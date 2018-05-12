@@ -3,7 +3,7 @@ Community-enhanced automated closed captions for Category5 TV Network shows
 
 ![Screenshot of VLC Playing Category5 TV with cat5tv_captions](assets/cat5tv_captions.png?raw=true)
 
-Our very own Robbie Ferguson has written a piece of software that uses speech-to-text and machine learning to convert all Category5 TV Network shows to WebVTT Subtitles, and then translates them into a number of languages and pushes them to GitHub. This process is 100% automated and as such has less-than-perfect accuracy (though is quite usable). As new episodes are released for any show on the Category5 TV Network, the AI automatically converts them to text subtitles, usually within a few days of the video being released.
+Our very own Robbie Ferguson has written a piece of software that uses speech-to-text and machine learning to convert all Category5 TV Network shows to WebVTT Subtitles, and then translates them into a number of languages and pushes them to GitHub. This process is 100% automated and as such has less-than-perfect accuracy, though is quite usable. As new episodes are released for any show on the Category5 TV Network, the AI automatically converts them to text subtitles, usually within a few days of the video being released.
 
 ## Help us improve the accuracy
 
