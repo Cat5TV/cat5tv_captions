@@ -1,0 +1,419 @@
+we're looking at the Raspberry Pi GPIO
+so this is a way that you can program
+external devices to do things
+all right so Raspberry Pi we've looked
+at it as a microcomputer we've looked at
+it as something that we could build a
+retro PI on so that you can play video
+games and mine cryptocurrency on mine
+cryptocurrency ha at nine hashes per
+second oh sorry and you know it's it's a
+fantastic piece of kit but you can take
+it to the next level because there's a
+40 pin GPIO on there which is a whole
+bunch of pins that you can connect
+cables to and program what you want
+those cables to do right so we're gonna
+start with the most simple example
+tonight that could ever be possible
+we're just gonna turn on an awful light
+but along with that we're gonna kind of
+learn what we need in order to get
+started because as we grow as makers we
+need to be able to have the kit so that
+we're ready to go obviously we're gonna
+need a Raspberry Pi Mike it is a
+Raspberry Pi 3 I love this guy here
+you've seen it on the show from cat5 TV
+slash maker just because it comes with
+things like bags and bags of many
+different image resistors for example
+like it just comes with tons and tons of
+resistors you can buy all this stuff
+separately but buying the kit as a
+beginner maker this just gave me a whole
+bunch of stuff to get started I've got
+various capacitors I've got various
+transistors and switches all kinds of
+stuff I got a couple of relays there so
+as we grow we can start using more and
+more of this kit so tonight for example
+I needed to pull out some resistors so I
+needed a resistor I needed an LED I
+needed a couple of cables and I need to
+be able to program my GPIO to turn on
+and off this light bulb okay over the
+next little while category-five TV is
+going to be looking more and more at
+beginner electronics we've looked at
+some in the past and we've really wanted
+to get going on on some of the projects
+that we can do here and
+we've done some pretty cool stuff but
+that's gonna grow over time and the
+Raspberry Pi is an interesting one
+because it's a full Linux computer right
+I have a question yeah
+what does GPIO stand for oh gosh
+GPIO you could have googled that as well
+as AI GPIO stands for general purpose
+input output okay that's the pins on
+right very PI for example and yes I have
+that because I'm a beginner maker and
+I'm okay with that right I just assume
+you know everything like in the tech
+world we have acronyms that you just use
+or short forms and it just becomes part
+of the lingo then you're like oh what
+does that I know LED is light emitting
+diode nicely done right nicely done so
+I've got one of those so with the GPIO
+these are all those pins
+remember there's 40 pins on the
+Raspberry Pi board right but I want my
+board to be in this nice little case
+it's an LED we know I love this case
+it's aluminum I've got a heatsink on the
+co pro and the at the CPU internally
+there and it's an aluminum chassis it
+keeps it nice and cool with passive
+cooling so there's no fans either but if
+I want to use a case well now it's
+really really tough to get in to do the
+GPIO putting things on the pins and
+things like that so that's where GPIO
+breakout cable cobbler for example would
+work really well so I have this what we
+call well it's it's a cobbler I'm gonna
+see if I can get in here just a little
+bit closer so this is a GPIO cable
+coming out of the side of the case and
+it's plugged into the GPIO on the
+Raspberry Pi and inside it looks just
+like that so it's just an extender
+everything - yeah so the inside GPIO has
+been basically brought along these
+cables and into this what looks like an
+old IDE it's a 40 pin GPIO connector so
+then I have the tea cobbler + v 2.2 and
+this is available at camp v dot TV slash
+PI and I love this because part of you
+know doing this is it's really tough to
+get the right pins and you need a
+diagram to figure out what pin is what
+and so on and so forth right
+and sometimes if you get it wrong you
+can cause damage to either the
+peripheral you're connecting or the pie
+itself the one quick question because it
+was just brought up in the chat room
+that that looks like the old IDE cables
+is that is it just an ID cable or is it
+something totally different because I
+would hate for somebody to go old
+computer and then I really like when I
+seem to recall that ID though had a pin
+that was that was blocked out let's see
+yes okay so it's not know cuz ID had a
+if I'm if I'm not mistaken I wish that
+that was a bigger photo no it looks
+pretty similar no it's 34 pin and but
+there's a 40 pin okay so I don't know
+the answer to that but okay that does
+look like a 40 pin cable okay so maybe
+they're the same which really hey if
+you're a packrat and you've got some old
+18 that's funny I do have some that help
+bring one in okay let's try this cable I
+don't know if the pin assignments would
+be exact or proper I don't I don't know
+the answer to that look up but they
+definitely look the same what the tea
+cobbler + v 2.2 does though it's first
+of all it's a prebuilt board okay so I
+didn't have to assemble this cobbler and
+what the cobbler does is it allows me to
+connect to my breadboard for prototyping
+a pencil II without having to run a
+whole bunch of cables out of the
+Raspberry Pi it's just one cable that I
+plug in to the tea cobbler Oh perfect
+okay so why the tea cobbler versus like
+a standard cobbler is now a standard
+cobbler is gonna just get rid of the T
+part that's why this one's called a tea
+cobbler right so that would be a
+standard cobbler that's tea cobbler the
+tea cobbler because it's got more space
+because remember if you have it just a
+normal cobbler the interface is in the
+middle here right so there's not a lot
+of writing on the board it's really
+really tough to see the pins nice thing
+about the tea cobbler is every single
+one of these pins is labeled that's
+helpful so you can see the pin number
+you can see which ones are 5 volt 3 volt
+ground it's labeled right on the circuit
+okay so then you need a breadboard it
+came with my Kit Kat 5 TV slash maker
+you just simply plug the tea cobbler
+into your breadboard and then plug your
+IDE cable
+IDE cable there I go if now you're doing
+it plug your GPIO cable directly into
+the tea cobbler and that's all there is
+to it so it just works like that so now
+my breadboard is set up to be a
+Raspberry Pi GPIO beast right okay so
+what I've done is I now have the ground
+going to the negative on my breadboard
+and I have
+pin 18 I've got that going down to here
+I'm just gonna move my laptop for you
+and I've got a 220 ohm resistor going to
+the positive and then an LED the
+resistor is so that I don't cause damage
+to my to my Raspberry Pi I don't want to
+damage the PI if I draw too much current
+from the LED and I used it to 20 because
+I wanted it to be bright enough for you
+to be able to see tonight if that will
+just give it a little bit more
+brightness than say a 370 ohm so let's
+give it a go you wanna take a look yes
+all right so I'm I've got everything
+kind of set up there it is I've already
+loaded Python as route and so I'm I'm
+raring to go so now that I've got this
+all set up
+got my LED here I've got the pin 18 is
+the one I'm using and I've got the
+ground going to the negative so I'm set
+now one question I have sort of before
+you go to is the reason why you have
+them situated on the board that way
+specifically or was just for somebody
+who's looking this going I don't know
+how to use them no time yeah just so
+that they know in case you try to
+replicate this at home it's it's tough
+for me to let you know what I'm gonna
+make this happen I'm gonna show you what
+I've done you don't have to the way a
+breadboard works is and you don't have
+to copy Robbie's way of doing it exactly
+so on the far right here is the negative
+and it's labeled as such and then right
+next to that is the positive so that's
+why I'm able to have the the LED just
+simply plugged in to negative and
+positive with the positive being the
+longer leg of the LED okay then I've got
+the ground from the Raspberry Pi GPIO
+this is the tea cobbler and it shows me
+that this is the ground so I've taken
+that
+and I've used a lead to take it to the
+negative so my ground is now on this
+entire line of the negative channel so
+anything that I plug into the blue see
+that blue stripe anything I plug into
+that will be connected to the ground on
+the Raspberry Pi once this is plugged
+into the GPIO so then with the yellow
+cable just up here because it's on the
+same horizontal line as the ground
+that's why it's plugged in there you
+couldn't just throw it anywhere down the
+line correct you could okay as long as
+it's touching a contact because as long
+as it touches a contact in the negative
+line so when it's in this line it will
+it will basically connect to all of the
+holes that are in this line okay that
+makes sense on the right-hand side and
+the left-hand side where it says
+positive and negative positive and
+negative it's like that but this is
+basically to two separate sides so I'm
+working all on the right-hand side of my
+board okay so if I if I take this LED
+for example and I move it down to down
+here that is exactly the same connection
+okay it doesn't matter where it is as
+long as I've got the positive and
+negative connected okay
+reason I put it up here is just so it's
+a little more visible on the camera
+because my laptop gets in the way here
+on the show right the positive which is
+pin 18 on the Raspberry Pi which is just
+the one I'm using for the GPIO so that I
+can program it that comes so pin 18
+comes out and I'm using this tether here
+to go down I'm just plugging it in
+anywhere but on the middle channel here
+it goes this way horizontal so now
+anything that I so I've plugged this in
+here anything that I plug in next to it
+will have the positive alright I hope
+that makes sense it does so this is now
+connected so this resistor that's next
+to the red because it's on the same line
+that way so it's too low there yeah it's
+really really fine but it's right next
+to it the where the resistor goes in so
+the positive is connected to the
+resistor on this end and then the
+resistor carries that current to the
+positive here so then even though it's
+kind of stretched out on the board
+really it's just a big
+circular loop you could do this in a
+little tiny plant okay absolutely the
+reason that I brought it down here was
+because I didn't want the resistor to
+accidentally come in contact with with
+something else
+fair enough whatever right sorry I
+didn't mean to throw you off I thought
+in case somebody's watching this and
+they're like why isn't it working
+yeah you know the pin assignment as far
+as where I put this doesn't matter as
+long as I wire it correctly so I could
+put this up here okay
+so I've now moved the red up here so now
+there is nothing going to the resistor
+because there's nothing in line with it
+right so now I have to take this
+resistor I'm going to connect the
+positive terminal first and the reason
+that I do that is what if I accidentally
+plug it into the negative and then
+short-circuit my board yeah I don't want
+to don't want to do that so I've plugged
+that into the positive terminal and now
+I'm going to plug it in to the same line
+as the red cable okay all right so it
+doesn't matter where it is up and down
+as long as it's in the right line up
+perfect okay no that makes sense
+cool all right all right so let's plug
+it in
+there we go so it is hot baby alright
+and I'm gonna jump over to Python here
+which is running as Super User the
+reason that I need to do that is because
+it needs access to the GPIO which only
+the Super User can do so I'm going to
+import the capabilities of the Raspberry
+Pi GPIO GPIO so I'm gonna go import our
+PI dot GPIO as GPIO so just typed
+exactly as I've shown there and then we
+need to set the mode of the GPIO to
+Broadcom so set mode GPIO dot BCM these
+are just kind of we're just setting up
+our script ah let's see what I did most
+recent call last STD in she I missed an
+O GPIO dot set mode GPIO dot BCM that
+looks a little nicer and then now I know
+that I'm using pin 18 so I need to
+actually set it up as an output so I
+need to go GPIO which I set up in the
+first in the first line dot setup and
+I'm gonna use pin 18 comma and we're
+gonna set that as GPIO dot out enter oh
+let's see what that tells me there oh
+that's so tiny what did I type wrong
+GPIO dot set up 18 GPIO dot out
+gpio don't set up you guys see what I've
+done wrong no I don't possibly space
+after 18 , where do you need that you
+don't need it but it shouldn't matter
+what did I type differently how did I
+get a typo there I don't see it folks I
+don't either
+well now what I need to do is I need to
+actually tell the output of pin 18 to
+turn on so true or false true if I did
+it right Jeff can you hit the light
+switch right behind you because that's
+going to allow us to kind of see it's
+dimmer in here okay
+I think it's on it's on okay now I'm
+gonna change that to false that's yeah
+you can definitely see on/off on/off and
+I don't know what my typo was there I I
+just I don't see it but I'll watch this
+back and I'll see it so basically what
+we've done is we've used that tea
+cobbler plus you can hit that light
+again if you like and then we've used
+the Python programming language in the
+terminal on a Raspberry Pi to be able to
+turn on and off the light which
+essentially what we're actually doing is
+turning on and off pin 18 has a
+different so it sends a current through
+pin 18 right so that is the most basic
+example of what we can do now you know
+the next step is okay once you've got
+all the kit then we can start doing some
+really exciting stuff there's a lot of
+stuff to come i know names is gonna be
+using the GPIO coming up soon really so
+that's going forward to that as well so
+there you have it head on over to cap 5
+dot TV slash PI for a Raspberry Pi and
+the tea cobbler plus and if you want to
+look at the maker kit and all the
+accessories cat5 dot TV slash maker is
+where you'd want to go and check that
+out
+good times awesome we had one question
+in the chat room please why is it called
+a breadboard why is it called a
+breadboard yeah serious question once
+again you could you could Google that
+what
+I could I don't know okay well I did
+someone named it a breadboard yourself I
+personally feel like it should be called
+a waffle board maybe because it looks
+like a like what you would cut bread on
+maybe maybe because it's the best thing
+since sliced bread yes you know true
+fact I don't know I said it in the chat
+room
+waffles are just pancakes with ABS back
+in the day circuits were often
+constructed by wire tapping components
+onto nails driven into flat pieces of
+wood that resembled the old days yes
+okay there's a lot of stuff is we should
+head over to the newsroom I know we're
+you know I'm using up all your time
+tonight you know right we're having fun
+right actually really love episodes like
+this where I can where I can learn from
+the beginning what I think that the
+viewers need to know too is that I'm
+learning this is like an experience for
+me like you're learning as we go and as
+we as we grow and and I'm learning stuff
+like how to how to do this and I love it
+like the soldering episode yeah and it's
+so basic for somebody who knows how to
+do this stuff but for somebody who's
+never done electronics in their life
+I've been a computer guy all my life and
+now to understand it and becoming more
+and more versed at it I'm excited to be
+able to fix things I'm excited to be
+able to service things and replace
+resistors on circuit boards so that I
+don't have to replace an entire circuit
+board yes awesome yeah it's really cool
+[Music]
