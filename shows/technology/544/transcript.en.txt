@@ -1,0 +1,1411 @@
+welcome to category five technology TV
+this is episode number 544 so nice to
+have you here this week we've got an
+exciting show planned for you if all
+goes well we're gonna show you how to
+install plex media server on a little
+Raspberry Pi 3 it's like a micro
+computer that fits in the palm of my
+hand if I had a shirt pocket I could put
+it in there it's so tiny we're gonna
+learn how to set up our own would be
+kind of homebrew Netflix on that device
+this is gonna be cool stick around
+this is category 5 technology TV
+[Music]
+[Applause]
+our live recordings are trusted only to
+solid-state drive by Kingston Technology
+revive your computer with improved
+performance and reliability over
+traditional hard drives with Kingston
+SSDs category 5 TV streams live with
+Telestream Wirecast and nimble streamer
+tune in every week on roku Kodi Plex and
+other HLS video players for local show
+times that category 5 TV category 5 TV
+is a member of the tech podcast network
+if it's tech it's here cat 5 TV slash
+TPN and the International Association of
+internet broadcasters cat 5 TV slash ia
+IB
+welcome to the show this is category 5
+technology TV so nice to have you here
+Sasha's back yeah way last week did you
+have a nice week I had a great week good
+good I spent my that that day yes it's
+not Valentine's Day I booked my
+honeymoon
+hey nice near future I'll have another
+week there you go what are you doing
+we're going to Dominican nice I know all
+of our viewers from the Dominican give
+us a whoop-whoop yes please come see me
+well no maybe not it's my honeymoon
+I'd actually happily host on the resort
+you can get date passes see yes there
+you go okay so this is coming up that's
+coming up in March
+nice yes they're gonna have a week off
+and I'm gonna have to find someone to
+fill in for you
+yes Jeff is away today that's yeah so
+it's just us last week Becca was here
+thank you everyone for your kind remarks
+and all the thumbs up that we got on
+YouTube as well we've been doing you
+know growing our audience on YouTube
+because it's been a process for us
+because we're predominantly on like on
+cable TV and on roku and Kody and Plex
+and platforms like set-top boxes and
+Smart TVs and so our audience is not
+predominantly on YouTube right
+and those who do watch on YouTube
+possibly don't have accounts or maybe
+don't comment and things like that so we
+really appreciate you becoming a part of
+that community as well watching our show
+is watching our clips on on YouTube we
+have not only category 5 TV but every
+week we added up the show into
+itty-bitty bite-sized pieces right those
+go on Linux tech show and so you can do
+the search for that on YouTube or you
+can just go Linux tech show comm and
+your favorite browser and it will
+automatically redirect you there it's
+cool because sometimes like this is an
+hour-plus show the full the full episode
+but then the features themselves may be
+between 5 and 20 minutes long exactly so
+people say in the comments hey how come
+I had to wait for 45 minutes to get them
+to the meat of this over to Linux tech
+show duck right exactly then you'll be
+able to watch just those little itty
+bitty snippets these funny YouTube
+people yeah and everything that I just
+said will be cut out you will never hear
+this if you're on I have been saying to
+all of my friends lately whenever I'm
+talking about cat 5 I say check check us
+out on YouTube first and then all over
+the rest o or Plex or Roku or Co kvv be
+hello California and all the ways that
+you can catch the show cool California
+story yes one of the patients I work at
+a chiropractic clinic and one of the
+patients there is a truck driver and she
+drives through California oh yeah yes I
+wonder if she's seen our billboard
+exactly so there you go I I think
+there's a picture of Jeff giving you the
+the bunny ears up on one of those
+billboards somewhere in Southern
+California look for it take a picture
+and send it to us let me know exactly
+where it is yeah that would be cool yes
+we've got a fantastic show planned for
+you tonight we're gonna be looking at
+how to get plex media server up and
+running on a Raspberry Pi 3
+I don't want to talk too much about it
+before the break we're gonna cover it
+right after this so stick around and
+it's gonna be fun yes it's gonna be fun
+it's gonna be a blast here we go you've
+got mad skills
+now hone them learn new skills or
+improve your existing ones with online
+video tutorials and training from
+lynda.com through our special link at
+cat5 dot TV slash Linda learned software
+technology creative and business skills
+you can use today to help you achieve
+your professional goals join today and
+start learning we'll give you this
+chance to try it absolutely free with
+unlimited access to all of the courses
+sign up now for free cat5 dot TV slash
+Linda welcome back this is category 5
+technology TV and imagine that in this
+little box is a server huh this is the
+world that we live in a Raspberry Pi 3
+you can pick them up at camp 5 dot TV
+slash PI it'll direct you to all kinds
+of sources like you can buy them on
+Amazon you've got one I have one I've
+got several mm a lot of us have several
+but they're an inexpensive SBC any guess
+on what SBC stands for SBC yeah put me
+on the spot hmm
+okay like super super bitty computer
+sync single board computer very close so
+it's like the size of a credit card and
+it is all built into one circuit board
+right so the processor the RAM
+everything is in there the only thing
+that you have to really add is you've
+got to put it in a case which I've done
+here you all can you can kind of see
+that under my monitor there it is super
+easy to build I did don't want in an
+episode episode yeah
+previously we've done a lot of rat
+berry pie features and last week was no
+exception we did the comparison of the
+ex u4q to the raspberry pi 3 in past
+episodes sashes built one go on to our
+website category 5 dot TV and click on
+the search up at the top you'll be able
+to just type in raspberry pi and you'll
+find a bunch of stuff I put that right
+there just to remind you what we're
+talking about speaking of having done
+raspberry pi features in the past yes
+episode number 4 59 Jeff and I were on
+the air you were in the newsroom and we
+did the very same feature that we're
+doing tonight however things have
+changed things have changed episode 4 59
+that was almost two years ago right and
+in that time now that demonstration was
+on Debbie and Jesse raspy and Jesse in
+this case and now we're using raspy and
+stretch so we've had a really great
+response and if you're watching this on
+youtube you know that you you may have
+found this through our previous feature
+from two years ago and now being 2018 a
+lot of the technology has changed it's
+improved it's gotten better and it's
+also broken some of the steps in the
+tutorial from our video from a couple
+years back right so high time for us to
+redo the demonstration refresher and
+show you how to do it sascha one of the
+things that has changed since that
+initial demonstration is we've been
+watching the comments on YouTube we've
+been watching the comments on our
+website category 5 TV and one of the
+rezoning comments
+well basically one of the resounding
+themes is coming from people who are
+brand-new to single board computing
+brand-new to Linux and they want to try
+it out but it's so complicated to go
+through all these steps yes this is kind
+of a two piece demonstration in this one
+video we're gonna get to the DIY let's
+break it down and walk you through all
+the steps step by step
+show you how to set up your own
+Raspberry Pi plex media server but we've
+also taken the time to create a ready to
+deploy image for Raspberry Pi 3
+it's called Plex Pi and you can get a
+duplex pi
+komm I think that you're very lucky that
+I am the co-host today because if you
+are a brand new user I have the right
+question she's got the questions for us
+such as what is plaques it's what it
+starts with right folks
+yeah the bare minimum question going
+into a demonstration of how to create a
+plex server is what is Plex what is Plex
+plex media server think of it this way
+Jeff and I like to call it our home brew
+Netflix take all of your videos put them
+on a drive o take all of your you know
+the part of the video podcasts that you
+watch like category 5 TV if you download
+our torrents put them on that drive put
+them into a folder and plug it into plex
+then plex media server in our case on a
+Raspberry Pi 3 creates an environment
+that looks and feels a lot like Netflix
+it keeps track of what episodes you've
+seen it allows you to rate episodes it
+shows you the description and a
+thumbnail image of each episode in each
+movie and as you watch things it it
+marks them as watched so if you're
+watching something like category 5 TV
+and there are 11 seasons of this thing
+right you can actually see where you've
+gotten to so if you're binge watching
+anything it makes it really easy ok same
+with like in the middle of an episode
+like you can turn it off and then you
+come back to later and it's in the right
+spot then the other nice thing about
+plex media server along that vein is
+that it works with all your devices so
+oh this device will be plugged into your
+TV no doubt and you'll be streaming
+video directly on the device but then if
+you have an Ethernet cable plugged into
+it you can be using your tablet and
+watching it on your tablet you can have
+you can have it on your computer
+upstairs or the TV in the living room or
+the bedroom and still and not have to
+move the device around it streams it
+through your network to any of your
+devices through the web browser can it
+be multi-use okay within the limitations
+of a Raspberry Pi because it is a very
+small micro server it doesn't have the
+same amount of power as a supercomputer
+but yes you can you can definitely
+string
+to multiple devices so if you're
+watching it on your TV downstairs mm-hmm
+and you pause it because it's time to
+make supper you go up to the kitchen you
+pull out your Android tablet or your
+phone and you set it up and you push
+play it starts right where you left off
+while you were downstairs that's a
+magnificent homebrew Netflix with your
+own content works with home movies works
+with mp3s and your music library and it
+plays web streaming we have an actual
+plex channel an add-on that you can put
+into your plex deployment and it gives
+you access to all of our back episodes
+plus live streaming during the live
+broadcast so it is very well-rounded
+solution and we're gonna learn how to
+set that up on a PI perfect why why
+would we do this
+why would why do we ever use a Raspberry
+Pi 3 because they're amazing they are
+amazing they're inexpensive and they are
+very inexpensive sacha they are easy not
+only easy to use but easy to procure yes
+and I may not have and you may not have
+a server at home that has HDMI output
+and can fit behind your TV that's
+mounted on the wall this you can just
+tape onto the back of the TV and plug an
+HDMI cable in and the power cable and
+you're done right this is a very easy
+like it's a palatable beginning step
+right like I feel like that like if you
+are new to all things Linux if you're
+new to all things tech and your this is
+the first episode you've ever seen
+you're lucky because this is a great
+first step all right all right
+so speaking of first step for those of
+you who do not want to do it yourself
+comes Plex PI right Plex PI comm will
+take you to well currently it just takes
+you to a forum and I'm gonna bring it up
+on my computer screen for you I've got
+my laptop here and let's just see if I
+can bring it up see if that comes up yes
+okay so Plex PI comm and when I go there
+right now we haven't built a website for
+it yet it just takes you to the category
+five community forum and you'll see a
+development forum here because it is
+under development right now
+and if you scroll there are three sticky
+posts one of them is introduction to
+Plex PI and download Plex PI images and
+when you go there there's a brief
+introduction as to how it works how to
+follow along with the steps and of
+course where you can download it as well
+and this is going to evolve over time we
+are going to create a website at plex pi
+comm so that it's you know more
+attractive and easier to find what
+you're looking for
+but in the meantime it gives you free
+access to the image so what that means
+is for those who don't want to do it
+yourself if you're not a Linux guru and
+you don't want to go through the steps
+and figure it out and follow along with
+the steps that we're gonna show you
+tonight you can just fire up this image
+use something like etcher that's the
+program that I like to use right so you
+install etcher
+I've got a link below if you're watching
+this on youtube or on our website or
+anywhere where we've got comments and
+things follow the link to enter and that
+will allow you to burn the image to a
+USB flash drive or in this case a micro
+SD card that you're gonna put in your
+Raspberry Pi right once it's in there we
+can put it up you ready okay let's turn
+on our Raspberry Pi 3 so this is
+happening in real time and I've already
+burned the image for Plex PI 1.1 the
+current version on my on my Raspberry Pi
+3 so here we go
+so from downloading and burning it to
+now booting it for the first time it is
+this easy to get up and running with
+Plex so you see the the raspbian desktop
+there now wait for it wait for it and
+wait a little X is a load and you're
+gonna leave this thing running on your
+TV you're gonna fire it up and it's just
+gonna be running connected to your TV
+you don't have to wait for it and things
+like that
+and then we're gonna be up on the screen
+here where it's gonna ask us how do you
+want to login now how do you want to
+sign up that is a fully functional plex
+media server from Plex PI com it's ready
+to go
+we just booted it up there exactly how
+you're gonna see it so you need to sign
+up for an account I use my email address
+to sign up and just like any sign up
+you just give them your email address
+and enter a password and that is what
+you're going to use on all of your
+devices to connect to your plex media
+server and you can access it from
+outside of your network if you've got
+high-speed internet those kinds of
+things are all possible this is not a
+tutorial on how to use plex media server
+that's happening next week but what
+we're doing here is showing you how to
+get set up with a plex media server on
+your Raspberry Pi so there it is it's as
+simple as that that's Plex PI comm from
+there if you want to get out of it you
+hit alt f4 that takes you right into
+your regular like desktop mm-hm
+and you can just shut her down just like
+that ok done and now we've got an
+opportunity to change the card I've
+already created a raspbian stretch
+installation here so for those of you
+who are interested in DIY here it is
+it's just raspy and stretch nothing has
+been done to it it's out-of-the-box
+ready to go we're gonna learn how to
+create how to build how to install
+everything we need to have this become
+that we're going to check that out right
+after the break stick around
+Jeff Weston Jemma
+you're building a brand-new beautiful
+website what aren't you you're terrible
+actor
+what this where acting comes into play I
+don't know you're supposed to act okay
+are you building a really cool website
+just because Jeff is confused doesn't
+mean you have to be visit cap five dot
+TV slash dream host to sign up for
+unlimited web hosting for your website
+with unlimited email accounts MySQL
+databases the latest version of PHP
+WordPress and more and even a free
+domain name registration it's less than
+six dollars per month so sign up today
+cat five dot TV slash DreamHost
+and we're back with raspbian stretch on
+category five technology TV now
+everything that's gonna happen from here
+on out is for the DIY wanna do it
+yourself and we're gonna install set up
+Plex Media Server on this bare-bones
+Raspberry Pi 3 if that's not you if
+you're not the DIY just rewind this
+video learn all about flex Pi calm
+forget about everything you're about to
+see here today that's right we're gonna
+get real geeky here we're gonna get into
+the Linux terminal and we're gonna see
+how we can get this set up so let's do
+it okay alright so speaking of Linux
+terminal we're gonna bring it up there
+we go and we're gonna go sudo apt update
+that's the first thing we want to do on
+Linux to make sure that things as far as
+our repositories are up to date now do
+we know what a repository is a
+repository is something that Linux uses
+in order to install software
+it's a place on the web where a bunch of
+software resides and anytime we want
+software all we have to do is use that
+apt command here on raspbian or a debian
+derivative and then it will download it
+and install it we don't have to find
+their website we don't have to compile
+anything we don't have to figure it out
+it's all there for us ready to go so now
+I'm gonna go apt and now notice that it
+says that there are some things that can
+be upgraded so we want to do that apt
+upgrade not update notice it says hey
+couldn't lock the file that's because I
+forgot sudo because I need to be super
+user now it's gonna go through and it's
+gonna upgrade anything that is ready to
+be upgraded so are we ready to do that
+yes let's do that
+this is now downloading all of those
+programs off of the web and this just
+shows you how bare-bones my installation
+of raspbian stretches here tonight
+because there is a ton of stuff to be
+upgraded here I see things like like
+Python and even my timezone data is
+being updated so that's all happening
+through those repositories that's also
+how we're going to install plug
+Media server tonight so let's check on
+the status here it looks like it's
+working away and it can take some time
+especially you know if you've got a
+slower connection we're gonna use the
+magic of television to kind of speed
+this up for you tonight let's see how we
+can do that okay so in real time we are
+sitting here and this has so far taken
+about 20 minutes or so to get to this
+point in that amount of time Marsh man
+in the chat room says while this is
+going on I downloaded and burned an SD
+card and booted up the new Plex PI comm
+mm-hmm and now back to our post
+processed accelerated apt upgrade on the
+Raspberry Pi 3 and boom it's done just
+like that it took no time at all
+actually it really did you're gonna have
+to dedicate yourself some time on the
+Raspberry Pi 3 because it does take a
+lot of time to update so really quickly
+now that that's been updated upgraded
+now we need to go apt dist upgrade
+that's gonna be the next step again
+super user do sudo apt dist upgrade and
+I'm not I'm so happy to see that it
+doesn't need to do any because that took
+a while to get through ok now we need to
+go sudo reboot and that's gonna restart
+our Raspberry Pi 3 because now that
+we've got all those updates to the
+software we need to make sure that we
+get the basically those load right they
+need to load up on the system so here we
+go we're rebooting into the updated
+raspbian stretch now if you're not
+familiar with raspbian you can head on
+over to raspberry pi dot org
+don't forget the silent P in there rasp
+berry pie dot org and as P I like the
+number not I like the edible and you can
+download it for free from there it's
+based on Debian now it tells me okay hey
+your upgraded to the latest version
+congratulations thank you took long
+enough ok so now next step because now
+that we're up to up-to-date we can
+finally get into installing deploying
+our plex media server now a real case
+for Plex PI comm comes from realizing
+how much time the
+can take to do this yourself right so
+we've done the work for you folks Plex
+Pike ami and just download it run it
+you're good to go so let's let's see how
+it's done though let's actually get in
+there and make this happen
+so all right in my terminal which thank
+you to the community who has let me know
+hey control shift plus allows me to
+actually zoom in on the terminal so
+folks if you're watching at home and
+having trouble seeing that on your
+60-inch TV well that's gonna help you
+out a great deal there we go so first
+thing I want to do now that we've
+rebooted is we need to make sure that
+apt remember we did apt update and I'm
+tired of typing sudo so I'm gonna go
+sudo su and now I am route done now
+remember how when I do apt update and
+everything else that connects to the
+servers and gets its updates well we
+need to make sure that apt is able to
+use HTTPS SSL encrypted transport in
+order to do that we need to install a
+package which may on the new stretch
+already be in existence but we're gonna
+do it anyways just to be sure it doesn't
+hurt anything remember that I am now
+route okay
+that's what sudo su did so I don't have
+to type sudo apt install and we're gonna
+just make sure apt transport HTTP hit
+enter if you don't have it it's going to
+install it if you do it says app
+transport HTTP is already the newest
+version so now we need to actually get
+our plex media server the repository
+it's a PPA so we're going to add that to
+our system here I'm not sure if there's
+a stretch one let's give it a go so
+let's go let's go over here let's do it
+this way
+et Cie slash apt and we're gonna go into
+sources dot list dot D and we're gonna
+create a new one so I notice I'm in the
+folder etc' slash app slash sources dot
+list D this is where I can add all kinds
+of things I'm gonna call this PMS dot
+list and you can follow along with these
+this whole tutorial at cat5 dot TV slash
+PMS and to be sure it stands for plex
+media server
+hmm hmm I'm creating a new file with
+nano I am route so I can do this and I'm
+gonna go Deb HTTP now that we've got
+HTTP transport and we're gonna go dev
+today dot de / PMS stretch main and then
+I'm going to output that with ctrl o and
+then ctrl X to exit app update let's see
+if there is a stretch repository there
+if all goes well it's gonna it's gonna
+tell me that the key can't be found
+there we go that's good
+so it's found a stretch all right
+perfect
+okay so the public key is not available
+we need to get that so W get - oh do I
+have a pipe this time I do not okay you
+guys ready for this number last time on
+episode number what was it for 34 59 we
+had that trouble so let's see if I can
+change my keyboard settings preferences
+mouse and mouse and keyboard settings my
+mouse is very sluggish by the way so
+that's why I'm moving in slow motion
+here keyboard keyboard layout Raspberry
+Pi being based in the UK they've
+defaulted this to a UK keyboard now I
+want to change to a United States
+keyboard you may need to change to
+something that's more appropriate to you
+and I'm gonna choose English your yes
+now I'm gonna have that pipe character
+unlike last time okay and then okay Wow
+is that every sluggish Wow
+okay do I have pipe yes okay W get -
+capital o that is the letter O and then
+- yes that's intentional we're gonna
+output this and import it into the next
+command HTTP colon slash slash dev - de
+de / PMS slash dev - de -
+PMS gpg key don't worry you can copy and
+paste that at cat 5 TV / PMS and then
+pipe and then sudo apt - key add - so
+what we're saying is grab that key and
+output it to - we'll say from dev today
+doc de /p
+GPG chi blah blah blah then pipe it into
+sudo apt key ad - that's gonna download
+and import the key all in one fell swoop
+without actually putting the file on my
+hard drive now if I go apt update if all
+went well
+we will not see those error messages
+this time because the private the public
+key is now available right and it worked
+ok so now we're ready to install plex
+media server this is where things have
+changed a little bit in Debian stretch
+or in raspy and stretch in our case the
+package name has changed so we're gonna
+go aft install plex media server
+- installer ok now before I hit enter on
+that I'm going to bring up my browser
+here so that you can just see what is
+going to be different and you can see
+that a little bit of sluggishness to the
+Raspberry Pi 3 that's what I was talking
+about when when we were talking last
+week about how performance feels more
+like a desktop on the Xu for Q if I go
+HTTP colon slash slash localhost colon
+32400 slash web it's going to tell me
+that such a thing does not exist ok
+that's where Plex is going to live in
+just a couple of moments time I'm going
+to hit enter and it's found it it's
+installing it fantastic
+so again repositories save the day makes
+it super super easy and it's grabbing a
+couple of extra packages that are needed
+that's fantastic
+while we wait for that you know what
+this is not even taking very long this
+mom this is motoring along I'm gonna
+bring up another terminal window and
+we're gonna zoom in on that one and
+we're gonna go sudo su and I gotta get
+started with the next step while I'm
+waiting so I'm gonna go nano
+slash et Cie default and plex media
+server which the file already exists
+because it's halfway done installing so
+this is my configuration file and I need
+to tell it what user to run as you see
+how plex media server user is currently
+set to Plex well on the Raspberry Pi the
+user is called pi so output that with
+control o and then control X now that is
+ready for us so it's going to be running
+as that I also need to change the
+ownership of that file just so that
+we've got access to its CH own not the
+file pardon me but the the folder which
+is going to contain plex media server
+but I need to wait until this process is
+done because it's still adding some
+files but I can get ready for it CH own
+- R which means recursive pi PI so
+that's the PI user and the PI group
+because that's who we're gonna be
+running as VAR Lib plex media server so
+I gotta wait for this to finish before I
+hit enter because they're still gonna be
+some files that are gonna be dropped
+into that folder and then we'll be good
+once again feels like I want to speed
+this up for you it's moving along
+anyways a little better than the last
+one but it is not an exciting process to
+sit there watching it you'll feel so
+much better just to boot up flex PI I
+guarantee it but there's a certain
+thrill that comes from doing it yourself
+isn't there and you can really customize
+it now that that's ready let's zoom in
+again so I'm going CH own recursively
+we're gonna go pi pi which means pi : pi
+PI user PI group that folder so now that
+folder belongs to
+so it's ready so now system CTL restart
+plex media server because we've changed
+the user that we want it to run as so we
+need to restart it
+system CTL status plex media server and
+we see that it is active running well it
+could this be true let's go back to our
+web browser and we're gonna hit f5 on
+the page that says cannot be reached and
+ladies and gentlemen we now have plex on
+our Raspberry Pi 3 amazing quite a bit
+more onerous than just downloading Plex
+PI comm and installing it on a flash
+drive and getting up and running but as
+I say such a victorious feeling to do it
+yourself ok learn along the way you
+could go to the store and buy lasagne or
+you could make a lasagna at home I'm not
+even gonna talk about the robot grandma
+who could make that lasagna for you and
+it would eat just like grandma used to
+make there it is folks that is Plex on
+the Raspberry Pi three two different
+ways to do it DIY or just download it
+and go check out more you can get your
+pie at cat5 TV slash pie that's the
+device that you need nice and cheap nice
+little piece of hardware that comes like
+that get yourself a power supply for it
+an SD card something that has a
+reasonable amount of space say 32 gigs
+or so to get up and going then you're
+gonna use usb with an external hard
+drive or an ass share or something like
+that in order to store your media we're
+gonna look at how Plex actually
+functions next week we're going to take
+it from here and show you how to use it
+so that's Plex on the Raspberry Pi find
+out more cat5 dot TV slash p-m ass we've
+got to take a really quick break when we
+come back we're gonna be we've got a
+prize to give away that's right we've
+got a winner of our video game giveaway
+and the news room
+now here's another great way you can
+support the shows you love for the
+category five dot TV network by shopping
+gearbest that's right Jeff cap five dot
+TV slash gearbest
+it's an online store for the geek streak
+in you or the loved ones of course I
+mean especially your loved ones right
+because cap 5 TV slash gearbest quite
+frankly has all of the greatest tech
+gifts that you can ever hope for at
+rock-bottom prices
+did that cellphones you betcha cap 5 TV
+slash gear best has a wide assortment of
+unlocked Android cell phones and tablets
+what about computer
+consumer electronics those make a great
+gift absolutely from high tech watches
+to action cameras headphones even
+virtual reality headsets cat5 dot TV
+slash gearbest has you covered they
+literally have it all Jeff literally
+really it's like a superstore right from
+the comfort of your own chair at your
+computer through the interweb yeah
+I there's no way they have it all it's
+true that's just a bunch of random
+electronic sesame what about clothes yep
+both men and women fashionable apparel
+at rock-bottom
+SuperDuper prices kind of like this well
+look at this coat what do you think it's
+a slimming mock leather jacket it's
+available for less than $30 plus free
+shipping at camp five TV slash gear best
+yeah all right it kind of got me there
+Wow any other questions for me Jeff now
+that the winter is past flying season do
+they have any good deals on say copters
+oh my goodness well check this out dude
+they have everything check out over 500
+various drums and not only that they're
+available marked down by about 32 up to
+63 percent off the regular price love it
+what's the website again well you're
+gonna find gearbest on our partners
+pages for any of your favorite category
+5 TV shows like new every day
+category 5 technology TV the pixel
+shadow but of course if you want to shop
+absolutely right now and you want to go
+straight to the site all you have to do
+is visit cat5 dot TV slash gearbest see
+that's easy tech 5 dot TV slash gearbest
+that's right
+happy shopping welcome back this is
+category 5 technology TV so nice to have
+you here check out our website category
+5 dot TV lots of great ways to
+participate such as as winning a copy of
+that effects VR that effect to VR yes we
+have been having a contest and we pick a
+winner each week now the way to enter
+the contest is to let us know how you're
+watching where you're watching from you
+do that by email email contest at
+category 5 dot TV easy pv it's too easy
+to win folks we've counted up this week
+not hundreds not thousands but several
+of your ballots
+and this week this week's winner is Sam
+okay lickin one kiss listen x11 what's
+your next one way to go congratulations
+you are our winner this week all of
+these dead effects to VR players are
+gonna just seat somewhere get steamed
+set up get her going we'll send you the
+passcode to download that right after
+the show
+congratulations here are the stories
+were covering this week in the category
+5 TV newsroom an IT worker who
+accidentally threw out a hard drive
+containing a small cache of Bitcoin has
+lost over 100 million dollars because of
+the blender investigations have been
+launched after a helicopter reportedly
+crashed when swerving to avoid a
+consumer drone a Japanese company is
+planning to build the world's tallest
+wooden skyscraper in 2041
+to mark its three hundred and fiftieth
+anniversary a mountain of sensitive
+FedEx consumer data has been exposed and
+Microsoft has back ported its Windows
+Defender advanced threat protection
+security toolkit from Windows 10 to
+Windows 7 and 8.1 these stories are
+coming right up
+don't go anywhere whether you shop on
+ThinkGeek gearbest B&amp;H Photo Video eBay
+or Amazon or even if you want a free
+trial of audible you'll find the best
+deals and support the shows we produce
+by simply visiting the shopping sites
+you already frequent by using the links
+on our website visit category-five TV
+slash partners for the full and
+ever-growing list and help us create
+more free content like this show thank
+you for shopping with our partners and
+thank you for watching
+this is the category 5 TV newsroom
+covering the week's top tech stories
+with a slight Linux - I'm Sasha Rickman
+and here the top stories were following
+this week an IT worker who accidentally
+threw out a hard drive containing a
+small cache of Bitcoin has so far lost
+over 100 million dollars because of the
+blunder we've reported on this a number
+of years ago as well but as Bitcoin
+continues to grow the time has come to
+revisit this the story dates back to
+2013 when James Howells had who had been
+mining cryptocurrency on his computer
+since 2009 to solve complex mathematical
+problems and earn rewards dismantled the
+device after spilling a drink on it he
+said after I had stopped mining the
+laptop I had used was broken into parts
+and sold on eBay however I kept the hard
+drive in a drawer at home knowing it
+contained my Bitcoin private keys so
+that if Bitcoin did become valuable one
+day I would still have the coins I had
+mined he continued in mid 2013 during a
+clear outs the hard drive then worth a
+few hundred thousand pounds was
+mistakenly thrown out and put into a
+general waste bin at my local landfill
+site after which it was buried on site
+the hard drive contains 7500 bitcoins at
+that time that amount of Bitcoin was
+worth about 700 thousand dollars but
+Bitcoin didn't stop there had he had not
+thrown away that drive it would have
+amounted to over 100 million dollars 119
+million five hundred and one thousand
+nine hundred and twenty-five dollars you
+asked as of last week while Howells had
+made several requests to the local
+council to dig up and salvage the hard
+drive at this site he has yet to be
+granted permission to look for the
+missing treasure he says I haven't
+actually tried to search for the hard
+drive yet as I have not been given
+permission to look despite having
+financial backing in place and engaging
+the local council a couple of times
+Howells who calls himself a Bitcoin
+pioneer and Bitcoin cache proponent on
+Twitter says that he will not give up on
+his search on December 2nd 2017 he
+tweeted a diagram
+of a modern landfill with the
+bittersweet caption Bitcoin cold storage
+vaults I remember this story I recall
+you doing this story years back it makes
+me so sad for this guy and I every time
+Bitcoin goes up a coin is constantly
+going up and has been going up but good
+news is that he tweeted on December 7th
+seems to be in good spirits has not
+taken his own life so this is this is
+Grace on the up-and-up I cannot believe
+he's waiting for permission like I feel
+like if this was me with a hundred
+million dollars I might be sneaking in
+under the cover of darkness and when
+you're telling a story again I can't
+help but think about Shizue Yamaguchi
+coming on the show and talking to us
+about decluttering yeah I cleaning up
+cleaning house the Mary Kondo method and
+I might be wrong in my recall on this
+but I do not believe it was him who
+threw it out was it the people from
+hoarders that came in and like took all
+this stuff and threw that something
+makes me think it was his wife and I
+don't know whether it's because I'm a
+wife but I just imagine that's the kind
+of thing that a wife would do I guess
+believe me it's true how many times have
+I been like where is such and such tech
+device and then I find it
+years later in the bottom of a box
+because there's a box that says random
+miscellaneous rabi things exactly at
+least they don't go to the dump
+oops okay so I want to know okay how
+like would that usually be okay if you
+took a hard drive out could you just put
+it in a safe and yours leader would it
+be okay if it had Bitcoin on it like is
+that obvious I wouldn't trust it right
+certainly it's certainly not yes and no
+I mean cuz so many things could happen
+putting a drive in a drawer right
+sensitive to electrostatic sensitive to
+vibration as people open and close the
+drawer sensitive to people coming in and
+throwing out the things that are in the
+drawer granted he did spill a drink on
+it to begin with so he's not exactly
+up-and-up on the safe keeping of his
+Bitcoin yeah
+yeah okay so if we're gonna mine
+cryptocurrency first of all yeah you're
+gonna get a string of words or a
+decryption key a private key they this
+is what it was stored on that hard drive
+the Bitcoin itself is not stored on the
+hard drive
+the Bitcoin is in the Internet it's like
+just they call it the the the blockchain
+it's in this blockchain so many many
+computers have that Bitcoin coded into
+them but in order to access those
+Bitcoin you have to have the private key
+so their Bitcoin out there that people
+can see that it's not tangible but
+numbers it's it's digital binary stuff
+with with the decryption key though or
+with the part of me the private key you
+can access that as money I kind of
+myself right
+so had he had multiple copies of that
+key or had he printed that key and put
+it in the filing capsule so this could
+easily be just to back up your stuff oh
+my gosh right especially if you have
+7500 Bitcoin at the time even when they
+were $1 each that's $7,500 and at the
+time when he had this discarded it was
+$700,000 I cannot believe he's so I like
+Jessica he thinks he's gonna find this
+you're not fine in it no well at this
+point it's been so many years buried in
+the muck
+when you buried in the muck what do they
+do at landfills they put things on top
+of it and they put chemicals and yeah
+types of bacteria that eat away at the
+things that are buried there right okay
+so when it was in your drawer was
+already possibly subject to some it
+should had some 7up all over it yeah and
+now it's a know you're never sorry buddy
+if you're gonna mine cryptocurrency once
+you get up to
+a half a Bitcoin you got to know it's
+time to like backup your backups put it
+in a safety deposit box print it print
+it when the electromagnetic pulse comes
+from the alien invaders you have to have
+a paper copy I will say I hope this guy
+is still happily married but if he's not
+he should never say on his first date
+that he does not a way to introduce
+yourself I could be out of McDonald's
+right now I have a story for why this is
+our first date I would be wining and
+dining you downtown not a good pick-up
+line investigations have been launched
+after a helicopter reportedly crashed
+while swerving to avoid a consumer drone
+a trainee had been practicing hovering
+about 50 feet above trees on Daniel
+Island South Carolina seeing a
+quadcopter flying towards them the
+instructor took control but clipped a
+tree with the tail rotor router causing
+the helicopter to crash to the ground
+and tip onto its side the drone is
+believed to have been a DJI phantom DJI
+says that they are trying to learn more
+about this incident and stand ready to
+assist investigators they also added
+that they do provide owners with help to
+ensure that they steer clear of
+traditional aircraft industry groups
+representing large US airlines pilots
+and air traffic controllers have
+previously urged the US Federal Aviation
+Administration which has also launched
+an investigation into the crash to end
+exemptions that currently prevents it
+from regulating consumer drones a letter
+co-signed by three organizations warns
+the likelihood that a drone will collide
+with an aircraft airline aircraft is
+increasing it is increasing because
+there's more drones out there yeah and
+it's scary I hope that the pilot and the
+student are okay now there was no
+mention of that I think I think that
+they must be okay and that it would be a
+much bigger story if they were not oh
+sure yeah you know what you're right
+absolutely if they were hurt or right
+worse it would be bigger news but even
+if there are what I mean
+I'm certain that there are some amounts
+of pain if you're 50 feet above the
+treeline and you fall but okay I'm
+assuming that they're alive and even if
+they okay who pays for this is where
+this is going no how you segue to that
+okay so these people are on the ground
+and there is their obviously hurt in
+some way and they have to go to the hole
+they just lost my helicopter that's got
+to be worth a couple of Bitcoin right so
+the drone flier is clearly at fault
+right because I would in this I mean I'm
+not the judge and jury on this one but
+the drone was flying around we don't
+have any inkling as to how close they
+were but it was the pilots error that
+hit the tree that's what took down the
+helicopter now had that drone gotten
+close you know what's happening
+if it got on top of those rotors done
+sucked down and shattered and who knows
+what kind of mess right could have been
+worse it could have been worse I still I
+okay they were 50 feet they hit a tree
+that's what took them down so they were
+20 feet they hit at that point right the
+hit a tree to avoid a drone that was
+perhaps coming toward that me in my mind
+it's like barreling toward them at the
+feet of the way matrix-style
+okay so they panicked they panicked yeah
+so is there insurance did DJ DJ I but
+the the pilot instructor would have had
+insurance of course on the craft itself
+right so they'd be covered now how do
+you track down the pilot of the drone
+good luck there now if DJI is helping
+they may have GPS data but they have
+been under a lot of heat for holding on
+to GPS data so guess what they're
+apparently not doing that anymore or
+they're hiding the fact that they're
+doing that so who really knows it does
+say DJI helps drone fliers avoid a
+medication for education so like when
+you see a plane oh and through the
+feature
+right they will you can't fly your drone
+into a no-fly zone if you are a good
+pilot if you're a good player a good
+player does not disable their GPS in
+there and the geofencing right
+geofencing will stop your drone dead
+stop if you are approaching a no-fly
+zone
+some people will turn off that feature
+on their drone I just hadn't want to
+keep a lightbulb moment yeah
+can each commercial aircraft each
+helicopter and plane can they not have
+like a beacon of some sort that does
+like a force field I think I know where
+you're going with you like here's my
+theory protective bubble it's probably
+not a good idea on an aircraft to have a
+transmitter that takes down aircraft
+right I see what you're saying yes but
+if it was a signal if it was a like a
+radio signal the broadcasts 50 yards in
+front and around right then and and the
+drone had a feature to receive that and
+say oh I'm getting too close but these
+are things that are traveling at super
+speeds I'm picturing like Star Trek or
+Star Wars whichever it is that is in the
+Stars has the force field that goes
+around Star Trek has right collector
+dishes and force fields right so okay
+ken planes not have that in theory but
+for just base like it did welcome to
+reality Sasha I'd love to be able to say
+the Star Trek is real but alas no but
+it's science fiction like just something
+that pulses they're working like okay
+they're working on it also
+faster-than-light Drive they're working
+on it not yet a thing idea right my idea
+is this is the how drones like the way
+you think yeah this is how a force field
+and faster-than-light Drive dilithium I
+don't know it started somewhere
+a Japanese company is planning to build
+the world's tallest wooden skyscraper in
+2041 to markets three hundred and
+fiftieth anniversary summit tomo
+forestry said ten percent of the 70
+story w 350 tower would be steel
+combined with about one hundred and
+eighty thousand cubic meters of
+indigenous wood enough to build about
+eight thousand homes with trees and
+foliage on balconies at every level it
+said a braced tube structure diagonal
+diagonal steel vibration controlled
+braces at the center of a three hundred
+and fifty meter wood and steel column
+would protect against Tokyo's regular
+earthquakes the projected cost of the
+building is about six hundred billion
+yen more than five and a half billion US
+dollars which is about twice the cost of
+a conventional skyscraper of the same
+size but Sumitomo said that it's
+expected that the costs will fall before
+completion due to technological
+breakthroughs a block of student flats
+in Vancouver was currently the world's
+tallest wooden skyscraper at 53 meters
+so this is about three hundred meters
+taller than the current world holder the
+300 the W 350 tower would be used for
+offices shops hotels and homes I love
+stuff that would be stunning are you
+imagine so if it's happening in that
+many years right 2040 G they got a lot
+of time to prepare and save up like they
+could probably plant the trees that are
+going to be used the would probably have
+deflectors by then I know right okay
+well so bang on with that that girl she
+knows it all yeah right how how is a
+braced tube structure gonna protect a
+wooden structure from earthquakes you
+mentioned that it's in the it sounds
+like it's in the interior corner so the
+interior column being set up such a way
+that so you think of a building and if a
+building with these trusses of wood and
+everything else and and built to look
+nice if they flex
+like this then things start snapping
+things start breaking right so you get a
+trust structure made of steel tube that
+is like criss cross that is really
+really solid that's not going to bend
+and warp and and flex the same way
+that's that traditional buildings like a
+square building would in in that kind of
+environment if there was an earthquake
+okay
+some may be worried about this sure
+that's pretty tall for it but it is
+steel and wood right and I don't think
+I'm as worried in that tree seemed
+pretty resilient like you see sure flex
+in the wind right and yes are all right
+with them I don't know if I live on the
+top floor and I don't know that there
+should be any amount of cooking inside
+building ever in case of fire yeah I
+kind of want like what what kind of fire
+hazard is it to have a wooden structure
+of that magnitude that's right that's
+giant like 350 meters that's half the
+size a little more than half the height
+of the CN Tower that's crazy
+this is significantly a non-smoking
+building you have to stand in the steel
+trusses you're fine I guess earthquakes
+people but I'll match you got some
+issues researchers said Thursday that
+passports driver's licenses and other
+sensitive documentation for thousands of
+FedEx customers were left online
+possibly for years in a blunder that
+left the information available to
+identity thieves and other malicious
+actors in all caram tech security Center
+said researchers found 119 thousand
+scanned documents stored in a publicly
+available Amazon s3 bucket the photo ID
+scans were accompanied by completed US
+Postal Service forms that included names
+home addresses and phone numbers of
+people who requested to have mail
+delivered by an authorized agent the IDS
+are from all over the world Mexico
+Canada European Union countries Saudi
+Arabia Kuwait Japan Malaysia China
+Australia and more the data was
+Julie gathered by Bongo International a
+company that helped North American
+retailers and brands sell online to
+customers in other countries
+FedEx acquired Bongo international in
+2014 and eventually changed its name to
+FedEx cross-border international FedEx
+shut down the service last April the
+discovery of the customer IDs and other
+personal information suggests that not
+only was the information never properly
+secured to begin with but FedEx
+officials failed to purge the data once
+the service was discontinued Kron tech
+said the information may have been
+available since 2009 people who used
+Bongo International or FedEx
+cross-border international should be on
+alert the incident incident is yet
+another example of why people should
+avoid giving over personal information
+whenever possible wow this is a weekly
+story when things feels like that's a
+lot of now very like data you think
+about identity theft what do you need ID
+up on an s3 bucket which is basically
+like a spot on the web to host files so
+right obviously they're able to download
+these hundreds of thousands of ID scans
+right so it's ID and addresses and like
+it's actually everything you need to
+become it if it was never secured to
+begin with yeah sounds like when FedEx
+took over the company why wouldn't you
+purge like why wouldn't you get rid of
+that is it hidden from them in the
+acquisition of the company I have no
+idea like how can you not I don't know
+in an acquisition of that scale like
+what if the here's a hypothetical for
+you what if they just didn't realize
+like they acquired the company and
+didn't realize that they were storing
+all this data unsafely I would assume
+that they wouldn't have realized it that
+FedEx seems like an up-and-up sort of
+company that wouldn't do something like
+this intentionally
+right like you yeah you would I guess in
+crit would with that help encrypting yes
+I have discussions with with people and
+I say what are you thinking
+like you can't keep doing this you can't
+not have a backup you can't have all of
+your data stored on this onedrive you
+you know I'm I'm very vocal about hey
+you need to have ransomware protection
+on your Windows network yeah you can't
+just use antivirus anymore you can't use
+security essentials you have to have
+proper protection and whether they
+listen to me or not that's up to them
+now here's a case where did FedEx go in
+and did they see that that was there and
+did someone be vocal about it and say
+you can't do this you can't have
+personal information freely available
+for anyone to download on s3 in a public
+bucket I mean like think of a hard drive
+that is accessible to anyone in the
+world don't know what this is and I've
+had that yeah I hear the sort of people
+who should have had that hard drive in a
+landfill oh boy are you still holding on
+to Windows 7 well good news Microsoft
+has back ported its Windows Defender
+advanced threat protection security
+toolkit from Windows 10 to Windows 7 and
+8.1 now in hindsight looking back at our
+previous story I feel bad that I said
+security essentials is not the product
+for you I didn't see this coming but it
+was a perfect segue we realize that is
+now available perfect the release will
+allow those holding out with older
+versions of the operating system to get
+the exploit and malware infection
+detection prevention and Event Reporting
+features offered by Windows 10 for
+enterprises the extension to Windows 7
+and 8.1 will more importantly allow
+admins to bring their older machines
+under the same security management and
+administration tools they use for
+Windows 10 pcs this is where Microsoft
+is focusing its pitch by adding ATP to
+Windows 7 and 8 point
+Redmond hopes that it will convince sis
+admin's
+to add those machines to the Windows
+Defender monitoring systems that they
+use for Windows 10 devices and in the
+process product companies toward
+migrating in the older pcs to Windows 10
+Microsoft noted that Windows 7 is still
+slated for retirement in January of 2020
+the software giant is also looking to
+extend the ATP support for non Windows
+devices by signing up another partner
+for its security push Sentinel 1 will be
+adding ATP support to the endpoint
+protection platform security tool it
+sells for Windows Mac Linux and VDI this
+means that administrators can set up
+Sentinel 1 to automatically pass alerts
+along to management consoles via ATP hmm
+I'm not a big Security Essentials fan I
+like ESET I like proper protection but
+for those who are going to opt for what
+comes with your computer it is good that
+there's something a little more robust
+than what's freely available right now
+yes if you're on Windows 7 why are you
+on Windows 7 why are you on Windows yeah
+I think a lot of people are still
+holding onto the past it's true and some
+people are stuck on hardware that
+doesn't support Windows 10 or some
+people just don't want updates crippling
+their computers right some people stop
+mullets she went there
+big thanks to Roy W Nash in our
+community of viewers for submitting
+story to us this week thanks for
+watching the category-five TV newsroom
+don't forget to Like and subscribe for
+all your tech news with a slight Linux
+bias and for more free content be sure
+to check out our website from the
+category-five TV newsroom I'm Sasha
+Rickman thanks Sasha this is category 5
+technology TV and thank you so much for
+joining us a game this week I'm looking
+forward to seeing next week when we take
+this Plex Media Server and show you how
+to actually import some of your video
+files and music and you
+that system that we've now built on a
+Raspberry Pi three look forward to
+seeing you next week
+take care I actually love everybody even
+if you have a Molly I feel bad
+always nice to feel bad at the end of

@@ -1,0 +1,618 @@
+[Music]
+welcome back this is category five
+technology TV and imagine that in this
+little box is a server huh this is the
+world that we live in a Raspberry Pi 3
+you can pick them up at camp five dot TV
+slash PI it'll direct you to all kinds
+of sources like you can buy them on
+Amazon you've got one I have one I've
+got several a lot of us have several but
+they're an inexpensive SBC any guess on
+what SBC stands for it SBC yeah put me
+on the spot hmm
+super super bitty computer sync single
+board computer very close so it's like
+the size of a credit card and it is all
+built into one circuit board right so
+the processor the RAM everything is in
+there the only thing that you have to
+really add is you've got to put it in a
+case which I've done here
+you all can you can kind of see that
+under my monitor build I did don't won
+in an episode episode yeah previously
+you've done a lot of Raspberry Pi
+features and last week was no exception
+we did the comparison of the X u4q to
+the Raspberry Pi 3 in past episodes
+Sascha's built one go onto our website
+category 5 dot TV and click on the
+search up at the top and you'll be able
+to just type in Raspberry Pi and you'll
+find a bunch of stuff okay put that
+right there just to remind you of what
+we're talking about speaking of having
+done Raspberry Pi features in the past
+yes
+episode number 4 59 Jeff and I were on
+the air you were in the news room and we
+did the very same feature that we're
+doing tonight however things have
+changed things have change ever so 4:59
+that was almost 2 years ago right and in
+that time now that demonstration was on
+debian jesse raspbian jesse in this case
+and now we're using raspbian stretch so
+we've had a really great response if
+you're watching this on youtube you know
+that you you may have found this through
+our previous feature from two years ago
+and
+now being 20 18 a lot of the technology
+has changed it's improved it's gotten
+better and it's also broken some of the
+steps in the tutorial from our video
+from a couple years back right so it's
+high time for us to redo the
+demonstration but a refresher and show
+you how to do it sascha one of the
+things that has changed since that
+initial demonstration is we've been
+watching the comments on YouTube we've
+been watching the comments on our
+website category 5 TV and one of the
+rezoning comments well it's basically
+one of the resounding themes is coming
+from people who are brand-new to single
+board computing brand new to Linux and
+they want to try it out but it's so
+complicated to go through all these
+steps yes this is kind of a two piece
+demonstration in this one video we're
+gonna get to the DIY let's break it down
+and walk you through all the steps step
+by step show you how to set up your own
+Raspberry Pi plex media server but we've
+also taken the time to create a ready to
+deploy image for Raspberry Pi 3
+it's called Plex Pi and you can get it
+at Plex PI dot-com I think that you're
+very lucky that I am the co-host today
+because if you are a brand new user I
+have the right question she's got the
+questions for us such as what is Plex
+it's what it starts with right folks
+yeah the bare minimum question going
+into a demonstration of how to create a
+Plex server is what is Plex
+what is Plex plex media server
+think of it this way Jeff and I like to
+call it our home brew Netflix take all
+of your videos put them on a drive I'll
+take all of your you know the part of
+the video podcasts that you watch like
+category 5 TV if you download our
+torrents put them on that drive put them
+into a folder and plug it into plex then
+plex media server in our case on a
+Raspberry Pi 3 creates an environment
+that looks and feels a lot like Netflix
+it keeps track of what episodes you've
+seen it allows you to rate episodes it
+shows you the description and a
+thumbnail image of each episode in each
+movie and as you watch things it it
+marks them as watched so if you're
+watching something like category 5 TV
+and there are 11 seasons of this thing
+right you can actually see where you've
+gotten to so if you're binge watching
+anything it makes it really easy okay
+same with like in the middle of an
+episode like you can turn it off and
+then you come back to later and it's in
+the right spot in the other nice thing
+about Plex Media Server along that vein
+is that it works with all your devices
+so oh this device will be plugged into
+your TV no doubt and you'll be streaming
+video directly on the device but then if
+you have an Ethernet cable plugged into
+it you can be using your tablet and
+watching it on your tablet you can have
+you can have it on your computer
+upstairs or the TV in the living room or
+the bedroom and still and not have to
+move the device around it streams that
+through your network to any of your
+devices through the web browser can it
+be multi-use okay within the limitations
+of a Raspberry Pi because it is a very
+small micro server it doesn't have the
+same amount of power as a supercomputer
+but yes you can you can definitely
+stream to multiple devices so if you're
+watching it on your TV downstairs mm-hmm
+and you pause it because it's time to
+make supper you go up to the kitchen you
+pull out your Android tablet or your
+phone and you set it up and you push
+play it starts right where you left off
+while you were downstairs that's a
+magnificent homebrew Netflix with your
+own content works with home movies works
+with mp3s and your music library and it
+plays web streaming we have an actual
+plex channel an add-on that you can put
+into your plex deployment and it gives
+you access to all of our back episodes
+plus live streaming during the live
+broadcast so it is very well-rounded
+solution and we're going to learn how to
+set that up on a PI perfect why why
+would we do this why would why do we
+ever use a Raspberry Pi 3 because
+they're amazing they are amazing they're
+inexpensive they are very inexpensive
+sacha they are
+easy not only easy to use but easy to
+procure yes and I may not have and you
+may not have a server at home that has
+HDMI output and can fit behind your TV
+that's mounted on the wall this you can
+just tape onto the back of the TV and
+plug HDMI cable in and the power cable
+and you're done right this is a very
+easy like it's a palatable beginning
+step right like I feel like that like if
+you are new to all things Linux if
+you're new to all things tech and your
+this is the first episode you've ever
+seen you're lucky because this is a
+great first step all right all right
+so speaking of first step for those of
+you who do not want to do it yourself
+comes Plex pie right Plex pie comm will
+take you to well currently it just takes
+you to a forum and I'm gonna bring it up
+on my computer screen for you I've got
+my laptop here and let's just see if I
+can bring it up see if that comes up yes
+okay so Plex pie comm and when I go
+there right now we haven't built a
+website for it yet it just takes you to
+the category-five community forum and
+you'll see a development forum here
+because it is under development right
+now and if you scroll there are three
+sticky posts one of them is introduction
+to Plex pie and download Plex pie images
+and when you go there there's a brief
+introduction as to how it works how to
+follow along with the steps and of
+course where you can download it as well
+and this is going to evolve over time we
+are going to create a website at plex pi
+comm so that it's you know more
+attractive and easier to find what
+you're looking for but in the meantime
+it gives you free access to the image so
+what that means is for those who don't
+want to do it yourself
+if you're not a Linux guru and you don't
+want to go through the steps and figure
+it out and follow along with the steps
+that we're gonna show you tonight you
+can just fire up this image use
+something like etcher that's the program
+that I like to use right so you install
+etcher I've got a link below if you're
+watching this on youtube or on our
+website or anywhere where we've got
+comments and things follow the link to
+etcher and that will allow you to burn
+the image
+to a USB flash drive or in this case a
+micro SD card that you're gonna put in
+your Raspberry Pi right once it's in
+there we can put it up you ready okay
+let's turn on our Raspberry Pi 3 so this
+is happening in real time and I've
+already burned the image for Plex pi 1.1
+the current version on my on my
+Raspberry Pi 3 so here we go
+so from downloading and burning it to
+now booting it for the first time it is
+this easy to get up and running with
+Plex so you see the the raspbian desktop
+there now wait for it wait for it and
+wait a little Lexa's a load and you're
+gonna leave this thing running on your
+TV you're gonna fire it up and it's just
+gonna be running connected to your TV
+you don't have to wait for it and things
+like that and then we're gonna be up on
+the screen here where it's gonna ask us
+how do you want to login now how do you
+want to sign up that is a fully
+functional plex media server from plex
+pi comm it's ready to go
+we just booted it up there exactly how
+you're gonna see it so you need to sign
+up for an account I use my email address
+to sign up and just like any sign up
+just give them your email address and
+enter a password and that is what you're
+going to use on all of your devices to
+connect to your plex media server and
+you can access it from outside of your
+network if you've got high-speed
+Internet those kinds of things are all
+possible this is not a tutorial on how
+to use plex media server that's
+happening next week but what we're doing
+here is showing you how to get set up
+with a plex media server on your
+Raspberry Pi so there it is it's as
+simple as that that's Plex PI dot comm
+from there if you want to get out of it
+you hit alt f4 that takes you right into
+your regular like desktop mm-hmm and you
+can just shut her down just like that
+okay done
+and now we've got an opportunity to
+change the card I've already created a
+raspbian stretch installation here so
+for those of you who are interested in
+DIY here it is it's just raspbian
+stretch nothing has been done to it it's
+out of the box ready to go we're gonna
+learn how to create how to build how to
+install everything we need to have this
+become that we're gonna check that out
+right after the break stick around
+Jeff Weston Gemma you're building a
+brand-new beautiful website what aren't
+you you're terrible actor what this
+where acting comes into play I don't
+know you're supposed to act okay are you
+building a really cool website are you
+building a really cool website just
+because Jeff is confused doesn't mean
+you have to be visit cap five dot TV
+slash DreamHost to sign up for unlimited
+web hosting for your website with
+unlimited email accounts MySQL databases
+the latest version of PHP WordPress and
+more and even a free domain name
+registration it's less than six dollars
+per month so sign up today cat five dot
+TV slash DreamHost
+and we're back with raspbian stretch on
+category five technology TV now
+everything that's gonna happen from here
+on out is for the DIY wanna do it
+yourself and we're gonna install set up
+Plex Media Server on this bare-bones
+Raspberry Pi 3 if that's not you if
+you're not the DIY just rewind this
+video learn all about flex Pi calm
+forget about everything you're about to
+see here today that's right we're gonna
+get real geeky here we're gonna get into
+the Linux terminal and we're gonna see
+how we can get this set up so let's do
+it okay alright so speaking of Linux
+terminal we're gonna bring it up there
+we go and we're gonna go sudo apt update
+that's the first thing we want to do on
+Linux to make sure that things as far as
+our repositories are up to date now do
+we know what a repository is a
+repository is something that Linux uses
+in order to install software
+it's a place on the web where a bunch of
+software resides and anytime we want
+software all we have to do is use that
+apt command here on raspbian or a debian
+derivative and then it will download it
+and install it we don't have to find
+their website we don't have to compile
+anything we don't have to figure it out
+it's all there for us ready to go so now
+I'm gonna go apt and now notice that it
+says that there are some things that can
+be upgraded so we want to do that apt
+upgrade not update notice it says hey
+couldn't lock the file that's because I
+forgot sudo because I need to be super
+user now it's gonna go through and it's
+gonna upgrade anything that is ready to
+be upgraded so are we ready to do that
+yes let's do that
+this is now downloading all of those
+programs off of the web and this just
+shows you how bare-bones my installation
+of raspbian stretches here tonight
+because there is a ton of stuff to be
+upgraded here I see things like like
+Python and even my timezone data is
+being updated so that's all happening
+through those repositories that's also
+how we're going to install plex
+Media server tonight so let's check on
+the status here it looks like it's
+working away and it can take some time
+especially you know if you've got a
+slower connection we're gonna use the
+magic of television to kind of speed
+this up for you tonight let's see how we
+can do that okay so in real time we're
+sitting here and this has so far taken
+about 20 minutes or so to get to this
+point in that amount of time marsh man
+in the chat room says while this is
+going on I downloaded and burned an SD
+card and booted up the new Plex pi comm
+mm-hmm
+and now back to our post-processed
+accelerated apt upgrade on the Raspberry
+Pi 3 and boom it's done just like that
+and it took no time at all actually it
+really did you're gonna have to dedicate
+yourself some time on the Raspberry Pi 3
+because it does take a lot of time to
+update so really quickly now that that's
+been updated upgraded now we need to go
+apt dist
+upgrade that's gonna be the next step
+again superuser do sudo apt dist upgrade
+and I'm not I'm so happy to see that it
+doesn't need to do any because that took
+a while to get through ok now we need to
+go sudo reboot and that's gonna restart
+our Raspberry Pi 3 because now that
+we've got all those updates to the
+software we need to make sure that we
+get the basically those load right they
+need to load up on the system so here we
+go we're rebooting into the updated
+raspbian stretch now if you're not
+familiar with raspbian you can head on
+over to raspberry pi dot org
+don't forget the silent P in there rasp
+berry pie dot org and as P I like the
+number not I like the edible and you can
+download it for free from there it's
+based on Debian now it tells me okay hey
+your upgraded to the latest version
+congratulations thank you took long
+enough
+okay so now next step because now that
+we're up to up to date we can finally
+get into installing deploying our plex
+media server now a real case for Plex PI
+comm comes from realizing how much time
+this
+can take to do this yourself right so
+we've done the work for you folks Plex
+Pike ami and just download it run it
+you're good to go so let's let's see how
+it's done no let's actually get in there
+and make this happen so all right in my
+terminal which thank you to the
+community who has let me know hey
+control shift plus allows me to actually
+zoom in on the terminal so folks if
+you're watching at home and having
+trouble seeing that on your 60-inch TV
+well that's gonna help you out a great
+deal there we go so first thing I want
+to do now that we've rebooted is we need
+to make sure that apt remember we did
+app update and I'm tired of typing sudo
+so I'm gonna go sudo su and now I am
+route done now remember how when I do
+apt update and everything else it
+connects to the servers and gets its
+updates well we need to make sure that
+apt is able to use HTTPS SSL encrypted
+Transport in order to do that we need to
+install a package which may on the new
+stretch already be in existence but
+we're gonna do it anyways just to be
+sure it doesn't hurt anything remember
+that I am now root okay that's what sudo
+su did so I don't have to type sudo apt
+install and we're gonna just make sure
+apt Transport HTTP hit enter if you
+don't have it it's going to install it
+if you do it says app Transport HTTP is
+already the newest version so now we
+need to actually get our plex media
+server the repository it's a PPA so
+we're going to add that to our system
+here I'm not sure if there's a stretch
+one let's give it a go so let's go let's
+go over here let's do it this way et Cie
+slash apt and we're gonna go into
+sources dot list dot D and we're gonna
+create a new one so I notice I'm in the
+folder etc' slash app slash sources dot
+list dot d this is where I can add all
+kinds of things I'm gonna call this PMS
+dot list and you can follow along with
+these this whole tutorial at cat5 dot TV
+slash PMS and to be sure stands for plex
+media server
+mm-hmm I'm creating a new file with nano
+if I am route so I can do this and I'm
+gonna go Deb HTTP now that we've got
+HTTP transport and we're gonna go dev
+today dot de / PMS stretch main and then
+I'm going to output that with ctrl o and
+then ctrl X to exit app update let's see
+if there is a stretch repository there
+if all goes well it's gonna it's gonna
+tell me that the key can't be found
+there we go that's good
+so it's found a stretch all right
+perfect
+okay so the public he is not available
+we need to get that so W get - oh do I
+have a pipe this time I do not okay you
+guys ready for this number last time on
+episode number what was it for 34 59 we
+had that trouble so let's see if I can
+change my keyboard settings preferences
+medicine mouse and keyboard settings my
+mouse is very sluggish by the way so
+that's why I'm moving in slow motion
+here keyboard keyboard layout Raspberry
+Pi being based in the UK they've
+defaulted this to a UK keyboard now I
+want to change to a United States
+keyboard you may need to change to
+something that's more appropriate to you
+and I'm gonna choose English you yes now
+I'm gonna have that pipe character
+unlike last time okay and then okay wow
+is that every sluggish Wow
+okay do I have pipe yes okay W get -
+capital o that is the letter O and then
+- yes that's intentional we're gonna
+output this and import it into the next
+command HTTP colon slash slash dev - day
+dot de / PMS slash dev - Day - PMS GPG
+ki don't worry even copy and paste that
+at cat 5 TV / PMS and then pipe and then
+sudo apt - ki add - so what we're saying
+is grab that key and output it to -
+we'll say from dev today dart de /p
+gbgt blah blah blah then pipe it into
+sudo apt key add - that's gonna download
+and import the key all in one fell swoop
+without actually putting the file on my
+hard drive now if I go apt update if all
+went well
+we will not see those error messages
+this time because the private public key
+is now available right and it worked
+ok so now we're ready to install plex
+media server this is where things have
+changed a little bit in Debian stretch
+or in raspbian stretch in our case the
+package name has changed so we're gonna
+go apt install plex media server
+- installer ok now before I hit enter on
+that I'm gonna bring up my browser here
+so that you can just see what is going
+to be different and you can see that
+little bit of sluggishness to the
+Raspberry Pi 3 that's what I was talking
+about when when we were talking last
+week about how performance feels more
+like a desktop on the Xu for Q if I go
+HTTP colon slash slash localhost colon
+32 400 slash web it's going to tell me
+that such a thing does not exist okay
+that's where Plex is going to live in
+just a couple of moments time I'm going
+to hit enter and it's found it it's
+installing it fantastic
+so again repositories save the day makes
+it super super easy and it's grabbing a
+couple of extra packages that are needed
+that's fantastic
+while we wait for that you know what
+this is not even taking very long as
+well
+this is motoring along I'm gonna bring
+up another terminal window and we're
+gonna zoom in on that one and we're
+gonna go sudo su and I gotta get started
+with the next step while I'm waiting so
+I'm gonna go nano
+slash et Cie default and plex media
+server which the file already exists
+because it's halfway done installing so
+this is my configuration file and I need
+to tell it what user to run as you see
+how plex media server user is currently
+set to Plex well on the Raspberry Pi the
+user is called pi so output that with
+control o and then control X now that is
+ready for us so it's going to be running
+as that I also need to change the
+ownership of that file just so that
+we've got access to its CH own not the
+file pardon me but the the folder which
+is going to contain plex media server
+but I need to wait until this process is
+done because it's still adding some
+files but I can get ready for at CH own
+- R which means recursive pi PI so
+that's the PI user and the PI group
+because that's who we're gonna be
+running as VAR Lib plex media server so
+I got to wait for this to finish before
+I hit enter because there are still
+gonna be some files that are gonna be
+dropped into that folder and then we'll
+be good to go
+once again feels like I want to speed
+this up for ya it's moving along anyways
+a little better than the last one
+but it is not an exciting process to sit
+there watching it you'll feel so much
+better just to boot up Plex PI I
+guarantee it but there's a certain
+thrill that comes from doing it yourself
+isn't there and you can really customize
+it now that that's ready let's zoom in
+again so I'm going CH own recursively
+we're gonna go pi pi which means pi : pi
+PI user PI group that folder so now that
+folder belongs to
+so it's ready so now system CTL restart
+plex media server because we've changed
+the user that we want it to run as so we
+need to restart it
+system CTL status plex media server and
+we see that it is active running well it
+could this be true let's go back to our
+web browser and we're gonna hit f5 on
+the page that says cannot be reached and
+ladies and gentlemen we now have plex on
+our Raspberry Pi 3 amazing quite a bit
+more onerous than just downloading plex
+pi comm and installing it on a flash
+drive and getting up and running but as
+I say such a victorious feeling to do it
+yourself learn along the way you could
+go to the store and buy lasagne or you
+could make a lasagna at home I'm not
+even gonna talk about the robot grandma
+who could make that lasagna for you and
+it would be just like grandma used to
+make there it is folks that is Plex on
+the Raspberry Pi three two different
+ways to do it DIY or just download it
+and go check out more you can get your
+pie at cap 5 TV slash pie that's the
+device that you need nice and cheap nice
+little piece of hardware that comes like
+that get yourself a power supply for it
+an SD card something that has a
+reasonable amount of space say 32 gigs
+or so to get up and going then you're
+gonna use usb with an external hard
+drive or an ass share or something like
+that in order to store your media we're
+gonna look at how Plex actually
+functions next week we're going to take
+it from here and show you how to use it
+that's Plex on Raspberry Pi find out
+more Cat five TV slash P and s
+you

@@ -1,0 +1,223 @@
+[La musique]
+vous voyez les deux systèmes sont très
+responsive le q x4 Odroid pour moi a
+plus de la au moins hors de la boîte a
+plus d'un ordinateur de bureau se sentir à elle
+la réactivité est comme un bureau
+ordinateur aussi bien, mais le fonctionnement
+système se sent très ordinateur de bureau ish
+Raspberry Pi Raspbian a fait une
+travail fantastique de le faire sentir de cette façon
+aussi bien, mais il a un peu de aa un peu de
+nous, je ne sais pas tout à fait une sensation de bureau
+à ce n'est pas tout à fait aussi puissant et
+a un peu de latence si
+sur le Raspberry Pi 3 première chose que je
+vouloir tester est que nous allons nous allons
+pour exécuter un test probablement 30 secondes en utilisant
+stress ng si stress - ng et on va
+dites- lui d'utiliser tous les cœurs de processeur et nous sommes
+va tester pour iOS, nous allons faire virtuel
+mémoire avec des blocs de 1 Go et nous allons
+aller pendant 30 secondes et nous obtenons la
+métrique brève à la fin, je vais courir
+que et nous allons sauter sur la
+Odroid xu4 file d'attente et nous allons courir
+exactement la même commande, donc insister -
+- cpu 0 io 2
+ok on va laisser cela courir sur le
+Odroid xu4 file d'attente pour revenir à la
+framboise pi comment sont les choses
+n'a pas encore été 30 secondes là nous allons
+ok donc tout d'abord nous examinons
+BOGO ops
+combien y a-t-il de Bogle ops
+qu'est-ce qu'un op BOGO à nouveau nous ne recevons pas
+scientifique ici BOGO op est un faux
+opération ok ok ok
+alors combien d'opérations bidon peuvent ces
+conseils traitent sur leurs processeurs sur leur
+iOS et la mémoire virtuelle qui est ce que
+nous regardons donc ce n'est pas un
+nombre scientifique, il est simplement un
+comparative que nous pouvons prendre deux planches
+côte à côte et dites que vous savez qu'ils
+fonctionner avec autant d'opérations fictives
+par seconde, donc en regardant la framboise
+Pi 3 combien d’ opérations BOGO avons-nous par
+seconde donc ressemble à la CPU est d'environ 20
+3.04 et le I / O est 23700 sautant en arrière
+sur le xro4 Odroid voyons si nous
+peut apporter cela un peu plus grand et oh
+il figure qu'il a emballé à la prochaine
+ligne d' accord pour regarder la même chose
+29 points oh sept pour le processeur et 53 47
+pour le qui est évier IO sautons en arrière
+à Raspberry Pi je dois courir à nouveau
+parce que c'est pas je ne peux pas je ne peux pas faire la
+comparaison côte à côte exécutons-le
+encore la même chose maintenant parce que nous avons
+UC spécifié zéro cela va utiliser
+huit cœurs sur cet appareil particulier
+et donnez-nous simplement quelques chiffres à
+comparer oh c'est le temps qui est le
+BOGO temps ops je regarde le
+colonne complètement faux regarder la
+côté gauche 1906 pour le CPU et 906
+mille pour le i / o bien quoi faire
+nous sommes arrivés ici cinq mille deux cent
+et trente-quatre pour le processeur par rapport à 1906
+sur le Raspberry Pi donc nous sommes environ cinq
+fois Wow, quatre fois plus rapide sur le processeur et les entrées / sorties
+évier est 129 000 sur l'Odroid et encore
+comment a fait comment pense-t-il qu'il est neuf
+cent six mille bien que cela
+est un œil de synchronisation différent de celui de l'entrée / sortie
+ils ne sont pas le même test et nous voulons
+tout pour être exactement côte à côte
+comparable mais nous ne pouvons pas comparer cela
+valeur parce qu'ils ne sont pas comparables
+valeur qui pourrait être une version du stress
+l'énergie qui nous donne un peu de
+une valeur rebutante donc on va regarder
+juste le CPU où CPU sur le
+Raspberry Pi est comparable à un 906 à
+la valeur de cinq deux trois quatre sur la
+Odroid X u4q donc encore une fois pas scientifique mais
+cela nous donne une idée qu'il est environ quatre
+fois plus vite juste dans ce faux
+opérations les trucs i / o ils ne sont pas un
+comparer côte à côte afin que nous
+ne peut pas utiliser ce nombre mais la CPU est sur le point
+quatre fois plus vite ok revenir à la
+Raspberry Pi testons le réseau
+interface maintenant j'ai un CL 100 de
+alimentation logique connectée à la même
+Commutateur Ethernet Gigabit comme ces deux
+appareils, il est en cours d'exécution iperf en tant que serveur
+cela signifie que je peux essentiellement envoyer des paquets
+à lui et les recevoir en retour et il sera
+donnez- moi une référence de mon réseau
+vitesse ok donc vous devez avoir un
+serveur de réception à l'autre bout et
+doit être connecté à un commutateur gigabit
+ainsi de suite le Raspberry Pi 3 tapons
+iperf
+- voir et l'adresse IP de cet iperf
+serveur qui est 192.168.0.1 o1 nous sommes
+va courir dix connexions simultanées
+et on va l'exécuter pendant 30 secondes
+là nous allons maintenant ici de l'autre
+dispositifs de run de file d'attente du ODROID de let
+cette même commande je perf - voir
+192.168.0.1 o 1 - p 10 - t 30 et avis
+Je ne vais pas entrer frapper jusqu'à ce que la
+framboise pi est fini parce que
+serait un repère injuste en raison de
+Bien sûr, celui-ci utilise déjà le
+la bande passante alors nous avons eu à le faire à un
+temps
+framboise pi devrait envelopper là-bas
+nous allons, je vais frapper entrer sur l'autre
+appareil ici et laisser cela courir pendant que nous
+regardez ces spécifications ainsi à
+essentiellement ce que nous voyons il y a la
+mégabits de bande passante par seconde sur les 10
+les connexions, puis le résumé à la
+fin qui est une moyenne de plus de 30 secondes
+donc nous obtenons quatre vingt quatorze point deux
+mégabits par seconde maintenant avec le 100
+adaptateur Ethernet mégabit dans une framboise
+Pi 3 c'est assez significatif que 92
+pour cent de sa vitesse globale promise est
+être atteint si c'est assez bon
+sauter sur le vieux Droid X u4q le
+la moyenne est de 926 mégabits par seconde, donc
+encore une fois, nous obtenons environ 92% des
+la vitesse promise, mais dans ce cas, nous avons
+Gigabit Ethernet donc la vitesse de la
+Connexion Ethernet est environ 10 fois
+plus vite sur le Odroid X u4q puis sur le
+Raspberry Pi 3, donc si vous utilisez cette
+pour un serveur si vous utilisez cela pour
+comme courir une boîte de cul ou quelque chose comme
+que cela va certainement être le la
+Killer PI sûr dans la mesure où cela va
+une autre raison pour laquelle vous voudriez que
+connexion réseau plus rapide serveurs Plex
+mm-hmm si vous voulez faire du multimédia
+streaming ce genre de chose qui est beaucoup
+beaucoup plus vite le test final que nous sommes
+va faire ici Becca parce que je le sais
+est en cours d'exécution dans le geekery au-delà
+mesure
+mais nous mesurons ne vous inquiétez pas la
+geekery est élevé avec celui-ci bien ainsi de suite
+chacun de ces systèmes que j'ai installés
+Cat5 TV Miners, vous pouvez trouver que sur notre
+github cap cap 5 TV sur github il y a un
+application appelée cap 5 TV - mineurs et
+on va mien monaro avec chacun de
+ces conseils alors voyons combien
+hashes par seconde chacun de ceux-ci peut faire
+ainsi de suite chaque système je l'ai déjà
+installé c'est le Raspberry Pi 3 je suis
+va laisser cela connecter et obtenir un couple
+des emplois de la piscine et ici sur
+l'Odroid xu4 on va faire la même chose
+chose
+Mineiro et nous allons laisser cette connexion
+et prenez de la piscine maintenant il ressemble
+ils se connectent tous les deux au hachage
+oui nous avons donc la même piscine que nous avons
+a la même application le même
+la version tout est exactement la même
+entre eux juste un matériel différent afin
+c'est la pi 3 de framboise, nous avons deux
+emplois ressemble je suis juste en attente de tout
+hash par seconde à rapporter identique
+avec la file d'attente Odroid xu4 qui n'attend que
+pour tout type de rapport dans la mesure où
+beaucoup de hachages par seconde nous obtenons
+cela pourrait prendre quelques instants
+nous en profiterons juste pour
+parler un peu de cap 5 TV -
+les mineurs qui est une façon cool que vous pouvez
+soutenir le réseau de télévision de catégorie 5, car
+vous pouvez l'installer sur votre ordinateur
+votre SBC sur quoi que ce soit et quand vous n'êtes pas
+en utilisant ces appareils, il sera à moi monaro
+et le déposer à la télévision de catégorie 5 il est donc
+un moyen vraiment intéressant pour vous d' être
+capable de soutenir les spectacles ici à
+catégorie 5 sans dépenser réellement
+autre chose que de simplement utiliser votre
+matériel et éventuellement électricité
+vous savez peut-être augmenter l' électricité
+facturer un peu si vous êtes si vous avez
+obtenu un superordinateur et il faudrait un
+vraiment puissant avec le SBC ce n'est pas
+va être un problème que tu ne vas pas être
+courir beaucoup de sorte que c'est la framboise
+Pi nous obtenons 8,2 hashes par seconde
+8,2 hashes par seconde ce n'est pas élevé mais
+c'est quelque chose de plus sur l'Odroid x u4q
+nous obtenons 20
+cinq virgule sept fois par seconde
+une augmentation significative de la performance lorsque
+il vient à la réécriture de Xu pour Q donc si
+vous cherchiez à utiliser un CCP pour
+exploitation minière
+c'est minière CPU accordée donc nous ne sommes pas
+en utilisant l' exploitation GPU ici parce que le
+Raspberry Pi 3 ne serait tout simplement pas capable de
+gérer cela donc avec l'extraction de la CPU, nous sommes
+obtenir environ 8 sur le Raspberry Pi 3
+et environ 23 ai-je dit sur le Xu pour 25
+presque 26 et il y a le Raspberry Pi 3
+il est descendu à 77,7 l'Odroid est
+tenant sa propre 24.7 donc définitivement
+obtenir de meilleurs taux de hachage sur ce
+vous
+[Applaudissements]
+[La musique]
