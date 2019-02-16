@@ -1,0 +1,164 @@
+tonight we're looking on our computer
+for space hogs pigs in space I'm pretty
+sure there was like a Muppets episode or
+something probably was space hogs are
+essentially files that fill up your
+harddrive so you know maybe somebody on
+your computer has downloaded a couple of
+videos that are all four gigs each and
+suddenly you're starting to find that
+that little 128 gigabyte SSD is running
+a little low so tonight we're gonna
+learn a couple of tricks well I trick on
+Linux that's gonna show us how to figure
+that out on a server okay or through the
+terminal why are we skipping right to
+the terminal why are we skipping right
+to the server well back on episode
+number 401 we already took a look at a
+couple of different tools first of all
+we looked at a program called space
+sniffer and that is a Windows tool that
+allows you to graphically visualize the
+space usage on your computer brilliant
+stuff now we showed you on episode 401
+how to now use space sniffer in order to
+find that same issue on a Linux machine
+right using wine which we learned about
+last week so we no longer we don't have
+to look at the GUI we've already done
+that look at episode number 401 of
+category 5 technology TV but what I run
+into and what you may run into if you
+have Linux servers anywhere throughout
+your network or online is that hey you
+know what what do I do about my server
+when space starts getting eaten up where
+is all the space going so tonight we're
+gonna look at a terminal command that's
+going to allow us to do that so over
+here on my computer I'm just gonna bring
+up putty and I'm gonna bring up one of
+my Linux servers which is going to allow
+us to show you one of the ways to do
+this so putty allows me to log in to my
+server from a remote location this is
+just a terminal emulator that lets me in
+so I'm going to log in to our gaming
+server for example I'm going to become a
+super user and here's the thing a server
+does not traditionally have a GUI
+correct and a GUI being like a desktop
+environment on Windows that would be
+like the thing with your start and your
+gonna get somebody saying you said it
+wrong it's gooey
+[Laughter]
+so here on a server I'm I've got this
+remote connection and I'm gonna bring up
+because I don't have a GUI I can
+actually access it from here
+so typically there are a couple of
+different commands that we're going to
+use so we can go D F - H which is disk
+free and that's gonna tell me hey how
+many how many megabytes or gigabytes are
+available on the particular disk that I
+am looking at or on a list of all the
+different disks in this system and there
+it is so there's my disk free space so I
+can see I've got nine percent use on
+slash that's good so now if I do a D u -
+H that shows me the disk usage which
+cool takes forever it's it's gonna show
+me the ultimate disk usage at the end
+let's go to home Robby and try it there
+disk usage - H this is traditionally how
+we do it on a server right so it's going
+through all my files and takes a little
+bit of time to find everything that's
+there and at the end of the report it's
+going to actually show me a tally of how
+much disk usage there is now I can sort
+that by the biggest files and I can go
+through that kind of hoopla but there is
+an easier easier way using n curses ok
+so this shows me a tally at the end if I
+were to allow it to keep going but n
+curses is basically a interface for the
+terminal that allows programs to have a
+bit of a GUI a bit of an interface
+that's beyond just text-based so the
+program that we want to use is as an n
+cursors program that is disk usage for n
+curses is in C DUI believe so n CD you
+try that it says n CD you not found so
+let's install it apt install n CD you
+and hit enter and now it's grabbed it so
+if I type n CD you - - help now I should
+see oh it doesn't even have a help let's
+see n CD you oh it starts scanning
+immediately crazy
+but I want to show you how I can use
+this tool in my terminal on my server to
+be really really quick about it so NCD
+you and then you can specify slash and
+it will show you the the usage on slash
+but I don't necessarily need to do that
+I'm just gonna go home slash Robbie and
+there's another thing that I want to do
+and this is why when when I run these
+commands you see that it's running a
+little bit slow because I've got a lot
+of mount points on this cert on this
+server and it's connecting out to other
+servers so I want to say you know what I
+only care about the built-in hard drive
+and the hard drive that I'm actually
+using right now in the slash home slash
+Robbie so I do dash X and what that does
+is it says only scan the media that is
+the same as home dat slash Robbie so I'm
+gonna ignore any Samba share CIFS and
+that kind of stuff hit enter now it
+scans everything and almost instantly
+now I see a report and again and curses
+allows me to navigate this with the
+keyboard I'm going to just kind of move
+up here now that I'm zoomed in you're
+not getting a full view there we go
+there so that's what it looks like on my
+screen I can I can navigate that with my
+keyboard going up and down so this is a
+mind test gaming server so obviously
+we've got a lot of maps on there so in
+my case I can go there and I can see Wow
+survival servers using six point seven
+gigs our dome server is only using one
+gig and I can navigate that and see
+where the file usage is actually
+happening see how much faster that is
+and easier than using something like D U
+it's just like instantaneous so that's a
+great tool for you just a quick and
+dirty Linux tip for you if you're
+running a Linux server anywhere on your
+network grab ahold think n curses disk
+usage so NC d u-- is the tool that you
+want to install you want to run it as
+root so that it doesn't have any sharing
+any violations as far as permissions go
+you want it to be able to scan all the
+folders on your computer and then you
+use n CDU - x we learned about that and
+then where you want to check so slash
+would be your entire hard drive or slash
+home slash ravi as my home folder and
+about it that way that is NCD you it's
+available just as you saw there you can
+install it on Linux with app or yum
+however you want to install it I'm just
+gonna tell a joke a week later yeah well
+Darby liked it
+[Music]
+[Applause]
