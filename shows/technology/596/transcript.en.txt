@@ -1,0 +1,1692 @@
+welcome to category five technology TV
+this week we're gonna be looking at the
+Raspberry Pi but we're gonna be doing it
+from a different perspective we're gonna
+be connecting the GPIO and we're
+learning how to turn on and off a light
+yes but we're gonna program it so that
+that light turns on when category five
+technology TV is on the air which we are
+right right now right now so stick
+around yes
+after this show don't go anywhere our
+live recordings are trusted only to
+solid-state drives by Kingston
+technology revive your computer with
+improved performance and reliability
+over traditional hard drives with
+Kingston SSDs category 5 TB streams live
+with Telestream Wirecast and nimble
+streamer tune in every week on roku Kodi
+Plex and other HLS video players for
+local show times visit category-five dot
+TV category 5 TV is a member of the tech
+podcast network if it's tech gets here
+cat 5 dot TV slash TPM and the
+International Association of internet
+broadcasters cat 5 TV slash ia IB
+welcome to the show everybody nice to
+have you here for episode number 596 we
+are four weeks away from episode 600
+it's amazing we're gonna do what are we
+gonna do I don't know something with
+sixes ah any ideas what can we do maybe
+bring some cake or some pie that's too
+raspberry pi zero 600 a lot of baking
+your why did it baby she's way too picky
+so hey Jen guess what you have been
+nominated for 600 raspberry pies and
+also a pizza and all of our friends due
+to time constraints Wow
+hard to believe that we're almost there
+that's unbelievable did you ever think
+you'd reach that cut 600 I never ever
+even contemplated yeah it's just yeah
+you're working every week every single
+week well you are I am super happy Jeff
+is here I feel like I'm a guest at this
+point yeah
+I had to rearrange all the cameras in
+order to accommodate the fact that Jeff
+was actually here tonight I just want to
+say thank you very very much to everyone
+who has thus far pitched in to support
+the replacing of our our Wirecast
+broadcast server it's a powerful kind of
+gaming rig computer that all of our
+cameras connect into and it allows us to
+do the camera switching and the graphics
+that you see on the screen and discord
+over there and everything else it's
+basically our everything plugs into that
+and it produces the show but it's been
+dying and it's been having some trouble
+and we talked about it briefly last week
+and some people didn't quite get why we
+were asking for help and so just a
+reminder and and maybe some of you don't
+even realize that category 5 as we
+mentioned has been here for 600 weeks
+almost yeah but we do this as volunteers
+we are volunteers the studio is a rented
+space so we have to pay for that space
+we have to pay for all the bills and
+when something happens like a server
+dying that's not really you know we
+don't have money in the bank to say
+let's just go and buy a new server it
+doesn't work that way when you're a
+voluntary organization such as this that
+you know we keep keep the lights on and
+keep the show going every single week
+but but we do this as volunteers and we
+need to be able to afford to replace
+that old girl she's she served as well
+fairly imminently
+exactly it's like we got to do this like
+yesterday so hopefully tonight will go
+well technically last week went fairly
+well after the show it's the kind of the
+post-production that's a real problem
+during the live is pretty good because
+we're recording to an external recorder
+so we don't have to really use a lot of
+CPU resources or and and the bus itself
+in order to to do that so thank you to
+everyone who has contributed towards
+that also to our patrons
+we appreciate you these are the folks
+who give as little as $1 per month and
+there's no upper cap folks hey a
+thousand dollars a month that's fine
+that's fine we won't say no you know a
+lot of folks just stay you know pitching
+a buck a month
+that makes a huge difference it really
+does like I jump out a thousand bucks
+mom no that's unreal like that's
+ridiculous
+that's just like be slightly
+uncomfortable you own the place
+so welcome boss but you know when
+there's a lot of folks contributing just
+a little bit it really makes a
+difference because there's power in that
+many people giving and and that keeps us
+afloat and keeps the monthly bills paid
+okay enough of that moving on to the
+Kingston DataTraveler DT mm this is that
+encrypted USB flash drive we love these
+here we've shown them on the show it's
+starting to get some buzz on YouTube and
+they are really really excellent we've
+got some of these to give away you can
+look below if you're watching this on
+youtube or on our website category-five
+TV for the way that you can qualify to
+win one of these make sure you if you're
+watching this on cable TV or otherwise
+if you're watching this on roku
+obviously you can't look below just head
+on over to our website category five dot
+TV find episode number five ninety six
+and you'll find the information about
+how you can qualify to win one of those
+and good luck to you mm-hmm
+tonight now we were talking about
+raspberry PI's there's no there's no
+edibles here tonight however we do have
+a Raspberry Pi set up and ready to go
+we're gonna be tinkering with the GPIO
+in just a couple of moments time stick
+around
+[Music]
+for a limited time get your hands on
+limited-edition shirts from the category
+5 TV network these high quality shirts
+are manufactured by teespring a
+fundraising website and your purchase
+will help support the shows we produce
+get yours today and send us your
+pictures to be featured on the
+corresponding show visit cap 5 dot TV
+slash shirts to support us and get your
+official Network shirt today cat5 dot TV
+slash shirts
+and we're back so glad you're here
+category five technology TV lots of good
+stuff coming up but before we get there
+I believe there's something with Sasha
+getting documents online we were talking
+about before past couple of weeks yes
+yeah we were talkin give you a bit of a
+recap of what please do because I've
+missed things okay so I want an update
+Quantum's
+calls notes I work in an office that has
+some windows-based computers some Linux
+based computers I want it to be able to
+open on my computer using the new office
+online tool okay I wanted to be able to
+or some tool or some tool open documents
+on my computer so that the format
+wouldn't be all mixed mashed up the way
+it is when I just open it Libre right
+okay yes right oh good
+then this will help you a few okay
+yeah so we looked at because one of my
+laptops is all it's all LibreOffice yeah
+it's Linux based and so often I get word
+files sent that I open them up I'm like
+oh that's a tough thing because that can
+be any number of things
+fonts yes the user used and they didn't
+tag the file so when you open it you
+don't have the same fonts and so it's
+all messed up so you've got to figure
+out what fonts they used and install
+those fonts in order to open them
+properly sometimes people don't realize
+that hey if I create a file on my
+computer it's not going to translate
+when you send it over so there's no
+solution to that beyond fixing the file
+correct plain and simple so that's not
+that's not a LibreOffice problem no but
+that's what if it's one page you get
+something that's yeah but typically with
+the document it's gonna be like a
+generic font that you can substitute
+another serife font or something like
+that
+wingdings whole document it's a script
+but so the the problem lies in the fact
+that files are not tagged so the fonts
+are not included with the file you have
+to have that font installed that's one
+good example
+that's why pdfs are so popular
+portable document format so when Adobe
+it was it yeah I guess it was Adobe that
+did PDF and they they created a format
+that's not typically editable right but
+it looks the same from computer to
+computer to computer and that's why it's
+done so well on the web because it
+always opens the same so if you create
+the document on your computer and then
+you export it to a PDF file you can then
+send it to someone and they will be able
+to print it and it will always look
+perfect right yes that's why we do PDF
+that makes that if you then take that
+docx file or ODT file and send them that
+file they may be able to open it but
+it's probably not gonna look the same
+it's gonna look a little wonky mm-hmm so
+understand the reasoning the underlying
+problem that exists there so I suggested
+why not look at Google Drive Google Docs
+yep or now Microsoft Office online which
+is available for free when did it go
+free what's Microsoft doing go to cat5
+TV slash MS office you'll be able to
+just sign in with your Skype account or
+you can create an account using your
+email address whatever you want to do
+yeah so let's take a quick look at how
+this is going to translate so I've
+created the world's easiest font using a
+liberation serif font it's easiest doc
+so I'm I've saved this as a doc X you
+see the file name in the top left yes so
+I just went file save as and I've saved
+it as word format so understand what I'm
+doing here is just demonstrating that it
+will work with doc files right so I
+don't have to convert them or do
+anything fancy I'm I'm just gonna I'm
+just starting with this very very basic
+doc file okay save so now jumping back
+to my browser I have Google Drive and I
+have Microsoft's onedrive which does
+provide free space up to a limit just
+like Google Drive and then you can pay
+if you want more space right so remember
+last week we took a look at this just
+really briefly on the fly and we didn't
+really know how to open a file in MS
+Office online because we didn't you
+couldn't find the connection
+I thought it might be one drive but it
+was just put me through this loop of
+click here click here click it turns out
+it's because when I created my account
+to be able to access MS Office online
+uh-huh I didn't verify my email address
+it sent me an email that said click here
+to verify your email address and I
+didn't do that that's why last week it
+was going through this loop of your not
+verified your not verified he can't so I
+couldn't get in right a headache so I
+clicked on the verify and boom lo and
+behold now office online so if I go cat
+five dot TV slash MS office and I open
+word
+so there's Microsoft Word it's free
+office online apps click on word then at
+the bottom here open from onedrive and
+now it just takes me to my onedrive so
+that's very similar to Google Drive
+right gonna show you both so I'm gonna
+go new file upload keep in mind now I'm
+on Google Drive so this is Google's
+product we're gonna look at both Google
+and Microsoft ok because both of these
+allow you to collaborate on my desktop
+I've got that file it's gonna be the
+only docx there it is test local file
+upload to Google Docs it sees the docx
+at the bottom right and it's removed the
+file extension and it's there now go
+over to Microsoft's onedrive let's see
+how we upload to this hmm maybe over
+here no not quite as intuitive I find
+all files ah there we go
+documents ok new upload upload I created
+a folder called sashes test document hah
+never quite got their files test local
+file that's my doc file now here it
+hasn't removed the docx extension it's
+still docx ok back at Google let's
+double click on that file and it has
+opened that in my online editor called
+Google Docs
+it also has Google sheets for
+spreadsheets and it will accept any
+format that you throw at it now but here
+you are in Google Docs you notice
+there's no longer the serife font it's
+changed it to something called normal
+text
+and it's going to change the formatting
+of some files because it's supplementing
+fonts and things like that if you've got
+checkboxes that are actually a checkbox
+image from a font it's probably not
+going to translate right we need to make
+sure that those are transferable but
+what's neat about doing it this way is
+now moving forward I always have them
+online so if I send it to somebody I'm
+sending them the Google Doc right they
+can go in they can open it and and it's
+always going to be the same right
+because it's still in Google Docs in the
+cloud jump back over to Microsoft's
+product and let's see how this one
+handles it I'm gonna double click on the
+file looked like it was going to take a
+single single click and there it is same
+thing now it kept the font the same
+which tells me that it's probably tying
+into my local fonts so fonts that are
+installed on my computer itself which
+definitely it looks like that's what
+it's doing that looks like kind of the
+default set for Linux or for Microsoft
+Windows I'm on Windows 10 pardon me so
+there there you have it so it was able
+to open both now where these products
+Excel Jeff is file share so now Sasha
+you want to be able to share this and
+some folks were joking like don't put
+information on here don't share this
+it's not secure look at all the people
+who are going in and editing it
+well I purposefully during the
+demonstration opened it up to the world
+and then just let people at it Wow
+what you're going to do is let's just
+say it who is the email provider for
+your company Google it is Google you go
+to Gmail open your email that's true all
+right
+do you use Gmail I do yeah work but yes
+okay well in your instance everybody in
+your office has access to a Gmail right
+because that's what they use yeah so
+what you can do is you can just share it
+with your company
+exactly anyone at your company can open
+it at this file nobody else can right
+that's how you can do it so and I can go
+as far as just setting up an email
+address if I wanted to go live at
+category five dot TV and then what do I
+want them to be able to do they can edit
+they can comment or they can view
+this is Google Docs so with that I can
+set up those permissions the way that I
+want them jumping over to the Microsoft
+product how do we share here I know that
+it's going to be available there it is
+share share with people no I want to
+share with aliens come on now live at
+category five dot TV what does it say
+recipients can edit recipients can only
+view ah
+recipients don't need a Microsoft
+account recipients need to sign in with
+a Microsoft account so presumably that
+means that you could send it without the
+need for them to sign in so that's an
+added level of kind of that's an added
+level of authentication to ensure that
+they are who they say they are
+because if someone else got ahold of the
+link they wouldn't be able to open it
+right so that's pretty cool so I think
+both products could achieve what we want
+to do yes now maybe this isn't for this
+demonstration but what about loading an
+OTT how does word online show it how
+would it work with an OD T so this is
+the default format so basically the
+question is is there cross compatibility
+between the products right because
+sometimes you know I might be sending an
+OD T to some right and they don't have
+LibreOffice ha and is it gonna load
+properly so can I just take the same
+file and I'm gonna change this to an OD
+F text document which is ODT file
+extension and I'm gonna save this as
+Libre just so that I have a distinction
+between them jump over here let's jump
+back to Google Drive and upload grab my
+LibreOffice so this just demonstrates if
+they are compatible cross program so
+does Google Drive recognize ODT files
+there's the Libre one and that opened
+just fine yeah now interestingly enough
+you can go file download as so now if
+you need to actually send it to someone
+who doesn't have an internet account or
+something you can download it as docx or
+ODT right or rich type you can do PDF
+you don't have to buy like a PDF program
+plain text and zipped HTML epub over to
+the Microsoft product let's try the same
+test upload files and grab that file
+that's the Libre Oh Dee T file and open
+and there it is
+open it and again single click on on the
+word online and what's the same now it
+warns though ODT documents some
+compatibility issues could occur if you
+edit this document details you know go
+into some details that's their way of
+saying weird formats better user words
+better than odg
+right that's just that is that's like
+okay I was I was doing some school work
+over the weekend with one of my
+classmates where she asked me to edit
+some of her work and so she works in
+Word and I work in Google Docs and so I
+so I could open it and it looked wonky
+but I knew like I wasn't editing her
+formatting I knew like the wording was
+correct right so then I sent it back to
+her she's like I don't like the way your
+stuff looks well then so imagine this
+now so pick your base and say ok you're
+already a Google user so use Google Docs
+exactly which is the Google Drive
+drive.google.com is where you want to go
+to sign in if you're not a Google user
+if you're really Microsoft Office lover
+then maybe the Microsoft online is the
+way to go yes but both seem to offer
+similar functionality and they give that
+collaborative nature so my thought is
+Sasha so yeah there's a little initial
+hurdle where some files if you upload
+them they may need to be reformatted but
+once they are now they are in the Google
+Docs format or the Microsoft Office
+online format and you know that it's
+going to be compatible right so that
+when someone else opens that it's going
+to look the same on their computer do a
+couple of minutes work just yeah yeah I
+think so yeah I think that'll work
+really well perfect
+this is category-five technology TV
+thanks everybody for joining us today
+are you folks ready to get into some
+gpio coding yeah
+we love raspberry pi yes we do you and I
+have worked a little bit with the digi
+spark remember when we made a light
+light up using Arduino coding thank you
+sir that week you weren't here I wasn't
+no I remember you doing do you probably
+watch it on repeat remember something
+where you use the Arduino
+it was awesome whose ass I don't know
+what it was then I find the light maybe
+you were here maybe you were Wow
+I'll live vicariously through you guys
+you remember definitely here she was
+really impressed with my work now one
+thing that I did during that
+demonstration is I did a little bit of
+soldering yes we're gonna avoid that
+tonight folks yes I contemplated it I
+got out a GPIO and a Raspberry Pi zero
+and I thought about it and I thought no
+I'm gonna breadboard it so there we have
+it I've got a really really simple
+breadboard set up I'm gonna tell you
+exactly what we need for today's project
+and before I do I'm gonna tell you what
+this is gonna do okay we're gonna create
+something tonight that is going to light
+a light uh-huh whenever category-five
+technology TV is live on the air oh okay
+when we sign off it's gonna turn off the
+light yes you can place this device
+anywhere in the world as long as it has
+an internet connection you're gonna
+build it yourself we're gonna do it with
+a raspberry pie and a cup it's gonna
+tell you when we're live so I'm gonna
+jump over here and I've got a little bit
+of walking to do so talk amongst
+yourselves while I get over here this is
+great this is what we need great
+reminder yes this is what we need we
+need and now there's a Raspberry Pi in
+behind here with ethernet cable plugged
+into it I've got the tea cobbler this is
+an optional component but it really
+really helps to be able to connect
+everything together and it shows you the
+pin assignments which are really really
+helpful we're going to need one led
+we're gonna need a 330 ohm resistor can
+you folks see that there and then we're
+going to need a couple of cables to wire
+it all together very very simple circuit
+and you can see how I've wired this so
+first of all the LED so just note that
+the longer leg is going to be your
+positive so that's going to go into pin
+eight
+which is 3.3 volts alright so that is
+I've already connected everything
+together just for the sake of the show
+so the longer pin is going into pin 18
+and then the shorter end of the LED
+which is the negative also called the
+the cathode that is going to go to the
+lane that has the resistor so what the
+resistor is going to do and it's
+focusing on my hand rather than the that
+doesn't really work very well so what
+this is going to do let's grab a
+screwdriver here so the resistor is
+going to prevent too much power from
+coming back along the negative cable
+into the ground and that's going to
+prevent the Raspberry Pi from getting
+overloaded if you leave out the resistor
+there is a potential chance that if the
+ball blue or if there was too much
+voltage going into the bulb it could
+feed back into the ground and damage
+your Raspberry Pi so that resistor is
+just gonna help protect you so a very
+very simple circuit we've got pin 18
+coming off the tea cobbler which is
+plugged into a Raspberry Pi 3 going to
+the long end of an LED then the short
+end is going to a 330 ohm resistor out
+to the ground of the Raspberry Pi ok so
+far so far so good and so far so good
+right mixels notice no soldering
+involved prototyping today yeah just so
+that you can see how it's done you can
+solder it you can put it into a nice
+little case do whatever you want
+we're using the LED you could use a
+relay right in place of the LED get a
+3.3 volt relay and then you can trip a
+110 breaker and turn on a big sign
+whatever you want to do okay first thing
+we need to do on our Raspberry Pi now
+I've already done this but I want to
+show you just because it is necessary we
+need to install a program called get and
+get is going to allow us to ins
+repositories and we're gonna need that
+functionality app install get and you
+might want to do an apt update first you
+can see git is already the newest
+version on my computer and that's
+exactly what we're looking for this is a
+clean vanilla wrasse
+in light installation so I just
+installed this on a Raspberry Pi 3 model
+B okay so next I need a an application
+that will allow me to communicate easily
+with the GPIO I don't want to get into
+creating registers and making all kinds
+of crazy stuff there's there are tools
+that are out there that make it a lot
+easier to communicate with that general
+purpose input output of the Raspberry Pi
+which are all those pins so you've got
+40 pins right yeah you can plug into
+those and do all kinds of things we can
+program what we want to do with them
+this is like the most basic thing but
+we're going to be tying it into our API
+so it makes it a little bit more
+exciting
+so the tool that we're going to use I'm
+just going to go into my temp folder
+which resets removes everything that I
+put in here after a reboot so it's good
+spot to do this get clone so remember I
+installed get and I'm also super user I
+have to be root for these for these
+things so if you're not already route
+the way to do that is sudo su all right
+sudo su and then CD slash temp why do
+you have to be route you have to be able
+to access the hardware GPIO you have to
+be able to access the the folders like
+user local bin
+you don't want permissions issues but it
+particularly you need to be able to
+access the GPIO which requires root
+access so we're gonna get clone and then
+we want to grab this tool called wiring
+PI which we're gonna get from git colon
+slash slash and remember I'm gonna put
+all the these commands in the notes
+below draw gone dotnet not dragon dotnet
+and then slash wiring and be mindful
+it's a capital P on PI wiring PI
+destination path wiring PI already
+exists Oh apparently I already tested
+this I'm gonna remove it just that I can
+show you from scratch okay so try that
+again
+there we go okay so now CD wiring PI
+with a capital P or I just type WI and
+then hit tab and you'll see a couple of
+files here but we need to build this so
+we just go dot
+slash build enter and you wait and you
+wait and assuming you are not on a
+Raspberry Pi zero it will happen quite
+quickly now if you type GPIO you'll see
+that it actually gives output I don't
+have to be in that folder I can be
+anywhere GPIO and it gives output ok so
+now I can actually start utilizing those
+GPIO connectors on my Raspberry Pi right
+which are connected to a tea cobbler
+again it's just a convenience thing you
+don't have to have a tea cobbler you can
+solder things to your Raspberry Pi but
+this is just a really easy way to
+prototype so the first thing I need to
+do because all GPIO pins are input set
+when you first boot it we need to set
+that GPIO which is you remember do you
+remember what number we plugged it into
+you can see it if you're looking on the
+screen there number 18 eight number 18
+is 3.3 volts output when it is enabled
+or they call that high okay so on pin 18
+I have to change that from input to
+output so I go GPIO - G mode 18 that's
+the pin number output enter now my GPIO
+pin is an output pin instead of an input
+pin now I want to turn on the light just
+to test it because I want to make sure
+that it's working and sure I've wired
+everything correctly so GPIO - G right
+pin 18 and we're gonna put one one sets
+it to high aka
+on a KA 3.3 volts it's gonna be a little
+less because of that resistor so now
+when I hit enter in three two one yeah
+it's on there we go
+sweet now similarily is that excited I
+know right so similarly I can remove
+that zero that one and add a zero and it
+will turn it off yes Jeff
+simple things folks simple things this
+is what happens if you take a week off
+so now you say yeah so now you say well
+what can we do with this well category
+five has a live API it just responds
+with either a zero or a one
+zero if we're off the air one if we are
+on the air you'll find this at live dot
+cap five dot TV slash API slash real
+time and you just pull that I'm using W
+get using curl whatever you want so if I
+do that so if I do W get HTTP colon
+slash slash
+live dot cat five dot TV slash API slash
+real time and then it gave me a file
+called real time I'm gonna cat that and
+you see it's one you see that yes maybe
+it would be easier if I did it this way
+if I W get and then instead I'm gonna
+output to the screen instead so W get I
+think it's - Q - OH - one see the one
+and then it says root mm-hmm and echo
+you know and and echo quote quote
+that'll help there one if we were off
+the air it would be a zero okay so this
+command is going to tell us whether
+we're on or off the air now incidentally
+there's another helpful tool on our API
+called test and it will automatically
+change between on the air and off the
+air without you having to do anything
+see how it was one first and then it
+turned to a zero right every thirty
+seconds it changes so that's a great way
+to be able to test our code before we
+move it over to real time so that we can
+see if everything is working so I've
+created a repository for yeah let's go
+into home slash PI and let's go get
+clone HTTP colon slash slash github.com
+slash cat five TV slash cat five TV -
+live we're gonna clone that into our
+slash home slash PI folder now it's
+their CD cat five TV - live slash SH and
+you're gonna see a couple of little
+tools there that are gonna be very very
+helpful for us so in just a couple of
+moments time we're gonna learn how to
+tap into that API and turn on and off
+that light depending whether or not
+we're on the air so cool stick around
+whether you shop on ThinkGeek gearbest
+B&amp;H photo video eBay or Amazon or even
+if you want a free trial of audible
+you'll find the best deals and support
+the shows we produce by simply visiting
+the shopping sites you already frequents
+by using the links on our website visit
+category-five TV slash partners for the
+full and ever-growing list and help us
+create more free content like this show
+thank you for shopping with our partners
+and thank you for watching welcome back
+to category 5 technology TV we are
+turning on the lights sort of no but
+that's what we're covering we're taking
+a look at a Raspberry Pi we're using the
+breadboard and we're showing you how to
+use a little program from from category
+5 to turn the light on when we are live
+on the air and you know what it's really
+just a proof-of-concept
+yes because the whole idea behind this
+demonstration is just to get you excited
+about hey you know what I can actually
+do some things with this you could use
+grep and you could find out if the
+school buses are canceled in your area
+right and you can have a little light go
+red if the school buses are canceled get
+the kids excited every morning if the
+light is red you know you can do
+whatever you want to do you can use all
+kinds of tools and and the what you do
+is really up to you and we're just
+working with one GPIO pin I almost feel
+like this could be used as some sort of
+like a Pavlov's dog kind of situation
+you know just put lights around your
+house and randomly turn them on it's
+like oh it's dinnertime turn it off oh
+it's dinnertime like a light that was
+like so so practical that's so
+incredibly practical ok so we mentioned
+about our API and our API just tells you
+whether or not we are live
+it looks a little something like that so
+we're off the air
+zero see how it returns a zero I'm using
+the test API C so if I keep running that
+it's eventually going to change to a 1
+right because those switches every 30
+seconds yeah and I see that some of it
+gets cut off there on your screen don't
+worry about it you can see what that as
+it Scrolls up oh it's taken a little
+longer one we are on the air the light
+didn't turn up that's cuz we haven't
+coded it to yet Jeff the light GPIO
+right number 18 one there you go Jeff
+yes yeah
+there you are okay so that's the thing
+we want it okay first of all we need to
+create some kind of intelligence to say
+to create a loop and say are we live or
+are we not live I almost feel like there
+was a slam on me because I want to see
+the light we need to create some sort of
+intelligence so here's the simple tool
+that I just whipped up for ya you can
+see that it's got both the api's we've
+got the test API that toggles every 30
+seconds and we've got the real-time API
+then we've got a quick loop and here's
+what we're doing now we've already
+learned some of these things so we're
+setting the live variable in Bosch using
+W get and then whichever API we're using
+and then we're outputting the response
+of that rather than downloading a file
+okay so live is going to become either a
+0 or a 1 if live is 0 say we're off the
+air if live is 1 say we're on the air
+and if it doesn't know either way if
+it's not a 0 or a 1 it will say unknown
+and low and then it will output whatever
+it output may be my servers offline or
+something like that then it will sleep
+for 10 seconds which means the loop is
+going to wait 10 seconds before going
+again and the first thing it does when
+it restarts the loop it do is it reloads
+the API to check what the status is so
+if I run this code we can see we're off
+the air
+no we're not this is the test API right
+and it's going to keep checking every 10
+seconds
+we know that the API is going to change
+the test API changes every 30 seconds so
+the most we're going to see is 3 off the
+airs and 3 on the errors and that's
+going to loop right ok and so when
+you've got something like this I mean
+could you
+use something other than a light could
+you have like a little bell the dings or
+could you sure you could program like
+you're Alexa to say cat5 is on the air
+or something like that you could do any
+number of things now you see we're on
+the air because 30 seconds have gone by
+and so it's on the air as I mentioned
+you can use a relay in place of an LED a
+relay will take a small voltage like 3.3
+volts and allow you to use up to two
+hundred and ten volts or something like
+that so you can you can have a 3.3 volt
+trigger flip the relay which connects
+the connectors for the 110 okay and then
+turns on whatever you want or you know
+that's the GPIO scenario anyway so you
+can really do anything as far as
+communicating with Alexa that's a whole
+other thing
+that's not something that we're doing
+here with no fur that's certainly not
+something we do I didn't know a program
+would like if you programmed it to that
+it would go that far you could make it
+do any number of things but all this
+does is it gives a 3.3 volt signal or it
+turns off the 3.3 volt signal an LED is
+the most simple way to demonstrate that
+that is actually taking place right yeah
+okay
+but I think a relay really opens it up
+to new possibilities so now we see that
+that loop is happening we're off the air
+we're on the air because it's the test
+API now if I switch that instead to the
+actual real-time API so comment out the
+test API and run that we're gonna see
+that every time it's gonna say that we
+are on air because right now we're
+broadcasting so we are in fact on air so
+that's what it's going to output so I've
+created a second tool which just takes
+that to the next step so again it uses
+everything that I've already
+demonstrated and shown you here to be
+able to do what we want which is
+inevitably turn on the light turn off
+the light depending on whether or not
+we're on the air so I've set the GPIO
+pin as a string so that you can change
+that if you want to a different GPIO pin
+I've set that to pin 18 then I'm saying
+if the GPIO executive will exists in
+user local pin then we can continue if
+not it's going to warn us you haven't
+installed wiring PI yet okay because
+remember that was one of the first
+things we had to do right
+then we need to set the pin for output
+we already demonstrated that but we're
+using the string instead of having to
+put 18 we're using dollar sign pin so
+that is now an output pin at the
+beginning notice there's no loop yet
+okay because we don't need to turn it I
+will put output output over and over
+again now clear the light state if it is
+on we're gonna turn it off the first of
+the first run and then and we already
+learn that command as well then we start
+our loop and this is exactly the same as
+the loop that we just looked at mm-hmm
+except for one thing and that is that
+I've added the GPIO statement so we grab
+the API from the whichever API is
+selected then we see whether it is zero
+at which case we say off the air but
+then we also turn off the light okay
+right we're writing to the pin 18 zero
+if it's live so one we say on the air to
+the terminal and then we take pin 18
+dollar sign pin and we set it to one so
+pull it off okay then we sleep for 10
+seconds now let's see what happens so
+you see on the screen now I'm gonna run
+that GPIO dot SH enter oh we're on the
+air so now remember we're using the test
+API so every 30 seconds is going to turn
+on or off the air it's gonna respond
+with either a 1 or a 0 every 30 seconds
+so right now we're on the air so the
+device that you've created now the light
+is on now you know oh it's time for
+category 5 time to make popcorn or
+whatever it is the court has passed you
+need to get to your feed wait for it
+wait for it oh we're gonna go off the
+air now no we're not
+yeah here goes so that's a really really
+simple programming really really simple
+circuit you can build something like
+that and it takes you 10 minutes
+realistically sure take my code study it
+I mean it's really really simple I just
+whipped that up before the show just to
+be able to demonstrate it for you
+without making too many mistakes here on
+the air while we're live and and it
+works great and it could be used for so
+many different things you know I mean
+I'm truly sitting there going I'm
+picturing like building a house and
+firing lights all over the place they
+offer a raspberry pie why not yeah also
+you could be in the kitchen you toggle
+switch it's like ooh dinner's on or you
+know all that kind of stuff so that all
+the bedrooms just have this little light
+because often they give you kids
+commuting the whole market like oh
+there's ready so this is where we need
+to tell you about voltage and yes you
+don't want to pull too many volts off of
+the Raspberry Pi you can't hook it up to
+your microwave to pop the popcorn but
+with a relay against you can then use
+like a 4 amp power supply plug that into
+the relay then plug the relay into the
+3.3 volt a GPIO and you can have the
+real a trip to trigger a 12 volt 4 amp
+circuit it does whatever you need Dennis
+Kelly asks and I think I know the answer
+to this so is there a way to make it
+come on 15 minutes before the show the
+truth of the matter is we kind of go
+live a couple minutes before the show
+anyway right so it would be fine so
+what's interesting about this is the
+moment I push live on Telestream wire
+cast our server database creates a
+variable in our server
+it's a session variable that says we're
+live yes so it automatically creates all
+the feeds and puts everything up and
+does all that and and does everything
+that happens yeah I get a little pop up
+on my screen there you go right so what
+you will get in that moment is the light
+will come on not not when we start hey
+welcome to category 5 no as soon as we
+push that we're live button and we're
+streaming to the web it's usually about
+15 minutes before the show that's gonna
+happen mm-hmm so try the circuit and if
+you try this simple simple circuit and
+the simple software that I've provided
+for you to get started we'd love to see
+your pictures we'd love to hear from you
+and know how it's worked out and make
+sure that you've got it near the TV next
+time you're watching category 5 TV when
+you're watching live and if you're not
+familiar with our live schedule it's
+every Wednesday night at 7 o'clock
+Eastern Time that's when we are actually
+broadcasting live if you're watching it
+elsewhere you may be watching like a
+recording or
+exactly all right one yeah I love it
+are you all set ready to head over to
+the newsroom I am okay here are the
+stories were covering this week in the
+category five TV newsroom research
+suggests thousands of websites are being
+hit by cyber cyber thieves who implant
+code to scoop up payment card numbers
+the no-fly zone for drones around
+airports is to be extended following the
+disruption at Gatwick in December a
+wake-up call as quadri grouse founder
+takes 135 million dollars of their
+customers cryptocurrency to the grave
+and a new AI is able to generate
+freakishly realistic people who don't
+actually exist these stories are coming
+right up don't go anywhere
+this is the category 5 TV newsroom
+covering the week's top textiles will be
+slight Linux bias Jeff Westen Jemma
+you're building a brand-new beautiful
+website
+what
+are you alright you're terrible actor
+what this we're acting comes into play
+you're supposed to act okay I'm building
+a really cool website are you building a
+really cool website just because Jeff is
+confused doesn't mean you have to be
+visit cap five dot TV slash DreamHost to
+sign up for unlimited web hosting for
+your website with unlimited email
+accounts MySQL databases the latest
+version of PHP WordPress and more and
+even a free domain name registration
+it's less than six dollars per month so
+sign up today cat five dot TV slash
+DreamHost I'm Sasha Rickman and here are
+the top stories for following this week
+research suggest thousands of websites
+are being hit by cyber thieves who
+implant code to scoop up payment card
+numbers security giant Symantec found
+more than 4,800 websites were being hit
+by these forum jacking attacks every
+month high profile victims of these
+attacks include British Airways and
+Ticketmaster according to or Allah Cox
+director of Symantec Security Response
+Unit formerly profitable ventures
+involving ransomware and mining
+cryptocurrencies now made gangs much
+less money so they have instead turned
+to inserting attack code either when
+sites failed to update core software to
+close loopholes or via insecure third
+party apps such as chat apps analytics
+packages or other extras it's a tiny
+line of code in there and that's enough
+for attackers to monitor payment card
+info being entered in as they siphon it
+off Cox goes on to say quote it's not
+obvious that the website has been
+compromised to the naked eye everything
+would look fine and quote hmm
+so I feel like this is just a digital
+version of those big thing this is such
+an easy thing to accomplish from a
+coding standpoint and I hope that people
+understand that that if you launch like
+if you launch a wordpress blog and then
+you install a whole bunch of plugin
+that sound cool this happens I'm just
+going to give you a scenario so oh this
+is a really cool slider that makes my
+images slide like a nice slideshow right
+just to it looks cool and it's free
+okay remember that so then what happens
+is some malicious party finds these
+really cool sliders that are free yeah
+and says hey I'll give you $1,000 to
+sell me that program so that it can now
+be my program that I I'll maintain it I
+will take over the project right it's
+like little small business transactions
+of like coders who I developed a really
+cool plugin for WordPress and Wow mom
+will so pay me for somebody wants to pay
+me a thousand bucks for the program that
+I made in my bedroom that's that's a
+very legitimate scenario so then this
+party who is now purchased it injects
+code into the plug-in then they upload
+that to the repository WordPress which
+you have installed with that plug-in now
+says oh there's an update install
+updates because we know to install our
+updates right so now this code is
+injected into our website our WordPress
+website just to use that as the example
+this is why WordPress websites you you
+hear about a lot of them getting
+compromised right and then people start
+to say oh well WordPress is not safe no
+it's the practice of the administrators
+that is not safe I have folks who say to
+me I want administrator access to my
+WordPress site and I say why do you want
+that oh well because I want to be able
+to have control over my site if your
+business goes under hold on one second
+how much do you know and what is that
+you're going to be putting in like you
+have to be realistic here you've got to
+understand the risks it's not a
+wordpress problem it's a user problem
+I'm not going to give you administrator
+access you can take that hosting
+elsewhere it kind of thing yeah because
+it's just too dangerous for you
+and that's why our local church website
+got hacked and turned into an Isis
+website this happens because they are
+clueless about security and yet they're
+and they're trying to say
+Buchan so we installed wordpress and
+somebody who doesn't actually understand
+security is the one who's administering
+it right that's the risk so so now this
+plugin is installed and we're doing
+sales on our website or we've got we're
+collecting contact information emails
+and things like that
+and all they're doing is transparently
+you don't even know what's happening if
+someone enters their credit card number
+it's sending a copy to you for the
+payment and it's sending a copy to the
+malicious party as well right that's it
+you don't even know what's happening
+know what using third-party services
+like say - lien or something where you
+can have your payment you know cards in
+your program that automatically fills it
+in would that be more secure or does the
+form still read that information it's
+not it's not at all that's not this
+problem okay all right this is form
+injection so this is taking a form that
+is being submitted on a website
+collecting the data before it sends it
+to the actual processor okay so your
+question was it does it help if I as the
+administrator well let's say I use
+PayPal as my payment processor or as the
+administrator I allow maybe I'm I used
+Medeiros and you know I'm sure I'm a big
+business well it doesn't matter because
+that information has to be transmitted
+to maneras in order to get the the
+charge to happen and then it comes back
+with a yeah it passed or no it was
+declined now in that case though maybe
+that's a different it's a different
+process cuz it's like OAuth and yeah
+okay the transaction details are never
+exposed PayPal same thing you don't
+actually get my credit card number if
+you that's right process my transaction
+with PayPal so it's a different thing
+however they could in jet they could
+receive my PayPal user credentials Oh
+theoretically right cuz I saw the form
+because it's because it's being
+transmitted through the form right they
+wouldn't get my credit card number so
+it's a little bit of a different
+scenario but still but any data that's
+transmitted can be intercepted by these
+types of infiltrations and part of it is
+that we've learned that a site needs to
+be secure so the injection has
+occur on the actual server it can't
+occur out in on some other server that's
+been compromised and then hey it's
+communicating back and forth no it has
+to happen on the actual server that's
+hosting the website because that's the
+security certificate so it happens
+completely transparently I doctor
+performs so be careful right well I
+think it boils down to you know what
+I've been sang on the it's come up a
+couple of times on our new endpoint
+security I see a podcast where Tony ants
+come and even Stephen Cobb had
+reiterated that we need to be very
+mindful and Tony really talked about
+this that when we are shopping online as
+an example we need to know that we trust
+the people that we are purchasing from
+especially if we're going to be saving
+our data for the next transactions right
+so Amazon memorizes my credit card
+because I'm shopping there all the time
+I don't want to have to enter it every
+time but another store where I maybe
+shop once a year twice a year I don't
+need to have them memorize my credit
+card number because I'm only opening
+myself up to be exploited if they come
+under compromised so just be mindful of
+all these things we've learned so much
+in this moment of news the next moment
+yes no-fly zone for drones around
+disruption at Gatwick in December from
+March 13th onward it will be illegal to
+fly a drone within three miles of an
+airport rather than the current point
+zero zero point six mile exclusion zone
+the government also said it wants police
+to now have new stop and search powers
+to tackle drone misuse Gatwick Airport
+was shut down for more than a day due to
+drone sightings near the runway it
+caused chaos for travelers affecting
+more than 1,000 flights and about
+140,000 passengers since then airports
+have been trying to improve their
+procedures to detect drones but they
+continue to see illegal flights near
+their perimeters in January departures
+at Heathrow were temporarily stopped
+after a drone was reportedly sighted
+transport secretary Chris Grayling said
+quote the law is clear that flying a
+drone at near an airport is serious
+criminal act
+he continues we are now going even
+further and extending the no-fly zone to
+help keep our airports secure and our
+skies safe anyone flying their drone
+within the vicinity of an airport should
+know that they are not only acting
+irresponsibly but criminally and could
+face imprisonment end quote hmm no issue
+with this makes it no no absolutely
+well if three miles is a lot of distance
+though and it is but we it's a shame
+that they've had to take this step but I
+mean you figure how high drones can go
+and if you've got a major plane that's
+coming in I mean that trajectory is not
+it's not like they're you know
+helicopter drop oh yeah they're coming
+in to go three miles out you're gonna
+need it
+right you know so I I have no issue with
+this I think it's good and it's
+unfortunate that people are so careless
+I think it bows down to the people the
+the only reason that I have a little bit
+of a different view is that my sister
+used to live fairly close within three
+miles of an airport nowhere near the fly
+zone like there were no airplanes going
+right over her house or anything but I
+used to fly around the field in her yard
+cuz she had a big yard and I and I
+thought well that's within three miles
+of the airport so you would not be able
+to fly in your field here because it's a
+no-fly zone at this point so there's
+kind of two sides to it but people need
+to be smart I remember when we heard
+about these drones a long time ago I had
+the idea why don't they come up with
+some sort of scrambler or something that
+would just not get it would this
+distance be far enough away from the
+planes that you could knock the drones
+out of the sky 747 you need to get about
+10 feet higher otherwise you're gonna
+hit the wall ooh I think is is the fact
+that I mean you've got drone makers from
+all over the world and at the end of the
+day they're not regulated on how they
+make them so it's not like you could say
+based on regulations you have to point
+you know this script within there there
+are my drone cannot fly above then like
+to the to the no fly limit
+right the GPS signal will we'll stop it
+it's like it's like hitting a wall it's
+an amazing feeling as soon as you get
+there
+the drone just is like then it just
+stops right you can't go any higher and
+all you can do is bring it down about 50
+feet and then fly that's it so yours has
+that program not it does it and as soon
+as you enforce that in every drone
+people are gonna be snipping the wire
+right that's exactly what you know is
+gonna happen he bikes came out he bikes
+came out and people started removing the
+governors yes people are boundary
+pushers by nature so this is this is why
+it becomes a criminal offense now
+instead of just hey we had a policy now
+it's like and but they can never find
+the individuals right again I mean man
+we have some really good information on
+the endpoint security dossier podcast
+because Stephen Cobb was saying you know
+part of the issue with cybercrime is
+people know that they are probably not
+going to get caught how is a Russian
+hacker in on Russian soil gonna get
+caught when he's hacking an American
+server it's not gonna happen and even if
+he's caught he's not gonna be arrested
+or anything right it's not gonna happen
+unless he leaves the country so
+similarily like I mean well a drone I
+mean they still haven't found the person
+or persons responsible no we're shutting
+down the airport and they won't and they
+won't know they put up a 50,000 pound
+reward for anyone with information and
+nobody's come for nobody has that
+information because it's just drone
+flying around close you have to be to
+the drone in order to fly it like could
+you not remote into your longer couple
+kilometer could you remote into your
+remote to fly your drone could you be
+like one step these days you can use you
+can just use a headset and you can fly
+it as far as you want and is this within
+range a couple kilometers or so yeah
+then you can see from the cameras to be
+the issue for planes Christmas lights
+just a couple of moments a couple of
+months ago a wake-up call as quad Regas
+founder takes 135 million of their
+when the 30 year old founder of a
+Canadian cryptocurrency
+change died suddenly he took around 180
+million dollars Canadian and
+cryptocurrency to his grave now tens of
+thousands of quadriga CX users are
+wondering if they will ever see their
+funds again
+back in 2014 one of the world's biggest
+online crypto currency exchanges mount
+Cox and unexpectedly shut down after
+losing 850,000 bitcoins valued at the
+time at nearly point four billion
+dollars its meltdown shook investors in
+the volatile emerging market place but
+the calamity at the Tokyo based company
+proved a boon for a new Canadian online
+crypto currency exchange quadriga CX
+founder Gerald cotton said at the time
+people liked the fact that we're located
+in Canada and know where their money is
+going some five years later caught in
+sudden untimely death has left thousands
+of his customers scrambling for
+information about their own missing
+funds this month quadriga which had
+grown to become Canada's largest
+cryptocurrency exchange was granted
+temporary bankruptcy protection in a
+Canadian Court the firm said it had
+spent the week since Cotton's death
+trying desperately to locate and secure
+the cryptocurrency reserves in court
+documents quadriga says it owes up to
+one hundred and fifteen thousand an
+estimated two hundred and fifty million
+dollars Canadian about seventy million
+dollars in hard currency and about 180
+and 190 million in cryptocurrency based
+on recent market rates it believes
+though it is not certain that the bulk
+of those millions in reserves was locked
+away by cotton in cold storage which is
+an offline safeguard against hacking and
+theft for now all has been all trading
+has been suspended on the platform I'll
+say yeah of course
+hey anybody wanted right on there okay
+so if but if it's a if it's a registered
+exchange now granted I don't know if it
+falls under the exchange rules as far as
+like the stock market goes but it's a
+company with somebody not have had
+authoritative powers to take over all
+those accounts it doesn't work that way
+it's cryptocurrency so he
+had the it presumably he had the D the
+keys yeah he had private keys right but
+then who gets access to his estate like
+this is the ship it was 30 so he didn't
+think of that I bet yeah maybe he was 30
+we'll know in the next couple of music
+Canadian 30 year old I feel like he
+probably thought he had another 50 years
+easy but I mean like I start not I don't
+think if you're gonna have a company
+that it's one point had point four
+billion dollars in cryptocurrency you'd
+have some sort of lawyer and backing
+behind you and you some sort of had a
+friend named Jeff at the time when you
+were starting that you might have
+thought of that but if you were just a
+guy that was taking advantage of the
+fact that he had a great idea and that
+the other you know tokyo-based company
+had problems then you just have an idea
+you run with it and then all of a sudden
+you meet an untimely end and you're
+people now are scrambling probably
+trying every cold storage area in Canada
+yeah it's got no it's not it's not a
+physical space oh this is cold storage
+crypto yeah this means in my mind it's
+like that time when that computer ended
+up in the dump
+remember that's right so I figure that
+it was that hard
+let's okay let's use this as an example
+okay so we've got a DT 2000 from
+Kingston yes it has a passcode key lock
+yes I set the password on this and I put
+all my files on this pretend that these
+files are
+the crypto currency keys for thousands
+of customers okay so this basically is
+the access to their money without this
+you cannot gain access to that money
+right now you can punch in your code you
+can try to guess my code ten times and
+then it wipes itself right
+everything's gone from this Drive okay
+he had the keys yeah and he died
+unexpectedly so he didn't he made a
+stupid decision I'm sure yeah it wasn't
+intentional to take anybody's money no
+he thought he was being wise to get it
+into cold storage which is to make it
+inaccessible by hackers
+and it's it's a tough call because if
+you're gonna trade in cryptocurrency you
+need to have your own cold storage you
+need to have your own they call it an
+offline wallet it's a wallet that is not
+accessible by anyone other than you keep
+your keys somewhere safe I've got a
+paper and you know and on paper your
+wife can find them if something happened
+to you
+crypto currency isn't insured in any way
+is it how do you prove your
+cryptocurrency if it went missing it you
+can't it's impossible that's the whole
+point so it's just one of the so-so
+because he is because this is an
+exchange it's different this is not a
+bank a bank you put your money in and
+you trust your money safe right this is
+not that this is an exchange this is
+where I put my money in order to
+exchange it to other to other currencies
+to other right so you hear about the
+value of Bitcoin and you think well how
+do you actually monetize that I can't
+walk into a store and buy something with
+Bitcoin no so you put that Bitcoin on an
+exchange convert it into etherium
+convert it into litecoin and convert it
+into US dollars right but it has to
+enter the exchange in order to happen
+yeah so that's why people put their
+currency in there unfortunately some
+people leave their currency and they're
+not ever really making the wise decision
+to move it into a paper wallet or an
+offline wallet
+it's truly is unfortunate because at the
+end of the day the the idea is a great
+idea but because the security and the
+succession planning wasn't thought out
+as a company people are now getting
+screwed but fortunately it's a really
+tough thing yeah and if I have paper
+wallet like it said a bad image for
+cryptocurrencies because people are
+going oh it's my money but at the end
+that's not the issue the issue is this
+case no you wanted you wanted safe
+guarantee you wanted a currency that
+cannot be traced so this is the side
+effect of that if something goes wrong
+it's right but the the really crummy
+thing is that you know people can't get
+that money back
+mmm it's a tragedy really there anyway
+to so many ways to like pull those
+trying transactions through the block
+coin to rebuild it through the
+blockchain store a block Jamie no no you
+have to have the keys right and just to
+find a final thought not to be ominous
+or anything but you you think okay well
+why don't you just have a paper wallet
+why didn't he just have the keys printed
+and stored in a safe or something and
+one of the things that's also happening
+with these kinds of folks so the people
+who are responsible for Bitcoin and and
+and other cryptocurrency exchanges is
+that they are now targets sure because
+if I know that somebody has that kind of
+currency and it's untraceable and I know
+that they store the keys in their vault
+instead of in their head then I want in
+their vault
+I want a result at all costs because as
+soon as I have those keys I have all of
+that currency and there is no tracing
+that transaction that's right ah well
+let's move on to some lighter news yeah
+okay a new AI is able to generate
+actually exist at first glance they just
+look like average looking people the
+catches and none of them exist all you
+all these faces that you're seeing are
+fakes put together by artificial
+intelligence to be more precise these
+faces are created by a generative
+adversarial network or Gann developed by
+Nvidia using deep learning techniques to
+produce realistic portraits out of a
+database of existing photos head over to
+this person does not exist com2 see for
+yourself every time you refresh the page
+the network will generate a new facial
+image from scratch with again new to
+neural networks neutral neural as in
+designed to mimic the brains
+decision-making process work in tandem
+here one network generates a fake face
+while another decides if it's realistic
+enough by comparing
+with photos of actual people if the test
+isn't past the face generator tries
+again this feedback loop is responsible
+for the images you can see here similar
+Gans have been used to switch a scene
+from winter to summer Nvidia's
+impressive face coding is now managing
+to add a new level of authenticity
+through what's known as style transfer
+processing different parts of the image
+like face shape and hairstyle separately
+it means different faces can be more
+easily and more realistically blended
+together in a similar sort of way that
+photo apps turn your face into a
+painting or sketch after training the
+programmers can combine these aspects in
+any way they like the weighting of these
+different facial aspects can be tweaked
+and adjusted as necessary giving the
+programmers greater control over the end
+output that is incredible I know it is
+freaky how realistic those faces are
+they are
+have you seen derp fakes like they can
+make faces look like they're saying
+stuff or singing or whatever yeah dig
+take this blend it with that and
+suddenly you've got actors that don't
+exist well and that's it I mean when I
+first saw this I was pulling enough up
+my wife's like what are you doing like
+you're looking and random people I mean
+they're not people so use this as your
+app what use these as your avatar well
+yeah right
+except then Facebook is like send me on
+your picture to prove that it's you now
+I will say though not all of the
+pictures were great there was a few that
+came through and when I looked at them
+I'm going there's something odd about
+this and I think it's a matter of
+learning to you know kind of figure it
+out but in general they looked really
+really lot of them it's true it's like
+the the little imperfections like the
+smile lines around the eyes or the
+crooked teeth it's like those sorts of
+things that make you feel okay this is
+an authentic person not an AI generated
+perfect symmetry chol being like nobody
+is it's incredible stuff yeah it's well
+it's but at the same time it makes you
+go now can I trust anybody
+is image online it's like yeah you know
+like could you turn around and create
+you know a whole story about somebody
+and have pictures and create this fake
+like you've got these fake Facebook
+profiles about steel that's with us and
+stuff I'm thinking about the real
+positive aspects of it though you're
+thinking that let's get let's get all
+yeah let's get into the neck no think
+about this a game in virtual reality
+with your headset so that is able to
+upon launch generate all of the
+characters that look like real people
+and everybody has never been seen before
+and they're not even real people but
+they look incredibly real because the AI
+could take that and form it on to a
+model right so now just add three
+dimensions to the photo it's in VR yeah
+interact with these people you know kids
+games these days they generate avatars
+upon watch and it's all you know it's a
+different avatar every time but their
+video game quality now take it and take
+it to the next level make them look
+really real now though what would happen
+if somebody use that image and there
+happen to be a real physical your
+doppelganger it's like it looks like
+somebody who kind of looks like me or
+you know you have to refresh all a time
+yeah but it would be freaky like not
+only am i no longer like an individual
+but I'm like copied by and and it's an
+AI person you know well see then you
+just look at you go am i really real
+let's put together like a wanted poster
+sure with light and just every week
+change the photo to one of these AI
+generated photos see how many calls you
+go or like employee over the month let's
+just do it as employee there you go
+brilliant we're gonna put that up behind
+us all right let's get let's get over to
+coin gecko here's what the crypto market
+looked like as of 1800 hours Eastern
+Time on Wednesday February 20th 2019
+Bitcoin is up gaining three hundred
+fifty three dollars and sixty cents u.s.
+doing very well 3,900
+$58 and 86 cents litecoin is also up
+gaining about $10 just nine dollars and
+fifty two cents us at fifty 110
+aetherium is also at 146 94 gained
+twenty-five dollars in 37 cents since
+last week Manero is rising slowly at
+fifty 124 and a small guys have come
+down just a little bit stellite is down
+at one point five nine ten thousandths
+of a cent and turtle coin at 0.8 to
+remember that the cryptocurrency market
+never closes and is always volatile big
+thanks to Roy W Nash in our community of
+viewers for submitting stories to us
+this week thanks for watching the
+category-five TV newsroom don't forget
+to Like and subscribe for all your tech
+news with a slight Linux bias and for
+more free content be sure to check out
+our web site from the category 5 TV
+newsroom i'm satya Rickman and i'm robi
+ferguson hey Jeff Weston thank you so
+much for being here with us again this
+week looking forward to next week same
+place same time see you then did you
+like to turn it on that's right
+[Applause]
+you
