@@ -1,0 +1,454 @@
+nous cherchons comment chiffrer un
+périphérique externe ou amovible de sorte que si
+vous mettez vos fichiers personnels en tant que
+sauvegarde vous n'avez pas à vous inquiéter si
+quelqu'un vole ou quelque chose de toute évidence
+vous voulez avoir la redondance, mais je suis
+parler de l'aspect de la vie privée ici
+et c'est ce que nous parlons d'eux
+le brancher sur leur ordinateur et
+pouvoir accéder à vos fichiers privés
+nous voulons en finir avec cela en utilisant
+cryptage on va le faire
+entièrement à travers le terminal Linux afin
+pour la démonstration de ce soir, j'ai
+tout simplement ça va
+c'est un voyageur de données de Kingston 16
+clé USB gigaoctet hey hey je veux dire
+cela fonctionne, vous voulez jeter des fichiers sur
+et garder une sauvegarde de ceux qui sont nécessaires
+les fichiers tout d'abord ce que la sauvegarde un
+la sauvegarde est redondante vous copie de votre
+choses juste il a un tas de belle
+des photos de mes enfants sur mon ordinateur, ils
+ne sont pas sauvegardés si je les déplace à cette
+droit parce que c'est maintenant la seule copie
+à droite, ils sont sauvegardés si vous avez déménagé
+dans deux de ceux que vous connaissez oui mais
+copions de préférence laissez-moi
+copies redondantes de sorte que si celui-ci
+est détruit ou perdu ou volé ou
+quel que soit et ils échouent, vous savez USB
+lecteurs flash disent-ils tellement rire
+utilisez afin de vous assurer que vous avez
+redondance et copies et quelque chose
+hors site afin que s'il y a un incendie ou
+quelque chose comme ça ils ne sont plus partis
+laissez ces choses branchées dans votre
+système parce que si vous êtes frappé par un
+surtension et votre ordinateur se fait tirer dessus
+devinez quoi donc la chose branchée
+dans le port USB alors d'accord ce ne sont que
+genre de conseils qui n'ont rien à
+faire avec le cryptage, mais ce soir, nous sommes
+va apprendre à chiffrer cela afin
+Je vais le brancher sur mon ordinateur
+ici et voyons ce qui se passe ici, nous
+vais donc je branche juste cela dans mon
+ordinateur portable et pas d'applications pour l'ouvrir
+mais là, il est sur mon bureau, je vais
+il suffit de double-cliquer dessus et vous
+vois que j'ai un kilomètre secret dans
+là et dans ce fichier top secret
+J'ai quelque chose de secret, ça pourrait être
+quelque chose de bien maintenant le processus
+nous allons utiliser ce soir est entièrement
+destructif donc nous allons être
+en commençant par un lecteur qui n'a rien
+essentiellement en gardant à l'esprit que
+si vous avez déjà des données à ce sujet
+Conduisez vous devez le déplacer à plus
+stockage redondant afin que nous puissions maintenant
+chiffrer cela donc les avantages de
+chiffrer ce système de fichiers essentiellement
+devez-vous connaître le mot de passe dans
+afin d'y accéder si l'avantage alors
+bien sûr être si quelqu'un obtient une emprise
+de ce lecteur de données , ils ne vont pas
+être capable d' ouvrir les fichiers mais vous
+être et nous ne cryptons pas individuellement
+fichiers et avoir à les décrypter non
+nous mettons en place pour que vous venez
+entrez simplement un mot de passe pour
+montez-le et vous pouvez y accéder juste
+comme toute autre clé USB, nous sommes prêts à obtenir
+dans ce sont tout va bien apportons
+notre terminal Linux ici, je suis en utilisant un
+avantage à Ma Tei cela fonctionnera sur tout
+saveur Linux et nous allons suivre
+vous connaissez des étapes qui sont génériques à tout
+système d'exploitation dérivé de Debian
+donc c'est bien pour debian bien sûr que je
+besoin d' apprécier aimer un avantage à matei ou
+boon - Kubuntu ou quoi que ce soit d'autre
+qui est basé sur vous savez que Debian et a
+apt-get qui a dit que les étapes vont marcher
+très bien si vous voulez utiliser yum aussi
+vous allez devoir remplacer certains
+commandes bien d'accord alors avec ça
+conduire branché regarder ce qui se passe quand
+Je vais LS slash dev étoiles SD, vous voyez comment
+J'ai SD a et SD B ok donc c'est
+deux disques durs actuellement connectés à
+mon ordinateur si je débranche ce lecteur de
+mon ordinateur va bien parce que ce n'est pas
+monté afin que je puisse le faire maintenant et puis faire
+cette même commande, vous remarquerez que je ne
+DB s droit plus si sûr de dire que je
+truc vraiment pas cher et sale à
+savoir ce que l'affectation de lecteur est
+mais bon c'est s DB là alors quand
+Je branche ça si je peux trouver la clé USB
+nous y allons
+aidez-moi ici d' accord, je vais juste annuler
+sur les trucs GUI faire un LS à nouveau et
+vous verrez que STD existe maintenant la clé
+pointer ici nous chiffrons une partition
+sur ce lecteur donc pas tout le lecteur pas
+le lecteur comme dans un appareil si vous faites
+chiffrer le périphérique afin que slash
+SPB tu ne vas pas être en mesure de
+y accéder, tu ne vas pas pouvoir
+montez-le et les en-têtes vont être
+foiré, vous pouvez résoudre ce problème en supprimant
+tout et le remettre à
+non formaté en partie G éditer ou quelque chose
+comme ça ou disque F mais nous allons
+vous épargner la peine en vous disant simplement
+dès le départ, nous devons avoir un
+partitionner ce disque particulier déjà
+a un SD b1 nous savons donc que c'est dans
+fait la partition, mais si vous n'avez pas
+une table de partition sur votre disque, vous pouvez
+en créer un avec votre partition préférée
+éditeur tel que G Part II D donc le premier
+chose que je dois faire est de devenir la route en
+Ubuntu je vais taper sudo su et
+entrer mon mot de passe dans Debian je voudrais juste
+tapez su et appuyez sur Entrée et cela se fait sentir
+su pour ceux d'entre vous qui sont juste
+écoute maintenant que je suis root je suis
+va taper apt-get update qui vient
+télécharge simplement tous les derniers forfaits
+des dépôts afin que tout ce que je
+installer va être la dernière et
+plus grand alors je vais aller apt-get
+installer et nous avons besoin de ce particulier
+paquet qui va nous permettre de faire
+cela , nous allons taper la configuration de la crypte et
+puis appuyez sur entrer mon système particulier
+déjà vous a installé crypte installé va
+voir cette configuration de la crypte a déjà le
+dernière version d' ubuntu afin que vous puissiez exécuter
+cette commande juste assurez-vous que vous avez
+a la dernière version et vous serez
+bon d'aller si quelques étapes ici
+d' abord tout ce que nous devons réellement faire
+le lecteur la partition je devrais dire
+crypté, nous allons utiliser ce qui est
+appelé lu KS de luke et tout est fait
+grâce à la configuration cryptée et agréable et simple
+si vous suivez ces étapes pour que nous sachions
+que nous avons dev / s DB 1 donc c'est ce que
+nous voulons en fait chiffrer de sorte que le
+commande afin de le faire en sachant que
+est la configuration crypt - - je vais faire
+d'abord verbeux pour que je puisse voir
+la sortie ici alors je vais aller - -
+vérifier - phrase de passe ce que cela fait est
+il dit au système de me demander le
+mot de passe deux fois juste au cas où je frappe
+parce que vous ne voulez pas gâcher ça
+et puis nous allons utiliser 512 bits
+Le format de Luke et c'est un F majuscule et
+alors l'appareil lui-même soit très très
+attention ici dev et
+db1 et je dis soyez prudent, car c'est
+entièrement destructif, il va essuyer
+tout ce qui est sur ce disque et chiffrer
+sur cette partition je devrais le dire si
+vous mettez accidentellement SD un 1 et c'est
+votre disque dur principal que vous pouvez détruire
+tout votre bien nous sommes bien le long
+et c'est là que les sauvegardes entrent en jeu
+nous allons frapper entrer sur cela et
+dit qu'il me prévient comme Robbie le fait
+hey es-tu sûr de vouloir faire ça, je
+besoin de taper en majuscule oui assurez- vous
+lu qu'il est assez irrévocable oui
+qui dit oui majuscule mais accrocher
+minuscule et il le fait pour que vous
+effectivement avoir à y penser
+ok entrez votre phrase secrète je suis juste
+va entrer un mot de passe ici pour utiliser
+et puis il y a cette vérification mot de passe
+qui demande une seconde fois et maintenant
+ne peut pas formater ok il est encore en cours d'utilisation
+faisons en sorte qu'il ne soit pas utilisé
+Voyons ce qui fait qu'il est
+monté pour profiter aussi pour que je puisse éjecter cette
+maintenant je pourrais aussi si il est monté parce que
+Je veux vraiment vous apprendre cela dans le
+terminal faisons monter et nous pouvons voir
+et maintenant nous pouvons aller monter puis pipe
+grep et nous allons aller SD b1 c'est
+une meilleure façon de le faire et UCSD b1 est
+monté sur support slash Ravi / USB
+16 gigaoctets alors voyons si je peux juste
+démonter que de force d'ici, je suis
+va copier cela dans mon presse - papiers si je
+mai vous ne pouvez pas être en mesure de le faire si
+vous êtes dans un vrai terminal, donc je vais
+pour aller vous montez puis collez-le dans
+et il est parti d' accord alors maintenant je devrais être
+capable d'exécuter cette commande parce que si je
+exécuter que grep à nouveau remarquer qu'il n'y a pas
+plus monté sur mon système de fichiers si bien
+bien d'avoir ces petites questions se posent
+afin que je puisse vous montrer ce qui s'est passé
+que faire si vous le rencontrez ok donc
+alors je viens de curseur DUP pour recréer
+cette commande et je vais taper
+oui entrez à nouveau mon mot de passe je dois
+sorte de commencer ici et nous y allons
+ça ne va pas nous prendre beaucoup de temps
+fait bien maintenant que Drive est un
+crypté
+ça n'a rien dessus ça n'a pas de dossier
+système, il n'est pas prêt à aller que ce soit
+nous ne pouvons même pas monter ce que nous devons
+est-ce que nous devons en fait monter en utilisant
+le système de cryptographie cryptographie donc d'abord
+de tout ce que je veux confirmer que cela a fonctionné
+Je sais qu'il l'a fait mais faisons juste
+Configuration de la crypte , puis nous allons faire
+ce qu'on appelle un luke
+Dump et encore, il comprend un D majuscule
+puis dev stb-1 maintenant si les choses allaient
+Eh bien, vous allez voir la fente clé 0 est
+activé cela signifie que mon mot de passe est
+stocké dans les en-têtes de ce lecteur maintenant
+si je fais un dump de Luke sur SP a1 tu vas
+notez que dev SDA 1 n'est pas valide
+Le périphérique de Luke n'est pas crypté, donc je
+peut voir que SB b1 est crypté, il a un
+es sha-256 et tout est réglé 512 bits
+il est bon d'aller maintenant la prochaine étape consiste à
+en fait, ouvrir cet appareil et nous devons
+faire cela à travers bien sûr le décryptage
+système, donc je vais juste sauter dans
+vous savez ce que je vais créer comment
+quel est le mot un mappeur à la recherche du
+mots et ce noggin de la mine nous sommes
+va créer un mappeur sur ce lecteur
+alors maintenant qu'il est crypté nous ne pouvons pas
+plus juste monter SD être 1 droite parce que
+il est crypté, nous devons créer un
+mappeur afin que nous puissions ensuite monter ce
+Napper décrypté ok je suis
+oui alors essayons-le en nature d'un test
+cas on ne va pas mettre en place une crypte
+onglet ou quoi que ce soit pour l'instant, nous allons
+aller configuration cryptée Luc est ouvert avec un
+capital o surprise et puis dev slash
+CFF 1 et nous allons appeler cela ce que
+voulez-vous le rappeler en arrière entrer
+entrez le mot de passe pour DB de slash dev
+1 parce qu'il y en a un si vous y entrez
+correctement, il a créé le mappeur afin
+maintenant si je vais mapp dev dev je devrais maintenant
+voir un appelé sauvegarde
+voir que mm-hmm afin que je puisse maintenant commencer à utiliser
+que donc regarder cette pensée de cette
+mappeur comme maintenant ma version déchiffrée de
+la partition, je peux le formater si bien
+maintenant il est temps de réellement faire cela
+chose en quelque chose qui est utilisable que
+est en train d' essayer de faire un spectacle ici
+chambre dans le corps de classe de Jakarta seconde
+côté oui je veux dire une carotte j'essaie de faire un
+présentation ici la salle de chat est tout comme
+ici ok f a maintenant 9 ans
+oh c'est parce que je vais me retourner Luke
+Linden dit faisons le mien cul
+semble stupide non, vous n'êtes pas à propos de Luke
+des choses et il devrait choisir survivre à la merde
+Je fais est Luke c'est n'importe quel japonais
+frère mourir ici que vous êtes bon got
+une souche Balu mais j'essaie de ne pas rire
+oh mon Dieu je pleure
+combien de Luke regardent ce clip
+commentaires ci-dessous
+Oh comme ils le regardent sur ton pouce
+sur la lèvre sur le foie
+oh mon bon oeil tu sais que je peux normalement
+donne moi - même ce genre de choses et
+vous avez continué à réduire au micro et je suis
+comme essayer de ne pas mourir et je viens je
+ne pouvait pas le faire
+Oh Lyndon tu es horrible
+Je l'aime je suis si heureux que le Hoffmans
+ce point je vais devoir faire un autre
+live stump musique juste pour vous montrer que vous êtes
+faire régulièrement chick monsieur me tuer
+oh mon dieu oh c'est le vrai spectacle cette
+n'est même pas les bloopers
+oh wow oh oh mon Dieu je pleure
+les gens dans la salle de discussion vous ont pleuré
+excuse-toi, n'apprends-tu pas
+Je veux dire que tu vas bien Luke sommes-nous prêts oh
+certainement pas prêt à faire un fichier
+système comprenons-nous où nous en sommes
+vous avez créé un mappeur qui est
+essentiellement ce qui aurait normalement été
+notre slash dev slash stb-1
+il n'était pas crypté droit créé que
+mappeur afin que nous puissions maintenant le formater bien
+donc nous allons aller faire FS tout comme
+vous auriez normalement
+point ext3 ok parce que c'est ce que je suis
+va créer cela comme slash dev slash
+mapper slash sauvegarde ok donc maintenant il est
+va me dire tout droit, il est juste
+le faire le faire qui va prendre un
+un peu plus de temps que vous connaissez l'un des
+les choses que je est toujours un peu irrité moi
+un peu sur le système terminal
+de sorte que vous n'obtenez jamais ce pourcentage il y a
+comme il se trouve juste là et il est
+pensant comme si vous regardez une fenêtre
+une barre de pourcentage et ça va dire
+vous vous savez oh je sais que c'est comme si je suis en
+10% a laissé 200 heures oui pour une minute, je
+savoir mais juste quelque chose à référencer
+comme je l'ai fait une mise à jour sur mon système le
+d'autres langues j'attends l'attente
+il arrive au point où tu vas
+donc mon système libre ouais ouais tu sais si
+si vous pensez que ça aurait gelé oh
+il y a une chose que vous pouvez faire Robbie a montré
+cela s'il y a une chose zéro vérifier moi
+Je serai là - moi - va expliquer
+la chose que vous pouvez faire est ce que vous faites
+vous appelez Robbie non non élever un autre
+fenêtre de terminal Jeff et tapez IO en haut à
+voir ce qui utilise votre votre votre / votre
+les entrées et les sorties remarquent que je ne suis pas super
+utilisateur si sudo IO top à la place et c'est
+va me montrer ce qui utilise actuellement
+mon ok Val Culex vous voyez le premier est
+faire et ça va aller et venir, mais
+rendre FS ext3 droite et ça le fait
+et il utilise mon œil oh tu vois que
+surgir de temps en temps pour que
+me dit que toujours faire FS ext3 est
+faire des choses avec le io assez pour que
+ça frappe haut
+droit d' accord à l'endroit où il est juste hors de mon
+bouche qui répond bien tu sais
+ce problème est-il en train de faire
+quoi que ce soit oui , vous savez parfaitement vous maintenant
+savons et nous passons un bon moment
+ce soir, apprendre à chiffrer
+ce lecteur flash USB maintenant il est tout fait
+et vous verrez que c'est tout simplement
+retourné à l'invite alors maintenant Jeff
+si je tape sudo je n'ai pas besoin de pseudo
+parce que je suis route en ce moment mais si je le fais
+Je dois note supérieure que faire FS ext3 n'est pas
+plus va montrer là-bas parce que
+ce que j'ai fini juste ce n'est pas fait
+plus rien et donc le i / o est
+fini d'être utilisé par cette application
+alors maintenant nous avons ce lecteur crypté et
+formaté comme ext3 apportons- le dans
+notre interface graphique parce que peut- être pourquoi
+nous allons accéder à ce déménagement
+avant prenons à partir de zéro d'accord
+pas de logiciel nécessaire, je viens de l'injecter
+et va le rebrancher voyons
+que se passe parfois votre session
+mémoriser le mot de passe alors tout clic droit
+dessus
+c'est ce que nous recherchons entrer un
+phrase secrète pour faire quoi déverrouiller le volume
+de sorte que vous remarquez que je ne peux même pas y accéder
+sauf si je connais le mot de passe que je vais
+entrer du charabia et nous allons
+dire oublier le mot de passe immédiatement et
+connectez et vous remarquerez que vous avez des
+Oh est allé nulle part et puis il dit erreur
+déverrouillage dev slash stb-1 sans clé
+disponible avec cette phrase secrète
+soit dit en passant c'est la même erreur
+message que vous allez recevoir si
+vous avez accidentellement créé le volume
+sur le périphérique ainsi s DB contre s façon DB afin
+Gardez cela à l'esprit si vous voyez que
+message d'erreur et vous savez que vous avez
+le mot de passe à droite peut-être que vous l'avez fait sur
+le dispositif de bloc plutôt que le
+partitionnez donc essayons avec le réel
+mot de passe je vais cliquer à nouveau dessus
+et je tape mon mot de passe ici et je suis
+va aller oublier le mot de passe immédiatement
+parce que je ne veux pas de mon ordinateur
+rappelez-vous qu'il peut
+est-ce que je tape correctement
+là nous allons nous venons de taper le premier
+temps maintenant j'ai un complètement vide
+système de fichiers ext3 de sorte que vous verrez que
+est maintenant accessible sur cet ordinateur, etc.
+l'épisode de la semaine prochaine , nous allons apprendre
+un couple plus de choses que nous allons
+apprenez maintenant parce que c'est un fichier en lecture seule
+système Je n'ai pas accès car cela
+utilisateur, il ne me pardonne pas en lecture seule, il est
+appartenant à la racine si seule la racine peut maintenant écrire
+à ce système de fichiers, nous pouvons vouloir faire
+afin que notre utilisateur puisse réellement accéder
+ce lecteur, nous allons examiner cette
+la semaine prochaine et nous allons voir comment
+faire en sorte que mon ordinateur et mon
+ordinateur seul peut ouvrir ce lecteur
+sans mot de passe à tout moment je pop que dans
+ok et je parle non seulement pas seulement
+de l'interface graphique alors bien sûr je pourrais dire
+rappelez-vous pour toujours que c'est l'interface graphique I
+vouloir penser à des choses comme un serveur
+où je n'ai qu'un accès SSH par exemple
+ou je n'ai qu'un terminal, je n'ai pas de
+GUI alors comment faisons-nous que nous allons
+en savoir plus sur la création d'un onglet de cryptage, nous sommes
+allez apprendre comment monter réellement
+cet appareil à travers notre onglet FS et
+déchiffrer automatiquement à l'aide d'une clé
+déposer de sorte que cela va se passer ensuite
+semaine sur l'épisode 506, donc si vous avez apprécié
+apprendre à créer ce volume
+nous allons apprendre à le prendre un
+aller plus loin et en faire la
+jeu de sauvegarde Perfectback afin que nous puissions
+commencer à jeter nos fichiers là-dessus et puis
+quand on éjecte ça ne va plus
+être accessible sur d'autres ordinateurs cool
+maintenant dans la salle de discussion le fu dit que
+Luke prend en charge huit emplacements de phrase secrète
+c'est correct
+de sorte que vous pouvez avoir plusieurs phrases de passe I
+sais ce que tu fais, je sais ce que vous
+je me fie simplement à ce qu'il y a dans la pièce
+ce bien je sais que je sais que je sais ce que le
+foo fait Oh qu'est-ce que j'ai qu'est-ce que j'ai fait
+non, mais pas de vers, pas de Jeff, pas de crypte de Jeff
+la configuration du personnel de décharge de Luc-1 de stb et maintenant je
+peut vous montrer que nous avons huit clés
+fentes
+tu as raison j'aime mon plan d' ombre
+J'aime le cri ici nous sommes mon travail
+fait je assez bien capitaine oui la
+le plus amusant tutoriel sur youtube
+aujourd'hui
+[La musique]
+[Applaudissements]
+[La musique]
