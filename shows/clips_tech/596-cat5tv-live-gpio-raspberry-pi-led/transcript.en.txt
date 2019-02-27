@@ -1,0 +1,506 @@
+I'm gonna tell you exactly what we need
+for today's project and before I do I'm
+gonna tell you what this is gonna do
+okay we're gonna create something
+tonight that is going to light a light
+uh-huh whenever category-five technology
+TV is live on the air
+oh okay when we sign off it's gonna turn
+off the light yes you can place this
+device anywhere in the world as long as
+it has an internet connection you're
+gonna build it yourself we're gonna do
+it with a Raspberry Pi and a cup it's
+gonna tell you when we're live so I'm
+gonna jump over here and I've got a
+little bit of walking to do so talk
+amongst yourselves while I get over here
+this is great this is what we need great
+reminder yes this is what we need we
+need now there's a Raspberry Pi in
+behind here with Ethernet cable plugged
+into it I've got the tea cobbler this is
+an optional component but it really
+really helps to be able to connect
+everything together and it shows you the
+pin assignments which are really really
+helpful we're going to need one led
+we're gonna need a 330 ohm resistor can
+you folks see that there yeah and then
+we're going to need a couple of cables
+to wire it all together very very simple
+circuit and you can see how I've wired
+this so first of all the LED so just
+note that the longer leg is going to be
+your positive so that's going to go into
+pin 18 which is 3.3 volts all right so
+that is I've already connected
+everything together just for the sake of
+the show so the longer pin is going into
+pin 18 and then the shorter end of the
+LED which is the negative also called
+the the cathode that is going to go to
+the lane that has the resistor so what
+the resistor is going to do and it's
+focusing on my hand rather than the that
+doesn't really work very well so what
+this is going to do let's grab a
+screwdriver here so the resistor is
+going to prevent too much power from
+coming back along the negative cable
+into the ground and that's going to
+prevent the Raspberry Pi from getting
+overloaded if you leave out the resistor
+there is a potential chance that if the
+ball blew or if there was too much
+voltage going into the bulb it could
+feed back into the ground and damage
+your Raspberry Pi so that resistor is
+just going to help protect you so a very
+very simple circuit we've got pin 18
+coming off the tea cobbler which is
+plugged into a raspberry
+pi3 going to the long end of an LED then
+the short end is going to a 330 ohm
+resistor out to the ground of the
+Raspberry Pi ok so far so far so good
+and so far so good
+right mixels notice no soldering
+involved prototyping today yes just so
+that you can see how it's done you can
+solder it you can put it into a nice
+little case do whatever you want
+we're using an LED you could use a relay
+right in place of the LED get a 3.3 volt
+relay and then you can trip a 110
+breaker and turn on a big sign whatever
+you want to do okay first thing we need
+to do on our Raspberry Pi now I've
+already done this but I want to show you
+just because it is necessary we need to
+install a program called get and get is
+going to allow us to download
+repositories and we're gonna need that
+functionality app install get and you
+might want to do an apt update first you
+can see git is already the newest
+version on my computer and that's
+exactly what we're looking for this is a
+clean vanilla raspbian light
+installation so I just installed this on
+a Raspberry Pi 3 Model D okay so next I
+need a application that will allow me to
+communicate easily with the GPIO I don't
+want to get into creating registers and
+making all kinds of crazy stuff there's
+there are tools that are out there that
+make it a lot easier to communicate with
+that general purpose input output of the
+Raspberry Pi which are all those pins so
+you've got 40 pins right yeah you can
+plug into those and do all kinds of
+things we didn't program what we want to
+do with them this is like the most basic
+thing but we're going to be tying it
+into our API so it makes it a little bit
+more exciting so the tool that we're
+going to use I'm just going to go into
+my temp folder which resets removes
+everything that I put in here after a
+reboot so it's good spot to do this get
+clone so remember I installed get and
+I'm also super user I have to be route
+for these for these things so if you're
+not already route the way to do that is
+sudo su alright sudo su and then CD
+slash temp why do you have to be root
+you have to be able to access the
+hardware GPIO you have to be able to
+access the the folders like user local
+bin
+you don't want permissions issues but it
+particularly you need to be able to
+access the GPIO which requires root
+access so we're gonna get clone and then
+we want to grab this tool called wiring
+PI which we're gonna get from git colon
+slash slash and remember I'm gonna put
+all the these commands in the notes
+below draw gone dotnet not dragon dotnet
+and then slash wiring and be mindful
+it's a capital P on PI wiring PI
+destination path wiring PI already
+exists Oh apparently I already tested
+this I'm gonna remove it just that I can
+show you from scratch ok so try that
+again there we go okay so now CD wiring
+PI with a capital P or I just type WI
+and then hit tab and you'll see a couple
+of files here but we need to build this
+so we just go dot slash build enter and
+you wait and you wait and assuming you
+are not on a Raspberry Pi 0 it will
+happen quite quickly now if you type
+GPIO you'll see that it actually gives
+output I don't have to be in that folder
+I can be anywhere GPIO and it gives
+output okay so now I can actually start
+utilizing those GPIO connectors on my
+Raspberry Pi right which are connected
+to a tea cobbler again it's just a
+convenience thing you don't have to have
+a tea cobbler you can solder things to
+your Raspberry Pi but this is just a
+really easy way to prototype so the
+first thing I need to do because all
+GPIO pins are input set when you first
+boot it we need to set that GPIO which
+is you remember do you remember what
+number we plugged it into you can see it
+if you're looking on the screen there
+number 18 eight number 18 is 3.3 volts
+output when it is enabled or they call
+that high
+okay so on pin 18 I have to change that
+from input to output so I go GPIO - G
+mode 18 that's the pin number output
+enter now my GPIO pin is an output pin
+instead of an input pin now I want to
+turn on the light just to test it
+because I want to make sure that it's
+working and sure I've wired everything
+correctly so GPIO - G right pin 18 and
+we're gonna put one one sets it to high
+aka on a KA 3.3 volts it's gonna be a
+little less because of that resistor so
+now when I hit enter in three two one
+yeah it's on there we go sweet now
+similarily is that excited I know right
+so similarly I can remove that zero that
+one and add a zero and it will turn it
+off yes simple things folks simple
+things this is what happens if you take
+a week off so now you say yeah so now
+you say well what can we do with this
+well category five has a live API it
+just responds with either 0 or 1 0 if
+we're off the air 1 if we are on the air
+you'll find this at live dot cap 5 dot
+TV slash API slash real time and you
+just pull that I'm using W get using
+curl whatever you want so if I do that
+so if I do W get HTTP colon slash slash
+live dot cat 5 dot TV slash API slash
+real time and then it gave me a file
+called real time I'm gonna cat that and
+you see it's 1 you see that yes maybe it
+would be easier if I did it this way if
+I double you get and then instead I'm
+gonna output to the screen instead so W
+get I think it's - Q - OH - 1 see the 1
+and then it says root mm-hmm and echo
+you know and and echo quote quote
+that'll help there 1 if we were off the
+air it would be a zero okay so this
+command is going to tell us whether
+we're on or off the air now incidentally
+there's another helpful
+tool on our API called test and it will
+automatically change between on the air
+and off the air without you having to do
+anything see how it was won first and
+then it turned to a zero right every
+thirty seconds it changes so that's a
+great way to be able to test our code
+before we move it over to real time so
+that we can see if everything is working
+so I've created a repository for yeah
+let's go into home slash PI and let's go
+get clone HTTP colon slash slash
+github.com slash cat five TV slash cat
+five TV - live we're gonna clone that
+into our slash home slash PI folder now
+it's their CD Cat five TV - live slash
+SH and you can see a couple of little
+tools there that are gonna be very very
+helpful for us so in just a couple of
+moments time we're gonna learn how to
+tap into that API and turn on and off
+that light depending whether or not
+we're on the air so cool
+stick around
+[Music]
+whether you shop on ThinkGeek gearbest
+PNH photo/video ebay or amazon or even
+if you want a free trial of audible
+you'll find the best deals and support
+the shows we produce by simply visiting
+the shopping sites you already frequent
+by using the links on our website visit
+category 5 TV slash partners for the
+full and ever-growing list and help us
+create more free content like this show
+thank you for shopping with our partners
+and thank you for watching welcome back
+to category 5 technology TV we are
+turning on the lights sort of no but
+that's what we're covering we're taking
+a look at a Raspberry Pi we're using the
+breadboard and we're showing you how to
+use a little program from from
+category-five to turn the light on when
+we are live on the air and you know what
+it's really just a proof of concept yes
+because the whole idea behind this
+demonstration is just to get you excited
+about hey you know what I can actually
+do some things with this you could use
+grep and you could find out if the
+school buses are cancelled in your area
+right and you can have a little light go
+red if the school buses are canceled get
+the kids excited every morning if the
+light is red you know do whatever you
+want to do you can use all kinds of
+tools and and the what you do is really
+up to you and we're just working with
+one GPIO pin I almost feel like this
+could be used as some sort of like a
+Pavlov's dog kind of situation you know
+just put lights around your house and
+randomly turn them on it's like oh it's
+dinnertime
+turn it off oh it's dinnertime like a
+light that was like so so practical
+that's so incredibly practical okay so
+we mentioned about our API and our API
+just tells you whether or not we are
+live and it look
+a little something like that so we're
+off the air
+zero see how it returns a zero I'm using
+the test API C so if I keep running that
+it's eventually going to change to a 1
+right because those switches every 30
+seconds yeah and I see that some of it
+gets cut off there on your screen don't
+worry about it you can see what that as
+it Scrolls out oh it's taken a little
+longer one we are on the air the light
+didn't turn up
+that's because we haven't coded it to
+yet Jeff the light GPIO right number 18
+1 there you go Jeff yes there you are
+ok so that's the thing we want it okay
+first of all we need to create some kind
+of intelligence to say to create a loop
+and say are we live or are we not live I
+almost feel like there was a slam on me
+because I want to see the light we need
+to create some sort of intelligence so
+here's a simple tool that I just whipped
+up for ya you can see that it's got both
+the api's we've got the test API the
+toggles every 30 seconds and we've got
+the real-time API then we've got a quick
+loop and here's what we're doing
+now we've already learned some of these
+things so we're setting the live
+variable in bosh using W get and then
+whichever API we're using and then we're
+outputting the response of that rather
+than downloading a file ok
+so live is going to become either a 0 or
+a 1 if live is 0 say we're off the air
+if live is 1 say we're on the air and if
+it doesn't know either way if it's not a
+0 or a 1 it will say unknown and low and
+then it will output whatever it output
+may be my servers offline or something
+like that then it will sleep for 10
+seconds which means the loop is going to
+wait 10 seconds before going again and
+the first thing it does when it restarts
+the loop it do is it reloads the API to
+check what the status is so if I run
+this code we can see we're off the air
+no we're not this is the test API right
+and it's going to keep checking every 10
+seconds we know that the API is going to
+change the test API changes every 30
+seconds so the most we're going to see
+is 3 off the airs and 3 on the errors
+and that's going to loop right ok and so
+when you've got something like this I
+mean could you
+something other than a light could you
+have like a little bell the dings or
+could you sure you could program like
+you're Alexa to sake a 5 is on the air
+or something like that you could do any
+number of things now you see we're on
+the air because 30 seconds have gone by
+and so it's on the air as I mentioned
+you can use a relay in place of an LED a
+relay will take a small voltage like 3.3
+volts and allow you to use up to two
+hundred and ten volts or something like
+that so you can you can have a 3.3 volt
+trigger flip the relay which connects
+the connectors for the 110 okay and then
+turns on whatever you want or you know
+that's the GPIO scenario anyway so you
+can really do anything as far as
+communicating with Alexa that's a whole
+other thing
+that's not something that we're doing
+here with no fur that's certainly not
+something we do I didn't know what
+program would like if you programmed it
+to that it would go that far you could
+make it do any number of things but all
+this does is it gives a 3.3 volt signal
+or it turns off the 3.3 volt signal an
+LED is the most simple way to
+demonstrate that that is actually taking
+place right yeah okay but I think a
+relay really opens it up to new
+possibilities so now we see that that
+loop is happening we're off the air
+we're on the air because it's the test
+API now if I switch that instead to the
+actual real-time API so comment out the
+test API and run that we're gonna see
+that every time it's gonna say that we
+are on air because right now we're
+broadcasting so we are in fact on air so
+that's what it's going to output so I've
+created a second tool which just takes
+that to the next step so again it uses
+everything that I've already
+demonstrated and shown you here to be
+able to do what we want which is
+inevitably turn on the light turn off
+the light depending on whether or not
+we're on the air so I've set the GPIO
+pin as a string so that you can change
+that if you want to a different GPIO pin
+I've set that to pin 18 then I'm saying
+if the GPIO executable exists in user
+local bin then we can continue if not
+it's going to warn us you haven't
+installed wiring pi yet
+okay because remember that was one of
+the first things we had to do right
+then we need to set the pin for output
+we already demonstrated that but we're
+using the string instead of having to
+put 18 we're using dollar sign pin so
+that is now an output pin at the
+beginning notice there's no loop yet
+okay because we don't need to turn it
+output output output over and over again
+now clear the light state if it is on
+we're gonna turn it off the first of the
+first run and then and we already
+learned that command as well then we
+start our loop and this is exactly the
+same as the loop that we just looked at
+mm-hmm except for one thing and that is
+that I've added the GPIO statement so we
+grab the API from the whichever API is
+selected then we see whether it is zero
+in which case we say off the air but
+then we also turn off the light okay
+right we're writing to the pin 18 zero
+if it's live so one we say on the air to
+the terminal and then we take pin 18
+dollar sign pin and we set it to one so
+pull it off okay then we sleep for 10
+seconds now let's see what happens so
+you see on the screen now I'm gonna run
+that GPIO dot SH enter oh we're on the
+air so now remember we're using the test
+API so every 30 seconds is going to turn
+on or off the air it's gonna respond
+with either a 1 or a 0 every 30 seconds
+so right now we're on the air so the
+device that you've created now the light
+is on that you know oh it's time for
+category 5 time to make popcorn or
+whatever it is the court has passed you
+need to get to your feed wait for it
+wait for it oh we're gonna go off the
+air now no we're not yeah
+here goes so that's as simple as it is
+really really simple programming really
+really simple circuit you can build
+something like that and it takes you 10
+minutes realistically sure take my code
+study it I mean it's really really
+simple I just whip that up before the
+show just to be able to demonstrate it
+for you without making too many mistakes
+here on the air while we're live and and
+it works great and it could be used for
+so many different things you know I mean
+I'm truly sitting there going I'm
+picturing like building a house and
+firing lights all over the place that
+offer a Raspberry Pi why not yes you
+also you could be in the kitchen you
+talk a little switch it's like ooh
+dinner's on or you know all that kind of
+stuff so that all the bedrooms just have
+this little light because often they
+give you kids commuting homework and
+they're like oh there's ready so this is
+where we need to tell you about voltage
+and yes you don't want to pull too many
+volts off of the Raspberry Pi you can't
+hook it up to your microwave to pop the
+popcorn but with a relay against you can
+then use like a four amp power supply
+plug that into the relay then plug the
+relay into the 3.3 volt right a GPIO and
+you can have the real a trip to trigger
+a 12 volt 4 amp circuit it does whatever
+you need Dennis Kelly asks and I think I
+know the answer to this so is there a
+way to make it come on 15 minutes before
+the show the truth of the matter is we
+kind of go live a couple minutes before
+the show anyway right you know it would
+be fine so what's interesting about this
+is the moment I push live on Telestream
+Wirecast our server database creates a
+variable in our server
+it's a session variable that says we're
+live yes so it automatically creates all
+the feeds and puts everything up and
+does all that and and does everything
+that happens yeah I get a little pop up
+on my screen there you go right so what
+you will get in that moment is the light
+will come on not not when we start hey
+welcome to category 5 no as soon as we
+push that we're live button and we're
+streaming to the web it's usually about
+15 minutes before the show that's gonna
+happen so try the circuit and if you try
+this simple simple circuit and the
+simple software that I've provided for
+you to get started we'd love to see your
+pictures we'd love to hear from you and
+know how it's worked out and make sure
+that you've got it near the TV next time
+you're watching category-five TV when
+you're watching live and if you're not
+familiar with our live schedule it's
+every Wednesday night at 7 o'clock
+Eastern Time
+that's when we are actually broadcasting
+live if you're watching it elsewhere you
+may be watching like a recording or
+something else
+[Applause]
