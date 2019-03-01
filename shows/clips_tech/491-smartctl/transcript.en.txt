@@ -1,0 +1,310 @@
+okay Chris Kevin Lee sent us a message
+this week first of all says hi Robbie
+this tweet is actually related to
+episode 490 so this is last week Chris
+was watching the show says a friend's
+PlayStation 3 had problems and I ran
+Dede rescue this is something you
+learned on the show last week episode
+490 her drive has got 27 errors and he
+posted this screenshot so thank you very
+much for that that helps us we're gonna
+refer right back to that in just a
+moment's time here carrying on with your
+your message there on Twitter you said I
+recommended her to replace the hard
+drive do you think that maybe that's the
+best option Sasha what do you think I
+would say yes I would say just go for it
+just place the drive replace the drive
+go for it go for it okay one of those
+Kingston's absolutely get one of those
+Kingston the kingston solid state drives
+what can you say i would investigate
+just a little bit further okay because
+here's the thing Chris we need to
+understand that errors do not
+necessarily mean failure okay hard
+drives over the course of their lifespan
+sometimes they will encounter bad
+sectors and things like that
+let's refer back to your comment where
+you said that your scan using DD Rescue
+found 27 errors so let's think about the
+process of running DD Rescue and what
+that means please refer back if you're
+not familiar with what I'm talking about
+I know Chris says but if you're watching
+this and you haven't seen it go back to
+episode 490 of category 5 technology TV
+it's going to teach you all about this
+but DD Rescue is it's trying to do a
+data recovery copy of your hard drive to
+an image file or another hard drive so
+if you get 27 errors in the process it's
+going it basically means 27 times I was
+trying to copy this block of data which
+by default is very small about 500
+kilobytes so unless you specify a larger
+size and this is why I didn't show you
+to make as larger size which would be
+faster but because we're working with
+drives that we assume are probably prob
+problematic we're gonna work with
+smaller block sizes so
+as its copying it says 27 times I had
+trouble copying that so there's a couple
+things here first of all you you know
+that there's some data loss okay we're
+gonna look at how much in just a second
+as it's copying okay DD rescue can try
+again
+but what DD Rescue does is it says oh
+okay I've found a problem here this
+could mean that the drive is going to
+fail so let's move on let's let's really
+quickly skip over this and let's move on
+to the next sectors and let's keep going
+because it wants to get the most amount
+of data off of your hard drive as it
+possibly can before that drive fails
+because we're making the assumption that
+we might have a bad drive so then you
+can run the scan again using your log
+file or you can set it up to loop back
+and this is through the command line
+options so do a dash dash help to find
+out about those or read the man pages
+and what it will do then is it will
+focus in on those 27 errors so think
+these are errors these are not bad
+sectors okay remember the difference
+there so it's not saying that these are
+bad parts of the drive it's saying I
+encountered an error at that point while
+I was copying so by going back over it
+again DD rescue may say oh okay now that
+we've taken a bit more time I've been
+able to get a couple more of those
+blocks oh so all of a sudden you're
+gonna see that the error count goes down
+because again it's not referring to bad
+sectors it's referring to a problem
+during the rescue process right which is
+going to decrease as it is able to go
+back over those so let's look back at
+Chris's screenshot here and Chris one of
+the key things that we notice here is
+the error size okay see that one just
+above your errors count the error size
+is very small this is a 250 gig disk you
+can see that just to the left of left of
+that or at least that's how much it had
+rescued and we see that it's finished so
+we can assume that this is probably a
+250 gig disk because it's not going to
+be much much different than that because
+it's finished so look at the error size
+124 kilobytes of 250
+bytes we're talking what is that zero
+point zero zero zero three percent
+something like that a very very small
+amount of data so chances you know it is
+data loss go back let it loop over it
+try to get that data and put it in your
+image file so that you've got all of the
+data and you don't lose any is the drive
+failing is it has it failed is it is it
+problematic is it something that needs
+to be replaced or that you need to be
+concerned with certainly the fact that
+there are errors on the drive means that
+it is there is something up okay if it's
+is a catastrophic that's what we want to
+determine so I'm gonna jump over to my
+Linux system here for you and we're
+gonna get into our terminal so let's do
+that make sure I bring up the rights
+great here we go
+okay so Chris what we're gonna do and
+for all of you watching what we're gonna
+learn here is how to determine if your
+hard drive is in fact failing if there
+is something that sector-by-sector copy
+can't see because those are two
+different readings what we want to look
+at is the smart status of our hard drive
+you've probably heard the term what it
+means is there's there's data that's
+stored on your hard drive about your
+hard drives status so every time there's
+a problem with your drive it's going to
+report it and the only way to see that
+is to use a tool that looks at your
+smart data so let's get in here and
+let's try it let's I'm gonna just see if
+I have it in start so smart did I say in
+starred because I'm typing smart smart
+and I said in I don't know what I said
+we're gonna see if I have it installed
+by typing smart CTL and it says
+obviously I I do have it installed
+because it's not giving me an error but
+the program is missing now if it did
+give me an error that there that the
+program was missing the the package that
+you want to install is so you would go
+sudo apt-get update enter your password
+and then once she's done sudo apt-get
+install smart Mon tools that's what
+you're gonna need Chris and everyone
+else okay and it says smart Mon tools is
+already the newest version that's what
+my system tells me I've already got it
+in there see that nice okay so I'm good
+so smart CTL dash 8 just gonna give you
+a little bit of information about how
+you use it and if you're in your
+terminal like this you can scroll up
+cool so what we need to do is we want to
+test or see the test results that are
+currently on that drive smart CTL - -
+all and then the drive the drive dev
+assignment we already know that because
+on episode 490 we used F disk - L to
+determine that let's do it again really
+really quickly just so that we know F
+disk no I'm gonna need sudo pardon me
+sudo fdisk - L and we see that I only
+have s da in my system so SDA one means
+partition the first partition - is the
+second and the third and the fifth and
+the sixth are actually the fourth and
+the fifth
+we know ya figure that the drive itself
+is called slash dev slash SDA so I'm
+going to type smart CTL - - all slash
+dev slash SDA and then hit enter what
+does it tell us permission denied okay
+why because I forgot sudo sudo you have
+to be super user there we go okay so
+gave me a big report here and if I
+scroll up you're gonna see a couple of
+things first of all okay well no it says
+pre fail pre fail pre-fill pre-fill pre
+fail oh no my drive is crashing no don't
+freak out don't worry you're okay you're
+okay why why because the raw value is
+zero zero that means it never happened
+okay what is this yeah this is the type
+the type of this particular error raw
+read error rate
+is prevail so okay so you're just
+looking in the wrong spot hmm so if my
+raw value for this particular line in
+the table happens to be greater than
+zero then we know that we have a pre
+fail error on our drive that means it's
+about to crash you're about to lose all
+your data it might be a year from now it
+might be a day from now but you need to
+replace this drive if you see any
+reasonable number of pre fail errors
+happening on that road anything greater
+than zero
+realistically guy I mean if you've got a
+pre fail error you know that your drive
+is failing and we need to replace it you
+know you need to get rockin on on that
+if there's one or two or 50 or 50 yeah I
+mean if that's the case then you know
+you'd probably don't need to freak out
+right now don't like it's failing okay
+don't get me wrong don't get me wrong I
+want you to replace it but where you
+really like I mean you could still be
+running your computer and have 50,000
+pre fail errors right and you'll be why
+is my computer so darn slow right
+because you're hard driving you've seen
+this where your hard drive gets really
+really like choked up and all of a
+sudden yeah and then your computer just
+seems to freeze up yeah and then all of
+a sudden it starts working again and
+something you think okay I must have
+just been doing something no that's your
+hard drive pre failing that's the
+internal storage getting ready to crash
+and that's called a pre fail problems so
+it's having trouble reading sectors of
+the drive and that's that's critical
+really scary yeah so as that starts
+happening now remember that Chris has
+followed the instructions on episode 490
+made an image of his friend's hard drive
+so now on Chris's laptop there is a full
+image a copy of this hard drive so you
+can go out and buy a new hard drive and
+then image that back and she's lost no
+data that's cool well 120 some odd
+kilobytes of data nothing significant
+but maybe if you loop over a couple more
+times it'll it'll get rid of it so look
+at this list okay and you see how some
+of them say old age look at this oh my
+goodness uh 649
+oh it's only old age it's not prevail
+what it's saying is that yeah this is
+normal for a drive that's been in
+operation for some time okay so this is
+not something that you necessarily have
+to be concerned with that particular
+thing is telling me that it has been
+that my hard drive has been powered on
+for a total of six hundred forty nine
+hours okay so mine is obviously a fairly
+new drive right so the fact that it says
+old age is not saying I have an old aged
+hard drive so when you say when you see
+pre fail it's not saying your drive is
+pre failing no it's saying this
+particular line in this table is about
+old age it's reporting on old age mm-hmm
+well it's this is the it's reporting on
+the number of hours that's been online
+so when you see 649 I offer of old age
+right now if I saw something there that
+said 10 million then yeah my drive is
+pretty old yes so you see how so the pre
+fail stuff we're not really we you know
+that's more critical right and those are
+real those are real oh yeah
+like if I turn off my laptop it stops
+counting okay yeah that's real time
+super accurate that's real time okay
+that's good I do see you know some
+things here that I'm not sure what they
+are like here's a pre fail where I have
+707 but it says unknown attribute so I'd
+have to look that up which I will allow
+you to Google code number ID 170 what is
+it comment below okay Chris and everyone
+else I hope that gives you a little bit
+more insight so Chris as you look at
+that report on your friend's hard drive
+that's now when you can say okay well
+I'd yeah okay DeeDee Rescue had some
+trouble copy and some some bits of data
+running over it again may get that data
+off of there so that I've got a full
+image what I really need to see now that
+I know that there are some errors with
+the drive is is the drive in a pre fail
+state I can tell that by looking at
+those pre fail lines and seeing if the
+raw value is a high number yeah that's
+going to tell us that that drive is on
+its way out if
+not already dead all right
+[Music]
