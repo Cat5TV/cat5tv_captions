@@ -1,0 +1,1629 @@
+welcome to episode number 307 of
+category 5 technology TV it's Tuesday
+the sixth of august 2013 great to see ya
+I'm Robbie Ferguson and I'm Becca
+Ferguson well hello better Ferguson just
+kind of scoot over here a little bit how
+you don't beautiful good how are you
+she's my wife come on I'm doing good
+thanks for asking it's coming up in the
+news coming after news we've been
+together all day so yeah how are you
+doing well this yeah in half an hour
+yeah we're like kids we have pizza for
+dinner was good alright what's up coming
+up in the newsroom dove is left a Trojan
+for art directors who Photoshop their
+models a tool to make them look even
+more beautiful with a single click meet
+a new nine-speed automatic transmission
+gives a hundred kilometers for every
+five point three liters of fuel a
+concept mission to land humans on Mars
+has been proposed by scientists at
+Imperial College London and Disney is
+testing a new air flow tactile gaming
+technology nice so stick around these
+stories are coming up later in the show
+we get this question on the show once in
+a while and it's really really tough for
+us to tackle what we're going to do
+tonight so I'm going to attempt it but
+we get the question how do I take a real
+computer and virtualize it into a
+virtual machine the time that it takes
+to do that is so great but we've never
+been able to fit it into a one hour show
+so we thought about okay humming ha how
+can we do this and so we actually
+pre-recorded tonight's feature so that
+we could edit everything together for
+you so stick around we're going to be
+learning how to do that very very thing
+take our windows 7 laptop here at the
+studio we're going to convert it to an
+actual virtual machine and we're going
+to give you some use case scenarios why
+that's an awesome
+so stick around fetal msf so don't go
+anywhere it's gonna be a great show I
+believe her a great joke right don't
+glare see a cereal commercial man could
+be great this is category 5 technology
+TV at eco alkalines we believe you
+should be able to trust your batteries
+not just here but here here and here but
+with one exception you should also be
+able to trust your batteries here Eco
+alkalines of the world's first and only
+certified carbon neutral battery
+manufactured to the highest standards of
+recycling and quality without any trace
+amounts of harmful chemicals like
+mercury lead or cadmium eco outlines
+provide performance the rivals leading
+national alkaline battery brands at a
+comparable price find out more about the
+Eco alkalines difference eco alkalines
+calm this is category 5 technology TV
+thanks so much for tuning in tonight
+great show planned for you I want to
+first and for my foremost almost a
+foremost it's like I'm reading this
+stuff no foremost I want to thank
+everybody who has sent in donations not
+just this week but you know all the time
+but all the donations that we received
+here the show we're volunteers and the
+show you know is basically set up in
+such a way that we're supported by the
+limited amount of advertising that we
+have as well as your donations so to
+those who have donated this week as well
+as those who have recurring donations
+that happen once a month we appreciate
+you and just want to extend thanks for
+all the support that you give us if you
+would care to send in a donation to help
+us with the development of studio D
+which is our big development project
+right now more information is coming
+about it but if you'd like to support
+that it's cat five dot TV /c
+we thank you for tonight if you have
+questions for for us you can email us
+live at category 5 TV pick up the phone
+give us call on the cat phone 2545 cat5
+TV or visit our website triple w
+category five dot TV if you have a
+mobile device i'll encourage you bring
+that up scan this QR code right here and
+that's going to load up our mobile
+website mcat 5 TV and you have a tablet
+mobile device you can actually watch the
+show live you can listen to the show
+live there's some great features there
+as well and you can you can catch past
+episodes it's pretty cool to have and we
+love being able to offer that for you
+category five dot TV is a member of the
+tech podcast network if it's tech it's
+here and the international association
+of internet broadcasters thanks Becca
+well what would you possibly want to
+virtualize a real physical computer for
+I think about a good use case scenario
+is somebody who is using a computer for
+business purposes or whatever and they
+want to take let's say you're on Windows
+and you there's something tying you down
+to Microsoft Windows it could be a piece
+of software that specifically is only
+available on Windows so can't really
+switch to linux because that software is
+not available on Linux perhaps so you
+know you want to make that switch but
+it's not possible for you you could
+install everything over again but that's
+so much work and then you gotta get
+licensing and so on and so forth so what
+we're going to look at tonight is
+actually taking that physical running
+computer that you have and we're going
+to convert it to a virtual machine so
+this is a two part series tonight we're
+going to get into the steps of actually
+creating the image we're going to use
+the saw we're going to get obtain all
+the software that we're going to use to
+do this and and we're going to actually
+create the virtual machine and create a
+virtualized version of the laptop that
+Beck is using tonight and then next week
+we're going to proceed to actually
+create make it so that it's bootable and
+we can get into windows 7 and all that
+kind of stuff so it's an exciting thing
+to be able to offer you and I hope that
+you'll enjoy and we're
+talk a little bit later about all the
+different ways that this can be used but
+first and foremost we're going to use a
+couple of pieces of software that are
+available for you free one of the big
+ones is called clonezilla and he grabbed
+that from clonezilla org we're not
+actually going to download it from
+clonezilla org tonight we're going to
+use a different piece of software which
+i'm going to show you but let me just
+pull up their website so that you can
+see that okay clonezilla dot org and
+there's downloads over on the left hand
+side we've been on to this website
+before and we will be back here again
+tonight because we're going to need to
+go there to get an iso file in a little
+while but we're not ready for that just
+now what we want to do is we actually
+want to take my flash drive we're going
+to take this drive and were going to
+turn this into a bootable clonezilla
+device all right these things are great
+because you can reuse them over and over
+again it only cost me a couple bucks at
+the store the the price of flash media
+has come down so much it's crazy I
+remember my first 128 gig flash stick
+was like a hundred dollars yeah everyone
+we because we used to own a business
+together and we remember when we
+invested and we bought like stock of
+flash tribes and it was ridiculous we
+had like what were they like for Meg
+flash drives and we had like yes lots
+and lots of them because we got a deal
+on them because they were so expensive
+back then this is an eight gig drive and
+I can reuse it over and over and over
+again and as long as I don't physically
+break it it's reusable up until you know
+so many reads and writes they're not
+safe to store data on because it has a
+finite amount of use they will
+eventually die and you'll lose all the
+data that's on it so but for what we're
+using its transient we're going to
+actually create a clonezilla
+installation media on here rather than
+having to use like a DVD or something
+and burn isos and waste of DVD so the
+way that I want to do that I want to use
+a special tool that is called unetbootin
+it's available for free it's in your
+repositories on Linux so all you have to
+do in our case we're on point linux I'm
+going to bring up synaptic package
+manager the same for a boon to for
+Debian basically any debian based system
+and I'm going to search for unetbootin
+unetbootin sounds kind of from Texas
+unetbootin or maybe that sounds more
+Canadian I don't know who knows okay so
+i'm just going to stall that with
+synaptic package manager this is a
+fantastic tool that's going to allow us
+to basically turn this flash drive into
+all different kinds of distributions
+including that clonezilla which we want
+to use to create our image of that
+laptop really really straightforward now
+that I've got it installed there we go
+easy breezy I'm going to bring up well
+first of all I'm going to plug this into
+my computer here and then that brings up
+the window for the flash drive and now
+I'm going to bring up unetbootin which
+is already installed doesn't take long
+at all and there's something that I want
+to see here to look down at the bottom
+it's going to basically by default it's
+going to write to SD e1 and that's the
+only drive that it detects that it can
+use as a USB Drive but my drive is
+actually mounted on media / whatever so
+I want to make absolutely certain that
+that unetbootin is going to be writing
+to the correct drive because we don't
+want to accidentally put the files in
+the wrong place or overwrite files so
+I'm going to use this command sudo mount
+and then pipe grep sde one and what
+that's going to do is it's going to
+actually allow me to see the amount
+point and there it is and it does match
+so we're good to go okay so with that
+now we know that it is writing to sault
+ste 1 is the correct drive that's good
+so now all I want to do is I want to
+change my distribution you see there's a
+lot of them available to you look at
+that there's a boon to there's all these
+different versions of Linux but there is
+clonezilla and that's the one that we're
+actually using tonight and there's the
+version there so we're good with sde one
+we've determined that and we're just
+going to proceed with that and it's good
+to go it really doesn't take long for
+this to take place and that'll be ready
+for us back in just a couple of moments
+so then we'll have this flash drive that
+we can boot from and it's easy breezy
+we've got this thing I love using flash
+drives with unetbootin because I can do
+clonezilla now and then two weeks from
+now I might need let's say any g part ed
+and i want to use the gparted live CD
+but i don't need to keep on burning cds
+and I don't need to keep stacks of CDs
+anymore and label them the sharpie year
+whatever else used to have boxes my nose
+actually still do you haven't gotten
+have to go through them okay I gotta
+sort them out because I didn't sharpie
+them all cuz my sharpie was dead so you
+know it's like I gotta figure out okay
+well what was this one and yeah that's
+the thing that you'll never bother to go
+through all these unlabeled brady's and
+why they sit there in a box exactly
+because you don't know really what's on
+it and that's what used to happen before
+you had the ability to use something
+like unetbootin because you would
+literally burn a DVD for every install
+that you wanted to do and then oh well
+where did my a boon to installer disk oh
+I can't find it so I'll burn another
+copy so you end up with 10 different
+copies it's wasteful it's bad for the
+environment but it's also it's just like
+you end up with all this these stacks of
+junk in the garage kind of thing and
+that's what good is that so that's
+already done so oh it's just wrapping up
+its just installing the bootloader
+that's kind of the final step anyways
+doesn't take long to get this out there
+we go now it's asking me if I want to
+reboot I don't actually want to reboot
+in this case because i'm not using it in
+this computer i actually want to use it
+to to make a clone of our
+laptop so I'm going to eject it from the
+computer plug it into the laptop first
+I'll show you you remember what it
+looked like the file system of that
+drive but you see that it's actually get
+a lot more files added to it now and
+keep that in mind because we're gonna
+bring it up on the window system too so
+will safely unmount that there we go and
+pull it out of here and we'll plug that
+into the laptop but before we do that
+we'll get you to log in and then I'm
+going to just throw a folder on the
+desktop here and this is going to be
+kind of our test case so so that when we
+create the image and create the virtual
+machine it's going to look like it's
+going to be an exact duplicate of what
+we see here right now so this is just
+the viewers at home can see that yeah
+it's everything so here's a test file
+we'll throw some text into that there we
+go and of course all of our applications
+are going to be intact as well that's
+what's nice about this whole process so
+if I have microsoft word installed if I
+have whatever applications that you know
+I've already got my computer set up the
+way that I want so now when I
+virtualized that all of that stuff is
+still there so that's pretty fantastic
+so so just plug that into the laptop
+here and that's going to come straight
+up on the screen there we go so we're
+just going to I'll just show you again
+the file structure you can see that okay
+Windows has detected it because it's a
+fat32 drive as it should be so now we're
+just simply going to reboot and that's
+going to come up in just a couple of
+moments time and we'll be good to go the
+the thing is you've got to make sure
+that your boot order is going to boot
+from USB now because we're using a USB
+device to boot from so your BIOS has to
+support it it needs to be a new enough
+system to support booting from USB if
+your computer is too old let's say your
+use case is I've got a really old
+computer the software is no longer
+available and so I want to virtualize it
+because it can't you know it's going to
+fail its 10 years old or 20 years old
+even and I want to have a virtual
+machine of that system so in that case
+you may not have the ability
+boot from USB you might want to actually
+download clonezilla and burn the iso to
+a DVD in that case well CD because it
+probably won't have DVD reader so in our
+case USB is good it's a fairly new
+laptop we've had it for a few years here
+and it works really well so so with that
+I have to I have to first now it's
+asking me for okay so I'm going to hit
+f11 at post here and by hitting f11
+that's going to bring up my boot menu
+and you'll see we've had to revert to a
+camera here just because we don't have a
+running operating system I've selected
+USB and because we're using a camera I'm
+going to select a low resolution just to
+help the text to be a little bit larger
+those are really the only you know
+you're probably going to just choose
+default this is going to just quickly go
+through the boot up process as I have a
+sip of my coffee that stuff probably you
+know it doesn't really matter to you
+it's all just Linux gibberish really but
+we're kind of showing you here in real
+time at this point okay so we're ready
+we're going to choose English in my case
+and we want to change the key map now
+we're going to leave that as is and
+we're going to start clonezilla so we're
+going to do device to image in our case
+we're not doing device to device because
+we're not saving to a hard drive we're
+actually creating an image that we want
+to be able to restore from that's just a
+fancy way of saying it's like an exact
+copy of your computer so where do you
+want to save it you want to use a local
+device SSH server samba server or NFS
+server we're gonna use samba which is a
+windows file share so we're going to
+save it to our unraid server and that's
+what it uses so now I've got a network
+cable plugged in so I can connect with
+DHCP and just change the IP address of
+the server to 10 dot 0 dot 0 dot 5 in my
+case your server will be different or
+computer that you're saving to and hit
+enter for the domain my user name is
+Robbie on that server and I want to save
+to the TMP mount point so and then just
+enter my password follow the prompts is
+pretty straightforward but you can see
+there it was able to mount home part
+image to temp which is great so do I
+want to save the local disk as
+image that's what I want I don't want to
+save local partitions as an image I want
+to save the whole disk so that's going
+to save the partition table and all the
+data that's there and this one you can
+leave as default and here I'm just going
+to disable the first option C which
+basically is it's going to ask me
+questions as it goes because I know this
+is going to take a long long time to run
+I don't want it to pause while it's just
+asking me to push why to accept or
+something like that so that's all I want
+to do okay what kind of compression do
+you want you can use gzip it's fantastic
+I would probably go with bzip2 it's
+going to take a little bit longer but I
+don't mind sacrificing time for a
+smaller image so I'm going to choose the
+second option that just makes it so that
+it takes up less space on our network
+okay so I'm going to hit enter on this
+is just the file name that we want to
+save and this is our internal actual
+physical hard drive in the laptop it's
+detected that so I need to salute it's
+already selected if you have multiple
+hard drives you might need to select
+which one and then just follow the
+prompts hit enter and it's like it's
+detecting the NTFS file system and going
+through and it looks like it's speeding
+through but the actual process is going
+to be quite time-consuming here it goes
+not actually a hundred percent complete
+don't be deceived this is going to take
+over night folks there we go okay so now
+it's actually creating an image of the
+physical hard drive and that's going to
+take quite a bit of time to be honest
+with you so we're going to just kind of
+let that go and in the meantime we're
+actually going to jump into the news
+nice and early tonight as that goes
+through the process so what it's
+actually doing is it's imaging that
+whole laptop computers hard drive
+including all the partitions all the
+files all the programs the windows
+operating system and its placing it on
+my server and the TMP share so wait yeah
+so if you're ready to take it away with
+the news then we'll jump into that and
+then we're going to come back in a few
+moments time and we're going to look at
+the status of that and
+we're gonna proceed with our feature
+tonight so don't go anywhere okay here
+are the top stories from the category 5
+TV news room the real beauty campaign
+continues his assault on Photoshop by
+fighting fire with fire the battles
+can't always be fought head-on sometimes
+it's advantageous to infiltrate the
+enemy for a sneak attack which is
+exactly what dove is doing and its
+ongoing war against unrealistically
+sabelt depictions of women in
+advertising at the very least of is
+making a strong statement with their
+latest tool dove Canada's latest
+endeavor is a sneaky way to hit the
+perpetrators of such ads right at the
+source their computers the team
+responsible for the campaign created a
+folder shop action called beautify a
+downloadable file that makes a change
+with a single click in this case aimed
+at photography creatives who might be
+photoshopping their models the company
+hopes to spread beautify by leaving it
+on sites like Reddit which art directors
+in the like or known to frequent
+presenting it as an aid for retouching
+beautify claims to make the model more
+beautiful with a single click and what
+beautify actually does is revert
+photoshopped images back to their
+original state really well that's yes
+sneaky sneaky sneaky sneaky that's kind
+of funny really it's it's a different
+tactic than what the what we're used to
+with dove canada because usually they're
+really really smart with stuff that is
+just like it's powerful stuff like to
+make people go oh you know maybe it's
+really a bad thing that people are
+photoshopping these images that sounds
+more like it's a bit of a almost a joke
+or a little bit of a haha at the expense
+of whoever downloads it now is this in
+any way associated with dove like will
+they recognize the Dove name when I go
+to download this be our cool and think
+oh this is dove this won't be a trick
+here well until until they actually like
+it because so imagine you're using
+Photoshop you're some bigwig magazine
+editor and you're working on the cover
+and you've got your model and you
+slimming the hips and you're changing
+the cheekbone structure and all the
+stuff that they do that's crazy and then
+they get ahold of this tool that is
+called beautify and it says with the
+single click it's going to make your
+model more beautiful basically that's
+the sales pitch it doesn't say anything
+they've cloaked it as an a-team it's
+nowhere a tool / me no that's right now
+I there there's no we're there until you
+run it but would associate the named of
+with ya please self-esteem campaigns and
+they drink this this can't be right
+right nobody would download it no it's
+literally just it's completely not
+associated with dove up until the point
+when you run it so they're working on
+the magazine cover it's all fandangled
+and they've done all this work to the to
+the model and then they run beautify and
+it looks like it's like magically doing
+work to the photo but actually what it's
+doing is reverting the whole model to
+its original photograph so undoing all
+of the beautiful all of the stuff that
+they've done and they call it my which
+is kind of I think it's just they'll
+roll their eyes and they'll click on you
+and then you know is what happens I
+don't so when that nap going to affect
+any any sort of change when it happens
+just so you know it actually brings up
+this message on the screen as part of
+the photograph so it adds this to the
+photos as don't manipulate our
+perceptions of real beauty from dove
+Canada the positive change and then they
+do go on to say on that message just
+undo to go back so they're not being
+malicious with it they call it a Trojan
+because it's a you know it's a trick but
+yeah I think you're right I don't know
+would it bring about change like their I
+can't see it bringing about change as
+long as women are all wearing fake
+eyelashes on TV shows and they're
+covered in makeup the magazines have to
+compete with that so if you just had
+women without fake eyelashes just
+looking like your average women they
+wouldn't compare to the women on the TV
+and so there's always going to be that
+competition
+nobody wants to be the first guy because
+they'll just get drowned but that's what
+dove has done all along and then all of
+a sudden they bring this out it's it
+just seems a little bit hokey a bit more
+like a joke it seems more like it'll
+raise more awareness with people like us
+talking about it and discussing it than
+the actual application because that's
+just some guy who will probably never
+mention it to anyone except perhaps with
+a snarky remark right but or if they're
+watching a show like this they won't
+even download it in the first place
+because you're ready let the cat out of
+the bag yep now you know now you know
+graphic designers watch out for beautify
+it'll undo all your changes hey check
+this out if you're into powerful cars
+and vehicles imagine having nine speeds
+to your automobile that's what's coming
+folks the all-new nine gtronic automatic
+transmission is making its way into the
+world and making a debut in the brand
+new mercedes-benz e350 BlueTEC it's now
+on sale in Europe now here's the thing
+according to the German automaker the
+nine-speed transmission helps achieve a
+fuel efficiency of just five point three
+liters of gasoline for every 100
+kilometers driven what in that awesome
+like could you imagine put that in our
+van you know because we got a family van
+right 55 people in our family so but
+here's the kicker they say how does it
+work well once you get up to 120
+kilometers an hour it shifts into ninth
+gear and in ninth gear it only rotates
+at about 1300 1350 rpms so basically
+it's like idling moving down the highway
+120 kilometres an hour but here's the
+thing here in Canada our speed limit on
+the highway is 90 kilometers an hour or
+a hundred sometimes 100 if you're on a
+straight stretch or something where you
+know that it may be up to a hundred but
+usually that's a construction zone and
+so the sign say eighty gonna be 80 to
+100 but yet we've had the conversation
+before where you know I'm doing
+everybody drives 100
+at least I'm doing a hundred on the
+highway because that's the maximum speed
+that it says we're supposed to go and
+someone zips by 130 so I'm looking at
+that and thinking okay so in order to
+take advantage of this new engine I have
+to basically break the law in Canada we
+don't have an Autobahn here folks just
+seems kind of useless to me it's not it
+might be useless to you but it's useless
+to me but the commuter who's doing a
+little kilometres over the speed limit
+there you go increase your fuel
+efficiency at jerks so the kickin get
+away from the cops what crime pays
+what's this yeah exactly so you gotta
+you gotta do 20 30 over the speed limit
+in order to take advantage of this
+transmission here in Canada I know it's
+different elsewhere but I I don't speed
+and so you know it's like it's i'm stuck
+in sixth gear what good is that I'm
+getting about I don't 30 liters for
+every hundred clock it feels like
+sometimes sometimes hmm what else we got
+ok scientists at Imperial College London
+have designed a concept mission to land
+astronauts on Mars the plan envisages a
+three-person crew journey into Mars
+aboard a small two-part craft three
+people three people three people to Mars
+this is going to be multi-billions of
+dollars possibly trillions and they can
+only send myself Becca and one lucky
+viewer the craft would rotate to
+generate artificial gravity and use a
+heat shield to protect itself against
+solar flares the crew would then return
+to Martian orbit in the pre sent craft
+fueled using ice from beneath the
+planet's surface all the concept
+developed in conjunction with the BBC of
+all things is intended to spark further
+debate debate about the technical
+obstacles and risks that would have to
+be overcome in order to put human on
+humans on Mars okay the new Imperial
+concept comes amid renewed interest in
+the red planet with two private groups
+having proposed missions
+okay two things that stand out to me
+there first of all BBC is involved in
+this mm-hmm yes it's like a documentary
+are we gonna see this that would be my
+guess that there they would document the
+whole process from finish put it all
+together and be amazing yeah it's
+literally it's literally just
+15 minutes of that per episode black
+because there's nothing like six months
+to travel to be a long documentary
+filmed like 24 you have to watch it in
+real time yeah maybe be like The Truman
+Show where you know everybody just say
+anything about a real-time document I
+know I'm just totally kidding this
+entirely speculation is just odd to hear
+that the BBC is involved in this project
+but what else stood out to me is that
+they're okay this other powering the
+ship by ice under the surface of Mars
+base from beneath the planet's surface
+so so there's is that a discovery that's
+did I miss something we have ice on
+under the surface of Mars maybe I've
+missed something but that sounds like
+there would have to be water and that it
+would have to be cold but maybe it's I
+always thought of Mars is being kind of
+a hot place that's what i was saying
+maybe because it don't remember Marvin
+the Martian like he had to wear it like
+a really short kilt just to stay cool
+yeah so it's probably just psychological
+it's red and we think red we made it
+with fire hot it's true the
+multi-faceted oh there's Pluto which is
+blue and apparently cold even might be
+an attendant fatalism of colors
+symbolism of colors dear me I don't know
+I know that's all I think that's a long
+time in coming along it is all just an
+idea at this point it's not like we can
+take a three-person trip to the moon and
+do a little exploration here they're
+talking about taking care of people
+tomorrow what's the space station it's
+like show show me that we can go to the
+moon first and then we'll talk about
+Mars I don't know that's it I'll believe
+it when it happened yeah let's just work
+on the moon spacebase yeah use 3d
+printers to make but the study would it
+would be amazing to go to the moon and
+walk around if that was an option but
+they want to go to Mars as they've
+always been obsessed with Mars so we'll
+see can't blame them it's kind of cool
+space travel awesome hey gamers here's
+something neat for you have you have
+been you know ever into games
+alright so games started like this and
+I'll start it like this then it went to
+this then it went to this now it's this
+right so Disney is experimenting with a
+brand new technology and you're going to
+be able to feel the actual flac of the
+ball as you're hitting it in the air it
+doesn't actually exist but you're going
+to actually be able to feel that or
+bullets whizzing by your head imagine
+that this is called air flow technology
+they're hoping that it's going to take
+off it's dubbed air real and the
+technology allows users to feel physical
+feedback from virtual images without
+ever having to wear anything like gloves
+or you know virtual reality belts or
+vests there's none of that involved how
+it actually works is that there is a
+basically a system that is connected in
+with the virtual reality experience or
+whatever you want to call it the gaming
+experience that uses puffs of compressed
+air and they're blown at different
+strengths and speeds and they simulate
+tactile experiences while motion sensors
+have allowed gamers to interact with 2d
+screens without the need for handheld
+controllers now they're aiming to make
+these virtual experiences actually have
+a tactile feel to them Disney was
+showing off this technology as they're
+experimenting experimenting with it at
+siggraph conference in anaheim
+california so that could be interesting
+but it could also be deadly well I
+thinking about the fact that okay so
+you've got all these little Jets of
+compressed air around your TV or
+whatever and you know the kids what peas
+dog food whatever they can find that
+would fit in those little compressed air
+sockets they're gonna be pushing it in
+there carrots projectiles folks yeah so
+it's like okay anybody want to play the
+new Wii 2015 sports by Disney all right
+stand here and you're getting shot at by
+peas and yeah talk about feeling the
+bullets going by yeah that's that would
+be my
+here but who knows how realistic can it
+be what's look like man it's like a very
+primitive prototype of true holodeck
+technology yeah um I like where you're
+going with this well we all know what
+happens when things go wrong in the
+holodeck you can actually RT you can get
+seriously injured yes but this would be
+a very confining technology to Moriarty
+just in the TV with the ability to blow
+on you they should introduce other other
+things like smell amazing like Google
+Google sniff or whatever it was called
+yeah yeah no but maybe you could not
+just feel a gun with a bullet right past
+your head you would also smell the gun
+the gun powder in the aroma of the
+sulfur and yeah that'll be kind of neat
+yeah what they do that they'd actually
+have to shoot you well they would have
+to build a holodeck okay incorporating
+only so work on that should be able to
+walk through my Boris you should be able
+to feel the leaves on your fingers all
+right is this primitive technology is
+this like 2013 we're gonna look back on
+this folks and say haha Stevie blue on
+him and they thought that was to do i do
+exactly love them air in your face I'm
+playing soccer I mean hello you feel
+that it's amazing you want this
+experience try it folks at home that's
+it that's it for the news you can get
+the full stories at category 5 TV /
+newsroom this week the category 5 TV
+news room is researched by roy w Nash
+with contributions by our community of
+viewers and if you have a news story you
+think is worthy of on-air mention email
+newsroom at category 5 TV for the
+category 5 DVD newsroom I'm Becca
+Ferguson
+thanks Becca all right so through the
+magic of television because all right
+we're gonna we're gonna go back to our
+feature here tonight about virtualizing
+this laptop computer to a virtual box
+virtual machine through the magic of
+television we are able to skip over the
+actual time that it takes because let's
+be honest it takes 12 15 maybe 20 hours
+to create that image on our network it
+really takes a lot of time that's why we
+pre-recorded tonight for you so that you
+could actually experience this and learn
+how this is done so we're able to skip
+over that time and jump straight back
+into the feature so are cloned our image
+that's cloning over to that that temp
+folder on my own raid server is all done
+and there we have it we're at a hundred
+percent complete and now the final step
+is that it needs to sink that image and
+it doesn't take very long to do that as
+you see and so I just hit enter and now
+the final step is to power off my laptop
+computer we're done it got a good image
+and again an image is basically just a
+copy of the entire hard drive so now
+we've got something that we can work
+with that image if you will is not just
+perfect for what we're doing here
+tonight which is creating a virtual
+machine this is an ideal backup solution
+for a full 100% revert abul position for
+you for me for your computer so now that
+I've done that with the laptop if
+tomorrow my hard drive crashed I could
+put another hard drive in and I could
+restore the laptop hard drive back from
+our network because we have an
+up-to-date image of it and it's a full
+it's not a backup it's a full image so
+it is literally a duplicate of the
+entire hard drive including the file
+system all the files all the programs
+all the network shares all the user
+accounts everything is there because
+it's the entire hard drive so it really
+makes a really great you know one
+hundred percent solution for backups as
+well if you want to run it you know I
+run it when I get a new computer I got a
+new laptop you know a couple years back
+the first thing I did was I created an
+image so that if we fill it up with a
+bunch of extra stuff that we don't need
+anymore suddenly we can wipe it out and
+it's good to go and where we can restore
+it back to its original state and it's
+fine so that's another use case that you
+can use this for mm-hmm so we've
+finished cloning that now we just simply
+need to create a virtual machine on my
+computer so we've got that on the
+network we don't need it we don't need
+the laptop anymore because we've got our
+image ready we're going to use a tool
+called virtual box and you you've had
+some experience with virtual box as well
+yep I have limit linux on my computer so
+i use it just to access quickbooks
+virtual box has a virtual machine that
+has windows XP we did exactly this where
+we took our old bill and we called it
+our billing computer mm-hmm when we had
+our company and we converted over to a
+virtual machine so now becca runs
+exclusively Linux and the kids use
+exclusively Lennox but QuickBooks is one
+of those windows programs that there is
+no installer for Linux plain and simple
+it doesn't run on Linux you can't use it
+on on wine very well and there's all
+these kinds of issues so we just decide
+okay let's virtualize that computer and
+here's this scenario where now okay well
+Becca's not tied down to Windows she can
+run her favorite operating system linux
+how do you like Linux by the way it's
+great side question yeah the kids love
+it they're like why do they run windows
+at school so weird doesn't have tox
+that's what they say yeah I don't think
+they mentioned anything to do with
+Windows they just said that they didn't
+have tux yeah why don't they have talks
+but they know what linux is so that I'm
+raising them well raising them well so
+now that our virtual machine is on the
+network as I'm saying okay we need to
+create that virtual machine we've got
+virtual box from virtualbox org it's a
+free virtualization program so you don't
+have to pay for it but it is for
+non-commercial use as far as how we're
+using it tonight because we're using
+what's called the extension pack and
+that gives us access to SATA drivers and
+two USB 2.0 bus you're going to need
+that for for this type of work that
+we're doing so get over to virtualbox
+org follow the prompts to
+load and install it you probably don't
+want to install the version that is in
+the repositories for your favorite linux
+operating system the reason for that is
+because that is the absolutely free
+version USB SATA these kinds of things
+are proprietary their patented
+technologies and so they're not
+available in the free version you've got
+to get the full version with the
+extension pack and that's going to give
+you all the extra stuff so once you've
+got VirtualBox now I've already got it
+installed so I'm gold and I'm ready to
+go we're going to actually do a couple
+of things before we even fire up
+VirtualBox first thing is we want to
+find out what we want to get ourselves i
+mention we're going to go back to
+clonezilla org we want to get a copy of
+the ISO image that we can boot our new
+virtual machine from once it's once it's
+time to do so so the first thing we need
+to do is determine what version of
+clonezilla we used on our flash drive to
+create the cloned image so we're going
+to bring back up unetbootin on the same
+computer and just look at the clonezilla
+distribution and check the version that
+we used so back to clonezilla it's one
+point one point 0 dash 8 so now back at
+clonezilla org we're going to go to
+download over on the left-hand side
+there or downloads and then scroll down
+a little ways we're not going to
+actually grab one of the stable installs
+we're going to go to clonezilla live
+file mirrors and we're going to go to
+just pick any mirror and we're going to
+go to the old stable branch because we
+know this is an older version that came
+with unetbootin and in fact I find that
+the older versions work better than the
+current version so there's the version
+we're looking for one point 1 point 0
+dash 8 so I just want to download the
+ISO file to my computer now once that's
+downloaded we've got a full copy of the
+basically the CD we don't need to burn
+it to CD because we're using a
+virtualization platform so we're going
+to virtualize it let's bring up
+VirtualBox and create a new virtual
+machine and you call this the windows 7
+laptop there we go
+and how much ram do we want same as the
+laptop for gigs and we're going to just
+create the disk and it's going to be a
+VDI image just default to find you want
+it to be a dynamic disk or a fixed disk
+the only reason you want fixed is if you
+want to use up a lot of space and
+increase performance we're going to go
+dynamic so that we save the space
+because we don't need to worry about the
+performance end of things hard drive
+size needs to be a little bit bigger
+than what you have I think it's a 500
+gig hard drive in there so I'm going to
+go 501 and that just makes sure that the
+image will indeed fit on our virtual
+hard drive so now that we've created the
+machine bring up your settings and go
+through things like set system make sure
+virtualization is turned on here that's
+important we want to turn on 3d and 2d
+acceleration and increase our video
+memory for Windows to be able to utilize
+those technologies and then we want to
+mount that clonezilla image so as a CD
+we're going to browse to the image that
+we just downloaded that's perfect and
+that actually is just like inserting a
+CD into the cd-rom this virtual make
+sure you change your network to bridged
+mode otherwise clonezilla is not going
+to be able to see your network share
+which is where we've saved our image and
+that's really all we need to do so now
+just literally all we need to do is boot
+up our virtual machine and start
+restoring that image so let's do it if
+you have any questions for us tonight
+get into the chat room email us live at
+category five TVs the best way to get us
+tonight here we go so notice because
+I've got that CD technically inserted
+there it's booting right from clonezilla
+I can use a higher resolution this time
+because we've got a better system than a
+video camera pointed at the screen there
+we go so now this again now this is
+going to look very similar to what
+you've already seen you know what what
+we're looking at here everything looks
+it's just clonezilla the difference here
+is that we're going to be restoring the
+image that we created rather than
+creating an image of the internal hard
+drive so remember everything that we do
+here is in a virtual machine I'm going
+to follow the prompts just like it did
+the first time being that it's a virtual
+machine any changes that I make to a
+hard drive anything this destructive is
+all
+going to be to the virtual machine right
+so device to image again and samba share
+and just follow the prompts just like
+before the HTTP change my server address
+once it comes up here doesn't take long
+see how quick this is to get in 10,000
+0025 is my server no domain change my
+username for the samba share and the
+path which is the share name there we go
+so everything mounted perfectly again
+and now this time I'm actually going to
+restore an image I'm not going to create
+one I'm going to restore the the one
+that I've already created so again I
+want to disable the fact that you know I
+want to turn off but it's going to do
+anything I like prompt me for anything
+so I'll turn off dash c you can go
+through this is kind of neat that it
+will change the hostname for you
+automatically so when i boot up the
+virtual machine it'll automatically have
+a new host name i don't have to worry
+about my laptop now conflicting with the
+same hostname so i'll choose one of
+those options i'm going to choose mac
+address just let it go and that's going
+to change the name of the computer on
+the network so that it doesn't conflict
+with the actual physical laptop i will
+just turn that off because we don't want
+to be bothered with questions and let
+the rest go does everything else looks
+good ok
+alright choose the first that's just the
+warning about encryption if you haven't
+encrypted I should have mentioned this
+if your laptop was encrypted then you
+didn't want to do the mac address change
+because that could cause some corruption
+in our case it's not an encrypted file
+system so we're good to go that's fine
+just be mindful of that if you're if the
+one that you use to create the image was
+encrypted than you can have a problem
+what is the prefix of your your new host
+name that you want to use I'm going to
+probably change it a vm I like to see
+that on my network so I know what's
+virtual and what's real and it's
+automatically detected the image that's
+on my TMP share and where do you want to
+say that that's my virtual hard drive in
+virtual disk so in virtualbox so
+everything that is changed everything
+that's written to disk every warning it
+gives me that says you're going to
+overwrite all your files it's ok because
+it's just a virtual hard drive it's not
+real it's just a file somewhere on my
+Linux file system and it is it is
+destructive but there's nothing on it so
+we just created it just like creating a
+file so do we want to proceed absolutely
+and that's going to go through so now
+this process is not going to take quite
+as long it's probably going to be about
+an hour two hours to restore the image
+again it took whether it be it was
+between about 12 and 20 hours I don't
+know I ran it over night make sure your
+imaging is going to happen overnight and
+keep in mind that your computer system
+that you're using is going to be offline
+during that time this one moves a little
+bit faster when it's restoring but again
+it's going to take a couple hours at
+least but I think that it's reasonable
+to say that you could probably restore
+that in the night so the thing about the
+way that Windows and Linux and
+everything works well they're they're a
+little bit different a linux machine so
+if your laptop was linux say or if i
+wanted to image your desktop computer so
+any linux machine i could create an
+image of it and restore it and move it
+onto a virtual machine and boot it right
+up
+it's going to be perfect and it's going
+to work because it automatically detects
+the changes and reinitiate seeeeee any
+modules and drivers that are needed
+windows on the other hand it detects
+everything when you first install it so
+then it disables and removes things that
+it doesn't need which is clever in a way
+but what happens in the case like this
+we've moved it on to as far as windows
+is concerned we've moved windows onto
+new hardware so if we try to boot it up
+it's just gonna say ah this is not the
+hardware I was installed on I don't know
+how to read from this hard drive bus I
+don't know how to do any of this stuff
+it doesn't have the correct drivers
+installed everything's wrong so it craps
+out it was gonna you know typically
+windows XP would blue screen of death
+that you're familiar with in windows 7's
+case if I tried to boot up just right
+now it would just reboot and reboot and
+reboot because it's just doing mini
+dumps over and over again and just
+crashing upon boot because it's not like
+Linux we're so that that what I'm saying
+there is if you have a Windows Linux
+system part me that you want to move
+over it will do it just fine and you'll
+be able to boot it up we're done for you
+we're done at this point it's going to
+work and you'll be able to boot up them
+you're good for Windows users however
+there is there's there quite a few other
+steps that need to be taken in order to
+get this system bootable we are going to
+cover all of those steps next week so
+that you can get this system bootable
+first things first though what we're
+going to do tonight is we're going to
+enable something called a I owe a pic
+and I jotted it down cuz i knew i would
+forget what the acronym is a pic is
+advanced programmable interrupt
+controllers foo see what i was going to
+forget that i don't want to bore you
+with really boring technical details but
+let's go back in time about 20 years in
+computing and 10 years in computing when
+if you put in a nice a card any cards in
+your computer they were assigned an irq
+and that was basically like a number
+that said okay here's how the operating
+system communicates with this card so if
+you had two cards it was okay if you
+have three it might say oh I'm out of
+irqs I don't have any more numbers to
+assign so I'll share the same irq number
+with two cards then all of a sudden you
+have what's call
+irq conflict there's a big problem so
+Intel comes along and says okay well
+we'll make something better will call it
+I owe a pic it's in a more advanced
+version of irq system and now we don't
+really encounter that anymore you plug a
+card and it just works it's a cool thing
+but it's only available on its mitts on
+modern architecture computer so our
+laptop definitely has it your computer
+probably has it so because windows came
+off of that computer we know that
+Windows upon installation would have
+detected oh this computer supports io a
+pic so I'm going to activate that if we
+then put it onto a computer that did not
+support that windows will never boot
+because it doesn't support the
+architecture of the system that was
+installed so what we need to make sure
+is because we're working with virtual
+hardware nothing is real it's all not
+physical hardware its virtual but we can
+actually make sure that our virtual
+hardware supports io a pic in order to
+do that all we need to do is bring up
+the settings of the virtual machine and
+you'll see I believe it's on the system
+page on the left hand side here yeah
+there it is enable io a pic so by
+clicking on that and then hitting ok now
+we should be able to double click on the
+virtual machine and it won't boot just
+yet windows 7 but at least we're going
+to get a little bit further than we
+would keep in mind that if you didn't
+have i oh a pic active and it was active
+on your original machine right here is
+just going to keep rebooting and
+rebooting and rebooting and you're not
+going to get any further I think we're
+going to get further than that tonight
+because of the IOA pic so let's see how
+it goes this is the moment of truth when
+it kind of sits there like that and
+there we go didn't reboot it's bringing
+it up we've got our copyright and mouse
+cursor desktop wallpaper that's always a
+good thing
+okay so now the the repair wizard is
+actually detecting that hey you've put
+this hard drive in a new computer you've
+got different hardware now we want to
+find out what's going on and we want to
+see if we can fix it now chances are
+pretty good that well that's there are
+there's a small chance that windows
+repair tool there may may get your
+operating system up and Ryan mm-hmm
+better chance that it won't so next week
+we're going to actually go through all
+the steps that that we need to take in
+order to get that system absolutely
+bootable so thanks for watching tonight
+I know it's very technical it's very a
+lot of techno babble Becca's starting to
+go yeah the pictures are gonna be great
+you watch the website there's gonna be a
+lot of pictures of me sit and you're
+going ahhhh she's like driftin this way
+and that's okay and I hope you haven't
+been like that at home maybe you know
+the popcorn has helped or whatever it is
+and you know that's it's one of those
+things where yeah sometimes we have to
+get into something technical and that's
+okay because we're a technical show to
+some degree hmm so some degree it
+something for everyone right well
+absolutely and but tonight because this
+is such a i think what i'm saying is
+usually we dedicate about 20 minutes to
+the really technical per episode this is
+such a big thing to do we've done our
+best using magic and Vanda angles you
+know editing practices and the ability
+to to to piece things together in time
+we've been able to skip over a lot of
+the time consuming things this could
+never happen on live TV because this is
+a 20-25 our process so we've been able
+to put this together for you in such a
+way so it is much more than what we
+could fit into a 20 minute segment so it
+gets a little bit Kiki so thank you for
+hanging in with me tonight and we must
+have some questions things like that
+don't miss next week when we finish this
+off okay and get your questions in live
+at category five dot TV and it's always
+a pleasure to have my beautiful wife
+with me by my side it's been a long time
+since you've been on hasn't it mm-hmm
+a few years that's I think it was
+probably that maybe the second season I
+don't even remember now like as gary was
+around no well have been that what feels
+like you came on we talked about linux i
+think it was about a hundred and ninety
+year so just before the 200th episode
+maybe i'm off no my than 109 who knows
+feels like it was a few years ago in one
+eye and then you did some you did the
+news for us for a little while but that
+was a long time ago that's hard to
+believe the time flies so much good she
+is very active actively involved in the
+show folks so if you ever noticed that
+you don't hear screaming kids during the
+broadcast that's probably Rebecca who is
+assisting with that appreciate that very
+much what you got for me um I've got
+three comments here all right side the
+first one is from Danny Harbor hey Danny
+and he says Robbie I need to hire you to
+fix this problem point linux citrix ica
+client error ssl error 61 you have not
+chosen to trust the issuer of the
+servers security certificate i'm pretty
+sure i have you have to copy the dot CRT
+file into the folder slash USR slash li
+be /i see a client etc etc etc i cannot
+find a folder and i need this fixed for
+work oh okay well if there's not a whole
+lot of detail about what it is that
+you're trying to do there Danny it
+sounds to me like you're perhaps
+administering a patchy server like a web
+server and you're trying to get a secure
+certificate so that you can get HTTPS
+without the error message that it's an
+untrusted source for the site if that's
+the case it can be done it's something
+that you could do but it sounds like
+you're following maybe a tutorial
+because you're looking for this user
+live ice I see a client Keystone certs
+and it's not necessarily there in your
+system because if you're following some
+tutorial and then you're using a
+different version of something or maybe
+you've never installed a cert before so
+there's no you know the folders don't
+exist
+whatever it's different for every system
+really because really it is just a file
+and and the the cert file the CRT and
+the the various files that go along with
+that the key and all that just needs to
+be in a folder on your servers hard
+drive that is rude accessible but not
+accessible to the world not accessible
+to your users because you don't want
+people to be able to access that file in
+such a way that they can read the
+contents because it contains very very
+private information it's a it's probably
+a decrypted key on your server it should
+be decrypted because you don't want it
+to be prompting for a password every
+time Apache restarts so you don't want
+people to access it so your tutorial may
+or may not be helping you it's really
+just a matter of understanding your way
+around installing a certificate on an
+Apache server or it could be under
+whatever it is that you're doing if you
+truly need to hire somebody then of
+course pop me an email in all
+seriousness and and let me know that
+that that's something that you want to
+do I have been known i've done it before
+where have been hired to help install a
+cert as somebody was having a very you
+know just a challenge with getting a
+cert installed on their server and their
+client was relying on it so i just
+remoted in and sent the bill after the
+fact and i and i don't do that
+personally i do that through my work so
+i can certainly help with that if that's
+something that you're serious about so
+just pop me another email to let me know
+but it's a it's a tough it can be tough
+to learn once you learn it it's really
+really easy but it's it's complicated
+when you're first trying to get into
+getting into that kind of server
+administration so thanks for the
+question though appreciate it hope to
+hear from you and I will receive your
+money I'm just kidding okay the next one
+is from Jay kid hey Jay and he says
+hello could you tell me what headsets
+you use for the show are they wireless
+how do you hook them up to your audio
+mixer alright these are apex 575 and
+they're pretty decent there they sound
+really good
+as you can hear and the sound is
+fantastic and with I guess the co-host
+and you tend to find there a little bit
+tough to get them on your ear properly
+aren't they a little bit finicky that's
+just the way that they are now I've got
+mine pretty good but if anyone because
+co-host changed you know everybody's got
+a different shape ear whatever and it
+can be kind of difficult so so it's kind
+of like a you want to have one for
+everybody but they do sound really
+really good these are hard-wired I don't
+know if you can see I've actually got a
+wire that goes down the back of my shirt
+and if I may I'll just show you what it
+goes into I've got a hip pack here a
+belt pack this converts audio technica
+to XLR the apex 575 comes with a bunch
+of cables I chose audio technica because
+it was easy to get an adapter for the
+audio technica style input convert over
+to XLR we go into a behringer xenyx
+looks like a 1000 to be bored and it's
+got the phantom power built in we don't
+use a separate power module then it goes
+into a behringer ultra miser pro that's
+the compressor to keep it so the levels
+are good if I talk loud it's the same as
+if I talk quietly here in the studio I
+was very loud you jumped yeah and then
+we've got a BBE sonic maximizer at the
+end of the chain that just crystallizes
+the sound it's we used to call it you
+know in the studio we call it Christmas
+it was adding Christmas to the to the
+mix because it's just that little
+shimmer it's a sparkle like when you
+look out over christmas it's just
+sparkly and shimmery that's what the BBE
+sonic maximizer does can I show you what
+it because it's one of those things it's
+really hard to explain what a BBE sonic
+maximizer does it literally has two
+knobs and a button that's it there's
+nothing there's no screen there's
+nothing to it I'm going to turn it off
+just so that you can hear what we sound
+like without the sonic maximizer and now
+it's off so you hear how the levels if
+you're especially if you're listening
+with headphones it sounds a little bit
+flat back if you give me a sound check
+this is what it sounds like with it
+turned off okay so now I'm going to turn
+back on the BBE sonic maximizer process
+and that's just punching it in so here
+we go we're back in again that's the BBE
+sonic maximizer back on again if you're
+wearing headphones
+gonna hear a big big difference and you
+can be another sound check and this is
+what it sounds like with it turned back
+on there you go so that's basically our
+audio chain it starts with the
+microphones they are excellent headsets
+they sound really really good if you can
+get them adjusted properly mine I've got
+it really really good but I'm on every
+single week the co-hosts do have a
+little bit more trouble with it because
+everybody adjust align once it's done
+yeah good good so but that's really my
+only complaint about the mics like if I
+could complain about them but the sound
+is exception I like I like them they're
+good to us we did hardwired because we
+used to use wireless I don't know if you
+recall back of it wireless you know in a
+studio like this we don't need wireless
+so why do wireless you don't need it and
+we would have interference from
+neighbours portable phones and stuff and
+so you know you're in the middle of a
+show and all of a sudden you you hear
+somebody dialing a telephone and we
+never know it until we watch the show
+back so yeah that's something we just
+wanted to avoid we've got time for a
+really really quick when I know we're a
+little bit over time but we did a major
+feature tonight so I'm okay with that if
+you're okay with that so okay so one
+more then all right um this is by IBM
+Jim hey IBM Jim Robbie enjoy very much
+seeing you and your co-hosts each week
+topics including web development
+security backup strategies graphics and
+linux distributions are always
+informative and thought-provoking
+although I am a Windows user I have been
+thinking about converting an old 2000
+era pc dell XPS t700 are now running
+Windows 2000 to Linux adding a new video
+card with hdmi output and perhaps adding
+a TV tuner to create a remote system
+with short-range wireless control used
+as an hdv TV input source for
+unrestricted web streaming such as
+comedians in cars getting coffee calm
+and off the off the air recordings
+perhaps video boards with hdmi output
+might present PCI compatibility issues
+and I'm sure there would be other
+challenges alternately just getting a
+new low end desktop configured for this
+purpose might make more so
+if you haven't covered this topic
+recently I would love to see a show or
+two on this topic thank you and all
+those who give their time to the show
+Jim Jim I think there are so many
+dedicated boxes that are built for this
+purpose that you're just throwing away
+money on this old thing I tried it
+remember we we got a case that was a
+beautiful rack mountable had the screen
+and everything and a remote control to
+build a computer htpc home theater PC
+remember that and it's satin storage for
+so long because I put a motherboard in
+it from an old computer i put graphic
+cards in it and it just could not keep
+up with HD video these old computers
+can't do it Jim you need to have a more
+powerful processor in order to do it so
+then it becomes ok well why don't you
+just go and get yourself like one of
+these rikomagic mk802 s that sits above
+the TV it's got a built-in webcam and
+it's got hdmi out and it's all built in
+or better yet you know if you want to
+step it up you can get the mk802 IV
+which we're going to be reviewing on the
+show in a few weeks these kinds of
+things are all pre-built Becca and I we
+use an iOS device from piva i'll put
+links in the show notes refs 1307 we
+have as I us as well which are all just
+fancy names for their devices that are
+pre-built for watching HDTV and they're
+just basically mini-computers my IOUs I
+love it it's an older generation it's
+from you before the Zions but I really
+love it it's got a built-in hard drive
+and we can just put the shows right on
+it and watch it without commercials and
+that combined with Netflix from cat5 TV
+/ Netflix and we're golden you know so
+we don't even need a PVR really because
+Netflix kind of provides all our shows
+to us but I think you're just throwing
+money away it's something like that Jim
+to be honest with you because it's just
+too old it's not going to it's not going
+to power HDTV for you find one of these
+boxes that is reasonably priced and I
+say that because they're they started
+about 60 bucks you can't buy a video
+card for that and if you can it's not
+going to be
+it's not gonna be good enough anyways
+yeah you know so realistically they
+start so cheap you might as well just
+get into one of these units and then you
+got the new google system that you know
+the plug it into your hdmi it's much
+like the like the 802 IV except with a
+little less features but then you use
+your tablet to control the video that's
+up on the screen for example all that
+stuff is coming as well so links
+everything will be in the show notes for
+episode number 307 thanks for joining us
+tonight next week Beck and I will be
+back we're going to continue our series
+on the the virtualization of the laptop
+we're going to show you how to get that
+to boot up and that will be the end of
+that and we'll be back on track with
+everything else so Becca thanks for
+being here tonight thanks for hanging
+out with me baby here keeping the smiles
+on even though I'm geekify on you
+alright folks have a great week and
+looking forward to seeing you next week
+thanks for being here see ya
+we hope you enjoyed the show category 5
+TV broadcasts live from Barrie Ontario
+Canada every tuesday at seven p.m.
+eastern if you're watching this on
+demand or through cable TV check out the
+local show times in your area at
+category 5 TV and find out when you can
+watch live and interact in the community
+chat room category 5 is a production of
+prodigy digital solutions and is
+licensed under creative commons
+attribution 2.5 canada we'll see you
+next time thanks for tuning in
