@@ -1,0 +1,1116 @@
+we are looking at the xu4 today and we
+have looked at the xu4 in the past you
+and I have looked at it we've done a lot
+of fun stuff we've we've built it into a
+big chassis we've done all that kind of
+stuff but this week we're working with
+just the board just that board okay but
+the first thing I want to do with the
+xu4 from Odroid is I want to determine
+what type of media I'm going to use okay
+this week what we're gonna do is we're
+going to create a DNS server which is
+using a software called piehole p.i -
+hol e alright it sounds obscene but it's
+not it's actually a black hole for DNS
+entries that you want to block that you
+can place on your own network and the Y
+aspect is it was really designed for the
+Raspberry Pi right but we're gonna learn
+how to install it on a completely
+different system and why would I want to
+do that why wouldn't I just go with a
+Raspberry Pi Jeff any any guesses
+well quad core maybe because the
+Raspberry Pi is only quad core yes
+yeah with eight cores that's right sure
+but a DNS server doesn't really need a
+whole lot of processing power consider
+this we're looking at this is not a
+proxy this is a DNS server right those
+who understand what that means know that
+what I'm saying is is that traffic is
+not gonna flow through this device so
+the the Gigabit Ethernet
+that's tape abilities the Gigabit
+Ethernet capabilities of the xu4 while
+beneficial and will actually speed
+things up it's not really the selling
+point versus the ten over 100 of the
+Raspberry Pi but definitely a good
+upgrade it's gonna impact performance
+but because we're not passing through
+data
+we're just requesting DNS information
+trying to remember all the does it have
+to do with like the specs of the Odroid
+it does it has to do with what I
+mentioned it right at the top here we
+have to determine what kind of storage
+we're gonna use right but that was a
+hint right totally missed that raspberry
+pi is limited to a
+it's pretty slow microSD card slot okay
+so SD cards as you know while fantastic
+and they're getting bigger and they're
+getting better
+they are comparably unreliable yes when
+you compare them to SSD storage or emmc
+storage and those other types of storage
+medium in this case yours is hooked up
+to an SSD what VHC one is we're not
+using an hc1 today although this could
+right we're just looking at the board I
+think it's an important I think it's an
+important fact to say we could do this
+on an hc1 we could do this on a
+Raspberry Pi we're choosing to do this
+on a no droid xu4 we could do this on
+pretty much any of the pine sixty-four
+boards I mean we could and they also
+have that advantage but what I'm looking
+for out of the Xu for this week is that
+emmc capability I'm going to be able to
+use an actual emmc storage card instead
+of SD so I've got that ultra reliability
+plus the performance boost that that
+provides
+Pyne 64 boards they also offer the MCA
+MMC capability so this is not something
+that you have to use an X you for for it
+just happens to be what we are demoing
+tonight but everything that we're gonna
+learn here can be done on an xu4 on any
+of the pine 64 boards on an Isuzu tinker
+board on a Raspberry Pi this is where
+we're at with single board computers we
+can just you can use whatever but we're
+looking at it and saying okay we want
+emmc so what are we gonna that just
+rules out Raspberry Pi yep okay because
+we want reliable storage why does it
+matter this device is going to become
+our DNS server for our network be it for
+home or for your office we want to block
+things that are not wanted within our
+network that is advertisements yeah I'm
+gonna circle back to that because this
+is gonna have a performance performance
+boost on our network as well but also
+pornography and things like that things
+that we want to block from our office
+network or you and I are parents we're
+parents of young kids
+we're really thinking about it with
+March break and the kids are home and
+they're on the computers a lot and it's
+so it's like it's something that we
+really want to protect our kids from and
+and that's that's as simple as it is so
+but in an office network in a home
+network these are all good things as
+well so we're gonna do that with these
+devices but we need them to be ultra
+reliable because if it ever goes down
+we're going to have the perception that
+our internet is down okay a DNS server
+is what resolves domain names right DNS
+is domain name server so when I type
+google.com it first goes to a DNS server
+and says what IP address should I be
+routing your traffic to and then it goes
+out to the Google server via the IP
+address now if my DNS server is down I'm
+going to type google.com and it's gonna
+say I don't know where to go page not
+found right okay so we need it to be
+ultra reliable that's why we're staying
+away from the Raspberry Pi and instead
+we're going with emmc storage so again
+Pyne 64 Odroid xu fours any of those
+kinds of boards that support the e MMC
+card it's gonna be a lot more reliable
+and therefore much better suited for
+something like what we're doing here
+today which is mission-critical for my
+network I don't want people calling me
+up but while I'm at work and saying you
+know my wife or my kids saying
+Internet's down oh no it's not the the
+Raspberry Pi has gone offline or
+something like that or the SD card is
+corrupt and that's why you need nems to
+let you know it would let me know Emma's
+Linux comm all right so now I'm just
+gonna jump over here where we've got
+that xu4 and let's let's get to it so
+you know how an SD card works Jeff yes
+obviously the SD card just kind of plugs
+into the side there right next to the
+HDMI that is an option on the xu4
+however as I mentioned we want to use
+the emmc but it's not accessible in this
+case so I actually leave the screws out
+of these cases I'm not really keen on it
+because I like to be able to access my
+emmc so I actually just kind of unsnap
+it and then I've got access oh by the
+way this is the real-time clock that I
+mentioned on episode number 598 that's
+the battery for the real-time clock so
+that's a
+accessory that you buy for six bucks and
+that will keep your time there's the
+emmc port Jeff yep that's where I'm
+gonna plug in my quote unquote hard
+drive alright so an emmc it kind of
+looks like an SD card but it goes snaps
+onto this USB reader which I use to
+flash it the same way I do with an SD
+card but it's not an SD card it has this
+connector on the bottom and that's going
+to connect it directly to the Odroid xu4
+or whatever other emmc capable SBC that
+you're using and it's as simple as that
+so that's the hard drive Wow
+the only other thing with the Xu for
+that I need to make sure is see the
+switch here this determines what your
+boot device is so you can see it's
+either SD or MMC make sure that you
+select that otherwise it's not going to
+boot because we don't have an SD card in
+and there's the SD card slot right above
+there as well so that's really all there
+is to do in that now I should mention
+I've already pre installed you saw me
+take this off of the USB adapter I've
+already pre imaged using etcher never
+extend stretch cat5 dot TV / nev it's a
+free download and that is the debian
+stretch install that i prefer for my
+Odroid device okay so we'll bring that
+over here and plug it in right here at
+the desk let's jump back over on the
+camera and that's all there is to it so
+I've got Ethernet and power Jeff that's
+all we need
+that's right yeah that's it yeah cuz
+hardware is already in it yeah I've
+already flashed so remember that's the
+first step I need to flash Mavericks
+Debian image so it is just a base Debbie
+and install Debian Linux on a little
+device like that that who can't fit that
+on on their network looks right it's got
+Gigabit Ethernet it's got a power
+adapter that uses a barrel plug it does
+have USB 3 and everything else that you
+would expect and this particular one
+this is the Odroid Xu 4 Q which is the
+quiet model Q stands for quiet and
+that's the one with the heatsink rather
+than a fan which is just one less thing
+to fail yes I'm all for let's just lets
+rule out
+the ability for things to fail let's
+make it really like that and these
+things are fantastic okay so I'm gonna
+first of all you need to determine the
+IP address now that it's booted
+presumably it is booted it's connected
+to Ethernet and everything is lit up
+right I do that by because it starts up
+as DHCP if you go into your router look
+at the DHCP pool and you're gonna see
+one called Debian stretch and that is
+okay my Odroid
+because i've booted it with debian
+stretch and that's that's what it's
+called on there so I'm gonna jump over
+to my computer here I have to do there
+we go I've got a nice little close up
+window and I've connected to my Odroid
+xu4 so I'm at 10.00 dot
+for first thing I want to do is I want
+to type date I see that it is March 13th
+and the time is correct and so that
+tells me that the real time clock is
+holding its own it's still set from the
+last time I booted it right and I don't
+have to reset anything but that's an
+important step you have to do that first
+make sure that your data is correct
+because if it's wrong you're not going
+to be able to install anything because
+all of your SSL certificates are going
+to fail because the date and time are
+going to not match up with the SSL
+certificates so I'll jump back to that
+window here so next step is apt update
+this is going to download all the
+repository information just make sure
+that everything is up-to-date make sure
+that your computer your xu4 knows what
+packages are available to it now apt
+upgrade is going to upgrade the
+underlying distribution mine says that
+it's already upgraded and then apt dist
+- upgrade will make sure if there's any
+new kernel or anything like that it's
+going to download and install that for
+me if you received a new kernel and
+things like that make sure you reboot
+next just type a reboot because I'm
+logged in as root
+remember with Mavericks image the
+username to log in via SSH is root and
+the password is all lowercase Odroid
+that's out of the box you can change
+that all right so let's let's get right
+into it so this is this is just a debian
+stretch it's running 4.1 for
+and I want to turn this into what they
+call a piehole okay again it's a DNS
+black hole so that when we request
+google.com it's going to respond right
+rather than my ISPs DNS server so if if
+I'm visiting a website and it has
+something that I have personally said
+I'm object objecting to that like an
+advertisement it will block that okay
+but not by traditional means but by
+saying page not found right ad not found
+right so think about that for a second
+what that does for your network so this
+has an adverse effect okay if we block
+all advertisements at the DNS level
+whenever I bring up a website that is at
+heavy and it goes to download all of
+those ads a traditional ad blocker will
+still download all those ads but then
+will stop them from displaying correct a
+DNS system like this instead will simply
+say ad not found that not found it never
+downloads it does that work only for web
+sites or does that work for ads that are
+processed through your network on other
+devices other devices in apps if you've
+got app apps that are heavy on ads
+things like that it will block those
+because it's blocking them at the DNS
+level right so that app is going out to
+the to the web and resolving to sites
+that serve up these advertisements and
+then blocks them before they actually
+download so the adverse effect that that
+creates is that your internet is
+perceptively faster because you will be
+amazed at how much ads and tracking are
+happening on the Internet it really is
+and I this is a double-edged sword
+because we are ad revenue supported
+right and so what I'm about to show you
+is potentially going to cut out our ad
+revenue is there a way to allow certain
+ad streams yeah however where does the
+ad revenue come from category five dot
+TV you can whitelist our website
+category
+TV ad revenue isn't generated their ad
+revenue is generated by media net by
+Google Adsense those things so you're
+blocking Google Google Adsense not
+category 5 TV so even if you whitelist
+us you're still not going to see ads on
+our site because we're not the ones who
+are hosting the ads that's true
+yeah so so as I say a double-edged sword
+consider that as you as you make this
+change on your network but I think that
+you know there are you know hopefully
+other ways to monetize more patreon
+there you go
+so keep that in the back of your mind
+all right so let's get let's get to the
+next step so we need to actually install
+piehole so first thing I want to show
+you this is not a step that you need to
+take but I do want to show you what this
+is I'm gonna go to install dot pi - hol
+dot net it's going to redirect to an
+installer script that's hosted on github
+I don't ever need to see this I just
+wanted to show you that oh this this
+resolves to the Installer so we know
+that install dot PI - whole net takes
+resolve to the Installer scratch right
+with that knowledge armed with that
+knowledge we can now grab that script so
+let's do that let's type W get - capital
+o for output to this file name and I'm
+going to save it to slash temp slash
+call it whatever you want I'm gonna call
+it install dot s H and then I go HTTP
+colon slash slash that's why our date
+and time are very important because I'm
+connecting to a secure server if I
+didn't have my correct date and time
+it's gonna give me an error install dot
+pi - whole net and now it's downloaded a
+file called /tmp slash install so if I
+open that file it is that script that we
+were just looking at in our browser so I
+want to create I want to make that so
+it's executive o CH mod + ex install dot
+sh so now it's executive all I am in the
+temp folder but you can type /tmp slash
+install dot sh here in the dot in the
+temp folder I can just type dot slash
+install dot SH and now as route I'm
+gonna run that and it's going to take me
+through the install installation steps
+for pi hole on this bear bare-bones
+Debbie and stretch system and I say
+bare-bones
+because you really want this to be a
+pure vanilla Debbie and install reaiiy
+is the reason for that Jeff is because
+if you've been using like someone will
+say well why can't I install this on
+NEMS or why can't I install this just on
+my computer well your computer and and
+these kinds of things they already have
+DNS stuff installed and DNS routes set
+up so if you try to install them you're
+gonna be removing packages that are
+possibly critical to your OS or other
+applications and you're gonna be you're
+gonna be possibly damaging the install
+start with the vanilla install and then
+we know what's gonna work so the
+Installer will transform your device
+into a network-wide
+ad blocker okay the pie hole is free but
+powered by your donations visit pi -
+hold on net slash donate in order to
+contribute to this particular product
+the pie hole is a server so it needs a
+static IP address to function correctly
+keep this in mind now we know that we
+are dot 144 on my network because it was
+given out by DHCP so it's going to
+detect that and it's going to
+automatically configure that okay this
+is interesting where do you want to get
+your upstream DNS from so this means
+where will the pie hole get the actual
+DNS information from do you want to
+Google where do you want it and so it
+comes with a bunch of options here the
+interesting thing about this Jeff is I
+can choose open dns okay and with Open
+DNS it has other filters that I can add
+to my DNS so it can supplement my
+piehole in order to I hate using that
+term shut your piehole there Robbie by
+selecting open dns I can actually go to
+open DNS and let's see open dns dot I
+want to say org let's just be sure Open
+DNS dot
+org yeah so you can actually log into
+this site it's a free service and then
+you can do things like blocking gambling
+sites doing so it can actually
+supplement the device that we're
+creating it can help to make it even
+stronger so I will in fact choose Open
+DNS because that will be a fail-safe for
+me piehole relies on third-party lists
+in order to block ads notice that the
+terminology with piehole is all about
+ads we talked about what we can also
+block things like pornography we're
+going to show you how to do that using
+the same system but out of the box it is
+strictly an ad blocker right so you
+don't have to block pornography but
+we're gonna show you how to do that at
+its base it's just going to block ads
+for you just like I've already described
+I want to subscribe to all of these
+lists that's fantastic I'm going to hit
+tab and okay enter it we're gonna block
+ads on both ipv4 and ipv6 etting x' as a
+static address so it's actually going to
+take what the DHCP server gave it
+10.0.0.0
+set that as a static address now my
+router hopefully is smart enough to know
+that that address is already taken don't
+assign another device to that IP address
+if this device has turned off for any
+given to any amount of time because 144
+is obviously within my DHCP pool which
+means my router might give that address
+to another computer so you want to make
+sure that this is either always-on or
+set up what's called a reservation in
+your router that's the safest bet but in
+this case I'm gonna say yes let's use it
+and it's actually giving you that same
+warning read the warning okay do you
+wish to install the web admin interface
+on yeah I want to be able to admit this
+thing do you wish to install the web
+server yeah I want to be able to
+actually get to my admin interface do
+you want to log query's yeah I want to
+log it I want to know what's going on in
+my network you may not need to but maybe
+you just want to block it not log it
+that's fine too we're using a MMC so
+we're not afraid to write things to the
+desk right
+show everything hide the domains
+whatever you know you make the the
+choice based on your needs as as dad's
+of young kids our needs may be a little
+bit different we want to know hey kids
+what are you doing on that site right
+now you set it for show everything so
+nothing's being blocked no no no no show
+everything in the logs oh this is a
+privacy thing this is like do I want
+privacy within the logs keep in mind
+this is my server only I have access to
+this my wife has access to this if I you
+know I'm gonna hook her up with access
+to it of course in a network of an
+office environment only those who are in
+the IT department have access to logging
+in that's that web interface how verbose
+are the logs
+this will show like what computer was
+accessing what website because I've left
+it as show everything it's going through
+it's installing PHP I really don't have
+to think about it it's just doing its
+thing it's going and going hmm and when
+we come back from a really quick break
+we're going to be able to actually take
+a look at this we're gonna set it up in
+our router so that this becomes our only
+DNS server for our entire network and
+we're gonna learn how to use this to
+block pornography as well it's optional
+but we're gonna learn how to do it stick
+around
+[Music]
+for a limited time get your hands on
+limited-edition shirts from the category
+5 TV network these high quality shirts
+are manufactured by teespring a
+fundraising website and your purchase
+will help support the shows we produce
+get yours today and send us your
+pictures to be featured on the
+corresponding show visit cap 5 dot TV
+slash shirts to support us and get your
+official Network shirt today cat5 dot TV
+slash shirts
+welcome back everybody before the break
+we learned to turn an au droid xu4 or
+any single board computer for that
+matter into an ad blocking system using
+software called puddle pile
+makes sense yeah it really does yeah
+it's clever in a way yeah it's clever in
+a way
+now while the commercial was rolling
+there that we had this pop-up oh it's
+done Oh make it show it says configure
+your devices to use the pie hole as
+their DNS server using 10.0.0.0 that's
+my IP address for the pie hole device
+right okay so there's something very
+very important on this screen I want you
+to observe its Robbie's DNS server
+password okay I'm gonna write this down
+it's a capital W the number 8 RPC - well
+that's easy 3-3 that's the admin
+web page login password it says I can
+actually access that by going to
+admin now I have a question about that
+yeah I know it's your home network IP
+but it's not listed as an HTTP is is
+there an issue with that
+no because it's internal it's not access
+from outside ok all right
+HTTP signifies that it is an encrypted
+connection right so but it's only an
+internal it's not something like you
+know you're at work and you're not
+you're not logging in tough can work all
+right
+yeah ok you could use HTTPS but then
+it's going to be a self-signed
+certificate which then leads to people
+saying well why am I getting warned that
+this is not a trusted certificate yeah
+what kind of a self-signed so keep this
+internal you don't want your DNS server
+outside unless you wanted to share it
+but you don't need the administrator
+interface on port 80 that's true port 80
+is the administrator interface don't
+open that up to the web but you could
+share your DNS settings DNS server
+settings with like family members allow
+them to use your DNS
+IP address that's that's not for this
+discussion that could be done but no
+there's no concern there Jeff
+so it's done it says its installation
+complete see in the red at the top there
+so let's zoom out a little bit and let's
+actually visit that IP address so
+10.0.0.0 that's here about 144 slash
+admin here we are Jeff we're in let's
+login all right it's asking me for my
+amazing password which is w8 RPC 2-3
+remember me for 7 days please I don't
+have to answer that every single time
+alright I'm in so we can see that this
+is up and running we're good to go
+we don't need to memorize it there we go
+nice we can see graphs we can see what
+is permitted what is getting blocked and
+everything else
+nothing is currently being blocked but
+there are 112 thousand three hundred and
+881 websites that are currently on the
+Block list that means that those ads
+will be blocked right so let's go to and
+that's a low number though it's pretty
+huge when you consider it like these are
+the ad servers I would have thought
+there would have been more though
+it's like you could just block Google
+Adwords and you've basically just cut
+90% of the ads out of all of the
+internet that's true really
+realistically right Microsoft's media
+net is another one so those are all part
+of it let's let's go to something like
+speedtest.net I want you to see this
+here's a great site that is a good
+example of a site that see how long that
+took to load right look at all the ads
+right so that's a site that has a lot of
+ads but it's a service that we all like
+to frequent well but why didn't it get
+blocked I've got a pile all set up did
+you not activate it well no it's active
+it's running it's up and going you can
+see on the screen if we look up at the
+top right top left here active right oh
+is this because you didn't set your
+router to make your D I didn't set
+so on my Windows machine here I can
+actually go into my terminal CMD on
+Linux going to your terminal and type IP
+space a on Windows it's IP config slash
+all and I get all my IP addresses here
+and if I find my neck I can see that the
+DNS servers that I'm using are google
+8.8.8.8 8.8.4.4 those are Google's DNS
+servers so they're completely it's
+completely avoiding my piehole entirely
+okay
+it doesn't even know that that exists as
+a DNS server okay so let's let's make
+that change I'm gonna actually bring up
+my router why would I do this because
+that's your router and everything goes
+for it everything goes through a Jeff
+would you would you want to go to every
+computer and change the DNS settings or
+or to every phone or every tablet that
+ever connect various internet connected
+devices at home and ever to go like the
+kids bring home friends and connect your
+Wi-Fi whatever right but so by setting
+it on the router this is the endpoint
+that goes out to the internet so
+anything and it here's the other thing
+it's what serves up your DHCP your IP
+address and your DNS information to all
+of your computers so by changing it on
+the router as soon as the device
+connects it gets the DNS information
+from the router so let's set it on the
+router so that it is for all of our
+network yeah so for me it's dd-wrt for
+you it may be different it depends on
+what device you're using and and it's
+gonna be different for every device but
+here on my setup screen I'm trying to
+get this centered for you folks there we
+go
+I see static DNS and what is it Google
+8.8.8.8 so I'm going to change this
+10.0.0.0 and get rid of my secondary so
+I need to set that to 0.0.0.0 and it
+allows tertiary as well I just want the
+one
+DNS server so now all of the DNS is
+going to pass through dot one four four
+okay I'm gonna save that record to my
+router here we go
+now it's important to know that my
+computer is already connected it's
+already got its IP address so it already
+knows its DNS records it's gonna take
+some time for that to flush it's gonna
+take some time for it to read get the
+new information so you can reboot all
+your computer's restart all your devices
+and it will probably come good but some
+of them cache things right so this
+change is not instantaneous on the
+entire network no this is something that
+ok now it's set now everything here
+forward is going to be connecting
+through this device it's going to be
+using it for its DNS let's see if I can
+just simply I don't know if I can maybe
+I can just restart my network
+connectivity I'm gonna turn off my Wi-Fi
+and turn it back on again which is going
+to reconnect to DHCP see that at the
+bottom there and let's hope that that's
+all it takes
+there we go let's go into CMD ipconfig
+/all ok what is my DNS server it's still
+Google C so my my computer still it
+still knows that ok IP config slash
+flush DNS let's try now now we have a
+question in the chat room mo maravilla
+and he's wondering should you have your
+like the Google DNS as your second DNS
+server that without the Pinal ever goes
+down no ok your your piehole already
+knows to go out to open DNS in our case
+or Google if that's what you said if
+your piehole goes down it's best just
+have it go down if you have secondary
+and tertiary DNS set in your router then
+it will just choose your computers your
+devices will choose one of those three
+oh so it's not like a sequential thing
+no ok no it's it's going to be just as
+traffic as flowing it's gonna be
+grabbing DNS settings from wherever so
+one minute something will be blocked the
+next minute it will not be blocked ok so
+we want to avoid that scenario
+altogether
+let's see if I'm able to get DNS yet I'm
+still not seeing the DNS refresh on here
+so for the sake of the show I'm going to
+manually configure my DNS but keep in
+mind this is not a requirement because
+I've configured it in my router my DHCP
+will start serving that up for me in
+some time I don't want to get into how
+to flush DNS on every system because
+it's it can be very complicated it can
+be a little difficult on some devices so
+let's let's avoid that altogether so I'm
+going to fade to black and you come back
+so again I didn't want to show you the
+process of doing that because that's not
+one of the steps that we need to do for
+the sake of the show I wanted to
+expedite things by pushing things along
+Marsh man in the chatroom was mentioning
+maybe we need to restart our router
+that's another thing that could kind of
+expedite things because maybe it's still
+serving up values from the previous DHCP
+settings right but know that as devices
+start connecting now because I've
+removed those old DNS settings and
+replaced it with my new DNS settings
+it's going to start dishing that up the
+other note I like I use mikrotik at the
+house
+and and on much of my many of my
+networks mikrotik are great routers but
+I actually had to change a setting which
+I made note of in the DHCP client
+settings you actually have to turn off
+use peer DNS because it will do just
+what we were talking about it will
+supplement your DNS setting with default
+options from your ISP so then it will
+sometimes block ads and sometimes not
+block ads it's yeah so let's let's get a
+real quick look at our computer here so
+I've got my settings are now set i've
+manually set it but you don't
+necessarily have to do that we're just
+expediting things let's go back to
+speedtest.net and it's done loading
+look but wait a minute where's the word
+the ads but did you notice how much
+quicker the web was there was like
+instant it just came up the service
+still works just the ads are gone that's
+great yeah so that is
+fantastic you know it does work I'm I'm
+getting full page yeah yeah now we have
+a question in the chat room and I don't
+know something you know the answer to
+it's from you you ghurabaa sorry I said
+that wrong
+hi is it possible to create some groups
+for example some users will see the ads
+and others or not is that possible with
+this software that I don't know the
+answer to okay alright though sorry
+something may be to get into the pie -
+hole net forums into their community and
+ask those kinds of things
+I haven't dug that deep into it yet okay
+fair enough so all right you got that
+far into the hole yep exactly so so
+let's get a look at the interface here
+let's jump back to our pie - whole
+interface and we can see already it's
+blocked 65 Wow what that's quick we
+brought up one website and there was
+only four so or thought so we thought
+but what did it actually block like we
+can actually look at this now it blocked
+this who knows secure us dot I am
+worldwide comm z b ZD double click net
+that's Google Google Analytics so
+tracking me ad services for Google ad
+services for Google scorecard research
+com
+double click net more ads Google tag
+services Google tag manager so all these
+things are being blocked just from that
+one hit 65 blocks just on speed test I
+feel like I just on that one site I feel
+like we should be loading you know like
+one of those Facebook oh yeah you could
+like do the experiment do the experiment
+at home do the experiment at home and
+see how it works for you
+so that in its this is complete this is
+done mm-hmm this is now ad blocking for
+our entire network because every time I
+go to a web site or that web site tries
+to load assets it's going through my DNS
+and blocking things before they're
+downloaded so it's faster it's saving
+bandwidth it's gonna make things a lot
+better that's
+so now the next step as we promised was
+how can we now take the pie hole device
+and use it to protect our family or
+perhaps our corporate network from stuff
+that's illicit that we don't want them
+to be accessing right so we're using the
+example of pornography it might be
+things like illegal downloads it might
+be other you know whatever else now
+we've also used Open DNS as our like our
+actual source for DNS so we could then
+log into them and change as I mentioned
+things like we can turn off gambling
+sites we can turn off social media we
+can get really down to the nitty gritty
+but here with our internal device we're
+going to block pornography by simply
+adding to the available list so if I go
+into settings you're gonna see block
+lists here and my block lists right now
+out of the box all have to do with ad
+blocking okay but let's get one that
+blocks all well if the block list does
+nothing it's it's just a list of
+pornographic websites and then our
+piehole is going to look at that list
+every time anything happens on our web
+because it said our DNS server and it's
+going to block anything that's on that
+list right so anything that is deemed to
+be to fall into that category so I'm
+gonna grab this from github so I'm gonna
+head on over to github calm slash and
+Chad Mae field oh I already have it
+I guess I've already been there on my
+laptop that's great and there you have
+it Chad Mayfield slash my - piehole -
+block list and the links as always will
+be below so if you're watching this
+online make sure you check the
+description below and you'll be able to
+grab the links directly so here we're
+just gonna go into his folder called
+lists there are two lists here Jeff okay
+pie block list porn all lists yep pie
+block lists porn top 1 million lists so
+pop one mil not 1 million so it's not
+the top one it's not 1 million sites
+right what it what he's done is he's
+taken Alexa results not Alexa
+sorry I didn't mean to set off your your
+devices oh not that's not the word I was
+looking for
+but did it what do they call it it is
+yes it is okay why did they name at that
+I have no clue I know it came first so
+it is I'm not gonna say the word again
+but the word that just triggered all of
+your smart home devices that is a
+ranking system on the internet it's been
+around since AltaVista days and it is
+indeed called that so what he's done is
+he's compared the list of all known porn
+websites to the top 1 million websites
+in the world okay and said okay well if
+it's not on the top 1 million it's
+probably never gonna come up in
+accidental clicking around the internet
+so let's just go with the one top 1
+million it might be 10,000 sites but
+it's going to be like the top ones that
+it will block like it's the most likely
+you don't have to block all because
+that's probably overkill and it
+certainly if you're doing this on a
+Raspberry Pi that's gonna be a
+performance hit on your DNS server on an
+xu4 on a rock pro 64 you're probably not
+gonna feel it especially if you're using
+emmc but it would suggest that you start
+with the top 1 million list it's gonna
+it's going to give you the the best bang
+for the buck now I don't want to click
+on this and have a list of bad websites
+come up on your screen so I'm just gonna
+I'm just going to click on the first
+option and then I'm going to click on
+raw can i zoom in here would that be
+okay maybe yeah well I can so on github
+well let's just do it let's let's zoom
+way out it's a sensitive subject there
+we go
+oh can I do it oh but now it's alright
+yeah alright so I clicked on the list
+and now on the right hand side oh there
+it is okay I'm gonna click on raw okay
+that's fine whatever okay now grab that
+URL okay and then paste it back in here
+under block lists in settings now save
+now as that has been added yes notice I
+push save and not
+an update I wanted to just show you that
+it's going to get added that's fine so
+normally you would hit save and update
+now in this case I'm going to update it
+myself so I'm gonna go tools update
+gravity and gravity being the list of
+block domains so now because right now
+nothing is being added until I update
+gravity so I click that button and it
+goes through that list and it creates
+all of the entries for the DNS server
+and now if anyone on my network using
+the pie hole as my DNS server tries to
+access any of those sites that are on
+that list it will block them excellent
+it just stops it it just page not found
+okay problem solved
+perfect any other things that we could
+use pie hole for oh man
+you mentioned like games and yes okay so
+is I mean I don't know it will this do
+specific times of blocking things or is
+this all the time like the reason I
+asked is like we homeschool our oldest
+and so there's been a lot of his
+educational programs are online yes so
+we don't want to block those websites
+and we don't want to block his ability
+to research but I've wanted to block
+especially I hear where you're going
+with this you want to block education
+during after hours no gaming so during
+school hours
+okay the inverse of what I was thinking
+but like he uses a lot of dot IO
+websites okay and plays a lot of those
+games timers no okay however as you saw
+here Jeff in my lists if I go into block
+list I can disable that save and update
+okay so I can actually turn off a list
+at will okay right so create a list
+create a list of sites that you don't
+want your child going to during certain
+hours and enable that list at certain
+times of the day and then save an update
+and you'll be good to go now if it's
+just a short couple of sites that you
+want to be able to do click on blacklist
+and let's let's do it let's go what's
+one slither dot IO yes right and then
+we'll add that
+so now slithery o is blocked apparently
+let's find out if it really is
+so I'm gonna go into my terminal command
+prompt here on Windows and do get close
+up for you now let's do a DNS lookup
+slither dot IO and then the I'm just
+gonna put the note 144
+that's the IP address of my server right
+nslookup pardon me not DNS lookup I'm
+thinking DNS and it's lookup what does
+it resolve to the IP address is 0.0.0.0
+it does page not found if I try to go
+there in my browser slither dot IO this
+site can't be reached what what
+excellent okay so so now if I remove
+that now let's go back oh sorry I just
+hit the delete button next to it I
+apologize I had the wrong screen up so I
+had it here okay now so right now it's
+as it was now I'm going to delete that
+okay now go back to my command prompt
+and let's run that same command nslookup
+slither dot IO and notice it's resolving
+an IP address now I'm going to move that
+up on your screen so you can see okay
+so now we're actually getting an IP
+address so now if I go there in my
+browser it comes up okay see how quick
+that was yes floating floating blocked
+all the ads okay so you can you can do
+block lists like that you can add things
+to block list or create your own list
+put it on github and then like link to
+it or put it on a local server and link
+to it that way you can absolutely do
+those things no will this work for
+things like like games that have to
+access to the internet so for instance
+say like World of Warcraft okay if you
+knew where World of Warcraft you could
+block the server that it's connecting to
+yeah yeah okay all right yeah unless it
+uses an IP address because remember this
+is DNA that's right domain name
+resolution which most things on the
+internet on the World Wide Web use DNS
+right okay okay so really the sky is the
+limit really is yeah I mean get creative
+with it look for lists that are for you
+know the things that you want
+to be able to do but really it comes
+down to okay so we learned a little bit
+about how to protect our children from
+illicit things on the internet things
+that you know that just come up by
+accident sometimes - like sometimes
+we're doing downloads and all of a
+sudden there's an ad that's really
+offensive and and and the kids have even
+brought it to my attention sometimes
+where there is an ad that's really kind
+of obscene
+it may not be pornography but it it's
+something that is offending to them and
+that I really as a dad don't want them
+to have - yeah I just don't want them to
+deal with that right you know what I'm
+saying so so I'm able to block those
+things and and that's a good thing and
+make my internet faster and use less
+bandwidth exactly and reduce the amount
+of tracking that's happening on me now
+this won't stop say like built-in ads on
+say like a YouTube feed or something
+this is just ads on a web page
+yeah well stuff oh no it will play the
+video ads so what I mean like you're so
+you know the ads that are all
+surrounding it right yeah oh yeah this
+is not a 100% all ads gone forever kind
+of thing this is this is blocking all
+the main kind of ads that you see all
+around the web you like we saw in speed
+test there right just as a good example
+all right now and this is just incoming
+this isn't outgoing right for like say
+for instance you go to Amazon and you're
+looking for you know flux capacitors
+next thing you know you all your ads
+have flux capacitors from Amazon this
+only blocks the incoming data not
+outgoing ad no idea what you're talking
+about if they're on ads if they're on
+one of the blocked add servers it's
+blocked
+no I yes I I meant like the data you're
+sending out for the purposes of like
+specific a specific ad targeting this
+doesn't block that information from
+going out to the service it just blocks
+what's coming into you yeah again
+everybody
+I think you're overcomplicating DNS no I
+understand that I just from the
+capabilities of the software I'm just
+trying to point out it's only incoming
+it's not outgoing this is a DNS server
+so every time my computer or any device
+on my network tries to access
+such-and-such calm right
+so Amazon ads com whatever it will block
+it it doesn't happen so if any site is
+tracking me or serving up advertising
+and is on one of the list that I'm
+subscribed to it will simply be stopped
+there's no transaction there because it
+never downloads it never gets outside of
+my network so if what you're asking is
+when I go to a website and that ad
+normally would actually track me just
+from the request so yes add something
+dot-com slash Robbie's computer tells it
+that hey I'm actually accessing it from
+Robbie's computer because it's shared
+that information during that request
+well the request never happened because
+it got stopped at the DNS level so
+before it ever left my network it
+stopped
+that's why the internet seems faster
+with this versus the traditional ad
+blocker the traditional ad blocker will
+will download the ads but then won't
+display them this will not download them
+will not even allow that transaction to
+take place okay because if it happens at
+the DNS level makes ups I hope that
+helps it does yes all right cool check
+out more at pie - hole dotnet and of
+course you can get all the links for
+everything that we mentioned right there
+below
+[Applause]

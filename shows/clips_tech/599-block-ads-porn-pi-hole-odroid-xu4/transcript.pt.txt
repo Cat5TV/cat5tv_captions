@@ -1,0 +1,1117 @@
+nós estamos olhando para o xu4 hoje e nós
+olhei para o xu4 no passado você
+e eu olhei para isso nós fizemos muito
+de coisas divertidas nós temos construído em um
+grande chassi que fizemos todo esse tipo de
+coisas, mas esta semana estamos trabalhando com
+apenas a placa apenas essa placa bem, mas
+a primeira coisa que quero fazer com o
+xu4 de Odroid é que eu quero determinar
+que tipo de mídia eu vou usar ok
+esta semana o que vamos fazer é que estamos
+vai criar um servidor DNS que é
+usando um software chamado piehole pi -
+hol e tudo bem, parece obsceno, mas é
+não é realmente um buraco negro para DNS
+entradas que você deseja bloquear que você
+pode colocar em sua própria rede e o Y
+aspecto é que foi realmente projetado para o
+Raspberry Pi certo, mas vamos aprender
+como instalá-lo em um completamente
+sistema diferente e por que eu iria querer
+fazer isso porque eu não iria apenas com um
+Framboesa Pi Jeff qualquer qualquer palpites
+bem quad core talvez porque o
+Raspberry Pi é apenas quad core sim
+sim com oito núcleos com certeza
+mas um servidor DNS realmente não precisa de um
+todo lote de poder de processamento considerar
+isso estamos olhando para isso não é um
+proxy este é um servidor DNS certo aqueles
+quem entende o que isso significa saber que
+o que estou dizendo é que o tráfego é
+não vai fluir através deste dispositivo tão
+o Gigabit Ethernet
+que é habilidades de fita o Gigabit
+Capacidades Ethernet do xu4 enquanto
+benéfico e vai realmente acelerar
+as coisas não é realmente a venda
+ponto contra os dez mais de 100 do
+Raspberry Pi, mas definitivamente um bom
+atualizar vai afetar o desempenho
+mas porque não estamos passando
+dados
+estamos apenas solicitando informações de DNS
+tentando lembrar de tudo o que tem
+para fazer com as especificações do Odroid
+isso tem a ver com o que eu
+mencionei logo no topo aqui nós
+tem que determinar que tipo de armazenamento
+nós vamos usar direito, mas isso foi um
+dica direita totalmente perdeu essa framboesa
+pi é limitado a um
+É muito lento slot para cartão microSD bem
+cartões SD, como você sabe, enquanto fantástico
+e eles estão ficando maiores e eles estão
+ficando melhor
+eles são comparativamente duvidosos sim quando
+você os compara ao armazenamento SSD ou ao emmc
+armazenamento e esses outros tipos de armazenamento
+meio , neste caso, o seu está ligado
+para um SSD que VHC é que não somos
+usando um hc1 hoje, embora isso pudesse
+certo estamos apenas olhando para o conselho que eu
+acho que é um importante eu acho que é um
+fato importante para dizer que poderíamos fazer isso
+em um hc1 poderíamos fazer isso em um
+Raspberry Pi estamos escolhendo fazer isso
+em um não droid xu4 poderíamos fazer isso em
+praticamente qualquer um dos sessenta e quatro pinho
+placas quero dizer que poderíamos e eles também
+tem essa vantagem, mas o que estou procurando
+para fora do Xu para esta semana é que
+capacidade de emmc eu vou ser capaz de
+usar um cartão de armazenamento emmc real
+de SD então eu tenho que ultra confiabilidade
+mais o aumento de desempenho que esse
+fornece
+Placas Pyne 64 eles também oferecem o MCA
+Capacidade MMC , então isso não é algo
+que você tem que usar um X para você
+só acontece de ser o que estamos demonstrando
+esta noite, mas tudo o que vamos
+aprender aqui pode ser feito em um xu4 em qualquer
+das placas de pinho 64 em um funileiro Isuzu
+placa em um Raspberry Pi este é o lugar onde
+estamos com computadores de placa única nós
+pode apenas você pode usar qualquer coisa, mas estamos
+olhando para ele e dizendo que tudo bem, queremos
+emmc então o que vamos nós que apenas
+exclui Raspberry Pi sim ok porque
+queremos armazenamento confiável por que isso
+importa este dispositivo vai se tornar
+nosso servidor DNS para a nossa rede seja para
+em casa ou para o seu escritório, queremos bloquear
+coisas que não são desejadas dentro do nosso
+rede que é anúncios sim, eu sou
+vai circular de volta para isso porque isso
+vai ter um desempenho de desempenho
+impulsionar em nossa rede também, mas também
+pornografia e coisas assim que as coisas
+que queremos bloquear do nosso escritório
+rede ou você e eu somos pais estamos
+pais de crianças pequenas
+estamos realmente pensando nisso com
+Pausa de março e as crianças estão em casa e
+eles estão nos computadores muito e é
+então é como se fosse algo que nós
+realmente quer proteger nossos filhos de e
+e isso é tão simples como é assim
+mas em uma rede de escritórios em uma casa
+rede estas são todas as coisas boas como
+Bem, então nós vamos fazer isso com estes
+dispositivos, mas precisamos deles para ser ultra
+confiável, porque se alguma vez desce
+nós vamos ter a percepção de que
+nossa internet está bem um servidor DNS
+é o que resolve nomes de domínio DNS direito
+é servidor de nome de domínio assim quando eu digito
+google.com primeiro vai para um servidor DNS
+e diz qual endereço IP devo ser
+encaminhando seu tráfego para e, em seguida, vai
+para o servidor do Google através do IP
+endereço agora, se o meu servidor DNS está inoperante eu sou
+vai digitar google.com e vai
+digamos que eu não sei onde ir página não
+achei certo ok então precisamos que seja
+ultra confiável é por isso que estamos ficando
+longe do Raspberry Pi e em vez disso
+nós estamos indo com o armazenamento emmc então novamente
+Pyne 64 Odroid xu fours qualquer um daqueles
+tipos de placas que suportam o e MMC
+cartão vai ser muito mais confiável
+e, portanto, muito mais adequado para
+algo parecido com o que estamos fazendo aqui
+hoje que é de missão crítica para o meu
+rede eu não quero que as pessoas me chamando
+mas enquanto eu estou no trabalho e dizendo que você
+conhecer minha esposa ou meus filhos dizendo
+Internet está para baixo oh não não é oo
+Raspberry Pi ficou offline ou
+algo parecido ou o cartão SD é
+corrupto e é por isso que você precisa de nems para
+que você saiba que iria me deixar saber de Emma
+Linux comm tudo bem então agora eu sou apenas
+vai pular aqui onde temos
+que xu4 e vamos chegar a isso assim
+Você sabe como funciona um cartão SD Jeff Sim
+obviamente, o cartão SD apenas tipo de plugues
+no lado lá mesmo ao lado do
+HDMI que é uma opção no xu4
+no entanto, como mencionei , queremos usar
+o emmc mas não é acessível neste
+caso então eu realmente deixar os parafusos para fora
+desses casos eu não estou realmente interessado nisso
+porque eu gosto de poder acessar meu
+Emmc então eu realmente apenas tipo de anular
+e então eu tenho acesso oh pelo
+maneira este é o relógio em tempo real que eu
+mencionado no número do episódio 598 que é
+a bateria para o relógio em tempo real, de modo
+aquilo é um
+acessório que você compra por seis dólares e
+que vai manter o seu tempo lá é o
+emmc port Jeff sim que é onde eu estou
+vai ligar minha citação unquote difícil
+dirigir bem assim um emmc que tipo de
+se parece com um cartão SD, mas vai encaixar
+para este leitor USB que eu uso para
+piscar da mesma maneira que eu faço com um SD
+cartão, mas não é um cartão SD tem este
+conector na parte inferior e isso vai
+para conectá-lo diretamente ao Odroid xu4
+ou qualquer outro emmc capaz SBC que
+você está usando e é tão simples quanto isso
+então esse é o disco rígido Wow
+a única outra coisa com o Xu para
+que eu preciso ter certeza é ver o
+mudar aqui isso determina o seu
+dispositivo de inicialização é para que você possa ver que é
+ou SD ou MMC certifique-se de que você
+selecione que, caso contrário, não vai
+arrancar porque não temos um cartão SD em
+e há o slot para cartão SD logo acima
+lá também, então isso é realmente tudo lá
+é fazer isso agora eu devo mencionar
+Eu já pré instalei você me viu
+tirar isso do adaptador USB eu tenho
+já pré-imagem usando etcher nunca
+estender TV Cat5 ponto stretch / nev é um
+download gratuito e que é o debian
+instalar trecho que eu prefiro para o meu
+Dispositivo Odroid ok então vamos trazer isso
+aqui e ligá-lo aqui mesmo em
+a mesa, vamos pular de volta sobre o
+câmera e isso é tudo que existe para isso assim
+Eu tenho Ethernet e poder Jeff que é
+tudo que precisamos
+é isso mesmo sim é isso sim cuz
+hardware já está nele sim eu tenho
+já brilhou então lembre-se que é o
+primeiro passo eu preciso para flash Mavericks
+Imagem Debian então é apenas uma base Debbie
+e instale o Debian Linux um pouco
+dispositivo assim que quem não pode caber
+na sua rede parece certo que tem
+Gigabit Ethernet tem um poder
+adaptador que usa um plug barril faz
+tem USB 3 e tudo mais que você
+esperaria e este em particular
+este é o Odroid Xu 4 Q, que é o
+modelo quieto Q significa calmo e
+esse é o único com o dissipador de calor em vez
+do que um fã que é apenas uma coisa a menos
+falhar sim, eu sou tudo por vamos apenas deixa
+descosindere
+a capacidade de as coisas falharem vamos
+torná-lo realmente assim e estes
+as coisas são fantásticas ok então eu vou
+Primeiro de tudo você precisa determinar o
+Endereço IP agora que foi inicializado
+presumivelmente é inicializado está conectado
+para Ethernet e tudo está iluminado
+certo eu faço isso porque começa
+como DHCP, se você entrar no seu roteador olhar
+no pool de DHCP e você vai ver
+um chamado trecho do Debian e que é
+ok meu Odroid
+porque eu já inicializei com debian
+esticar e isso é o que é
+chamado por lá, então eu vou saltar sobre
+para o meu computador aqui eu tenho que fazer lá
+vamos eu tenho um bom pequeno close-up
+janela e eu me conectei ao meu Odroid
+xu4, então estou em 10,00 ponto
+para a primeira coisa que eu quero fazer é que eu quero
+para datilografar data , vejo que é 13 de março
+e a hora está correta e assim
+me diz que o relógio em tempo real é
+segurando o seu próprio ainda é definido a partir do
+última vez eu inicializei certo e eu não
+tem que redefinir qualquer coisa, mas isso é um
+passo importante você tem que fazer isso primeiro
+verifique se seus dados estão corretos
+porque se é errado você não vai
+para poder instalar qualquer coisa porque
+todos os seus certificados SSL estão indo
+falhar porque a data e a hora são
+vai não coincidir com o SSL
+certificados, então eu vou voltar a esse
+janela aqui tão próximo passo é atualizar apt
+isso vai baixar todo o
+informações do repositório apenas certifique-se
+que tudo está atualizado, certifique-se
+que o seu computador seu xu4 sabe o que
+pacotes estão disponíveis para ele agora apt
+atualização vai atualizar o
+distribuição subjacente meu diz que
+já está atualizado e, em seguida, apt dist
+- A atualização vai garantir que haja alguma
+novo kernel ou qualquer coisa assim é
+vai baixar e instalar isso para
+me se você recebeu um novo kernel e
+coisas assim certifique - se de reiniciar
+Em seguida, basta digitar uma reinicialização porque eu sou
+logado como root
+lembre-se com a imagem Mavericks
+nome de usuário para logar via SSH é root e
+a senha é toda em minúscula .
+que está fora da caixa você pode mudar
+tudo bem então vamos vamos acertar
+para ele assim que esta é esta é apenas uma debian
+esticar ele está correndo 4,1 para
+e eu quero transformar isso em que eles
+chamar uma boca bem novamente é um DNS
+buraco negro para que quando nós pedimos
+google.com vai responder direito
+ao invés do meu servidor DNS ISPs por isso, se se
+Eu estou visitando um site e tem
+algo que eu disse pessoalmente
+Eu sou objeto objetando a isso como um
+anúncio que irá bloquear tudo bem
+mas não por meios tradicionais, mas por
+dizendo que a página não encontrou o anúncio certo não encontrado
+certo então pensar sobre isso por um segundo
+o que isso faz para a sua rede de modo que este
+tem um efeito adverso ok se bloquearmos
+todas as propagandas no nível do DNS
+sempre que eu levanto um site que está em
+pesado e ele vai para o download de todos
+esses anúncios um bloqueador de anúncios tradicional
+ainda baixar todos esses anúncios, mas depois
+vai impedi-los de exibir um correto
+Sistema DNS como este, em vez disso, simplesmente
+dizer anúncio não encontrado que não encontrou nunca
+downloads faz isso funcionar apenas para web
+sites ou isso funciona para anúncios que são
+processado através de sua rede em outro
+dispositivos outros dispositivos em aplicativos se você tiver
+Aplicativos para aplicativos que são pesados ​​em anúncios
+coisas assim vai bloquear os
+porque está bloqueando-os no DNS
+nível certo para que o aplicativo está saindo para
+o para a web e resolvendo sites
+que servem esses anúncios e
+então bloqueia-os antes que eles realmente
+baixar assim que o efeito adverso que esse
+cria é que sua internet é
+perceptivelmente mais rápido porque você será
+espantado com a quantidade de anúncios e rastreamento
+acontecendo na Internet é realmente
+e eu esta é uma espada de dois gumes
+porque somos a receita publicitária suportada
+certo e então o que estou prestes a mostrar- lhe
+é potencialmente cortar nosso anúncio
+receita existe uma maneira de permitir que certos
+correntes de anúncios sim, no entanto, onde é que o
+receita de publicidade vem da categoria cinco dot
+TV você pode whitelist nosso site
+categoria
+A receita do anúncio de TV não é gerada pelo anúncio
+a receita é gerada pela rede de mídia por
+Google Adsense essas coisas que você é
+bloqueando Google Google Adsense não
+TV categoria 5 assim mesmo se você whitelist
+nos você ainda não vai ver anúncios em
+nosso site porque não somos os únicos que
+estão hospedando os anúncios que são verdadeiros
+sim tão quando eu digo uma espada de dois gumes
+considere isso como você como você faz isso
+mudar em sua rede, mas acho que
+você sabe que você sabe esperançosamente
+outras formas de rentabilizar mais patreon
+ai está
+então mantenha isso no fundo da sua mente
+tudo bem, então vamos chegar, vamos para o
+próximo passo, então precisamos realmente instalar
+piehole então primeira coisa que eu quero mostrar
+você esta não é uma etapa que você precisa
+pegue, mas eu quero te mostrar o que isso
+é que eu vou instalar o ponto pi - hol
+dot net vai redirecionar para um
+script de instalação hospedado no github
+Eu nunca preciso ver isso eu só
+queria te mostrar que oh isso isso
+resolve para o instalador para que saibamos
+que instalam o ponto PI - toda a rede leva
+resolver para o direito de arranhão Installer
+com esse conhecimento armado com isso
+conhecimento , podemos agora pegar esse script assim
+vamos fazer isso vamos digitar W get - capital
+o para saída para este nome de arquivo e eu sou
+indo para salvá-lo para cortar barra de temperatura
+chame como quiser, eu vou ligar
+instalar o ponto s H e depois eu vou HTTP
+barra de cólon barra é por isso que nosso encontro
+e o tempo é muito importante porque eu sou
+conectando a um servidor seguro se eu
+não tinha minha data e hora corretas
+vai me dar um erro instalar ponto
+pi - toda net e agora é baixado um
+arquivo chamado / tmp barra de instalação, se eu
+abrir esse arquivo é esse script que nós
+estava apenas olhando no nosso navegador, então eu
+quer criar eu quero fazer isso tão
+é o executivo o CH mod + ex install dot
+sh então agora é executivo tudo o que eu sou no
+pasta temporária, mas você pode digitar / tmp barra
+instalar ponto sh aqui no ponto no
+pasta temporária eu posso apenas digitar barra de ponto
+instalar ponto SH e agora como rota eu sou
+vai correr isso e vai me levar
+através das etapas de instalação da instalação
+para pi buraco neste urso ossos nus
+Debbie e esticar o sistema e eu digo
+ossos nus
+porque você realmente quer que isso seja um
+baunilha pura Debbie e instalar reaiiy
+é a razão para que Jeff é porque
+se você estiver usando como alguém vai
+dizer bem por que não posso instalar isso em
+NEMS ou por que não consigo instalar isso apenas em
+meu computador bem o seu computador ee
+esses tipos de coisas que eles já têm
+Coisas DNS instaladas e rotas DNS definidas
+se você tentar instalá-los você está
+vai estar removendo pacotes que são
+possivelmente crítico para o seu sistema operacional ou outro
+aplicações e você vai ser você é
+Vai ser possivelmente danificando a instalação
+começar com a instalação de baunilha e depois
+nós sabemos o que vai funcionar para o
+O instalador transformará seu dispositivo
+em uma rede de toda a
+bloqueador de anúncios bem o buraco da torta é livre, mas
+alimentado por suas doações visita pi -
+segurar na rede de doar a fim de
+contribuir para este produto em particular
+o buraco da torta é um servidor por isso precisa de um
+endereço IP estático para funcionar corretamente
+tenha isso em mente agora sabemos que nós
+são ponto 144 na minha rede porque era
+dado por DHCP por isso vai
+detectar isso e vai
+configurar automaticamente que tudo bem esta
+é interessante onde você quer chegar
+seu DNS upstream de modo isso significa
+onde será o furo da torta
+Informações de DNS de você quer
+Google onde você quer e por isso
+vem com um monte de opções aqui o
+coisa interessante sobre este Jeff é que eu
+pode escolher open dns bem e com Open
+DNS tem outros filtros que eu posso adicionar
+para o meu DNS para que possa completar o meu
+piehole , a fim de eu odeio usar isso
+termo calar a sua boca lá Robbie por
+selecionando aberto dns eu posso realmente ir para
+DNS aberto e vamos ver dns abertos dot I
+quer dizer org vamos apenas ter certeza de abrir
+Ponto DNS
+org sim, então você pode realmente entrar
+este site é um serviço gratuito e, em seguida,
+você pode fazer coisas como bloquear o jogo
+sites fazendo isso pode realmente
+complementar o dispositivo que estamos
+criá-lo pode ajudar a torná-lo ainda mais
+mais forte, então eu vou de fato escolher Open
+DNS, porque isso será uma prova de falhas para
+mim piehole confia em listas de terceiros
+a fim de bloquear anúncios notar que o
+terminologia com piehole é toda sobre
+anúncios falamos sobre o que podemos também
+bloquear coisas como pornografia estamos
+vai mostrar-lhe como fazer isso usando
+o mesmo sistema, mas fora da caixa é
+estritamente um bloqueador de anúncios certo para você
+não tem que bloquear pornografia, mas
+nós vamos mostrar- lhe como fazer isso em
+sua base só vai bloquear anúncios
+para você apenas como eu já descrevi
+Eu quero me inscrever em todos esses
+listas que é fantástico eu vou bater
+guia e tudo bem entrar nele vamos bloquear
+anúncios em ambos ipv4 e ipv6 etting x ' como um
+endereço estático por isso é realmente vai
+pegar o que o servidor DHCP deu
+10.0.0.0
+definir isso como um endereço estático agora meu
+roteador espero que seja inteligente o suficiente para saber
+que esse endereço já é tomado não
+atribuir outro dispositivo a esse endereço IP
+se este dispositivo foi desligado por qualquer
+dado a qualquer quantidade de tempo porque 144
+é, obviamente, dentro do meu pool DHCP que
+significa que meu roteador pode fornecer esse endereço
+para outro computador assim que você quer fazer
+Certifique-se de que isso é sempre-on ou
+configurar o que é chamado de reserva em
+seu roteador que é a aposta mais segura, mas em
+Neste caso, eu vou dizer sim, vamos usá-lo
+e é realmente dando-lhe esse mesmo
+aviso de ler o aviso bem você
+deseja instalar a interface de administração da web
+em sim eu quero ser capaz de admitir isso
+coisa que você deseja instalar a web
+servidor sim eu quero ser capaz de
+na verdade, chegar à minha interface de administração do
+você deseja registrar consulta sim eu quero
+log eu quero saber o que está acontecendo em
+minha rede você pode não precisar, mas talvez
+você só quer bloquear não logar
+tudo bem também estamos usando um MMC assim
+não temos medo de escrever coisas para o
+mesa direita
+mostrar tudo esconder os domínios
+tudo o que você sabe que você faz oo
+escolha com base em suas necessidades como o do pai
+de jovens nossas necessidades podem ser um pouco
+pouco diferente, queremos saber hey crianças
+o que você está fazendo nesse site certo
+agora você configurou para mostrar tudo assim
+nada está sendo bloqueado não não não não mostra
+tudo nos logs oh este é um
+coisa privacidade é como eu quero
+privacidade dentro dos logs tenha em mente
+este é o meu servidor só eu tenho acesso a
+esta minha esposa tem acesso a isso, se eu você
+sei que vou ligá-la com acesso
+para isso, claro, em uma rede de um
+ambiente de escritório apenas aqueles que estão em
+o departamento de TI tem acesso ao registro
+em que é essa interface web como verboso
+são os logs
+isso vai mostrar como o computador era
+acessando o site porque eu deixei
+como mostra tudo o que está passando
+está instalando PHP eu realmente não tenho
+pensar nisso é apenas fazendo o seu
+coisa que vai e vai hmm e quando
+nós voltamos de um intervalo realmente rápido
+nós vamos ser capazes de realmente levar
+uma olhada nisso nós vamos configurá-lo em
+nosso roteador para que isso se torne nosso único
+Servidor DNS para toda a nossa rede e
+vamos aprender a usar isso para
+bloquear pornografia também é opcional
+mas nós vamos aprender como fazer isso
+por aí
+[Música]
+por um tempo limitado, ponha as mãos
+camisas de edição limitada da categoria
+5 redes de televisão destas camisas de alta qualidade
+são fabricados por teespring um
+site de angariação de fundos e sua compra
+vai ajudar a apoiar os shows que produzimos
+receba o seu hoje e envie-nos o seu
+fotos para ser apresentado no
+show correspondente visite cap 5 dot TV
+Slash camisas para nos apoiar e obter o seu
+camisa de rede oficial hoje cat5 dot TV
+camisas slash
+bem-vindo de volta a todos antes do intervalo
+nós aprendemos a transformar um au droid xu4 ou
+qualquer computador de placa única para esse
+importa em um sistema de bloqueio de anúncios usando
+software chamado pilha poça
+faz sentido sim realmente faz sim
+É inteligente de certa forma sim, é inteligente
+longe
+agora enquanto o comercial estava rolando
+lá que nós tivemos este pop-up oh, é
+feito Oh faça mostrar que diz configurar
+seus dispositivos para usar o furo pie como
+seu servidor DNS usando 10.0.0.0 que é
+meu endereço IP para o dispositivo de furo de pizza
+certo ok então há algo muito
+muito importante nesta tela eu quero você
+para observar o seu servidor DNS do Robbie
+senha bem, eu vou escrever isso
+é uma capital W o número 8 RPC - bem
+isso é fácil 3-3 que é o administrador
+senha de login da página web diz que eu posso
+realmente acessar isso, indo para
+admin agora eu tenho uma pergunta sobre isso
+sim eu sei que é o seu IP de rede doméstica
+mas não está listado como um HTTP é é
+há um problema com isso
+não porque é interno não é acesso
+de fora ok tudo bem
+HTTP significa que é um criptografado
+conexão certa, mas é apenas uma
+interno não é algo como você
+sei que você está no trabalho e você não está
+você não está logando duro pode trabalhar tudo
+certo
+sim ok você poderia usar HTTPS, mas depois
+ele vai ser um assinado auto-
+certificado que então leva a pessoas
+dizendo bem por que estou sendo avisado que
+este não é um certificado confiável sim
+que tipo de auto-assinado, então mantenha isso
+interna você não quer seu servidor DNS
+fora a menos que você quisesse compartilhá-lo
+mas você não precisa do administrador
+interface na porta 80 que é verdadeira porta 80
+é a interface do administrador não
+abrir isso até a web, mas você poderia
+compartilhar seu servidor DNS de configurações de DNS
+configurações com membros semelhantes da família permitem
+-los a usar o seu DNS
+Endereço IP que não é para isso
+discussão que poderia ser feito, mas não
+não há preocupação há Jeff
+por isso é feito, diz a sua instalação
+completa ver no vermelho no topo lá
+então vamos diminuir um pouco e vamos
+realmente visitar esse endereço IP assim
+10.0.0.0 que está aqui cerca de 144 barra
+admin aqui estamos Jeff estamos em vamos
+login tudo bem, ele está me pedindo meu
+senha incrível que é w8 RPC 2-3
+lembre-se de mim por 7 dias por favor, eu não
+tem que responder isso a cada momento
+tudo bem que estou em para que possamos ver que isso
+está instalado e funcionando , estamos prontos para ir
+nós não precisamos memorizar lá vamos nós
+bom podemos ver gráficos , podemos ver o que
+é permitido o que está sendo bloqueado e
+todo o resto
+nada está sendo bloqueado, mas
+existem 112 mil trezentos e
+881 sites que estão atualmente no
+Bloquear lista que significa que esses anúncios
+será bloqueado certo então vamos para e
+isso é um número baixo, embora seja bonito
+enorme quando você considera como estes são
+os servidores de anúncios que eu teria pensado
+teria havido mais embora
+é como se você pudesse bloquear o Google
+Adwords e você basicamente acabou de cortar
+90% dos anúncios de todos os
+internet isso é verdade realmente
+realisticamente direito da mídia da Microsoft
+net é outro então aqueles são todos parte
+de que vamos vamos para algo como
+speedtest.net Eu quero que você veja isso
+aqui está um ótimo site que é um bom
+exemplo de um site que ver quanto tempo que
+levou para carregar o direito de olhar para todos os anúncios
+certo modo que é um site que tem um monte de
+anúncios, mas é um serviço que todos nós gostamos
+para freqüentar bem, mas por que não conseguiu
+bloqueado eu tenho uma pilha tudo pronto fez
+você não o ativa bem, não é ativo
+está correndo e você pode
+ver na tela se olharmos para o
+parte superior direita superior esquerda aqui ativa direita oh
+é isso porque você não definiu o seu
+roteador para fazer o seu DI não definiu
+Então, na minha máquina Windows aqui eu posso
+realmente entrar no meu terminal CMD em
+Linux indo para o seu terminal e digite IP
+espaço um no Windows é barra de configuração IP
+todos e eu recebo todos os meus endereços IP aqui
+e se eu encontrar meu pescoço , posso ver que o
+Servidores DNS que estou usando são google
+8.8.8.8 8.8.4.4 esses são DNS do Google
+servidores para que eles estejam completamente é
+evitando completamente minha boca completamente
+OK
+nem sequer sabe que isso existe como
+um servidor DNS ok então vamos fazer
+essa mudança eu vou realmente trazer
+meu roteador porque eu faria isso porque
+esse é o seu roteador e tudo vai
+pois tudo passa por um Jeff
+você gostaria de ir a todos os
+computador e alterar as configurações de DNS ou
+ou para todos os telefones ou tablets que
+já conecte vários internet conectado
+dispositivos em casa e sempre para ir como o
+as crianças trazem amigos em casa e conectam o seu
+Wi-Fi qualquer direito, mas assim, definindo
+no roteador este é o ponto final
+que vai para a internet assim
+qualquer coisa e aqui está a outra coisa
+é o que serve o seu DHCP seu IP
+endereço e suas informações de DNS para todos
+de seus computadores assim, alterando -o em
+o roteador assim que o dispositivo
+conecta-se recebe as informações de DNS
+a partir do roteador então vamos configurá-lo no
+roteador de modo que é para todos os nossos
+rede sim, então para mim é dd-wrt para
+você pode ser diferente isso depende
+qual dispositivo você está usando ee é
+Vai ser diferente para cada dispositivo, mas
+aqui na minha tela de configuração eu estou tentando
+obter isso centrado para vocês lá nós
+vai
+Vejo DNS estático e o que é o Google
+8.8.8.8 então eu vou mudar isso
+10.0.0.0 e se livrar do meu secundário assim
+Eu preciso definir isso para 0.0.0.0 e
+permite terciária, bem eu só quero o
+1
+Servidor DNS agora todo o DNS é
+vai passar por um ponto quatro quatro
+Ok, eu vou salvar esse registro para o meu
+roteador aqui vamos nós
+agora é importante saber que meu
+computador já está conectado é
+já tem o seu endereço IP por isso já
+sabe seus registros de DNS que vai demorar
+algum tempo para que a descarga seja
+levar algum tempo para ler ler o
+novas informações para que você possa reiniciar todos
+o seu computador reinicia todos os seus dispositivos
+e provavelmente virá bem, mas alguns
+deles esconder as coisas direito assim que este
+mudança não é instantânea no
+rede inteira sem isso é algo que
+ok agora está definido agora tudo aqui
+frente vai estar se conectando
+através deste dispositivo vai ser
+usando-o para o seu DNS, vamos ver se consigo
+simplesmente não sei se posso talvez
+Posso apenas reiniciar minha rede
+conectividade eu vou desligar meu Wi-Fi
+e ligá-lo novamente, o que vai
+para se reconectar ao DHCP ver que no
+lá em baixo e vamos esperar que isso seja
+tudo o que é preciso
+lá vamos nós vamos entrar em ipconfig CMD
+/ tudo ok o que é meu servidor DNS ainda é
+Google C então meu meu computador ainda
+ainda sabe que ok barra de configuração IP
+flush DNS vamos tentar agora agora temos um
+pergunta na sala de chat mo maravilla
+e ele está se perguntando se você tem o seu
+como o DNS do Google como seu segundo DNS
+servidor que sem o Pinal nunca vai
+para baixo não ok seu seu piehole já
+sabe sair para abrir o DNS no nosso caso
+ou Google, se é isso que você disse se
+seu piehole desce é melhor apenas
+tem que descer se você tem secundário
+e DNS terciário definido no seu roteador, em seguida,
+ele só vai escolher seus computadores seus
+dispositivos vai escolher um desses três
+oh, então não é como uma coisa sequencial
+não ok não é que vai ser tão
+tráfego como fluindo vai ser
+agarrando as configurações de DNS de onde quer que seja
+um minuto algo será bloqueado o
+próximo minuto não será bloqueado ok, então
+queremos evitar esse cenário
+completamente
+vamos ver se eu sou capaz de obter DNS ainda estou
+ainda não vendo a atualização do DNS aqui
+-lo por causa do show eu vou
+configurar manualmente o meu DNS, mas manter em
+mente isso não é um requisito porque
+Eu configurei no meu roteador meu DHCP
+vai começar a servir isso para mim em
+algum tempo eu não quero entrar em como
+para limpar o DNS em todos os sistemas, porque
+é isso pode ser muito complicado, pode
+ser um pouco difícil em alguns dispositivos assim
+vamos evitar isso completamente, então eu sou
+vai desbotar para preto e você voltar
+então novamente eu não queria mostrar-lhe o
+processo de fazer isso porque isso não é
+um dos passos que precisamos fazer para
+pelo bem do show que eu queria
+agilizar as coisas, empurrando as coisas ao longo
+Marsh homem na sala de chat estava mencionando
+talvez precisemos reiniciar nosso roteador
+isso é outra coisa que poderia tipo de
+agilizar as coisas, porque talvez seja ainda
+servindo valores do DHCP anterior
+configurações certas, mas sabemos que, como dispositivos
+começar a ligar agora porque eu tenho
+removeu essas configurações antigas de DNS e
+substituí-lo com minhas novas configurações de DNS
+vai começar a distribuir isso
+outra nota que eu gosto de usar mikrotik no
+casa
+e em muitos dos meus muitos dos meus
+redes mikrotik são ótimos roteadores, mas
+Eu realmente tive que mudar um cenário que
+Tomei nota no cliente DHCP
+configurações você realmente tem que desligar
+usar o peer DNS porque vai fazer apenas
+o que estávamos falando sobre isso
+complemente sua configuração de DNS com o padrão
+opções de seu ISP então ele vai
+às vezes bloquear anúncios e às vezes não
+bloquear anúncios é sim então vamos vamos obter um
+verdadeira olhada rápida no nosso computador aqui, então
+Eu tenho minhas configurações agora estão definidas eu tenho
+definir manualmente, mas você não
+necessariamente tem que fazer isso somos apenas
+acelerando as coisas vamos voltar para
+speedtest.net e é feito o carregamento
+olhe, mas espere um minuto, onde está a palavra
+os anúncios, mas você percebeu o quanto
+mais rápido a web estava lá era como
+instante em que acabou o serviço
+ainda funciona apenas os anúncios se foram isso é
+ótimo sim, então isso é
+fantástico você sabe que funciona eu sou eu sou
+ficando página inteira, sim, sim agora temos
+uma pergunta na sala de bate - papo e eu não
+sabe algo que você sabe a resposta para
+é de você você ghurabaa desculpe eu disse
+que errado
+oi é possível criar alguns grupos
+Por exemplo, alguns usuários verão os anúncios
+e outros ou não é possível com
+este software que eu não sei o
+responder a tudo bem tudo bem embora desculpe
+algo pode ser para entrar na torta -
+fóruns net buraco em sua comunidade e
+pergunte a esses tipos de coisas
+Eu não cavei tão fundo nisso ainda bem
+justo o suficiente para tudo bem você tem que
+longe no buraco sim exatamente tão
+vamos dar uma olhada na interface aqui
+vamos voltar para a nossa torta - toda
+interface e podemos ver já é
+bloqueado 65 Uau que é rápido nós
+trouxe um site e houve
+apenas quatro assim ou pensei assim pensamos
+mas o que realmente bloquear como nós
+pode realmente olhar para isso agora bloqueou
+isso quem sabe nos garantir dot eu sou
+em todo o mundo comm z b clique duplo ZD net
+isso é o Google Google Analytics assim
+me rastreando serviços de anúncios para o anúncio do Google
+serviços para pesquisa de scorecard do Google
+com
+clique duas vezes net more ads Tag do Google
+serviços do Gerenciador de tags do Google para todos estes
+as coisas estão sendo bloqueadas apenas a partir disso
+um atingiu 65 blocos apenas no teste de velocidade I
+sinto que eu só naquele site que eu sinto
+como nós deveríamos estar carregando você sabe como
+um daqueles Facebook oh sim você poderia
+como fazer o experimento fazer o experimento
+em casa, faça o experimento em casa e
+veja como isso funciona para você
+de modo que em sua isto é completo este é
+feito mm-hmm este é agora o bloqueio de anúncios para
+toda a nossa rede, porque toda vez que eu
+ir a um site ou esse site tenta
+para carregar ativos que está passando pelo meu DNS
+e bloqueando as coisas antes que elas
+baixado por isso é mais rápido que está salvando
+largura de banda vai tornar as coisas muito
+melhor que seja
+então agora o próximo passo como prometemos foi
+como podemos agora tomar o dispositivo de furo de pizza
+e usá-lo para proteger nossa família ou
+talvez nossa rede corporativa de coisas
+isso é ilícito que não os queremos
+estar acessando direito, então estamos usando o
+exemplo de pornografia pode ser
+coisas como downloads ilegais pode
+seja outro você sabe o que mais agora
+nós também usamos o Open DNS como o nosso como o nosso
+fonte real para o DNS para que pudéssemos então
+faça o login neles e mude como mencionei
+coisas como podemos desligar o jogo
+sites podemos desligar mídia social nós
+pode ficar realmente para baixo para o nitty gritty
+mas aqui com o nosso dispositivo interno estamos
+vai bloquear pornografia simplesmente
+adicionando à lista disponível por isso, se eu for
+em configurações que você vai ver bloco
+listas aqui e minhas listas de bloqueio agora
+fora da caixa tudo tem a ver com anúncio
+bloqueando tudo bem, mas vamos pegar um que
+bloqueia tudo bem se a lista de bloqueio não
+nada é apenas uma lista de
+sites pornográficos e, em seguida, nosso
+Piehole vai olhar para essa lista
+cada vez que acontece alguma coisa na nossa web
+porque disse que o nosso servidor DNS e é
+vai bloquear tudo o que está naquele
+listar direito então tudo o que é considerado
+ser a cair nessa categoria, então eu sou
+vai pegar isso do github, então eu vou
+de cabeça para baixo para github calma e barra
+Chad Mae campo oh eu já tenho isso
+Eu acho que já estive lá na minha
+laptop que é ótimo e você tem
+que Chad Mayfield cortar meu - piehole -
+lista de bloqueio e os links como sempre será
+estar abaixo por isso, se você está assistindo isso
+on-line, certifique-se de verificar o
+descrição abaixo e você será capaz de
+pegue os links diretamente então aqui estamos
+só vou entrar em sua pasta chamada
+listas existem duas listas aqui Jeff ok
+lista de bloco de torta pornô todas as listas sim torta
+listas de bloqueio porn top 1 milhão de listas de modo
+pop um mil não 1 milhão por isso não é
+o topo não é 1 milhão de sites
+certo que o que ele fez é que ele é
+Alexa resultados não Alexa
+desculpe, eu não queria desencadear seu seu
+dispositivos oh não , não é essa a palavra que eu era
+procurando
+mas fez o que eles chamam é
+sim, tudo bem por que eles nomeiam naquele
+Eu não tenho idéia Eu sei que veio primeiro assim
+é não vou dizer a palavra novamente
+mas a palavra que acabou de desencadear todos
+seus dispositivos domésticos inteligentes que é um
+sistema de classificação na internet tem sido
+em torno desde os dias AltaVista e é
+de fato chamado que então o que ele fez é
+ele comparou a lista de todas as pornografias conhecidas
+sites para o topo 1 milhão de sites
+no mundo tudo bem e disse tudo bem bem se
+não está no topo 1 milhão é
+provavelmente nunca vai aparecer
+acidental clicando na internet
+então vamos apenas ir com o um top 1
+milhões pode ser 10.000 sites, mas
+vai ser como os melhores que
+ele irá bloquear como é o mais provável
+você não tem que bloquear tudo porque
+isso é provavelmente um exagero e
+Certamente, se você está fazendo isso em um
+Raspberry Pi, que vai ser um
+acerto de desempenho em seu servidor DNS em um
+xu4 em um rock pro 64 você provavelmente não é
+vai sentir isso especialmente se você estiver usando
+emmc mas sugeriria que você começasse
+com a lista de 1 milhão vai
+ele vai te dar o melhor estrondo
+para o fanfarrão agora eu não quero clicar
+sobre isso e tem uma lista de sites ruins
+subir na sua tela, então eu só vou
+Eu só vou clicar no primeiro
+opção e então eu vou clicar em
+raw pode i zoom e aqui teria que ser
+Ok, talvez sim bem, eu posso assim no github
+Bem, vamos apenas fazer , vamos vamos zoom
+saída é um assunto sensível lá
+nós vamos
+oh eu posso fazer isso oh, mas agora está tudo bem
+sim tudo bem então eu cliquei na lista
+e agora no lado direito oh lá
+está tudo bem, eu vou clicar em ok bruto
+tudo bem tudo bem agora pegar esse
+URL ok e depois colá-lo de volta aqui
+em listas de bloqueio nas configurações agora salve
+agora como isso foi adicionado sim aviso I
+empurrar salvar e não
+uma atualização que eu queria apenas mostrar-lhe que
+ele vai começar acrescentou que está bem assim
+normalmente você iria acertar salvar e atualizar
+agora, neste caso, vou atualizá-lo
+eu mesmo assim eu vou atualizar ferramentas
+gravidade e gravidade sendo a lista de
+bloquear domínios agora porque agora
+nada está sendo adicionado até que eu atualize
+gravidade, então eu clico nesse botão e
+passa por essa lista e cria
+todas as entradas para o servidor DNS
+e agora, se alguém na minha rede usando
+o furo da torta como meu servidor DNS tenta
+acessar qualquer um desses sites que estão em
+essa lista vai bloqueá-los excelente
+ele simplesmente para apenas a página não encontrada
+problema bem resolvido
+aperfeiçoar quaisquer outras coisas que pudéssemos
+usar buraco de torta para oh man
+você mencionou como jogos e sim ok então
+é que eu quero dizer que eu não sei isso vai fazer
+tempos específicos de bloqueio de coisas ou é
+isso o tempo todo como a razão pela qual eu
+perguntou é como nós homeschool nosso mais antigo
+e então tem havido muito dele
+programas educacionais estão online sim, então
+nós não queremos bloquear esses sites
+e nós não queremos bloquear sua habilidade
+para pesquisar, mas eu queria bloquear
+especialmente eu ouço onde você está indo
+com isso, você quer bloquear a educação
+durante depois de horas sem jogo assim durante
+horário escolar
+bem o inverso do que eu estava pensando
+mas como ele usa muito ponto IO
+sites bem e joga muito daqueles
+temporizadores de jogos não está bem no entanto, como você viu
+aqui Jeff nas minhas listas, se eu entrar em bloco
+lista eu posso desativar que salvar e atualizar
+ok, então eu posso realmente desligar uma lista
+à vontade tudo bem certo para criar uma lista
+crie uma lista de sites que você não
+quer que seu filho vai durante certo
+horas e permitir que a lista em certa
+momentos do dia e depois salvar uma atualização
+e você será bom para ir agora, se é
+apenas um par de sites que você
+quer ser capaz de fazer clique na lista negra
+e vamos Vamos fazer isso vamos o que é
+um slither dot IO sim certo e depois
+vamos adicionar isso
+então agora escorregadio o é bloqueado aparentemente
+vamos descobrir se realmente é
+então eu vou entrar no meu comando de terminal
+solicitar aqui no Windows e chegar perto
+para você agora vamos fazer uma pesquisa DNS
+slither dot IO e, em seguida, o que eu sou apenas
+vou colocar a nota 144
+esse é o endereço IP do meu servidor certo
+nslookup me perdoar não lookup DNS eu sou
+pensando DNS e é lookup o que faz
+resolver para o endereço IP é 0.0.0.0
+não página não encontrada se eu tentar ir
+lá no meu navegador slither dot IO este
+site não pode ser alcançado o que o
+excelente ok então agora se eu remover
+que agora vamos voltar oh desculpe, eu só
+aperte o botão delete ao lado dele eu
+peço desculpas eu tinha a tela errada , então eu
+tinha aqui bem agora então agora é
+como era agora eu vou apagar isso
+bem agora voltar ao meu prompt de comando
+e vamos rodar o mesmo comando nslookup
+slither dot IO e observe que está resolvendo
+um endereço IP agora eu vou mover esse
+na sua tela para que você possa ver tudo bem
+então agora estamos realmente recebendo um IP
+endereço então agora se eu for lá na minha
+navegador vem bem ver o quão rápido
+que foi sim flutuante flutuante bloqueado
+todos os anúncios bem, então você pode você pode fazer
+listas de bloqueio, como que você pode adicionar coisas
+para bloquear lista ou criar sua própria lista
+colocá- lo no github e, em seguida, como link para
+ou colocá- lo em um servidor local e link
+para que assim você pode absolutamente fazer
+essas coisas não será este trabalho para
+coisas como jogos que tem que
+acesso à internet assim, por exemplo
+dizer como World of Warcraft bem se você
+sabia onde World of Warcraft você poderia
+bloquear o servidor que está a ligar a
+sim sim tudo bem tudo bem sim a menos que
+usa um endereço IP porque lembre-se disso
+é DNA que é o nome de domínio certo
+resolução que a maioria das coisas no
+internet na World Wide Web usar DNS
+certo bem ok então realmente o céu é o
+limite é realmente sim quero dizer ser criativo
+com ele procure listas que são para você
+sabe as coisas que você quer
+para ser capaz de fazer, mas realmente vem
+até ok então aprendemos um pouco
+sobre como proteger nossos filhos de
+coisas ilícitas na internet coisas
+que você sabe que acaba de chegar por
+acidente às vezes - como às vezes
+estamos fazendo downloads e tudo de um
+de repente há um anúncio que é realmente
+ofensivo eee as crianças têm mesmo
+trouxe a minha atenção às vezes
+onde há um anúncio que é realmente gentil
+de obsceno
+pode não ser pornografia, mas é
+algo que está ofendendo a eles e
+que eu realmente como um pai não quer que eles
+ter - sim, eu só não quero que eles
+lidar com esse direito você sabe o que eu sou
+dizendo isso, então eu sou capaz de bloquear os
+coisas ee isso é uma coisa boa e
+tornar minha internet mais rápida e usar menos
+largura de banda exatamente e reduzir a quantidade
+de rastreamento que está acontecendo comigo agora
+isso não vai parar de dizer como anúncios integrados em
+digamos como um feed do YouTube ou algo assim
+isso é apenas anúncios em uma página da web
+sim bem coisas oh não vai jogar o
+anúncios em vídeo, então o que quero dizer como você é tão
+você conhece os anúncios que são todos
+em torno dele certo sim oh sim isso
+não é um 100% todos os anúncios foram para sempre tipo
+de coisa isso é isso está bloqueando tudo
+o principal tipo de anúncios que você vê tudo
+em torno da web que você gosta, vimos em velocidade
+teste lá certo apenas como um bom exemplo
+tudo bem agora e isso é apenas a entrada
+isso não é certo para sair como dizem
+por exemplo, você vai para a Amazônia e você está
+procurando por você sabe capacitores de fluxo
+próxima coisa que você conhece todos os seus anúncios
+tem capacitores de fluxo da Amazônia este
+apenas bloqueia os dados de entrada não
+anúncio de saída não tem ideia do que você está falando
+sobre se eles estão em anúncios, se eles estão em
+um dos servidores add bloqueados é
+bloqueado
+Não, eu sim II significava como os dados que você está
+enviando para os fins de como
+específico um anúncio específico que segmenta este
+não bloqueia essa informação de
+saindo para o serviço que apenas bloqueia
+o que está chegando em você sim novamente
+todo o mundo
+Eu acho que você está supercomplicando DNS não eu
+entender que eu só do
+capacidades do software eu sou apenas
+tentando salientar que é apenas entrada
+não é de saída este é um servidor DNS
+então toda vez que meu computador ou qualquer dispositivo
+na minha rede tenta acessar
+tal e tal calma
+assim anúncios da Amazon com tudo o que ele irá bloquear
+isso não acontece assim se algum site é
+me rastreando ou servindo publicidade
+e está em um da lista que eu sou
+subscrito será simplesmente parado
+não há transação lá porque
+nunca downloads nunca sai fora de
+minha rede por isso, se o que você está pedindo é
+quando vou a um site e esse anúncio
+normalmente iria me rastrear apenas
+a partir do pedido então sim adicionar algo
+dot-com barra de computador de Robbie diz
+que hey eu estou realmente acessando isso de
+Computador de Robbie porque é compartilhado
+essa informação durante esse pedido
+bem o pedido nunca aconteceu porque
+ele parou no nível de DNS
+antes que ele nunca deixou minha rede que
+parado
+é por isso que a internet parece mais rápida
+com isso versus o anúncio tradicional
+bloqueador do bloqueador de anúncios tradicional
+vai baixar os anúncios, mas depois não vai
+exibi-los isso não irá baixá- los
+não vai mesmo permitir que essa transação
+acontecerá bem, porque se acontece em
+o nível de DNS faz ups Espero que
+ajuda sim sim tudo bem legal verificar
+mais em dotnet torta - buraco e de
+Claro que você pode obter todos os links para
+tudo o que nós mencionamos ali
+abaixo
+[Aplausos]
+[Música]
