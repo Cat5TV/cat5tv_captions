@@ -8,7 +8,7 @@ Our very own Robbie Ferguson has written a piece of software that uses speech-to
 ## File Descriptions
 - captions.en.vtt - The English transcription of the episode, including timecodes for use as closed captions.
 - transcript.en.txt - The English transcription of the episode, including only the text itself.
-- All other files - Many auto-translations of the English text passed through Google Translate's API.
+- All other files - Many auto-translations of the English text passed through Google Translate's API. Excellent for assisting viewers when English is not their first language.
 
 ## Help us improve the accuracy
 
