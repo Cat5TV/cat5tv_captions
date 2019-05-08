@@ -5,6 +5,11 @@ Community-enhanced automated closed captions for Category5 TV Network shows
 
 Our very own Robbie Ferguson has written a piece of software that uses speech-to-text and machine learning to convert all Category5 TV Network shows to WebVTT Subtitles, and then translates them into a number of languages and pushes them to this repository on GitHub. This process is 100% automated and as such has less-than-perfect accuracy, though is quite usable. As new episodes are released for any show on the Category5 TV Network, the AI automatically converts them to text subtitles, usually within a few days of the video being released.
 
+## File Descriptions
+- captions.en.vtt - The English transcription of the episode, including timecodes for use as closed captions.
+- transcript.en.txt - The English transcription of the episode, including only the text itself.
+- All other files - Many auto-translations of the English text passed through Google Translate's API.
+
 ## Help us improve the accuracy
 
 This is your chance to help hearing impaired individuals enjoy Category5 TV Network shows!
