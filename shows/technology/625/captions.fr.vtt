@@ -1,0 +1,5467 @@
+WEBVTT
+Kind: captions
+Language: fr
+
+00:00:00.030 --> 00:00:06.210
+ bienvenue à la télévision de catégorie cinq technologie 
+
+00:00:02.700 --> 00:00:07.319
+ la finale de la saison 12 cette semaine, nous sommes 
+
+00:00:06.210 --> 00:00:10.230
+ va regarder le Raspberry Pi 
+
+00:00:07.319 --> 00:00:12.540
+ 4 mais spécifiquement les thermiques les 
+
+00:00:10.230 --> 00:00:14.400
+ les températures de l'étranglement et nous sommes 
+
+00:00:12.540 --> 00:00:16.949
+ va apprendre sur un cas pour le 
+
+00:00:14.400 --> 00:00:19.890
+ Raspberry Pi 4 qui est censé aller 
+
+00:00:16.949 --> 00:00:21.570
+ pour faire baisser ces températures pour nous 
+
+00:00:19.890 --> 00:00:22.830
+ on va découvrir si c'est vraiment 
+
+00:00:21.570 --> 00:00:31.740
+ vaut de l'argent supplémentaire 
+
+00:00:22.830 --> 00:00:33.660
+ restez autour de nos enregistrements live 
+
+00:00:31.740 --> 00:00:36.090
+ confiance uniquement aux disques à semi-conducteurs par 
+
+00:00:33.660 --> 00:00:37.440
+ La technologie Kingston ravive votre ordinateur 
+
+00:00:36.090 --> 00:00:39.360
+ avec une performance améliorée et 
+
+00:00:37.440 --> 00:00:42.690
+ fiabilité par rapport aux disques durs traditionnels 
+
+00:00:39.360 --> 00:00:44.340
+ avec les programmes de télévision SSD Kingston de catégorie 5 
+
+00:00:42.690 --> 00:00:46.559
+ vivre avec bonjour coulé fil métallique et 
+
+00:00:44.340 --> 00:00:49.350
+ streamer agile syntoniser chaque semaine sur 
+
+00:00:46.559 --> 00:00:51.120
+ roku Kodi Plex et autre vidéo HLS 
+
+00:00:49.350 --> 00:00:54.239
+ les joueurs pour les heures locales montrent visite 
+
+00:00:51.120 --> 00:00:56.190
+ catégorie 5 TV catégorie 5 TV est un membre 
+
+00:00:54.239 --> 00:01:00.390
+ du réseau de podcast tech si c'est tech 
+
+00:00:56.190 --> 00:01:02.039
+ il est ici chat 5 DV / TPN et le 
+
+00:01:00.390 --> 00:01:06.270
+ association internationale d'internet 
+
+00:01:02.039 --> 00:01:07.860
+ diffuseurs cat 5 TV / i 8i soyez les bienvenus 
+
+00:01:06.270 --> 00:01:12.780
+ pour le spectacle tout le monde c'est épisode 
+
+00:01:07.860 --> 00:01:15.830
+ numéro 625 ça veut dire quoi ça veut dire 
+
+00:01:12.780 --> 00:01:21.119
+ Je sais où tu vas avec ce jab 
+
+00:01:15.830 --> 00:01:25.830
+ c'est 12 saisons saisons de catégorie 5 
+
+00:01:21.119 --> 00:01:27.119
+ technologie TV, je suis mort bien oui à la fin 
+
+00:01:25.830 --> 00:01:31.130
+ de cela donc rester pour la prochaine 
+
+00:01:27.119 --> 00:01:35.700
+ heure parce qu'alors nous pourrons dire 
+
+00:01:31.130 --> 00:01:37.710
+ saison 12 saisons vous saisons jamais euh je 
+
+00:01:35.700 --> 00:01:40.049
+ ne m'y attendais pas mais je ne savais pas 
+
+00:01:37.710 --> 00:01:41.939
+ ce que je devenais dans c'est à coup sûr 
+
+00:01:40.049 --> 00:01:44.610
+ Je veux dire ici nous sommes dans notre studio 
+
+00:01:41.939 --> 00:01:46.710
+ avec des gens formidables autour de moi et un grand 
+
+00:01:44.610 --> 00:01:49.049
+ téléspectateurs et spectateurs merveilleux dans le 
+
+00:01:46.710 --> 00:01:52.950
+ communauté et nous sommes tous ici 
+
+00:01:49.049 --> 00:01:54.960
+ semaine, je suis on va remémorer douze 
+
+00:01:52.950 --> 00:01:57.439
+ saisons plus tard, nous parlerons un peu 
+
+00:01:54.960 --> 00:02:00.360
+ peu plus tard d'accord, il est si cette semaine 
+
+00:01:57.439 --> 00:02:03.810
+ nous allons regarder la framboise 
+
+00:02:00.360 --> 00:02:06.000
+ Pi 4 et plus précisément un peu 
+
+00:02:03.810 --> 00:02:10.500
+ les aspects thermiques du Raspberry Pi 
+
+00:02:06.000 --> 00:02:12.630
+ 4 il commence à faire chaud ici la framboise 
+
+00:02:10.500 --> 00:02:16.480
+ Pi a fonctionné 
+
+00:02:12.630 --> 00:02:18.910
+ c'est comme ouais, donc il fait 83 degrés ici 
+
+00:02:16.480 --> 00:02:21.490
+ dans les studios ont affaire à ça alors ouais je 
+
+00:02:18.910 --> 00:02:23.530
+ sais que je ne fais pas bien avec la chaleur que 
+
+00:02:21.490 --> 00:02:25.780
+ chose qu'il est probablement bon que notre 
+
+00:02:23.530 --> 00:02:28.720
+ la climatisation a été cassée pour la 
+
+00:02:25.780 --> 00:02:35.770
+ deux dernières semaines parce que c'est un 
+
+00:02:28.720 --> 00:02:38.020
+ test thermique du Raspberry Pi mais il 
+
+00:02:35.770 --> 00:02:41.140
+ fonctionne bien pour nous dans ce cas particulier 
+
+00:02:38.020 --> 00:02:45.190
+ par exemple oui le Raspberry Pi 4 est connu 
+
+00:02:41.140 --> 00:02:48.760
+ être un petit morceau de kit chaud nous allons 
+
+00:02:45.190 --> 00:02:51.850
+ il suffit de dire qu'il fait chaud et quand il 
+
+00:02:48.760 --> 00:02:54.340
+ est-ce que chaque rumeur dit-il étrangle 
+
+00:02:51.850 --> 00:02:56.620
+ lui-même oui alors bon si elle semble jolie 
+
+00:02:54.340 --> 00:02:58.450
+ vite et puis il fait chaud ça va 
+
+00:02:56.620 --> 00:03:01.890
+ étrangler et courir un peu 
+
+00:02:58.450 --> 00:03:01.890
+ peu plus lent 
+
+00:03:03.730 --> 00:03:09.940
+ collez-le au congélateur et faites passer les câbles 
+
+00:03:06.190 --> 00:03:17.800
+ et ça va courir 1,5 gigahertz pas 
+
+00:03:09.940 --> 00:03:20.200
+ ne faites pas que pas de condensation le bon 
+
+00:03:17.800 --> 00:03:22.630
+ chose à faire est d'ajouter un radiateur qui est 
+
+00:03:20.200 --> 00:03:24.940
+ ce que tout le monde est oh ouais j'avais un 
+
+00:03:22.630 --> 00:03:26.890
+ dissipateur thermique à votre Raspberry Pi 4 qui est 
+
+00:03:24.940 --> 00:03:28.510
+ la bonne chose à faire, nous n'avons pas 
+
+00:03:26.890 --> 00:03:31.810
+ fait que ce soir, nous examinons la 
+
+00:03:28.510 --> 00:03:33.310
+ Raspberry Pi pour 4 gigaoctets oh c'est un 
+
+00:03:31.810 --> 00:03:34.510
+ beaucoup oh mon Dieu, c'est un peu 
+
+00:03:33.310 --> 00:03:36.600
+ de la fumée verte là-bas pouvez-vous les gars 
+
+00:03:34.510 --> 00:03:39.370
+ sentir ça 
+
+00:03:36.600 --> 00:03:42.730
+ vous venez de casser un œuf et les frites 
+
+00:03:39.370 --> 00:03:45.040
+ sur le Raspberry Pi pour moi 
+
+00:03:42.730 --> 00:03:47.380
+ effectivement mis ma main sur cette affaire 
+
+00:03:45.040 --> 00:03:50.020
+ là-bas juste avant le spectacle et je 
+
+00:03:47.380 --> 00:03:51.670
+ pourrait sentir la chaleur qui en sort, je 
+
+00:03:50.020 --> 00:03:54.310
+ pouvait sentir qu'il faisait un peu chaud 
+
+00:03:51.670 --> 00:03:56.560
+ pas assez chaud pour faire fondre le plastique 
+
+00:03:54.310 --> 00:04:00.130
+ va mais il se fait un peu 
+
+00:03:56.560 --> 00:04:02.800
+ peu chaud donc nous aimerions voir si 
+
+00:04:00.130 --> 00:04:07.989
+ nous sommes en mesure de chauffer ce Raspberry Pi 
+
+00:04:02.800 --> 00:04:10.150
+ 4 en exécutant simplement un test de stress et 
+
+00:04:07.989 --> 00:04:13.690
+ ce que ça va faire est que ça va 
+
+00:04:10.150 --> 00:04:15.610
+ exécuter le CPU aussi fort que possible 
+
+00:04:13.690 --> 00:04:17.680
+ peut-être l'exécuter, nous allons essentiellement 
+
+00:04:15.610 --> 00:04:20.410
+ mettre cette chose à genoux 
+
+00:04:17.680 --> 00:04:22.660
+ voir si nous pouvons l'obtenir pour faire chaud et voir 
+
+00:04:20.410 --> 00:04:25.419
+ si nous pouvons l'obtenir à étrangler c'est la 
+
+00:04:22.660 --> 00:04:26.860
+ chose parce que nous avons entendu si vous savez 
+
+00:04:25.419 --> 00:04:28.840
+ la rumeur a si vous avez été à la recherche 
+
+00:04:26.860 --> 00:04:30.759
+ le Raspberry Pi pour peut-être un 
+
+00:04:28.840 --> 00:04:33.789
+ remplacement de bureau ou même tout simplement 
+
+00:04:30.759 --> 00:04:35.650
+ quelque chose à avoir sur le bureau en tant que 
+
+00:04:33.789 --> 00:04:38.470
+ ordinateur peut-être un décodeur, ce serait 
+
+00:04:35.650 --> 00:04:42.150
+ idéal pour qu'il dispose de deux HDMI 4k 
+
+00:04:38.470 --> 00:04:44.620
+ sorties afin que vous puissiez brancher à la télévision 
+
+00:04:42.150 --> 00:04:45.940
+ théoriquement c'est l'idée que je veux dire 
+
+00:04:44.620 --> 00:04:48.070
+ c'est une petite bête puissante 
+
+00:04:45.940 --> 00:04:51.729
+ sauf qu'alors ça va faire chaud si 
+
+00:04:48.070 --> 00:04:55.060
+ il fait chaud fait-il étrangler lui-même 
+
+00:04:51.729 --> 00:04:57.270
+ ce qui signifie qu'il faut la vitesse et tourne 
+
+00:04:55.060 --> 00:05:00.130
+ en bas de la vitesse afin de le garder au frais 
+
+00:04:57.270 --> 00:05:02.199
+ Je vais sauter ici vraiment 
+
+00:05:00.130 --> 00:05:04.180
+ très vite donc je travaille juste mon 
+
+00:05:02.199 --> 00:05:06.490
+ chemin sur le plateau que je veux juste 
+
+00:05:04.180 --> 00:05:10.419
+ vous montrer rapidement que l'intérieur de cette 
+
+00:05:06.490 --> 00:05:12.430
+ cas est un Raspberry Pi 4 nue et nue 
+
+00:05:10.419 --> 00:05:14.590
+ ce que je veux dire par là est qu'il n'y a pas 
+
+00:05:12.430 --> 00:05:16.180
+ radiateur et il est en cours d'exécution, il a été 
+
+00:05:14.590 --> 00:05:18.520
+ courir pendant environ une heure ici au studio 
+
+00:05:16.180 --> 00:05:20.169
+ D et nous l'avons délibérément obtenu de cette façon 
+
+00:05:18.520 --> 00:05:22.919
+ afin que nous puissions exécuter des tests thermiques 
+
+00:05:20.169 --> 00:05:26.169
+ et savoir où cette chose va 
+
+00:05:22.919 --> 00:05:29.139
+ tomber aussi loin que la température et la 
+
+00:05:26.169 --> 00:05:31.690
+ fréquence et fréquence se réfère à 
+
+00:05:29.139 --> 00:05:34.360
+ ce cas à quelle vitesse est le processeur 
+
+00:05:31.690 --> 00:05:37.599
+ courir tout droit donc la fréquence de base 
+
+00:05:34.360 --> 00:05:42.220
+ d'un Raspberry Pi 4 est comme 600.000 donc 
+
+00:05:37.599 --> 00:05:45.610
+ soit 600 mégahertz, donc 0,6 gigahertz 
+
+00:05:42.220 --> 00:05:47.620
+ de mettre cela dans les normes actuelles afin 
+
+00:05:45.610 --> 00:05:50.889
+ J'ai en fait cela sur mon ordinateur 
+
+00:05:47.620 --> 00:05:54.490
+ écran j'ai ssh et j'ai un outil sur 
+
+00:05:50.889 --> 00:05:56.320
+ NEMS Linux alors cet outil est open-source 
+
+00:05:54.490 --> 00:05:58.330
+ vous êtes bienvenu pour l'utiliser port le 
+
+00:05:56.320 --> 00:06:00.490
+ tout ce que vous voulez faire, mais ce qu'il fait 
+
+00:05:58.330 --> 00:06:03.400
+ compter sur les données thermiques fournies 
+
+00:06:00.490 --> 00:06:05.650
+ par NEMS info partie de NEMS Linux 
+
+00:06:03.400 --> 00:06:08.320
+ système d'exploitation qui est une surveillance 
+
+00:06:05.650 --> 00:06:11.259
+ système pour les framboises PI et autres 
+
+00:06:08.320 --> 00:06:13.330
+ dispositifs ordinateurs à carte unique et il est 
+
+00:06:11.259 --> 00:06:14.889
+ il vous permet de surveiller vos réseaux 
+
+00:06:13.330 --> 00:06:16.840
+ peut en savoir plus même le télécharger et 
+
+00:06:14.889 --> 00:06:20.110
+ exécuter ces mêmes tâches sur votre appareil à 
+
+00:06:16.840 --> 00:06:23.919
+ NEMS Linux comm dans le dossier racine de 
+
+00:06:20.110 --> 00:06:26.020
+ nems Linux est un dossier appelé NEMS admin 
+
+00:06:23.919 --> 00:06:26.889
+ et dans ce dossier est un programme 
+
+00:06:26.020 --> 00:06:30.870
+ appelé NEMS 
+
+00:06:26.889 --> 00:06:33.900
+ stress nem stress utilise le stress linux 
+
+00:06:30.870 --> 00:06:36.570
+ commande afin que, comme je l'ai dit apporter cette 
+
+00:06:33.900 --> 00:06:38.910
+ chose à genoux, il va détecter 
+
+00:06:36.570 --> 00:06:42.540
+ combien y a-t-il de noyaux sur le 
+
+00:06:38.910 --> 00:06:47.130
+ processeur et disons que nous allons max 
+
+00:06:42.540 --> 00:06:50.700
+ tous ces noyaux claquent ouais tout simplement 
+
+00:06:47.130 --> 00:06:52.410
+ juste des quantités incroyables de traitement 
+
+00:06:50.700 --> 00:06:54.450
+ de sorte que vous ne voulez pas faire cela sur un 
+
+00:06:52.410 --> 00:06:56.160
+ système de production nous le faisons sur un 
+
+00:06:54.450 --> 00:06:58.650
+ système qui est assis sur notre banc 
+
+00:06:56.160 --> 00:07:01.410
+ spécifiquement pour voir les thermiques et la 
+
+00:06:58.650 --> 00:07:04.020
+ fréquence si le stress nem signalera une 
+
+00:07:01.410 --> 00:07:07.980
+ peu de données que les données sont 
+
+00:07:04.020 --> 00:07:10.170
+ recueilli par la fréquence de la vitesse 
+
+00:07:07.980 --> 00:07:13.650
+ du processeur a-t-il été en panne 
+
+00:07:10.170 --> 00:07:15.630
+ synchronisé et si c'est ce que le 
+
+00:07:13.650 --> 00:07:17.010
+ la température est si je vais sauter par-dessus 
+
+00:07:15.630 --> 00:07:20.070
+ ici parce qu'il va prendre environ 
+
+00:07:17.010 --> 00:07:23.100
+ cinq minutes pour courir alors faisons un zoom avant et 
+
+00:07:20.070 --> 00:07:25.170
+ dans ce dossier home slash routes slash 
+
+00:07:23.100 --> 00:07:30.720
+ Némésis slash noms admin, je vais juste 
+
+00:07:25.170 --> 00:07:32.760
+ courir les noms de points et le stress comme ça 
+
+00:07:30.720 --> 00:07:34.440
+ et on va laisser ça courir et c'est 
+
+00:07:32.760 --> 00:07:37.560
+ va prendre cinq minutes pour qu'il soit 
+
+00:07:34.440 --> 00:07:39.540
+ déjà activé les soulignent comment puis-je 
+
+00:07:37.560 --> 00:07:42.540
+ sais que je peux réellement changer de fenêtre 
+
+00:07:39.540 --> 00:07:44.640
+ ici j'ai une autre fenêtre de terminal 
+
+00:07:42.540 --> 00:07:46.740
+ et je vais taper H top et regardons 
+
+00:07:44.640 --> 00:07:49.230
+ à ce qui se passe ici, vous voyez que 
+
+00:07:46.740 --> 00:07:54.420
+ processeur, il est maximisé dès que nous 
+
+00:07:49.230 --> 00:07:57.540
+ étaient à une charge moyenne de 1-1, nous avons maintenant frappé 
+
+00:07:54.420 --> 00:08:01.140
+ 10,38 et cette charge moyenne est maintenant 
+
+00:07:57.540 --> 00:08:03.870
+ douze point quatre trois et escalade 
+
+00:08:01.140 --> 00:08:06.510
+ quatorze virgule quatre et vous voyez nos quatre 
+
+00:08:03.870 --> 00:08:09.780
+ noyaux sur le Raspberry Pi quatre, ils sont 
+
+00:08:06.510 --> 00:08:12.870
+ 100% maxi nous apportons cette chose 
+
+00:08:09.780 --> 00:08:16.260
+ droit à ses genoux droit et si je tâche 
+
+00:08:12.870 --> 00:08:18.960
+ Retour à notre test de stress, il fait juste 
+
+00:08:16.260 --> 00:08:21.300
+ sa chose donc si vous n'aviez pas la 
+
+00:08:18.960 --> 00:08:23.820
+ deuxième fenêtre ouverte, vous verriez 
+
+00:08:21.300 --> 00:08:26.100
+ que ça marche et oui oui je 
+
+00:08:23.820 --> 00:08:28.530
+ verrais tout simplement ce point point point 
+
+00:08:26.100 --> 00:08:30.240
+ point point point mais alors je reçois le rapport à 
+
+00:08:28.530 --> 00:08:32.310
+ la fin Jeff droite que nous allons 
+
+00:08:30.240 --> 00:08:34.290
+ voir et que les données du rapport est 
+
+00:08:32.310 --> 00:08:36.390
+ très important pour nous, comme je l'ai mentionné 
+
+00:08:34.290 --> 00:08:39.000
+ est-ce suivi avec chaque petit 
+
+00:08:36.390 --> 00:08:42.000
+ itération donc en gros chaque seconde, il est 
+
+00:08:39.000 --> 00:08:44.279
+ suivi des choses comme les données thermiques du 
+
+00:08:42.000 --> 00:08:47.819
+ la fréquence du processeur a 
+
+00:08:44.279 --> 00:08:50.730
+ il a été mis à l'échelle comment réduire 
+
+00:08:47.819 --> 00:08:53.220
+ la température a augmenté et ensuite 
+
+00:08:50.730 --> 00:08:55.949
+ enfin à la fin quelles sont nos moyennes 
+
+00:08:53.220 --> 00:08:58.139
+ Oh, est-ce que ça te donne aussi 
+
+00:08:55.949 --> 00:09:01.379
+ comme un coup en temps réel de oh il a fallu cette 
+
+00:08:58.139 --> 00:09:03.180
+ longtemps pour frapper max et puis il ne sait pas 
+
+00:09:01.379 --> 00:09:05.490
+ ça ne marche pas parce que c'est juste 5 minutes 
+
+00:09:03.180 --> 00:09:09.240
+ moyenne tout va bien donc c'est si 
+
+00:09:05.490 --> 00:09:10.620
+ ce que je vois est que et à la fin est la 
+
+00:09:09.240 --> 00:09:11.999
+ le rapport général que vous allez voir 
+
+00:09:10.620 --> 00:09:15.300
+ que dans quelques instants 
+
+00:09:11.999 --> 00:09:17.939
+ regardant H haut encore, il est encore 
+
+00:09:15.300 --> 00:09:21.629
+ assis à 100% pourquoi faisons-nous cela, je 
+
+00:09:17.939 --> 00:09:23.370
+ veulent voir si c'est c'est la clé, nous sommes 
+
+00:09:21.629 --> 00:09:27.809
+ tous intéressés par la tarte aux framboises pour 
+
+00:09:23.370 --> 00:09:31.399
+ oui quelle différence ça va faire 
+
+00:09:27.809 --> 00:09:34.740
+ si nous allons avec le cas de stock à droite à droite 
+
+00:09:31.399 --> 00:09:37.559
+ par rapport à quelque chose d'un peu plus haut pourquoi 
+
+00:09:34.740 --> 00:09:39.749
+ voudrions-nous dépenser 30 40 dollars sur 
+
+00:09:37.559 --> 00:09:41.970
+ une tarte aux framboises pour le cas qui est le 
+
+00:09:39.749 --> 00:09:43.980
+ question que nous partons à 
+
+00:09:41.970 --> 00:09:45.360
+ peut-être répondre cette semaine parce que le 
+
+00:09:43.980 --> 00:09:48.300
+ alternative est le jeter dans un congélateur 
+
+00:09:45.360 --> 00:09:50.790
+ c'est c'est un cas très coûteux 
+
+00:09:48.300 --> 00:09:53.910
+ qui utilise beaucoup d'électricité c'est 
+
+00:09:50.790 --> 00:09:56.399
+ vrai que de X glaçons c'est vrai cette 
+
+00:09:53.910 --> 00:09:59.339
+ est également vrai dîners de télévision sont une chose 
+
+00:09:56.399 --> 00:10:04.410
+ ce n'est pas actuellement une chose avec notre 
+
+00:09:59.339 --> 00:10:06.059
+ solution que nous avons, nous allons trouver 
+
+00:10:04.410 --> 00:10:09.029
+ sortir Sasha si nous pouvons cuisiner un dîner de télévision 
+
+00:10:06.059 --> 00:10:11.189
+ avec cette chose si nous une fois cette chose est 
+
+00:10:09.029 --> 00:10:15.750
+ tout dit et fait pour que le test est un 
+
+00:10:11.189 --> 00:10:17.730
+ Runnin vous savez ce que vous savez revenir 
+
+00:10:15.750 --> 00:10:20.819
+ au fait que vous savez que nous sommes maintenant comme 
+
+00:10:17.730 --> 00:10:22.470
+ la fin d'une saison oui 12 ans la 
+
+00:10:20.819 --> 00:10:25.319
+ fait que nous pouvons exécuter un test pour 5 
+
+00:10:22.470 --> 00:10:26.910
+ minutes d'attente pour les points à compiler sur un 
+
+00:10:25.319 --> 00:10:29.230
+ cela plus court et nous pourrions simplement le remplir 
+
+00:10:26.910 --> 00:10:32.660
+ avec la conversation elle-même oh ouais 
+
+00:10:29.230 --> 00:10:39.389
+ [Rire] 
+
+00:10:32.660 --> 00:10:42.149
+ en fait sur notre script pas ok ok donc 
+
+00:10:39.389 --> 00:10:43.709
+ dot aussi loin que je lis juste ce que je 
+
+00:10:42.149 --> 00:10:46.170
+ voir ici assez juste mais pour autant que ceux-ci 
+
+00:10:43.709 --> 00:10:47.339
+ les tests vont ce que ça fait donc laissez 
+
+00:10:46.170 --> 00:10:48.809
+ d'abord quelqu'un qui exécute ce test 
+
+00:10:47.339 --> 00:10:49.740
+ ça va comment ça chauffe 
+
+00:10:48.809 --> 00:10:52.829
+ comme pourquoi 
+
+00:10:49.740 --> 00:10:55.589
+ consultez la commande de stress Linux afin 
+
+00:10:52.829 --> 00:10:57.340
+ les nems soulignent ce que cela crée-t-il 
+
+00:10:55.589 --> 00:11:00.190
+ plusieurs instances 
+
+00:10:57.340 --> 00:11:02.740
+ de la commande de stress qui atteint son maximum 
+
+00:11:00.190 --> 00:11:04.690
+ le processeur et cela crée je ne 
+
+00:11:02.740 --> 00:11:07.240
+ sais que je pense qu'il est neuf fois 
+
+00:11:04.690 --> 00:11:10.060
+ et chacune de ces instances pousse tous les 
+
+00:11:07.240 --> 00:11:12.190
+ seul cœur du processeur donc ça marche 
+
+00:11:10.060 --> 00:11:14.710
+ il vraiment vraiment difficile c'est juste un processeur 
+
+00:11:12.190 --> 00:11:16.960
+ test et la seule raison est de voir ne 
+
+00:11:14.710 --> 00:11:18.760
+ le processeur devient chaud et ça accélère est 
+
+00:11:16.960 --> 00:11:22.380
+ il est facile de le faire accidentellement avec un 
+
+00:11:18.760 --> 00:11:25.029
+ test de stress comme accidentellement comme 
+
+00:11:22.380 --> 00:11:27.490
+ combien d'onglets avez-vous ouvert dans le 
+
+00:11:25.029 --> 00:11:30.190
+ Google Chrome est la bonne question 
+
+00:11:27.490 --> 00:11:32.529
+ ouais ouais parce que la chose est, il semble 
+
+00:11:30.190 --> 00:11:35.560
+ sans limite, il semble que quelque chose que vous 
+
+00:11:32.529 --> 00:11:37.779
+ voudriez-vous simplement lui demander de faire beaucoup et 
+
+00:11:35.560 --> 00:11:40.660
+ puis tout d'un coup il ferait chaud 
+
+00:11:37.779 --> 00:11:42.520
+ et il ralentirait la ceinture est comme je 
+
+00:11:40.660 --> 00:11:46.390
+ ne sais pas si le stress nem est en cours d'exécution si 
+
+00:11:42.520 --> 00:11:51.670
+ Je vais l'exécuter à nouveau juste voir comment ça 
+
+00:11:46.390 --> 00:11:54.880
+ va donc cette semaine nous avons en fait un 
+
+00:11:51.670 --> 00:11:58.029
+ Aled nous savons cas en aluminium que je suis 
+
+00:11:54.880 --> 00:12:00.550
+ aller à Anne robe le Raspberry Pi pour 
+
+00:11:58.029 --> 00:12:01.960
+ d'accord et la paupière, nous savons maintenant le cas 
+
+00:12:00.550 --> 00:12:05.110
+ nous avons vu ces avant pour la 
+
+00:12:01.960 --> 00:12:08.170
+ Raspberry Pi 3s et j'adore 
+
+00:12:05.110 --> 00:12:09.880
+ la nature en aluminium de ceux-ci parce que 
+
+00:12:08.170 --> 00:12:11.680
+ ils sont ils dissipent de la chaleur, ils sont 
+
+00:12:09.880 --> 00:12:15.610
+ très bien construit, ils sont très 
+
+00:12:11.680 --> 00:12:18.960
+ attrayant esthétiquement et maintenant avec 
+
+00:12:15.610 --> 00:12:21.910
+ le Raspberry Pi pour ce qui est arrivé est 
+
+00:12:18.960 --> 00:12:25.150
+ les cas Raspberry Pi 3 ne sont plus 
+
+00:12:21.910 --> 00:12:26.890
+ compatible compatible, nous avons vu que comme 
+
+00:12:25.150 --> 00:12:29.470
+ à travers les années, Raspberry Pi a 
+
+00:12:26.890 --> 00:12:31.750
+ maintenu une assez bonne cohérence 
+
+00:12:29.470 --> 00:12:33.790
+ de sorte que vous connaissez un Raspberry Pi 2 et 
+
+00:12:31.750 --> 00:12:35.830
+ puis passer à un Raspberry Pi 3, vous pouvez 
+
+00:12:33.790 --> 00:12:37.860
+ réutiliser le même cas et juste obtenir le 
+
+00:12:35.830 --> 00:12:41.080
+ mettre à niveau bien maintenant avec un Raspberry Pi pour 
+
+00:12:37.860 --> 00:12:44.080
+ vous ne pouvez pas le faire, aucune hypothèse pourquoi 
+
+00:12:41.080 --> 00:12:48.520
+ est comme d'un non mais d'un d'un 
+
+00:12:44.080 --> 00:12:53.020
+ point de vue physique réel de la la 
+
+00:12:48.520 --> 00:12:55.150
+ la taille est identique vous avez un peu la 
+
+00:12:53.020 --> 00:12:57.459
+ trous de vis ouais pas de trous de vis sont en 
+
+00:12:55.150 --> 00:13:00.029
+ au même endroit alors que pourrait-il être ce 
+
+00:12:57.459 --> 00:13:03.010
+ pourrait faire en sorte que c'est dans les verticilles 
+
+00:13:00.029 --> 00:13:06.100
+ vos vêtements différents ports ouais c'est 
+
+00:13:03.010 --> 00:13:08.560
+ le double HDMI alors souvenez-vous de la framboise 
+
+00:13:06.100 --> 00:13:09.270
+ Pi jusqu'au Raspberry Pi pour seulement 
+
+00:13:08.560 --> 00:13:12.240
+ avait un 
+
+00:13:09.270 --> 00:13:16.620
+ Ingle pleine taille HDMI maintenant, ils ont un 
+
+00:13:12.240 --> 00:13:18.990
+ double micro HDMI donc vous devez avoir un 
+
+00:13:16.620 --> 00:13:22.530
+ cas particulier pour faire que mon 
+
+00:13:18.990 --> 00:13:24.930
+ test thermique a bien terminé bien 
+
+00:13:22.530 --> 00:13:27.660
+ c'est le test de stress NEM voici ce que 
+
+00:13:24.930 --> 00:13:31.320
+ nous savons sur le Raspberry Pi pour 
+
+00:13:27.660 --> 00:13:36.960
+ en cours d'exécution comme il est juste dans la norme 
+
+00:13:31.320 --> 00:13:39.120
+ cas et travailler ce bébé aussi fort que nous 
+
+00:13:36.960 --> 00:13:41.730
+ peut la température la plus basse était soixante neuf 
+
+00:13:39.120 --> 00:13:42.720
+ le point six à sept degrés de quelqu'un 
+
+00:13:41.730 --> 00:13:44.970
+ dois écrire cela parce que nous sommes 
+
+00:13:42.720 --> 00:13:48.000
+ va devoir renvoyer à cette soixantaine 
+
+00:13:44.970 --> 00:13:50.880
+ neuf soixante neuf virgule six à sept 
+
+00:13:48.000 --> 00:13:53.250
+ degrés Celsius était le plus bas 
+
+00:13:50.880 --> 00:13:56.580
+ température de sorte que le processeur sur le Raspberry 
+
+00:13:53.250 --> 00:13:58.200
+ Pi trois quatre était assis à 69 degrés 
+
+00:13:56.580 --> 00:14:01.830
+ avant de commencer juste assis 
+
+00:13:58.200 --> 00:14:04.980
+ il ne fait rien au ralenti alors 
+
+00:14:01.830 --> 00:14:10.650
+ a continué il a frappé quatre vingt cinq virgule six 
+
+00:14:04.980 --> 00:14:13.350
+ neuf huit degrés Celsius ouais maintenant 
+
+00:14:10.650 --> 00:14:18.120
+ Fait intéressant, la vitesse la plus lente au ralenti 
+
+00:14:13.350 --> 00:14:21.120
+ était cinquante et un point cinq gigahertz donc 
+
+00:14:18.120 --> 00:14:25.920
+ quand vous voyez quinze cent et quoi 
+
+00:14:21.120 --> 00:14:28.290
+ est-ce que 1.500.000 qui est en fait un 
+
+00:14:25.920 --> 00:14:30.570
+ pointer cinq gigahertz la vitesse maximale de 
+
+00:14:28.290 --> 00:14:33.390
+ le Raspberry Pi sans overclocking 
+
+00:14:30.570 --> 00:14:35.340
+ à droite puis la vitesse maximale était la 
+
+00:14:33.390 --> 00:14:37.110
+ même et quand le conseil était chaud 
+
+00:14:35.340 --> 00:14:38.970
+ c'est très intéressant même quand 
+
+00:14:37.110 --> 00:14:40.560
+ levé à quatre vingt cinq virgule six neuf 
+
+00:14:38.970 --> 00:14:42.210
+ huit parce que j'ai entendu dire que ce sera 
+
+00:14:40.560 --> 00:14:45.240
+ papillon après quatre-vingts degrés 
+
+00:14:42.210 --> 00:14:47.610
+ il ne l'a pas jeté il ne l'a pas fait 
+
+00:14:45.240 --> 00:14:52.470
+ n'a pas étranglé la fréquence maintenue 
+
+00:14:47.610 --> 00:14:54.480
+ était de 1,5 gigahertz vous savez est-ce la 
+
+00:14:52.470 --> 00:14:57.240
+ première fois que vous avez exécuté ce test non, j'ai 
+
+00:14:54.480 --> 00:14:59.430
+ exécutez-le quelques fois juste pour voir et cela 
+
+00:14:57.240 --> 00:15:01.020
+ est-ce le résultat sans un 
+
+00:14:59.430 --> 00:15:03.450
+ tout type de système de refroidissement qui est très 
+
+00:15:01.020 --> 00:15:05.700
+ intéressant parce que, comme vous, je n'ai que 
+
+00:15:03.450 --> 00:15:07.830
+ lire les critiques et les gens qui parlent 
+
+00:15:05.700 --> 00:15:09.540
+ à quel point si il fait chaud ça va 
+
+00:15:07.830 --> 00:15:11.640
+ d'étrangler et si elle frappe quatre-vingts 
+
+00:15:09.540 --> 00:15:14.430
+ degrés Celsius, il va étrangler 
+
+00:15:11.640 --> 00:15:17.210
+ non est ce n'est pas un laps de temps soutenu 
+
+00:15:14.430 --> 00:15:19.650
+ eh bien c'était cinq minutes que je suis sûr 
+
+00:15:17.210 --> 00:15:21.060
+ peut-être un coup de pied à dire dix minutes, il 
+
+00:15:19.650 --> 00:15:21.970
+ va bien cela a été trop je ne peux pas 
+
+00:15:21.060 --> 00:15:27.040
+ gérer vous les gars sont partis 
+
+00:15:21.970 --> 00:15:30.879
+ non non je viens comme ce que quelqu'un a regardé 
+
+00:15:27.040 --> 00:15:32.829
+ la programmation dans la framboise 
+
+00:15:30.879 --> 00:15:34.990
+ Le firmware de pi à regarder où est-ce 
+
+00:15:32.829 --> 00:15:36.879
+ étranglement coups de pied ouais je pense 
+
+00:15:34.990 --> 00:15:39.040
+ c'est un point intéressant maintenant je vois 
+
+00:15:36.879 --> 00:15:41.860
+ vous savez au premier démarrage, donc je l'ai eu 
+
+00:15:39.040 --> 00:15:43.720
+ au ralenti afin d'être juste l'objectif était ici 
+
+00:15:41.860 --> 00:15:46.000
+ faire en sorte que les deux tâches seraient 
+
+00:15:43.720 --> 00:15:49.060
+ être aussi proche que possible, donc je l'ai eu 
+
+00:15:46.000 --> 00:15:51.250
+ inactif pendant environ une heure et avec ça 
+
+00:15:49.060 --> 00:15:54.250
+ maintenant, quand je l'ai allumé pour la première fois, il était 
+
+00:15:51.250 --> 00:15:56.319
+ assis à 600 mégahertz en ce moment nous faisons 
+
+00:15:54.250 --> 00:15:58.870
+ voir que même quand j'ai commencé cette 
+
+00:15:56.319 --> 00:16:00.129
+ tester qu'il fonctionnait à 1,5 gigahertz afin 
+
+00:15:58.870 --> 00:16:01.569
+ quelque chose sur le Raspberry Pi 
+
+00:16:00.129 --> 00:16:04.689
+ peut-être parce que NEMS fait plus de choses 
+
+00:16:01.569 --> 00:16:06.639
+ que de rester assis inactif NamUs a Nagios 
+
+00:16:04.689 --> 00:16:09.579
+ et tout le reste en cours d'exécution et et 
+
+00:16:06.639 --> 00:16:11.769
+ Serveur MySQL et Apache 2 et tout 
+
+00:16:09.579 --> 00:16:16.209
+ sinon alors il y a un peu plus de poids va 
+
+00:16:11.769 --> 00:16:18.009
+ sur donc mais il n'a jamais réduit 
+
+00:16:16.209 --> 00:16:21.519
+ à droite et je pense que Jeff tout 
+
+00:16:18.009 --> 00:16:23.560
+ intention mais avec étranglement est que 
+
+00:16:21.519 --> 00:16:26.680
+ quand quelque chose chauffe il va 
+
+00:16:23.560 --> 00:16:27.850
+ étrangler très rapidement oui vous 
+
+00:16:26.680 --> 00:16:29.050
+ verrait que dans cette température 
+
+00:16:27.850 --> 00:16:33.220
+ augmenter parce que c'est un assez grand 
+
+00:16:29.050 --> 00:16:35.620
+ augmentation de la température que vous verriez ainsi à 
+
+00:16:33.220 --> 00:16:39.370
+ quatre vingt cinq virgule six neuf huit 
+
+00:16:35.620 --> 00:16:42.790
+ Celsius, il n'a toujours pas étranglé un 
+
+00:16:39.370 --> 00:16:45.189
+ seuil de cinq minutes il le ferait 
+
+00:16:42.790 --> 00:16:50.319
+ étrangler finalement si c'est assis de cette façon 
+
+00:16:45.189 --> 00:16:51.610
+ pendant 30 minutes, il est possible, mais c'est 
+
+00:16:50.319 --> 00:16:53.339
+ quelque chose qui se passe dans le noyau 
+
+00:16:51.610 --> 00:16:58.680
+ c'est quelque chose qui se passe 
+
+00:16:53.339 --> 00:16:58.680
+ activement et je ne l'ai pas vu arriver ici 
+
+00:17:00.360 --> 00:17:05.589
+ mais combien de fois connaissez-vous être 
+
+00:17:03.220 --> 00:17:07.510
+ en utilisant votre PI au point où vous avez 
+
+00:17:05.589 --> 00:17:09.159
+ a maximisé pour une période soutenue 
+
+00:17:07.510 --> 00:17:10.870
+ c'est ça c'est pourquoi nous poussons cette 
+
+00:17:09.159 --> 00:17:12.909
+ à genoux nous le faisons 
+
+00:17:10.870 --> 00:17:15.039
+ spécifiquement pour voir quand il étrangle 
+
+00:17:12.909 --> 00:17:17.740
+ ouais ça deviendrait vraiment très chaud et 
+
+00:17:15.039 --> 00:17:22.059
+ il n'a pas ça n'a pas été super chaud j'ai 
+
+00:17:17.740 --> 00:17:24.880
+ vu quatre pieds Odroid Xu plus chaud que 85 
+
+00:17:22.059 --> 00:17:27.640
+ degrés droit et soutenir que heureusement 
+
+00:17:24.880 --> 00:17:29.020
+ et ne pas avoir un problème maintenant c'est un 
+
+00:17:27.640 --> 00:17:30.370
+ cas intéressant parce qu'il n'y a pas de chaleur 
+
+00:17:29.020 --> 00:17:33.850
+ couler que ce soit et nous sommes assis à 
+
+00:17:30.370 --> 00:17:35.030
+ environ 85 degrés maintenant obtenir un rapide 
+
+00:17:33.850 --> 00:17:36.970
+ regarde comme ça 
+
+00:17:35.030 --> 00:17:43.280
+ Eh bien, nous avons une température moyenne de 
+
+00:17:36.970 --> 00:17:47.000
+ 78 virgule six sept oh pardonnez-moi six 373 
+
+00:17:43.280 --> 00:17:49.820
+ vous voyez que 78 points six trois 
+
+00:17:47.000 --> 00:17:52.550
+ sept trois degrés le plus bas qui est 
+
+00:17:49.820 --> 00:17:55.460
+ plus la température à charge lourde est basse 
+
+00:17:52.550 --> 00:17:57.950
+ et la fréquence moyenne de cours est 
+
+00:17:55.460 --> 00:18:00.110
+ encore un point cinq gigahertz il est resté 
+
+00:17:57.950 --> 00:18:02.420
+ là-bas et maintenu juste à droite si 
+
+00:18:00.110 --> 00:18:04.670
+ maintenant je vais arrêter le pi framboise pour 
+
+00:18:02.420 --> 00:18:07.520
+ L'entraîneur doit l'arrêter 
+
+00:18:04.670 --> 00:18:10.010
+ J'ai perdu la connexion à la framboise pi 
+
+00:18:07.520 --> 00:18:12.500
+ 4 et je vais sauter ici et nous sommes 
+
+00:18:10.010 --> 00:18:14.900
+ va aller jeter un oeil à cette LED, nous savons 
+
+00:18:12.500 --> 00:18:17.120
+ cas alors que je fais mon chemin ici les gens 
+
+00:18:14.900 --> 00:18:20.180
+ on va déconnecter le framboise pi 
+
+00:18:17.120 --> 00:18:23.900
+ 4 de ses périphériques, nous avons fermé cette 
+
+00:18:20.180 --> 00:18:25.580
+ bas en utilisant l'arrêt et entrons dans cette 
+
+00:18:23.900 --> 00:18:26.060
+ Si je peux sentir la chaleur qui sort de 
+
+00:18:25.580 --> 00:18:30.440
+ cette 
+
+00:18:26.060 --> 00:18:34.820
+ Je veux dire 85 degrés oh ouais oh on se sent 
+
+00:18:30.440 --> 00:18:36.560
+ fumer vous voulez sentir que oui ouais 
+
+00:18:34.820 --> 00:18:39.110
+ c'est comme montrer pour obtenir vos mains dans 
+
+00:18:36.560 --> 00:18:40.760
+ ici, donc la chose intéressante ne 
+
+00:18:39.110 --> 00:18:43.000
+ toucher le processeur, mais rien d'autre est 
+
+00:18:40.760 --> 00:18:45.680
+ jeu juste 
+
+00:18:43.000 --> 00:18:47.570
+ oui il fait assez chaud les gens oh ouais 
+
+00:18:45.680 --> 00:18:49.850
+ ce qui est intéressant à propos de la framboise 
+
+00:18:47.570 --> 00:18:52.150
+ Pi 4 est la dissipation de chaleur sur 
+
+00:18:49.850 --> 00:18:55.670
+ toute la carte principale de sorte que le PCB 
+
+00:18:52.150 --> 00:18:57.800
+ dissipe la chaleur pour qu'elle se répande 
+
+00:18:55.670 --> 00:18:59.810
+ sur l'ensemble du conseil principal et nous ne sommes pas 
+
+00:18:57.800 --> 00:19:02.510
+ va l'avoir comme le Raspberry Pi 3 
+
+00:18:59.810 --> 00:19:04.610
+ où il est très concentré sur le processeur 
+
+00:19:02.510 --> 00:19:07.070
+ à droite si cette carte est conçue dans un tel 
+
+00:19:04.610 --> 00:19:09.020
+ d'une manière qu'il essaie d'obtenir cette chaleur 
+
+00:19:07.070 --> 00:19:11.480
+ hors de la CPU et dans la carte mère 
+
+00:19:09.020 --> 00:19:14.720
+ et je peux le sentir beaucoup dans le 
+
+00:19:11.480 --> 00:19:16.850
+ dans ces périphériques et alors que je ne le fais pas 
+
+00:19:14.720 --> 00:19:18.830
+ avoir un scanner thermique thermique afin 
+
+00:19:16.850 --> 00:19:20.600
+ pour vous montrer que je peux vous dire que 
+
+00:19:18.830 --> 00:19:22.190
+ c'est le cas et je vais vous dire que 
+
+00:19:20.600 --> 00:19:25.190
+ bien que nous travaillons sur l'obtention 
+
+00:19:22.190 --> 00:19:28.010
+ un tel dispositif maintenant c'est la LED nous 
+
+00:19:25.190 --> 00:19:30.470
+ connaître le boîtier en aluminium du Raspberry Pi 
+
+00:19:28.010 --> 00:19:32.420
+ 4 et comme je l'ai mentionné, nous avons examiné 
+
+00:19:30.470 --> 00:19:35.330
+ LED nous connaissons des cas dans le passé, je suis 
+
+00:19:32.420 --> 00:19:39.530
+ très très heureux avec eux c'est un 
+
+00:19:35.330 --> 00:19:42.320
+ très beau boîtier en aluminium qui a l'air 
+
+00:19:39.530 --> 00:19:44.930
+ et ça n'a pas l'air intéressant hey donc 
+
+00:19:42.320 --> 00:19:46.760
+ passons un peu plus loin dans la boîte 
+
+00:19:44.930 --> 00:19:47.390
+ il est un peu plus là-bas, nous 
+
+00:19:46.760 --> 00:19:50.200
+ aller 
+
+00:19:47.390 --> 00:19:53.060
+ c'est donc ce sont comme antidérapant 
+
+00:19:50.200 --> 00:19:56.150
+ tampons pour le bas et un 
+
+00:19:53.060 --> 00:19:58.430
+ tournevis alors ouvrons ce que tu vas 
+
+00:19:56.150 --> 00:20:00.680
+ avis avec le Aled nous savons cas pour 
+
+00:19:58.430 --> 00:20:04.670
+ le Raspberry Pi pour il y a quelques 
+
+00:20:00.680 --> 00:20:06.650
+ les choses à noter ici on est qu'il est 
+
+00:20:04.670 --> 00:20:08.870
+ montable au mur voyez-vous ces mur 
+
+00:20:06.650 --> 00:20:10.970
+ monte oui afin que vous puissiez réellement accrocher cette 
+
+00:20:08.870 --> 00:20:13.130
+ chose sur le mur 
+
+00:20:10.970 --> 00:20:15.620
+ aussi il a un capteur tactile ici que 
+
+00:20:13.130 --> 00:20:17.660
+ vous permet de contrôler les fans mais 
+
+00:20:15.620 --> 00:20:21.620
+ les ventilateurs sont également contrôlés thermiquement 
+
+00:20:17.660 --> 00:20:25.580
+ alors que le Raspberry Pi 4 devient chaud, il est 
+
+00:20:21.620 --> 00:20:28.520
+ va augmenter la vitesse de ceux 
+
+00:20:25.580 --> 00:20:31.580
+ deux fans à droite ceux-ci sont intelligemment 
+
+00:20:28.520 --> 00:20:34.940
+ fans contrôlés alors allons-y et 
+
+00:20:31.580 --> 00:20:36.860
+ voir à quoi il ressemble de sorte que le 
+
+00:20:34.940 --> 00:20:40.580
+ les vis sont en fait ici hors de la 
+
+00:20:36.860 --> 00:20:42.380
+ boîte nous sommes là et nous l'avons donc 
+
+00:20:40.580 --> 00:20:43.970
+ vous pouvez voir que ce n'est pas juste ces 
+
+00:20:42.380 --> 00:20:47.180
+ ne sont pas que des fans qui sont alimentés par 
+
+00:20:43.970 --> 00:20:50.120
+ le GPIO ces fans vont dans un 
+
+00:20:47.180 --> 00:20:52.060
+ circuit de contrôleur et qui va 
+
+00:20:50.120 --> 00:20:54.860
+ être connecté aux quatre Raspberry Pi 
+
+00:20:52.060 --> 00:20:57.530
+ GPIO mais c'est beaucoup plus 
+
+00:20:54.860 --> 00:21:00.410
+ sophistiqué que simplement direct comme 
+
+00:20:57.530 --> 00:21:02.420
+ pouvoir sortant de cela et là nous allons 
+
+00:21:00.410 --> 00:21:06.380
+ Raspberry Pi 4 va aller là-bas, je 
+
+00:21:02.420 --> 00:21:08.600
+ n'ont pas retiré la carte SD et 
+
+00:21:06.380 --> 00:21:14.150
+ on dirait que ça va juste être une belle 
+
+00:21:08.600 --> 00:21:16.820
+ regarder en forme que oui puis-je aimer 
+
+00:21:14.150 --> 00:21:19.040
+ la nature en aluminium de ces cas 
+
+00:21:16.820 --> 00:21:21.800
+ bien parce que nous savons que l'aluminium 
+
+00:21:19.040 --> 00:21:23.840
+ quoi chauffer l'enlève ce genre de 
+
+00:21:21.800 --> 00:21:27.410
+ le dissipe et l'étend pas ne 
+
+00:21:23.840 --> 00:21:28.850
+ avoir comment est-ce facile à installer c'est 
+
+00:21:27.410 --> 00:21:32.030
+ très facile si vous avez besoin des instructions 
+
+00:21:28.850 --> 00:21:34.070
+ tapé ici si j'en ai besoin, je 
+
+00:21:32.030 --> 00:21:39.980
+ les ai je vais montrer à ceux après Jeff 
+
+00:21:34.070 --> 00:21:41.810
+ le spectacle qu'as tu fait 
+
+00:21:39.980 --> 00:21:43.340
+ Très bien, il y a une chose dans le 
+
+00:21:41.810 --> 00:21:46.850
+ les instructions que je dois savoir est comment 
+
+00:21:43.340 --> 00:21:48.920
+ puis-je câbler cette carte de circuit Jeff ou 
+
+00:21:46.850 --> 00:21:49.690
+ Sasha peut-être que vous avez accès à cela 
+
+00:21:48.920 --> 00:21:53.000
+ information 
+
+00:21:49.690 --> 00:21:54.920
+ aha j'ai accès tu te sens comme faire 
+
+00:21:53.000 --> 00:21:57.770
+ vous le fermez avant de tout câbler à 
+
+00:21:54.920 --> 00:21:59.720
+ obtenir comme oh là c'est ça qui est fait 
+
+00:21:57.770 --> 00:22:02.750
+ ok je peux voir qu'il y a un peu 
+
+00:21:59.720 --> 00:22:05.510
+ d'un film plastique sur ce que je vais 
+
+00:22:02.750 --> 00:22:07.520
+ enlever que si jamais vous obtenez un nouveau 
+
+00:22:05.510 --> 00:22:09.530
+ appareil électronique et vous vous demandez pourquoi 
+
+00:22:07.520 --> 00:22:13.610
+ semble rayé c'est probablement cette 
+
+00:22:09.530 --> 00:22:16.940
+ film plastique oui, donc nous avons bien ouais vous 
+
+00:22:13.610 --> 00:22:18.290
+ mettez le look que vous avez complètement assemblé 
+
+00:22:16.940 --> 00:22:20.690
+ sans le brancher là vous allez 
+
+00:22:18.290 --> 00:22:23.960
+ bien fait voici le GPIO parce que 
+
+00:22:20.690 --> 00:22:26.120
+ rappelez-vous le GPIO la sortie de la caméra la 
+
+00:22:23.960 --> 00:22:28.520
+ Carte SD tout est accessible à droite 
+
+00:22:26.120 --> 00:22:31.970
+ ici mais et je peux voir la caméra 
+
+00:22:28.520 --> 00:22:33.860
+ connecteur là à droite et quelles couleurs 
+
+00:22:31.970 --> 00:22:37.010
+ comment vais-je connecter ce maintenant rouge 
+
+00:22:33.860 --> 00:22:38.960
+ est à ce que le rouge est d'épingler quatre et quatre 
+
+00:22:37.010 --> 00:22:44.330
+ alors voici mon GPIO sur le Raspberry Pi 
+
+00:22:38.960 --> 00:22:47.450
+ quatre donc j'ai broche 1 2 3 4 alors broche 4 
+
+00:22:44.330 --> 00:22:51.770
+ et bleu ou noir de sorte que tout est là 
+
+00:22:47.450 --> 00:22:55.460
+ est-il bleu ou noir est connecté à 
+
+00:22:51.770 --> 00:22:58.130
+ la broche 6 qui est correcte pour que 
+
+00:22:55.460 --> 00:23:01.520
+ devrait être tout ce qu'il y a à ce que je 
+
+00:22:58.130 --> 00:23:06.169
+ comme à propos de ce regard sur la façon dont cette élégante 
+
+00:23:01.520 --> 00:23:09.919
+ est-ce que ça a l'air bon, je pense que j'aime comment 
+
+00:23:06.169 --> 00:23:13.190
+ Aled, nous le savons, a créé un facteur de forme 
+
+00:23:09.919 --> 00:23:16.730
+ c'est en fait la Raspberry 
+
+00:23:13.190 --> 00:23:19.040
+ Pi 4 oui et c'est comme très bas profil 
+
+00:23:16.730 --> 00:23:22.070
+ Je veux dire les faits je suis d'accord les ports USB 
+
+00:23:19.040 --> 00:23:24.080
+ tenir encore au-dessus des touches oui faire 
+
+00:23:22.070 --> 00:23:26.179
+ vous les gars voyez que regarder à ce qu'elle 
+
+00:23:24.080 --> 00:23:28.100
+ était un peu plus petit le câble est 
+
+00:23:26.179 --> 00:23:34.730
+ sorte de trois autres câbles et différents 
+
+00:23:28.100 --> 00:23:37.429
+ couleurs et juste oui pouvez-vous pousser que 
+
+00:23:34.730 --> 00:23:39.260
+ dans je ne sais pas peut-être que vous pourriez peut-être si 
+
+00:23:37.429 --> 00:23:40.940
+ Je peut-être si je faisais plus attention quand je 
+
+00:23:39.260 --> 00:23:42.290
+ était en train de mettre ensemble penser à ce sujet 
+
+00:23:40.940 --> 00:23:43.220
+ comme vous le mettez ensemble peut-être vous 
+
+00:23:42.290 --> 00:23:44.900
+ pourrait rendre cela un peu plus 
+
+00:23:43.220 --> 00:23:47.480
+ rationalisé mais oui vous avez raison la 
+
+00:23:44.900 --> 00:23:50.270
+ le câble ne dépasse pas quand il est 
+
+00:23:47.480 --> 00:23:54.110
+ branché sur le GPIO donc c'est comme la 
+
+00:23:50.270 --> 00:23:57.350
+ un comme l'homme qui était probablement une conception 
+
+00:23:54.110 --> 00:23:58.970
+ défaut si vous pouviez dire pas vraiment un défaut 
+
+00:23:57.350 --> 00:24:00.440
+ mais ils auraient pu faire quelque chose qui 
+
+00:23:58.970 --> 00:24:03.800
+ était un peu 
+
+00:24:00.440 --> 00:24:05.570
+ ou baseline oui tout droit comme à plat mais 
+
+00:24:03.800 --> 00:24:07.790
+ si c'est le seul problème comme viens 
+
+00:24:05.570 --> 00:24:10.190
+ ouais vraiment utile si le câble est le 
+
+00:24:07.790 --> 00:24:14.090
+ même couleur est la table vraiment oui 
+
+00:24:10.190 --> 00:24:15.770
+ est-ce que ça aide comme ça vous touchpad 
+
+00:24:14.090 --> 00:24:18.620
+ peut contrôler le ventilateur alors qu'est-ce juste 
+
+00:24:15.770 --> 00:24:20.660
+ question de c'est presque comme un curseur non 
+
+00:24:18.620 --> 00:24:24.040
+ non c'est juste comme une lampe tactile 
+
+00:24:20.660 --> 00:24:26.120
+ oh mon dieu vous voyez Oh touchez là ouais 
+
+00:24:24.040 --> 00:24:30.170
+ ok donc je vais rebrancher le 
+
+00:24:26.120 --> 00:24:32.840
+ Ethernet ok, il est si Ethernet est 
+
+00:24:30.170 --> 00:24:35.660
+ Dassin connecté qui a l'air sexy, je suis 
+
+00:24:32.840 --> 00:24:39.710
+ désolé les gars, mais c'est le sommeil oh c'est 
+
+00:24:35.660 --> 00:24:41.540
+ une attente, il a l'air bien est-ce que j'aime je 
+
+00:24:39.710 --> 00:24:44.330
+ signifie que je suis un geek à travers, mais 
+
+00:24:41.540 --> 00:24:47.300
+ qui a l'air vraiment sympa ouais regarde ça 
+
+00:24:44.330 --> 00:24:48.980
+ et il y a les deux micro sorties HDMI 
+
+00:24:47.300 --> 00:24:52.430
+ que je parlais de oui, plus vous avez 
+
+00:24:48.980 --> 00:24:55.340
+ obtenu la sortie AV encore mais un micro HDMI 
+
+00:24:52.430 --> 00:24:57.950
+ peu de douleur quelqu'un qui a déjà 
+
+00:24:55.340 --> 00:24:59.150
+ HDMI micro utilisé si vous utilisez un 
+
+00:24:57.950 --> 00:25:00.770
+ adaptateur vous allez probablement être 
+
+00:24:59.150 --> 00:25:03.260
+ pressé de trouver un adaptateur qui 
+
+00:25:00.770 --> 00:25:05.630
+ sera assis à côté de cette place 
+
+00:25:03.260 --> 00:25:09.050
+ Je vous recommanderais de trouver un câble 
+
+00:25:05.630 --> 00:25:10.940
+ qui a HDMI micro à une extrémité et plein 
+
+00:25:09.050 --> 00:25:13.640
+ taille HDMI à l'autre bout, je vais 
+
+00:25:10.940 --> 00:25:16.730
+ branchez l’USB C qui immédiatement 
+
+00:25:13.640 --> 00:25:18.440
+ alimenté ces fans et ressemble 
+
+00:25:16.730 --> 00:25:21.320
+ il est bon d'aller maintenant si je vous touche que 
+
+00:25:18.440 --> 00:25:24.290
+ voir ce qui se passe Jeff oui si c'est 
+
+00:25:21.320 --> 00:25:27.770
+ juste un petit coup rapide est maintenant cette sensation 
+
+00:25:24.290 --> 00:25:30.590
+ comme qu'est-ce qu'il y a beaucoup de vibrations 
+
+00:25:27.770 --> 00:25:32.720
+ il n'y a aucune vibration que ce soit 
+
+00:25:30.590 --> 00:25:37.330
+ pas de son que je vais tenir ça jusqu'à 
+
+00:25:32.720 --> 00:25:37.330
+ mon micro, vous pouvez voir ça 
+
+00:25:37.870 --> 00:25:46.880
+ ok donc il y a quand vous touchez je suis 
+
+00:25:45.770 --> 00:25:49.040
+ va poser cela et venir à la 
+
+00:25:46.880 --> 00:25:50.870
+ définir si vous voulez nous amener à la 
+
+00:25:49.040 --> 00:25:54.380
+ plan large là-bas ouais maintenant quand vous touchez 
+
+00:25:50.870 --> 00:25:56.180
+ le bouton pour activer les fans oui a fait 
+
+00:25:54.380 --> 00:25:58.220
+ ils aiment est-ce qu'ils vont rester 
+
+00:25:56.180 --> 00:25:59.510
+ en permanence ou l'ordinateur prendra-t-il 
+
+00:25:58.220 --> 00:26:02.270
+ ils vont ouais il est passé sur la 
+
+00:25:59.510 --> 00:26:04.220
+ les circuits vont le faire tourner si elle 
+
+00:26:02.270 --> 00:26:06.080
+ devient chaud à droite le tourner si il devient 
+
+00:26:04.220 --> 00:26:08.360
+ froid et et ça va automatiquement 
+
+00:26:06.080 --> 00:26:09.890
+ ajuster et inquiéter comme oh je me suis tourné 
+
+00:26:08.360 --> 00:26:12.470
+ il sur j'ai oublié de l'éteindre ce n'est pas 
+
+00:26:09.890 --> 00:26:14.149
+ comme ça oh non non et par défaut comme 
+
+00:26:12.470 --> 00:26:16.399
+ dès que le Raspberry Pi est alimenté 
+
+00:26:14.149 --> 00:26:21.169
+ donc si le courant est coupé et que vous ne le faites pas 
+
+00:26:16.399 --> 00:26:23.659
+ avoir un UPS ou comme un PI Voyager de 
+
+00:26:21.169 --> 00:26:26.239
+ bras bas connectés à votre Raspberry Pi 
+
+00:26:23.659 --> 00:26:29.089
+ alors il se rallumera automatiquement 
+
+00:26:26.239 --> 00:26:31.939
+ les fans à droite alors ce que nous disons que nous devrions courir 
+
+00:26:29.089 --> 00:26:34.219
+ ces mêmes tests oui et voir comment le 
+
+00:26:31.939 --> 00:26:37.339
+ les thermiques sont affectés sur la framboise 
+
+00:26:34.219 --> 00:26:41.529
+ Pi pour l'avoir placé dans le bras 
+
+00:26:37.339 --> 00:26:43.579
+ la led aucun cas avec les ventilateurs 
+
+00:26:41.529 --> 00:26:46.669
+ supposez que vous pensez que ça va marcher 
+
+00:26:43.579 --> 00:26:49.459
+ cela va fonctionner refroidisseur oh je suis 
+
+00:26:46.669 --> 00:26:51.760
+ vraiment curieux de savoir tout droit sorti de 
+
+00:26:49.459 --> 00:27:09.200
+ la boîte reste autour, nous serons de retour 
+
+00:26:51.760 --> 00:27:09.200
+ [La musique] 
+
+00:27:11.139 --> 00:27:16.309
+ avant la pause, nous avons examiné le 
+
+00:27:13.789 --> 00:27:18.469
+ Raspberry Pi 4 nous avons couru à travers un EM 
+
+00:27:16.309 --> 00:27:20.869
+ test de stress et nous l'avons apporté à sa 
+
+00:27:18.469 --> 00:27:22.699
+ les genoux nous l'avons vraiment très chaud au 
+
+00:27:20.869 --> 00:27:26.329
+ Point où vous savez même le toucher, nous 
+
+00:27:22.699 --> 00:27:29.449
+ pourrait sentir que même les ports USB les 
+
+00:27:26.329 --> 00:27:34.159
+ la prise ethernet était vraiment très chaude 
+
+00:27:29.449 --> 00:27:37.129
+ oui maintenant nous avons mis une LED aucun cas c'est 
+
+00:27:34.159 --> 00:27:41.689
+ un boîtier en aluminium avec deux intelligents 
+
+00:27:37.129 --> 00:27:43.519
+ les fans sur le Raspberry Pi 4 et avec cette 
+
+00:27:41.689 --> 00:27:45.769
+ vous savez que la question est vous savez nous sommes 
+
+00:27:43.519 --> 00:27:47.869
+ résultats biaisés par vous savez que nous l'avions 
+
+00:27:45.769 --> 00:27:49.759
+ pendant trois minutes pendant que nous étions 
+
+00:27:47.869 --> 00:27:53.179
+ l'installation l'a fait cela fait une différence 
+
+00:27:49.759 --> 00:27:56.689
+ Je ne pense pas que cela signifie vraiment que je veux dire peut-être 
+
+00:27:53.179 --> 00:27:58.339
+ comme des quantités micro, mais le fait est que 
+
+00:27:56.689 --> 00:28:01.459
+ le système va chauffer 
+
+00:27:58.339 --> 00:28:03.439
+ encore une fois dès que nous avons frappé cela avec un EM 
+
+00:28:01.459 --> 00:28:05.959
+ test de stress ça va être intéressant de voir 
+
+00:28:03.439 --> 00:28:07.669
+ si la température atteint les quatre-vingts 
+
+00:28:05.959 --> 00:28:09.589
+ cinq virgule six neuf huit degrés 
+
+00:28:07.669 --> 00:28:11.719
+ il a eu avant que je suis vraiment curieux de savoir quoi 
+
+00:28:09.589 --> 00:28:15.109
+ était la température de départ de notre test 
+
+00:28:11.719 --> 00:28:17.629
+ avec le sans radiateur non rien il 
+
+00:28:15.109 --> 00:28:19.939
+ était seize virgule six à sept soixante 
+
+00:28:17.629 --> 00:28:22.009
+ neuf virgule six à sept alors retour à NEMS 
+
+00:28:19.939 --> 00:28:25.390
+ Linux je peux taper MEMS 
+
+00:28:22.009 --> 00:28:28.130
+ info température 
+
+00:28:25.390 --> 00:28:30.500
+ quarante-cinq points deux sept d'accord 
+
+00:28:28.130 --> 00:28:33.290
+ quarante cinq virgule deux sept est ce qu'il est 
+
+00:28:30.500 --> 00:28:35.870
+ en ce moment et ça marche oui 
+
+00:28:33.290 --> 00:28:37.490
+ ok donc ça ne va pas vous n'avez pas besoin de 
+
+00:28:35.870 --> 00:28:38.990
+ écrire celui-ci parce que celui-ci 
+
+00:28:37.490 --> 00:28:40.670
+ pas une partie de nos noms a souligné 
+
+00:28:38.990 --> 00:28:42.650
+ assez juste pour que le test de détresse n'a pas 
+
+00:28:40.670 --> 00:28:44.720
+ commencé mais nous savons que nous sommes 20 degrés 
+
+00:28:42.650 --> 00:28:45.890
+ refroidisseur qui est un gros problème qui est énorme 
+
+00:28:44.720 --> 00:28:48.320
+ Ouais 
+
+00:28:45.890 --> 00:28:49.490
+ oublier le FIR la mise à jour du firmware 
+
+00:28:48.320 --> 00:28:52.690
+ censé le laisser tomber comme trois 
+
+00:28:49.490 --> 00:28:54.470
+ degrés oui alors quoi alors quel est le 
+
+00:28:52.690 --> 00:28:59.780
+ disons simplement des noms 
+
+00:28:54.470 --> 00:29:01.370
+ info fréquence et voir nous sommes à 600 
+
+00:28:59.780 --> 00:29:02.930
+ Hertz droit ouais c'est par là que vous commencez 
+
+00:29:01.370 --> 00:29:04.370
+ à 600 mégahertz pardonnez-moi c'est là 
+
+00:29:02.930 --> 00:29:06.680
+ vous démarrez un nouveau vol ce l'autre 
+
+00:29:04.370 --> 00:29:08.090
+ on était à 600 Hertz mais au moment où nous 
+
+00:29:06.680 --> 00:29:10.310
+ a commencé le test, il était déjà en cours d'exécution 
+
+00:29:08.090 --> 00:29:12.710
+ un par cinq alors oui il a fait une 
+
+00:29:10.310 --> 00:29:14.330
+ différence dans ces chiffres dès que 
+
+00:29:12.710 --> 00:29:16.400
+ nous courons le test de stress que ça va 
+
+00:29:14.330 --> 00:29:20.480
+ immédiatement étrangler nous allons voir 
+
+00:29:16.400 --> 00:29:24.320
+ cela et encore je peux voir que si nous regardons 
+
+00:29:20.480 --> 00:29:26.570
+ à notre autre dans la fenêtre suivante ici, donc 
+
+00:29:24.320 --> 00:29:27.500
+ nous voyons notre charge moyenne actuelle est zéro 
+
+00:29:26.570 --> 00:29:30.320
+ point un trois 
+
+00:29:27.500 --> 00:29:33.170
+ allons-nous commencer notre test oui donc c'est 
+
+00:29:30.320 --> 00:29:37.730
+ sur le Raspberry Pi quatre avec la LED nous 
+
+00:29:33.170 --> 00:29:40.610
+ aucun cas, je vais courir le stress et nems 
+
+00:29:37.730 --> 00:29:42.890
+ on y va le stress test a commencé 
+
+00:29:40.610 --> 00:29:45.500
+ Revenons ici et nous voyons 
+
+00:29:42.890 --> 00:29:47.330
+ que nous sommes assis à 100% d'utilisation du processeur 
+
+00:29:45.500 --> 00:29:53.030
+ maintenant juste parce que nous voulons le faire 
+
+00:29:47.330 --> 00:29:55.070
+ rapidement Jeff NEMS info température cinquante 
+
+00:29:53.030 --> 00:29:59.090
+ cinq virgule neuf neuf déjà bien 
+
+00:29:55.070 --> 00:30:01.850
+ et en moyenne d'accord pour que le Cisco 
+
+00:29:59.090 --> 00:30:03.770
+ cinquante-six oui et je peux réellement taper 
+
+00:30:01.850 --> 00:30:07.870
+ regarde et je peux voir cette température 
+
+00:30:03.770 --> 00:30:10.940
+ changer si cinquante-sept virgule quatre cinq 
+
+00:30:07.870 --> 00:30:13.430
+ voir si cela change comme le test de stress 
+
+00:30:10.940 --> 00:30:14.900
+ se passe cinquante-huit points et il est un vous 
+
+00:30:13.430 --> 00:30:20.600
+ sais qu'il fluctue de haut en bas un 
+
+00:30:14.900 --> 00:30:22.430
+ peu voir que 59 virgule quatre si 
+
+00:30:20.600 --> 00:30:24.680
+ nous frappons des nombres plus élevés maintenant je peux 
+
+00:30:22.430 --> 00:30:26.750
+ vérifiez également la fréquence en temps réel 
+
+00:30:24.680 --> 00:30:29.180
+ et rappelez-vous mon test de stress se passe 
+
+00:30:26.750 --> 00:30:32.300
+ dans une autre fenêtre ok donc je suis SSH étain 
+
+00:30:29.180 --> 00:30:34.700
+ en utilisant deux fenêtres différentes ici, donc je 
+
+00:30:32.300 --> 00:30:37.620
+ peut taper fréquence et voir ce que je suis 
+
+00:30:34.700 --> 00:30:39.299
+ assis à donc je suis à 1,5 gigahertz donc 
+
+00:30:37.620 --> 00:30:40.980
+ dans à peu près tout de suite il dit d'accord 
+
+00:30:39.299 --> 00:30:43.320
+ il y a beaucoup de choses qui se passent nous allons 
+
+00:30:40.980 --> 00:30:45.779
+ monter le processeur parce que la framboise 
+
+00:30:43.320 --> 00:30:47.580
+ Pi intelligent et dit bien nous n'avons pas besoin de tous 
+
+00:30:45.779 --> 00:30:49.770
+ cette puissance de processeur donc nous allons 
+
+00:30:47.580 --> 00:30:51.480
+ horloge jusqu'à 600 mégahertz mais comme 
+
+00:30:49.770 --> 00:30:53.940
+ dès que vous commencez le test de stress de 
+
+00:30:51.480 --> 00:30:56.250
+ Bien sûr, notre base notre vitesse de base va 
+
+00:30:53.940 --> 00:30:58.140
+ être juste 1,5 gigahertz parce que c'est 
+
+00:30:56.250 --> 00:30:59.929
+ la vitesse que ça va horloge pour maintenant 
+
+00:30:58.140 --> 00:31:02.340
+ une des questions que nous avions à partir de 
+
+00:30:59.929 --> 00:31:04.500
+ Ameritrade quand vous étiez Ryan AirDroid 
+
+00:31:02.340 --> 00:31:08.070
+ quand vous exécutiez le premier test oui 
+
+00:31:04.500 --> 00:31:11.899
+ NIMS vérifie la vitesse de tous 
+
+00:31:08.070 --> 00:31:15.360
+ le cours SOC non c'est pas c'est juste 
+
+00:31:11.899 --> 00:31:17.549
+ non ce n'est pas ce qu'il demande 
+
+00:31:15.360 --> 00:31:19.770
+ il y a quatre noyaux à droite sommes-nous 
+
+00:31:17.549 --> 00:31:24.000
+ vérifier les thermiques et la vitesse de 
+
+00:31:19.770 --> 00:31:27.179
+ chacun de ces quatre noyaux à 
+
+00:31:24.000 --> 00:31:28.740
+ répondre à cette question avec précision le seul 
+
+00:31:27.179 --> 00:31:32.909
+ façon de le faire serait de regarder 
+
+00:31:28.740 --> 00:31:36.899
+ code source si d'accord si nano ET neige 
+
+00:31:32.909 --> 00:31:42.840
+ utilisateur slash local slash nem slash NEMS 
+
+00:31:36.899 --> 00:31:47.520
+ script slash info point h utilisateur partage local 
+
+00:31:42.840 --> 00:31:52.080
+ Je manque la fréquence de part de part et 
+
+00:31:47.520 --> 00:31:53.120
+ ça tire de zéro CPU donc pourrait 
+
+00:31:52.080 --> 00:31:56.640
+ qui soit différent 
+
+00:31:53.120 --> 00:31:58.559
+ demandons de la vitesse qui est la 
+
+00:31:56.640 --> 00:32:00.059
+ fréquence ok gars donc c'est c'est 
+
+00:31:58.559 --> 00:32:02.000
+ exactement ce que je vais vous montrer 
+
+00:32:00.059 --> 00:32:04.770
+ ce test est toujours en cours ici et 
+
+00:32:02.000 --> 00:32:08.460
+ Revenons à cela, donc nous ne sommes que 
+
+00:32:04.770 --> 00:32:13.110
+ regardant CPU 0 qui est le premier noyau 
+
+00:32:08.460 --> 00:32:16.350
+ oh pardonnez-moi, je dois plafonner que c'est 
+
+00:32:13.110 --> 00:32:22.409
+ assis à 6600 méga Hertz en ce moment 
+
+00:32:16.350 --> 00:32:27.649
+ intéressant allons à la CPU 1 est-il 1.5 
+
+00:32:22.409 --> 00:32:31.260
+ d'accord là-bas Hertz CPU 260 600 mégahertz 
+
+00:32:27.649 --> 00:32:34.620
+ CPU 3, donc vous voyez comment les moyennes sont 
+
+00:32:31.260 --> 00:32:39.809
+ ce qui nous a fait un autre 
+
+00:32:34.620 --> 00:32:42.720
+ impact 1 2 3 pour qu'il en soit ainsi 0 1 2 0 1 
+
+00:32:39.809 --> 00:32:45.330
+ 2 3 est vos 4 cœurs du processeur 
+
+00:32:42.720 --> 00:32:49.500
+ droit nous avons donc il y avait trois d'entre eux 
+
+00:32:45.330 --> 00:32:50.920
+ à 600 oui à ce moment-là parce que 
+
+00:32:49.500 --> 00:32:53.500
+ nous sommes juste à la fin de l'onglet 
+
+00:32:50.920 --> 00:32:55.330
+ de sorte que les tests se sont arrêtés et ainsi 
+
+00:32:53.500 --> 00:32:57.640
+ trois des noyaux avaient reculé 
+
+00:32:55.330 --> 00:33:00.190
+ à 600 mégahertz un des noyaux était 
+
+00:32:57.640 --> 00:33:01.240
+ fonctionnant toujours à 1,5 gigahertz mais je 
+
+00:33:00.190 --> 00:33:04.720
+ pense que ce que tu trouveras est dans ces 
+
+00:33:01.240 --> 00:33:09.340
+ cas, il va être chronométré haut 
+
+00:33:04.720 --> 00:33:13.390
+ donc notre température la plus basse était de quarante 
+
+00:33:09.340 --> 00:33:16.810
+ trois virgule trois à neuf degrés 
+
+00:33:13.390 --> 00:33:18.550
+ Celsius Jeff comment ça se compare à 
+
+00:33:16.810 --> 00:33:21.370
+ le Raspberry Pi sans nous Allard 
+
+00:33:18.550 --> 00:33:23.980
+ aucun cas Jeff alors nous étions sans le L 
+
+00:33:21.370 --> 00:33:26.440
+ la surrénale était que nous sommes à seize neuf points 
+
+00:33:23.980 --> 00:33:29.710
+ six à sept comme base de départ oui maintenant 
+
+00:33:26.440 --> 00:33:32.410
+ comme facteur de variabilité dans ce qu'il 
+
+00:33:29.710 --> 00:33:34.450
+ courait pendant une heure sans que 
+
+00:33:32.410 --> 00:33:36.670
+ cas, mais pour être juste, il a seulement été fermé 
+
+00:33:34.450 --> 00:33:38.740
+ pendant cinq minutes comme nous exactement oui 
+
+00:33:36.670 --> 00:33:40.660
+ exactement donc je veux dire qu'il pourrait y avoir des 
+
+00:33:38.740 --> 00:33:42.670
+ variation, mais le peu, il a commencé 
+
+00:33:40.660 --> 00:33:43.960
+ avec les fans déjà en marche et la 
+
+00:33:42.670 --> 00:33:46.540
+ canettes en aluminium refroidissant déjà 
+
+00:33:43.960 --> 00:33:49.530
+ bien sûr, il a commencé un peu de base inférieure 
+
+00:33:46.540 --> 00:33:53.830
+ assez juste mais regardez cet homme, il est 
+
+00:33:49.530 --> 00:33:57.580
+ vingt-six degrés de moins que la base de 
+
+00:33:53.830 --> 00:33:59.260
+ le Raspberry Pi sans ce cas d'accord 
+
+00:33:57.580 --> 00:34:02.500
+ regardant à la température la plus élevée que nous sommes 
+
+00:33:59.260 --> 00:34:05.850
+ assis bien nous avons frappé soixante et un point 
+
+00:34:02.500 --> 00:34:09.669
+ trois quatre huit degrés Celsius 
+
+00:34:05.850 --> 00:34:12.970
+ soixante et un était la température maximale de la 
+
+00:34:09.669 --> 00:34:16.240
+ framboise pi juste moins que le départ 
+
+00:34:12.970 --> 00:34:20.130
+ temp sans le cas avant c'est 
+
+00:34:16.240 --> 00:34:24.669
+ ça vaut le coup, je dirais que c'est incroyable 
+
+00:34:20.130 --> 00:34:27.220
+ c'est cool bien quoi d'autre avons-nous 
+
+00:34:24.669 --> 00:34:31.230
+ arrivé ici maintenant la vitesse la plus lente si vous voulez 
+
+00:34:27.220 --> 00:34:35.530
+ est de 1,5 gigahertz la vitesse maximale aussi 
+
+00:34:31.230 --> 00:34:38.500
+ 1,5 gigahertz il n'est jamais tombé en dessous de 1,5 
+
+00:34:35.530 --> 00:34:40.240
+ gigahertz maintenant voulez-vous toucher les gars 
+
+00:34:38.500 --> 00:34:42.490
+ ça va parce que nous venons de courir cette 
+
+00:34:40.240 --> 00:34:44.679
+ à travers un test de stress majeur, tout comme nous 
+
+00:34:42.490 --> 00:34:45.880
+ a fait avec le PI avant qu'il ne soit 
+
+00:34:44.679 --> 00:34:47.919
+ significativement différent 
+
+00:34:45.880 --> 00:34:49.990
+ ouais c'est vraiment différent 
+
+00:34:47.919 --> 00:34:51.730
+ veux sentir ce gars je me sens comme je 
+
+00:34:49.990 --> 00:34:53.380
+ devons parce que nous avons senti qu'avant et 
+
+00:34:51.730 --> 00:34:56.560
+ les voici, je suis hors du plateau 
+
+00:34:53.380 --> 00:34:59.620
+ oui, ils se dirigent là-bas, mais vous 
+
+00:34:56.560 --> 00:35:00.940
+ Vous ne pouvez pas voir que vous connaissez ce genre 
+
+00:34:59.620 --> 00:35:02.860
+ de juste l'impression de tirer un portefeuille 
+
+00:35:00.940 --> 00:35:03.410
+ de votre poche arrière ouais c'est un 
+
+00:35:02.860 --> 00:35:07.280
+ il n'y a rien 
+
+00:35:03.410 --> 00:35:09.890
+ il n'y a rien pas de chaleur ce qu'il est 
+
+00:35:07.280 --> 00:35:13.160
+ comme cool c'est intéressant comment allez-vous 
+
+00:35:09.890 --> 00:35:16.760
+ comme cela la LED pas de cas est en aluminium 
+
+00:35:13.160 --> 00:35:18.590
+ et il est il a les doubles fans qui sont 
+
+00:35:16.760 --> 00:35:20.360
+ intelligent qui va tourner comme il devient 
+
+00:35:18.590 --> 00:35:22.460
+ plus chaud peut-être c'est pourquoi nous voyons la 
+
+00:35:20.360 --> 00:35:25.910
+ tombé d'accord, nous avons frappé 77, puis tous 
+
+00:35:22.460 --> 00:35:30.380
+ d'un coup 48 comment est-ce arrivé la 
+
+00:35:25.910 --> 00:35:33.050
+ les fans ont dit oui, faisons en sorte que cela se produise 
+
+00:35:30.380 --> 00:35:35.060
+ les gars s'il y a un moyen de connecter le ventilateur 
+
+00:35:33.050 --> 00:35:38.630
+ rotations oh faisons toutes ces choses 
+
+00:35:35.060 --> 00:35:42.530
+ les gens faisons toutes ces choses parce 
+
+00:35:38.630 --> 00:35:44.750
+ ce serait amusant de voir comme aller juste 
+
+00:35:42.530 --> 00:35:47.630
+ mais graphique cela, mais peut-être que c'est un jeu que vous 
+
+00:35:44.750 --> 00:35:49.160
+ connaître un moteur de voiture où il est comme si vous êtes 
+
+00:35:47.630 --> 00:35:50.300
+ regardez vous ne pouvez pas voir le mouvement c'est 
+
+00:35:49.160 --> 00:35:53.390
+ aller si vite, mais la différence entre 
+
+00:35:50.300 --> 00:35:55.100
+ vous savez 2.000 tours et 3.000 tours est un 
+
+00:35:53.390 --> 00:35:55.340
+ grande différence à quoi il ressemble encore le 
+
+00:35:55.100 --> 00:35:58.360
+ même 
+
+00:35:55.340 --> 00:36:00.710
+ oui et pas de son pas comme pas perceptible 
+
+00:35:58.360 --> 00:36:02.180
+ vibration ou quelque chose comme ça et de 
+
+00:36:00.710 --> 00:36:04.340
+ Bien sûr, le conseil lui-même est à l'état solide 
+
+00:36:02.180 --> 00:36:04.880
+ la LED ne vaut donc pas la peine 
+
+00:36:04.340 --> 00:36:07.460
+ argent 
+
+00:36:04.880 --> 00:36:08.840
+ c'est un oui, je ne même pas je ne 
+
+00:36:07.460 --> 00:36:10.730
+ veux le dire, je veux que tu le dises 
+
+00:36:08.840 --> 00:36:16.430
+ Pensez-y juste une seconde 
+
+00:36:10.730 --> 00:36:19.010
+ vaut la peine oui oui accepter accepter oh attendre 
+
+00:36:16.430 --> 00:36:20.720
+ pour ce peuple il n'y avait pas de problème 
+
+00:36:19.010 --> 00:36:21.800
+ et la fonctionnalité avec le dernier, il 
+
+00:36:20.720 --> 00:36:23.000
+ eu chaud mais ça n'a pas changé la 
+
+00:36:21.800 --> 00:36:24.950
+ fonction mmm 
+
+00:36:23.000 --> 00:36:26.420
+ point intéressant mais en le gardant au frais 
+
+00:36:24.950 --> 00:36:26.630
+ ou tu vas prolonger la vie que vous 
+
+00:36:26.420 --> 00:36:31.040
+ sont 
+
+00:36:26.630 --> 00:36:32.150
+ c'est mais l'autre chose que nous nous n'avons pas 
+
+00:36:31.040 --> 00:36:34.310
+ test nous en avons parlé avec le premier 
+
+00:36:32.150 --> 00:36:36.890
+ test est peut-être que c'est là qu'il a été 
+
+00:36:34.310 --> 00:36:38.000
+ période soutenue de vous connaissez cinq 
+
+00:36:36.890 --> 00:36:40.870
+ minutes ou quelque chose que nous allons 
+
+00:36:38.000 --> 00:36:44.960
+ autour de cette chose le stress NEMS est 
+
+00:36:40.870 --> 00:36:46.760
+ disponible sur n'importe quel serveur mm, il suffit de l'éditer 
+
+00:36:44.960 --> 00:36:47.360
+ faire beaucoup de problèmes oui c'est 
+
+00:36:46.760 --> 00:36:51.730
+ pour vous 
+
+00:36:47.360 --> 00:36:55.220
+ NEMS stress modifier les gens 
+
+00:36:51.730 --> 00:37:02.180
+ première chose depuis combien de temps voulez-vous courir 
+
+00:36:55.220 --> 00:37:03.590
+ pour Jeff jamais d'accord c'est tout ce que vous 
+
+00:37:02.180 --> 00:37:06.920
+ besoin de changer c'est tout ce que vous devez 
+
+00:37:03.590 --> 00:37:08.260
+ changer je suis sérieux David je vais écrire 
+
+00:37:06.920 --> 00:37:13.690
+ ça je vais 
+
+00:37:08.260 --> 00:37:21.640
+ ce point slash stress NEMS courir le 
+
+00:37:13.690 --> 00:37:23.680
+ test pour Linux à partir de Nimes Linux comm 
+
+00:37:21.640 --> 00:37:26.890
+ oui si vous voulez exécuter le test sur votre 
+
+00:37:23.680 --> 00:37:28.900
+ propre conseil, je suis avec je suis avec Jeff sur 
+
+00:37:26.890 --> 00:37:30.400
+ celui-ci, je ne vois pas d'inconvénient à la 
+
+00:37:28.900 --> 00:37:32.260
+ conseil que je veux dire que cela vous coûte un peu 
+
+00:37:30.400 --> 00:37:33.790
+ peu supplémentaire, mais tu vas tu vas 
+
+00:37:32.260 --> 00:37:35.800
+ prolonger la vie du Raspberry Pi et 
+
+00:37:33.790 --> 00:37:37.390
+ lorsque vous exécutez quelque chose comme un MS 
+
+00:37:35.800 --> 00:37:39.370
+ Serveur Linux si vous voulez l'utiliser comme un 
+
+00:37:37.390 --> 00:37:43.090
+ set-top box si vous voulez l'utiliser pour 
+
+00:37:39.370 --> 00:37:45.790
+ plex Pi par exemple même comme un PI rétro 
+
+00:37:43.090 --> 00:37:47.890
+ système de jeu ouais le plus froid, il peut fonctionner 
+
+00:37:45.790 --> 00:37:49.660
+ mieux ça va se produire parce que 
+
+00:37:47.890 --> 00:37:51.670
+ oui il y a aussi d'autres périphériques 
+
+00:37:49.660 --> 00:37:54.280
+ que faire chaud pense à l'USB comme ça 
+
+00:37:51.670 --> 00:37:55.600
+ a USB 3 et tu vas avoir un disque 
+
+00:37:54.280 --> 00:37:57.880
+ conduire connecté à cela parce qu'il est 10 
+
+00:37:55.600 --> 00:38:00.100
+ fois plus rapide que l'USB 2 à droite afin que vous puissiez 
+
+00:37:57.880 --> 00:38:01.930
+ ainsi connecter un lecteur à cela et vous 
+
+00:38:00.100 --> 00:38:03.640
+ veulent la meilleure performance, mais il est donc 
+
+00:38:01.930 --> 00:38:05.650
+ non seulement le processeur qui va être 
+
+00:38:03.640 --> 00:38:07.360
+ affecté par la chaleur mais aussi comme Jeff 
+
+00:38:05.650 --> 00:38:12.580
+ mentionné la longévité du conseil 
+
+00:38:07.360 --> 00:38:14.740
+ lui-même combien de temps ça va vivre, il a l'air si 
+
+00:38:12.580 --> 00:38:19.150
+ Je veux dire si tu vas être un responsable 
+
+00:38:14.740 --> 00:38:22.000
+ Le propriétaire de l'IP refroidit activement là-bas 
+
+00:38:19.150 --> 00:38:24.280
+ les gens qui est le Raspberry Pi 4 avec le 
+
+00:38:22.000 --> 00:38:27.070
+ LED aucun cas, nous avons une tête sur la 
+
+00:38:24.280 --> 00:38:29.740
+ salle de presse Sasha si vous êtes prêt pour nous 
+
+00:38:27.070 --> 00:38:32.050
+ oui excellent voici les histoires étaient 
+
+00:38:29.740 --> 00:38:34.750
+ couvrant cette semaine dans une télévision de catégorie 5 
+
+00:38:32.050 --> 00:38:36.760
+ salle de presse Facebook a confirmé que 
+
+00:38:34.750 --> 00:38:39.520
+ moins 200 millions de numéros de téléphone de 
+
+00:38:36.760 --> 00:38:41.650
+ les membres ont été exposés dans un en ligne 
+
+00:38:39.520 --> 00:38:44.800
+ base de données, il pourrait être plus de deux fois 
+
+00:38:41.650 --> 00:38:46.810
+ que cela environ 600 000 GPS 
+
+00:38:44.800 --> 00:38:48.670
+ traqueurs pour surveiller l'emplacement de 
+
+00:38:46.810 --> 00:38:50.740
+ enfants âgés et animaux de compagnie contiennent 
+
+00:38:48.670 --> 00:38:54.310
+ vulnérabilités qui ouvrent les utilisateurs à un 
+
+00:38:50.740 --> 00:38:56.680
+ hôte d'attaques effrayantes pour protéger la requête 
+
+00:38:54.310 --> 00:39:01.570
+ confidentialité Mozilla va commencer une lente 
+
+00:38:56.680 --> 00:39:04.060
+ déploiement de DNS sur HTTPS par défaut dans 
+
+00:39:01.570 --> 00:39:06.490
+ son navigateur Firefox à la fin de la 
+
+00:39:04.060 --> 00:39:07.720
+ mois en déplaçant toutes les requêtes DNS à 
+
+00:39:06.490 --> 00:39:09.880
+ CloudFlare 
+
+00:39:07.720 --> 00:39:11.920
+ et un homme aveugle a aidé à développer un 
+
+00:39:09.880 --> 00:39:14.230
+ canne intelligente qui utilise Google Maps et 
+
+00:39:11.920 --> 00:39:15.579
+ des capteurs pour naviguer dans le monde ces 
+
+00:39:14.230 --> 00:39:18.310
+ les histoires sont à venir 
+
+00:39:15.579 --> 00:39:21.099
+ ne va nulle part c'est la catégorie 
+
+00:39:18.310 --> 00:39:27.790
+ salle de presse cinq points TV couvrant la semaine 
+
+00:39:21.099 --> 00:39:29.770
+ top textes ainsi Linux parti pris, je suis Sacha 
+
+00:39:27.790 --> 00:39:31.630
+ Rickman et voici les meilleurs remous étaient 
+
+00:39:29.770 --> 00:39:34.060
+ suite à cette semaine Facebook a 
+
+00:39:31.630 --> 00:39:36.400
+ confirmé au moins 200 millions de téléphone 
+
+00:39:34.060 --> 00:39:38.890
+ les chiffres des membres ont été exposés 
+
+00:39:36.400 --> 00:39:41.589
+ dans une base de données en ligne, il pourrait être plus 
+
+00:39:38.890 --> 00:39:43.960
+ que deux fois que oui, nous avons pris une pause 
+
+00:39:41.589 --> 00:39:46.000
+ des données hebdomadaires de Facebook fuit ces 
+
+00:39:43.960 --> 00:39:48.369
+ dernières semaines, mais nous ne plaisantions pas 
+
+00:39:46.000 --> 00:39:49.630
+ quand nous avons dit qu'il continue à se produire la 
+
+00:39:48.369 --> 00:39:51.760
+ société a dit qu'il est maintenant 
+
+00:39:49.630 --> 00:39:54.099
+ enquêter en essayant de comprendre qui 
+
+00:39:51.760 --> 00:39:56.650
+ compilé cette base de données de partout 
+
+00:39:54.099 --> 00:40:00.010
+ 200 à 400 millions d'enregistrements téléphoniques 
+
+00:39:56.650 --> 00:40:02.319
+ le laissant en ligne non protégé ce n'est pas 
+
+00:40:00.010 --> 00:40:04.660
+ soupçonné d'avoir été compilé ou mis 
+
+00:40:02.319 --> 00:40:06.910
+ il par Facebook la base de données de 
+
+00:40:04.660 --> 00:40:09.520
+ les numéros de téléphone et les identifiants Facebook était 
+
+00:40:06.910 --> 00:40:12.640
+ découvert sur un serveur Web non protégé 
+
+00:40:09.520 --> 00:40:14.980
+ et n'était pas la base de données protégée par mot de passe 
+
+00:40:12.640 --> 00:40:17.560
+ a été mis hors ligne après le nouveau site 
+
+00:40:14.980 --> 00:40:20.890
+ TechCrunch a signalé le problème sur le Web. 
+
+00:40:17.560 --> 00:40:22.780
+ société d'hébergement en avril 2018 Facebook 
+
+00:40:20.890 --> 00:40:25.359
+ désactivé une fonctionnalité qui permet aux gens 
+
+00:40:22.780 --> 00:40:26.500
+ rechercher d'autres utilisateurs en tapant 
+
+00:40:25.359 --> 00:40:30.160
+ leur numéro de téléphone 
+
+00:40:26.500 --> 00:40:32.470
+ la société a déclaré avoir maltraité des acteurs malveillants 
+
+00:40:30.160 --> 00:40:34.690
+ la fonctionnalité en tapant dans des millions de 
+
+00:40:32.470 --> 00:40:36.910
+ numéros de téléphone pour savoir à qui ils appartiennent 
+
+00:40:34.690 --> 00:40:39.220
+ il a dit qu'ils avaient été la récolte 
+
+00:40:36.910 --> 00:40:41.380
+ profils et numéros de téléphone pour les années par 
+
+00:40:39.220 --> 00:40:43.480
+ abuser de l'outil de recherche et que quiconque 
+
+00:40:41.380 --> 00:40:45.310
+ qui n'avait pas changé leur vie privée 
+
+00:40:43.480 --> 00:40:48.220
+ paramètres après avoir ajouté leur numéro de téléphone 
+
+00:40:45.310 --> 00:40:49.170
+ devrait supposer que leurs informations avaient été 
+
+00:40:48.220 --> 00:40:52.240
+ récolté 
+
+00:40:49.170 --> 00:40:54.190
+ ok alors comprends comment ça se passe 
+
+00:40:52.240 --> 00:40:56.650
+ comme vous le savez, cette case à cocher 
+
+00:40:54.190 --> 00:41:03.010
+ dit permettre aux gens de me trouver par mon téléphone 
+
+00:40:56.650 --> 00:41:05.920
+ numéro ouais ouais donc 0 0 0 0 0 0 0 1 0 0 0 
+
+00:41:03.010 --> 00:41:08.109
+ 0 0 0 2 et il suffit de faire défiler à droite 
+
+00:41:05.920 --> 00:41:09.970
+ juste un bot pour le faire et boum 
+
+00:41:08.109 --> 00:41:14.079
+ récolte tout cela, donc ce n'est pas une donnée 
+
+00:41:09.970 --> 00:41:15.910
+ violation en soi, c'est que cette case à cocher 
+
+00:41:14.079 --> 00:41:16.900
+ cela leur permet de vous trouver s'ils 
+
+00:41:15.910 --> 00:41:19.390
+ connais ton numéro de téléphone 
+
+00:41:16.900 --> 00:41:20.340
+ permis à quiconque de récolter en fonction de 
+
+00:41:19.390 --> 00:41:22.650
+ boîte 
+
+00:41:20.340 --> 00:41:24.750
+ malgré tout c'est comme ça les dialers achetés 
+
+00:41:22.650 --> 00:41:27.660
+ dialers ange droit ils les appellent je 
+
+00:41:24.750 --> 00:41:30.180
+ rappelez-vous ceux oui alors souvenez-vous quand nous 
+
+00:41:27.660 --> 00:41:33.030
+ utilisé pour obtenir beaucoup d'appels d'avocat et 
+
+00:41:30.180 --> 00:41:34.800
+ il était juste aléatoire utilisé pour bien 
+
+00:41:33.030 --> 00:41:38.820
+ ne devrait pas être trop élevé maintenant mais là encore 
+
+00:41:34.800 --> 00:41:41.550
+ Je suis sur Magic Jack alors je dirais à 
+
+00:41:38.820 --> 00:41:43.980
+ moins une fois par semaine, je reçois un appel du 
+
+00:41:41.550 --> 00:41:47.360
+ Agence du revenu du Canada oh il y a un 
+
+00:41:43.980 --> 00:41:47.360
+ mandat pour votre arrestation 
+
+00:41:47.390 --> 00:41:52.760
+ prendre celui-là au sérieux alors il y a 
+
+00:41:49.980 --> 00:41:55.680
+ toujours le gars qui appelle pour nettoyer mon smoking 
+
+00:41:52.760 --> 00:41:57.540
+ sais que tout ce que j'ai est oies Wow et 
+
+00:41:55.680 --> 00:42:00.210
+ il ne figure pas celui qui ne pouvait pas 
+
+00:41:57.540 --> 00:42:04.140
+ comprendre pas un an sous caution alors non 
+
+00:42:00.210 --> 00:42:06.150
+ vierge vierge yep une sorte de sadducéens 
+
+00:42:04.140 --> 00:42:08.580
+ magicJack oui et nous avons changé notre 
+
+00:42:06.150 --> 00:42:10.140
+ numéro avant qu'il ne soit qu'un bouton et je 
+
+00:42:08.580 --> 00:42:11.430
+ dira que vous venez de vous connecter et appuyez sur un 
+
+00:42:10.140 --> 00:42:13.710
+ bouton et il vous donne un nouveau téléphone 
+
+00:42:11.430 --> 00:42:14.970
+ numéroter il ne se produit pas avec Magic 
+
+00:42:13.710 --> 00:42:17.880
+ Jack parce que nous avons Magic Jack pour notre 
+
+00:42:14.970 --> 00:42:19.650
+ adresse de domicile, nous avons depuis 2010 oui 
+
+00:42:17.880 --> 00:42:23.520
+ qui n'a jamais eu une fois un appel de spam 
+
+00:42:19.650 --> 00:42:25.260
+ je l'ai mais vous pouvez les bloquer, vous pouvez 
+
+00:42:23.520 --> 00:42:27.150
+ il suffit de vous connecter à nouveau et à l'interface 
+
+00:42:25.260 --> 00:42:28.830
+ sur le site Web II ne les ont pas bloquer 
+
+00:42:27.150 --> 00:42:31.140
+ que je n'ai jamais eu ça n'a jamais bon 
+
+00:42:28.830 --> 00:42:32.490
+ donc je suis ouais il est assez rare que je voudrais 
+
+00:42:31.140 --> 00:42:35.520
+ savoir qui a mis son numéro de téléphone 
+
+00:42:32.490 --> 00:42:37.650
+ Facebook beaucoup d'entre vous doivent pour 
+
+00:42:35.520 --> 00:42:39.630
+ authentifier votre compte oh vraiment 
+
+00:42:37.650 --> 00:42:44.790
+ ouais à un moment donné tu n'avais pas à I 
+
+00:42:39.630 --> 00:42:47.070
+ ne pense pas que je devais ouais tu es 
+
+00:42:44.790 --> 00:42:50.640
+ pas sur Facebook maintenant je ne suis pas sur Facebook 
+
+00:42:47.070 --> 00:42:53.070
+ donc je ne peux pas vérifier était sur le visage mais je pouvais 
+
+00:42:50.640 --> 00:42:56.100
+ avoir tort, je veux dire que je ne me suis jamais inscrit 
+
+00:42:53.070 --> 00:42:58.440
+ pour Facebook sur une application hmm je pense que si 
+
+00:42:56.100 --> 00:42:59.670
+ vous le faites sur le web, vous n'avez pas besoin d'un 
+
+00:42:58.440 --> 00:43:01.020
+ téléphone portable parce qu'évidemment ils ne peuvent pas 
+
+00:42:59.670 --> 00:43:03.570
+ texte votre téléphone portable et être comme oh est 
+
+00:43:01.020 --> 00:43:07.020
+ ce correct oui je pense mais cela pourrait 
+
+00:43:03.570 --> 00:43:08.940
+ se tromper, je ne sais pas que c'était une sécurité 
+
+00:43:07.020 --> 00:43:10.770
+ préoccupation si je suis sûr que j'ai soulevé 
+
+00:43:08.940 --> 00:43:12.900
+ sur le spectacle avant ouais 
+
+00:43:10.770 --> 00:43:15.390
+ comment Facebook forçait les gens à 
+
+00:43:12.900 --> 00:43:17.190
+ fournir des numéros de téléphone afin de 
+
+00:43:15.390 --> 00:43:18.480
+ confirmer qu'ils sont qui ils sont 
+
+00:43:17.190 --> 00:43:21.150
+ et c'est une pratique assez courante 
+
+00:43:18.480 --> 00:43:23.970
+ YouTube est le même, vous ne pouvez pas être un 
+
+00:43:21.150 --> 00:43:26.070
+ Créateur YouTube sans fournir de cellule 
+
+00:43:23.970 --> 00:43:28.950
+ appeler un numéro de téléphone portable 
+
+00:43:26.070 --> 00:43:33.180
+ oh juste un couvercle, je dois pouvoir 
+
+00:43:28.950 --> 00:43:35.190
+ SMS vous maintenant ils vraiment bien vous pouvez 
+
+00:43:33.180 --> 00:43:37.380
+ l'activer avec une faute à la maison comme avec 
+
+00:43:35.190 --> 00:43:38.730
+ un numéro de téléphone et le robot appellera 
+
+00:43:37.380 --> 00:43:42.630
+ vous et dites que c'est Google votre 
+
+00:43:38.730 --> 00:43:45.060
+ code d'authentification est hein alors oui mon 
+
+00:43:42.630 --> 00:43:47.700
+ erreur ouais vous pouvez le faire cependant dans 
+
+00:43:45.060 --> 00:43:50.010
+ mon cas je l'avais déjà fait quelques 
+
+00:43:47.700 --> 00:43:52.770
+ fois avec d'autres comptes et donc mon 
+
+00:43:50.010 --> 00:43:54.270
+ numéro de téléphone personnel a été maximisé comme 
+
+00:43:52.770 --> 00:43:55.410
+ vous êtes autorisé à le faire quatre fois ou 
+
+00:43:54.270 --> 00:43:58.140
+ quelque chose comme ça ouais c'est comme 
+
+00:43:55.410 --> 00:44:01.410
+ l'activation de Windows, vous ne pouvez le faire qu'un 
+
+00:43:58.140 --> 00:44:03.570
+ cent fois viens maintenant droit oui de 
+
+00:44:01.410 --> 00:44:11.970
+ Bien sûr, je n'ai qu'un seul ordinateur en marche 
+
+00:44:03.570 --> 00:44:14.640
+ Windows 10 ou un logiciel de piratage 
+
+00:44:11.970 --> 00:44:17.010
+ estimé à 600 000 traceurs GPS pour 
+
+00:44:14.640 --> 00:44:19.530
+ surveillance de l'emplacement des enfants aînés 
+
+00:44:17.010 --> 00:44:22.290
+ et les animaux de compagnie contenant des vulnérabilités qui 
+
+00:44:19.530 --> 00:44:26.790
+ ouvrir les utilisateurs à une foule de creepy 
+
+00:44:22.290 --> 00:44:28.800
+ attaque les appareils de 25.20 5 à 50.00 $ 
+
+00:44:26.790 --> 00:44:31.320
+ sont assez petits pour porter sur un collier 
+
+00:44:28.800 --> 00:44:34.080
+ ou caché dans une poche ou une carte - 
+
+00:44:31.320 --> 00:44:36.390
+ compartiment beaucoup comprennent également des caméras 
+
+00:44:34.080 --> 00:44:38.580
+ et microphones, ils sont commercialisés sur 
+
+00:44:36.390 --> 00:44:40.440
+ Amazon et autres magasins en ligne comme 
+
+00:44:38.580 --> 00:44:43.140
+ des moyens peu coûteux d'aider à garder les enfants 
+
+00:44:40.440 --> 00:44:46.110
+ les personnes âgées et les animaux domestiques en toute sécurité en ignorant la 
+
+00:44:43.140 --> 00:44:48.270
+ éthique de la fixation d'un dispositif d'espionnage sur 
+
+00:44:46.110 --> 00:44:51.090
+ les gens que nous aimons il y a un autre 
+
+00:44:48.270 --> 00:44:53.550
+ raison des vulnérabilités de scepticisme dans 
+
+00:44:51.090 --> 00:44:56.460
+ le localisateur de suivi GPS mini t8 et 
+
+00:44:53.550 --> 00:45:00.660
+ près de 30 marques de modèles similaires de la 
+
+00:44:56.460 --> 00:45:03.600
+ même fabricant shenzhen i 365 Tec 
+
+00:45:00.660 --> 00:45:05.880
+ rend les utilisateurs vulnérables à l'écoute indiscrète 
+
+00:45:03.600 --> 00:45:07.400
+ attaques d'espionnage et d'usurpation d'identité qui falsifient 
+
+00:45:05.880 --> 00:45:10.080
+ utilisateurs vrai emplacement 
+
+00:45:07.400 --> 00:45:12.090
+ chercheurs au laboratoire de la menace Avast trouvé 
+
+00:45:10.080 --> 00:45:14.730
+ les numéros d'identification attribués à chaque appareil 
+
+00:45:12.090 --> 00:45:18.660
+ étaient basés sur son mobile international 
+
+00:45:14.730 --> 00:45:20.430
+ Identité de l'équipement ou IMEI encore pire 
+
+00:45:18.660 --> 00:45:22.350
+ pendant les dispositifs de fabrication étaient 
+
+00:45:20.430 --> 00:45:24.990
+ affecté exactement le même défaut 
+
+00:45:22.350 --> 00:45:27.870
+ mot de passe d'un deux trois quatre cinq six 
+
+00:45:24.990 --> 00:45:30.480
+ la conception a permis aux chercheurs de 
+
+00:45:27.870 --> 00:45:32.700
+ trouver plus de 600 000 appareils actifs 
+
+00:45:30.480 --> 00:45:35.040
+ être utilisé à l'état sauvage avec ça 
+
+00:45:32.700 --> 00:45:37.260
+ mot de passe et comme si c'était pas mal 
+
+00:45:35.040 --> 00:45:39.010
+ assez l'appareil est transmis tous 
+
+00:45:37.260 --> 00:45:40.990
+ données en texte clair en utilisant 
+
+00:45:39.010 --> 00:45:44.200
+ commandes faciles à 
+
+00:45:40.990 --> 00:45:45.700
+ désosser les résultats des personnes qui 
+
+00:45:44.200 --> 00:45:48.520
+ sont sur le même réseau que le 
+
+00:45:45.700 --> 00:45:51.700
+ smartphone ou une application Web peut surveiller 
+
+00:45:48.520 --> 00:45:53.380
+ ou modifier le trafic sensible une commande 
+
+00:45:51.700 --> 00:45:55.720
+ cela pourrait être utile envoie un texte 
+
+00:45:53.380 --> 00:45:58.480
+ message à un téléphone des attaquants 
+
+00:45:55.720 --> 00:45:59.950
+ choix qu'un attaquant peut utiliser pour obtenir 
+
+00:45:58.480 --> 00:46:02.859
+ le numéro de téléphone lié à un particulier 
+
+00:45:59.950 --> 00:46:05.020
+ compte de leurs attaquants sur le même 
+
+00:46:02.859 --> 00:46:07.690
+ le réseau pourrait changer les coordonnées GPS 
+
+00:46:05.020 --> 00:46:09.609
+ le traqueur signalait ou forcé la 
+
+00:46:07.690 --> 00:46:12.220
+ appareil pour appeler un certain nombre d'attaques 
+
+00:46:09.609 --> 00:46:14.619
+ choix et diffuser aucun son dans 
+
+00:46:12.220 --> 00:46:17.530
+ gamme de son microphone autre commande 
+
+00:46:14.619 --> 00:46:19.200
+ commandes permettent aux appareils de revenir à 
+
+00:46:17.530 --> 00:46:22.240
+ leurs réglages d'usine d'origine 
+
+00:46:19.200 --> 00:46:24.490
+ y compris le mot de passe par défaut ou à 
+
+00:46:22.240 --> 00:46:26.410
+ installer un attaquant choisi du firmware et 
+
+00:46:24.490 --> 00:46:28.630
+ pour ceux d'entre nous qui connaissent 
+
+00:46:26.410 --> 00:46:31.359
+ attaques de l'homme du milieu, voici une peur 
+
+00:46:28.630 --> 00:46:34.090
+ un une simple commande permet aux attaquants de 
+
+00:46:31.359 --> 00:46:37.090
+ changer l'adresse IP du serveur qui 
+
+00:46:34.090 --> 00:46:38.980
+ le traqueur communique avec le 
+
+00:46:37.090 --> 00:46:41.920
+ les chercheurs ont dit qu'ils en privé 
+
+00:46:38.980 --> 00:46:43.780
+ a informé le vendeur du mini GPS t8 
+
+00:46:41.920 --> 00:46:52.270
+ traqueur des vulnérabilités en juin 
+
+00:46:43.780 --> 00:46:53.590
+ 24 et n'a jamais eu une réponse si ok je suis 
+
+00:46:52.270 --> 00:47:00.490
+ va me mettre dans le pétrin aller de l'avant 
+
+00:46:53.590 --> 00:47:04.660
+ Jeff pensez-vous que c'est par conception Oh Jeff 
+
+00:47:00.490 --> 00:47:07.180
+ n'y allez pas non c'est bêtise et 
+
+00:47:04.660 --> 00:47:08.020
+ produit pas cher et pas cher, je vais dire 
+
+00:47:07.180 --> 00:47:13.150
+ c'est pour la surveillance 
+
+00:47:08.020 --> 00:47:15.160
+ non non parce que solution de surveillance appropriée 
+
+00:47:13.150 --> 00:47:17.440
+ que vous faites allusion à ce que je sais 
+
+00:47:15.160 --> 00:47:20.890
+ vous faites allusion à va être 
+
+00:47:17.440 --> 00:47:23.320
+ crypté et ils vont être les données 
+
+00:47:20.890 --> 00:47:26.050
+ va être caché dans des paquets juste 
+
+00:47:23.320 --> 00:47:27.640
+ aller à un serveur, mais je veux dire que vous 
+
+00:47:26.050 --> 00:47:30.340
+ pourrait être juste peut-être que je suis juste comme 
+
+00:47:27.640 --> 00:47:32.530
+ vous savez entrer dans le noir complot 
+
+00:47:30.340 --> 00:47:34.930
+ théories de mon esprit mais d'avoir 
+
+00:47:32.530 --> 00:47:38.970
+ quelque chose d'aussi simple tout de même 
+
+00:47:34.930 --> 00:47:40.960
+ mot de passe comme si facile pour moi qui est un 
+
+00:47:38.970 --> 00:47:42.520
+ produit inférieur qu'ils ont dit nous a laissés 
+
+00:47:40.960 --> 00:47:45.070
+ laisser cette ouverture pour pouvoir collecter 
+
+00:47:42.520 --> 00:47:45.609
+ l'accès aux données de partout où je ne le fais pas 
+
+00:47:45.070 --> 00:47:50.260
+ Achète-le 
+
+00:47:45.609 --> 00:47:51.770
+ Je cède l'état non je je ne suis pas j'aime 
+
+00:47:50.260 --> 00:47:53.540
+ pense que les gens sont inhérents 
+
+00:47:51.770 --> 00:47:54.860
+ comme bon oui peu importe la culture 
+
+00:47:53.540 --> 00:47:57.650
+ ils viennent de n'importe quel fond 
+
+00:47:54.860 --> 00:48:01.490
+ ils sont de c'est ce que je crois que je 
+
+00:47:57.650 --> 00:48:04.910
+ effectivement pu voir le bénéfice de ces 
+
+00:48:01.490 --> 00:48:07.910
+ si c'est juste, c'est voir le 
+
+00:48:04.910 --> 00:48:10.070
+ bon dedans et sûr que ça me plaise 
+
+00:48:07.910 --> 00:48:13.070
+ me sent d'avoir un patient d'Alzheimer 
+
+00:48:10.070 --> 00:48:15.070
+ tout à fait sûr, mais les gens qui sont merveilleux 
+
+00:48:13.070 --> 00:48:18.020
+ resks ils pensent qu'ils vont 
+
+00:48:15.070 --> 00:48:19.550
+ quelque part que je veux dire qu'ils pensent qu'ils sont 
+
+00:48:18.020 --> 00:48:21.050
+ rentrer à la maison et ils vivent dans un 
+
+00:48:19.550 --> 00:48:22.550
+ ville complètement différente oui et 
+
+00:48:21.050 --> 00:48:25.040
+ ils errent juste dans la rue 
+
+00:48:22.550 --> 00:48:27.350
+ et c'est une panique jusqu'à ce que vous les trouviez 
+
+00:48:25.040 --> 00:48:29.570
+ nous avons eu des tragédies, je veux dire que nous sommes ici 
+
+00:48:27.350 --> 00:48:31.280
+ au Canada, nous avons eu des tragédies d'hiver 
+
+00:48:29.570 --> 00:48:34.310
+ où si quelqu'un est parti perdu de 
+
+00:48:31.280 --> 00:48:37.340
+ d'une maison de retraite et ils ont trouvé 
+
+00:48:34.310 --> 00:48:39.440
+ les sortir au milieu de la glace exacte 
+
+00:48:37.340 --> 00:48:41.810
+ mois plus tard et il est tragique et comme 
+
+00:48:39.440 --> 00:48:43.280
+ ce genre de sorte que cela comme quelqu'un a 
+
+00:48:41.810 --> 00:48:46.100
+ créé une idée merveilleuse 
+
+00:48:43.280 --> 00:48:48.800
+ oui mais n'a pas eu la connaissance ou la 
+
+00:48:46.100 --> 00:48:51.830
+ finance le soutien financier à mettre en œuvre 
+
+00:48:48.800 --> 00:48:54.770
+ correctement car il peut coûter des dizaines de 
+
+00:48:51.830 --> 00:48:56.480
+ des milliers et plus pour pouvoir développer 
+
+00:48:54.770 --> 00:48:58.340
+ le logiciel correctement donc ce que j'espère 
+
+00:48:56.480 --> 00:49:01.100
+ ne se produit pas est j'espère qu'ils ne le font pas 
+
+00:48:58.340 --> 00:49:06.440
+ prendre une histoire comme ça et avoir peur 
+
+00:49:01.100 --> 00:49:09.230
+ pour un outil comme celui-là ouais utilisé correctement 
+
+00:49:06.440 --> 00:49:12.940
+ d'une manière sûre et sûre cela pourrait vraiment 
+
+00:49:09.230 --> 00:49:16.700
+ aider à vous garder connaître un peuple à risque en toute sécurité 
+
+00:49:12.940 --> 00:49:20.210
+ y compris les animaux droit ouais ça peut aider 
+
+00:49:16.700 --> 00:49:23.590
+ Jeff ne veut pas y croire 
+
+00:49:20.210 --> 00:49:26.720
+ pourquoi je ne crois pas ça va pas de réponse 
+
+00:49:23.590 --> 00:49:32.420
+ encore une fois si vous êtes si je peux sauvegarder juste 
+
+00:49:26.720 --> 00:49:34.700
+ une seconde si si de mes yeux cela pourrait 
+
+00:49:32.420 --> 00:49:38.210
+ être une entreprise qui a vraiment développé 
+
+00:49:34.700 --> 00:49:39.860
+ produit cool et eux qui sait quoi 
+
+00:49:38.210 --> 00:49:43.190
+ leur entreprise est comme cela pourrait être un 
+
+00:49:39.860 --> 00:49:45.680
+ démarrage, il pourrait être, mais ils l'ont vendu 
+
+00:49:43.190 --> 00:49:47.390
+ pour nous, comme ceci est une société de shenzhen donc 
+
+00:49:45.680 --> 00:49:49.580
+ nous savons que c'est une société chinoise et 
+
+00:49:47.390 --> 00:49:51.590
+ combien d'entreprises chinoises sont là 
+
+00:49:49.580 --> 00:49:55.040
+ beaucoup de bonne chance pour mettre la main sur l'un des 
+
+00:49:51.590 --> 00:49:57.170
+ eux en cas de problème de soutien si 
+
+00:49:55.040 --> 00:49:58.580
+ il y a cinq personnes qui travaillent pour le 
+
+00:49:57.170 --> 00:50:01.010
+ entreprise, ils ont construit quelque chose de vraiment cool 
+
+00:49:58.580 --> 00:50:03.040
+ ils ont malheureusement vendu un quart 
+
+00:50:01.010 --> 00:50:05.990
+ d'un million d'entre eux 
+
+00:50:03.040 --> 00:50:07.580
+ oui c'est une bonne idée mais mais ils ont 
+
+00:50:05.990 --> 00:50:10.910
+ fait mal à partir d'une sécurité 
+
+00:50:07.580 --> 00:50:13.660
+ perspective toujours pas acheter je suis 
+
+00:50:10.910 --> 00:50:16.490
+ désolé le fait que vous pouvez vous connecter et 
+
+00:50:13.660 --> 00:50:18.860
+ changer même l'adresse IP de rapport 
+
+00:50:16.490 --> 00:50:21.620
+ me dit à quel point le backend est flexible 
+
+00:50:18.860 --> 00:50:23.540
+ logiciel est et si tel est le cas, ils 
+
+00:50:21.620 --> 00:50:25.520
+ devrait être capable de pousser une mise à jour ou 
+
+00:50:23.540 --> 00:50:26.870
+ quelque chose disons simplement que la personne 
+
+00:50:25.520 --> 00:50:29.060
+ qui fait ça doit être jolie 
+
+00:50:26.870 --> 00:50:30.710
+ bien informé sur la technologie et oui 
+
+00:50:29.060 --> 00:50:34.700
+ il y a deux choses que je connais 
+
+00:50:30.710 --> 00:50:40.520
+ l'humanité un tout le monde est né bien oui 
+
+00:50:34.700 --> 00:50:42.760
+ et deux tout le monde est né stupide et nous 
+
+00:50:40.520 --> 00:50:46.700
+ devons passer que nous devons apprendre 
+
+00:50:42.760 --> 00:50:49.730
+ deux choses que l’on ignore et reste mauvais 
+
+00:50:46.700 --> 00:50:52.820
+ bon et devenir intelligent et et 
+
+00:50:49.730 --> 00:50:56.240
+ par intelligence intelligente est relative 
+
+00:50:52.820 --> 00:50:59.900
+ et la connaissance est ce que je fais référence à 
+
+00:50:56.240 --> 00:51:01.520
+ tellement tellement la la personne qui a développé 
+
+00:50:59.900 --> 00:51:04.400
+ ce produit ou les personnes qui ont développé 
+
+00:51:01.520 --> 00:51:06.830
+ ce produit, je crois ou vais être 
+
+00:51:04.400 --> 00:51:08.330
+ bonnes leurs intentions sont bonnes c'est mon 
+
+00:51:06.830 --> 00:51:08.870
+ croyance personnelle parce que c'est ce que je 
+
+00:51:08.330 --> 00:51:10.520
+ aurait 
+
+00:51:08.870 --> 00:51:13.400
+ c'est ce que je crois plutôt à la 
+
+00:51:10.520 --> 00:51:16.190
+ monde presque comme ils avaient un grand cru 
+
+00:51:13.400 --> 00:51:17.660
+ idée et ils ont pris cette idée et ils 
+
+00:51:16.190 --> 00:51:20.960
+ vient juste de tomber sur le marché 
+
+00:51:17.660 --> 00:51:22.850
+ opposé à le polir, il est presque comme 
+
+00:51:20.960 --> 00:51:24.530
+ vous savez qu'ils l'ont publié à la première étape 
+
+00:51:22.850 --> 00:51:27.230
+ et il fallait passer par 20 autres 
+
+00:51:24.530 --> 00:51:29.000
+ étapes ou j'ai la bonne idée que je ne fais pas 
+
+00:51:27.230 --> 00:51:30.860
+ sais comment programmer je vais embaucher 
+
+00:51:29.000 --> 00:51:33.500
+ quelqu'un qui vient de sortir de l'école et qui n'a pas 
+
+00:51:30.860 --> 00:51:34.700
+ idée de la cybersécurité oui et 
+
+00:51:33.500 --> 00:51:35.930
+ ils vont être ceux qui le feront 
+
+00:51:34.700 --> 00:51:38.150
+ parce qu'ils peuvent le faire moins cher je voudrais 
+
+00:51:35.930 --> 00:51:40.760
+ aime ces choses comme je l'habitude d'avoir 
+
+00:51:38.150 --> 00:51:43.520
+ un dans ma voiture serait génial en tant que 
+
+00:51:40.760 --> 00:51:45.260
+ sécurité oui facteur à droite de sorte que si mon 
+
+00:51:43.520 --> 00:51:47.180
+ voiture jamais se fait voler je ne peux toujours pas 
+
+00:51:45.260 --> 00:51:50.690
+ que ma voiture va se faire voler ce n'est pas 
+
+00:51:47.180 --> 00:51:53.990
+ même mais mais alors je pourrais suivre ou 
+
+00:51:50.690 --> 00:51:54.740
+ sûr sur ma personne pour que si je reçois 
+
+00:51:53.990 --> 00:51:57.320
+ volé 
+
+00:51:54.740 --> 00:52:00.890
+ quelqu'un peut me suivre Dave tu as la 
+
+00:51:57.320 --> 00:52:03.530
+ app bien que pensez-vous que je suis heureux 
+
+00:52:00.890 --> 00:52:05.750
+ vous les gars, vous savez comme positif 
+
+00:52:03.530 --> 00:52:07.400
+ penseurs, je pense que c'est totalement par 
+
+00:52:05.750 --> 00:52:10.180
+ la conception et personne ne veut l'admettre, je 
+
+00:52:07.400 --> 00:52:12.680
+ Je ne crois pas que pour une seconde 
+
+00:52:10.180 --> 00:52:14.630
+ tu n'as pas à le croire qui tu 
+
+00:52:12.680 --> 00:52:15.970
+ apportez avec moi qui êtes-vous d'accord avec 
+
+00:52:14.630 --> 00:52:20.570
+ cette 
+
+00:52:15.970 --> 00:52:22.550
+ suivi de la surveillance sombre profond 
+
+00:52:20.570 --> 00:52:25.700
+ en essayant de savoir qui est allé à la 
+
+00:52:22.550 --> 00:52:27.560
+ magasin de crème glacée aujourd'hui en Amérique ou est 
+
+00:52:25.700 --> 00:52:30.110
+ c'est l'opinion de Jeff ou est-ce juste 
+
+00:52:27.560 --> 00:52:31.820
+ quelqu'un qui a probablement embauché un étudiant 
+
+00:52:30.110 --> 00:52:33.740
+ faire le codage pour eux parce qu'ils 
+
+00:52:31.820 --> 00:52:35.420
+ avoir une excellente idée de produit et que 
+
+00:52:33.740 --> 00:52:37.880
+ étudiant n'a aucune idée sur 
+
+00:52:35.420 --> 00:52:39.710
+ la cybersécurité et ne savaient pas qu'ils 
+
+00:52:37.880 --> 00:52:41.990
+ besoin de chiffrer ces données et chiffrer 
+
+00:52:39.710 --> 00:52:44.780
+ que la circulation et pour l'amour de Dieu utiliser un 
+
+00:52:41.990 --> 00:52:47.780
+ mot de passe haché et ce n'est pas un deux 
+
+00:52:44.780 --> 00:52:53.530
+ trois quatre cinq six qui a raison c'est 
+
+00:52:47.780 --> 00:52:57.200
+ comme c'est à vous de décider d'accord 
+
+00:52:53.530 --> 00:53:02.030
+ pour protéger la confidentialité des requêtes, Mozilla 
+
+00:52:57.200 --> 00:53:04.460
+ commencer un lent déploiement de DNS sur HTTP en 
+
+00:53:02.030 --> 00:53:07.130
+ défaut dans son navigateur Firefox par le 
+
+00:53:04.460 --> 00:53:09.620
+ fin du mois, déplacement de toutes les requêtes DNS 
+
+00:53:07.130 --> 00:53:14.300
+ nuage équitable en cours de développement depuis 
+
+00:53:09.620 --> 00:53:17.060
+ DNS sur HTTP 2017, connu sous le nom de Oh H pour 
+
+00:53:14.300 --> 00:53:19.670
+ requêtes de noms de domaine de transferts courts 
+
+00:53:17.060 --> 00:53:22.310
+ qui essaient de faire correspondre les noms de domaine avec 
+
+00:53:19.670 --> 00:53:25.190
+ adresses IP du serveur sur un site sécurisé 
+
+00:53:22.310 --> 00:53:28.000
+ connexion HTTPS cryptée à un DNS 
+
+00:53:25.190 --> 00:53:30.700
+ serveur plutôt que via un non protégé 
+
+00:53:28.000 --> 00:53:34.010
+ non chiffré un DNS standard 
+
+00:53:30.700 --> 00:53:36.950
+ connecter cette couche de sécurité supplémentaire 
+
+00:53:34.010 --> 00:53:39.650
+ empêche idéalement des tiers tels que 
+
+00:53:36.950 --> 00:53:42.230
+ fournisseurs de services réseau de facilement 
+
+00:53:39.650 --> 00:53:45.020
+ voir les sites Web que les internautes visitent 
+
+00:53:42.230 --> 00:53:49.550
+ et empêche les scélérats de falsifier 
+
+00:53:45.020 --> 00:53:52.190
+ avec des recherches de noms de domaine à travers 
+
+00:53:49.550 --> 00:53:54.170
+ bien que do H offre beaucoup plus d'intimité 
+
+00:53:52.190 --> 00:53:57.110
+ que le statu quo, il est controversé 
+
+00:53:54.170 --> 00:53:58.910
+ où un manque d'intimité est supposé ou 
+
+00:53:57.110 --> 00:54:01.010
+ requis tel qu'un moniteur 
+
+00:53:58.910 --> 00:54:03.860
+ environnements qui insistent sur le contenu 
+
+00:54:01.010 --> 00:54:07.030
+ filtrer entre autres raisons dans 
+
+00:54:03.860 --> 00:54:09.850
+ Juillet, les fournisseurs de services Internet du Royaume-Uni 
+
+00:54:07.030 --> 00:54:12.350
+ Association nommée Mozilla pour son 
+
+00:54:09.850 --> 00:54:15.380
+ prix internet méchant de l'année 
+
+00:54:12.350 --> 00:54:17.750
+ parce que H rompt le contenu basé sur DNS 
+
+00:54:15.380 --> 00:54:19.280
+ filtres mis en place pour refuser l'accès à 
+
+00:54:17.750 --> 00:54:22.250
+ obscène explicite ou autrement 
+
+00:54:19.280 --> 00:54:24.710
+ sites Web répréhensibles quelques jours plus tard 
+
+00:54:22.250 --> 00:54:26.420
+ le groupe de commerce s'est renversé après une 
+
+00:54:24.710 --> 00:54:28.700
+ retombées des utilisateurs 
+
+00:54:26.420 --> 00:54:31.369
+ il a été réclamé le do H le fera 
+
+00:54:28.700 --> 00:54:34.160
+ plus facile pour les gens d'éviter le réseau 
+
+00:54:31.369 --> 00:54:36.920
+ le filtrage de contenu Mozilla maintient que 
+
+00:54:34.160 --> 00:54:39.710
+ H améliore la sécurité Internet globale 
+
+00:54:36.920 --> 00:54:42.140
+ bien que Firefox soit le service H sera 
+
+00:54:39.710 --> 00:54:46.970
+ fourni à travers nuage nuage pour nuage 
+
+00:54:42.140 --> 00:54:49.250
+ flares 1.1.11 service dns au début le 
+
+00:54:46.970 --> 00:54:59.740
+ liste des fournisseurs de services pris en charge peut 
+
+00:54:49.250 --> 00:55:07.760
+ grandir au fil du temps, donc c'est un dur 
+
+00:54:59.740 --> 00:55:12.849
+ quand Google a forcé tous les concepteurs Web 
+
+00:55:07.760 --> 00:55:15.230
+ et hébergeur pour aller HTTPS il y a la 
+
+00:55:12.849 --> 00:55:18.559
+ comprendre que cela est plus sûr 
+
+00:55:15.230 --> 00:55:20.029
+ c'est plus sûr que mes données sont envoyées et 
+
+00:55:18.559 --> 00:55:23.900
+ reçu de ce serveur est maintenant 
+
+00:55:20.029 --> 00:55:27.170
+ chiffré à droite mais quand Google l'a fait 
+
+00:55:23.900 --> 00:55:31.339
+ ils ont également fait en sorte que d'autres recherches 
+
+00:55:27.170 --> 00:55:34.369
+ moteurs qui suivent le trafic afin de 
+
+00:55:31.339 --> 00:55:38.480
+ fournir des résultats précis au lieu de 
+
+00:55:34.369 --> 00:55:41.720
+ PageRank ne sont plus viables leur 
+
+00:55:38.480 --> 00:55:44.259
+ toute l'infrastructure ne fonctionne pas maintenant 
+
+00:55:41.720 --> 00:55:48.440
+ parce que Google a fait l'Internet 
+
+00:55:44.259 --> 00:55:51.440
+ HTTPS donc je ne vois pas les retombées d'un 
+
+00:55:48.440 --> 00:55:54.339
+ décision qu'ils ont mis sous le couvert 
+
+00:55:51.440 --> 00:55:59.059
+ que c'est une question de sécurité maintenant 
+
+00:55:54.339 --> 00:56:01.150
+ Firefox forçant DNS à être basé sur HTTP 
+
+00:55:59.059 --> 00:56:05.450
+ sonne comme d'un point de vue de la sécurité 
+
+00:56:01.150 --> 00:56:08.299
+ c'est une bonne idée maintenant mon internet 
+
+00:56:05.450 --> 00:56:11.089
+ fournisseur de services ne sait pas que je suis 
+
+00:56:08.299 --> 00:56:14.410
+ aller à la catégorie 5 points TV quand je vais 
+
+00:56:11.089 --> 00:56:17.359
+ parce que la recherche DNS est 
+
+00:56:14.410 --> 00:56:19.960
+ passe à un niveau crypté et tout 
+
+00:56:17.359 --> 00:56:23.569
+ cela se produit la transaction est basée sur IP 
+
+00:56:19.960 --> 00:56:28.690
+ oui pensez-vous que cela pourrait être 
+
+00:56:23.569 --> 00:56:33.230
+ liée à une conséquence de choses comme 
+
+00:56:28.690 --> 00:56:36.619
+ téléchargements illégaux comme cela pourrait-il être 
+
+00:56:33.230 --> 00:56:39.770
+ utilisé quelle est la grande image est-ce qu'il fait 
+
+00:56:36.619 --> 00:56:42.440
+ longtail ont une arrière-motif comme 
+
+00:56:39.770 --> 00:56:44.390
+ Google avec HTTPS mais bon c'est ce que 
+
+00:56:42.440 --> 00:56:46.880
+ Je demande comme je veux dire je pense à la 
+
+00:56:44.390 --> 00:56:48.260
+ cas sur je ne sais pas était-il six sept 
+
+00:56:46.880 --> 00:56:50.540
+ il y a des années où un groupe de personnes 
+
+00:56:48.260 --> 00:56:53.210
+ téléchargé The Hurt Locker et tout à coup 
+
+00:56:50.540 --> 00:56:56.120
+ ils ont reçu des lettres légales disant votre adresse IP 
+
+00:56:53.210 --> 00:56:58.370
+ a été suivi télécharger ce droit est donc 
+
+00:56:56.120 --> 00:57:00.830
+ il est possible qu'en faisant cela, vous puissiez 
+
+00:56:58.370 --> 00:57:03.920
+ vous pouvez nier plausiblement je ne suis jamais allé 
+
+00:57:00.830 --> 00:57:06.950
+ là bien on peut dire que le DNS 
+
+00:57:03.920 --> 00:57:09.820
+ le cryptage nous protège en tant qu'utilisateur 
+
+00:57:06.950 --> 00:57:16.960
+ bien sûr c'est absolument 
+
+00:57:09.820 --> 00:57:21.350
+ mais je suis un papa et j'ai un trou à tarte 
+
+00:57:16.960 --> 00:57:24.290
+ oui ok ok j'ai un trou à la tarte sur mon 
+
+00:57:21.350 --> 00:57:26.090
+ réseau qui bloque la publicité de tous 
+
+00:57:24.290 --> 00:57:29.750
+ types que ce soit pornographique ou 
+
+00:57:26.090 --> 00:57:32.210
+ sinon yep et mon trou de tarte est 
+
+00:57:29.750 --> 00:57:35.900
+ abonné c'est donc une filtration DNS 
+
+00:57:32.210 --> 00:57:39.230
+ appareil mon trou de tarte est également abonné à 
+
+00:57:35.900 --> 00:57:41.420
+ listes pornographiques oui et le contenu adulte 
+
+00:57:39.230 --> 00:57:44.600
+ et les sites de jeu et tous ces types 
+
+00:57:41.420 --> 00:57:47.300
+ des choses afin que mes enfants ne rien 
+
+00:57:44.600 --> 00:57:48.980
+ plus que de les protéger en ce moment 
+
+00:57:47.300 --> 00:57:50.840
+ tomber par hasard sur quelque chose qui 
+
+00:57:48.980 --> 00:57:54.740
+ ils exactement 
+
+00:57:50.840 --> 00:57:59.210
+ ne voudrait pas ouais ouais et tragiquement 
+
+00:57:54.740 --> 00:58:01.520
+ cela arrive en téléchargeant un fichier mp3 
+
+00:57:59.210 --> 00:58:05.300
+ googler pour télécharger une chanson particulière 
+
+00:58:01.520 --> 00:58:08.150
+ oui c'est une annonce pornographique apparaît oui 
+
+00:58:05.300 --> 00:58:10.460
+ de Google comme cela ne devrait pas arriver, mais 
+
+00:58:08.150 --> 00:58:12.830
+ en tant que père, je veux protéger mon 
+
+00:58:10.460 --> 00:58:17.690
+ les enfants alors j'ai ce que maintenant en place 
+
+00:58:12.830 --> 00:58:20.150
+ Mattila me dit si nous allons 
+
+00:58:17.690 --> 00:58:23.750
+ déployer une mise à jour qui va 
+
+00:58:20.150 --> 00:58:26.420
+ changer vos ordinateurs, y compris celui de mon fils 
+
+00:58:23.750 --> 00:58:28.820
+ ordinateur portable et l'ordinateur portable de ma fille et mon 
+
+00:58:26.420 --> 00:58:32.410
+ ordinateur portable de huit ans, ils ont tous 
+
+00:58:28.820 --> 00:58:35.030
+ ordinateurs portables se branlant gâtés 
+
+00:58:32.410 --> 00:58:36.859
+ ils vont changer les paramètres sur 
+
+00:58:35.030 --> 00:58:40.430
+ leurs ordinateurs portables afin qu'il contourne 
+
+00:58:36.859 --> 00:58:43.790
+ la protection de papa et leur permet à la place 
+
+00:58:40.430 --> 00:58:45.650
+ voir toutes ces choses souffle dans mon esprit et 
+
+00:58:43.790 --> 00:58:48.349
+ leur présenter c'est si vous utilisez 
+
+00:58:45.650 --> 00:58:51.260
+ Firefox c'est si vous utilisez Firefox ouais 
+
+00:58:48.349 --> 00:58:56.960
+ ouais tu sais où je vais 
+
+00:58:51.260 --> 00:58:59.540
+ yep Firefox iceweasel au revoir ouais 
+
+00:58:56.960 --> 00:59:02.090
+ est intéressant cependant parce que je crains et 
+
+00:58:59.540 --> 00:59:04.369
+ Je suis c'est juste un profane 
+
+00:59:02.090 --> 00:59:06.980
+ perspective ok je sais que dans le 
+
+00:59:04.369 --> 00:59:09.650
+ passé pour divers endroits où j'ai travaillé 
+
+00:59:06.980 --> 00:59:11.960
+ ils ont eu des bloqueurs Internet sûr 
+
+00:59:09.650 --> 00:59:14.840
+ Bloqueurs de CDN il devrait être oui pourquoi pas 
+
+00:59:11.960 --> 00:59:18.230
+ utiliser l'Internet du tout cependant Oh peut 
+
+00:59:14.840 --> 00:59:19.760
+ Firefox dans le passé travaillent pour nous et ainsi 
+
+00:59:18.230 --> 00:59:21.170
+ il y avait des choses que nous étions comme oh 
+
+00:59:19.760 --> 00:59:23.090
+ nous allons juste contourner cela parce que nous 
+
+00:59:21.170 --> 00:59:26.030
+ obtenu le feu cuz Firefox utilise un 
+
+00:59:23.090 --> 00:59:28.340
+ serveur DNS externe droit oui donc dans 
+
+00:59:26.030 --> 00:59:30.650
+ chrome fait deux chrome par défaut peut ou 
+
+00:59:28.340 --> 00:59:33.020
+ ne peut pas utiliser un droit DNS externe mais dans 
+
+00:59:30.650 --> 00:59:35.869
+ ce cas chrome ne fonctionnerait pas si a 
+
+00:59:33.020 --> 00:59:38.720
+ cela a toujours été une sorte de chose avec 
+
+00:59:35.869 --> 00:59:40.520
+ Firefox où ils ont en quelque sorte poussé 
+
+00:59:38.720 --> 00:59:44.060
+ ce bord un peu plus parce que je 
+
+00:59:40.520 --> 00:59:46.700
+ veux dire que je retourne 10 ans ce que je veux 
+
+00:59:44.060 --> 00:59:49.280
+ pour revenir à Jeff est le jour où mon 
+
+00:59:46.700 --> 00:59:50.540
+ système d'exploitation détermine mon DNS 
+
+00:59:49.280 --> 00:59:52.550
+ serveurs assez juste 
+
+00:59:50.540 --> 00:59:58.070
+ oui ok pense à ce sujet pour une seconde 
+
+00:59:52.550 --> 01:00:02.000
+ mon navigateur mon logiciel BitTorrent le 
+
+00:59:58.070 --> 01:00:04.970
+ programmes que j'utilise pour agréger mon flux RSS 
+
+01:00:02.000 --> 01:00:07.700
+ nourrit ces programmes n'ont pas le droit de 
+
+01:00:04.970 --> 01:00:12.890
+ mon point de vue pour administrer mon DNS 
+
+01:00:07.700 --> 01:00:15.830
+ paramètres corrects merci qui devrait 
+
+01:00:12.890 --> 01:00:18.109
+ définir les paramètres DNS mais moi et grand 
+
+01:00:15.830 --> 01:00:20.869
+ ces programmes devraient honorer que c'est 
+
+01:00:18.109 --> 01:00:22.359
+ et devrait honorer de force que si 
+
+01:00:20.869 --> 01:00:24.830
+ ils essaient de le remplacer devinez quoi 
+
+01:00:22.359 --> 01:00:30.050
+ Firefox est éteint de tous les ordinateurs 
+
+01:00:24.830 --> 01:00:32.119
+ que je possède période je pense que si nous vivons 
+
+01:00:30.050 --> 01:00:35.720
+ dans un jour et l'âge où les gens ne sont pas 
+
+01:00:32.119 --> 01:00:37.609
+ bon sens de la technologie qui est un problème que je connais mais 
+
+01:00:35.720 --> 01:00:39.260
+ ils aiment leur temps, je dis cela avec tous 
+
+01:00:37.609 --> 01:00:41.270
+ respect dû oui parce que vous ne savez pas 
+
+01:00:39.260 --> 01:00:43.580
+ que cela vous arrive exactement 
+
+01:00:41.270 --> 01:00:45.540
+ et donc je pense que nous avons je veux dire quand 
+
+01:00:43.580 --> 01:00:46.590
+ Facebook est d'abord sorti avec l'ensemble 
+
+01:00:45.540 --> 01:00:49.170
+ on va tout révéler au 
+
+01:00:46.590 --> 01:00:51.270
+ monde sauf si vous dites que cela n'a pas changé 
+
+01:00:49.170 --> 01:00:55.380
+ le jeu internet oui et donc nous avons maintenant 
+
+01:00:51.270 --> 01:00:56.880
+ entreprises de technologie vu vont oh je n'ai pas 
+
+01:00:55.380 --> 01:00:57.840
+ suivre ces règles de construction sociale 
+
+01:00:56.880 --> 01:00:59.130
+ que j'ai fait avant 
+
+01:00:57.840 --> 01:01:00.840
+ Très bien, nous allons le changer et 
+
+01:00:59.130 --> 01:01:02.790
+ on va le faire de cette façon et donc Tech 
+
+01:01:00.840 --> 01:01:04.830
+ décide maintenant comment nos vies vivent comme 
+
+01:01:02.790 --> 01:01:06.570
+ opposé à nous décider comment Tech est 
+
+01:01:04.830 --> 01:01:08.130
+ censé fonctionner et c'est juste un 
+
+01:01:06.570 --> 01:01:08.580
+ changer dans la société, nous l'avons permis de 
+
+01:01:08.130 --> 01:01:11.220
+ se produire 
+
+01:01:08.580 --> 01:01:13.320
+ et plus nous utilisons la technologie avec le moins 
+
+01:01:11.220 --> 01:01:14.730
+ surveillance plus ils s'en tirer avec 
+
+01:01:13.320 --> 01:01:16.110
+ les choses et les gens ne se soucient pas qu'ils 
+
+01:01:14.730 --> 01:01:17.150
+ veux savoir quand je l'allume le fait 
+
+01:01:16.110 --> 01:01:20.600
+ travail 
+
+01:01:17.150 --> 01:01:23.580
+ c'est un problème et dans ce cas 
+
+01:01:20.600 --> 01:01:25.620
+ Mattila prend la décision en disant 
+
+01:01:23.580 --> 01:01:27.510
+ il est plus important pour les utilisateurs que 
+
+01:01:25.620 --> 01:01:31.170
+ ils savent que leur service internet 
+
+01:01:27.510 --> 01:01:33.660
+ fournisseur n'écoute pas alors l'utilisateur 
+
+01:01:31.170 --> 01:01:37.200
+ avoir le contrôle sur le contenu qui 
+
+01:01:33.660 --> 01:01:39.660
+ ils sont des enfants voit et c'est un 
+
+01:01:37.200 --> 01:01:41.250
+ hypothèse que je ne pense pas que le web 
+
+01:01:39.660 --> 01:01:49.320
+ les développeurs de navigateurs devraient avoir le droit 
+
+01:01:41.250 --> 01:01:54.870
+ pour faire, je suis d'accord c'est mon avis qui est 
+
+01:01:49.320 --> 01:01:56.760
+ comment nous terminons une saison seulement commentez ci-dessous 
+
+01:01:54.870 --> 01:01:58.440
+ si vous êtes d'accord avec nous non plus 
+
+01:01:56.760 --> 01:02:02.610
+ juste commenter je veux entendre de vous, je 
+
+01:01:58.440 --> 01:02:04.920
+ veux savoir ce que tu penses d'un aveugle 
+
+01:02:02.610 --> 01:02:07.470
+ l'homme a aidé à développer une canne intelligente 
+
+01:02:04.920 --> 01:02:09.510
+ utilise Google Maps et des capteurs pour naviguer 
+
+01:02:07.470 --> 01:02:11.640
+ les villes du monde sont difficiles à 
+
+01:02:09.510 --> 01:02:13.440
+ naviguer dans le meilleur des cas, mais pour 
+
+01:02:11.640 --> 01:02:15.600
+ les personnes qui ont une déficience visuelle, ils 
+
+01:02:13.440 --> 01:02:18.060
+ peut être comme un parcours d'obstacles et un 
+
+01:02:15.600 --> 01:02:20.220
+ labyrinthe enveloppé dans un un ressortissant britannique 
+
+01:02:18.060 --> 01:02:22.770
+ enquête de voyage a révélé que les adultes avec 
+
+01:02:20.220 --> 01:02:24.960
+ les difficultés de mobilité ont pris 39% moins 
+
+01:02:22.770 --> 01:02:26.010
+ voyages que ceux sans handicap en 
+
+01:02:24.960 --> 01:02:28.980
+ 2017 
+
+01:02:26.010 --> 01:02:30.960
+ maintenant une nouvelle canne intelligente est sur le point de changer 
+
+01:02:28.980 --> 01:02:33.540
+ qu'en révolutionnant la manière aveugle 
+
+01:02:30.960 --> 01:02:35.610
+ les gens peuvent naviguer dans le monde afin 
+
+01:02:33.540 --> 01:02:38.010
+ pour guider ses utilisateurs à la fois 
+
+01:02:35.610 --> 01:02:38.730
+ objets bas et obstacles au-dessus 
+
+01:02:38.010 --> 01:02:41.790
+ niveau de la poitrine 
+
+01:02:38.730 --> 01:02:44.310
+ la canne intelligente, nous marchons utilise des ultrasons 
+
+01:02:41.790 --> 01:02:47.130
+ des capteurs pour avertir d'un empêchement à proximité 
+
+01:02:44.310 --> 01:02:49.980
+ par des vibrations dans la poignée du 
+
+01:02:47.130 --> 01:02:51.810
+ canne conçue par des ingénieurs de jeunes 
+
+01:02:49.980 --> 01:02:54.720
+ gourou académie ou yga 
+
+01:02:51.810 --> 01:02:57.480
+ en Turquie peut également être jumelé avec le nous 
+
+01:02:54.720 --> 01:02:58.280
+ marcher app smartphone via Bluetooth en utilisant 
+
+01:02:57.480 --> 01:03:00.650
+ le toucher 
+
+01:02:58.280 --> 01:03:02.990
+ commandes sur la canne intelligente, l'utilisateur peut 
+
+01:03:00.650 --> 01:03:05.390
+ contrôler le smartphone sans 
+
+01:03:02.990 --> 01:03:08.180
+ en le sortant de leur poche en laissant 
+
+01:03:05.390 --> 01:03:10.310
+ une main libre pour d'autres tâches de la technologie 
+
+01:03:08.180 --> 01:03:12.200
+ ne s'arrête pas là si natif 
+
+01:03:10.310 --> 01:03:14.390
+ intégration avec assistant vocal et 
+
+01:03:12.200 --> 01:03:16.520
+ Le logiciel Google Maps permet à la canne de 
+
+01:03:14.390 --> 01:03:18.290
+ utiliser ses haut-parleurs intégrés pour informer le 
+
+01:03:16.520 --> 01:03:20.630
+ utilisateur de magasins à proximité et 
+
+01:03:18.290 --> 01:03:23.810
+ détails infrastructurels qu'ils peuvent 
+
+01:03:20.630 --> 01:03:26.720
+ ne pas être en mesure de voir nous marchons PDG et 
+
+01:03:23.810 --> 01:03:29.750
+ co-fondateur qui était assis qui est aussi 
+
+01:03:26.720 --> 01:03:32.240
+ aveugle dit qu'il a aidé à développer la 
+
+01:03:29.750 --> 01:03:34.160
+ canne sur un désir d'utiliser moderne 
+
+01:03:32.240 --> 01:03:36.530
+ la technologie comme outil visuel 
+
+01:03:34.160 --> 01:03:38.450
+ avec facultés affaiblies dans un monde où il y a des discussions 
+
+01:03:36.530 --> 01:03:41.480
+ des voitures volantes, il ne peut pas obtenir sa tête 
+
+01:03:38.450 --> 01:03:44.030
+ autour de pourquoi les aveugles sont encore juste 
+
+01:03:41.480 --> 01:03:46.190
+ en utilisant un bâton pour se déplacer, dit-il 
+
+01:03:44.030 --> 01:03:48.590
+ citer comme aveugle quand je suis à la 
+
+01:03:46.190 --> 01:03:50.360
+ station de métro, je ne sais pas quel est mon 
+
+01:03:48.590 --> 01:03:53.150
+ sortie je ne sais pas quel bus est 
+
+01:03:50.360 --> 01:03:55.280
+ approcher ou quels magasins sont autour 
+
+01:03:53.150 --> 01:03:57.500
+ moi ce genre d'information peut être 
+
+01:03:55.280 --> 01:03:59.840
+ fourni avec la citation fin nous marchons 
+
+01:03:57.500 --> 01:04:02.780
+ actuellement les cellules de démarrage que nous marchons 
+
+01:03:59.840 --> 01:04:05.180
+ pour environ 500 $ de cours à mesure qu'ils gagnent 
+
+01:04:02.780 --> 01:04:06.980
+ élan le prix peut changer, mais la 
+
+01:04:05.180 --> 01:04:09.860
+ les fonctionnalités continueront également à être 
+
+01:04:06.980 --> 01:04:12.530
+ amélioré et amélioré je l'aime 
+
+01:04:09.860 --> 01:04:16.760
+ c'est cool ouais c'est un assez grand 
+
+01:04:12.530 --> 01:04:18.890
+ traiter pour moi, je veux dire que vous traitez beaucoup 
+
+01:04:16.760 --> 01:04:20.360
+ des patients âgés oui combien d'entre eux 
+
+01:04:18.890 --> 01:04:22.540
+ sont malvoyants sasha est un 
+
+01:04:20.360 --> 01:04:25.150
+ préposé aux services de soutien personnel 
+
+01:04:22.540 --> 01:04:27.950
+ vous avez des clients personnels qui sont 
+
+01:04:25.150 --> 01:04:31.370
+ malvoyants et / ou complètement 
+
+01:04:27.950 --> 01:04:34.010
+ juridiquement aveugle je me sens comme si même 
+
+01:04:31.370 --> 01:04:38.030
+ à l'intérieur de la maison que nous marchons canne serait 
+
+01:04:34.010 --> 01:04:41.210
+ être si utile que je nous avons un 
+
+01:04:38.030 --> 01:04:43.280
+ place en ville appelée 5 points oui oui ok 
+
+01:04:41.210 --> 01:04:44.930
+ ça s'appelle 5 points pour une raison il est 5 
+
+01:04:43.280 --> 01:04:47.330
+ intersections qui se rejoignent à un 
+
+01:04:44.930 --> 01:04:48.890
+ point c'est oui et c'est bien cool de 
+
+01:04:47.330 --> 01:04:52.010
+ conduire à travers et encore moins marcher à travers 
+
+01:04:48.890 --> 01:04:53.690
+ bien nous ma femme et moi jamais vraiment aller 
+
+01:04:52.010 --> 01:04:56.240
+ dans cette fin de ville mais nous avons fait pour un 
+
+01:04:53.690 --> 01:04:59.480
+ rassemblement social pour la famille juste 
+
+01:04:56.240 --> 01:05:02.150
+ récemment et à cinq points maintenant quand 
+
+01:04:59.480 --> 01:05:04.760
+ il est temps de marcher il y a un bip bip 
+
+01:05:02.150 --> 01:05:06.980
+ oui bip pour les malvoyants 
+
+01:05:04.760 --> 01:05:09.350
+ leur dit qu'il est temps de commencer à marcher 
+
+01:05:06.980 --> 01:05:10.850
+ dans les cinq points oui deux personnes 
+
+01:05:09.350 --> 01:05:13.940
+ couru un feu rouge devant nous 
+
+01:05:10.850 --> 01:05:16.970
+ Oh deux personnes oui et j'ai regardé mon 
+
+01:05:13.940 --> 01:05:18.860
+ femme et moi avons dit que si vous étiez aveugle comme 
+
+01:05:16.970 --> 01:05:21.560
+ entendre ce bip bip bip bip bip 
+
+01:05:18.860 --> 01:05:24.470
+ moi, il est sûr comment puis-je savoir exactement 
+
+01:05:21.560 --> 01:05:25.910
+ deux personnes juste devant nous c'est un 
+
+01:05:24.470 --> 01:05:28.040
+ plus grand problème social mais parce que je vois 
+
+01:05:25.910 --> 01:05:31.850
+ pain temps de lecture, mais cela utilise 
+
+01:05:28.040 --> 01:05:34.700
+ ondes à ultrasons ok donc il détecte 
+
+01:05:31.850 --> 01:05:37.190
+ le mouvement et quelque chose qui vient à vous et 
+
+01:05:34.700 --> 01:05:40.760
+ peut vibrer et dire d'accord arrêter 
+
+01:05:37.190 --> 01:05:44.090
+ Oui, d'une canne intelligente, j'adore 
+
+01:05:40.760 --> 01:05:48.380
+ que tu sais que je pensais en lisant 
+
+01:05:44.090 --> 01:05:51.350
+ l'histoire est que vous connaissez les lunettes Google 
+
+01:05:48.380 --> 01:05:53.450
+ verre le verre de Google est comme un store 
+
+01:05:51.350 --> 01:05:55.730
+ version de ce droit, donc si vous mettez 
+
+01:05:53.450 --> 01:05:57.830
+ Google en tant que quelqu'un qui est légalement 
+
+01:05:55.730 --> 01:06:00.650
+ aveugle mais avec une vision non complète 
+
+01:05:57.830 --> 01:06:05.090
+ perte, mais si vous mettez Google verre et 
+
+01:06:00.650 --> 01:06:07.010
+ avait la canne alors comme des signes majeurs et 
+
+01:06:05.090 --> 01:06:08.990
+ des choses pourraient apparaître dans un très haut 
+
+01:06:07.010 --> 01:06:09.590
+ définition dans votre verre Google aussi bien 
+
+01:06:08.990 --> 01:06:11.450
+ hmm 
+
+01:06:09.590 --> 01:06:14.570
+ juste parce que tout ouais 
+
+01:06:11.450 --> 01:06:16.730
+ tout est intégré, j'ai vu des gens 
+
+01:06:14.570 --> 01:06:21.320
+ avec les lecteurs modifiés où ils 
+
+01:06:16.730 --> 01:06:23.600
+ faites glisser le papier sous le oui 
+
+01:06:21.320 --> 01:06:25.700
+ projette vraiment bien si cela grand 
+
+01:06:23.600 --> 01:06:27.740
+ se passait intégré à la canne 
+
+01:06:25.700 --> 01:06:30.260
+ et les lunettes je suis curieux de savoir oui 
+
+01:06:27.740 --> 01:06:33.380
+ Je ne sais pas si si quelqu'un qui est ce 
+
+01:06:30.260 --> 01:06:35.780
+ les malvoyants pourraient utiliser le verre Google 
+
+01:06:33.380 --> 01:06:38.750
+ parce que c'est encore un petit appareil 
+
+01:06:35.780 --> 01:06:42.290
+ à droite, mais ne remplirait-il pas toute votre 
+
+01:06:38.750 --> 01:06:44.450
+ champ visuel si programme, donc je ne sais pas 
+
+01:06:42.290 --> 01:06:46.280
+ c'est une bonne question avec qui que ce soit 
+
+01:06:44.450 --> 01:06:48.710
+ expérience avec Google Glass, j'aimerais 
+
+01:06:46.280 --> 01:06:51.530
+ sais hey c'est une histoire cool cette 
+
+01:06:48.710 --> 01:06:54.860
+ apporte le monde aux gens ouais c'est 
+
+01:06:51.530 --> 01:06:56.450
+ ça change le jeu d'avoir même le 
+
+01:06:54.860 --> 01:07:00.290
+ confiance pour aller vérifier votre courrier 
+
+01:06:56.450 --> 01:07:03.590
+ vous oui oui j'arrive à quelqu'un 
+
+01:07:00.290 --> 01:07:05.540
+ maison parfois et II dois aller 
+
+01:07:03.590 --> 01:07:07.730
+ vérifier pour voir si elles sont mail au 
+
+01:07:05.540 --> 01:07:09.290
+ devant la maison, il a été livré 
+
+01:07:07.730 --> 01:07:11.870
+ bien sûr parce qu'ils ne peuvent pas sortir 
+
+01:07:09.290 --> 01:07:14.000
+ eux-mêmes pour le faire oui pouvez-vous imaginer 
+
+01:07:11.870 --> 01:07:15.560
+ comme juste l'indépendance de pouvoir 
+
+01:07:14.000 --> 01:07:16.970
+ faire quelque chose d'aussi simple que ça 
+
+01:07:15.560 --> 01:07:19.520
+ eh bien je veux dire à la fin de la journée du 
+
+01:07:16.970 --> 01:07:21.550
+ tout le point d'accessibilité est de 
+
+01:07:19.520 --> 01:07:23.590
+ éliminer ces obstacles 
+
+01:07:21.550 --> 01:07:25.710
+ empêche les gens de la vie normale et ainsi 
+
+01:07:23.590 --> 01:07:28.690
+ quelque chose comme ceci est un énorme 
+
+01:07:25.710 --> 01:07:30.850
+ dispositif d'accessibilité et je l'aime c'est 
+
+01:07:28.690 --> 01:07:32.710
+ grand et cinq cents dollars n'est pas que 
+
+01:07:30.850 --> 01:07:35.140
+ fanatique non non maintenant penser au coût 
+
+01:07:32.710 --> 01:07:37.510
+ d'un chien qui voit ce que je veux dire exactement 
+
+01:07:35.140 --> 01:07:39.700
+ juste pour mettre un peu de tour dessus, mais 
+
+01:07:37.510 --> 01:07:41.590
+ ouais je veux dire vraiment je veux dire donner le 
+
+01:07:39.700 --> 01:07:44.590
+ chien une pause pour juste un après-midi et aller 
+
+01:07:41.590 --> 01:07:46.630
+ pour une promenade avec votre nous marchons et ça va 
+
+01:07:44.590 --> 01:07:48.210
+ vous dire où sont les magasins et vous 
+
+01:07:46.630 --> 01:07:50.890
+ sais que le chien ne peut pas faire ça 
+
+01:07:48.210 --> 01:07:52.270
+ Hé là vous allez vous avez mentionné que vous 
+
+01:07:50.890 --> 01:07:54.580
+ peut avoir une main libre de sorte que vous avez 
+
+01:07:52.270 --> 01:07:58.270
+ votre votre chien oui et vous avez votre 
+
+01:07:54.580 --> 01:08:00.580
+ canne vous avez le la le cerveau de 
+
+01:07:58.270 --> 01:08:03.430
+ le chien et que et tout ce qui 
+
+01:08:00.580 --> 01:08:05.980
+ vient avec cela et ces intelligences de 
+
+01:08:03.430 --> 01:08:08.980
+ comme la nation intelligente l'information 
+
+01:08:05.980 --> 01:08:11.110
+ intelligence de Google assistant qui serait 
+
+01:08:08.980 --> 01:08:12.970
+ vous dire votre arrêt de bus et si ou 
+
+01:08:11.110 --> 01:08:15.400
+ pas les bus ouais quel bus est-ce présent 
+
+01:08:12.970 --> 01:08:17.589
+ est le bus qui va au centre commercial ou 
+
+01:08:15.400 --> 01:08:20.319
+ celui qui va chez toi droit 
+
+01:08:17.589 --> 01:08:22.600
+ c'est cool c'est très intelligent et je 
+
+01:08:20.319 --> 01:08:24.730
+ aime ce qu'il a dit qui est pourquoi sommes-nous 
+
+01:08:22.600 --> 01:08:26.290
+ toujours en utilisant un bâton ouais comme nous allons 
+
+01:08:24.730 --> 01:08:28.600
+ smarten les choses ici les gens 
+
+01:08:26.290 --> 01:08:30.700
+ oui tout va bien, je dois jeter un oeil à 
+
+01:08:28.600 --> 01:08:32.920
+ coin gecko voici ce que le marché de la crypto 
+
+01:08:30.700 --> 01:08:35.380
+ ressemblait à partir de 1800 heures de l'Est 
+
+01:08:32.920 --> 01:08:40.060
+ Heure le mercredi 11 septembre 2019 
+
+01:08:35.380 --> 01:08:41.650
+ Bitcoin est un perdant cette semaine perd cinq 
+
+01:08:40.060 --> 01:08:43.990
+ cent douze dollars en 71 cents 
+
+01:08:41.650 --> 01:08:46.210
+ ton cul tient toujours assez fort 
+
+01:08:43.990 --> 01:08:48.850
+ mais à dix mille cent 
+
+01:08:46.210 --> 01:08:50.710
+ trois dollars et 22 cents nous Facebook 
+
+01:08:48.850 --> 01:08:54.810
+ Balance toujours pas essayer un commerce 
+
+01:08:50.710 --> 01:08:59.500
+ litecoin est à 68 71 dollars américains 
+
+01:08:54.810 --> 01:09:03.430
+ Aetherium à 176 quatre-vingt cinq Manero a 
+
+01:08:59.500 --> 01:09:05.680
+ gagné très peu à 70 301 je veux dire 
+
+01:09:03.430 --> 01:09:10.780
+ tout est assez statique en ce moment 
+
+01:09:05.680 --> 01:09:13.990
+ Scala aka couple aka Stellite est en baisse de 
+
+01:09:10.780 --> 01:09:15.339
+ 0,55 je pense qu'ils perdent un marché 
+
+01:09:13.990 --> 01:09:17.170
+ la confiance avec tous les changements et 
+
+01:09:15.339 --> 01:09:17.799
+ tout et les gens ne savent pas où 
+
+01:09:17.170 --> 01:09:20.530
+ aller 
+
+01:09:17.799 --> 01:09:23.680
+ tortue pièce est également un peu en baisse à 
+
+01:09:20.530 --> 01:09:27.609
+ 0,3 à dix mille cent et désolé 
+
+01:09:23.680 --> 01:09:28.150
+ Scala était 0,55 dix millièmes pas un 
+
+01:09:27.609 --> 01:09:30.310
+ cent 
+
+01:09:28.150 --> 01:09:33.240
+ rappelez-vous le marché de la crypto-monnaie est 
+
+01:09:30.310 --> 01:09:36.360
+ en constante évolution, il est volatile et il est 
+
+01:09:33.240 --> 01:09:38.910
+ va jamais fermer alors c'est un marché 24/7 
+
+01:09:36.360 --> 01:09:41.490
+ alors quand vous allez au lit à dire 10 heures 
+
+01:09:38.910 --> 01:09:44.130
+ la nuit, le marché change encore si 
+
+01:09:41.490 --> 01:09:46.140
+ vous savez que vous vous ne pouvez pas être possible sur 
+
+01:09:44.130 --> 01:09:49.980
+ haut des marchés de crypto-monnaie en tant que 
+
+01:09:46.140 --> 01:09:52.350
+ mécanisme de négociation afin que chaque fois que vous investissez 
+
+01:09:49.980 --> 01:09:53.670
+ chaque fois que vous décidez de mettre quelque chose 
+
+01:09:52.350 --> 01:09:56.040
+ dans le marché de la crypto-monnaie notre 
+
+01:09:53.670 --> 01:09:57.510
+ recommandation ici la catégorie 5 est de 
+
+01:09:56.040 --> 01:10:00.930
+ n'investissez que ce que vous êtes prêt à perdre 
+
+01:09:57.510 --> 01:10:03.420
+ et nous vous souhaitons bonne chance avec cela et nous le faisons 
+
+01:10:00.930 --> 01:10:10.430
+ avoir un pot de pourboire si vous faites bien garder cela 
+
+01:10:03.420 --> 01:10:13.260
+ dans le fond de votre esprit oui 
+
+01:10:10.430 --> 01:10:14.850
+ grand merci à Roy W Nash et à notre 
+
+01:10:13.260 --> 01:10:16.830
+ votre communauté pour soumettre 
+
+01:10:14.850 --> 01:10:18.870
+ histoires à nous cette semaine merci pour 
+
+01:10:16.830 --> 01:10:20.640
+ regarder la salle de presse de la catégorie cinq 
+
+01:10:18.870 --> 01:10:22.560
+ ne pas oublier à aimer et à souscrire 
+
+01:10:20.640 --> 01:10:24.390
+ toutes vos nouvelles techniques avec un léger Linux 
+
+01:10:22.560 --> 01:10:25.980
+ partialité et pour plus de contenu gratuit, assurez-vous 
+
+01:10:24.390 --> 01:10:28.260
+ consulter notre site Web à partir du 
+
+01:10:25.980 --> 01:10:30.330
+ salle de rédaction de télévision catégorie cinq, je suis Sasha 
+
+01:10:28.260 --> 01:10:32.280
+ Rickman et je suis Robbie Ferguson et je suis 
+
+01:10:30.330 --> 01:10:34.260
+ Jeff Weston merci d'être ici avec 
+
+01:10:32.280 --> 01:10:36.030
+ nous à nouveau cette semaine les gens que nous devons 
+
+01:10:34.260 --> 01:10:37.370
+ prendre une pause très rapide et nous serons 
+
+01:10:36.030 --> 01:10:54.810
+ bâton droit 
+
+01:10:37.370 --> 01:10:54.810
+ [La musique] 
+
+01:10:56.500 --> 01:11:01.010
+ bon retour dans cette catégorie cinq 
+
+01:10:58.310 --> 01:11:03.350
+ la technologie de la télévision, nous célébrons la fin 
+
+01:11:01.010 --> 01:11:07.990
+ de toutes choses 
+
+01:11:03.350 --> 01:11:07.990
+ pas seulement la saison quelle est la saison 
+
+01:11:12.710 --> 01:11:22.840
+ [Rire] 
+
+01:11:16.420 --> 01:11:26.240
+ nous serons de retour ce qui est irréaliste 
+
+01:11:22.840 --> 01:11:28.640
+ bien bien fait tout le monde 
+
+01:11:26.240 --> 01:11:35.870
+ bien fait bien fini l'année 
+
+01:11:28.640 --> 01:11:38.360
+ sans ca oui la tarte Wow saison 12 
+
+01:11:35.870 --> 01:11:40.280
+ était une saison assez grande, je veux dire que nous avons 
+
+01:11:38.360 --> 01:11:42.080
+ avait eu beaucoup de changements ici et 
+
+01:11:40.280 --> 01:11:45.170
+ progressivement le studio devient 
+
+01:11:42.080 --> 01:11:47.870
+ de mieux en mieux tout le temps je pense 
+
+01:11:45.170 --> 01:11:49.160
+ comme alors que nous n'avons pas souvent d'invités 
+
+01:11:47.870 --> 01:11:51.500
+ le studio parfois tu nous entends parler 
+
+01:11:49.160 --> 01:11:53.330
+ Dave Dave est ici avec nous ce soir 
+
+01:11:51.500 --> 01:11:56.200
+ notre public de studio, nous avons des sièges 
+
+01:11:53.330 --> 01:11:59.630
+ pour 10 et il peste toute la place 
+
+01:11:56.200 --> 01:12:01.970
+ nous avons eu des gens comme Bill Marshall et 
+
+01:11:59.630 --> 01:12:04.160
+ sa femme et Beau et était ici de 
+
+01:12:01.970 --> 01:12:06.740
+ Amérique avec sa femme comme 
+
+01:12:04.160 --> 01:12:09.500
+ bien et et avoir des gens ici dans le 
+
+01:12:06.740 --> 01:12:12.500
+ studio pour moi est un moment vraiment spécial 
+
+01:12:09.500 --> 01:12:14.930
+ surtout Dave sans offense, je vous connais 
+
+01:12:12.500 --> 01:12:18.140
+ est venu de loin, vous savez juste 
+
+01:12:14.930 --> 01:12:21.860
+ la route, mais ceux qui sont venus de 
+
+01:12:18.140 --> 01:12:25.790
+ Californie de New York pour être 
+
+01:12:21.860 --> 01:12:28.070
+ ici dans notre studio à Barrie en Ontario et 
+
+01:12:25.790 --> 01:12:30.830
+ vous savez traité comme des vacances avec un 
+
+01:12:28.070 --> 01:12:33.020
+ Escale mercredi soir et nous sommes un 
+
+01:12:30.830 --> 01:12:35.330
+ une partie de l'émission et et les deux 
+
+01:12:33.020 --> 01:12:37.340
+ Messieurs où nous sommes réellement disposés 
+
+01:12:35.330 --> 01:12:39.530
+ être placé devant la caméra aussi 
+
+01:12:37.340 --> 01:12:43.040
+ donc je suis sûr que vous avez tous apprécié ce que vous faites 
+
+01:12:39.530 --> 01:12:45.020
+ vouloir venir oh ouais tu ne dois pas 
+
+01:12:43.040 --> 01:12:47.480
+ être sur les ondes, vous ne devez pas être 
+
+01:12:45.020 --> 01:12:49.880
+ mondialement connu, mais quand vous faites cela, vous 
+
+01:12:47.480 --> 01:12:52.580
+ devenir célèbre dans le monde entier 
+
+01:12:49.880 --> 01:12:55.670
+ comme à coup sûr sortir avec nous 
+
+01:12:52.580 --> 01:12:58.760
+ et nous arrangerons que oui, c'est que 
+
+01:12:55.670 --> 01:13:00.980
+ est besoin pour c'est un souvenir pour moi, je 
+
+01:12:58.760 --> 01:13:03.320
+ signifie cette saison qui se démarque vraiment 
+
+01:13:00.980 --> 01:13:05.300
+ J'ai aussi fait beaucoup plus de soudure et je suis 
+
+01:13:03.320 --> 01:13:06.800
+ apprendre à s'améliorer c'est 
+
+01:13:05.300 --> 01:13:09.680
+ c'est quelque chose que j'ai travaillé 
+
+01:13:06.800 --> 01:13:11.060
+ sur et dans la saison 13, je vais faire 
+
+01:13:09.680 --> 01:13:12.680
+ plus de cela, nous allons faire plus 
+
+01:13:11.060 --> 01:13:14.810
+ trucs pratiques, il y a beaucoup de choses 
+
+01:13:12.680 --> 01:13:17.060
+ ça va être tu sais que nous évoluons 
+
+01:13:14.810 --> 01:13:19.160
+ comme un spectacle de la saison 13, je suis vraiment 
+
+01:13:17.060 --> 01:13:20.890
+ hâte d'être juste Robbie fixation 
+
+01:13:19.160 --> 01:13:23.420
+ toutes les choses que je casse vous 
+
+01:13:20.890 --> 01:13:26.300
+ sais que je veux construire des choses à partir de zéro 
+
+01:13:23.420 --> 01:13:28.100
+ oh bien oh bien sûr nous avons fait des réparations 
+
+01:13:26.300 --> 01:13:30.830
+ et j'utilise le commutateur réseau 
+
+01:13:28.100 --> 01:13:33.470
+ que j'ai jeté un coup d'oeil et je fait 
+
+01:13:30.830 --> 01:13:35.420
+ soudé et fixé et commandé les pièces 
+
+01:13:33.470 --> 01:13:37.070
+ d'Amazon après le diagnostic moi-même 
+
+01:13:35.420 --> 01:13:39.680
+ et oui ça marche très bien c'est ce que je suis 
+
+01:13:37.070 --> 01:13:41.420
+ utiliser à la maison dans ma salle de serveur nem 
+
+01:13:39.680 --> 01:13:43.340
+ c'est aussi NEMS Linux a tout un tas 
+
+01:13:41.420 --> 01:13:46.930
+ de micro-ordinateurs et j'ai un 16 
+
+01:13:43.340 --> 01:13:46.930
+ commutateur de port pour 6 dollars 
+
+01:13:46.960 --> 01:13:52.970
+ des souvenirs préférés pour vous à cette 
+
+01:13:49.580 --> 01:13:55.640
+ année, j'ai vraiment été époustouflé par les Y 
+
+01:13:52.970 --> 01:13:57.170
+ cam unboxing oh oui tellement que j'étais 
+
+01:13:55.640 --> 01:13:59.510
+ attendre et attendre et attendre 
+
+01:13:57.170 --> 01:14:01.460
+ Noël à venir parce que j'étais 
+
+01:13:59.510 --> 01:14:03.770
+ pour Dave pour Noël et je 
+
+01:14:01.460 --> 01:14:05.540
+ décidé que vous ne pouviez pas attendre, ne faisons pas 
+
+01:14:03.770 --> 01:14:08.060
+ que connaissons-nous juste un anniversaire 
+
+01:14:05.540 --> 01:14:10.250
+ cadeau d'anniversaire combo mm-hmm parce que je 
+
+01:14:08.060 --> 01:14:11.780
+ aimez-les, vous avez apprécié certains des 
+
+01:14:10.250 --> 01:14:18.830
+ produits que nous avons montrés à l'émission 
+
+01:14:11.780 --> 01:14:21.470
+ comme le papier e qui était-ce et nous faisons 
+
+01:14:18.830 --> 01:14:24.200
+ ont tendance à montrer des trucs assez cool et 
+
+01:14:21.470 --> 01:14:28.340
+ c'est pratique j'essaie de rester à l'écart 
+
+01:14:24.200 --> 01:14:29.810
+ juste de la technologie qui vient de jeter ouais 
+
+01:14:28.340 --> 01:14:32.900
+ loin des choses comme des choses qui est vraiment 
+
+01:14:29.810 --> 01:14:35.390
+ comme bon c'est assez sage cam 
+
+01:14:32.900 --> 01:14:37.250
+ ouais un papier ouais c'est un pas cher comme 
+
+01:14:35.390 --> 01:14:39.890
+ comme vous pouvez les obtenir pour 14 dollars ouais 
+
+01:14:37.250 --> 01:14:47.960
+ c'est assez cool et cela économise beaucoup de 
+
+01:14:39.890 --> 01:14:49.310
+ arbres j'ai installé un système d'exploitation sur ma lumière 
+
+01:14:47.960 --> 01:14:52.160
+ Garvey et l'homme des marais qui est 
+
+01:14:49.310 --> 01:14:54.400
+ d'ailleurs, quand j'ai entendu parler de Google 
+
+01:14:52.160 --> 01:14:55.760
+ fonction de bureau à distance qui est 
+
+01:14:54.400 --> 01:14:59.929
+ formidable 
+
+01:14:55.760 --> 01:15:02.030
+ ouais bien fait merci les gars 
+
+01:14:59.929 --> 01:15:04.400
+ pour moi ça a été les interviews oui 
+
+01:15:02.030 --> 01:15:05.630
+ comme nous avons eu d'excellents entretiens dans 
+
+01:15:04.400 --> 01:15:08.090
+ la dernière seconde, je pense à un couple 
+
+01:15:05.630 --> 01:15:11.179
+ il y a des saisons que l'interview sur lidar 
+
+01:15:08.090 --> 01:15:12.920
+ que la forêt amazonienne et j'étais 
+
+01:15:11.179 --> 01:15:14.179
+ comme ce fut l'interview la plus cool jamais 
+
+01:15:12.920 --> 01:15:15.650
+ qui était incroyable, je suis tellement excité à propos de 
+
+01:15:14.179 --> 01:15:17.900
+ ce genre de choses, mais quand il est venu à cette 
+
+01:15:15.650 --> 01:15:20.150
+ saison, nous avons eu quelques vraiment paniquer 
+
+01:15:17.900 --> 01:15:22.070
+ interviews cool que je vais bien 
+
+01:15:20.150 --> 01:15:25.010
+ c'est comme le meilleur comme interview 
+
+01:15:22.070 --> 01:15:28.489
+ statut jamais en particulier celui que nous 
+
+01:15:25.010 --> 01:15:31.070
+ vient d'avoir la semaine dernière andrew était ici et 
+
+01:15:28.489 --> 01:15:33.190
+ jacasser au sujet de leurs progrès dans 
+
+01:15:31.070 --> 01:15:36.320
+ La technologie Wi-Fi regarde le numéro d'épisode 
+
+01:15:33.190 --> 01:15:39.860
+ 624 c'était très amusant et je 
+
+01:15:36.320 --> 01:15:42.620
+ rentra chez moi et ma femme regardait la télévision oh 
+
+01:15:39.860 --> 01:15:44.949
+ oui et j'ai interrompu son spectacle pour dire 
+
+01:15:42.620 --> 01:15:48.050
+ elle à propos de oui les changements de femme 
+
+01:15:44.949 --> 01:15:50.840
+ parce que j'étais ça enflammé sur j'étais 
+
+01:15:48.050 --> 01:15:53.060
+ tellement tellement excité et ainsi les interviews nous 
+
+01:15:50.840 --> 01:15:56.000
+ ont fait ont été super et et j'aime 
+
+01:15:53.060 --> 01:15:57.980
+ que j'aime que le spectacle tu te connaisse 
+
+01:15:56.000 --> 01:15:59.750
+ savoir couvrant 12 ans est passé de 
+
+01:15:57.980 --> 01:16:02.120
+ juste le sous-sol comme oh hey nous sommes 
+
+01:15:59.750 --> 01:16:05.480
+ tu vas savoir cette chose rinky-dink sur 
+
+01:16:02.120 --> 01:16:08.690
+ une webcam - merci Jeff j'aime comment tu 
+
+01:16:05.480 --> 01:16:10.730
+ vraiment vanté la première saison ouais mais 
+
+01:16:08.690 --> 01:16:13.160
+ le fait est que vous ne vous avez pas pris maintenant 
+
+01:16:10.730 --> 01:16:15.290
+ la vérité, c’est vous que vous avez 
+
+01:16:13.160 --> 01:16:17.870
+ pris le spectacle 12 saisons au point 
+
+01:16:15.290 --> 01:16:19.790
+ où nous sommes maintenant recherchés et 
+
+01:16:17.870 --> 01:16:23.090
+ les gens disent que je veux monter sur votre 
+
+01:16:19.790 --> 01:16:24.590
+ montrer et ils veulent et ils veulent notre 
+
+01:16:23.090 --> 01:16:26.719
+ produit leurs produits à examiner 
+
+01:16:24.590 --> 01:16:29.270
+ et juste pour vous amuser 
+
+01:16:26.719 --> 01:16:32.870
+ Jeff c'est le spectacle Sasha tout droit 
+
+01:16:29.270 --> 01:16:37.750
+ ouais ouais je veux dire qu'elle me permet de rester 
+
+01:16:32.870 --> 01:16:37.750
+ sur le plateau mais c'est ça y est je 
+
+01:16:41.050 --> 01:16:46.250
+ en fait la saison 13 ont été renommer 
+
+01:16:43.670 --> 01:16:53.600
+ catégorie cinq technologie de télévision - la ceinture 
+
+01:16:46.250 --> 01:16:55.790
+ vous savez ce qui est intéressant 
+
+01:16:53.600 --> 01:16:57.949
+ des interviews est assez souvent, je ne sais pas 
+
+01:16:55.790 --> 01:17:01.340
+ comment les choses vont aller oui et tout à fait 
+
+01:16:57.949 --> 01:17:04.480
+ et parfois je me demande même est-ce 
+
+01:17:01.340 --> 01:17:06.670
+ va aller bien yep 
+
+01:17:04.480 --> 01:17:08.260
+ quand nous avons quelqu'un à parler 
+
+01:17:06.670 --> 01:17:10.390
+ leur technologie Wi-Fi il y a quelques 
+
+01:17:08.260 --> 01:17:12.100
+ choses que je regarde un que je n'aime pas 
+
+01:17:10.390 --> 01:17:15.010
+ les choses doivent être nettes Je n'aime pas les choses 
+
+01:17:12.100 --> 01:17:16.570
+ être salé ouais oui c'est vrai et 
+
+01:17:15.010 --> 01:17:18.400
+ c'est quelque chose qui est difficile à 
+
+01:17:16.570 --> 01:17:19.660
+ donner à un homme d'affaires qui est 
+
+01:17:18.400 --> 01:17:22.060
+ en essayant de promouvoir leurs affaires au 
+
+01:17:19.660 --> 01:17:24.100
+ en même temps mais notre approche a toujours 
+
+01:17:22.060 --> 01:17:27.760
+ été et et continue d'être et je suis 
+
+01:17:24.100 --> 01:17:30.130
+ apprendre à apprendre à diriger 
+
+01:17:27.760 --> 01:17:31.690
+ interviews de cette façon notre approche est 
+
+01:17:30.130 --> 01:17:33.670
+ parlons de la technologie parlons 
+
+01:17:31.690 --> 01:17:36.340
+ sur la façon dont cela fonctionne parlons de la 
+
+01:17:33.670 --> 01:17:39.850
+ aspects personnels de la façon dont il est arrivé, je 
+
+01:17:36.340 --> 01:17:42.550
+ aimer le contact personnel aussi mais sans 
+
+01:17:39.850 --> 01:17:45.040
+ être sale et qui peut être difficile 
+
+01:17:42.550 --> 01:17:45.550
+ peut être ouais ouais je pense que ça vous a été 
+
+01:17:45.040 --> 01:17:48.490
+ j'y suis arrivé 
+
+01:17:45.550 --> 01:17:49.630
+ oh merci mec qu'est-ce que tu crois que j'ai 
+
+01:17:48.490 --> 01:17:50.560
+ l'interview a été très amusant pour 
+
+01:17:49.630 --> 01:17:53.170
+ vous et c'est quelque chose que nous pouvons 
+
+01:17:50.560 --> 01:17:56.470
+ se concentrer sur plus, puis à venir 
+
+01:17:53.170 --> 01:17:57.760
+ mois aussi avec la saison 13 alors quoi de 
+
+01:17:56.470 --> 01:17:59.470
+ nous voulons connaître votre souvenir préféré 
+
+01:17:57.760 --> 01:18:01.510
+ ouais j'aimerais avoir votre commentaire ci-dessous 
+
+01:17:59.470 --> 01:18:03.910
+ c'est un bon point quels souvenirs 
+
+01:18:01.510 --> 01:18:05.260
+ avez-vous de la saison 12 vraiment 
+
+01:18:03.910 --> 01:18:07.330
+ démarquez-vous pour vous et si vous n'êtes pas 
+
+01:18:05.260 --> 01:18:10.660
+ bien sûr, rendez-vous sur notre site Web 
+
+01:18:07.330 --> 01:18:14.140
+ vous pouvez aller à la catégorie 5 points TV et sur 
+
+01:18:10.660 --> 01:18:16.900
+ notre site Web, vous pouvez aller spectacles catégorie 5 
+
+01:18:14.140 --> 01:18:19.660
+ technologie TV épisodes complets de la saison 12 
+
+01:18:16.900 --> 01:18:21.970
+ et simplement regarder une partie du contenu 
+
+01:18:19.660 --> 01:18:23.020
+ qui est là et faites défiler et dites bon 
+
+01:18:21.970 --> 01:18:25.420
+ il y a une bonne mémoire 
+
+01:18:23.020 --> 01:18:27.970
+ il y a quelque chose hé le fan d'Orval 
+
+01:18:25.420 --> 01:18:29.620
+ expérience, je l'aime comme ce genre de 
+
+01:18:27.970 --> 01:18:31.240
+ les choses regardent même ces souvenirs 
+
+01:18:29.620 --> 01:18:33.790
+ y at-il il y a moi de soudure de la 
+
+01:18:31.240 --> 01:18:35.500
+ d'en haut à droite alors vérifiez-le nous dire 
+
+01:18:33.790 --> 01:18:37.210
+ quels sont tes souvenirs préférés 
+
+01:18:35.500 --> 01:18:40.750
+ l'amour de vous entendre à ce sujet aussi bien 
+
+01:18:37.210 --> 01:18:43.720
+ maintenant pour la première fois de notre vie 
+
+01:18:40.750 --> 01:18:46.330
+ prendre une semaine de congé de la catégorie 5 
+
+01:18:43.720 --> 01:18:48.040
+ la technologie TV si bien soyons clairs, je 
+
+01:18:46.330 --> 01:18:51.340
+ pense que cette saison nous avons dû l'enlever 
+
+01:18:48.040 --> 01:18:54.970
+ mais parce qu'il n'y a pas de puits de puissance nous 
+
+01:18:51.340 --> 01:18:56.770
+ étaient ici, nous avons envoyé un fichier que nous 
+
+01:18:54.970 --> 01:18:59.140
+ pourrait mais je peut être à la recherche d'une semaine 
+
+01:18:56.770 --> 01:19:01.480
+ effectivement être oui, nous savons réellement 
+
+01:18:59.140 --> 01:19:03.730
+ nos réseaux de télévision par câble qui nous diffusent 
+
+01:19:01.480 --> 01:19:06.310
+ vont rouler une reprise la semaine prochaine 
+
+01:19:03.730 --> 01:19:09.820
+ donc 18 septembre technologie de catégorie 5 
+
+01:19:06.310 --> 01:19:13.390
+ La télévision sera fermée et il y a quelque chose 
+
+01:19:09.820 --> 01:19:16.690
+ passe qui est exclusif à notre 
+
+01:19:13.390 --> 01:19:18.310
+ les clients, donc si vous êtes déjà un patron 
+
+01:19:16.690 --> 01:19:20.770
+ qui est fondamentalement 
+
+01:19:18.310 --> 01:19:24.070
+ un donateur à la télévision de technologie de catégorie cinq 
+
+01:19:20.770 --> 01:19:25.480
+ qui aide à soutenir cet effort et 
+
+01:19:24.070 --> 01:19:28.590
+ ce que nous faisons ici à la catégorie cinq 
+
+01:19:25.480 --> 01:19:31.930
+ la technologie de la télévision, nous avons trois heures 
+
+01:19:28.590 --> 01:19:34.600
+ spécial pour vous si vous n'êtes pas 
+
+01:19:31.930 --> 01:19:38.970
+ actuellement un patron, vous pouvez devenir 
+
+01:19:34.600 --> 01:19:38.970
+ impliqué dans cela a une semaine en allant à 
+
+01:19:39.390 --> 01:19:44.980
+ patreon.com/scishow que vous pouvez 
+
+01:19:42.820 --> 01:19:46.570
+ participer à ce spectacle mais comme je le dis 
+
+01:19:44.980 --> 01:19:48.520
+ pour la première fois, il n'y aura pas 
+
+01:19:46.570 --> 01:19:51.180
+ être un spectacle accessible au public sur 
+
+01:19:48.520 --> 01:19:53.710
+ 18 septembre alors si vous accordez en direct 
+
+01:19:51.180 --> 01:19:56.620
+ savoir que cela ne sera pas disponible pour 
+
+01:19:53.710 --> 01:20:00.010
+ vous cependant dans deux semaines du 
+
+01:19:56.620 --> 01:20:03.010
+ diffusé aujourd'hui saison treize coups de pied 
+
+01:20:00.010 --> 01:20:05.740
+ hors de notre studio régulier avec des 
+
+01:20:03.010 --> 01:20:07.690
+ améliorations ici qui fait partie de 
+
+01:20:05.740 --> 01:20:10.630
+ ce que nous faisons avec nos clients 
+
+01:20:07.690 --> 01:20:12.100
+ spécial sur le 18, si bien que vous avez 
+
+01:20:10.630 --> 01:20:14.070
+ le singe dansant commandé pour la semaine prochaine 
+
+01:20:12.100 --> 01:20:19.210
+ droite je pense qu'il est déjà là oui 
+
+01:20:14.070 --> 01:20:21.520
+ ouais ce sont les noms Robbie ont un merveilleux 
+
+01:20:19.210 --> 01:20:23.140
+ semaine et nous aurons bien une merveilleuse 
+
+01:20:21.520 --> 01:20:25.570
+ deux semaines si vous n'êtes pas un client si vous 
+
+01:20:23.140 --> 01:20:26.680
+ suis un patron, je suis tellement impatient de 
+
+01:20:25.570 --> 01:20:28.510
+ vous voir pour la prochaine spéciale 
+
+01:20:26.680 --> 01:20:29.410
+ Mercredi soir, faites attention à tout le monde 
+
+01:20:28.510 --> 01:20:32.489
+ toi 
+
+01:20:29.410 --> 01:20:32.489
+ [La musique] 
+
+01:20:36.660 --> 01:20:41.940
+ [La musique] 
+
+01:20:39.310 --> 01:20:43.010
+ [Applaudissements] 
+
+01:20:41.940 --> 01:20:49.789
+ toi 
+
+01:20:43.010 --> 01:20:49.789
+ [Applaudissements] 
+
