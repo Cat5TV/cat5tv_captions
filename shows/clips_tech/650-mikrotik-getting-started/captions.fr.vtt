@@ -1,0 +1,649 @@
+WEBVTT
+Kind: captions
+Language: fr
+
+00:00:01.970 --> 00:00:09.450
+ nous commençons une série sur les routeurs micro tech ce sont un perturbateur 
+
+00:00:09.450 --> 00:00:15.900
+ technologie dans la mesure où ils offrent des fonctionnalités qui ne sont généralement disponibles sur le 
+
+00:00:15.900 --> 00:00:22.650
+ marché en tant que fonctionnalités de niveau entreprise, vous devez donc payer beaucoup d'argent pour obtenir 
+
+00:00:22.650 --> 00:00:27.570
+ ce genre de fonctionnalités bien ces petits gars de mikrotik sont capables de faire 
+
+00:00:27.570 --> 00:00:34.500
+ beaucoup moins cher, nous parlons de 10% du prix, donc c'est une bonne chose et 
+
+00:00:34.500 --> 00:00:39.750
+ il nous permet de créer un meilleur réseau domestique un meilleur réseau de bureau parfait 
+
+00:00:39.750 --> 00:00:45.690
+ pour les PME ou les travailleurs indépendants, donc si c'est vous ou si vous voulez juste faire 
+
+00:00:45.690 --> 00:00:49.649
+ votre réseau domestique aussi bien que possible peut être bien cette série est pour vous 
+
+00:00:49.649 --> 00:00:53.730
+ nous allons vous guider, je vais vous guider à travers tout, de la 
+
+00:00:53.730 --> 00:00:58.980
+ configuration de base aujourd'hui jusqu'à la création d'un réseau Wi-Fi invité qui est 
+
+00:00:58.980 --> 00:01:04.680
+ va permettre à vos enfants amis d'utiliser le Wi-Fi sans risquer réellement la 
+
+00:01:04.680 --> 00:01:09.720
+ l'intégrité de vos données personnelles il y a beaucoup que nous pouvons faire avec un mikrotik 
+
+00:01:09.720 --> 00:01:13.049
+ routeur et nous allons vous aider à travers cela tout au long de cette 
+
+00:01:13.049 --> 00:01:18.960
+ série la série est disponible sur cat5 dot TV slash mikrotik alors assurez-vous 
+
+00:01:18.960 --> 00:01:22.380
+ allez-y et tu vas voir chacune des vidéos ainsi que le matériel qui est 
+
+00:01:22.380 --> 00:01:26.580
+ va être nécessaire de parler de matériel maintenant, j'ai opté pour le micro 
+
+00:01:26.580 --> 00:01:33.869
+ tech cap AC router board RB 9 6 2 UI GS et la raison pour laquelle j'ai opté pour cela 
+
+00:01:33.869 --> 00:01:38.280
+ modèle particulier est bien il y a quelques choses différentes essentiellement, il a 
+
+00:01:38.280 --> 00:01:43.920
+ Gigabit Ethernet maintenant mon internet ici au studio est internet gigabit donc si je 
+
+00:01:43.920 --> 00:01:48.960
+ avait un routeur qui n'a fait que 10 sur 100, je vais en fait seulement obtenir 100 
+
+00:01:48.960 --> 00:01:52.619
+ mégabits par seconde sur mon service Internet, même s'il est capable de 
+
+00:01:52.619 --> 00:01:58.469
+ bien plus, donc je devais absolument faire en sorte que mon routeur va 
+
+00:01:58.469 --> 00:02:04.460
+ soutenir le Gigabit Ethernet de sorte que et l'Internet gigabit de sorte que je ne suis pas 
+
+00:02:04.460 --> 00:02:09.090
+ perdre une partie de la vitesse de ma connectivité Internet qui est très très importante 
+
+00:02:09.090 --> 00:02:13.860
+ deuxième est le fait qu'il a une double radio afin 2.4 
+
+00:02:13.860 --> 00:02:19.980
+ et cinq gigahertz Wi-Fi pour que je puisse mettre mes caméras sur 2,4 gigahertz qui est un 
+
+00:02:19.980 --> 00:02:24.300
+ bande assez sursaturée mais en même temps je peux avoir cinq gigahertz pour 
+
+00:02:24.300 --> 00:02:27.720
+ mon téléphone et mes autres appareils pour avoir une meilleure vitesse mieux 
+
+00:02:27.720 --> 00:02:30.660
+ la connectivité et ça va vraiment très bien fonctionner 
+
+00:02:30.660 --> 00:02:37.500
+ il prend en charge 802 11 BG et n capacité Wi-Fi tout de l'intérieur de ce petit 
+
+00:02:37.500 --> 00:02:42.030
+ appareil qui ne va pas nous coûter beaucoup d'argent, vous pouvez en savoir plus 
+
+00:02:42.030 --> 00:02:46.709
+ sur la gamme de produits aller à notre site Web cap cinq points TV slash mikrotik et 
+
+00:02:46.709 --> 00:02:51.060
+ suivez le lien et ça va vous amener à un index donc ce qui est intéressant, je 
+
+00:02:51.060 --> 00:02:54.600
+ devrait dire que je l'ai déjà un peu couvert dans la vidéo d'introduction un couple 
+
+00:02:54.600 --> 00:03:01.050
+ il y a quelques semaines, mais pour être clair, ce qui est bien avec mikrotik, c'est qu'il n'est pas 
+
+00:03:01.050 --> 00:03:07.260
+ limité par le logiciel de sorte que le firmware du routeur ne vous limite pas dans le 
+
+00:03:07.260 --> 00:03:12.840
+ de la même manière qu'un routeur grand public traditionnel devrait généralement payer 
+
+00:03:12.840 --> 00:03:20.120
+ plus pour plus de fonctionnalités bien mikrotik et leur système d'exploitation de la carte de routeur si c'est 
+
+00:03:20.120 --> 00:03:25.019
+ complètement ouvert en ce qui concerne Heco est donc la seule considération que vous 
+
+00:03:25.019 --> 00:03:30.540
+ acheter un appareil micro tech est ce que le matériel va faire pour vous, donc vous avez besoin 
+
+00:03:30.540 --> 00:03:34.890
+ pour vous assurer que l'appareil que vous achetez va répondre à votre 
+
+00:03:34.890 --> 00:03:40.590
+ besoins est-ce le bon appareil pour vous, je ne sais pas, vous pourrez peut-être vous évader 
+
+00:03:40.590 --> 00:03:45.450
+ avec un petit quelque chose d'un peu plus petit un peu moins 
+
+00:03:45.450 --> 00:03:50.790
+ cher et et vous pouvez parcourir la liste de leur matériel et comprendre 
+
+00:03:50.790 --> 00:03:56.310
+ lequel vous convient le mieux, mais gardez à l'esprit le logiciel qui l'exécute à partir du 
+
+00:03:56.310 --> 00:04:00.810
+ routeur trente quarante dollars très bon marché que mikrotik fait tout le chemin jusqu'à 
+
+00:04:00.810 --> 00:04:07.080
+ la plus belle unité montable en rack de six cents dollars le logiciel du 
+
+00:04:07.080 --> 00:04:13.560
+ firmware les capacités de la programmation sont complètement les mêmes afin 
+
+00:04:13.560 --> 00:04:17.760
+ la seule limitation est basée sur le matériel afin que vous puissiez commencer avec quelque chose 
+
+00:04:17.760 --> 00:04:21.419
+ vraiment pas cher et progressez plus tard, vous pouvez mettre à niveau si vous avez besoin de quelque chose 
+
+00:04:21.419 --> 00:04:27.360
+ mieux c'est assez cool à nouveau cat5 dot TV slash mikrotik le 
+
+00:04:27.360 --> 00:04:31.800
+ maintenant tout ce que j'ai fait est branché jusqu'à présent, mais ce que nous devons faire 
+
+00:04:31.800 --> 00:04:38.129
+ avant tout, je dois relier mon modem Internet pour que mon service Internet 
+
+00:04:38.129 --> 00:04:43.169
+ fournisseur a fourni un modem Internet qui me permet la connectivité mais 
+
+00:04:43.169 --> 00:04:48.629
+ modem a un serveur DHCP, il a un pare-feu et il permet essentiellement mon 
+
+00:04:48.629 --> 00:04:53.610
+ les ordinateurs pour communiquer sur Internet et je vais remplacer ce intégré 
+
+00:04:53.610 --> 00:04:58.860
+ pare-feu dans ce routeur intégré avec et le serveur DHCP avec mon mikrotik afin 
+
+00:04:58.860 --> 00:05:06.479
+ J'ai besoin de faire ce qu'on appelle un pont pour que le modem que mon FAI fournit le mien soit un 
+
+00:05:06.479 --> 00:05:13.440
+ modem hITRON, je dois le régler de sorte qu'il ne soit rien d'autre qu'un modem, puis nous sommes 
+
+00:05:13.440 --> 00:05:17.639
+ va utiliser cet appareil pour le contrôler de sorte que la façon dont je vais le faire est que je suis 
+
+00:05:17.639 --> 00:05:25.349
+ va se connecter à l'interface et les modems hITRON rcus admin est la connexion 
+
+00:05:25.349 --> 00:05:31.710
+ votre modem va être différent alors gardez cela à l'esprit que ça va être le 
+
+00:05:31.710 --> 00:05:37.770
+ Adresse IP de votre passerelle, vous pouvez en savoir plus en contactant votre FAI si 
+
+00:05:37.770 --> 00:05:43.259
+ vous ne savez pas comment faire cela, mais demandez-leur juste comment ponter mon modem 
+
+00:05:43.259 --> 00:05:47.669
+ c'est la chose importante, donc ça va être un modem stupide qui donne à mon 
+
+00:05:47.669 --> 00:05:52.650
+ l'accès mikrotik à Internet ainsi de suite sur l'hITRON, je vais aller en base et 
+
+00:05:52.650 --> 00:05:58.620
+ la fonction de passerelle et la fonction de passerelle résidentielle sont activées par défaut 
+
+00:05:58.620 --> 00:06:02.940
+ Je veux simplement désactiver cela maintenant, gardez à l'esprit dès que je dis bien 
+
+00:06:02.940 --> 00:06:07.879
+ Je vais perdre l'accès à Internet une fois que j'appuierai sur Enregistrer les modifications alors faisons-le 
+
+00:06:07.879 --> 00:06:15.719
+ parce que maintenant je l'ai transformé en un modem stupide alors prenons un Ethernet 
+
+00:06:15.719 --> 00:06:21.719
+ câble et nous allons monter la carte de notre routeur de sorte que le numéro de port de la carte de routeur 
+
+00:06:21.719 --> 00:06:28.669
+ celui que je vais définir comme mon port LAN, donc je vais le connecter à mon réseau 
+
+00:06:28.669 --> 00:06:33.719
+ il suffit de retirer cela de la façon dont cela est un peu branlant parce que je fais 
+
+00:06:33.719 --> 00:06:36.500
+ ça tu sais 
+
+00:06:36.640 --> 00:06:42.020
+ assez de fortune, mais tu vas avoir l'idée essentiellement le port numéro un de 
+
+00:06:42.020 --> 00:06:50.740
+ la carte du routeur va sortir sur mon mon modem, donc je vais le brancher sur 
+
+00:06:50.740 --> 00:07:03.800
+ mon modem ici, nous allons connecté et bon voyons ouais ne semble pas 
+
+00:07:03.800 --> 00:07:09.980
+ importe quel port je vais, je vais juste bloquer que là-bas, nous allons et maintenant 
+
+00:07:09.980 --> 00:07:14.240
+ Je vais prendre le câble qui me reliait au réseau et je vais 
+
+00:07:14.240 --> 00:07:18.500
+ branchez-le dans le port numéro deux sur ma carte de routeur et cela va me donner 
+
+00:07:18.500 --> 00:07:23.600
+ accès à la micro technologie, je dis que la carte de routeur mikrotik est la carte de routeur de marque 
+
+00:07:23.600 --> 00:07:31.100
+ est le produit donc mon réseau qui est mon commutateur est maintenant connecté au numéro de port 
+
+00:07:31.100 --> 00:07:35.090
+ deux donc mon ordinateur voit essentiellement le numéro de port deux numéro de port un sur le 
+
+00:07:35.090 --> 00:07:42.560
+ mikrotik va à l'arrière du modem ISP réel qui est maintenant réglé sur 
+
+00:07:42.560 --> 00:07:48.950
+ mode pont donc passons à notre mikrotik tout d'abord, nous devons voir 
+
+00:07:48.950 --> 00:07:54.580
+ ce qui est maintenant une chose que tu vas remarquer est que je suis à 10,00 points 
+
+00:07:54.580 --> 00:08:00.430
+ pour savoir quel est mon nouveau réseau maintenant que je suis sur la micro tech ipconfig 
+
+00:08:00.430 --> 00:08:08.030
+ / tout cela est donc dans Windows sous Linux, vous allez taper l'espace IP tiret a et 
+
+00:08:08.030 --> 00:08:13.280
+ Voyons quel type de réseautage j'ai ici bien, je vois toujours un 
+
+00:08:13.280 --> 00:08:24.380
+ passerelle par défaut de 10.0.0.0, il n'a pas encore été actualisé si bien vérifions donc je suis 
+
+00:08:24.380 --> 00:08:30.260
+ sur Windows 10 et même si un redémarrage pourrait déclencher essentiellement la réparation de votre 
+
+00:08:30.260 --> 00:08:33.830
+ réseau en essayant de reconnecter tout ce que je vais faire est que je vais faire un clic droit sur 
+
+00:08:33.830 --> 00:08:39.620
+ mon un adaptateur thern ed et déconnectez désactiver l'adaptateur Ethernet et 
+
+00:08:39.620 --> 00:08:45.560
+ le réactiver et maintenant une fois qu'il se reconnecte, je devrais pouvoir faire une configuration IP 
+
+00:08:45.560 --> 00:08:55.170
+ slash tout et devrait voir oui bien donc nous sommes maintenant sur 192.168.1 nous allons donc 
+
+00:08:55.170 --> 00:09:06.209
+ essayez que 192.168.1 et nous y sommes avec le routeur OS donc dans le cul rétro première chose que nous 
+
+00:09:06.209 --> 00:09:10.379
+ avec maintenant c'est le quick-set donc cela nous permet de configurer rapidement notre 
+
+00:09:10.379 --> 00:09:15.000
+ dispositif de routeur mikrotik alors voyons ce qui se passe ici, donc serveur DHCP 
+
+00:09:15.000 --> 00:09:21.379
+ plage que je veux changer en 10.0.0.0 
+
+00:09:21.560 --> 00:09:30.170
+ à 10.0.0.0 pour l'instant, vous n'aurez peut-être pas besoin de le faire car vous utilisez peut-être 
+
+00:09:30.170 --> 00:09:35.160
+ 192.168.1 - Je suis ici au studio, j'utilise le 
+
+00:09:35.160 --> 00:09:41.399
+ Bloc 10.0.0.0 de sorte que ce soit la mise en réseau générale et pas vraiment ce que je suis 
+
+00:09:41.399 --> 00:09:47.339
+ visant à faire ici et et vous enseigner, mais essentiellement c'est mon bloc IP si 
+
+00:09:47.339 --> 00:09:57.240
+ vous êtes satisfait de 192.168.1 c'est bien je fais 10.0.0.0 mon routeur et mon réglage 
+
+00:09:57.240 --> 00:10:01.740
+ la gamme de serveurs DHCP en conséquence de cent à deux cent cinquante 
+
+00:10:01.740 --> 00:10:06.329
+ quatre bien donc toute autre chose que je dois définir ici, je peux configurer mon 
+
+00:10:06.329 --> 00:10:12.779
+ sans fil et tout le reste, je vais le faire dans un peu alors disons simplement 
+
+00:10:12.779 --> 00:10:19.019
+ obtenir notre adresse IP fonctionne ici, donc je vais frapper appliquer la notification de configuration 
+
+00:10:19.019 --> 00:10:23.339
+ l'acquisition d'adresse saisit du numéro de port Ethernet c'est pourquoi je 
+
+00:10:23.339 --> 00:10:28.529
+ branché mon modem là-bas et je l'ai configuré pour obtenir automatiquement l'adresse IP 
+
+00:10:28.529 --> 00:10:34.500
+ nous allons donc voir ce qui se passe ici comme j'applique cette configuration nous devrions donc 
+
+00:10:34.500 --> 00:10:40.889
+ voir que ce routeur va se redémarrer et quand il le fera, nous allons être 
+
+00:10:40.889 --> 00:10:45.920
+ sur un 1000 qui fonctionne 
+
+00:10:50.300 --> 00:11:02.420
+ solution bon marché et joyeuse bien 10 points 0 point 0 point 
+
+00:11:05.000 --> 00:11:13.650
+ pour obtenir tout mis en place bien alors nous allons renouveler notre DHCP à partir de c'est 
+
+00:11:13.650 --> 00:11:22.400
+ notre connexion Internet, voyons ce qu'elle nous a donné, libérons et renouvelons 
+
+00:11:22.400 --> 00:11:30.240
+ assurez-vous que oui, nous sommes sur le port Ethernet numéro un, je n'ai pas de live 
+
+00:11:30.240 --> 00:11:38.510
+ voyant si quelque chose que mon câble n'a pas été branché tout le chemin ah qui est 
+
+00:11:38.510 --> 00:11:43.680
+ chose numéro deux pour le faire voyez-vous comment cela vient de surgir en plein boom je suis en direct 
+
+00:11:43.680 --> 00:11:49.290
+ sur Internet alors maintenant je devrais déjà avoir accès à dire Google oui je suis 
+
+00:11:49.290 --> 00:11:58.910
+ en ligne faisons un test de vitesse rapide Voyons comment elle va 
+
+00:12:00.670 --> 00:12:16.360
+ go-go-go donc c'était une vitesse de téléchargement assez misérable vitesse de téléchargement pas terrible 
+
+00:12:16.360 --> 00:12:27.730
+ tester à nouveau quelque chose est peut-être là-bas, nous sommes juste en ce que vous savez que 
+
+00:12:27.730 --> 00:12:34.100
+ pandémie vitesse Internet tout est assez lent en ce moment ouais obtenir 
+
+00:12:34.100 --> 00:12:39.970
+ des vitesses assez faibles donc même encore un routeur 10 sur 100 ne me donnerait jusqu'à 
+
+00:12:39.970 --> 00:12:46.490
+ 100 mégabits et je pousse 156 en ce moment c'est assez mauvais étant donné que je suis 
+
+00:12:46.490 --> 00:12:51.230
+ censé avoir un concert mais au moins je sais que je vais mieux que 100 
+
+00:12:51.230 --> 00:12:56.270
+ mégabits une seconde alors là, nous allons tout semble assez bien réglé nous allons 
+
+00:12:56.270 --> 00:13:03.590
+ sauter dans le web Figg maintenant c'est ce qui rend le mikrotik si très puissant ce 
+
+00:13:03.590 --> 00:13:08.990
+ est le logiciel que vous perdrez si vous essayez de trouver votre chemin ici 
+
+00:13:08.990 --> 00:13:12.860
+ et notez que c'est aussi rapide que c'était de tout faire fonctionner, mais je 
+
+00:13:12.860 --> 00:13:22.670
+ je vais avoir besoin de configurer des choses comme sous IP, je peux configurer des réservations DHCP 
+
+00:13:22.670 --> 00:13:29.600
+ de sorte que mes appareils se connectent, je peux réellement les configurer comme des appareils statiques, vous 
+
+00:13:29.600 --> 00:13:33.800
+ remarquez qu'il compte à rebours de sorte que mon ordinateur est effectivement arrivé à 54 il est donc 
+
+00:13:33.800 --> 00:13:37.190
+ en fait en commençant à l'extrémité supérieure du pool DHCP et en descendant 
+
+00:13:37.190 --> 00:13:42.230
+ ce qui est bien si je le voulais, je pourrais rendre cela statique en cliquant simplement sur 
+
+00:13:42.230 --> 00:13:47.090
+ faire à nouveau statique, je suis un serveur dhcp IP, j'ai cliqué sur mon ordinateur et je 
+
+00:13:47.090 --> 00:13:50.990
+ peut cliquer sur rendre statique, je ne vais pas le faire, mais je devrai le faire avec 
+
+00:13:50.990 --> 00:13:58.310
+ des choses comme mon serveur quand je mets ceux en ligne ce qui est vraiment comme vraiment 
+
+00:13:58.310 --> 00:14:03.680
+ configuration rapide bon marché et joyeuse de mon réseau maintenant, nous allons en fait obtenir le Wi-Fi 
+
+00:14:03.680 --> 00:14:08.060
+ et en cours d'exécution si le Wi-Fi est assez simple, je vais ajouter un Wi-Fi 
+
+00:14:08.060 --> 00:14:14.170
+ mot de passe de dum-dum 1 2 3 ne fait pas vraiment que je suis 
+
+00:14:14.170 --> 00:14:15.790
+ faire cela pour le bien de la démonstration 
+
+00:14:15.790 --> 00:14:23.340
+ ok donc le nom du réseau sur 2 gigahertz je peux le laisser tel quel ou je peux dire cat 5 TV 
+
+00:14:23.340 --> 00:14:30.000
+ 2 points, je suppose que je ne peux pas, je ne sais pas si je peux avoir un point là-dedans ou non 
+
+00:14:30.000 --> 00:14:39.030
+ Je vais cat 5 TV et ensuite pour 5 gigahertz je vais cat 5 TV 5 gigahertz 
+
+00:14:39.030 --> 00:14:48.820
+ ouais bien alors voir les options ici bheegi bheegi nb GN GN et puis nous avons 
+
+00:14:48.820 --> 00:14:59.770
+ a obtenu un / an / an / a seulement AC et n avec un voir il y a mon mot de passe bien alors regarde 
+
+00:14:59.770 --> 00:15:05.230
+ bon appliquer cette configuration maintenant l'un des 
+
+00:15:05.230 --> 00:15:08.650
+ des choses qui est vraiment vraiment soigné à ce sujet bien tout d'abord vous remarquez que je suis 
+
+00:15:08.650 --> 00:15:11.950
+ ne pas avoir à redémarrer mon routeur à chaque fois et remarquer que je commence à décrocher 
+
+00:15:11.950 --> 00:15:19.390
+ une certaine connectivité Wi-Fi ici, je ne dois pas redémarrer chaque fois que je 
+
+00:15:19.390 --> 00:15:24.910
+ changer la configuration et quand je crée tout type de configuration, il est 
+
+00:15:24.910 --> 00:15:31.900
+ instantané donc mais ce qui est cool sur le web fig cette interface web alors remarquez que je suis 
+
+00:15:31.900 --> 00:15:38.340
+ accéder à cela via l'adresse IP du routeur est que si je devais ma brique 
+
+00:15:38.340 --> 00:15:41.770
+ mikrotik et je ne veux pas perdre les paramètres que j'ai créés 
+
+00:15:41.770 --> 00:15:45.790
+ sans doute vous les avez sauvegardés parce que vous pouvez au sein de la figue Web qui fait partie de 
+
+00:15:45.790 --> 00:15:55.390
+ le système, donc si je saute dans ce que vous voulez, je veux dire qu'il est dans le système système pour 
+
+00:15:55.390 --> 00:16:04.570
+ faire les ports de redémarrage récents voir à quelle vitesse cela est, je vais trouver et couvrir la sauvegarde de votre 
+
+00:16:04.570 --> 00:16:12.340
+ micro bâton oh il y a un sous-fichier dot riff afin que cela le fera, mais si vous 
+
+00:16:12.340 --> 00:16:16.180
+ devaient causer un problème qui ne ferait pas en sorte que vous ne puissiez pas 
+
+00:16:16.180 --> 00:16:22.690
+ connectez-vous à ce mikrotik fournit un logiciel, donc je viens de me déconnecter et 
+
+00:16:22.690 --> 00:16:26.680
+ vous pouvez descendre et installer la boîte à vent est une 
+
+00:16:26.680 --> 00:16:30.910
+ Application Windows, elle est également disponible pour Mac et vous donne l'interface 
+
+00:16:30.910 --> 00:16:34.450
+ il détecte essentiellement votre routeur sur le réseau et il vous donne la même chose 
+
+00:16:34.450 --> 00:16:40.830
+ interface avec un peu plus de fonctionnalités comme le micro multitâche 
+
+00:16:40.830 --> 00:16:46.450
+ mais même si vous ne pouvez pas accéder à l'interface Web, vous pouvez utiliser la boîte à vent 
+
+00:16:46.450 --> 00:16:51.070
+ Je dis que c'est une application Windows, vous pouvez la télécharger et l'exécuter dans wine sur votre 
+
+00:16:51.070 --> 00:16:56.290
+ Boîte Linux donc ne vous inquiétez pas de cet avis, je peux me connecter sans mot de passe 
+
+00:16:56.290 --> 00:17:01.510
+ donc je veux entrer dans la configuration rapide et me mettre un mot de passe sur mon routeur dum-dum 
+
+00:17:01.510 --> 00:17:06.939
+ 1 2 3 dum-dum 1 2 3 et appliquez cette config et 
+
+00:17:06.939 --> 00:17:12.189
+ maintenant si je me déconnecte et essaie de me reconnecter, ça va dire l'authentification 
+
+00:17:12.189 --> 00:17:18.819
+ a échoué donc je vais essayer dum-dum 1 2 3 entrez assurez-vous d'utiliser des mots de passe intelligents 
+
+00:17:18.819 --> 00:17:22.329
+ les gens ok la meilleure façon de le faire est d'utiliser un outil comme 
+
+00:17:22.329 --> 00:17:28.120
+ comme LastPass et générer un mot de passe sécurisé saisir ok qui font que votre 
+
+00:17:28.120 --> 00:17:32.950
+ mot de passe, puis utilisez LastPass ou tout autre gestionnaire de mot de passe que vous utilisez 
+
+00:17:32.950 --> 00:17:36.340
+ afin de le mémoriser et cela va vous garder beaucoup plus en sécurité 
+
+00:17:36.340 --> 00:17:39.700
+ bien sûr, l'interface est uniquement accessible au sein de mon réseau afin qu'il puisse 
+
+00:17:39.700 --> 00:17:45.220
+ être quelque chose qui vous est familier, donc c'est donc nous avons le Wi-Fi 
+
+00:17:45.220 --> 00:17:51.610
+ travailler probablement donc voyons si je soulève mon téléphone ici et faites glisser vers le bas 
+
+00:17:51.610 --> 00:18:01.810
+ évoquons nos réseaux Wi-Fi et vous verrez chat 5 TV 5 gigahertz est 
+
+00:18:01.810 --> 00:18:06.510
+ là-bas et prêt pour moi de me connecter, je vais essayer de le connecter et de taper 
+
+00:18:06.510 --> 00:18:12.520
+ dum-dum 1 2 3 se connecter et obtenir une adresse IP 
+
+00:18:12.520 --> 00:18:20.620
+ et je suis fait et il est détecté chat 5 TV les 2 gigahertz aussi et je suis 
+
+00:18:20.620 --> 00:18:25.930
+ connecté maintenant si je vais faire pipi puis serveur DHCP et aller dans mes baux, vous 
+
+00:18:25.930 --> 00:18:31.090
+ voir qu'il y a un nouvel appareil qui est mon téléphone afin que je puisse rendre cela statique et je 
+
+00:18:31.090 --> 00:18:37.280
+ peut et remarquez que c'est le téléphone polka téléphone polka f1 Robby il est donc aussi rapide 
+
+00:18:37.280 --> 00:18:42.980
+ que pour ramasser les choses être en mesure de le configurer et littéralement nous nous venons de 
+
+00:18:42.980 --> 00:18:48.740
+ mettre en place notre Internet et se leva et fonctionne en quelques minutes quels sont 
+
+00:18:48.740 --> 00:18:51.590
+ on va faire pour le reste des gens du spectacle qu'est-ce qu'on va faire 
+
+00:18:51.590 --> 00:18:56.840
+ alors consultez cat5 dot TV slash mikrotik ces appareils sont abordables, ils sont 
+
+00:18:56.840 --> 00:19:01.160
+ puissant, nous allons apprendre toutes sortes de choses incroyables que nous pouvons faire avec cette 
+
+00:19:01.160 --> 00:19:05.990
+ c'est tellement mieux que le pare-feu et la protection intégrés fournis avec 
+
+00:19:05.990 --> 00:19:12.260
+ votre modem FAI, il supprime la capacité des FAI d'être en mesure de se connecter et 
+
+00:19:12.260 --> 00:19:16.880
+ accéder à votre réseau qui est important d'y penser pendant une seconde lorsque vous 
+
+00:19:16.880 --> 00:19:22.490
+ installer un modem de votre FAI votre fournisseur de services Internet qu'ils ont 
+
+00:19:22.490 --> 00:19:27.470
+ l'accès à ce souvenir quand je l'ai ponté qui leur a fait perdre l'accès maintenant 
+
+00:19:27.470 --> 00:19:32.390
+ le seul appareil qu'ils peuvent voir s'ils essaient de suivre est le 
+
+00:19:32.390 --> 00:19:36.710
+ mikrotik ils ne peuvent pas y accéder mais ils pourraient voir juste que 
+
+00:19:36.710 --> 00:19:40.970
+ il y a un appareil connecté, je pourrais connecter une autre centaine d'ordinateurs qu'ils 
+
+00:19:40.970 --> 00:19:45.500
+ ne verrait toujours qu'un seul appareil connecté, ce qui vous donne une bonne quantité 
+
+00:19:45.500 --> 00:19:51.650
+ de la vie privée contre l'ESP espionnage ainsi et cela dit que cela vous donne un 
+
+00:19:51.650 --> 00:19:55.970
+ énorme quantité de vie privée contre les script kiddies et les pirates et tout le reste 
+
+00:19:55.970 --> 00:20:01.130
+ mais en même temps, nous allons pouvoir créer un réseau plus sûr au sein de notre 
+
+00:20:01.130 --> 00:20:05.330
+ infrastructure interne qui va être fantastique, je veux dire qu'il est si agréable de 
+
+00:20:05.330 --> 00:20:09.800
+ pouvoir donner un mot de passe Wi-Fi à vos amis et à votre famille au fur et à mesure 
+
+00:20:09.800 --> 00:20:15.080
+ visitez, mais vous ne voulez pas qu'ils aient accès aux fichiers sur votre serveur pour 
+
+00:20:15.080 --> 00:20:21.350
+ votre imprimante à utiliser toute votre bande passante que vous essayez de faire 
+
+00:20:21.350 --> 00:20:25.430
+ quelque chose en ligne et quelque chose de bizarre, il fonctionne si lentement et bien peu avez-vous 
+
+00:20:25.430 --> 00:20:30.080
+ sachez que quelqu'un à qui vous avez accordé votre accès Wi-Fi télécharge un film 
+
+00:20:30.080 --> 00:20:35.840
+ à côté à droite donc ce sont des choses que nous allons être en mesure d'empêcher avec 
+
+00:20:35.840 --> 00:20:40.370
+ notre mikrotik alors consultez la série cat5 TV slash mikrotik ça va être 
+
+00:20:40.370 --> 00:20:44.750
+ incroyable et nous sommes opérationnels, je vais mettre cela dans le rack et 
+
+00:20:44.750 --> 00:20:51.490
+ Je suis excité parce que c'est une bien meilleure solution pour mon réseau 
+
+00:21:03.040 --> 00:21:06.079
+ [La musique] 
+
