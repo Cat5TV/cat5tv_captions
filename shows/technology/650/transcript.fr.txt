@@ -1,0 +1,504 @@
+qui est le nerd chauve oh hey désolé c'est maladroit, je ne vous ai pas vu là-bas
+cette semaine sur la technologie TV de catégorie cinq, nous allons commencer avec le
+bases des routeurs mikrotik c'est une série qui va vous aider à sécuriser votre
+réseau domestique ou de bureau et nous devons commencer quelque part afin que nous puissions aussi bien commencer
+avec le démarrage, nous allons configurer notre routeur pour la première fois
+aujourd'hui, puis au cours de la série, vous allez apprendre comment
+pour durcir ce réseau et rendre les choses aussi sûres que possible en utilisant un
+appareil beaucoup plus abordable qu'il ne devrait être possible pour l'ensemble de fonctionnalités
+c'est un micro bout de bâton, nous allons commencer juste après
+[La musique]
+nos enregistrements en direct ne sont fiables que pour les disques SSD de Kingston
+la technologie fait revivre votre ordinateur avec des performances et une fiabilité améliorées
+sur les disques durs traditionnels avec les SSD Kingston de catégorie 5 diffusés en direct
+avec Telestream Wirecast et streamer agile écouter chaque semaine sur roku cody
+et d'autres lecteurs vidéo HLS pour les heures d'émission locales, visitez la catégorie TV à 5 points, je suis
+Robby Ferguson merci beaucoup d'être à nouveau avec moi cette semaine, je suis
+dans le studio de production aka le pont le pont est ce que nous appelons ici à
+TV de technologie de catégorie 5 au Studio e donc nous commençons une série sur la micro technologie
+routeurs ce sont une technologie perturbatrice en ce sens qu'ils fournissent des fonctionnalités
+qui ne sont généralement disponibles sur le marché que comme fonctionnalités de niveau entreprise afin
+vous devez payer beaucoup d'argent pour obtenir ce genre de fonctionnalités bien celles-ci
+les petits gars de mikrotik sont en mesure de le faire beaucoup moins cher, nous parlons de 10%
+du prix donc c'est une bonne chose et cela nous permet de créer une meilleure maison
+mettre en réseau un meilleur réseau de bureau parfait pour les PME ou les travailleurs indépendants, donc si
+c'est vous ou si vous voulez juste rendre votre réseau domestique aussi bon que possible
+peut-être bien cette série est pour vous on va
+vous guider, je vais vous guider à travers tout, de la configuration de base
+aujourd'hui tout le chemin vers la création d'un réseau Wi-Fi invité qui va permettre
+vos enfants amis à utiliser le Wi-Fi sans risquer réellement l'intégrité
+de vos données personnelles, nous pouvons faire beaucoup avec un micro routeur et
+nous allons vous aider à travers cela tout au long de cette série, le
+série est disponible sur cat5 dot TV slash mikrotik alors assurez-vous d'y aller et
+vous allez voir chacune des vidéos ainsi que le matériel qui va être
+nécessaire de parler de matériel maintenant, j'ai opté pour le routeur ca micro tech hap
+carte RB 9 6 - UI GS et la raison pour laquelle j'ai opté pour ce modèle particulier est
+Eh bien, il y a quelques choses différentes essentiellement, il a maintenant Gigabit Ethernet
+mon internet ici au studio est gigabit internet donc si j'avais un routeur
+qui n'a fait que 10 sur 100, je vais en fait seulement obtenir une centaine
+mégabits par seconde sur mon service Internet, même s'il est capable de
+bien plus, donc je devais absolument faire en sorte que mon routeur va
+soutenir le Gigabit Ethernet de sorte que et l'Internet gigabit de sorte que je ne suis pas
+perdre une partie de la vitesse de ma connectivité Internet qui est très très importante
+deuxième est le fait qu'il dispose d'une double radio donc 2,4 et 5 gigahertz Wi-Fi
+donc je peux mettre mes caméras sur 2,4 gigahertz qui est une bande assez saturée mais
+en même temps je peux avoir 5 gigahertz pour mon téléphone et mes autres appareils donc
+que j'ai une meilleure vitesse une meilleure connectivité et ça va vraiment marcher
+vraiment bien il prend en charge 802 11 BG et n Wi-Fi
+la capacité de l'intérieur de ce petit appareil qui ne va pas nous coûter un tout
+beaucoup d'argent, vous pouvez en savoir plus sur la gamme de produits, visitez notre site Web cap v
+dot TV slash mikrotik et suivez le lien et cela va vous emmener à un
+index donc ce qui est intéressant, je dois dire que j'ai déjà un peu couvert cela dans
+la vidéo d'introduction il y a quelques semaines, mais juste pour être clair ce qui est bien
+à propos de mikrotik est qu'il n'est pas limité par le logiciel, donc le firmware du
+le routeur ne vous limite pas de la même manière qu'un routeur grand public traditionnel
+serait généralement vous devez payer plus pour plus de fonctionnalités bien mikrotik et leur
+OS de la carte de routeur s'ils sont complètement ouverts en ce qui concerne les fonctionnalités
+la seule considération que vous achetez un appareil micro-tech est quelle est la
+matériel va faire pour vous, vous devez donc vous assurer que c'est que l'appareil
+que vous achetez va répondre à vos besoins est-ce
+le bon appareil pour vous, je ne sais pas, vous pourrez peut-être vous en sortir avec un
+moindre quelque chose un peu plus petit un peu moins cher et
+et vous pouvez parcourir la liste de leur matériel et déterminer lequel est
+pour vous, mais gardez à l'esprit le logiciel qui l'exécute depuis le tout
+moins cher routeur 30 40 dollars que mikrotik fait tout le chemin jusqu'à la
+très belle unité de 600 $ montable en rack le logiciel le firmware du
+les capacités de la programmation sont complètement les mêmes, de sorte que le seul
+la limitation est basée sur le matériel afin que vous puissiez commencer avec quelque chose de vraiment
+pas cher et progressez plus tard, vous pouvez mettre à niveau si vous avez besoin de quelque chose de mieux
+c'est assez cool à nouveau cat5 dot TV slash mikrotik le
+maintenant tout ce que j'ai fait est branché jusqu'à présent, mais ce que nous devons faire
+avant tout, je dois relier mon modem Internet pour que mon service Internet
+fournisseur a fourni un modem Internet qui me permet la connectivité mais
+modem a un serveur DHCP, il a un pare-feu et il permet essentiellement mon
+ordinateurs pour communiquer sur Internet et je vais remplacer ce intégré
+pare-feu et ce routeur intégré avec et le serveur DHCP avec mon mikrotik afin
+J'ai besoin de faire ce qu'on appelle un pont pour que le modem que mon FAI fournit le mien soit un
+modem hITRON, je dois le régler de sorte qu'il ne soit rien d'autre qu'un modem, puis nous sommes
+va utiliser cet appareil pour le contrôler de sorte que la façon dont je vais le faire est que je suis
+va se connecter à l'interface et les modems hITRON rcus admin est la connexion
+votre modem va être différent alors gardez cela à l'esprit que ça va être le
+Adresse IP de votre passerelle, vous pouvez en savoir plus en contactant votre FAI si
+vous ne savez pas comment faire, mais demandez-leur juste comment ponter mon modem
+c'est la chose importante, donc ça va être un modem stupide qui donne à mon
+accès mikrotik à Internet ainsi de suite sur le hITRON je vais aller dans
+la fonction de base puis la passerelle et la fonction de passerelle résidentielle sont activées
+par défaut, je veux simplement désactiver cela maintenant
+à l'esprit dès que je dis bien, je vais perdre l'accès à Internet une fois que je frappe
+Enregistrer les modifications alors faisons-le parce que maintenant je l'ai transformé en un
+modem stupide alors prenons un câble Ethernet et nous allons monter notre routeur
+carte de sorte que le numéro de port de la carte de routeur un, je vais définir comme mon port LAN afin
+Je vais connecter ça à mon réseau, juste retirer ça du chemin
+c'est un peu branlant parce que je fais cela, vous savez assez de fortune, mais
+tu vas avoir l'idée essentiellement le port numéro un de la carte de routeur est
+va sortir sur mon mon modem, donc je vais le brancher sur mon modem ici
+là, nous allons connecté et bon voyons ouais ne semble pas avoir d'importance quel port je
+allez, je vais juste confiture que là-bas, nous allons
+et maintenant je vais prendre le câble qui me reliait au réseau et je suis
+va brancher cela dans le port numéro deux sur ma carte de routeur et ça va donner
+moi l'accès à la micro technologie, je dis la carte de routeur mikrotik comme carte de routeur de marque
+est le produit donc mon réseau qui est mon commutateur est maintenant connecté au numéro de port
+deux donc mon ordinateur voit essentiellement le numéro de port deux numéro de port un sur le
+mikrotik va à l'arrière du modem ISP réel qui est maintenant réglé sur
+mode pont donc passons à notre mikrotik tout d'abord, nous devons voir
+ce qui est maintenant une chose que tu vas remarquer est que je suis à 10,00 points
+pour savoir quel est mon nouveau réseau maintenant que je suis sur la micro tech ipconfig
+/ tout cela est donc dans Windows sous Linux, vous allez taper IP
+l'espace - un et découvrons quel type de réseautage que j'ai ici d'accord, je suis
+voyant toujours une passerelle par défaut de 10.0.0.0, il n'a pas encore été actualisé afin
+vérifions donc je suis sur Windows 10 et même si un redémarrage pourrait déclencher
+essentiellement réparer votre réseau en essayant de reconnecter tout ce que je vais faire est que je suis
+va faire un clic droit sur mon 8ème adaptateur ernet et déconnecter désactiver la
+Adaptateur Ethernet et réactivez-le et maintenant une fois qu'il se reconnecte, je devrais pouvoir
+pour faire une barre de configuration IP tout et devrait voir oui ok donc nous sommes maintenant sur 192.168.1 afin
+essayons cela 192.168.1 et nous y sommes avec le routeur OS donc dans le cul rétro d'abord
+chose que nous avons maintenant c'est le réglage rapide donc cela nous permet de mettre en place rapidement
+notre appareil de routeur mikrotik alors voyons ce qui se passe ici, donc serveur DHCP
+plage, je veux changer cela à 10 points 0 point 0 point cent deux 10.0.0.0 pour
+vous n'aurez peut-être plus besoin de le faire car vous utilisez peut-être 192.168.1
+je ici au studio j'utilise le bloc 10.0.0.0 de sorte que soit général
+le réseautage et pas vraiment ce que je me propose de faire ici et et vous apprendre
+mais c'est essentiellement mon bloc IP si vous êtes satisfait de 192.168.1 ça va
+Je fais 10.0.0.0 mon routeur et je configure la plage de serveurs DHCP en conséquence de
+100 à 250 pour tout droit donc toute autre chose que je dois définir ici, je peux définir
+mon sans fil et tout le reste, je vais le faire
+dans un peu donc nous allons simplement obtenir notre adresse IP de travail ici, donc je vais frapper
+appliquer un avis de configuration que l'acquisition d'adresse saisit depuis Ethernet
+port numéro un, c'est pourquoi j'ai branché mon modem là-bas et je l'ai réglé sur
+obtenir automatiquement l'adresse IP alors voyons ce qui se passe ici comme je
+appliquer cette configuration nous devrions donc voir que ce routeur va redémarrer
+lui-même et quand il le fait, nous allons être à 10,00 metwork
+solution bon marché et joyeuse bien dix points 0 point 0 point
+deux pour que tout soit bien configuré alors renouvelons notre DHCP à partir de c'est
+notre connexion Internet, voyons ce qu'elle nous a donné, libérons et renouvelons
+assurez-vous que oui, nous sommes sur le port Ethernet numéro un, je n'ai pas de live
+voyant si quelque chose que mon câble n'a pas été branché tout le chemin ah qui est
+chose numéro deux pour le faire voyez-vous comment cela vient de surgir en plein boom je suis en direct
+sur Internet alors maintenant je devrais déjà avoir accès à dire Google oui je suis
+en ligne faisons un test de vitesse rapide
+voyons comment elle va
+go-go-go donc c'était une vitesse de téléchargement assez misérable vitesse de téléchargement pas terrible
+tester à nouveau quelque chose est peut-être là-bas, nous sommes juste en ce que vous savez que
+pandémie vitesse Internet tout est assez lent en ce moment ouais obtenir
+des vitesses assez faibles donc même encore un routeur 10 sur 100 ne me donnerait jusqu'à
+100 mégabits et je pousse 156 en ce moment c'est assez mauvais étant donné que je suis
+censé avoir un concert mais au moins je sais que je vais mieux que 100
+mégabits une seconde alors là, nous allons tout semble assez bien réglé nous allons
+sauter dans le web Figg maintenant c'est ce qui rend le mikrotik si très puissant ce
+est le logiciel que vous perdrez si vous essayez de trouver votre chemin ici
+et notez que c'est aussi rapide que c'était de tout faire fonctionner, mais je
+je vais avoir besoin de configurer des choses comme sous IP, je peux configurer des réservations DHCP
+de sorte que mes appareils se connectent, je peux réellement les configurer comme des appareils statiques, vous
+remarquez qu'il compte à rebours de sorte que mon ordinateur est effectivement arrivé à 54 il est donc
+en fait en commençant à l'extrémité supérieure de la piscine DHCP et en descendant qui
+est bien si je le voulais, je pourrais rendre statique en cliquant simplement sur rendre statique
+encore une fois, je suis un serveur dhcp IP, j'ai cliqué sur mon ordinateur et je peux cliquer
+sur rendre statique, je ne vais pas faire ça, mais je vais devoir le faire avec des choses comme
+mon serveur quand je mets ceux en ligne ce qui est vraiment vraiment pas cher et
+joyeuse configuration rapide de mon réseau maintenant, faisons en sorte que le Wi-Fi soit opérationnel
+donc le Wi-Fi est assez simple, je vais ajouter un mot de passe Wi-Fi de
+dum-dum 1 2 3 ne fait pas vraiment ce que je fais pour le bien de la
+démonstration bien donc le nom du réseau sur 2 gigahertz I
+peut le laisser tel quel ou je peux dire chat 5 TV 2 points, je suppose que je ne peux pas, je ne sais pas si
+Je peux avoir un point là-dedans ou non, je vais aller au chat 5 TV, puis pour 5 gigahertz
+Je vais aller chat 5 TV 5 gigahertz ouais bien alors voyez les options ici BGBG n
+BG n GN et puis nous avons un et anan un voir seulement AC et n avec un voir il y a
+mon mot de passe bien semble donc bien appliquer cette configuration maintenant l'une des choses
+c'est vraiment très bien à ce sujet bien tout d'abord, vous remarquez que je ne suis pas
+avoir à redémarrer mon routeur à chaque fois et remarquer que je commence à ramasser certains
+Connectivité Wi-Fi ici, je n'ai pas besoin de redémarrer chaque fois que je change
+configuration et quand je crée tout type de configuration, il est instantané, mais quoi
+est cool sur le web fig cette interface web alors remarquez que j'y accède via le
+L'adresse IP du routeur est que si je brique mon mikrotik et je ne le fais pas
+voulez perdre les paramètres que j'ai créés, vous les avez probablement sauvegardés
+parce que vous pouvez dans la figue Web qui fait partie du système, donc si je saute dans
+que voulez-vous, je veux dire qu'il est dans le système système pour faire des ports de redémarrage récents voir comment
+vaste c'est je vais trouver et couvrir la sauvegarde de votre spécification micro oh il y a un
+sous fichier dot riff de sorte que le fera, mais si vous deviez causer un problème
+ne serait pas que cela rendrait de sorte que vous ne pouvez pas vous connecter à ce mikrotik fournit
+un logiciel donc je viens de me déconnecter et vous pouvez
+télécharger et installer la boîte à vent Wind Box est une application Windows, il est également
+disponible pour Mac et il vous donne l'interface qu'il détecte essentiellement votre
+routeur sur le réseau et il vous donne la même interface avec un peu plus
+des fonctionnalités comme le micro multitâche, mais même si vous ne pouvez pas accéder au Web
+interface, vous pouvez utiliser la boîte à vent, je dis que c'est une application Windows, vous pouvez
+téléchargez-le et exécutez-le dans wine sur votre box Linux donc ne vous inquiétez pas
+cet avis, je peux me connecter sans mot de passe, donc je veux entrer dans la configuration rapide
+et juste me mettre un mot de passe sur mon routeur dum-dum 1 2 3
+dum-dum 1 2 3 et appliquer cette config et maintenant si je me déconnecte et essaie de me connecter
+encore une fois ça va dire que l'authentification a échoué donc je vais essayer dum-dum 1 2 3
+entrez assurez-vous que vous utilisez des mots de passe intelligents ok les gens
+la meilleure façon de le faire est d'utiliser un outil comme LastPass et de générer un
+mot de passe ok saisir qui font que votre mot de passe, puis utilisez LastPass ou
+quel que soit le gestionnaire de mots de passe que vous utilisez afin de le mémoriser et cela va
+pour vous garder beaucoup plus sûr, bien sûr, l'interface est seulement
+accessible au sein de mon réseau afin qu'il puisse être quelque chose qui vous est familier
+bien donc c'est donc nous avons le Wi-Fi fonctionne probablement alors voyons si je
+élever mon téléphone ici et faites glisser vers le bas évoquons nos réseaux Wi-Fi et
+vous verrez chat 5 TV 5 gigahertz est là et prêt pour moi à me connecter, je suis
+va essayer de s'y connecter et tapez dum-dum
+1 2 3 connectez-vous et obtenez l'adresse IP et j'ai terminé et il est détecté cat 5
+TV le 2 gigahertz aussi et je suis connecté maintenant si je vais je fais pipi puis
+Serveur DHCP et allez dans mes baux, vous verrez qu'il y a un nouvel appareil qui est mon
+téléphone afin que je puisse faire que statique et je peux et remarquez que c'est le téléphone à polka
+ok téléphone f1 Robbie il est donc aussi
+parce que pour ramasser les choses pouvoir le configurer et littéralement nous nous venons de
+mettre en place notre Internet et se leva et fonctionne en quelques minutes quels sont
+on va faire pour le reste des gens du spectacle qu'est-ce qu'on va faire
+donc la casquette de caisse cinq points TV slash mikrotik ces appareils sont abordables
+ils sont puissants, nous allons apprendre toutes sortes de choses incroyables que nous pouvons faire
+avec cela, c'est tellement mieux que le pare-feu et la protection intégrés qui
+livré avec votre modem FAI, il supprime la capacité des FAI de pouvoir se connecter
+et accéder à votre réseau qui est important de penser à ce sujet pendant une seconde
+lorsque vous installez un modem de votre FAI, votre fournisseur de services Internet
+l'accès à ce souvenir quand je l'ai ponté qui leur a fait perdre l'accès maintenant
+le seul appareil qu'ils peuvent voir s'ils essaient de suivre est le
+mikrotik ils ne peuvent pas y accéder mais ils pourraient voir juste que
+il y a un appareil connecté, je pourrais connecter une autre centaine d'ordinateurs qu'ils
+ne verrait toujours qu'un seul appareil connecté, ce qui vous donne une bonne quantité
+de la vie privée contre l'ESP espionnage ainsi et cela dit que cela vous donne un
+énorme quantité de vie privée contre les script kiddies et les pirates et tout le reste
+mais en même temps, nous allons pouvoir créer un réseau plus sûr au sein de notre
+infrastructure interne qui va être fantastique, je veux dire qu'il est si agréable de
+pouvoir donner un mot de passe Wi-Fi à vos amis et à votre famille au fur et à mesure
+visitez, mais vous ne voulez pas qu'ils aient accès aux fichiers sur votre serveur pour
+votre imprimante à utiliser toute votre bande passante que vous essayez de faire
+quelque chose en ligne et quelque chose de bizarre, il fonctionne si lentement et bien peu avez-vous
+sachez que quelqu'un à qui vous avez accordé votre accès Wi-Fi télécharge un film
+à côté à droite donc ce sont des choses que nous allons être en mesure d'empêcher avec
+notre mikrotik alors consultez la série cat5 TV slash mikrotik ça va être
+incroyable et nous sommes opérationnels, je vais mettre cela dans le rack et je suis
+excité parce que c'est une meilleure solution pour ma vérification de réseau
+it out cat 5 TV slash Microtech je dois faire une pause très rapide quand
+nous revenons, nous sommes de retour avec le bâton de nouvelles
+bienvenue à nouveau avec les meilleures histoires technologiques de cette semaine, voici Becca
+voici ce qui arrive dans la salle de rédaction de télévision de catégorie cinq, il y a un trou noir
+caché dans un millier d'années-lumière de la Terre et des gens dans le sud
+l'hémisphère peut voir les étoiles qui l'entourent à l'œil nu deux téraoctets de
+Le code source de Nintendo a été divulgué Facebook a formé leurs BOTS de chat AI à l'aide de reddit
+postes Tesla a demandé à devenir un fournisseur d'électricité au Royaume-Uni le Poco
+f2 pro smartphone avec le snapdragon 865 qualcomm a été lancé à l'échelle mondiale et
+Twitter permettra aux employés de travailler à domicile aussi longtemps qu'ils le souhaitent
+autour de tous les détails dans le coin crypto de cette semaine arrivent c'est le
+catégorie 5 newsroom TV couvrant la semaine arrêtez d'envoyer des SMS avec un léger biais linux
+de la salle de presse, je suis astronomes Becca Ferguson ont
+tombé sur le trou noir le plus proche de nous, mais le vide se trouve au cœur de
+un système stellaire à seulement mille années-lumière et des indications à son
+emplacement sont visibles à l'œil nu, une équipe de chercheurs observait la
+hr6 81: 9 système étoilé de l'Observatoire européen austral au Chili dans le cadre de
+une enquête plus large étudiant par nos systèmes d'étoiles binaires de départ et ils ont trébuché
+à travers un troisième objet données spectrographiques a révélé que l'un des
+les étoiles en orbite autour d'un compagnon invisible tous les 40 jours pendant ce temps, la deuxième étoile
+se trouve beaucoup plus loin du premier, ils croient maintenant que le HR 68 19 est
+pas un système double mais un système triple qui contient deux étoiles qui sont
+à la fois autour des six masses solaires et un troisième objet qui est au moins 4,2 solaire
+les masses de ce nombre sont beaucoup trop élevées pour que l'objet soit une étoile à neutrons
+Thomas Ravinia sphère étoile de l'étude a déclaré un objet invisible avec une masse à
+au moins quatre fois hors du Soleil ne peut être un trou noir que si les chercheurs sont
+en effet corriger l'objet sera le trou noir le plus proche de la terre découvert
+pourtant Peter avait un drame le co-auteur de la recherche a déclaré que l'équipe était totalement
+surpris quand nous avons réalisé que c'est le premier système stellaire avec un noir
+trou qui peut être vu à l'œil nu comme point de clarté le trou noir
+lui-même n'est pas visible à l'œil nu, seules les étoiles sont pour ceux du
+l'hémisphère sud espérant avoir un aperçu, il est situé dans le télescope
+constellation ium et sera mieux vu pendant une nuit claire et deux
+les piqûres lumineuses floues doivent être discernables
+sans jumelles ni télescope bien que l'objet semble avoir été
+oreilles tout au long, il est échappé à la détection jusqu'à présent non seulement le trou noir
+assez petit est également très calme, ce qui signifie qu'il ne crache pas de jets électromagnétiques
+rayonnement contrairement aux supermassifs au
+Des centres de galaxies engloutissant les étoiles que l'équipe a seulement réussi à déduire
+son existence de l'oscillation des étoiles qui en orbite autour de l'équipe espère
+pour capturer des images de l'orbite pour établir davantage la distance en masse
+des objets du système, un pirate anonyme a divulgué une valeur d'environ 2 téraoctets
+du code source lié à la Nintendo Wii GameCube et l'intention oh 64 conceptions
+ce cache comprend un code très journal pour le matériel essentiellement codé
+des plans pour les différentes puces tout en jetant un coup d'œil dans le fonctionnement interne de
+Nintendo et un regard rare sur le design bas niveau de la spécialité
+les puces qui entrent dans les consoles ne s'attendent pas à trop de sortir de cela alors que dans
+théorie, le code très log pourrait être utilisé pour transformer les chlochops en puce Nintendo
+imite l'équipement et l'expertise nécessaires pour le faire serait très
+cher et pas le genre de chose qu'un amateur pourrait faire et tout commercial
+les efforts seraient sans aucun doute déchirés par les avocats de Nintendo la fuite a également
+ne sera apparemment d'aucune utilité pour les développeurs d'émulateurs qui ne peuvent
+faire légalement ce qu'ils font en rétro-ingénierie les développeurs de la
+Les émulateurs de dauphins disent qu'en réponse à la fuite, nous ne pouvons rien utiliser d'aucune sorte
+d'une fuite, en fait, nous ne pouvons même pas le regarder
+dauphin est seulement illégal parce que nous sommes l'ingénierie inverse de salle blanche du
+GameCube et Wii si nous utilisons quoi que ce soit d'une fuite de dauphin n'est plus légal et
+Nintendo nous fermera, cela ne veut pas dire qu'il n'y aura pas de vol nocturne
+émulateurs qui incluent le code principal, mais nous vous conseillons une grande prudence lorsque
+envisager et utiliser un tel outil, car il est très probable qu'il contienne des logiciels malveillants ou
+backdoors pour une utilisation malveillante Facebook a lancé un nouveau bot de chat qu'il prétend
+est capable de démontrer l'empathie et la personnalité de leur bot de chat qui
+ils ont nommé agaçant blender a été formé en utilisant le domaine public disponible
+conversations qui comprenaient 1,5 milliards d'exemples d'échanges humains, mais des experts
+dire la formation de l'intelligence artificielle en utilisant une plate-forme telle que reddit a son
+inconvénients de nombreux problèmes se sont posés pendant
+mélangeur de conversations répondait parfois avec un langage offensant et au
+d'autres fois, cela constituerait des faits tout à fait les chercheurs ont dit qu'ils espéraient
+d'autres modèles permettraient de résoudre certains de ces problèmes
+l'expert en intelligence artificielle Dave Chopin a déclaré que le mélange
+était un pas dans la bonne direction mais a noté deux questions fondamentales qui
+besoin d'être surmonté, il a dit à la BBC le premier est à quel point il est complexe de
+reproduire toutes les nuances d'un attribut humain comme la capacité de tenir un
+conversation une gorgée d'une compétence que la plupart des enfants de trois ans peuvent maîtriser la seconde est
+autour de la relation avec les données utilisées pour former le modèle et les résultats
+généré par le modèle, il explique une plate-forme aussi grande que Retta
+des algorithmes de formation basés sur les conversations que vous y trouverez vont
+vous obtenez beaucoup de paillettes parmi le blé Facebook a également comparé les mélangeurs
+performances avec la dernière version de BOTS Mina de chat de Google, il a montré
+les gens deux séries de conversations faites avec un mélangeur et l'autre avec
+Les conversations Mina comprenaient un large éventail de sujets, notamment la musique de films et
+le véganisme Facebook a déclaré que 67% des personnes interrogées via le mélangeur sonnaient plus
+humain que Mina, les chercheurs ont noté que nous avons atteint cette étape grâce à une nouvelle
+recette de chat bot qui comprend des techniques de décodage améliorées
+compétences et un modèle avec neuf virgule quatre milliards de paramètres qui est 3,6 fois
+plus que le plus grand ce système existant construisant un vraiment intelligent
+agent de dialogue qui peut discuter comme un humain reste l'un des plus grands ouverts
+défis en IA aujourd'hui bien merci Becca nous devons prendre une pause rapide
+quand nous reviendrons, Robert Koenig est ici avec le coin crypto et Becca a
+plus de nouvelles pour nous à venir aussi bien rester
+vous
+revenir pour le coin cryptique de votre puits cette semaine, je voudrais me concentrer sur
+informations si vous avez été plus d'une semaine avec cela dans cette industrie et
+vous avez posté sur YouTube ou tout autre média, vous aurez vu qu'il y a
+est beaucoup d'informations différentes là-bas et la plupart de cela est trompeur
+ouais vous avez ces maximalistes qui prétendent que leur pièce ou jeton
+est le meilleur et que tout le reste est assez mauvais, vous avez ceux qui
+shillent des pièces pour essayer de vous vendre quelque chose et beaucoup de gens
+ont également aucune idée de ce dont ils parlent donc cette semaine, je voudrais
+se concentrer sur exactement ce sujet, je suis dans cette industrie depuis 2015 et ce
+vous verrez maintenant est une collection de ces vidéos et podcasts YouTube que je
+suivez régulièrement, vous verrez le tableau à la fin de cette vidéo et
+sera déposé avec le nom du podcast ou de la vidéo YouTube, puis dans le
+cas de YouTube, j'ai également ajouté les abonnés afin que vous puissiez le trouver
+plus facile au cas où il y a quelqu'un qui prétend être ce youtuber alors nous allons
+commencer avec elle crypto 101 c'est un podcast c'est deux gars
+font ensuite des entretiens et un tous les deux ou trois jours
+ils sont fantastiques ces interviews parce qu'ils sont neutres, ils ne le font pas
+faire semblant d'être menaçant ou quelque chose comme ça, ils sont juste neutres, ils sont
+vraiment gentil et ils obtiennent les informations que vous en tant qu'utilisateur
+tiens à entendre si crypto 101 podcast fantastique suivant est Ivan sur la technologie afin
+c'est pour nous ici à la catégorie 5 un intéressant parce qu'il se concentre sur
+le codage et la programmation, il fait sept jours par semaine une vidéo YouTube, il est
+l'un des leaders de cette industrie en ce qui concerne la programmation et le codage de la
+troisième est Andreas Antonopoulos, il est l'un des oh geez dans le Krypton
+industrie 2014, il a fait une présentation devant le Sénat canadien qu'il fait
+probablement cinq ou six vidéos YouTube par semaine et la bonne chose pour vous est que
+il les classe donc il ne s'agit pas seulement de tout ce qu'il classe
+les afin qu'il soit facile pour vous de trouver ou de voir si c'est quelque chose qui est de
+intérêt pour vous ou non suivant est crypto par lequel le O est un zéro ce n'est pas
+un O c'est un zéro, il est un gars appelé bombe Omar gars vraiment sympa a été dans ce
+l'industrie depuis longtemps ne connaît pas tout le monde et a de bonnes nouvelles
+il le fait aussi environ tous les deux ou trois jours de filet est bourgeon crypto que je
+lire très haut parce qu'il vient du commerce traditionnel de négociation
+point de vue financier traditionnel et il fait une analyse fantastique sur les pièces et
+jetons et projets, il va vraiment dans le détail avec nous et les analyse et et
+il est très bon ce qu'il fait est Laura Shin, je dirais qu'elle est la seule
+vrai journaliste dans cette industrie et quand elle a quelqu'un qu'elle
+interviews ces interviews vont en profondeur et dans un très professionnel donc j'aime
+écouter Laura shins podcasts crypto tous les jours c'est le prochain
+il est le gars amusant de cette industrie si vous êtes intéressé par les mèmes combinés avec
+quelques informations, alors il est le bon gars pour vous si vous voulez éclairer votre
+la vie un peu alors oui certainement aller avec crypto tous les jours l'investisseur moderne est
+quelqu'un qui ne montre jamais son visage, il se trouve quelque part en Europe et il lit
+les nouvelles comme il les trouve sur toutes ces nouvelles oz sans cœur nous a laissé des points de vente qui
+existe, il le fait très bien, il donne également sa propre opinion sur ceux oui
+l'investisseur moderne suivant est Stefan laverra ce n'est pas quelqu'un si vous voulez
+geek c'est la bonne personne pour vous derrière Andreas Antonopoulos II je voudrais
+dire qu'il est celui qui a la connaissance la plus détaillée des portefeuilles de produits
+échange tout ce qu'il fait des interviews et il a toujours aussi les meilleures personnes
+aligné de sorte que Stefan quitte jamais pour le minage technique de personnes est le prochain
+également technique, il était un programmeur programmeur de jeu est basé à Hong Kong et
+c'est aussi une très bonne analyse des problèmes de koto
+au moment où il mélange beaucoup de nouvelles de Hong Kong et de la Chine en ce qui concerne la
+virus qui circule actuellement et mais quand il va à crypto ses connaissances
+est très bon et aussi impartial, mais non le moindre est les données - je dirais qu'il est le
+le meilleur faisant une analyse d'analyste technique, donc si vous êtes en technique
+analyse puis données - est la bonne personne, il a une très bonne connaissance énorme
+suivre la base et sait connaître le marché aussi très bien donc tous ceux ici que je
+viennent d'être mentionnés ceux que je regarde régulièrement, je note tous
+ceux en tant que personnes mutuelles qui savent vraiment de quoi ils parlent
+Voilà donc ceux que je vous recommande et comme vous le verrez dans une seconde
+vous aurez cette table derrière moi pour que vous n'ayez pas à écrire les choses de toute façon, je
+Je vous souhaite une bonne semaine et je vous souhaite la meilleure des chances la semaine prochaine.
+[Applaudissements] merci Robert
+juste un rappel pour vous voir à la maison, nous ne donnons pas de conseils financiers ici
+sur le spectacle mais nous vous donnons juste les faits et vous laisser courir avec
+mais gardez à l'esprit que le marché des crypto-monnaies est en constante évolution
+toujours en évolution et toujours volatile, nous vous suggérons donc d'investir uniquement ce que vous pouvez
+permettre de perdre maintenant avec plus de vos nouvelles technologiques, voici Becca Merci Robby
+surtout connu pour ses voitures électriques, la société Tesla d'Elon Musk fait également
+des batteries qui stockent de l'énergie renouvelable à l'échelle domestique et industrielle et
+ils ont demandé à devenir un fournisseur d'électricité au Royaume-Uni, le
+La demande a été déposée fin mars auprès du gaz et de l'électricité britanniques
+l'Autorité des marchés publics pour une licence de production d'électricité
+locaux en Grande-Bretagne, il y a eu une baisse de la demande d'électricité pendant
+verrouillage à la suite de la pandémie du virus corona avec de nombreuses usines et principaux
+les entreprises doivent fermer, mais l'offre et la demande d'électricité doivent être
+équilibré au sein de la grille pour qu'il fonctionne pouvant générer et
+stocker notre propre électricité a son attrait, surtout si le réseau devient
+déséquilibré et nécessite une coupure de courant temporaire en plus de Tesla
+développé un logiciel appelé Auto bitter qui permet aux clients de vendre le surplus
+l'électricité vers le réseau automatiquement, ils utilisent l'amer automatique dans
+Australie du Sud, mais il n'est pas encore clair s'ils envisagent de construire des
+usines de batteries au Royaume-Uni qui sont nécessaires pour stocker le surplus d'une maison
+version de la batterie Tesla le Powerwall a coûté des milliers de Britanniques
+livres et nécessite un ensemble de panneaux solaires, vous vous souvenez peut-être du téléphone à polka
+f1 maintenant le poco f2 Pro est lancé avec le Snapdragon Qualcomm
+865 une impressionnante vidéo 8k enregistrant le téléphone polka f1 était une bête rare et un
+exemple réel d'un tueur phare maintenant près de deux ans plus tard
+il est enfin temps pour une mise à niveau de la marque poco a commencé comme une sous-marque de
+Le fabricant de téléphones chinois me montre mais avec le succès du F1, il était
+a décidé qu'il pouvait se suffire à lui-même et ils l'ont éclaté en son propre
+société indépendante basée en Inde après le f1, ils ont rebaptisé le
+milieu de gamme redmi k 30 l'appelant le poco x2 maintenant le nouveau modèle f2 est essentiellement un
+rebranded K 30 pearl le poco f2 pro apporte une longue liste d'améliorations
+par rapport au f1 à partir du dernier chipset un muflier 865 est le
+meilleure puce de qualcomm à ce jour et l'un des premiers à proposer des pilotes GPU
+peut être mis à jour, ce qui pourrait améliorer la longévité du téléphone.
+placé sur le 2.0 Tec refroidi par liquide avec une chambre à vapeur plus grande en soi
+que les téléphones concurrents poco dit que cela permettra un refroidissement plus efficace du
+f2 pro exécute Android 10 hors de la boîte avec le mode sombre poco launcher 2.0 est
+disponible qui semble magnifique sur le stockage d'écran AMOLED amélioré maintenant
+commence à 128 gigaoctets, il y a aussi une option de 256 gigaoctets que nous avions
+recommander car ils ont retiré la fente microSD et la vidéo 8k peut manger
+beaucoup d'espace de stockage est rapide UF u FS 3.1 contre 2.1 sur le f1 le nouveau
+appareil photo sur le pied sur le poco f2 pro peut être ce qui pousse poco Fong f1
+les ventilateurs pour mettre à niveau le téléphone ont quatre capteurs de caméra orientés vers l'arrière la configuration
+comprend un capteur sony imx6 86 de 64 mégapixels
+il prend en charge le zoom optique optique trois fois ainsi que la double image optique
+stabilisation, il y a aussi un appareil photo ultra grand-angle de 13 mégapixels un 8
+pixel méga un 8 mégapixels leur dire que je leur dis que c'est un virelangue
+un 8 mégapixels dire à un appareil photo macro et un capteur de 5 mégapixels pour les selfies vous obtenez un
+Appareil photo 20 mégapixels sur un mécanisme pop-up motorisé capable de seulement 1080p
+vidéo c'est la seule chose que nous aimerions vraiment
+pour voir des enregistreurs 4v améliorés qui sont obligés d'utiliser les caméras arrière s'ils
+voulez filmer en Ultra HD 4k ou 8k en parlant d'Ultra HD le plus puissant
+le chipset permet l'enregistrement 8k à 30fps et les vidéos 4k peuvent maintenant être enregistrées
+à 60fps, le passage au mm OLED a également permis au lecteur d'empreintes digitales d'être
+caché dans l'écran, l'écran rafraîchit qu'un 60 Hertz standard, mais
+le taux d'échantillonnage tactile a été augmenté à 180 Hertz le poco f2 également
+a large par une certification l1 afin que nous puissions lire du contenu HD à partir de Netflix Amazon
+Prime vidéo et autres services, la capacité de la batterie est passée à
+de 4700 milliampères heures avec une charge plus rapide de 30 watts et une prise casque est
+toujours inclus le poco f2 est maintenant disponible via nos partenaires rendez-vous sur
+cap 5 TV slash f2 pour le vérifier
+selon un porte-parole de la société Twitter PDG Jack Dorsey a déclaré
+les employés mardi que beaucoup d'entre eux seront autorisés à travailler à domicile dans
+perpétuité même après la fin de la pandémie du virus corona dans un premier e-mail obtenu
+par BuzzFeed news Dorsey a déclaré qu'il était peu probable que Twitter ouvre son
+bureaux avant septembre et que tous les événements en personne seraient annulés pour la
+le reste de l'année, la société acceptera d'évaluer ses plans pour les événements de 2021
+plus tard cette année, le porte-parole a déclaré que nous étions particulièrement bien placés pour répondre
+rapidement et permettre aux gens de travailler à domicile étant donné notre accent sur
+la décentralisation et le soutien d'une main-d'œuvre répartie capable de travailler
+de n'importe où au cours des derniers mois ont prouvé que nous pouvons le faire fonctionner si notre
+les employés sont dans un rôle et une situation qui leur permettent de travailler à domicile et
+ils veulent continuer à le faire pour toujours, nous y arriverons sinon notre
+les bureaux seront là, chaleureux et accueillants avec quelques précautions supplémentaires
+quand nous pensons qu'il est prudent de retourner la nouvelle politique de Twitter vient que les entreprises
+partout dans le monde ont du mal à s'adapter aux directives de distanciation sociale et
+repenser la façon dont ils fonctionneront dans un poste
+grandes sociétés technologiques du monde endémique telles que Facebook Google et Microsoft étaient
+tôt pour passer à un modèle de travail à domicile et ont également été les plus prudents dans
+la planification du retour des employés dans le bureau Google a dit aux employés
+que la grande majorité d'entre eux travailleront de chez eux jusqu'en 2021, même si certains
+retour au début de l'été, Facebook commencera également à rouvrir les bureaux après
+le week-end du 4 juillet, mais permettra aux employés qui sont en mesure de travailler à domicile
+faites-le jusqu'à l'année prochaine grâce à Roy W Nash et notre
+communauté de téléspectateurs pour nous soumettre des histoires cette semaine merci pour
+regarder la salle de rédaction de télévision de catégorie cinq n'oubliez pas d'aimer et de vous abonner
+toutes vos actualités technologiques avec un léger biais Linux et si vous appréciez ce que nous faisons
+devenez mécène sur patreon.com slash catégorie 5 de la catégorie 5 TV
+je suis Becca Ferguson Merci Becca nous devons faire une petite pause
+rester [Musique]
+eh bien les gens n'étaient pas encore à 100% mais nous faisons de notre mieux, je fais de mon mieux
+ici, à la télévision de catégorie 5, le studio n'est pas configuré comme je le veux, c'est
+pas tout à fait là, je suis bien en retard sur la façon dont les choses vont de la
+perspective en direct, mais je fais tout ce que je peux et et nous ne remplissons pas tout à fait le temps
+et tout rassembler de la manière que je veux vraiment faire, nous sommes donc
+les téléviseurs à technologie de catégorie 5 sont toujours là
+nous sommes toujours forts, nous grandissons là où nous apprenons et nous évoluons dans notre
+nouvel espace mais nous n'y sommes pas encore, alors tenez-vous-y, visitez notre site Web
+catégorie 5 dot TV hey ce serait un tel encouragement juste de savoir que
+vous consultez notre site Web en vérifiant certains de ces épisodes de retour que nous avons
+a obtenu 13 ans de technologie TV non seulement cela, mais nous avons aussi des très grands
+fonctionnalités sur notre site Web, donc si vous allez à la télévision de catégorie 5, vous verrez de nouvelles
+fonctionnalités dans la barre de menus, par exemple, nous avons un bouton qui dit tout à fait
+littéralement fonctionnalité et c'est là que vous trouverez la fonctionnalité d'aujourd'hui sur le
+routeur mikrotik qui va faire partie de cet élément de menu et bien
+cela signifie-t-il que Robbie est un moyen pour vous de trouver du contenu
+est pertinent pour d'autres contenus, donc ce que cela signifie est que nous procédons à cette
+série, vous allez voir chaque vidéo qui a été publiée dans
+cette série afin que vous puissiez suivre, cela rend les choses beaucoup plus faciles que vous ne le faites pas
+avoir à tâtonner et essayer de trouver les bonnes vidéos et assurez-vous que vous êtes
+pour que non, il est très simple, c'est une liste de vidéos que vous allez
+pour être en mesure de trouver facilement ce n'est qu'une des caractéristiques de notre catégorie de site Web 5
+dot TV merci beaucoup d'être ici avec nous cette semaine, je vous remercie
+J'apprécie que vous souteniez la technologie TV de catégorie 5 si vous êtes
+ne le faites pas encore s'il vous plaît aller faire un don de télévision de catégorie 5 ou encore mieux patreon.com
+slash catégorie 5 qui est un excellent moyen de nous soutenir merci d'être ici
+tout le monde nous vous reverrons la semaine prochaine
+[La musique]

@@ -1,0 +1,504 @@
+qui és el nerd calb, ho sento, això és maldestre no us he vist allà
+aquesta setmana a la televisió de tecnologia cinquena categoria, comencem a començar
+El bàsic dels encaminadors de mikrotik és una sèrie que us ajudarà a protegir-vos
+xarxa domèstica o d’oficines i hem de començar per algun lloc perquè també puguem començar
+amb els primers passos, establirem el nostre router per primera vegada
+Avui i, a continuació, al llarg de la sèrie vas a aprendre com
+per endurir aquesta xarxa i fer que les coses siguin tan segures com possiblement es pot utilitzar amb un
+dispositiu molt més assequible del que hauria de ser possible per al conjunt de funcions
+això és el punt de micro punta que comença a començar just després d'això
+[Música]
+els nostres enregistraments en directe només són de confiança per a discos en estat sòlid de Kingston
+la tecnologia reviu el vostre equip amb un rendiment i fiabilitat millorats
+a través de discs durs tradicionals amb discs de Kingston SSD de categoria 5 en directe
+amb Telestream Wirecast i una sintonització àgil i fluvial cada setmana en roku cody
+i altres reproductors de vídeo HLS per a les programes locals visiten la categoria 5 dot TV I'm
+Robby Ferguson moltes gràcies per estar aquí amb mi aquesta setmana que sóc
+a l'estudi de producció, també conegut com el pont, el pont és el que anomenem aquí
+categoria de tecnologia de la categoria 5 a Studio e, per tant, comencem una sèrie en micro-tecnologia
+els encaminadors són una tecnologia pertorbadora, ja que proporcionen funcions
+que només estan disponibles al mercat en general, ja que són característiques de nivell empresarial
+Heu de pagar molts diners per aconseguir aquest tipus de funcions
+els nois de mikrotik ho poden fer molt més barat estem parlant d’un 10%
+del preu pel que és una cosa fantàstica i ens permet crear una casa millor
+fer xarxa una millor xarxa d’oficines perfecta per a les PIME o els treballadors autònoms, de manera que si
+o si només voleu que la vostra xarxa domèstica sigui el més bona possible
+possiblement estigui bé que aquesta sèrie sigui per a tu
+et portaré a través de tot, des de la configuració bàsica
+avui en dia fins a crear una xarxa Wi-Fi convidada que permetrà
+que els vostres fills facin servir el Wi-Fi sense arriscar-se en realitat
+de les vostres dades personals hi podem fer moltes coses amb un encaminador de micro tecnologia i
+us ajudarem a passar-ho al llarg de la sèrie
+Les sèries estan disponibles a cat5 dot TV slash mikrotik, així que assegureu-vos d'anar-hi
+veureu cadascun dels vídeos més el maquinari que serà
+Parlar de maquinari necessària ara he optat per l’encaminador de micro tecnologia hap AC
+placa RB 9 6 - UI GS i la raó per la qual he optat per aquest model en particular és
+bé, hi ha algunes coses diferents, essencialment té Gigabit Ethernet ara
+La meva internet aquí a l'estudi és internet gigabit, així que si tingués un encaminador
+Això només en va fer 10 més de 100: realment només en tindré un centenar
+megabits per segon al meu servei d'Internet, encara que sigui capaç
+molt més, així que necessitava absolutament assegurar-me que anés el meu encaminador
+recolzeu el Gigabit Ethernet perquè Internet i el gigabit de manera que no ho sigui
+És molt important perdre una mica de la velocitat de la meva connectivitat a Internet
+en segon lloc, és el fet que posseeix una ràdio dual de 2,4 i 5 gigahertz Wi-Fi
+de manera que puc posar les meves càmeres a 2.4 gigahertz, que és una banda bastant sobresaturada
+al mateix temps, puc tenir 5 gigahertz per al meu telèfon i els meus altres dispositius
+que tinc millor velocitat i millor connectivitat i funcionarà realment
+És molt bo, és compatible amb 802 11 BG i n Wi-Fi
+capacitat des d’aquest petit dispositiu que no ens costarà un tot
+molts diners per obtenir més informació sobre la línia de productes, aneu a la nostra pàgina web cap v
+dot TV slash mikrotik i segueix l'enllaç i això et portarà a un
+així que interessant, hauria de dir que ja he recorregut
+el vídeo introductori fa un parell de setmanes enrere, però només cal tenir clar el que és net
+sobre mikrotik és que no està limitat pel programari, de manera que el firmware del
+l'encaminador no et restringeix de la mateixa manera que un encaminador tradicional de consum
+normalment haureu de pagar més per més funcions, així com el mikrotik i les seves
+sistema operatiu del router si és completament obert pel que fa al conjunt de funcions
+l’única consideració al comprar un dispositiu de micro-tecnologia és el que és
+el maquinari us servirà pel que heu d'assegurar-vos que és el dispositiu
+és que això que compreu satisfarà les vostres necessitats
+el dispositiu adequat per a tu, no sé que podríeu escapar amb un
+menys una cosa una mica més petita una mica una mica menys cara i
+i podeu accedir a la llista del seu maquinari i esbrinar quina és
+és adequat per a vosaltres, però tingueu en compte el programari que el gestiona des del mateix
+un router més barat de 30 dòlars que el mikrotik fa de tot el camí
+el més bonic que es pot muntar en un rack de 600 dòlars, el programari del firmware
+les capacitats de la programació són completament iguals, així que l'única
+la limitació es basa en el maquinari perquè pugueu començar amb alguna cosa realment
+Més barat i a la vostra feina, després es pot actualitzar si necessiteu alguna cosa millor
+això és bastant genial, així que de nou cat5 dot TV slash mikrotik the
+Ara tot el que he fet està connectat a la potència fins ara, però el que hem de fer
+En primer lloc, he de fer servir el mòdem d'Internet per connectar el meu servei d'Internet
+el proveïdor ha proporcionat un mòdem a Internet que em permet connectivitat, però això
+el mòdem té un servidor DHCP, té un tallafoc i bàsicament permet el meu
+Els equips per comunicar-me a Internet bé vaig a substituir els integrats
+tallafoc i aquell enrutador integrat amb el servidor DHCP i el meu mikrotik
+He de fer el que s’anomena pont perquè el mòdem que proporciona el meu ISP és el
+El mòdem hITRON necessito definir-lo de manera que no sigui més que un mòdem i, a continuació, estem
+Vaig a utilitzar aquest dispositiu per controlar-lo, així que el que vaig a fer és que sóc
+anireu a iniciar la sessió a la interfície i el mòdems hITRON rcus admin serà el registre
+el vostre mòdem serà diferent, així que tingueu en compte que serà el mateix
+Si voleu obtenir més informació, poseu-vos en contacte amb l’identificador IP de la vostra passarel·la
+no esteu segurs de com fer-ho, sinó que només els pregunteu, com puc fer el pont sobre el mòdem
+això és l’important, només serà un mòdem mut que em doni
+accés a Internet per mikrotik, per tant, a l'hITRON vaig a entrar
+la funció bàsica i de passarel·la i la funció de passarel·la residencial està habilitada
+per defecte, vull simplement desactivar el manteniment ara
+Tingueu en compte tan aviat com dic que estic bé, perdré l'accés a Internet un cop que toqui
+Deseu els canvis si ho fem perquè ara he convertit això en un
+mòdem mut, agafem un cable Ethernet i deixem el connexió del nostre router
+per tant, el port número 1 de la placa del router que establiré com a port LAN
+Va a connectar-ho a la meva xarxa només m’aconseguirà
+això és una mica rickety perquè estic fent això que saps bastant improvisat, però
+Us donareu la idea bàsicament del port número u de la placa de l’encaminador
+Aniré al meu mòdem, així que vaig a connectar el mòdem aquí
+allà anem connectats i bé, mirem, sí, no sembla importar quin port estic
+vés, vaig a confondre que, allà, anem
+i ara agafaré el cable que estava enllaçant a la xarxa i estic
+Va a connectar-ho al port número dos del meu tauler d’encaminadors i això anirà donant
+Accés a la tecnologia de micro que dic microtik board board com l'encaminador de la marca
+és el producte de manera que la meva xarxa, que és el meu interruptor, està connectada al número de port
+dos, de manera que el meu equip bàsicament està veient el port número dos del port un al
+mikrotik s’endinsarà a la part posterior del mòdem ISP actual, que ara està configurat
+mode bridged, doncs, passem al nostre mikrotik primer de tot el que hem de veure
+el que ara notareu és que estic a les 10.00 punts
+per saber quina és la meva nova xarxa ara que estic a l’ipconfig de micro tecnologia
+/ Tot i això, a Windows a Linux escriviu IP
+espai: a i descobrim quina mena de xarxa tinc aquí, estic bé
+encara hi ha una passarel·la predeterminada de 10.0.0.0, encara no s'ha actualitzat
+anem a comprovar que estic a Windows 10 i, tot i que es pot activar un reinici
+bàsicament, arreglant la vostra xarxa intentant tornar a connectar tot el que faré és que sóc
+Hi haurà clic amb el botó dret al meu 8è adaptador d'ernet i desconnectar desactivar-lo
+L'adaptador Ethernet ho torna a activar i ara un cop torni a connectar hauria de ser capaç
+per fer una configuració IP, hem de veure totes i haurien de veure sí, de manera que ara estem a 192.168.1
+Provem que 192.168.1 i estem amb el sistema operatiu del router, per tant, amb el cul retro primer
+el que hem tingut ara és el conjunt ràpid, de manera que ens permet configurar-nos ràpidament
+el nostre dispositiu d'encaminador mikrotik, així que vegem què passa aquí, així que el servidor DHCP
+l'interval Vull canviar això de 10 punts 0 punt 0 dot cent dos 10.0.0.0 per
+Ara és possible que no necessiteu fer-ho perquè potser feu servir el 192.168.1 que necessiteu
+Aquí, a l'estudi, faig servir el bloc 10.0.0.0, per la qual cosa és general
+de xarxa i no realment el que proposo fer aquí i t’ensenyaré
+però, bàsicament, és el meu bloc IP si està satisfet amb 192.168.1 està bé
+Estic fent el meu router 10.0.0.0 i establint l’interval del servidor DHCP en conseqüència a partir de
+De 100 a 250 per a tot, així que qualsevol altra cosa que necessiti establir aquí la puc fer
+A la meva xarxa sense fils i tot el que vaig a fer això
+en una mica, així que anem a treballar la nostra adreça IP, així que vaig a tocar
+Apliqueu un avís de configuració que l’adquisició d’adreces agafa d’Ethernet
+número 1 del port, és per això que he connectat el mòdem allà i l'he configurat a
+obtindreu automàticament l’adreça IP així que vegem què passa aquí com jo
+apliqueu aquesta configuració, així que hauríem de veure que aquell encaminador es reiniciarà
+per si mateixa i quan ho faci, anirem a les 10.00
+solució barata i alegre, bé deu punts 0 dot 0 punts
+dos per aconseguir que tot estigui configurat bé, així que anem a renovar el nostre DHCP
+la nostra connexió a Internet vegem què ens ha donat a llum i renovem
+Assegureu-vos que sí que estem al port Ethernet número u que no tinc en directe
+llum indicadora, de manera que alguna cosa del meu cable no estava connectat fins a ah
+La cosa número dos per fer-ho, veieu com això va sortir del boom en viu
+a Internet, així que ja hauria d’accedir a dir Google sí que ho sóc
+en línia fem una prova de velocitat ràpida
+vegem com va
+go-go-go, així que era una velocitat de descàrrega bastant miserable, la velocitat de càrrega no és terrible
+torna a provar alguna cosa allà, potser estem en això que ho saps
+la velocitat d’internet pandèmica tot és força lent ara mateix sí
+velocitats bastant baixes, així que fins i tot un router de més de 100 només em permetria
+100 megabits i estic pressionant 156 en aquest moment és bastant dolent tenint en compte
+suposadament hauria de fer una gira, però almenys sé que vaig a millorar 100
+megabits un segon, així que anem tot sembla molt bé
+Saltar a la web Figg ara això és el que fa que el mikrotik sigui tan potent
+és el programari que perdreu si intenteu trobar el vostre camí aquí
+i tingueu en compte que això és tan ràpid com ho era per funcionar tot, però jo
+Hauré de configurar coses com ara sota IP. Puc configurar reserves de DHCP
+de manera que a mesura que es connecten els meus dispositius, els puc configurar com a dispositius estàtics
+fixeu-vos que està comptant enrere, de manera que el meu ordinador en va arribar a 54, així és
+en realitat, comença a la part alta de la piscina de DHCP i comença la seva ruta cap a baix
+està bé si volgués, podria fer aquesta estàtica fent clic simplement sobre fer estàtica
+de nou sóc un servidor IP dhcp que he fet un sol clic al meu equip i puc fer clic
+En fer estàtica, no ho faré, però hauré de fer-ho amb coses com
+al meu servidor quan els porto en línia, de manera que és realment semblant barat i
+alegre i ràpida configuració de la meva xarxa, ara posem en funcionament la Wi-Fi
+de manera que el Wi-Fi és força senzill, vaig a afegir una contrasenya de wifi
+dum-dum 1 2 3 realment no ho faig pel bé de les coses
+demostració està bé, així que el nom de la xarxa a 2 Gigahertz I
+ho puc deixar com està o puc dir cat 5 TV 2 punts Cat suposo que no puc no estic segur de si
+Puc tenir un punt allà o no aniré a cat 5 TV i després a 5 gigahertz
+Jo aniré cat 5 TV 5 gigahertz sí, així que vegeu les opcions aquí BGBG n
+BG n GN i aleshores tenim una i anan una només veure AC i n amb una vista que hi ha
+la meva contrasenya està bé, així que sembla bo aplicar aquesta configuració ara una de les coses
+realment està molt ordenat amb això d'acord, primer que tothom observa que no ho sóc
+Haureu de reiniciar el meu enrutador cada vegada i notar que ja començo a agafar-ne alguns
+La connectivitat wifi aquí no he de reiniciar cada vegada que canvio la funció
+la configuració i quan creo qualsevol tipus de configuració és instantània, però, què
+és genial sobre web fig aquesta interfície web, així que noteu que estic accedint a això mitjançant el document
+L'adreça IP del router és que si jo fos de maquetar el meu mikrotik i no
+Voleu perdre la configuració que he creat presumptament que les heu fet una còpia de seguretat
+perquè podeu entrar al web fig que forma part del sistema, per tant, si puc entrar
+Vull dir que està en el sistema del sistema per fer els ports de reiniciar recents veure com
+Vasta això és que trobaré i cobri una còpia de seguretat de les seves micro específiques, hi ha
+Afegeix el fitxer de riff dot, de manera que ho farà, però si haguessis de causar un problema
+si no, no podreu iniciar la sessió amb aquest mikrotik que ofereix
+un programari pel que acabo de tancar la sessió i podreu
+descarregar i instal·lar Wind box Wind box també és una aplicació de Windows
+disponible per a Mac i us proporciona la interfície que detecta bàsicament
+encaminador a la xarxa i et proporciona la mateixa interfície amb una mica més
+una funcionalitat, com la microinformàtica, però fins i tot si no podeu entrar a la xarxa
+interfície que podeu utilitzar el quadre de vent, dic que és una aplicació de Windows que podeu
+descarregueu-la i executeu-la amb vi a la vostra caixa de Linux perquè no us preocupeu
+Aquest avís puc iniciar la sessió sense contrasenya, així que vull entrar a un conjunt ràpid
+i només establir la meva contrasenya al meu router dum-dum 1 2 3
+dum-dum 1 2 3 i aplico aquesta configuració, i ara si tanco la sessió i intento iniciar la sessió
+un cop més, dirà que l’autenticació ha fallat, així que provaré 1 2 3
+Si us plau, assegureu-vos que utilitzeu contrasenyes intel·ligents
+La millor manera de fer-ho és utilitzar una eina com LastPass i generar una seguretat
+bé, agafar la contrasenya que fa que la contrasenya i, a continuació, utilitzar LastPass o
+sigui el gestor de contrasenyes que utilitzeu per memoritzar-lo i això continuarà
+per mantenir-vos molt més segur, només la interfície és
+accessible dins de la meva xarxa perquè pugui ser una cosa que us sigui familiar
+així és així que hem de funcionar Wi-Fi presumiblement, així que mirem si
+pugeu el telèfon aquí i arrossegueu cap avall, augmentem les nostres xarxes Wi-Fi
+veuràs cat 5 TV 5 gigahertz és allà i a punt per connectar-me
+anireu a provar-lo connecteu-lo i escriviu dum-dum
+1 2 3 connecto i obteniu una adreça IP i estic acabat i es detecta el gat 5
+TV els 2 gigahertz també i estic connectat ara si vaig a fer pipí i després
+Servidor DHCP i aprofiteu per comprovar que hi ha un dispositiu nou que és el meu
+així que puc fer que estàtic i puc notar que és el telèfon polka
+està bé, el telèfon f1 Robbie, així és
+perquè això per recollir les coses serà capaç de configurar-ho i, literalment, només nosaltres
+configureu la nostra internet i es posen en funcionament en qüestió de minuts quines són
+anem a fer per a la resta d’espectacles, què farem
+de manera que aquests dispositius són econòmics
+són poderosos, aprendrem tot tipus de coses sorprenents
+amb això és molt millor que el tallafoc incorporat i la protecció que
+ve amb el mòdem ISPs, elimina la possibilitat de connectar-se als ISPs
+i accedir a la vostra xarxa és important pensar-ho durant un segon
+quan instal·leu un mòdem del proveïdor de serveis d'Internet del vostre ISP, disposen d'aquest servei
+l'accés a aquesta memòria quan el vaig bridar, que els va fer perdre l'accés ara
+l’únic dispositiu que poden veure si intenten fer un seguiment és
+mikrotik no poden accedir-hi, però podrien veure només això
+Hi ha un dispositiu connectat. Podria connectar un centenar d’ordinadors
+només veuria un dispositiu connectat, de manera que us proporcionarà una quantitat adequada
+de la privadesa contra l’ISP que també s’ofereix i això va dir que t’està donant
+una gran quantitat de privadesa contra els pirates informàtics i els pirates informatius de qualsevol script
+però, alhora, podrem crear una xarxa més segura dins la nostra
+infraestructura interna que serà fantàstica, vull dir que és tan agradable
+poder donar una contrasenya wifi als teus amics i familiars a mesura que vinguin
+visiteu, però no voleu que tinguin accés als fitxers del servidor
+la impressora utilitza tot l'ample de banda tal com està intentant fer-ho
+alguna cosa en línia i alguna cosa estranya està funcionant tan lentament, poc va fer
+sap que algú a qui has donat accés a Wi-Fi està baixant una pel·lícula
+de la porta del costat, de manera que aquestes són les coses amb les quals podrem evitar
+el nostre mikrotik, fes una ullada a la sèrie cat5 TV slash mikrotik que serà
+increïble i estem en marxa, vaig a posar això al cremallera i estic
+emocionat perquè aquesta és la millor solució per al meu control de xarxa
+és a fora de 5 rates de televisió Microtech: he de fer una escapada molt ràpida quan
+tornem a tornar amb el pal de notícies
+Benvinguts de nou amb les històries tecnològiques d'aquesta setmana, Becca
+Heus aquí el que surt a la sala informativa de la categoria cinc: hi ha un forat negre
+a la terra a mil anys-llum de la Terra i de la gent del sud
+hemisferi pot veure estrelles envoltant-lo a simple vista de dos terabytes de
+El codi font de Nintendo es va filtrar: Facebook va formar els seus BOTS de xat AI mitjançant reddit
+publicacions que Tesla ha sol·licitat per convertir-se en proveïdor d'electricitat al Regne Unit, Poco
+Un smartphone intel·ligent f2 amb el qualcomm snapdragon 865 s'ha llançat a tot el món i
+twitter permetrà que els empleats puguin treballar des de casa durant el temps que vulguin
+A continuació es detallen els detalls complets que hi ha a la cantonada criolla d'aquesta setmana
+categoria de televisió de la categoria 5 que cobreix els missatges de text de la setmana amb un lleuger prejudici
+a la redacció que sóc Becca Ferguson
+va topar amb el forat negre més proper a nosaltres, però el buit es troba al cor de
+un sistema estel·lar a només mil anys-llum de distància i indicacions seves
+la ubicació és visible a simple vista que un equip d’investigadors estava observant
+hr6 81: sistema de 9 estrelles de l'Observatori Sud Europeu de Xile com a part
+una enquesta més àmplia estudiant els nostres sistemes d'estels binaris inicials i van topar
+a través d'un tercer objecte, les dades espectrogràfiques van revelar que
+les estrelles van orbitar un company invisible cada 40 dies, mentre que el segon estel
+es troba molt més lluny del primer que ara creuen que el HR 68 19 és
+no és un sistema doble, sinó un sistema triple, que conté dues estrelles
+tant al voltant de les sis masses solars com d’un tercer objecte que és almenys 4,2 solars
+masses amb un nombre massa elevat perquè l'objecte sigui una estrella de neutrons
+Thomas Ravinia, una estrella de l'estudi, va dir un objecte invisible amb una massa a
+Si més no, quatre vegades fora del Sol només poden ser un forat negre si els investigadors ho són
+En efecte, l’objecte serà el forat negre més proper de la terra descobert
+tot i així, Peter va tenir un drama, el coautor de la investigació, va dir que l'equip era totalment
+sorprès quan ens vam adonar que es tracta del primer sistema estel·lar amb un color negre
+forat que es pot veure amb l’ull no ajudat com a punt de claredat el forat negre
+en si mateix no és visible a simple vista només les estrelles són per als que hi ha
+l'hemisferi sud amb l'esperança que es troba al telescopi
+constel·lació ium, es veurà millor durant una nit i dues hores clares
+els pinzellats brillants difuminats haurien de ser distingits
+sense prismàtics ni telescopi tot i que l'objecte sembla
+Les orelles al llarg de les quals se n'han escapat de detecció, fins ara no només és el forat negre
+força petita també és molt silenciosa, és a dir, no parla de raigs electromagnètics
+radiació a diferència de les supermassives de la web
+Centres de galàxies recollint les estrelles que l'equip només ha aconseguit inferir
+la seva existència a partir del wobble de les estrelles que l'orbiten l'esperança de l'equip
+capturar imatges de l'òrbita per establir encara més la distància en massa
+dels objectes del sistema, un pirata informàtic anònim es va filtrar al voltant de 2 terabytes
+de codi font relacionat amb el Nintendo Wii GameCube i que preveu 64 dissenys
+Aquesta memòria cau inclou molt codi de registre per al maquinari essencialment el codificat
+models de les diferents fitxes, mentre que una visualització perfecta cap al funcionament interior de
+Nintendo i una visió rara al disseny de baix nivell de l’especialitzat
+els xips que entren a les consoles no esperen que en surti massa
+en teoria, el codi de registre es podria utilitzar per convertir els clochops en xip de Nintendo
+Seria molt probable que els equips i les competències necessàries per fer-ho
+car i no el tipus de coses que podia fer un aficionat i cap tipus comercial
+Els esforços de tota mena també serien reduïts, sense cap dubte, per als advocats de Nintendo
+aparentment, no serà d'utilitat per als desenvolupadors d'emuladors que només poden
+fan legalment el que fan mitjançant enginyeria inversa als desenvolupadors de la web
+Els emuladors de dofins diuen que, en resposta a la filtració, no podem utilitzar res de cap tipus
+per una fuga de fet, ni tan sols podem mirar-ho
+el dofí només és il·legal perquè som enginyeria inversa
+GameCube i Wii si fem servir qualsevol cosa que es faci amb un dofí que ja no és legal, és legal
+Nintendo ens tancarà, no vol dir que no hi haurà un vol per nit
+emuladors que inclouen el codi principal, però recomanem que tingueu molta precaució quan
+considerant i utilitzant qualsevol eina, ja que és molt probable que inclogui programari maliciós o
+Facebook a l’interior d’ús malintencionat Facebook ha llançat un nou bot de xat que afirma
+és capaç de demostrar empatia coneixements i personalitat del seu bot bot
+han rebut una molèstia anomenada batidora amb domini públic disponible
+converses que van incloure 1.500 milions d'exemples d'intercanvis humans però d'experts
+dir que entrenar la intel·ligència artificial mitjançant una plataforma com Reddit té els seus
+inconvenients van sorgir nombrosos problemes durant més temps
+les converses blender de vegades respondrien amb un llenguatge ofensiu i at
+altres vegades es farien fets del tot i que els investigadors van dir que esperaven
+altres models tractarien alguns d'aquests problemes
+Dave Chopin, expert en intel·ligència artificial, va dir que aquesta barreja
+va ser un pas en la direcció correcta, però va assenyalar encara dues qüestions fonamentals
+Cal superar-ho, va dir a la BBC que el primer és el complex que és
+replicar tots els matisos d’un atribut humà com la capacitat de contenir un
+conversa un glop una habilitat que la majoria dels nens de tres anys poden dominar el segon és
+entorn de la relació amb les dades emprades per entrenar el model i els resultats
+generat pel model que continua explicant una plataforma tan fantàstica com és Retta
+Algoritmes d’entrenament basats en les converses que hi ha a continuació
+Obteniu molta pasta entre el blat de Facebook i també compareu els mescladors
+rendiment amb la darrera versió del propi xat de Google BOTS Mina que va mostrar
+els dos grups de converses, una amb la licuadora i l’altra amb
+Les converses de Mina van incloure una àmplia gamma de temes, com ara música i pel·lícules
+veganisme Facebook va dir que el 67% dels enquestats a través de la batedora sonava més
+Els investigadors més humans que Mina van assenyalar que vam aconseguir aquesta fita mitjançant una nova
+Recepta de bot botigues de xat que inclou tècniques millorades de decodificació millorades
+competències i un model amb nou punts quatre mil milions de paràmetres, que és 3,6 vegades
+més que el més gran d’aquest sistema existent construint un autènticament intel·ligent
+un agent de diàleg que pot xerrar com un ésser humà segueix sent un dels més grans oberts
+Els reptes de la IA avui estan bé, gràcies Becca, hem de fer una escapada ràpida
+quan tornem, Robert Koenig és aquí amb el cantó i Becca té
+més notícies per a nosaltres, que apareixen
+vostè
+Torneu al racó críptic del vostre pou aquesta setmana en el que vull centrar-me
+informació si heu estat més d’una setmana amb aquesta indústria i
+heu publicat arreu de YouTube o qualsevol altre punt de venda de notícies que haureu vist allà
+Hi ha moltes dades diferents i la majoria és enganyosa
+Sí, tens aquells maximalistes que pretenen que sigui la seva moneda o testimoni
+és el millor i que la resta és bastant dolent que en teniu
+són monedes de xilí, de manera que intenten vendre alguna cosa i molta gent
+Tampoc tenen cap idea de què parlen, així que aquesta setmana m'agradaria
+centrar-me exactament en aquest tema que he estat en aquesta indústria des del 2015 i què
+Ja veuràs, és un recull d’aquests vídeos i podcasts de YouTube que jo
+seguiu-ne de forma regular, veureu la taula al final d’aquest vídeo i aquest
+es presentarà amb el nom del podcast o del vídeo de YouTube i, a continuació, al document
+cas de YouTube també he afegit els subscriptors perquè el pugueu trobar
+més fàcil en cas que algú fingeixi aquest youtuber, doncs anem
+Comença amb el crypto 101, és un podcast, és dos nois
+a continuació, fan entrevistes i una cada dos o tres dies
+són fantàstiques les entrevistes perquè són neutres i no
+fingir que amenaça o qualsevol cosa semblant que són neutres
+molt amable i reben la informació que us faria com a usuari
+M'agrada escoltar el fantàstic podcast de Crypto 101, el següent és Ivan on tech so
+és per a nosaltres a la categoria 5 que és interessant perquè se centra en ell
+el costat de codificació i programació que fa set dies a la setmana un vídeo de YouTube és
+un dels líders d'aquesta indústria en matèria de programació i codificació
+el tercer és Andreas Antonopoulos, és un dels oh geez de Krypton
+indústria 2014 va fer una presentació davant del senat canadenc que fa
+probablement cinc o sis vídeos de YouTube a la setmana i el més maco per a tu és que
+els classifica i no només parlem de tot el que ell classifica
+de manera que us sigui fàcil trobar o veure si hi ha alguna cosa
+t'interessa o no el següent és crypto per la qual la O és un zero, no ho és
+un O és un zero és un tipus anomenat bomba Omar realment ha estat un tipus simpàtic
+la indústria des de fa molt de temps coneix a tothom i té una bona notícia
+ho fa també cada dos o tres dies el fillet és criptofamí jo
+llegir molt alt, perquè ve de la negociació tradicional de comerç de
+el punt de vista tradicional de les finances i realitza anàlisis fantàstics en monedes i monedes
+fitxes i projectes que realment detalla amb nosaltres i els analitza i
+està molt bé el que fa, segueix és Laura Shin, diria que és l’única
+periodista real d’aquesta indústria i quan hagi tingut algú que ella
+Entrevistes que aquestes entrevistes aprofundeixen i són molt professionals, per la qual cosa m'encanta
+escoltar Laura diuen els podcasts crypto diàriament és el següent
+és el noi divertit d'aquesta indústria si us interessa memes combinats
+una mica d’informació, aleshores és l’home adequat per a vosaltres si voleu il·luminar el vostre
+la vida una mica, doncs sí, definitivament, vau amb cripto diàriament és l’inversor modern
+algú que mai no mostra la cara, se sent en algun lloc d’Europa i llegeix
+Les notícies que els troba en totes aquelles notícies sense cor ens han deixat punts de venda
+existeix, ho fa molt bé, també dóna la seva pròpia opinió sobre aquells sí
+l’inversor modern que hi ha al costat és Stefan laverra no és algú si vols
+Geek és la persona adequada per tu darrere d'Andreas Antonopoulos II
+diguem que és qui ha obtingut el coneixement més detallat de les carteres de productes
+intercanvia tot el que fa entrevistes i sempre ha estat la gent superior
+alineat perquè Stefan surti sempre cap a la caixa tècnica de gent que ve a la primera
+també tècnic, va ser un programador de jocs de programador amb seu a Hong Kong i
+també és una molt bona anàlisi de les preocupacions de Koto
+en el moment en què barreja moltes notícies de Hong Kong i la Xina sobre aquest tema
+virus que actualment va donant voltes i que quan va a cripto el seu coneixement
+és molt bo i també és imparcial, però no per això menys important són les dades; diria que és ell
+el millor que fa l'anàlisi de l'analista tècnic, així que si vostè és tècnic
+anàlisi i dades: és la persona adequada que té un gran coneixement
+segueix la base i sap que el mercat també molt bé, així que tots aquells que jo
+S'esmenten només són els que estic veient de forma regular, puntuo tots
+aquells com a mutuos que realment saben de què parlen
+així que és el que us recomano i com veureu en un segon
+tindreu aquesta taula al meu darrere, de manera que no heu d'anotar les coses
+desitjo una bona setmana a tot el que ens veiem la setmana que ve i estigueu segurs
+[Aplaudiments] gràcies Robert
+només un recordatori per veure a casa, no rebem assessorament financer aquí
+al programa, però, només et donem els fets i et deixem anar
+tingueu en compte, tot i que, el mercat de la criptomoneda sempre canvia
+sempre evoluciona i és sempre volàtil, per la qual cosa us recomanem que invertiu només el que podeu
+permetre’t perdre ara amb més de les teves novetats tecnològiques aquí és Becca Gràcies Robby
+més coneguda pels seus cotxes elèctrics, també fa companyia a Tesla de Elon Musk
+bateries que emmagatzemen energia renovable tant a escala nacional com industrial
+han sol·licitat convertir-se en proveïdor d’electricitat al Regne Unit
+A finals de març es va presentar la sol·licitud amb gas i electricitat al Regne Unit
+comercialitza Autoritat per obtenir una llicència per generar electricitat per subministrar-ne qualsevol
+a Gran Bretanya hi ha hagut una menor demanda d’electricitat durant
+bloqueig com a resultat de la pandèmia del virus de la corona amb moltes fàbriques i importants
+les empreses han de tancar-se, però hi ha de ser l’oferta i la demanda d’electricitat
+equilibrat dins de la graella perquè funcioni podent generar i
+Emmagatzemar electricitat pròpia té el seu atractiu, especialment si es produeix la xarxa
+desequilibrat i requereix tallar el poder temporalment, a més de Tesla
+desenvolupat un programari anomenat Auto amargo que permet als clients vendre excedent
+l'electricitat a la xarxa automàticament s'utilitza automàticament amarg
+Austràlia del Sud, però encara no està clar si tenen previst construir grans superfícies similars
+instal·lacions de bateries al Regne Unit, que han d’emmagatzemar l’excedent d’una casa
+la versió de la bateria de Tesla el powerwall va costar milers de britànics
+lliures i requereix un conjunt de plaques solars que potser recordeu el telèfon polka
+f1 ara el poc f2 Pro s’ha llançat completament amb el Qualcomm Snapdragon
+El 865, un impressionant vídeo de 8k que enregistrava el telèfon polka f1 era una rara bèstia i una
+exemple real d'un assassí insígnia ara gairebé dos anys després
+és finalment el moment per a una actualització de la marca poco que va començar com a sub marca
+El fabricant xinès de telèfons em va mostrar, però amb l'èxit de la F1 va ser
+va decidir que es podia mantenir pel seu compte i la van esclatar per si sola
+companyia independent amb seu a l'Índia després de la F1 van tornar a marcar els
+redmi k 30 de gamma mitjana que l’anomenen el poc x2 ara el nou model f2 és fonamentalment a
+rebranded K 30 perla el poco f2 pro aporta una llarga llista de millores
+en comparació amb el f1 que comença amb el chipset més recent, un snapdragon 865 és el
+el millor xip de Qualcomm encara i un dels primers en incloure controladors GPU que
+es pot actualitzar, que podria millorar la longevitat del telèfon
+col·locat al teixit 2.0 refrigerat per líquid amb una cambra de vapor que en si mateixa és més gran
+que els telèfons competidors poc diuen que això permetrà un refrigerament més eficient
+El f2 pro funciona amb Android 10 fora del quadre amb el llançament 2.0 de manera poc fosca
+disponible que sembla magnífic a l’actual emmagatzematge de pantalla AMOLED actualitzada
+comença a 128 gigabytes. També hi hauria una opció de 256 gigabytes
+recomano ja que han suprimit la ranura microSD i el vídeo de 8k pot consumir-se
+Una gran quantitat d'espai a l'emmagatzematge és ràpid UF i FS 3.1 fins a 2.1 del f1 el nou
+la càmera al peu del poc f2 pro pot ser el que empeny a Diehard poco Fong F1
+els ventiladors per actualitzar el telèfon tenen quatre sensors de càmera orientats a la part posterior de la configuració
+inclou un sensor de 64 mega píxel de sony imx6 86
+admet un zoom òptic de tres vegades i una imatge òptica doble
+estabilització També hi ha una càmera de gran angular ultra gran de 13 megapíxels de 8
+píxels mega i un megapíxel de 8 megapíxels, els dic que això és un llenguatge
+un 8 megapíxels digueu a una càmera macro i un sensor de 5 megapíxels per a selfies que obtens
+Càmera de 20 megapíxels amb un mecanisme pop-up motoritzat capaç de tenir una 1080p
+el vídeo és l’única cosa que ens agradaria molt
+per veure els registradors de 4v millorats que es veuen obligats a utilitzar les càmeres posteriors si
+Voleu disparar en 4K o 8k en Ultra HD parlant d’Ultra HD més potent
+El chipset permet gravar 8k a les 30fps completes i ara es poden gravar vídeos 4k
+a 60fps el canvi a mm OLED també permetia que el lector d’empremtes dactilars fos
+amagada a la pantalla, la pantalla actualitza un estàndard de 60 Hertz
+la taxa de mostreig tàctil s’ha incrementat a 180 Hz el poc f2 també
+té una certificació l1 de manera que podem reproduir contingut en alta definició des de Netflix Amazon
+Video de primera qualitat i altres serveis la capacitat de la bateria ha augmentat a
+de 4.700 mil·límetres horaris amb una càrrega més ràpida de 30 watts i una presa d’auriculars
+encara inclòs el poc f2 ja està disponible a través dels nostres socis
+cap 5 TV slash f2 per comprovar-ho
+segons va dir un portaveu del conseller delegat de Twitter de l'empresa, Jack Dorsey
+Els empleats el dimarts que molts d’ells podran treballar des de casa
+perpetuïtat fins i tot després que la pandèmia del virus de la corona acabi en un correu electrònic obtingut per primer cop
+per BuzzFeed news Dorsey va dir que era poc probable que Twitter obrís el seu
+oficines abans de setembre i que es cancel·larien tots els esdeveniments presencials per a la web
+La resta d’any la companyia acceptarà valorar els seus plans per a esdeveniments 2021
+a finals d’aquest any, el portaveu va dir que estàvem posicionats de manera única per respondre
+ràpidament i permet que la gent treballi des de casa, donada la nostra èmfasi en
+descentralització i suport d’una mà d’obra distribuïda capaç de treballar
+des de qualsevol lloc dels últims mesos han demostrat que podem fer que això funcioni si és nostre
+els empleats es troben en un paper i una situació que els permet treballar des de casa i
+volen continuar fent-ho per sempre farem que això passi si no és el nostre
+Les oficines estaran allí mateix acollidores i acollidores amb algunes precaucions addicionals
+quan creiem que és segur tornar la nova política de Twitter, que és la de les empreses
+arreu del món lluiten per adaptar-se a les pautes de distanciament social i
+repensar el seu funcionament en una publicació
+Principals companyies tecnològiques endèmiques com Facebook Google i Microsoft eren
+aviat per passar a un model de treball des de casa i també han estat els més prudents
+Google ha explicat als empleats la planificació per traslladar els empleats de nou a l'oficina
+que la gran majoria d’ells treballaran des de casa fins al 2021, encara que alguns ho faran
+tornar a principis d'estiu Facebook començarà a reobrir oficines després
+el cap de setmana del 4 de juliol, però permetrà als empleats que puguin treballar des de casa
+fes-ho fins l’any que ve en gran gràcies a Roy W Nash i als nostres
+Comunitat d’espectadors per enviar-nos històries aquesta setmana gràcies per
+veient la sala de notícies de televisió de la categoria cinc no oblideu agradar-vos i subscriure-us
+totes les vostres novetats tecnològiques amb un lleuger biaix de Linux i si agraïu el que fem
+convertir-se en patró de la categoria 5 de patreon.com de la categoria 5 de TV
+sala de notícies Sóc Becca Ferguson Gràcies Becca hem de fer un breu descans
+enganxar [Música]
+així, la gent encara no era fins al 100%, però estem fent tot el possible
+aquí a la categoria 5 TV l’estudi no està configurat de la manera que vull que sigui
+No hi sóc gaire, pel que fa a com van les coses
+Perspectiva en viu, però faig tot el que puc i no estem completament omplint el temps
+i aconseguir que tots estiguin junts de la manera que realment vull ser, així estem
+arribar a la televisió de tecnologia de categoria 5 encara aquí
+encara estem forts, creixem on aprenem i evolucionem
+nou espai, però encara no hi som, així que ens en sortiu, visiteu el nostre lloc web
+Televisió de la categoria 5 punt, bé, seria un estímul només saber-ho
+estàs consultant el nostre lloc web comprovant alguns d'aquests episodis posteriors
+tinc 13 anys de tecnologia de TV no només això, sinó que també en tenim alguns de fantàstics
+característiques al nostre lloc web, així que si aneu a la categoria 5 TV podreu veure algunes novetats
+característiques a la barra de menús, per exemple, tenim un botó que diu força
+literalment és aquí i és on trobareu la funció d'avui a la web
+l'encaminador de mikrotik que formarà part d'aquest element de menú i, què passa?
+això vol dir que Robbie és una manera de trobar contingut amb això
+és rellevant per a altres continguts, per la qual cosa el que això vol dir és a mesura que continuem
+sèrie en què podreu veure tots els vídeos publicats
+Aquesta sèrie, per poder seguir-la, fa que les coses siguin molt més fàcils
+heu de picar i intentar trobar els vídeos adequats i assegureu-vos que ho sigueu
+per tal de que no sigui molt senzill, és una llista de vídeos que hi aneu
+que pugueu trobar fàcilment, de manera que només és una de les funcions de la nostra categoria web 5
+dot TV moltes gràcies per estar aquí amb nosaltres aquesta setmana us agraeixo
+Si us plau, us ajudeu a donar suport a la tecnologia de cinquena categoria de televisió
+Encara no ho feu, aneu a donar TV de categoria 5 o, encara millor, a patreon.com
+slash categoria 5 és una manera fantàstica de donar-nos suport gràcies a ser aquí
+tothom ens tornarem a veure la setmana que ve
+[Música]
