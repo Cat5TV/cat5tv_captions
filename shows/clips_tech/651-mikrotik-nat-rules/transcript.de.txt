@@ -1,0 +1,242 @@
+In Ordnung, wir haben uns das erweiterte Routing der Mikrotik-Router angesehen
+Ich meine, diese Geräte fallen in diese interessante Kategorie
+Ein Weg, weil sie wie ein Consumer-Router teuer sind, aber sie haben die
+Funktionsumfang eines Unternehmens-Routers, sodass Sie plötzlich so viel mehr tun können
+Sie können Ihr Netzwerk besser schützen als mit einem Verbraucher
+Router und Sie sind in der Lage, das für etwa den gleichen Preis oder vielleicht ein
+ein bisschen mehr, aber ungefähr ein Zehntel des Preises eines gleichwertigen Unternehmens
+Level Router so alles, was gesagt hat, dass sie extrem billig für das sind, was Sie bekommen und
+Wenn Sie eine Weile einen Mikrotik-Router benutzt haben, werden Sie feststellen, wow
+Es gibt keine Grenzen, es ist so, als ob Sie nur Code können
+Sachen hinein in ihre Router-Betriebssystem-Software und und Sie können alle verwalten
+Sachen und plötzlich fängst du an, mit Caps Man und deinem zu spielen
+Der Verstand ist überwältigt, weil Sie mit einem Micro-Tech-Router für 30 40 50 a Dinge tun können
+hundertfünfzig Dollar, die Sie mit einem gleichwertigen Router machen würden
+Spezifikationen, die sieben achthundert Dollar fünfzehnhundert Dollar zehn ist
+Tausend Dollar und Sie tun es auf diesen Geräten zu Verbraucherpreisen von Micro
+Tech, also ist das Gerät, das ich hier im Studio sehe, die Router-Karte
+RB 9 6 2 UI GS und dieses Modell habe ich hier im Studio für uns ausgewählt
+Möglicherweise ist es jedoch nicht genau das, was Sie für Ihr Haus oder Ihr Heimnetzwerk wünschen
+oder Ihr Unternehmensnetzwerk, aber genau das ist das Coole an Micro Tech I.
+Das heißt, eines der Dinge ist, dass Sie nur die Hardware auswählen, die für Sie und funktioniert
+Die Software wird von Gerät zu Gerät gleich sein, ob
+Sie kaufen die 30-Dollar-Einheit oder die 150-Dollar-Einheit oder die 600-Dollar-Einheit
+Egal was die Software angeht, Ihre einzige Einschränkung liegt in der Schwierigkeit
+Wir sind so, wo mein Gerät sowohl 2,4 als auch 5 Gigahertz Wi-Fi Antennen und und hat
+und Sender können Sie ein billigeres Gerät kaufen, das nur 2.4 oder nur 5 hat
+Daher werden diese Funktionen nur durch die Hardware, sondern durch die Software selbst eingeschränkt
+ist das gleiche, also beginne ich immer damit, das zu sagen, weil ich will, dass du es tust
+Verstehe, dass du nicht das gleiche kaufen musst, das ich gekauft habe. Du findest das, das
+arbeitet für Sie und dann können Sie mit der Serie und erstaunlich sogar folgen
+Wenn Sie ein anderes Modell haben, können Sie dem folgen
+Bildschirm Sie werden in der Lage sein, die Schritte zu folgen und es wird genau sein
+Das gleiche ist erstaunlich, also werde ich diese Woche schauen
+Wie man die Portweiterleitung einrichtet, nennen wir es jetzt Mikrotik
+Nennen wir es NAT-Firewall-Regeln. Ich werde gleich ein wenig darüber sprechen
+aber wir kennen es als Portweiterleitung oder -umleitung und das ist, wenn
+Jemand trifft unsere öffentliche IP-Adresse an einem bestimmten Port, wenn es sich um einen Port handelt, den ich habe
+erlaubt und dass ich erkenne, dass ich möchte, dass es so auf den entsprechenden Server umgeleitet wird
+In meinem Fall habe ich einen Server bei 10.0.0.0
+Es ist meine persönliche Alternative zu Google Cloud-Diensten und Laufwerken und
+onedrive und all diese Arten von Diensten kann ich auf meinen eigenen Server stellen
+und es ist meins, es ist mein eigenes gehostetes System bei 10.0.0.0 'pn Ports 80 und Port 443
+Wenn jemand meine IP-Adresse erreicht oder ich tatsächlich einen DNS-Eintrag habe, weil wir Kategorie 5 haben
+TV natürlich, also habe ich Studio Dot Kategorie 5 Dot TV wird sie weiterleiten
+bis hierher und das wird dann den Micro Tech treffen und der Micro Tech wird gehen
+Um zu sagen, okay, was mache ich mit diesem Verkehr? Was soll ich tun, damit ich es tun muss
+Sagen Sie meinem Micro-Tech, hey, das ist Port 443, den ich will
+schrieb das auf 10.0.0.0, weil das vermutlich das ist, was diese Person versucht
+Zugang, also lass uns gleich hineinspringen. Ich werde zu unserer Mikrotik springen und
+Die Dinge hier sind so raffiniert, also folge einfach und du wirst anfangen
+Um herauszufinden, wie die Dinge funktionieren, habe ich letzte Woche auf IP geklickt. Wir sind hierher gekommen
+weil wir uns den DHCP-Server und statische Regeln und ähnliches angesehen haben
+Das, worauf wir in der Zeit näher eingehen werden, wenn ich auf die Firewall stoße, ist die Standardeinstellung
+Einstellungen für meine Microtech-Firewall und ich möchte einige Regeln hinzufügen, die gehen werden
+Leiten Sie den Datenverkehr in meinem Netzwerk um, jetzt sind wir ein typischer Consumer-Firewall-Router
+Ich werde sagen, hey, ich nehme Port 80 und leite es um
+Mit der Mikrotik kann ich viel mehr Kontrolle darüber haben, also werde ich es sein
+Richten Sie zuerst NAT-Regeln ein, also die Netzwerkadressübersetzung
+Die Regeln werden entscheiden, ob jemand diesen Port erreicht, wo ich will
+um es innerhalb des Landes zu schicken, okay, wohin werde ich ihnen den Zugang erlauben, aber dann
+Es wird immer noch nicht funktionieren, im Gegensatz zu einem Consumer-Router, der nur sagen wird
+Okay, ich werde im Grunde nur D DMZ diesen Server und erlauben, dass jeder durchkommt
+und erlauben Sie ihnen, sich einzumischen und was auch immer sie tun wollen, sobald Sie sagen, gehen Sie
+Die Mikrotik wird sagen, dass okay, nein, ich werde den Verkehr durchlassen
+Sie unterliegen jedoch einigen Regeln. Möglicherweise haben Sie andere Regeln
+Sie haben Ihrem Mikrotik-Gerät hinzugefügt. Nehmen wir an, ich erlaube nur a
+bestimmte IP-Adresse, um darauf zuzugreifen, so dass dies meine private IP-Adresse oder meine sein kann
+Im Büro kann es sein, dass ich eine Regel aufgestellt habe, die besagt, dass ich nie reise, in der ich immer bin
+Kanada Ich bin immer in Ontario, wenn also jemand versucht, auf meine zuzugreifen
+Server von außerhalb von Ontario blockieren sie, öffnen sie aber für mich, wenn ich in bin
+Ontario so, als gäbe es alle möglichen Arten von hierarchischen Methoden
+Schauen Sie sich diese Router-Reto-Regeln an, um sie umzuleiten
+Sie können sich vorstellen, dass der Datenverkehr zu bestimmten Servern in Ihrem Netzwerk hilfreich ist
+für zu Hause, weil es Ihnen mehr Sicherheit gibt, aber es ist auch außergewöhnlich für
+Unternehmen, ob Sie eine IT-Abteilung in einem kleinen mittelständischen Unternehmen besitzen oder betreiben
+Geschäft oder sogar ein großes Geschäft Mikrotik wird Ihnen so viel geben
+Mehr Kontrolle über diese Art von Regeln. Beginnen wir also mit unserer Nat-Regel und
+Auch hier ist NAT eine Kurzform, für die wir einen Stand für Netzwerkadresse verwenden
+Übersetzung und es sagt unserem Netzwerkverkehr im Grunde, wohin er basierend fließen soll
+Die Regeln, die ich aufgestellt habe, aber sie werden immer noch nicht erlaubt sein
+um dir das in nur wenigen Augenblicken zu zeigen, damit ich weiß, dass ich es werde
+Ich brauche Port 80 und Port 443, um meinen Datenverkehr für die nächste Cloud weiterzuleiten, und ich sollte es tun
+Beginnen Sie damit, Ihnen zu zeigen, dass hey, wenn ich tatsächlich zum Studio der fünften Kategorie gehe
+es wird nur hängen, es wird eine Auszeit geben, es wird nirgendwo hingehen, weil ich
+Ich habe diese Regeln noch nicht aufgestellt, also ist das Spin Spin Spin Spin Spin, aber ich werde gehen
+das öffnet sich also meine nat regel die ich zuerst erstellt habe
+eine neue NAT-Regel, also IP-Firewall NAT neue Regel und jetzt werde ich die Kette ändern
+hier möchte ich sagen, dass dies die Zielkarte ist, weil ich einstelle
+Als Ziel in meinem internen Netzwerk muss ich auch das Protokoll festlegen
+weil ich angeben möchte, dass dies tatsächlich TCP ist und Sie das dort sehen können
+Es gibt Unmengen von Protokollen, aus denen Sie auswählen können. Ich richte gerade TCP ein
+Port 80 und dann Port 443, damit wir anfangen zu bemerken, dass ich das Web benutze
+fig in meinem Webbrowser habe ich nicht eingerichtet oder und bin es auch nicht
+mit einer Windbox und das liegt zum Teil daran, dass ich Ihnen das durch zeigen möchte
+den Browser, damit Sie sehen können, dass Sie kein Tool installiert haben müssen
+in der Lage sein, Ihren Mikrotik-Router zu verwalten Ich denke, es gibt ein Missverständnis
+Sobald ich sage, installiere Windbox und benutze das, um dich mit deiner Rhetorik zu verbinden
+schafft ein Missverständnis, das Ihnen das Gefühl gibt, oh das muss
+von einem Tool aus verwaltet werden, aber das ist ein hilfreiches Tool, um es Ihnen geben zu können
+Zugriff auf Ihren Router und es bietet einige außergewöhnliche zusätzliche
+Dienste wie mein Multitasking probieren Sie es aus, aber ich werde das meiste davon tun
+über den Browser, weil ich denke, dass dies eine bessere Möglichkeit ist, Sie als zu zeigen
+Sie lernen gerade Ihre Microtech, also habe ich sie auf das von mir festgelegte Ziel eingestellt
+es zu TCP als das Protokoll, das Nummer sechs ist und ich muss meine einstellen
+Zielport und dieser Zielport ist der Port im externen Netzwerk
+Verwechsle dich also nicht mit dem, was ich manchmal mache, weil manchmal
+Möglicherweise haben Sie eine Situation, in der sich Ihr öffentlicher Hafen von dem unterscheidet
+privater Port in diesem Fall, während wir unsere NAT-Regel einrichten, die wir festlegen
+Der externe Port hier, also in meinem Fall, wird er mit dem internen Port übereinstimmen
+Aber denken Sie daran, dass wir sagen möchten, dass wir darauf antworten sollen
+Port 8080 können Sie dort hinzufügen, obwohl der Server im Haus antwortet
+Denken Sie also an Port 80 daran, dass dies möglicherweise anders ist, in meinem Fall jedoch
+in der Tat nicht anders in Ordnung Ich muss auf meine Oberfläche schauen, damit es die in gibt
+Schnittstelle Ich muss sagen, dass dies Ethernet sein wird, in meinem Fall kann es eine sein
+ein bisschen anders für dich denk nur daran, was ich eigentlich mache
+Dort, während ich meine Internetschnittstelle auswähle, erinnere ich mich an die erste Einrichtung
+Mit diesem Router in unserer ersten Folge dieser Serie habe ich gezeigt, dass ich es bin
+Stecken Sie mein Internetmodem in Ethernet 1 Port 1 und so bin ich
+Wenn ich hier spezifiziere, möchte ich, dass dies auf meiner Internetschnittstelle und so gut wie möglich reagiert
+Stellen Sie sich vor, Sie können tief graben und dies so einrichten, dass Sie wissen, dass Sie es tun könnten
+Dinge sehr raffiniert durch Angabe verschiedener Ports, die alle VLANs einrichten
+solche Sachen halten wir die Dinge ziemlich einfach und machen es einfach
+Auf diese Weise werde ich Wade scrollen
+hier - Aktion und stellen Sie einfach sicher, dass dies auf DN DST-Netzziel eingestellt ist
+net, damit dieser Datenverkehr an unseren Server weitergeleitet wird, scrollen Sie jetzt nach unten
+ein kleines Stück hier und du wirst dort zwei Ports finden, es sind meine zwei Ports
+Eigentlich wird es der gleiche Hinweis sein, der mir eine Reichweite gibt, die ich gerade gehe
+Port 80 anzugeben und ganz unten gibt es eine Möglichkeit für
+Wenn Sie einen Kommentar erstellen, werde ich das tun. Ich werde endlich die nächste Wolke 80 sagen
+Das letzte, was ich hier hinzufügen muss, ist die Ziel-IP-Adresse
+Intern in meinem Netzwerk ist dies der Server, wie ich bereits erwähnt habe
+Die NAT-Regel wird auf Port 80 antworten und auf 1000 umleiten
+Nun, jetzt scrolle ich ganz nach oben und drücke auf OK. Jetzt werden wir das sehen
+Wir haben eine neue Regel namens Next Cloud 80, die auf das DST-Netz reagiert und es ist
+Zeigen von TCP auf Port 80 über Ethernet 1 - wie wir aus der Einrichtung wissen
+10.0.0.0 möchte, dass auch der sichere Port die gleichen Schritte ausführt, die ich ausführen werde
+Ändern Sie die Kette zum Ziel, an dem ich mein Protokoll in TCP ändern möchte, und dann
+Ich werde meine externe In-Schnittstelle auf ein Ethernet-Ziel umstellen
+Port Ich weiß, ich bin ein bisschen außer Betrieb, das ist okay, du weißt was ich bin
+Zielport ist 4 4 3 Lassen Sie uns hier nach unten scrollen und unsere ändern
+Aktion an DST net und unsere, um denselben Server nur unterschiedlichen Port und dann zu adressieren
+zu Port 443 und geben Sie es einen Kommentar hier nächste Wolke 443 in Ordnung Ich denke, ich habe
+Alles dort sieht gut aus. Lass uns auf OK klicken. Jetzt habe ich Port 80 und Port 443 nat
+Regeln gehen zu 10 Punkt 0 Punkt 0 Punkt
+Vom Ethernet 1-Port über TCP wird es immer noch nicht funktionieren, wenn ich überspringe
+hier drücke ich f5 um mich zu erfrischen oh und es funktioniert, schau dir das an, weil ich es bin
+intern auf dem internen Land, also bin ich nicht wirklich auf dem Ethernet, das es nicht ist
+Ich werde noch von außen arbeiten, weil die Außenwelt kommt
+In über Ethernet 1 bin ich offensichtlich intern. Ich bin wie Sie an Port 2
+erinnere mich an die letzte Woche also, um jetzt Zugang zur Außenwelt zu gewähren
+Gehen Sie hier zur Registerkarte Firewall-Regeln und klicken Sie auf Neu hinzufügen, damit dies der Fall ist
+Wo ich eigentlich ok sage, wenn die Firewall getroffen wird, muss ich das auslösen
+nat rule also lass uns das machen, also haben wir eine neue Firewall-Regel hinzugefügt und ich werde mich ändern
+Die Kette, mal sehen, nein, es wird bereits standardmäßig weitergeleitet, also ist das in Ordnung
+Quell-IP-Adresse das ist irgendwie cool Ich werde das nicht einstellen, aber ich nur
+Ich möchte, dass Sie dies sehen. Dies kann die IP-Adresse sein, die Sie zulassen möchten
+Mitglied Ich erwähnte, Sie könnten es so einstellen, dass nur Ihr Heimnetzwerk erlaubt ist
+Dazu können Sie Ihre private IP-Adresse hinzufügen, die Sie sogar erstellen können
+IP-Gruppen, die hier eingerichtet würden, sind hier unten Quelladresse
+Liste sehen, dass dies also Dinge sind, die wir rechtzeitig lernen werden
+Jetzt werde ich das nicht tun. Ich werde keine Quelladresse festlegen, an die ich gehen werde
+Öffne dies für die Welt, aber ich möchte, dass du weißt, dass dir das so zur Verfügung steht
+Das Bewegen entlang der Zieladresse ist in der Tat der interne Server, das sind also 10
+0.017-Protokoll Wir wissen bereits, dass es sich um TCP handelt. Klicken Sie also darauf, und es handelt sich tatsächlich um TCP
+Die Standardeinstellung spart uns nur eine kurze Zeit, aber Sie können alle sehen
+Protokolle, die uns im nächsten Schritt zur Verfügung stehen, müssen den Service-Port festlegen
+Der Zielhafen wird also Port 80 sein. Wir werden damit beginnen, was wir tun müssen
+beides, aber ich muss jede Regel separat einrichten, damit wir in die Schnittstelle gehen
+wird mein Ethernet 1 Port sein, wie wir bereits eingerichtet haben und was ich bin
+Hier sage ich der Firewall, dass ich dies zulassen werde
+Verkehr vom ersten Ethernet-Port, der meine Internetverbindung ist und dies
+ist derjenige, bei dem Maßnahmen festgelegt werden müssen, um zu akzeptieren, also sage ich dies hier
+Ja, Sie wissen, was ich zulassen werde. Sie können dies auch so einstellen, dass es abgelehnt wird
+in bestimmten Fällen oder Sie kennen verschiedene Einstellungen, aber wir werden sagen
+außer wir werden dies zulassen und dann einen Kommentar erstellen, wie wir es zuvor getan haben
+Ich werde diesen Kommentar zur Firewall-Regel als nächstes aufrufen
+Beachten Sie dies, wenn Sie die NAT-Regel oder die Firewall-Regel weglassen
+Nun, Sie vermissen einige der Ketten, so dass es nicht wirklich reagieren wird
+außerhalb Ihres Netzwerks müssen Sie also sicherstellen, dass dies im nächsten Schritt erfolgt
+Ich werde 4 für 3 in die Firewall-Regeln einfügen, damit die Weiterleitung bereits ausgewählt ist
+Quelladresse werden wir diesmal nicht um die Zieladresse machen
+Wir werden auf 10 0 Punkt 0 Punkt 1 7 Protokoll setzen wird TCP eine Schnittstelle sein
+wird Äther sein 1
+und was sonst noch in meinem Zielhafen brauche ich dort auch bah bah das
+wird 4 4 3 nach unten scrollen stellen Sie sicher, dass es akzeptiert wird und setzen Sie dann unsere
+Kommentar wird nächste Wolke sein 4 4 3 da gehen wir alles sieht aus wie ich
+Ich vermisse alles, was du mir sagst, ich werde es so gut machen
+Hier ist der letzte Schritt, bei dem Sie feststellen, dass diese beiden Elemente hier gelöscht werden
+Vorwärtsregeln im Feuergesetz Jetzt ist es wichtig zu beachten, dass Mikrotik in funktioniert
+Grundsätzlich in der Reihenfolge von oben nach unten, wenn Sie sich Ihre Firewall ansehen
+Regeln, wenn Sie sich fragen, warum diese immer noch nicht gut funktionieren, liegt es daran
+Vor meinen Regeln, die ich gerade konfiguriert habe, gibt es bereits eine Regel, die drop lautet
+Alles im Grunde heißt das: Hey, wenn du das alles hinter dir gelassen hast
+diese Vergangenheit all dies jetzt die Verbindung richtig zu trennen, weil diese das ist ein
+Ziemlich solide Firewall, dann kommt sie nie hierher, also muss ich sie tatsächlich neu bestellen
+diese und die Art und Weise, wie ich das tun werde, ist, dass ich möchte, dass diese passieren oder ich möchte meine
+Benutzerdefinierte Weiterleitungsregeln werden direkt nach der endgültigen Eingaberegel ausgeführt, also sollte ich
+in der Lage sein, das einfach bis hierher zu ziehen, gehen wir und schnappen uns den letzten
+nächste Cloud 4 für 3 Regel ziehen Sie das nach oben und los geht's und jetzt sind wir in so jetzt ich
+Ich muss den Router nicht neu starten. Ich muss nichts tun, was ich kann
+Sieh es dir an, aber unser Zwietracht-Server, den du mir bestätigen kannst, geht ins Studio
+doc Kategorie 5 TV und ohne meinen Router neu starten zu müssen, ohne es zu müssen
+Starten Sie alles neu, was jetzt angezeigt werden sollte
+Gehen Sie zu Studio Kategorie 5 Punkt TV Es tut mir leid und und bp9 ist nur
+Verzeihung, kein Mann, fünf, du kommentierst das nur, wenn ich die Kommentare hinzufüge
+Sie sehen sie nicht wirklich auf dem Bildschirm und das liegt daran, dass Kategorie 5 ist
+18/9 und mein Computerbildschirm ist 16/9, also werde ich das tun
+Ich muss herausfinden, wie ich das in Zukunft beheben kann. Das ist mein Fehler, aber Sie können sehen
+Diese Kommentare wurden eingegeben. Es handelt sich um ein Kommentarfeld, bei dem es sich nur um ein Textfeld handelt
+den unteren Rand Ihres Fensters, während Sie es hinzufügen, und genau das ist es
+Ich habe die nächste Wolke betreten 18 X Wolke 4 4 ​​3 Ich entschuldige mich, dass ich das nicht verstanden habe
+aber ich schätze es, dass du es bemerkt hast, also sagt mo maravilla yep ich sehe das login eines BP
+9 sagt auch, dass ja auch für mich funktioniert, also würden sie es ohne diese Regeln nicht tun
+Ich würde überhaupt nicht antworten, aber jetzt, wo ich diese Regeln hinzugefügt habe, seid ihr alle
+sind in der Lage, eine Verbindung herzustellen. Das nächste, was ich tun könnte, wenn ich wollte, ist ich
+könnte diese Quelladresslisten einrichten und diese Listen können IP-Adressen enthalten
+meines Heimnetzwerks meines Arbeitsnetzwerks meiner Freunde Netzwerke meiner Mitarbeiter
+Netzwerke und erlauben ihnen, diese Regeln zu befolgen, aber alle fallen zu lassen
+sonst, damit die Hacker, die sich auf meinem Discord-Server befinden, nicht in meinen nächsten gelangen können
+Cloud-Server und so weiter und so fort, so dass Sie im Wesentlichen wissen, dass dies der Fall ist
+Ihre Schritte, die so aussehen, lassen Sie uns ein wenig zurückgehen und verstehen, dass ich sie eingestellt habe
+Bis zu zwei Ports heute sind Port 80 und Port 443, Port 80, ein unsicheres HTTP
+Port und Port 443 ist ein sicherer SSL-verschlüsselter HTTP-Port. Ich möchte beide
+Wenn also jemand den HTTP-Doppelpunkt nicht physisch eingibt
+Slash Studio Dot Kategorie-5 TV wird es stattdessen den Port 80 und treffen
+Wenn ich Port 80 nicht geöffnet hätte, würden sie automatisch zu 443 umleiten
+Niemals diese Weiterleitung bekommen, sie würden nur einen Server bekommen, der keinen Fehler gefunden hat
+Nach oben müssen wir in unsere Mikrotik-Konfiguration gehen. Ich benutze Web Abb
+und klicken Sie auf IP. Klicken Sie auf Firewall. Klicken Sie oben auf die Registerkarte NAT und erstellen Sie eine neue
+NAT-Regel Diese NAT-Regel teilt ihr mit, wohin Sie damit gehen möchten
+mit diesem port was willst du damit machen
+Aber es wird sich nicht wirklich öffnen. Öffnen Sie es für die Öffentlichkeit
+Die Firewall-Regel ist jetzt verfügbar. Klicken Sie daher auf Firewall-Regeln für dieselbe IP-Adresse
+Firewall und wir müssen eine neue Firewall-Regel erstellen, die akzeptiert wird
+diese Verbindung und lassen Sie diese Verbindungen durch und Sie können weiter
+Verbessern Sie IP-Adressen oder IP-Quellgruppen, und solche Dinge gibt es auch
+viele verschiedene Optionen, die wir heute nicht abdecken können, aber Sie können die bekommen
+Idee, dass dies uns viel Konfigurierbarkeit und viel Kontrolle geben wird
+über nicht nur, wie der Verkehr durch unsere Netzwerke geleitet wird, sondern auch und welche IP
+Adressen und welche Netzwerke können sich über unser Netzwerk verbinden und wie
+Das wird weitergeleitet, sobald es unsere Microtech erreicht
+[Musik]
