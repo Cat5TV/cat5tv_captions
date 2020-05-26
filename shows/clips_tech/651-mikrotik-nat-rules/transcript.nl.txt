@@ -27,100 +27,99 @@ en zenders kunt u een goedkoper apparaat kopen dat slechts 2,4 of slechts 5 heef
 deze functies worden dus alleen beperkt door de hardware maar door de software zelf
 is hetzelfde, dus ik begin altijd met dat te zeggen omdat ik dat wil
 begrijp dat je niet dezelfde hoeft te kopen die ik heb gekocht, je vindt degene die
-werkt voor jou en dan kun je de serie volgen en verbazingwekkend zelfs
-als je een ander model hebt, kun je de
-scherm zult u de stappen kunnen volgen en het zal precies zijn
-hetzelfde is geweldig, dus deze week ga ik kijken
-hoe port forwarding in te stellen, we noemen het nu mikrotik gaat doen
-noem het NAT firewall regels. Daar ga ik straks een beetje over praten
-maar we kennen het als port forwarding of redirecting en dat is wanneer
-iemand raakt ons openbare IP-adres op een bepaalde poort als het een poort is die ik heb
-toegestaan ​​en dat ik erken dat ik wil dat het zo naar de juiste server wordt omgeleid
-in mijn geval heb ik een server op 10.0.0.0
+werkt voor jou en dan kun je deze serie volgen en verbazingwekkend
+zelfs als je een heel ander model hebt, zul je het kunnen
+volg het scherm, je zult de stappen kunnen volgen en het zal zo zijn
+precies hetzelfde dat geweldig is, dus deze week ga ik
+om te kijken hoe je port forwarding instelt, we gaan het nu noemen
+mikrotik gaat het NAT-firewallregels noemen. Ik ga wat praten
+daarover in een oogwenk, maar we kennen het als port forwarding of redirecting en
+dat is dat wanneer iemand ons openbare IP-adres op een bepaalde poort raakt, als
+het is een poort die ik heb toegestaan ​​en waarvan ik herken dat ik wil dat deze wordt omgeleid naar de
+geschikte server, dus in mijn geval heb ik een server op 10.0.0.0
 het is mijn eigen persoonlijke alternatief voor Google-cloudservices en drive en
 onedrive en al dat soort diensten kan ik ze op mijn eigen server zetten
 en het is van mij, het is mijn eigen gehoste systeem op 10.0.0.0 'pn-poorten 80 en poort 443 dus
 als iemand mijn IP-adres bereikt of ik heb eigenlijk een DNS-record omdat we categorie 5 hebben
 TV natuurlijk dus ik heb Studio dot categorie 5 dot TV gaat ze routeren
-naar hier en dat raakt dan de micro Tech en de micro Tech gaat
-om te zeggen wat moet ik doen met dit verkeer, wat moet ik doen, dus ik moet
-Zeg tegen mijn micro-tech dat hij poort 443 wil
-schreef dat naar 10.0.0.0 omdat dat waarschijnlijk is wat deze persoon probeert te doen
-toegang, dus laten we er meteen in springen. Ik spring naar onze mikrotik en
-de zaken zijn hier zo geavanceerd, dus volg gewoon en je begint
-om op te halen hoe dingen werken Ik heb vorige week op IP geklikt toen we hier kwamen
-omdat we begonnen te kijken naar de DHCP-server en statische regels en dergelijke
-wat we zullen uitbreiden in de tijd dat ik de firewall ga gebruiken, dit is de standaard
-instellingen voor mijn Microtech-firewall en ik wil enkele regels toevoegen die gaan
-verkeer binnen mijn netwerk omleiden nu zijn we een typische firewall-router voor consumenten
-gaat hey zeggen, ik neem poort 80 en ik leid deze om, onthoud de
-mikrotik geeft me veel meer controle daarover, dus dat zal ik zijn
-het instellen van NAT-regels, dat is de vertaling van netwerkadressen, dus die
-regels gaan bepalen of iemand deze poort raakt waar wil ik
-om het binnen het land te sturen, oké, waar ga ik ze toegang toe geven, maar dan
-het werkt nog steeds niet, in tegenstelling tot een consumentenrouter die het gewoon gaat zeggen
-Oké, ik ga gewoon D DMZ die server gebruiken en iedereen doorlaten
-en sta toe dat ze kunnen hacken en wat ze ook willen doen zodra je zegt 'ga'
-de mikrotik gaat zeggen dat oke nee ik laat het verkeer door
-maar ze zijn onderhevig aan enkele regels. Mogelijk hebt u enkele andere regels
-je hebt toegevoegd aan je mikrotik-apparaat, laten we zeggen dat ik alleen een
-bepaald IP-adres om hier toegang toe te krijgen, dus dat kan mijn thuis-IP-adres of mijn zijn
-kantoor kan het zijn dat ik een regel heb opgesteld die zegt dat ik nooit reis waar ik altijd in zit
-Canada Ik ben eigenlijk altijd in Ontario, dus als iemand ooit toegang probeert te krijgen tot mijn
-servers van buiten Ontario blokkeren ze, maar openen het voor mij als ik binnen ben
-Ontario, alsof er allerlei soorten zijn alsof het een hiërarchische manier is
-kijkend naar die router-retoregels om te leiden
-verkeer naar bepaalde servers binnen uw netwerk kunt u zich voorstellen dat dit nuttig is
-voor thuis omdat het u meer veiligheid geeft, maar het is ook uitzonderlijk voor
-of u nu eigenaar bent of een IT-afdeling runt bij een kleine middelgrote onderneming
-bedrijf of zelfs een groot bedrijf mikrotik gaat u zoveel geven
-meer controle over dat soort regels dus laten we beginnen met onze nat regel en
-nogmaals NAT is een korte vorm term die we gebruiken een standaard voor netwerkadres
-vertaling en het vertelt ons netwerkverkeer in feite waar het naartoe moet stromen op basis van
-de regels die ik heb opgesteld, maar ze zullen nog steeds niet worden toegestaan. Ik ga
-om je dat over een paar ogenblikken te laten zien, dus ik weet dat ik dat ga doen
-heb poort 80 en poort 443 nodig om mijn verkeer naar de volgende cloud te leiden en dat zou ik moeten doen
-laten we beginnen met te laten zien dat als ik echt naar studio categorie vijf tv ga
-het gaat gewoon hangen, het zal een time-out krijgen, het gaat nergens heen omdat ik
-heb die regels nog niet opgesteld, dus dat is spin spin spin spin spin, maar ik vertrek
-die open, dus mijn nat regel allereerst heb ik gemaakt
-een nieuwe NAT regel dus IP firewall NAT nieuwe regel en nu ga ik de ketting veranderen
-hier wil ik zeggen dat dit de bestemmingskaart is omdat ik aan het instellen ben
-de bestemming binnen mijn interne netwerk moet ik ook het protocol instellen
-omdat ik wil specificeren dat dit eigenlijk TCP is en dat kun je daar zien
-zijn heel veel protocollen waaruit je kunt kiezen. Ik stel gewoon TCP in
-poort 80 en vervolgens poort 443 om ons op weg te helpen, merk ook op dat ik web gebruik
-fig in mijn webbrowser heb ik niet ingesteld en ik ook niet
-met een windbox en dat komt mede omdat ik je dit wil laten zien
-de browser zodat u kunt zien dat u geen tool nodig heeft
-je mikrotik router kunnen beheren Ik denk dat er een misvatting is
-zodra ik zeg installeer windbox en gebruik dat om verbinding te maken met je retoriek
-creëert een misvatting waardoor je het gevoel krijgt dat dit moet
-worden beheerd vanuit een tool nee, maar dat is een handig hulpmiddel om u te kunnen geven
-toegang tot uw router en het biedt een aantal uitzonderlijke extra
-diensten zoals mijn multitasking dus probeer het eens, maar ik ga het meeste doen
-via de browser omdat ik denk dat dat een betere manier is om je te laten zien als
-je bent net je Microtech aan het leren, dus ik heb het ingesteld op de bestemming die ik heb ingesteld
-het naar TCP als het protocol dat nummer zes is en ik moet mijn instellen
-bestemmingspoort en deze bestemmingspoort is de poort op het externe netwerk
-dus raak niet in de war met wat ik soms doe omdat soms
-Mogelijk hebt u een situatie waarin uw openbare poort anders is dan de
-privépoort in dit geval terwijl we onze NAT-regel instellen die we instellen
-de externe poort hier, dus in mijn geval komt het overeen met de interne poort
-maar houd er rekening mee dat we hiermee willen antwoorden
-poort 8080 zou je daar aan kunnen toevoegen, ook al reageert de server in huis
-op poort 80 dus houd er rekening mee dat dit misschien anders is, maar in mijn geval wel
-in feite niet anders oke ik moet naar mijn interface kijken dus daar zit het in
-interface Ik moet zeggen dat dit Ethernet wordt, in mijn geval kan het een
-een beetje anders voor je, onthoud gewoon wat ik eigenlijk doe
-daar, terwijl ik mijn internetinterface selecteer, onthoud dan wanneer ik voor het eerst instelde
-deze router bij onze eerste aflevering van deze serie heb ik laten zien dat ik dat was
-mijn internetmodem aansluiten op Ethernet 1-poort 1 en dat is wat ik ben
-door hier te specificeren, wil ik dat dit op mijn internetinterface reageert en zo mogelijk
-stel je voor dat je diep kunt graven en je dit kunt instellen, je weet dat je zou kunnen doen
-dingen zeer geavanceerd door verschillende poorten op te geven die allemaal VLAN's instellen
-dat soort dingen houden we de dingen vrij eenvoudig en doen we het gewoon
-op die manier ga ik door Wade scrollen
+naar hier en dat raakt dan de micro-tech en de micro-tech gaat
+om ok te zeggen, wat moet ik doen met dit verkeer, wat moet ik doen, dus ik moet het mijn vertellen
+micro tech hey dat is poort 443 Ik wil dat schrijven naar 10.0.0.0 want dat is
+vermoedelijk waartoe deze persoon toegang probeert te krijgen, dus laten we er meteen in springen
+ga naar onze mikrotik en de dingen zijn hier zo geavanceerd
+volg gewoon en je begint te begrijpen hoe de dingen werken Ik heb
+klikte op IP vorige week kwamen we hier omdat we begonnen te kijken naar de DHCP
+server en statische regels en dat soort dingen die we zullen uitbreiden in de tijd dat ik ben
+ga firewall raken, dit zijn de standaardinstellingen voor mijn mikrotik-firewall en ik
+wil enkele regels toevoegen die het verkeer binnen mijn netwerk nu omleiden
+we zijn een typische firewall-router voor consumenten die zal zeggen dat ik poort 80 neem
+en ik zal het omleiden, onthoud dat de mikrotik me veel meer toestaat
+controle daarover, dus ik ga eerst NAT-regels instellen
+netwerkadres vertaling, dus die regels zullen beslissen of
+iemand raakt deze poort waar wil ik hem binnen het land heen sturen oke waar ben ik
+Ik ga ze toegang geven, maar dan zal het nog steeds niet werken in tegenstelling tot a
+consumentenrouter die gewoon gaat zeggen oké, ik ga gewoon D DMZ gebruiken
+die server en laat iedereen er doorheen komen en laat ze hacken en
+wat ze willen doen, zodra je zegt, gaat de mikrotik zeggen
+oke nee, ik laat het verkeer toe, maar ze zijn onderworpen aan enkele regels
+hebt u mogelijk enkele andere regels die u aan uw mikrotik-apparaat hebt toegevoegd
+dat zegt dat ik hier alleen een bepaald IP-adres toegang toe geef
+dat kan mijn thuis IP-adres of mijn kantoor zijn, het kan zijn dat ik een regel heb ingesteld
+dat zegt dat ik nooit reis. Ik ben altijd in Canada. Ik ben eigenlijk altijd in Ontario, dus
+als iemand ooit probeert toegang te krijgen tot mijn servers van buiten het Ontario-blok
+maar open het voor mij als ik in Ontario ben, alsof er van alles is
+alsof het een hiërarchische manier van kijken is
+op die router reto regels om het verkeer om te leiden naar bepaalde servers binnen uw
+netwerk dat u zich kunt voorstellen dat handig is voor thuis omdat het u meer geeft
+beveiliging, maar het is ook uitzonderlijk voor bedrijven, of u nu een IT bezit of runt
+afdeling bij een klein middelgroot bedrijf of zelfs een groot bedrijf
+mikrotik gaat je zoveel meer controle geven over dat soort regels
+dus laten we beginnen met onze nat regel en NAT is weer een korte vorm term die we
+gebruik een standaard voor netwerkadresvertaling en het vertelt ons in feite
+netwerkverkeer waar naartoe te stromen op basis van de regels die ik heb ingesteld, maar ze zijn
+nog steeds niet toegestaan ​​zal ik u dat laten zien in slechts een paar
+momenten tijd, dus ik weet dat ik poort 80 en poort 443 nodig heb om mijn te routeren
+verkeer voor de volgende cloud en ik moet beginnen met u te laten zien dat he als ik
+ga eigenlijk naar studio dot categorie-5 dot tv, het hangt gewoon op
+time-out het gaat nergens heen omdat ik die regels nog niet heb opgesteld
+dus die spin spin spin spin spin maar ik laat dat open
+dus mijn nat regel allereerst heb ik een nieuwe nat regel gemaakt, dus IP firewall nat nieuw
+regel en nu ga ik de ketting hier veranderen. Ik wil zeggen dat dit is
+de bestemmingskaart omdat ik de bestemming instel binnen mijn interne
+netwerk Ik moet ook het protocol instellen omdat ik wil specificeren dat dit is
+eigenlijk TCP en je kunt zien dat er heel veel protocollen zijn die je kunt
+kies uit Ik stel gewoon TCP in op poort 80 en vervolgens poort 443 om ons te halen
+begon ook te merken dat ik webfig in mijn webbrowser gebruik
+Ik heb niet ingesteld of en ik gebruik ook geen windbox en dat komt deels omdat
+Ik wil je dit via de browser laten zien zodat je dat kunt zien
+er hoeft geen tool te zijn geïnstalleerd om uw mikrotik te kunnen beheren
+router Ik denk dat er een misvatting is zodra ik zeg windbox installeren en
+gebruik dat om verbinding te maken met uw retoriek, dat leidt tot een misvatting
+dat geeft je het gevoel dat dit moet worden beheerd met een tool, nee, maar dat is een
+handige tool om u toegang te geven tot uw router en dat doet het
+een aantal uitzonderlijke aanvullende services bieden, zoals mijn multitasking, dus geef het maar
+probeer het maar ik ga het meeste via de browser doen omdat ik dat denk
+dat is een betere manier om u te laten zien terwijl u uw Microtech zo leert
+Ik heb het ingesteld op de bestemming dat ik het heb ingesteld op TCP als het protocol dat is
+nummer zes en ik moet mijn bestemmingspoort en deze bestemming instellen
+poort is de poort op het externe netwerk, dus raak niet in de war met wat ik
+soms doen omdat u soms een situatie heeft waarin uw
+openbare poort is in dit geval anders dan de privé-poort zoals wij
+bij het opzetten van onze NAT-regel plaatsen we hier de externe poort, dus in mijn geval
+het komt overeen met de interne poort, maar houd daar rekening mee dat dit
+laten we zeggen dat we willen dat het antwoord geeft op poort 8080, je zou dat daar zelfs kunnen toevoegen
+hoewel de server in huis reageert op poort 80, dus houd daar rekening mee
+kan anders zijn, maar in mijn geval is het in feite niet anders
+kijk naar mijn interface, dus er is de in-interface die ik moet zeggen dat dit gaat gebeuren
+be Ethernet een in mijn geval is het misschien een beetje anders voor je gewoon houden
+in gedachten dat wat ik daar eigenlijk doe terwijl ik mijn internet selecteer
+interface onthoud wanneer ik deze router voor het eerst instelde in onze eerste aflevering hiervan
+serie Ik heb aangetoond dat ik mijn internetmodem op Ethernet heb aangesloten
+één poort één en dat is wat ik hier specificeer, ik wil dat dit reageert
+op mijn internetinterface en zoals je je kunt voorstellen, kun je diep graven en je kunt instellen
+weet je dat je dingen heel geavanceerd kunt doen door te specificeren
+verschillende poorten die VLAN's opzetten al dat soort dingen dat we bewaren
+vrij eenvoudig en ik doe het gewoon op die manier. Ik ga door Wade scrollen
 hier - actie en zorg ervoor dat dit is ingesteld op DN DST-netbestemming
 net zodat dit verkeer naar onze server gaat, dus scroll nu naar beneden
 een klein stukje hier en je zult twee poorten vinden daar is mijn twee poorten
@@ -128,115 +127,113 @@ zal eigenlijk hetzelfde bericht zijn dat me een bereik geeft dat ik gewoon ga
 poort 80 te specificeren en helemaal onderaan hier is er een mogelijkheid voor
 jij om een ​​opmerking te maken. Ik ga dat doen. Ik ga eindelijk de volgende wolk 80 zeggen
 het laatste dat ik hier moet toevoegen is het IP-adres van de bestemming
-intern op mijn netwerk is dit de server zoals ik 1000 noemde dat dit
-NAT-regel gaat reageren op poort 80 en omleiden naar 1000
-Nou dus nu ga ik helemaal naar boven scrollen en op OK drukken en nu zullen we dat zien
-we hebben een nieuwe regel genaamd next cloud 80 en het reageert DST net en het is
-het wijzen van TCP op poort 80 via Ethernet één - zoals we weten bij het instellen
-10.0.0.0 wil dat de beveiligde poort ook dezelfde stappen volgt als ik
-verander de ketting naar bestemming waar ik mijn protocol in TCP ga veranderen en dan
-Ik ga mijn externe mijn in-interface wijzigen in Ethernet één bestemming
-poort Ik weet dat ik een beetje defect ben, dat is oké, je weet wat ik ben
-bestemming poort doen is 4 4 3 laten we hier naar beneden scrollen en onze veranderen
-actie naar DST-net en onze om dezelfde server aan te pakken, alleen een andere poort en dan
+intern op mijn netwerk is dit de server zoals ik 1000 noemde om dat te zeggen
+deze NAT-regel zal reageren op poort 80 en omleiden naar 10.0.0.0 dus nu
+Ik ga helemaal naar boven scrollen en klik op OK en nu zullen we zien dat we een
+nieuwe regel genaamd volgende cloud 80 en het reageert DST-net en het wijst TCP
+op poort 80 via Ethernet één - zoals we weten van het instellen van 10.0.0.0 veilig
+poort en volg dezelfde stappen. Ik ga de ketting veranderen naar bestemming
+dat ik mijn protocol ga veranderen in TCP en dan ga ik mijn externe wijzigen
+mijn in interface met Ethernet
+bestemmingspoort Ik weet dat ik een beetje defect ben, dat is oké weet je wat
+Ik doe de bestemmingspoort is 4 4 3 laten we hier naar beneden scrollen en veranderen
+onze actie voor DST nat en onze om dezelfde server aan te pakken, alleen een andere poort en dan
 naar poort 443 en geef het hier een opmerking volgende wolk 443 oke ik denk dat ik heb
-alles daar ziet er goed uit, laten we goed klikken, dus nu heb ik poort 80 en poort 443 nat
-regels gaan naar 10 punt 0 punt 0 punt
-vanaf de Ethernet 1-poort via TCP werkt het nog steeds niet, dus als ik erover spring
-hier ga ik op f5 drukken om te vernieuwen oh en het werkt, kijk daar naar want ik ben
-intern op het interne land, dus ik ben niet echt op het Ethernet, dat is het niet
-gaan werken vanuit de buitenwereld maar omdat de buitenwereld eraan komt
-via Ethernet 1 Ik ben duidelijk intern Ik ben op poort 2 zoals jij
-herinner me van vorige week dus om toegang te geven tot de buitenwereld nu ik
-moet hier naar het tabblad firewallregels gaan en op nieuw toevoegen klikken, dus dit is
-waar ik eigenlijk ok zeg als de firewall wordt geraakt, moet ik dat activeren
-nat regel dus laten we dat doen, dus hebben we een nieuwe firewallregel toegevoegd en ik ga veranderen
-de ketting laten we zien nee, hij wordt al standaard doorgestuurd, dus dat is prima
-bron IP-adres dit is best cool Ik ga dit niet instellen, maar ik doe het gewoon
-Ik wil dat je dit ziet, dit kan het IP-adres zijn dat je wilt toestaan
-lid Ik zei dat je het zo kon instellen dat alleen je thuisnetwerk is toegestaan
-om dit te doen zou u dat kunnen doen door uw eigen IP-adres toe te voegen dat u zelfs kunt maken
-IP-groepen die dat zouden zijn, worden hier ingesteld, dat is hier het bronadres
-lijst zien, dus dit zijn dingen die we op tijd zullen leren
-nu ga ik dat niet doen. Ik ga geen bronadres instellen waar ik naar toe ga
-open dit voor de wereld, maar ik wil dat je weet dat dat voor jou beschikbaar is
-het verplaatsen van bestemming I-adres is in feite de interne server, dus dat is 10
-We weten al dat het 0.017-protocol TCP is, dus klik erop en het is in feite TCP
-de standaard, zodat ons een beetje tijd wordt bespaard, maar u kunt al het zien
-protocollen die voor ons beschikbaar zijn, de volgende stap is dat we de servicepoort moeten instellen
-dus de bestemmingspoort wordt poort 80, we beginnen met wat we moeten doen
-beide, maar ik moet elke regel afzonderlijk instellen, dus daar gaan we in de interface
-wordt mijn Ethernet 1-poort zoals we al hebben vastgesteld en dus wat ik ben
-wat ik hier doe, is eigenlijk tegen de firewall zeggen dat ik dit zal toestaan
-verkeer van de eerste Ethernet-poort die mijn internetverbinding is en dit
-is degene waar actie moet worden ingesteld om te accepteren, dus dit is wat ik zeg
-ja je weet wat ik dit ga toestaan, je zou dit ook kunnen instellen om te weigeren
-in bepaalde gevallen of je kent verschillende instellingen, maar we gaan zeggen
-behalve dat we dit toestaan ​​en dan een opmerking maken zoals we eerder deden
-Ik noem deze firewallregel commentaar volgende wolk 80 scroll omhoog en
-merk op dat als u de NAT-regel weglaat of de firewall-regel weglaat
-Nou, je mist een aantal kettingen, dus het zal niet echt reageren
-buiten uw netwerk, dus u moet ervoor zorgen dat dit de volgende stap is
-Ik ga 4 voor 3 toevoegen in de firewallregels, dus vooruit is al geselecteerd
-bronadres dit keer doen we het bestemmingsadres niet
-we gaan instellen op 10 0 dot 0 dot 1 7 protocol wordt een TCP interface
-wordt ether 1
+heb alles daar ziet er goed uit laten we op OK drukken, dus nu heb ik poort 80 en poort
+443 NAT-regels gaan naar 10.0.0.0 net1-poort via tcp, het gaat nog steeds niet werken
+dus als ik hier spring, ga ik op f5 drukken om te vernieuwen oh en het werkt
+dat omdat ik intern ben op het binnenland, dus ik ben niet echt op de
+ethernet een gaat het nog niet werken van de buitenwereld omdat de
+de buitenwereld komt binnen via ethernet. Ik ben duidelijk intern
+op poort 2 zoals je je die vorige week herinnert, dus om toegang te geven tot de
+buitenwereld nu moet ik hier naar het tabblad firewallregels gaan en op klikken
+voeg nieuw toe, dus dit is waar ik eigenlijk ok zeg als de firewall I raakt
+moeten die nat-regel activeren, dus laten we dat doen, dus hebben we een nieuwe firewall toegevoegd
+regel en ik ga de ketting veranderen, laten we zien nee, het is al in gebreke
+vooruit dus dat is prima bron IP-adres dit is best wel cool
+Ik ga dit niet instellen, maar ik wil alleen dat je dit kan zien
+het IP-adres zijn dat u wilt toestaan, onthoud dat ik zei dat u het zo kunt instellen
+dat alleen uw thuisnetwerk dit mag doen, kunt u dat doen door uw toe te voegen
+thuis IP-adres kunt u zelfs IP-groepen maken die dat zou zijn ingesteld
+hier, daar beneden, bronadreslijst, zie dat dit dus dingen zijn
+we gaan nu op tijd leren. Ik ga niet doen wat ik niet ben
+Ik ga een bronadres instellen. Ik ga dit openstellen voor de wereld, maar ik wil je
+om te weten dat dat voor jou beschikbaar is, dus als je verdergaat op de bestemming waar ik het adres heb
+feit de interne server dus dat is 10 0,017 protocol dat we al weten dat is
+TCP, dus klik erop en het is in feite de standaard, dus het slaat gewoon een beetje op
+ons een snelle tijd, maar u kunt alle protocollen zien die ons daarna ter beschikking staan
+stap is dat we de servicepoort moeten instellen, zodat de bestemmingspoort de poort wordt
+80 we beginnen met we moeten beide doen, maar ik moet elke regel instellen
+afzonderlijk, dus daar gaan we in de interface zal mijn Ethernet 1-poort zijn zoals wij
+al gevestigd en dus wat ik hier doe is eigenlijk het vertellen van de
+firewall dat ik dit verkeer vanaf de eerste Ethernet-poort zal toestaan
+dat is mijn internetverbinding en dit is degene waar actie moet worden ingesteld
+om te accepteren, dus dit is waar ik zeg ja je weet wat ik ga toestaan
+dit kunt u ook instellen om in bepaalde gevallen af ​​te wijzen of u kent verschillende
+verschillende instellingen, maar we gaan zeggen, behalve dat we dit toestaan ​​en
+maak dan een opmerking zoals we deden voordat ik deze firewallregel noem
+comment next cloud 80 scroll omhoog en merk op dat als je de NAT verlaat
+regel of je verlaat de firewall regel goed, je mist een aantal kettingen
+dus het reageert niet echt buiten uw netwerk, dus u moet wel
+zorg ervoor dat dit de volgende stap is: ik ga 4 voor 3 toevoegen in de firewall
+regels zo vooruit is al geselecteerd bronadres dat we niet gaan doen
+deze keer zullen we het bestemmingsadres instellen op het 1000 dot 17 protocol
+wordt TCP, een interface wordt ether 1
 en wat heb ik daar nog meer nodig in mijn haven van bestemming, bah bah dat
 wordt 4 4 3 scroll naar beneden, zorg ervoor dat het is geaccepteerd en stel dan ons in
 opmerking wordt de volgende wolk 4 4 3 daar gaan we, alles ziet eruit alsof ik heb
 Ik heb alles erin. Ik mis alles, mensen die je me vertelt dat ik goed ga, dus
 nu is hier de laatste stap die je merkt dat deze twee items hier vallen
 doorsturen regels in de brandwet nu is het belangrijk op te merken dat mikrotik werkt in
-in principe dus van boven naar beneden dus als je naar je firewall kijkt
-regels als je je afvraagt ​​waarom deze nog steeds niet goed werken, komt dat omdat
-voor mijn regels die ik zojuist heb geconfigureerd, is er al een regel die drop zegt
-alles dus eigenlijk zegt dit hey als je dit allemaal voorbij bent
-dit verleden dit alles nu verbreekt de verbinding juist omdat deze dat is een
+het is eigenlijk in orde dus van boven naar beneden dus als je naar je kijkt
+firewall-regels als je je afvraagt ​​waarom deze nog steeds niet goed werken
+want voor mijn regels die ik zojuist heb geconfigureerd, is er al een regel die
+zegt laat alles vallen, dus dit zegt in feite hey als je dit allemaal bent gepasseerd
+voorbij dit alles verleden dit alles nu laat de verbinding goed vallen, want deze is een
 behoorlijk solide firewall, dan komt het hier nooit, dus ik moet eigenlijk opnieuw bestellen
-deze en de manier waarop ik dat doe, is dat ik wil dat dit gebeurt of dat ik mijn wil
-aangepaste doorstuurregels gebeuren direct na de laatste invoerregel, dus dat zou ik moeten doen
-in staat zijn om dat gewoon naar hier te slepen, daar gaan we en pakken de laatste mijn
-volgende cloud 4 voor 3 regel sleep dat omhoog en daar gaan we en nu zijn we er in dus nu ik
-hoef de router niet opnieuw op te starten Ik hoef niets te doen wat ik kan
-zie het maar onze onenigheidsserver kunt u voor mij bevestigen ga naar studio
-doc categorie 5 TV en zonder mijn router opnieuw op te starten zonder dat het nodig is
-herstart alles wat u nu ook zou moeten zien, dezelfde aanmeldingsprompt
-ga naar studio categorie 5 dot TV Het spijt me en en bp9 is gewoon
+deze en de manier waarop ik dat doe, is dat ik wil dat dit gebeurt of dat ik mijn gewoonte wil
+het doorsturen van regels gebeurt direct na de laatste invoerregel, dus ik zou het moeten kunnen
+om dat gewoon naar hier te slepen, gaan we en pakken de laatste mijn volgende wolk 4
+voor 3 regel belde dat op en daar gaan we en nu zijn we binnen, dus nu hoef ik het niet te doen
+herstart de router Ik hoef niets te doen dit kan ik wel zien maar
+onze onenigheidsserver kunt u voor mij bevestigen ga naar studio doc categorie 5
+Tv en zonder mijn router opnieuw op te starten zonder opnieuw op te starten
+alles wat u nu ook zou moeten zien, dezelfde aanmeldingsprompt, dus ga verder
+over naar studio categorie 5 dot TV Het spijt me en en bp9 is gewoon
 pardon, nee man vijf, je geeft daar alleen commentaar op als ik de opmerkingen toevoeg
-je ziet ze niet echt op het scherm en dat komt omdat categorie 5 dat wel is
-18/9 en mijn computerscherm is 16/9 dus dat is iets dat ik zal doen
-moet uitzoeken hoe ik dit in de toekomst kan oplossen, dat is mijn fout, maar je kunt het zien
-die opmerkingen zijn ingevoerd, het is een opmerkingenveld, het is gewoon een tekstveld op
-de onderkant van uw venster terwijl u het toevoegt en dat is het
-Ik ging de volgende wolk binnen 18 X Cloud 4 4 3 Mijn excuses dat ik dat niet heb opgevangen
-maar ik waardeer het dat je het opmerkt dus mo maravilla zegt ja ik zie de login een BP
-9 zegt ook dat ja ook voor mij werkt, dus zonder die regels zouden ze het niet doen
-zou helemaal niet reageren, maar nu ik die regels heb toegevoegd, jullie allemaal
-kunnen verbinden, dus het volgende dat ik zou kunnen doen als ik dat wilde, was ik
-kan deze bronadreslijsten instellen en die lijsten kunnen IP-adressen bevatten
-van mijn thuisnetwerk van mijn werknetwerk van mijn vriendennetwerken van mijn personeel
-netwerken en laat ze die regels volgen, maar laat iedereen vallen
-anders zodat die hackers op mijn discord-server niet bij mijn volgende kunnen komen
-Cloud-server, enzovoort, dus dat is in wezen dat u weet dat dat zijn
-je stappen zo kijken, laten we een beetje teruggaan en begrijpen dat dat oké is
-twee poorten omhoog vandaag poort 80 en poort 443 dat zijn poort 80 is een onveilige HTTP
-poort en poort 443 is een veilige SSL-gecodeerde HTTP-poort die ik beide wil
-zodat als iemand niet echt fysiek HTTP-dubbele schuine streep invoert
-slash studio dot categorie-vijf tv zal in plaats daarvan de poort 80 en raken
-stuur automatisch door naar 443 als ik poort 80 niet open had staan
-nooit die omleiding krijgen, ze zouden gewoon een server krijgen die niet is gevonden, dus een back-up maken
-omhoog moeten we naar onze mikrotik-configuratie gaan. Ik gebruik web fig
-en klik op IP klik op firewall klik op NAT tab bovenaan en maak een nieuwe aan
-NAT-regel die NAT-regel gaat vertellen waar u hiermee naartoe wilt
-met deze poort wat wil je ermee doen
-maar het zal niet echt open gaan staan, open voor het publiek, dat is waar
-de firewallregel komt nu binnen, dus klik op firewallregels op datzelfde IP
+je ziet ze niet echt op het scherm en dat komt omdat categorie vijf
+is 18 over negen en mijn computerscherm is zestien over negen, dus dat is dat
+iets dat ik moet uitzoeken hoe ik het in de toekomst kan oplossen, dat is mijn
+fout, maar u kunt zien dat die opmerkingen zijn ingevoerd, het is een opmerkingenveld
+het is gewoon een tekstveld onderaan je venster terwijl je toevoegt
+het is en dat is wat ik heb ingevoerd volgende cloud 18x cloud 443 mijn excuses
+dat ik dat niet heb opgevangen, maar ik waardeer het dat je het zo mo maravilla opmerkt
+zegt ja, ik zie de login, een bp9 zegt ook dat ja ook voor mij werkt, dus zonder
+die regels zouden ze niet zijn, het zou helemaal niet reageren, maar nu ik dat heb gedaan
+die regels zijn nu toegevoegd, jullie kunnen allemaal verbinding maken, dus het volgende dat ik kon
+als ik dat wilde, zou ik die bronadreslijsten en die kunnen instellen
+lijsten kunnen IP-adressen van mijn thuisnetwerk of mijn werknetwerk van mij bevatten
+vriendennetwerken van de netwerken van mijn medewerkers en laat hen die volgen
+regels maar laat iedereen vallen zodat die hackers die mijn onenigheid hebben
+server kan niet in mijn volgende cloud-server komen, enzovoort, dus dat is
+in wezen weet je dat dit je stappen zijn, dus laten we kijken a
+beetje en begrijp dat oké, ik heb vandaag twee poorten ingesteld, poort 80 en poort
+443 dat zijn poort 80 is een onveilige HTTP-poort en poort 443 is een veilige SSL
+gecodeerde HTTP-poort Ik wil beide, zodat als iemand dat niet doet
+typ fysiek in HTTP colon slash slash studio categorie vijf dot TV it
+zal in plaats daarvan de poort 80 raken en automatisch omleiden naar 443 als ik
+poort 80 niet open hadden staan, zouden ze die omleiding nooit krijgen
+krijg een server niet gevonden fout dus back-up moeten we naar onze mikrotik gaan
+configuratie ik gebruik web fig en klik op IP klik op firewall klik
+op het NAT-tabblad bovenaan en maak een nieuwe NAT-regel die de NAT-regel gaat vertellen
+waar wil je met deze poort naartoe, wat wil je doen
+maar het zal niet echt open gaan staan, open het voor het publiek
+waar de firewallregel nu binnenkomt, dus klik op firewallregels op hetzelfde IP-adres
 firewall en we moeten een nieuwe firewallregel maken die wordt geaccepteerd
 die verbinding en laat die verbindingen door en je kunt verder
 hone in op IP-adressen of IP-brongroepen en dat soort dingen zijn er zo
 veel verschillende opties die we vandaag niet kunnen behandelen, maar u kunt de
 idee dat dit ons veel configureerbaarheid en veel controle gaat geven
-over niet alleen hoe verkeer door onze netwerken wordt geleid, maar ook en welk IP-adres
-adressen en welke netwerken verbinding kunnen maken via ons netwerk en hoe
-dat zal worden gerouteerd zodra het onze Microtech raakt
-[Muziek]
+over niet alleen hoe verkeer door onze netwerken wordt geleid, maar wie en en
+welke IP-adressen en welke netwerken verbinding kunnen maken via ons netwerk en
+hoe dat zal worden gerouteerd zodra het onze Microtech raakt

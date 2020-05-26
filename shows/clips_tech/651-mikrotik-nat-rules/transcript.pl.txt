@@ -27,100 +27,99 @@ i nadajniki możesz kupić tańsze urządzenie, które ma tylko 2,4 lub tylko 5
 więc te funkcje będą ograniczone tylko przez sprzęt, ale samo oprogramowanie
 jest taki sam, więc zawsze zaczynam od mówienia tego, ponieważ chcę, żebyś to zrobił
 rozumiem, że nie musisz kupować tego samego, który kupiłem, znajdziesz ten, który
-działa dla Ciebie, a następnie możesz śledzić serię, a nawet zadziwiająco
-jeśli masz inny model, będziesz w stanie postępować zgodnie z nim
-na ekranie będziesz w stanie postępować zgodnie z instrukcjami i będzie dokładnie
-to samo jest niesamowite, więc w tym tygodniu będę patrzeć
-jak skonfigurować przekierowanie portów, nazwiemy to teraz mikrotik
-nazwij to regułami zapory sieciowej NAT. Zaraz o tym porozmawiam
-ale znamy to jako przekierowanie lub przekierowanie portów i właśnie wtedy
-ktoś trafi na nasz publiczny adres IP w określonym porcie, jeśli jest to port, który mam
-dozwolone i wiem, że chcę przekierować na odpowiedni serwer
-w moim przypadku mam serwer w wersji 10.0.0.0
+działa dla Ciebie, a następnie możesz śledzić tę serię i zadziwiająco
+nawet jeśli masz zupełnie inny model, będziesz w stanie
+podążaj za ekranem, będziesz mógł postępować zgodnie z instrukcjami i tak będzie
+dokładnie to samo, co jest niesamowite, więc w tym tygodniu idę
+aby dowiedzieć się, jak skonfigurować przekierowanie portów, nazwiemy to teraz
+mikrotik nazywa to regułami zapory sieciowej NAT. Porozmawiam trochę
+o tym za chwilę, ale znamy to jako przekierowywanie portów lub przekierowywanie i
+to jest, gdy ktoś trafi na nasz publiczny adres IP w określonym porcie, jeśli
+jest to port, na który zezwoliłem i który uznaje, że chcę przekierować do
+odpowiedni serwer, więc w moim przypadku mam serwer w wersji 10.0.0.0
 to moja osobista alternatywa dla usług w chmurze Google i dysku i
 onedrive i wszystkie tego rodzaju usługi, które mogę umieścić na własnym serwerze
 i jest mój, to mój własny system hostowany na 10.0.0.0 'pn porty 80 i port 443 tak
 jeśli ktoś trafi na moje IP lub faktycznie mam rekord DNS, ponieważ mamy kategorię 5
 TV oczywiście, więc mam Studio kropka 5 kropka TV je poprowadzi
-tutaj, a to trafi do mikro Tech i mikro Tech będzie
-powiedzieć ok, co mam zrobić z tym ruchem, co mam zrobić, więc muszę
-powiedz mojej mikro tech hej, to jest port 443, którego chcę
-napisałem to do 10.0.0.0, ponieważ prawdopodobnie jest to tym, co ta osoba próbuje
-dostęp, więc wskoczmy od razu. Skoczę do naszego mikrotika i
-rzeczy są tutaj tak wyrafinowane, więc podążaj za nimi i zaczniesz
-aby sprawdzić, jak działają rzeczy, kliknąłem adres IP w zeszłym tygodniu, kiedy tu przyszliśmy
-ponieważ zaczęliśmy patrzeć na serwer DHCP i reguły statyczne i tym podobne
-to, nad czym rozwiniemy się z czasem, uderzę w zaporę, to są ustawienia domyślne
-ustawienia mojej zapory Microtech i chcę dodać kilka reguł
-przekierowuję ruch w mojej sieci, teraz jesteśmy typowym routerem zapory konsumenckiej
-powie hej, wezmę port 80 i przekieruję to, pamiętam
-mikrotik pozwala mi mieć o wiele większą kontrolę nad tym, więc będę
-najpierw skonfiguruj reguły NAT, czyli translację adresów sieciowych
-zasady zdecydują, czy ktoś trafi do tego portu, gdzie chcę
-wysłać to w krainie, dobrze, gdzie pozwolę im na dostęp, ale wtedy
-to nadal nie zadziała w przeciwieństwie do routera konsumenckiego, który po prostu powie
-ok, po prostu zamierzam D DMZ tego serwera i pozwolić każdemu przejść
-i pozwól im włamać się i cokolwiek chcą zrobić, jak tylko powiesz
-mikrotik powie, że dobrze nie pozwolę na ruch
-jednak podlegają one pewnym zasadom, które możesz mieć
-dodałeś do swojego urządzenia mikrotik powiedzmy, że pozwolę tylko
-konkretnego adresu IP, aby uzyskać do niego dostęp, aby mógł to być mój domowy adres IP lub mój
-biuro może być tak, że ustanowiłem regułę, która mówi, że nigdy nie podróżuję, w której zawsze jestem
-Kanada W rzeczywistości zawsze jestem w Ontario, więc jeśli ktoś kiedykolwiek spróbuje uzyskać do mnie dostęp
-serwery spoza Ontario blokują je, ale otwierają dla mnie, jeśli jestem w
-Ontario, tak jakby istniało wiele rodzajów, jest to hierarchiczny sposób
-patrząc na te zasady reto routera do przekierowania
-ruch do niektórych serwerów w sieci, można sobie wyobrazić, że jest to pomocne
-do domu, ponieważ daje ci większe bezpieczeństwo, ale jest również wyjątkowy
-działaj niezależnie od tego, czy jesteś właścicielem, czy prowadzisz dział IT w małej średniej wielkości
-biznes, a nawet duży biznes mikrotik da ci tyle
-większą kontrolę nad tego rodzaju regułami, zacznijmy od naszej reguły nat i
-znowu NAT to krótki termin, w którym używamy skrótów adresu sieciowego
-tłumaczenie i w zasadzie informuje nasz ruch sieciowy, na podstawie którego należy przepływać
-zasady, które ustanowiłem, ale nadal nie będą dozwolone
-aby pokazać wam to za kilka chwil, więc wiem, że to zrobię
-potrzebuję portu 80 i portu 443, aby kierować mój ruch do następnej chmury i powinienem
-zacznij od pokazania, że ​​hej, jeśli rzeczywiście przejdę do studia telewizyjnego kategorii piątej
-po prostu się zawiesi, skończy się limit czasu, nigdzie nie pójdzie, bo ja
-nie skonfigurowałem jeszcze tych zasad, więc to spin spin spin spin spin, ale odejdę
-które są otwarte, więc mój nat rządzi przede wszystkim tym, co stworzyłem
-nowa reguła NAT, więc firewall IP Nowa reguła NAT i teraz zmienię łańcuch
-tutaj chcę powiedzieć, że to jest mapa docelowa, ponieważ ustawiam
-odbiorca w mojej wewnętrznej sieci muszę również ustawić protokół
-ponieważ chcę sprecyzować, że tak naprawdę jest to TCP i możecie to zobaczyć
-to mnóstwo protokołów, które możesz wybrać. Właśnie konfiguruję TCP
-port 80, a następnie port 443, aby nas uruchomić, zauważ, że korzystam z sieci
-rys. w mojej przeglądarce nie skonfigurowałem lub też nie jestem
-używając skrzynki wiatrów, a częściowo dlatego, że chcę wam to pokazać
-przeglądarkę, abyś mógł zobaczyć, że nie musisz mieć zainstalowanego narzędzia
-móc administrować routerem mikrotik. Myślę, że istnieje nieporozumienie
-jak tylko powiem, zainstaluj windbox i użyj go, aby połączyć się z retoryką
-tworzy nieporozumienie, które sprawia, że ​​czujesz, że to musi
-być zarządzanym z narzędzia nie, ale jest to pomocne narzędzie, które możesz dać
-dostęp do routera i zapewnia wyjątkowe dodatkowe
-usługi takie jak moja wielozadaniowość, więc spróbuj, ale zrobię większość tego
-przez przeglądarkę, ponieważ uważam, że to lepszy sposób na pokazanie się jako
-dopiero uczysz się swojego Microtecha, więc ustawiłem go jako docelowy
-jest to TCP jako protokół, który jest numerem sześć i muszę go ustawić
-port docelowy, a tym portem docelowym jest port w sieci zewnętrznej
-więc nie mylcie się z tym, co czasami robię, ponieważ czasami
-możesz mieć sytuację, w której twój port publiczny jest inny niż
-prywatny port w tym przypadku, ponieważ konfigurujemy naszą regułę NAT, którą ustalamy
-port zewnętrzny tutaj, więc w moim przypadku będzie pasował do portu wewnętrznego
-ale pamiętajcie, że powiedzmy, że chcemy, aby na nie odpowiadał
-port 8080 można dodać, że tam, mimo że serwer w domu odpowiada
-na porcie 80, więc pamiętaj, że może być inaczej, ale w moim przypadku tak jest
-w rzeczywistości nie inaczej, muszę spojrzeć na mój interfejs, więc jest w nim
-interfejs Muszę powiedzieć, że to będzie Ethernet jeden w moim przypadku może to być
-trochę inaczej, pamiętajcie tylko o tym, co właściwie robię
-tam, kiedy wybieram interfejs internetowy, pamiętajcie o pierwszej konfiguracji
-router w naszym pierwszym odcinku tej serii pokazałem, że tak
-podłączenie mojego modemu internetowego do portu 1 Ethernet 1 i tak właśnie jestem
-określając tutaj, chcę, aby to odpowiadało na moim interfejsie internetowym i jak możesz
-wyobraź sobie, że możesz kopać głęboko i możesz to ustawić, wiedząc, że możesz to robić
-rzeczy bardzo wyrafinowane poprzez określenie różnych portów konfigurujących wszystkie sieci VLAN
-tego rodzaju rzeczy utrzymujemy w prostocie i po prostu się tym zajmujemy
-w ten sposób w porządku zamierzam przewijać Wade
+tutaj, a to uderzy w mikro-technologię i mikro-technologia będzie
+powiedzieć ok, co mam zrobić z tym ruchem, co mam zrobić, więc muszę to powiedzieć
+micro tech hej to port 443 Chcę to napisać do wersji 10.0.0.0, ponieważ tak jest
+przypuszczalnie do tego, do czego ta osoba próbuje uzyskać dostęp, więc wskoczmy od razu
+wskoczę do naszego mikrotika i wszystko jest tutaj tak wyrafinowane
+po prostu idź dalej, a zaczniesz rozumieć, jak to działa
+kliknęliśmy na adres IP w zeszłym tygodniu, kiedy tu przyjechaliśmy, ponieważ zaczęliśmy patrzeć na DHCP
+serwerowe i statyczne reguły i takie rzeczy, które rozwiniemy z czasem
+wejdę w zaporę ogniową. Są to domyślne ustawienia mojej zapory ogniowej mikrotik i ja
+chcę dodać teraz reguły, które będą przekierowywać ruch w mojej sieci
+jesteśmy typowym routerem zapory konsumenckiej, który mówi: hej, wezmę port 80
+i przekieruję to pamiętam, że mikrotik pozwala mi mieć znacznie więcej
+kontroluję to, więc najpierw ustawię reguły NAT
+translacja adresów sieciowych, więc te reguły zdecydują, czy dobrze
+ktoś uderza w ten port, gdzie chcę wysłać go na ląd, dobrze, gdzie jestem
+Pozwolę im na dostęp, ale wtedy to nie zadziała inaczej niż
+router konsumencki, który po prostu powie OK, po prostu zamierzam po prostu D DMZ
+ten serwer i pozwól każdemu się przedostać i pozwól mu włamać się i
+cokolwiek chcą zrobić, jak tylko powiesz, idź, powie mikrotik
+okej nie Pozwolę na ruch, ale podlegają one pewnym zasadom
+możesz mieć inne reguły, które dodałeś do swojego urządzenia mikrotik
+które mówią, że pozwolę na dostęp do tego konkretnego adresu IP
+może to być mój domowy adres IP lub moje biuro, być może ustawiłem regułę
+to znaczy, że nigdy nie podróżuję. Zawsze jestem w Kanadzie. Tak naprawdę zawsze jestem w Ontario
+jeśli ktoś kiedykolwiek spróbuje uzyskać dostęp do moich serwerów spoza bloku Ontario
+je, ale otwórzcie to dla mnie, jeśli jestem w Ontario, więc są różne rodzaje
+jakby to był hierarchiczny sposób patrzenia
+na tych routerach przepisuj zasady, aby przekierowywać ruch do niektórych serwerów w twoim
+sieć, którą możesz sobie wyobrazić, która jest pomocna w domu, ponieważ daje ci więcej
+bezpieczeństwo, ale jest również wyjątkowe dla biznesu, niezależnie od tego, czy jesteś właścicielem, czy prowadzisz dział IT
+dział w małej średniej lub nawet dużej firmie
+mikrotik da ci znacznie większą kontrolę nad tego rodzaju regułami
+zacznijmy od naszej reguły nat i znowu NAT jest skrótem od nas
+użyj podstawek do translacji adresów sieciowych i to w zasadzie mówi nam
+ruch sieciowy, gdzie przepływać w oparciu o reguły, które skonfigurowałem, ale są
+wciąż nie będę miał pozwolenia. Pokażę wam to za kilka
+chwile czasu, więc wiem, że będę potrzebować portu 80 i portu 443, aby kierować moim
+ruch do następnej chmury i powinienem zacząć od pokazania, że ​​hej, jeśli ja
+w rzeczywistości przejdź do studia kropka kategorii pięć telewizji kropka, to po prostu zawiesi to będzie
+limit czasu nigdzie nie pójdzie, ponieważ nie skonfigurowałem jeszcze tych zasad
+więc spin spin spin spin spin ale zostawię to otwarte
+więc moja zasada nat przede wszystkim stworzyłem nową regułę nat, więc firewall IP jest nowy
+rządzę, a teraz zmienię łańcuch tutaj Chcę powiedzieć, że tak jest
+mapę celu, ponieważ ustawiam cel w mojej wewnętrznej
+sieć Muszę również ustawić protokół, ponieważ chcę określić, że tak jest
+właściwie TCP i widać, że istnieje mnóstwo protokołów, które możesz
+wybierz z właśnie konfiguruję TCP na porcie 80, a następnie na porcie 443, aby nas pobrać
+też zacząłem zauważać, że używam przeglądarki internetowej w przeglądarce
+Nie skonfigurowałem lub też nie używam skrzynki wiatrowej, a to częściowo dlatego
+Chcę Ci to pokazać w przeglądarce, abyś mógł to zobaczyć
+nie musisz mieć zainstalowanego narzędzia, aby móc administrować mikrotikiem
+router Myślę, że jest nieporozumienie, jak tylko powiem, zainstaluj wind box i
+użycie tego, aby połączyć się z retoryką, stwarza nieporozumienie
+sprawia, że ​​czujesz się, jakbyś musiał to zarządzać z narzędzia nie, ale to jest
+pomocne narzędzie umożliwiające dostęp do routera i robi to
+zapewnij wyjątkowe dodatkowe usługi, takie jak moja wielozadaniowość, więc daj to
+spróbuj, ale zrobię to większość za pośrednictwem przeglądarki, ponieważ tak myślę
+to lepszy sposób, aby pokazać Ci, jak uczysz się Microtech
+Ustawiłem go jako docelowy, że ustawiłem go jako TCP, który jest protokołem
+numer sześć i muszę ustawić port docelowy i ten cel
+port jest portem w sieci zewnętrznej, więc nie myl się z tym, co ja
+czasami tak się dzieje, ponieważ czasami możesz mieć sytuację, w której jesteś
+port publiczny różni się w tym przypadku od portu prywatnego
+ustanawiając naszą regułę NAT, ustawiamy tutaj zewnętrzny port, więc w moim przypadku
+będzie pasować do portu wewnętrznego, ale pamiętaj o tym
+powiedzmy, że chcemy, aby odpowiadał na porcie 8080, można dodać, że nawet tam
+chociaż serwer w domu odpowiada na port 80, więc pamiętaj o tym
+może być inny, ale w moim przypadku tak naprawdę nie jest inaczej, muszę
+spójrz na mój interfejs, więc jest interfejs, który muszę powiedzieć
+bądź Ethernet jeden w moim przypadku może być trochę inny, po prostu zachowaj
+pamiętam, że to, co właściwie tam robię, kiedy wybieram swój internet
+interfejs pamiętaj, kiedy pierwszy raz skonfigurowałem ten router w naszym pierwszym odcinku
+seria wykazałem, że podłączam modem internetowy do sieci Ethernet
+jeden port jeden, a więc to tutaj określam, chcę, aby to odpowiedział
+na moim interfejsie internetowym i jak możesz sobie wyobrazić, możesz kopać głęboko i ustawić
+to wiesz, że możesz robić rzeczy bardzo wyrafinowane, określając
+różne porty konfigurujące sieci VLAN i inne tego typu rzeczy, które przechowujemy
+dość proste i po prostu tak sobie radzę w porządku, przewinę Wade'a
 tutaj - akcja i tylko upewnij się, że jest ustawiony na DN DST netto
 net, dzięki czemu ten ruch będzie kierowany do naszego serwera, więc teraz przewiń w dół
 kilka sposobów tutaj i znajdziesz dwa porty tam jest mój dwa porty
@@ -128,115 +127,113 @@ właściwie to ta sama informacja, która daje mi zasięg, po prostu idę
 aby określić port 80, a na samym dole jest szansa na
 aby stworzyć komentarz, zrobię to, że w końcu powiem następną chmurę 80
 ostatnią rzeczą, którą muszę tutaj dodać, jest docelowy adres IP
-wewnętrznie w mojej sieci jest to serwer, ponieważ wspomniałem o 1000 a to
-Reguła NAT zareaguje na porcie 80 i przekieruje na 1000
-Cóż, więc teraz przewiń do góry i wciśnij OK, a teraz to zobaczymy
-mamy nową regułę o nazwie next cloud 80, która odpowiada sieci DST i tak jest
-wskazując TCP na port 80 przez Ethernet jeden - jak wiemy z jego konfiguracji
-10.0.0.0 chce, aby bezpieczny port również wykonał te same kroki, które zamierzam
-zmień łańcuch na docelowy, a potem zmienię protokół na TCP
-Zamienię swój zewnętrzny interfejs w Ethernet na miejsce docelowe
-port Wiem, że jestem trochę niesprawny, w porządku. Wiesz, kim jestem
-wykonanie portu docelowego to 4 4 3 przewińmy tutaj w dół i zmień nasze
-działania w sieci DST i naszym, aby adresować ten sam serwer po prostu inny port, a następnie
+wewnętrznie w mojej sieci jest to serwer, jak wspomniałem 1000, aby to powiedzieć
+ta reguła NAT zareaguje na porcie 80 i przekieruje do 10.0.0.0, więc teraz
+Przewiń do góry i wciśnij OK, a teraz zobaczymy, że mamy
+nowa reguła o nazwie next cloud 80, która odpowiada sieci DST i wskazuje TCP
+na porcie 80 przez Ethernet jeden - jak wiemy po skonfigurowaniu bezpiecznego 10.0.0.0
+port również wykonaj te same kroki, zamierzam zmienić łańcuch do miejsca docelowego
+że zmienię protokół na TCP, a potem zmienię zewnętrzny
+mój interfejs do Ethernetu jeden
+port docelowy Wiem, że jestem trochę niesprawny, w porządku, wiesz co
+Robię port docelowy to 4 4 3 przewińmy tutaj i zmieńmy
+nasze działania wobec DST nat i adresowanie tego samego serwera po prostu inny port, a następnie
 do portu 443 i skomentuj tutaj następna chmura 443 w porządku. Myślę, że mam
-wszystko tam wygląda dobrze, uderzmy OK, więc teraz mam port 80 i port 443 nat
-reguły idą do 10 kropka 0 kropka 0 kropka
-z portu Ethernet 1 przez TCP wciąż nie będzie działać, więc jeśli przeskoczę
-tutaj uderzę w F5, żeby odświeżyć, och, i działa na to, bo jestem
-wewnętrzny na wewnętrznej ziemi, więc tak naprawdę nie jestem w sieci Ethernet, to nie jest
-pójść do pracy ze świata zewnętrznego, ponieważ nadchodzi świat zewnętrzny
-przez Ethernet 1 Jestem oczywiście wewnętrzny Jestem na porcie 2 jak ty
-pamiętajcie z zeszłego tygodnia, aby teraz dać dostęp do świata zewnętrznego
-musisz przejść do zakładki reguł zapory tutaj i kliknąć Dodaj nowy, więc to jest
-gdzie właściwie mówię OK, jeśli zapora ogniowa zostanie trafiona, muszę ją uruchomić
-zasada nat, więc zróbmy to, więc dodaliśmy nową regułę zapory ogniowej i zamierzam to zmienić
-łańcuch zobaczymy nie, domyślnie jest już przekazywać dalej, więc nie ma sprawy
-źródłowy adres IP to trochę fajne Nie zamierzam tego ustawiać, ale po prostu
-chcę, chcę, żebyś to zobaczył. Może to być adres IP, na który chcesz zezwolić
-członek Wspomniałem, że możesz ustawić go tak, aby dozwolona była tylko Twoja sieć domowa
-aby to zrobić, możesz dodać swój domowy adres IP, który możesz nawet utworzyć
-Grupy adresów IP, które zostałyby tutaj utworzone, to tutaj adres źródłowy
-lista zobacz, że są to rzeczy, których będziemy się uczyć w odpowiednim czasie
-teraz nie zamierzam tego robić, nie ustawię adresu źródłowego
-otwórz to na świat, ale chcę, żebyś wiedział, że jest to dla ciebie dostępne
-przemieszczanie się wzdłuż miejsca docelowego I to tak naprawdę serwer wewnętrzny, więc to 10
-Protokół 0.017, który już wiemy, że to TCP, więc kliknij to, a tak naprawdę jest TCP
-domyślnie, więc po prostu oszczędza nam to szybki czas, ale możesz zobaczyć wszystko
-protokoły, które są dla nas dostępne, następnym krokiem jest ustawienie portu usługi
-więc docelowym portem będzie port 80, zaczniemy od tego, co musimy zrobić
-oba, ale muszę skonfigurować każdą regułę osobno, więc przejdźmy do interfejsu
-będzie moim portem Ethernet 1, jak już ustaliliśmy, i czym jestem
-Robię tutaj, to tak naprawdę mówię zaporze ogniowej, że pozwolę na to
-ruch z pierwszego portu Ethernet, który jest moim połączeniem internetowym i to
-to ten, w którym należy ustawić akcję, aby ją zaakceptować, więc o tym mówię
-tak, wiesz na co pozwolę na to, możesz również ustawić to na odrzucanie
-w niektórych przypadkach lub znasz różne ustawienia, ale powiemy
-z wyjątkiem tego, że pozwolimy na to, a następnie utworzymy komentarz tak jak wcześniej
-Zadzwonię do tego komentarza reguły zapory następnej chmury 80 przewiń w górę i
-zwróć uwagę, że jeśli zrezygnujesz z reguły NAT lub z reguły zapory
-cóż, brakuje ci niektórych łańcuchów, więc tak naprawdę nie zareaguje
-poza siecią, więc musisz upewnić się, że zrobiono to w następnym kroku
-Dodam 4 do 3 w regułach zapory, więc przesyłanie dalej jest już wybrane
-adres źródłowy nie zamierzamy tym razem robić w pobliżu adresu docelowego
-ustawimy na 10 0 kropka 0 kropka 1 7 protokół będzie interfejsem TCP
-będzie eterem 1
+wszystko tam wygląda dobrze, uderzmy OK, więc teraz mam port 80 i port
+443 reguły NAT idące do 10.0.0.0 portu net1 przez tcp wciąż nie będą działać
+więc jeśli skoczę tutaj, uderzę w F5, żeby odświeżyć, och, i działa
+to dlatego, że jestem wewnętrzny na wewnętrznej ziemi, więc tak naprawdę nie jestem na
+Ethernet jeden nie będzie jeszcze działał ze świata zewnętrznego, ponieważ
+świat zewnętrzny wchodzi przez sieć Ethernet, jestem oczywiście wewnętrznie
+na porcie 2, jak pamiętasz z zeszłego tygodnia, aby umożliwić dostęp do
+poza światem muszę teraz przejść do zakładki reguł zapory tutaj i kliknąć
+dodaj nowy, więc właśnie tutaj mówię OK, jeśli zapora zostanie trafiona I.
+musimy uruchomić tę regułę nat, więc zróbmy to, więc dodaliśmy nową zaporę ogniową
+reguła i zmienię łańcuch, zobaczmy, że nie, to już domyślnie
+do przodu, więc to dobry źródłowy adres IP, to trochę fajne
+Nie zamierzam tego ustawiać, ale chcę tylko, żebyś to zobaczył
+być adresem IP, na który chcesz zezwolić, pamiętaj, że wspomniałem, że możesz go tak ustawić
+że tylko twoja sieć domowa może to zrobić, możesz to dodać
+domowy adres IP, możesz nawet utworzyć grupy IP, które byłyby ustawione
+tutaj, na dole, lista adresów źródłowych, zobacz, więc to są rzeczy
+będziemy się uczyć na czas, teraz tego nie zrobię
+ustawię adres źródłowy, zamierzam otworzyć to na świat, ale chcę ciebie
+aby wiedzieć, że jest to dla ciebie dostępne, więc przemieszczanie się wzdłuż miejsca docelowego, pod którym znajduje się adres
+fakt wewnętrzny serwer, więc jest to protokół 10 0.017, który już wiemy
+TCP, więc kliknij to, a TCP jest w rzeczywistości domyślny, więc po prostu zapisuje
+szybko, ale możesz zobaczyć wszystkie protokoły, które są dla nas dostępne w następnej kolejności
+krok jest taki, że musimy ustawić port usługi, aby port docelowy był portem
+80 Zaczniemy od tego, że musimy zrobić oba, ale muszę skonfigurować każdą regułę
+osobno więc wchodzimy w interfejs będzie moim portem Ethernet 1 tak jak my
+już ustalone, a więc to, co tu robię, to tak naprawdę mówię
+zapora ogniowa, że ​​zezwalam na ten ruch z pierwszego portu Ethernet
+które jest moim połączeniem internetowym i właśnie tam należy podjąć działania
+zaakceptować, więc tutaj mówię tak, wiesz, na co pozwolę
+możesz to również ustawić tak, aby odrzucało w niektórych przypadkach lub znasz różne
+inne ustawienia, ale powiemy, ale pozwolimy na to i
+następnie utwórz komentarz, tak jak zrobiliśmy, zanim zadzwonię do tej reguły zapory
+skomentuj następną chmurę 80 przewiń w górę i zauważ, że jeśli przestaniesz NAT
+lub odrzucisz regułę zapory, brakuje niektórych łańcuchów
+więc nie będzie reagować poza Twoją siecią, więc musisz to zrobić
+upewnij się, że zrobiono to w następnym kroku - dodam 4 do 3 w zaporze
+reguły, więc przesyłanie dalej jest już wybranym adresem źródłowym, którego nie zamierzamy robić
+tym razem wokół adresu docelowego ustawimy protokół 1000 punktów 17
+będzie to TCP, a interfejs to eter 1
 i co jeszcze w moim docelowym porcie potrzebuję, tam również bah bah
 będzie 4 4 ​​3 przewiń w dół, upewnij się, że jest ustawiony na akceptację, a następnie ustaw nasz
 komentarz będzie następna chmura 4 4 3 proszę bardzo wszystko wygląda jak ja
 mam wszystko tam, brakuje mi wszystkiego, co mi powiesz, że będę w porządku, więc
 teraz jest ostatni krok, w którym zauważysz, że te dwa przedmioty są upuszczone
 przekaż reguły w prawie przeciwpożarowym, teraz ważne jest, aby pamiętać, że mikrotik działa
-zasadniczo w kolejności od góry do dołu, więc patrząc na zaporę ogniową
-zasady, jeśli zastanawiasz się, dlaczego nadal nie działają dobrze, to dlatego
-przed skonfigurowanymi przeze mnie regułami jest już reguła mówiąca upuść
-wszystko tak właściwie to mówi hej, jeśli wszystko minęło
-ta przeszłość, wszystko to teraz zrywa połączenie, ponieważ to jest
+to w zasadzie w kolejności od góry do dołu, więc kiedy patrzysz na siebie
+reguły zapory ogniowej, jeśli zastanawiasz się, dlaczego nadal nie działają dobrze, to jest
+ponieważ przed moimi właśnie skonfigurowanymi regułami jest już taka reguła
+mówi upuść wszystko, więc w zasadzie to hej, jeśli zdałeś już wszystko
+przeszłość cała przeszłość wszystko to teraz porzuciło połączenie, ponieważ to jest
 całkiem solidna zapora ogniowa, więc nigdy jej nie ma, więc muszę zmienić kolejność
-te i sposób, w jaki to zrobię, to chcę, aby tak się stało lub chcę moje
-niestandardowe reguły przekazywania, które mają się odbyć zaraz po ostatecznej regule wejściowej, więc powinienem
-być w stanie po prostu przeciągnąć to tutaj, tutaj i bierzemy ostatni ostatni mój
-następna zasada chmura 4 za 3 przeciągnij to w górę i zaczynamy i teraz jesteśmy, więc teraz ja
-nie muszę restartować routera Nie muszę nic robić, to jestem w stanie
-zobacz to, ale nasz serwer niezgody, możesz mi potwierdzić, przejdź do studia
-doc TV kategorii 5 i bez konieczności ponownego uruchamiania routera bez konieczności
-zrestartuj wszystko, co powinno być teraz widoczne również z tego samego monitu logowania
-przejdź do studia TV kropka kategorii 5 Przykro mi, a bp9 jest po prostu
+te i sposób, w jaki to zrobię, to chcę, aby tak się stało lub chcę mój zwyczaj
+reguły przekazywania będą miały miejsce zaraz po ostatniej regule wejściowej, więc powinienem móc
+aby po prostu przeciągnąć to tutaj, zaczynamy i bierzemy ostatnią moją następną chmurę 4
+bo 3 reguły zadzwoniły i tam zaczynamy i teraz jesteśmy, więc nie muszę
+zrestartuj router Nie muszę nic robić, to widzę, ale
+nasz serwer niezgody, który możesz mi potwierdzić, przejdź do studio doc kategorii 5
+TV i bez konieczności ponownego uruchamiania routera bez konieczności ponownego uruchamiania
+cokolwiek powinieneś teraz zobaczyć również ten sam monit logowania, więc kontynuuj
+Przepraszam do studia w kategorii 5-kropkowej telewizji, a bp9 jest po prostu
 przepraszam, nie ma piątki, tylko komentujesz to, kiedy dodam komentarze
-nie widać ich na ekranie, a to dlatego, że jest to kategoria 5
-18/9, a ekran mojego komputera to 16/9, więc to coś, co ja
-muszę wymyślić, jak to naprawić w przyszłości, to mój błąd, ale widać
-te komentarze zostały wprowadzone to pole komentarza to tylko pole tekstowe w
-dolna część okna podczas dodawania i tam jest to
-Wszedłem do następnej chmury 18 X Cloud 4 4 3 Przepraszam, że tego nie złapałem
-ale doceniam, że to zauważyłeś, więc moja maravilla mówi: tak, widzę login BP
-9 mówi także, że tak, dla mnie też działa, więc bez tych zasad nie zrobiliby tego
-nie odpowiedziałbym w ogóle, ale teraz, kiedy dodałem te zasady, teraz wszyscy
-są w stanie się połączyć, więc następną rzeczą, którą mógłbym zrobić, gdybym tego chciał, to ja
-może skonfigurować te listy adresów źródłowych, które mogą zawierać adresy IP
-mojej domowej sieci mojej sieci pracy moich przyjaciół sieci moich pracowników
-sieci i pozwól im przestrzegać tych zasad, ale porzuć wszystkich
-inaczej, aby hakerzy znajdujący się na moim serwerze niezgody nie mogli dostać się do mojego następnego
-serwer w chmurze itd., więc zasadniczo wiesz, że są
-Twoje kroki, więc patrzmy, cofnijmy się trochę i zrozummy, że dobrze, ustawiłem
-dwa porty dzisiaj port 80 i port 443 to port 80 to niepewny HTTP
-port i port 443 to bezpieczny port HTTP z szyfrowaniem SSL Chcę obu z nich
-więc jeśli ktoś nie wpisuje fizycznie slash dwukropka HTTP
-slash studio dot kategorii piątej TV zamiast tego uderzy w port 80 i
-przekierowują automatycznie do 443, jeśli nie miałbym otwartego portu 80, zrobiliby to
-nigdy nie dostanie tego przekierowania, po prostu dostanie błąd serwera, więc wystąpił błąd tworzenia kopii zapasowej
-w górę musimy przejść do naszej konfiguracji mikrotik Używam rysunków internetowych
-i kliknij IP, kliknij zaporę ogniową, kliknij kartę NAT u góry i utwórz nową
-Reguła NAT Ta reguła NAT powie, gdzie chcesz z tym iść
-z tym portem, co chcesz z tym zrobić
-ale tak naprawdę nie otworzy się, nie otworzy przed publicznością
-reguła zapory jest teraz dostępna, więc kliknij reguły zapory dla tego samego adresu IP
+tak naprawdę nie widać ich na ekranie, a to dlatego, że kategoria piąta
+ma 18 lat, a mój komputer ma szesnaście lat, więc to tyle
+coś, co będę musiał wymyślić, jak to naprawić w przyszłości, to moje
+błąd, ale widać, że te komentarze zostały wprowadzone to pole komentarza
+podczas dodawania jest to tylko pole tekstowe u dołu okna
+i właśnie to wszedłem do następnej chmury 18x chmura 443 Przepraszam
+że tego nie złapałem, ale doceniam to, że zauważyłeś to, tak, maravilla
+mówi tak Widzę login a bp9 również mówi, że tak, działa również dla mnie, więc bez
+te zasady, których nie zrobiliby, to by nie zareagowało, ale teraz, kiedy ja
+dodałem te reguły, teraz możecie się połączyć, więc następną rzeczą, którą mogłem
+zrobić, gdybym chciał, mógłbym skonfigurować te listy adresów źródłowych i te
+Listy mogą zawierać adresy IP mojej sieci domowej mojej sieci służbowej
+sieci znajomych w sieciach moich pracowników i pozwól im je śledzić
+rządzi, ale upuść wszystkich innych, aby hakerzy, którzy są w mojej sprzeczce
+serwer nie może dostać się do mojego następnego serwera w chmurze itd., więc to jest
+w zasadzie wiesz, że to twoje kroki, więc spójrzmy wstecz
+trochę i rozumiem, że dobrze skonfigurowałem dziś dwa porty: port 80 i port
+443 to port 80 to niezabezpieczony port HTTP, a port 443 to bezpieczny SSL
+zaszyfrowany port HTTP Chcę oba te, aby, jeśli ktoś tak naprawdę nie
+fizycznie wpisz dwukropek slash slash studio kategorii dwukropek TV to
+zamiast tego uderzy w port 80 i automatycznie przekieruje na 443
+nie mieli otwartego portu 80, nigdy nie dostaliby takiego przekierowania
+błąd serwera nie został znaleziony, więc wykonaj kopię zapasową, aby przejść do naszego mikrotik
+konfiguracja Używam rys. internetowego i kliknij IP kliknij firewall
+na karcie NAT u góry i utwórz nową regułę NAT, którą reguła NAT powie
+gdzie chcesz iść z tym portem, co chcesz zrobić
+z tym, ale tak naprawdę nie otworzy się, otworzy to przed publicznością, która
+gdzie jest teraz reguła zapory, więc kliknij reguły zapory na tym samym adresie IP
 zapora ogniowa i musimy utworzyć nową regułę zapory, która będzie akceptowana
 to połączenie i zezwól na te połączenia, a Ty możesz dalej
 doskonalić adresy IP lub grupy źródeł IP i takie tam są
 wiele różnych opcji, których dzisiaj nie jesteśmy w stanie objąć, ale możesz je zdobyć
 pomysł, że da nam to dużą konfigurowalność i kontrolę
-nie tylko o tym, jak ruch jest kierowany przez nasze sieci, ale i jaki adres IP
-adresy i jakie sieci mogą łączyć się za pośrednictwem naszej sieci i jak
-który zostanie przekierowany, gdy dotrze do naszego Microtech
-[Muzyka]
+nie tylko o tym, jak ruch jest kierowany przez nasze sieci, ale kto i
+jakie adresy IP i jakie sieci mogą łączyć się za pośrednictwem naszej sieci i
+w jaki sposób zostanie on przekierowany, gdy dotrze do naszego Microtech

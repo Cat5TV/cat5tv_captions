@@ -27,100 +27,99 @@ y transmisores, puede comprar un dispositivo más barato que solo tiene 2.4 o so
 entonces esas características estarán limitadas solo por el hardware pero el software en sí
 es lo mismo, así que siempre empiezo diciendo eso porque quiero que
 entiendo que no tienes que comprar el mismo que compré, encuentras el que
-funciona para ti y luego puedes seguir la serie y sorprendentemente incluso
-si tienes un modelo diferente, podrás seguir el
-pantalla vas a poder seguir los pasos y va a ser exactamente
-lo mismo que es sorprendente, así que esta semana voy a mirar
-cómo configurar el reenvío de puertos lo vamos a llamar ahora Mikrotik va a
-llámalo reglas de firewall NAT voy a hablar un poco sobre eso en un momento
-pero lo conocemos como reenvío o redireccionamiento de puertos y eso es cuando
-alguien golpea nuestra dirección IP pública en un puerto determinado si es un puerto que tengo
-permitido y que reconozco que quiero redirigir al servidor apropiado para
-en mi caso tengo un servidor en 10.0.0.0
+funciona para ti y luego puedes seguir esta serie y sorprendentemente
+incluso si tienes un modelo completamente diferente, podrás
+siga la pantalla, podrá seguir los pasos y será
+exactamente lo mismo que es increíble, así que esta semana voy
+para ver cómo configurar el reenvío de puertos lo llamaremos ahora
+Mikrotik lo va a llamar reglas de firewall NAT voy a hablar un poco
+poco sobre eso en un momento, pero lo conocemos como reenvío o redireccionamiento de puertos y
+Es decir, cuando alguien golpea nuestra dirección IP pública en un puerto determinado si
+es un puerto que he permitido y que reconozco que quiero redirigirlo al
+servidor apropiado, así que en mi caso tengo un servidor en 10.0.0.0
 es mi propio tipo de alternativa personal a los servicios en la nube de Google y conducir y
 onedrive y todo ese tipo de servicios puedo ponerlos en mi propio servidor
 y es mío, es mi propio sistema alojado en 10.0.0.0 'pn puertos 80 y puerto 443 así
 si alguien golpea mi IP o tengo un registro DNS porque tenemos categoría 5
 TV, por supuesto, así que tengo Studio dot categoría 5 dot TV los enrutará
-hasta aquí y eso va a golpear el micro Tech y el micro Tech va
-para decir bien, ¿qué hago con este tráfico, qué voy a hacer, así que tengo que
-dile a mi micro tecnología oye que es el puerto 443 que quiero
-escribí eso en 10.0.0.0 porque eso es probablemente lo que esta persona está tratando de
-acceso, así que saltemos a eso. Voy a saltar a nuestro Mikrotik y
-las cosas son tan sofisticadas aquí, así que solo sigue y comenzarás
-para retomar cómo funcionan las cosas He hecho clic en IP la semana pasada vinimos aquí
-porque comenzamos a mirar el servidor DHCP y las reglas estáticas y cosas como
-eso que ampliaremos a tiempo voy a golpear el firewall, estos son los predeterminados
-configuración para mi firewall de Microtech y quiero agregar algunas reglas que van a
-redirigir el tráfico dentro de mi red ahora somos un enrutador de firewall de consumidor típico
-va a decir oye, tomaré el puerto 80 y lo redirigiré, recuerda el
-Mikrotik me permite tener mucho más control sobre eso, así que voy a estar
-configurando primero las reglas NAT, que es la traducción de direcciones de red
-las reglas van a decidir bien si alguien llega a este puerto, ¿dónde quiero
-para enviarlo dentro de la tierra bien, ¿dónde voy a permitirles acceder pero luego
-todavía no va a funcionar a diferencia de un enrutador de consumidor que solo dirá
-bien, básicamente voy a D DMZ ese servidor y permitir que cualquiera pueda pasar
-y permitirles piratear y lo que quieran hacer tan pronto como les digas ir
-el mikrotik va a decir que está bien, no, permitiré el tráfico a través de
-sin embargo, están sujetos a algunas reglas, es posible que tenga otras reglas que
-has agregado a tu dispositivo mikrotik digamos que solo voy a permitir un
-dirección IP particular para acceder a esta, por lo que podría ser la dirección IP de mi casa o mi
-puede ser que he establecido una regla que dice que nunca viajo, siempre estoy en
-De hecho, siempre estoy en Ontario, así que si alguien intenta acceder a mi
-los servidores de fuera de Ontario los bloquean, pero me abren si estoy en
-Ontario, así que hay todo tipo de formas jerárquicas
-mirando las reglas de reto de enrutador para redirigir
-puede imaginar que es útil el tráfico a ciertos servidores dentro de su red
-para el hogar porque te da más seguridad pero también es excepcional para
-comercialice si posee o dirige un departamento de TI en una pequeña y mediana empresa
-mikrotik de negocios o incluso un gran negocio te dará mucho
-más control sobre ese tipo de reglas, así que comencemos con nuestra regla nat y
-Nuevamente, NAT es un término corto en el que usamos un soporte para la dirección de red
-traducción y básicamente le dice a nuestro tráfico de red dónde fluir según
-las reglas que he establecido, pero todavía no se me permitirán, voy
-para mostrarte eso en solo un par de momentos, así que sé que voy a
-necesito el puerto 80 y el puerto 443 para enrutar mi tráfico para la próxima nube y debería
-comience mostrándole que bueno, si en realidad voy a la categoría cinco de estudio de TV
-solo va a colgar, va a agotar el tiempo, no va a ir a ninguna parte porque yo
-no he establecido esas reglas todavía, así que eso es spin spin spin spin spin pero me iré
-que se abren por lo que mi regla nat en primer lugar he creado
-una nueva regla NAT, entonces la nueva regla NAT del firewall IP y ahora voy a cambiar la cadena
-aquí quiero decir que este es el mapa de destino porque estoy configurando
-el destino dentro de mi red interna también necesito configurar el protocolo
-porque quiero especificar que esto es realmente TCP y puedes ver que hay
-hay toneladas de protocolos entre los que puede elegir, solo estoy configurando TCP en
-puerto 80 y luego puerto 443 para que comencemos, noten también que estoy usando web
-higo en mi navegador web que no he configurado o tampoco
-usando una caja de viento y eso es en parte porque quiero mostrarte esto a través de
-el navegador para que pueda ver que no necesita tener una herramienta instalada para
-ser capaz de administrar su enrutador mikrotik Creo que hay un error
-tan pronto como diga, instale la caja de viento y úsela para conectarse a su retórica
-crea un concepto erróneo que te hace sentir como si esto tuviera que
-ser administrado desde una herramienta no, pero esa es una herramienta útil para poder darle
-acceso a su enrutador y proporciona algunos excepcionales adicionales
-servicios como mi multitarea, así que pruébalo, pero voy a hacer la mayor parte de esto
-a través del navegador porque creo que es una mejor manera de mostrarte como
-solo estás aprendiendo tu Microtech, así que lo configuré en el destino que configuré
-a TCP como el protocolo que es el número seis y necesito configurar mi
-puerto de destino y este puerto de destino es el puerto de la red externa
-así que no te confundas con lo que suelo hacer algunas veces porque a veces
-Es posible que tenga una situación en la que su puerto público sea diferente al
-puerto privado en este caso, ya que estamos configurando nuestra regla NAT, estamos configurando
-el puerto externo aquí, así que en mi caso va a coincidir con el puerto interno
-pero solo tenlo en cuenta que esto digamos que estás queremos que responda
-puerto 8080, podría agregar que a pesar de que el servidor interno está respondiendo
-en el puerto 80, así que ten en cuenta que puede ser diferente, pero en mi caso es
-de hecho no está bien, tengo que mirar mi interfaz, así que ahí está el
-interfaz tengo que decir que esto será Ethernet uno en mi caso, puede ser un
-un poco diferente para ti solo ten en cuenta que lo que realmente estoy haciendo
-allí cuando estoy seleccionando mi interfaz de Internet, recuerde cuando configuro por primera vez
-este enrutador en nuestro primer episodio de esta serie demostré que estaba
-enchufar mi módem de internet en el puerto 1 de Ethernet 1 y eso es lo que soy
-especificando aquí quiero que esto responda en mi interfaz de internet y como puedas
-imagina que puedes cavar profundo y puedes configurar esto, sabes que podrías estar haciendo
-cosas muy sofisticadas al especificar diferentes puertos que configuran todas las VLAN
-ese tipo de cosas mantenemos las cosas bastante simples y simplemente lo hacemos
-de esa manera bien voy a desplazar a Wade
+hasta aquí y eso va a golpear la tecnología micro y la tecnología micro va
+para decir bien, ¿qué hago con este tráfico? ¿Qué voy a hacer, así que tengo que decirle a mi
+micro tecnología oye ese es el puerto 443 Quiero escribir eso a 10.0.0.0 porque eso es
+presumiblemente a lo que esta persona está intentando acceder, así que saltemos directamente a eso estoy
+saltaremos a nuestro mikrotik y las cosas son tan sofisticadas aquí, así que
+solo sigue y comenzarás a retomar cómo funcionan las cosas que he
+Hicimos clic en IP la semana pasada vinimos aquí porque comenzamos a mirar el DHCP
+servidor y reglas estáticas y cosas por el estilo que ampliaremos a tiempo estoy
+voy a golpear el firewall, estas son las configuraciones predeterminadas para mi firewall Mikrotik y yo
+quiero agregar algunas reglas que redirigirán el tráfico dentro de mi red ahora
+somos un enrutador de firewall de consumidor típico va a decir oye, tomaré el puerto 80
+y lo redirigiré, recuerda que el Mikrotik me permite tener mucho más
+control sobre eso, así que voy a configurar las reglas NAT primero que es
+traducción de direcciones de red, por lo que esas reglas decidirán si
+alguien llega a este puerto donde quiero enviarlo dentro de la tierra bien donde estoy
+Voy a permitirles acceder, pero aún así no funcionará a diferencia de un
+enrutador de consumidor que solo va a decir bien, básicamente voy a básicamente D DMZ
+ese servidor y permitir que cualquiera pueda pasar y permitirles piratear y
+lo que quieran hacer tan pronto como digas ir, el mikrotik va a decir
+Está bien, no, permitiré el tráfico, sin embargo, están sujetos a algunas reglas
+Es posible que tenga otras reglas que haya agregado a su dispositivo Mikrotik
+que dicen que solo voy a permitir que una dirección IP en particular acceda a esto
+esa podría ser la dirección IP de mi casa o mi oficina, puede ser que haya configurado una regla
+que dice que nunca viajo, siempre estoy en Canadá, de hecho siempre estoy en Ontario, así que
+si alguien intenta acceder a mis servidores desde fuera del bloque de Ontario
+pero ábrelo si estoy en Ontario, así que hay todo tipo de
+como si fuera una forma jerárquica de mirar
+en esas reglas de reto de enrutador para redirigir el tráfico a ciertos servidores dentro de su
+red que puede imaginar que es útil para el hogar porque le brinda más
+seguridad, pero también es excepcional para las empresas, ya sea que posea o ejecute una TI
+departamento en una pequeña y mediana empresa o incluso en una gran empresa
+Mikrotik te dará mucho más control sobre ese tipo de reglas
+así que comencemos con nuestra regla nat y nuevamente NAT es un término corto que
+utilizar un soporte para la traducción de direcciones de red y básicamente le dice a nuestro
+tráfico de red donde fluir según las reglas que he establecido pero son
+todavía no se me permitirá, les mostraré eso en solo un par de
+momentos, así que sé que voy a necesitar el puerto 80 y el puerto 443 para enrutar mi
+tráfico para la próxima nube y debería comenzar mostrándole que bueno si yo
+en realidad ir al estudio punto categoría cinco puntos de televisión que va a colgar va a
+tiempo de espera no va a ir a ninguna parte porque aún no he configurado esas reglas
+así que gira, gira, gira, gira, pero dejaré eso abierto
+así que mi regla nat, en primer lugar, he creado una nueva regla nat, así que el firewall IP nat new
+regla y ahora voy a cambiar la cadena aquí quiero decir que digamos que esto es
+el mapa de destino porque estoy configurando el destino dentro de mi
+red también necesito configurar el protocolo porque quiero especificar que esto es
+en realidad TCP y puedes ver que hay toneladas de protocolos que puedes
+elegir, solo estoy configurando TCP en el puerto 80 y luego el puerto 443 para obtenernos
+También comencé a notar que estoy usando web fig en mi navegador web
+No he configurado o tampoco estoy usando caja de viento y eso es en parte porque
+Quiero mostrarte esto a través del navegador para que puedas ver que
+no necesita tener una herramienta instalada para poder administrar su mikrotik
+enrutador Creo que hay una idea errónea tan pronto como digo instalar wind box y
+usar eso para conectarte a tu retórica crea un concepto erróneo
+eso te hace sentir como si esto tuviera que ser manejado desde una herramienta no pero eso es un
+herramienta útil para poder darle acceso a su enrutador y lo hace
+Proporcionar algunos servicios adicionales excepcionales como mi multitarea, así que dale
+un intento pero voy a hacer la mayor parte de esto a través del navegador porque creo que
+esa es una mejor manera de mostrarte, ya que estás aprendiendo tu Microtech
+Lo configuré en el destino que lo configuré en TCP como el protocolo que es
+número seis y necesito configurar mi puerto de destino y este destino
+puerto es el puerto en la red externa, así que no te confundas con lo que yo
+tienden a hacerlo porque a veces puede tener una situación en la que
+el puerto público es diferente al puerto privado en este caso ya que estamos
+configurando nuestra regla NAT estamos configurando el puerto externo aquí, así que en mi caso
+va a coincidir con el puerto interno, pero ten en cuenta que esto
+digamos que queremos que responda en el puerto 8080, podría agregar eso incluso
+aunque el servidor interno está respondiendo en el puerto 80, así que ten en cuenta que
+puede ser diferente, pero en mi caso, de hecho, no es diferente bien, necesito
+mira mi interfaz, así que ahí está la interfaz, necesito decir que esto va a
+ser Ethernet uno en mi caso, puede ser un poco diferente para usted solo mantenga
+tenga en cuenta que lo que estoy haciendo allí al seleccionar mi internet
+interfaz recuerda cuando configuré este enrutador por primera vez en nuestro primer episodio de este
+serie demostré que estaba conectando mi módem de internet a Ethernet
+un puerto uno y eso es lo que estoy especificando aquí Quiero que esto responda
+en mi interfaz de internet y como puedes imaginar puedes cavar profundo y puedes configurar
+esto sabes que podrías estar haciendo cosas muy sofisticadas especificando
+diferentes puertos que configuran VLAN todo ese tipo de cosas que estamos guardando cosas
+bastante simple y solo de esa manera voy a desplazar a Wade
 aquí: acción y solo asegúrese de que esté configurado en DN DST net destination
 net, de modo que va a enrutar este tráfico a nuestro servidor, así que ahora desplácese hacia abajo
 un poco aquí y vas a encontrar dos puertos allí es mi puerto dos es
@@ -128,115 +127,113 @@ en realidad va a ser el mismo aviso que me está dando un rango que solo voy
 para especificar el puerto 80 y en el fondo aquí hay una oportunidad para
 para crear un comentario que voy a hacer que voy a decir la próxima nube 80 finalmente
 Lo último que necesito agregar aquí es la dirección IP de destino
-internamente en mi red este es el servidor como mencioné 1000 a que este
-La regla NAT responderá en el puerto 80 y redirigirá a 1000
-bueno, ahora voy a desplazarme hacia arriba y presionar OK y ahora veremos que
-tenemos una nueva regla llamada próxima nube 80 y está respondiendo DST net y es
-apuntando TCP en el puerto 80 a través de Ethernet uno, como sabemos por configurarlo
-10.0.0.0 quiere el puerto seguro y sigue los mismos pasos que voy a
-cambiar la cadena al destino que voy a cambiar mi protocolo a TCP y luego
-Voy a cambiar mi interfaz externa de entrada a Ethernet un destino
-puerto Sé que estoy un poco fuera de servicio, está bien, sabes lo que soy
-haciendo puerto de destino es 4 4 3 vamos a desplazarse hacia abajo aquí y cambiar nuestro
-acción para DST net y nuestro para abordar el mismo servidor, solo un puerto diferente y luego
-al puerto 443 y darle un comentario aquí próxima nube 443 bien creo que tengo
-todo se ve bien vamos a presionar OK, así que ahora tengo el puerto 80 y el puerto 443 nat
-reglas que van a 10 puntos 0 puntos 0 puntos
-desde el puerto Ethernet 1 sobre TCP todavía no funcionará, así que si salto
-aquí voy a presionar f5 para actualizar oh y está funcionando mira eso porque estoy
-interno en la tierra interna, así que en realidad no estoy en el Ethernet no es
-va a trabajar desde el mundo exterior todavía porque el mundo exterior se acerca
-a través de Ethernet 1 Estoy obviamente interno Estoy en el puerto 2 como lo harás
-recordar de la semana pasada, así que para dar acceso al mundo exterior ahora yo
-necesita ir a la pestaña de reglas del firewall aquí y hacer clic en agregar nuevo, así que esto es
-donde en realidad estoy diciendo que si el firewall se ve afectado, necesito activarlo
-regla nat, así que hagamos eso, así que hemos agregado una nueva regla de firewall y voy a cambiar
-la cadena vamos a ver que no, ya está predeterminado para reenviar, así que está bien
-dirección IP de origen esto es genial No voy a configurar esto pero solo
-quiero Quiero que veas esto, esta puede ser la dirección IP que deseas permitir
-miembro que mencioné, podría configurarlo para que solo se permita su red doméstica
-para hacer esto, puede hacer eso, agregar la dirección IP de su hogar que incluso puede crear
-Los grupos de IP que lo harían se establecerían aquí que está aquí abajo, la dirección de origen
-ver en la lista que estas son cosas que aprenderemos a tiempo
-ahora no voy a hacer eso, no voy a establecer una dirección de origen que voy a
-abre esto al mundo pero quiero que sepas que eso está disponible para ti
-moviéndose a lo largo del destino que dirijo es, de hecho, el servidor interno, así que eso es 10
-0.017 protocolo ya sabemos que es TCP, así que haga clic en eso y TCP es de hecho
-el valor predeterminado para que nos ahorre un poco de tiempo, pero puede ver todos los
-Los protocolos que están disponibles para nosotros, el siguiente paso es que necesitamos configurar el puerto de servicio
-así que el puerto de destino va a ser el puerto 80, vamos a comenzar con lo que tenemos que hacer
-ambos, pero necesito configurar cada regla por separado, así que ahí vamos en la interfaz
-va a ser mi puerto Ethernet 1 como ya establecimos y entonces lo que soy
-haciendo aquí es en realidad estoy diciendo al firewall que voy a permitir esto
-tráfico desde el primer puerto Ethernet que es mi conexión a Internet y esto
-es donde la acción necesita ser configurada para aceptar, así que aquí es donde digo
-Sí, sabes lo que voy a permitir esto, también puedes configurar esto para rechazar
-en ciertos casos o conoces varias configuraciones diferentes pero vamos a decir
-excepto que permitiremos esto y luego crearemos un comentario como lo hicimos antes
-Voy a llamar a este comentario de la regla del cortafuegos siguiente nube 80 desplazarse hacia arriba y
-tenga en cuenta que si deja fuera la regla NAT o deja fuera la regla del firewall
-bueno, te estás perdiendo algunas de las cadenas, así que en realidad no va a responder
-fuera de su red, por lo que debe asegurarse de que esto se haga, el siguiente paso es
-Voy a agregar 4 por 3 en las reglas del cortafuegos para que adelante ya esté seleccionado
-dirección de origen que no vamos a hacer esta vez alrededor de la dirección de destino
-vamos a establecer el protocolo 10 0 punto 0 punto 1 7 será TCP una interfaz
-va a ser éter 1
+internamente en mi red este es el servidor como mencioné 1000 para decir que
+esta regla NAT responderá en el puerto 80 y redirigirá a 10.0.0.0, así que ahora
+Voy a desplazarme hacia arriba y presionar OK y ahora veremos que tenemos un
+nueva regla llamada siguiente nube 80 y responde a la red DST y apunta a TCP
+en el puerto 80 a través de Ethernet uno, como sabemos por configurarlo 10.0.0.0 seguro
+puerto también sigue los mismos pasos que voy a cambiar la cadena al destino
+que voy a cambiar mi protocolo a TCP y luego voy a cambiar mi externo
+mi interfaz en Ethernet uno
+puerto de destino Sé que estoy un poco fuera de servicio, está bien, sabes qué
+Estoy haciendo el puerto de destino es 4 4 3 vamos a desplazarnos hasta aquí y cambiar
+nuestra acción para DST nat y nuestro para abordar el mismo servidor, solo un puerto diferente y luego
+al puerto 443 y darle un comentario aquí próxima nube 443 bien creo que he
+tengo todo lo que se ve bien, vamos a presionar OK, así que ahora tengo el puerto 80 y el puerto
+443 reglas NAT que van al puerto 10.0.0.0 net1 sobre tcp todavía no funcionará
+así que si salto aquí voy a presionar f5 para actualizar oh y está funcionando mira
+porque soy interno en la tierra interna, así que en realidad no estoy en el
+Ethernet uno no va a funcionar desde el mundo exterior todavía porque el
+mundo exterior está llegando a través de Ethernet uno obviamente soy interno estoy
+en el puerto 2, como recordarán de la semana pasada, para dar acceso a la
+fuera del mundo ahora tengo que ir a la pestaña de reglas de firewall aquí y hacer clic en
+agregue nuevo, así que aquí es donde realmente estoy diciendo que si el firewall se golpea I
+necesita activar esa regla nat, así que hagamos eso, así que hemos agregado un nuevo firewall
+regla y voy a cambiar la cadena vamos a ver no, ya está predeterminado
+hacia adelante, así que está bien la dirección IP de origen esto es algo genial
+No voy a configurar esto, pero solo quiero quiero que veas esto, esto puede
+sea ​​la dirección IP que desea permitir, recuerde que mencioné que podría configurarlo para
+que solo tu red doméstica puede hacer esto, puedes hacer eso y agregar tu
+dirección IP doméstica, incluso puede crear grupos IP que se establecerían
+aquí arriba que está aquí abajo la lista de direcciones de origen ver que estas son cosas que
+vamos a aprender a tiempo en este momento no voy a hacer eso no estoy
+voy a establecer una dirección de origen voy a abrir esto al mundo pero te quiero
+saber que eso está disponible para usted, así que moverse a lo largo del destino que dirijo está en
+De hecho, el servidor interno por lo que es el protocolo 10 0.017 ya sabemos que es
+TCP, así que haga clic en eso y TCP es, de hecho, el valor predeterminado para que solo se guarde
+nosotros un tiempo rápido pero puede ver todos los protocolos que están disponibles para nosotros a continuación
+el paso es que necesitamos configurar el puerto de servicio para que el puerto de destino sea el puerto
+80 vamos a comenzar con tenemos que hacer ambas cosas, pero necesito configurar cada regla
+por separado, así que allí vamos en la interfaz va a ser mi puerto Ethernet 1 como
+ya establecido y entonces lo que estoy haciendo aquí es decirle al
+firewall que voy a permitir este tráfico desde el primer puerto Ethernet
+cual es mi conexión a internet y esta es donde la acción necesita ser establecida
+aceptar, así que aquí es donde estoy diciendo, sí, sabes lo que voy a permitir
+esto también podría configurar esto para rechazar en ciertos casos o conoce varios
+diferentes configuraciones pero vamos a decir excepto que vamos a permitir esto y
+luego cree un comentario como lo hicimos antes de llamar a esta regla de firewall
+comente la siguiente nube 80, desplácese hacia arriba y observe que si deja el NAT
+regla o dejas fuera de la regla del cortafuegos, así te estás perdiendo algunas de las cadenas
+por lo que no va a responder realmente fuera de su red, por lo que debe
+asegúrese de que esto se haga el siguiente paso es que voy a agregar 4 por 3 en el firewall
+reglas para reenviar ya está seleccionada la dirección de origen que no vamos a hacer
+esta vez alrededor de la dirección de destino, vamos a configurar el protocolo 1000 dot 1 7
+va a ser TCP una interfaz va a ser ether 1
 y qué más en mi puerto de destino necesito que haya bah bah que
 va a ser 4 4 3 desplácese hacia abajo, asegúrese de que esté configurado para aceptar y luego configure nuestro
 el comentario va a ser la próxima nube 4 4 ​​3 ahí vamos todo parece que he
 tengo todo ahí extraño todo lo que me digas que voy a golpear bien, así que
 ahora aquí está el paso final, notan que estos dos elementos aquí son soltar
 reenviar las reglas de la ley de incendios ahora es importante tener en cuenta que mikrotik funciona en
-básicamente en orden, de arriba a abajo, así que cuando estás mirando tu firewall
-reglas si te preguntas por qué todavía no funcionan bien es porque
-antes de las reglas que acabo de configurar, ya hay una regla que dice soltar
-todo, básicamente, esto es decir oye, si has pasado todo este pasado todo
-este pasado todo esto ahora deja caer la conexión correcta porque esto es un
+básicamente en orden, de arriba a abajo, así que cuando estás mirando tu
+reglas de firewall si se pregunta por qué todavía no funcionan bien, es
+porque antes de mis reglas que acabo de configurar ya hay una regla que
+dice dejar todo así que básicamente esto es decir oye si has pasado todo esto
+pasado todo esto pasado todo esto ahora deja caer la conexión correcta porque esto es una
 cortafuegos bastante sólido, entonces nunca llega aquí, así que realmente necesito reordenar
-estos y la forma en que voy a hacer eso es que quiero que esto suceda o quiero que mi
-reglas de reenvío personalizadas para suceder justo después de la regla de entrada final, así que debería
-ser capaz de simplemente arrastrar eso hasta aquí, vamos y agarrar el último mi
-siguiente nube 4 por 3 regla arrastre eso hacia arriba y ahí vamos y ahora estamos en lo que ahora yo
-no tengo que reiniciar el enrutador. No tengo que hacer nada.
-lo veo pero nuestro servidor de discordias me lo puedes confirmar dirígete al estudio
-doc TV de categoría 5 y sin tener que reiniciar mi enrutador sin tener que
-reinicie cualquier cosa que ahora debería ver el mismo mensaje de inicio de sesión, así
-dirígete a la categoría de estudio de TV de 5 puntos, lo siento y bp9 es solo
+estos y la forma en que voy a hacer eso es que quiero que esto suceda o quiero mi costumbre
+las reglas de reenvío sucederán justo después de la regla de entrada final, por lo que debería poder
+simplemente arrastrar eso hasta aquí, vamos y agarramos el último mi próxima nube 4
+por 3 regla sonó eso y ahí vamos y ahora estamos dentro, así que ahora no tengo que
+reiniciar el enrutador No tengo que hacer nada esto es que puedo verlo pero
+nuestro servidor de discordias puede confirmar por mí diríjase a la categoría 5 del documento de estudio
+TV y sin tener que reiniciar mi enrutador sin tener que reiniciar
+cualquier cosa que ahora debería estar viendo ese mismo mensaje de inicio de sesión también, así que adelante
+a la categoría de estudio de 5 puntos de televisión lo siento y bp9 es solo
 perdóname no hombre cinco solo estás comentando que cuando agrego los comentarios
-en realidad no los estás viendo en la pantalla y eso es porque la categoría 5 es
-18/9 y la pantalla de mi computadora es 16/9, así que eso es algo que voy a
-tengo que descubrir cómo solucionarlo en el futuro, ese es mi error, pero puedes ver
-esos comentarios han sido ingresados, es un campo de comentarios, es solo un campo de texto en
-la parte inferior de su ventana mientras la agrega y eso es lo que
-Entré en la siguiente nube 18 X Nube 4 4 ​​3 Pido disculpas por no haber captado eso
-pero agradezco que lo hayas notado, así que maravilla dice que sí, veo el inicio de sesión en un BP
-9 también dice que sí funciona para mí, así que sin esas reglas no lo harían
-no respondería en absoluto pero ahora que he agregado esas reglas ahora ustedes
-son capaces de conectarme así que lo siguiente que podría hacer si quisiera es
-podría configurar esas listas de direcciones de origen y esas listas pueden contener direcciones IP
-de mi red doméstica de mi red de trabajo de mis amigos redes de mi personal
-redes y les permite seguir esas reglas pero dejar a todos
-de otra manera para que esos hackers que están en mi servidor discord no puedan entrar en mi próximo
-servidor en la nube y así sucesivamente, así que eso es esencialmente sabes que esos son
-tus pasos así que mirando vamos a retroceder un poco y entender que ok configuré
-hasta dos puertos hoy el puerto 80 y el puerto 443 esos son el puerto 80 es un HTTP inseguro
-puerto y puerto 443 es un puerto HTTP SSL encriptado seguro. Quiero ambos
-de modo que si alguien no escribe físicamente la barra diagonal de dos puntos HTTP
-slash studio dot TV de categoría cinco en su lugar llegará al puerto 80 y
-redirigir automáticamente a 443 si no tuviera el puerto 80 abierto lo harían
-nunca obtienen esa redirección, solo obtendrían un error de servidor no encontrado, por lo que respaldan
-arriba tenemos que entrar en nuestra configuración Mikrotik estoy usando web fig
-y haga clic en IP haga clic en firewall haga clic en la pestaña NAT en la parte superior y cree un nuevo
-La regla NAT que la regla NAT le dirá a dónde quiere ir con esto
-con este puerto, ¿qué quieres hacer con él?
-pero en realidad no va a abrirse, abrirlo al público, ahí es donde
-la regla del firewall viene ahora, así que haga clic en las reglas del firewall en la misma IP
+en realidad no los estás viendo en la pantalla y eso es porque la categoría cinco
+es 18 sobre nueve y la pantalla de mi computadora es dieciséis sobre nueve, así que eso es
+algo que tendré que averiguar cómo arreglarlo en el futuro, esa es mi
+error pero puedes ver que esos comentarios han sido ingresados ​​es un campo de comentarios
+es solo un campo de texto en la parte inferior de su ventana mientras agrega
+y eso es lo que ingresé en la próxima nube 18x nube 443 pido disculpas
+que no entendí eso pero agradezco que lo hayas notado
+dice sí veo el inicio de sesión un bp9 también dice que sí funciona para mí, así que sin
+esas reglas no lo harían, no responderían en absoluto, pero ahora que he
+agregó esas reglas ahora, ustedes pueden conectarse, así que lo siguiente que pude
+hacer si quisiera es que podría configurar esas listas de direcciones de origen y esas
+las listas pueden contener direcciones IP de mi red doméstica de mi red laboral de mi
+redes de amigos de las redes de mi personal y les permiten seguir a través de esos
+reglas, pero deja a todos los demás para que esos hackers que están en mi discordia
+el servidor no puede entrar en mi próximo servidor en la nube y así sucesivamente, así que eso es
+esencialmente sabes que esos son tus pasos, así que mirando vamos a retroceder un
+poco y entiendo que está bien, configuré dos puertos hoy, el puerto 80 y el puerto
+443 esos son el puerto 80 es un puerto HTTP inseguro y el puerto 443 es un SSL seguro
+puerto HTTP encriptado Quiero ambos para que si alguien no lo hace
+escriba físicamente en HTTP colon slash slash studio categoría cinco puntos TV it
+en su lugar llegará al puerto 80 y redirigirá automáticamente a 443 si yo
+no tenían el puerto 80 abierto, nunca tendrían esa redirección, solo lo harían
+obtener un error de servidor no encontrado, así que haciendo una copia de seguridad tenemos que entrar en nuestro mikrotik
+configuración estoy usando web fig y haga clic en IP haga clic en firewall haga clic
+en la pestaña NAT en la parte superior y cree una nueva regla NAT que la regla NAT le dirá
+¿Dónde quieres ir con esto con este puerto? ¿Qué quieres hacer?
+con él, pero en realidad no va a abrirse, abrirlo al público que es
+donde entra la regla de firewall ahora, así que haga clic en las reglas de firewall en esa misma IP
 firewall y necesitamos crear una nueva regla de firewall que acepte
 esa conexión y permitir esas conexiones a través y puede seguir
 afinar las direcciones IP o grupos de fuentes de IP y cosas por el estilo que hay
 muchas opciones diferentes que no podemos cubrir hoy, pero puede obtener el
 idea de que esto nos dará mucha capacidad de configuración y mucho control
-sobre no solo cómo se enruta el tráfico a través de nuestras redes sino y qué IP
-direcciones y qué redes pueden conectarse a través de nuestra red y cómo
-eso se enrutará una vez que llegue a nuestro Microtech
-[Música]
+sobre no solo cómo se enruta el tráfico a través de nuestras redes sino también quién y
+qué direcciones IP y qué redes pueden conectarse a través de nuestra red y
+cómo se enrutará una vez que llegue a nuestro Microtech

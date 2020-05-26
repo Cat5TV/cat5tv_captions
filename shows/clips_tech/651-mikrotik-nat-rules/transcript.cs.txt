@@ -27,100 +27,99 @@ a vysílače si můžete koupit levnější zařízení, které má pouze 2,4 ne
 takže tyto funkce budou omezeny pouze hardwarem, ale samotným softwarem
 je to stejné, takže to vždy začínám říkat, protože chci, abys to udělal
 pochopit, že nemusíte kupovat stejný, jaký jsem koupil, najít ten, který
-pracuje pro vás a pak můžete sledovat spolu s řadou a úžasně dokonce
-pokud máte úplně jiný model, budete moci sledovat
-obrazovky, budete moci následovat kroky a bude to přesně
-to samé je úžasné, takže se tento týden podívám
-jak nastavit přeposílání portů, budeme to nazývat mikrotik
-zavolej to NAT pravidla firewallu O tom si za chvíli promluvím
-ale víme to jako přesměrování portů nebo přesměrování a to je to, kdy
-někdo zasáhne naši veřejnou IP adresu na určitém portu, pokud je to port, který mám
-povoleno a že jsem si uvědomil, že chci přesměrovat na příslušný server
-v mém případě mám server na 10.0.0.0
+pracuje pro vás a pak můžete sledovat tuto sérii a úžasně
+i když máte úplně jiný model, budete schopni
+sledujte obrazovku, kterou budete moci následovat, a bude to
+přesně to samé, co je úžasné, takže tento týden jedu
+abychom se podívali na to, jak nastavit předávání portů, nazveme to hned teď
+mikrotik to bude nazývat pravidlami brány firewall NAT Budu mluvit trochu
+trochu o tom za chvíli, ale my to víme jako přesměrování portů nebo přesměrování a
+to je, že když někdo udeří naši veřejnou IP adresu na určitém portu, pokud
+je to port, který jsem povolil a uznávám, že chci, aby přesměroval na
+vhodný server, takže v mém případě mám server na 10.0.0.0
 je to můj osobní druh alternativy k cloudovým službám a jednotkám Google
 onedrive a všechny ty druhy služeb, které mohu dát na svůj vlastní server
 a je to moje, je to můj vlastní hostovaný systém na 10.0.0.0 'pn portech 80 a portu 443
 pokud někdo udeří na mou IP adresu nebo mám záznam DNS, protože máme kategorii 5
 Televize samozřejmě, takže mám Studio dot kategorie 5 dot TV je nasměruje
-sem a to zasáhne micro Tech a micro Tech jde
-říci dobře, co mám dělat s tímto provozem, co mám dělat, tak musím
-řekni svému microtechu, hej, to je port 443, který chci
-napsal to 10.0.0.0, protože to je pravděpodobně to, co se tento člověk snaží
-přístup, tak do toho skočíme přímo do toho jdu přejít k našemu mikrotiku a
-věci jsou tady tak sofistikované, takže prostě následujte a vy začnete
-abychom zjistili, jak to funguje, kliknul jsem na IP minulý týden, kdy jsme sem přišli
-protože jsme začali zkoumat DHCP server a statická pravidla a podobně
-to, na co se v čase rozbalíme, narazím na firewall, to jsou výchozí
-nastavení mého firewallu Microtech a chci přidat některá pravidla, která jdou
-přesměrovat provoz v mé síti nyní jsme typický router brány firewall pro zákazníky
-řekne, hej, vezmu port 80 a přesměruji si to
-mikrotik mi umožňuje mít mnohem větší kontrolu nad tím, takže budu
-Nejprve nastavíte pravidla NAT, tj. překlad síťových adres
-pravidla se rozhodnou dobře, pokud někdo zasáhne tento port, kde chci
-poslat to do země v pořádku, kam jim dovolím přístup, ale pak
-stále to nebude fungovat na rozdíl od spotřebitelského routeru, který jen řekne
-Dobře, já prostě v podstatě D DMZ, že server a umožnit komukoli projít
-a dovolte jim proniknout a cokoli chtějí, jakmile řeknete, jděte
-mikrotik řekne, že v pořádku ne, povolím provoz
-nicméně se na ně vztahují některá pravidla, která však můžete mít i jiná
-přidali jste do svého mikrotikového zařízení řekněme, že povolím pouze
-konkrétní IP adresa pro přístup k tomu, aby to mohla být moje domovská IP adresa nebo moje IP adresa
-v kanceláři je možné, že jsem vytvořil pravidlo, které říká, že nikdy necestuji, vždycky jsem uvnitř
-Kanada jsem ve skutečnosti vždy v Ontariu, takže pokud se někdo pokusí získat přístup k mému
-servery z vnější strany Ontario je blokují, ale otevřou je pro mě, pokud jsem uvnitř
-Ontario, jako by existovaly všechny druhy, jako je hierarchický způsob
-při pohledu na tato pravidla routeru reto přesměrovat
-provoz na určitých serverech ve vaší síti si můžete představit, že je to užitečné
-pro domov, protože vám dává větší bezpečnost, ale je to také výjimečné
-ať už vlastníte nebo provozujete IT oddělení v malém středním formátu
-podnikání nebo dokonce velký podnik mikrotik vám to dá tolik
-větší kontrolu nad těmito druhy pravidel, tak začněme s naší nat pravidlo a
-opět NAT je krátký termín, který používáme pro síťovou adresu
-překlad a v podstatě řekne našemu síťovému provozu, kam má tok vycházet, na základě
-pravidla, která jsem stanovil, ale stále jim nebude dovoleno, že jdu
-abych vám to ukázal za pár okamžiků, takže vím, že to udělám
-potřebuji port 80 a port 443, abych směroval svůj provoz na další cloud a já bych měl
-začněte tím, že vám ukážu, že hej, pokud ve skutečnosti půjdu do studiové kategorie pět TV
-bude to prostě viset, bude to vypršet časový limit, nebude to nikam, protože já
-ještě nestanovila tato pravidla, takže to je spin spin spin spin spin, ale odejdu
-které se otvírají, takže moje rodné pravidlo nejprve ze všeho, co jsem vytvořil
-nové pravidlo NAT, takže IP firewall NAT nové pravidlo a nyní změním řetěz
-zde chci říci, že se jedná o cílovou mapu, protože jsem v nastavení
-v rámci mé vnitřní sítě musím také nastavit protokol
-protože chci specifikovat, že se jedná o TCP a vidíte to
-jsou tuny protokolů, ze kterých si můžete vybrat, právě nastavuji protokol TCP
-port 80 a poté port 443, abychom si také mohli všimnout, že používám web
-obr ve svém webovém prohlížeči jsem nenastavil nebo a také nejsem
-pomocí větru, a to částečně proto, že vám to chci ukázat
-v prohlížeči, abyste viděli, že nemusíte mít nainstalován nástroj
-být schopen spravovat váš mikrotik router Myslím, že existuje mylná představa
-jakmile řeknu, nainstalujte větrný box a použijte jej k připojení k vaší rétorice
-vytváří mylnou představu, díky které máte pocit, že to musí být
-být spravován z nástroje ne, ale to je užitečný nástroj, který vám může poskytnout
-přístup k routeru a poskytuje některé výjimečné další
-služby, jako je můj multitasking, tak to zkuste, ale udělám většinu z toho
-prostřednictvím prohlížeče, protože si myslím, že je to lepší způsob, jak vám ukázat, jak
-jen se učíte své Microtech, takže jsem ji nastavil na místo určení, které jsem stanovil
-to na TCP jako protokol, který je číslo šest a já musím nastavit můj
-cílový port a tento cílový port je port v externí síti
-takže se nemusíte zaměňovat s tím, co někdy dělám, protože někdy
-můžete mít situaci, kdy se váš veřejný přístav liší od portu
-soukromý port v tomto případě, když nastavujeme naše pravidlo NAT, které nastavujeme
-externí port, takže v mém případě to bude odpovídat internímu portu
-ale mějte na paměti, že to řekněme, že na to chceme odpovědět
-port 8080 můžete přidat, že tam, i když server v domě reaguje
-na portu 80, tak mějte na paměti, že by to mohlo být jiné, ale v mém případě to je
-ve skutečnosti se neliší v pořádku, musím se podívat na své rozhraní, takže je tu
-rozhraní musím říct, že to bude Ethernet jeden v mém případě to může být
-trochu jiné pro vás jen mějte na paměti, že to, co vlastně dělám
-při výběru internetového rozhraní si pamatuji při prvním nastavení
-tento router v naší první epizodě této série jsem prokázal, že jsem
-připojením mého internetového modemu do portu Ethernet 1, a tak jsem
-zadáním zde chci, aby to reagovalo na mém internetovém rozhraní a jak jen můžete
-Představte si, že můžete kopat hluboko a můžete to nastavit, abyste věděli, že byste mohli dělat
-věci velmi sofistikované zadáním různých portů, které nastavují všechny VLAN
-s takovými věcmi udržujeme věci poměrně jednoduché a jen to jde
-tak v pořádku jdu posouvat Wade
+sem a to pak zasáhne microtech a microtech to jde
+říct ok, co mám dělat s tímto provozem, co mám dělat, tak musím říct své
+micro hej, to je port 443 Chci to napsat na 10.0.0.0, protože to je
+pravděpodobně to, co se tato osoba snaží získat přístup, tak pojďme do toho skočit přímo já
+pojedeme k našemu mikrotiku a věci jsou tady tak sofistikované
+jen sledujte a začnete se zabývat tím, jak věci fungují
+klikli jsme na IP minulý týden jsme sem přišli, protože jsme se začali dívat na DHCP
+serverová a statická pravidla a podobné věci, na které se časem rozbalíme
+zasáhnu firewall Toto jsou výchozí nastavení mého mikrotikového firewallu i
+chci přidat některá pravidla, která nyní přesměrovávají přenos v mé síti
+Jsme typický spotřebitelský router firewall, který řekne, hej, vezmu port 80
+a já to přesměruji, pamatuji si, že mi mikrotik dovoluje mít mnohem víc
+kontrolu nad tím, tak budu nejprve nastavovat pravidla NAT, která jsou
+překlad síťových adres, takže tato pravidla se rozhodnou dobře, pokud
+někdo zasáhne tento port, kam ho chci poslat do země v pořádku, kde jsem
+Budu jim umožňovat přístup, ale pak to ještě nebude fungovat na rozdíl od
+spotřebitelský router, který jen řekne, že budu v podstatě D DMZ
+tento server a umožnit komukoli projít a umožnit jim proniknout dovnitř a
+cokoli chtějí udělat, jakmile řeknete, mikrotik to řekne
+v pořádku ne, povolím provoz, ale podléhají určitým pravidlům
+možná máte některá další pravidla, která jste do svého mikrotikového zařízení přidali
+že říkám, že k tomu budu mít přístup pouze konkrétní IP adrese
+to může být moje domovská IP adresa nebo moje kancelář. Pravděpodobně jsem nastavil pravidlo
+to říká, že nikdy necestuji, že jsem vždy v Kanadě, vždy jsem ve skutečnosti v Ontariu
+pokud se někdo pokusí o přístup k mým serverům mimo blok Ontario
+je, ale otevřete mi to, pokud jsem v Ontariu, jako by tam byly všechny druhy
+jako je to hierarchický způsob pohledu
+u těchto pravidel směrovače reto přesměrovat provoz na určité servery ve vašem
+síť si můžete představit, že je to užitečné pro domov, protože vám to dává víc
+zabezpečení, ale je to také výjimečné pro podnikání, ať už vlastníte nebo provozujete IT
+oddělení malého středního podniku nebo dokonce velkého podniku
+mikrotik vám dá mnohem větší kontrolu nad těmito druhy pravidel
+tak začněme s naším pravidlem nat a znovu NAT je krátký termín, který my
+používejte stojany pro překlad síťových adres a v zásadě to říká našemu
+síťový provoz, kam má proudit na základě pravidel, která jsem nastavil, ale jsou
+stále nebudu mít dovoleno, ukážu ti to za pár
+momenty čas, takže vím, že budu potřebovat port 80 a port 443, abych mohl směrovat můj
+provoz na další cloud a já bych měl začít tím, že vám ukážu, že hej, jestli
+vlastně jděte do studio dot-kategorie-pět dot TV, prostě to bude viset, bude to
+timeout to nikam nepůjde, protože jsem ještě tato pravidla nenastavil
+takže točení se točí točení se točí točení, ale nechám to otevřené
+takže moje pravidlo nat v první řadě jsem vytvořil nové pravidlo nat, takže IP firewall nat nové
+vládnu a teď tu změním řetěz, chci říct, že to je
+cílovou mapu, protože nastavuji cíl v rámci své interní
+síť musím také nastavit protokol, protože chci specifikovat, že to je
+ve skutečnosti TCP a můžete vidět, že existuje spousta protokolů, které můžete
+vyberte si z nastavení protokolu TCP na portu 80 a poté na portu 443, aby nás dostali
+si také všiml, že ve svém webovém prohlížeči používám webovou fígu
+Nemám nastaven nebo a já také nepoužívám větrný box a to je částečně proto
+Chci vám to ukázat prostřednictvím prohlížeče, abyste viděli, že jste
+Nemusíte mít nainstalovaný nástroj, aby bylo možné spravovat váš mikrotik
+router Myslím, že existuje mylná představa, jakmile řeknu nainstalovat větrný box a
+pomocí tohoto spojení s vaší rétorikou vytvoří mylnou představu
+to vám dává pocit, že to musí být spravováno z nástroje ne, ale to je
+užitečný nástroj, který vám umožní přístup ke směrovači a funguje
+poskytovat některé výjimečné doplňkové služby, jako je můj multitasking, tak to dejte
+zkuste to, ale udělám to většinu z prohlížeče, protože si to myslím
+to je lepší způsob, jak vám ukázat, jak se právě učíte Microtech
+Nastavil jsem to na místo určení, které jsem nastavil na TCP jako protokol, který je
+číslo šest a musím nastavit svůj cílový port a tento cíl
+port je port v externí síti, takže se nemusíte zaměňovat s tím, co jsem
+inklinují někdy dělat, protože někdy můžete mít situaci, kdy vaše
+veřejný port je v tomto případě jiný než soukromý port
+Když nastavujeme pravidlo NAT, nastavujeme zde externí port, takže v mém případě
+bude to odpovídat internímu portu, ale mějte na paměti, že to
+řekněme, že chceme, aby odpověděla na port 8080, který tam můžete přidat
+i když server v domě reaguje na port 80, tak mějte na paměti, že
+může být jiný, ale v mém případě to ve skutečnosti není úplně v pořádku, co musím
+podívejte se na moje rozhraní, takže je tu rozhraní, které musím říct, že to bude
+být Ethernet jeden v mém případě to může být trochu jiné pro vás jen udržet
+s ohledem na to, co tam vlastně dělám, když volím svůj internet
+rozhraní si pamatuji, když jsem poprvé nastavil tento router v naší první epizodě tohoto
+série jsem demonstroval, že jsem připojoval svůj internetový modem do Ethernetu
+jeden port jeden, a to je to, co zde specifikuji, chci, aby to reagovalo
+na mém internetovém rozhraní a jak si dokážete představit, můžete kopat hluboko a můžete nastavit
+to až na víte, že byste mohli dělat věci velmi sofistikované zadáním
+různé porty, které nastavují VLAN všechny druhy věcí, které uchováváme
+docela jednoduché a prostě to jde tak dobře, budu posouvat Wade
 zde - akce a jen se ujistěte, že je nastaven na čistý cíl DN DST
 net, takže bude tento provoz směrován na náš server, takže nyní přejděte dolů
 Tady je několik způsobů, jak najít dva porty, to jsou moje dva porty
@@ -128,115 +127,113 @@ ve skutečnosti to bude stejné upozornění, které mi dává rozsah, který pr
 pro specifikování portu 80 a úplně dole je zde příležitost
 vytvoříte komentář, který udělám, že konečně řeknu další cloud 80
 poslední věcí, kterou sem musím přidat, je cílová IP adresa
-interně v mé síti je to server, jak jsem zmínil 1000, že to
-Pravidlo NAT bude reagovat na portu 80 a přesměrovat na 1000
-dobře, takže teď pojedu celou cestu nahoru a stiskem OK a teď to uvidíme
-máme nové pravidlo nazvané next cloud 80 a reaguje na síť DST a je to
-nasměrování TCP na port 80 přes Ethernet - jak víme od jeho nastavení
-10.0.0.0 požadují, aby zabezpečený port také postupoval podle stejných kroků, kterými se chystám
-změňte řetězec na místo určení, že změním svůj protokol na TCP a poté
-Změním své externí rozhraní na ethernetové místo určení
-port Vím, že jsem trochu mimo provoz, to je v pořádku, víš, co jsem
-cílový port je 4 4 ​​3 pojďme se posunout dolů sem a změnit náš
-akce na DST net a naše na adresu stejného serveru jen jiný port a pak
-na port 443 a dejte mu komentář zde další cloud 443 v pořádku Myslím, že mám
-všechno tam vypadá dobře Pojďme OK, takže teď mám port 80 a port 443 nat
-pravidla jdou na 10 bodů 0 bodů 0 bodů
-z portu Ethernet 1 přes TCP to stále nebude fungovat, takže pokud přeskočím
-tady zasáhnu f5, abych se osvěžil, a to je funkční, protože jsem
-vnitřní na vnitřní zemi, takže nejsem ve skutečnosti na ethernetu, není to
-bude pracovat z vnějšího světa, protože vnější svět se blíží
-přes Ethernet 1 jsem samozřejmě interní, jsem na portu 2 jako vy
-pamatujte si z minulého týdne, abych nyní umožnil přístup do vnějšího světa
-je třeba přejít na kartu pravidel brány firewall a kliknout na přidat nové, tak to je
-kde vlastně říkám ok, pokud dojde k zásahu brány firewall, musím to spustit
-pravidlo nat, udělejme to, proto jsme přidali nové pravidlo brány firewall a já se změním
-řetěz neuvidíme, že je již výchozí předávání, takže je to v pořádku
-zdrojová IP adresa je to v pohodě, nebudu to nastavovat, ale já jen
-chci, abys viděl toto může být IP adresa, kterou chceš povolit
-člen, o kterém jsem se zmínil, můžete nastavit tak, aby byla povolena pouze vaše domácí síť
-za tímto účelem můžete přidat svou domovskou IP adresu, kterou můžete dokonce vytvořit
-Skupiny IP, které by byly vytvořeny zde, to je tady zdrojová adresa
-seznam vidět, že to jsou věci, které se budeme učit včas
-teď nebudu dělat, že nebudu nastavovat zdrojovou adresu, na kterou půjdu
-otevřete to světu, ale chci, abyste věděli, že to máte k dispozici
-pohyb po cílové adrese je ve skutečnosti interní server, takže je to 10
-Protokol 0,017 již víme, že je to TCP, takže na něj klikněte a ve skutečnosti je to TCP
-výchozí, aby nás jen druh rychle ušetřil, ale můžete vidět všechny
-Protokoly, které máme k dispozici v dalším kroku, musíme nastavit servisní port
-takže cílovým portem bude port 80, kterým začneme, musíme udělat
-obojí, ale musím nastavit každé pravidlo zvlášť, takže tam jdeme do rozhraní
-bude můj ethernetový port 1, jak jsme již vytvořili, a tak co jsem
-tady dělám, že vlastně říkám firewallu, že to dovolím
-přenos z prvního ethernetového portu, který je mým internetovým připojením a to
-je ten, kde musí být akce přijata, takže tady říkám
-jo, víš, co to dovolím, můžeš to také nechat odmítnout
-v určitých případech nebo znáte různá různá nastavení, ale řekneme to
-kromě toho to dovolíme a pak vytvoříme komentář stejně jako předtím
-Zavolám tento komentář k pravidlu brány firewall příští cloud 80 posouvejte cestu nahoru a nahoru
-Všimněte si, že pokud opustíte pravidlo NAT nebo opustíte pravidlo brány firewall
-dobře vám chybí některé řetězce, takže to vlastně nebude reagovat
-mimo vaši síť, takže se musíte ujistit, že je to provedeno dalším krokem
-V pravidlech brány firewall přidám 4 za 3, takže vpřed je již vybrána
-zdrojovou adresu tentokrát nebudeme dělat kolem cílové adresy
-nastavíme na 10 0 dot 0 dot 1 7 protokol bude TCP rozhraní
-bude ether 1
+interně v mé síti je to server, jak jsem zmínil 1000, abych to řekl
+toto pravidlo NAT bude reagovat na portu 80 a přesměrovat na 10.0.0.0, takže nyní
+Jdu posunout celou cestu nahoru a stisknout OK a teď uvidíme, že máme
+nové pravidlo nazvané next cloud 80 a reaguje na síť DST a ukazuje TCP
+na portu 80 přes Ethernet jeden - jak víme od jeho nastavení až do 10.0.0.0 zabezpečené
+port a postupujte podle stejných kroků, které chystám změnit řetězec na místo určení
+že změním svůj protokol na TCP a potom změním svůj externí
+moje rozhraní rozhraní Ethernet
+cílový port Vím, že jsem trochu mimo provoz, to je v pořádku, víš co
+Dělám cílový port je 4 4 ​​3 Pojďme se posouvat dolů dolů a změnit
+naše akce na DST nat a naše na adresu stejný server jen jiný port a pak
+na port 443 a dejte mu komentář zde další cloud 443 dobře, myslím, že jsem
+mám všechno tam vypadá dobře Pojďme OK, takže teď mám port 80 a port
+443 pravidel NAT směřujících na 10.0.0.0 port net1 přes tcp stále to nebude fungovat
+takže pokud sem skočím, zasáhnu f5, abych se osvěžil a funguje to
+to proto, že jsem vnitřní na vnitřní zemi, takže nejsem vlastně na
+ethernet jeden to nebude fungovat z vnějšího světa dosud, protože
+vnější svět přichází přes ethernet, jsem samozřejmě vnitřní
+na portu 2, jak si budete pamatovat od minulého týdne, abyste mohli zpřístupnit internet
+mimo svět teď musím přejít na kartu pravidel brány firewall zde a kliknout na
+přidat nové, takže tady říkám, že pokud firewall zasáhne I
+je třeba spustit toto pravidlo nat, takže to udělejme, takže jsme přidali nový firewall
+pravidlo a změním řetěz, uvidíme, že už to není výchozí
+dopředu, takže je to skvělá zdrojová IP adresa, což je v pohodě
+Nebudu to nastavovat, ale chci jen, abys viděl tohle
+být IP adresa, kterou chcete povolit zapamatovat jsem se zmínil, že byste mohli nastavit tak
+že to může udělat pouze vaše domácí síť, kterou můžete přidat
+domovskou IP adresu můžete dokonce vytvořit skupiny IP, které by byly nastaveny
+tady dole, to je dole zde seznam zdrojových adres, takže to jsou věci, které
+teď se teď učíme včas, nebudu dělat to, že nejsem
+nastavím zdrojovou adresu, kterou budu otevírat světu, ale chci tě
+abyste věděli, že je to pro vás k dispozici, takže se pohybujete po cílové adrese, na které se nachází
+ve skutečnosti interní server, takže to je protokol 10 0,017, který už víme, že je
+TCP, takže klikněte na to, a to je ve skutečnosti výchozí TCP, takže prostě druh uložení
+rychle nás najdete, ale další protokoly, které máme k dispozici, si můžete prohlédnout příště
+krok je, že musíme nastavit servisní port, takže cílový port bude port
+Začneme tím, že musíme udělat obojí, ale musím nastavit každé pravidlo
+samostatně, takže tam jdeme v rozhraní bude můj Ethernet 1 port jako my
+již zavedené, a tak, co tady dělám, je, že to vlastně říkám
+firewall, který budu povolit tento provoz z prvního ethernetového portu
+což je moje připojení k internetu a to je ta, kde je třeba provést akci
+přijmout, takže tady říkám ano, víš, co dovolím
+toto můžete také v určitých případech nastavit, aby bylo odmítnuto, nebo znáte různé
+různá nastavení, ale řekneme, kromě toho, že to dovolíme a
+pak vytvořte komentář stejně jako předtím, než zavolám toto pravidlo brány firewall
+komentovat další cloud 80 posunout cestu nahoru a všimněte si, že pokud opustíte NAT
+pravidlo nebo vynecháte pravidlo brány firewall, chybí vám některé řetězce
+takže nebude skutečně reagovat mimo vaši síť, takže musíte
+ujistěte se, že je to provedeno dalším krokem je přidání 4 ke 3 v bráně firewall
+pravidel, takže vpřed je již vybrána zdrojová adresa, kterou nebudeme dělat
+tentokrát kolem cílové adresy nastavíme protokol na 1 000 bodů 1 7
+bude TCP a rozhraní bude ether 1
 a co dalšího v mém cílovém přístavu potřebuji, aby to také bylo, bah bah
 bude 4 4 ​​3 přejděte dolů a ujistěte se, že je nastavena na přijetí, a poté nastavte naši
 komentář bude další cloud 4 4 3 tam jdeme všechno vypadá jako já
 mám tam všechno, co mi chybí, lidi, co mi říkáš, že to dopadnu dobře
 Teď je tu poslední krok, který si všimnete, že tyto dvě položky jsou přetažené
 vpřed pravidla v požárním zákoně je nyní důležité si uvědomit, že mikrotik pracuje
-v zásadě v pořadí tak shora dolů, takže když se díváte na svůj firewall
-pravidla, pokud přemýšlíte, proč to stále nefunguje dobře, protože
-před mými pravidly, která jsem právě nakonfiguroval, už existuje pravidlo, které říká, že je pokles
-všechno tak v podstatě to říká hej, pokud jsi prošel celou minulost
-toto minulé všechno to nyní zruší spojení správně, protože to je
+v zásadě v pořadí tak shora dolů, takže když se díváte na své
+pravidla brány firewall, pokud vás zajímá, proč stále nefungují dobře
+protože před mými pravidly, která jsem právě nakonfiguroval, už existuje pravidlo, které
+říká, že upustí všechno, takže v podstatě to říká hej, pokud jsi to všechno prošel
+minulost celé tohle všechno tohle nyní zruší spojení správně, protože to je
 docela solidní firewall dobře, pak se sem nikdy nedostane, takže ve skutečnosti potřebuji změnit pořadí
-tohle a způsob, jakým to udělám, je, že chci, aby se to stalo, nebo chci své
-vlastní pravidla pro přesměrování, která se stanou hned po konečném vstupním pravidle, takže bych měla
-být schopen to jednoduše přetáhnout sem, jdeme a vezmeme toho posledního
-další cloud 4 pro 3 pravidlo to přetáhněte nahoru a tam jdeme a teď jsme v tom teď já
-nemusím restartovat router Nemusím dělat nic, co jsem schopen
-podívejte se na to, ale náš nesouhlasný server mi můžete potvrdit, že půjdu do studia
-doc kategorie 5 TV a bez nutnosti restartování routeru bez nutnosti
-restartujte vše, co byste nyní měli vidět, že stejné přihlašovací výzva také
-zamíříme do studia kategorie 5 dot TV Je mi líto a bp9 je jen
+tohle a způsob, jakým to udělám, je, že chci, aby se to stalo, nebo chci svůj zvyk
+pravidla předávání se stanou hned po konečném vstupním pravidle, takže bych měl být schopen
+Abych to jednoduše přetáhl sem, jdeme a vezmeme ten poslední, můj další cloud 4
+za 3 pravidlo zazvonil, že tam a tam jdeme a teď jsme v tak teď nemusím
+restart routeru Nemusím dělat nic, co jsem schopen vidět, ale
+náš diskordovací server, můžete mi potvrdit, že jdu na studio doc kategorie 5
+TV a bez nutnosti restartování routeru bez nutnosti restartování
+vše, co byste nyní měli vidět, že stejné přihlašovací výzva také, tak hlavu
+Je mi líto a studio bp9 je prostě
 promiňte mi žádný muž pět, jen to komentujete, když přidám komentáře
-ve skutečnosti je nevidíte na obrazovce a to proto, že kategorie 5 je
-18/9 a obrazovka mého počítače je 16/9, takže to je něco, co budu
-musím přijít na to, jak to v budoucnu opravit, to je moje chyba, ale vidíš
-tyto komentáře byly zadány, je to pole komentářů, je to jen textové pole
-spodní část okna, zatímco ji přidáváte, a to je to, co
-Vstoupil jsem do dalšího cloudu 18 X Cloud 4 4 3 Omlouvám se, že jsem to nezachytil
-ale oceňuji, že si toho všimnete, takže mo maravilla říká, že jo vidím přihlášení BP
-9 také říká, že jo, pracuje pro mě také, takže bez těchto pravidel by to ne
-nebude reagovat vůbec, ale teď, když jsem nyní přidal tato pravidla, už jste všichni
-jsou schopni se spojit, takže další věc, kterou bych mohl udělat, kdybych chtěl, je já
-mohl tyto seznamy zdrojových adres nastavit a tyto seznamy mohou obsahovat adresy IP
-mé domácí sítě pracovní sítě mých přátel sítí mých zaměstnanců
-sítě a umožnit jim, aby se těmito pravidly řídili, ale všechny upustili
-jinak, aby se hackeři, kteří jsou na mém discord serveru, nemohli dostat do mého dalšího
-cloud server a tak dále a tak dále, takže v podstatě víte, že jsou
-vaše kroky, takže vypadáme, pojďme se trochu vrátit a pochopit, že jsem v pořádku
-nahoru dva porty dnes port 80 a port 443 to je port 80 je nezabezpečený HTTP
-port a port 443 je bezpečný HTTP šifrovaný port HTTP, který chci oba
-takže pokud někdo ve skutečnosti fyzicky nenapíše lomítko HTTP dvojtečky
-slash studio dot kategorie pět TV, místo toho zasáhne port 80 a
-automaticky přesměrovat na 443, pokud bych neměl port 80 otevřený, že by
-nikdy dostat, že přesměrování by jen dostat server nebyl nalezen chyba, takže podpora
-nahoru musíme jít do naší mikrotikové konfigurace, používám web obr
-a klikněte na IP klikněte na firewall klikněte na záložku NAT nahoře a vytvořte nový
-Pravidlo NAT, že pravidlo NAT mu řekne, kam s tím chcete jít
-s tímto portem, co s ním chcete dělat
-ale ve skutečnosti se to neotevře otevřít veřejnosti, kde je
-pravidlo brány firewall nyní přichází, takže klikněte na pravidla brány firewall na stejné IP
+ve skutečnosti je nevidíte na obrazovce, a to proto, že kategorie pět
+je 18 přes devět a obrazovka mého počítače je šestnáct přes devět, takže to je ono
+něco, co budu muset přijít na to, jak to v budoucnu opravit, to je moje
+omyl, ale můžete vidět, že tyto komentáře byly zadány, jedná se o pole pro komentáře
+je to jen textové pole v dolní části okna, zatímco přidáváte
+to je to, co jsem vstoupil do dalšího cloudu 18x cloud 443 omlouvám se
+že jsem to nezachytil, ale oceňuji, že jste si to všimli tak mo maravilla
+říká, že jo, vidím přihlášení a bp9 také říká, že jo pro mě také funguje, takže bez
+na tato pravidla by neodpověděli vůbec, ale teď, když jsem
+dodal tato pravidla, teď se můžete připojit, takže další věc, kterou bych mohl
+pokud bych chtěl, je, že bych mohl nastavit ty seznamy zdrojových adres a ty
+seznamy mohou obsahovat IP adresy mé domácí sítě mé pracovní sítě
+přátelských sítí mých zaměstnanců a umožnit jim je sledovat
+pravidla, ale zrušte všechny ostatní, takže hackeři, kteří jsou na mém sporu
+server se nemůže dostat do mého dalšího cloudového serveru a tak dále a tak dále
+v podstatě víte, že to jsou vaše kroky, takže se podívejme zpět
+trochu a pochopit, že v pořádku jsem dnes nastavil dva porty port 80 a port
+443 jsou port 80 je nezabezpečený port HTTP a port 443 je zabezpečený SSL
+šifrovaný port HTTP, chci je oba, aby to, pokud někdo ve skutečnosti není
+fyzicky zadejte do HTTP lomítka lomítko lomítko studio kategorie pět dot TV to
+místo toho zasáhne port 80 a automaticky přesměruje na 443, pokud
+Neměli otevřený port 80, nikdy by nedostali takové přesměrování, jaké by právě měli
+získat server nebyl nalezen chyba, takže při zálohování musíme jít do našeho mikrotiku
+konfiguraci používám web obr a klikněte na IP klikněte na firewall klikněte na
+na kartě NAT nahoře a vytvořte nové pravidlo NAT, které pravidlo NAT řekne
+tam, kam chceš jít s tímto portem, co chceš dělat
+s tím, ale ve skutečnosti se to neotevře otevřít veřejnosti, to je
+kde nyní přichází pravidlo brány firewall, klikněte na pravidla brány firewall na stejné IP adrese
 firewall a musíme vytvořit nové pravidlo brány firewall, které bude akceptováno
 že připojení a povolit tato připojení prostřednictvím a můžete dále
 hone in na IP adresy nebo IP zdrojové skupiny a podobné věci tam jsou tak
 mnoho různých možností, které dnes nejsme schopni pokrýt, ale můžete získat
 myšlenka, že nám to dá spoustu konfigurovatelnosti a spoustu kontroly
-nejen o tom, jak je směrován provoz prostřednictvím našich sítí, ale i o jakou IP
-adresy a jaké sítě se mohou prostřednictvím naší sítě připojit a jak
-to bude směrováno, jakmile to zasáhne naši Microtech
-[Hudba]
+nejen o tom, jak je směrován provoz přes naše sítě, ale kdo a
+jaké adresy IP a jaké sítě se mohou prostřednictvím naší sítě připojit a
+jak to bude směrováno, jakmile to zasáhne naši Microtech

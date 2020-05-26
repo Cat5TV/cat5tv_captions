@@ -27,100 +27,99 @@ et les émetteurs, vous pouvez acheter un appareil moins cher qui n'a que 2,4 ou
 donc ces fonctionnalités ne seront limitées que par le matériel mais par le logiciel lui-même
 est le même donc II commence toujours par dire que parce que je veux que vous
 comprenez que vous ne devez pas acheter le même que je vous ai acheté trouver celui qui
-fonctionne pour vous, puis vous pouvez suivre la série et étonnamment même
-si vous avez un modèle différent, vous allez pouvoir suivre la
-écran tu vas être en mesure de suivre les étapes et ça va être exactement
-la même chose qui est incroyable donc cette semaine, je vais regarder
-comment configurer la redirection de port, nous allons l'appeler maintenant mikrotik va
-appeler les règles de pare-feu NAT, je vais en parler un peu dans un instant
-mais nous le connaissons comme la redirection de port ou la redirection et c'est que lorsque
-quelqu'un frappe notre adresse IP publique à un certain port si c'est un port que j'ai
-autorisé et que je reconnais que je veux qu'il redirige vers le serveur approprié afin
-dans mon cas, j'ai un serveur à 10.0.0.0
+fonctionne pour vous et vous pouvez suivre cette série et étonnamment
+même si vous avez un modèle différent, vous allez pouvoir
+suivez l'écran que vous allez pouvoir suivre les étapes et ça va être
+exactement la même chose qui est incroyable donc cette semaine, je vais
+pour voir comment configurer la redirection de port, nous allons l'appeler maintenant
+mikrotik va l'appeler règles de pare-feu NAT, je vais parler un peu
+peu à ce sujet dans un instant, mais nous le savons comme la redirection de port ou la redirection et
+c'est que lorsque quelqu'un frappe notre adresse IP publique à un certain port si
+c'est un port que j'ai autorisé et que je reconnais que je veux le rediriger vers le
+serveur approprié donc dans mon cas, j'ai un serveur à 10.0.0.0
 il est mon propre genre d'alternative personnelle aux services cloud de Google et conduire et
 onedrive et tous ces types de services que je peux les mettre sur mon propre serveur
 et c'est le mien, c'est mon propre système hébergé à 10.0.0.0 'ports pn 80 et port 443 donc
 si quelqu'un frappe mon adresse IP ou si j'ai un enregistrement DNS parce que nous avons la catégorie 5
 TV bien sûr, donc j'ai Studio dot catégorie 5 dot TV va les acheminer
-ici et ça va ensuite frapper le micro Tech et le micro Tech va
-dire bien que dois-je faire avec ce trafic que vais-je faire donc je dois
-dire à mon micro tech hey c'est le port 443 je veux
-a écrit cela à 10.0.0.0 parce que c'est probablement ce que cette personne essaie de
-accès alors sautons à droite dans ce que je vais sauter sur notre mikrotik et
-les choses sont si sophistiquées ici, alors suivez et vous allez commencer
-pour savoir comment les choses fonctionnent, j'ai cliqué sur IP la semaine dernière, nous sommes venus ici
-parce que nous avons commencé à regarder le serveur DHCP et les règles statiques et des choses comme
-ce que nous allons développer dans le temps, je vais frapper le pare-feu ce sont les valeurs par défaut
-paramètres de mon pare-feu Microtech et je veux ajouter des règles qui vont
-réacheminer le trafic au sein de mon réseau maintenant, nous sommes un routeur de pare-feu grand public typique
-va dire bon je vais prendre le port 80 et je vais le réacheminer me souviens de la
-mikrotik me permet d'avoir beaucoup plus de contrôle sur cela, donc je vais être
-la mise en place des règles NAT d'abord qui est la traduction d'adresse réseau afin que ceux
-les règles vont décider d'accord si quelqu'un frappe ce port où dois-je
-de l'envoyer dans le pays bien où vais-je leur permettre d'accéder, mais
-ça ne va toujours pas fonctionner contrairement à un routeur grand public qui va juste dire
-ok je vais juste essentiellement D DMZ ce serveur et permettre à quiconque de passer à travers
-et leur permettre de pirater et tout ce qu'ils veulent faire dès que vous dites aller
-le mikrotik va dire que d'accord non, je vais autoriser le trafic à travers
-mais ils sont soumis à certaines règles, vous pouvez avoir d'autres règles
-vous avez ajouté à votre appareil mikrotik disons que je ne vais autoriser un
-adresse IP particulière pour accéder à ce qui pourrait être mon adresse IP à la maison ou mon
-bureau, il se peut que j'ai mis en place une règle qui dit que je ne voyage jamais, je suis toujours
-Canada, je suis toujours en fait en Ontario, donc si quelqu'un essaie jamais d'accéder à mon
-les serveurs de l'extérieur de l'Ontario les bloquent mais l'ouvrent pour moi si je suis
-Ontario donc comme il y a toutes sortes de comme c'est une sorte de façon hiérarchique de
-en regardant ces règles de reto de routeur pour rediriger
-le trafic vers certains serveurs de votre réseau, vous pouvez imaginer que c'est utile
-pour la maison parce que ça vous donne plus de sécurité mais c'est aussi exceptionnel pour
-affaires, que vous possédiez ou dirigiez un service informatique dans une petite et moyenne entreprise
-entreprise ou même une grande entreprise mikrotik va vous donner tellement
-plus de contrôle sur ce genre de règles alors commençons par notre règle nat et
-encore une fois NAT est un terme de forme courte que nous utilisons un signifie adresse réseau
-traduction et il dit essentiellement à notre trafic réseau où s'écouler en fonction de
-les règles que j'ai mises en place, mais elles ne seront toujours pas autorisées, je vais
-pour vous montrer que dans quelques instants, je sais que je vais
-besoin du port 80 et du port 443 pour acheminer mon trafic pour le prochain cloud et je devrais
-commencez par vous montrer que si je vais en fait à la télévision de catégorie cinq studio
-ça va juste accrocher ça va timeout ça ne va aller nulle part parce que je
-n'ont pas encore mis en place ces règles donc c'est spin spin spin spin spin mais je vais laisser
-qui ouvre donc ma règle nat tout d'abord, j'ai créé
-une nouvelle règle NAT donc pare-feu IP NAT nouvelle règle et maintenant je vais changer la chaîne
-ici, je veux dire que c'est la carte de destination parce que je mets
-la destination dans mon réseau interne, je dois également définir le protocole
-parce que je veux préciser que c'est en fait TCP et vous pouvez voir qu'il y a
-sont des tonnes de protocoles que vous pouvez choisir Je configure juste TCP sur
-le port 80 puis le port 443 pour nous aider à commencer à remarquer aussi que j'utilise le web
-figue dans mon navigateur web, je n'ai pas mis en place ou et je ne suis pas non plus
-en utilisant une boîte à vent et c'est en partie parce que je veux vous le montrer
-le navigateur afin que vous puissiez voir que vous n'avez pas besoin d'avoir un outil installé pour
-être en mesure d'administrer votre routeur mikrotik Je pense qu'il y a une idée fausse
-dès que je dis installer une boîte à vent et l'utiliser pour se connecter à votre rhétorique
-crée une idée fausse qui vous fait sentir comme oh cela doit
-être géré à partir d'un outil non, mais c'est un outil utile pour pouvoir vous donner
-l'accès à votre routeur et il fournit des éléments supplémentaires exceptionnels
-des services comme mon multitâche alors essayez, mais je vais faire la plupart de cela
-via le navigateur parce que je pense que c'est une meilleure façon de vous montrer
-vous venez d'apprendre votre Microtech, donc je l'ai mis à destination que j'ai mis
-à TCP comme protocole qui est le numéro six et je dois définir mon
-port de destination et ce port de destination est le port du réseau externe
-alors ne soyez pas confondu avec ce que j'ai tendance à faire parfois parce que parfois
-vous pouvez avoir une situation où votre port public est différent de celui
-port privé dans ce cas que nous mettons en place notre règle NAT que nous mettons
-le port externe ici, donc dans mon cas, il va correspondre au port interne
-mais gardez cela à l'esprit que ce disons que vous êtes, nous voulons qu'il réponde sur
-port 8080, vous pouvez ajouter que même si le serveur interne répond
-sur le port 80 alors gardez à l'esprit que cela pourrait être différent, mais dans mon cas, il est
-en fait pas différent bien je dois regarder mon interface donc il y a le
-interface, je dois dire que cela va être un Ethernet dans mon cas, il peut être un
-peu différent pour vous gardez juste à l'esprit que ce que je fais réellement
-là que je sélectionne mon interface Internet rappelez-vous quand j'ai installé
-ce routeur sur notre premier épisode de cette série, j'ai démontré que j'étais
-brancher mon modem Internet sur Ethernet 1 port 1 et c'est ce que je suis
-spécifiant ici, je veux que cela réponde sur mon interface Internet et comme vous le pouvez
-imaginez que vous pouvez creuser profondément et vous pouvez configurer cela, vous savez que vous pourriez faire
-les choses très sophistiquées en spécifiant différents ports la configuration de tous les VLAN
-ce genre de choses, nous gardons les choses assez simples et nous y allons
-comme ça je vais faire défiler Wade
+ici et ça va ensuite frapper la micro-technologie et la micro-technologie va
+pour dire ok que dois-je faire avec ce trafic que vais-je faire donc je dois dire à mon
+micro tech hey qui est le port 443 je veux écrit cela à 10.0.0.0 parce que c'est
+vraisemblablement ce que cette personne essaie d'accéder alors passons à droite dans ce que je suis
+va sauter sur notre mikrotik et les choses sont si sophistiquées ici, donc
+il suffit de suivre et tu vas commencer à comprendre comment les choses fonctionnent, j'ai
+cliqué sur IP la semaine dernière, nous sommes venus ici parce que nous avons commencé à regarder le DHCP
+serveur et règles statiques et des choses comme ça que nous développerons dans le temps, je suis
+va frapper le pare-feu ce sont les paramètres par défaut pour mon pare-feu mikrotik et je
+je veux ajouter des règles qui vont rediriger le trafic sur mon réseau maintenant
+nous sommes un routeur de pare-feu grand public typique va dire bon je vais prendre le port 80
+et je vais le rediriger rappelez-vous que le mikrotik me permet d'avoir beaucoup plus
+le contrôle que je vais donc mettre en place des règles NAT d'abord qui est
+traduction d'adresse réseau de sorte que ces règles vont décider si
+quelqu'un frappe ce port où dois-je l'envoyer dans le pays bien où suis
+Je vais leur permettre d'accéder mais ça ne marchera toujours pas contrairement à un
+routeur grand public qui va juste dire d'accord, je vais juste essentiellement D DMZ
+ce serveur et permettre à quiconque de passer à travers et leur permettre de pirater et
+tout ce qu'ils veulent faire dès que vous dites allez le mikrotik va dire
+ok non, je vais autoriser le trafic mais ils sont soumis à certaines règles
+vous pouvez avoir d'autres règles que vous avez ajoutées à votre appareil mikrotik
+qui disent que je vais seulement autoriser une adresse IP particulière à accéder à ce si
+cela pourrait être mon adresse IP personnelle ou mon bureau, il se peut que j'aie mis en place une règle
+cela dit que je ne voyage jamais, je suis toujours au Canada, je suis toujours en fait en Ontario, donc
+si quelqu'un tente d'accéder à mes serveurs de l'extérieur du bloc de l'Ontario
+eux, mais ouvrez-le pour moi si je suis en Ontario, donc comme il y a toutes sortes de
+comme si c'était une manière hiérarchique de regarder
+à ces règles de reto de routeur pour rediriger le trafic vers certains serveurs au sein de votre
+réseau, vous pouvez imaginer que c'est utile pour la maison parce que cela vous donne plus
+la sécurité, mais il est également exceptionnel pour les entreprises, que vous possédiez ou dirigiez un service informatique
+département dans une petite ou moyenne entreprise
+mikrotik va vous donner beaucoup plus de contrôle sur ce genre de règles
+nous allons donc commencer avec notre règle nat et encore NAT est un terme de forme courte que nous
+utiliser un est synonyme de traduction d'adresse réseau et il dit essentiellement à notre
+le trafic réseau où circuler en fonction des règles que j'ai mises en place, mais ils sont
+ne va toujours pas être autorisé, je vais vous montrer que dans quelques
+moments, donc je sais que je vais avoir besoin du port 80 et du port 443 pour acheminer mon
+le trafic pour le prochain nuage et je devrais commencer par vous montrer que bon si je
+aller réellement au studio dot catégorie-cinq points TV ça va juste accrocher ça va
+timeout ça ne va aller nulle part parce que je n'ai pas encore mis en place ces règles
+de sorte que spin spin spin spin spin mais je vais laisser ça ouvert
+donc ma règle nat tout d'abord j'ai créé une nouvelle règle nat donc pare-feu IP nat nouveau
+règle et maintenant je vais changer la chaîne ici, je veux dire que c'est
+la carte de destination parce que je définis la destination dans mon interne
+réseau, je dois également définir le protocole parce que je veux spécifier que c'est
+en fait TCP et vous pouvez voir qu'il y a des tonnes de protocoles que vous pouvez
+choisissez je suis juste en train de configurer TCP sur le port 80 puis le port 443 pour nous
+commencé à remarquer aussi que j'utilise web fig dans mon navigateur web
+Je n'ai pas installé ou je n'utilise pas non plus de boîte à vent et c'est en partie parce que
+Je veux vous montrer cela à travers le navigateur afin que vous puissiez voir que vous
+pas besoin d'avoir un outil installé pour pouvoir administrer votre mikrotik
+routeur, je pense qu'il y a une idée fausse dès que je dis installer la boîte à vent et
+utiliser cela pour se connecter à votre rhétorique crée une idée fausse
+qui vous fait sentir comme oh cela doit être géré à partir d'un outil non, mais c'est un
+outil utile pour pouvoir vous donner accès à votre routeur et il le fait
+fournir des services supplémentaires exceptionnels comme mon multitâche alors donnez-le
+un essai, mais je vais faire la plupart de cela via le navigateur parce que je pense que
+c'est une meilleure façon de vous montrer que vous venez d'apprendre votre Microtech afin
+Je l'ai mis à destination que je l'ai mis sur TCP comme protocole qui est
+numéro six et je dois définir mon port de destination et cette destination
+port est le port sur le réseau externe alors ne vous confondez pas avec ce que je
+ont tendance à faire parfois parce que parfois vous pouvez avoir une situation où votre
+le port public est différent du port privé dans ce cas, car nous sommes
+la mise en place de notre règle NAT, nous définissons le port externe ici, donc dans mon cas
+ça va correspondre au port interne, mais gardez cela à l'esprit que cela
+disons que nous voulons qu'il réponde sur le port 8080, vous pouvez ajouter qu'il y a même
+bien que le serveur interne réponde sur le port 80, alors gardez à l'esprit que
+pourrait être différent, mais dans mon cas, il est en fait pas différent d'accord, je dois
+regardez mon interface donc il y a l'interface dans je dois dire que cela va
+être un Ethernet dans mon cas, il peut être un peu différent pour vous gardez juste
+à l'esprit que ce que je fais là-bas pendant que je sélectionne mon internet
+interface rappelez-vous quand j'ai installé ce routeur pour la première fois sur notre premier épisode de cette
+série, j'ai démontré que je connectais mon modem Internet à Ethernet
+un port un et c'est donc ce que je spécifie ici, je veux que cela réponde
+sur mon interface Internet et comme vous pouvez l'imaginer, vous pouvez creuser profondément et vous pouvez définir
+sur vous savez que vous pourriez faire des choses très sophistiquées en spécifiant
+différents ports configurant des VLAN tout ce genre de choses que nous gardons les choses
+assez simple et juste aller de cette façon bien je vais faire défiler Wade
 ici - action et assurez-vous simplement que ce paramètre est défini sur DN DST net destination
 net de sorte que va acheminer ce trafic vers notre serveur alors maintenant faites défiler vers le bas
 un peu ici et tu vas trouver deux ports là, il est mon deux ports est
@@ -128,115 +127,113 @@ va en fait être le même avis qui me donne une gamme, je vais juste
 pour spécifier le port 80 et tout en bas ici, il y a une possibilité pour
 vous pour créer un commentaire que je vais faire que je vais dire le prochain nuage 80 enfin
 la dernière chose que je dois ajouter ici est l'adresse IP de destination
-en interne sur mon réseau c'est le serveur comme je l'ai mentionné 1000 a que cette
-La règle NAT va répondre sur le port 80 et rediriger vers 1000
-eh bien maintenant je vais faire défiler tout le chemin et appuyez sur OK et maintenant nous allons voir que
-nous avons une nouvelle règle appelée prochain cloud 80 et il répond net DST et il est
-pointant TCP sur le port 80 via Ethernet one - comme nous le savons depuis sa configuration
-10.0.0.0 veulent le port sécurisé et suivez ces mêmes étapes que je vais
-changer la chaîne à destination que je vais changer mon protocole en TCP, puis
-Je vais changer mon interface externe my in en Ethernet one destination
-port, je sais que je suis un peu hors service qui est d'accord, vous savez ce que je suis
-faire le port de destination est 4 4 3 nous allons faire défiler vers le bas ici et changer notre
-action à DST net et notre adresse au même serveur juste un port différent, puis
-au port 443 et lui donner un commentaire ici prochain nuage 443 bien, je pense que j'ai
-tout y semble bon, frappons OK alors maintenant j'ai le port 80 et le port 443 nat
-règles allant à 10 points 0 point 0 point
-à partir du port Ethernet 1 sur TCP ça ne va toujours pas fonctionner, donc si je saute par-dessus
-ici, je vais frapper f5 pour rafraîchir oh et ça fonctionne regarder ça parce que je suis
-interne sur le terrain interne, donc je ne suis pas réellement sur celui Ethernet ce n'est pas
-va travailler du monde extérieur encore parce que le monde extérieur arrive
-via Ethernet 1, je suis évidemment interne, je suis sur le port 2 comme vous le ferez
-rappelez-vous de la semaine dernière afin de donner accès au monde extérieur maintenant je
-besoin d'aller sur l'onglet des règles de pare-feu ici et cliquez sur ajouter un nouveau c'est donc
-où je dis en fait ok si le pare-feu est touché, je dois déclencher cette
-règle nat alors faisons-le donc nous avons ajouté une nouvelle règle de pare-feu et je vais changer
-la chaîne voyons non, il est déjà en défaut de transmettre de sorte que ça va
-adresse IP source c'est un peu cool, je ne vais pas régler cela, mais je viens
-je veux que vous voyez cela peut être l'adresse IP que vous souhaitez autoriser
-membre, j'ai mentionné que vous pouvez le configurer de sorte que seul votre réseau domestique soit autorisé
-pour ce faire, vous pouvez le faire ajouter votre adresse IP domestique, vous pouvez même créer
-Les groupes IP qui seraient mis en place ici c'est l'adresse source ici
-liste voir que ce sont donc des choses que nous allons apprendre à temps à droite
-maintenant je ne vais pas faire ça, je ne vais pas définir une adresse source que je vais
-ouvrir cela au monde, mais je veux que vous sachiez que cela est à votre disposition afin
-se déplaçant le long de la destination que j'adresse est en fait le serveur interne de sorte que ce soit 10
-0.017 protocole, nous savons déjà que c'est TCP alors cliquez dessus et TCP est en fait
-la valeur par défaut, ce qui nous fait gagner un peu de temps, mais vous pouvez voir tous les
-les protocoles qui sont disponibles pour nous la prochaine étape est que nous devons définir le port de service
-donc le port de destination va être le port 80, nous allons commencer avec nous devons faire
-les deux, mais je dois configurer chaque règle séparément, donc nous allons dans l'interface
-va être mon port Ethernet 1 comme nous l'avons déjà établi et donc ce que je suis
-faire ici est que je dis en fait le pare-feu que je vais autoriser cette
-le trafic du premier port Ethernet qui est ma connexion Internet et cela
-est celui où l'action doit être réglée pour accepter c'est donc là que je dis
-ouais vous savez ce que je vais autoriser cela, vous pouvez également définir cela pour rejeter
-dans certains cas, ou si vous connaissez différents paramètres, mais nous allons dire
-sauf que nous allons permettre cela, puis créer un commentaire comme nous l'avons fait avant
-Je vais appeler ce commentaire de règle de pare-feu prochain nuage 80 défilement vers le haut et
-notez que si vous omettez la règle NAT ou si vous omettez la règle de pare-feu
-Eh bien, vous manquez certaines des chaînes, donc ça ne va pas vraiment répondre
-en dehors de votre réseau, vous devez donc vous assurer que cela est fait la prochaine étape est
-Je vais ajouter 4 pour 3 dans les règles de pare-feu, donc en avant est déjà sélectionné
-adresse source, nous n'allons pas faire cette fois autour de l'adresse de destination
-on va mettre à 10 0 point 0 point 1 7 protocole va être TCP une interface
-va être de l'éther 1
+en interne sur mon réseau c'est le serveur comme je l'ai mentionné 1000 pour dire que
+cette règle NAT va répondre sur le port 80 et rediriger vers 10.0.0.0 maintenant
+Je vais faire défiler tout en haut et cliquer sur OK et maintenant nous allons voir que nous avons un
+nouvelle règle appelée prochain cloud 80 et il répond net DST et il pointe TCP
+sur le port 80 via Ethernet one - comme nous le savons de la configuration de 10.0.0.0 sécurisé
+port ainsi suivre ces mêmes étapes, je vais changer la chaîne à destination
+que je vais changer mon protocole en TCP, puis je vais changer mon externe
+mon interface vers Ethernet un
+port de destination, je sais que je suis un peu hors service qui est d'accord, vous savez ce que
+Je fais le port de destination est 4 4 3 défilons ici et changeons
+notre action à DST nat et notre adresse au même serveur juste un port différent, puis
+au port 443 et lui donner un commentaire ici prochain nuage 443 bien je pense que j'ai
+a tout ce qu'il semble bon, frappons OK alors maintenant j'ai le port 80 et le port
+443 règles NAT allant au port 10.0.0.0 net1 sur TCP, ça ne marchera toujours pas
+donc si je saute ici, je vais frapper f5 pour rafraîchir oh et ça fonctionne regarder
+parce que je suis interne sur la terre intérieure, donc je ne suis pas réellement sur le
+Ethernet, il ne va pas encore fonctionner du monde extérieur parce que le
+le monde extérieur arrive via Ethernet, je suis évidemment interne, je suis
+sur le port 2 comme vous vous en souvenez de la semaine dernière afin de donner accès à la
+monde extérieur maintenant, je dois aller sur l'onglet des règles de pare-feu ici et cliquez sur
+ajouter de nouveaux c'est donc là que je dis en fait ok si le pare-feu est touché, je
+besoin de déclencher cette règle nat alors faisons-le donc nous avons ajouté un nouveau pare-feu
+règle et je vais changer la chaîne Voyons non, il est déjà par défaut
+vers l'avant de sorte que l'adresse IP de la source fine c'est un peu cool
+Je ne vais pas régler cela, mais je veux juste que je veux que vous voyiez cela, cela peut
+être l'adresse IP que vous souhaitez autoriser rappelez-vous que je l'ai mentionné, vous pouvez le définir de manière
+que seul votre réseau domestique est autorisé à le faire, vous pouvez le faire ajouter votre
+adresse IP personnelle, vous pouvez même créer des groupes IP qui seraient définis
+ici c'est ici la liste d'adresses source voir que ce sont donc des choses qui
+on va apprendre à temps en ce moment, je ne vais pas le faire, je ne suis pas
+va définir une adresse source, je vais l'ouvrir au monde, mais je vous veux
+de savoir que cela est à votre disposition afin de vous déplacer le long de la destination que j'adresse est en
+fait le serveur interne de sorte que c'est 10 0,017 protocole, nous savons déjà que c'est
+TCP alors cliquez dessus et TCP est en fait la valeur par défaut de sorte que juste une sorte de sauvegarde
+nous un temps rapide, mais vous pouvez voir tous les protocoles qui sont à notre disposition à côté
+l'étape est que nous devons définir le port de service de sorte que le port de destination va être le port
+80 nous allons commencer avec nous devons faire les deux, mais je dois mettre en place chaque règle
+séparément donc là, nous allons dans l'interface va être mon port Ethernet 1 que nous
+déjà établi et donc ce que je fais ici est que je dis en fait la
+pare-feu que je vais autoriser ce trafic depuis le premier port Ethernet
+qui est ma connexion Internet et c'est celle où l'action doit être définie
+d'accepter c'est donc là que je dis oui, vous savez ce que je vais permettre
+cela, vous pouvez également définir cela pour rejeter dans certains cas ou vous connaissez divers
+différents paramètres, mais on va dire sauf que nous allons permettre cela et
+puis créez un commentaire comme nous l'avons fait avant que je vais appeler cette règle de pare-feu
+commenter le prochain nuage 80 faire défiler vers le haut et remarquer que si vous laissez le NAT
+règle ou vous laissez la règle de pare-feu et vous manquez certaines des chaînes
+donc ça ne va pas vraiment répondre en dehors de votre réseau donc vous devez
+assurez-vous que cela est fait la prochaine étape est que je vais ajouter 4 pour 3 dans le pare-feu
+règles si en avant est déjà l'adresse source sélectionnée, nous n'allons pas faire
+cette fois autour de l'adresse de destination, nous allons définir le protocole 1000 points 1 7
+va être TCP une interface va être de l'éther 1
 et quoi d'autre dans mon port de destination j'ai besoin que là aussi bah bah que
 va être 4 4 ​​3 faites défiler vers le bas assurez-vous qu'il est réglé pour accepter, puis définissez notre
 commentaire va être le prochain nuage 4 4 ​​3 là, nous allons tout ressemble à j'ai
 a tout là-dedans, je manque quelque chose les gens vous me dites que je vais frapper ok donc
 voici maintenant la dernière étape, vous remarquez que ces deux éléments ici sont en baisse
 transmettre des règles dans la loi sur le feu maintenant, il est important de noter que mikrotik fonctionne dans
-essentiellement afin de haut en bas quand vous regardez votre pare-feu
-règles si vous vous demandez pourquoi ceux-ci ne fonctionnent toujours pas bien c'est parce que
-avant mes règles que je viens de configurer, il y a déjà une règle qui dit drop
-tout si fondamentalement cela dit bon si vous avez passé tout ce passé tout
-ce passé tout cela maintenant laisser tomber la connexion à droite parce que ceux-ci est un
+essentiellement afin afin de haut en bas quand vous regardez votre
+règles de pare-feu si vous vous demandez pourquoi ceux-ci ne fonctionnent toujours pas bien, il est
+parce qu'avant mes règles que je viens de configurer, il y a déjà une règle qui
+dit tout laisser tomber donc, fondamentalement, cela dit bon si vous avez passé tout cela
+passé tout ce passé tout cela maintenant laisser tomber la connexion à droite parce que ceux-ci est un
 pare-feu assez solide et il n'arrive jamais ici, donc je dois réorganiser
-ceux-ci et la façon dont je vais le faire est que je veux que cela se produise ou je veux que mon
-les règles de transfert personnalisées doivent se produire juste après la règle d'entrée finale, donc je devrais
-être en mesure de simplement faire glisser cela jusqu'à ici, nous allons saisir le dernier mon
-nuage suivant 4 pour 3 règle faites glisser cela et là nous allons et maintenant nous sommes donc maintenant je
-ne pas avoir à redémarrer le routeur, je ne dois rien faire c'est que je suis en mesure de
-voir mais notre serveur de discorde vous pouvez confirmer pour moi la tête au studio
-doc catégorie 5 TV et sans avoir à redémarrer mon routeur sans avoir à
-redémarrez tout ce que vous devriez maintenant voir cette même invite de connexion, si bien que
-dirigez-vous vers la catégorie studio 5 dot TV, je suis désolé et et bp9 est juste
+ceux-ci et la façon dont je vais le faire est que je veux que cela se produise ou je veux ma coutume
+les règles de transmission doivent se produire juste après la règle d'entrée finale, donc je devrais pouvoir
+pour simplement faire glisser cela jusqu'à ici, nous allons chercher le dernier mon prochain nuage 4
+pour 3 règle a sonné que là et nous allons et maintenant nous sommes donc maintenant je ne dois pas
+redémarrer le routeur, je ne dois rien faire c'est que je suis en mesure de le voir, mais
+notre serveur de discorde, vous pouvez confirmer pour moi la tête dans la catégorie doc studio 5
+TV et sans avoir à redémarrer mon routeur sans avoir à redémarrer
+tout ce que vous devriez maintenant voir cette même invite de connexion, alors allez-y
+au studio catégorie 5 dot TV, je suis désolé et et bp9 est juste
 notre pardonne-moi pas d'homme cinq vous commentez juste que quand j'ajoute les commentaires
-vous ne les voyez pas réellement à l'écran et c'est parce que la catégorie 5 est
-18/9 et mon écran d'ordinateur est 16/9, c'est donc quelque chose que je vais
-dois comprendre comment réparer à l'avenir c'est mon erreur, mais vous pouvez voir
-ces commentaires ont été saisis c'est un champ de commentaire c'est juste un champ de texte à
-le bas de votre de votre fenêtre pendant que vous l'ajoutez et il y a c'est ce que
-Je suis entré dans le cloud suivant 18 X Cloud 4 4 3 Je m'excuse de ne pas l'avoir attrapé
-mais j'apprécie que vous le notiez donc mo maravilla dit oui je vois la connexion un BP
-9 dit aussi que oui fonctionne pour moi aussi, donc sans ces règles, ils ne le feraient pas
-ne répondrait pas du tout mais maintenant que j'ai ajouté ces règles maintenant vous tous
-sont en mesure de se connecter de sorte que la prochaine chose que je pourrais faire si je voulais est que je
-pourrait configurer ces listes d'adresses sources et ces listes peuvent contenir des adresses IP
-de mon réseau domestique de mon réseau de travail de mes amis réseaux de mon personnel
-réseaux et leur permettre de suivre ces règles, mais laisser tomber tout le monde
-d'autre pour que les pirates qui sont sur mon serveur de discorde ne puissent pas entrer dans mon prochain
-serveur cloud et ainsi de suite et ainsi de suite c'est donc essentiellement vous savez que ce sont
-vos étapes afin de regarder Revenons un peu en arrière et comprenons que ok je mets
-jusqu'à deux ports aujourd'hui le port 80 et le port 443 ce sont le port 80 est un HTTP non sécurisé
-le port et le port 443 est un port HTTP crypté SSL sécurisé Je veux les deux
-de sorte que si quelqu'un ne tape pas réellement physiquement dans la barre oblique du côlon HTTP
-slash studio dot catégorie-cinq TV, il va plutôt frapper le port 80 et
-rediriger automatiquement vers 443 si je n'avais pas le port 80 ouvert, ils le feraient
-jamais obtenir cette redirection, ils obtiendraient simplement une erreur de serveur introuvable afin de sauvegarder
-nous devons aller dans notre configuration mikrotik j'utilise web fig
-et cliquez sur IP, cliquez sur le pare-feu, cliquez sur l'onglet NAT en haut et créez un nouveau
-Règle NAT que la règle NAT va lui dire où voulez-vous aller avec cette
-avec ce port que voulez-vous en faire
-mais ça ne va pas vraiment l'ouvrir au public c'est là
-la règle de pare-feu vient maintenant, alors cliquez sur les règles de pare-feu sur cette même IP
+vous ne les voyez pas réellement à l'écran et c'est parce que la catégorie cinq
+est de 18 sur neuf et mon écran d'ordinateur est de seize sur neuf de sorte que c'est un qui est
+quelque chose que je vais devoir trouver comment résoudre à l'avenir c'est mon
+erreur mais vous pouvez voir que ces commentaires ont été saisis c'est un champ de commentaire
+c'est juste un champ de texte en bas de votre fenêtre pendant que vous ajoutez
+et il y a c'est ce que je suis entré dans le prochain nuage 18x nuage 443 je m'excuse
+que je n'ai pas attrapé ça mais j'apprécie que vous le notiez donc mo maravilla
+dit oui je vois la connexion un bp9 dit aussi ouais fonctionne pour moi aussi, donc sans
+ces règles ils ne le feraient pas, mais maintenant que j'ai
+a ajouté ces règles maintenant, vous pouvez tous vous connecter, donc la prochaine chose que je pourrais
+faire si je voulais est que je pourrais mettre en place ces listes d'adresses sources et celles
+les listes peuvent contenir des adresses IP de mon réseau domestique de mon réseau de travail de mon
+réseaux d'amis des réseaux de mon personnel et leur permettre de suivre à travers ceux
+règles, mais laisser tomber tout le monde pour que les pirates qui sont sur ma discorde
+serveur ne peut pas entrer dans mon prochain serveur cloud et ainsi de suite et ainsi de suite c'est donc
+essentiellement, vous savez que ce sont vos étapes alors regardons un retour en arrière
+peu et comprendre que d'accord j'ai mis en place deux ports aujourd'hui le port 80 et le port
+443 ce sont le port 80 est un port HTTP non sécurisé et le port 443 est un SSL sécurisé
+port HTTP crypté, je veux les deux de sorte que si quelqu'un n'a pas réellement
+tapez physiquement dans HTTP colon slash slash studio catégorie cinq points TV, il
+va plutôt frapper le port 80 et rediriger automatiquement vers 443 si je
+n'a pas eu le port 80 ouvert, ils n'obtiendraient jamais cette redirection, ils
+obtenir une erreur de serveur introuvable, donc sauvegarde, nous devons aller dans notre mikrotik
+configuration j'utilise web fig et cliquez sur IP, cliquez sur le pare-feu, cliquez sur
+sur l'onglet NAT en haut et créer une nouvelle règle NAT que la règle NAT va dire
+où voulez-vous aller avec ce port que voulez-vous faire
+avec elle, mais ça ne va pas vraiment ouvrir l'ouvrir au public qui est
+où la règle de pare-feu entre maintenant, alors cliquez sur les règles de pare-feu sur cette même IP
 pare-feu et nous devons créer une nouvelle règle de pare-feu qui va accepter
 cette connexion et autoriser ces connexions à travers et vous pouvez en outre
 affiner les adresses IP ou les groupes de sources IP et des choses comme ça il y a tellement
 de nombreuses options différentes que nous ne pouvons pas couvrir aujourd'hui, mais vous pouvez obtenir le
 idée que cela va nous donner beaucoup de configurabilité et beaucoup de contrôle
-sur non seulement la façon dont le trafic est acheminé à travers nos réseaux, mais et et quelle IP
-adresses et quels réseaux peuvent se connecter via notre réseau et comment
-qui va être acheminé une fois qu'il aura atteint notre microtech
-[La musique]
+sur non seulement la façon dont le trafic est acheminé via nos réseaux, mais qui et et
+quelles adresses IP et quels réseaux peuvent se connecter via notre réseau et
+comment cela va être acheminé une fois qu'il aura atteint notre microtech

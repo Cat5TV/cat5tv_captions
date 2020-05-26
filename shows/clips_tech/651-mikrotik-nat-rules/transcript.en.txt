@@ -57,24 +57,25 @@ saying that because I want you to
 understand you don't have to buy the
 same one I bought you find the one that
 works for you and then you can follow
-along with the series and amazingly even
-if you have a different model altogether
-you're gonna be able to follow the
-screen you're gonna be able to follow
-the steps and it's going to be exactly
-the same that is amazing
-so this week I'm going to be looking at
-how to set up port forwarding we're
-gonna call it now mikrotik is going to
-call it NAT firewall rules I'm gonna
-talk a little bit about that in a moment
-but we know it as port forwarding or
-redirecting and that is that when
-someone hits our public IP address at a
-certain port if it's a port that I have
-allowed and that I recognize I want it
-to reroute to the appropriate server so
-in my case I have a server at 10.0.0.0
+along with this series and amazingly
+even if you have a different model
+altogether you're gonna be able to
+follow the screen you're gonna be able
+to follow the steps and it's going to be
+exactly the same
+that is amazing so this week I'm going
+to be looking at how to set up port
+forwarding we're gonna call it now
+mikrotik is going to call it NAT
+firewall rules I'm gonna talk a little
+bit about that in a moment but we know
+it as port forwarding or redirecting and
+that is that when someone hits our
+public IP address at a certain port if
+it's a port that I have allowed and that
+I recognize I want it to reroute to the
+appropriate server so in my case I have
+a server at 10.0.0.0
 it's my own personal kind of alternative
 to Google cloud services and drive and
 onedrive and all those kinds of services
@@ -86,11 +87,10 @@ a DNS record because we have category 5
 TV of course so I have Studio dot
 category 5 dot TV is going to route them
 to here and that's going to then hit the
-micro Tech and the micro Tech is going
-to say okay what do I do with this
-traffic what am I gonna do so I have to
-tell my micro tech hey that's port 443 I
-want
+micro tech and the micro tech is going
+to say ok what do I do with this traffic
+what am I gonna do so I have to tell my
+micro tech hey that's port 443 I want
 wrote that to 10.0.0.0 because that is
 presumably what this person is trying to
 access so let's jump right into it I'm
@@ -103,7 +103,7 @@ because we started looking at the DHCP
 server and static rules and things like
 that which we'll expand upon in time I'm
 gonna hit firewall these are the default
-settings for my Microtech firewall and I
+settings for my mikrotik firewall and i
 want to add some rules that are going to
 reroute traffic within my network now
 we're a typical consumer firewall router
@@ -118,17 +118,17 @@ someone hits this port where do I want
 to send it within the land okay where am
 I going to allow them to access but then
 it's still not going to work unlike a
-consumer router that is just gonna say
-okay I'm just gonna basically D DMZ that
-server and allow anyone to get through
-and allow them to hack in and whatever
-they want to do as soon as you say go
-the the mikrotik is going to say that
+consumer router that is just going to
+say okay I'm just gonna basically D DMZ
+that server and allow anyone to get
+through and allow them to hack in and
+whatever they want to do as soon as you
+say go the the mikrotik is going to say
 okay no I'll allow traffic through
 however they are subject to some rules
 you may have some other rules that
 you've added to your mikrotik device
-let's say I'm only going to allow a
+that say I'm only going to allow a
 particular IP address to access this so
 that might be my home IP address or my
 office it may be that I've set up a rule
@@ -162,14 +162,14 @@ moments time so I know that I'm gonna
 need port 80 and port 443 to route my
 traffic for next cloud and I should
 start by showing you that hey if I
-actually go to studio category five TV
-it's just gonna hang it's gonna timeout
-it's not gonna go anywhere because I
-haven't set up those rules yet so that's
-spin spin spin spin spin but I'll leave
-that open
-so my nat rule first of all I've created
-a new NAT rule so IP firewall NAT new
+actually go to studio dot category-five
+dot TV it's just gonna hang it's gonna
+timeout it's not gonna go anywhere
+because I haven't set up those rules yet
+so that spin spin spin spin spin but
+I'll leave that open
+so my nat rule first of all i've created
+a new nat rule so IP firewall nat new
 rule and now I'm gonna change the chain
 here I want to say it say that this is
 the destination map because I'm setting
@@ -183,9 +183,9 @@ port 80 and then port 443 to get us
 started notice too that I am using web
 fig in my web browser
 I have not set up or and I'm also not
-using a wind box and that's partly
-because I want to show you this through
-the browser so that you can see that you
+using wind box and that's partly because
+I want to show you this through the
+browser so that you can see that you
 don't need to have a tool installed to
 be able to administer your mikrotik
 router I think there's a misconception
@@ -216,7 +216,7 @@ setting up our NAT rule we are setting
 the external port here so in in my case
 it's going to match the internal port
 but just keep that in mind that this
-let's say you're we want it to answer on
+let's say your we want it to answer on
 port 8080 you could add that there even
 though the server in house is responding
 on port 80 so just keep in mind that
@@ -232,7 +232,7 @@ interface remember when I first set up
 this router on our first episode of this
 series I demonstrated that I was
 plugging my internet modem into Ethernet
-1 port 1 and so that's what I'm
+one port one and so that's what I'm
 specifying here I want this to respond
 on my internet interface and as you can
 imagine you can dig deep and you can set
@@ -241,8 +241,7 @@ things very sophisticated by specifying
 different ports setting up VLANs all
 that kind of stuff we're keeping things
 fairly simple and just going about it
-that way all right I'm going to scroll
-Wade
+that way all right I'm gonna scroll Wade
 here - action and just make sure that
 this is set to DN DST net destination
 net so that is going to route this
@@ -258,57 +257,56 @@ that I'm gonna say next cloud 80 finally
 the one last thing that I need to add
 here is the destination IP address
 internally on my network this is the
-server as I mentioned 1000 a that this
-NAT rule is going to respond on port 80
-and redirect to 1000
-well so now I'm going to scroll all the
-way up and hit OK and now we'll see that
-we have a new rule called next cloud 80
-and it's responding DST net and it's
-pointing TCP on port 80 through Ethernet
-one - as we know from setting it up
-10.0.0.0 want the secure port as well
-follow those same steps I'm going to
-change the chain to destination that I'm
-gonna change my protocol to TCP and then
-I'm going to change my external my in
-interface to Ethernet one destination
-port I know I'm a little bit out of
-order that's okay you know what I'm
-doing destination port is 4 4 3 let's
-scroll way down here and change our
-action to DST net and our to address
+server as I mentioned 1000 to say that
+this NAT rule is going to respond on
+port 80 and redirect to 10.0.0.0 so now
+I'm going to scroll all the way up and
+hit OK and now we'll see that we have a
+new rule called next cloud 80 and it's
+responding DST net and it's pointing TCP
+on port 80 through Ethernet one - as we
+know from setting it up 10.0.0.0 secure
+port as well follow those same steps I'm
+going to change the chain to destination
+that I'm gonna change my protocol to TCP
+and then I'm going to change my external
+my in interface to Ethernet one
+destination port I know I'm a little bit
+out of order that's okay you know what
+I'm doing destination port is 4 4 3
+let's scroll way down here and change
+our action to DST nat and our to address
 same server just different port and then
 to port 443 and give it a comment here
-next cloud 443 alright I think I've got
-everything there looks good let's hit OK
-so now I've got port 80 and port 443 nat
-rules going to 10 dot 0 dot 0 dot
-from the Ethernet 1 port over TCP it's
-still not gonna work so if I jump over
-here I'm gonna hit f5 to refresh oh and
-it is working look at that because I'm
-internal on the internal land so I'm not
-actually on the Ethernet one it's not
-going to work from the outside world yet
-because the outside world is is coming
-in through Ethernet 1 I'm obviously
-internal I'm on port 2 as you'll
-remember from last week so in order to
-give access to the outside world now I
-need to go over to the firewall rules
-tab here and click on add new so this is
-where I'm actually saying ok if the
-firewall gets hit I need to trigger that
-nat rule so let's do that so we've added
-a new firewall rule and I'm gonna change
-the chain let's see no it's already
-defaulting to forward so that's fine
+next cloud 443 all right I think I've
+got everything there looks good let's
+hit OK so now I've got port 80 and port
+443 NAT rules going to 10.0.0.0 net1
+port over tcp it's still not gonna work
+so if i jump over here i'm gonna hit f5
+to refresh oh and it is working look at
+that because i'm internal on the
+internal land so i'm not actually on the
+ethernet one it's not going to work from
+the outside world yet because the
+outside world is is coming in through
+ethernet one I'm obviously internal I'm
+on port 2 as you'll remember from last
+week so in order to give access to the
+outside world now I need to go over to
+the firewall rules tab here and click on
+add new so this is where I'm actually
+saying ok if the firewall gets hit I
+need to trigger that nat rule so let's
+do that so we've added a new firewall
+rule and I'm gonna change the chain
+let's see no it's already defaulting to
+forward so that's fine
 source IP address this is kind of cool
 I'm not going to set this but I just
 want to I want you to see this this can
 be the IP address that you want to allow
-member I mentioned you could set it so
+remember I mentioned you could set it so
 that only your home network is allowed
 to do this you could do that add your
 home IP address you can even create
@@ -344,9 +342,9 @@ yeah you know what I'm going to allow
 this you could also set this to reject
 in certain cases or you know various
 different settings but we're gonna say
-except we're gonna allow this and then
-create a comment just like we did before
-I'm gonna call this firewall rule
+except we're going to allow this and
+then create a comment just like we did
+before I'm gonna call this firewall rule
 comment next cloud 80 scroll way up and
 notice that if you leave off the NAT
 rule or you leave off the firewall rule
@@ -358,9 +356,9 @@ I'm going to add 4 for 3 in the firewall
 rules so forward is already selected
 source address we're not going to do
 this time around destination address
-we're gonna set to 10 0 dot 0 dot 1 7
-protocol is going to be TCP an interface
-is going to be ether 1
+we're gonna set to 1000 dot 1 7 protocol
+is going to be TCP an interface is going
+to be ether 1
 and what else in my destination port
 I need that there as well bah bah that
 is going to be 4 4 3 scroll down make
@@ -373,77 +371,78 @@ now here's the final step you notice
 that these two items here are drop
 forward rules in the fire law now it's
 important to note that mikrotik works in
-basically in order so from top to bottom
-so when you're looking at your firewall
-rules if you're wondering why are these
-still not working well it's because
-before my rules that I just configured
-there's already a rule that says drop
-everything so basically this is saying
-hey if you've passed all this past all
-this past all this now drop the
+it basically in order so from top to
+bottom so when you're looking at your
+firewall rules if you're wondering why
+are these still not working well it's
+because before my rules that I just
+configured there's already a rule that
+says drop everything so basically this
+is saying hey if you've passed all this
+past all this past all this now drop the
 connection right because these that's a
 pretty solid firewall well then it never
 gets here so I actually need to reorder
-these and the way I'm going to do that
-is I want these to happen or I want my
-custom forwarding rules to happen right
-after the final input rule so I should
-be able to simply drag that up to here
-there we go and grab the last one my
-next cloud 4 for 3 rule drag that up and
-there we go and now we're in so now I
-don't have to restart the router I don't
-have to do anything this is I'm able to
-see it but our discord server you can
-confirm for me head on over to studio
-doc category 5 TV and without having to
-reboot my router without having to
-restart anything you should now be
-seeing that same login prompt as well so
-head on over to studio category 5 dot TV
-I'm sorry and and bp9 is just
+these and the way I'm gonna do that is I
+want these to happen or I want my custom
+forwarding rules to happen right after
+the final input rule so I should be able
+to simply drag that up to here there we
+go and grab the last one my next cloud 4
+for 3 rule rang that up and there we go
+and now we're in so now I don't have to
+restart the router I don't have to do
+anything this is I'm able to see it but
+our discord server you can confirm for
+me head on over to studio doc category 5
+TV and without having to reboot my
+router without having to restart
+anything you should now be seeing that
+same login prompt as well so head on
+over to studio category 5 dot TV I'm
+sorry and and bp9 is just
 our pardon me no man five you're just
 commenting that when I add the comments
 you're not actually seeing them on the
-screen and that's because category 5 is
-18 / 9 and my computer screen is 16 / 9
-so that's a that's something that I'll
-have to figure out how to fix in the
-future that's my mistake but you can see
-those comments have been entered it's a
-comment field it's just a text field at
-the bottom of your of your window while
-you're adding it and there's that's what
-I entered next cloud 18 X Cloud 4 4 3 I
-apologize that I didn't catch that
-but I appreciate you noting it so mo
-maravilla says yep I see the login a BP
-9 also says yeah works for me as well so
-without those rules they would not it
-would not respond whatsoever but now
-that I've added those rules now y'all
-are able to connect so the next thing
-that I could do if I wanted to is I
-could set up those source address lists
-and those lists can contain IP addresses
-of my home network of my work network of
-my friends networks of my staff's
-networks and allow them to follow
-through those rules but drop everyone
-else so that those hackers that are on
-my discord server can't get into my next
-cloud server and so on and so forth so
-that's essentially you know those are
-your steps so looking let's backtrack a
-little bit and understand that ok I set
-up two ports today port 80 and port 443
-those are port 80 is an insecure HTTP
-port and port 443 is a secure SSL
+screen and that's because category five
+is 18 over nine and my computer screen
+is sixteen over nine so that's a that's
+something that I'll have to figure out
+how to fix in the future that's my
+mistake but you can see those comments
+have been entered it's a comment field
+it's just a text field at the bottom of
+your of your window while you're adding
+it and there's that's what I entered
+next cloud 18x cloud 443 I apologize
+that I didn't catch that but I
+appreciate you noting it so mo maravilla
+says yep I see the login a bp9 also says
+yeah works for me as well so without
+those rules they would not it would not
+respond whatsoever but now that I've
+added those rules now y'all are able to
+connect so the next thing that I could
+do if I wanted to is I could set up
+those source address lists and those
+lists can contain IP addresses of my
+home network of my work network of my
+friends networks of my staff's networks
+and allow them to follow through those
+rules but drop everyone else so that
+those hackers that are on my discord
+server can't get into my next cloud
+server and so on and so forth so that's
+essentially you know those are your
+steps so looking let's backtrack a
+little bit and understand that okay I
+set up two ports today port 80 and port
+443 those are port 80 is an insecure
+HTTP port and port 443 is a secure SSL
 encrypted HTTP port I want both of those
 so that if someone doesn't actually
 physically type in HTTP colon slash
-slash studio dot category-five TV it
+slash studio category five dot TV it
 will instead hit the port 80 and
 redirect automatically to 443 if I
 didn't have port 80 open they would
@@ -456,11 +455,10 @@ on NAT tab at the top and create a new
 NAT rule that NAT rule is going to tell
 it where do you want to go with this
 with this port what do you want to do
-with it
-but it's not actually going to open up
-open it up to the public that's where
-the firewall rule comes in now so click
-on firewall rules on that same IP
+with it but it's not actually going to
+open up open it up to the public that's
+where the firewall rule comes in now so
+click on firewall rules on that same IP
 firewall and we need to create a new
 firewall rule that's going to accept
 that connection and allow those
@@ -472,9 +470,8 @@ able to cover today but you can get the
 idea that this is going to give us a lot
 of configurability and a lot of control
 over not only how traffic is routed
-through our networks but and and what IP
-addresses and what networks are able to
-connect through our network and how
-that's going to be routed once it hits
-our Microtech
-[Music]
+through our networks but who and and
+what IP addresses and what networks are
+able to connect through our network and
+how that's going to be routed once it
+hits our Microtech
