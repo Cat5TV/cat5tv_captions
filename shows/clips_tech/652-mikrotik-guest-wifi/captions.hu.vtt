@@ -1,0 +1,766 @@
+WEBVTT
+Kind: captions
+Language: hu
+
+00:00:01.790 --> 00:00:07.170
+ most a mikrotik márkájú útválasztókat néztük meg, és a teljes sorozat az 
+
+00:00:07.170 --> 00:00:12.570
+ teljesen ingyenesen elérhető a cat5 dot TV perjel mikrotiknél, most, hogy hálózatunk van 
+
+00:00:12.570 --> 00:00:19.320
+ felállítva hozzunk létre egy vendég Wi-Fi SSID-t, a vendég Wi-Fi-vel a 
+
+00:00:19.320 --> 00:00:25.260
+ fojtott kapcsolat az internettel, és nem fognak hozzáférni a helyi hálózathoz 
+
+00:00:25.260 --> 00:00:30.449
+ erőforrások, tehát a hálózat megosztja a nyomtatókat, és ilyet szeretnék zárolni 
+
+00:00:30.449 --> 00:00:35.280
+ hogy egy valóban izolált Wi-Fi kapcsolatot létrehozunk, amely lehetővé teszi 
+
+00:00:35.280 --> 00:00:40.530
+ vendégek barátok ügyfelek vagy látogatók, hogy internetkapcsolatunk nélkül használják 
+
+00:00:40.530 --> 00:00:46.620
+ a kapcsolat lelassulásának kockázata, vagy az integritás vagy a magánélet veszélyeztetése nélkül 
+
+00:00:46.620 --> 00:00:52.050
+ adatainkból, tehát ez ma egy összetett bemutató lesz, tehát mit tettem 
+
+00:00:52.050 --> 00:00:56.030
+ ténylegesen dokumentáltam az összes lépést, amelyen keresztülmenek 
+
+00:00:56.030 --> 00:01:01.920
+ A cat5 dot TV perjel mikrotik, így követve csak soká teszi 
+
+00:01:01.920 --> 00:01:05.820
+ könnyebb számodra, szóval menjünk bele, valójában megyek 
+
+00:01:05.820 --> 00:01:11.340
+ ezeket a jegyzeteket, mert ez valóban egy kifinomult sorozat, amelyet kapunk 
+
+00:01:11.340 --> 00:01:18.000
+ ma itt vagy legalább a sorozat egyik aspektusában, így leszek 
+
+00:01:18.000 --> 00:01:24.390
+ itt dolgozom a fenyőkönyvemen, és szeretném előhozni a laptopomat és a 
+
+00:01:24.390 --> 00:01:28.799
+ A képernyő fantasztikusan néz ki ezen a héten, nézd meg, hogy itt javítottam itt 
+
+00:01:28.799 --> 00:01:31.920
+ a stúdiót, így azt hiszem, rájössz, hogy a dolgok sokkal könnyebben olvashatók 
+
+00:01:31.920 --> 00:01:35.670
+ köszönöm mindenkinek a türelmét ebben az időben, mert ez volt 
+
+00:01:35.670 --> 00:01:39.990
+ sok műsorszolgáltató számára nehéz, de ezen a héten javításokat végeztünk 
+
+00:01:39.990 --> 00:01:44.640
+ tehát köszönöm a türelmét, így az első dolgot az itt bemutatott web ábraben szeretném megtenni 
+
+00:01:44.640 --> 00:01:49.320
+ szeretnék bemélyülni a vezeték nélküli biztonsági profiljaimba, így értem? 
+
+00:01:49.320 --> 00:01:53.460
+ Nem akarom, hogy azok, akik hozzáférnek a vendég Wi-Fi-hez, ugyanazt használják 
+
+00:01:53.460 --> 00:01:59.070
+ a jelszót, amelyet a fő Wi-Fi-én használok, ez az, amit főleg nem akarok 
+
+00:01:59.070 --> 00:02:03.210
+ adj ki, szóval tegyük meg most, és állítsunk be külön jelszót 
+
+00:02:03.210 --> 00:02:07.110
+ kattintson a bal oldalon található vezeték nélküli elemre, majd a biztonságra kattint 
+
+00:02:07.110 --> 00:02:13.830
+ A tetején lévő profilokon kattintson az Új hozzáadása elemre, és látni fogja, hogy az alapértelmezés valóban az én enyém 
+
+00:02:13.830 --> 00:02:18.360
+ hálózatba, tehát ez a jelszó a hálózatomhoz, a Wi-Fi-hez, amelyet már megtettem 
+
+00:02:18.360 --> 00:02:22.340
+ felállítom, és rákattintok az új felvételre, és ezt csak egy vendégnek hívjuk 
+
+00:02:22.340 --> 00:02:27.060
+ éppúgy, mint egy megjegyzés, ki akarom kapcsolni a WPA PSK-t 
+
+00:02:27.060 --> 00:02:33.270
+ mivel a WPA, amint tudod, nagyon részelem, nagyon könnyű kompromisszumot kötni, így mi is 
+
+00:02:33.270 --> 00:02:41.460
+ nem akarjuk használni a WPA-t, csak a wpa2-t akarjuk használni, mivel a wpa2 sokkal biztonságosabb 
+
+00:02:41.460 --> 00:02:49.110
+ amennyiben valaki betörhet a Wi-Fi hálózatba, akkor kapcsolja ki a WPA PSK-t 
+
+00:02:49.110 --> 00:02:55.230
+ hagyja engedélyezve a wpa2 PSK-t, majd itt, mert erre szükség van 
+
+00:02:55.230 --> 00:03:00.770
+ írjon be egy előre megosztott kulcsot, más néven a hálózatunk jelszavát, így dum-dum-ot fogok használni 
+
+00:03:00.770 --> 00:03:06.050
+ egy-két-három-négy ez a vendég Wi-Fi, tehát ez csak a vendég Wi-Fi-re vonatkozik 
+
+00:03:06.050 --> 00:03:12.060
+ ne feledje, hogy rendben van, miután megadtam a jelszavam, rendben leszek, így lesz 
+
+00:03:12.060 --> 00:03:16.680
+ Még nem hoztam létre hálózatot, de mégis csak egy biztonságot hoztam létre 
+
+00:03:16.680 --> 00:03:23.880
+ vendégnek nevezett profil, és ez a biztonsági profil tartalmazza a wpa2 megosztott kulcsot 
+
+00:03:23.880 --> 00:03:29.489
+ azt a vendéghálózatot, és észreveszem, hogy alapértelmezett hálózatom valójában a WPA pre-t használja 
+
+00:03:29.489 --> 00:03:35.790
+ megosztott kulcsot, így amíg itt vagyunk, nyissuk meg azt, és kapcsoljuk ki a WPA PSK-t 
+
+00:03:35.790 --> 00:03:42.570
+ mert nem akarom, hogy valaki feltörjön a fő hálózatomba, és csak az OK-t nyomja meg 
+
+00:03:42.570 --> 00:03:46.940
+ egy pillanatra eltartott egy idő, amíg a fenyőkönyvem Pro lekapcsolódott a Wi-Fi-ről és 
+
+00:03:46.940 --> 00:03:52.470
+ A jelszó újracsatlakoztatása nem változott meg egyszerűen a titkosítási algoritmusnak 
+
+00:03:52.470 --> 00:03:57.930
+ megváltozott, így most, amint a képernyőn láthatja, egyik Wi-Fi biztonsági kulcsom sem 
+
+00:03:57.930 --> 00:04:03.660
+ megengedik a WPA-nak, hogy csak a wpa2-t engedjék meg 
+
+00:04:03.660 --> 00:04:08.070
+ A Wi-Fi interfészek itt látják a két gigaherc és az öt gigaherc adataimat 
+
+00:04:08.070 --> 00:04:13.320
+ és szeretnék új csatolni a vendég Wi-Fi-hez, de nincs másik 
+
+00:04:13.320 --> 00:04:17.760
+ rádió, szóval mit fogunk csinálni, megosztjuk a rádiót az egyikemmel 
+
+00:04:17.760 --> 00:04:22.770
+ w lesz, tehát nem adunk hozzá újabb rádiót, nem kell azt megvennünk 
+
+00:04:22.770 --> 00:04:26.830
+ hozzáférési pont vagy bármilyen eszköz, amelyet éppen ugyanazt fogunk használni 
+
+00:04:26.830 --> 00:04:32.410
+ mikrotik router, tehát az egyetlen figyelmeztetés az, hogy ez azt jelenti, hogy a vendég 
+
+00:04:32.410 --> 00:04:39.570
+ A Wi-Fi ugyanazt a csatornát fogja megosztani, mint a tényleges 
+
+00:04:39.570 --> 00:04:43.990
+ Wi-Fi hálózatunk számára azonban, mert ez egy másik hálózat, és ez egy 
+
+00:04:43.990 --> 00:04:49.150
+ más jelszóval, ők nem lesznek képesek hozzáférni a dolgunkhoz, csak az 
+
+00:04:49.150 --> 00:04:52.600
+ ugyanazt a csatornát fogja megosztani 
+
+00:04:52.600 --> 00:04:57.000
+ függetlenül attól, hogy számít, nem hiszem, hogy rendben van, menjünk hozzá új 
+
+00:04:57.000 --> 00:05:03.010
+ és a virtuálisat fogjuk választani, mert nem valódiat hozunk létre most 
+
+00:05:03.010 --> 00:05:08.889
+ hozzon létre egy virtuális hálózatot itt a vezeték nélküli lapon a Wi-Fi interfészek között 
+
+00:05:08.889 --> 00:05:14.800
+ hozzunk létre egy virtuális felületet, amit először meg kell tennem, mindig azt értem, hogy adom 
+
+00:05:14.800 --> 00:05:17.229
+ Névnek hívom ezt egy vendégnek 
+
+00:05:17.229 --> 00:05:23.050
+ - Wi-Fi, és észreveszi, hogy a vendégeket használom, bárhol használhatják a sajátját 
+
+00:05:23.050 --> 00:05:28.030
+ vezetéknév vagy családnév, vagy valami szórakoztató a vendégek számára, Wi-Fi 
+
+00:05:28.030 --> 00:05:32.830
+ megteheti, de annak érdekében, hogy ezt az oktatóanyagot egyetemesen elérhetővé és 
+
+00:05:32.830 --> 00:05:37.510
+ Könnyen követhető A vendégeket használom, mert bárki megteheti ezeket a lépéseket 
+
+00:05:37.510 --> 00:05:43.030
+ akkor keresje meg és nevezze át a dolgokat, ha szeretné, de ezt nem kell tennie 
+
+00:05:43.030 --> 00:05:47.320
+ ezen a hálózaton görgessünk le egy kicsit tovább, és meglátjuk 
+
+00:05:47.320 --> 00:05:53.800
+ valami itt SSID néven tudjuk, hogy a hálózatunk SSID alapvetően megvan 
+
+00:05:53.800 --> 00:05:58.060
+ amit lát, amikor felveszi a telefonját, és hozzáfér a Wi-Fi-hez, és te is 
+
+00:05:58.060 --> 00:06:03.789
+ Lásd a különböző hálózatok listáját, tehát most látom az 5. macskás TV-t és az 5. macskát - 
+
+00:06:03.789 --> 00:06:09.220
+ 5 g és körülbelül egymilliárd más Wi-Fi hálózat körül, de szeretnék adni 
+
+00:06:09.220 --> 00:06:14.770
+ ez egy olyan SSID, amely a jelen esetben a vendég Wi-Fi-t jelöli ki 
+
+00:06:14.770 --> 00:06:20.500
+ Ezt az SSID-t fogom hívni, egyszerűen csak újra kitaláltam, vissza fogok térni 
+
+00:06:20.500 --> 00:06:24.820
+ megjegyzésem, hogy ezt csak általánosan elérhetővé tesszük, de felhívhatsz 
+
+00:06:24.820 --> 00:06:29.860
+ hogy bármi is lehet, ezt a macskát 5 TV-nek hívhatom, amely 
+
+00:06:29.860 --> 00:06:33.400
+ nagyon megfelelő lenne, mert ha van még egy vendég nevű hálózat 
+
+00:06:33.400 --> 00:06:37.680
+ mert ez elég általános, és konfliktusokat válthat ki, de ugyanakkor is 
+
+00:06:37.680 --> 00:06:41.280
+ csak úgy teszi, hogy amikor az emberek belépnek a stúdióba, mondhatják ó 
+
+00:06:41.280 --> 00:06:46.259
+ ez a vendég Wi-Fi a cat5 TV-hez. Hé mi a jelszó? 
+
+00:06:46.259 --> 00:06:51.030
+ három jó és egyszerű rendben, de a mai demonstrációhoz csak fogunk csinálni 
+
+00:06:51.030 --> 00:06:55.889
+ menj a vendéggel, és most a végső dolog, amit természetesen meg kell tennünk, meg van állítva 
+
+00:06:55.889 --> 00:06:58.710
+ biztonsági profil a Wi-Fi kapcsolathoz, és változni fogunk 
+
+00:06:58.710 --> 00:07:03.060
+ az alapértelmezettről a vendégre, tehát úgy lesz beállítva, hogy a 
+
+00:07:03.060 --> 00:07:07.680
+ jelszó dum-dum 1 2 3, ahogyan azt a biztonsági profilban megadtuk, és ez az 
+
+00:07:07.680 --> 00:07:14.160
+ szó szerint csak annyit kell tennem, hogy felvesszük az ok felületet, mert most készítem 
+
+00:07:14.160 --> 00:07:20.520
+ megváltozik a Wi-Fi beállításomban, és mivel a pine Book Pro csatlakozik a Wi-Fi-hez 
+
+00:07:20.520 --> 00:07:25.860
+ most ne feledje, hogy a Wi-Fi most az útválasztó nem indítja újra a szervereimet és a 
+
+00:07:25.860 --> 00:07:29.639
+ mindent, amire az Internet nem megy le, a Wi-Fi azonban csukolni fog 
+
+00:07:29.639 --> 00:07:35.610
+ ott, mert a Wi-Fi adó újraindítja vagy újratölti ezeket 
+
+00:07:35.610 --> 00:07:40.530
+ a konfigurációs beállításokat önmagában, tehát most már befejeződött azok újratöltése 
+
+00:07:40.530 --> 00:07:45.389
+ A beállításokat most látni fogja, hogy a vezeték nélküli Wi-Fi interfészek alatt nekem van 
+
+00:07:45.389 --> 00:07:54.060
+ a vendég Wi-Fi-nek nevezzük, és ez egy virtuális felület, amely a Wi-Fi-hez kapcsolódik, tehát a 
+
+00:07:54.060 --> 00:07:57.810
+ A következő dolog, amit meg kell tennünk, el kell indítanunk a forgalom irányítását 
+
+00:07:57.810 --> 00:08:01.470
+ folyik, és van-e itt az érzésed, hogy hé, ha te, ha ezeket követed 
+
+00:08:01.470 --> 00:08:05.180
+ lépéseket, és ha megérti a mikrotik útválasztó beállításának lépéseit 
+
+00:08:05.180 --> 00:08:10.139
+ megtehetsz igazán kifinomult dolgokat ennek a demonstrációnak a tetején 
+
+00:08:10.139 --> 00:08:14.970
+ figyelmeztette, hogy ez nagyon bonyolult lesz, nem is nehéz 
+
+00:08:14.970 --> 00:08:19.710
+ nem nehéz, nem kihívást jelent, csak nagyon sok lépés van, így menjen 
+
+00:08:19.710 --> 00:08:24.659
+ cap v dot TV slash micro tech, és ezeket felsoroltam egy dokumentációban 
+
+00:08:24.659 --> 00:08:30.120
+ formátum az Ön számára, és a teljes sorozat teljesen ingyenesen elérhető, így ha 
+
+00:08:30.120 --> 00:08:32.550
+ meg akarja követni ezeket a lépéseket, és kissé aggódik a talán 
+
+00:08:32.550 --> 00:08:36.510
+ összezavarodva valamit, amit mondtam, vagy talán egy kicsit is mozogok 
+
+00:08:36.510 --> 00:08:41.099
+ gyorsan hé fejjel lefelé a kupakhoz és a TV-slash mikrotik-hez, hogy beállítsa magát 
+
+00:08:41.099 --> 00:08:44.430
+ ezekkel a dokkokkal minden rendben van, hogy hidat hozzon létre, átmegyek a 
+
+00:08:44.430 --> 00:08:48.329
+ a bal oldali menüben, és kattintson a hídra, láthatjuk, hogy már van aktív híd 
+
+00:08:48.329 --> 00:08:52.360
+ ott fut, de szeretnénk hozzáadni egyet a vendég Wi-Fi-hez, mert szeretnénk 
+
+00:08:52.360 --> 00:08:56.620
+ ezt el kell különíteni a fő hídtól, tehát rákattintottam az Új hozzáadása elemre, és megyek 
+
+00:08:56.620 --> 00:09:02.230
+ Adj neki egy nevet, amire kitalálta híd - vendég 
+
+00:09:02.230 --> 00:09:06.160
+ tartsuk mindent egyszerűen, azt akarom, hogy szó szerint kövesse ezt, és ez így lesz 
+
+00:09:06.160 --> 00:09:09.490
+ segítsen annak biztosításában, hogy a végén mindennek értelme legyen, és mindig elmehetsz 
+
+00:09:09.490 --> 00:09:14.470
+ vissza és és nevezze át a dolgokat, ha úgy érzi, hogy erre szó szerint mindent meg kell tennünk 
+
+00:09:14.470 --> 00:09:19.089
+ meg kell tennie egy híd létrehozásához, ami rendben van, tehát most, amint láthatja 
+
+00:09:19.089 --> 00:09:22.870
+ van egy híd, az úgynevezett híd vendégek, akik ott ülnek, és semmit sem tehetnek 
+
+00:09:22.870 --> 00:09:28.480
+ tehát meg kell határoznunk a portok hozzárendelésének módját, így kattintsunk 
+
+00:09:28.480 --> 00:09:32.980
+ a kikötőkön, és ezt a hídot valóban csatlakoztatnunk kell az új vendég Wi-Fi-hez 
+
+00:09:32.980 --> 00:09:41.949
+ adj hozzá új, majd változtasd meg az interfészt vendég Wi-Fi-vel és a híddal, amelyet nem akarunk 
+
+00:09:41.949 --> 00:09:50.050
+ hogy a fő híd használatával azt akarjuk, hogy menjen a hídra - vendégre, és most nyomja meg az OK gombot 
+
+00:09:50.050 --> 00:09:58.990
+ és most alul láthatja a vendéget - Wi-Fi híd - az összes vendég 
+
+00:09:58.990 --> 00:10:03.970
+ készen állunk, és arra várunk, hogy befejezzük a konfigurálást, így a következő dolog 
+
+00:10:03.970 --> 00:10:08.800
+ hogy nyilvánvalóan meg kell tennünk, nem mondtuk el ennek a vendégnek a Wi-Fi hídjában, hogy mi az IP 
+
+00:10:08.800 --> 00:10:15.160
+ blokkolom a felhasználást, és ismét vissza fogok készülni, amikor azt mondtam, hogy akarom, hogy ez a hálózat legyen 
+
+00:10:15.160 --> 00:10:21.910
+ külön a magánhálózatoktól. Nem akarom, hogy a vendég Wi-Fi ugyanazon az IP-n legyen 
+
+00:10:21.910 --> 00:10:26.620
+ blokk Nem akarom, hogy az IP blokk hozzáférhessen az enyémhez, mert van 
+
+00:10:26.620 --> 00:10:31.209
+ Hálózati megosztások a szerveremen, és nem akarom, hogy hozzáférhessenek a webhelyem törléséhez 
+
+00:10:31.209 --> 00:10:34.990
+ fájlokat, vagy ami még rosszabb, itt egy olyan világban élünk, amelyhez valaki csatlakozhat 
+
+00:10:34.990 --> 00:10:39.670
+ a vendég Wi-Fi-jét a Windows laptopjukból, és ezt megvan ransomware-vel 
+
+00:10:39.670 --> 00:10:43.810
+ A ransomware ezután kialszik a hálózaton, és megkeresi a hálózati megosztásokat és 
+
+00:10:43.810 --> 00:10:48.699
+ titkosítja az összes fájlt, annak ellenére, hogy lehet, hogy vírusölő, vagy akár 
+
+00:10:48.699 --> 00:10:52.829
+ csak a Linux van a hálózatán, mert csatlakoztak a Wi-Fi-hez 
+
+00:10:52.829 --> 00:10:58.329
+ most hozzáférhetnek az összes fájlt az általuk ártó kártevőkkel 
+
+00:10:58.329 --> 00:11:04.120
+ van a laptopjukon, így olyan hálózatot hozunk létre, amely védi Önt 
+
+00:11:04.120 --> 00:11:08.110
+ teljesen a behatolás ellen, valamint a rosszindulatúak ellen is 
+
+00:11:08.110 --> 00:11:11.950
+ olyan személy, aki csatlakozna a vendégeihez a Wi-Fi-vel, és megpróbálja keresni a magántulajdont 
+
+00:11:11.950 --> 00:11:16.060
+ információt a hálózatán, így megvédjük Önt attól, hogy állítsuk be 
+
+00:11:16.060 --> 00:11:23.170
+ hozzon létre egy IP-blokkot a vendég Wi-Fi-hez és egy go IP-t, majd címeket a 
+
+00:11:23.170 --> 00:11:32.500
+ itt a bal oldalon, és itt látható, hogy a hálózatom 10.0.0.0 pont nulla pont 
+
+00:11:32.500 --> 00:11:39.940
+ egy kettő, három, négy, és így számol, tehát új IP blokkot fogok létrehozni 
+
+00:11:39.940 --> 00:11:44.110
+ egyszerűen rákattint az új hozzáadása elemre, és kicsit másképp változtatjuk 
+
+00:11:44.110 --> 00:11:53.620
+ 10.10 pontot használunk egy 24-es perjelnél, és az interfészen kitaláljuk 
+
+00:11:53.620 --> 00:12:00.400
+ melyik felületet fogjuk használni itt folks bridge - vendég ez a megjegyzés 
+
+00:12:00.400 --> 00:12:03.339
+ mező, amelyről a múlt héten beszéltem, és mi nem igazán láttuk, hogy szükségünk van rá 
+
+00:12:03.339 --> 00:12:07.750
+ ebben az esetben, de bármilyen elemhez hozzáfűzheti észrevételeit, amelyeket hozzáad az interneten 
+
+00:12:07.750 --> 00:12:12.910
+ vastag hit rendben van, tehát most itt van egy új hálózat, tíz tíz tíz pont 
+
+00:12:12.910 --> 00:12:17.890
+ és ez hozzá fog rendelni, hogy elkerülhetetlenül szükségünk lesz egy DHCP szerver beállítására 
+
+00:12:17.890 --> 00:12:24.100
+ ha sok lépés van, akkor IP-címeket rendel hozzá az adott IP-blokkhoz 
+
+00:12:24.100 --> 00:12:28.810
+ tehát a DHCP szerverről beszélve ez a következő lépés, tehát ide fogunk ugrani 
+
+00:12:28.810 --> 00:12:32.890
+ és az IP alatt, amely már nyitva van, már kibővült, és rákattintunk 
+
+00:12:32.890 --> 00:12:38.350
+ a DHCP szerveren és itt láthatja a jelenleg futó DHCP szervert, de a 
+
+00:12:38.350 --> 00:12:41.860
+ A helyzet azzal, hogy furcsa neve van a dobozból, tehát először én 
+
+00:12:41.860 --> 00:12:44.170
+ dolog, amit meg akarok csinálni, azt szeretném megnyitni, és ezt csak átnevezem 
+
+00:12:44.170 --> 00:12:49.060
+ helyi és ennek oka, hogy ezt akarom tenni, ezt mindig emlékeztetem magamra 
+
+00:12:49.060 --> 00:12:55.089
+ hogy a DHCP készlet az én helyi hálózatom, teljes hozzáféréssel rendelkezik az enyémhez 
+
+00:12:55.089 --> 00:12:59.529
+ hálózat nem akarja hozzárendelni egy vendég ehhez, így hívja a helyi 
+
+00:12:59.529 --> 00:13:03.790
+ csak engem egy kicsit biztonságosabbnak tart, mert így áll ki 
+
+00:13:03.790 --> 00:13:08.620
+ határozottan a helyi hálózatom, most hozzáadjunk egy új DHCP szervert, és láthatjuk 
+
+00:13:08.620 --> 00:13:11.980
+ hogy létezik ez a beállítás, amelyen keresztülment, de szeretnék mutatni neked egy eszközt 
+
+00:13:11.980 --> 00:13:16.120
+ ez még ennél is könnyebbé válik, tehát csak előhoztam, de 
+
+00:13:16.120 --> 00:13:20.560
+ visszavonás és láthatja, hogy valóban van a DHCP beállítása, és ez fel fog készülni 
+
+00:13:20.560 --> 00:13:25.120
+ egy varázsló, amely ezt sokkal egyszerűbbé teszi számunkra, és ez szó szerint 
+
+00:13:25.120 --> 00:13:30.490
+ könnyű szellő, a DHCP szerver felületét átalakítjuk híd - vendég és 
+
+00:13:30.490 --> 00:13:36.430
+ akkor nézd meg, mi következő lépni fogunk, látni fogjuk, hogy az R2 automatikusan hozzá van rendelve 
+
+00:13:36.430 --> 00:13:44.079
+ A megfelelő hálózatra a következő DNS-kiszolgálók csak húznak az útválasztómon 
+
+00:13:44.079 --> 00:13:47.680
+ rendben, megváltoztathatjuk, valójában megváltoztatjuk ezeket a jövőben 
+
+00:13:47.680 --> 00:13:53.970
+ epizód, amikor egy piehole-t állítunk fel, ez nem egy rossz szó, valójában eszköz 
+
+00:13:53.970 --> 00:13:58.329
+ ez házon belüli DNS szerverként fog működni, és blokkolja a hirdetési blokkot 
+
+00:13:58.329 --> 00:14:08.320
+ pornográfia minden ilyen cucc kattintson a Next Next Next Next Next Next csak hagyja el 
+
+00:14:08.320 --> 00:14:16.510
+ mindent úgy, ahogy van, és készen állunk, hogy megkapjuk az 1. vendéget, és észrevegyük, miért 
+
+00:14:16.510 --> 00:14:20.440
+ ez a DHCP 1 és a híd vendégem, látom, hogy igen 
+
+00:14:20.440 --> 00:14:26.079
+ híd vendég, de észreveszi, hogy nem adtam neki nevet, és így megtehetem 
+
+00:14:26.079 --> 00:14:28.350
+ pontosan ugyanezt tudom kinyitni, és felhívni ezt a vendéget 
+
+00:14:28.350 --> 00:14:34.810
+ könnyű peasy rendben van, tehát most azon a ponton vagyok, ahol látnom kellene a 
+
+00:14:34.810 --> 00:14:39.519
+ vendég Wi-Fi hálózat a telefonon, tehát tegyünk egy gyors frissítést a Wi-Fi-ről itt és 
+
+00:14:39.519 --> 00:14:44.589
+ biztos benne, hogy van macska 5 TV 5 gigaherc macska 5 TV és egy vendég, úgynevezett vendég, szóval 
+
+00:14:44.589 --> 00:14:49.990
+ kattintson rá, mielőtt megtenném, hogy előállítom a helyi hálózati erőforrást 
+
+00:14:49.990 --> 00:14:55.829
+ nincs csatlakoztatva az 5. macska TV-hez. Szeretném, ha látnád, hogy valóban hozzáférhetek 
+
+00:14:55.829 --> 00:15:01.839
+ helyi erőforrások, szóval tegyük fel a VirtualBox bejelentkezésemet, ahol egyszer van 
+
+00:15:01.839 --> 00:15:06.339
+ Átkapcsolok a vendég Wi-Fi-re. Ezt demonstráción fogom használni 
+
+00:15:06.339 --> 00:15:10.660
+ mutassa meg, hogy képesek vagyunk-e hozzáférni ezekhez az erőforrásokhoz, hát a Wi-Fi-ben 
+
+00:15:10.660 --> 00:15:17.790
+ Csatlakozzunk a vendéghez, írja be a jelszavam a dum-dum 1 2 3 biztonsági profilból 
+
+00:15:17.790 --> 00:15:27.279
+ Csatlakozzon az IP-cím megszerzéséhez, és megválaszoljuk, milyen lehetőségeket kínálunk itt 
+
+00:15:27.279 --> 00:15:31.630
+ nézd meg a 10 IP-címet, lásd az átjárót 10 10 10 
+
+00:15:31.630 --> 00:15:37.390
+ rendben van, nézzük meg újra a böngészőnket, most, amikor kapcsolatba léptem 
+
+00:15:37.390 --> 00:15:42.160
+ megpróbáljuk elérni a PHP VirtualBox-ot, és észre fogod venni, hogy igen vagyok 
+
+00:15:42.160 --> 00:15:46.390
+ valóban továbbra is hozzáférhet a PHP VirtualBox-hoz, rákattintottam a címre 
+
+00:15:46.390 --> 00:15:50.830
+ sáv, és rákattintottam a linkre, és ez betöltődik, és ez egyszerűen azért van, mert én 
+
+00:15:50.830 --> 00:15:57.340
+ még nem hoztak létre tűzfalszabályt alapvetően, és csapdába ejtették a Wi-Fi-t 
+
+00:15:57.340 --> 00:16:01.950
+ vendég belépés és elkészítés úgy, hogy ne lehessen visszajutni az én velem 
+
+00:16:01.950 --> 00:16:08.650
+ helyi hálózaton vagy a tényleges Wi-Fi-én lévő Wi-Fi-eszközökön, tehát ahogy vagyunk 
+
+00:16:08.650 --> 00:16:13.360
+ meg fogom csinálni, ami visszatér a mikrotik web-oldalunkon, a Figg-ra, amire rákattintok 
+
+00:16:13.360 --> 00:16:18.310
+ megnyitotta az IP-t, majd a tűzfalakba fogunk lépni, amire ezt már láttuk 
+
+00:16:18.310 --> 00:16:22.690
+ A cat5 TV korábbi epizódjai mikrotik, láthatom, hogy hozzáadtam pár 
+
+00:16:22.690 --> 00:16:26.860
+ új dolgokról, mióta legutóbb itt voltunk, de mit akarok csinálni 
+
+00:16:26.860 --> 00:16:32.350
+ itt az ideje, hogy el kell készíteni egy szabályt, amely lehetővé teszi annak létrehozását, hogy a Wi-Fi számára 
+
+00:16:32.350 --> 00:16:39.870
+ a vendéghálózat nem tud hozzáférni tíz pont 0 pont 0 ponthoz 
+
+00:16:39.870 --> 00:16:45.610
+ az új hozzáadása új tűzfalszabály létrehozásához, és nevetni fogsz, milyen egyszerű ez 
+
+00:16:45.610 --> 00:16:52.150
+ észreveszi, hogy a lánc alapértelmezés szerint nem továbbítja, ezért szeretnénk így hagyni 
+
+00:16:52.150 --> 00:16:56.770
+ így van, és a forráscímet meg fogjuk állítani, tehát ez az, ha az IP 
+
+00:16:56.770 --> 00:17:05.110
+ cím jön ebből, akkor tedd ezt, így nézd, mit fogok itt csinálni 10.10 
+
+00:17:05.110 --> 00:17:15.790
+ dot dot 0 perjel 24, tehát bárki, aki a vendég Wi-Fi IP blokkjában van, megy 
+
+00:17:15.790 --> 00:17:23.339
+ beleesik ebbe a forráscím célcímébe, ez a hálózatom 
+
+00:17:23.339 --> 00:17:34.690
+ 10.0.0.0 24-es perjel, ha valaki ebből a hálózatból megpróbál hozzáférni ehhez a hálózathoz 
+
+00:17:34.690 --> 00:17:42.570
+ mit akarsz csinálni, görgessen lefelé 
+
+00:17:45.150 --> 00:17:54.220
+ csökken, tehát azt mondjuk, hogy bármilyen forrást megkísérel a vendég Wi-Fi IP-blokkjáról 
+
+00:17:54.220 --> 00:18:03.280
+ hozzáférni a tényleges LAN-hoz, eldobjuk azokat a csomagokat, amelyeket rámutatni szeretnék 
+
+00:18:03.280 --> 00:18:09.400
+ hogy ez egyirányú, ezért előfordulhatnak olyan esetek, amikor eszközöket szeretne 
+
+00:18:09.400 --> 00:18:15.460
+ hozzáférjen a vezeték nélküli hálózatához, de ne férjen hozzá a belső hálózatához 
+
+00:18:15.460 --> 00:18:19.720
+ erőforrások, azonban azt akarja, hogy a belső erőforrások hozzáférhessenek 
+
+00:18:19.720 --> 00:18:28.210
+ gondolkodnak egy olyan IP-kameráról, amely Wi-Fi-t használ a kívánt összeköttetéshez 
+
+00:18:28.210 --> 00:18:33.490
+ hogy csatlakozhasson az internethez, azt szeretné, hogy hozzáférhessen a 
+
+00:18:33.490 --> 00:18:40.480
+ hálózatot, és Ön a földön lévő számítógépről azt akarja, hogy hozzáférjen ehhez 
+
+00:18:40.480 --> 00:18:47.170
+ fényképezőgép, de nem akarja, hogy a kamera hozzáférjen a dolgaihoz 
+
+00:18:47.170 --> 00:18:51.220
+ a hálózatod ez csak egy példa, de úgy értem, hogy valószínűleg eszébe jut az eszközök 
+
+00:18:51.220 --> 00:18:56.320
+ hogy szeretne külön lenni a hálózatától, ha valaki 
+
+00:18:56.320 --> 00:18:59.710
+ megragadja, ha valaki ellopja, mondjuk, hogy van egy Málna Pi ülőben 
+
+00:18:59.710 --> 00:19:03.070
+ a tető valahol csatlakozik a Wi-Fi-hez, ha valaki ellopja téged 
+
+00:19:03.070 --> 00:19:06.910
+ nem szeretné, hogy hozzáférjenek a hálózatához, ezért külön helyezze el 
+
+00:19:06.910 --> 00:19:10.420
+ hálózatot, de lehetővé teszi, hogy csatlakozzon ahhoz, hogy megértsük 
+
+00:19:10.420 --> 00:19:15.850
+ ezt egyirányú módon hajtjuk végre, ez csak a vendég Wi-Fi-jét fogja érinti 
+
+00:19:15.850 --> 00:19:20.500
+ ez nem csökkenti, nem távolítja el a képességemet a 
+
+00:19:20.500 --> 00:19:27.310
+ eszközöket a vendég Wi-Fi-n, nyomja meg az OK gombot, és most már megállítottuk ezt az útvonalat 
+
+00:19:27.310 --> 00:19:31.750
+ bár észrevetted, hogy az aljára helyezte, és már beszéltünk 
+
+00:19:31.750 --> 00:19:36.370
+ erről szeretnénk gondoskodni arról, hogy a szabályok előrehaladása előtt a 
+
+00:19:36.370 --> 00:19:41.170
+ mikrotik cucc, és biztosan szeretném megbizonyosodni arról, hogy ez megtörténjen-e a 
+
+00:19:41.170 --> 00:19:46.450
+ szabályokat, amelyeket én hoztam létre, ha azok tartalmaznak belső infrastruktúrát, ezt akarom 
+
+00:19:46.450 --> 00:19:53.950
+ ez után nem történik Nem akarom, hogy ez előbb megtörténjen, mert ha 
+
+00:19:53.950 --> 00:20:00.220
+ tíz pont 0 pont 0 pontot fognak elérni az interneten keresztül 
+
+00:20:00.220 --> 00:20:05.260
+ az engedélyezett kikötőn keresztül, tehát ha ez lenne alatta, akkor valóban megtennék 
+
+00:20:05.260 --> 00:20:17.110
+ férjen hozzá a 10.0.0.0 5. kategóriájú TV-hez, tehát elsőként el fogom dobni 
+
+00:20:17.110 --> 00:20:21.100
+ anélkül, hogy újra kellene indítanom anélkül, hogy bármi mást kellene tennem, visszahozom 
+
+00:20:21.100 --> 00:20:25.870
+ itt fel a telefonomat, amely csatlakozik a vendég Wi-Fi-hez, és térjünk vissza oda 
+
+00:20:25.870 --> 00:20:30.970
+ böngészőm, és kattintson a PHP VirtualBox-ra, amelyen látod ezt a haladást 
+
+00:20:30.970 --> 00:20:37.900
+ A tetején látható jelző fel van lógva, úgy értem, tudom, hogy továbbra is látom a PHP-t 
+
+00:20:37.900 --> 00:20:41.440
+ Mivel a VirtualBox-ot már korábban betöltöttem, menjünk haza és menjünk 
+
+00:20:41.440 --> 00:20:47.710
+ ott ismét tehát 10,0 PHP VirtualBox nézzétek ezt 
+
+00:20:47.710 --> 00:20:54.940
+ rákattintott, hol nem működik, mert kapcsolatban vagyok 
+
+00:20:54.940 --> 00:21:02.350
+ A vendég Wi-Fi-re ez a webhely nem érhető el, azonban az internet működik 
+
+00:21:02.350 --> 00:21:09.190
+ menjünk csak az 5. kategóriába tartozó televízióhoz, és az internet egy csemege, próbáljuk megmenni 
+
+00:21:09.190 --> 00:21:17.800
+ vissza a hibás IP 10.00 10-re, amely a VirtualBox szerver 
+
+00:21:17.800 --> 00:21:23.770
+ és tegyük fel, mert tudjuk, hogy ez időtúllépést fogok cserélni a macskámra 
+
+00:21:23.770 --> 00:21:32.980
+ 5 TV 5 gigaherc-es Wi-Fi, ott csatlakozunk, felvesszük, és felrobbanok 
+
+00:21:32.980 --> 00:21:38.290
+ azonnal belép, így láthatja, hogy sikeresen létrehoztuk a vendég Wi-Fi-t 
+
+00:21:38.290 --> 00:21:45.790
+ elkülönülnek a hálózatunktól, és nem tudnak hozzáférni a 10.0.0.0-os erőforrásokhoz 
+
+00:21:45.790 --> 00:21:50.560
+ hogy hozzáférjünk ehhez a vendég Wi-Fi-n keresztül, amelyet később megtanulunk 
+
+00:21:50.560 --> 00:21:53.920
+ hetek alatt hogyan tudjuk gátat csinálni, hogy megemlítettem, hogy mi leszünk 
+
+00:21:53.920 --> 00:21:58.480
+ nézzük a fojtást, de elkésettünk erre a hétre, így fogok 
+
+00:21:58.480 --> 00:22:02.860
+ helyezze át ezt egy jövőbeli epizódba is, ezért ügyeljen arra, hogy vigyázzon erre 
+
+00:22:02.860 --> 00:22:06.580
+ megtanulom, hogyan kell fojtani a kapcsolatot a vendég Wi-Fi-vel 
+
+00:22:06.580 --> 00:22:11.800
+ biztos, hogy tudod, ha hozzáférést adok a gyerekeknek a táblagépükön 
+
+00:22:11.800 --> 00:22:15.160
+ barátai, majd a barátok úton vannak, és videókat tölthetnek le 
+
+00:22:15.160 --> 00:22:19.030
+ az én Wi-Fi-én nem akarom, hogy az egész sávszélességük megfejjen, tehát ezt fedezzük 
+
+00:22:19.030 --> 00:22:23.980
+ egy eljövő show-n is rögzítsd az öt pontos TV-slash mikrotik készüléket, ahová menni akarsz 
+
+00:22:23.980 --> 00:22:28.900
+ hogy az egész sorozat teljesen ingyenes legyen, kérjük, tegye meg észrevételeit és győződjön meg róla 
+
+00:22:28.900 --> 00:22:33.220
+ feliratkozol ránk a Linux tech show nyugodt oldalán, ahol én mindent feladok 
+
+00:22:33.220 --> 00:22:37.600
+ ezek szintén utalnak a következő tech nevű youtube csatornánkhoz 
+
+00:22:37.600 --> 00:22:39.840
+ előadás 
+

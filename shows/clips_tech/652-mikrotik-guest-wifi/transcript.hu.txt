@@ -1,0 +1,254 @@
+most a mikrotik márkájú útválasztókat néztük meg, és a teljes sorozat az
+teljesen ingyenesen elérhető a cat5 dot TV perjel mikrotiknél, most, hogy hálózatunk van
+felállítva hozzunk létre egy vendég Wi-Fi SSID-t, a vendég Wi-Fi-vel a
+fojtott kapcsolat az internettel, és nem fognak hozzáférni a helyi hálózathoz
+erőforrások, tehát a hálózat megosztja a nyomtatókat, és ilyet szeretnék zárolni
+hogy egy valóban izolált Wi-Fi kapcsolatot létrehozunk, amely lehetővé teszi
+vendégek barátok ügyfelek vagy látogatók, hogy internetkapcsolatunk nélkül használják
+a kapcsolat lelassulásának kockázata, vagy az integritás vagy a magánélet veszélyeztetése nélkül
+adatainkból, tehát ez ma egy összetett bemutató lesz, tehát mit tettem
+ténylegesen dokumentáltam az összes lépést, amelyen keresztülmenek
+A cat5 dot TV perjel mikrotik, így követve csak soká teszi
+könnyebb számodra, szóval menjünk bele, valójában megyek
+ezeket a jegyzeteket, mert ez valóban egy kifinomult sorozat, amelyet kapunk
+ma itt vagy legalább a sorozat egyik aspektusában, így leszek
+itt dolgozom a fenyőkönyvemen, és szeretném előhozni a laptopomat és a
+A képernyő fantasztikusan néz ki ezen a héten, nézd meg, hogy itt javítottam itt
+a stúdiót, így azt hiszem, rájössz, hogy a dolgok sokkal könnyebben olvashatók
+köszönöm mindenkinek a türelmét ebben az időben, mert ez volt
+sok műsorszolgáltató számára nehéz, de ezen a héten javításokat végeztünk
+tehát köszönöm a türelmét, így az első dolgot az itt bemutatott web ábraben szeretném megtenni
+szeretnék bemélyülni a vezeték nélküli biztonsági profiljaimba, így értem?
+Nem akarom, hogy azok, akik hozzáférnek a vendég Wi-Fi-hez, ugyanazt használják
+a jelszót, amelyet a fő Wi-Fi-én használok, ez az, amit főleg nem akarok
+adj ki, szóval tegyük meg most, és állítsunk be külön jelszót
+kattintson a bal oldalon található vezeték nélküli elemre, majd a biztonságra kattint
+A tetején lévő profilokon kattintson az Új hozzáadása elemre, és látni fogja, hogy az alapértelmezés valóban az én enyém
+hálózatba, tehát ez a jelszó a hálózatomhoz, a Wi-Fi-hez, amelyet már megtettem
+felállítom, és rákattintok az új felvételre, és ezt csak egy vendégnek hívjuk
+éppúgy, mint egy megjegyzés, ki akarom kapcsolni a WPA PSK-t
+mivel a WPA, amint tudod, nagyon részelem, nagyon könnyű kompromisszumot kötni, így mi is
+nem akarjuk használni a WPA-t, csak a wpa2-t akarjuk használni, mivel a wpa2 sokkal biztonságosabb
+amennyiben valaki betörhet a Wi-Fi hálózatba, akkor kapcsolja ki a WPA PSK-t
+hagyja engedélyezve a wpa2 PSK-t, majd itt, mert erre szükség van
+írjon be egy előre megosztott kulcsot, más néven a hálózatunk jelszavát, így dum-dum-ot fogok használni
+egy-két-három-négy ez a vendég Wi-Fi, tehát ez csak a vendég Wi-Fi-re vonatkozik
+ne feledje, hogy rendben van, miután megadtam a jelszavam, rendben leszek, így lesz
+Még nem hoztam létre hálózatot, de mégis csak egy biztonságot hoztam létre
+vendégnek nevezett profil, és ez a biztonsági profil tartalmazza a wpa2 megosztott kulcsot
+azt a vendéghálózatot, és észreveszem, hogy alapértelmezett hálózatom valójában a WPA pre-t használja
+megosztott kulcsot, így amíg itt vagyunk, nyissuk meg azt, és kapcsoljuk ki a WPA PSK-t
+mert nem akarom, hogy valaki feltörjön a fő hálózatomba, és csak az OK-t nyomja meg
+egy pillanatra eltartott egy idő, amíg a fenyőkönyvem Pro lekapcsolódott a Wi-Fi-ről és
+A jelszó újracsatlakoztatása nem változott meg egyszerűen a titkosítási algoritmusnak
+megváltozott, így most, amint a képernyőn láthatja, egyik Wi-Fi biztonsági kulcsom sem
+megengedik a WPA-nak, hogy csak a wpa2-t engedjék meg
+A Wi-Fi interfészek itt látják a két gigaherc és az öt gigaherc adataimat
+és szeretnék új csatolni a vendég Wi-Fi-hez, de nincs másik
+rádió, szóval mit fogunk csinálni, megosztjuk a rádiót az egyikemmel
+w lesz, tehát nem adunk hozzá újabb rádiót, nem kell azt megvennünk
+hozzáférési pont vagy bármilyen eszköz, amelyet éppen ugyanazt fogunk használni
+mikrotik router, tehát az egyetlen figyelmeztetés az, hogy ez azt jelenti, hogy a vendég
+A Wi-Fi ugyanazt a csatornát fogja megosztani, mint a tényleges
+Wi-Fi hálózatunk számára azonban, mert ez egy másik hálózat, és ez egy
+más jelszóval, ők nem lesznek képesek hozzáférni a dolgunkhoz, csak az
+ugyanazt a csatornát fogja megosztani
+függetlenül attól, hogy számít, nem hiszem, hogy rendben van, menjünk hozzá új
+és a virtuálisat fogjuk választani, mert nem valódiat hozunk létre most
+hozzon létre egy virtuális hálózatot itt a vezeték nélküli lapon a Wi-Fi interfészek között
+hozzunk létre egy virtuális felületet, amit először meg kell tennem, mindig azt értem, hogy adom
+Névnek hívom ezt egy vendégnek
+- Wi-Fi, és észreveszi, hogy a vendégeket használom, bárhol használhatják a sajátját
+vezetéknév vagy családnév, vagy valami szórakoztató a vendégek számára, Wi-Fi
+megteheti, de annak érdekében, hogy ezt az oktatóanyagot egyetemesen elérhetővé és
+Könnyen követhető A vendégeket használom, mert bárki megteheti ezeket a lépéseket
+akkor keresje meg és nevezze át a dolgokat, ha szeretné, de ezt nem kell tennie
+ezen a hálózaton görgessünk le egy kicsit tovább, és meglátjuk
+valami itt SSID néven tudjuk, hogy a hálózatunk SSID alapvetően megvan
+amit lát, amikor felveszi a telefonját, és hozzáfér a Wi-Fi-hez, és te is
+Lásd a különböző hálózatok listáját, tehát most látom az 5. macskás TV-t és az 5. macskát -
+5 g és körülbelül egymilliárd más Wi-Fi hálózat körül, de szeretnék adni
+ez egy olyan SSID, amely a jelen esetben a vendég Wi-Fi-t jelöli ki
+Ezt az SSID-t fogom hívni, egyszerűen csak újra kitaláltam, vissza fogok térni
+megjegyzésem, hogy ezt csak általánosan elérhetővé tesszük, de felhívhatsz
+hogy bármi is lehet, ezt a macskát 5 TV-nek hívhatom, amely
+nagyon megfelelő lenne, mert ha van még egy vendég nevű hálózat
+mert ez elég általános, és konfliktusokat válthat ki, de ugyanakkor is
+csak úgy teszi, hogy amikor az emberek belépnek a stúdióba, mondhatják ó
+ez a vendég Wi-Fi a cat5 TV-hez. Hé mi a jelszó?
+három jó és egyszerű rendben, de a mai demonstrációhoz csak fogunk csinálni
+menj a vendéggel, és most a végső dolog, amit természetesen meg kell tennünk, meg van állítva
+biztonsági profil a Wi-Fi kapcsolathoz, és változni fogunk
+az alapértelmezettről a vendégre, tehát úgy lesz beállítva, hogy a
+jelszó dum-dum 1 2 3, ahogyan azt a biztonsági profilban megadtuk, és ez az
+szó szerint csak annyit kell tennem, hogy felvesszük az ok felületet, mert most készítem
+megváltozik a Wi-Fi beállításomban, és mivel a pine Book Pro csatlakozik a Wi-Fi-hez
+most ne feledje, hogy a Wi-Fi most az útválasztó nem indítja újra a szervereimet és a
+mindent, amire az Internet nem megy le, a Wi-Fi azonban csukolni fog
+ott, mert a Wi-Fi adó újraindítja vagy újratölti ezeket
+a konfigurációs beállításokat önmagában, tehát most már befejeződött azok újratöltése
+A beállításokat most látni fogja, hogy a vezeték nélküli Wi-Fi interfészek alatt nekem van
+a vendég Wi-Fi-nek nevezzük, és ez egy virtuális felület, amely a Wi-Fi-hez kapcsolódik, tehát a
+A következő dolog, amit meg kell tennünk, el kell indítanunk a forgalom irányítását
+folyik, és van-e itt az érzésed, hogy hé, ha te, ha ezeket követed
+lépéseket, és ha megérti a mikrotik útválasztó beállításának lépéseit
+megtehetsz igazán kifinomult dolgokat ennek a demonstrációnak a tetején
+figyelmeztette, hogy ez nagyon bonyolult lesz, nem is nehéz
+nem nehéz, nem kihívást jelent, csak nagyon sok lépés van, így menjen
+cap v dot TV slash micro tech, és ezeket felsoroltam egy dokumentációban
+formátum az Ön számára, és a teljes sorozat teljesen ingyenesen elérhető, így ha
+meg akarja követni ezeket a lépéseket, és kissé aggódik a talán
+összezavarodva valamit, amit mondtam, vagy talán egy kicsit is mozogok
+gyorsan hé fejjel lefelé a kupakhoz és a TV-slash mikrotik-hez, hogy beállítsa magát
+ezekkel a dokkokkal minden rendben van, hogy hidat hozzon létre, átmegyek a
+a bal oldali menüben, és kattintson a hídra, láthatjuk, hogy már van aktív híd
+ott fut, de szeretnénk hozzáadni egyet a vendég Wi-Fi-hez, mert szeretnénk
+ezt el kell különíteni a fő hídtól, tehát rákattintottam az Új hozzáadása elemre, és megyek
+Adj neki egy nevet, amire kitalálta híd - vendég
+tartsuk mindent egyszerűen, azt akarom, hogy szó szerint kövesse ezt, és ez így lesz
+segítsen annak biztosításában, hogy a végén mindennek értelme legyen, és mindig elmehetsz
+vissza és és nevezze át a dolgokat, ha úgy érzi, hogy erre szó szerint mindent meg kell tennünk
+meg kell tennie egy híd létrehozásához, ami rendben van, tehát most, amint láthatja
+van egy híd, az úgynevezett híd vendégek, akik ott ülnek, és semmit sem tehetnek
+tehát meg kell határoznunk a portok hozzárendelésének módját, így kattintsunk
+a kikötőkön, és ezt a hídot valóban csatlakoztatnunk kell az új vendég Wi-Fi-hez
+adj hozzá új, majd változtasd meg az interfészt vendég Wi-Fi-vel és a híddal, amelyet nem akarunk
+hogy a fő híd használatával azt akarjuk, hogy menjen a hídra - vendégre, és most nyomja meg az OK gombot
+és most alul láthatja a vendéget - Wi-Fi híd - az összes vendég
+készen állunk, és arra várunk, hogy befejezzük a konfigurálást, így a következő dolog
+hogy nyilvánvalóan meg kell tennünk, nem mondtuk el ennek a vendégnek a Wi-Fi hídjában, hogy mi az IP
+blokkolom a felhasználást, és ismét vissza fogok készülni, amikor azt mondtam, hogy akarom, hogy ez a hálózat legyen
+külön a magánhálózatoktól. Nem akarom, hogy a vendég Wi-Fi ugyanazon az IP-n legyen
+blokk Nem akarom, hogy az IP blokk hozzáférhessen az enyémhez, mert van
+Hálózati megosztások a szerveremen, és nem akarom, hogy hozzáférhessenek a webhelyem törléséhez
+fájlokat, vagy ami még rosszabb, itt egy olyan világban élünk, amelyhez valaki csatlakozhat
+a vendég Wi-Fi-jét a Windows laptopjukból, és ezt megvan ransomware-vel
+A ransomware ezután kialszik a hálózaton, és megkeresi a hálózati megosztásokat és
+titkosítja az összes fájlt, annak ellenére, hogy lehet, hogy vírusölő, vagy akár
+csak a Linux van a hálózatán, mert csatlakoztak a Wi-Fi-hez
+most hozzáférhetnek az összes fájlt az általuk ártó kártevőkkel
+van a laptopjukon, így olyan hálózatot hozunk létre, amely védi Önt
+teljesen a behatolás ellen, valamint a rosszindulatúak ellen is
+olyan személy, aki csatlakozna a vendégeihez a Wi-Fi-vel, és megpróbálja keresni a magántulajdont
+információt a hálózatán, így megvédjük Önt attól, hogy állítsuk be
+hozzon létre egy IP-blokkot a vendég Wi-Fi-hez és egy go IP-t, majd címeket a
+itt a bal oldalon, és itt látható, hogy a hálózatom 10.0.0.0 pont nulla pont
+egy kettő, három, négy, és így számol, tehát új IP blokkot fogok létrehozni
+egyszerűen rákattint az új hozzáadása elemre, és kicsit másképp változtatjuk
+10.10 pontot használunk egy 24-es perjelnél, és az interfészen kitaláljuk
+melyik felületet fogjuk használni itt folks bridge - vendég ez a megjegyzés
+mező, amelyről a múlt héten beszéltem, és mi nem igazán láttuk, hogy szükségünk van rá
+ebben az esetben, de bármilyen elemhez hozzáfűzheti észrevételeit, amelyeket hozzáad az interneten
+vastag hit rendben van, tehát most itt van egy új hálózat, tíz tíz tíz pont
+és ez hozzá fog rendelni, hogy elkerülhetetlenül szükségünk lesz egy DHCP szerver beállítására
+ha sok lépés van, akkor IP-címeket rendel hozzá az adott IP-blokkhoz
+tehát a DHCP szerverről beszélve ez a következő lépés, tehát ide fogunk ugrani
+és az IP alatt, amely már nyitva van, már kibővült, és rákattintunk
+a DHCP szerveren és itt láthatja a jelenleg futó DHCP szervert, de a
+A helyzet azzal, hogy furcsa neve van a dobozból, tehát először én
+dolog, amit meg akarok csinálni, azt szeretném megnyitni, és ezt csak átnevezem
+helyi és ennek oka, hogy ezt akarom tenni, ezt mindig emlékeztetem magamra
+hogy a DHCP készlet az én helyi hálózatom, teljes hozzáféréssel rendelkezik az enyémhez
+hálózat nem akarja hozzárendelni egy vendég ehhez, így hívja a helyi
+csak engem egy kicsit biztonságosabbnak tart, mert így áll ki
+határozottan a helyi hálózatom, most hozzáadjunk egy új DHCP szervert, és láthatjuk
+hogy létezik ez a beállítás, amelyen keresztülment, de szeretnék mutatni neked egy eszközt
+ez még ennél is könnyebbé válik, tehát csak előhoztam, de
+visszavonás és láthatja, hogy valóban van a DHCP beállítása, és ez fel fog készülni
+egy varázsló, amely ezt sokkal egyszerűbbé teszi számunkra, és ez szó szerint
+könnyű szellő, a DHCP szerver felületét átalakítjuk híd - vendég és
+akkor nézd meg, mi következő lépni fogunk, látni fogjuk, hogy az R2 automatikusan hozzá van rendelve
+A megfelelő hálózatra a következő DNS-kiszolgálók csak húznak az útválasztómon
+rendben, megváltoztathatjuk, valójában megváltoztatjuk ezeket a jövőben
+epizód, amikor egy piehole-t állítunk fel, ez nem egy rossz szó, valójában eszköz
+ez házon belüli DNS szerverként fog működni, és blokkolja a hirdetési blokkot
+pornográfia minden ilyen cucc kattintson a Next Next Next Next Next Next csak hagyja el
+mindent úgy, ahogy van, és készen állunk, hogy megkapjuk az 1. vendéget, és észrevegyük, miért
+ez a DHCP 1 és a híd vendégem, látom, hogy igen
+híd vendég, de észreveszi, hogy nem adtam neki nevet, és így megtehetem
+pontosan ugyanezt tudom kinyitni, és felhívni ezt a vendéget
+könnyű peasy rendben van, tehát most azon a ponton vagyok, ahol látnom kellene a
+vendég Wi-Fi hálózat a telefonon, tehát tegyünk egy gyors frissítést a Wi-Fi-ről itt és
+biztos benne, hogy van macska 5 TV 5 gigaherc macska 5 TV és egy vendég, úgynevezett vendég, szóval
+kattintson rá, mielőtt megtenném, hogy előállítom a helyi hálózati erőforrást
+nincs csatlakoztatva az 5. macska TV-hez. Szeretném, ha látnád, hogy valóban hozzáférhetek
+helyi erőforrások, szóval tegyük fel a VirtualBox bejelentkezésemet, ahol egyszer van
+Átkapcsolok a vendég Wi-Fi-re. Ezt demonstráción fogom használni
+mutassa meg, hogy képesek vagyunk-e hozzáférni ezekhez az erőforrásokhoz, hát a Wi-Fi-ben
+Csatlakozzunk a vendéghez, írja be a jelszavam a dum-dum 1 2 3 biztonsági profilból
+Csatlakozzon az IP-cím megszerzéséhez, és megválaszoljuk, milyen lehetőségeket kínálunk itt
+nézd meg a 10 IP-címet, lásd az átjárót 10 10 10
+rendben van, nézzük meg újra a böngészőnket, most, amikor kapcsolatba léptem
+megpróbáljuk elérni a PHP VirtualBox-ot, és észre fogod venni, hogy igen vagyok
+valóban továbbra is hozzáférhet a PHP VirtualBox-hoz, rákattintottam a címre
+sáv, és rákattintottam a linkre, és ez betöltődik, és ez egyszerűen azért van, mert én
+még nem hoztak létre tűzfalszabályt alapvetően, és csapdába ejtették a Wi-Fi-t
+vendég belépés és elkészítés úgy, hogy ne lehessen visszajutni az én velem
+helyi hálózaton vagy a tényleges Wi-Fi-én lévő Wi-Fi-eszközökön, tehát ahogy vagyunk
+meg fogom csinálni, ami visszatér a mikrotik web-oldalunkon, a Figg-ra, amire rákattintok
+megnyitotta az IP-t, majd a tűzfalakba fogunk lépni, amire ezt már láttuk
+A cat5 TV korábbi epizódjai mikrotik, láthatom, hogy hozzáadtam pár
+új dolgokról, mióta legutóbb itt voltunk, de mit akarok csinálni
+itt az ideje, hogy el kell készíteni egy szabályt, amely lehetővé teszi annak létrehozását, hogy a Wi-Fi számára
+a vendéghálózat nem tud hozzáférni tíz pont 0 pont 0 ponthoz
+az új hozzáadása új tűzfalszabály létrehozásához, és nevetni fogsz, milyen egyszerű ez
+észreveszi, hogy a lánc alapértelmezés szerint nem továbbítja, ezért szeretnénk így hagyni
+így van, és a forráscímet meg fogjuk állítani, tehát ez az, ha az IP
+cím jön ebből, akkor tedd ezt, így nézd, mit fogok itt csinálni 10.10
+dot dot 0 perjel 24, tehát bárki, aki a vendég Wi-Fi IP blokkjában van, megy
+beleesik ebbe a forráscím célcímébe, ez a hálózatom
+10.0.0.0 24-es perjel, ha valaki ebből a hálózatból megpróbál hozzáférni ehhez a hálózathoz
+mit akarsz csinálni, görgessen lefelé
+csökken, tehát azt mondjuk, hogy bármilyen forrást megkísérel a vendég Wi-Fi IP-blokkjáról
+hozzáférni a tényleges LAN-hoz, eldobjuk azokat a csomagokat, amelyeket rámutatni szeretnék
+hogy ez egyirányú, ezért előfordulhatnak olyan esetek, amikor eszközöket szeretne
+hozzáférjen a vezeték nélküli hálózatához, de ne férjen hozzá a belső hálózatához
+erőforrások, azonban azt akarja, hogy a belső erőforrások hozzáférhessenek
+gondolkodnak egy olyan IP-kameráról, amely Wi-Fi-t használ a kívánt összeköttetéshez
+hogy csatlakozhasson az internethez, azt szeretné, hogy hozzáférhessen a
+hálózatot, és Ön a földön lévő számítógépről azt akarja, hogy hozzáférjen ehhez
+fényképezőgép, de nem akarja, hogy a kamera hozzáférjen a dolgaihoz
+a hálózatod ez csak egy példa, de úgy értem, hogy valószínűleg eszébe jut az eszközök
+hogy szeretne külön lenni a hálózatától, ha valaki
+megragadja, ha valaki ellopja, mondjuk, hogy van egy Málna Pi ülőben
+a tető valahol csatlakozik a Wi-Fi-hez, ha valaki ellopja téged
+nem szeretné, hogy hozzáférjenek a hálózatához, ezért külön helyezze el
+hálózatot, de lehetővé teszi, hogy csatlakozzon ahhoz, hogy megértsük
+ezt egyirányú módon hajtjuk végre, ez csak a vendég Wi-Fi-jét fogja érinti
+ez nem csökkenti, nem távolítja el a képességemet a
+eszközöket a vendég Wi-Fi-n, nyomja meg az OK gombot, és most már megállítottuk ezt az útvonalat
+bár észrevetted, hogy az aljára helyezte, és már beszéltünk
+erről szeretnénk gondoskodni arról, hogy a szabályok előrehaladása előtt a
+mikrotik cucc, és biztosan szeretném megbizonyosodni arról, hogy ez megtörténjen-e a
+szabályokat, amelyeket én hoztam létre, ha azok tartalmaznak belső infrastruktúrát, ezt akarom
+ez után nem történik Nem akarom, hogy ez előbb megtörténjen, mert ha
+tíz pont 0 pont 0 pontot fognak elérni az interneten keresztül
+az engedélyezett kikötőn keresztül, tehát ha ez lenne alatta, akkor valóban megtennék
+férjen hozzá a 10.0.0.0 5. kategóriájú TV-hez, tehát elsőként el fogom dobni
+anélkül, hogy újra kellene indítanom anélkül, hogy bármi mást kellene tennem, visszahozom
+itt fel a telefonomat, amely csatlakozik a vendég Wi-Fi-hez, és térjünk vissza oda
+böngészőm, és kattintson a PHP VirtualBox-ra, amelyen látod ezt a haladást
+A tetején látható jelző fel van lógva, úgy értem, tudom, hogy továbbra is látom a PHP-t
+Mivel a VirtualBox-ot már korábban betöltöttem, menjünk haza és menjünk
+ott ismét tehát 10,0 PHP VirtualBox nézzétek ezt
+rákattintott, hol nem működik, mert kapcsolatban vagyok
+A vendég Wi-Fi-re ez a webhely nem érhető el, azonban az internet működik
+menjünk csak az 5. kategóriába tartozó televízióhoz, és az internet egy csemege, próbáljuk megmenni
+vissza a hibás IP 10.00 10-re, amely a VirtualBox szerver
+és tegyük fel, mert tudjuk, hogy ez időtúllépést fogok cserélni a macskámra
+5 TV 5 gigaherc-es Wi-Fi, ott csatlakozunk, felvesszük, és felrobbanok
+azonnal belép, így láthatja, hogy sikeresen létrehoztuk a vendég Wi-Fi-t
+elkülönülnek a hálózatunktól, és nem tudnak hozzáférni a 10.0.0.0-os erőforrásokhoz
+hogy hozzáférjünk ehhez a vendég Wi-Fi-n keresztül, amelyet később megtanulunk
+hetek alatt hogyan tudjuk gátat csinálni, hogy megemlítettem, hogy mi leszünk
+nézzük a fojtást, de elkésettünk erre a hétre, így fogok
+helyezze át ezt egy jövőbeli epizódba is, ezért ügyeljen arra, hogy vigyázzon erre
+megtanulom, hogyan kell fojtani a kapcsolatot a vendég Wi-Fi-vel
+biztos, hogy tudod, ha hozzáférést adok a gyerekeknek a táblagépükön
+barátai, majd a barátok úton vannak, és videókat tölthetnek le
+az én Wi-Fi-én nem akarom, hogy az egész sávszélességük megfejjen, tehát ezt fedezzük
+egy eljövő show-n is rögzítsd az öt pontos TV-slash mikrotik készüléket, ahová menni akarsz
+hogy az egész sorozat teljesen ingyenes legyen, kérjük, tegye meg észrevételeit és győződjön meg róla
+feliratkozol ránk a Linux tech show nyugodt oldalán, ahol én mindent feladok
+ezek szintén utalnak a következő tech nevű youtube csatornánkhoz
+előadás

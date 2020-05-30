@@ -1,0 +1,254 @@
+nu har vi set på mikrotik-mærkerutere, og den fulde serie er
+tilgængelig helt gratis på cat5 dot TV slash mikrotik nu, hvor vores netværk er
+op og kører lad os oprette en gæst Wi-Fi SSID vores gæst Wi-Fi vil have en
+throttled forbindelse til internettet, og de vil ikke have adgang til vores lokale
+ressourcer, så det er netværk, der deler printere, sådan som jeg vil låse
+at nede skal vi oprette en virkelig isoleret Wi-Fi-forbindelse, der tillader
+gæster venner kunder eller besøgende til at bruge vores internetforbindelse uden
+risikere at bremse vores forbindelse eller uden at risikere integriteten eller privatlivets fred
+af vores data, så dette bliver en kompleks tutorial i dag, så hvad jeg har gjort
+er jeg faktisk har dokumenteret alle de trin, jeg skal gennemgå på
+cat5 dot TV slash mikrotik, så du kan følge med på det bare gør det meget
+lettere for dig, så lad os komme ind i det, jeg skal faktisk gå fra
+disse noter, fordi dette virkelig er en sofistikeret serie, som vi får
+ind lige her i dag eller i det mindste et aspekt af serien, så det bliver jeg
+arbejder på min fyrbog her, og jeg vil bare hente min bærbare computer og
+skærmen ser fantastisk ud i denne uge se på, at jeg har foretaget nogle forbedringer her på
+studiet, så jeg tror, ​​du finder ud af, at tingene er meget lettere at læse nu
+tak for alle for din tålmodighed gennem denne tid, fordi det har været
+vanskelig for mange tv-stationer, men vi har foretaget nogle forbedringer denne uge
+så tak for din tålmodighed, så den første ting, jeg vil gøre i web fig. her
+er jeg vil gå ind i mine trådløse sikkerhedsprofiler så forstå
+Jeg vil ikke, at de, der får adgang til min gæst Wi-Fi, skal bruge det samme
+adgangskode, som jeg bruger på min hoved Wi-Fi, det er især det, jeg ikke ønsker
+give ud, så lad os gøre det lige nu, lad os oprette en separat adgangskode ved
+ved at klikke på trådløs til venstre her, så klikker jeg på sikkerhed
+profiler øverst klik nu på tilføj nyt, og du vil se, at standard faktisk er min
+dit netværk, så det er adgangskoden til mit netværk den Wi-Fi, som jeg allerede har
+opsæt, og jeg skal klikke på tilføje nyt, og vi kalder bare denne ene gæst
+ligesom den ene note er, at jeg vil slå WPA PSK fra
+fordi WPA som du kender meget er en del af mig, er det meget let at gå på kompromis, så vi
+ønsker ikke at bruge WPA, vi vil kun bruge wpa2, fordi wpa2 er meget sikrere som
+så vidt nogen kan hacke til dit Wi-Fi-netværk, så slå WPA PSK fra
+lad wpa2 PSK være aktiveret og derefter her nede, fordi det er aktiveret, vi er nødt til
+indtast en forud delt nøgle aka adgangskoden til vores netværk, så jeg bruger dum-dum
+en-to-tre-fire denne gæst Wi-Fi, så dette er kun til gæst Wi-Fi
+husk, at ok, når jeg først har indtastet min adgangskode, skal jeg ramme ok, så jeg
+har faktisk ikke oprettet et netværk endnu, alt hvad jeg har gjort er at jeg har oprettet en sikkerhed
+profil kaldet gæst og den sikkerhedsprofil indeholder den delte wpa2 nøgle til
+dette gæstnetværk, og jeg bemærker, at mit standardnetværk faktisk bruger WPA pre
+delt nøgle, så mens vi er her, lad os åbne den, og lad os slukke for WPA PSK
+fordi jeg ikke vil have nogen, der går ind i mit hovednetværk og kun rammer OK
+tog et øjeblik tid for min pine Book Pro at afbryde forbindelsen til Wi-Fi og
+igen tilslut adgangskoden har ikke ændret sig blot krypteringsalgoritmen har
+ændret sig så nu som du kan se på skærmen ingen af ​​mine Wi-Fi sikkerhedstaster
+vil tillade WPA de tillader kun wpa2 det er så simpelt som det nu springer ind i vores
+Wi-Fi-grænseflader, det er her du ser mine to gigahertz og fem gigahertz
+netværk, og jeg vil tilføje et nyt til min gæst Wi-Fi, men jeg har ikke et andet
+radio, så hvad skal vi gøre, vi deler radioen med en af ​​mine
+lander, så vi ikke vil tilføje en ny radio, vi ikke behøver at købe en
+adgangspunkt eller enhver form for enhed, vi skal bare bruge det samme
+mikrotik router, så det eneste advarsel om det er, at det betyder, at gæsten
+Wi-Fi vil dele den samme kanal som vores Wi-Fi som vores faktiske
+Wi-Fi til vores netværk dog fordi det er et andet netværk og det er et
+forskellige adgangskoder, de vil ikke have adgang til vores ting, det er bare
+vil dele den samme den samme kanal
+Uanset om det betyder noget, tror jeg ikke, det gør okay, lad os tilføje nye
+og vi vælger virtuelt, fordi vi ikke opretter en rigtig nu, vi er
+oprette et virtuelt netværk her på vores trådløse fane i Wi-Fi-grænseflader
+lad os oprette en virtuel grænseflade første ting, jeg skal gøre, er altid jeg mener give
+ting et navn Jeg vil kalde denne ene gæst
+- Wi-Fi, og du vil bemærke, at jeg bruger gæster overalt, som du muligvis bruger din
+efternavn eller dit efternavn eller noget sjovt for dine gæster Wi-Fi dig
+kan gøre det, men for at gøre denne tutorial universelt tilgængelig og
+let at følge Jeg bruger gæster, fordi alle kan gennemgå disse trin og
+derefter gå tilbage og omdøbe ting, hvis du vil, men du ikke behøver at gøre det
+på dette netværk lad os rulle ned ad nogle få måder, og vi får se
+noget her kaldet SSID ved vi, at SSID til vores netværk stort set er
+hvad du ser, når du rejser din telefon, og du får adgang til Wi-Fi og dig
+se en liste over de forskellige netværk, så lige nu ser jeg cat 5 TV og cat 5 TV -
+5 g og omkring en milliard andre Wi-Fi-netværk omkring mig, men jeg vil give
+denne er en SSID, der udpeger dette til gæstens Wi-Fi nu i vores tilfælde i dag
+Jeg vil kalde denne SSID ganske enkelt gætte igen, jeg vil henvise tilbage til
+min kommentar om, at vi bare gør dette universelt tilgængeligt, men du kan ringe til
+at uanset hvad du ønsker dette kunne være kunne jeg kalde denne kat 5 TV - gæst som
+ville være meget passende, fordi hvis der er et andet netværk kaldet gæst
+fordi det er temmelig generisk, der kan forårsage en konflikt, men også
+det gør det bare, så når folk kommer ind i studiet, kan de sige oh
+det er gæsten Wi-Fi til cat5 TV hey hvad er adgangskoden dum-dum en to
+tre pæn og enkel ret, men til dagens demonstration skal vi bare
+gå med gæst, og nu er den endelige ting, vi selvfølgelig skal gøre, indstillet vores
+sikkerhedsprofil til Wi-Fi-forbindelsen, og vi vil ændre
+det fra standard til gæst, så det bliver indstillet, så vi bruger
+password dum-dum 1 2 3, som vi specificerede med den sikkerhedsprofil, og det er
+bogstaveligt talt alt der er at tilføje interface hit ok nu, fordi jeg laver
+ændres til min Wi-Fi-opsætning, og fordi min pine Book Pro er forbundet til min Wi-Fi
+lige nu husk at Wi-Fi nu routeren ikke genstarter mine servere og
+alt, hvad min internet går ikke ned, dog går Wi-Fi i vejret
+der fordi Wi-Fi-senderen genstarter eller genindlæser dem
+konfigurationsindstillinger på egen hånd, så nu er det færdig med at indlæse dem igen
+indstillinger ser du nu, at under trådløse Wi-Fi-grænseflader har jeg en
+kaldet gæst Wi-Fi, og det er en virtuel interface, der opretter forbindelse til min Wi-Fi, så
+den næste ting, vi skal gøre, er, at vi er nødt til at begynde at dirigere, hvordan trafikken går
+at flyde og får du følelsen her, at he, hvis du hvis du følger disse
+trin, og hvis du forstår trinene, der er involveret i opsætningen af ​​en mikrotik-router
+du kan gøre nogle virkelig sofistikerede ting øverst i denne demonstration jeg
+advarede om, at dette bliver slags kompliceret, ikke at det er svært
+ikke svært, det er ikke udfordrende, det er bare der er mange trin, så gå til
+cap v dot TV slash micro tech, og jeg har listet dem ud i en dokumentation
+format til dig og hele serien er tilgængelig for dig helt gratis, så hvis
+du ønsker at følge disse trin, og du er måske lidt bekymret for
+fumler over noget, som jeg har sagt, eller måske også bevæger mig lidt
+hurtigt hej hovedet hen til cap v dot TV skrå mikrotik for at få dig selv opsat
+med disse Docs er det okay, så jeg opretter en bro, jeg går over til
+venstre menu og klik på bridge, vi kan se, at der allerede er en aktiv bro
+kører der, men vi vil tilføje en til vores gæst Wi-Fi, fordi vi vil
+dette skal adskilles fra vores hovedbro, så jeg har klikket på tilføj nyt, og jeg skal
+give denne et navn, du gættede det bro - gæst
+lad os holde alt simpelt, jeg vil have dig til at følge dette ordret, og det bliver det
+hjælp til at sikre, at alt giver mening i sidste ende, og at du altid kan gå
+tilbage og omdøbe ting, hvis du føler, at du har brug for, det er bogstaveligt talt alt, hvad vi er
+nødt til at gøre for at skabe en bro hit okay så nu som du kan se vi nu
+har en bro kaldet brogæster der sidder der og gør absolut intet
+så vi er nødt til at specificere, hvordan portene skal tildeles, så klik
+på havne, og vi er nødt til faktisk at forbinde den bro til vores nye gæst Wi-Fi så
+tilføj nye og skift derefter grænsefladen til gæstens Wi-Fi og den bro, vi ikke ønsker
+at vi ved hjælp af vores hovedbro ønsker at gå til bridge - gæst og nu ramme OK
+og nu kan du se lige nederst der gæst - Wi-Fi bridge - gæst alle
+sæt klar til at gå og vente på, at vi er færdige med at konfigurere, så den næste ting
+at vi er nødt til at gøre selvfølgelig har vi ikke fortalt denne gæst Wi-Fi broen hvilken IP
+blokerer for at bruge og igen skal jeg tage op til, da jeg sagde, at jeg vil have dette netværk
+adskilt fra mit private netværk ønsker jeg ikke gæstens Wi-Fi på den samme IP
+blokere Jeg ønsker ikke, at deres IP-blok skal kunne få adgang til min, fordi jeg har
+Netværksdelinger på min server, og jeg vil ikke have dem til at have adgang til at slette min
+filer eller værre endnu, vi lever i en verden, hvor nogen kunne oprette forbindelse til
+din gæst Wi-Fi fra deres Windows-bærbare computer, og de har ransomware der
+ransomware går derefter ud på netværket og ser efter netværksandele og
+krypterer alle dine filer, så selvom du måske har antivirus, eller du måske endda
+har intet andet end Linux på dit netværk, fordi de har oprettet forbindelse til din Wi-Fi
+de har nu adgang til at kryptere alle dine filer med deres malware, som de
+har på deres bærbare computer, så vi opretter et netværk, der beskytter dig
+helt imod den slags infiltration såvel som den ondsindede
+person, der ville oprette forbindelse til dine gæster Wi-Fi og forsøge at søge privat
+information på dit netværk, så vi beskytter dig mod det, lad os angive
+op en IP-blok for denne gæst Wi-Fi og en go IP og derefter adresser på
+venstre side her, og du kan her se, at mit netværk er 10.0.0.0 dot zero dot
+en to tre fire så videre og tæller så jeg skal oprette en ny IP-blok ved
+ved blot at klikke på tilføj nyt, så laver vi det lidt anderledes
+vi går med 10,10 dot dot en skråstreg 24 og på interface interface gæt
+hvilket interface vi bruger her folk bridge - gæst, der er kommentaren
+felt, som jeg talte om i sidste uge, at vi ikke rigtig ser, at vi ikke har brug for
+det i dette tilfælde, men du kan tilføje kommentarer til alt, hvad du tilføjer på nettet
+tykt hit ok, så nu har vi et nyt netværk her kaldet ti ti ti prik en
+og det tildeler jeg godt, vi vil uundgåeligt, når vi opsætter en DHCP-server
+se der er masser af trin, det tildeler IP-adresser på den IP-blok
+så taler vi om DHCP-server, det er vores næste trin, så vi springer over her
+og under IP, som allerede er åben, allerede udvidet, og vi skal klikke
+på DHCP-server, og her kan du se min nuværende kørende DHCP-server, men
+ting med dette er, at det har lidt af et underligt navn ud af boksen, så jeg først
+ting, jeg vil gøre, er, at jeg vil åbne det, og jeg vil bare omdøbe denne
+lokal, og grunden til, at jeg vil gøre det, er, at jeg altid vil minde mig selv om det
+at DHCP-puljen er mit lokale netværk, det har fuld adgang til alt, hvad der er på min
+netværk, du ikke ønsker at tildele en gæst til det, så ved at kalde det lokalt det
+holder mig bare lidt mere sikker, fordi det skiller sig ud som det er
+bestemt mit lokale netværk nu lad os tilføje en ny DHCP-server, og du kan se
+at der er alt dette setup, som du kan gennemgå, men jeg vil vise dig et værktøj
+det vil hjælpe med at gøre dette endnu nemmere, så jeg har netop opdraget det, men
+annullere, og du kan se, at der faktisk er DHCP-opsætning, og det kommer til at blive vist
+en guide, der vil gøre dette meget enklere for os, og det er bogstaveligt talt
+let breezy vi ændrer DHCP-servergrænsefladen til bridge - gæst og
+så se dette vi får næste næste se det r2 tildeles det automatisk
+til det korrekte netværk næste næste DNS-servere er bare at trække fra min router
+det er fint, vi kan ændre, vi vil faktisk ændre dem i fremtiden
+afsnit, når vi oprettede et cirkelhul, der ikke er et dårligt ord, der faktisk er en enhed
+det vil fungere som vores DNS-server internt og blokere reklameblokken
+pornografi alt det slags ting klik på Næste Næste Næste Næste Næste bare forlad
+alt, hvad det er, og vi er færdige over hvem vi har gæst 1 og bemærker ok godt hvorfor
+er det DHCP 1 godt min brogæst, jeg kan se, at det er
+bro gæst, men bemærk, at jeg ikke har givet hende et navn til det, og så kan jeg nu gøre
+nøjagtig den samme ting, jeg kan åbne det og kalde denne gæst
+let peasy højre ok, så nu er jeg på det punkt, hvor jeg skulle være i stand til at se
+gæst Wi-Fi-netværk på min telefon, så lad os gøre en hurtig opdatering af Wi-Fi her og
+sikker nok der er kat 5 TV 5 gigahertz kat 5 TV og en kaldet gæst, så lad os
+Klik på det faktisk, før jeg gør det, at jeg får en lokal netværksressource op
+uden forbindelse til cat 5 TV. Jeg vil have dig til at se, at jeg faktisk er i stand til at få adgang
+lokale ressourcer, så lad os bare hente mit VirtualBox-login der, det er så en gang
+Jeg skifter til gæstens Wi-Fi, det bruger jeg som en demonstration til
+Vis, om vi er i stand til at få adgang til disse ressourcer så tilbage i min Wi-Fi
+lad os oprette forbindelse til gæst indtaste min adgangskode fra sikkerhedsprofilen dum-dum 1 2 3
+tilslut få IP-adresse, og vi er i, hvilke muligheder vi har her lad os
+se på IP-adressen 10 se Gateway 10 10 10
+en okay, så lad os se på vores browser igen nu, hvor jeg er tilsluttet
+dette netværk, og lad os prøve at få adgang til PHP VirtualBox, og du vil bemærke, ja, det er jeg
+faktisk stadig i stand til at få adgang til PHP VirtualBox Jeg har klikket på adressen
+bar, og jeg har klikket på linket, og det indlæses, og det er simpelthen fordi jeg
+har endnu ikke oprettet en firewall-regel til grundlæggende og det fælder, at Wi-Fi the
+gæsteadgang og gør det så det ikke er tilladt at kommunikere tilbage med min
+lokalt netværk eller mine Wi-Fi-enheder på min faktiske Wi-Fi, sådan som vi er
+gør det er tilbage på vores mikrotik web Figg jeg vil klikke på Jeg har
+åbnede IP og så går vi til firewall, vi allerede har set dette på
+tidligere episoder af cat5 tv-skråstreg mikrotik kan du se, jeg har tilføjet et par
+af nye ting siden sidste gang vi var her, men hvad jeg vil gøre dette
+tid er Jeg vil oprette en regel for at være i stand til at gøre det så Wi-Fi til
+gæstens netværk er ikke i stand til at få adgang til ti dot 0 dot 0 dot
+på tilføj nyt for at oprette en ny firewall-regel, og du skal grine af, hvor let dette er
+vil du bemærke, at kæden standardiserer at videresende, det er det, vi ønsker, så forlad
+det er som det er, og vi vil indstille kildeadressen, så dette er hvis IP'en
+adresse kommer fra dette så gør dette så se hvad jeg skal gøre her 10.10
+dot dot 0 skråstreg 24, så alle, der er på gæstens Wi-Fi IP-blok, vil
+falder ind i dette kildeadressens destinationsadresse, dette er mit netværk
+10.0.0.0 skråstreg 24, hvis nogen fra dette netværk forsøger at få adgang til dette netværk
+hvad vil du gøre rulle nedad handling
+slip, så hvad vi siger, er enhver kilde fra gæstens Wi-Fi IP-blok, der prøver
+få adgang til mit faktiske LAN, vi vil droppe de pakker, jeg vil påpege
+at dette er ensrettet, så der kan være tilfælde, hvor du vil have enheder til
+få adgang til dit trådløse netværk, men har ikke adgang til dit interne
+ressourcer, men du vil dog have, at dine interne ressourcer skal kunne få adgang til
+dem tænker måske på et IP-kamera, der bruger Wi-Fi til at forbinde godt, du ønsker
+det skal være i stand til at oprette forbindelse til internettet, du vil have det til at kunne få adgang til
+netværk, og du fra din computer på dit land vil have adgang til det
+kamera, men du vil ikke have, at kameraet skal have rettighederne til at få adgang til dine ting på
+dit netværk er bare et eksempel, men jeg mener, du sandsynligvis kan tænke på enheder
+at du gerne vil have en slags adskilt fra dit netværk, så hvis nogen
+griber det, hvis nogen stjæler, så lad os sige, at du har en Raspberry Pi siddende i
+taget et eller andet sted tilsluttet din Wi-Fi godt, hvis nogen stjæler dig
+ønsker ikke, at de skal have adgang til dit netværk, så sæt det på en separat
+netværk, men giver dig mulighed for at oprette forbindelse til det, så vi forstår det
+vi laver denne envejs e dette påvirker kun gæstens Wi-Fi
+dette reducerer ikke, det eliminerer ikke min evne til at oprette forbindelse til
+enheder på gæstens Wi-Fi lad os ramme OK, og nu har vi den rute sat op
+men du har bemærket, at den har placeret den i bunden, og vi har allerede talt
+om dette ønsker vi at sikre, at vores fremadrettede regler sker inden nogle af
+mikrotik-ting, og jeg vil bestemt sikre mig, at dette sker før
+regler, som jeg har oprettet, hvis de involverer intern infrastruktur, jeg vil have denne
+at ske efter dette nej, jeg vil ikke, at det skal ske før dette, fordi hvis
+de får adgang til ti dot 0 dot 0 dot via internettet
+gennem havnen, som vi har tilladt, så hvis dette var under det, ville de faktisk
+har adgang til 10.0.0.0 TV 5 i kategori 5, så jeg vil være den første ting nu
+uden at skulle genstarte uden at skulle gøre noget andet, vil jeg bringe tilbage
+op på min telefon her, der er tilsluttet gæstens Wi-Fi, og lad os hoppe tilbage til
+min browser, og lad os klikke på PHP VirtualBox, som du ser fremskridt
+indikator øverst, det er hængt op nu. Jeg mener, jeg ved, at jeg stadig kan se PHP
+VirtualBox, fordi jeg tidligere har indlæst det, lad os gå hjem og lad os gå
+der igen så 10.0 PHP VirtualBox se dette jeg har
+klikket på det hvor er det det fungerer ikke, fordi jeg er tilsluttet
+til gæsten Wi-Fi kan dette websted ikke nås, men Internettet fungerer
+lad os bare gå kategori 5 TV, ja Internettet fungerer en godbid, lad os prøve at gå
+tilbage til forkert IP 10,00 10, som er min VirtualBox-server
+og lad os fordi vi ved, at det kommer til timeout, jeg skifter til min kat
+5 TV 5 gigahertz Wi-Fi der går vi tilsluttet og bringer det op og boom jeg er
+øjeblikkeligt ind, så du kan se, har vi med succes oprettet en gæst Wi-Fi der
+er adskilt fra vores netværk, de har ikke adgang til ressourcer på 10.0.0.0, de kan ikke
+få adgang til det fra vores gæst Wi-Fi, vi også lærer at komme
+uger, hvordan vi kan smøre os, som jeg nævnte, at vi bliver
+ser på gashåndtering, men vi er ude af tid til denne uges segment, så det gør jeg
+flyt det også ind i en fremtidig episode, så sørg for, at du holder øje med, at vi er
+lærer, hvordan man smitter forbindelsen til vores gæst Wi-Fi at oprette
+sikker på, at selv du ved, om jeg giver børnene adgang til det på deres tabletter
+deres venner, og så er vennerne nede ved at downloade videoer igennem
+min Wi-Fi Jeg vil ikke have, at de malker al min båndbredde, så vi dækker det
+på et kommende show samt cap fem-punkts tv-skråstreg mikrotik er, hvor du vil hen
+for at få hele serien helt gratis skal du skrive dine kommentarer og sørg for
+du abonnerer på os på Linux tech show rolig, hvor jeg poster alle
+disse såvel som omdirigerer til vores youtube kanal kaldet den næste tech
+at vise

@@ -1,0 +1,766 @@
+WEBVTT
+Kind: captions
+Language: nl
+
+00:00:01.790 --> 00:00:07.170
+ nu hebben we gekeken naar de mikrotik-merkrouters en de volledige serie is 
+
+00:00:07.170 --> 00:00:12.570
+ absoluut gratis beschikbaar op cat5 dot tv slash mikrotik nu ons netwerk is 
+
+00:00:12.570 --> 00:00:19.320
+ up-and-running laten we een gast Wi-Fi SSID maken, onze gast Wi-Fi zal een hebben 
+
+00:00:19.320 --> 00:00:25.260
+ vertraagde verbinding met het internet en ze hebben geen toegang tot onze lokale 
+
+00:00:25.260 --> 00:00:30.449
+ bronnen, dus dat zijn netwerkshares, printers, dingen die ik wil vergrendelen 
+
+00:00:30.449 --> 00:00:35.280
+ dat naar beneden we een echt geïsoleerde wifi-verbinding maken om toe te staan 
+
+00:00:35.280 --> 00:00:40.530
+ gasten vrienden klanten of bezoekers om onze internetverbinding zonder te gebruiken 
+
+00:00:40.530 --> 00:00:46.620
+ het risico lopen onze verbinding te vertragen of zonder de integriteit of privacy in gevaar te brengen 
+
+00:00:46.620 --> 00:00:52.050
+ van onze gegevens, dus dit wordt vandaag een complexe tutorial, dus wat ik heb gedaan 
+
+00:00:52.050 --> 00:00:56.030
+ is dat ik alle stappen die ik ga doorlopen eigenlijk heb gedocumenteerd 
+
+00:00:56.030 --> 00:01:01.920
+ cat5 dot tv slash mikrotik zodat je het kunt volgen, maakt het gewoon veel 
+
+00:01:01.920 --> 00:01:05.820
+ gemakkelijker voor u, dus laten we er meteen in gaan waar ik eigenlijk vanaf ga 
+
+00:01:05.820 --> 00:01:11.340
+ die aantekeningen omdat dit echt een verfijnde serie is die we krijgen 
+
+00:01:11.340 --> 00:01:18.000
+ hier vandaag of in ieder geval een aspect van de serie, dus dat zal ik zijn 
+
+00:01:18.000 --> 00:01:24.390
+ Ik werk hier aan mijn grenenboek en ik wil gewoon mijn laptop en de computer ter sprake brengen 
+
+00:01:24.390 --> 00:01:28.799
+ scherm ziet er fantastisch uit deze week, kijk maar, ik heb hier wat verbeteringen aangebracht 
+
+00:01:28.799 --> 00:01:31.920
+ de studio, dus ik denk dat je zult merken dat de dingen nu veel gemakkelijker te lezen zijn 
+
+00:01:31.920 --> 00:01:35.670
+ bedankt voor iedereen voor je geduld gedurende deze tijd omdat het zo is geweest 
+
+00:01:35.670 --> 00:01:39.990
+ moeilijk voor veel omroepen, maar we hebben deze week enkele verbeteringen aangebracht 
+
+00:01:39.990 --> 00:01:44.640
+ dus bedankt voor je geduld dus het eerste wat ik wil doen in webfiguur hier 
+
+00:01:44.640 --> 00:01:49.320
+ is dat ik in mijn draadloze beveiligingsprofielen wil gaan, dus begrijp het 
+
+00:01:49.320 --> 00:01:53.460
+ Ik wil niet dat degenen die toegang krijgen tot mijn gasten-wifi hetzelfde zullen gebruiken 
+
+00:01:53.460 --> 00:01:59.070
+ wachtwoord zoals ik gebruik op mijn belangrijkste wifi, dat is vooral wat ik niet wil 
+
+00:01:59.070 --> 00:02:03.210
+ geven, dus laten we dat nu doen. Laten we een apart wachtwoord instellen door 
+
+00:02:03.210 --> 00:02:07.110
+ Klik hier links op draadloos en dan klik ik op beveiliging 
+
+00:02:07.110 --> 00:02:13.830
+ profielen bovenaan klik nu op nieuwe toevoegen en je zult zien dat de standaard eigenlijk mijn mijn is 
+
+00:02:13.830 --> 00:02:18.360
+ je netwerk, dus dat is het wachtwoord voor mijn netwerk, de wifi die ik al heb 
+
+00:02:18.360 --> 00:02:22.340
+ instellen en ik klik op nieuw toevoegen en we gaan deze gast gewoon bellen 
+
+00:02:22.340 --> 00:02:27.060
+ net als die ene opmerking is dat ik WPA PSK wil uitschakelen 
+
+00:02:27.060 --> 00:02:33.270
+ omdat WPA zoals u weet een groot deel van mij is, is het heel gemakkelijk om compromissen te sluiten, dus wij 
+
+00:02:33.270 --> 00:02:41.460
+ geen WPA willen gebruiken we willen alleen wpa2 gebruiken omdat wpa2 veel veiliger is 
+
+00:02:41.460 --> 00:02:49.110
+ voor zover iemand je wifi-netwerk kan hacken, schakel WPA PSK dan uit 
+
+00:02:49.110 --> 00:02:55.230
+ laat wpa2 PSK ingeschakeld en vervolgens hier omdat dat is ingeschakeld, we moeten 
+
+00:02:55.230 --> 00:03:00.770
+ voer een vooraf gedeelde sleutel in, ook bekend als het wachtwoord voor ons netwerk, dus ik ga dum-dum gebruiken 
+
+00:03:00.770 --> 00:03:06.050
+ één-twee-drie-vier deze gast-wifi, dus dit is alleen voor de gast-wifi 
+
+00:03:06.050 --> 00:03:12.060
+ Onthoud dat als ik mijn wachtwoord eenmaal heb ingevoerd, ik op OK ga klikken, dus ik 
+
+00:03:12.060 --> 00:03:16.680
+ Ik heb nog geen netwerk gemaakt, ik heb alleen een beveiliging gemaakt 
+
+00:03:16.680 --> 00:03:23.880
+ profiel genaamd guest en dat beveiligingsprofiel bevat de wpa2 gedeelde sleutel voor 
+
+00:03:23.880 --> 00:03:29.489
+ dat gastnetwerk en ik merk dat mijn standaardnetwerk in feite WPA pre gebruikt 
+
+00:03:29.489 --> 00:03:35.790
+ gedeelde sleutel, dus terwijl we hier zijn, laten we die openen en laten we WPA PSK uitschakelen 
+
+00:03:35.790 --> 00:03:42.570
+ omdat ik niet wil dat iemand mijn hoofdnetwerk hackt en alleen op OK klikt 
+
+00:03:42.570 --> 00:03:46.940
+ Het duurde even voordat mijn Pine Book Pro de verbinding met wifi en 
+
+00:03:46.940 --> 00:03:52.470
+ opnieuw verbinden het wachtwoord is niet veranderd, simpelweg het coderingsalgoritme 
+
+00:03:52.470 --> 00:03:57.930
+ veranderd, zoals je nu op het scherm geen van mijn wifi-beveiligingssleutels kunt zien 
+
+00:03:57.930 --> 00:04:03.660
+ zal WPA toestaan, ze staan ​​alleen wpa2 toe, het is zo simpel als dat spring nu in ons 
+
+00:04:03.660 --> 00:04:08.070
+ Wi-Fi-interfaces hier zie je mijn twee gigahertz en vijf gigahertz 
+
+00:04:08.070 --> 00:04:13.320
+ netwerken en ik wil een nieuwe toevoegen voor mijn Wi-Fi voor gasten, maar ik heb geen andere 
+
+00:04:13.320 --> 00:04:17.760
+ radio, dus wat gaan we doen, we gaan de radio delen met een van mijn 
+
+00:04:17.760 --> 00:04:22.770
+ landt, dus we gaan geen nieuwe radio meer toevoegen, we hoeven er geen te kopen 
+
+00:04:22.770 --> 00:04:26.830
+ toegangspunt of een ander apparaat dat we gewoon hetzelfde gaan gebruiken 
+
+00:04:26.830 --> 00:04:32.410
+ mikrotik router dus het enige voorbehoud daarvan is dat het betekent dat de gast 
+
+00:04:32.410 --> 00:04:39.570
+ Wi-Fi gaat hetzelfde kanaal delen als onze Wi-Fi, zoals het echte 
+
+00:04:39.570 --> 00:04:43.990
+ Wi-Fi voor ons netwerk echter omdat het een ander netwerk is en het is een 
+
+00:04:43.990 --> 00:04:49.150
+ ander wachtwoord, ze zullen geen toegang hebben tot onze dingen, het is gewoon 
+
+00:04:49.150 --> 00:04:52.600
+ hetzelfde kanaal gaan delen 
+
+00:04:52.600 --> 00:04:57.000
+ of dat nu uitmaakt of niet, ik denk niet dat het goed is, laten we nieuw gaan toevoegen 
+
+00:04:57.000 --> 00:05:03.010
+ en we gaan virtueel kiezen omdat we geen echte creëren nu we dat zijn 
+
+00:05:03.010 --> 00:05:08.889
+ het creëren van een virtueel netwerk hier op ons draadloze tabblad in Wi-Fi-interfaces dus 
+
+00:05:08.889 --> 00:05:14.800
+ laten we een virtuele interface maken. Het eerste wat ik moet doen is altijd bedoel ik geven 
+
+00:05:14.800 --> 00:05:17.229
+ dingen een naam die ik deze gast ga noemen 
+
+00:05:17.229 --> 00:05:23.050
+ - Wi-Fi en u zult merken dat ik overal gasten gebruik, misschien gebruikt u uw 
+
+00:05:23.050 --> 00:05:28.030
+ achternaam of uw achternaam of iets leuks voor uw gasten Wi-Fi u 
+
+00:05:28.030 --> 00:05:32.830
+ kan dat doen, maar om deze tutorial universeel toegankelijk te maken en 
+
+00:05:32.830 --> 00:05:37.510
+ gemakkelijk te volgen Ik gebruik gasten omdat iedereen deze stappen kan doorlopen en 
+
+00:05:37.510 --> 00:05:43.030
+ volg dan en hernoem dingen als je dat wilt, maar je hoeft dat niet te doen 
+
+00:05:43.030 --> 00:05:47.320
+ laten we op dit netwerk een paar manieren naar beneden scrollen en we zullen zien 
+
+00:05:47.320 --> 00:05:53.800
+ iets hier SSID genoemd, we weten dat de SSID voor ons netwerk eigenlijk is 
+
+00:05:53.800 --> 00:05:58.060
+ wat je ziet als je je telefoon tevoorschijn haalt en je toegang hebt tot wifi en jij 
+
+00:05:58.060 --> 00:06:03.789
+ zie een lijst met de verschillende netwerken, dus op dit moment zie ik Cat 5 TV en Cat 5 TV - 
+
+00:06:03.789 --> 00:06:09.220
+ 5g en ongeveer een miljard andere wifi-netwerken om me heen, maar ik wil geven 
+
+00:06:09.220 --> 00:06:14.770
+ dit is een SSID die dit aanduidt als gast-wifi nu in ons geval vandaag 
+
+00:06:14.770 --> 00:06:20.500
+ Ik ga deze SSID gewoon opnieuw raden, ik ga terugverwijzen 
+
+00:06:20.500 --> 00:06:24.820
+ mijn opmerking dat we dit gewoon universeel toegankelijk maken, maar je kunt bellen 
+
+00:06:24.820 --> 00:06:29.860
+ dat wat je ook wilt, ik deze kat 5 tv zou kunnen noemen - gast die 
+
+00:06:29.860 --> 00:06:33.400
+ zou zeer geschikt zijn, want als er een ander netwerk is genaamd guest 
+
+00:06:33.400 --> 00:06:37.680
+ want dat is vrij algemeen dat een conflict kan veroorzaken, maar ook 
+
+00:06:37.680 --> 00:06:41.280
+ het zorgt er gewoon voor dat wanneer mensen de studio binnenkomen, ze oh kunnen zeggen 
+
+00:06:41.280 --> 00:06:46.259
+ dat is de Wi-Fi voor gasten voor cat5 tv hey wat is het wachtwoord dum-dum één twee 
+
+00:06:46.259 --> 00:06:51.030
+ drie mooie en simpele rechts, maar voor de demonstratie van vandaag gaan we gewoon 
+
+00:06:51.030 --> 00:06:55.889
+ ga met de gast en nu is het laatste wat we natuurlijk moeten doen onze 
+
+00:06:55.889 --> 00:06:58.710
+ beveiligingsprofiel voor de Wi-Fi-verbinding en we gaan veranderen 
+
+00:06:58.710 --> 00:07:03.060
+ dat van standaard naar gast, dus dat wordt zo ingesteld dat we de gebruiken 
+
+00:07:03.060 --> 00:07:07.680
+ wachtwoord dum-dum 1 2 3 zoals we gespecificeerd met dat beveiligingsprofiel en dat is 
+
+00:07:07.680 --> 00:07:14.160
+ letterlijk alles wat er is om de interface toe te voegen, raak nu ok omdat ik aan het maken ben 
+
+00:07:14.160 --> 00:07:20.520
+ verandert in mijn Wi-Fi-configuratie en omdat mijn Pine Book Pro is verbonden met mijn Wi-Fi 
+
+00:07:20.520 --> 00:07:25.860
+ onthoud nu dat Wi-Fi nu de router mijn servers niet herstart en 
+
+00:07:25.860 --> 00:07:29.639
+ alles wat mijn internet niet doet, maar de wifi gaat hikken 
+
+00:07:29.639 --> 00:07:35.610
+ daar omdat de Wi-Fi-zender deze herstart of herlaadt 
+
+00:07:35.610 --> 00:07:40.530
+ configuratie-instellingen op zichzelf, dus dat is klaar met het opnieuw laden van die 
+
+00:07:40.530 --> 00:07:45.389
+ instellingen zie je nu dat ik onder draadloze Wi-Fi-interfaces er een heb 
+
+00:07:45.389 --> 00:07:54.060
+ genaamd gast Wi-Fi en dat is een virtuele interface die verbinding maakt met mijn Wi-Fi, zodat de 
+
+00:07:54.060 --> 00:07:57.810
+ het volgende dat we moeten doen, is dat we moeten beginnen met routeren hoe het verkeer gaat 
+
+00:07:57.810 --> 00:08:01.470
+ om te stromen en krijg je het gevoel hier dat he als je als je deze volgt 
+
+00:08:01.470 --> 00:08:05.180
+ stappen en als u de stappen begrijpt die betrokken zijn bij het opzetten van een mikrotik-router 
+
+00:08:05.180 --> 00:08:10.139
+ je kunt een aantal echt geavanceerde dingen doen bovenaan deze demonstratie I 
+
+00:08:10.139 --> 00:08:14.970
+ waarschuwde wel dat dit een beetje ingewikkeld gaat worden, niet dat het moeilijk is 
+
+00:08:14.970 --> 00:08:19.710
+ niet moeilijk, het is niet uitdagend, er zijn gewoon veel stappen, dus ga naar 
+
+00:08:19.710 --> 00:08:24.659
+ cap v dot TV slash micro tech en ik heb die in een documentatie vermeld 
+
+00:08:24.659 --> 00:08:30.120
+ formaat voor u en de hele serie is geheel gratis voor u beschikbaar dus als 
+
+00:08:30.120 --> 00:08:32.550
+ u wilt deze stappen volgen en u maakt zich misschien een beetje zorgen over 
+
+00:08:32.550 --> 00:08:36.510
+ rommelen over iets dat ik heb gezegd of misschien beweeg ik ook een beetje 
+
+00:08:36.510 --> 00:08:41.099
+ ga snel naar cap v dot TV slash mikrotik om jezelf op te zetten 
+
+00:08:41.099 --> 00:08:44.430
+ met die Doc's in orde dus om een ​​brug te slaan ga ik naar de 
+
+00:08:44.430 --> 00:08:48.329
+ linkermenu en klik op brug we kunnen zien dat er al een actieve brug is 
+
+00:08:48.329 --> 00:08:52.360
+ die daar wordt uitgevoerd, maar we willen er een toevoegen voor onze gast-wifi omdat we dat willen 
+
+00:08:52.360 --> 00:08:56.620
+ dit om gescheiden te zijn van onze hoofdbrug, dus ik heb op nieuw klikken geklikt en ik ga 
+
+00:08:56.620 --> 00:09:02.230
+ geef deze een naam, je raadt het al bridge - gast 
+
+00:09:02.230 --> 00:09:06.160
+ laten we alles simpel houden. Ik wil dat je dit woordelijk volgt en dat gaat gebeuren 
+
+00:09:06.160 --> 00:09:09.490
+ helpen ervoor te zorgen dat alles uiteindelijk logisch is en dat u altijd kunt gaan 
+
+00:09:09.490 --> 00:09:14.470
+ terug en en hernoem dingen als je denkt dat je dat nodig hebt, dat is letterlijk alles wat we zijn 
+
+00:09:14.470 --> 00:09:19.089
+ moeten doen om een ​​brug te maken, oké, dus nu zoals je kunt zien, zien we het nu 
+
+00:09:19.089 --> 00:09:22.870
+ heb een brug genaamd bridge-gasten die daar absoluut niets doen 
+
+00:09:22.870 --> 00:09:28.480
+ dus we moeten echt specificeren hoe de poorten zullen worden toegewezen, dus klik op 
+
+00:09:28.480 --> 00:09:32.980
+ op poorten en we moeten die brug daadwerkelijk verbinden met onze nieuwe wifi voor gasten 
+
+00:09:32.980 --> 00:09:41.949
+ voeg nieuw toe en verander vervolgens de interface in wifi voor gasten en de brug die we niet willen 
+
+00:09:41.949 --> 00:09:50.050
+ dat we met onze hoofdbrug willen dat die naar bridge - guest gaat en nu op OK drukt 
+
+00:09:50.050 --> 00:09:58.990
+ en nu kun je helemaal onderaan gast - Wi-Fi bridge - gast allemaal zien 
+
+00:09:58.990 --> 00:10:03.970
+ klaar om te gaan en te wachten tot we klaar zijn met configureren, dus het volgende 
+
+00:10:03.970 --> 00:10:08.800
+ dat we natuurlijk moeten doen, we hebben deze gast Wi-Fi de bridge niet verteld welk IP-adres 
+
+00:10:08.800 --> 00:10:15.160
+ blok om te gebruiken en opnieuw ga ik een back-up maken toen ik zei dat ik dit netwerk wilde hebben 
+
+00:10:15.160 --> 00:10:21.910
+ los van mijn privénetwerk Ik wil geen wifi voor gasten op hetzelfde IP-adres 
+
+00:10:21.910 --> 00:10:26.620
+ blok Ik wil niet dat hun IP-blok toegang heeft tot het mijne omdat ik dat wel heb 
+
+00:10:26.620 --> 00:10:31.209
+ Netwerkshares op mijn server en ik wil niet dat ze toegang hebben tot het verwijderen van mijn 
+
+00:10:31.209 --> 00:10:34.990
+ bestanden of erger nog, hier leven we in een wereld waar iemand verbinding mee kan maken 
+
+00:10:34.990 --> 00:10:39.670
+ uw gasten Wi-Fi vanaf hun Windows-laptop en ze hebben ransomware 
+
+00:10:39.670 --> 00:10:43.810
+ ransomware gaat dan uit op het netwerk en zoekt naar netwerkshares en 
+
+00:10:43.810 --> 00:10:48.699
+ versleutelt al uw bestanden, dus ook al heeft u mogelijk een antivirusprogramma of misschien zelfs wel 
+
+00:10:48.699 --> 00:10:52.829
+ hebben niets anders dan Linux op je netwerk omdat ze verbinding hebben gemaakt met je wifi 
+
+00:10:52.829 --> 00:10:58.329
+ ze hebben nu toegang tot het versleutelen van al uw bestanden met hun malware die ze hebben 
+
+00:10:58.329 --> 00:11:04.120
+ hebben op hun laptop, dus we creëren een netwerk dat u beschermt 
+
+00:11:04.120 --> 00:11:08.110
+ geheel tegen dat soort infiltratie en de kwaadwillende 
+
+00:11:08.110 --> 00:11:11.950
+ persoon die verbinding maakt met de wifi van uw gasten en probeert privé te zoeken 
+
+00:11:11.950 --> 00:11:16.060
+ informatie op uw netwerk, dus we gaan u hiertegen beschermen 
+
+00:11:16.060 --> 00:11:23.170
+ een IP-blok maken voor deze gast Wi-Fi en een go-IP en vervolgens adressen op de 
+
+00:11:23.170 --> 00:11:32.500
+ linkerkant hier en je kunt hier zien dat mijn netwerk 10.0.0.0 dot zero dot is 
+
+00:11:32.500 --> 00:11:39.940
+ een twee drie vier enzovoort en Tellen dus ik ga een nieuw IP-blok maken 
+
+00:11:39.940 --> 00:11:44.110
+ Klik gewoon op Nieuw toevoegen en we gaan deze een beetje anders maken 
+
+00:11:44.110 --> 00:11:53.620
+ we gaan met 10,10 punt stip één schuine streep 24 en volgens de interface raden 
+
+00:11:53.620 --> 00:12:00.400
+ welke interface we hier gaan gebruiken, mensen bridge - gast, dat is de opmerking 
+
+00:12:00.400 --> 00:12:03.339
+ veld waar ik het vorige week over had, waarvan we niet echt zagen dat we het niet nodig hadden 
+
+00:12:03.339 --> 00:12:07.750
+ dat in dit geval, maar u kunt opmerkingen toevoegen aan alles wat u op internet toevoegt 
+
+00:12:07.750 --> 00:12:12.910
+ dikke hit ok dus nu hebben we hier een nieuw netwerk genaamd tien tien tien punten één 
+
+00:12:12.910 --> 00:12:17.890
+ en het zal toewijzen dat ik het onvermijdelijk zal doen wanneer we een DHCP-server opzetten 
+
+00:12:17.890 --> 00:12:24.100
+ zie, er zijn veel stappen die IP-adressen aan dat IP-blok zullen toewijzen 
+
+00:12:24.100 --> 00:12:28.810
+ dus over de DHCP-server gesproken, dat is onze volgende stap, dus we springen hierheen 
+
+00:12:28.810 --> 00:12:32.890
+ en onder IP die al open is al uitgebreid en we gaan klikken 
+
+00:12:32.890 --> 00:12:38.350
+ op DHCP-server en hier kunt u mijn huidige actieve DHCP-server zien, maar de 
+
+00:12:38.350 --> 00:12:41.860
+ ding hiermee is dat het een soort rare naam uit de doos heeft, dus ik eerst 
+
+00:12:41.860 --> 00:12:44.170
+ wat ik wil doen is dat ik dat wil openen en ik ga deze gewoon hernoemen 
+
+00:12:44.170 --> 00:12:49.060
+ lokaal en de reden dat ik dat wil doen, is dat ik mezelf er altijd aan wil herinneren 
+
+00:12:49.060 --> 00:12:55.089
+ die DHCP-pool is mijn lokale netwerk, het heeft volledige toegang tot alles op mijn 
+
+00:12:55.089 --> 00:12:59.529
+ netwerk waar u geen gast aan wilt toewijzen, dus door het lokaal te noemen 
+
+00:12:59.529 --> 00:13:03.790
+ houdt me gewoon een beetje veiliger omdat het opvalt zoals dat is 
+
+00:13:03.790 --> 00:13:08.620
+ zeker mijn lokale netwerk laten we nu een nieuwe DHCP-server toevoegen en u kunt zien 
+
+00:13:08.620 --> 00:13:11.980
+ dat er al deze instellingen zijn die je kunt doorlopen, maar ik wil je een tool laten zien 
+
+00:13:11.980 --> 00:13:16.120
+ dat zal dit nog gemakkelijker maken, dus ik heb dat ter sprake gebracht, maar 
+
+00:13:16.120 --> 00:13:20.560
+ annuleren en je kunt zien dat er eigenlijk DHCP-instellingen zijn en dat zal naar voren komen 
+
+00:13:20.560 --> 00:13:25.120
+ een tovenaar die dit voor ons een stuk eenvoudiger gaat maken en dit is letterlijk 
+
+00:13:25.120 --> 00:13:30.490
+ easy breezy we gaan de DHCP server interface veranderen in bridge - guest en 
+
+00:13:30.490 --> 00:13:36.430
+ kijk dan dit we gaan volgende volgende zien zien r2 automatisch toegewezen 
+
+00:13:36.430 --> 00:13:44.079
+ naar het juiste netwerk naast de volgende DNS-servers trekt gewoon van mijn router 
+
+00:13:44.079 --> 00:13:47.680
+ dat is prima, we kunnen veranderen, we gaan die in de toekomst ook veranderen 
+
+00:13:47.680 --> 00:13:53.970
+ aflevering waarin we een piehole maken dat geen slecht woord is, maar eigenlijk een apparaat is 
+
+00:13:53.970 --> 00:13:58.329
+ dat gaat in-house fungeren als onze DNS-server en het advertentieblok blokkeren 
+
+00:13:58.329 --> 00:14:08.320
+ pornografie al dat soort dingen klik op Volgende Volgende Volgende Volgende Volgende Volgende gewoon weggaan 
+
+00:14:08.320 --> 00:14:16.510
+ alles zoals het is en we zijn klaar, we hebben gast 1 en merken goed op waarom 
+
+00:14:16.510 --> 00:14:20.440
+ is het DHCP 1 nou mijn bridge guest ik kan zien dat het zo is 
+
+00:14:20.440 --> 00:14:26.079
+ bridge guest maar merk het op Ik heb haar er geen naam voor gegeven en dus kan ik het nu doen 
+
+00:14:26.079 --> 00:14:28.350
+ precies hetzelfde als ik dat kan openen en deze gast kan bellen 
+
+00:14:28.350 --> 00:14:34.810
+ easy peasy oké, dus nu ben ik op het punt waar ik het zou moeten kunnen zien 
+
+00:14:34.810 --> 00:14:39.519
+ gast-wifi-netwerk op mijn telefoon, dus laten we de wifi hier en daar snel vernieuwen 
+
+00:14:39.519 --> 00:14:44.589
+ ja hoor, er is cat 5 tv 5 gigahertz cat 5 tv en een genaamd gast, dus laten we 
+
+00:14:44.589 --> 00:14:49.990
+ klik erop voordat ik dat doe. Ik ga een lokale netwerkbron oproepen 
+
+00:14:49.990 --> 00:14:55.829
+ niet verbonden met Cat 5 TV Ik wil dat u ziet dat ik inderdaad toegang heb 
+
+00:14:55.829 --> 00:15:01.839
+ lokale bronnen, dus laten we gewoon mijn VirtualBox-login oproepen, het is zo een keer 
+
+00:15:01.839 --> 00:15:06.339
+ Ik schakel over naar het wifi-netwerk van gasten. Ik ga dat gebruiken als demonstratie 
+
+00:15:06.339 --> 00:15:10.660
+ laat zien of we toegang hebben tot die bronnen, dus terug in mijn wifi 
+
+00:15:10.660 --> 00:15:17.790
+ laten we verbinding maken met gasten, voer mijn wachtwoord in vanuit het beveiligingsprofiel dum-dum 1 2 3 
+
+00:15:17.790 --> 00:15:27.279
+ verbind het verkrijgen van IP-adres en we zijn in welke opties hebben we hier laten we 
+
+00:15:27.279 --> 00:15:31.630
+ kijk naar het IP-adres 10 zie de Gateway 10 10 10 
+
+00:15:31.630 --> 00:15:37.390
+ één in orde, dus laten we onze browser opnieuw bekijken nu ik verbinding heb 
+
+00:15:37.390 --> 00:15:42.160
+ dat netwerk en laten we proberen om toegang te krijgen tot PHP VirtualBox en je zult merken dat ik dat ben 
+
+00:15:42.160 --> 00:15:46.390
+ inderdaad nog steeds toegang tot PHP VirtualBox heb ik op het adres geklikt 
+
+00:15:46.390 --> 00:15:50.830
+ balk en ik heb op de link geklikt en deze wordt geladen en dat komt simpelweg omdat ik 
+
+00:15:50.830 --> 00:15:57.340
+ moet nog een firewallregel maken om in principe die Wi-Fi op te sluiten 
+
+00:15:57.340 --> 00:16:01.950
+ gasttoegang en zorg ervoor dat het niet is toegestaan ​​om terug te communiceren met mijn 
+
+00:16:01.950 --> 00:16:08.650
+ lokaal netwerk of mijn Wi-Fi-apparaten op mijn werkelijke Wi-Fi, zoals we zijn 
+
+00:16:08.650 --> 00:16:13.360
+ ga dat doen is terug op ons mikrotik web de Figg ik ga klikken ik heb 
+
+00:16:13.360 --> 00:16:18.310
+ IP geopend en dan gaan we naar de firewall waar we dit al op hebben gezien 
+
+00:16:18.310 --> 00:16:22.690
+ vorige afleveringen van cat5 TV slash mikrotik zie je dat ik er een paar heb toegevoegd 
+
+00:16:22.690 --> 00:16:26.860
+ van nieuwe dingen sinds de laatste keer dat we hier waren, maar wat ik dit wil doen 
+
+00:16:26.860 --> 00:16:32.350
+ tijd is dat ik een regel wil maken om het zo te kunnen maken dat de wifi voor 
+
+00:16:32.350 --> 00:16:39.870
+ het gastnetwerk kan geen toegang krijgen tot tien punt 0 punt 0 punt 
+
+00:16:39.870 --> 00:16:45.610
+ op nieuw toevoegen om een ​​nieuwe firewallregel te maken en je zult lachen om hoe gemakkelijk dit is 
+
+00:16:45.610 --> 00:16:52.150
+ is dat je zult merken dat de ketting standaard doorstuurt, dat is wat we willen, dus vertrek 
+
+00:16:52.150 --> 00:16:56.770
+ dat is zoals het is en we gaan het bronadres instellen, dus dit is als het IP 
+
+00:16:56.770 --> 00:17:05.110
+ adres komt hier vandaan, doe dit dan, dus kijk wat ik hier ga doen 10.10 
+
+00:17:05.110 --> 00:17:15.790
+ dot dot 0 slash 24 dus iedereen die zich in het wifi-IP-blok van de gast bevindt, gaat naar 
+
+00:17:15.790 --> 00:17:23.339
+ vallen hierin het bestemmingsadres van het bronadres, dit is mijn netwerk 
+
+00:17:23.339 --> 00:17:34.690
+ 10.0.0.0 schuine streep 24 als iemand van dit netwerk probeert toegang te krijgen tot dit netwerk 
+
+00:17:34.690 --> 00:17:42.570
+ wat wil je doen scroll down actie 
+
+00:17:45.150 --> 00:17:54.220
+ laten vallen, dus wat we zeggen is elke bron van het wifi-IP-blok van de gast dat probeert 
+
+00:17:54.220 --> 00:18:03.280
+ toegang tot mijn eigenlijke LAN zullen we die pakketten laten vallen die ik wil aanwijzen 
+
+00:18:03.280 --> 00:18:09.400
+ dat dit unidirectioneel is, dus er kunnen gevallen zijn waarin u apparaten wilt hebben 
+
+00:18:09.400 --> 00:18:15.460
+ toegang tot uw draadloze netwerk, maar geen toegang tot uw interne netwerk 
+
+00:18:15.460 --> 00:18:19.720
+ bronnen, hoe u ook wilt dat uw interne bronnen toegang hebben 
+
+00:18:19.720 --> 00:18:28.210
+ ze denken misschien aan een IP-camera die Wi-Fi gebruikt om goed verbinding te maken 
+
+00:18:28.210 --> 00:18:33.490
+ om verbinding te kunnen maken met internet wilt u dat het toegang heeft tot de 
+
+00:18:33.490 --> 00:18:40.480
+ netwerk en u wilt vanaf uw computer op uw land daar toegang toe hebben 
+
+00:18:40.480 --> 00:18:47.170
+ camera, maar u wilt niet dat die camera de rechten heeft om toegang te krijgen tot uw spullen 
+
+00:18:47.170 --> 00:18:51.220
+ uw netwerk is het slechts een voorbeeld, maar ik bedoel, u kunt waarschijnlijk apparaten bedenken 
+
+00:18:51.220 --> 00:18:56.320
+ dat je een beetje gescheiden wilt zijn van je netwerk, zodat als iemand 
+
+00:18:56.320 --> 00:18:59.710
+ grijpt het als iemand dat steelt, laten we zeggen dat je een Raspberry Pi hebt zitten 
+
+00:18:59.710 --> 00:19:03.070
+ het dak ergens verbonden met je wifi-bron als iemand dat van je steelt 
+
+00:19:03.070 --> 00:19:06.910
+ wil niet dat ze toegang hebben tot uw netwerk, dus zet het op een apart 
+
+00:19:06.910 --> 00:19:10.420
+ netwerk, maar u kunt er wel verbinding mee maken, dus dat begrijpen we 
+
+00:19:10.420 --> 00:19:15.850
+ we doen dit in één richting en dit heeft alleen gevolgen voor de wifi van gasten 
+
+00:19:15.850 --> 00:19:20.500
+ dit vermindert niet, het elimineert niet mijn vermogen om verbinding te maken met de 
+
+00:19:20.500 --> 00:19:27.310
+ apparaten op de gast-wifi laten we op OK drukken en nu hebben we die route ingesteld 
+
+00:19:27.310 --> 00:19:31.750
+ maar je hebt gemerkt dat het onderaan staat en we hebben al gepraat 
+
+00:19:31.750 --> 00:19:36.370
+ hierover willen we ervoor zorgen dat onze voorwaartse regels vóór een deel van de 
+
+00:19:36.370 --> 00:19:41.170
+ mikrotik spullen en ik wil er zeker van zijn dat dit gebeurt vóór de 
+
+00:19:41.170 --> 00:19:46.450
+ regels die ik heb gemaakt als het om interne infrastructuur gaat, ik wil deze 
+
+00:19:46.450 --> 00:19:53.950
+ om daarna te gebeuren, nee, ik wil niet dat het eerder gebeurt, want als 
+
+00:19:53.950 --> 00:20:00.220
+ ze krijgen toegang tot tien punt 0 punt 0 punt via internet 
+
+00:20:00.220 --> 00:20:05.260
+ via de poort die we hebben toegestaan, dus als dit lager was, zouden ze dat ook doen 
+
+00:20:05.260 --> 00:20:17.110
+ heb toegang tot 10.0.0.0 categorie 5 tv, dus ik ga er nu als eerste mee stoppen 
+
+00:20:17.110 --> 00:20:21.100
+ zonder opnieuw te hoeven starten zonder iets anders te hoeven doen, dat breng ik terug 
+
+00:20:21.100 --> 00:20:25.870
+ hier mijn telefoon op die is verbonden met de wifi van de gast en laten we teruggaan naar 
+
+00:20:25.870 --> 00:20:30.970
+ mijn browser en laten we op PHP VirtualBox klikken om de voortgang te zien 
+
+00:20:30.970 --> 00:20:37.900
+ indicator bovenaan, het hangt nu op Ik bedoel, ik weet dat ik nog steeds PHP kan zien 
+
+00:20:37.900 --> 00:20:41.440
+ VirtualBox omdat ik het eerder heb geladen, laten we naar huis gaan en gaan 
+
+00:20:41.440 --> 00:20:47.710
+ daar weer dus 10.0 PHP VirtualBox bekijk dit ik heb 
+
+00:20:47.710 --> 00:20:54.940
+ erop geklikt waar werkt het niet omdat ik verbonden ben 
+
+00:20:54.940 --> 00:21:02.350
+ voor de gasten Wi-Fi is deze site niet bereikbaar, maar het internet werkt 
+
+00:21:02.350 --> 00:21:09.190
+ laten we gewoon gaan naar categorie 5 TV ja het internet werkt een traktatie laten we proberen te gaan 
+
+00:21:09.190 --> 00:21:17.800
+ terug naar verkeerde IP 10.00 10 die mijn VirtualBox-server is 
+
+00:21:17.800 --> 00:21:23.770
+ en laten we omdat we weten dat er een time-out optreedt, ik ga veranderen naar mijn kat 
+
+00:21:23.770 --> 00:21:32.980
+ 5 TV 5 gigahertz Wi-Fi daar gaan we verbonden en brengen het naar voren en boem ik 
+
+00:21:32.980 --> 00:21:38.290
+ zoals je kunt zien, hebben we met succes een gast-wifi gemaakt 
+
+00:21:38.290 --> 00:21:45.790
+ is gescheiden van ons netwerk, ze hebben geen toegang tot bronnen op 10.0.0.0 dat ze dat niet kunnen 
+
+00:21:45.790 --> 00:21:50.560
+ toegang krijgen tot die van onze gast Wi-Fi die we ook zullen leren in de komende 
+
+00:21:50.560 --> 00:21:53.920
+ weken hoe we kunnen vertragen dat ik zei dat we zullen zijn 
+
+00:21:53.920 --> 00:21:58.480
+ kijkend naar beperking, maar we hebben geen tijd meer voor dit weekgedeelte, dus dat zal ik doen 
+
+00:21:58.480 --> 00:22:02.860
+ verplaats dat ook naar een toekomstige aflevering, dus zorg ervoor dat je erop let dat we 
+
+00:22:02.860 --> 00:22:06.580
+ leren hoe we de verbinding voor onze gast-wifi kunnen vertragen 
+
+00:22:06.580 --> 00:22:11.800
+ zeker dat zelfs jij weet of ik de kinderen er toegang toe geef op hun tablets 
+
+00:22:11.800 --> 00:22:15.160
+ hun vrienden en dan zijn de vrienden onderweg video's aan het downloaden 
+
+00:22:15.160 --> 00:22:19.030
+ mijn Wi-Fi Ik wil niet dat ze al mijn bandbreedte melken, dus daar gaan we op in 
+
+00:22:19.030 --> 00:22:23.980
+ op een komende show en cap 5-punts tv-slash mikrotik is waar je naartoe wilt 
+
+00:22:23.980 --> 00:22:28.900
+ om de hele serie helemaal gratis te krijgen, plaats uw opmerkingen en zorg ervoor dat u dit doet 
+
+00:22:28.900 --> 00:22:33.220
+ je abonneert je op Linux tech show kalm, dat is waar ik alles post 
+
+00:22:33.220 --> 00:22:37.600
+ deze ook die omleiden naar ons youtube-kanaal genaamd de volgende technologie 
+
+00:22:37.600 --> 00:22:39.840
+ laten zien 
+

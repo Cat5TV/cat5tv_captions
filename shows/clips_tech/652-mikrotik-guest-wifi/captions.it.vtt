@@ -1,0 +1,766 @@
+WEBVTT
+Kind: captions
+Language: it
+
+00:00:01.790 --> 00:00:07.170
+ ora stiamo guardando i router di marca mikrotik e la serie completa è 
+
+00:00:07.170 --> 00:00:12.570
+ disponibile assolutamente gratuitamente su cat5 dot TV slash mikrotik ora che la nostra rete è 
+
+00:00:12.570 --> 00:00:19.320
+ attivo e funzionante creiamo un SSID Wi-Fi ospite il nostro Wi-Fi ospite avrà un 
+
+00:00:19.320 --> 00:00:25.260
+ limitazione della connessione a Internet e non avranno accesso al nostro locale 
+
+00:00:25.260 --> 00:00:30.449
+ risorse in modo che la rete condivide stampanti cose del genere che voglio bloccare 
+
+00:00:30.449 --> 00:00:35.280
+ che in basso creeremo una connessione Wi-Fi davvero isolata per consentire 
+
+00:00:35.280 --> 00:00:40.530
+ ospiti amici clienti o visitatori di utilizzare la nostra connessione Internet senza 
+
+00:00:40.530 --> 00:00:46.620
+ rischiando di rallentare la nostra connessione o senza rischiare l'integrità o la privacy 
+
+00:00:46.620 --> 00:00:52.050
+ dei nostri dati, quindi questo sarà un tutorial complesso oggi, quindi quello che ho fatto 
+
+00:00:52.050 --> 00:00:56.030
+ è che in realtà ho documentato tutti i passaggi che sto per affrontare 
+
+00:00:56.030 --> 00:01:01.920
+ mikrotik slash TV cat5 dot TV in modo che tu possa seguirlo lo rende molto 
+
+00:01:01.920 --> 00:01:05.820
+ più facile per te, quindi entriamo subito da dove sto andando 
+
+00:01:05.820 --> 00:01:11.340
+ quelle note perché questa è davvero una serie sofisticata che stiamo ottenendo 
+
+00:01:11.340 --> 00:01:18.000
+ proprio qui oggi o almeno un aspetto della serie, quindi lo sarò 
+
+00:01:18.000 --> 00:01:24.390
+ lavorando sul mio libro di pini qui e voglio solo far apparire il mio laptop e il 
+
+00:01:24.390 --> 00:01:28.799
+ lo schermo sembra fantastico questa settimana guarda che ho apportato alcuni miglioramenti qui a 
+
+00:01:28.799 --> 00:01:31.920
+ lo studio quindi penso che scoprirai che le cose sono molto più facili da leggere ora 
+
+00:01:31.920 --> 00:01:35.670
+ grazie a tutti per la vostra pazienza in questo periodo perché è stato 
+
+00:01:35.670 --> 00:01:39.990
+ difficile per molte emittenti, ma questa settimana abbiamo apportato alcuni miglioramenti 
+
+00:01:39.990 --> 00:01:44.640
+ quindi grazie per la tua pazienza, quindi la prima cosa che voglio fare nel web fig qui 
+
+00:01:44.640 --> 00:01:49.320
+ è che voglio andare nei miei profili di sicurezza wireless in modo da capire 
+
+00:01:49.320 --> 00:01:53.460
+ Non voglio che quelli che accederanno al mio ospite Wi-Fi utilizzino lo stesso 
+
+00:01:53.460 --> 00:01:59.070
+ la password che utilizzo sul mio Wi-Fi principale, in particolare ciò che non desidero 
+
+00:01:59.070 --> 00:02:03.210
+ dare, quindi facciamolo adesso, impostiamo una password separata da 
+
+00:02:03.210 --> 00:02:07.110
+ facendo clic su wireless a sinistra qui e poi ho intenzione di fare clic su sicurezza 
+
+00:02:07.110 --> 00:02:13.830
+ profili in alto ora fai clic su Aggiungi nuovo e vedrai che il valore predefinito è in realtà il mio 
+
+00:02:13.830 --> 00:02:18.360
+ rete quindi questa è la password per la mia rete il Wi-Fi che ho già 
+
+00:02:18.360 --> 00:02:22.340
+ impostare e farò clic su Aggiungi nuovo e chiameremo questo unico ospite 
+
+00:02:22.340 --> 00:02:27.060
+ proprio come quella nota è che voglio disattivare WPA PSK 
+
+00:02:27.060 --> 00:02:33.270
+ perché WPA come sai fa parte di me, è molto facile scendere a compromessi, quindi noi 
+
+00:02:33.270 --> 00:02:41.460
+ non vogliamo usare WPA, vogliamo solo usare wpa2 perché wpa2 è molto più sicuro 
+
+00:02:41.460 --> 00:02:49.110
+ per quanto qualcuno sia in grado di hackerare la tua rete Wi-Fi, quindi disattivare WPA PSK 
+
+00:02:49.110 --> 00:02:55.230
+ lasciare wpa2 PSK abilitato e poi quaggiù perché abilitato dobbiamo farlo 
+
+00:02:55.230 --> 00:03:00.770
+ inserisci una chiave pre-condivisa, ovvero la password della nostra rete, quindi userò dum-dum 
+
+00:03:00.770 --> 00:03:06.050
+ uno-due-tre-quattro questo ospite Wi-Fi, quindi questo è solo per il Wi-Fi ospite 
+
+00:03:06.050 --> 00:03:12.060
+ ricorda che ok una volta che ho inserito la mia password ho intenzione di premere ok così io 
+
+00:03:12.060 --> 00:03:16.680
+ non ho ancora creato una rete ma tutto quello che ho fatto è che ho creato una sicurezza 
+
+00:03:16.680 --> 00:03:23.880
+ profilo chiamato guest e quel profilo di sicurezza contiene la chiave condivisa wpa2 per 
+
+00:03:23.880 --> 00:03:29.489
+ quella rete ospite e noto che la mia rete predefinita utilizza effettivamente WPA pre 
+
+00:03:29.489 --> 00:03:35.790
+ chiave condivisa così mentre siamo qui apriamo quello e disattiviamo WPA PSK 
+
+00:03:35.790 --> 00:03:42.570
+ perché non voglio che qualcuno entri nella mia rete principale e prema solo OK 
+
+00:03:42.570 --> 00:03:46.940
+ ci è voluto un momento per il mio pino Book Pro per disconnettersi dal Wi-Fi e 
+
+00:03:46.940 --> 00:03:52.470
+ ricollegare la password non è stata modificata semplicemente dall'algoritmo di crittografia 
+
+00:03:52.470 --> 00:03:57.930
+ cambiato così ora come puoi vedere sullo schermo nessuno dei miei tasti di sicurezza Wi-Fi 
+
+00:03:57.930 --> 00:04:03.660
+ consentiranno WPA, consentiranno solo wpa2, è così semplice come ora saltare nel nostro 
+
+00:04:03.660 --> 00:04:08.070
+ Interfacce Wi-Fi qui è dove vedi i miei due gigahertz e cinque gigahertz 
+
+00:04:08.070 --> 00:04:13.320
+ reti e voglio aggiungerne uno nuovo per il mio ospite Wi-Fi ma non ne ho un altro 
+
+00:04:13.320 --> 00:04:17.760
+ radio, quindi cosa faremo per condividere la radio con una delle mie 
+
+00:04:17.760 --> 00:04:22.770
+ w atterra quindi non aggiungeremo un'altra radio di cui non dobbiamo acquistare una 
+
+00:04:22.770 --> 00:04:26.830
+ punto di accesso o qualsiasi tipo di dispositivo utilizzeremo lo stesso 
+
+00:04:26.830 --> 00:04:32.410
+ router mikrotik quindi l'unico avvertimento di ciò è che significa che l'ospite 
+
+00:04:32.410 --> 00:04:39.570
+ Il Wi-Fi condividerà lo stesso canale del nostro Wi-Fi come il nostro attuale 
+
+00:04:39.570 --> 00:04:43.990
+ Wi-Fi per la nostra rete tuttavia perché è una rete diversa ed è una 
+
+00:04:43.990 --> 00:04:49.150
+ password diverse non saranno in grado di accedere alle nostre cose è solo 
+
+00:04:49.150 --> 00:04:52.600
+ condividerà lo stesso canale 
+
+00:04:52.600 --> 00:04:57.000
+ se ciò che conta o no, non penso che vada bene, andiamo ad aggiungerne di nuovi 
+
+00:04:57.000 --> 00:05:03.010
+ e sceglieremo virtuale perché non ne stiamo creando uno vero adesso 
+
+00:05:03.010 --> 00:05:08.889
+ creando una rete virtuale qui sulla nostra scheda wireless nelle interfacce Wi-Fi così 
+
+00:05:08.889 --> 00:05:14.800
+ creiamo un'interfaccia virtuale la prima cosa che devo fare è sempre intendo dare 
+
+00:05:14.800 --> 00:05:17.229
+ cose un nome che chiamerò questo unico ospite 
+
+00:05:17.229 --> 00:05:23.050
+ - Wi-Fi e noterai che sto usando degli ospiti mentre potresti usare il tuo 
+
+00:05:23.050 --> 00:05:28.030
+ cognome o cognome o qualcosa di divertente per i tuoi ospiti Wi-Fi 
+
+00:05:28.030 --> 00:05:32.830
+ può farlo ma per il bene di rendere questo tutorial universalmente accessibile e 
+
+00:05:32.830 --> 00:05:37.510
+ facile da seguire sto usando gli ospiti perché chiunque può seguire questi passaggi e 
+
+00:05:37.510 --> 00:05:43.030
+ quindi ripercorrere e rinominare le cose se lo si desidera ma non è necessario farlo 
+
+00:05:43.030 --> 00:05:47.320
+ su questa rete scorriamo verso il basso solo alcuni modi e vedremo 
+
+00:05:47.320 --> 00:05:53.800
+ qualcosa qui chiamato SSID sappiamo che l'SSID per la nostra rete è fondamentalmente 
+
+00:05:53.800 --> 00:05:58.060
+ quello che vedi quando apri il telefono e accedi al Wi-Fi e a te 
+
+00:05:58.060 --> 00:06:03.789
+ vedere un elenco delle diverse reti, quindi in questo momento vedo cat 5 TV e cat 5 TV - 
+
+00:06:03.789 --> 00:06:09.220
+ 5g e circa un miliardo di altre reti Wi-Fi intorno a me, ma voglio dare 
+
+00:06:09.220 --> 00:06:14.770
+ questo è un SSID che designa questo il Wi-Fi ospite ora nel nostro caso oggi 
+
+00:06:14.770 --> 00:06:20.500
+ Chiamerò questo SSID semplicemente indovinato di nuovo a cui farò riferimento 
+
+00:06:20.500 --> 00:06:24.820
+ il mio commento è che lo stiamo rendendo universalmente accessibile ma che puoi chiamare 
+
+00:06:24.820 --> 00:06:29.860
+ che qualunque cosa tu voglia, potrei chiamare questo gatto 5 TV - ospite che 
+
+00:06:29.860 --> 00:06:33.400
+ sarebbe molto appropriato perché se c'è qualche altra rete chiamata guest 
+
+00:06:33.400 --> 00:06:37.680
+ perché è piuttosto generico che potrebbe causare un conflitto ma anche 
+
+00:06:37.680 --> 00:06:41.280
+ fa sì che quando le persone entrano in studio possano dire oh 
+
+00:06:41.280 --> 00:06:46.259
+ questo è l'ospite Wi-Fi per TV Cat5 hey qual è la password dum-dum one two 
+
+00:06:46.259 --> 00:06:51.030
+ tre belle e semplici, ma per la dimostrazione di oggi ci limiteremo a farlo 
+
+00:06:51.030 --> 00:06:55.889
+ andare con gli ospiti e ora l'ultima cosa che dobbiamo fare ovviamente è impostare il nostro 
+
+00:06:55.889 --> 00:06:58.710
+ profilo di sicurezza per la connessione Wi-Fi e cambieremo 
+
+00:06:58.710 --> 00:07:03.060
+ da default a guest, quindi verrà impostato in modo da utilizzare il file 
+
+00:07:03.060 --> 00:07:07.680
+ password dum-dum 1 2 3 come specificato con quel profilo di sicurezza e basta 
+
+00:07:07.680 --> 00:07:14.160
+ letteralmente tutto ciò che serve per aggiungere l'interfaccia hit ok ora perché sto facendo 
+
+00:07:14.160 --> 00:07:20.520
+ cambia la mia configurazione Wi-Fi e perché il mio Pine Book Pro è collegato al mio Wi-Fi 
+
+00:07:20.520 --> 00:07:25.860
+ in questo momento ricorda che Wi-Fi ora il router non sta riavviando i miei server e 
+
+00:07:25.860 --> 00:07:29.639
+ tutto ciò che la mia Internet non sta diminuendo, tuttavia il Wi-Fi sta andando a singhiozzo 
+
+00:07:29.639 --> 00:07:35.610
+ lì perché il trasmettitore Wi-Fi sta riavviando o ricaricando quelli 
+
+00:07:35.610 --> 00:07:40.530
+ impostazioni di configurazione da solo, quindi ora che è stato ricaricato 
+
+00:07:40.530 --> 00:07:45.389
+ ora vedrai che nelle interfacce Wi-Fi wireless ne ho una 
+
+00:07:45.389 --> 00:07:54.060
+ chiamato guest Wi-Fi e questa è un'interfaccia virtuale che si collega al mio Wi-Fi, quindi il 
+
+00:07:54.060 --> 00:07:57.810
+ la prossima cosa che dobbiamo fare è iniziare il percorso del traffico 
+
+00:07:57.810 --> 00:08:01.470
+ scorrere e hai la sensazione che ehi se segui questi 
+
+00:08:01.470 --> 00:08:05.180
+ passaggi e se si comprendono i passaggi necessari per configurare un router mikrotik 
+
+00:08:05.180 --> 00:08:10.139
+ puoi fare alcune cose davvero sofisticate in cima a questa dimostrazione I. 
+
+00:08:10.139 --> 00:08:14.970
+ ha avvertito che questo sarà un po 'complicato, non che sia difficile 
+
+00:08:14.970 --> 00:08:19.710
+ non è difficile, non è una sfida, è solo che ci sono molti passaggi, quindi vai a 
+
+00:08:19.710 --> 00:08:24.659
+ cap v dot TV slash micro tech e li ho elencati in una documentazione 
+
+00:08:24.659 --> 00:08:30.120
+ formato per te e l'intera serie è disponibile per te assolutamente gratuito, quindi se 
+
+00:08:30.120 --> 00:08:32.550
+ vuoi seguire questi passaggi e forse sei un po 'preoccupato 
+
+00:08:32.550 --> 00:08:36.510
+ armeggiando su qualcosa che ho detto o forse mi sto muovendo anche un po ' 
+
+00:08:36.510 --> 00:08:41.099
+ vai subito a capovolgere v dot TV mikrotik per prepararti 
+
+00:08:41.099 --> 00:08:44.430
+ con quei Doc va bene così per creare un ponte andrò al 
+
+00:08:44.430 --> 00:08:48.329
+ menu a sinistra e fare clic sul ponte possiamo vedere che c'è già un ponte attivo 
+
+00:08:48.329 --> 00:08:52.360
+ in esecuzione lì, ma vogliamo aggiungerne uno per il nostro ospite Wi-Fi perché vogliamo 
+
+00:08:52.360 --> 00:08:56.620
+ questo per essere separato dal nostro ponte principale, quindi ho fatto clic su Aggiungi nuovo e lo farò 
+
+00:08:56.620 --> 00:09:02.230
+ dai a questo un nome che hai indovinato bridge - guest 
+
+00:09:02.230 --> 00:09:06.160
+ manteniamo tutto semplice, voglio che tu segua questo testualmente e questo succederà 
+
+00:09:06.160 --> 00:09:09.490
+ aiuta ad assicurarti che tutto abbia un senso alla fine e puoi sempre andare 
+
+00:09:09.490 --> 00:09:14.470
+ e rinominare le cose se ritieni di aver bisogno di questo è letteralmente tutto ciò che abbiamo 
+
+00:09:14.470 --> 00:09:19.089
+ devi fare per creare un colpo a ponte, quindi ora come puoi vedere ora 
+
+00:09:19.089 --> 00:09:22.870
+ avere un ponte chiamato ospiti del ponte seduti lì senza fare assolutamente nulla 
+
+00:09:22.870 --> 00:09:28.480
+ quindi dobbiamo effettivamente specificare come verranno assegnate le porte, quindi fare clic 
+
+00:09:28.480 --> 00:09:32.980
+ sulle porte e dobbiamo effettivamente collegare quel bridge al nostro nuovo ospite Wi-Fi così 
+
+00:09:32.980 --> 00:09:41.949
+ aggiungi nuovo e poi cambia l'interfaccia in guest Wi-Fi e il bridge che non vogliamo 
+
+00:09:41.949 --> 00:09:50.050
+ che usando il nostro bridge principale vogliamo che vada al bridge - guest e ora premi OK 
+
+00:09:50.050 --> 00:09:58.990
+ e ora puoi vedere proprio in fondo lì ospite - ponte Wi-Fi - ospite tutto 
+
+00:09:58.990 --> 00:10:03.970
+ pronto per partire e in attesa che finiamo di configurare la prossima cosa 
+
+00:10:03.970 --> 00:10:08.800
+ che dobbiamo fare ovviamente non abbiamo detto a questo ospite Wi-Fi il bridge quale IP 
+
+00:10:08.800 --> 00:10:15.160
+ blocco da usare e tornerò a quando ho detto che volevo che questa rete fosse 
+
+00:10:15.160 --> 00:10:21.910
+ separato dalla mia rete privata non voglio il guest Wi-Fi sullo stesso IP 
+
+00:10:21.910 --> 00:10:26.620
+ blocco Non voglio che il loro blocco IP sia in grado di accedere al mio perché ho 
+
+00:10:26.620 --> 00:10:31.209
+ Condivisioni di rete sul mio server e non desidero che abbiano accesso all'eliminazione di my 
+
+00:10:31.209 --> 00:10:34.990
+ file o peggio ancora qui viviamo in un mondo in cui qualcuno potrebbe connettersi 
+
+00:10:34.990 --> 00:10:39.670
+ il tuo ospite Wi-Fi dal suo laptop Windows e hanno questo ransomware 
+
+00:10:39.670 --> 00:10:43.810
+ ransomware quindi esce sulla rete e cerca condivisioni di rete e 
+
+00:10:43.810 --> 00:10:48.699
+ crittografa tutti i tuoi file, anche se potresti avere un antivirus o puoi anche 
+
+00:10:48.699 --> 00:10:52.829
+ non hanno altro che Linux sulla tua rete perché sono connessi al tuo Wi-Fi 
+
+00:10:52.829 --> 00:10:58.329
+ ora hanno accesso alla crittografia di tutti i tuoi file con il loro malware 
+
+00:10:58.329 --> 00:11:04.120
+ hanno sul proprio laptop, quindi stiamo creando una rete che ti protegge 
+
+00:11:04.120 --> 00:11:08.110
+ interamente contro quel tipo di infiltrazione e anche i maliziosi 
+
+00:11:08.110 --> 00:11:11.950
+ persona che vorrebbe connettersi ai tuoi ospiti Wi-Fi e provare a cercare un privato 
+
+00:11:11.950 --> 00:11:16.060
+ informazioni sulla tua rete in modo che ti proteggiamo da questo 
+
+00:11:16.060 --> 00:11:23.170
+ un blocco IP per questo ospite Wi-Fi e un indirizzo IP e quindi indirizzi sul 
+
+00:11:23.170 --> 00:11:32.500
+ qui a sinistra e puoi vedere qui che la mia rete è 10.0.0.0 punto zero punto 
+
+00:11:32.500 --> 00:11:39.940
+ uno due tre quattro e così via e conteggio quindi creerò un nuovo blocco IP da 
+
+00:11:39.940 --> 00:11:44.110
+ semplicemente facendo clic su aggiungi nuovo e lo renderemo un po 'diverso 
+
+00:11:44.110 --> 00:11:53.620
+ andremo con 10.10 punti punto una barra 24 e sull'ipotesi dell'interfaccia 
+
+00:11:53.620 --> 00:12:00.400
+ quale interfaccia useremo qui gente ponte - ospite questo è il commento 
+
+00:12:00.400 --> 00:12:03.339
+ campo di cui stavo parlando la scorsa settimana che non abbiamo visto davvero di non aver bisogno 
+
+00:12:03.339 --> 00:12:07.750
+ che in questo caso ma puoi aggiungere commenti a tutto ciò che aggiungi nel web 
+
+00:12:07.750 --> 00:12:12.910
+ hit hit ok quindi ora abbiamo una nuova rete qui chiamata dieci dieci dieci punti uno 
+
+00:12:12.910 --> 00:12:17.890
+ e lo assegnerò bene lo faremo inevitabilmente quando configuriamo un server DHCP 
+
+00:12:17.890 --> 00:12:24.100
+ vedi ci sono molti passaggi che assegnerà gli indirizzi IP su quel blocco IP 
+
+00:12:24.100 --> 00:12:28.810
+ quindi parlando del server DHCP questo è il nostro prossimo passo, quindi salteremo qui 
+
+00:12:28.810 --> 00:12:32.890
+ e sotto IP che è già aperto già espanso e faremo clic 
+
+00:12:32.890 --> 00:12:38.350
+ sul server DHCP e qui puoi vedere il mio server DHCP attualmente in esecuzione ma il 
+
+00:12:38.350 --> 00:12:41.860
+ la cosa è che ha un nome strano fuori dalla scatola, quindi io per primo 
+
+00:12:41.860 --> 00:12:44.170
+ cosa che voglio fare è che voglio aprirlo e lo rinominerò 
+
+00:12:44.170 --> 00:12:49.060
+ locale e il motivo per cui voglio farlo è che voglio ricordarmelo sempre 
+
+00:12:49.060 --> 00:12:55.089
+ quel pool DHCP è la mia rete locale e ha pieno accesso a tutto il mio 
+
+00:12:55.089 --> 00:12:59.529
+ rete a cui non si desidera assegnare un ospite, quindi chiamandolo locale 
+
+00:12:59.529 --> 00:13:03.790
+ mi tiene un po 'più sicuro perché si distingue così 
+
+00:13:03.790 --> 00:13:08.620
+ sicuramente la mia rete locale ora aggiungiamo un nuovo server DHCP e puoi vedere 
+
+00:13:08.620 --> 00:13:11.980
+ che c'è tutto questo setup che puoi passare ma voglio mostrarti uno strumento 
+
+00:13:11.980 --> 00:13:16.120
+ questo aiuterà a renderlo ancora più semplice, quindi l'ho appena sollevato ma 
+
+00:13:16.120 --> 00:13:20.560
+ annulla e puoi vedere che c'è effettivamente la configurazione DHCP e che verrà visualizzata 
+
+00:13:20.560 --> 00:13:25.120
+ un mago che renderà tutto molto più semplice per noi e questo è letteralmente 
+
+00:13:25.120 --> 00:13:30.490
+ facile, cambiamo l'interfaccia del server DHCP in bridge - guest e 
+
+00:13:30.490 --> 00:13:36.430
+ quindi guarda che andremo a colpire il prossimo prossimo, vedilo assegnato automaticamente a r2 
+
+00:13:36.430 --> 00:13:44.079
+ alla rete corretta il prossimo server DNS successivo sta semplicemente estraendo dal mio router 
+
+00:13:44.079 --> 00:13:47.680
+ va bene, possiamo cambiare, li cambieremo in futuro 
+
+00:13:47.680 --> 00:13:53.970
+ episodio quando impostiamo un buco che non è una parolaccia che è in realtà un dispositivo 
+
+00:13:53.970 --> 00:13:58.329
+ fungerà da nostro server DNS interno e bloccherà il blocco della pubblicità 
+
+00:13:58.329 --> 00:14:08.320
+ pornografia tutto quel genere di cose fare clic su Avanti Avanti Avanti Avanti Avanti Avanti basta partire 
+
+00:14:08.320 --> 00:14:16.510
+ tutto come è e abbiamo finito whoo abbiamo ospite 1 e notiamo ok bene perché 
+
+00:14:16.510 --> 00:14:20.440
+ è DHCP 1 bene il mio guest bridge posso vedere che è 
+
+00:14:20.440 --> 00:14:26.079
+ ospite del ponte ma notate che non le ho dato un nome e quindi ora posso farlo 
+
+00:14:26.079 --> 00:14:28.350
+ la stessa identica cosa che posso aprire e chiamare questo ospite 
+
+00:14:28.350 --> 00:14:34.810
+ easy peasy ok ok quindi ora sono al punto in cui dovrei essere in grado di vedere 
+
+00:14:34.810 --> 00:14:39.519
+ rete Wi-Fi ospite sul mio telefono, quindi facciamo un rapido aggiornamento del Wi-Fi qui e 
+
+00:14:39.519 --> 00:14:44.589
+ abbastanza sicuro c'è cat 5 TV 5 gigahertz cat 5 TV e uno chiamato guest quindi andiamo 
+
+00:14:44.589 --> 00:14:49.990
+ fai clic su di esso prima di farlo per far apparire una risorsa di rete locale 
+
+00:14:49.990 --> 00:14:55.829
+ scollegato dalla TV cat 5 Voglio che tu veda che sono effettivamente in grado di accedere 
+
+00:14:55.829 --> 00:15:01.839
+ risorse locali quindi portiamo solo il mio login VirtualBox lì è così una volta 
+
+00:15:01.839 --> 00:15:06.339
+ Passo al Wi-Fi ospite e lo userò come dimostrazione 
+
+00:15:06.339 --> 00:15:10.660
+ mostra se siamo in grado di accedere a tali risorse o meno nel mio Wi-Fi 
+
+00:15:10.660 --> 00:15:17.790
+ connettiamoci al guest inserisci la mia password dal profilo di sicurezza dum-dum 1 2 3 
+
+00:15:17.790 --> 00:15:27.279
+ connettersi ottenendo l'indirizzo IP e siamo in quali opzioni abbiamo qui andiamo 
+
+00:15:27.279 --> 00:15:31.630
+ guarda l'indirizzo IP 10 vedi Gateway 10 10 10 
+
+00:15:31.630 --> 00:15:37.390
+ uno va bene, quindi diamo un'occhiata al nostro browser ora che sono connesso 
+
+00:15:37.390 --> 00:15:42.160
+ quella rete e proviamo ad accedere a PHP VirtualBox e noterai di sì 
+
+00:15:42.160 --> 00:15:46.390
+ anzi ancora in grado di accedere a PHP VirtualBox ho cliccato sull'indirizzo 
+
+00:15:46.390 --> 00:15:50.830
+ barra e ho cliccato sul link e si sta caricando e questo è semplicemente perché io 
+
+00:15:50.830 --> 00:15:57.340
+ devo ancora creare una regola firewall per fondamentalmente e intrappola quel Wi-Fi 
+
+00:15:57.340 --> 00:16:01.950
+ accesso ospite e farlo in modo che non sia autorizzato a comunicare con il mio 
+
+00:16:01.950 --> 00:16:08.650
+ rete locale o i miei dispositivi Wi-Fi sul mio attuale Wi-Fi così come siamo 
+
+00:16:08.650 --> 00:16:13.360
+ farò che è tornato sul nostro mikrotik web il Figg che ho intenzione di fare clic ho 
+
+00:16:13.360 --> 00:16:18.310
+ IP aperto e poi andremo al firewall su cui l'abbiamo già visto 
+
+00:16:18.310 --> 00:16:22.690
+ episodi precedenti di cat5 TV slash mikrotik puoi vedere che ne ho aggiunti un paio 
+
+00:16:22.690 --> 00:16:26.860
+ di cose nuove dall'ultima volta che siamo stati qui, ma quello che voglio fare questo 
+
+00:16:26.860 --> 00:16:32.350
+ tempo è che voglio creare una regola per essere in grado di farlo in modo che il Wi-Fi 
+
+00:16:32.350 --> 00:16:39.870
+ la rete ospite non è in grado di accedere a dieci punti 0 punti 0 punti 
+
+00:16:39.870 --> 00:16:45.610
+ su aggiungi nuovo per creare una nuova regola del firewall e riderai di quanto sia facile 
+
+00:16:45.610 --> 00:16:52.150
+ è che noterai che la catena non sta eseguendo l'inoltro che è ciò che vogliamo, quindi lascia 
+
+00:16:52.150 --> 00:16:56.770
+ così com'è e imposteremo l'indirizzo sorgente così questo è se l'IP 
+
+00:16:56.770 --> 00:17:05.110
+ l'indirizzo viene da questo quindi fai questo, quindi guarda cosa farò qui 10.10 
+
+00:17:05.110 --> 00:17:15.790
+ punto punto 0 barra 24 quindi chiunque si trovi sul blocco IP Wi-Fi ospite lo farà 
+
+00:17:15.790 --> 00:17:23.339
+ rientro in questo indirizzo di destinazione indirizzo di destinazione questa è la mia rete 
+
+00:17:23.339 --> 00:17:34.690
+ 10.0.0.0 barra 24 se qualcuno da questa rete tenta di accedere a questa rete 
+
+00:17:34.690 --> 00:17:42.570
+ cosa vuoi fare scorrere verso il basso azione 
+
+00:17:45.150 --> 00:17:54.220
+ rilasciamo quindi quello che stiamo dicendo è qualsiasi fonte dal blocco IP Wi-Fi guest che sta provando 
+
+00:17:54.220 --> 00:18:03.280
+ accedendo alla mia LAN effettiva, elimineremo quei pacchetti che voglio sottolineare 
+
+00:18:03.280 --> 00:18:09.400
+ che è unidirezionale, quindi potrebbero esserci casi in cui si desidera che i dispositivi 
+
+00:18:09.400 --> 00:18:15.460
+ accedi alla tua rete wireless ma non hai accesso al tuo interno 
+
+00:18:15.460 --> 00:18:19.720
+ risorse, tuttavia, si desidera che le risorse interne siano in grado di accedere 
+
+00:18:19.720 --> 00:18:28.210
+ pensano forse a una telecamera IP che utilizza il Wi-Fi per connettersi bene 
+
+00:18:28.210 --> 00:18:33.490
+ per poterti connettere a Internet vuoi che sia in grado di accedere a 
+
+00:18:33.490 --> 00:18:40.480
+ rete e tu dal tuo computer sulla tua terra vuoi essere in grado di accedervi 
+
+00:18:40.480 --> 00:18:47.170
+ ma non vuoi che quella videocamera abbia i diritti per accedere alle tue cose 
+
+00:18:47.170 --> 00:18:51.220
+ la tua rete è solo un esempio ma intendo che probabilmente puoi pensare ai dispositivi 
+
+00:18:51.220 --> 00:18:56.320
+ che vorresti avere un po 'separato dalla tua rete in modo che se qualcuno 
+
+00:18:56.320 --> 00:18:59.710
+ lo prende se qualcuno ruba che diciamo che hai un Raspberry Pi seduto 
+
+00:18:59.710 --> 00:19:03.070
+ il tetto da qualche parte collegato al tuo Wi-Fi bene se qualcuno ti ruba 
+
+00:19:03.070 --> 00:19:06.910
+ non voglio che abbiano accesso alla tua rete, quindi mettilo su un altro 
+
+00:19:06.910 --> 00:19:10.420
+ rete ma permettendoti di essere in grado di connettersi ad esso in modo che lo capiamo 
+
+00:19:10.420 --> 00:19:15.850
+ stiamo facendo questo unidirezionale e questo influenzerà solo il Wi-Fi ospite 
+
+00:19:15.850 --> 00:19:20.500
+ questo non sta riducendo, non sta eliminando la mia capacità di connettermi a 
+
+00:19:20.500 --> 00:19:27.310
+ dispositivi sul Wi-Fi guest premiamo OK e ora abbiamo impostato quel percorso 
+
+00:19:27.310 --> 00:19:31.750
+ comunque hai notato che l'ha messo in fondo e ne abbiamo già parlato 
+
+00:19:31.750 --> 00:19:36.370
+ su questo vogliamo assicurarci che le nostre regole forward vengano applicate prima di alcune delle 
+
+00:19:36.370 --> 00:19:41.170
+ roba mikrotik e certamente voglio assicurarmi che questo accada prima del 
+
+00:19:41.170 --> 00:19:46.450
+ regole che ho creato se coinvolgono l'infrastruttura interna voglio questo 
+
+00:19:46.450 --> 00:19:53.950
+ succedere dopo questo no, non voglio che accada prima perché perché 
+
+00:19:53.950 --> 00:20:00.220
+ accederanno a dieci punti 0 punti 0 punti attraverso Internet 
+
+00:20:00.220 --> 00:20:05.260
+ attraverso la porta che abbiamo permesso, quindi se questo fosse al di sotto lo farebbero effettivamente 
+
+00:20:05.260 --> 00:20:17.110
+ avere accesso alla TV di categoria 5.0.0.0 quindi lascerò cadere come prima cosa così ora 
+
+00:20:17.110 --> 00:20:21.100
+ senza dover ricominciare senza dover fare nient'altro che riporterò indietro 
+
+00:20:21.100 --> 00:20:25.870
+ il mio telefono qui che è collegato al Wi-Fi ospite e torniamo a 
+
+00:20:25.870 --> 00:20:30.970
+ il mio browser e facciamo clic su PHP VirtualBox che vedi che progressi 
+
+00:20:30.970 --> 00:20:37.900
+ indicatore in alto è appeso ora voglio dire che so che posso ancora vedere PHP 
+
+00:20:37.900 --> 00:20:41.440
+ VirtualBox perché l'ho già caricato andiamo a casa e andiamo 
+
+00:20:41.440 --> 00:20:47.710
+ c'è di nuovo quindi 10.0 PHP VirtualBox guarda questo 
+
+00:20:47.710 --> 00:20:54.940
+ cliccato su di esso dove non funziona perché sono connesso 
+
+00:20:54.940 --> 00:21:02.350
+ per l'ospite Wi-Fi questo sito non è raggiungibile ma Internet funziona 
+
+00:21:02.350 --> 00:21:09.190
+ andiamo in TV di categoria 5 sì, Internet funziona a meraviglia, proviamo ad andare 
+
+00:21:09.190 --> 00:21:17.800
+ ritorno a IP 10,00 errato che è il mio server VirtualBox 
+
+00:21:17.800 --> 00:21:23.770
+ e facciamo perché sappiamo che andrà in timeout cambierò con il mio gatto 
+
+00:21:23.770 --> 00:21:32.980
+ 5 TV 5 gigahertz Wi-Fi lì andiamo collegati e tiriamo su e boom sono 
+
+00:21:32.980 --> 00:21:38.290
+ immediatamente come puoi vedere, abbiamo creato con successo un guest Wi-Fi 
+
+00:21:38.290 --> 00:21:45.790
+ è separato dalla nostra rete che non possono accedere alle risorse su 10.0.0.0 che non possono 
+
+00:21:45.790 --> 00:21:50.560
+ ottenere l'accesso a ciò dal nostro ospite Wi-Fi che impareremo anche a venire 
+
+00:21:50.560 --> 00:21:53.920
+ settimane in cui possiamo limitare il fatto che ho detto che saremo 
+
+00:21:53.920 --> 00:21:58.480
+ guardando il throttling ma non siamo in tempo per questo segmento di settimana, quindi lo farò 
+
+00:21:58.480 --> 00:22:02.860
+ spostalo anche in un episodio futuro, quindi assicurati di stare attento a questo 
+
+00:22:02.860 --> 00:22:06.580
+ imparerò come limitare la connessione che il nostro ospite Wi-Fi deve effettuare 
+
+00:22:06.580 --> 00:22:11.800
+ certo che anche tu sai se do ai bambini l'accesso ad esso sui loro tablet 
+
+00:22:11.800 --> 00:22:15.160
+ i loro amici e poi gli amici sono sulla strada per scaricare video 
+
+00:22:15.160 --> 00:22:19.030
+ il mio Wi-Fi non li voglio mungere tutta la mia larghezza di banda, quindi lo copriremo 
+
+00:22:19.030 --> 00:22:23.980
+ in uno show in arrivo anche il tappo a cinque punti TV mikrotik è dove vuoi andare 
+
+00:22:23.980 --> 00:22:28.900
+ per avere l'intera serie assolutamente gratuita, inserisci i tuoi commenti e assicurati 
+
+00:22:28.900 --> 00:22:33.220
+ ti iscrivi a Linux Tech Show Calma, che è dove sto postando tutto 
+
+00:22:33.220 --> 00:22:37.600
+ anche questi che reindirizzano al nostro canale youtube chiamato la prossima tecnologia 
+
+00:22:37.600 --> 00:22:39.840
+ mostrare 
+
