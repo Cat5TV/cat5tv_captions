@@ -1,0 +1,491 @@
+bienvenue à la technologie de télévision de catégorie cinq, mikrotik rend incroyablement puissant
+routeurs à un prix très abordable et cette semaine, nous allons apprendre à
+créer un hotspot Wi-Fi pour cet espace de studio, mais les informations que je vais
+vous apprendre va vous permettre de créer votre propre hotspot Wi-Fi pour les invités
+accès pour votre entreprise ou pour votre maison et avec ces informations, vous êtes
+va être en mesure de verrouiller cet accès de telle manière que l'un des gens
+qui accèdent au Wi-Fi invité ne pourront pas traire toute votre bande passante
+parce que vous allez le limiter et aux personnes qui accèdent à votre invité
+Le Wi-Fi n'aura pas accès à vos fichiers personnels ou à d'autres ressources
+au sein de votre réseau privé, c'est une terre sans fil isolée que nous allons
+être en train de créer aujourd'hui, je vais vous montrer comment le faire correctement
+après ça
+[La musique]
+nos enregistrements en direct ne sont fiables que pour les disques SSD de Kingston
+la technologie fait revivre votre ordinateur avec des performances et une fiabilité améliorées
+sur les disques durs traditionnels avec les SSD Kingston de catégorie 5 diffusés en direct
+avec Telestream Wirecast et streamer agile écouter chaque semaine sur roku cody
+et d'autres lecteurs vidéo HLS pour les heures d'émission locales visitent maintenant la catégorie TV à 5 points
+cette diffusion ne serait pas possible sans le soutien de notre
+communauté et en particulier, je tiens à dire un grand merci à bp9 Scott Berkeley
+Ron Morissette Jerry Kowalski Jonathan Garvey jens Nissen bollock maintenant
+ski et bill marshall ainsi que tous ceux qui ont soutenu ce spectacle via via
+patreon sur patriot patreon.com slash catégorie 5 ou via notre kickstarter
+campagne qui a récemment conclu qui a contribué à nous mettre dans cet espace et est
+me permettant le financement dont j'ai besoin pour construire le studio
+lentement mais sûrement, nous y arrivons et vous savez déchiqueter cela et
+que pendant que nous allons et certaines choses commencent à venir au cours des deux derniers
+des semaines qui ont été commandées il y a un mois et demi, je ne peux toujours pas avoir
+l'entrepreneur ici, je crois que cela ouvre mais maintenant bien sûr avoir ouvert
+et bien qu'il ouvre notre entrepreneur est plein à craquer et a un très
+horaire chargé et je devais être honnête avec eux et dire regarder, je comprends
+vous êtes super occupé faites le moi savoir quand vous êtes libre quand nous pouvons vous réserver parce que
+ce que nous faisons ici n'est pas une urgence que je vais faire
+Je vais faire de mon mieux avec ce que nous avons, je ne veux pas entrer et me sentir comme ça
+est urgent et c'est une urgence et j'ai obtenu une charge de taux préférentiel afin que vous sachiez
+qui est frugal Ravi alors nous allons simplement attendre et nous l'attendons
+ensemble et ça va être super, il est déjà super de quoi je parle
+à propos de c'est fantastique, nous ne sommes pas que ça va aller mieux comment puis-je aller mieux
+que cela et vous serez comme wow c'est génial hey avant de sauter dans
+le spectacle si vous ne l'avez pas encore fait, je veux vous encourager s'il vous plaît
+abonnez-vous sur YouTube si nous pouvons atteindre 25 000 abonnés sur
+Linux tech show com Je vais faire une danse pour vous comment est ce son
+nous sommes très très proches aimeriez-vous voir Robbie danser oh non maintenant je suis engagé
+Je devrais être engagé Je serai engagé après avoir fait ma danse, je ne suis pas
+un danseur, alors ne vous abonnez pas à notre chaîne YouTube, nous sommes
+nous avons deux canaux ok donc bien deux canaux principaux, nous avons la technologie de catégorie 5
+La télévision, c'est là que vous allez obtenir l'émission complète d'une heure consécutive comme
+complètement non édité et c'est votre spectacle complet maintenant d'autre part, nous avons
+Linux tech show calm qui vous redirige vers Linux tech show sur YouTube et que
+canal en revanche prend ce spectacle d'une heure et le couper dans son
+segments individuels donc toutes les choses qui sont couvertes tout au long du cours
+de l'épisode d'une heure devient de petits clips courts de 20 minutes Clips de 10 minutes
+même des clips de deux minutes en fonction de ce qu'ils sont, nous brisons également la salle de presse
+donc chaque histoire de nouvelles est disponible pour vous au Linux tech show com, donc si vous
+voir quelque chose dans la salle de presse que vous souhaitez partager sur les réseaux sociaux
+Linux tech show calme dans la playlist de la salle de rédaction et vous verrez tous ces
+clips individuels que vous pouvez partager et ça va spécifiquement partager
+une histoire qui vous intéresse ou que vous pensez que vos followers
+ont aussi beaucoup d'intérêt donc si vous voulez me voir danser
+hey abonnez-vous à nous sur YouTube et cliquez sur la cloche et vous obtiendrez le
+notifications maintenant, nous avons examiné les routeurs de la marque mikrotik et le plein
+la série est disponible gratuitement sur cat5 dot TV slash micro tech maintenant que
+notre réseau est opérationnel créons un SSID Wi-Fi invité notre invité
+Le Wi-Fi aura une connexion limitée à Internet et ils n'auront pas
+l'accès à nos ressources locales de sorte que le réseau partage des imprimantes des choses comme ça
+Je veux verrouiller ça, nous allons créer une connexion Wi-Fi vraiment isolée
+pour permettre aux invités amis clients ou visiteurs d'utiliser notre connexion Internet
+sans risquer de ralentir notre connexion ou sans risquer la
+l'intégrité ou la confidentialité de nos données, ce sera donc un tutoriel complexe aujourd'hui
+donc ce que j'ai fait est que j'ai documenté toutes les étapes que je suis
+va passer par cat5 dot TV slash mikrotik afin que vous puissiez le suivre
+rend juste beaucoup plus facile pour vous alors allons droit au but, je suis en fait
+va aller de ces notes parce que c'est vraiment un sophistiqué
+série que nous entrons ici aujourd'hui ou au moins aspect de la
+série donc je vais travailler sur mon livre de pin ici et je veux juste apporter
+mon ordinateur portable et l'écran semble fantastique cette semaine regardez ce que j'ai
+fait quelques améliorations ici au studio, donc je pense que tu vas trouver que
+les choses sont beaucoup plus faciles à lire maintenant merci à tous pour votre patience
+à travers cette période, car il a été difficile pour de nombreux diffuseurs, mais
+nous avons fait quelques améliorations cette semaine, alors merci de votre patience pour que le
+la première chose que je veux faire dans la figue web ici est que je veux aller dans mon sans fil
+profils de sécurité alors comprenez que je ne veux pas ceux qui vont être
+accéder à mon Wi-Fi invité pour utiliser le même mot de passe que j'utilise sur mon Wi-Fi principal
+c'est particulièrement ce que je ne veux pas donner alors faisons-le maintenant
+mettons en place un mot de passe séparé en cliquant sur sans fil à gauche ici
+puis je vais cliquer sur les profils de sécurité au
+maintenant, cliquez sur ajouter un nouveau et vous verrez par défaut est en fait mon mon réseau afin
+c'est le mot de passe pour mon réseau le Wi-Fi que j'ai déjà configuré et je suis
+va cliquer sur ajouter un nouveau et nous allons simplement appeler cet invité comme ça
+une note est que je veux désactiver WPA PSK parce que WPA comme vous le savez fait très partie de
+moi, il est très facile de faire des compromis, donc nous ne voulons pas utiliser le WPA, nous voulons seulement
+utiliser wpa2 parce que wpa2 est beaucoup plus sûr pour autant que quelqu'un puisse pirater
+votre réseau Wi-Fi, désactivez WPA PSK, laissez wpa2 PSK activé, puis désactivez
+ici parce que cela est activé, nous devons entrer une clé pré-partagée aka le mot de passe
+pour notre réseau, donc je vais utiliser dum-dum un deux trois quatre ce Wi-Fi invité afin
+ce n'est que pour le Wi-Fi invité rappelez-vous que ok une fois que je suis entré dans mon
+mot de passe, je vais frapper OK, donc je n'ai pas encore créé de réseau
+tout ce que j'ai fait, c'est que j'ai créé un profil de sécurité appelé invité et que la sécurité
+le profil contient la clé partagée wpa2 pour ce réseau invité et je remarque que mon
+réseau par défaut utilise en fait la clé pré-partagée WPA donc pendant que nous sommes ici, nous allons
+ouvrons celui-ci et éteignons WPA PSK parce que je ne veux pas que quelqu'un pirate
+dans mon réseau principal et cliquez sur OK, cela n'a pris qu'un moment pour mon pin
+Book Pro pour se déconnecter du Wi-Fi et reconnecter le mot de passe n'a pas
+changé simplement l'algorithme de cryptage a changé maintenant comme vous pouvez le voir sur le
+écran aucune de mes clés de sécurité Wi-Fi n'autorisera WPA, ils n'autorisent que wpa2 c'est
+aussi simple que cela maintenant sauter dans nos interfaces Wi-Fi c'est là que vous voyez
+mes deux réseaux gigahertz et cinq réseaux gigahertz et je veux en ajouter un nouveau pour
+mon invité Wi-Fi mais je n'ai pas d'autre radio alors qu'est-ce qu'on va faire, nous sommes
+va partager la radio avec l'un de mes terrains W donc nous n'allons pas ajouter
+une autre radio, nous ne devons pas par un point d'accès ou tout type d'appareil
+nous allons simplement utiliser le même routeur mikrotik de sorte que la seule mise en garde de
+c'est que cela signifie que le Wi-Fi invité va partager le même
+canal comme notre Wi-Fi comme notre Wi-Fi réel pour notre réseau mais parce que
+c'est un réseau différent et c'est un mot de passe différent, ils ne vont pas
+être en mesure d'accéder à nos choses, il va juste partager le même la même
+Canaliser si cela importe ou non, je ne pense pas
+bien allons ajouter de nouveaux et on va choisir virtuel parce que nous ne sommes pas
+en créant un vrai maintenant, nous créons un réseau virtuel ici sur notre onglet sans fil
+dans les interfaces Wi-Fi nous allons donc créer une interface virtuelle première chose que je dois
+faire est toujours que je veux dire donner aux choses un nom que je vais appeler cet invité
+- Wi-Fi et vous remarquerez que j'utilise des invités tout au long de votre utilisation de votre
+nom de famille ou votre nom de famille ou quelque chose d'amusant pour votre invité Wi-Fi vous
+peut le faire, mais dans le but de rendre ce tutoriel universellement accessible et
+facile à suivre J'utilise des invités parce que tout le monde peut passer par ces étapes et
+puis retracer et renommer les choses si vous le souhaitez, mais vous ne devez pas le faire si
+sur ce réseau, faisons défiler vers le bas juste un peu et nous allons voir
+quelque chose ici appelé SSID, nous savons que le SSID de notre réseau est essentiellement
+ce que vous voyez lorsque vous ouvrez votre téléphone et que vous accédez au Wi-Fi et que vous
+voir une liste des différents réseaux donc en ce moment je vois cat 5 TV et cat 5 TV -
+5g et environ un milliard d'autres réseaux Wi-Fi autour de moi, mais je veux donner
+celui-ci un SSID qui désigne ce Wi-Fi invité maintenant dans notre cas aujourd'hui
+Je vais appeler ce SSID simplement deviné à nouveau, je vais me référer à
+mon commentaire que nous faisons juste ce universellement accessible, mais vous pouvez appeler
+que tout ce que vous voulez, je pourrais appeler ce chat 5 TV - invité qui
+serait très approprié, car s'il y a un autre réseau appelé invité
+parce que c'est assez générique qui pourrait provoquer un
+conflit, mais aussi il fait en sorte que lorsque les gens entrent dans le studio
+ils peuvent dire oh c'est le Wi-Fi invité pour cat5 TV hey quel est le mot de passe
+dum-dum 1 2 3 droit simple et agréable, mais pour la démonstration d'aujourd'hui, nous sommes juste
+va aller avec invité et maintenant la dernière chose que nous devons faire est bien sûr
+définir notre profil de sécurité pour la connexion Wi-Fi et nous allons changer cela
+de défaut à invité de sorte que ça va définir de sorte que nous utilisons le mot de passe
+dum-dum 1 2 3 comme nous l'avons spécifié avec ce profil de sécurité et c'est littéralement
+tout ce qu'il y a à ajouter l'interface est ok maintenant parce que je fais des changements à mon
+Configuration Wi-Fi et parce que mon Pine Book Pro est actuellement connecté à mon Wi-Fi
+rappelez-vous que le Wi-Fi maintenant le routeur ne redémarre pas mes serveurs et tout
+mon Internet ne descend pas mais le Wi-Fi va hoquet
+là parce que l'émetteur Wi-Fi redémarre ou recharge ceux
+les paramètres de configuration seuls maintenant que le rechargement est terminé
+les paramètres que vous verrez maintenant que sous les interfaces Wi-Fi sans fil, j'en ai un
+appelé Wi-Fi invité et qui est une interface virtuelle se connectant à mon Wi-Fi de sorte que le
+la prochaine chose que nous devons faire est que nous devons commencer à déterminer comment se déroule le trafic
+à couler et obtenez-vous le sens ici que bon si vous si vous suivez ces
+étapes et si vous comprenez les étapes de la configuration d'un routeur mikrotik
+vous pouvez faire des trucs vraiment sophistiqués en haut de cette démonstration, je
+a averti que cela va être un peu compliqué pas qu'il soit difficile, il est
+pas difficile, il n'est pas difficile, il est juste qu'il y a beaucoup d'étapes alors allez à
+cap 5 dot TV slash micro tech et je les ai énumérés dans une documentation
+format pour vous et toute la série est disponible pour vous tout à fait gratuitement, donc si
+vous voulez suivre ces étapes et vous vous inquiétez peut-être un peu
+tâtonnant sur quelque chose que j'ai dit ou peut-être que je bouge un peu aussi
+rapidement la tête vers le plafond 5 TV slash mikrotik pour vous mettre en place avec
+ces Doc est bien pour créer un pont, je vais passer à la
+menu de gauche et cliquez sur le pont, nous pouvons voir qu'il y a déjà un pont actif
+courir là-bas, nous voulons ajouter un nouveau pour notre invité
+Wi-Fi parce que nous voulons que cela soit séparé de notre pont principal, donc j'ai
+cliqué sur ajouter un nouveau et je vais donner à celui-ci un nom que vous avez deviné pont - invité
+gardons tout simple, je veux que vous suiviez ce mot et ça va
+aider à s'assurer que tout a un sens à la fin et que vous pouvez toujours aller
+en arrière et et renommer les choses si vous sentez que vous devez c'est littéralement tout ce que nous
+besoin de faire pour créer un pont a frappé bien maintenant comme vous pouvez le voir, nous maintenant
+avoir un pont appelé pont invités assis là ne faisant absolument rien
+nous devons donc spécifier comment les ports vont être attribués, cliquez sur
+sur les ports et nous devons réellement connecter ce pont à notre nouveau Wi-Fi invité afin
+ajouter de nouveaux, puis changer l'interface en Wi-Fi invité et le pont que nous ne voulons pas
+qu'en utilisant notre pont principal, nous voulons que cela aille au pont - invité et maintenant cliquez sur OK
+et maintenant vous pouvez voir juste en bas là invité - Pont Wi-Fi - invité tout
+prêt à partir et en attendant que nous ayons fini de configurer la prochaine chose
+que nous devons faire, évidemment, nous n'avons pas dit à cet invité Wi-Fi le pont quelle IP
+bloquer à utiliser et encore je vais revenir quand j'ai dit que je veux que ce réseau soit
+séparé de mon réseau privé, je ne veux pas que le Wi-Fi invité sur la même IP
+bloquer je ne veux pas que leur bloc IP puisse accéder au mien parce que j'ai
+Les partages réseau sur mon serveur et je ne veux pas qu'ils aient accès à la suppression de mon
+fichiers ou pire encore ici, nous vivons dans un monde où quelqu'un pourrait se connecter à
+votre invité Wi-Fi à partir de leur ordinateur portable Windows et ils ont un ransomware qui
+ransomware sort ensuite sur le réseau et recherche des partages réseau et
+crypte tous vos fichiers, même si vous pouvez avoir un antivirus ou même
+n'ont que Linux sur votre réseau car ils se sont connectés à votre Wi-Fi
+ils ont maintenant accès au cryptage de tous vos fichiers avec leur malware qu'ils
+avoir sur leur ordinateur portable afin que nous créons un réseau qui vous protège entièrement
+contre ce genre d'infiltration ainsi que la personne malveillante qui serait
+connectez-vous au Wi-Fi de votre invité et essayez de rechercher des informations privées sur votre
+réseau donc nous allons vous protéger contre ce que nous allons mettre en place un bloc IP
+pour cet invité Wi-Fi et je vais IP, puis les adresses sur le côté gauche
+ici et vous pouvez voir ici que mon réseau est 10.0.0.0 point zéro point un deux
+trois quatre ainsi de suite et en comptant donc je vais créer un nouveau bloc IP simplement en
+en cliquant sur ajouter de nouveaux et on va faire celui-ci un peu différent, donc nous sommes
+va aller avec 10,10 points point 1/24 et sur l'interface devinez quelle interface
+on va utiliser ici les gens pont - invité qui est le champ de commentaire que je
+parlait la semaine dernière que nous ne voyions pas vraiment que nous n'avons pas besoin de cela dans
+ce cas, mais vous pouvez ajouter des commentaires à tout ce que vous ajoutez dans le hit épais Web
+ok maintenant nous avons ici un nouveau réseau appelé 10.10 10.1 et il assignera I
+eh bien, nous allons inévitablement lorsque nous mettons en place un serveur DHCP voir il y a beaucoup d'étapes, il
+attribuera des adresses IP sur ce bloc IP, de sorte que le serveur DHCP qui est
+notre prochaine étape, donc on va sauter ici et sous IP qui est déjà ouvert
+déjà étendu et on va cliquer sur le serveur DHCP et ici vous pouvez voir mon
+serveur DHCP en cours d'exécution, mais le problème est qu'il a une sorte de
+un nom bizarre hors de la boîte, donc je première chose que je veux faire est que je veux ouvrir
+cela et je vais juste renommer celui-ci local et la raison pour laquelle je veux le faire
+est que je veux toujours me rappeler que ce pool DHCP est mon réseau local, il
+a un accès complet à tout sur mon réseau, vous ne voulez pas attribuer un
+invité à cela donc en l'appelant local, il me garde juste un peu plus en sécurité
+car il se démarque comme c'est certainement mon réseau local maintenant, nous allons
+ajoutez un nouveau serveur DHCP et vous pouvez voir qu'il y a toute cette configuration que vous pouvez
+passer par, mais je veux vous montrer un outil qui va aider à rendre cela encore
+plus facile donc je viens de le mentionner, mais annuler et vous pouvez voir qu'il y a en fait
+une configuration DHCP et cela va faire apparaître un assistant qui va en faire un
+beaucoup plus simple pour nous et cela est littéralement facile, on va changer le DHCP
+interface serveur pour combler - invité, puis regardez ce que nous allons frapper ensuite
+le voir ensuite l'attribuer automatiquement au bon réseau suivant suivant DNS
+serveurs tire juste de mon routeur qui est très bien, nous pouvons changer on va
+changer réellement ceux dans un futur épisode quand nous avons mis en place un trou de tarte qui est
+pas un mauvais mot qui est en fait un appareil qui va agir comme notre serveur DNS
+maison et bloquer la pornographie de bloc de publicité tout ce genre de choses cliquez
+suivant suivant suivant suivant suivant suivant suivant
+il suffit de tout laisser tel quel et nous avons terminé whoo nous avons invité 1 et remarquez
+ok bien pourquoi est-il DHCP 1 bien mon invité de pont, je peux voir qu'il est
+invité de pont, mais remarquez que je ne lui ai pas donné un nom et maintenant II peut faire
+exactement la même chose que je peux ouvrir et appeler cet invité
+easy-peasy droit ok alors maintenant je suis au point où je devrais être en mesure de voir le
+réseau Wi-Fi invité sur mon téléphone alors faisons un rafraîchissement rapide du Wi-Fi ici et
+bien sûr, il y a chat 5 TV 5 gigahertz cat 5 TV et un invité appelé alors nous allons
+cliquez dessus avant de faire que je vais faire apparaître une ressource de réseau local
+non connecté à cat 5 TV, je veux que vous voyiez que je suis en fait en mesure d'accéder
+les ressources locales nous allons donc juste mettre en place ma connexion VirtualBox il est si une fois
+Je passe au Wi-Fi invité, je vais l'utiliser comme démonstration pour
+montrer si nous sommes en mesure ou non d'accéder à ces ressources, donc de retour dans mon Wi-Fi
+connectons-nous à l'invité entrez mon mot de passe à partir du profil de sécurité dum-dum 1 2 3
+connecter l'obtention de l'adresse IP et nous sommes
+quelles options avons-nous ici, regardons l'adresse IP 10 voir la passerelle 10
+10 10. 1 bien alors regardons à nouveau notre navigateur maintenant que je suis
+connecté à ce réseau et essayons d'accéder à PHP VirtualBox et vous
+remarquez oui je suis en effet toujours en mesure d'accéder à PHP VirtualBox sur lequel j'ai cliqué
+la barre d'adresse et j'ai cliqué sur le lien et il se charge et c'est
+tout simplement parce que je dois encore créer une règle de pare-feu 2 essentiellement et piège
+que Wi-Fi l'accès invité et faire en sorte qu'il ne soit pas autorisé à communiquer
+revenir avec mon réseau local ou mes appareils Wi-Fi sur mon Wi-Fi réel de sorte que le
+façon que nous allons faire est de retour sur notre site mikrotik Figg je vais
+cliquez sur J'ai ouvert IP puis nous allons passer au pare-feu que nous avons déjà vu
+cela sur les épisodes précédents de cat5 TV slash mikrotik vous pouvez voir que j'ai ajouté un
+quelques nouvelles choses depuis la dernière fois que nous étions ici, mais ce que je veux faire
+le temps est que je veux créer une règle pour pouvoir faire en sorte que le Wi-Fi pour
+le réseau invité n'est pas en mesure d'accéder à 10.0.0.0 toutes les règles et vous êtes
+va rire à quel point c'est facile, vous remarquerez que la chaîne est par défaut
+avant c'est ce que nous voulons donc laisser tel quel et on va définir la
+l'adresse source c'est donc si l'adresse IP vient de cela, alors faites cela
+alors regardez ce que je vais faire ici 10.10 dot dot 0 slash 24 donc toute personne qui est sur
+le bloc IP Wi-Fi invité va tomber dans cette adresse source
+adresse de destination c'est mon réseau 10.0.0.0 barre oblique 24 si quelqu'un de cette
+réseau tente d'accéder à ce réseau que voulez-vous faire défiler vers le bas
+l'action baisse donc ce que nous disons est n'importe quelle source du bloc IP Wi-Fi invité
+en essayant d'accéder à ma terre réelle, nous allons laisser tomber ces paquets que je veux
+souligner que c'est unidirectionnel donc il peut y avoir des cas où vous voulez
+appareils pour accéder à votre réseau sans fil, mais ne pas avoir accès à votre
+les ressources internes mais vous voulez que vos ressources internes soient en mesure de
+y accéder pensez peut-être à une caméra IP qui utilise le Wi-Fi pour bien se connecter
+vous voulez qu'il puisse se connecter à Internet, vous voulez qu'il puisse
+accéder au réseau et vous à partir de votre ordinateur sur votre terrain voulez pouvoir
+accéder à cette caméra, mais vous ne voulez pas que cette caméra ait les droits d'accès
+vos choses sur votre réseau, il est juste un exemple, mais je veux dire que vous pouvez probablement
+pensez aux appareils que vous voudriez avoir en quelque sorte séparés de votre réseau afin
+que si quelqu'un l'attrape si quelqu'un vole que disons que vous avez un
+Raspberry Pi assis dans le toit quelque part connecté à votre puits Wi-Fi
+si quelqu'un vole que vous ne voulez pas qu'ils aient accès à votre réseau afin
+le mettre sur un réseau séparé mais vous permettre de vous y connecter
+nous comprenons donc que nous faisons cela unidirectionnellement cela ne va que
+affecter le Wi-Fi invité cela ne réduit pas cela n'élimine pas ma capacité
+pour se connecter aux appareils sur le Wi-Fi invité, cliquons sur OK et maintenant nous avons cela
+itinéraire mis en place mais vous avez remarqué qu'il l'a placé en bas et nous avons
+déjà parlé de cela, nous voulons nous assurer que nos règles avancées se produisent
+avant certains des trucs mikrotik et je veux certainement faire en sorte que ce
+se passe avant les règles que j'ai créées si elles impliquent des règles internes
+infrastructure, je veux que celui-ci se produise après
+ce non, je ne veux pas que cela se produise avant cela parce que s'ils vont
+accéder à 10.0.0.0 si elles auraient réellement accès à la télévision de catégorie 5 10.0.0.0
+donc je vais laisser tomber comme la première chose maintenant sans avoir à redémarrer sans
+avoir à faire autre chose que je vais ramener mon téléphone ici
+qui est connecté au Wi-Fi invité et revenons à mon navigateur et
+cliquons sur PHP VirtualBox que vous voyez cet indicateur de progression
+en haut, il a raccroché maintenant, je veux dire que je sais que je peux toujours voir PHP VirtualBox
+parce que je l'ai déjà chargé, rentrons à la maison et allons-y à nouveau
+donc 10.0 PHP VirtualBox regarder ce que j'ai cliqué dessus, où est-ce que ce n'est pas
+fonctionne parce que je suis connecté au Wi-Fi invité ce site est inaccessible
+mais Internet fonctionne, allons simplement catégorie 5 TV yep
+Internet fonctionne un régal essayons de revenir à nous sommes sur IP
+10,00 10 qui est mon serveur VirtualBox et disons parce que nous savons que ça va
+au délai d'attente, je vais passer à mon chat 5 TV 5
+gigahertz Wi-Fi là, nous allons connecté et l'amener et boom je suis instantanément
+comme vous pouvez le voir, nous avons réussi à créer un réseau Wi-Fi invité
+est distinct de notre réseau, ils ne peuvent pas accéder aux ressources sur 10.0.0.0, ils ne peuvent pas
+accéder à cela à partir de notre Wi-Fi invité, nous allons également apprendre à venir
+semaines comment nous pouvons étrangler que je l'ai mentionné que nous allons être
+regardant la limitation mais nous sommes à court de temps pour ce segment de la semaine, donc je vais
+déplacer cela dans un avenir aussi, alors assurez-vous de regarder pour cela
+on va apprendre à étrangler la connexion pour que nos clients puissent faire du Wi-Fi
+sûr que même vous savez si je donne aux enfants l'accès à leurs tablettes sont
+leurs amis, puis les amis sont en train de télécharger des vidéos sur
+mon Wi-Fi, je ne veux pas qu'ils traitent toute ma bande passante donc nous allons couvrir
+que sur une émission à venir ainsi cap cinq points TV slash mikrotik est où vous voulez
+pour obtenir la série complète gratuitement, veuillez poster votre
+commentaires et assurez-vous de vous abonner à nous à Linux tech show.com qui est où
+Je poste également tout cela qui redirige vers notre chaîne YouTube appelée
+Linux tech show merci d'avoir regardé tout le monde, nous devons sauter au
+salle de presse ici est Becca voici ce qui arrive dans une salle de presse TV de catégorie 5
+iBM licencie des milliers d'employés et recherche de la flexibilité pendant le kovat
+19 comptes de crise volant des logiciels malveillants font sa tournée sur la discorde une pizzeria
+propriétaire américain a découvert et exploité une faille dans la porte Dash
+plan de marketing et gagne de l'argent en achetant ses propres pizzas microsoft a fixé un
+vulnérabilité critique affectant toutes les versions de Windows depuis 1996 et sans pilote
+les drones réduiront les délais de livraison du NHS dans un hôpital écossais éloigné
+tous les détails arrivent, c'est la salle de rédaction de télévision à cinq points de catégorie
+couvrant le sommet de la semaine avec un léger biais linux
+de la salle de presse, je suis Becca Ferguson
+l'entreprise hewlett-packard et IBM ont annoncé d'importantes réductions de coûts
+mesures, y compris des réductions de salaire et des pertes d'emplois importantes le kovat 19
+la crise frappe durement presque tous les secteurs du marché et maintenant les dominos sont
+commence à baisser alors que d'autres petites et moyennes entreprises réduisent leurs opérations
+ou frémir pour de bon les entreprises technologiques qui comptent sur les clients des entreprises sont
+eux-mêmes prenant de lourdes pertes dans le licenciement du personnel IBM a annoncé ses licenciements
+jeudi soir dans un communiqué, la société a déclaré que le marché très concurrentiel
+nécessite de la flexibilité pour remélanger constamment des compétences de grande valeur qui, dans ce cas
+signifie que vous décidez de ne plus accorder une grande valeur aux compétences
+nombre d'employés apportent à la table des distances sociales
+IBM, comme de nombreuses entreprises confrontées à des coupures et des licenciements, n'était pas
+situations avant Cova 19 a frappé le PDG de la société Arvind Krishna a été
+avec l'entreprise depuis des décennies, mais n'est entré dans le peloton de tête en avril
+disant à l'époque qu'il se concentrait sur la construction des parties de l'entreprise
+qui prennent en charge le cloud computing et l'intelligence artificielle et était prêt
+pour s'éloigner du reste, l'IVM n'a pas précisé le nombre de postes à pourvoir
+couper, mais le Wall Street Journal et Bloomberg News rapportent des milliers de
+les employés ont été touchés dans cinq états Californie New York Caroline du Nord
+Missouri et Pennsylvanie IBM a déclaré dans un communiqué qu'il offrirait des subventions
+couverture médicale pour les employés concernés pour les 12 prochains mois Hewlett Packard
+Enterprise a également annoncé jeudi ses plans de réduction des coûts
+de son rapport trimestriel sur les bénéfices le plus récent, la société
+les salaires jusqu'à la fin octobre au moins, les cadres subissant des baisses de salaire
+entre 20 à 25 pour cent de l'entreprise comme les jeunes frères technologiques tels que
+Facebook et Twitter disent qu'il permettra d'économiser davantage en adoptant la télécommande
+travailler à plus long terme lui permettant de fermer certains bureaux des chercheurs ont
+a trouvé une version mise à jour de l'anarchie grabber que Steve
+les mots de passe en clair des victimes et infectent les amis des victimes en cas de discorde détectés comme
+anarchy grabber 3 la nouvelle variante de cheval de Troie modifie les clients discord
+javascriptcore après une installation réussie et cette version modifiée
+donne au malware la possibilité de charger d'autres fichiers JavaScript lorsque l'infecté
+client Discord est ouvert la menace chargée injecter j / s à partir d'un nouveau dossier anarchie
+ce fichier a chargé un autre script appelé discord magis et les deux scripts
+déconnecte ensemble l'utilisateur à quel point il est invité à se reconnecter
+la nouvelle variante de capture Anarchy tente ensuite de désactiver deux facteurs
+authentification sur son compte de victimes et vole des informations, y compris leur
+mot de passe en clair et nom d'utilisateur qu'il envoie aux attaquants
+propre serveur de discorde par un crochet Web, le malware tente également de se propager
+aux autres utilisateurs de Discord en envoyant un message contenant le malware à
+tout le monde sur la liste d'amis de l'utilisateur après avoir modifié le client Discord et notre clé
+grabber ne fonctionne pas à nouveau, ce qui rend difficile pour les logiciels antivirus
+détecter la menace car il n'y a pas de processus malveillants, il garantit également que
+une victime fait toujours partie du botnet chaque fois qu'elle interagit avec la discorde
+en utilisant l'application Robbie comment un utilisateur peut-il déterminer s'il est infecté si
+antivirus ne peut pas bien le détecter Les utilisateurs avertis de la technologie Becca peuvent ouvrir le
+indexer le fichier j / s, puis ils peuvent vérifier le contenu ainsi sur Windows tu vas
+constater que dans ses données d'application, il suffit d'envelopper que dans des signes de pourcentage pour y arriver vraiment
+rapidement, puis vous entrerez dans le dossier discord Les utilisateurs Linux et Mac vont à
+le dossier caché de config doc dans votre dossier d'accueil et dans lequel vous trouverez
+le dossier discord contenant tous les fichiers maintenant sur n'importe quelle architecture les fichiers
+à partir de là va être le même, que vous soyez sur Windows Mac ou Linux
+vous remarquerez qu'il y a beaucoup de nombreux fichiers appelés index J s dans l'arborescence
+à partir de ce dossier de sorte que celui que vous recherchez est en soulignement discordant
+noyau de soulignement de bureau et le format de répertoire est votre version discordante
+maintenant dans mon cas ici sur Windows si c'est zéro point zéro point
+306 donc j'entre dans ce dossier puis les modules puis discorde le soulignement du bureau
+souligner le noyau et je peux vérifier le contenu du fichier d'index J ass et si
+il contient autre chose qu'une commande pour exiger R de points de base, il est
+probablement infecté merci Robby si vous soupçonnez une infection, désinstallez le
+discordez l'application et réinstallez changez votre mot de passe et assurez-vous que 2fa est réactivé diff
+il a été désactivé, que ce soit la discorde par courriel Facebook ou autrement être diligent
+et assurez-vous de ne cliquer que sur les liens auxquels vous savez que vous pouvez faire confiance, car des logiciels malveillants comme celui-ci
+se propage sans amis, il est également important de se rappeler que juste parce que
+c'est l'un de vos amis de confiance qui l'envoie ne signifie pas que vous pouvez automatiquement
+faites confiance aux liens un simple avez-vous envoyé cette question pourrait être tout ce qu'il faut pour
+vous protéger votre compte et votre vie privée le propriétaire d'une pizzeria
+aux États-Unis a découvert la porte - l'application de livraison vend sa nourriture
+moins cher que lui tout en lui payant le prix fort pour les commandes d'une pizza pour
+qu'il a facturé vingt-quatre dollars était annoncé pour 16 sur la porte - et
+quand il l'a secrètement commandé, l'application a payé son restaurant les vingt
+quatre dollars tout en lui faisant payer 16 donc il a commandé dix pizzas payées cent
+soixante dollars et les a livrés à la maison d'un ami, le restaurant était alors
+payé deux cent quarante dollars pour la commande à domicile - dans d'autres tests, le
+restaurant a préparé sa commande d'amis en boxant la base de pizza sans aucun
+garnitures maximisant le profit des prix incompatibles et cela a fonctionné
+le stratège de contenu Rand John Roy qui est un ami du propriétaire de la pizzeria a blogué
+à ce sujet, il a dit que j'étais vraiment curieux de savoir si doordash allait prendre, mais ils
+la curiosité ne provenait-elle pas du fait qu'ils n'avaient pas demandé à être mis
+sur l'application, il n'était donc pas logique que l'entreprise vende sa pizza
+à perte, ils ont découvert plus tard que cela faisait partie d'une stratégie astucieuse pour construire
+la demande des clients, puis utiliser cette demande pour obtenir le restaurant pour vous inscrire mr. Roy
+dit qu'ils ont une période de test où ils grattent le site Web des restaurants et ne le font pas
+facturer des frais à tout le monde pour qu'ils puissent idéalement aller au restaurant
+les données de commande positives pour ensuite connecter le restaurant à la plate-forme mr.
+Roy est d'avis que ce sont de mauvaises affaires
+il dit que vous avez des pools de capitaux incroyablement grands créant un incroyablement
+le modèle économique perdant de l'argent inefficace doordash est soutenu par des géants de l'investissement
+Softbank qui a enregistré la semaine dernière une perte record de près de 13
+milliards Merci Becca, nous devons prendre une pause très rapide, mais quand nous arrivons
+Becca a plus de vos meilleures nouvelles technologiques pour la semaine, alors restez
+les chercheurs ont montré qu'une vulnérabilité dans une décennie
+Le composant Microsoft Windows qui contrôle l'impression pourrait être utilisé abusivement par
+des acteurs malveillants pour obtenir des privilèges élevés sur le système ciblé du
+défaut qu'ils surnommé démon d'impression réside dans le spouleur d'impression et obtenir
+cela affecte toutes les versions de Windows depuis NT
+4.0 la composante est restée pratiquement inchangée depuis même si un autre
+la vulnérabilité qui l'affectait a été abusée par le tristement célèbre Stuxnet il y a une décennie
+Microsoft a dit du correctif qu'une élévation de vulnérabilité privilégiée existe lorsque
+le service de spouleur d'impression Windows autorise de manière incorrecte l'écriture arbitraire dans
+le système de fichiers un attaquant qui a réussi à exploiter cette
+la vulnérabilité pourrait exécuter du code arbitraire avec des privilèges système élevés un
+l'attaquant pourrait alors installer des programmes pour voir les changements ou supprimer des données ou créer de nouveaux
+comptes avec des droits d'utilisateur complets Microsoft a fixé la probabilité d'exploitation
+disant qu'un attaquant devrait se connecter à un système affecté et utiliser un
+script ou application spécialement écrit, mais comme nous le savons, les exploits RDP sont
+se produisant dans la nature avec des logiciels malveillants tels que SAR veut ouvrir un accès à distance à
+systèmes Windows donc dans le monde connecté d'aujourd'hui en disant qu'un pirate doit avoir
+l'accès à un système afin de l'exploiter est un point irresponsable à faire
+qui pourrait manquer dans les services informatiques expérimentés en
+complaisance la vulnérabilité peut être abusée pour élever les privilèges contourner
+règles de détection et de réponse des points finaux et persistance du jeu dans le cadre de cette
+patch du mois de mardi qui a bouché un total de 111 failles de sécurité Microsoft
+changé la façon dont le composant spouleur d'impression Windows écrit les données dans le système de fichiers
+et il a conseillé de télécharger et d'appliquer la mise à jour de cet exploit pour montrer pourquoi
+exécuter une version de Windows qui est en fin de vie n'est pas judicieux
+pour cet exploit ne sera pas publié sur les systèmes d'exploitation eol tels que Windows XP
+ou même Windows 7 qui restera peut-être vulnérable à cette faille critique
+c'est aussi un autre exemple des raisons pour lesquelles il est grand temps d'envisager de passer à Linux
+des drones de contrôle à distance seront utilisés pour livrer des kits de test de coronavirus à un
+Hôpital écossais à distance et ils volent en dehors des opérateurs
+une ligne de vue directe soutenue par la société locale de drones de confiance NHS Sky
+drones entre l'île de Mull et Oban la ville la plus proche sur le Scottish
+continentale, nous avons signalé des programmes similaires dans des essais récents et il semble qu'il soit
+travailler comme plus de communautés commencent à exploiter les capacités inégalées
+du directeur du port des UAVs Sky, Duncan Walker, parle de son récent procès
+dans la région écossaise d'Argyll et Bute en disant qu'il fournit un important
+réponse à court terme à la pandémie actuelle et jette les bases de
+pour développer une opération de livraison de drones permanente à travers un réseau de soins de santé
+installations à travers le pays, son entreprise volera livraison sans pilote
+drones fabriqués par la compagnie allemande aile copter l'engin volera le 17
+kilomètres entre l'hôpital Lauren et Isles en plein air et je possède une communauté
+hôpital à Craig nur alors que 17 kilomètres ne ressemble pas à un long
+la distance à vol d'oiseau, il est un long voyage difficile par la route et
+ferry par contraste ciel port dit qu'il faudra
+à seulement 15 minutes par drone, le procès aura lieu en utilisant au-delà de la ligne visuelle de
+règles de vue pour ahran autorisation spéciale de la part des civils
+Les vols de drones de l'Autorité de l'aviation qui dépassent la ligne de visée des opérateurs sont
+normalement interdit cependant le principal avantage perçu des drones d'aviation
+ne peut être réalisé tant que la technologie n'est pas suffisamment sûre pour être considérée comme
+volé sans un humain vigilant à proximité en cas de collisions, le procès prendra
+placer au cours des deux prochaines semaines se terminant au cours de la première semaine de juin
+un grand merci à Roy W Nash et à votre communauté pour avoir soumis
+des histoires pour nous cette semaine merci d'avoir regardé la salle de rédaction de télévision de catégorie cinq
+n'oubliez pas d'aimer et de vous abonner à toutes vos actualités technologiques avec un léger linux '
+biais et si vous appréciez ce que nous faisons devenir mécène à patreon.com slash
+catégorie 5 de la catégorie 5 Newsroom TV je suis becca ferguson bien
+merci Becca et merci à vous de nous avoir rejoints cette semaine ça a été
+super de vous avoir ici, je tiens à vous rappeler que nous sommes sur twitter à la catégorie 5
+TV Je suis personnellement sur twitter chez robbie ferguson et je suis de retour alors donnez-moi un
+suivez et je vais vous traquer et je vous suivrai
+hé si vous aimez regarder les versions éditées vers le bas de la technologie TV de catégorie cinq
+ils sont très partageables, ils sont très consommables, ils sont juste
+de petites vidéos d'extraits rapides se dirigent vers le spectacle de technologie linux calme qui est un grand
+Chaîne YouTube à laquelle vous abonner si vous aimez le contenu que nous produisons et
+nous avons déjà établi que je vais faire une petite danse pour vous si vous si vous aidez
+moi d'atteindre vingt-cinq mille abonnés au cours du mois de mai, je suis
+va dire que dans le mois de mai vingt vingt on va y arriver
+ensemble la technologie de la catégorie cinq TV est également sur roku
+nous sommes sur d'autres joueurs HLS nous sommes sur Plex étaient sur cody vous pouvez obtenir nos chaînes à
+github comm slash cat five TV et bien sûr, notre site Web principal relie tout
+ensemble, vous trouverez qu'à la télévision à cinq points de catégorie et n'oubliez pas tous ces
+adresses Web et les choses à droite, mais notre série cette semaine est sur la micro tick
+et j'ai un lien très spécial pour vous à cat5 dot TV slash micro tech
+qui a tous les détails et ces étapes à suivre pour atteindre
+tout ce que nous avons fait ici cette semaine donc vous avez une merveilleuse semaine
+tout le monde et j'ai hâte de vous revoir
+dans une semaine je te vois
+vous
