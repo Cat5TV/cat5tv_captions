@@ -1,0 +1,379 @@
+WEBVTT
+Kind: captions
+Language: sv
+
+00:00:01.610 --> 00:00:06.839
+ okej så vi är här för att lära dig hur du konfigurerar mikrotik routrar 
+
+00:00:06.839 --> 00:00:11.219
+ Jag kommer att anta att du redan vet vad en cirkulär är kommer jag inte 
+
+00:00:11.219 --> 00:00:15.870
+ gå in på att jag kommer att anta att du redan har en uppsättning om du har 
+
+00:00:15.870 --> 00:00:20.970
+ har ingen aning om vad en piehole är bara att tänka på att för att göra vad vi är 
+
+00:00:20.970 --> 00:00:24.510
+ på väg att göra måste du ha en medan det kan låta som något 
+
+00:00:24.510 --> 00:00:29.970
+ stötande är det faktiskt en enda kortdator eller till och med en virtuell maskin 
+
+00:00:29.970 --> 00:00:35.820
+ körs på ditt nätverk 24/7 det fungerar som din DNS-server för ditt nätverk det 
+
+00:00:35.820 --> 00:00:42.390
+ filtrerar bort annonser på DNS-nivå så eftersom annonsen aldrig laddar ner din 
+
+00:00:42.390 --> 00:00:47.489
+ Internet blir märkbart snabbare din dataanvändning är 
+
+00:00:47.489 --> 00:00:52.289
+ minskat ett överraskande belopp och du ser en märkbar minskning av antalet 
+
+00:00:52.289 --> 00:00:57.180
+ annonser som du utsätts för nu kan det ha en nackdel ibland 
+
+00:00:57.180 --> 00:01:00.930
+ som om du surfar på Amazon ibland kommer de att presentera dig med en 
+
+00:01:00.930 --> 00:01:05.790
+ relevant produktförslag men när du klickar på det kommer det att blockeras 
+
+00:01:05.790 --> 00:01:10.439
+ eftersom det är en annons men allt detta är en fantastisk lösning som minskar annonser 
+
+00:01:10.439 --> 00:01:14.189
+ långt ner på hela nätverket behöver du inte installera programvara på ditt 
+
+00:01:14.189 --> 00:01:20.220
+ enheter och det finns ingen konfiguration på en enhet till enhetsnivå så snart din 
+
+00:01:20.220 --> 00:01:23.880
+ enheten är ansluten till nätverket, den får dina filtermöjligheter 
+
+00:01:23.880 --> 00:01:30.360
+ piehole så om du inte känner till piehole på denna punkt eller annars om 
+
+00:01:30.360 --> 00:01:34.320
+ du har inte en jag gjorde en handledning förra året som leder dig igenom det grundläggande 
+
+00:01:34.320 --> 00:01:38.400
+ ställa in för dig som tittar på YouTube eller via vår webbplats a 
+
+00:01:38.400 --> 00:01:43.770
+ kategori-5 TV kan du helt enkelt klicka på den ikonen för att se självstudien annars 
+
+00:01:43.770 --> 00:01:49.590
+ vidare till vår webbplats kategori 5-punkts-tv och bara göra en snabb sökning efter pajhål 
+
+00:01:49.590 --> 00:01:53.939
+ och det stavas precis som du ser på skärmen där kakan - hål videon du är 
+
+00:01:53.939 --> 00:02:00.670
+ letar efter kallas blockannonser och porr med en enda datordator 
+
+00:02:00.670 --> 00:02:38.050
+ Åh vänta okej så nu när du tydligen har ditt piehole 
+
+00:02:38.050 --> 00:02:44.260
+ alla konfigurerade låt oss se hur man konfigurerar detta på vår mikrotik router så på min 
+
+00:02:44.260 --> 00:02:51.820
+ nätverk min piehole-enhet är klockan 10.00 till din DNS-server måste uppenbarligen ha en 
+
+00:02:51.820 --> 00:02:55.930
+ statisk IP-adress i ditt nätverk så det är den IP-adress jag ska 
+
+00:02:55.930 --> 00:03:00.340
+ dirigera min DNS-trafik till så jag vill visa er några saker här på webben 
+
+00:03:00.340 --> 00:03:04.330
+ Figg så jag kommer att klicka på IP som redan är öppen och sedan DNS så när jag 
+
+00:03:04.330 --> 00:03:07.690
+ gå in där ska du se de dynamiska servrar som mitt nätverk är 
+
+00:03:07.690 --> 00:03:11.590
+ för närvarande dishing till alla mina enheter genom DHCP och jag vill ändra det 
+
+00:03:11.590 --> 00:03:16.269
+ Jag vill faktiskt ställa in dessa till att vara min piehole men du märker att jag inte kan faktiskt 
+
+00:03:16.269 --> 00:03:21.760
+ ändra dem det tillåter mig inte att göra några ändringar här så först vad jag måste 
+
+00:03:21.760 --> 00:03:28.480
+ gör är att klicka på DHCP-klienten klicka på din eter en i mitt fall, det är du 
+
+00:03:28.480 --> 00:03:34.230
+ kom ihåg från tidigare i vår mikrotik-serie eter ett gränssnitt är mitt 
+
+00:03:34.230 --> 00:03:39.160
+ internetanslutning så det är den faktiska anslutningen till routern från routern 
+
+00:03:39.160 --> 00:03:42.940
+ till modemet för att ge mig min internetuppkoppling så jag ska klicka på det 
+
+00:03:42.940 --> 00:03:49.299
+ och jag kommer att stänga av använda peer-DNS så i princip säger jag att jag inte vill 
+
+00:03:49.299 --> 00:03:55.180
+ använd den DNS som min ISP har gett mig och tryck OK nu när jag går till när jag går till 
+
+00:03:55.180 --> 00:04:02.549
+ DNS kommer du att se nu dynamiska servrar är borta, det finns ingenting där och 
+
+00:04:02.549 --> 00:04:05.980
+ förmodligen såvida det inte är cachelagrat om jag försöker åka någonstans kommer det bara att gå 
+
+00:04:05.980 --> 00:04:11.769
+ timeout för just nu har jag inga DNS-servrar så nu måste jag lägga till mina 
+
+00:04:11.769 --> 00:04:24.330
+ äger tio vad 10.0.0.0 Jag gjorde det är allt 
+
+00:04:24.330 --> 00:04:28.800
+ det finns det på ett sätt att tala men jag kommer att vända det så vi har 
+
+00:04:28.800 --> 00:04:32.610
+ gått igenom den processen bara för att visa dig att jag bara kommer att göra det 
+
+00:04:32.610 --> 00:04:36.380
+ omvänd det så att jag kan visa dig en demonstration av vad vi faktiskt är 
+
+00:04:36.380 --> 00:04:41.280
+ vad vi gör här vad vi faktiskt uppnår så låt oss slå på igen 
+
+00:04:41.280 --> 00:04:45.090
+ vår rena DNS Jag har problem med dessa styrplattor 
+
+00:04:45.090 --> 00:04:50.400
+ Jag borde få en mus okej så se att vi är tillbaka på dynamiken så jag ska 
+
+00:04:50.400 --> 00:04:55.789
+ ta upp en webbplats så måste du göra det inom Firefox eller Chrome 
+
+00:04:55.789 --> 00:05:01.380
+ gör inte det på modigt eftersom modiga uppenbarligen redan blockerar reklam 
+
+00:05:01.380 --> 00:05:08.580
+ annonser gör det inte i en webbläsare som har ett annonsblockverktyg installerat 
+
+00:05:08.580 --> 00:05:15.449
+ och aktivt arbeta eftersom det inte kommer att visa dig framgången 
+
+00:05:15.449 --> 00:05:20.370
+ att göra vad vi håller på att göra genom att vända igenom vårt cirkelhål så vad jag 
+
+00:05:20.370 --> 00:05:27.630
+ vill göra är att gå till HTTP-kolonstreck-annonser - blockerare com och anledningen till att jag 
+
+00:05:27.630 --> 00:05:31.949
+ vill åka dit är för det är bara en annons tung webbplats för demonstration så om 
+
+00:05:31.949 --> 00:05:35.729
+ du bläddrar ner lite sätt du ska börja se lite reklam här 
+
+00:05:35.729 --> 00:05:43.560
+ på denna webbplats finns det annonser som dyker upp på den här webbplatsen som det ser ut som Firefox är 
+
+00:05:43.560 --> 00:05:50.280
+ faktiskt redan blockerar några och så jag kommer igen du blockerar begäran om ursprung 
+
+00:05:50.280 --> 00:05:55.440
+ blockerade 7 eller 10% av den här sidan kan jag stänga av det 
+
+00:05:55.440 --> 00:06:05.820
+ är det som gör det ja nu ska vi se annonser där du går så Firefox är 
+
+00:06:05.820 --> 00:06:10.949
+ nu med en annonsblockerare som är cool men förstår så väl om Firefox 
+
+00:06:10.949 --> 00:06:14.009
+ har redan en annonsblockerare varför behöver vi gå till allt detta arbete varför behöver vi en 
+
+00:06:14.009 --> 00:06:20.430
+ pie hole kom ihåg hur jag sa att detta gör att annonsen blockerar på DNS-nivå så och 
+
+00:06:20.430 --> 00:06:23.130
+ Jag antydde att du kommer att minska din bandbreddförbrukning 
+
+00:06:23.130 --> 00:06:27.500
+ du ska påskynda ditt internet och det är för att med något liknande 
+
+00:06:27.500 --> 00:06:33.080
+ ad blockerande plugin eller en annonsblockerande webbläsare traditionellt 
+
+00:06:33.080 --> 00:06:38.750
+ vad som händer är att den fortfarande laddar ner annonsen, den döljer bara den den blockerar den men 
+
+00:06:38.750 --> 00:06:43.550
+ med DNS-nivå som blockerar är det faktiskt begäran till annonsservern 
+
+00:06:43.550 --> 00:06:50.000
+ som svarar med ett null-svar så att det faktiskt blockerar möjligheten för 
+
+00:06:50.000 --> 00:06:55.129
+ din dator för att nå annonsservern alls kan den inte ladda ner något de 
+
+00:06:55.129 --> 00:07:00.020
+ kan inte spåra dig de kan inte spåra den begäran det spelar ingen roll där det är 
+
+00:07:00.020 --> 00:07:03.620
+ kommer att blockeras på DNS-nivå så det finns så mycket mer så nu 
+
+00:07:03.620 --> 00:07:07.909
+ Jag har det här du blockerar inaktivera, du kan se att det finns en Google-annons här 
+
+00:07:07.909 --> 00:07:15.470
+ så tillbaka till min mikrokryss här ska vi återigen gå till DHCP-klienten under IP och 
+
+00:07:15.470 --> 00:07:19.909
+ det finns många sätt att göra detta kan du göra detta på ett nätverk efter nätverksbasis om 
+
+00:07:19.909 --> 00:07:24.139
+ du vill, men jag ska bara göra detta i hela mitt nätverk eftersom jag vill ha något 
+
+00:07:24.139 --> 00:07:28.009
+ enhet som finns på mitt nätverk för att gå igenom cirkelhålet som jag kan stänga av 
+
+00:07:28.009 --> 00:07:40.370
+ ren DNS och träffa ok nu gå till DNS och lägg till mina piehole 10 punkter 
+
+00:07:40.370 --> 00:07:46.790
+ 0.2 och detta är allt ganska omedelbart men det finns ett par saker att göra 
+
+00:07:46.790 --> 00:07:52.280
+ Observera så jag kommer att rensa min cache detta är DNS cache flush cache så nu 
+
+00:07:52.280 --> 00:07:56.600
+ allt som redan har nåtts spolas ur DNS-cachen och så 
+
+00:07:56.600 --> 00:08:02.210
+ det kommer inte att vara det det kommer att begära till spelet och gå igenom 
+
+00:08:02.210 --> 00:08:08.000
+ det andra att tänka på är att du kunde göra det om du ville gå in 
+
+00:08:08.000 --> 00:08:15.410
+ DHCP-servernätverk så istället för att göra detta på DNS ​​skulle jag bara kunna säga okej mitt LAN 
+
+00:08:15.410 --> 00:08:23.449
+ eller mina dessa är mina gäst Wi-Fi-nätverk. Jag kan bara lägga till en specifik DNS-server 
+
+00:08:23.449 --> 00:08:29.449
+ för dem så jag kunde göra det för att se hur varierande konfigurationen kan vara med en 
+
+00:08:29.449 --> 00:08:34.250
+ mikrotik så genom att göra det på så sätt kan du ha flera cirkelhål med 
+
+00:08:34.250 --> 00:08:38.750
+ flera olika inställningar du kan ha en mamma och pappa Wi-Fi som har det 
+
+00:08:38.750 --> 00:08:43.010
+ har direkt åtkomst genom som Googles DNS eller något liknande om du inte gör det 
+
+00:08:43.010 --> 00:08:49.100
+ vill blockera saker du kan få din gäst Wi-Fi att ha en mer härdad DNS 
+
+00:08:49.100 --> 00:08:54.380
+ filtrera till exempel så att du kan göra det på nätverksnivå i mitt fall som jag säger att jag är 
+
+00:08:54.380 --> 00:09:01.220
+ inte gör det på den här nivån Jag gör det på mitt hela nätverk så min eter är det 
+
+00:09:01.220 --> 00:09:09.200
+ kommer att gå igenom 10.0.0.0 älska sina DNS-förfrågningar så nu om jag hoppar hit och 
+
+00:09:09.200 --> 00:09:19.550
+ bara uppdatera den här sidan så enkel som att annonsen är blockerad, se så 
+
+00:09:19.550 --> 00:09:25.480
+ den försökte ladda den för att se hur den har en platshållare som den försökte komma åt annonsen 
+
+00:09:25.480 --> 00:09:33.320
+ men det var blockerat på DNS-nivå så det kom aldrig till min webbläsare hur coolt är 
+
+00:09:33.320 --> 00:09:39.650
+ att så med denna uppsättning en annan sak att tänka på är att medan din 
+
+00:09:39.650 --> 00:09:47.930
+ mikrotik DHCP-server kommer att rensa ut den nya DNS-inställningen för 1000-in 
+
+00:09:47.930 --> 00:09:54.560
+ mitt fall kanske du har en situation där någon kanske har vanat sig 
+
+00:09:54.560 --> 00:10:00.620
+ inställning på sin telefon eller kanske är det där de kör en webbläsare som 
+
+00:10:00.620 --> 00:10:07.999
+ åsidosätter dina nätverks DNS-inställningar som kan vara ett problem eftersom det här 
+
+00:10:07.999 --> 00:10:16.040
+ inställningen verkställs inte så den här inställningen kan enkelt förbigås av din enhet så 
+
+00:10:16.040 --> 00:10:20.959
+ som standard din mikrotik-enhet just nu som jag just har visat med det här 
+
+00:10:20.959 --> 00:10:27.350
+ grundläggande konfiguration kommer att ladda ner dessa inställningar via DHCP och det gör jag inte 
+
+00:10:27.350 --> 00:10:31.519
+ vet att nedladdningen är rätt term men det kommer att få den nya IP och dns 
+
+00:10:31.519 --> 00:10:37.999
+ inställningar från din DHCP-server på Microtech men om din enhet har sin egen 
+
+00:10:37.999 --> 00:10:44.930
+ anpassade inställningar kommer det att kringgå det så om du vill istället och 
+
+00:10:44.930 --> 00:10:50.809
+ tvinga det så att även om det fanns en åsidosättning på en enhet eller om din webbläsare 
+
+00:10:50.809 --> 00:10:56.300
+ ignorerade dina önskade DNS-inställningar i ditt nätverk och du vill 
+
+00:10:56.300 --> 00:11:00.559
+ titta vidare i vår serie när vi ska titta på hur man gör vad 
+
+00:11:00.559 --> 00:11:05.720
+ kallas DNS maskerad och med DNS maskerad tar vi det vi 
+
+00:11:05.720 --> 00:11:10.730
+ lärde oss idag om den här tutorialen och vi kommer att ta den till nästa nivå vilken 
+
+00:11:10.730 --> 00:11:17.149
+ är att säga okej min mikrotik kommer nu i grund och botten att hitta någon DSN-trafik som är 
+
+00:11:17.149 --> 00:11:22.879
+ går igenom mitt nätverk och det kommer att maskera det så att det måste gå 
+
+00:11:22.879 --> 00:11:28.220
+ genom piehålet finns det en oförmåga på din enhet att kringgå 
+
+00:11:28.220 --> 00:11:34.220
+ eller åsidosätta det även om du ställer in dina dns-inställningar manuellt maskerad 
+
+00:11:34.220 --> 00:11:43.160
+ kommer att tvinga den att gå igenom i mitt fall 10.0.0.0 vid fem-punkts tv-snedstreck mikrotik 
+
+00:11:43.160 --> 00:11:48.709
+ täcker ett brett utbud av hur du konfigurerar och konfigurerar och använder din Microtech 
+
+00:11:48.709 --> 00:11:54.920
+ routingapparat detta är att vi ska titta mer på maskering i 
+
+00:11:54.920 --> 00:11:58.910
+ framtiden så jag tappar det sökordet för dig eftersom jag vill att du ska se efter det 
+
+00:11:58.910 --> 00:12:03.319
+ Om det är av intresse för dig vill du verkställa det gå vidare till cap v dot TV-snedstreck 
+
+00:12:03.319 --> 00:12:09.610
+ mikrotik och leta efter att man maskeras 
+
+00:12:20.740 --> 00:12:23.779
+ [Musik] 
+

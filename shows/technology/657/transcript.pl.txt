@@ -1,0 +1,574 @@
+w tym tygodniu zajmiemy się naszą serią routerów mikrotik, pokażę ci jak
+zaktualizować oprogramowanie routera, jak przypisać statyczne adresy IP za pośrednictwem
+serwer DHCP i sposób kierowania ruchu DNS do swojego piehole
+domyślnie Becca ma Twoje najważniejsze wiadomości, w tym 10-letni upływ czasu
+syna Tima Hortona pod ostrzałem za szpiegowanie cię za pośrednictwem ich aplikacji i
+najpotężniejszy na świecie superkomputer jest zasilany przez procesory ARM, które ktoś został zhakowany
+pół miliona dolarów w krypto, ale bitcoin jest nadal bezpieczniejszy niż złoto
+Robert Koenig jest tutaj, aby pomóc nam znaleźć szalony rynek kryptowalut
+wszystko się zbliża, więc czas na technologię
+[Muzyka] Nasze nagrania na żywo są godne zaufania
+Dyski SSD w technologii Kingston ożywiają Twój komputer
+poprawiona wydajność i niezawodność w porównaniu z tradycyjnymi dyskami twardymi
+Dyski SSD Kingston kategorii 5 na żywo z Telestream Wirecast i zwinne
+streamer dostroić co tydzień na rok cody i inne odtwarzacze wideo HLS dla lokalnych
+razy w serialu odwiedź kategorię 5 kropek TV witamy ponownie w programie wszyscy
+to dobrze, że jesteś tu miło, że dołączasz do naszej transmisji na żywo, a może
+oglądasz to na żądanie po tym, jak oglądasz, daj nam
+kciuki w górę daj nam zasubskrybować, jeśli oglądasz na YouTube oczywiście, jeśli tak
+kliknij subskrybuj na naszym kanale YouTube
+niestety to podbija nasze liczby, a gdy nasze liczby rosną, jestem zaszczycony
+robić szalone rzeczy, więc mam pierwszą lekcję choreografii, dziękuję bardzo
+i powie, że to uczę się, że będę robić postępy, kiedy będziemy, więc uderzymy i
+przekroczył 25 000 subskrybentów podczas pokazu technologii Linux, co oczywiście oznacza
+Muszę dla ciebie zrobić taniec funky, więc pracuję nad tym i mam swój
+choreograf pomaga mi w tym i to niespodzianka, kto będzie
+pomagając w tym, więc upewnij się, że nadal oglądasz telewizję kategorii 5, a to pomoże
+jesteś subskrybentem, ponieważ wtedy otrzymasz powiadomienie do sprawdzenia
+nasza niezgoda nikt z 5 nie zastanawia się, czy mogę spędzić dzień w kategorii 5
+Studio telewizyjne, które dzisiaj jest szczęśliwe z okazji Dnia Kanady i gdybym mógł wydać
+kiedyś w studio byłem w stanie przekopać się przez pudła i znaleźć swoje
+narzędzia lutownicze i do tego mówię: o tak, mój przyjacielu tak, znalazłem swoje lutowanie
+ale nie jest jeszcze idealnie skonfigurowany
+to trochę bałagan i próbuję wymyślić, jak mogę ustawić stół
+Muszę znaleźć odpowiedni stolik, ale jest tutaj, więc będziemy mogli go zdobyć
+laptop się podnosi i idzie w ciągu następnych kilku tygodni, kiedy tylko się pojawię
+szansa na to, że cały dzień spędziłem w studio niezupełnie
+ale to dlatego, że wziąłem długi, długi urlop z rodziną
+do domku i mój pierwszy dzień z powrotem był we wtorek, więc to oznaczało robienie
+część postprodukcji z serialu piątego z zeszłego tygodnia
+Wtorek, więc mamy wiadomości i wszystko we wtorek wieczorem
+kilka innych funkcji, a dziś spędziłem jak pisanie wiadomości i
+przygotowywanie wszystkiego dla ciebie Wiele zależy od nadawania
+Telewizja technologiczna kategorii piątej i naprawdę doceniam wsparcie naszej społeczności
+spotykają się i mówią wow, jakbym wiedział, że to dużo pracy
+szczególnie w tych czasach, kiedy nie mogę mieć ze sobą nikogo innego w studio
+fizycznie w tym samym czasie, kiedy tu nadaję, więc naprawdę dużo
+spada mi na ramiona i trzeba to zrobić. Muszę cię przynieść
+koncert każdego tygodnia, ale tym z was, którzy powiedzieli tak, zrobię krok
+i powiedz tak, doceniam to, co robisz, i wrócę finansowo
+że chcę w szczególności podziękować Chcę szczególnie podziękować
+do bp9 Scott Barclay Ron Morissette Jerry Kowalski Jonathan Garvey Jen's
+Nissen Ameritrade nomen v Bill Marshall i NiCad plus oczywiście wszyscy inni
+kto wspierał program lub wspiera program, może się skończyć
+przez naszego patreona na patreon.com slash kategorii piątej, to naprawdę fajny sposób
+aby wspierać telewizję piątej kategorii, a nawiasem mówiąc, dostajesz się za kulisy
+masz dostęp do mojego vloga, którego nikt inny nie widzi, więc możesz go zobaczyć
+rzeczy, które dzieją się tutaj w studio i rzeczy, które się dzieją
+w moim świecie, bo w pewnym sensie podnoszę poziom każdej kategorii
+tydzień tak wielkie dzięki dla wszystkich, którzy są lub wspierali telewizję kategorii 5
+ten regularny wkład, to znaczy, jeśli możecie w to uwierzyć, jest teraz 1 lipca
+i już powtarzam, że czas płynie, ale 1 lipca oznacza ok, nie mogę
+zapomnij zanim skończę dziś wieczorem muszę napisać czek czynszowy, muszę iść
+pokrywają to, więc te miesięczne składki za pośrednictwem Patreon i
+inne sposoby, w jakie możesz nas wspierać za pośrednictwem naszej strony internetowej, mamy kilka
+na różne sposoby można to sprawdzić w telewizji piątej, ale w patone
+szczególny jest dla mnie dobrym sposobem na śledzenie tego, co jest
+będzie przychodził każdego miesiąca i pomaga nam to pokryć
+miesięczne wydatki, więc to naprawdę fajne, dziękuję wszystkim
+w porządku, więc najpierw zacznijmy od części 6 naszego mikrotika
+jako exploity i powinienem powiedzieć, że w tej chwili powstaje konstrukcja
+korytarz dzisiaj, więc jeśli usłyszysz jakiś hałas, wybaczam, że jest
+nic, co naprawdę mogę na to poradzić, ale mam nadzieję, że oni też nie pójdą
+zbyt głośno i za długo, ale ponieważ exploity są monitorowane, łatane i nowe
+funkcje są dodawane do oprogramowania micro Tech, które można łatwo zaktualizować
+Mikrotik Router za pomocą zaledwie kilku kliknięć myszką w sieci Figg i widać
+to, co właściwie mam, to figa internetowa. Kliknę na szybki zestaw
+a następnie przewiń tutaj w dół, aby sprawdzić dostępność aktualizacji. Czy to może być takie proste, a Ty?
+widzę, że biegam stabilnie sześć punktów cztery dwa punkty dwanaście można zmienić
+gałąź, jeśli chcesz lub kanał, ale chcę uzyskać stabilny punkt sześć czwarty
+siedem, a jeśli spojrzysz poniżej, zobaczysz dzienniki zmian dla tego i wszystkiego
+że mi to da, więc po prostu kliknij pobierz, zainstaluj i spójrz
+nic to nie robi, pobiera plik z pobranych serwerów, uruchamia się ponownie, więc
+teraz mój router jest restartowany i spójrz na to, że stabilna jest sześć punktów cztery siódemka
+wersja Teraz działam, kliknij opcję Sprawdź aktualizacje, a zobaczysz, że działam
+ta wersja i system są już aktualne, to wszystko, co masz, więc Twój
+router mikrotik obsługuje teraz najnowsze i najlepsze oprogramowanie układowe
+dalej w naszej serii mikrotik jest jak przypisać statyczny adres IP do urządzenia
+w twoim DHCP w twojej puli DHCP, więc po prostu zaloguję się na stronie internetowej fig na moim
+laptop i chcę pokazać, jak łatwo to zrobić, kliknij adres IP i kliknij
+na serwerze DHCP i kliknij na dzierżawę, jest to ważna rzecz do zrobienia, ponieważ
+dla różnych rzeczy będziesz musiał mieć statyczny adres IP w swojej sieci
+podobnie jak serwery w moim przypadku patrzymy również na piehole, więc mój
+Serwer piehole jest w rzeczywistości ustawiony jako 10.0.0.0 dla mojej puli DHCP dla
+na mojej mikro tech, więc każde z tych urządzeń, więc te są dynamiczne, zobacz je
+dynamiczne Dee, które mają przycisk Dee, który faktycznie będzie
+przekonwertować na dynamiczny, ale obecnie są one statyczne, więc spójrzmy na I
+złapię mój telefon, tam jest mój telefon poco, więc po prostu kliknę
+i obecnie jest przypisany do 10.0.0.0 7, więc po prostu zamierzam
+naciśnij make static, a teraz został przypisany do 10.0.0.0 7 static, ale jeśli ja
+zamknij, że teraz zobaczysz, że 107 ma ten D obok i nie jest już dynamiczny
+więc teraz, jeśli otworzę go jednym kliknięciem, otrzymam wszystkie nowe opcje i
+teraz mogę przypisać do własnego adresu IP coś, co nie jest aktualnie używane
+na mojej puli, abym mógł przypisać 2,88 i wcisnąć OK, a teraz mój telefon polka ma 10 0
+kropka 0 kropka widać, jak łatwo to zrobić
+skonfiguruj rezerwację statyczną w puli DHCP na urządzeniu mikrotik
+fantastycznie, musimy wrócić szybko po powrocie
+jak skierować ruch DHCP w naszej sieci do wojska poprzez nasz mikrotik
+router dostroi nasz serwer DNS, który w moim przypadku pozostaje w pobliżu
+[Muzyka]
+szybko postępuj zgodnie z pytaniem w naszej niezadowoleniu od Fuu, który pyta
+nie powinien rezerwować IPS poza zakresem dynamicznym pul dhcp i jednocześnie
+technicznie prawdziwe w innym typie scenariusza, w którym nie używasz
+DHCP tak nie jest tutaj. Wyjaśnię, dlaczego tak tradycyjnie wspomagano
+minuty są w gruncie rzeczy zakorzenione w naszych umysłach, aby zawsze przypisywać DHC
+statyczny adres znajdujący się poza pulą jest tego przyczyną, powiedzmy
+instalujesz nową drukarkę w sieci, idziesz do tej drukarki i piszesz
+na adres IP, a ty umieścisz go w puli, teraz twój serwer DHCP nie
+nawet wiem, że istnieje, ponieważ nie przypisał adresu IP, więc jesteśmy
+robienie tego tutaj jest zupełnie inne
+rezerwacja na serwerze DHCP, aby drukarka wciąż otrzymywała
+adres IP z serwera DHCP, więc musi on znajdować się poza pulą
+teraz nie ma powodu, dla którego musiałbym to pisać ręcznie
+drukarka, ponieważ kiedy serwer DHCP przypisuje ten adres IP innemu
+urządzenie w twojej sieci spowoduje konflikt kolizji IP, więc ty
+będziesz mieć dwa urządzenia współdzielące ten sam adres IP, a dostaniesz wszystko
+tego rodzaju ataki ARP, ostrzegające przed atakami ARP, takie rzeczy, ponieważ
+masz takie kolizje, które występują w twojej sieci, rzeczy się skończą
+nagle spowalnia to problem, ponieważ przydzielam mój adres IP
+z serwera DHCP na moje urządzenie lub drukarkę mogę ustawić na cokolwiek
+nie jest jeszcze przypisany i rozdzieli go przez DHCP i nie robi tego
+bez względu na to, czy znajduje się w basenie, czy nie jest w porządku, skoro jesteśmy tutaj, aby się uczyć
+o tym, jak skonfigurować routery mikrotik. Zakładam, że już jesteś
+wiedzcie, w czym jest dziura, do której nie wejdę
+zakładam, że masz już skonfigurowany, jeśli nie masz
+wyobraź sobie, czym jest piehole, pamiętaj tylko, że aby zrobić to, co zamierzamy
+czy będziesz potrzebować takiego, który może brzmieć jak coś
+ofensywne to tak naprawdę komputer jednopłytowy lub nawet maszyna wirtualna
+działa w sieci 24/7, działa jak serwer DNS dla twojej sieci
+odfiltrowuje reklamy na poziomie DNS, więc ponieważ reklama nigdy nie pobiera Twojej
+Internet staje się zauważalnie zauważalnie szybszy w użyciu danych
+zmniejszyło zaskakującą ilość i zauważalne jest znaczne zmniejszenie liczby
+reklamy, którym teraz jesteś poddany, mogą czasem mieć wadę
+np. jeśli przeglądasz Amazon, czasami przedstawiają Ci
+trafna propozycja produktu, ale kiedy go klikniesz, zostanie zablokowany
+ponieważ jest to reklama, ale w sumie jest to fantastyczne rozwiązanie, które tnie reklamy
+w całej sieci nie musisz instalować oprogramowania w swojej sieci
+urządzenia i nie ma konfiguracji na poziomie urządzenia na poziomie urządzenia, gdy tylko
+urządzenie jest podłączone do sieci, zyskuje możliwości filtrowania twojego
+piehole, więc jeśli nie jesteś zaznajomiony z piehole w tym momencie lub w inny sposób, jeśli
+nie masz takiego. W zeszłym roku zrobiłem tutorial, który przeprowadzi cię przez podstawy
+konfiguracja dla tych, którzy oglądają w YouTube lub za pośrednictwem naszej strony internetowej
+telewizor kategorii 5, wystarczy kliknąć tę ikonę, aby zobaczyć samouczek, w przeciwnym razie skieruj się
+na naszej stronie w kategorii 5-punktowy telewizor i po prostu szybko wyszukaj dziurę w cieście
+i jest napisane tak, jak widzisz na ekranie placek - wstaw film, w którym jesteś
+szukanie nazywa się reklamami blokowymi i pornografią za pomocą komputera jednopłytkowego. Poczekam
+[Muzyka] w porządku, więc teraz najwyraźniej masz
+Twój piehole wszystko skonfigurowane Zobaczmy, jak to skonfigurować na naszym routerze Mikrotik
+w mojej sieci moje urządzenie piehole jest o 10.00 - twój serwer DNS oczywiście musi
+mieć statyczny adres IP w swojej sieci, więc taki jest adres IP
+Zamierzam przekierowywać mój ruch DNS, więc chcę wam pokazać kilka rzeczy
+tutaj w sieci Figg, więc kliknę na adres IP, który jest już otwarty, a następnie DNS tak
+kiedy tam wejdę, zobaczysz dynamiczne serwery mojej sieci
+obecnie wymykam się na wszystkie moje urządzenia za pośrednictwem DHCP. Chcę to zmienić
+Chcę tak naprawdę ustawić je jako moją piehole
+ale zauważasz, że nie mogę zmienić tych, których nie mogę zrobić
+zmiany tutaj, więc najpierw muszę kliknąć klienta DHCP, kliknij swój
+eter w moim przypadku, który zapamiętasz wcześniej w naszym mikrotik
+seria interfejs eterowy jeden to moje połączenie internetowe, więc to jest rzeczywiste
+połączenie z routerem z routera do modemu, aby dać mi mój internet
+łączność, więc zamierzam to kliknąć
+i zamierzam wyłączyć używanie równorzędnego DNS, więc w zasadzie mówię, że nie chcę
+użyj DNS, który został mi przekazany przez mojego dostawcę usług internetowych, i naciśnij OK teraz, kiedy przejdę do czego, kiedy ja
+przejdź do DNS, zobaczysz teraz, że dynamiczne serwery zniknęły, nic tam nie ma i
+przypuszczalnie chyba, że ​​nie jest zapisany w pamięci podręcznej, jeśli spróbuję udać się gdzieś, po prostu tam
+upłynął limit czasu, ponieważ w tej chwili nie mam żadnych serwerów DNS, więc teraz muszę je dodać
+posiadać 10 co 10 kropka 0 kropka 0 kropka
+a następnie wciśnij Zastosuj, to zrobione, to wszystko, co jest w tym, w mowie
+ale zamierzam to odwrócić, więc przeszliśmy przez ten proces, żeby pokazać
+zamierzam po prostu odwrócić to, żebym mógł ci pokazać
+pokaz tego, co właściwie wykonujemy tutaj, czym jesteśmy
+faktycznie osiągam, więc wróćmy do naszego czystego DNS Mam z tym problem
+trackpady Powinienem mieć mysz w porządku, więc zobaczymy
+z powrotem na dynamice, więc zamierzam otworzyć stronę internetową i będziecie potrzebować
+aby to zrobić w przeglądarce Firefox lub Chrome, nie rób tego odważnie, bo odważnie
+oczywiście już blokuje reklamy nie rób tego w przeglądarce
+z zainstalowanym narzędziem do blokowania reklam i aktywnie działającym, ponieważ tak nie jest
+pokaże wam sukces robienia tego, co zamierzamy zrobić
+przeglądając naszą dziurę w cieście, więc chcę przejść do slash dwukropka HTTP
+slash ads - blocker com i powód, dla którego chcę tam iść, ponieważ jest to po prostu
+Witryna z ciężką prezentacją reklam, więc jeśli przewiniesz w dół na kilka sposobów, to jesteś
+zacznę widzieć reklamy tutaj na tej stronie, są reklamy, które nadchodzą
+na tej stronie wygląda na to, że Firefox już tak naprawdę blokuje
+Mam zamiar ponownie zablokować żądanie pochodzenia zablokowane 7 lub 10 procent tej strony może
+Wyłączam to, że to, co to robi, tak, teraz jesteśmy
+zobaczymy tam reklamy, więc Firefox zawiera teraz bloker reklam, który jest fajny
+ale dobrze to rozumiem, jeśli Firefox ma już blokadę reklam, dlaczego jest nam potrzebny
+aby przejść do całej tej pracy, dlaczego potrzebujemy ciasta, pamiętaj, jak to powiedziałem
+blokowanie reklam na poziomie DNS, więc zasugerowałem, że idziesz
+aby zmniejszyć zużycie przepustowości, przyspieszysz Internet
+a to dlatego, że z czymś takim
+wtyczka blokująca reklamy lub przeglądarka blokująca reklamy tradycyjnie
+zdarza się, że nadal pobiera reklamę, którą po prostu ukrywa, blokuje, ale
+z blokowaniem poziomu DNS jest to w rzeczywistości żądanie do serwerów reklamowych
+które odpowiadają zerową odpowiedzią, więc faktycznie blokują tę zdolność
+Twój komputer, aby w ogóle dotrzeć do serwera reklam, nie może niczego pobrać
+nie mogą cię śledzić, nie mogą śledzić tego żądania, nie ma znaczenia, że ​​jest
+zostaną zablokowane na poziomie DNS, więc teraz jest o wiele więcej
+Mam blokadę, wyłącz, widać, że jest tu reklama Google, dobrze
+więc wracając do mojego mikro-tyka, przejdźmy ponownie do klienta DHCP pod IP i
+istnieje wiele sposobów, aby to zrobić, możesz to zrobić w sieci według sieci, jeśli
+chcesz, ale zamierzam to zrobić w całej mojej sieci, ponieważ chcę taką
+urządzenie, które jest w mojej sieci, aby przejść przez otwór w cieście, którego mogę wyłączyć
+peer DNS i naciśnij OK, teraz przejdź do DNS i dodaj mój otwór kołowy 10.0
+0.2 i to wszystko jest natychmiastowe, jednak jest kilka rzeczy
+Uwaga, więc zamierzam wyczyścić pamięć podręczną. To jest pamięć podręczna opróżniania pamięci podręcznej DNS, więc teraz
+wszystko, co już było dostępne, jest usuwane z pamięci podręcznej DNS i tak dalej
+to nie będzie to, że poprosi o grę i przejdzie ciasto
+dziura Inną rzeczą, o której należy pamiętać, jest to, że możesz, jeśli chcesz wejść do
+Sieci serwerów HCP, więc zamiast robić to w DNS, mogę po prostu powiedzieć OK mojej sieci LAN
+lub moje to są moje sieci Wi-Fi dla gości. Mogę po prostu dodać określony serwer DNS
+dla tych, więc mogłem to zrobić, aby zobaczyć, jak różnorodna może być konfiguracja z
+mikrotik, więc robiąc to w ten sposób możesz mieć wiele otworów do ciasta
+wiele różnych ustawień, możesz mieć mamę i tatę Wi-Fi, które ma to
+ma bezpośredni dostęp za pośrednictwem DNS firmy Google lub czegoś podobnego, jeśli nie masz
+chcesz zablokować rzeczy, które mogą sprawić, że Wi-Fi gościa będzie mieć bardziej hartowany DNS
+filtruj na przykład, abyś mógł to zrobić na poziomie sieci w moim przypadku, tak jak mówię
+nie robię tego na tym poziomie, robię to w mojej pełnej sieci, więc mój eter jest
+przejdę 10.0.0.0 uwielbiam jego żądania DNS, więc teraz, jeśli przeskoczę tutaj i
+odśwież tę stronę tak prosto, że reklama jest zablokowana, zobacz to
+próbował go załadować, aby zobaczyć, jak ma symbol zastępczy, próbował uzyskać dostęp do reklamy
+ale został zablokowany na poziomie DNS, więc nigdy nie dotarło do mojej przeglądarki, jak fajnie jest
+że przy takim ustawieniu należy pamiętać o tym, że podczas gdy ty
+mikrotik Serwer DHCP wyda to nowe ustawienie DNS dla 1000 - in
+w moim przypadku możesz mieć sytuację, w której ktoś ma
+może niestandardowe ustawienie DNS w telefonie lub może są uruchomione
+przeglądarka, która przesłania ustawienia DNS sieci, co może być problemem
+ponieważ to ustawienie nie jest wymuszone, więc można je łatwo ominąć
+twoje urządzenie, więc domyślnie twoje urządzenie mikrotik teraz, tak jak właśnie
+zademonstrowany w tej podstawowej konfiguracji zamierza je pobrać
+ustawienia za pośrednictwem DHCP i nie wiem, czy pobieranie jest właściwym terminem, ale tak jest
+uzyskam nowe ustawienia IP i DNS z twojego serwera DHCP na Microtech
+ale jeśli Twoje urządzenie ma własne ustawienia niestandardowe, obejdzie to
+więc jeśli chcesz zamiast tego i wymusić to tak, aby nawet jeśli było nadpisanie włączone
+urządzenie lub jeśli Twoja przeglądarka ignoruje wybrane ustawienia DNS w twoim
+sieć dobrze, będziesz chciał oglądać dalej w naszej serii, jak będziemy
+patrząc na to, jak zrobić to, co nazywa się maskaradowaniem DNS i maskarowaniem DNS
+weźmiemy to, czego nauczyliśmy się dzisiaj w tym samouczku i zabierzemy
+to do następnego poziomu, co oznacza, że ​​w porządku, mój mikrotik teraz będzie
+w zasadzie znajdź ruch dns, który przechodzi przez moją sieć i idzie
+maskaradować go tak, aby musiał przejść przez otwór, w którym jest
+niezdolność Twojego urządzenia do obejścia lub obejścia tego, nawet jeśli ustawisz swoje
+ustawienia dns ręcznie maskaradujące wymuszą przejście w moim przypadku
+10.0.0.0 v slash mikrotik obejmuje szeroką gamę sposobów konfiguracji i
+skonfiguruj i użyj urządzenia do routingu Microtech, właśnie tego będziemy szukać
+więcej o maskaradzie w przyszłości, więc upuszczam to słowo kluczowe dla ciebie
+ponieważ chcę, żebyś na to uważał, jeśli to Cię interesuje, chcesz
+egzekwuj to, aby dostać się do cap v kropka TV slash mikrotik i poszukaj tego o nazwie
+ENS udaje, że wszystko w porządku, mamy głowę do redakcji Becca jest tutaj
+u nas oto, co pojawi się w kategorii telewizyjnej 5 Newsroom NASA
+niesamowity 10-letni upływ czasu ognistego obrotu Słońca, jakim jest Tim Hortons
+w obliczu pozwu zbiorowego dotyczącego śledzenia aplikacji przez Disney
+opracowywanie niesamowicie realistycznej technologii głębokiego fałszowania Japońska gra Phu gaku oparta na ramieniu
+obecnie najszybszy na świecie superkomputer wspierany przez firmę Apple ma na celu 1 milion
+Taksówki Robo i Facebook opracowały nowy zestaw okularów VR, które wyglądają jak
+gruba para okularów przeciwsłonecznych przykleja się do wszystkich szczegółów i kryptowaluty w tym tygodniu
+zbliża się róg, jest to kategoria telewizyjna z 5 kropkami, obejmująca
+tydzień przestań pisać SMS-y z lekkim odchyleniem linuksa
+z newsroomu Jestem Becca Ferguson, nie powinieneś wpatrywać się w Słońce, to jest
+niebezpieczne, ale w tym miesiącu przypada pełna dekada słonecznej dynamiki NASA
+Obserwatorium obserwujące nas dla Słońca bada gwiazdę
+najbliżej Ziemi non-stop od orbity, gromadząc 425 milionów wysokiej rozdzielczości
+obrazy od czerwca 2010 r. zgromadzone dane pomogły naukowcom w tworzeniu
+wiele odkryć, ale dla tych z nas, którzy szukają czegoś w Internecie
+dobra wiadomość nASA zmieniła obserwacje w coś, co ma przyjemność
+skompilował obrazy w oszałamiający upływ czasu aktywności gwiazd
+w ciągu ostatnich 10 lat film poklatkowy składa się z ekstremalnych zdjęć
+długość fali ultrafioletowej, która pokazuje najbardziej zewnętrzną warstwę atmosferyczną Słońca
+corona film kompiluje zdjęcie co godzinę z ciemnymi slajdami spowodowanymi przez
+Ziemia lub księżyc zasłaniają obserwatorium, gdy przechodzą między
+statek kosmiczny i słońce cały film trwa 61 minut, pokazując słońce
+11-letni cykl solarny wraz ze wzrostem i spadkiem aktywności przesunięcie energii słonecznej
+aktywność można wyraźnie zobaczyć, gdy wzrosła liczba pęczniejących plam słonecznych
+do poziomów wybuchowych z gwałtownymi uderzeniami linii pola magnetycznego i rozbłyskami słonecznymi
+następnie uspokaja się ponownie do okresu znanego jako minimum słoneczne, gdy ilość
+aktywności słonecznej jest stosunkowo niski, to okres, w którym jesteśmy teraz
+w rezultacie zorza polarna jest rzadziej widoczna na niższych obszarach
+szerokości geograficzne to niesamowite z naszej perspektywy, nawet jeśli dekada to trochę
+więcej niż błysk w życiu gwiazdy film poklatkowy w rozdzielczości 4k
+rozdzielczość można zobaczyć na ekranie telewizyjnym dot. cat5 dot. Sun Tim Hortons stoi przed
+pozew zbiorowy w Quebecu w sprawie problemów związanych z gromadzeniem danych w firmie
+Aplikacja do zamawiania aplikacji mobilnych, zgłoszona następnego dnia w sprawie ochrony prywatności, ogłosiła wspólne
+dochodzenie w sprawie firmy wykracza poza złożony przez sąd wniosek
+dwie kancelarie prawne z siedzibą w Montrealu we wtorek przytaczają historię śledczą
+Financial Post, który ujawnił aplikację Tim Hortons
+rejestrował dane lokalizacji użytkowników w tle, nawet gdy aplikacja nie była otwarta
+aplikacja przesyłała dane lokalizacji GPS do radaru amerykańskiej firmy Labs Inc
+który analizuje dane lokalizacji, aby stwierdzić, gdzie mieszkają i pracują użytkownicy, i loguje
+wizyty osoby u jednego z konkurentów Tima Hortona, takiego jak Starbucks lub
+McDonald's Corp natychmiast po komisarzach ds. Prywatności federalnych
+rząd Quebec Alberta i Kolumbia Brytyjska ogłosiły swój wspólny
+śledztwo w poniedziałek Tim Hortons powiedział w oświadczeniu, że zostało przerwane
+jego praktyka polegająca na śledzeniu utraty lokalizacji użytkowników, gdy aplikacja nie jest otwarta
+główny powód jest mieszkańcem Montrealu, który pracuje w sektorze IT, a nawet
+chociaż jego prawnik określił go jako specjalistę od technologii, był zszokowany, gdy dowiedział się, jak to zrobić
+Joey Zuk Zuk Rijn, prawnik zajmujący się ochroną konsumentów, powiedział
+że po prostu powstrzymanie praktyki śledzenia lokalizacji w tle nie jest
+wystarczy, ponieważ firma macierzysta Tim Hortons wydaje się śledzić
+główny powód od zeszłego roku, a szkody już zostały wyrządzone
+sacharyna twierdzi, że zdobyli cenną bazę danych i zachowań
+wzorce i działania poszczególnych osób, więc teraz będą to po prostu rzucać
+czy zamierzają z tego skorzystać, zgaduję, że zgaduję ten drugi Tim
+Fulton, dyrektor generalny firmy Hortons, synowie Duncana pełnego, powiedział w e-mailu
+oświadczenie firma nie miała żadnego komentarza w sprawie pozwu zbiorowego i
+powtórzył, że zaprzestał śledzenia lokalizacji w tle
+chociaż aplikacja może nadal rejestrować lokalizację użytkownika, gdy jest otwarta w wielu przypadkach
+naruszenia prywatności są trudne do wytoczenia, ponieważ strony nie mogą postawić dolara
+wartość szkody, jaką ponieśli, ale Karta praw z Quebecu i
+Wolności sprawiają, że prywatność jest chronionym prawem, co najbardziej upraszcza sprawę
+przypadki prywatności i danych w Kanadzie koncentrowały się na naruszeniach, w których firmy
+zezwalali na wycieki lub kradzież prywatnych informacji przez hakerów, ale spory sądowe
+wokół kwestii związanych z danymi i prywatnością mogą stać się bardziej powszechne
+w zależności od reakcji sądów w tej sprawie i przyszłych sprawach
+nowy artykuł opublikowany przez Disney Research opisuje w pełni zautomatyzowany układ nerwowy
+metoda sieciowa do zamiany twarzy na zdjęciach i filmach pierwsza metoda
+daje to wyniki o wysokiej rozdzielczości i jakości wystarczającej do zastosowania w filmie
+i telewizji naukowcy specjalnie to zamierzają
+technologia stosowana w celu zastąpienia go i występów istniejących aktorów
+aktorzy zastępczy spotykają się na przykład podczas starzenia się lub wzrostu
+wiek kogoś lub potencjalnie w przypadku aktora, który zmarł
+sugerują również, że można go użyć do zastąpienia twarzy kaskaderów
+przypadki, w których warunki sceny wymagają ich użycia, jest taka metoda
+unikalne z innych podejść na wiele sposobów, w tym dowolną twarz użytą w
+zestaw można zamienić na dowolną zarejestrowaną wydajność, co umożliwia
+stosunkowo łatwo ponownie odtworzyć aktorów na żądanie, drugim jest to, że odtwarza
+kontrast i warunki oświetleniowe, aby aktor wyglądał tak, jak jest
+faktycznie występują w takich samych warunkach jak scena, którą możesz sprawdzić
+wyniki dla siebie w tym filmie, jak widać, jest jeszcze cień
+dzieje się tutaj niesamowita dolina, ale naukowcy potwierdzają to w swoich
+gazeta nazywa to dużym krokiem w kierunku fotorealistycznej zamiany twarzy, która może
+skutecznie pokonując niesamowitą dolinę, wciąż jest o wiele bardziej realistyczna niż
+inne próby, które są szczególnie widoczne, gdy zobaczysz
+porównanie z innymi technikami, w szczególności działa bardzo dobrze
+wyższa rozdzielczość, która jest kluczowa dla rzeczywistego wykorzystania w branży rozrywkowej
+biorąc pod uwagę przykład zastosowania tej techniki do wykonania sztuczki kaskaderskiej podwójnie rzeczywistej
+realizm może wydawać się niezwykle realistycznym przykładem
+przedstawione są bardzo małą próbką, więc okaże się, jak szeroko może to być
+zastosowane obiekty wydają się być na przykład przede wszystkim białe
+zawsze pojawia się pytanie o etyczne konsekwencje użycia twarzy
+technologia wymiany, szczególnie w wideo, ponieważ można ją wykorzystać do produkcji
+wiarygodne wideo lub dowody fotograficzne na coś, co się tak naprawdę nie wydarzyło
+zważywszy jednak, że technologia jest obecnie rozwijana od wielu kwartałów
+zasadniczo minął już czas na debatę na temat jego etyki
+zamiast tego jest mile widziany w organizacjach
+podobnie jak Disney Research podążają ścieżką akademicką i dzielą się wynikami
+ich pracę, aby inni martwili się o potencjalną złośliwość Melissy
+użycie może określić sposoby oznaczenia tożsamości i ochrony przed złymi aktorami
+Japońska fuga Fokue Aku jest obecnie najszybszym superkomputerem na świecie
+wspierana firma ma na celu milion taksówek Robo, a Facebook opracował nowy zestaw
+Okulary VR, które wyglądają jak gruba para okularów przeciwsłonecznych Becca ma te historie
+nadchodzący Plus Roberts tutaj z kącikiem kryptograficznym nigdzie się nie wybieraj
+ty
+witamy w kryształowym kącie i znowu mamy dla Ciebie w pełni załadowany program
+zanurzmy się w to, jeśli spojrzymy na rynek, to zobaczysz, że jest
+nastąpił niewielki spadek między ubiegłym tygodniem a tym tygodniem z 277 miliardów do 263
+Średnio w Iranie miliard pięć procent spadło od zeszłego tygodnia do tego tygodnia
+widzieliśmy w tym roku o siedem dni, a w zeszłym tygodniu zyskaliśmy dwadzieścia monet
+więcej niż piętnaście procent, tym razem jest to zaledwie sześć monet i ma swoje minusy
+w zeszłym tygodniu mieliśmy dwie monety, które tym razem straciły ponad piętnaście procent
+kilka więcej, więc to nieco niedźwiedzi zachowanie na rynku i jeśli my
+spójrz na rynek d5, a następnie podobny obraz z 6,7 miliarda do 6
+1 miliard spadł między ostatnim tygodniem a tym tygodniem teraz, jeśli pamiętasz
+w zeszłym tygodniu szczegółowo omówiliśmy sposób uczestnictwa w rynku d5
+ten rynek i jak wygląda przyszłość, ale także związane z tym ryzyko
+do tego, ponieważ jest to bardzo młody rynek, i tak właśnie się stało
+w zeszłym tygodniu iw tym tygodniu haker ukradł teraz około pół miliona dolarów
+to nie kradzież w tradycyjnym sensie, po prostu bierzemy coś, co jest po prostu
+że wykorzystali te różne protokoły w taki sposób, w jaki byli w stanie
+zebrać około pół miliona dolarów amerykańskich, a sposób, który zadziałał jest taki
+pamiętasz tę jedną z platform, na której możesz wziąć udział i powiedzieć sobie
+wykorzystują saldo puli saldo platformy w jednej z tych puli i
+używają technologii flush LAN, więc dzięki tej technologii, co oznacza flash
+Więź jest czymś, co dzieje się między dwoma blokami, więc nigdy nie jest zarejestrowana
+możesz wziąć pożyczkę tak wysoko, jak chcesz, nie ma znaczenia, ponieważ nigdy nie jest
+zarejestrowany, ale między dwoma tymi dwoma blokami możesz zrobić, co chcesz
+czy przy pomocy tych pieniędzy możesz robić, co chcesz, i tak właśnie zrobili
+więc wzięli tę pożyczkę, a potem zaczęli zamieniać się między twierdzeniem a
+token STA i zrobili to 24 razy, dopóki cała pula nie została wyczerpana
+znowu to jest między dwoma blokami, więc nigdy nie jest zarejestrowany, ale robili
+korzystanie z tego i za każdym razem, gdy nastąpił ten transfer, opłata za transfer w wysokości 1%
+odbiorca został obciążony, ale nie został zarejestrowany na koncie
+platformę, więc za każdym razem atakujący zamieniał te dwie monety
+dwa żetony saldo Poole otrzymało jeden procent mniej ta niż oczekiwano
+i ci ludzie to zbierają, więc pokazuje to, jak młody jest ten przemysł
+także jak to jest interesujące i jak zachęcam was w zeszłym tygodniu, po prostu idźcie
+tam i dowiedz się więcej o tym teraz, po drugiej stronie, patrząc na
+tradycyjny rynek stało się coś podobnego 2,8 miliarda dolarów amerykańskich
+oszustwa na rynku złota to coś, czego nigdy nie byłoby w stanie
+na Bitcoinie lub rynku kryptowalut, szczególnie Bitcoin, ponieważ tak jest
+najbezpieczniejsza platforma na świecie, ale w złocie dla każdego, kto z nią działa
+certyfikaty czy nie fizyczne złoto to certyfikat, który jest
+przeniesione i tam właśnie stało się oszustwo z takim rodzajem, który by to zrobił
+nigdy się nie wydarzyło, ponieważ Bitcoin nigdy nie został zhakowany, więc jest to najbardziej bezpieczne
+platforma oprogramowania na świecie teraz coś ciekawego
+ktoś opublikował fantastyczny raport. Zachęcam do obejrzenia
+i jak zwykle umieszczam link w opisie, ale ten raport jest już dostępny
+dług, bardzo naukowy i fantastyczny. Uwielbiam ten raport, więc oni w to wpadają
+każdy aspekt rynku, więc stawka podatkowa uchylania się od płacenia podatków i
+na poziomie globalnym, a także analizują, w jaki sposób zmierza wartość
+wykonać z tętnienia Bitcoin aetherium i XRP jaja w ciągu najbliższych pięciu do dziesięciu
+lat przewidywali swoją cenę, nie zamierzam tu o tym wspominać, ponieważ tak jest
+nie to, co robimy, ale spójrz na to, co mówi ten raport, ale interesujące
+tak naprawdę chodzi o to, o czym mówią, więc transakcje online, jak to robią
+patrz, oczywiście, że widzisz, że to naprawdę szczegółowo
+analizują i warto poświęcić trochę czasu na przeczytanie tego
+zgłoś, że jest teraz 64, teraz 61 stron. Część tego jest oczywiście, jak słyszeliście od nas
+ostatnie kilka tygodni temu to, że Chiny naprawdę się wprowadzają w Chinach
+kryptowaluta i Kanada są takie, jak większość innych krajów planuje
+podobne rzeczy, interesujące jest to, że mają nadzieję niektórzy eksperci w Kanadzie
+że Bank of Canada stworzy bardziej inkluzywną i dostępną cyfrę
+Dolar kanadyjski, więc miejmy nadzieję, że tak się stanie, ponieważ byłoby to korzystne
+dla wszystkich na świecie, a ostatnia jest bazą monet, którą mają
+sekcja, w której możesz zarabiać pieniądze, po prostu ucząc się czegoś, aby przejść do monety
+oparte na komunikacie, a następnie slash zarabiać, a następnie masz tutaj sekcję, w której możesz
+po prostu ucząc się czegoś, zarabiaj pieniądze i myślę, że łącznie ponad 400 $
+właśnie rozpoczęli ten tutaj złożony kurs, w którym możesz zarobić dziewięć
+połączysz kurs już teraz
+być szybkim, ponieważ te rzeczy sprzedają się dość szybko, ale jest to po prostu inny sposób
+jak możesz zarobić trochę pieniędzy, ale i tak możesz zarobić
+w tym tygodniu Mam nadzieję, że ci się podobało Mam nadzieję, że się czegoś nauczyłeś i szukam
+do zobaczenia w przyszłym tygodniu, więc dziękuję bardzo za obejrzenie dzięki
+pa pa pa Robert, przypomnienie, że nie zapewniamy środków finansowych
+porady, ale zawsze dziel się tym, co dzieje się na rynku kryptowalut
+pamiętaj, że rynek kryptowalut ciągle się zmienia i zawsze jest niestabilny
+powinieneś wydać tylko tyle, ile możesz stracić, wracając do Becca w
+newsroom Thank You Robbie według półrocznego rankingu ogłoszonego przez USA
+Projekt 500 najlepszych w Europie w poniedziałek najnowszy japoński superkomputer Fuga qu to
+najszybsza na świecie prędkość obliczeniowa. To pierwszy raz, gdy Japończycy
+superkomputer zajął najwyższą pozycję od dziewięciu lat, kiedy komputer K.
+Poprzednik vogue aku zajął pierwsze miejsce w tym czasie w 2011 roku wspólnie opracowany
+przez Japan State z powrotem w Centre for computational science i Fujitsu who
+gaku to pierwszy system oparty na ARM, który stał się najszybszym na świecie
+superkomputer uzyskał wysoką wydajność Linpack HPL na poziomie
+415 pkt. 5 petaflop, co czyni go 2,8 razy szybszym niż IBM
+osiąga szczyt 148 punkt 6 petaflop, który jest teraz na drugim miejscu w pierwszej 500
+superkomputery Ann Keynes, która jest zasilana przez Fujitsu, jest oparta na 48 rdzeniach ARM
+64-systemowy układ scalony na chipie, składający się z prawie siedmiu i pół miliona procesorów
+rdzenie w operacjach pojedynczej precyzji osiągają najwyższą wydajność ponad 1000
+petaflop, który popycha nasz język ojczysty do następnego poziomu na jednym exaflop
+chipy działają przy 2,0 gigahercach z doładowaniem do 2,2 gigaherców i przenoszą 32 gigabajty
+pamięci o wysokiej przepustowości drugiej generacji, każdy ten superkomputer oparty na ARM
+zapewnił również pozycję numer jeden w innych rankingach testujących komputery
+różne parametry, w tym wykres 500 HP ai i koniugat o wysokiej wydajności
+gradient to pierwszy raz, kiedy superkomputer jednocześnie osiągnął szczyt
+rankingi w powyższych czterech kategoriach według Fujitsu
+obecnie zainstalowany w RIKEN Center for computational science w Kobe Japan
+tylko kilka gaku wykona szeroki zakres aplikacji, które będą dotyczyć
+problemy społeczne i naukowe o wysokim priorytecie, podczas gdy superkomputer jest
+oczekuje się, że zaczną działać w pełnym wymiarze godzin w kwietniu przyszłego roku, z których już korzystają
+w walce z Koba 19 w ostatnich latach kraje takie jak USA i
+Chiny zdominowały wyścig, aby tym razem opracować potężne maszyny do Chin
+zdominował listę 500 najlepszych z 226 superkomputerami, podczas gdy my wzięliśmy
+drugie miejsce ze 114 systemami, a następnie Japonia z 30 Francją z 18 i
+Niemcy z 16 systemami mówi chińska firma zajmująca się wjeżdżaniem pojazdów DD chicheng
+planuje eksploatować ponad milion samojezdnych pojazdów do 2030 r
+według dyrektora operacyjnego Dedesa Manninga robo taki
+taksówki mają być rozmieszczone w miejscach, w których kierowcy wzywający jeźdźców są mniej dostępni
+firma w zeszłym miesiącu zakończyła zbiórkę pieniędzy o wartości ponad 500 milionów dolarów
+runda dla autonomicznej jednostki napędowej kierowanej przez fundusz wizyjny grupy Softbank do
+jabłko, o którym wiadomo, że jest zainteresowane rozwojem autonomicznej jazdy
+zainwestował 1 miliard dolarów w DD w 2016 roku
+w zeszłym roku DD zapowiedziało, że zacznie korzystać z pojazdów autonomicznych
+pasażerów w Pekinie w Szanghaju i Shenzhen w tym roku przed rozszerzeniem
+program poza Chinami w 2021 r. to producenci samochodów i firmy technologiczne w Chinach
+inwestowanie dużych środków w autonomiczny przemysł jazdy, aby konkurować z
+lubi alfabetu Tesli sposób mo i uber, podczas gdy niektórzy znawcy branży twierdzą, że tak będzie
+powiedział, że społeczeństwo potrzebuje czasu, aby zaufać pojazdom autonomicznym
+DeeDee oczekuje, że autonomiczne pojazdy będą masowo produkowane do 2025 r
+konkurenci już oferują taksówki Robo, ale flota 1 miliona
+pojazdy zawstydzą ich wszystkich, będziemy na to uważać i sprawdzimy, czy
+dee dee jest w stanie dostarczyć Facebook stworzył zestaw wirtualnej rzeczywistości, który jest
+niewiele większe niż masywne okulary przeciwsłoneczne, których używają futurystyczne odcienie
+specjalnie zaprojektowany film holograficzny do miniaturyzacji obiektywu konwencjonalnej VR
+wyświetlacze wydają się być nieporęczne, ponieważ soczewki refrakcyjne w nich potrzebują
+kilka centymetrów silnika, aby skupić wyświetlacz na oczach użytkownika wynik
+to para okularów o grubości co najwyżej zaledwie 9 milimetrów
+dla badaczy i droga tylko 17,8 gramów obrazów z okularów zielonych i
+czarne wyświetlacze są szczerze mówiąc ekstremalnie cyberpunkami, które mogą zapewnić okulary
+poziome pole widzenia o około 90 stopniach zgodnie z testami opisanymi w
+artykuł opublikowany przez Facebooka, projekt również eliminuje
+tradycyjne panele LCD stosowane w konwencjonalnym zestawie słuchawkowym VR
+i zamiast tego używa laserów, aby utworzyć obraz, który oznacza, że ​​zliczanie pikseli nie jest
+naprawdę opcja, to wciąż wczesny prototyp z mnóstwem ograniczeń
+ponieważ promienie świetlne z podświetlenia rozchodzą się znacznie wcześniej
+zogniskowane przez holograficzną powierzchnię dzielnika wiązki z dużych obszarów przyczyny
+display nie ma wpływu na pole widzenia badaczy
+napisz na papierze, okulary również nie są w stanie wyprodukować
+kolorowy obraz i widmo zjawy na krawędziach pola widzenia
+spowodowane przez powierzchnie optyczne odbijające światło, zespół ma już plan
+naukowcy zmniejszają wagę jeszcze bardziej, przechodząc na podłoża z tworzyw sztucznych
+spodziewaj się, że całkowita waga wzrośnie do zaledwie 6,6 grama w stosunku do masy pary
+duże okulary przeciwsłoneczne w stylu aviator, ta wiadomość pojawia się w tym samym czasie, co Google
+przejęcie kanadyjskiego startupu ds. inteligentnych okularów North, który opracował lekkość
+ogniskowe inteligentne okulary zaprojektowane z holograficznym wyświetlaczem, który jest przeznaczony tylko dla użytkownika
+widzę, że wydaje się, że rzeczywistość rozszerzona jest wciąż w zasięgu ich wzroku
+dwóch dużych graczy, co może oznaczać interesującą technologię w nadchodzących latach
+dzięki Roy W Nash i naszej społeczności widzów za przesłanie nam historii
+w tym tygodniu dziękuję za obejrzenie newsroomu telewizyjnego kategorii 5, nie zapomnij
+Polub i subskrybuj wszystkie nowinki techniczne z lekkim uprzedzeniem do Linuksa, a jeśli ty
+doceniamy to, co robimy, zostaliśmy patronem na patreon.com slash kategorii 5 z
+newsroom telewizyjny kategorii 5 Jestem Becca Ferguson
+zanim zakończyliśmy odcinek tego tygodnia, właśnie do mnie przyszła wiadomość od Eduardo
+a Eduardo używa sosnowej Book Pro tak jak ja
+ale stara się działać z kartą SD dla systemu operacyjnego
+Eduardo pisze: Witam Chciałbym wiedzieć, czy używałeś systemu operacyjnego na karcie przez
+długo mam problem z kartą, która po 10 dniach staje się tylko do odczytu
+Powtórzyłem procedurę dwa razy i uzyskałem taki sam wynik, jaki znam Waring
+problem, ale wyłączam pamięć podręczną bagienną i Firefox, aby zmniejszyć zużycie
+efekt, ale około 10 dni na karcie staje się bezużyteczne, że znowu do nas przychodzi
+z Eduardo to niefortunny scenariusz, jeśli tak się stanie, ale zamierzam
+powiem ci, co, jak podejrzewam, dzieje się przede wszystkim w Linuksie podczas działania
+system staje się tylko do odczytu, gdy system plików staje się tylko do odczytu, co ma miejsce
+gdy jądro wpada w panikę podczas próby wykonania operacji zapisu, to zwykle jest to
+znak ostrzegawczy informujący o uszkodzeniu dysku twardego, ale nie używasz dysku twardego
+używasz karty SD micro SD, więc w twoim przypadku, jeśli masz pewność, że
+Karta micro sd jest dobra bez wad, jeśli masz pewność, że twoja karta SD nie jest
+fałszywe, ponieważ istnieją, więc jeśli jest to nowa karta, wejdź na naszą stronę
+telewizor kropkowy kategorii 5, a nawet Linux Tech pokazują spokój i po prostu wykonują szybkie wyszukiwanie
+poprzez nasze filmy na temat fałszywej karty SD i mam tam kilka narzędzi, które pomogą
+będziesz w stanie ustalić, czy twoja karta SD jest fałszywa, ponieważ co się wtedy stanie
+czy dojdziesz do pewnego punktu w systemie plików, w którym próbuje się zapisać
+obszary karty, które tak naprawdę nie istnieją, ponieważ są fałszywe, a potem będą
+cholera, przejdziesz do stanu tylko do odczytu
+więc jest to możliwe, ale jeśli masz pewność, że to dobra karta i
+jesteś całkiem pewien i absolutnie pewien, że to nie jest fałszywe, ponieważ
+który zdecydowanie zapewniłby ten objaw, wystarczy spróbować innej marki
+inna karta spróbuj innej prędkości dostać się do społeczności w Pine 64 org find
+z czego korzystają inni ludzie Odniosłem wielki sukces z niektórymi kartami Kingston
+i miałem pewne niepowodzenia z niektórymi kartami Kingston, odniosłem wielki sukces
+z niektórymi kartami SanDisk, a ja z kolei miałem pewne awarie z niektórymi Santami
+karty, więc z karty na kartę są różne rzeczy, które to powodują
+tak się dzieje, ponieważ ta sosna Book Pro próbuje go używać, jakby był dyskiem twardym
+a niektóre karty mogą być problematyczne, podczas gdy inna karta będzie idealnie
+dobrze, więc spróbuj innej karty, spróbuj innej marki, innej, innej
+karty w swoim składzie nawet i zobacz, co jest dla Ciebie najlepsze - prosto
+odpowiedź na twoje pytanie, eduardo. Odkąd używam mojej karty micro SD
+dostałem moją sosnową książkę Pro i nie miałem takiego zdarzenia, teraz nie jestem gruby
+zaawansowany użytkownik mojej sosnowej książki Pro, mówiąc ogólnie, pozostaje w studio, kiedy jestem
+nie tu i wtedy odpalam go w środę wieczorem, żeby zrobić show, ale tam
+są czasy, kiedy zabieram do domu i robię pełną produkcję i takie tam, ale i jestem
+używam go jak w weekendy i takie tam, ale tak myślę
+Z karty do karty musisz po prostu sprawdzić, jak zachowuje się następna karta, ale
+rozumiem, że to właśnie powoduje, że ma z tym problem
+kartę, więc jeśli przepisałeś tę samą kartę i spróbowałeś ponownie, nadal jesteś
+występuje ten sam objaw, ponieważ jest to ta sama karta lub jeśli jest taka sama
+marka i ta sama linia produktów, może znowu jest z tym problem
+wejście do społeczności i sprawdzenie, co sugerują inni ludzie
+zrobię ci coś dobrego, dziękuję za pytanie, dobra ludzie
+Cóż, musimy podsumować ten tydzień, że wspaniale było mieć Ciebie
+tutaj sprawdź naszą serię mikrotik TV 5 cat slash sprawdź newsroom
+kącik Krypto i wszystkie te klipy w technice Linuksa pokazują spokój lub oczywiście
+wszystko składa się na naszej stronie internetowej 5-calowy telewizor, który możesz śledzić
+telewizja 5 kategorii na Twitterze, a ja osobiście jestem jeszcze bardziej niesamowity
+Twitter w Robbie Fergus i dlatego, że wrócę, więc jeśli chcesz dodatkowego
+obserwujący podąża za mną i nawiasem mówiąc, publikuję takie rzeczy, jak Doctor Who
+ponieważ miałem tweeta, który opublikowałem w tym tygodniu, a BBC podał go dalej i tak było
+po prostu zginaj się stamtąd, więc przejdź do twitter.com slash Robbie Fergus i
+dajcie mi śledzić, a wrócę do was, dobrze, wszyscy mają cudowny tydzień
+Do zobaczenia następnym razem, och, nie zapomnij, że mamy kawę
+przerwa w tę niedzielę o godzinie 12 czasu wschodniego
+więc przejdź do naszej strony internetowej TV kategorii 5 przewiń w dół na stronie głównej, którą zobaczysz
+przerwa na kawę i udział w tym spotkaniu z zoomem, na którym przychodzi nasza społeczność
+razem i po prostu ma kawę i czat, więc do zobaczenia, spokojnie
+wszyscy widzą
+ty

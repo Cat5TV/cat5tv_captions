@@ -1,0 +1,1140 @@
+this week we're picking up on our
+mikrotik router series I'll show you how
+to upgrade your router firmware how to
+assign a static IP addresses through
+your DHCP server and how to route DNS
+traffic to your piehole
+by default Becca's got your top news
+stories including a 10-year time lapse
+of the son Tim Horton's under fire for
+spying on you through their app and the
+world's most powerful supercomputer is
+powered by ARM processors someone hacked
+a half a million dollars in crypto yet
+bitcoin is still more secure than gold
+Robert Koenig is here to help us figure
+out the crazy cryptocurrency market this
+is all coming up so strap in it's time
+for the tech
+[Music]
+our live recordings are trusted only to
+solid-state drives by Kingston
+technology revive your computer with
+improved performance and reliability
+over traditional hard drives with
+Kingston SSDs category 5 TV streams live
+with Telestream Wirecast and nimble
+streamer tune in every week on roku cody
+and other HLS video players for local
+show times visit category 5 dot TV
+welcome back to the show everybody it's
+great to have you here nice to have you
+joining our live broadcast or maybe
+you're watching this on demand after the
+fact however you're watching give us a
+thumbs up give us a subscribe if you're
+watching on YouTube of course if you
+click on subscribe on our YouTube
+channel
+unfortunately that bumps our numbers up
+and as our numbers go up I'm honorbound
+to do crazy things so I have my first
+choreography lesson thank you very much
+and it will say it's I'm learning I'm
+gonna progress as we go so we hit and
+surpassed 25,000 subscribers at Linux
+tech show comm and of course that means
+I got to do a funky dance for you and so
+I'm working on it and I got my
+choreographer helping me out with that
+and it's a surprise who's gonna be
+helping with that so make sure you keep
+watching category 5 TV and it helps if
+you're a subscriber because then you're
+gonna get the notification checking out
+our discord no man 5 is wondering if I
+got to spend the day at the category 5
+TV studio being that today is happy
+Canada Day and if I did get to spend
+some time at the studio today was I able
+to dig through the boxes and find my
+soldering tools and to that I say oh yes
+my friend yes I did find my soldering
+stuff
+but it's not quite set up perfectly yet
+it's a bit of a mess and I'm trying to
+figure out like how can I set up a table
+I got to get a proper table but it's
+here so we're gonna be able to get that
+laptop up and going over the course of
+the next couple of weeks whenever I get
+a chance to do that did I get to spend
+the whole day at the studio not quite
+but that's because I took a nice long
+extended holiday with my family went up
+to the cottage and my first day back was
+Tuesday so that meant actually doing
+some of the post-production on
+category-five show from last week on
+Tuesday so so we just got the news up
+and everything Tuesday night and a
+couple of the other features and today
+was spent like writing the news and
+getting everything ready for you there's
+a lot that goes in to broadcasting
+category-five technology TV and I really
+appreciate the support of our community
+coming together and saying wow like I
+recognize that this is a lot of work
+especially in these times where I can't
+have anyone else in the studio with me
+physically at the same time that I'm
+here broadcasting so so really a lot of
+it falls on my shoulders and it's got to
+be done I've got to be able to bring you
+a show each and every week but to those
+of you who have said yeah I'm gonna step
+up and say yeah I appreciate what you're
+doing and I'm gonna financially back
+that I just want to say thanks in
+particular I want to say a big thank you
+to bp9 Scott Barclay Ron Morissette
+Jerry Kowalski Jonathan Garvey Jen's
+Nissen Ameritrade nomen v bill Marshall
+and NiCad plus of course everyone else
+who has supported the show or is
+supporting the show may be through
+through our patreon at patreon.com slash
+category-five that's a really cool way
+to support category-five TV and
+incidentally you get behind-the-scenes
+access you get my vlog which nobody else
+gets to see and so you get to see some
+of the things as they're happening here
+at the studio and things that are going
+on in my world as I'm kind of ramping
+things up for category 5 each and every
+week so big thanks to everyone who is or
+has supported category 5 TV
+that regular contribution I mean if you
+can believe it it is now July 1st
+already and I keep saying like time is
+flying but July 1st means ok I can't
+forget before I wrap up for tonight I
+got to write a rent check I got to go
+cover that so those monthly
+contributions through patreon and and
+other ways that you may support us
+through our website we've got a few
+different ways there you can check it
+out at category-five TV but patreon in
+particular is a nice way for me to be
+able to kind of keep track of what's
+going to be coming in each and every
+month and it helps us to cover those
+month-to-month expenses so that is
+really really cool thank you everybody
+all right so first of all let's kick
+things off with part 6 of our mikrotik
+series as exploits and i should say
+there is construction going out in the
+hallway today and so if you hear some
+noise I forgive me that's there's
+nothing that I can really do about that
+but hopefully they won't be going too
+loud and too long but as exploits are
+monitored and patched and as new
+features are added to micro Tech's
+firmware you can easily update your
+mikrotik router with just a couple of
+mouse clicks in web Figg and you can see
+what I've actually what I've got here is
+web fig I'm going to click on quick set
+and then scroll down here to check for
+updates could it be that simple and you
+can see I'm running six point four two
+point twelve stable you can change the
+branch if you want or the channel but I
+want to get the stable six point four
+seven and if you look below you can see
+the change logs for that and everything
+that this is going to give me so just
+click download and install and look at
+this nothing to it it grabs the file off
+of their server downloads it reboots so
+now my router is rebooting and look at
+that six point four seven stable is the
+version I'm now running click on check
+for updates and you'll see I'm running
+that version and system is already up to
+date that is all there is to it so your
+mikrotik router is now running the
+latest and greatest firmware
+next in our mikrotik series is how to
+assign a static IP address to a device
+in your DHCP in your DHCP pool so I'm
+gonna just sign in to web fig here on my
+laptop and I want to show you how easy
+this is to do so click on IP and click
+on DHCP server and click on leases this
+is an important thing to do because
+you're gonna need to have static IP
+addressing on your network for things
+like servers in my case we're also
+looking at piehole for example so my
+piehole Server is in fact set as
+10.0.0.0 servation in my DHCP pool for
+on my micro tech so any of these devices
+so these ones are dynamic see these
+dynamic Dee the ones that are that have
+a Dee button that button will actually
+convert it to dynamic but they are
+currently static so let's look at I've
+got a let's grab my phone there's my
+poco phone so I'm just going to click on
+that and it's currently assigned to
+10.0.0.0 7 so I'm just simply going to
+press make static and now it has been
+assigned to 10.0.0.0 7 static but if I
+close that now you'll see 107 has that D
+next to it and no longer is it dynamic
+so now if I open it by single clicking
+on it I get all these new options and
+now I can assign it its own IP address
+something that is not currently in use
+on my pool so I can assign that 2.88 and
+hit OK and now my polka phone is 10 0
+dot 0 dot
+there it is see how easy it is to
+configure a static reservation on your
+DHCP pool on a mikrotik device it's
+fantastic we've got to take a quick
+break when we return
+how to direct the DHCP traffic on our
+network to army through our mikrotik
+router tune our DNS server which is in
+my case a piehole stay around
+quick follow a question in our discord
+from the Fuu who's asking
+shouldn't reserved IPS be outside of the
+dhcp pools dynamic range and while
+technically true in an in a different
+type of scenario where you're not using
+DHCP that's not the case here I'm going
+to explain why so traditionally assisted
+mins are basically it's it's ingrained
+in our minds to always assign the DHC
+the static address outside of the pool
+the reason for that is if you let's say
+you install a new printer on a network
+and you go to that printer and you type
+in the IP address and you put it within
+the pool now your DHCP server doesn't
+even know that it exists because it did
+not assign the IP address so what we're
+doing here is completely different what
+we're doing is we're setting the
+reservation in the DHCP server
+so that printer is still just getting
+the IP address from the DHCP server so
+does it have to be outside of the pool
+now no the reason it would have to be if
+I was typing it in manually onto the
+printer is because when the DHCP server
+then assigns that IP address to another
+device on your network it's going to
+cause an IP collision conflict so you're
+gonna have two devices sharing the same
+IP address and you're gonna get all
+kinds of like ARP attacks warning ARP
+attack warnings things like that because
+you've got these collisions occurring
+within your network things are gonna go
+slow all of a sudden that's a problem
+because I am assigning my IP address
+from the DHCP server to my device or to
+my printer I can set it to anything that
+is not already assigned and it will dish
+it out through the DHCP and it doesn't
+matter whether it's within the pool or
+not all right so as we're here to learn
+about how to configure mikrotik routers
+I'm going to assume that you already
+know what a piehole is I'm not going to
+get into
+that I'm going to assume that you've
+already got one set up if you've got no
+idea what a piehole is just keep in mind
+that in order to do what we're about to
+do you're going to need to have one
+while it may sound like something
+offensive it's actually a single board
+computer or even a virtual machine that
+runs on your network 24/7 it acts as
+your DNS server for your network it
+filters out ads at the DNS level so
+since the ad never downloads your
+Internet becomes perceptibly
+perceptively faster your data usage is
+reduced a surprising amount and you see
+a notable reduction in the number of
+advertisements that you're subjected to
+now it can have a downside sometimes
+such as if you're browsing Amazon
+sometimes they'll present you with a
+relevant product suggestion but when you
+click on it it's gonna get blocked
+because it's an ad but all in all this
+is a fantastic solution that cuts ads
+way down on your entire network you
+don't have to install software on your
+devices and there's no configuration on
+a device to device level as soon as your
+device is connected to the network it
+gains the filtering capabilities of your
+piehole so if you are unfamiliar with
+piehole at this point or otherwise if
+you don't have one I did a tutorial last
+year that walks you through the basic
+setup for those of you who are watching
+on YouTube or through our website a
+category 5 TV you can simply click that
+icon to see the tutorial otherwise head
+on over to our website category 5 dot TV
+and just do a quick search for pie hole
+and it's spelt just like you see on the
+screen there pie - hole the video you're
+looking for is called block ads and porn
+using a single board computer I'll wait
+okay so now that you've apparently got
+your piehole all set up let's see how to
+configure this on our mikrotik router so
+on my network my piehole device is at
+10.00 - your DNS server obviously has to
+have a static IP address within your
+network so that's the IP address that
+I'm going to be routing my DNS traffic
+to so I want to show you a couple things
+here in web Figg so I'm gonna click on
+IP which is already open and then DNS so
+when I go in there you're gonna see the
+dynamic servers that my network is
+currently dishing out to all my devices
+through DHCP well I want to change that
+I want to actually set these to be my
+piehole
+but you notice I can't actually change
+those it doesn't allow me to make any
+changes here so first what I have to do
+is click on DHCP client click on your
+ether one in my case which is you'll
+remember from earlier in our mikrotik
+series the ether one interface is my
+internet connection so that's the actual
+connection to the router from the router
+to the modem to give me my internet
+connectivity so I'm going to click on
+that
+and I'm going to turn off use peer DNS
+so basically I'm saying I don't want to
+use the DNS that's given to me by my ISP
+and hit OK now when I go to what when I
+go to DNS you'll see now dynamic servers
+are gone there's nothing there and
+presumably unless it's cached if I try
+to go somewhere it's just going to
+timeout because right now I do not have
+any DNS servers so now I need to add my
+own
+10 what 10 dot 0 dot 0 dot
+and then hit apply it's done that's all
+there is to it in a manner of speaking
+but I'm going to reverse that so we've
+gone through that process just to show
+you I'm going to just kind of I'm gonna
+reverse that so that I can show you a
+demonstration of what we're actually
+what we're performing here what we're
+actually achieving so let's turn back on
+our pure DNS I have trouble with these
+trackpads
+I should get a mouse okay so see we're
+back on the dynamic so I'm going to
+bring up a website and you're gonna need
+to do this within Firefox or Chrome
+don't do it in brave because brave
+obviously already blocks advertising
+advertisements don't do it in a browser
+that has an ad blocking tool installed
+and actively working because it's not
+going to actually show you the the the
+success of doing what we're about to do
+by revving through our pie hole so what
+I want to do is go to HTTP colon slash
+slash ads - blocker com and the reason I
+want to go there is because it's just an
+ad heavy demonstration web site so if
+you scroll down a little ways you're
+gonna start to see some advertising here
+on this website there are ads that come
+up on this site it looks like Firefox is
+actually already blocking some and so
+I'm going again you block origin request
+blocked 7 or 10 percent of this page can
+I turn that off
+is that what's doing it yeah now we're
+gonna see ads there you go so Firefox is
+now including an ad blocker that's cool
+but understand so well if Firefox
+already has an ad blocker why do we need
+to go to all this work why do we need a
+pie hole remember how I said this does
+the ad blocking at the DNS level so and
+I hinted to the fact that you're going
+to reduce your bandwidth consumption
+you're going to speed up your internet
+and
+that is because with something like an
+ad blocking plugin
+or an ad blocking browser traditionally
+what happens is is it still downloads
+the ad it just hides it it blocks it but
+with the DNS level blocking it's
+actually the request to the ad servers
+that respond with a null response so
+it's actually blocking the ability for
+your computer to reach the ad server at
+all it can't download anything they
+can't track you they can't trace that
+request it doesn't matter there it's
+gonna be blocked at the DNS level so
+there's so much more to it so now that
+I've got this you block disable you can
+see there's a Google ad right here okay
+so back over to my micro tick here let's
+again go to DHCP client under IP and
+there are many ways to do this you can
+do this on a network by network basis if
+you want but I'm just going to do this
+on my entire network because I want any
+device that is on my network to go
+through the pie hole I can turn off use
+peer DNS and hit ok now go to DNS and
+add my pie hole 10.0
+0.2 and this is all quite instantaneous
+however there are a couple of things to
+note so I'm going to clear my cache
+this is DNS cache flush cache so now
+anything that has already been accessed
+is flushed out of the DNS cache and so
+it's not going to be it's it's gonna
+request it a game and go through the pie
+hole the other thing to keep in mind is
+you could if you wanted to go into the
+HCP server networks so instead of doing
+this at DNS I could just say okay my LAN
+or my these are my guest Wi-Fi networks
+I could just add a specific DNS server
+for those so I could do that see how
+diverse the configuration can be with a
+mikrotik so by doing it that way you
+could have multiple pie holes with
+multiple different settings you could
+have a mum and dad Wi-Fi that has that
+has direct access through like Google's
+DNS or something like that if you don't
+want to block things you can have your
+guest Wi-Fi have a more hardened DNS
+filter for example so you can do that at
+a network level in my case as I say I'm
+not doing it at this level I'm doing it
+on my full network so my ether one is
+gonna go through 10.0.0.0 love its DNS
+requests so now if I jump over here and
+just refresh this page as simple as that
+the advertisement is blocked see that so
+it tried to load it see how it's got a
+placeholder it tried to access the ad
+but it was blocked at the DNS level so
+it never got to my browser how cool is
+that so with this set up another thing
+to keep in mind is that while your
+mikrotik DHCP server is is going to dish
+out this new DNS setting for 1000 - in
+my case you may have a situation where
+somebody has
+maybe a custom DNS setting on their
+phone or maybe there is they're running
+a browser that overrides your networks
+DNS settings that could be a problem
+because this setting is not enforced so
+this setting can easily be bypassed by
+your device so by default your mikrotik
+device right now as I've just
+demonstrated with this basic
+configuration is going to download those
+settings through DHCP and I don't know
+that download is the right term but it's
+gonna get the new IP and DNS settings
+from your DHCP server on the Microtech
+but if your device has its own custom
+settings it's going to circumvent that
+so if you'd like to instead and force it
+so that even if there was an override on
+a device or if your browser was ignoring
+your desired DNS settings on your
+network well you'll want to watch
+further in our series as we're gonna be
+looking at how to do what's called DNS
+masquerading and with DNS masquerading
+we're gonna take what we learned today
+on this tutorial and we're going to take
+it to the next level which is to say
+okay my mikrotik is now going to
+basically find any dns traffic that's
+going through my network and it's going
+to masquerade it so that it has to go
+through the piehole there is an
+inability on your device to circumvent
+or override that even if you set your
+your dns settings manually masquerading
+will force it to go through in my case
+10.0.0.0 v slash mikrotik is covering a
+wide gamut of how to set up and
+configure and use your Microtech routing
+device this is we're gonna be looking
+more at masquerading in the future so
+I'm dropping that keyword for you
+because I want you to watch for it if
+that's of interest to you you want to
+enforce it get on to cap v dot TV slash
+mikrotik and look for that one called
+ENS masquerading all right we've got a
+head over to the newsroom Becca is here
+with us here's what's coming up in the
+category 5 TV newsroom NASA made an
+incredible 10-year time-lapse of the
+sun's fiery rotation Tim Hortons is
+facing a class-action lawsuit over
+application tracking Disney has been
+developing incredibly lifelike deep fake
+technology Japan's arm-based Phu gaku is
+now the world's fastest supercomputer
+Apple backed firm aims for 1 million
+Robo taxis and Facebook has developed a
+new set of VR glasses that look like a
+chunky pair of sunglasses stick around
+the full details and this week's crypto
+corner are coming up this is the
+category 5 dot TV newsroom covering the
+week stop texting with a slight linux
+bias
+from the newsroom I'm Becca Ferguson you
+shouldn't stare at the Sun it's
+dangerous but this month marks a full
+decade of NASA's Solar Dynamics
+Observatory doing the staring at the Sun
+for us it's been studying the star
+closest to Earth non-stop from orbit
+gathering 425 million high-resolution
+images since June 2010 the data
+collected has helped scientists make
+many discoveries but for those of us
+scrolling the internet for some kind of
+good news nASA has turned the
+observations into something fun nASA has
+compiled the images into a stunning
+time-lapse of the stars activity over
+the last 10 years the time-lapse
+assembles images taken at an extreme
+ultraviolet wavelength that shows the
+sun's outermost atmospheric layer the
+corona the movie compiles a photo every
+hour with dark slides caused by the
+Earth or the moon eclipsing the
+observatory as they pass between the
+spacecraft and the Sun the full video
+lasts 61 minutes showcasing the sun's
+11-year solar cycle with its rise and
+fall in activity the shift in solar
+activity can be clearly seen as the
+number of swelling solar spots increased
+to explosive levels with violent whips
+of magnetic field lines and solar flares
+it then calms down again to a period
+known as solar minimum when the amount
+of solar activity is relatively low
+that's a period we're in now with one
+result being that the Northern Lights
+are less frequently seen in lower
+latitudes it's stunning to see from our
+perspective even if a decade is a little
+more than a blip in the life of a star
+the full time-lapse video in 4k
+resolution can be viewed at cat5 dot TV
+slash Sun Tim Hortons is facing a
+class-action lawsuit in Quebec over data
+collection issues in the company's
+mobile ordering app filed a day after
+for privacy watchdogs announced a joint
+investigation into the company's
+overreach the court application filed by
+two montreal-based law firms on Tuesday
+cites an investigative story by the
+Financial Post which revealed the Tim
+Hortons app
+was logging users location data in the
+background even when the app wasn't open
+the app was streaming GPS location data
+to radar Labs Inc an American company
+which analyzes location data to infer
+where users live and work and logs a
+person's visits to one of Tim Hortons
+competitors such as Starbucks or
+McDonald's Corp immediately after
+privacy commissioners for the federal
+government Quebec Alberta and British
+Columbia announced their joint
+investigation on Monday Tim Hortons said
+in a statement that it has discontinued
+its practice of tracking losing users
+location when the app is not open the
+lead plaintiff is a Montreal resident
+who works in the IT sector and even
+though defined by his lawyer as a tech
+savvy guy he was shocked to find out how
+the app was tracking him consumer
+protection lawyer Joey Zuk Zuk Rijn said
+that simply stopping the practice of
+background location tracking isn't
+enough because Tim Hortons parent
+company appears to have been tracking
+the lead plaintiff since last year and
+the damage is already done
+saccharin says they've gained a valuable
+database of information and behavior
+patterns and activities of individuals
+so are they now just going to throw that
+out or are they going to profit from it
+my guess my guess is the latter Tim
+Hortons chief corporate officer Duncan
+full 'sons Fulton said in an e-mailed
+statement the company did not have any
+comment on the class-action lawsuit and
+reiterated that it had discontinued
+background location-tracking
+although the app may still record user
+location when it's open in many cases of
+privacy violations is difficult to sue
+because litigants can't put a dollar
+value on the harm they have suffered but
+the Quebec Charter of Rights and
+Freedoms makes privacy a protected right
+and that simplifies the case most
+privacy and data cases in Canada have
+been focused on breaches where companies
+allowed private information to be leaked
+or stolen by hackers but litigation
+around issues relating to data and
+privacy could become more common
+depending on how the courts respond in
+this case and future cases
+a new paper published by Disney Research
+describes a fully automated neural
+network based method for swapping faces
+in photos and videos the first method
+that results in high resolution results
+of sufficient quality to be used in film
+and TV
+the researchers specifically intend this
+tech for use in replacing it and
+existing actors performance with a
+substitute actors face
+for instance when T aging or increasing
+the age of someone or potentially when
+portraying an actor who has passed away
+they also suggest it could be used for
+replacing the faces of stunt doubles in
+cases where the conditions of a scene
+call for them to be used this method is
+unique from other approaches in a number
+of ways including that any face used in
+the set can be swapped with any recorded
+performance making it possible to
+relatively easily re image the actors
+on-demand the other is that it recreates
+contrast and lighting conditions to
+ensure the actor looks like they are
+actually present in the same conditions
+as the scene you can check out the
+results for yourself in this video as
+you can see there's still a hint of
+uncanny valley going on here but the
+researchers acknowledge that in their
+paper calling this a major step toward
+photorealistic face swapping that can
+successfully bridge the uncanny valley
+it is still a lot more realistic than
+other attempts which is especially
+apparent when you've seen the
+side-by-side comparisons with other
+techniques most notably it works at much
+higher resolution which is key for
+actual entertainment industry use
+considering the example of using this
+technique for a stunt double the real is
+realism could come across as being
+incredibly realistic the examples
+presented are a super small sample so it
+remains to be seen how broadly this can
+be applied subjects used appear to be
+primarily white for instance also
+there's always the question of the
+ethical implication of any use of face
+swapping technology especially in video
+as it could be used to fabricate
+credible video or photographic evidence
+of something that didn't actually happen
+given however that the technology is now
+in development from multiple quarters
+it's essentially long past the time for
+debate about the ethics of its
+development and exploration
+instead it's welcomed at organizations
+like Disney Research are following the
+academic path and sharing the results of
+their work so that others concerned
+about its potential Melissa malicious
+use can determine ways to flag identify
+and protect against any bad actors
+Japan's arm-based fugue aku is now the
+world's fastest supercomputer an apple
+backed firm aims at 1 million Robo taxis
+and Facebook has developed a new set of
+VR glasses that look like a chunky pair
+of sunglasses Becca has these stories
+coming up Plus Roberts here with the
+crypto corner don't go anywhere
+you
+welcome to the crystal corner and again
+we've got a fully loaded program for you
+let's dive into it if we look into the
+market then you'll see that there has
+been a slight drop between last week and
+this week from 277 billion to 263
+billion in average Iran five percent
+drop between last week and this week we
+saw this year by seven days then last
+week we had twenty coins that gained
+more than fifteen percent this time it's
+a mere six coins and on the downside
+last week we had two coins have lost
+a few more than that so it's slightly
+bearish behavior in the market and if we
+look into the d5 market then similar
+picture there from 6.7 billion down to 6
+point 1 billion dropped between last
+week and this week now if you remember
+last week we went into detail in regards
+to the d5 market how to participate in
+this market and how the future looks
+like but also that their risks attached
+to that because it's a very young market
+and so this is what happened between
+last week and this week a hacker stole
+around half a million u.s. dollars now
+it's not stealing in the traditional
+sense we just take something it's just
+that they made use of these different
+protocols in a way that they were able
+to harvest around half a million u.s.
+dollars and the way that worked is as
+you remember this one of those platforms
+where you can participate and say you
+they use the balance of pool the balance
+of platform in one of those pools and
+they use the flush LAN technology so
+with this technology which means a flash
+bond is something that happens between
+two blocks so it's never registered so
+you can take a loan as high as you want
+doesn't matter because it's never
+registered but between two those two
+blocks you can do whatever you want to
+do you can do whatever you want to with
+that money and that's what they did
+so they took out that loan and then they
+started swapping between the theorem and
+the STA token and they did that 24 times
+until the whole pool was drained
+again that's between two blocks so it's
+never registered but they were making
+use of that and every time that this
+transfer happened the transfer fee of 1%
+was charged to the recipient but that
+was not registered on the balance of
+platform and so every time the attacker
+swapped between those two coins those
+two tokens the balance of Poole received
+one percent less ta then was expected
+and these people were harvesting that so
+it shows how young this industry is but
+also how interesting it is
+and as I encourage you last week just go
+in there and learn more about it now on
+the other side looking at the
+traditional market something similar
+happened 2.8 billion u.s. dollars were
+scammed in the gold market now that's
+something that would never have be able
+to happen in the Bitcoin or the crypto
+market especially Bitcoin because it's
+the most secure platform in the world
+but in gold everybody who operates with
+certificates or not the physical gold
+it's a certificate that's being
+transferred and that's where the scam
+happened thing with the kind that would
+have never happened because Bitcoin was
+never hacked so it's the most secure
+software platform in the world now
+something interesting
+somebody published a report that is
+fantastic I encourage you to take a look
+at it and as usual I put the link into
+the description but this report is in
+debt and very scientific and fantastic I
+loved this report so these they go into
+every single aspect of the market so
+adoption rate tax evasion remittance and
+that on a global basis and they also
+look into how the value is going to
+perform from Bitcoin aetherium ripple
+and egg XRP over the next five to ten
+years they predicted their price I'm not
+going to mention that here because it's
+not what we do but take a look into what
+that report says but the interesting
+thing is really what they are talking
+about so online transactions how they
+look they of course you can see it's
+really in detail of what
+they are analyzing and it's worth
+spending some time into reading this
+report it's 64 now 61 pages now part of
+this is of course as you heard from us
+last a few weeks ago is that China is
+moving into the the Chinese really into
+cryptocurrency and Canada is like most
+other countries are planning to do
+similar things the interesting thing is
+that some experts in Canada are hoping
+that the Bank of Canada will create a
+more inclusive and accessible digital
+Canadian dollar so let's hope that that
+happens because that would be beneficial
+for everybody in the world and the last
+one is a coin base they have got a
+section where you can earn money by just
+learning something so you go into coin
+based comm and then slash earn and then
+you have got here section where you can
+just by learning something earn money
+and it's I think in total over $400 and
+they just started this one here the
+compound course where you can earn nine
+compounds nine dollars worth in compound
+by just taking the course now you have
+to be fast because these things sell out
+pretty fast but it's just another way on
+how you can make some money but you can
+make some money anyway that's it for me
+this week I hope you enjoyed it I hope
+you learned something and I'm looking
+forward to see you next week so thank
+you very much for watching thanks
+bye-bye thank you Robert just a reminder
+that we're not providing financial
+advice but just sharing what's happening
+in the cryptocurrency market always
+remember that the cryptocurrency market
+is ever-changing and always volatile so
+you should only spend what you can
+afford to lose now back to Becca in the
+newsroom Thank You Robbie according to a
+semi annual ranking announced by the US
+European top 500 project on Monday
+Japan's latest supercomputer fuga qu is
+the world's fastest for computing speed
+this is the first time that a Japanese
+supercomputer has taken the top position
+in nine years when the K computer
+vogue aku's predecessor took first place
+at this time in 2011 jointly developed
+by Japan State back in Center for
+computational science and Fujitsu who
+gaku is the first-ever ARM based system
+to become the world's fastest
+supercomputer it scored a
+high-performance Linpack HPL score of
+415 point 5 petaflop
+which makes it 2.8 times faster than IBM
+summits 148 point 6 petaflop that is now
+in second place in the top 500
+supercomputers Ann Keynes who gaku is
+powered by Fujitsu is 48 core ARM based
+a 64 FX system on chip and consists of
+nearly seven point three million CPU
+cores in single precision operations it
+reaches peak performance of over 1,000
+petaflop which pushes our vernacular
+into the next tier at one exaflop the
+chips run at 2.0 gigahertz with a boost
+to 2.2 gigahertz and carry 32 gigabytes
+of second-generation high bandwidth
+memory each this ARM based supercomputer
+also secured the number one position in
+other rankings that test computers on
+different parameters including graph 500
+HP l ai and high performance conjugate
+gradient this is the first time that a
+supercomputer has simultaneously topped
+the rankings in the above four
+categories according to Fujitsu
+currently installed at the RIKEN Center
+for computational science in Kobe Japan
+few gaku is will also carry out a wide
+range of applications that will address
+high priority social and scientific
+issues while the supercomputer is
+expected to start full-time operation in
+April next year they are already using
+it in the fight against Koba 19 in
+recent years countries like the US and
+China have dominated the race to develop
+powerful machines this time to China
+dominated the top 500 list with 226
+supercomputers while the u.s. took
+second place with 114 systems followed
+by Japan with 30 France with 18 and
+Germany with 16 systems Chinese
+ride-hailing firm DD chicheng says it
+plans to operate more than a million
+self-driving driving vehicles by 2030
+according to Dedes chief operating
+officer Manning the robo taki
+taxis are to be deployed in places where
+ride-hailing drivers are less available
+the company last month completed a more
+than 500 million dollar fundraising
+round for the autonomous driving unit
+led by Softbank group's vision fund to
+apple who is known to be interested in
+the development of autonomous driving
+invested 1 billion dollars into DD back
+in 2016
+last year DD said it would start using
+autonomous vehicles to pick up
+passengers in Beijing Shanghai and
+Shenzhen this year before expanding the
+scheme outside China in 2021 automakers
+and tech companies in China are
+investing heavily in the autonomous
+driving industry to compete with the
+likes of Tesla alphabet way mo and uber
+while some industry insiders say it will
+take time for the public to trust
+autonomous vehicles fully mang said
+DeeDee expects autonomous vehicles to be
+in mass production by 2025
+competitors are already offering Robo
+taxi service but a fleet of 1 million
+vehicles would put them all to shame
+we'll keep our eye on this and see if
+dee dee is able to deliver Facebook has
+created a virtual reality headset that's
+not much larger than a chunky pair of
+sunglasses the futuristic shades use a
+specially designed holographic film to
+miniaturize the lens conventional VR
+displays tend to be bulky as the
+refractive lenses inside of them need a
+couple of engine inches to focus the
+display for its wearer's eyes the result
+is a pair of glasses that are most at
+most only 9 millimeters thick according
+to the researchers and way only 17.8
+grams images from the glasses green and
+black display are frankly extremely
+cyberpunk the glasses can provide an
+approximately 90 degree horizontal field
+of view according to testing detailed in
+a paper published by Facebook research
+the design also does away with the
+traditional LCD panels used in
+conventional VR headset
+and uses lasers instead to create an
+image that means pixel counting isn't
+really an option it's still an early
+prototype with plenty of limitations
+since light rays from the backlight fan
+out significantly before they are
+focused by the holographic beam splitter
+surface large reason regions of the
+display do not contribute to the
+displays field of view the researchers
+write in the paper the glasses are also
+still not capable of producing a
+full-color image and exhibit ghosting
+around the edges of the field of view
+caused by optical surfaces reflecting
+light the team already has a plan to
+reduce weight even further by switching
+to plastic substrates the researchers
+expect to bring total weight to just 6.6
+grams about the weight of a pair of
+large aviator style sunglasses this news
+comes at the same time as Google's
+acquisition of Canadian smart glasses
+startup North who developed lightweight
+focal smart glasses designed with a
+holographic display that only the user
+can see it would appear augmented
+reality is still in the sights of these
+two big players which could mean some
+interesting tech in the coming years big
+thanks to Roy W Nash and our community
+of viewers for submitting stories to us
+this week thanks for watching a
+category-5 TV newsroom don't forget to
+Like and subscribe for all your tech
+news with a slight Linux bias and if you
+appreciate what we do become a patron at
+patreon.com slash category 5 from the
+category 5 TV newsroom i'm becca
+ferguson
+before we wrap up this week's episode a
+message just came in to me from Eduardo
+and Eduardo is using a pine Book Pro
+just like me
+but is trying to get things working with
+an SD card for the operating system
+Eduardo writes hi I'd like to know if
+you've used the OS in the card for a
+long time I'm facing a problem where the
+card becomes read-only after 10 days
+I've repeated the procedure twice and I
+got the same result I know the Waring
+problem but I disable the swamp and
+Firefox disk cache to reduce the wearing
+effect but around 10 days in the card
+becomes useless that again coming to us
+from Eduardo it's an unfortunate
+scenario if that happens but I'm gonna
+tell you what I suspect is going on so
+first of all in Linux when an operating
+system becomes a read-only when a file
+system becomes read-only that occurs
+when the kernel panics when trying to do
+readwrite operations that usually is a
+telltale sign of a failing hard drive
+well you're not using a hard drive
+you're using an SD card a micro SD so in
+your case if you are confident that your
+micro sd card is good no defects if you
+are confident that your SD card is not a
+fake because they exist so please if
+this is a new card get onto our website
+category 5 dot TV or even Linux Tech
+show calm and just do a quick search
+through our videos for fake SD card and
+I've got some tools there that will help
+you to be able to determine if your SD
+card is fake because then what happens
+is you get to a certain point on the
+file system where it tries to write to
+areas of the card that don't actually
+exist because it's fake and then it will
+crap out and you're gonna go into that
+read-only state
+so that's a possibility but if you are
+confident that it's a good card and
+you're pretty sure and you're absolutely
+certain that it's not a fake because
+that would definitely provide this
+symptom just try a different brand try a
+different card try a different speed get
+into the community at Pine 64 org find
+out what other people are using I've had
+great success with some Kingston cards
+and I've had some failures with some
+Kingston cards I've had great success
+with some SanDisk cards and I've had
+some failures in turn with some Santas
+cards so from card to card there are
+various things that will cause this to
+happen because that pine Book Pro is
+trying to use it like it's a hard drive
+and some cards may be problematic
+whereas another card will be perfectly
+fine so try a different card try a
+different brand a different a different
+card within their lineup even and see
+what what works best for you - straight
+out right answer your question eduardo i
+have used my micro SD card ever since I
+got my pine book Pro and I have had no
+such happenstance now I'm not a heavy
+power user on my pine book Pro generally
+speaking it stays in the studio when I'm
+not here and and then I fire it up on a
+Wednesday night to do the show but there
+are times when I take at home and I do
+full production and stuff but and I'm
+using it like over the weekends and
+things like that but so I think from
+card to card you just got to try and see
+what what the next card behaves like but
+understand that that is what's causing
+it is that it's having trouble with that
+card so if you've then rewritten the
+same card and tried again you're still
+experiencing the same symptom because
+it's the same card or if it's the same
+brand and same product line maybe
+there's a problem with that so again
+getting into the community and finding
+out what other people are suggesting
+will do you some good
+thank you for the question alright folks
+well we've got we've got to wrap up for
+the week it's been fantastic having you
+here do check out our series of cat 5 TV
+slash mikrotik check out the newsroom
+the Krypto corner and all of these clips
+at Linux tech show calm or of course
+everything comes together on our website
+category 5 dot TV you can follow
+category 5 TV on Twitter and I
+personally am even more awesome on
+Twitter at Robbie Fergus and because I
+follow back so if you want an extra
+follower follow me and incidentally I
+post things like Doctor Who I say that
+because I had a tweet that I posted this
+week and BBC retweeted it and it was
+just mind bending from there so get over
+to twitter.com slash Robbie Fergus and
+give me a follow and I'll fall you back
+alright have a wonderful week everybody
+I will see you again next time
+oh don't forget we do have a coffee
+break this Sunday at 12 o'clock noon
+Eastern Time
+so get on to our website category 5 TV
+scroll down on the home page you'll see
+the coffee break and participate in that
+zoom meeting where our community comes
+together and just has a coffee and a
+chat so we'll see you there take it easy
+everybody see

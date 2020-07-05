@@ -1,0 +1,379 @@
+WEBVTT
+Kind: captions
+Language: fi
+
+00:00:01.610 --> 00:00:06.839
+ no niin, että olemme täällä oppiaksesi kuinka konfiguroida mikrotik-reitittimet 
+
+00:00:06.839 --> 00:00:11.219
+ Oletan, että tiedät jo jo olemassa olevan pieholen, jota en aio tehdä 
+
+00:00:11.219 --> 00:00:15.870
+ pääsen siihen, että oletan, että sinulla on jo yksi asennettu, jos olet 
+
+00:00:15.870 --> 00:00:20.970
+ ei ole aavistustakaan, mitä piehole on, pidä vain mielessä, että tehdäksemme mitä olemme 
+
+00:00:20.970 --> 00:00:24.510
+ aiot tehdä, tarvitset sellaisen, vaikka se saattaa kuulostaa jostain 
+
+00:00:24.510 --> 00:00:29.970
+ loukkaavaa se on oikeastaan ​​yhden kortin tietokone tai jopa virtuaalinen kone 
+
+00:00:29.970 --> 00:00:35.820
+ toimii verkossa ympäri vuorokauden, se toimii DNS-palvelimena verkollesi 
+
+00:00:35.820 --> 00:00:42.390
+ suodattaa mainoksia DNS-tasolla, joten koska mainos ei koskaan lataa 
+
+00:00:42.390 --> 00:00:47.489
+ Internetistä tulee tuntuvasti nopeammin tietosi käyttö 
+
+00:00:47.489 --> 00:00:52.289
+ vähensi yllättävää määrää ja näet huomattavan vähentymisen 
+
+00:00:52.289 --> 00:00:57.180
+ mainokset, joille nyt kohdistuvat, sillä voi olla joskus heikkous 
+
+00:00:57.180 --> 00:01:00.930
+ kuten jos selaat Amazonia, joskus he esittelevät sinulle 
+
+00:01:00.930 --> 00:01:05.790
+ asiaa koskevaa tuotesuositusta, mutta kun napsautat sitä, se tukkeutuu 
+
+00:01:05.790 --> 00:01:10.439
+ koska se on mainos, mutta kaiken kaikkiaan tämä on upea ratkaisu, joka leikkaa mainoksia 
+
+00:01:10.439 --> 00:01:14.189
+ Koko verkon verran, sinun ei tarvitse asentaa ohjelmistoa verkkoon 
+
+00:01:14.189 --> 00:01:20.220
+ laitteita, eikä laitteella ole mitään määritystä laitteen tasolle heti, kun 
+
+00:01:20.220 --> 00:01:23.880
+ laite on kytketty verkkoon, se saa laitteesi suodatusominaisuudet 
+
+00:01:23.880 --> 00:01:30.360
+ reikä, joten jos et ole tutustunut reikään tässä vaiheessa tai muuten, jos 
+
+00:01:30.360 --> 00:01:34.320
+ sinulla ei ole sellaista tein viime vuonna opetusohjelman, joka opastaa sinut perusoppaan läpi 
+
+00:01:34.320 --> 00:01:38.400
+ asetettu niille teistä, jotka katsovat YouTubessa tai verkkosivustomme kautta a 
+
+00:01:38.400 --> 00:01:43.770
+ luokan 5 televisio voit napsauttaa kyseistä kuvaketta nähdäksesi opetusohjelman muutoin 
+
+00:01:43.770 --> 00:01:49.590
+ sivustomme luokkaan 5 pistetelevisio ja tee vain nopea haku piirakkareikään 
+
+00:01:49.590 --> 00:01:53.939
+ ja se on kirjoitettu aivan kuten näet ruudulla siellä piirakka - reikä video olet 
+
+00:01:53.939 --> 00:02:00.670
+ Etsimistä kutsutaan blokkimainoksiksi ja pornoksi yhden taulutietokoneen avulla 
+
+00:02:00.670 --> 00:02:38.050
+ Voi odota okei niin nyt, kun olet ilmeisesti saanut reikäsi 
+
+00:02:38.050 --> 00:02:44.260
+ kaikki asennetut Katsotaanpa kuinka määrittää tämä mikrotik-reitittimessä niin minun 
+
+00:02:44.260 --> 00:02:51.820
+ verkko minun piehole-laite on klo 10.00 DNS-palvelimellesi on tietenkin oltava 
+
+00:02:51.820 --> 00:02:55.930
+ staattinen IP-osoite verkossa, joten se on IP-osoite, johon aion 
+
+00:02:55.930 --> 00:03:00.340
+ reitittää DNS-liikenteeni niin, että haluan näyttää pari asiaa täällä verkossa 
+
+00:03:00.340 --> 00:03:04.330
+ Figg, joten aion napsauttaa IP-osoitetta, joka on jo avoinna, ja sitten DNS, kun minä 
+
+00:03:04.330 --> 00:03:07.690
+ mennä sinne, niin näet dynaamiset palvelimet, joita verkko on 
+
+00:03:07.690 --> 00:03:11.590
+ dishing out tällä hetkellä kaikille laitteilleni DHCP: n kautta. Haluan muuttaa sen 
+
+00:03:11.590 --> 00:03:16.269
+ Haluan asettaa nämä todellakin reikäni, mutta huomaat, etten voi 
+
+00:03:16.269 --> 00:03:21.760
+ muuttaa niitä, se ei salli minun tehdä mitään muutoksia täällä, joten ensin mitä minun on tehtävä 
+
+00:03:21.760 --> 00:03:28.480
+ Tee napsauttamalla DHCP-asiakasohjelmaa, napsauta eetterisi kohtaa tapauksessani, joka on sinä 
+
+00:03:28.480 --> 00:03:34.230
+ muista aikaisemmasta mikrotik-sarjastamme, eetterin yksi käyttöliittymä on minun 
+
+00:03:34.230 --> 00:03:39.160
+ Internet-yhteys, joten se on todellinen yhteys reitittimeen reitittimestä 
+
+00:03:39.160 --> 00:03:42.940
+ modeemille, jotta saan Internet-yhteyteni, joten aion napsauttaa sitä 
+
+00:03:42.940 --> 00:03:49.299
+ ja aion poistaa käytöstä vertaisverkko-DNS: n, joten periaatteessa sanon, etten halua 
+
+00:03:49.299 --> 00:03:55.180
+ Käytä Internet-palveluntarjoajani antamaa DNS: ää ja napsauta OK nyt, kun menen, kun menen 
+
+00:03:55.180 --> 00:04:02.549
+ Näet nyt, että dynaamiset palvelimet ovat poissa. Siellä ei ole mitään 
+
+00:04:02.549 --> 00:04:05.980
+ luultavasti ellei se ole välimuistissa, jos yritän mennä jonnekin, johon se vain menee 
+
+00:04:05.980 --> 00:04:11.769
+ aikakatkaisu, koska tällä hetkellä minulla ei ole DNS-palvelimia, joten minun on nyt lisättävä omani 
+
+00:04:11.769 --> 00:04:24.330
+ oma kymmenen mitä 10.0.0.0 tein, siinä kaikki 
+
+00:04:24.330 --> 00:04:28.800
+ siellä on siinä tapa puhua, mutta aion kääntää sen niin olemme 
+
+00:04:28.800 --> 00:04:32.610
+ käynyt läpi prosessin vain osoittaakseni, että aion sellaisena kuin aion 
+
+00:04:32.610 --> 00:04:36.380
+ käännä se niin, että voin näyttää sinulle demonstraation siitä, mitä olemme 
+
+00:04:36.380 --> 00:04:41.280
+ mitä suoritamme täällä, mitä todella saavutamme, joten palataan takaisin toimintaan 
+
+00:04:41.280 --> 00:04:45.090
+ puhtaan DNS: n kanssa Minulla on vaikeuksia näiden ohjauslevyjen kanssa 
+
+00:04:45.090 --> 00:04:50.400
+ Minun pitäisi saada hiiri kunnossa, joten katso, olemme palanneet dynaamiseen, joten aion 
+
+00:04:50.400 --> 00:04:55.789
+ tuo verkkosivusto esiin ja joudut tekemään tämän Firefoxissa tai Chromessa 
+
+00:04:55.789 --> 00:05:01.380
+ älä tee sitä rohkeasti, koska rohkea estää selvästi jo mainostamisen 
+
+00:05:01.380 --> 00:05:08.580
+ mainokset eivät tee sitä selaimessa, johon on asennettu mainosten estämistyökalu 
+
+00:05:08.580 --> 00:05:15.449
+ ja työskentelemme aktiivisesti, koska se ei aio näyttää menestystä 
+
+00:05:15.449 --> 00:05:20.370
+ tekemään sen, mitä olemme tekemässä, kiemurtelemalla piirakkareiän läpi niin mitä minäkin 
+
+00:05:20.370 --> 00:05:27.630
+ haluan tehdä, on siirtyä HTTP-kaksoispisteviivan mainoksiin - esto-com ja syy minä 
+
+00:05:27.630 --> 00:05:31.949
+ halua mennä sinne, koska se on vain mainoksia painava esittelysivusto, joten jos 
+
+00:05:31.949 --> 00:05:35.729
+ vierität hitaasti alaspäin, niin näet mainontaa täällä 
+
+00:05:35.729 --> 00:05:43.560
+ tällä sivustolla on mainoksia, jotka ilmestyvät tällä sivustolla näyttää siltä, ​​että Firefox on 
+
+00:05:43.560 --> 00:05:50.280
+ tosiasiallisesti jo estää joitain, ja niin minä aion jälleen estää alkuperäpyynnön 
+
+00:05:50.280 --> 00:05:55.440
+ estetty 7 tai 10% tästä sivusta voin sammuttaa sen 
+
+00:05:55.440 --> 00:06:05.820
+ on se, että mitä se tekee joo nyt näemme mainoksia siellä menee niin Firefox on 
+
+00:06:05.820 --> 00:06:10.949
+ nyt myös mainosten esto, joka on siisti, mutta ymmärrä niin hyvin, jos Firefox 
+
+00:06:10.949 --> 00:06:14.009
+ jo sinulla on mainosten esto, miksi meidän on mentävä kaikkiin tähän työhön, miksi tarvitsemme 
+
+00:06:14.009 --> 00:06:20.430
+ piirakka reikä muistaa, kuinka sanoin tämän estää mainoksia DNS-tasolla niin ja 
+
+00:06:20.430 --> 00:06:23.130
+ Vihjein tosiasialle, että aiot vähentää kaistanleveyden kulutusta 
+
+00:06:23.130 --> 00:06:27.500
+ aiot nopeuttaa Internetiäsi ja johtuu siitä, että jollain 
+
+00:06:27.500 --> 00:06:33.080
+ mainosten estolaajennus tai mainosten estävä selain perinteisesti 
+
+00:06:33.080 --> 00:06:38.750
+ mitä tapahtuu, se lataa edelleen mainoksen, se vain piilottaa sen estää sen, mutta 
+
+00:06:38.750 --> 00:06:43.550
+ Kun DNS-taso estää, se todella pyytää mainospalvelimia 
+
+00:06:43.550 --> 00:06:50.000
+ jotka vastaavat nollavastauksella, joten se todella estää 
+
+00:06:50.000 --> 00:06:55.129
+ tietokoneesi tavoittaa mainospalvelin ollenkaan, se ei voi ladata mitään 
+
+00:06:55.129 --> 00:07:00.020
+ ei voi seurata sinua he eivät pysty jäljittämään pyyntöä sillä ei ole väliä siinä on 
+
+00:07:00.020 --> 00:07:03.620
+ estetään DNS-tasolla, joten siihen on nyt paljon enemmän 
+
+00:07:03.620 --> 00:07:07.909
+ Sain tämän estääksesi käytöstä. Näet, että täällä on Google-mainos, okei 
+
+00:07:07.909 --> 00:07:15.470
+ Joten takaisin täällä olevaan mikroni kohtaan, siirrytään taas DHCP-asiakasohjelmaan IP: n ja 
+
+00:07:15.470 --> 00:07:19.909
+ on monia tapoja tehdä tämä voit tehdä tämän verkon verkon perusteella, jos 
+
+00:07:19.909 --> 00:07:24.139
+ haluat, mutta aion tehdä tämän koko verkostossani, koska haluan 
+
+00:07:24.139 --> 00:07:28.009
+ laite, joka on verkossani lävistää pieholen, jonka voin poistaa käytöstä 
+
+00:07:28.009 --> 00:07:40.370
+ puhdas DNS ja paina ok nyt siirry DNS: iin ja lisää reikäni 10 pistettä 
+
+00:07:40.370 --> 00:07:46.790
+ 0,2 ja tämä kaikki on melko välitöntä, mutta on olemassa pari asiaa 
+
+00:07:46.790 --> 00:07:52.280
+ Huomaa, että tyhjennän välimuistin, tämä on DNS-välimuistin tyhjennysvälimuisti, joten nyt 
+
+00:07:52.280 --> 00:07:56.600
+ kaikki, jo jo on käytetty, tyhjennetään DNS-välimuistista ja niin 
+
+00:07:56.600 --> 00:08:02.210
+ ei tule olemaan, se aikoo pyytää peliä ja käydä läpi 
+
+00:08:02.210 --> 00:08:08.000
+ piehole toinen mielessä pidettävä asia on, että voisit, jos halusit mennä 
+
+00:08:08.000 --> 00:08:15.410
+ DHCP-palvelinverkot, joten tämän sijaan, että tein tämän DNS: ssä, voisin vain sanoa, että okei LAN 
+
+00:08:15.410 --> 00:08:23.449
+ tai nämä ovat vieraani Wi-Fi-verkkoja, voisin vain lisätä tietyn DNS-palvelimen 
+
+00:08:23.449 --> 00:08:29.449
+ niille, jotta voisin tehdä sen, kuinka monipuolinen kokoonpano voi olla 
+
+00:08:29.449 --> 00:08:34.250
+ mikrotik joten tekemällä sen niin, sinulla voisi olla useita piirakka reikiä 
+
+00:08:34.250 --> 00:08:38.750
+ useita eri asetuksia, sinulla voi olla äidille ja isällesi Wi-Fi, jolla on sellainen 
+
+00:08:38.750 --> 00:08:43.010
+ on suora pääsy kuten Googlen DNS tai jotain sellaista, jos et 
+
+00:08:43.010 --> 00:08:49.100
+ haluat estää asioita, jotka saavat vieras Wi-Fi: n kovemman DNS: n 
+
+00:08:49.100 --> 00:08:54.380
+ suodattaa esimerkiksi, jotta voit tehdä sen verkkotasolla tapauksessani, kun sanon olevani 
+
+00:08:54.380 --> 00:09:01.220
+ en tee sitä tällä tasolla teen koko verkkooni, joten eetterini on 
+
+00:09:01.220 --> 00:09:09.200
+ aion käydä läpi 10.0.0.0 rakastaa sen DNS-pyyntöjä, joten nyt jos hyppään tänne ja 
+
+00:09:09.200 --> 00:09:19.550
+ Päivitä tämä sivu niin yksinkertaisesti, että mainos on estetty, niin niin 
+
+00:09:19.550 --> 00:09:25.480
+ se yritti ladata sen nähdäkseen miten sillä on paikanvaraaja, jonka se yritti käyttää mainosta 
+
+00:09:25.480 --> 00:09:33.320
+ mutta se estettiin DNS-tasolla, joten se ei koskaan päässyt selaimeeni kuinka hieno on 
+
+00:09:33.320 --> 00:09:39.650
+ että niin tämän asettamisen yhteydessä on pidettävä mielessä toinen asia, että vaikka sinun 
+
+00:09:39.650 --> 00:09:47.930
+ mikrotik DHCP-palvelin aikoo laittaa pois tämän uuden DNS-asetuksen 1000 tuumaa varten 
+
+00:09:47.930 --> 00:09:54.560
+ tapauksessani sinulla voi olla tilanne, jossa joku on ehkä tottunut 
+
+00:09:54.560 --> 00:10:00.620
+ asettaa heidän puhelimeensa tai ehkä siellä he käyttävät selainta, joka 
+
+00:10:00.620 --> 00:10:07.999
+ ohittaa verkkojen DNS-asetukset, jotka voivat olla ongelmia, koska tämä 
+
+00:10:07.999 --> 00:10:16.040
+ asetusta ei valvota, joten laite voi helposti ohittaa tämän asetuksen 
+
+00:10:16.040 --> 00:10:20.959
+ oletuksena mikrotik-laitteesi nyt, kuten olen juuri osoittanut tämän kanssa 
+
+00:10:20.959 --> 00:10:27.350
+ peruskokoonpano lataa nämä asetukset DHCP: n kautta, enkä minä 
+
+00:10:27.350 --> 00:10:31.519
+ tiedä, että lataus on oikea termi, mutta se saa uuden IP: n ja dns 
+
+00:10:31.519 --> 00:10:37.999
+ asetukset Microtechin DHCP-palvelimelta, mutta jos laitteellasi on oma 
+
+00:10:37.999 --> 00:10:44.930
+ mukautettuja asetuksia, se kiertää sen, joten jos haluat sen sijaan ja 
+
+00:10:44.930 --> 00:10:50.809
+ pakota se niin, että vaikka laitteessa olisi ohitus tai selaimesi 
+
+00:10:50.809 --> 00:10:56.300
+ ohitti halutut DNS-asetukset verkossasi 
+
+00:10:56.300 --> 00:11:00.559
+ katso tarkemmin sarjaamme, kun aiomme tarkastella miten tehdä mitä 
+
+00:11:00.559 --> 00:11:05.720
+ nimeltään DNS-naamiointi ja DNS-naamioinnilla me otamme mitä me 
+
+00:11:05.720 --> 00:11:10.730
+ oppinut tänään tämän opetusohjelman ja siirrymme sen seuraavalle tasolle, joka 
+
+00:11:10.730 --> 00:11:17.149
+ on sanottava, että okei mikrotik etsii nyt pohjimmiltaan mitä tahansa dns-liikennettä 
+
+00:11:17.149 --> 00:11:22.879
+ menen verkon läpi ja se maskelee sen niin, että sen täytyy mennä 
+
+00:11:22.879 --> 00:11:28.220
+ lävistysreiän kautta laitteellasi ei ole mahdollisuutta kiertää 
+
+00:11:28.220 --> 00:11:34.220
+ tai ohita se, vaikka asettaisit dns-asetukset manuaalisesti naamiointiin 
+
+00:11:34.220 --> 00:11:43.160
+ pakottaa sen menemään läpi tapauksessani 10.0.0.0 viiden pisteen televisiossa mikrotik 
+
+00:11:43.160 --> 00:11:48.709
+ kattaa laajan valikoiman kuinka määrittää ja määrittää Microtech-laitteesi 
+
+00:11:48.709 --> 00:11:54.920
+ reitityslaite, tämä on me aiomme tarkastella enemmän naamiointia 
+
+00:11:54.920 --> 00:11:58.910
+ joten jätän sen avainsanan puolestasi, koska haluan sinun odottavan sitä 
+
+00:11:58.910 --> 00:12:03.319
+ Jos se kiinnostaa sinua, haluat panna sen täytäntöön, siirry cap-dot TV -viivaan 
+
+00:12:03.319 --> 00:12:09.610
+ mikrotik ja etsi sitä dns-naamiointia 
+
+00:12:20.740 --> 00:12:23.779
+ [Musiikki] 
+

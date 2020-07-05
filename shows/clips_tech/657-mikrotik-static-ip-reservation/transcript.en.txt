@@ -1,0 +1,104 @@
+next in our microtic series is how to
+assign a static ip address
+to a device in your dhcp in your dhcp
+pool so i'm going to just sign into
+web fig here on my laptop
+and i want to show you how easy this is
+to do so
+click on ip and click on dhcp
+server and click on leases
+this is an important thing to do because
+you're you're going to need to have
+static ip
+addressing on your network for things
+like servers
+in my case we're also looking at pi hole
+for example
+so my pi hole server is in fact set as
+10.0.0.2
+that is a static reservation in my dhcp
+pool
+for on my microtech so any of these
+devices so these ones are
+dynamic see these dynamic
+d the ones that are that have a d
+button that button will actually convert
+it to dynamic but they are currently
+static
+so let's look at i've got a
+let's grab my phone there's my pocophone
+so i'm just going to click on that
+and it's currently assigned to
+10.0.0.107
+so i'm just simply going to press make
+and now it has been assigned to
+static but if i close that
+now you'll see 107 has that d next to it
+and no longer is it dynamic
+so now if i open it by single clicking
+on it i get all these new options
+and now i can assign it its own ip
+address something that
+is not currently in use on my pool so i
+can assign that 2.88
+and hit ok and now my pocophone
+is 10.0.0.88
+there it is see how easy it is to
+configure a static reservation on your
+dhcp pool on a microtech device
+is fantastic quick follow-up question in
+our discord from the foo
+who's asking shouldn't reserved ips be
+outside of the dhcp pool's dynamic range
+and while technically true in
+an in a different type of scenario where
+you're not using dhcp
+that's not the case here i'm going to
+explain why so
+traditionally us sysadmins are
+basically it's it's ingrained in our
+minds to always assign the dhc
+uh the static address outside of the
+pool the reason for that is
+if you let's say you install a new
+printer on a network
+and you go to that printer and you type
+in
+the ip address and you put it within the
+now your dhcp server doesn't even know
+that it exists
+because it did not assign the ip address
+so what we're doing here is completely
+different what we're doing is we're
+setting the reservation
+in the dhcp server so that printer is
+still
+just getting the ip address from the
+dhcp server
+so does it have to be outside of the
+pool now no
+the reason it would have to be if i was
+typing it in manually onto the printer
+is because
+when the dhcp server then assigns that
+ip
+address to another device on your
+network it's going to cause an ip
+collision conflict so you're going to
+have two devices
+sharing the same ip address and you're
+going to get all kinds of like arp
+attacks warning
+arp attack warnings things like that
+because you've got these collisions
+occurring within your network things are
+going to go slow all of a sudden
+that's a problem because i am assigning
+my ip address from the dhcp server to my
+device
+or to my printer i can set it to
+anything that is not already assigned
+and it will dish it out through the dhcp
+and it doesn't matter whether it's
+within the pool or not
+you
