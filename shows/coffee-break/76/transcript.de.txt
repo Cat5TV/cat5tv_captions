@@ -1,0 +1,414 @@
+Hallo, das ist Kategorie fünf TV uh Kategorie
+fünf tv kaffeepause ich bin uh bp9 und winke dir da drüben
+und wir haben Solberg, der uns einen Weg zur Lösung gibt
+oh okay nah genug und dann haben wir Doug
+gib uns weg und hallo los gehts und hallo peter gib uns weg peter
+da gehen wir hallo peter alles klar dann willkommen im
+zur Kaffeepause und meine Neuigkeiten im Grunde diese Woche
+ist uh uh hat mit gestern zu tun oh gestern letzte Woche ich denke ich habe geredet
+über ähm in erster Linie
+uh Unit-Tests in C-Programmen und das war eine große Sache für mich, weil ich
+Ich habe das die ganze Zeit in Java gemacht, wo ich versucht habe, 70 oder 80 zu bekommen
+Abdeckung auf meinem auf meinem Java-Code für Sie wissen aus kommerziellen Gründen, dass
+war erforderlich Sie wissen, dass Sie sicher sein mussten
+dass Ihr Code mit dem übereinstimmte, was Ihr Code tatsächlich getan hat, was Sie erwartet hatten
+Also, was ich getan habe, ist eines der anderen Dinge, die wir tun möchten, ist zu machen
+Sicher erhalten Sie eine gute Codeabdeckung und mit Codeabdeckung ist das etwas
+Das ist nicht gut, was ich nicht für richtig hielt
+so einfach mit um mit c zu bekommen, aber es stellt sich heraus, dass es trivial ist
+Der gcc-Compiler generiert sehr gerne Coverage
+Daten für Sie, wenn Sie die Minus-Minus-Abdeckung verwenden
+Befehl ein Argument, so dass Sie das Befehlszeilenargument an die geben
+an den Compiler und an den Linker und dann, wenn Sie das Programm mit ausführen
+Ihr Testgeschirr wird passieren, wenn alles läuft
+die Tests und es wird einfach es wird nur uh uh du rennst einfach alle
+Tests, die Sie in Ihrer Testsuite haben
+Am Ende erhalten Sie eine ganze Reihe von Abdeckungsdaten, in die Sie dann konvertieren
+eine HTML-Seite und Sie bekommen eine Sie bekommen eine sehr schöne
+uh Bildschirm um eine Website im Grunde, die Ihnen sagt, wie viel welche Art von
+Abdeckung erhalten Sie auf der gesamten Programmebene
+und dann auf jeder Dateiebene und sogar bis zu jeder
+um Funktion und Line Level, wenn Sie das wollten
+Das hat mir Spaß gemacht. Ich habe mich darauf eingelassen
+ähm, ich habe an dem Client-Server-Programm gearbeitet, das ich wahrscheinlich erwähnt habe
+Vor ein oder zwei Wochen habe ich versucht, das Ähm zu bekommen
+uh wo ich versucht habe, das um ähm uh das zu bekommen
+Der Client muss die Nutzdaten verschlüsseln und dann signieren
+und dann lassen Sie den Server um uh entschlüsseln und überprüfen Sie dann die Signatur auf
+die Nutzlast, aber ich habe das nicht geschafft
+Zuerst zuverlässig arbeiten Ich konnte es überhaupt nicht zum Laufen bringen, bis ich es gerade herausgefunden hatte
+Nur indem Sie sich den Code anderer Leute ansehen, wie es geht
+wie ich einen Hash der Nutzdaten erstellen und dann verschlüsseln musste
+und dann signiere den Hash, der funktioniert, aber er funktioniert nicht zuverlässig, ich kann
+Von zehn Läufen kann ich es vielleicht sieben Mal zum Laufen bringen
+Von diesen Zehnern habe ich nichts geändert. Ich führe nur diesen Test durch
+Geschirr immer und immer und immer wieder funktioniert es manchmal und manchmal auch
+tut es nicht und ich weiß nicht warum, wenn jemand einen Einblick in das hat
+Ich würde es gerne hören, weil ich es momentan nicht kann
+Im Moment kann ich nichts dagegen tun
+Wie ist Ihre Verbindung zwischen dem Client und dem Server?
+uh es ist ein uh es ist ein TCP-Socket, aber da beide auf dem laufen
+Gut Korrektur, wenn ich es auf dem Testgeschirr laufen lasse
+Um die Verbindung gibt es keine Verbindung, die sie im selben Prozess ausführen
+ähm, also nehme ich eine Nutzlast, ich lasse mich in einen Rahmen setzen, den ich nehme
+Nutzlast Ich signiere es und dann nehme ich diese signierte Nutzlast
+und dann Überprüfen der Signatur mit einer anderen Kryptofunktion
+alle im selben Prozess alle auf derselben Maschine
+sind richtig ja sir okay jetzt vielleicht mag es nicht, dass ich unterschreibe und
+Überprüfen derselben Signatur auf derselben Nutzlast
+Vielleicht muss ich es in separaten Prozessen tun oder etwas, das ich nicht weiß
+Wie wäre es, wenn Sie es auf separaten Computern versuchen?
+Ich könnte das tun, aber dann müsste ich tatsächlich den Code schreiben, der macht
+Die Verbindung zwischen den beiden Maschinen Ich habe diesen Code noch nicht geschrieben. Ich bin es
+im Grunde beweisen, dass ich zuerst verschlüsseln und unterschreiben kann und
+dann werde ich den Code schreiben und überprüfen, ob er über das sprechen wird
+Internet über TCP-Socket Ich bin zuversichtlich, dass ich das tun kann, was ich habe
+habe diesen Code so oft geschrieben, dass ich weiß, dass ich es bin
+zuversichtlich, dass ich diesen Teil zum Laufen bringen kann, was ich nicht sicher war
+Über die Unzuverlässigkeit bin ich gerecht
+Ich frage mich, ob etwas bei der Übertragung nicht fallen gelassen wird
+Gut, dafür gibt es hier keine Verbindung
+dafür ist es ähm es ist buchstäblich nur ein
+ähm dafür ist es eine direkte Verbindung
+zu ähm, ich sage immer wieder Verbindung und ich liege falsch
+Das Signieren und Überprüfen geschieht genau in der gleichen Weise
+Prozess im gleichen Adressraum gibt es keine uh
+Es gibt keine Zwischenverbindung zwischen den beiden, nein, wir sind
+verboten, wenn du versuchst etwas zu sagen nein nein ich
+glaube nicht, was wolltest du sagen peter i
+entschuldige dich, du machst ein bisschen Lärm und ich muss
+vorübergehend sagte ich, dass es die Dinge ändern könnte, die
+halten sich jedes Mal, wenn Sie die Angriffe ausführen, daran, dass es wieder falsch ist
+den Code irgendwie buchstäblich zu ändern und das
+könnte sich ändern, warum man das zweite oder das dritte Mal gearbeitet hat
+Von diesem einen Brunnen ist der Programmcode der Programmcode für jeden Lauf identisch
+und die Nutzlast ist für jeden Lauf identisch, das einzige, was anders ist
+ist das ist ist der vorzeichenbehaftete Wert, weil der Startwert etwas anders ist
+jedes Mal, wenn es läuft, aber ich kann mir nicht vorstellen, dass das so wäre
+Alles, was damit zu tun hat, kann ich mir nicht vorstellen
+Alles, was ich denken kann, ist
+Etwas, da ändert sich etwas, weil es wie etwas sagt
+irgendwo in der Schleife ändern und deshalb funktioniert es nicht oh ich
+Ich würde zustimmen, ja, ich würde dem zustimmen
+etwas ist anders, aber die Sache ist, ich weiß nicht, was anders ist
+und hier ist das hier ist der unglückliche Teil über die Verwendung
+Bibliotheken aus Ihrem Code, genau wie Sie es in Pascal Peter tun, wenn
+Sie verwenden Einheiten richtig oder wenn Sie Bibliotheken verwenden, verlassen Sie sich auf diese Bibliotheken
+Mach das Richtige, aber damit die Bibliotheken das tun
+Richtig, man muss tatsächlich verstehen, wie die Bibliotheken funktionieren
+und ich bin mir nicht ganz sicher, ob ich alle Regeln verstanden habe
+beteiligt um herum nennen die verschiedenen besonders
+Kryptofunktionen, weil sie so empfindlich sind, schrecklich
+Dinge ja und du musst nach rechts ziehen
+Dinge auch hinein, weil das dich gehen lassen kann
+Knall auch oh sicher ja oh absolut, aber trotzdem, weil ich es bin
+Es tut mir leid, dass es einen Weg gibt, genau den gleichen Code auszuführen
+Überwachen Sie den Durchsatz
+Gibt es eine Möglichkeit, die Bedrohung buchstäblich zu überwachen?
+Ich denke, ich denke, ich könnte buchstäblich durch den Code gehen
+mit dem gnu debugger um wenn ich das machen wollte um i
+Normalerweise mag ich es nicht, durch den Code zu gehen, weil er alle ändert
+Timings um, wie der Code richtig funktioniert, also bin ich
+Ich bin mir nicht sicher, ob das so ist
+Der Code wird sehr produktiv sein. Ja, ich würde mich lieber auf Protokollnachrichten verlassen
+außer das Problem ist, dass Protokollnachrichten trotzdem dazu neigen
+uh ändere das Timing des Codes, wenn du viele Nachrichten an die schreibst
+Konsole, die das gesamte Programm verlangsamt und
+Das könnte ausreichen, um den Fehler zu verbergen
+Sie wissen, dass es einen Weg gibt, um zu erreichen
+Gibt es eine Möglichkeit, den Durchsatz aufzuzeichnen und dann zu durchlaufen?
+danach
+Ich bin mir nicht sicher, ob ich das tun würde
+ähm, ich meine, ich schreibe Protokollnachrichten, was die Ergebnisse der Tests angeht
+und so kann ich um sagen, ob die
+ob die Verschlüsselung oder die Signatur erfolgreich war oder nicht
+weil ich einen Rückkehrcode zurück bekomme, um den Code Null zurückzugeben, war die Signatur
+erfolgreich und es ist alles in Ordnung, aber wenn der Rückkehrcode zurückkommt mit
+ein unsinniger Wert und dieser unsinnige Wert übrigens, wenn
+du wandelst es in hex um und dann weißt du, dass du das Höchste wegnimmst
+Bit es löst sich in es löst sich auf, was ich denke, ist ein Rückkehrcode, der bedeutet
+eine Art Konflikt, aber es gibt keinen
+Dokumentation darüber, was dieser Konflikt-Rückkehrcode bedeutet, dass er nur äh ja sagt
+Es gab einen Konflikt, danke, das wusste ich
+[Lachen]
+Wenn ich den Rückkehrcode richtig lese, bedeutet das aber was
+aber wie um alles in der Welt mache ich ich ähm du weißt wie ich mache
+Fahren Sie damit fort, ich weiß es nicht, also werde ich mich weiter damit beschäftigen
+manchmal, wenn ich eine Fehlermeldung von einem Prozess sehe und
+manchmal denke ich mir ja ich wusste das sag es mir
+etwas, das ich nicht weiß
+genau richtig so fühle ich mich gerade jetzt und
+Ich bekomme es, wenn ich den Rückkehrcode richtig lese, weil es involviert war
+Konvertieren in Hex, wobei der hohe Wert und der hohe Bitwert am
+sehr hohes Niveau und dann lesen die
+Rest, weil es das war, was die Bitebene eins war
+null null null null null null null null und dann
+Was auch immer der Hex-Wert des Rückkehrcodes war, war eine Idee, die ich bin
+Ich denke an ja, du hast gesagt, du unterschreibst
+um eine Nutzlast und dann überprüfen Sie, ob es ist
+richtig unterschrieben richtig ja und hast du nur versucht das zu überprüfen
+dass es ähm ist, hast du versucht, zu entschlüsseln
+Die Nutzdaten speichern anschließend die einzelnen Nutzlasten
+um speichere eine, die korrekt ist und eine, die nicht korrekt ist
+und dann entschlüsseln Sie jeden und sehen und dann sehen
+Was ist anders? Ja, also mache ich das. Ich mache es
+das um das verschlüsseln und entschlüsseln getrennt von der signierung und
+Überprüfung, um zu beweisen, dass ich jedes einzeln tun kann und dann, wenn ich beweisen kann, dass ich
+kann jeder einzeln machen, dann nehme ich das Nutzlastzeichen
+verschlüsseln entschlüsseln es überprüfen die Signatur und dann
+Abrufen der Nutzdaten Ich bin noch nicht bis zu diesem Punkt Ich habe bewiesen, dass ich verschlüsseln kann und
+überhaupt kein Problem entschlüsseln Ich kann das tun, das funktioniert nur für
+Ich kann das jedes Mal zuverlässig machen, ohne mir Sorgen zu machen
+es ist das es ist die ganze Unterschrift und dann
+Überprüfen der Signatur der Nutzlast, die mich gerade beißt
+Ja, das ist genau mein Punkt, oder?
+versuchte nur zu überprüfen, ob Sie wissen, ob nicht zu beseitigen
+dass diese beiden Nutzlasten tatsächlich gleich sind, obwohl Sie
+Ich bin noch nicht an dem Punkt angelangt, an dem du welche hast
+ähm gute Verwendung dafür aber nur zur Überprüfung
+das ist okay
+Ja, ich habe das mit einem sehr guten Ja gemacht, also habe ich das mit dem gemacht, was ich getan habe
+das mit Ver- und Entschlüsseln
+Alles klar Peter, mach schon, Sir, ich werde unhöflich sein, aber sie könnten es tun
+Prüfsumme vorher und überprüfen Sie sie, um zu sehen, ob sich ihre Nummern ändern
+weil ich das okay habe ja das ist keine ahnung
+Okay, die Sache ist also, dass die Nutzlast Klartext ist. Okay, es ist einfach
+Es ist buchstäblich ein JSON-Dokument in Ordnung, daher ist es trivial zu überprüfen, ob das
+Die Nutzlast ist jetzt dieselbe wie beim Signieren einer Nutzlast
+ändert nicht die Nutzlast Signatur die Nutzlast erstellt eine
+Trennen Sie eine Hex-Zeichenfolge, die Sie separat speichern, in Ordnung und dann
+Sie nehmen beide und verschlüsseln sie
+dann später, nachdem Sie es über die Interwebs gesendet haben oder was auch immer Sie getan haben
+Sie entschlüsseln es und nehmen dann diese Unterschrift und Sie
+Überprüfen Sie die Nutzlast, nachdem Sie es wissen
+Ab der Signatur ändert sich die Nutzlast nicht, wenn Sie
+Unterschreiben oder überprüfen Sie die Unterschrift, damit die
+Trick ist, um zu testen, um sicherzustellen, dass das Signieren und Überprüfen funktioniert
+ist, dass Sie es unterschreiben, erhalten Sie die Unterschrift
+und dann übergeben Sie diese Signatur zusammen mit der Nutzlast an die Überprüfung
+und Sie sagen, okay, tut dies, um dies zu überprüfen
+überprüft dies korrekt das einzige was ich kann
+Denken Sie daran, ähm, es gibt zwei Orte, an die ich denken kann
+Es könnte ein Problem geben, das man tatsächlich hat
+Das Signieren schlägt irgendwie fehl oder die Überprüfung
+scheitert irgendwie und es sagt dir nicht warum oder wo es da ist oder
+Ja, okay, der Fehlerpunkt ist die Unterzeichnung
+weil ich die Signatur sehen und einen Null-Rückkehrcode erhalten kann
+Wenn der Signiervorgang korrekt ist, funktioniert er
+so kann ich die Signatur in Ordnung sehen, weil ich das in meiner Protokollnachricht drucke
+Wenn die Signatur nicht funktioniert, ist mein Testcode dumm. Ich mache einfach weiter
+und versuchen Sie es trotzdem zu überprüfen, aber natürlich gibt es nichts zu überprüfen, weil
+Die Signatur ist fehlgeschlagen, daher ist der Hinweis auf den Fehlerpunkt
+Die Signatur ist die Signatur der Nutzlast
+Dort passiert der Fehler. Das kann ich Ihnen sagen
+Ich hatte noch nie ein Problem, bei dem es erfolgreich unterschrieben hat
+Diese Überprüfung ist fehlgeschlagen, wenn sie erfolgreich signiert wurde
+Die Überprüfung funktionierte jedes Mal außer der Unterzeichnung
+ist, wo es archiviert, könnte es sein, dass ähm
+Es könnte ein Timing-Problem sein, oder?
+Ich denke nur wie immer aus meinem Kopf heraus, könnte es sein, dass ähm
+aber es beginnt zu signieren, bevor die Nutzlast ist
+uh richtig geliefert, damit es etwas signiert und
+ähm ich denke es läuft sozusagen zu früh
+Oh, der Testcode, damit der Testcode nicht ausgeführt wird
+versucht nicht, die Signatur zu überprüfen
+bis nach Abschluss des Signiervorgangs
+weil ich nicht zur nächsten Operation übergehe, bis ich eine gute sehe
+Null-Rückkehrcode aus dem Signaturprozess
+Ja, aber ich glaube nicht, dass es sich bewegen kann
+Ich denke, es kann mit der Überprüfung fortfahren, bis ich weiß, dass die Signatur gut ist
+Ja, und hier würden entweder unser Debugger oder die Debug-Meldungen stehen
+nützlich sein, denn dann können Sie sehen, ob
+wenn es einen Zeitmanager gibt ja und übrigens ein großes Dankeschön an
+die glib uh Testgeschirr Leute
+Sie haben einen tollen Job gemacht. Sie haben einen sehr guten Job gemacht
+Das Testgeschirr so aussehen und funktionieren lassen
+uh die Java-Äquivalente so um wie ich kann
+Sie haben einen besseren Job gemacht, den ich zum Beispiel wegen meines klobigen Tests machen konnte
+Das Geschirr führt nur alle Tests durch und es ist mir egal, wie lange es dauert, aber
+Sie können Tests kategorisieren, um festzustellen, ob sie wirklich sehr, sehr lange laufen
+und deshalb, ob Sie sie auf einem normalen Testgeschirr laufen lassen, ja
+all diese Sachen, aber jetzt, ob etwas los ist
+Mit dem Testgeschirr wissen Sie jetzt, dass möglicherweise etwas vorhanden ist
+weiter mit dem Testcode, den ich nicht kenne, weißt du aber
+Dies beweist auch, dass sie etwas tun, das eine erfordert
+Verschlüsselung und es richtig zu machen ist wirklich schwer
+Also die, die sie sind und Projekte, die eine gute Verschlüsselung machen
+ähm einige von ihnen irgendwo in der Art von solchen
+Probleme, die sie ein paar Mal haben mussten, um so ähm
+Ja, erkläre es einfach
+Ich bin damit einverstanden, aber ich werde es noch einmal sagen
+Die Verschlüsselung funktioniert hervorragend. Ich kann nach Herzenslust verschlüsseln und entschlüsseln
+Inhalt und ich bekomme jedes Mal die gleiche Nutzlast zurück
+Kein Problem, dass dieser Teil großartig funktioniert. Es ist die Unterzeichnung, die mich beißt
+Rückseite, das ist das einzige, was ich versuche
+Ich versuche nicht, meinen Kopf herumzukriegen. Ich verstehe nicht, dass ich es nicht benutzen würde
+rsa ich glaube ich muss nachsehen ich habe nicht geschaut ich
+Ich könnte schauen, ich meine, ich könnte, aber ich will mich nicht anlegen
+Ich werde es dir später erzählen
+ähm ja, das ist es, was ich gemacht habe, wenn jemand einen anderen hat
+Ideen, über die ich mich sehr freuen würde, also lass uns ganz schnell um den Tisch gehen
+weil ich hier viel zu viel Zeit verbracht habe
+Also, was hast du dieses Wochenende gemacht? Ich war gestern und heute
+und ich habe meinem Bruder geholfen, umzuziehen, ja, er hat einen neuen Job bekommen
+Also muss er sein Ähm schließen oder beenden
+Mietvertrag uh in der in seiner alten Wohnung und bevor er umziehen kann
+in einen neuen musste er ja, damit er sich bewegt, ähm, er hat eine vorübergehende
+Platz um zu bleiben um die Hälfte seiner uh Möbel sind in meinem
+Garage gerade jetzt so und er hat ein paar uh so für die Amerikaner
+Auf der Linie für die Amerikaner auf der Linie ist eine Wohnung
+ist das gleiche wie eine Wohnung ja richtig
+Das ist es, was ich getan habe. Ich weiß, dass du das danach wusstest
+Kaffeepause Ich gehe hinein und setze meinen Anhänger auf mein Auto und ich fahre
+um ihn irgendwo zu treffen und dann übernimmt er den Trailer und
+uh die letzten uh Teile der Luft bewegen, wie weit ist er entfernt
+und weit weg ja zweieinhalb Stunden zu fahren
+hier zu ihm oh so ist es nicht gerade ein guter pendelweg
+Option, in seinem jetzigen Zuhause zu bleiben, um zur neuen Arbeit zu fahren, ist
+nicht wirklich eine Option dann von seinem alten Platz auf die uh zum
+New York, es ist eineinhalb Stunden, können Sie arbeiten
+yeah yeah oh okay vielleicht zwei Stunden Züge öffentliche Verkehrsmittel vielleicht
+Ja, ist das eine Option, nein, weil er ähm muss
+Wenn jemand ins Krankenhaus muss und dann
+ähm, er ist okay, einer von denen, die diese Anrufe entgegennehmen
+also ist es okay yeah yeah also hier ist er ein Taxifahrer oh
+Gut
+so oh schön okay, also hat er einen neuen Vertrag mit dieser Taxifirma unterschrieben
+in einer der Gemeinden
+eine Stunde von mir entfernt ähm und er und er haben eine große Zunahme von ähm von
+in dem alten Job hatte er eine 10 uh Arbeit um und uh alle anderen waren
+Extras und ähm, wenn jemand krank war, haben sie ihn angerufen
+und so weiter, aber jetzt hat er eine 70
+Arbeitsvereinbarung, damit er seine Freizeit ein wenig planen kann
+besser
+Die Brücke sieht also großartig aus. Die Voyager-Brücke sieht ausgezeichnet aus
+Wenn Sie die Nachtschicht noch einmal machen, möchten Sie vielleicht ganz unten nachsehen
+von deinem uh von deinem Bildschirm, weil um dein Grün
+Bildschirm reicht nicht ganz
+[Gelächter] Ich hasse es, darauf aufmerksam zu machen, aber ich
+Ich dachte, Sie möchten vielleicht wissen, wohin Sie gehen
+da oh viel besser oh ja viel besser viel besser
+Doug, was hast du vor? Sir, wie geht es dir?
+Erstens geht es mir viel besser. Ich werde am Dienstag wieder arbeiten
+schönes Hurra Hurra, ich bin seit drei Wochen unterwegs, ich bekomme es
+Ich bekomme einen Anruf, damit ich das Internet verlieren kann
+wieder, wenn ja, bitte einfach durchhalten, nicht auflegen, okay
+Also bekomme ich politische Anrufe von links nach rechts und zentriere es ist verrückt
+Also, du fühlst dich besser, du hast gedacht, du würdest zurückkehren
+Arbeit letzte Woche richtig gut, dann habe ich mit meinem Arzt und ihm gesprochen
+sagte, Sie müssen Zeit haben, damit sich Ihr Verdauungssystem erholt
+Das ist es, was ich getan habe. Ich habe daran gearbeitet und
+Okay, mir geht es gut, also werde ich am Dienstag wieder arbeiten
+Bist du wieder auf festem Essen? Dann ist alles gut
+Ja, gut gemacht, ja, also war es dieser lustige Name
+Habe ich es letzte Woche in den Notizen richtig geschrieben?
+bacter warte warte lass mich das aufschreiben
+Warte, buchstabiere es noch einmal
+yeah y lo
+Bakterium Campylobacter
+Okay, da ist kein b drin. Habe ich nicht b Entschuldigung gesagt?
+Ich dachte du sagtest b vielleicht vielleicht bin ich ja kann nicht gehören ja Lager
+von okay
+lobacter yeah ich habe gelesen, dass b nicht e ist, also dachte ich, dass das nicht richtig sein kann
+Irgendwo muss es Ab geben
+Ich werde es dieses Mal richtig riechen. Ich verspreche, vielleicht ist Robbie, das ist meine ganze Familie
+dieser Benutzer, wenn sie absolut buchstabieren, ja
+absolut ja oder du ja gut da ist das auch ja ich
+hätte es wahrscheinlich tun können und es hätte es wahrscheinlich richtig machen können
+Ja, tut mir leid, dass sie schlecht sind, weil sie besonders bei Google funktionieren
+sehr gut mit versuchten Schreibweisen wie schön
+Ja, das stimmt, es gibt einen Rechtschreibfehler richtig ein. Es wird herausfinden, was
+du versuchst es zu tun ja oder in meinem Fall duckduckgo ich nicht ich
+Ich weiß nicht, dass duckduckgo dich nicht verfolgt
+verfolgt Sie auch nicht richtig rechts rechts Startseite
+Ja, fang an, eine andere Suchmaschine auszuwählen. Oh ja, oh
+Oh, ich muss das auch aufschreiben. Ihr seid wirklich hilfreich, danke
+Seite Punkt com yep süß
+Vielen Dank, dass ich meinen handlichen Dandy benutze
+stinky dinky tiny little uh ja yeah man arbeitet super
+Ich liebe es nicht mehr, keine Kugelschreiber mehr für mich, außer wenn ich Schecks schreibe
+weil du nicht kannst, kannst du nicht hart nach unten drücken
+genug, um damit durch die Kopie zu kommen, wenn Sie versuchen, auch nach unten zu drücken
+schwer, es wird nur das Papier gut verteilen, es wird nur die Zinken spielen
+Auf dem Füllfederhalter im Moment weiß ich nicht, ob Sie es sehen können
+weil es sich nicht auf mein Gesicht konzentriert, wird es sich nicht darauf konzentrieren
+auf die Anzeige wird es sich aber immer noch nicht konzentrieren
+Die Sache ist, dass es die Zähne und die Zinken spreizen wird
+das auf den Füllfederhalter anstatt zu setzen
+mehr Druck auf das Papier, so dass Sie keine Kopie bekommen können
+Peter vier, fünf Minuten vor dem, was Sie vorhatten, Sir
+ähm meine schulter ist immer noch ähm und schmerzen uh geh geh beweg es und
+uh wir sind wieder niedergeschlagen oh oh noch uh ich muss alles machen
+vor allem, obwohl ich wieder eingesperrt bin und ähm
+dass die Zahlen auch dort steigen
+nein nein sie werden alle evakuiert und ich hatte den Grippewitz auch den anderen
+Tag auch okay und meine Mutter auch
+aber ich konnte keine Eier haben und ich konnte nicht haben
+äh ich mag dieses um mit einem durcheinandergebrachten uh Gummihandschuhen von
+latex yep yep yep ich weiß nicht warum sie es nehmen
+Ich sagte ihnen, dass es war
+Oh je, ich wusste, dass du dorthin gehen würdest. Ich wusste, dass du dorthin gehen würdest. Warum bin ich nicht überrascht?
+Wie geht es deiner Frau mit ihren Knochen?
+Stricken ist sie ruht sich aus, nein du weißt, sie muss sich benehmen, Mann
+Ich weiß, ich kann es sagen, aber sie werden es nicht sein, sie werden es nicht erfahren
+Keiner von ihnen wird nicht über all die blutigen Dinge informiert
+Steh nicht einfach auf
+[Musik]
+Okay, aber der Arzt, der Arzt muss eine Vorstellung davon haben, was passieren wird, wenn ähm
+Wenn sie es nicht weiß, wissen Sie, was das ist
+schlimmster Fall die schlimmsten Fälle sind, dass es dort deformiert werden sollte und ähm
+Es wird einfach nicht jedes Mal richtig sein, wenn er sich einen Arm bricht und es dann versucht
+Alles, was die Knochen heilen, ja die Knochen
+wird wieder heilen, sie werden einfach falsch heilen
+Richtig, das sage ich ja, sie sind alle fertig, sie sind alle total wach
+falsch ja, sie waren am falschen Ort
+Sie könnten ihr Probleme bereiten, aber sie haben nach oben gegriffen und geklopft
+da drüben und ihnen wird nicht gesagt, dass ich von keiner Behörde informiert werde
+Ich fürchte, du weißt also, dass du weißt, dass wir das bisschen rausbekommen haben, weil
+Sie wissen, aber es tut mir leid zu hören, dass ich ja alles meine, was ich kann
+Sagen Sie, Sie wissen, sagen Sie ihr, dass Sie sich ausruhen und
+heile und hoffentlich wird alles gut und ii
+Ich kann nicht mehr sagen, als dass unsere Gedanken bei dir sind. Ich hoffe, ich hoffe
+Alles klappt sowohl für dich als auch für dich und deine Frau, also ja, oh, ja, ja, ich
+wir sehen uns
+wie mach weiter, mach weiter, ähm, das ist alles, nein, ich war gerecht
+also jedes schließen irgendwelche abschließenden Kommentare dann bevor ich uh
+bevor ich das Meeting schließe, weil es kaum zu glauben ist, dass wir es getan haben
+30 Minuten gemacht, das ist verrückt, aber ähm, wir sind nur was für drei Monate
+yeah mach weiter yeah letzte woche endete die uh aufnahme mit einem
+Wirklich ein bisschen plötzlich, wenn ich denke, du hast deine verloren
+Internetverbindung um das Ende oh das ist richtig genial
+Ich liebe das
+Ja, und ich habe Robbie gesagt, dass ich ihm jetzt noch einmal sagen werde, dass er hervorragende Arbeit geleistet hat
+mit diesem ähm mit diesem Ende habe ich es so geliebt
+Das beste Bild der gesamten Kaffeepause war das Ende
+war das Ende absolut oh vielen Dank
+Ich weiß das zu schätzen, also war das Ende unterhaltsamer als unser
+Streifzüge danke ich schätze es
+Also gut, in diesem Sinne werde ich weitermachen und schließen
+Schließen Sie das Meeting. Vielen Dank. Wir hoffen, dass wir es sehen werden
+Sie nächste Woche vielleicht rauben Sie einmal auftauchen, wenn Sie nur einmal und wissen
+Lass uns wissen, wie sein Studio-Zeug läuft
+er war letzte Woche vermutlich weg, weil er mit dem spielte
+Titellied also ähm, wir werden sehen, wie das aussehen wird
+Wenn er es noch nicht getan hat, hat er die Episode, die ich nicht habe, nicht fallen lassen
+weiß, hat er letzte Woche fallen nein nein nicht die
+ganz
+aber ich konnte es nicht zum Spielen bringen
+oh wirklich was passiert ist okay die gegenüberliegende Seite auf Patreon hatte die
+kleines rundes Spielsymbol darin kennst du das Dreieck
+darauf und ich traf das und dann ging es zu was
+schien ein Foto zu sein und als ich auf das Foto klickte, war das
+Es war nur ein Foto, es gab keinen Link zu einem Video
+Jetzt können Sie können Sie das Video von Patreon herunterladen, zeigt es
+irgendwo, wo Sie es herunterladen können
+Eine Sache, von der ich denke, dass dies sein könnte, ist das Video
+lädt noch hoch und wird so verarbeitet
+Das Foto ist eine Vorschau auf das, was kommt, wenn sie sind
+fertig das ist yeah yeah yeah ich denke yeah also könntest du einfach
+Ich möchte es noch einmal versuchen, vielleicht versuchen Sie es noch einmal. Ja, ja, dann gut, gute Nachrichten
+alles klar gut danke nochmal sehr genossen es wie immer und und
+Ich schätze Ihre Teilnahme sehr. Wir sehen uns. Wir sehen uns nächste Woche
+und und okay, versuchen Sie, Ärger zu vermeiden
+alle und bleib in Sicherheit, pass auf dich auf, tschüss, okay
+Tschüss
