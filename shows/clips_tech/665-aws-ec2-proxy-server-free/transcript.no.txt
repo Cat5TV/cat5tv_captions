@@ -1,0 +1,240 @@
+om du håper å gi deg selv litt ekstra privatliv mens du surfer
+Internett eller du vil få tilgang til tjenester som kanskje
+er ikke tilgjengelig vanligvis i ditt område, eller kanskje det er et tilfelle av å faktisk ha
+fikk IP-adressen din blokkert av en tjenesteleverandør
+det kan ikke være en ondsinnet ting jeg har fått IP-adressen min blokkert av youtube før
+fordi jeg laster opp så mange videoer og laster ned
+undertekster for de som har ført til at jeg har overskredet bruken min i
+youtube api så da blir ip-adressen min blokkert så
+det trenger ikke være en ondsinnet ting, jeg vil ikke gi det inntrykket
+men det er veldig legitime grunner til at du trenger å komme deg rundt disse typene
+ting og nerdene går til er en fullmakt, problemet er fullmakter
+kan være veldig dyrt å bruke og gratis
+mens lett tilgjengelige er ofte ofte ikke veldig pålitelige, er de oppe
+dagen de er nede den neste, og du mister tilgangen til tjenestene dine
+og alt annet eller enda verre, de er farlige, du vet ikke hva
+disse fullmaktene sporer logging og til og med som avlytting
+når du går gjennom, sender du all internettrafikken din
+gjennom den tjenesteleverandøren, så det er en person som jeg virkelig stoler på
+å proxy alle mine data, og det er meg, jeg er ikke den samme personen
+at du vil si at du stoler på personen du stoler på er deg så jeg er
+skal vise deg hvordan jeg kan sette opp en gratis proxy-tjeneste
+av meg selv, og du kan replikere det og lage dine egne også
+vi skal gjøre dette i skyen vi skal bruke en tredjepartstjeneste
+leverandør og det er fantastisk så du sier å vel
+amazon hva med deg vet at vi kan stole på dataene våre
+for dem vel det vi bruker er deres skytjenester det kalles amazon
+webtjenester så det er alt deres det er deres sky
+infrastruktur som de har for kunder å i utgangspunktet leie
+tilgang til deres servere og deres plass og
+og de virtuelle serverne og alt det hele
+infrastruktur er tilgjengelig for deg, men selve distribusjonen er
+din, jeg skal vise deg hvordan dette er gjort, vi kommer til å hoppe videre til aws
+og spesielt ec2 så selvfølgelig du hvis du ikke er kjent med aws bare
+gå til aws.amazon.com logg på med Amazon-kontoen din og
+så søk raskt etter ec2, og det vil ta deg inn i
+i utgangspunktet tenker deres virtualiseringsplattform på ec2 som
+bare det så det første jeg legger merke til når jeg er her
+i ec2 er min region, og dette er viktig fordi det er her min proxy
+serveren skal bo skal jeg sette den der hvorfor er det
+viktig vel tenk på dette la oss si at jeg bruker en videostreaming
+tjeneste som begrenser kanadisk tilgang til videoen deres
+streamingtjeneste så ved å plassere min proxyserver nede i nord
+California nå er de plutselig
+av IP-adresse kommer til å tro at jeg kobler fra
+California så jeg er i stand til å omgå det
+på samme måte vil du kanskje endre region basert på
+hva det du prøver å oppnå, kan du til og med sette en server i afrika
+eller asia se på at du kan sette en rett i hong kong
+du kan sette en i canada en uh i europa du har
+overalt, og så har vi Midtøsten og Sør-Amerika akkurat nå
+så det er en ganske stor liste over hvor de
+har denne infrastrukturen satt opp for amazon
+webtjenester ec2-tjenesten, så velg den som
+er der du vil at proxy-serveren skal være
+Jeg skal sette meg, jeg skal bare la det være som Nord-California
+oss vest en og det er der
+min proxy-server kommer til å bo, slik at jeg kan koble til
+som om jeg faktisk satt i California
+OK, så jeg kommer til å klikke på lanseringsinstansen
+og deretter starte forekomst igjen fordi det faller ned og dette gir meg
+en liste over um-operativsystemer som jeg kan distribuere
+på min ec2-forekomst, så jeg bruker noen vilkår her du kanskje ikke er kjent med
+aws er amazon nettjenester som i utgangspunktet
+amazons fulle utvalg av tjenester de tilbyr
+for skybrukere er ec2 deres virtualiseringsplattform for virtuell
+maskiner når jeg sa eksempel snakker jeg om en
+virtuell maskin, så det er bokstavelig talt en virtuell maskin
+så jeg skal distribuere et av disse operativsystemene til en forekomst av ec2
+som er en virtuell maskin, så hva vil jeg ha den?
+å være det, og jeg sa hei kommentar nedenfor hvis
+Jeg bruker et begrep som du ikke er kjent med
+Jeg skal gjøre et raskt søk, jeg har allerede gjort det før, fordi jeg distribuerer massevis av
+servere i skyen, jeg skal klikke på debian
+uh bare skriv inn debian i søket her
+så da kommer jeg til å gå til aws markedsresultater det er også
+de jeg har opprettet og de i samfunnet
+du ville tro å vel jeg vil bruke fellesskap de vel nei du ikke fordi
+de kommer til å koste deg penger, og du sier vel, men samfunnet er gratis
+det er åpen kildekode og ja, men det er ikke en del av aws
+markedsplass, og så må du betale for bruken
+å ha den virtuelle maskinen som forekomsten kjører
+i skyen, så i stedet skal vi bruke en av de offisielle fra
+aws marketplace la oss se hvilke resultater vi får, de er sortert ganske bra
+debian kommer opp det første resultatet er debian 10 buster
+et gratis nivå kompatibelt eller gratis nivå nivå kvalifisert
+versjon av debian som vi skal distribuere, så velg det
+gratis nivåer kvalifisert slik at vi kan ignorere prissettingen fordi vi skal bruke en
+free tier hit fortsette, og det er her vi velger det så bra
+hvis vi vil ha gratis nivå, må vi gå med en t2 micro så
+Jeg skal velge det, men hva gir det oss det gir oss en CPU
+en gigabyte minne um og så har vi lagringsplass å håndtere
+vi trenger ikke mye lagringsplass fordi vi bare setter opp en grunnleggende proxy
+og det handler om det, så jeg kommer til å distribuere akkurat som
+at så t2 micro er den som er gratis nivå
+kvalifiserte, velg ikke en av de større fordi du skal betale
+for det med en gang skal jeg gjennomgå og
+lansering skal vi komme tilbake for å gjøre innstillinger som sikkerhetsgruppene våre og
+ting som det, jeg kommer bare til å forlate alt
+som standard for nå, og vi skal lansere det slik
+først og fremst trenger jeg å lage et nytt nøkkelpar så dette er det
+ssh-nøkkelen som jeg skal bruke for å ssh inn
+denne serveren, så jeg skal kalle denne fullmakten
+serveren og last ned ned nøkkelparet mitt. Sørg for at du lagrer det trygt
+Jeg skal kaste det på serveren min og slippe det
+der og nå lanseringsinstans betyr kraft
+på den virtuelle maskinen din, så jeg skal presse det
+og der går vi, så det er i utgangspunktet å skape det å skape en virtuell
+maskinere en ec2-forekomst i skyen for oss i
+uh i Nord-California, så det går vi så
+Jeg skal se forekomster her nede, og nå kan jeg se at jeg nå har en
+eksempel kjører en t2 mikro, og det er bare ikke noe navn, så jeg skal
+klikk på rediger og jeg skal kalle dette min proxy-server
+server prøver at der går vi greit så det er allerede i gang
+så hvis jeg klikker på det, kan jeg se ip-adressen til den serveren jeg har ringt
+det proxy-server, men akkurat nå husk at det bare er debian 10. det er
+ingenting annet er installert på den, så jeg trenger å kopiere den IP-adressen
+og så skal jeg hoppe inn i ledeteksten
+fordi jeg lastet ned nøkkelen til serveren min, kommer jeg personlig til
+ssh til den interne serveren min
+ok så nå er jeg der så nå kommandoen jeg skal bruke
+er ssh og deretter dash jeg for nøkkelen som jeg skal bruke
+så den innkommende filen som jeg skal bruke til nøkkelen
+og den ene kalles proxy server.pem er det jeg lastet ned
+så skal jeg gå admin fordi det er standard pålogging for debian
+ami eller amazon machine image admin på
+og deretter IP-adressen som jeg allerede har kopiert til utklippstavlen, og hvis jeg
+trykk enter, det kommer til å be meg om å godta den nøkkelen
+og jeg sier ja, og jeg blir nektet
+tillatelser til den filen endte opp med å være oppmerksom på at
+766 slik at alle har tilgang til disse filene, så det er interessant
+ssh i seg selv beskytter meg mot at noen kan kompromittere nøkkelen min
+så chmod 7 0 0 proxy server dot pam la oss prøve det og
+prøv nå igjen, så det jeg har gjort er å, og nå er jeg
+koblet det bare fungerte syv null null betyr at jeg eieren av
+den nøkkelen jeg har lov til å gjøre noe med den
+les skriv utfør null null betyr ingen i gruppen ingen som ikke er en
+en del av gruppen har tilgang til det i det hele tatt så det er
+i utgangspunktet en dum fil som de ikke en gang kan åpne
+uh, men jeg kan greit så nå som jeg er koblet, skal jeg gå sudo saksøke
+fordi det er det kommandoen er å bli rot, så nå er jeg rot så apt
+oppdater apt apt oppdatering kommer til å fange opp lagringene mine, du ser dette er en
+en faktisk debian-datamaskin hvis du vil i skyen
+det er så enkelt at jeg allerede oppgraderer, jeg er allerede
+kjører en debian-datamaskin i skyen så på den tiden og jeg er bla
+bla bla samtidig um, vi har en skybasert debian-server
+visste du at du var klar over at det var så enkelt og det er gratis
+ok, så vi kan gjøre andre ting med dette også vi kan sette opp en lampestabel vi
+kunne bruke den til mysql mariadb alt du kan finne på det er en
+debian-server, så vi skal bruke dette som vårt
+proxy så nå hva jeg skal gjøre er at jeg skal installere et verktøy som heter
+liten proxy fin og enkel å installere apt installere liten proxy
+veldig enkelt å konfigurere si ja her går vi
+og det er gjort nå som vi har installert liten proxy vi bare trenger å redigere
+konfigurasjonsfilen så skråstrek osv. skråstikker liten liten proxy forandret henne til det
+og så bruker jeg nano tinyproxy.com og redigerer det slik at du kontrollerer w i nano
+tillater meg å søke oh, men før jeg søker, merk at
+port bruker som standard 8888, vi trenger å vite det
+informasjon fordi det er det vi skal koble oss til for
+vår proxy gjør et raskt søk etter tillat
+alt w lar deg søke igjen wow ordet allow er sannsynligvis ikke det beste
+søk kan søke etter 127.0.0.1 um og rett under den jeg skal til
+tillat og så må jeg legge til ip-adressen min slik at jeg kan koble til dette
+proxy-server fordi akkurat nå er den lukket, bare localhost kan få tilgang til den
+det er viktig å merke seg at dette er mens dette er et publikum gratis
+proxy server Jeg er den eneste som får lov til å få tilgang til den som er
+kommer til å få lov til å proxy innholdet mitt forbindelsen gjennom
+det så det er privat i så henseende jeg trenger å kjenne min
+ip-adresse så jeg kommer til å hoppe over til
+currentip.xyz og kopier den IP-adressen til utklippstavlen
+og deretter hoppe tilbake dit og lime det inn i konfigurasjonen min
+kontroll o enter kontroll x kontroll o er å skrive ut
+lagre filen nå system ctl start liten proxy på nytt
+nesten gjort det siste vi trenger å gjøre er at vi bare trenger å fortelle aws
+ec2-sikkerheten som vi skal sette opp en policy som sier
+hei bare jeg har lov til å koble til den serveren
+så ingen andre kan koble seg til det overhodet, så det er det vi skal
+gjør akkurat nå så jeg kommer til å hoppe tilbake hit og du ser denne serveren oppe på
+skjermen godt hvis jeg klikker på sikkerhet kan jeg da
+klikk på sikkerhetsgruppen som den tildeles automatisk, så bare klikk
+det og nå har det overlatt meg til ec2
+sikkerhetsgrupper og riktig sikkerhetsgruppe
+vil du merke at det allerede er satt opp en for ssh fordi
+det er som standard aktivert, jeg kan angi at det bare tillater meg også som er
+viktig så la oss gjøre det bare for å være i god
+sikkerhetspraksis så ssh jeg kommer til å endre det fra
+custom0000 Jeg skal lukke x det og da
+endre den til min ip så skal jeg legge til en ny regel du så
+hvordan jeg kom hit, vet jeg at jeg beveger meg veldig fort
+Jeg har nettopp klikket på rediger innkommende regler her
+ok, så legg til en ny regel tilpasset tcp er standard
+portnummer husker du 888 og tillater bare ip-en min, jeg kan kalle det noe hvis jeg
+vil ha fullmektig og deretter lagre reglene mine
+der går vi så nå ser du ssh og tilpasset tcp
+en som heter proxy på port 8888, så hvordan tester vi dette greit så vårt
+nåværende ip-adresse er 99,233, og så kommer jeg til å koble til proxyen
+dette er ikke en opplæring om hvordan du bruker en proxy
+dette er ikke en opplæring om hva du skal bruke den til
+nødvendigvis er dette jeg antar her at
+du kan enten google det selv fordi det kommer til å være annerledes basert
+på brukssaken din, enten du bare vil proxye nettleseren eller proxyen din
+bestemt program eller hele nettverket
+det kommer til å være opp til din individuelle brukssak dette er
+strengt tatt en opplæring om hvordan du bygger denne ec2-forekomsten veldig raskt for
+gratis som har en proxy klar for bruk i
+california eller hvor som helst og eh det er det så i mitt
+bestemt tilfelle akkurat nå, så dette øyeblikket er ikke nødvendigvis hva
+du vil gjøre neste, dette er bare hvordan jeg skal teste
+proxy jeg tilfeldigvis er på Windows 10 her, så jeg skal bare skrive inn proxy
+og gå inn i proxy-innstillinger igjen, dette er sannsynligvis ikke slik du vil gjøre det
+Jeg vil bare teste så jeg skal slå på proxy
+Jeg kan se at det er gamle proxy-innstillinger der, så sørg for at du er
+husk på det hvis det er gamle proxy-innstillinger du trenger
+for å endre det, gå til forekomster på ec2, klikk på forekomsten din
+id og ta tak ip-adressen og lim deretter inn
+det som adressen til proxy-serveren din
+port 8888 og lagre så nå er jeg koblet til
+proxy øyeblikkelig ikke koblet til nå windows sier
+Jeg skal dirigere all trafikken din gjennom proxyen jeg burde rette
+meg selv der, så hvis jeg går tilbake til currentip.xyz
+99.233 er min nåværende ip jeg skal slå f5 for å oppdatere
+og hvis alt gikk bra 3.101.108.211. vel hva er det?
+det er serveren min, så jeg er faktisk nå hvor er jeg la oss finne ut
+maxmind.com la oss søke etter ip-adressen som jeg er for øyeblikket på
+hvor er jeg san jose california det er der max mine bestemmer meg for
+være så det er alt det er det folkens vi har
+opprettet konfigurert distribuert en gratis proxy-tjeneste
+at vi eier og driver, er vi de eneste
+som har det som har den ssh-nøkkelen, så hvis du vil
+koble til for å gjøre endringer, bruk den som en multifunksjonell server du kan gjøre
+men det er bare å holde øye med dine fakturerings ting bare sørg for at
+du har ikke overskredet terskelverdiene og sånne ting
+hvis du bare bruker den som en proxy, er det svært lite sannsynlig at du kommer til å gjøre det
+det er bare noe du rør data gjennom
+så sjekk at det er aws.amazon.com for å komme i gang
+Hvis du har spørsmål, legg dem til samfunnet vårt
+til vår uoverensstemmelse finner du lenken på category5.tv
+på samhandlingsmenyen i mellomtiden hvis du likte dette hvis du har brukt det eller
+syntes det var nyttig, gi meg store tommelen opp, vennligst abonner
+[Musikk] gjør
+[Musikk]

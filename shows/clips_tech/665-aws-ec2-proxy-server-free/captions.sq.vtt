@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: sq
+
+00:00:03.919 --> 00:00:07.120
+nëse jeni duke shpresuar t'i jepni vetes pak privatësi shtesë ndërsa surfoni
+
+00:00:07.120 --> 00:00:10.639
+ internet ose ju doni të përdorni shërbime që ndoshta
+
+00:00:10.639 --> 00:00:17.279
+ nuk janë në dispozicion zakonisht në zonën tuaj ose ndoshta është një rast i të paturit
+
+00:00:17.279 --> 00:00:22.000
+ e keni bllokuar adresën tuaj IP nga një ofrues shërbimi
+
+00:00:22.000 --> 00:00:27.359
+ mund të mos jetë një gjë e dëmshme që më kanë bllokuar adresën ip nga youtube më parë
+
+00:00:27.359 --> 00:00:31.039
+ sepse unë ngarkoj kaq shumë video dhe shkarkoj
+
+00:00:31.039 --> 00:00:37.280
+ titrat e mbyllur për ata që më ka çuar në tejkalimin e përdorimit tim në
+
+00:00:37.280 --> 00:00:42.239
+ api youtube kështu që atëherë adresa ip ime bllokohet kështu
+
+00:00:42.239 --> 00:00:46.000
+ nuk ka pse të jetë diçka dashakeqe, nuk dua ta jap atë përshtypje
+
+00:00:46.000 --> 00:00:52.399
+ por ka arsye shumë të ligjshme për të nevojë për të kapërcyer ato lloje të
+
+00:00:52.399 --> 00:00:58.640
+ gjërat dhe nerds shkojnë në është një përfaqësues problemi janë përfaqësuesit
+
+00:00:58.640 --> 00:01:02.160
+ mund të jenë shumë të shtrenjta për t'u përdorur dhe ato falas
+
+00:01:02.160 --> 00:01:08.240
+ ndërsa në dispozicion janë shumë shpesh ose jo shumë të besueshëm, ato janë një
+
+00:01:08.240 --> 00:01:11.360
+ ditën kur ato do të zbresin ditën tjetër dhe ju do të humbni hyrjen në shërbimet tuaja
+
+00:01:11.360 --> 00:01:18.320
+ dhe gjithçka tjetër ose edhe më keq janë të rrezikshme nuk dini çfarë
+
+00:01:18.320 --> 00:01:24.479
+ ata përfaqësues ndjekin regjistrimet dhe madje u pëlqen përgjimi
+
+00:01:24.479 --> 00:01:28.640
+ ndërsa po kaloni, po dërgoni të gjithë trafikun tuaj të internetit
+
+00:01:28.640 --> 00:01:36.159
+ përmes atij ofruesi të shërbimit kështu që ka një person të cilit i besoj vërtet
+
+00:01:36.159 --> 00:01:44.079
+ të përfaqësoj të gjitha të dhënat e mia dhe kjo jam unë nuk jam i njëjti person
+
+00:01:44.079 --> 00:01:49.360
+ që ju do të thoni se i besoni personit që keni besim jeni ju kështu që unë jam
+
+00:01:49.360 --> 00:01:54.399
+ do t'ju tregoj se si mund të krijoj një shërbim falas proxy
+
+00:01:54.399 --> 00:02:00.000
+ e imja dhe ju mund ta përsërisni atë dhe të krijoni edhe tuajin
+
+00:02:00.000 --> 00:02:03.200
+ ne do ta bëjmë këtë në re do të përdorim një shërbim të palës së tretë
+
+00:02:03.200 --> 00:02:06.399
+ ofrues dhe kjo është amazon kështu që ju thoni oh mirë
+
+00:02:06.399 --> 00:02:09.440
+ amazon po ju e dini se a jemi në gjendje t'u besojmë të dhënave tona
+
+00:02:09.440 --> 00:02:13.440
+ për ta mirë ajo që ne po përdorim është shërbimet e tyre cloud quhet amazon
+
+00:02:13.440 --> 00:02:17.520
+ shërbime në internet kështu që është e gjitha e tyre është reja e tyre
+
+00:02:17.520 --> 00:02:22.000
+ infrastrukturën që ata kanë për klientët që në thelb të marrin me qira
+
+00:02:22.000 --> 00:02:25.120
+ qasje në serverat e tyre dhe hapësirën e tyre dhe
+
+00:02:25.120 --> 00:02:28.640
+ dhe serverat virtualë dhe gjithçka tjetër në tërësi
+
+00:02:28.640 --> 00:02:34.959
+ infrastruktura është në dispozicion për ju, por vendosja në vetvete është
+
+00:02:34.959 --> 00:02:39.840
+ e juaja do t'ju tregoj se si është bërë kjo ne do të shkojmë në aws
+
+00:02:39.840 --> 00:02:45.920
+ dhe në veçanti ec2 kështu që sigurisht ju nëse nuk jeni njohur me aws thjesht
+
+00:02:45.920 --> 00:02:50.160
+ shkoni te aws.amazon.com identifikohuni me llogarinë tuaj në amazon dhe
+
+00:02:50.160 --> 00:02:55.519
+ atëherë bëni një kërkim të shpejtë për ec2 dhe kjo do t'ju marrë
+
+00:02:55.519 --> 00:02:58.959
+ në thelb platforma e tyre e virtualizimit mendon për ec2 si
+
+00:02:58.959 --> 00:03:02.800
+ vetëm kaq, gjëja e parë që vë re kur jam këtu
+
+00:03:02.800 --> 00:03:08.480
+ në ec2 është rajoni im dhe kjo është e rëndësishme sepse këtu është përfaqësuesi im
+
+00:03:08.480 --> 00:03:13.360
+ serveri do të banojë nëse duhet ta vendos atje pse është kështu
+
+00:03:13.360 --> 00:03:16.720
+ e rëndësishme mirë mendoni për këtë le të themi se po përdor një transmetim video
+
+00:03:16.720 --> 00:03:20.959
+ shërbim që kufizon aksesin kanadez në videon e tyre
+
+00:03:20.959 --> 00:03:24.720
+ shërbim transmetimi kështu duke vendosur serverin tim të përfaqësimit në veri
+
+00:03:24.720 --> 00:03:28.640
+ kalifornia tani krejt papritur ato janë në thelb
+
+00:03:28.640 --> 00:03:31.599
+ nga ip adresa do të mendoj se jam duke u lidhur nga
+
+00:03:31.599 --> 00:03:34.640
+ California kështu që unë jam në gjendje të punoj rreth kësaj
+
+00:03:34.640 --> 00:03:37.920
+ në mënyrë të ngjashme ju mund të dëshironi të ndryshoni rajonin tuaj bazuar në
+
+00:03:37.920 --> 00:03:42.480
+ çfarë jeni duke u përpjekur të arrini, madje mund të vendosni një server në Afrikë
+
+00:03:42.480 --> 00:03:45.760
+ ose aziatike shikoni që ju mund ta vendosni një të drejtë në Hong Kong
+
+00:03:45.760 --> 00:03:49.440
+ ju mund të vendosni një në Kanada një uh në evropë që keni
+
+00:03:49.440 --> 00:03:55.040
+ në të gjithë vendin dhe pastaj kemi Amerikën e Lindjes së Mesme dhe Jugut tani
+
+00:03:55.040 --> 00:03:58.080
+ kështu që është një listë mjaft e madhe se ku ndodhen
+
+00:03:58.080 --> 00:04:00.080
+ e kanë të vendosur këtë infrastrukturë për amazon
+
+00:04:00.080 --> 00:04:03.920
+ shërbimet në internet shërbimin ec2 kështu që zgjidhni atë që
+
+00:04:03.920 --> 00:04:07.200
+ është vendi ku dëshironi të jetë serveri juaj proxy
+
+00:04:07.200 --> 00:04:10.879
+ Unë jam duke shkuar për të vendosur timen Unë jam vetëm duke shkuar për të lënë atë si California veriore e cila është
+
+00:04:10.879 --> 00:04:14.560
+ ne perëndimi një dhe kjo është ku
+
+00:04:14.560 --> 00:04:19.040
+ serveri im i përfaqësimit do të banojë që do të më lejojë të lidhem
+
+00:04:19.040 --> 00:04:22.880
+ sikur në të vërtetë isha ulur në California
+
+00:04:22.880 --> 00:04:26.160
+ në rregull, kështu që unë do të klikoj në shembullin e nisjes
+
+00:04:26.160 --> 00:04:30.160
+ dhe pastaj nis përsëri shembullin sepse bën një zbritje dhe kjo më jep
+
+00:04:30.160 --> 00:04:34.720
+ një listë e sistemeve operative um që unë mund të vendos
+
+00:04:34.720 --> 00:04:39.040
+ në rastin tim ec2 kështu që unë jam duke përdorur disa terma këtu ju mund të mos jeni njohur me të
+
+00:04:39.040 --> 00:04:42.080
+ aws është shërbime në internet amazon që në thelb
+
+00:04:42.080 --> 00:04:46.560
+ gamën e plotë të shërbimeve të Amazon që ato ofrojnë
+
+00:04:46.560 --> 00:04:52.000
+ për përdoruesit e cloud ec2 është platforma e tyre e virtualizimit për virtuale
+
+00:04:52.000 --> 00:04:55.840
+ makineritë kur thashë shembull jam duke folur për një
+
+00:04:55.840 --> 00:05:00.160
+ makinë virtuale kështu që është fjalë për fjalë një makinë virtuale
+
+00:05:00.160 --> 00:05:03.919
+ kështu që unë jam duke shkuar për të vendosur një nga këto sisteme operative në një shembull të ec2
+
+00:05:03.919 --> 00:05:06.560
+ e cila është një makinë virtuale kështu që çfarë dua unë
+
+00:05:06.560 --> 00:05:10.960
+ të jesh i tillë dhe po thoja hej komenti më poshtë nëse
+
+00:05:10.960 --> 00:05:12.639
+ Unë përdor një term që nuk jeni njohur me të
+
+00:05:12.639 --> 00:05:15.600
+ unë do ta bëj një kërkim të shpejtë që e kam bërë më parë sepse vendos një ton
+
+00:05:15.600 --> 00:05:18.960
+ serverat në re do të klikoj në debian
+
+00:05:18.960 --> 00:05:21.360
+ thjesht shkruani debian në kërkimin këtu
+
+00:05:21.360 --> 00:05:27.600
+ kështu që atëherë unë jam do të shkoj në rezultatet e tregut ka gjithashtu
+
+00:05:27.600 --> 00:05:30.960
+ ato që kam krijuar dhe ato në komunitet
+
+00:05:30.960 --> 00:05:34.000
+ ju do të mendoni oh mirë unë dua të përdor ato të komunitetit mirë jo ju nuk bëni sepse
+
+00:05:34.000 --> 00:05:37.919
+ ato do t'ju kushtojnë para dhe ju thoni mirë, por komuniteti është falas
+
+00:05:37.919 --> 00:05:42.800
+ është burim i hapur dhe po megjithatë nuk është pjesë e aws
+
+00:05:42.800 --> 00:05:45.919
+ treg dhe kështu do të duhet të paguani për përdorimin
+
+00:05:45.919 --> 00:05:49.600
+ të ketë atë makinë virtuale që ekzekuton
+
+00:05:49.600 --> 00:05:52.639
+ në re, kështu që në vend të kësaj ne do të përdorim një nga zyrtarët nga
+
+00:05:52.639 --> 00:05:56.800
+ aws treg le të shohim se çfarë rezultatesh marrim ata janë të renditura mjaft mirë
+
+00:05:56.800 --> 00:06:00.400
+ debian del rezultati i parë është debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ një nivel i pajtueshëm ose i nivelit falas të pranueshëm
+
+00:06:04.479 --> 00:06:09.039
+ versioni i debianit që do të vendosim prandaj zgjidhni atë
+
+00:06:09.039 --> 00:06:12.720
+ niveli falas i pranueshëm, kështu që ne mund ta injorojmë çmimin sepse do të përdorim një
+
+00:06:12.720 --> 00:06:16.560
+ hit i nivelit të lirë vazhdon dhe kjo është ajo ku ne e zgjedhim atë aq mirë
+
+00:06:16.560 --> 00:06:20.000
+ nëse duam nivelin e lirë, duhet të shkojmë me një mikro t2 kështu
+
+00:06:20.000 --> 00:06:24.080
+ Unë jam duke shkuar për të zgjedhur atë, por çfarë na jep ajo na jep një CPU
+
+00:06:24.080 --> 00:06:29.520
+ një gigabajt memorie um dhe pastaj ne kemi hapësirë ​​për t'u marrë me të
+
+00:06:29.520 --> 00:06:33.199
+ nuk kemi nevojë për shumë hapësirë ​​ruajtëse sepse thjesht po krijojmë një përfaqësues themelor
+
+00:06:33.199 --> 00:06:36.639
+ dhe kjo është për këtë kështu që unë jam duke shkuar për të vendosur ashtu si
+
+00:06:36.639 --> 00:06:40.080
+ kështu që mikro t2 është ai që është i nivelit falas
+
+00:06:40.080 --> 00:06:43.440
+ të ligjshëm, mos zgjidhni një nga më të mëdhenjtë sepse do të paguani
+
+00:06:43.440 --> 00:06:45.919
+ për atë menjëherë unë jam duke shkuar për të shqyrtuar dhe
+
+00:06:45.919 --> 00:06:50.080
+ nisjen ne do të kthehemi për të bërë cilësime si grupet tona të sigurisë dhe
+
+00:06:50.080 --> 00:06:51.759
+ gjëra të tilla thjesht do të lë gjithçka
+
+00:06:51.759 --> 00:06:54.880
+ nga default për tani dhe ne do të fillojmë që kështu
+
+00:06:54.880 --> 00:06:58.479
+ para së gjithash më duhet të krijoj një çift të ri çelësash kështu që kjo është
+
+00:06:58.479 --> 00:07:02.720
+ çelësi ssh që unë do të përdor në mënyrë që të ssh në
+
+00:07:02.720 --> 00:07:06.800
+ këtë server kështu që unë jam duke shkuar për të thirrur këtë proxy
+
+00:07:06.800 --> 00:07:11.120
+ server dhe më pas shkarkoni çiftin tim të çelësave sigurohuni që ta ruani diku të sigurt
+
+00:07:11.120 --> 00:07:14.960
+ Unë do ta hedh atë në serverin tim dhe do ta heq atë
+
+00:07:14.960 --> 00:07:19.199
+ atje dhe tani shembulli i nisjes do të thotë fuqi
+
+00:07:19.199 --> 00:07:23.680
+ në makinën tuaj virtuale kështu që unë jam duke shkuar për të shtyrë atë
+
+00:07:23.680 --> 00:07:27.759
+ dhe atje ne do të shkojmë kështu që në thelb krijimi i saj është krijimi i një virtuale
+
+00:07:27.759 --> 00:07:32.240
+ makinë një shembull ec2 në re për ne në
+
+00:07:32.240 --> 00:07:35.360
+ uh në kaliforninë veriore kështu që shkojmë kështu
+
+00:07:35.360 --> 00:07:40.400
+ Unë jam duke shkuar për të parë raste këtu poshtë dhe tani unë mund të shoh unë tani kam një të tillë
+
+00:07:40.400 --> 00:07:45.120
+ shembull duke ekzekutuar një mikro t2 dhe nuk ka asnjë emër, prandaj po shkoj
+
+00:07:45.120 --> 00:07:48.080
+ kliko në redaktim dhe unë jam duke shkuar për të thirrur këtë server im proxy
+
+00:07:48.080 --> 00:07:52.720
+ serveri provo që atje të shkojmë në rregull kështu që tashmë është duke funksionuar
+
+00:07:52.720 --> 00:07:56.960
+ kështu që nëse klikoj mbi të, unë mund të shoh adresën ip të këtij serveri që unë kam thirrur
+
+00:07:56.960 --> 00:08:00.400
+ është proxy server por tani mbani mend se është vetëm debian 10. atje
+
+00:08:00.400 --> 00:08:05.120
+ asgjë tjetër e instaluar në të, kështu që duhet të kopjoj atë adresë ip
+
+00:08:05.120 --> 00:08:09.759
+ dhe pastaj unë jam duke shkuar për të hedhur në komandën time të shpejtë
+
+00:08:09.759 --> 00:08:13.520
+ sepse kam shkarkuar çelësin në serverin tim, personalisht po shkoj
+
+00:08:13.520 --> 00:08:17.440
+ ssh në serverin tim të brendshëm
+
+00:08:23.680 --> 00:08:27.360
+ në rregull kështu që tani unë jam atje kështu që tani komandën që unë do të përdor
+
+00:08:27.360 --> 00:08:33.360
+ është ssh dhe pastaj dash i për çelësin që do të përdor
+
+00:08:33.360 --> 00:08:36.320
+ kështu që skedari në hyrje që do të përdor për çelësin
+
+00:08:36.320 --> 00:08:41.039
+ dhe ai quhet proxy server.pem është ajo që kam shkarkuar
+
+00:08:41.039 --> 00:08:45.200
+ atëherë do të shkoj te administratori sepse kjo është hyrja e paracaktuar për debian
+
+00:08:45.200 --> 00:08:48.880
+ ami ose amazon makinë admin në imazhin
+
+00:08:48.880 --> 00:08:51.920
+ dhe pastaj adresa ip që unë kam kopjuar tashmë në kujtesën time dhe nëse i
+
+00:08:51.920 --> 00:08:54.240
+ goditi enter do të më kërkojë ta pranoj atë çelës
+
+00:08:54.240 --> 00:08:59.279
+ dhe unë them po dhe më mohojnë
+
+00:08:59.279 --> 00:09:02.560
+ lejet në atë skedar përfunduan duke qenë se
+
+00:09:02.560 --> 00:09:06.480
+ 766 kështu që të gjithë kanë qasje në ato skedarë kështu që është interesante
+
+00:09:06.480 --> 00:09:10.800
+ Vetë ssh po më mbron që dikush të mos jetë në gjendje të kompromentojë çelësin tim
+
+00:09:10.800 --> 00:09:18.160
+ pra chmod 7 0 0 server proxy dot pam le ta provojme dhe
+
+00:09:18.160 --> 00:09:21.279
+ tani provo përsëri kështu që ajo që kam bërë është oh dhe tani jam
+
+00:09:21.279 --> 00:09:25.360
+ lidhur vetëm ka punuar shtatë zero zero do të thotë unë pronari i
+
+00:09:25.360 --> 00:09:29.120
+ ky çelës më lejohet të bëj gjithçka me të
+
+00:09:29.120 --> 00:09:35.200
+ lexo shkruaj ekzekuto zero zero do të thotë askush në grup askush që nuk është a
+
+00:09:35.200 --> 00:09:39.120
+ një pjesë e grupit lejohet të ketë qasje në të gjitha, kështu që është
+
+00:09:39.120 --> 00:09:42.080
+ në thelb një skedar memec që ata as nuk mund ta hapin
+
+00:09:42.080 --> 00:09:46.800
+ uh por unë mund të gjithë të drejtë kështu që tani që unë jam i lidhur unë jam do të shkoj sudo padisë
+
+00:09:46.800 --> 00:09:52.080
+ sepse kjo është ajo që komanda është të bëhet rrënjë, kështu që tani unë jam rrënjë aq e prirur
+
+00:09:52.080 --> 00:09:57.519
+ azhurnimi apt i azhurnimit do të rrëmbej depot e mia, shikoni se kjo është një
+
+00:09:57.519 --> 00:10:02.160
+ një kompjuter aktual debian nëse dëshironi në re
+
+00:10:02.160 --> 00:10:05.600
+ është kaq e lehtë që tashmë jam duke e azhurnuar
+
+00:10:05.600 --> 00:10:10.320
+ drejtimin e një kompjuteri debian në re, kështu që në atë kohë dhe unë jam i mirë
+
+00:10:10.320 --> 00:10:16.640
+ blah blah në të njëjtën kohë um kemi një server debian të bazuar në re
+
+00:10:16.640 --> 00:10:20.800
+ a e kuptove që ishte kaq e lehtë dhe është falas
+
+00:10:20.800 --> 00:10:24.000
+ në rregull kështu që ne mund të bëjmë gjëra të tjera me këtë gjithashtu mund të krijojmë një pirg llambë ne
+
+00:10:24.000 --> 00:10:28.880
+ mund ta përdorni atë për mysql mariadb gjithçka që mund të gjeni me të është një
+
+00:10:28.880 --> 00:10:32.000
+ server debian kështu që ne do ta përdorim këtë si tonin
+
+00:10:32.000 --> 00:10:37.040
+ proxy kështu që tani ajo që unë do të bëj është të instaloj një mjet të quajtur
+
+00:10:37.040 --> 00:10:43.920
+ përfaqësues i vogël i bukur dhe i thjeshtë për tu instaluar proxy i vogël i instaluar me vend
+
+00:10:43.920 --> 00:10:50.880
+ me të vërtetë e thjeshtë për tu konfiguruar thuaj po këtu
+
+00:10:52.399 --> 00:10:56.480
+ dhe është bërë tani që kemi instaluar përfaqësues të vegjël, thjesht duhet të redaktojmë
+
+00:10:56.480 --> 00:11:04.640
+ skedari i konfigurimit në mënyrë të çajtë etj. çaj proxy të vogël të vogël e ndryshoi atë në atë
+
+00:11:04.640 --> 00:11:10.959
+ dhe pastaj unë jam duke përdorur nano tinyproxy.com dhe redaktoni që kështu të kontrolloni w në nano
+
+00:11:10.959 --> 00:11:14.079
+ më lejon të kërkoj oh, por para se të bëj kërkimin vini re se
+
+00:11:14.079 --> 00:11:18.000
+ porti si parazgjedhje është duke përdorur 8888 ne do të duhet ta dimë atë
+
+00:11:18.000 --> 00:11:20.959
+ informacion sepse kjo është ajo për të cilën do të lidhemi
+
+00:11:20.959 --> 00:11:25.200
+ përfaqësuesi ynë bën një kërkim të shpejtë për lejimin
+
+00:11:26.720 --> 00:11:30.959
+ alt w ju lejon të kërkoni përsëri wow fjala lejoj nuk është ndoshta më e mira
+
+00:11:30.959 --> 00:11:35.920
+ kërkimi i kërkimit mbase kërkoni për 127.0.0.1 um dhe pikërisht poshtë kësaj do të shkoj
+
+00:11:35.920 --> 00:11:40.399
+ lejoj dhe pastaj më duhet të shtoj adresën time ip në mënyrë që të mund të lidhem me këtë
+
+00:11:40.399 --> 00:11:44.320
+ server proxy sepse tani është mbyllur vetëm localhost mund të ketë qasje në të
+
+00:11:44.320 --> 00:11:48.399
+ është e rëndësishme të theksohet se kjo është ndërsa kjo është falas në publik
+
+00:11:48.399 --> 00:11:51.519
+ server proxy unë jam i vetmi që do të lejohet të hyjë në të që është
+
+00:11:51.519 --> 00:11:54.959
+ do të lejohet të përfaqësoj përmbajtjen time përmes lidhjes sime
+
+00:11:54.959 --> 00:11:58.880
+ kështu që është private në atë drejtim duhet ta njoh timen
+
+00:11:58.880 --> 00:12:02.959
+ adresa IP kështu që unë jam duke shkuar për të kërcejnë mbi të
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz dhe kopjo atë adresë ip në kujtesën time
+
+00:12:08.000 --> 00:12:11.279
+ dhe pastaj hidhen përsëri atje dhe ngjitur në konfigurimin tim
+
+00:12:11.279 --> 00:12:15.839
+ kontrolli o futni kontrollin x kontrolli o është të shkruani
+
+00:12:15.839 --> 00:12:22.720
+ ruaje skedarin tani sistemi ctl rinis proxy të vogël
+
+00:12:22.720 --> 00:12:28.079
+ gati e bërë gjëja përfundimtare që duhet të bëjmë është se thjesht duhet të tregojmë aws
+
+00:12:28.079 --> 00:12:32.639
+ sigurinë ec2 që do të krijojmë një politikë që thotë
+
+00:12:32.639 --> 00:12:35.920
+ hej, vetëm më lejohet të lidhem me atë server
+
+00:12:35.920 --> 00:12:39.839
+ kështu që askush tjetër nuk mund të lidhet me të çfarëdo qoftë kjo është ajo që ne do të shkojmë
+
+00:12:39.839 --> 00:12:43.120
+ bëni tani, kështu që unë jam duke shkuar për të kërcej përsëri këtu dhe ju e shihni këtë server deri në
+
+00:12:43.120 --> 00:12:47.279
+ ekran mirë nëse klikoj mbi sigurinë atëherë mundem
+
+00:12:47.279 --> 00:12:50.880
+ klikoni në grupin e sigurisë që është caktuar automatikisht, prandaj thjesht klikoni
+
+00:12:50.880 --> 00:12:53.680
+ kjo dhe tani më ka lënë në ec2
+
+00:12:53.680 --> 00:12:56.240
+ grupet e sigurisë dhe grupi i saktë i sigurisë
+
+00:12:56.240 --> 00:12:59.440
+ do të vëreni se tashmë është krijuar një për ssh sepse
+
+00:12:59.440 --> 00:13:03.760
+ aktivizohet si parazgjedhje unë mund ta vendos që të më lejojë vetëm mua, po ashtu
+
+00:13:03.760 --> 00:13:06.639
+ e rëndësishme kështu që le ta bëjmë atë vetëm që të jemi në gjendje të mirë
+
+00:13:06.639 --> 00:13:09.959
+ praktikat e sigurisë kështu që unë do ta ndryshoj nga
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 do të mbyll x atë dhe pastaj
+
+00:13:13.440 --> 00:13:18.320
+ ndryshojeni në ip tim atëherë do të shtoj një rregull të ri që keni parë
+
+00:13:18.320 --> 00:13:20.880
+ si kam ardhur këtu të drejtë unë e di unë jam duke lëvizur me të vërtetë të shpejtë
+
+00:13:20.880 --> 00:13:24.079
+ Unë thjesht kam klikuar këtu për të rregulluar rregullat përbrenda
+
+00:13:24.079 --> 00:13:29.040
+ në rregull kështu që shtoni një rregull të ri tcp me porosi është i paracaktuar
+
+00:13:29.040 --> 00:13:35.120
+ numrin e portit a e mbani mend 888 dhe lejoni ip tim vetëm mund ta quaj diçka nëse i
+
+00:13:35.120 --> 00:13:40.320
+ dua përfaqësues dhe më pas ruaj rregullat e mia
+
+00:13:40.320 --> 00:13:44.639
+ atje ne do të shkojmë kështu që tani ju shihni ssh dhe tcp me porosi
+
+00:13:44.639 --> 00:13:51.040
+ një i quajtur proxy në portin 8888 kështu që si ta provojmë këtë, në rregull
+
+00:13:51.040 --> 00:13:57.360
+ adresa aktuale e ip është 99.233 dhe kështu do të lidhem me përfaqësuesin
+
+00:13:57.360 --> 00:14:01.600
+ ky nuk është një udhëzues se si të përdorni një përfaqësues
+
+00:14:01.600 --> 00:14:04.480
+ ky nuk është një udhëzues se për çfarë ta përdorësh
+
+00:14:04.480 --> 00:14:08.079
+ domosdoshmërisht kjo është kjo unë jam duke bërë supozime këtu se
+
+00:14:08.079 --> 00:14:11.920
+ ju ose mund ta google atë vetë sepse do të jetë i bazuar ndryshe
+
+00:14:11.920 --> 00:14:15.199
+ në rastin tuaj të përdorimit nëse doni të thjesht proxy shfletuesin tuaj ose proxy
+
+00:14:15.199 --> 00:14:18.480
+ aplikacion të veçantë ose të gjithë rrjetin tuaj
+
+00:14:18.480 --> 00:14:21.839
+ kjo do të varet nga rasti i përdorimit tuaj individual
+
+00:14:21.839 --> 00:14:28.399
+ në mënyrë rigoroze një tutorial se si ta ndërtojmë këtë shembull ec2 me të vërtetë shpejt
+
+00:14:28.399 --> 00:14:31.760
+ falas që ka një përfaqësues të gatshëm për ne për ta përdorur në
+
+00:14:31.760 --> 00:14:36.639
+ California ose kudo dhe uh kjo është kështu në timen
+
+00:14:36.639 --> 00:14:40.720
+ një rast i veçantë tani, kështu që ky moment nuk është domosdoshmërisht çfarë
+
+00:14:40.720 --> 00:14:43.680
+ ju doni të bëni tjetër kjo është vetëm se si unë jam duke shkuar për të provuar
+
+00:14:43.680 --> 00:14:50.000
+ proxy rastësisht ndodhem në windows 10 këtu, kështu që thjesht do të shkruaj proxy
+
+00:14:50.000 --> 00:14:54.240
+ dhe shko përsëri në cilësimet e përfaqësuesit, kjo ndoshta nuk është mënyra se si dëshiron ta bësh
+
+00:14:54.240 --> 00:14:57.279
+ Unë thjesht dua të provoj kështu që do të aktivizoj përfaqësuesin
+
+00:14:57.279 --> 00:15:00.560
+ Unë mund të shoh se ka një cilësim të vjetër proxy atje, sigurohuni që të jeni
+
+00:15:00.560 --> 00:15:03.839
+ duke pasur parasysh këtë nëse ju nevojiten cilësime të vjetra për përfaqësuesit
+
+00:15:03.839 --> 00:15:08.480
+ për ta ndryshuar shkoni te instancat në ec2 klikoni në shembullin tuaj
+
+00:15:08.480 --> 00:15:12.079
+ id dhe kap atë adresë ip dhe pastaj ngjit
+
+00:15:12.079 --> 00:15:15.519
+ që në si adresë për serverin tuaj proxy
+
+00:15:15.519 --> 00:15:20.800
+ porti 8888 dhe ruaj kështu që tani jam i lidhur me
+
+00:15:20.800 --> 00:15:24.639
+ proxy menjëherë nuk është i lidhur me tani windows po thotë
+
+00:15:24.639 --> 00:15:27.199
+ Unë jam duke shkuar për të drejtuar të gjithë trafikun tuaj përmes proxy unë duhet të korrigjuar
+
+00:15:27.199 --> 00:15:32.199
+ veten time kështu që nëse kthehem te currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 është IP-ja ime aktuale që do të godas f5 për të rifreskuar
+
+00:15:36.160 --> 00:15:44.639
+ dhe nëse gjithçka shkon mirë 3.101.108.211. mirë çfarë është ajo
+
+00:15:44.639 --> 00:15:52.839
+ ky është serveri im, kështu që unë jam tani, ku jam, le ta zbulojmë
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com le të bëjmë një kërkim për adresën ip që jam aktualisht në
+
+00:15:59.759 --> 00:16:06.839
+ ku jam unë në San José California aty përcakton miniera ime
+
+00:16:06.839 --> 00:16:10.880
+ bëhu kështu që gjithçka ka për të njerëz që kemi
+
+00:16:10.880 --> 00:16:14.880
+ krijuar konfiguruar vendosur një shërbim falas proxy
+
+00:16:14.880 --> 00:16:17.680
+ që ne zotërojmë dhe veprojmë, ne jemi të vetmit
+
+00:16:17.680 --> 00:16:22.560
+ kush e ka atë që e ka atë çelës ssh kështu që nëse dëshiron
+
+00:16:22.560 --> 00:16:26.079
+ lidheni në bëni ndryshime, përdorni atë si një server me shumë qëllime që mund të bëni
+
+00:16:26.079 --> 00:16:30.720
+ kjo um por vetëm mbaj një vështrim mbi gjërat e faturimit, thjesht sigurohu që
+
+00:16:30.720 --> 00:16:33.120
+ nuk i keni tejkaluar pragjet dhe gjëra të tilla
+
+00:16:33.120 --> 00:16:36.240
+ nëse thjesht po e përdorni atë si një përfaqësues, nuk ka shumë të ngjarë që ju do ta bëni atë
+
+00:16:36.240 --> 00:16:38.480
+ është thjesht diçka përmes së cilës jeni duke përdorur të dhëna
+
+00:16:38.480 --> 00:16:42.800
+ kështu që kontrolloni që është aws.amazon.com për të filluar veten
+
+00:16:42.800 --> 00:16:45.920
+ nëse keni pyetje, postojini ato përgjithmonë në komunitetin tonë
+
+00:16:45.920 --> 00:16:50.160
+ për mosmarrëveshjen tonë ju do të gjeni lidhjen në category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ në menunë ndërveprojmë ndërkohë nëse e ke shijuar këtë nëse e ke përdorur ose
+
+00:16:54.000 --> 00:17:05.839
+ e gjeti të dobishme më jepni një gisht të madh, ju lutem abonohuni
+
+00:17:08.849 --> 00:17:19.839
+ [Muzikë] bëj
+
+00:17:23.599 --> 00:17:31.710
+ [Muzika]
+

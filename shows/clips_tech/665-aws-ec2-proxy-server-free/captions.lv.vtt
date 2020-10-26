@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: lv
+
+00:00:03.919 --> 00:00:07.120
+neatkarīgi no tā, vai jūs sērfošanas laikā vēlaties sev piešķirt nedaudz papildu privātumu
+
+00:00:07.120 --> 00:00:10.639
+ internetā vai vēlaties piekļūt pakalpojumiem, kas, iespējams, ir
+
+00:00:10.639 --> 00:00:17.279
+ parasti nav pieejami jūsu reģionā vai varbūt tas tiešām ir
+
+00:00:17.279 --> 00:00:22.000
+ pakalpojumu sniedzējs bloķēja jūsu IP adresi
+
+00:00:22.000 --> 00:00:27.359
+ tā, iespējams, nav ļaunprātīga lieta, un man jau iepriekš bija bloķēta mana ip adrese ar youtube
+
+00:00:27.359 --> 00:00:31.039
+ jo es augšupielādēju tik daudz video un lejupielādēju
+
+00:00:31.039 --> 00:00:37.280
+ slēgtie paraksti tiem, kas ir noveduši pie tā, ka es pārsniegu savu lietojumu
+
+00:00:37.280 --> 00:00:42.239
+ youtube api, tāpēc mana IP adrese tiek bloķēta
+
+00:00:42.239 --> 00:00:46.000
+ tam nav jābūt ļaunprātīgai lietai, es nevēlos radīt tādu iespaidu
+
+00:00:46.000 --> 00:00:52.399
+ taču ir ļoti likumīgi iemesli, lai apietu šāda veida
+
+00:00:52.399 --> 00:00:58.640
+ lietas, un nerds iet, ir starpnieks, problēma ir pilnvaras
+
+00:00:58.640 --> 00:01:02.160
+ var būt ļoti dārga lietošanā un bezmaksas
+
+00:01:02.160 --> 00:01:08.240
+ kaut arī viegli pieejamie ir ļoti bieži vai nu ne pārāk uzticami, viņi ir viens
+
+00:01:08.240 --> 00:01:11.360
+ dienā, kad viņi ir nonākuši nākamajā dienā, un jūs zaudējat piekļuvi saviem pakalpojumiem
+
+00:01:11.360 --> 00:01:18.320
+ un viss pārējais, vai vēl sliktāk, tie ir bīstami, jūs nezināt, ko
+
+00:01:18.320 --> 00:01:24.479
+ šie pilnvarnieki izseko mežizstrādi un pat patīk pārtvert
+
+00:01:24.479 --> 00:01:28.640
+ ejot cauri, jūs sūtāt visu savu interneta trafiku
+
+00:01:28.640 --> 00:01:36.159
+ caur šo pakalpojumu sniedzēju, tāpēc ir viena persona, kurai es patiešām uzticos
+
+00:01:36.159 --> 00:01:44.079
+ lai pilnvarotu visus savus datus, un tas esmu es, es neesmu tā pati persona
+
+00:01:44.079 --> 00:01:49.360
+ ka jūs teiktu, ka uzticaties personai, kurai uzticaties, vai jūs esat, tātad es esmu
+
+00:01:49.360 --> 00:01:54.399
+ parādīšu, kā es varētu izveidot bezmaksas starpniekserveri
+
+00:01:54.399 --> 00:02:00.000
+ no manis paša, un jūs varat to atkārtot un izveidot arī savu
+
+00:02:00.000 --> 00:02:03.200
+ mēs to darīsim mākonī, mēs izmantosim trešās puses pakalpojumu
+
+00:02:03.200 --> 00:02:06.399
+ pakalpojumu sniedzējs, un tas ir amazon, tāpēc jūs sakāt, ka labi
+
+00:02:06.399 --> 00:02:09.440
+ amazon, ko jūs zināt, vai mēs varam uzticēties saviem datiem
+
+00:02:09.440 --> 00:02:13.440
+ viņiem labi, ko mēs izmantojam, ir viņu mākoņpakalpojumi, kurus sauc par amazon
+
+00:02:13.440 --> 00:02:17.520
+ tīmekļa pakalpojumi, tāpēc tas viss ir viņu mākonis
+
+00:02:17.520 --> 00:02:22.000
+ infrastruktūru, kas klientiem ir pamatā to īrei
+
+00:02:22.000 --> 00:02:25.120
+ piekļuve saviem serveriem un viņu vietnei un
+
+00:02:25.120 --> 00:02:28.640
+ un virtuālie serveri un viss pārējais
+
+00:02:28.640 --> 00:02:34.959
+ infrastruktūra ir pieejama jums, bet pati izvietošana ir
+
+00:02:34.959 --> 00:02:39.840
+ tavs, es jums parādīšu, kā tas tiek darīts, mēs pāriet uz aws
+
+00:02:39.840 --> 00:02:45.920
+ un jo īpaši ec2, tāpēc, protams, jūs, ja jūs vienkārši nezināt aws
+
+00:02:45.920 --> 00:02:50.160
+ dodieties uz vietni aws.amazon.com, pierakstieties ar savu amazon kontu un
+
+00:02:50.160 --> 00:02:55.519
+ tad ātri meklējiet ec2, un tas jūs aizvedīs
+
+00:02:55.519 --> 00:02:58.959
+ būtībā viņu virtualizācijas platforma domā par ec2 kā
+
+00:02:58.959 --> 00:03:02.800
+ tieši tā, tāpēc pirmā lieta, ko es atzīmēju, kad esmu šeit
+
+00:03:02.800 --> 00:03:08.480
+ ec2 ir mans reģions, un tas ir svarīgi, jo šeit ir mans starpniekserveris
+
+00:03:08.480 --> 00:03:13.360
+ serveris uzturēsies, ja es to tur iestatīšu, kāpēc tas tā ir
+
+00:03:13.360 --> 00:03:16.720
+ labi padomājiet par to, pieņemsim, ka es izmantoju video straumēšanu
+
+00:03:16.720 --> 00:03:20.959
+ pakalpojums, kas ierobežo Kanādas piekļuvi viņu videoklipam
+
+00:03:20.959 --> 00:03:24.720
+ straumēšanas pakalpojumu, novietojot starpniekserveri uz ziemeļiem
+
+00:03:24.720 --> 00:03:28.640
+ Kalifornijā pēkšņi viņi būtībā ir
+
+00:03:28.640 --> 00:03:31.599
+ pēc ip adreses domāju, ka es izveidoju savienojumu no
+
+00:03:31.599 --> 00:03:34.640
+ Kalifornijā, tāpēc es varu to apiet
+
+00:03:34.640 --> 00:03:37.920
+ līdzīgi, iespējams, vēlēsities mainīt savu reģionu, pamatojoties uz
+
+00:03:37.920 --> 00:03:42.480
+ ko jūs mēģināt sasniegt, jūs pat varat ievietot serveri Āfrikā
+
+00:03:42.480 --> 00:03:45.760
+ vai Āzija paskatieties, ka Honkongā jūs varat ievietot vienu pareizo
+
+00:03:45.760 --> 00:03:49.440
+ jūs varat ievietot vienu kanādā uh europe jums
+
+00:03:49.440 --> 00:03:55.040
+ un tad mums tagad ir Tuvie Austrumi un Dienvidamerika
+
+00:03:55.040 --> 00:03:58.080
+ tāpēc tas ir diezgan liels saraksts ar to, kur viņi atrodas
+
+00:03:58.080 --> 00:04:00.080
+ lai šī infrastruktūra ir izveidota Amazon
+
+00:04:00.080 --> 00:04:03.920
+ tīmekļa pakalpojumi ec2 pakalpojums, tāpēc izvēlieties to, kas
+
+00:04:03.920 --> 00:04:07.200
+ ir vieta, kur vēlaties atrast starpniekserveri
+
+00:04:07.200 --> 00:04:10.879
+ es gatavojos iestatīt raktuves, es vienkārši atstāšu to kā ziemeļkaliforniju, kas ir
+
+00:04:10.879 --> 00:04:14.560
+ mūs uz rietumiem un tieši tur
+
+00:04:14.560 --> 00:04:19.040
+ mans proxy serveris dzīvos, kas ļaus man izveidot savienojumu
+
+00:04:19.040 --> 00:04:22.880
+ it kā es tiešām sēdētu Kalifornijā
+
+00:04:22.880 --> 00:04:26.160
+ labi, tāpēc es noklikšķināšu uz palaišanas instances
+
+00:04:26.160 --> 00:04:30.160
+ un pēc tam palaidiet vēlreiz, jo tas nolaižamo izvēlni, un tas man dod
+
+00:04:30.160 --> 00:04:34.720
+ to operētājsistēmu saraksts, kuras es varu izvietot
+
+00:04:34.720 --> 00:04:39.040
+ manā ec2 instancē, tāpēc es šeit lietoju dažus terminus, kas, iespējams, jums nav pazīstami
+
+00:04:39.040 --> 00:04:42.080
+ aws ir Amazon tīmekļa pakalpojumi, kas būtībā ir
+
+00:04:42.080 --> 00:04:46.560
+ Amazon piedāvā pilnu pakalpojumu klāstu
+
+00:04:46.560 --> 00:04:52.000
+ mākoņa lietotājiem ec2 ir viņu virtualizācijas platforma
+
+00:04:52.000 --> 00:04:55.840
+ mašīnas, kad es teicu, ka es runāju par a
+
+00:04:55.840 --> 00:05:00.160
+ virtuālā mašīna, tā ir burtiski virtuālā mašīna
+
+00:05:00.160 --> 00:05:03.919
+ tāpēc es izvietošu vienu no šīm operētājsistēmām ec2 instancē
+
+00:05:03.919 --> 00:05:06.560
+ kas ir virtuālā mašīna, tad ko es to gribu
+
+00:05:06.560 --> 00:05:10.960
+ lai tā būtu, un es teicu, hey comment below if
+
+00:05:10.960 --> 00:05:12.639
+ es lietoju terminu, kas jums nav pazīstams
+
+00:05:12.639 --> 00:05:15.600
+ Es veikšu ātru meklēšanu, es to jau esmu izdarījis, jo es izvietoju daudz
+
+00:05:15.600 --> 00:05:18.960
+ serveri mākonī, es noklikšķināšu uz debian
+
+00:05:18.960 --> 00:05:21.360
+ uh vienkārši ierakstiet debian šeit meklēšanā
+
+00:05:21.360 --> 00:05:27.600
+ tāpēc es eju uz aws tirgus rezultātiem
+
+00:05:27.600 --> 00:05:30.960
+ tie, kurus esmu izveidojis, un tie, kas ir sabiedrībā
+
+00:05:30.960 --> 00:05:34.000
+ jūs domājat, ka labi, es gribu izmantot kopienas, labi, jūs to nedarāt, jo
+
+00:05:34.000 --> 00:05:37.919
+ šie maksās jums naudu, un jūs sakāt labi, bet kopiena ir brīva
+
+00:05:37.919 --> 00:05:42.800
+ tas ir atvērtā koda un jā, tomēr tas nav daļa no aws
+
+00:05:42.800 --> 00:05:45.919
+ tirgū, un tāpēc jums būs jāmaksā par lietošanu
+
+00:05:45.919 --> 00:05:49.600
+ lai šī virtuālā mašīna un instance darbotos
+
+00:05:49.600 --> 00:05:52.639
+ mākonī, tāpēc tā vietā izmantosim vienu no oficiālajiem
+
+00:05:52.639 --> 00:05:56.800
+ AWS tirgus, redzēsim, kādus rezultātus mēs iegūstam, viņi tiek kārtoti diezgan labi
+
+00:05:56.800 --> 00:06:00.400
+ debian nāk klajā pirmais rezultāts ir debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ saderīgs ar bezmaksas līmeni vai piemērots bezmaksas līmenis
+
+00:06:04.479 --> 00:06:09.039
+ Debian versiju, kuru mēs izvietosim, izvēlieties to
+
+00:06:09.039 --> 00:06:12.720
+ piemērots bezmaksas līmenis, lai mēs varētu ignorēt cenu noteikšanu, jo mēs izmantosim
+
+00:06:12.720 --> 00:06:16.560
+ bezmaksas līmeņa trāpījums turpinās, un šeit mēs to tik labi izvēlamies
+
+00:06:16.560 --> 00:06:20.000
+ ja mēs vēlamies bezmaksas līmeni, mums jāiet ar t2 mikro
+
+00:06:20.000 --> 00:06:24.080
+ es to izvēlēšos, bet ko tas mums dod, tas dod mums vienu procesoru
+
+00:06:24.080 --> 00:06:29.520
+ viens gigabaits atmiņas utt., un tad mums būs pieejama krātuve
+
+00:06:29.520 --> 00:06:33.199
+ mums nav nepieciešams daudz krātuves, jo mēs tikai izveidojam pamata starpniekserveri
+
+00:06:33.199 --> 00:06:36.639
+ un tas ir viss, tāpēc es gatavojos izvietot to pašu
+
+00:06:36.639 --> 00:06:40.080
+ ka t2 mikro ir tas, kas ir bezmaksas līmenis
+
+00:06:40.080 --> 00:06:43.440
+ piemēroti, neizvēlieties vienu no lielākajiem, jo ​​maksāsit
+
+00:06:43.440 --> 00:06:45.919
+ par to es tūlīt pārskatīšu un
+
+00:06:45.919 --> 00:06:50.080
+ palaist mēs atgriezīsimies, lai veiktu iestatījumus, piemēram, mūsu drošības grupas un
+
+00:06:50.080 --> 00:06:51.759
+ tādas lietas es vienkārši atstāšu visu
+
+00:06:51.759 --> 00:06:54.880
+ pagaidām pēc noklusējuma, un mēs to uzsāksim
+
+00:06:54.880 --> 00:06:58.479
+ vispirms man ir jāizveido jauns atslēgu pāris, tā tas ir
+
+00:06:58.479 --> 00:07:02.720
+ ssh atslēga, kuru es izmantošu, lai iekļūtu
+
+00:07:02.720 --> 00:07:06.800
+ šo serveri, tāpēc es izsaukšu šo vienu starpniekserveri
+
+00:07:06.800 --> 00:07:11.120
+ serveri un pēc tam lejupielādējiet manu atslēgu pāri. Pārliecinieties, ka esat to saglabājis kaut kur drošā vietā
+
+00:07:11.120 --> 00:07:14.960
+ es to iemetu uz sava servera un nomestu
+
+00:07:14.960 --> 00:07:19.199
+ tur un tagad palaišanas instance nozīmē spēku
+
+00:07:19.199 --> 00:07:23.680
+ savā virtuālajā mašīnā, tāpēc es to virzīšu
+
+00:07:23.680 --> 00:07:27.759
+ un tur mēs ejam, tāpēc tas galvenokārt ir tā radīšana, tas ir virtuāla radīšana
+
+00:07:27.759 --> 00:07:32.240
+ mašīnā izveidot mākoņā ec2 instanci
+
+00:07:32.240 --> 00:07:35.360
+ uh Kalifornijas ziemeļu daļā, tāpēc mēs tā arī ejam
+
+00:07:35.360 --> 00:07:40.400
+ es šeit apskatīšu gadījumus, un tagad es redzu, ka man tagad tāds ir
+
+00:07:40.400 --> 00:07:45.120
+ piemēram, darbojas t2 mikro, un tas vienkārši nav nosaukuma, tāpēc es to darīšu
+
+00:07:45.120 --> 00:07:48.080
+ noklikšķiniet uz rediģēt, un es to saucu par savu starpniekserveri
+
+00:07:48.080 --> 00:07:52.720
+ serveris mēģiniet, ka tur mums iet labi, tāpēc tas jau ir izveidots un darbojas
+
+00:07:52.720 --> 00:07:56.960
+ Tātad, ja es noklikšķinu uz tā, es varu redzēt tā servera IP adresi, uz kuru es esmu piezvanījis
+
+00:07:56.960 --> 00:08:00.400
+ tas starpniekserveris, bet tagad atcerieties, ka tas ir tikai debian 10. tur ir
+
+00:08:00.400 --> 00:08:05.120
+ nekas cits tajā nav instalēts, tāpēc man ir jākopē šī IP adrese
+
+00:08:05.120 --> 00:08:09.759
+ un tad es iešu savā komandrindā
+
+00:08:09.759 --> 00:08:13.520
+ jo es lejupielādēju atslēgu uz savu serveri, uz kuru es personīgi dodos
+
+00:08:13.520 --> 00:08:17.440
+ ssh uz manu iekšējo serveri
+
+00:08:23.680 --> 00:08:27.360
+ labi, tagad es esmu tur, tāpēc tagad komanda, kuru es gatavojas izmantot
+
+00:08:27.360 --> 00:08:33.360
+ ir ssh un tad domuzīme i par atslēgu, kuru es izmantošu
+
+00:08:33.360 --> 00:08:36.320
+ tātad ienākošais fails, kuru izmantošu atslēgai
+
+00:08:36.320 --> 00:08:41.039
+ un to sauc par starpniekserveri. pem ir tas, ko es lejupielādēju
+
+00:08:41.039 --> 00:08:45.200
+ tad es eju uz admin, jo tā ir debian noklusējuma pieteikšanās
+
+00:08:45.200 --> 00:08:48.880
+ ami vai amazon machine image admin vietnē
+
+00:08:48.880 --> 00:08:51.920
+ un pēc tam ip adresi, kuru jau esmu nokopējis uz starpliktuvi, un, ja es
+
+00:08:51.920 --> 00:08:54.240
+ nospiediet ievadīt, tas man lūgs pieņemt šo atslēgu
+
+00:08:54.240 --> 00:08:59.279
+ un es saku jā un man tiek liegta
+
+00:08:59.279 --> 00:09:02.560
+ šī faila atļaujas galu galā to atzīmēja
+
+00:09:02.560 --> 00:09:06.480
+ 766, tāpēc visiem ir piekļuve šiem failiem, tāpēc tas ir interesanti
+
+00:09:06.480 --> 00:09:10.800
+ Pats ssh mani pasargā no tā, ka kāds nespēj sabojāt manu atslēgu
+
+00:09:10.800 --> 00:09:18.160
+ tik chmod 7 0 0 starpniekservera dot pam mēģināsim to un
+
+00:09:18.160 --> 00:09:21.279
+ tagad mēģiniet vēlreiz, tāpēc tas, ko esmu izdarījis, ir ak, un tagad es esmu
+
+00:09:21.279 --> 00:09:25.360
+ savienots tas tikko strādāja septiņi nulle nulle nozīmē i īpašnieks
+
+00:09:25.360 --> 00:09:29.120
+ ar šo atslēgu man ir atļauts kaut ko darīt
+
+00:09:29.120 --> 00:09:35.200
+ lasīt rakstīt izpildīt nulli nulle nozīmē, ka neviens grupā nav neviens, kas nav a
+
+00:09:35.200 --> 00:09:39.120
+ daļai grupas ir atļauts tam piekļūt vispār, tāpēc tas ir
+
+00:09:39.120 --> 00:09:42.080
+ būtībā mēms fails, kuru viņi pat nevar atvērt
+
+00:09:42.080 --> 00:09:46.800
+ uh, bet man viss ir kārtībā, tāpēc tagad, kad esmu izveidojis savienojumu, es eju sudo tiesā
+
+00:09:46.800 --> 00:09:52.080
+ jo tieši tā ir komanda, lai kļūtu par sakni, tāpēc tagad es esmu tik trāpīgs
+
+00:09:52.080 --> 00:09:57.519
+ grab greifers manu krātuves redzat, ka tas ir
+
+00:09:57.519 --> 00:10:02.160
+ faktiskais debian dators, ja vēlaties mākonī
+
+00:10:02.160 --> 00:10:05.600
+ tas ir tik vienkārši, es jau modernizēju, es jau esmu
+
+00:10:05.600 --> 00:10:10.320
+ palaist debian datoru mākonī tik daudz laika, un es esmu blabls
+
+00:10:10.320 --> 00:10:16.640
+ blah blah tajā pašā laikā um mums ir mākoņa bāzes debian serveris
+
+00:10:16.640 --> 00:10:20.800
+ vai tu saprati, ka tas ir tik vienkārši un tas ir bez maksas
+
+00:10:20.800 --> 00:10:24.000
+ labi, lai mēs arī ar šo varētu darīt citas lietas, mēs varētu izveidot lampu kaudzi
+
+00:10:24.000 --> 00:10:28.880
+ varētu to izmantot mysql mariadb jebko, ko jūs varat izdomāt
+
+00:10:28.880 --> 00:10:32.000
+ debian serveris, tāpēc mēs to izmantosim kā savu
+
+00:10:32.000 --> 00:10:37.040
+ starpniekserveris, tāpēc tagad es instalēšu rīku ar nosaukumu
+
+00:10:37.040 --> 00:10:43.920
+ jauks un vienkārši instalējams
+
+00:10:43.920 --> 00:10:50.880
+ tiešām vienkārši konfigurējams, sakiet jā, šeit mēs ejam
+
+00:10:52.399 --> 00:10:56.480
+ un tas tiek darīts tagad, kad esam instalējuši nelielu starpniekserveri, kas mums vienkārši jārediģē
+
+00:10:56.480 --> 00:11:04.640
+ konfigurācijas fails, tāpēc slīpsvītra utt. Sīka un maza starpniekserveris viņu mainīja
+
+00:11:04.640 --> 00:11:10.959
+ un pēc tam es izmantoju nano tinyproxy.com un rediģēju to, lai kontrolētu w nano
+
+00:11:10.959 --> 00:11:14.079
+ ļauj man meklēt oh, bet pirms es veicu meklēšanu, ņemiet vērā, ka
+
+00:11:14.079 --> 00:11:18.000
+ ports pēc noklusējuma izmanto 8888, mums tas būs jāzina
+
+00:11:18.000 --> 00:11:20.959
+ informāciju, jo tieši tam mēs izveidosim savienojumu
+
+00:11:20.959 --> 00:11:25.200
+ mūsu pilnvarnieks ātri meklē atļauju
+
+00:11:26.720 --> 00:11:30.959
+ alt w ļauj jums meklēt vēlreiz wow vārds, iespējams, nav labākais
+
+00:11:30.959 --> 00:11:35.920
+ meklēšanas vaicājums varbūt meklē 127.0.0.1 um un tieši zem tā, uz kuru es eju
+
+00:11:35.920 --> 00:11:40.399
+ atļaut un pēc tam man jāpievieno sava ip adrese, lai es varētu izveidot savienojumu ar šo
+
+00:11:40.399 --> 00:11:44.320
+ starpniekserveris, jo šobrīd tas ir slēgts, tam piekļūt var tikai localhost
+
+00:11:44.320 --> 00:11:48.399
+ ir svarīgi atzīmēt, ka tas notiek, kamēr tas ir publisks bezmaksas
+
+00:11:48.399 --> 00:11:51.519
+ starpniekserveris Es esmu vienīgais, kuram būs atļauts tam piekļūt
+
+00:11:51.519 --> 00:11:54.959
+ tiks atļauts starpniekserverēt manu saturu, izmantojot manu savienojumu
+
+00:11:54.959 --> 00:11:58.880
+ tas ir privāts šajā ziņā man jāzina mans
+
+00:11:58.880 --> 00:12:02.959
+ IP adrese, tāpēc es pārietu uz
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz un nokopējiet šo IP adresi uz manu starpliktuvi
+
+00:12:08.000 --> 00:12:11.279
+ un pēc tam atgriezieties tur un ielīmējiet to manā konfigurācijā
+
+00:12:11.279 --> 00:12:15.839
+ kontrolēt o ievadīt vadību x vadību o ir izrakstīt
+
+00:12:15.839 --> 00:12:22.720
+ saglabājiet failu tagad sistēma ctl restartējiet mazo starpniekserveri
+
+00:12:22.720 --> 00:12:28.079
+ gandrīz izdarīts pēdējais, kas mums jādara, ir vienkārši jāpasaka aws
+
+00:12:28.079 --> 00:12:32.639
+ ec2 drošība, ka mēs izveidosim politiku, kurā teikts
+
+00:12:32.639 --> 00:12:35.920
+ hei, tikai man ir atļauts izveidot savienojumu ar šo serveri
+
+00:12:35.920 --> 00:12:39.839
+ tāpēc neviens cits nevar ar to savienoties, tāpēc mēs to arī darīsim
+
+00:12:39.839 --> 00:12:43.120
+ dariet tieši tagad, tāpēc es atgriezīšos šeit, un jūs redzat šo serveri
+
+00:12:43.120 --> 00:12:47.279
+ ekrāns labi, ja es noklikšķiniet uz drošības es varu
+
+00:12:47.279 --> 00:12:50.880
+ noklikšķiniet uz drošības grupas, kurai tā tiek piešķirta automātiski, tāpēc vienkārši noklikšķiniet uz
+
+00:12:50.880 --> 00:12:53.680
+ un tagad tas mani atstāja ec2
+
+00:12:53.680 --> 00:12:56.240
+ drošības grupas un pareizā drošības grupa
+
+00:12:56.240 --> 00:12:59.440
+ jūs ievērosiet, ka tas jau ir izveidots ssh, jo
+
+00:12:59.440 --> 00:13:03.760
+ tas pēc noklusējuma ir iespējots, es varu to iestatīt, lai atļautu arī man
+
+00:13:03.760 --> 00:13:06.639
+ svarīgi, tāpēc darīsim to tikai tāpēc, lai būtu labi
+
+00:13:06.639 --> 00:13:09.959
+ drošības praksi, tāpēc es to mainīšu no
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 es aizvēršu x to un pēc tam
+
+00:13:13.440 --> 00:13:18.320
+ nomainiet to uz manu ip, tad es pievienošu jaunu kārtulu, kuru redzējāt
+
+00:13:18.320 --> 00:13:20.880
+ kā es šeit nokļuvu, es zinu, ka es patiešām ātri pārvietojos
+
+00:13:20.880 --> 00:13:24.079
+ Es tikko šeit noklikšķināju uz Rediģēt ienākošos noteikumus
+
+00:13:24.079 --> 00:13:29.040
+ labi, tāpēc pievienojiet jaunu kārtulu pēc noklusējuma ir pielāgots TCP
+
+00:13:29.040 --> 00:13:35.120
+ vai jūs atceraties 888 un atļaujiet manam ip tikai to saukt, ja es
+
+00:13:35.120 --> 00:13:40.320
+ vēlaties starpniekserveri un pēc tam saglabājiet manus noteikumus
+
+00:13:40.320 --> 00:13:44.639
+ tur mēs ejam, tāpēc tagad jūs redzat ssh un pielāgoto TCP
+
+00:13:44.639 --> 00:13:51.040
+ vienu sauc par starpniekserveri 8888 ostā, lai kā mēs pārbaudām, vai tas ir labi, tāpēc mūsu
+
+00:13:51.040 --> 00:13:57.360
+ Pašreizējā IP adrese ir 99.233, un tāpēc es izveidošu savienojumu ar starpniekserveri
+
+00:13:57.360 --> 00:14:01.600
+ šī nav apmācība par starpniekservera izmantošanu
+
+00:14:01.600 --> 00:14:04.480
+ šī nav apmācība, kam to izmantot
+
+00:14:04.480 --> 00:14:08.079
+ tas noteikti ir tas, ko es šeit pieļauju
+
+00:14:08.079 --> 00:14:11.920
+ vai nu pats varat to google meklēt, jo tas būs atšķirīgs
+
+00:14:11.920 --> 00:14:15.199
+ lietojuma gadījumā neatkarīgi no tā, vai vēlaties tikai starpniekserveri pārlūkprogrammai vai starpniekserveri
+
+00:14:15.199 --> 00:14:18.480
+ lietojumprogrammu vai visu jūsu tīklu
+
+00:14:18.480 --> 00:14:21.839
+ tas būs jūsu individuālā lietojuma gadījumā
+
+00:14:21.839 --> 00:14:28.399
+ stingri apmācība par to, kā patiešām ātri izveidot šo ec2 instanci
+
+00:14:28.399 --> 00:14:31.760
+ bezmaksas, kurā ir pieejams starpniekserveris, kuru mēs varam izmantot
+
+00:14:31.760 --> 00:14:36.639
+ Kalifornijā vai kur un uh tas tā ir manā
+
+00:14:36.639 --> 00:14:40.720
+ konkrētais gadījums šobrīd, tāpēc šis brīdis nav obligāti kas
+
+00:14:40.720 --> 00:14:43.680
+ jūs vēlaties darīt tālāk, tas ir tikai tas, kā es gatavojos pārbaudīt
+
+00:14:43.680 --> 00:14:50.000
+ starpniekserveris, es šeit atrodos uz Windows 10, tāpēc es vienkārši ierakstīšu starpniekserveri
+
+00:14:50.000 --> 00:14:54.240
+ un atkal dodieties uz starpniekservera iestatījumiem, iespējams, tas nav tas, kā jūs to vēlaties darīt
+
+00:14:54.240 --> 00:14:57.279
+ es tikai vēlos pārbaudīt, lai ieslēgtu starpniekserveri
+
+00:14:57.279 --> 00:15:00.560
+ es redzu, ka tur ir veci starpniekservera iestatījumi, tāpēc pārliecinieties, vai esat
+
+00:15:00.560 --> 00:15:03.839
+ paturot to prātā, ja jums ir nepieciešami veci starpniekservera iestatījumi
+
+00:15:03.839 --> 00:15:08.480
+ lai to mainītu, pārejiet uz gadījumiem, kad ec2 noklikšķiniet uz sava gadījuma
+
+00:15:08.480 --> 00:15:12.079
+ ID un paņemiet šo IP adresi un pēc tam ielīmējiet
+
+00:15:12.079 --> 00:15:15.519
+ tas ir jūsu starpniekservera adrese
+
+00:15:15.519 --> 00:15:20.800
+ ports 8888 un saglabājiet, tāpēc tagad esmu izveidojis savienojumu ar
+
+00:15:20.800 --> 00:15:24.639
+ starpniekserveris, kas tūlīt nav savienots ar Windows, saka
+
+00:15:24.639 --> 00:15:27.199
+ es virzīšu visu jūsu datplūsmu caur starpniekserveri, kas man jālabo
+
+00:15:27.199 --> 00:15:32.199
+ es pats tur, tāpēc, ja es atgriezīšos vietnē currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 ir mans pašreizējais ip, es gatavojas nospiest f5, lai atsvaidzinātu
+
+00:15:36.160 --> 00:15:44.639
+ un ja viss gāja labi 3.101.108.211. nu kas tas ir
+
+00:15:44.639 --> 00:15:52.839
+ tas ir mans serveris, tāpēc es patiesībā atrodos, kur esmu, uzzināsim
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com meklēsim to IP adresi, kurā pašlaik atrodos
+
+00:15:59.759 --> 00:16:06.839
+ kur es esmu sanhosē Kalifornijā, tur mani nosaka mans
+
+00:16:06.839 --> 00:16:10.880
+ esiet, tas ir viss, kas mums ir
+
+00:16:10.880 --> 00:16:14.880
+ izveidots konfigurēts izvietots bezmaksas starpniekserveris
+
+00:16:14.880 --> 00:16:17.680
+ ka mums pieder un mēs esam vienīgie
+
+00:16:17.680 --> 00:16:22.560
+ kam tas ir, kam ir šī ssh atslēga, tāpēc, ja vēlaties
+
+00:16:22.560 --> 00:16:26.079
+ izveidojiet savienojumu, veicot izmaiņas, izmantojiet to kā universālu serveri, ko varat darīt
+
+00:16:26.079 --> 00:16:30.720
+ tas tikai, bet vienkārši sekojiet līdzi norēķinu lietām, vienkārši pārliecinieties, vai tas ir
+
+00:16:30.720 --> 00:16:33.120
+ jūs neesat pārsniegis sliekšņus un tamlīdzīgas lietas
+
+00:16:33.120 --> 00:16:36.240
+ ja jūs to vienkārši izmantojat kā starpniekserveri, maz ticams, ka jūs to darīsit
+
+00:16:36.240 --> 00:16:38.480
+ tas ir tikai kaut kas, caur kuru veicat datu pārraidi
+
+00:16:38.480 --> 00:16:42.800
+ tāpēc pārbaudiet, vai esat aws.amazon.com, lai sāktu darbu
+
+00:16:42.800 --> 00:16:45.920
+ ja jums ir jautājumi, nosūtiet tos mūsu kopienai
+
+00:16:45.920 --> 00:16:50.160
+ uz mūsu nesaskaņām saiti atradīsit category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ pa to laiku mijiedarbības izvēlnē, ja jums tas patika, ja esat to izmantojis vai
+
+00:16:54.000 --> 00:17:05.839
+ šķita noderīgi, dodiet man lielu īkšķi, lūdzu, parakstieties
+
+00:17:08.849 --> 00:17:19.839
+ [Mūzika] darīt
+
+00:17:23.599 --> 00:17:31.710
+ [Mūzika]
+

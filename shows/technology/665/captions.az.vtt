@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: az
+
+00:00:00.320 --> 00:00:05.040
+5 TV kateqoriyasında fayllarımızı kingston tərəfindən bərk vəziyyətə gətirən sürücülərə etibar edirik
+
+00:00:05.040 --> 00:00:07.839
+ serverinizin dizüstü kompüteri üçün və ya
+
+00:00:07.839 --> 00:00:10.880
+ masa üstü kompüterdə inkişaf etmiş performansla qarşılaşacaqsınız
+
+00:00:10.880 --> 00:00:17.920
+ və kingston ssds ilə etibarlılıq, texnoloji üçün vaxt yetişməyə hazırdır
+
+00:00:22.320 --> 00:00:25.519
+ hər kəsin 14-cü mövsümün 2-ci seriyası olan verilişə xoş gəlmisiniz
+
+00:00:25.519 --> 00:00:29.599
+ mən Robbi Fergusonam və Jeff Westonam, burada olmağınız çox yaxşıdır
+
+00:00:29.599 --> 00:00:32.800
+ və ümid edirəm ki, buna baxmayaraq çox gözəl bir həftə keçirdin
+
+00:00:32.800 --> 00:00:37.760
+ hər şey ancaq buradayıq və böyük bir şou gözləyirik
+
+00:00:37.760 --> 00:00:40.960
+ bu gecə özümüzün özümüzü necə yaratmağı öyrənəcəyik
+
+00:00:40.960 --> 00:00:45.840
+ proxy server yaxşıdır, buna görə bu barədə çox danışmaq istəmirəm
+
+00:00:45.840 --> 00:00:49.200
+ şou, amma bilirəm ki, bəzən yaxşı tapmaq çətin
+
+00:00:49.200 --> 00:00:52.640
+ pulsuz proxy xidməti, buna görə özümüzün yaratacağıq
+
+00:00:52.640 --> 00:00:55.840
+ və sizə dünyanın hər yerində necə yerləşdiriləcəyini göstərəcəyəm
+
+00:00:55.840 --> 00:01:01.600
+ aws bulud xidmətlərindən istifadə etmək olduqca maraqlı və şeylərdən biridir
+
+00:01:01.600 --> 00:01:05.680
+ bununla birlikdə necə olduğunu bir az öyrəndiyimiz üçün
+
+00:01:05.680 --> 00:01:09.520
+ amazon veb xidmətləri ec2 və bulud xidmətləri və bacarığı
+
+00:01:09.520 --> 00:01:13.760
+ öyrəndiyimiz kimi bulud infrastrukturunda debian serverlərini yerləşdirin
+
+00:01:13.760 --> 00:01:18.799
+ bunu necə edəcəyini və bunun necə işlədiyini yalnız birini bilirik
+
+00:01:18.799 --> 00:01:20.159
+ edəcəyimiz şeylər
+
+00:01:20.159 --> 00:01:24.000
+ Bəzi məlumatlarımızı bu infrastruktura köçürdüyüm üçün bunu söyləyirəm
+
+00:01:24.000 --> 00:01:26.960
+ çünki bəzi canlı yayım izləyicilərimiz var
+
+00:01:26.960 --> 00:01:29.600
+ tamponlama və bunun kimi problemlərlə qarşılaşdı
+
+00:01:29.600 --> 00:01:32.799
+ və buna görə bir az lövhəli kompüterimiz var
+
+00:01:32.799 --> 00:01:36.880
+ axın etdiyimiz və sonra yenidən yayımladığımız hər şey
+
+00:01:36.880 --> 00:01:40.799
+ roku və ya digər hls oyunçularını və bu kimi şeyləri seyr edən hər kəs
+
+00:01:40.799 --> 00:01:44.399
+ tək lövhəli kompüterdə işləyən çevik axın var, həqiqətən də elədir
+
+00:01:44.399 --> 00:01:47.759
+ heyrətləndirici vay lakin mən nə mənim vasitəsilə nəzarət etdik
+
+00:01:47.759 --> 00:01:50.960
+ test insanlar olduqca yüksək bir CPU işləməsidir
+
+00:01:50.960 --> 00:01:55.439
+ Bəzilərinin səbəbi ola biləcəyinə inandığım üçün doğru izləyirlər
+
+00:01:55.439 --> 00:01:58.640
+ axınınızla əlaqəli məsələləri buferləşdirmək üçün çox şey var
+
+00:01:58.640 --> 00:02:03.520
+ burada səhnə arxasında bunu sizə göstərməyə çalışmaq üçün şou sizə də çatacaq
+
+00:02:03.520 --> 00:02:07.840
+ bir formatda çox əlçatan və asanlıqla əldə edə bilərsiniz
+
+00:02:07.840 --> 00:02:10.160
+ fırlanan təkər kimi şeylər yaşamaq
+
+00:02:10.160 --> 00:02:14.560
+ və bu cür şeyləri, amma bu axşam seyr etdiyimiz kimi
+
+00:02:14.560 --> 00:02:18.560
+ uh və bu debian serverlərinin buludda necə yerləşdiriləcəyini öyrənmək
+
+00:02:18.560 --> 00:02:20.879
+ bil ki, bu, burada pərdə arxasında edəcəyimiz bir şeydir
+
+00:02:20.879 --> 00:02:23.760
+ həmçinin bu xidmətləri köçürmək
+
+00:02:23.760 --> 00:02:27.120
+ Bunu etmək üçün bu nümunələrdən birinə
+
+00:02:27.120 --> 00:02:30.480
+ burada studiyadakı performansımızı yaxşılaşdırmağa çalışaq
+
+00:02:30.480 --> 00:02:34.400
+ geridə qaldığınız bir çox maraqlı şeylər
+
+00:02:34.400 --> 00:02:38.000
+ bu axşam sizinlə biraz sonra danışacağımıza yaxşı idim
+
+00:02:38.000 --> 00:02:42.080
+ uh bəzi istismarlarınız lehimləmə ilə bəli bəli bizə bir az danışmaq istəyirsən
+
+00:02:42.080 --> 00:02:44.720
+ nə olacağımıza dair cəld bir sataşma
+
+00:02:44.720 --> 00:02:48.959
+ uh oğlumun lehimləmə istəməsini müzakirə etdi
+
+00:02:48.959 --> 00:02:53.120
+ onun ad günü uh bu yolla getdik
+
+00:02:53.120 --> 00:02:56.480
+ keçən aydan başlayaraq uh bir az oynadıq və oldu
+
+00:02:56.480 --> 00:03:01.200
+ evdə öz əşyalarımı necə düzəldəcəyimi düşünürəm
+
+00:03:01.200 --> 00:03:04.560
+ özümə aid etmək üçün böyük bir istehsal sahəm olmadıqda
+
+00:03:04.560 --> 00:03:09.599
+ pcb bəli buna görə bəli bu barədə danışdığımız yer, buna görə maraqlanırsınızsa
+
+00:03:09.599 --> 00:03:15.040
+ diy elektronikadan bəhs edəcəyik və vay vay var
+
+00:03:15.040 --> 00:03:19.840
+ Gələn həftə də hazırlaşacağımız bəzi maraqlı şeylər
+
+00:03:19.840 --> 00:03:23.040
+ onsuz da getməyə hazırdır və həyəcanlıyıq
+
+00:03:23.040 --> 00:03:26.640
+ 3d çapı izləyicilərimizə də təqdim edirik
+
+00:03:26.640 --> 00:03:29.680
+ buna görə bu müddət ərzində öyrənəcəyimiz bir şey var
+
+00:03:29.680 --> 00:03:36.080
+ gələn həftələrdə burada 5 kateqoriyasında TV-də çox şeylər var bəli
+
+00:03:36.080 --> 00:03:39.200
+ zəhmət olmasa youtube-da bizə abunə olduğunuzdan əmin olun
+
+00:03:39.200 --> 00:03:42.159
+ və zəngi vurun ki, hər dəfə yeni xəbər göndərdiyimiz zaman bildiriş alasınız
+
+00:03:42.159 --> 00:03:46.560
+ biz istədiyimiz zaman canlı olduğumuz video da var
+
+00:03:46.560 --> 00:03:49.280
+ icmanın həqiqətən çox yaxşı bir yol olduğunu düşünürəm
+
+00:03:49.280 --> 00:03:54.000
+ 5-ci kateqoriyadakı TV-nin bir hissəsi olmaq üçün bəzi insanlar hələ də mənə nə deyir
+
+00:03:54.000 --> 00:03:58.400
+ ixtilaf və bu vay siz bizim ixtilafın bir hissəsi deyilsiniz
+
+00:03:58.400 --> 00:04:01.920
+ server, çünki siz bizim anlaşmazlığımıza qoşulsanız, gedərsinizsə tapa bilərsiniz
+
+00:04:01.920 --> 00:04:06.560
+ category5.tv üçün qarşılıqlı əlaqəni vurun, fikir ayrılığına qoşulduğunu görəcəksiniz
+
+00:04:06.560 --> 00:04:10.720
+ server pulsuz brauzer və ya tətbiq əsaslıdır
+
+00:04:10.720 --> 00:04:14.720
+ cihazınıza qoya biləcəyiniz və ya daxil ola biləcəyiniz bir xidmət
+
+00:04:14.720 --> 00:04:18.160
+ brauzeriniz vasitəsilə hər hansı bir şey və əsasən ilə söhbət edə bilərsiniz
+
+00:04:18.160 --> 00:04:22.079
+ icma, ancaq söhbət otağından daha çox olduğu üçün həqiqətən səliqəlidir
+
+00:04:22.079 --> 00:04:26.160
+ ayrıca ayrılmış fərqli otaqlar var
+
+00:04:26.160 --> 00:04:28.160
+ fərqli şeylər, buna görə söhbət etdiyimiz şeylər
+
+00:04:28.160 --> 00:04:31.280
+ haqqında və ya məsələn, pərdə arxasında olduq
+
+00:04:31.280 --> 00:04:35.680
+ belə ki, səhnə arxasında sadəcə səhnə arxasında dolu var
+
+00:04:35.680 --> 00:04:42.320
+ əks halda görə bilməyəcəyiniz fotoşəkillər və bizim də bəli çox şey var
+
+00:04:42.320 --> 00:04:44.400
+ discord server, həqiqətən oraya getməlisiniz
+
+00:04:44.400 --> 00:04:47.919
+ bunun bir söhbət platforması kimi olduğunu bilirik, amma bir də var
+
+00:04:47.919 --> 00:04:51.360
+ yalnız söhbət qarşılıqlı əlaqəsindən daha çox şey
+
+00:04:51.360 --> 00:04:54.880
+ bu doğru və yalnız şou zamanı aktiv deyil
+
+00:04:54.880 --> 00:04:58.240
+ hər zaman var və demək texnoloji şeyləriniz varsa
+
+00:04:58.240 --> 00:05:01.360
+ həftənin ortalarında oh kimisiniz, bu məsələni sizə necə həll edəcəyimi bilmirəm
+
+00:05:01.360 --> 00:05:04.080
+ orada pop bilər və icma vermək haqqında zəhmli deyil
+
+00:05:04.080 --> 00:05:07.680
+ tövsiyə və bu da olduqca dəqiqdir bəli doğrudur
+
+00:05:07.680 --> 00:05:10.720
+ tamam yaxşı, belə ki, həqiqətən tez bir ara verməliyik və sonra sağa atlayırıq
+
+00:05:10.720 --> 00:05:14.800
+ bu qısa ayrılıqdan sonra baxacağıq
+
+00:05:14.800 --> 00:05:20.800
+ technobabble kimi səslənən bir aws ec2 nümunəsini necə qurmaq olar
+
+00:05:20.800 --> 00:05:24.080
+ Mənə bu həqiqi sürətli edir bəli buna necə baxırıq
+
+00:05:24.080 --> 00:05:29.759
+ deməyə daha asan öz pulsuz proxy xidmətimizi yaradacağıq
+
+00:05:29.759 --> 00:05:36.240
+ nəzarətdəyəm, girişim var, nəzarət çubuğumuz var
+
+00:05:36.240 --> 00:05:51.920
+ sağ ol [Musiqi]
+
+00:05:58.560 --> 00:06:01.919
+ sörf edərkən özünüzə bir az əlavə gizlilik verəcəyinizə ümid edirsiniz
+
+00:06:01.919 --> 00:06:04.720
+ internet və ya xidmətlərə daxil olmaq istəyirsən
+
+00:06:04.720 --> 00:06:10.160
+ bəlkə də ərazinizdə ümumiyyətlə mövcud deyil və ya ola bilər
+
+00:06:10.160 --> 00:06:13.680
+ ip adresinizin olması halında
+
+00:06:13.680 --> 00:06:17.600
+ bir xidmət təminatçısı tərəfindən bloklanmış ola bilər
+
+00:06:17.600 --> 00:06:20.960
+ zərərli bir şey, ip adresimi bloklamışdım
+
+00:06:20.960 --> 00:06:24.639
+ youtube əvvəl, çünki çox video yükləyirəm və
+
+00:06:24.639 --> 00:06:29.120
+ bunlar üçün qapalı başlıqları yükləyin
+
+00:06:29.120 --> 00:06:33.759
+ youtube api-də istifadəmi aşmağıma səbəb oldu
+
+00:06:33.759 --> 00:06:38.800
+ Beləliklə, ip adresim bloklanır, beləliklə zərərli bir şey olmamalıdır
+
+00:06:38.800 --> 00:06:44.319
+ bu təəssüratı vermək istəmirəm, amma çox qanuni səbəblər var
+
+00:06:44.319 --> 00:06:49.759
+ bu tip şeyləri dolaşmaq lazımdır və inəklər gedirlər
+
+00:06:49.759 --> 00:06:56.000
+ problem bir vəkildir vəkilin istifadəsi çox bahalı ola bilər
+
+00:06:56.000 --> 00:07:00.160
+ pulsuz olanlar çox vaxt mövcuddur
+
+00:07:00.160 --> 00:07:04.800
+ ya da çox etibarlı deyillər bir gün yüksəldilər ertəsi gün aşağı düşərlər və itirərsiniz
+
+00:07:04.800 --> 00:07:10.240
+ xidmətlərinizə və digər hər şeyə giriş və ya daha da pisdir
+
+00:07:10.240 --> 00:07:14.960
+ təhlükəlidirlər, bu etibarlı şəxslərin nəyi izlədiyini bilmirsiniz
+
+00:07:14.960 --> 00:07:21.120
+ giriş və hətta göndərdiyiniz zaman ələ keçirmək kimi
+
+00:07:21.120 --> 00:07:26.720
+ bu xidmət təminatçısı vasitəsi ilə bütün internet trafikinizi
+
+00:07:26.720 --> 00:07:35.199
+ beləliklə, bütün məlumatlarımın vəkil olunmasına həqiqətən etibar etdiyim bir nəfər var
+
+00:07:35.199 --> 00:07:41.039
+ və bu mənəm, güvənəcəyini söyləyəcək adamla eyni deyiləm
+
+00:07:41.039 --> 00:07:45.199
+ güvəndiyin insan sənsən, buna görə sənə necə göstərəcəyəm
+
+00:07:45.199 --> 00:07:53.280
+ özümün pulsuz bir proxy xidməti qura bilərəm və bunu təkrarlaya bilərsiniz və
+
+00:07:53.280 --> 00:07:56.319
+ özünüzü də yaradın, bunu da buludda edəcəyik
+
+00:07:56.319 --> 00:07:58.800
+ üçüncü tərəf xidmət təminatçınızdan istifadə edəcəyik
+
+00:07:58.800 --> 00:08:02.400
+ və bu amazon, buna görə də oh amazon haqqında nə deyirsən
+
+00:08:02.400 --> 00:08:05.919
+ bilirsən ki, verilərimizi onlara etibar edə bilərik, istifadə etdiklərimiz bunlardır
+
+00:08:05.919 --> 00:08:10.639
+ bulud xidmətlərinə amazon veb xidmətləri deyilir, buna görə
+
+00:08:10.639 --> 00:08:14.319
+ bunların hamısı sahib olduqları bulud infrastrukturudur
+
+00:08:14.319 --> 00:08:18.560
+ müştərilərin əsasən öz serverlərinə və özlərinə giriş kirayəsi üçün
+
+00:08:18.560 --> 00:08:23.360
+ onların məkanı və virtual serverlər və bunların hamısı
+
+00:08:23.360 --> 00:08:29.680
+ infrastruktur sizin üçün mövcuddur, ancaq yerləşdirmənin özü mövcuddur
+
+00:08:29.680 --> 00:08:34.560
+ səninki, bunun necə edildiyini sənə göstərəcəyəm, aws-a keçəcəyik
+
+00:08:34.560 --> 00:08:40.719
+ və xüsusən ec2-yə görə əlbətdə ki, yalnız aws ilə tanış deyilsinizsə
+
+00:08:40.719 --> 00:08:44.720
+ amazon hesabınızla daxil olun aws.amazon.com saytına daxil olun
+
+00:08:44.720 --> 00:08:50.640
+ və sonra ec2 üçün sürətli bir axtarış aparın və bu sizi əsas götürəcəkdir
+
+00:08:50.640 --> 00:08:53.680
+ onların virtualizasiya platforması ec2 kimi düşünürlər
+
+00:08:53.680 --> 00:08:57.519
+ burada olduğum zaman qeyd etdiyim ilk şey
+
+00:08:57.519 --> 00:09:03.200
+ ec2-də mənim bölgəmdir və bu vacibdir, çünki mənim vəkilim budur
+
+00:09:03.200 --> 00:09:08.080
+ server orada yerləşməli olarsa niyə yerləşəcəyini düşünürəm
+
+00:09:08.080 --> 00:09:11.519
+ Vacib bir düşünün bu barədə düşünək bir video axını istifadə edirəm
+
+00:09:11.519 --> 00:09:15.680
+ videolarına Kanada girişini məhdudlaşdıran xidmət
+
+00:09:15.680 --> 00:09:19.440
+ proxy serverimi şimalda yerləşdirərək axın xidməti
+
+00:09:19.440 --> 00:09:23.360
+ California indi birdən-birə bunlar təməldir
+
+00:09:23.360 --> 00:09:26.320
+ ip ünvanı ilə əlaqə quracağımı düşünürəm
+
+00:09:26.320 --> 00:09:29.360
+ Kaliforniya, buna görə də bunun üzərində işləyə bilirəm
+
+00:09:29.360 --> 00:09:32.720
+ eyni şəkildə bölgənizi əsas götürərək dəyişdirmək istəyə bilərsiniz
+
+00:09:32.720 --> 00:09:37.200
+ nəyə nail olmağa çalışdığınızı, afrikaya bir server də qoya bilərsiniz
+
+00:09:37.200 --> 00:09:40.480
+ ya da asya baxın birini honq kongda düzəldə bilərsiniz
+
+00:09:40.480 --> 00:09:44.160
+ sahib olduğunuz avropada kanada bir uh qoymaq olar
+
+00:09:44.160 --> 00:09:49.680
+ hər yerdə və sonra hazırda orta şərq və cənub amerika var
+
+00:09:49.680 --> 00:09:52.800
+ buna görə harada olduqlarının olduqca böyük bir siyahısı
+
+00:09:52.800 --> 00:09:57.360
+ ecaz xidməti amazon veb xidmətləri üçün qurulmuş bu infrastruktur
+
+00:09:57.360 --> 00:10:01.920
+ proxy serverinizin olmasını istədiyiniz yeri seçin
+
+00:10:01.920 --> 00:10:05.600
+ Mənimki təyin edəcəyəm, onu yalnız Şimali Kaliforniya olaraq tərk edəcəyəm
+
+00:10:05.600 --> 00:10:09.279
+ bizi qərb bir, o da budur
+
+00:10:09.279 --> 00:10:13.760
+ proxy serverim qoşulmağım üçün imkan verəcəkdir
+
+00:10:13.760 --> 00:10:17.680
+ sanki Kaliforniyada oturmuşdum
+
+00:10:17.680 --> 00:10:20.880
+ tamam, buna görə başlatma instansiyasına vuracağam
+
+00:10:20.880 --> 00:10:24.880
+ və sonra nümunəni yenidən başladın, çünki aşağı açılan bir şeydir və bu mənə verir
+
+00:10:24.880 --> 00:10:29.440
+ yerləşdirə biləcəyim əməliyyat sistemlərinin siyahısı
+
+00:10:29.440 --> 00:10:33.760
+ ec2 instansiyamda, bəlkə də tanış olmadığınız bəzi terminlərdən istifadə edirəm
+
+00:10:33.760 --> 00:10:38.240
+ aws əsasən amazonkanın amazon veb servisləridir
+
+00:10:38.240 --> 00:10:44.560
+ bulud istifadəçiləri üçün təklif etdikləri bütün xidmətlər ec2
+
+00:10:44.560 --> 00:10:48.160
+ virtual maşınlar üçün virtualizasiya platforması
+
+00:10:48.160 --> 00:10:52.240
+ instansiya dedikdə virtual bir maşın haqqında danışıram
+
+00:10:52.240 --> 00:10:56.160
+ buna görə sözün əsl mənasında virtual bir maşın olduğu üçün bunlardan birini yerləşdirəcəyəm
+
+00:10:56.160 --> 00:10:59.360
+ bir əməliyyat sistemi olan ec2 nümunəsidir
+
+00:10:59.360 --> 00:11:02.880
+ virtual maşın, buna görə nə olmasını istəyirəm
+
+00:11:02.880 --> 00:11:07.040
+ Beləliklə, tanış olmadığınız bir termin istifadə etsəm, aşağıda hey şərh deyirdim
+
+00:11:07.040 --> 00:11:08.399
+ ilə birlikdə sürətli bir axtarış aparacağam
+
+00:11:08.399 --> 00:11:11.120
+ bir ton server yerləşdirdiyim üçün onsuz da əvvəldən etmişəm
+
+00:11:11.120 --> 00:11:15.279
+ buludda debian düyməsini vuracağam, sadəcə debian yazın
+
+00:11:15.279 --> 00:11:19.279
+ burda axtar, o zaman aws-a gedəcəyəm
+
+00:11:19.279 --> 00:11:24.640
+ bazarda nəticələr yaratdığım nəticələr də var
+
+00:11:24.640 --> 00:11:27.120
+ icma düşünürsən oh yaxşı istifadə etmək istəyirəm
+
+00:11:27.120 --> 00:11:30.800
+ icma olanları yaxşı, yox, çünki bunlar sizə pula başa gələcək
+
+00:11:30.800 --> 00:11:34.320
+ və yaxşı deyirsiniz, amma cəmiyyət açıqdır və açıqdır
+
+00:11:34.320 --> 00:11:38.959
+ lakin bu aws bazarının bir hissəsi deyil və buna görə də sahib olacaqsınız
+
+00:11:38.959 --> 00:11:42.320
+ bu virtual maşına sahib olmaq üçün istifadə haqqını ödəmək
+
+00:11:42.320 --> 00:11:46.160
+ nümunə buludda çalışan buna görə bunun yerinə gedəcəyik
+
+00:11:46.160 --> 00:11:49.440
+ aws marketdən rəsmi olanlardan birini istifadə edək nəticələrinin nə olduğunu görək
+
+00:11:49.440 --> 00:11:53.360
+ Debianın ilk nəticəsi olduqca yaxşı sıralanır
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster pulsuz bir səviyyəyə uyğun və ya pulsuz bir qat
+
+00:11:57.839 --> 00:12:00.560
+ debianın uyğun versiyası olacağıq
+
+00:12:00.560 --> 00:12:06.000
+ yerləşdirməyimiz üçün bu pulsuz səviyyəni seçin, buna görə laqeyd ola bilərik
+
+00:12:06.000 --> 00:12:09.360
+ Qiymətləndirmə istifadə edəcəyimiz üçün pulsuz bir səviyyəli vuruşa davam edirik
+
+00:12:09.360 --> 00:12:13.040
+ və burada getmək istədiyimiz pulsuz səviyyəni istəsək, bunu çox yaxşı seçirik
+
+00:12:13.040 --> 00:12:15.839
+ bir t2 mikro ilə buna görə seçəcəyəm amma nə
+
+00:12:15.839 --> 00:12:22.399
+ bizə verirmi bizə bir cpu bir gigabayt yaddaş verir um
+
+00:12:22.399 --> 00:12:25.600
+ və sonra əlimizdə çox sayda saxlamağa ehtiyacımız olmadığı ilə məşğul olmaq üçün yaddaşımız var
+
+00:12:25.600 --> 00:12:29.920
+ biz yalnız əsas bir proxy qururuq və bununla əlaqədar gedirəm
+
+00:12:29.920 --> 00:12:34.079
+ t2 micro pulsuz olanı olduğu kimi yerləşdirin
+
+00:12:34.079 --> 00:12:37.120
+ uyğun səviyyədən daha böyük birini seçməyin
+
+00:12:37.120 --> 00:12:38.720
+ bunlara görə ödəyəcəksiniz
+
+00:12:38.720 --> 00:12:42.079
+ dərhal nəzərdən keçirəcəyəm və yenidən qayıdacağam
+
+00:12:42.079 --> 00:12:45.839
+ təhlükəsizlik qruplarımız kimi parametrləri edin və bu kimi şeylərdən ayrılacağam
+
+00:12:45.839 --> 00:12:48.480
+ indiyə kimi hər şey varsayılan olaraq gedəcəyik
+
+00:12:48.480 --> 00:12:52.000
+ ilk növbədə yeni bir açar yaratmalı olduğumu işə salın
+
+00:12:52.000 --> 00:12:55.360
+ cüt, buna görə istifadə edəcəyim ssh düyməsidir
+
+00:12:55.360 --> 00:12:59.680
+ bu serverə ssh yazmaq üçün buna zəng edəcəyəm
+
+00:12:59.680 --> 00:13:04.160
+ bir proxy server və sonra açar cütümü yükləyin
+
+00:13:04.160 --> 00:13:06.320
+ əmin olduğum bir yerə saxladığınızdan əmin olun
+
+00:13:06.320 --> 00:13:10.800
+ bunu serverimə atın və oraya atın
+
+00:13:10.800 --> 00:13:16.240
+ və indi başlanğıc nümunəsi virtual maşınınızdakı güc deməkdir, buna görə də gedirəm
+
+00:13:16.240 --> 00:13:20.000
+ itələyin və oraya gedək, beləliklə, əsasən
+
+00:13:20.000 --> 00:13:23.120
+ onu yaratmaq virtual maşın yaratmaqdır
+
+00:13:23.120 --> 00:13:29.360
+ uh bir ec2 nümunəsi buludda bizim üçün Şimali Kaliforniyada uh bizim üçün belədir
+
+00:13:29.360 --> 00:13:33.279
+ get buradakı nümunələrə baxacağam
+
+00:13:33.279 --> 00:13:37.200
+ və indi bir t2 micro işlədən bir nümunəmin olduğunu görə bilərəm
+
+00:13:37.200 --> 00:13:41.199
+ və sadəcə ad deyil, buna görə redaktə vuracağam və buna zəng edəcəyəm
+
+00:13:41.199 --> 00:13:45.839
+ proxy server serverim orada çalışdığımızı yaxşı bildiyimiz üçün belə oldu
+
+00:13:45.839 --> 00:13:49.519
+ onsuz da işləyir və buna görə vursam ipi görə bilərəm
+
+00:13:49.519 --> 00:13:53.360
+ həmin serverin ünvanı, onu proksi server adlandırmışam, amma indi
+
+00:13:53.360 --> 00:13:56.720
+ yalnız debian 10 olduğunu unutmayın. Bunun üzərinə başqa bir şey quraşdırılmamışdır
+
+00:13:56.720 --> 00:14:02.480
+ buna görə həmin ip ünvanı kopyalamalıyam və sonra özümə keçəcəyəm
+
+00:14:02.480 --> 00:14:05.839
+ düyməsini yüklədiyim üçün komut istemi
+
+00:14:05.839 --> 00:14:17.839
+ serverim şəxsən daxili serverimə ssh gedəcəyəm
+
+00:14:18.399 --> 00:14:22.079
+ tamam yaxşı indi mən oradayam indi istifadə edəcəyim əmr
+
+00:14:22.079 --> 00:14:28.079
+ ssh və sonra istifadə edəcəyim açar üçün tire i
+
+00:14:28.079 --> 00:14:31.040
+ belə açar üçün istifadə edəcəyim gələn fayl
+
+00:14:31.040 --> 00:14:35.760
+ və buna proxy server.pem deyilir, yüklədiyim şey
+
+00:14:35.760 --> 00:14:39.920
+ onda adminə gedəcəyəm, çünki debian üçün standart girişdir
+
+00:14:39.920 --> 00:14:43.600
+ ami və ya amazon maşın görüntü admin
+
+00:14:43.600 --> 00:14:46.639
+ və sonra panoya kopyaladığım ip ünvanı və əgər varsa
+
+00:14:46.639 --> 00:14:48.959
+ Enter düyməsini basmağımı istəməyimi xahiş edirəm
+
+00:14:48.959 --> 00:14:54.000
+ və bəli deyirəm və rədd edirəm
+
+00:14:54.000 --> 00:14:57.279
+ bu sənəddəki icazələrin sona çatdığını unutmayın
+
+00:14:57.279 --> 00:15:01.199
+ 766, buna görə hər kəsin bu sənədlərə girişi var, belə ki, maraqlıdır
+
+00:15:01.199 --> 00:15:05.519
+ ssh özü məni kiməsə açarımı güzəştə getməkdən qoruyur
+
+00:15:05.519 --> 00:15:13.120
+ buna görə chmod 700 proxy server pam bunu və indi sınayaq
+
+00:15:13.120 --> 00:15:16.000
+ Yenidən cəhd edin ki, etdiklərim oh və indi mənəm
+
+00:15:16.000 --> 00:15:20.800
+ sadəcə işləmiş 700 mən bu açarın sahibi deməkdir
+
+00:15:20.800 --> 00:15:27.279
+ bununla bir şey etməyimə icazə verilir, oxumaq sıfır sıfır deməkdir
+
+00:15:27.279 --> 00:15:30.800
+ qrupda heç kim qrupun bir hissəsi olmayan kimsə
+
+00:15:30.800 --> 00:15:35.600
+ ümumiyyətlə daxil olmağa icazə verilir, ona görə də əsasən lal olmayan bir sənəddir
+
+00:15:35.600 --> 00:15:39.519
+ hətta açıq, amma indi yaxşı olduğumu deyə bilərəm
+
+00:15:39.519 --> 00:15:44.240
+ bağlı sudo məhkəməsinə gedəcəyəm, çünki əmr budur
+
+00:15:44.240 --> 00:15:47.440
+ kök olmaq üçün indi kök edirəm tətbiq yeniləmə
+
+00:15:47.440 --> 00:15:50.399
+ whoop tətbiqetmə yeniləməsi mənim üçün ələ keçir
+
+00:15:50.399 --> 00:15:55.680
+ Bunu gördüyünüz anbarlar həqiqi bir debian kompüteridir
+
+00:15:55.680 --> 00:16:01.680
+ buludda o qədər asandır ki, yeniləyirəm, artıq debian işləyirəm
+
+00:16:01.680 --> 00:16:05.120
+ buluddakı kompüter bu qədər vaxt içindədir və mən də bəli
+
+00:16:05.120 --> 00:16:11.360
+ blah blah eyni zamanda um bir bulud əsaslı debian serverimiz var
+
+00:16:11.360 --> 00:16:15.519
+ bunun asan olduğunu və pulsuz olduğunu başa düşdünmü?
+
+00:16:15.519 --> 00:16:18.720
+ tamam, bununla da başqa şeylər edə bilərik, lampa yığını qura bilərik
+
+00:16:18.720 --> 00:16:23.600
+ bunu mysql mariadb üçün istifadə edə biləcəyiniz bir şey var
+
+00:16:23.600 --> 00:16:26.720
+ debian server, buna görə biz bunu özümüz kimi istifadə edəcəyik
+
+00:16:26.720 --> 00:16:31.759
+ proxy buna görə indi nə edəcəyəm, adlı bir alət quracağam
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy qurmaq asan və sadə apt install kiçik proxy
+
+00:16:38.639 --> 00:16:45.600
+ həqiqətən sadə konfiqurasiya etmək üçün bəli deyirik buraya gəlirik
+
+00:16:47.120 --> 00:16:51.199
+ və indi düzəltməyimiz lazım olan kiçik bir proxy quraşdırdığımız üçün hazırdır
+
+00:16:51.199 --> 00:16:59.440
+ konfiqurasiya faylı, beləliklə slash və s. kiçik kiçik proxy dəyişdirin
+
+00:16:59.440 --> 00:17:05.760
+ və sonra nano tinyproxy.com-dan istifadə edirəm və nano-da belə idarə edin
+
+00:17:05.760 --> 00:17:08.799
+ mənə oh axtarışa imkan verir, amma axtarışdan əvvəl qeyd edirəm
+
+00:17:08.799 --> 00:17:12.720
+ Portu varsayılan olaraq 888 istifadə etdiyini bilməli olacağıq
+
+00:17:12.720 --> 00:17:15.679
+ məlumat, çünki əlaqə quracağımız budur
+
+00:17:15.679 --> 00:17:19.839
+ müvəkkilimiz icazə vermək üçün sürətli bir axtarış edin
+
+00:17:21.439 --> 00:17:25.679
+ alt w yenidən axtarışa imkan verir wow sözün yəqin ki, ən yaxşısı deyil
+
+00:17:25.679 --> 00:17:30.640
+ axtarış sorğusu bəlkə 127.0.0.1 axtarın və bunun altından gedirəm
+
+00:17:30.640 --> 00:17:34.720
+ icazə verin və sonra bağlana biləcəyim üçün ip adresimi əlavə etməliyəm
+
+00:17:34.720 --> 00:17:37.440
+ bu proxy server, çünki hazırda bağlanıb
+
+00:17:37.440 --> 00:17:40.640
+ qeyd etmək vacib olan yalnız localhost daxil ola bilər
+
+00:17:40.640 --> 00:17:44.720
+ budur ki, bu ictimai pulsuz bir proxy serverdir, mən yeganə adamam
+
+00:17:44.720 --> 00:17:47.280
+ ona daxil olmağa icazə veriləcək, buna icazə veriləcək
+
+00:17:47.280 --> 00:17:52.400
+ Bu mövzuda özəl olduğum üçün məzmunu mənim vasitəmlə əlaqələndirirəm
+
+00:17:52.400 --> 00:17:55.919
+ ip adresimi bilməliyəm, ona görə atlayacağam
+
+00:17:55.919 --> 00:18:03.360
+ cari ip.xyz və ip ünvanını panoya köçürün və sonra atlayın
+
+00:18:03.360 --> 00:18:09.840
+ oraya qayıdın və konfiqurasiya nəzarətimə yapışdırın o idarəetməyə daxil olun x nəzarət o
+
+00:18:09.840 --> 00:18:14.320
+ yazmaq üçün faylı indi qeyd edin systemctl
+
+00:18:14.320 --> 00:18:21.039
+ kiçik proxy-i yenidən başladın, ehtiyacımız olan son işi demək olar ki tamamladı
+
+00:18:21.039 --> 00:18:26.000
+ Bunu etmək üçün ECS təhlükəsizliyini izah etməliyik
+
+00:18:26.000 --> 00:18:29.840
+ hey yalnız mənə qoşulmağıma icazə verildiyini deyən bir siyasət quracağıq
+
+00:18:29.840 --> 00:18:32.799
+ server, buna görə heç kim ona qoşula bilməz
+
+00:18:32.799 --> 00:18:34.880
+ nə olursa olsun, bunu doğru edəcəyik
+
+00:18:34.880 --> 00:18:38.799
+ indi geri qayıdacağam və bu serveri ekranda görürsən
+
+00:18:38.799 --> 00:18:43.840
+ təhlükəsizliyi tıklasam, təhlükəsizlik qrupunu da vura bilərəm
+
+00:18:43.840 --> 00:18:46.240
+ avtomatik olaraq təyin olunur, buna görə yalnız vurun
+
+00:18:46.240 --> 00:18:50.480
+ və indi məni ec2 təhlükəsizlik qruplarına və düzgün təhlükəsizliyə təhvil verdi
+
+00:18:50.480 --> 00:18:52.320
+ qrupun artıq qurulduğunu görəcəksiniz
+
+00:18:52.320 --> 00:18:56.960
+ bir ssh üçün, çünki varsayılan olaraq effektivdir, bunu təyin edə bilərəm
+
+00:18:56.960 --> 00:18:59.440
+ yalnız mənə də icazə vermək vacib olan vacibdir
+
+00:18:59.440 --> 00:19:02.720
+ bunu yaxşı təhlükəsizlik tətbiqetmələrində olmaq üçün edək
+
+00:19:02.720 --> 00:19:06.160
+ ssh bunu custom000-dən dəyişdirəcəyəm
+
+00:19:06.160 --> 00:19:10.080
+ x-ı bağlayacağam və sonra ipimə dəyişdirəcəyəm
+
+00:19:10.080 --> 00:19:14.480
+ onda yeni bir qayda əlavə edəcəyəm, gördüm ki, buraya necə gəlmişəm, hərəkət etdiyimi bilirəm
+
+00:19:14.480 --> 00:19:18.080
+ həqiqətən sürətli, yalnız gələn qaydaları redaktə etməyi tıkladım
+
+00:19:18.080 --> 00:19:22.960
+ burada tamam, buna görə yeni bir qayda əlavə edin xüsusi tcp
+
+00:19:22.960 --> 00:19:27.120
+ default port nömrəsini 888 və yalnız xatırlayırsınız
+
+00:19:27.120 --> 00:19:31.919
+ IP-yə icazə verin, əgər proxy istəsəm buna bir şey deyə bilərəm
+
+00:19:31.919 --> 00:19:37.919
+ və sonra qaydalarımı orada saxla, getdik, indi ssh və
+
+00:19:37.919 --> 00:19:44.160
+ port 888-də proxy adlanan xüsusi tcp.
+
+00:19:44.160 --> 00:19:49.600
+ indiki ip adresimiz 99.233 olduğu üçün bunu necə yaxşı test edirik
+
+00:19:49.600 --> 00:19:52.640
+ və buna görə bu vəkilə qoşulacağam
+
+00:19:52.640 --> 00:19:57.360
+ bir proxy istifadə etmək üçün bir təlimat bu deyil
+
+00:19:57.360 --> 00:20:01.120
+ mütləq bunun üçün istifadə etmək üçün təlimat
+
+00:20:01.120 --> 00:20:04.720
+ burada fərziyyələr edirəm ki, ya özünüz google edə bilərsiniz
+
+00:20:04.720 --> 00:20:08.240
+ çünki istəsəniz də istifadə vəziyyətinizə görə fərqli olacaq
+
+00:20:08.240 --> 00:20:11.600
+ yalnız brauzerinizin və ya müəyyən bir tətbiqin və ya hamısının vəkil olun
+
+00:20:11.600 --> 00:20:15.440
+ sizin fərdinizə aid olacaq şəbəkə
+
+00:20:15.440 --> 00:20:20.159
+ istifadə vəziyyəti, bunun necə qurulacağına dair bir təlimatdır
+
+00:20:20.159 --> 00:20:23.679
+ ec2 instansiyası həqiqətən tez bir zamanda pulsuzdur
+
+00:20:23.679 --> 00:20:28.400
+ Kaliforniyada və ya hər yerdə istifadə etməyə hazır bir vəkil var
+
+00:20:28.400 --> 00:20:32.960
+ və uh budur mənim xüsusi işimdə indi
+
+00:20:32.960 --> 00:20:36.480
+ buna görə bu an mütləq sonrakı etmək istədiyin şey deyil
+
+00:20:36.480 --> 00:20:41.120
+ buradakı Windows 10-da olduğum proksini necə sınayacağam
+
+00:20:41.120 --> 00:20:47.280
+ buna görə sadəcə proxy yazıb proxy parametrlərinə girəcəyəm bu
+
+00:20:47.280 --> 00:20:50.880
+ yəqin ki, bunu necə etmək istədiyinizi yox, sadəcə test etmək istəyirəm, buna görə dönəcəyəm
+
+00:20:50.880 --> 00:20:53.679
+ proxy-də köhnə bir vəkil olduğunu görə bilərəm
+
+00:20:53.679 --> 00:20:56.880
+ Oradakı parametrlər buna görə diqqət etdiyinizə əmin olun
+
+00:20:56.880 --> 00:21:00.240
+ köhnə proxy parametrləri varsa, onu dəyişdirməlisiniz
+
+00:21:00.240 --> 00:21:03.679
+ ec2-dəki nümunələr, nümunə identifikatorunuza vurun
+
+00:21:03.679 --> 00:21:07.440
+ və həmin ip ünvanı tutun və sonra yapışdırın
+
+00:21:07.440 --> 00:21:11.840
+ proxy server port 8888 üçün ünvan olaraq
+
+00:21:11.840 --> 00:21:17.120
+ və indi qeyd et ki, dərhal proksi ilə əlaqə saxlayıram
+
+00:21:17.120 --> 00:21:20.559
+ İndi pəncərələrə bağlı deyiləm bütün trafikinizi marşrut edəcəyəm deyir
+
+00:21:20.559 --> 00:21:22.880
+ vəkil vasitəsilə özümü orada düzəltməliyəm
+
+00:21:22.880 --> 00:21:29.520
+ buna görə də currentip.xyz-a qayıtsam, 99.233 indiki ipimdir, vuracağam
+
+00:21:29.520 --> 00:21:38.159
+ yeniləmək üçün f5 və hər şey qaydasında olsa 3.101.108.211. yaxşı
+
+00:21:38.159 --> 00:21:44.720
+ bu mənim serverimdir, buna görə də indi mənəm
+
+00:21:44.720 --> 00:21:51.679
+ haradayam maxmind.com-u tapaq ip ünvanı üçün axtarış aparaq
+
+00:21:51.679 --> 00:21:59.120
+ hal-hazırda harada olduğumu san san jose california
+
+00:21:59.120 --> 00:22:02.559
+ maksimum mina məni təyin etdiyim yerdir
+
+00:22:02.559 --> 00:22:05.600
+ buna görə əlimizdə olan hər şey budur
+
+00:22:05.600 --> 00:22:10.640
+ yaradılan konfiqurasiya edilmiş bir pulsuz proxy xidməti yerləşdirmişik
+
+00:22:10.640 --> 00:22:14.559
+ sahibi olan və işləyən, buna sahib olan yalnız bizik
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh düyməsinə görə qoşulmaq istəyirsinizsə dəyişikliklərdən istifadə edin
+
+00:22:19.200 --> 00:22:23.840
+ çox məqsədli bir server olaraq bunu edə bilərsiniz, ancaq özünüzə baxın
+
+00:22:23.840 --> 00:22:27.120
+ faktura sənədləriniz hədləri aşmadığınızdan əmin olun və
+
+00:22:27.120 --> 00:22:29.440
+ bu kimi şeylər yalnız bir vəkil olaraq istifadə edirsinizsə
+
+00:22:29.440 --> 00:22:32.159
+ Çox çətin ki, bunu boru kəməri etdiyiniz bir şey edəcəksiniz
+
+00:22:32.159 --> 00:22:37.520
+ məlumatları özünüzə başlamaq üçün aws.amazon.com olduğunu yoxlayın
+
+00:22:37.520 --> 00:22:41.440
+ suallarınız varsa onları icma başlığına göndərin
+
+00:22:41.440 --> 00:22:44.480
+ ixtilafımızı 5-ci kateqoriyada tapa bilərsiniz
+
+00:22:44.480 --> 00:22:48.720
+ Bu vaxt qarşılıqlı əlaqə menyusundakı tv
+
+00:22:48.720 --> 00:22:53.039
+ Mənə böyük bir baş barmaq verin faydalı olduğunu xahiş edirəm abunə olun və sizi doğru görəcəyik
+
+00:22:53.039 --> 00:23:07.059
+ fasilədən sonra [Musiqi]
+
+00:23:15.520 --> 00:23:18.559
+ xoş gəldiniz, bu 5 kateqoriyalı texnologiyadır
+
+00:23:18.559 --> 00:23:22.240
+ və evdə nə etdiyim barədə danışmaq istəyirəm
+
+00:23:22.240 --> 00:23:26.640
+ daha doğrusu netflix-ə baxıb oturub nə etməyi planlaşdırıram
+
+00:23:26.640 --> 00:23:30.480
+ ətrafında oturub netflix-i izləməyə vaxtım yoxdu kaş ki, edim
+
+00:23:30.480 --> 00:23:34.960
+ uh yox ailem həmişə netflix hogs edir və mən sadəcə kompüterə girəcəyəm
+
+00:23:34.960 --> 00:23:38.720
+ bu əladır, çünki məni kompüterdə netflix tətbiq etməyə məcbur etdi
+
+00:23:38.720 --> 00:23:44.000
+ indi Jeff məni yayındırırsan uh yox amma bu
+
+00:23:44.000 --> 00:23:46.960
+ əla, çünki etdiyim bəzi şeylərə baxmağa başlamağım məcbur oldu
+
+00:23:46.960 --> 00:23:51.760
+ evin ətrafında gedin və bunu necə özüm edə bilərəm və s
+
+00:23:51.760 --> 00:23:55.120
+ bilirsiniz ki, verilişin yuxarı hissəsində oğlumuz var
+
+00:23:55.120 --> 00:24:00.240
+ lehimləmə işinə başladı və bu işi çox yaxşı bacardı və bizə neçə yaşında olduğunu xatırladır
+
+00:24:00.240 --> 00:24:05.200
+ yalnız 12 yaşında. 12 yaşı tamam oldu, amma hə, tamam oldu
+
+00:24:05.200 --> 00:24:09.760
+ çox yaxşı və uh bu günə qədər iki kalkulyator lehimlənmişdir
+
+00:24:09.760 --> 00:24:13.919
+ um və onlardan biri müəlliminin tamamilə uçurduğu məktəbə aparıldı
+
+00:24:13.919 --> 00:24:16.000
+ uzaqda bəli 12 yaşında olduğumu düşünürəm və o da
+
+00:24:16.000 --> 00:24:20.320
+ onsuz da bir kalkulyator edir bəli bəli bir diy dəsti aldığımız bir kalkulyator etdi
+
+00:24:20.320 --> 00:24:23.360
+ amazon və o inşa etdi və bəlkə də iki saat
+
+00:24:23.360 --> 00:24:27.039
+ iş həqiqətən fövqəladə qeyri-real idi və onun lehim işi
+
+00:24:27.039 --> 00:24:30.880
+ həqiqətən görünən pro kimi həqiqətən əla
+
+00:24:30.880 --> 00:24:34.559
+ amma hər halda başqa şeyləri necə edəcəyini soruşurdu və biz lehimləyirik
+
+00:24:34.559 --> 00:24:37.200
+ kimi bu nədir, bu nədir və necə işləyir və
+
+00:24:37.200 --> 00:24:40.480
+ gedirəm ona bu şeyləri öyrədə bilmək istəyirəm
+
+00:24:40.480 --> 00:24:46.480
+ ona bir elektron kartın sadəcə necə işlədiyini izah edə bilmək istəyirəm
+
+00:24:46.480 --> 00:24:49.360
+ lehimləmə, ancaq komponentləri və marşrutlaşdırma və bütün bunları anlamaq
+
+00:24:49.360 --> 00:24:53.279
+ bir növ şeylər və demək ki, um ala biləcəyinizi bilirəm
+
+00:24:53.279 --> 00:25:00.400
+ yalnız kiçik əlaqə nöqtələrinin sıraları olan düz lövhələr
+
+00:25:00.400 --> 00:25:03.840
+ ancaq öz lövhəmizi edə bilmək istəyirəm, buna görə də soruşdu
+
+00:25:03.840 --> 00:25:07.279
+ Xüsusi üçün bir DIY dəsti tapa bilsək
+
+00:25:07.279 --> 00:25:10.320
+ bildiyiniz faydasız bir qutu, düyməni basdığınız qutu, bəli və
+
+00:25:10.320 --> 00:25:15.840
+ kiçik bir şey çıxır və açılır, bəli, sınayın
+
+00:25:17.600 --> 00:25:22.640
+ nə etdin ciddisən
+
+00:25:25.039 --> 00:25:30.400
+ ay şən, ey şən
+
+00:25:32.720 --> 00:25:39.520
+ salam orada pişik balası var, mənim pişikim kimidir
+
+00:25:40.240 --> 00:25:44.799
+ hey hey indi buna görə axtardığım birini tapmadım amma bir dəstə tapdım
+
+00:25:44.799 --> 00:25:48.080
+ oh kimi insanlar arduino istifadə edərək birini edə bilərsiniz, bundan istifadə edərək birini də edə bilərsiniz
+
+00:25:48.080 --> 00:25:55.520
+ və elə bildim ki, mən də bir qutu yararsız qutu düzəldəcəyəm, onu düzəltmək istəyirəm
+
+00:25:55.520 --> 00:25:58.559
+ zəmin hazırlandı, buna görə necə edəcəyimi araşdırdım
+
+00:25:58.559 --> 00:26:03.679
+ evdəki öz pcbs'im tamam bu qədər çətin deyil
+
+00:26:03.679 --> 00:26:08.960
+ və mənə lazım olan tək marşrutumu təyin etmək üçün lazer printeri olduğumu uçurdum
+
+00:26:08.960 --> 00:26:12.880
+ yolların hara getdiyi kimi, həqiqətən də onu həkk edəcəksən
+
+00:26:12.880 --> 00:26:15.919
+ evde heqiqeten cixiracam oh insan
+
+00:26:15.919 --> 00:26:20.159
+ bu məndən kənarda olan jeff, həqiqətən kimyəvi maddələrə aiddir
+
+00:26:20.159 --> 00:26:23.679
+ bunu edir, amma həqiqətən sadə bir müddət tapdım
+
+00:26:23.679 --> 00:26:26.880
+ bununla bağlı bir dəstə araşdırma apardım və buna görə də tapdım
+
+00:26:26.880 --> 00:26:29.919
+ öz pcb etmək üçün həqiqətən sadə asan yol
+
+00:26:29.919 --> 00:26:32.799
+ və bunu edəcəyik, buna görə növbəti proyektim üçün proyektim
+
+00:26:32.799 --> 00:26:35.600
+ bir neçə ay çünki bu şeyləri necə öyrənməliyəm
+
+00:26:35.600 --> 00:26:39.520
+ işləri bir devre kartı dizayn etməkdir
+
+00:26:39.520 --> 00:26:43.120
+ Daha əvvəl heç əvvəl devre kartı etdirməmişəm, sonra oğlumun
+
+00:26:43.120 --> 00:26:45.919
+ birlikdə lehimləyəcəyik və özümüzü edəcəyik
+
+00:26:45.919 --> 00:26:50.960
+ ümid etdiyim faydasız qutu da qutunu 3d yazdıracağam, ha da sərin
+
+00:26:50.960 --> 00:26:56.480
+ Bəli, kiçik bir şey etmədiyim zaman yalnız içimdə dalış edirsən
+
+00:26:56.480 --> 00:27:00.320
+ və bilirsiniz ki, mənim yanaşmam bir az fərqlidir, çünki mən çoxam
+
+00:27:00.320 --> 00:27:03.520
+ kimi bir şey əvvəlcə öyrənməyi sevirəm
+
+00:27:03.520 --> 00:27:09.200
+ və sonra bu müddətə qoyacağım sərmayəni artırsın və sən də danışırsan
+
+00:27:09.200 --> 00:27:13.679
+ pcb yaradılmasına doğru atlanmaq haqqında belə bildiyiniz üçün ehtiyat nüsxə alacağam
+
+00:27:13.679 --> 00:27:16.799
+ bu hey düşünürsənsə bəlkə də öz sxemlərimi qurmaq istərdim
+
+00:27:16.799 --> 00:27:20.399
+ və bu kimi şeylər mənim başlanğıc nöqtəm bir çörək bəli
+
+00:27:20.399 --> 00:27:25.440
+ və çörək plitəsi, dizayn etdiyiniz və ya hazırladığınız dövrəni düzəltməyə imkan verir
+
+00:27:25.440 --> 00:27:28.559
+ bir dövrə planı kimi yüklədiyinizi um
+
+00:27:28.559 --> 00:27:32.399
+ internetdən və ya bununla birlikdə onu yerləşdirməyə imkan verir
+
+00:27:32.399 --> 00:27:36.799
+ a on a asosan bir saxta pcb
+
+00:27:36.799 --> 00:27:41.039
+ bir pcb kimi işləyəcək, ancaq sonra hamısını ayırmaq və
+
+00:27:41.039 --> 00:27:46.399
+ hissələri dərhal yerə qoyun və ucuz çox ucuzdur və yalnız işə başlayır
+
+00:27:46.399 --> 00:27:50.080
+ və sonra mənim üçün növbəti addım bir prototip lövhə deyilən budur ki, sən əldə et
+
+00:27:50.080 --> 00:27:53.279
+ doğru olan bütün çuxurları olan pcb lövhələr
+
+00:27:53.279 --> 00:27:57.840
+ bal kimi lehim var, amma yoxdur
+
+00:27:57.840 --> 00:28:02.080
+ aralarında qarşılıqlı əlaqə qurduğunuz üçün əslində telləri ya da səni işlədirsən
+
+00:28:02.080 --> 00:28:05.760
+ məsələn iki fərqli birləşmə arasında bir az lehimləyin
+
+00:28:05.760 --> 00:28:10.080
+ və bunu belə edirsən, buna görə mənim ikinci addımım bəli, baxacağam
+
+00:28:10.080 --> 00:28:14.720
+ bəlkə həqiqətən özünüzün aşındırma marşrutu ilə gedin
+
+00:28:14.720 --> 00:28:19.200
+ PCB çünki o zaman kimyəvi proseslərə bənzəyirsiniz
+
+00:28:19.200 --> 00:28:24.960
+ və mən tədqiq etməmişəm, amma bu çox daha mürəkkəb bir prosesdir
+
+00:28:24.960 --> 00:28:27.919
+ ilk pcb i biraz daha sadə başlamağı sevirəm
+
+00:28:27.919 --> 00:28:32.080
+ bir çörək taxtası üzərində çox təməl qurulmuşdur, amma onu düzgün dizayn etdim
+
+00:28:32.080 --> 00:28:35.120
+ tamam və bunun üçün beş volt lazımdır
+
+00:28:35.120 --> 00:28:38.880
+ siqnal və beş volt olduqda
+
+00:28:38.880 --> 00:28:43.440
+ röle bağlıdır, buna görə beş volt olmadığı zaman bir röleyə malikdir
+
+00:28:43.440 --> 00:28:47.520
+ röle açılır, belə ki ayırır
+
+00:28:47.520 --> 00:28:51.440
+ yaratmağımın səbəbi, məqsədli bir tətbiq olduğu üçün qurdum
+
+00:28:51.440 --> 00:28:56.000
+ bir çörək taxtasında və beş voltluq bir qidalanma gəlir
+
+00:28:56.000 --> 00:29:03.440
+ hər hansı bir təxmin hər hansı bir təxmin spc yox bu başqa üç hərfli usb qısaltmasıdır
+
+00:29:03.440 --> 00:29:07.360
+ usb usb mikro gənədən beş volt siqnal çəkərək
+
+00:29:07.360 --> 00:29:12.399
+ yönlendiricinin tamam olduğunu və bundan sonra mikro gənə içərisində proqramlaşdırılmış kod olduğunu söylədi
+
+00:29:12.399 --> 00:29:17.039
+ ki, əsasən internet azalsa onu lal etmək
+
+00:29:17.039 --> 00:29:20.559
+ usbdakı gücünü öldürün oh və buna görə
+
+00:29:20.559 --> 00:29:25.520
+ röleyi açır və röle nəzarətindən başqa modemimin gücü nədir
+
+00:29:25.520 --> 00:29:29.919
+ beləliklə internetim aşağı düşsə modem avtomatik olaraq dönəcəkdir
+
+00:29:29.919 --> 00:29:33.120
+ rölesim üzündən öz gücünü itirir
+
+00:29:33.120 --> 00:29:37.039
+ sağ və beş saniyə gözləyin və sonra yenidən açın, beləliklə a
+
+00:29:37.039 --> 00:29:41.200
+ virtual versiyasını söndürdün və yenidən açdın çünki
+
+00:29:41.200 --> 00:29:43.679
+ bir internetdə olduğunuz zaman nə edirsiniz, fişini çəkirsiniz
+
+00:29:43.679 --> 00:29:46.799
+ impulsdan beş saniyə gözləyirsiniz və onu yenidən bağlayırsınız
+
+00:29:46.799 --> 00:29:50.240
+ ondan səkkiz dəfə bilirsiniz ki, qayıdıb işləyəcək
+
+00:29:50.240 --> 00:29:54.559
+ düz qurduğum dövrə belə idi, buna görə bir dəfə prototip lövhədə qurdum
+
+00:29:54.559 --> 00:29:58.240
+ Mən işləyirdim və yalnız birlikdə lehimlədim və çox sadədir
+
+00:29:58.240 --> 00:30:00.799
+ dövrə çox sərin və çox xoşuma gəldi
+
+00:30:00.799 --> 00:30:04.720
+ çox sərin belə alətlər nə əldə etdiniz
+
+00:30:04.720 --> 00:30:08.080
+ yenə etdiyim dediyim kimi haradasınız uh?
+
+00:30:08.080 --> 00:30:13.760
+ bu keçən həftəki araşdırma oh mən satın alma mərhələsindəyəm
+
+00:30:13.760 --> 00:30:17.679
+ uh, lövhəni satın alacağım bütün lehimləmə materiallarımız var
+
+00:30:17.679 --> 00:30:21.919
+ um proqramını artıq yüklədiyim kimyəvi maddələr
+
+00:30:21.919 --> 00:30:25.600
+ pcb dizaynı üçün wow um
+
+00:30:25.600 --> 00:30:29.360
+ və hamısı ilə birlikdə olan bir komponent dəsti var
+
+00:30:29.360 --> 00:30:33.039
+ Rezistorlar və kondansatörlər düz bəli, səliqəli bir şey olan bu cür şeylər
+
+00:30:33.039 --> 00:30:36.559
+ bu günlərdə həqiqətən gəzə bilməyəcəyiniz deməkdir
+
+00:30:36.559 --> 00:30:39.039
+ əvvəllər olduğu kimi bir radio kulbasına girə bilərik
+
+00:30:39.039 --> 00:30:43.679
+ bareldə hələ də dəniz məhsulları kimi bir mağazamız var
+
+00:30:43.679 --> 00:30:47.039
+ olan bir köhnə radio köşkü kimi bir parlaq mağaza var
+
+00:30:47.039 --> 00:30:50.399
+ içəri gir və sanki bir kondensatora ehtiyacım var bəli
+
+00:30:50.399 --> 00:30:52.880
+ və sanki bura getmisən, tuman kimi olduğunu bilirsən
+
+00:30:52.880 --> 00:30:57.279
+ və kondansatörlərin və rezistorların çekmecələri və digər hər şey diodlar və hər şey
+
+00:30:57.279 --> 00:31:01.519
+ ancaq 20 dollarlıq bir dəst almaq üçün var
+
+00:31:01.519 --> 00:31:04.960
+ hər növ ümumi şeylər və bununla birlikdə gələn bir dəst
+
+00:31:04.960 --> 00:31:07.440
+ çörək taxtası və çörək taxtası ilə gəlir
+
+00:31:07.440 --> 00:31:11.279
+ şeylərdən biri budur ki, bəli, onu dizayn edəcəyəm, amma bir hissəsini istəyirəm
+
+00:31:11.279 --> 00:31:14.640
+ planlaşdırma prosesinin anlamaq üçün çörək taxtasından istifadə etməsi dediyiniz kimidir
+
+00:31:14.640 --> 00:31:17.519
+ dövrə necə gedəcək və bu çox yaxşı bir öyrənmə olacaq
+
+00:31:17.519 --> 00:31:19.840
+ Luka üçün təcrübə, çünki hey bu kimi olacaqlar
+
+00:31:19.840 --> 00:31:23.200
+ bu necə işləyir və gəlin bunu sınayaq, sonra da edək
+
+00:31:23.200 --> 00:31:26.080
+ bilirsiniz ki, əslində öz parçalarımızı etmədən orada sınaqdan keçirə biləcəyik
+
+00:31:26.080 --> 00:31:30.880
+ arduino və arduino bir növü olduğunu qeyd etdiyiniz həqiqətən səliqəli
+
+00:31:30.880 --> 00:31:34.159
+ sanki bir nəzarətçi olduğu üçün bəli bilirsiniz
+
+00:31:34.159 --> 00:31:37.200
+ moruq pi və ya başqa bir lövhəli kompüter doğrudur
+
+00:31:37.200 --> 00:31:41.200
+ bir əməliyyat sistemi və bir arduino sizin kimi hər şeyə sahib olan real kompüter
+
+00:31:41.200 --> 00:31:45.519
+ yalnız proqramı çox spesifik bir vəzifə yerinə yetirmək üçün möhkəm bir vəziyyətdir
+
+00:31:45.519 --> 00:31:48.960
+ və cavab verəcək və bunun belə olduğunu düşünürəm
+
+00:31:48.960 --> 00:31:51.840
+ niyə bir arduino üçün həqiqətən yaxşı işləyəcək
+
+00:31:51.840 --> 00:31:55.679
+ uh faydasız bir qutu üçün ona görədir
+
+00:31:55.679 --> 00:31:59.200
+ ya açıqdır, ya da doğru deyil və açıqdırsa bunu edin
+
+00:31:59.200 --> 00:32:03.200
+ və sonra çox sadə bir proqramlaşdırma doğru olduğunu söndürəcəkdir
+
+00:32:03.200 --> 00:32:09.919
+ rəqəmli dörd vergül salam salam nöqtəli vergül yaz və sonra bizik
+
+00:32:09.919 --> 00:32:13.519
+ min saniyə olan bir saniyə təxirə salınacaq
+
+00:32:13.519 --> 00:32:17.039
+ və sonra bu sətri indi kopyalayacağıq
+
+00:32:17.039 --> 00:32:20.960
+ Sizcə yüksək, aşağı ilə müqayisədə nə deməkdir, hansını buraya qoyacağam
+
+00:32:20.960 --> 00:32:27.440
+ bəli açıq və ya qapalı bir təxmin, beləliklə dövrəm indi belə görünür
+
+00:32:27.440 --> 00:32:32.399
+ və bunu sadəcə usb gücünə bağlayacağam, ona görə qoşmayacağam
+
+00:32:32.399 --> 00:32:36.240
+ kompüteri bu cihazı həqiqətən gücləndirmək və olub olmadığını görmək istəyirəm
+
+00:32:36.240 --> 00:32:40.840
+ proqramımı işə salır və belə olarsa bu işığı görməliyik
+
+00:32:40.840 --> 00:32:45.279
+ orada sanki hər saniyədə səliqəli olduğuna görə gedirik
+
+00:32:45.279 --> 00:32:49.600
+ əslində dövrəni kifayət qədər tez yaratdı və yaratdı
+
+00:32:49.600 --> 00:32:53.919
+ İndi bu işığa nə edəcəyini izah edəcək bir proqram və bunu çox çox izah etdik
+
+00:32:53.919 --> 00:32:57.760
+ sadəcə təkrar açın və söndürün, ancaq sizsiniz
+
+00:32:57.760 --> 00:32:59.679
+ bəyənməli olduğunuz öz dövrənizi etmək
+
+00:32:59.679 --> 00:33:04.159
+ bunu özünüz proqramlaşdırmalısınız, necə edəcəyinizi anlamalısınız
+
+00:33:04.159 --> 00:33:07.919
+ vay bu layihəni davam edən bir iş kimi görmək istəyirəm
+
+00:33:07.919 --> 00:33:11.840
+ tamam, sonra görün necə bir araya gəldi bəli yaxşı səslənir
+
+00:33:11.840 --> 00:33:16.559
+ Buradakı topluluğumuzu şousumuzda və uyğunsuzluq serverimizdə qeyd etdik
+
+00:33:16.559 --> 00:33:20.320
+ xüsusən icma jeff-ə toxundum
+
+00:33:20.320 --> 00:33:23.760
+ içəri gir və dövrələr üçün fikirlərimi deyim və bəli
+
+00:33:23.760 --> 00:33:27.519
+ kimi şeylər var və cəmiyyətimizdə ədalətli insanlar var
+
+00:33:27.519 --> 00:33:32.559
+ kimi imkanları və bunları anlamaq qədər buraya qədər
+
+00:33:32.559 --> 00:33:36.320
+ şeylərin növləri, buna görə də mənim üçün həqiqətən faydalı oldu
+
+00:33:36.320 --> 00:33:38.880
+ Öyrəndiyim üçün oh tamamən istifadə etməyi planlaşdırıram
+
+00:33:38.880 --> 00:33:42.640
+ icma məni böcəklərdən istifadə edərək işləyir, bəli və bu insanlardan biri olsanız
+
+00:33:42.640 --> 00:33:46.159
+ camaat indi hey əlinizi qaldırın və evet deyin
+
+00:33:46.159 --> 00:33:48.480
+ bütün bunların necə işlədiyini anlamaqda kömək etmək istərdim
+
+00:33:48.480 --> 00:33:52.640
+ və bu, həqiqətən səliqəli olacağını düşündüyüm bir şeydir
+
+00:33:52.640 --> 00:33:54.320
+ Şou üçün xüsusiyyət də öyrəndiyiniz qədər
+
+00:33:54.320 --> 00:33:57.200
+ Bəli, şübhəsiz ki, bizi o Jeff-də yayımlayın, şübhəsiz ki, həqiqətən maraqlanacağam
+
+00:33:57.200 --> 00:34:00.159
+ şeylərin necə getdiyini bilmək üçün bəli arxasındakı şeyləri göndərəcəyəm
+
+00:34:00.159 --> 00:34:06.320
+ mənzərələr yararsız bir qutu başqa hər hansı bir fikir var hələ həyəcanlanıram
+
+00:34:06.320 --> 00:34:09.520
+ nəyisə düşündüyüm kimi ixtira etdiyim zaman
+
+00:34:09.520 --> 00:34:13.200
+ həqiqətən istədiyim kimi olduğum anlardan birini yaşadınmı?
+
+00:34:13.200 --> 00:34:16.240
+ bunu edəcək bir şey var idi, amma mövcud deyil
+
+00:34:16.240 --> 00:34:20.079
+ 3d çap mənim üçün maraqlıdır, çünki mən elə şeylər yaradıram
+
+00:34:20.079 --> 00:34:23.520
+ hələ mövcud deyil ii həqiqətən düşünməmişəm
+
+00:34:23.520 --> 00:34:27.520
+ mövcud olan və olmayan şeyə gəlincə
+
+00:34:27.520 --> 00:34:29.919
+ um
+
+00:34:30.960 --> 00:34:34.000
+ yox həqiqətən fikirləşmədim ki, bəzi fikirlər ortaya çıxacaq
+
+00:34:34.000 --> 00:34:37.040
+ Bəli və bir çox şeyə sahib olduqlarını mütləq paylaşın
+
+00:34:37.040 --> 00:34:43.679
+ Bəli, mən həmişə evdə bir səs sistemi qurmaq istəyirdim
+
+00:34:43.679 --> 00:34:48.879
+ um ilə əlaqəli olan amazon cihazımızı və bu kimi şeyləri tanıyırsınız
+
+00:34:48.879 --> 00:34:52.079
+ amma sensörlerinin harada olmasını istərdim
+
+00:34:52.079 --> 00:34:56.320
+ bir otaqdan digərinə gedəndə hərəkət sensoru işə başlayır və qapanacaq
+
+00:34:56.320 --> 00:34:59.760
+ bir otaq hoparlörlərindən kənarlaşdırın və getdiyim yerə əlavə edin
+
+00:34:59.760 --> 00:35:02.000
+ bu yol daha inkişaf etmiş, amma yəqin ki
+
+00:35:02.000 --> 00:35:05.119
+ bunu istədiyim yeri düşünə biləcəyim ancaq danışdığınızı görən
+
+00:35:05.119 --> 00:35:08.960
+ bu barədə və sonra pasif bir infraqırmızı sensor istifadə edə biləcəyinizi düşünürəm
+
+00:35:08.960 --> 00:35:14.640
+ yep, hərəkət sensorlarında istifadə olunan bir lazer sensoru istifadə edə bilərsiniz
+
+00:35:14.640 --> 00:35:19.200
+ pir çox ucuzdur bəli bəli və buna bənzər bir az sensordur
+
+00:35:19.200 --> 00:35:22.880
+ tamam hərəkət var idi bir şey et hə belə bir şey yarada bilərsən
+
+00:35:22.880 --> 00:35:27.520
+ yenə də yalnız hoparlörün olub olmadığını nəzarət edən bir röle ilə
+
+00:35:27.520 --> 00:35:31.599
+ tamamlanmış bir dövrə və ya bəli, belə ki, yalnız a
+
+00:35:31.599 --> 00:35:36.160
+ bir gücləndirici vasitəsi ilə bir-birinə bağlanan hoparlör dəsti rölelər qura bilərsiniz
+
+00:35:36.160 --> 00:35:40.000
+ hərəkətlə idarə edə biləcəyiniz pir sensorları ilə
+
+00:35:40.000 --> 00:35:44.160
+ Bəli yaxşı və 10 dəqiqə heç bir hərəkət yoxdursa hoparlörü söndürün
+
+00:35:44.160 --> 00:35:45.760
+ avtomatik və ya buna bənzər bir şey
+
+00:35:45.760 --> 00:35:49.200
+ tam olaraq bu cür fikirlər kimi, bacardığınız çox şey var
+
+00:35:49.200 --> 00:35:51.359
+ başa düşməyə başladıqda sonra et
+
+00:35:51.359 --> 00:35:55.839
+ hər hansı bir şeyin pozulduğu bütün tərəfi var və onu düzəldə bilərsiniz
+
+00:35:55.839 --> 00:35:59.200
+ bu yaxşı bir hissdir və biz bunu artıq etdik
+
+00:35:59.200 --> 00:36:02.000
+ Bəli, yaxşı ki, o kiçik batareyanı aldığınızı biləsən
+
+00:36:02.000 --> 00:36:07.280
+ test edənlər uh yükünü yoxlamaq istərlər, bəli, onlardan biri var və belədir
+
+00:36:07.280 --> 00:36:09.200
+ oğlum kalkulyatorunu qurarkən gülməli
+
+00:36:09.200 --> 00:36:12.560
+ batareyaların işlədiyindən əmin deyildik və heç bir şey almırdıq
+
+00:36:12.560 --> 00:36:15.760
+ Mən buna bənzəyirəm ki, ölsə də ümumiyyətlə əldə etmirik
+
+00:36:15.760 --> 00:36:18.640
+ qırmızıya atılır, amma heç bir şey yox idi, ona görə açdıq
+
+00:36:18.640 --> 00:36:22.960
+ gerçək əlaqənin qırıldığı ortaya çıxdı
+
+00:36:22.960 --> 00:36:27.359
+ indi bəli heç bir ipucu yoxdur və oğlum oh kimi bunu düzəldə bilərəm
+
+00:36:27.359 --> 00:36:30.240
+ onu düzəltdik və yenidən bir araya gətirdik, sonra işləyirik və oh kimi
+
+00:36:30.240 --> 00:36:34.000
+ Bəli, ölü bir batareyadır Bəli, bununla da əlaqələndirə bilərəm a
+
+00:36:34.000 --> 00:36:38.160
+ podkastlar üçün yastıq hoparlör tamam və uh çünki bilirsən
+
+00:36:38.160 --> 00:36:40.880
+ telimə bağlanaraq telefonuma çəkilir
+
+00:36:40.880 --> 00:36:45.119
+ yep və düz çıxardı, buna görə bu qədər sadə bir şeydir, amma tamamilə nəyəm
+
+00:36:45.119 --> 00:36:48.720
+ etmədim başqa birini almadım xeyr xeyr götürmədim
+
+00:36:48.720 --> 00:36:52.480
+ ayırdım və yenidən lehimlədim və möhkəmləndirdim
+
+00:36:52.480 --> 00:36:56.160
+ belə bir daha olmazdı oh gözəl onu özündən daha yaxşı etdi
+
+00:36:56.160 --> 00:37:00.240
+ fikrini e-tullantı kimi şeylərə yönəltdi bəli və kiməsə bənzəyir
+
+00:37:00.240 --> 00:37:04.960
+ TV və ya kompüter monitorlarından xilas olmaq şansları var
+
+00:37:04.960 --> 00:37:08.240
+ hələ də işləyən ata, içəridə yalnız bir şey qırıldı
+
+00:37:08.240 --> 00:37:12.400
+ bunu düzəldə biləcəyimə bənzəyirəm, bəli, bu barədə düşünürsən və onun təkərləri belədir
+
+00:37:12.400 --> 00:37:15.599
+ sonuncunu döndüm və bunları edə bilərəm, sonra satıram
+
+00:37:15.599 --> 00:37:20.160
+ onlara 12 yaşında bir karyera var
+
+00:37:20.160 --> 00:37:22.960
+ bir sıra
+
+00:37:23.599 --> 00:37:27.359
+ bu qabiliyyətlərə sahib olmaq həqiqətən dəyərlidir
+
+00:37:27.359 --> 00:37:30.960
+ ona görə onu 12 yaşında olan növbəti uh üçün hazırlayacağam
+
+00:37:30.960 --> 00:37:38.560
+ səkkiz altı il təqaüdə çıxıram bir monitor gəldi bilmirəm
+
+00:37:38.560 --> 00:37:42.960
+ bəlkə də 23 düym və ya 24 düym geniş ekranlı gözəl bir monitor
+
+00:37:42.960 --> 00:37:47.359
+ e-tullantı kimi gəldi və buna görə mən də buna bənzəyirəm
+
+00:37:47.359 --> 00:37:50.720
+ bir nəzər salacağam və buna görə qızım və mən də baxdıq
+
+00:37:50.720 --> 00:37:57.280
+ və yandırılmış tək bir kondansatör var idi, ona görə də onlayn oldum və
+
+00:37:57.280 --> 00:37:59.920
+ Paketlərdə satdıqları kondansatörlərdən birini aldım
+
+00:37:59.920 --> 00:38:03.599
+ üç və 12 üçün on iki dollar idi
+
+00:38:03.599 --> 00:38:07.760
+ üç nəfərlik bir paket aldıq, bu kondansatörlərdən birini əvəzlədik və monitor belədir
+
+00:38:07.760 --> 00:38:13.520
+ indi qızımın masasında otururam canım heyrətamiz çox gözəl
+
+00:38:13.520 --> 00:38:16.720
+ və o tamamilə haqlıdır, ancaq jeff-i düzəldə bilməzsən
+
+00:38:16.720 --> 00:38:19.920
+ deyək ki, bir şey elektron tullantıya çevrilir və ya bir şey tapdığınızı bilirsiniz
+
+00:38:19.920 --> 00:38:22.320
+ kimsənin edə bilmədikləri üçün atdıqları yolun kənarı
+
+00:38:22.320 --> 00:38:26.480
+ bunu necə düzəldəcəyini bil, bəlkə də düzəltmək daha çoxdur
+
+00:38:26.480 --> 00:38:30.079
+ bir çox halda yenisini almaqdan baha başa gəlir
+
+00:38:30.079 --> 00:38:35.119
+ üm düzəldə bilməsən belə, soyutma deyiləni edə bilərsən
+
+00:38:35.119 --> 00:38:39.440
+ bu, belə ki, bütün yaxşı komponentləri və
+
+00:38:39.440 --> 00:38:43.119
+ onları bir çekmece təşkilatçısına qoyun bəli, sonra öz radioya sahib ola bilərsiniz
+
+00:38:43.119 --> 00:38:46.880
+ bütün bu fərqli hissələrin çekmecelerini aldığınız evdə kulba
+
+00:38:46.880 --> 00:38:50.079
+ və sonra bir şey pozulduqda 12 xərcləmək lazım deyil
+
+00:38:50.079 --> 00:38:53.280
+ Onları almaq üçün onlayn olsaydım kaş ki, bu işə girəcəyini bilmirdim
+
+00:38:53.280 --> 00:38:57.040
+ çünki yayda təxminən dörd kompüterim var idi
+
+00:38:57.040 --> 00:39:00.320
+ Bir neçə proyektoru hamısını e-tullantıya götürdük
+
+00:39:00.320 --> 00:39:03.760
+ Beləliklə oh, sökə bilərdim ki, bəli onları əldə et
+
+00:39:03.760 --> 00:39:07.119
+ oh yaxşı yaşadığımız hissələr və hə dəqiq öyrənirik
+
+00:39:07.119 --> 00:39:10.960
+ çox sərin, bizi mütləq şəkildə xəbərdar edin və aşağıdakı şərhləri bizə izah edin
+
+00:39:10.960 --> 00:39:13.359
+ yaşadığınız bəzi istismarları haqqında
+
+00:39:13.359 --> 00:39:18.560
+ uh bu mövzu ilə əlaqədar olaraq və əgər varsa belədir
+
+00:39:18.560 --> 00:39:20.880
+ sizi maraqlandıran bir şey, heç içəri girmədiyiniz
+
+00:39:20.880 --> 00:39:24.720
+ hey aşağıda da fikir bildirmək istərdik və sizinlə görüşmək istərdik
+
+00:39:24.720 --> 00:39:27.920
+ jeff olaraq bu prosesin bir hissəsi olaraq öyrənir
+
+00:39:27.920 --> 00:39:32.079
+ Mən də öyrənirəm və getdikcə daha çox bu növlərə yiyələnirəm
+
+00:39:32.079 --> 00:39:36.800
+ komponent təmiri və dövrə lövhələri və başqa hər şey kimi
+
+00:39:36.800 --> 00:39:41.359
+ çox əyləncəli, bəli, bu böyük bir hobbi və əgər varsa, gözəl bir karyera
+
+00:39:41.359 --> 00:39:45.200
+ həqiqətən bunu da etmək istəyirəm, ona görə də eşitmək istədiyim oğlun üçün yaxşıdır
+
+00:39:45.200 --> 00:39:49.680
+ ümid etdiyim zaman bundan necə zövq alır?
+
+00:39:49.680 --> 00:39:53.359
+ 13 üstəgəl gələn il onu studiyaya gətirə bilərsiniz
+
+00:39:53.359 --> 00:39:56.560
+ və necə etdiyini bizə göstərə bilər
+
+00:39:56.560 --> 00:40:00.480
+ çox yaxşı səslənir, bunu baş verməyə, xəbər otağına aparmalıyıq
+
+00:40:00.480 --> 00:40:02.960
+ becca həftə üçün ən yaxşı xəbərlərimiz var
+
+00:40:02.960 --> 00:40:08.800
+ burada o 5 kateqoriyalı televiziya xəbər otağında gələnlər burada
+
+00:40:08.800 --> 00:40:12.000
+ hakerlər güzəştə getmək üçün ciddi bir Windows böcəyi istifadə edirlər
+
+00:40:12.000 --> 00:40:17.280
+ düzəldilməmiş serverlər üç javascript paketi npm-dən silindi
+
+00:40:17.280 --> 00:40:22.560
+ zərərli kod nokia kodunu ehtiva etdiyi üçün portal a qurmaq tapşırılmışdır
+
+00:40:22.560 --> 00:40:27.040
+ Ayda yeni 4g mobil şəbəkə yeni 80
+
+00:40:27.040 --> 00:40:32.240
+ xiaomi-dən watt simsiz şarj texnologiyası zehinlərimizə təsir edir
+
+00:40:32.240 --> 00:40:36.240
+ moruq pi hesablama modulu 4 buraxıldı biz edəcəyik
+
+00:40:36.240 --> 00:40:40.720
+ xüsusiyyətləri və bunun sənaye iot üçün şeyləri necə dəyişdirdiyini bildirin
+
+00:40:40.720 --> 00:40:44.000
+ bütün təfərrüatları və bu həftə kripto küncündə qalın
+
+00:40:44.000 --> 00:40:48.640
+ bu 5 kateqoriyalı televiziya xəbər otağıdır
+
+00:40:48.640 --> 00:40:52.079
+ həftənin ən yaxşı texnoloji hekayələrini kiçik bir linux ilə əhatə edir
+
+00:40:52.079 --> 00:40:54.480
+ qərəz
+
+00:40:56.240 --> 00:41:00.319
+ redaksiyadan mən becca fergusonam
+
+00:41:00.720 --> 00:41:03.920
+ hakerlər güzəştə getmək üçün ciddi bir Windows böcəyi istifadə edirlər
+
+00:41:03.920 --> 00:41:07.920
+ düzəldilməmiş serverlər ən vacib Windows zəifliklərindən biridir
+
+00:41:07.920 --> 00:41:10.400
+ Bu il açıqlanan hücum aktiv hücum altındadır
+
+00:41:10.400 --> 00:41:14.480
+ hər kəs üçün etimadnaməni saxlayan arxa qapı serverlərini sınayan hackerlar tərəfindən
+
+00:41:14.480 --> 00:41:18.480
+ bir şəbəkədəki istifadəçi və inzibati hesab
+
+00:41:18.480 --> 00:41:23.119
+ tədqiqatçılar bu zəifliyə xerologon adı verdilər, çünki hücumlar işləyir
+
+00:41:23.119 --> 00:41:27.200
+ şəbəkədən istifadə edən bir sıra mesajlarda bir sıra sıfır göndərmək
+
+00:41:27.200 --> 00:41:30.720
+ Windows serverlərinin a üçün etibar etdiyi giriş protokolu
+
+00:41:30.720 --> 00:41:34.560
+ son istifadəçilərin daxil olmasına imkan daxil olmaqla müxtəlif tapşırıqlar
+
+00:41:34.560 --> 00:41:38.560
+ zəiflik olduğu kimi bir şəbəkə xero girişinə
+
+00:41:38.560 --> 00:41:41.280
+ dublyajla keçən ay geniş maraq gördü
+
+00:41:41.280 --> 00:41:44.000
+ aşkar edən firma təcavüzkarlara verə biləcəyini söylədikdə
+
+00:41:44.000 --> 00:41:48.079
+ administratorların yaratmaq üçün istifadə etdiyi aktiv qovluqlara anında giriş
+
+00:41:48.079 --> 00:41:52.480
+ şəbəkə hesablarını aktiv qovluqları və domeni silin və idarə edin
+
+00:41:52.480 --> 00:41:55.599
+ Başladıqları nəzarətçilər ən çox arzu olunan mükafatlar arasındadır
+
+00:41:55.599 --> 00:42:00.480
+ bir dəfə qaçırıldıqları üçün təcavüzkarların kod yerinə yetirməsinə icazə verdikləri üçün hack
+
+00:42:00.480 --> 00:42:03.839
+ bütün qoşulmuş maşınlarda sursat microsoft
+
+00:42:03.839 --> 00:42:09.280
+ cümə günü avqust ayında təhlükəsizlik qüsurunu yamaqladı kevin beaumont
+
+00:42:09.280 --> 00:42:12.480
+ müstəqil bir tədqiqatçı kimi fəaliyyət göstərir
+
+00:42:12.480 --> 00:42:16.480
+ bir blog yazısında saxlamaq üçün istifadə etdiyi bal çanağına edilən hücumları təsbit etdiyini söylədi
+
+00:42:16.480 --> 00:42:19.680
+ hackerların istifadə etdiyi hücum hücumlarından xəbərdar oldu
+
+00:42:19.680 --> 00:42:24.160
+ Vəhşi, cazibe serverini yamamadığı zaman təcavüzkarlar istifadə edə bildilər
+
+00:42:24.160 --> 00:42:27.680
+ bir administrator parolunu uğurla dəyişdirmək üçün powerhell skript
+
+00:42:27.680 --> 00:42:31.920
+ və arxa qapıdakı server beaumont hücumun ortaya çıxdığını söylədi
+
+00:42:31.920 --> 00:42:36.480
+ bütün əmrlərin bir neçə saniyə içində tamamlanması ilə tamamilə ssenarili olmaq
+
+00:42:36.480 --> 00:42:40.160
+ bununla təcavüzkarlar uzaqdan icazə verən bir arxa qapı quraşdırdılar
+
+00:42:40.160 --> 00:42:44.079
+ istehza şəbəkəsi daxilindəki cihazlara inzibati giriş
+
+00:42:44.079 --> 00:42:48.400
+ təcavüzkarlar da davam edəcəkləri üçün uzaq masaüstünü aktivləşdirdilər
+
+00:42:48.400 --> 00:42:53.200
+ administrator daha sonra serverə yamalar qoysa belə uzaqdan giriş əldə etmək
+
+00:42:53.200 --> 00:42:57.520
+ orijinal kimliyi yoxlan insanlar domen qazanmaq üçün istismardan istifadə edə bilərlər
+
+00:42:57.520 --> 00:43:00.800
+ təcavüzkarların bacarığı olduğu müddətdə inzibati sənədlər
+
+00:43:00.800 --> 00:43:05.839
+ daxilində həssas bir domen nəzarətçisi ilə tcp əlaqələri qurun
+
+00:43:05.839 --> 00:43:10.160
+ bəzi hallarda təcavüzkarlar içəridə möhkəmlənmək üçün ayrı bir zəiflikdən istifadə edə bilərlər
+
+00:43:10.160 --> 00:43:13.359
+ bir şəbəkə və sonra götürmək üçün sıfır girişdən istifadə edin
+
+00:43:13.359 --> 00:43:17.599
+ etki alanı denetleyicisi üçün yaxşı bir yol nümunəsi hesab edirəm
+
+00:43:17.599 --> 00:43:20.319
+ şəbəkələrə daxil olmaq üçün bu cür skriptlər
+
+00:43:20.319 --> 00:43:27.839
+ şəbəkədəki köhnəlmiş kompüterlər və eyni zamanda sosial mühəndis fırıldaqçılar
+
+00:43:27.839 --> 00:43:31.040
+ bu e-poçtları ala biləcəyiniz kimi bir çox şey eşitmək
+
+00:43:31.040 --> 00:43:34.800
+ sizi bir müddətlə izləmək üçün aldatmağa çalışın
+
+00:43:34.800 --> 00:43:38.319
+ bir etimadnamə və ya buna bənzər bir şey daxil edin
+
+00:43:38.319 --> 00:43:44.720
+ Riskimizi və gördüyüm kədərli hadisəni görürəm
+
+00:43:44.720 --> 00:43:48.880
+ bunda bəzən insanlar yaxşı düşünürlər
+
+00:43:48.880 --> 00:43:52.319
+ o kompüteri yeniləməyimə ehtiyac yoxdur, çünki arxa otaqda kimsə var
+
+00:43:52.319 --> 00:43:55.680
+ həqiqətən istifadə edir bəli ya da oh buna ehtiyacımız var
+
+00:43:55.680 --> 00:43:58.800
+ Hələ də Windows XP var, çünki birimizlə problemimiz var
+
+00:43:58.800 --> 00:44:02.880
+ printerlər biz hələ çox Windows 7 görürük
+
+00:44:02.880 --> 00:44:06.960
+ sistemlər və bu bir faciədir
+
+00:44:06.960 --> 00:44:10.960
+ Windows 7 və ya Windows xp sisteminizi şəbəkənizdə açın
+
+00:44:10.960 --> 00:44:13.839
+ ondan qurtulun bəli baxın şey budur
+
+00:44:13.839 --> 00:44:20.480
+ bu sistemlərdə olduğu üçün microsoft eol və ya ömrün sonu dediyimiz şeyə sahibdir
+
+00:44:20.480 --> 00:44:24.240
+ bu əməliyyat sistemlərinin ömrünü başa vurdu
+
+00:44:24.240 --> 00:44:27.839
+ buna görə Windows 10-a yüksəlməli olduğunuzu söylədilər, yaxşı da yüksəltmək istəmirəm
+
+00:44:27.839 --> 00:44:32.000
+ Windows 10-a Windows 7-ni sevirəm. Bunu başa düşürəm və hörmət edirəm
+
+00:44:32.000 --> 00:44:37.119
+ Lakin burada problem hackerlar var
+
+00:44:37.119 --> 00:44:41.599
+ İndi bu əməliyyat sistemlərindən istifadə edə bilərik
+
+00:44:41.599 --> 00:44:45.839
+ və bunu etdikləri zaman istismar tapdıqca
+
+00:44:45.839 --> 00:44:48.960
+ baş verən bir neçə şey var
+
+00:44:48.960 --> 00:44:55.520
+ bu istismarları ya verin, ya da satın, ya da yalnız sərbəst buraxıldıqları ikisini
+
+00:44:55.520 --> 00:45:01.520
+ istər qaranlıq vebdən, istərsə də github üzərindən xalqa
+
+00:45:01.520 --> 00:45:07.839
+ təhlükəsizlik araşdırması kimi və indi bu hackerları istəsəniz edəcəkik
+
+00:45:07.839 --> 00:45:11.599
+ onları belə adlandırın, amma bir çox halda real olaraq dediyimiz şey olur
+
+00:45:11.599 --> 00:45:16.800
+ ssenari kitties və bunlar um
+
+00:45:16.800 --> 00:45:21.680
+ hackerlardan belə bəli, amma çox məlumat sahibi olmaları lazım deyil
+
+00:45:21.680 --> 00:45:28.160
+ istismar açıq şəkildə bilinir və başa düşüləndir
+
+00:45:28.160 --> 00:45:32.319
+ bir əməliyyat sistemi üçün mövcud olan istismar var
+
+00:45:32.319 --> 00:45:36.880
+ nə baş verəcəyini gözləyirik, əməliyyat sistemi satıcısını microsoft-da gözləyirik
+
+00:45:36.880 --> 00:45:41.200
+ bu işi düzəltmək üçün istismar edən yamaq
+
+00:45:41.200 --> 00:45:44.560
+ və Windows 10-da belədir, təəssüf ki
+
+00:45:44.560 --> 00:45:49.040
+ eol olanlar bəzən bir eol əməliyyat sistemində belə deyil
+
+00:45:49.040 --> 00:45:54.079
+ oh yaxşı eşidirəm dəstəyə ehtiyacım yoxdur microsoft dəstəyi sona çatdırdı
+
+00:45:54.079 --> 00:45:57.440
+ eşitdiklərimizi bəli Windows 7 dəstəyini sona çatdırdılar. sona çatdılar
+
+00:45:57.440 --> 00:46:01.920
+ windows xp üçün dəstək oh, amma heç vaxt dəstəyə zəng etmək məcburiyyətində qalmadım
+
+00:46:01.920 --> 00:46:04.640
+ bunun öhdəsindən gələ bilərəm ki, onlar olduqları deyil
+
+00:46:04.640 --> 00:46:06.640
+ dediklərindən ümumiyyətlə danışmaqdır
+
+00:46:06.640 --> 00:46:12.640
+ istismarların əhəmiyyəti olmadığı yamaları düzəltməyəcəklər
+
+00:46:12.640 --> 00:46:16.160
+ nə qədər şiddətli olduqları, nə qədər asan olduqları vacib deyil
+
+00:46:16.160 --> 00:46:20.079
+ istismar edin, beləliklə şəbəkənizdə bir windows 7 maşını var
+
+00:46:20.079 --> 00:46:26.319
+ belə olmayan hakerlərdən birinə giriş verirsiniz
+
+00:46:26.319 --> 00:46:31.040
+ istismarları ictimaiyyətə məlum olduğu üçün hack etməkdə çox yaxşı olmaq
+
+00:46:31.040 --> 00:46:36.240
+ yep bəzən alətlərin bir hissəsidir, bəzən pulsuz yükləyə bilərlər
+
+00:46:36.240 --> 00:46:41.440
+ alət və Windows 7 əməliyyat sistemini bir yoxlama ilə istəməyimi söyləyə bilərlər
+
+00:46:41.440 --> 00:46:46.400
+ və beləliklə Windows 7 qutusuna girirlər və ya işçilərinizdən birini aldatmışlar
+
+00:46:46.400 --> 00:46:50.880
+ arxada yalnız anbarda işləyən biri olsalar da
+
+00:46:50.880 --> 00:46:55.119
+ kimisə indi onlara giriş imkanı verən bir fayl açmaq üçün aldatdılar
+
+00:46:55.119 --> 00:46:59.359
+ windows 7 maşın windows xp maşın və ya arxa otaqdakı maşın
+
+00:46:59.359 --> 00:47:03.359
+ heç bir əhəmiyyəti yoxdur və biz o mikrosoftu öyrənirik
+
+00:47:03.359 --> 00:47:08.400
+ serverlər artıq bir istismara sahibdirlər
+
+00:47:08.400 --> 00:47:13.599
+ zərərli tərəf şəbəkədəki istənilən kompüterə giriş əldə edə bilər
+
+00:47:13.599 --> 00:47:20.480
+ artıq bütün şəbəkəyə domen administratoru giriş əldə edə bilərlər
+
+00:47:20.480 --> 00:47:25.359
+ indi qorxunc indi windows 10 maşın artıq deyil
+
+00:47:25.359 --> 00:47:31.440
+ təhlükəsiz, çünki sanki onlara şəbəkənizə giriş verdiniz
+
+00:47:31.440 --> 00:47:39.200
+ onlar bir domen administratoru, oh orada sadəcə pis xəbər olduğunu görün
+
+00:47:39.200 --> 00:47:42.319
+ yaxşı pis xəbər niyə fidyə proqramı bir şeydir
+
+00:47:42.319 --> 00:47:46.400
+ çünki indi nə edirlər, tamam bu şəbəkəyə giriş qazandım
+
+00:47:46.400 --> 00:47:49.599
+ Bu şəbəkəyə qaranlıq veb girişdə satacağam
+
+00:47:49.599 --> 00:47:56.640
+ bunu qəsəbələr ilə um ilə, bəli şəhərlərlə birlikdə görürsən
+
+00:47:56.640 --> 00:48:00.000
+ heç bir şey etməyən orijinal ssenari kitty idi
+
+00:48:00.000 --> 00:48:03.680
+ o, yalnız daxil olmaq istədiklərini istəyirlər
+
+00:48:03.680 --> 00:48:07.119
+ proqramlarını quraşdırın və çıxın və sonra satış satın
+
+00:48:07.119 --> 00:48:11.040
+ doğrudur, çünki bu sürətli puldur, buna görə insanlar niyə bunu pul üçün edirlər
+
+00:48:11.040 --> 00:48:15.119
+ və bunu belə edirlər, belə ki um bəli sən başa düşməlisən
+
+00:48:15.119 --> 00:48:18.319
+ şeyləri yeniləyin, belə ki, yalnız sürətli bir düşüncə olduğunu biləsiniz
+
+00:48:18.319 --> 00:48:22.079
+ Şəbəkənizdə köhnəlmiş maşınlarınız varsa hey düşünmək
+
+00:48:22.079 --> 00:48:25.599
+ onları çıxarın və heyətinizi kiber mövzusunda öyrədin
+
+00:48:25.599 --> 00:48:29.119
+ təhlükəsizlik tətbiqləri fişinq dolandırıcılığının nə olduğunu başa düşür
+
+00:48:29.119 --> 00:48:32.720
+ axı yaxşı bilirsən kimsə bir linki vurub indi
+
+00:48:32.720 --> 00:48:34.880
+ kompüter kompüterləri virusa yoluxdu, ancaq kompüterləri
+
+00:48:34.880 --> 00:48:41.839
+ şəbəkənizdə amma o şahzadənin pulunun yarısını alacağam
+
+00:48:41.839 --> 00:48:45.359
+ tam orada başqa bir qurd var Jeff
+
+00:48:45.359 --> 00:48:50.000
+ ancaq sisteminizə baxmaq və demək bu cür şeylərə gəldikdə məni nəzərdə tuturam
+
+00:48:50.000 --> 00:48:52.559
+ oh yeddi səkkiz xərcləmək istəmirəm
+
+00:48:52.559 --> 00:48:55.599
+ yeni bir kompüter üçün yüz dollar, bunu yeniləməkdən narahat olmayacağam
+
+00:48:55.599 --> 00:49:00.000
+ uzun müddətdə və ya qısa müddətdə daha çox xərc çəkəcəksiniz
+
+00:49:00.000 --> 00:49:05.040
+ um xeyli uzun müddət sisteminizə bir dəfə yamaq verilməsə
+
+00:49:05.040 --> 00:49:09.200
+ aşağı və kənarda ola biləcəyiniz hər şeyə giriş əldə edirlər, amma mən
+
+00:49:09.200 --> 00:49:11.760
+ hər şeyə çatdıqda düşünürəm
+
+00:49:11.760 --> 00:49:13.760
+ bunu başa düşməyin vacib olduğunu düşünürəm
+
+00:49:13.760 --> 00:49:20.400
+ bir giriş nöqtəsi hər şeyə giriş olur, buna görə bir neçə yüz xərcləyin
+
+00:49:20.400 --> 00:49:24.160
+ dollar yeni kompüterinizi özünüzdən qurtarın nə edəcəyini bilmirəm
+
+00:49:24.160 --> 00:49:27.599
+ Yəni fərqli bir şeydir, hər bir iş üçün fərqli, hə, bir nəfər var idi
+
+00:49:27.599 --> 00:49:30.800
+ bu gün kim zəng edib tək bir windows 7 kompüterim olduğunu söylədi
+
+00:49:30.800 --> 00:49:33.920
+ yüksəltmək istəmirəm, çünki sadəcə oh işləyir
+
+00:49:33.920 --> 00:49:38.400
+ Yəni burada bir açıqlama var və burada becca bizimlə bir hekayə paylaşdı
+
+00:49:38.400 --> 00:49:43.200
+ bizə sadəcə ehtiyaclarının yalnız bir kompüterə giriş olduğunu söyləyir
+
+00:49:43.200 --> 00:49:47.599
+ və indi kompüterlərinizin bütün kompüterlərinə giriş əldə etdilər
+
+00:49:47.599 --> 00:49:52.240
+ yalnız samba yolu ilə deyil, səmimi və inşallah onlar kimi bir şəkildə
+
+00:49:52.240 --> 00:49:55.520
+ bunların arxa qapılarına yol tapmayın
+
+00:49:55.520 --> 00:49:59.200
+ kompüterlərdə administrator kimlik sənədləri yoxdur
+
+00:49:59.200 --> 00:50:03.119
+ hər şey edə biləcəkləri üçün şəbəkəniz
+
+00:50:03.119 --> 00:50:07.280
+ evimi düşünəndə istədikləri hər şey doğru
+
+00:50:07.280 --> 00:50:10.880
+ səni bitirdim deyə düşünürəm, yeddi var deyə düşünürəm
+
+00:50:10.880 --> 00:50:15.520
+ telefonlar və tabletlər daxil olmayan cihazlar və bu kimi əlaqəli şeylər
+
+00:50:15.520 --> 00:50:18.960
+ şəbəkəyə, bunların əldə edilməsini istəmirəm
+
+00:50:18.960 --> 00:50:21.200
+ Bəli, Jeff olsa da kifayət qədər stress keçirə bilmirəm
+
+00:50:21.200 --> 00:50:26.160
+ Yəni iş şərtləri baxımından daha çox ev istifadəçisi olduğunu düşünürəm
+
+00:50:26.160 --> 00:50:33.119
+ bir dəfə onlar var olduqda, bitmiş ola bilməzsən, çünki indi edə bilməzsən
+
+00:50:33.119 --> 00:50:36.240
+ o Windows maşınını bağla Windows 7 maşını yox onsuz da
+
+00:50:36.240 --> 00:50:40.319
+ hər şeyin içində, belə ki nə edirsən hər şeyi əvəz et
+
+00:50:40.319 --> 00:50:44.240
+ hər bir kompüteri silin, çünki hansı alətləri olduğunu bilmirsiniz
+
+00:50:44.240 --> 00:50:50.079
+ bahalı olduğunu quraşdırdılar, buna görə düşməyin
+
+00:50:50.079 --> 00:50:53.280
+ hər halda, həqiqətən ciddi insanlar olduğum pis bir istismar olduğuna ümid edirəm
+
+00:50:53.280 --> 00:50:56.720
+ Bunun pis olduğunu başa düşməyiniz üçün kifayət qədər vurğuladıq
+
+00:50:56.720 --> 00:51:02.720
+ beləliklə şəbəkə idarəçilərinizin yuxarıda olduqlarından və bunları başa düşdüklərindən əmin olun
+
+00:51:02.720 --> 00:51:05.520
+ qorunan və təhlükəsiz olduğunuz şeylər
+
+00:51:05.520 --> 00:51:09.920
+ bu cür təhdidlərə qarşı tamamilə becca'ya dönəcəyik
+
+00:51:09.920 --> 00:51:13.920
+ üç javascript paketi npm portalından silindi
+
+00:51:13.920 --> 00:51:18.000
+ mpm-dən gələn tövsiyələrə görə zərərli kod ehtiva edir
+
+00:51:18.000 --> 00:51:21.440
+ təhlükəsizlik qrupu üç javascript kitabxanasını açır
+
+00:51:21.440 --> 00:51:24.480
+ paketləri idxal edən inkişaf etdiricilərin kompüterlərindəki qabıqlar
+
+00:51:24.480 --> 00:51:29.200
+ Layihələrə daxil olan mərmilər təhdid aktyorlarının uzaqdan əlaqə qurmasına imkan verir
+
+00:51:29.200 --> 00:51:33.520
+ yoluxmuş kompüter və npm zərərli əməliyyatlar həyata keçirir
+
+00:51:33.520 --> 00:51:37.920
+ təhlükəsizlik qrupu, mərmilərin müəyyən bir əməliyyat sisteminə bağlı olmadığını söylədi
+
+00:51:37.920 --> 00:51:41.760
+ və Windows linux freebsd-ni güzəştə getmək üçün istifadə edilə bilər
+
+00:51:41.760 --> 00:51:46.960
+ openbsd və digər sistemlər hər üç paketin üzərinə yükləndi
+
+00:51:46.960 --> 00:51:50.880
+ 2018-də npm portalı və hər birinin yüzlərlə
+
+00:51:50.880 --> 00:51:55.839
+ o vaxtdan bəri yükləmələr paketin adları plutovs tire
+
+00:51:55.839 --> 00:52:01.920
+ ləng tire müştəri nodetest199 və nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ npm təhlükəsizlik qrupu buna sahib olan hər hansı bir kompüter olduğunu söylədi
+
+00:52:07.119 --> 00:52:10.800
+ paketin quraşdırıldığı və ya işlədildiyi tamamilə pozulmuş sayılmalıdır
+
+00:52:10.800 --> 00:52:15.280
+ o kompüterdə saxlanılan bütün sirlər və açarlar dərhal döndürülməlidir
+
+00:52:15.280 --> 00:52:20.559
+ fərqli bir kompüterdən paketin çıxarılması lazım olduğu kimi xəbərdarlıq edirlər
+
+00:52:20.559 --> 00:52:24.160
+ kompüterin tam nəzarəti kənar bir təşkilata verilmiş ola bilər
+
+00:52:24.160 --> 00:52:27.760
+ paketin silinməsinin zərərli olanların hamısını aradan qaldıracağına dair heç bir zəmanət yoxdur
+
+00:52:27.760 --> 00:52:32.079
+ mpm yükləməsindən qaynaqlanan proqram
+
+00:52:32.079 --> 00:52:36.079
+ təhlükəsizlik işçiləri müntəzəm olaraq javascript kitabxanalar kolleksiyasını tarar
+
+00:52:36.079 --> 00:52:41.839
+ hər hansı bir proqramlaşdırma dili üçün ən böyük paket deposu hesab olunur
+
+00:52:41.839 --> 00:52:46.079
+ kottecimdə yaxşı hüceyrə örtüyü əhatə edə bilmədiyim halda
+
+00:52:46.079 --> 00:52:52.240
+ nokia nasa ilə 4g gətirmək üçün nasa ilə işləyir
+
+00:52:52.240 --> 00:52:56.559
+ bir addım kimi ayda uzun müddətli bir insan varlığı yaratmaq
+
+00:52:56.559 --> 00:53:01.040
+ daşa mars istiqamətində müstəmləkəçilik və işə başlamaq üçün nasa edir
+
+00:53:01.040 --> 00:53:05.280
+ 14 şirkətə 370 milyon dollar uzatmaq
+
+00:53:05.280 --> 00:53:08.400
+ proqram üçün texnologiyanı təmin etmək
+
+00:53:08.400 --> 00:53:12.400
+ robot texnikasından enerji istehsalına və hətta kriogenikaya
+
+00:53:12.400 --> 00:53:16.240
+ lakin bu komandaların. ilə ünsiyyət qurmağı bacarmaları lazım olduğu mantiqidir
+
+00:53:16.240 --> 00:53:20.079
+ ana planet yeni şəbəkə dizayn ediləcək
+
+00:53:20.079 --> 00:53:23.760
+ xüsusilə həddindən artıq dözə bilən ay şərtləri üçün
+
+00:53:23.760 --> 00:53:28.559
+ istilik dəyişikliyi və radiasiya texnologiyası kiçik hüceyrədən də istifadə edəcəkdir
+
+00:53:28.559 --> 00:53:32.800
+ texnoloji adından da göründüyü kimi uzundan xeyli kiçikdir
+
+00:53:32.800 --> 00:53:37.599
+ burada görmək üçün istifadə etdikləri mobil qüllələr, daha az istifadə edirlər
+
+00:53:37.599 --> 00:53:41.200
+ plan bir ay endiricisinin daşıması üçün gücdür
+
+00:53:41.200 --> 00:53:44.480
+ 4g rabitə sistemi ay səthinə
+
+00:53:44.480 --> 00:53:50.400
+ 2022-ci ildə nokia'nın çan laboratoriyalarına 14.1 milyon dollar verildi
+
+00:53:50.400 --> 00:53:55.119
+ özləri üçün yeni bir 80 watt simsiz şarj texnologiyası
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi ağlımızı və moruq pi-ni əsir
+
+00:53:58.880 --> 00:54:03.839
+ hesablama modulu 4 buraxıldı, xüsusiyyətləri və necə olduğunu sizə xəbər verəcəyik
+
+00:54:03.839 --> 00:54:08.480
+ bu, sənaye iot becca üçün şeyləri dəyişdirir, bu hekayələr artıdır
+
+00:54:08.480 --> 00:54:25.839
+ robert burada kripto küncündə bir yerə getməyin
+
+00:54:28.079 --> 00:54:32.079
+ kripto dünyasına qayıt və kripto küncünə qayıt
+
+00:54:32.079 --> 00:54:35.920
+ keçən həftə banklardan bir neçə il sonra onları tanımayacağınız barədə danışdıq
+
+00:54:35.920 --> 00:54:39.839
+ Artıq və mən də sənə o qədər də çox danışmadım
+
+00:54:39.839 --> 00:54:43.119
+ bundan əvvəl Çin rəqəmsal valyutası edəcək
+
+00:54:43.119 --> 00:54:46.720
+ riemann arısını əvəzləyin və onsuz da tətbiq etdiklərini və
+
+00:54:46.720 --> 00:54:50.400
+ bu həftə Şenjendə bəzi sınaqları davam etdirirlər
+
+00:54:50.400 --> 00:54:54.400
+ bəzi inkişaflar olub və bu barədə danışmaq istərdim, çünki
+
+00:54:54.400 --> 00:54:58.319
+ sizin həyatınıza və mənim həyatınıza birbaşa təsir edəcəkdir
+
+00:54:58.319 --> 00:55:03.760
+ buna görə də beynəlxalq valyuta fondunun başı buraya dalaq
+
+00:55:03.760 --> 00:55:08.400
+ bu beynəlxalq təşkilatın, cristalina jojeva və adlı bir xanımdır
+
+00:55:08.400 --> 00:55:11.359
+ yeni bretton meşəsi ilə bağlı bir çıxış etdi
+
+00:55:11.359 --> 00:55:14.240
+ indi bir bretton meşəsi britaniyalı nə idi
+
+00:55:14.240 --> 00:55:17.440
+ sistem qurulan pul idarəsidir
+
+00:55:17.440 --> 00:55:21.760
+ arasında ticarət maliyyə münasibətləri qaydaları
+
+00:55:21.760 --> 00:55:25.920
+ bizim kimi ölkələr kanada qərbi avropa avstraliya və yaponiya
+
+00:55:25.920 --> 00:55:31.520
+ və beləliklə sistem tam danışıqlı bir sifarişin ilk nümunəsidir
+
+00:55:31.520 --> 00:55:36.640
+ müstəqil dövlətlər arasındakı pul münasibətlərini idarə etmək məqsədi daşıyırdı
+
+00:55:36.640 --> 00:55:40.079
+ bretton meşəsi və dəyişikliyindən danışır
+
+00:55:40.079 --> 00:55:45.760
+ o sistemi indi daha müasir bir şeyə çevirmək kifayətdir
+
+00:55:45.760 --> 00:55:51.200
+ bazar ertəsi günü bir neçə mərkəzi bankir ilə sözdə söhbət edən bir görüş oldu
+
+00:55:51.200 --> 00:55:56.319
+ sərhədlərarası ödənişlər, ancaq düşünsəniz hansı növə baxın
+
+00:55:56.319 --> 00:55:59.520
+ İnsanlar var idi, buna görə də başın var
+
+00:55:59.520 --> 00:56:03.040
+ Səudiyyə mərkəzi bankının hamısının mərkəzi var
+
+00:56:03.040 --> 00:56:06.480
+ banklar imf başı bizim başımız
+
+00:56:06.480 --> 00:56:10.319
+ mərkəzi bank və Malayziya mərkəzi bankının başçısı itkin
+
+00:56:10.319 --> 00:56:13.200
+ Avropanın maraqlı olduğu ancaq bir səbəbinin olacağını təxmin edirəm
+
+00:56:13.200 --> 00:56:16.880
+ ümumi su ödənişlərindən danışmaq üçün bir araya gəldilər
+
+00:56:16.880 --> 00:56:21.920
+ indi inanmıram ki, bu, əsl hekayədir
+
+00:56:21.920 --> 00:56:26.079
+ uh da Raul Paul adlı bir bəy tərəfindən nəşr olundu
+
+00:56:26.079 --> 00:56:31.119
+ bununla tamamilə eyni fikirdəyəm, ona görə düşüncələri tam olaraq necə düşündüyümdür
+
+00:56:31.119 --> 00:56:35.520
+ və danışdığı şey məhz bazar ertəsi baş verən bu görüşdür
+
+00:56:35.520 --> 00:56:39.119
+ köhnə bretton meşəsi ilə əlaqəni əvəz edəcək
+
+00:56:39.119 --> 00:56:46.319
+ Ölkələr arasında nə baş verəcəksə mərkəzi banklar belə görünür
+
+00:56:46.319 --> 00:56:50.720
+ əlbir olub bir sistem ortaya qoyacaq
+
+00:56:50.720 --> 00:56:54.000
+ hamısı arasında bir mərkəzi bank sistemi olduğu üçün biz olmayacağıq
+
+00:56:54.000 --> 00:56:56.640
+ dollarlıq mərkəzi bank sistemi olacaq
+
+00:56:56.640 --> 00:56:59.680
+ hər biri üçün bütün təşkilatlar üçün və sonra
+
+00:56:59.680 --> 00:57:04.160
+ orada şaxələndiriləcək və nə edə bilərsən
+
+00:57:04.160 --> 00:57:06.319
+ belə bir sistem maraqlı hissəsidir və
+
+00:57:06.319 --> 00:57:13.520
+ sevirəm, buna görə bank və maliyyə sahələrini dəyişdirəcək
+
+00:57:13.520 --> 00:57:17.920
+ maliyyə sistemi, çünki insanlarla birbaşa əlaqə qurursunuz
+
+00:57:17.920 --> 00:57:22.160
+ Bəli, bu anda mərkəzi bankın olduğu və ya olduğu kimi deyil
+
+00:57:22.160 --> 00:57:26.720
+ Kanadanın heç bir əhəmiyyəti yoxdur, bəzi siyasətlər ortaya çıxır və sonra olur
+
+00:57:26.720 --> 00:57:32.400
+ bu zəncirdən aşağı süzülür və fərdi olaraq sən
+
+00:57:32.400 --> 00:57:35.440
+ istifadəçi ehtimal ki, ən az miqdarda görürsən
+
+00:57:35.440 --> 00:57:37.680
+ pul və ehtimal ki, ən yüksək faiz dərəcəsi ilə
+
+00:57:37.680 --> 00:57:42.559
+ Başqa insanlar haqqında düşünə biləcəyiniz rəqəmsal ilə daha güclü bir şəkildə faydalanacaqdır
+
+00:57:42.559 --> 00:57:46.799
+ pul üstəgəl kriptovalyutalar və ya programlanabilir
+
+00:57:46.799 --> 00:57:50.400
+ indi çox şey edə biləcəyiniz pul
+
+00:57:50.400 --> 00:57:55.839
+ mərkəzi bank birbaşa insanların davranışına təsir edə bilər və bunlar necədir
+
+00:57:55.839 --> 00:58:00.400
+ bunu et, bəli, yaxşı bir şey deyə bilərlər, əgər bir restoran sahibiysənsə edə bilərsən
+
+00:58:00.400 --> 00:58:03.839
+ pulu birbaşa cibinə bizdən al, bəli artıq yoxdur
+
+00:58:03.839 --> 00:58:08.079
+ cəlb banklar bunu birbaşa edəcəyik, bunun mərkəzi bankın pulu ola bilər
+
+00:58:08.079 --> 00:58:12.240
+ faiz dərəcələrini bir uh instansiyasında və ya bir sənayedə dəyişə bilərlər
+
+00:58:12.240 --> 00:58:16.480
+ nə olacağını bir başqasına görə yüksək faiz dərəcəsi ola bilər
+
+00:58:16.480 --> 00:58:19.839
+ vergilərlə bəli irs ilə nə olacaq
+
+00:58:19.839 --> 00:58:22.079
+ çünki bunlarla birbaşa məşğul ola bilərlər
+
+00:58:22.079 --> 00:58:25.200
+ programlanabilen pul sayesinde vaxt alacaq
+
+00:58:25.200 --> 00:58:28.799
+ bunu son dərəcədə əldə etmək, amma olacaq
+
+00:58:28.799 --> 00:58:34.640
+ Gördüyünüz kimi birbaşa ödəmələr mümkün olacaq
+
+00:58:34.799 --> 00:58:41.119
+ burada da um bəli davranış iqtisadiyyatı haqqında danışırlar uh
+
+00:58:41.119 --> 00:58:45.359
+ izah edən bəzi iqtisadçılar vasitəsilə deyil
+
+00:58:45.359 --> 00:58:49.200
+ Hökümət nə etməli və nə etməli, çünki bu uğursuz oldu
+
+00:58:49.200 --> 00:58:52.160
+ keçmiş hamı belə deyir nə edirlər
+
+00:58:52.160 --> 00:58:56.400
+ etmək bir fikir növü və ya gənə vurmaq fikri bir facebook tipinə bənzəyir
+
+00:58:56.400 --> 00:58:59.520
+ insanlarla maraqlandığınız youtube fikri
+
+00:58:59.520 --> 00:59:03.280
+ sizinlə dost olmaq və ya insanların maraqlandığı yerlərdə
+
+00:59:03.280 --> 00:59:06.799
+ daha çox bəyənmə əldə etmək və beləliklə davranışınızı dəyişdirmək
+
+00:59:06.799 --> 00:59:10.079
+ daha çox bəyənməyə və eyni şeyə gəldikdə
+
+00:59:10.079 --> 00:59:13.839
+ pulla belə olacaq və hamısı tənzimlənəcəkdir
+
+00:59:13.839 --> 00:59:17.680
+ xarici dünyadan kimsə olmadan mərkəzi bank vasitəsilə
+
+00:59:17.680 --> 00:59:22.000
+ əhəmiyyətli dərəcədə təsir etmək şansı olan belədir
+
+00:59:22.000 --> 00:59:26.079
+ sonunda kimsə bilmir əlbətdə bunlara bənzəyəcək
+
+00:59:26.079 --> 00:59:31.200
+ İnsanlar sifarişlərarası ödənişləri müzakirə etmək üçün bir araya gəlirlər
+
+00:59:31.200 --> 00:59:36.079
+ uh son dərəcə maraqlı və uh əlbəttə ki, fantastik xəbərdir
+
+00:59:36.079 --> 00:59:39.040
+ uh bitcoin üçün, çünki bitcoin bunun xaricindədir
+
+00:59:39.040 --> 00:59:44.839
+ sistem uh bitcoini tənzimləyən kimsə yoxdur
+
+00:59:44.839 --> 00:59:48.400
+ mərkəzsizləşdirilmiş um, dəyişməz olduğunu yaxşı bilirsiniz
+
+00:59:48.400 --> 00:59:54.079
+ uh bitcoin xüsusiyyətləri, belə ki um bitcoin fantastik bir alternativdir
+
+00:59:54.079 --> 00:59:57.839
+ digər bütün kriptovalyutalar əsas olanlar mütləq yaxşı bir alternativdir
+
+00:59:57.839 --> 01:00:02.000
+ gəlin görək nə tərəzi gətirəcək, amma yaxşı alternativlər olacaq
+
+01:00:02.000 --> 01:00:06.480
+ mərkəzdən mərkəzə doğru
+
+01:00:06.480 --> 01:00:11.359
+ Mərkəzi banklar vasitəsi ilə pul köçürdüyüm üçün ümid edirəm ki, bunu maraqlı tapdınız
+
+01:00:11.359 --> 01:00:14.559
+ ümid edirəm bəyəndin və ümid edirəm səndən bir çatışmazlıq alacağam
+
+01:00:14.559 --> 01:00:18.799
+ və sizə fantastik bir həftə arzulayıram, buna görə izlədiyiniz üçün çox sağ olun
+
+01:00:18.799 --> 01:00:23.200
+ bye sağol robertə təşəkkür edirəm yalnız bir maddi məsləhət vermədiyimizi xatırladın
+
+01:00:23.200 --> 01:00:26.400
+ ancaq kriptovalyuta bazarında baş verənləri bölüşmək
+
+01:00:26.400 --> 01:00:29.599
+ hər zaman kriptovalyuta bazarlarının daim dəyişdiyini və
+
+01:00:29.599 --> 01:00:33.920
+ hər zaman uçucu olur, buna görə yalnız itirmək imkanınızda olanı sərf etməlisiniz
+
+01:00:33.920 --> 01:00:38.720
+ indi yenidən redaksiyada becca'ya təşəkkür edirəm robbi
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi, tükənmiş şəxsləri tam doldura bilən yeni bir şarj çekini elan etdi
+
+01:00:42.799 --> 01:00:48.480
+ ağıllı telefonu 20 dəqiqədən az bir müddətdə, amma heç bir tel olmadan sürətli edir
+
+01:00:48.480 --> 01:00:52.480
+ Şarj son illərdə və bir çox smartfonun əsas xüsusiyyətinə çevrildi
+
+01:00:52.480 --> 01:00:56.160
+ rahatlıq xatirinə simsiz şarj həqiqətən böyük ola bilər
+
+01:00:56.160 --> 01:00:59.920
+ lakin əlbətdə simsiz şarj adətən bir telefonu şarj edir
+
+01:00:59.920 --> 01:01:05.359
+ Oneplus 8 pro kimi bəzi telefonlar 10-15 vatt gücündədir
+
+01:01:05.359 --> 01:01:10.160
+ 40 vattadək simsiz şarj, lakin xiaomi'nin yeni şarj texnologiyası vəd edir
+
+01:01:10.160 --> 01:01:14.240
+ cəlbedici 80 watt simsiz suyu
+
+01:01:14.240 --> 01:01:18.319
+ bu, elana görə praktik baxımdan nə deməkdir
+
+01:01:18.319 --> 01:01:22.160
+ 80 watt me simsiz şarj texnologiyasını ortaya qoyur
+
+01:01:22.160 --> 01:01:26.720
+ Dörd min milliamperlik batareyanın yüzdə sıfır yükü olan bir smartfon
+
+01:01:26.720 --> 01:01:30.160
+ yalnız bir dəqiqədə yüzdə əlli faiz ödəməlidir
+
+01:01:30.160 --> 01:01:34.160
+ səkkiz dəqiqədə və 19 dəqiqədən sonra tamamilə doldurulur
+
+01:01:34.160 --> 01:01:37.599
+ nəhayət telefonumu dolduracaq bir şarj cihazı
+
+01:01:37.599 --> 01:01:43.359
+ sıfırdan yüzdə yüzə qədər mənim nahar fasiləm kimi gözəl olduğunu gör
+
+01:01:43.359 --> 01:01:48.079
+ bir oyun dəyişdiricisidir, uşaqlarım haqqında düşündüyümü və necə olduğumuzu təsəvvür edə bilərsən
+
+01:01:48.079 --> 01:01:51.440
+ telefonlar kimi hər yerdə açıq-aydın bu kimi etmək deməkdir
+
+01:01:51.440 --> 01:01:56.319
+ ən son və ən böyük texnika, amma hər zaman bir şeyi unutdum
+
+01:01:56.319 --> 01:01:59.520
+ telefonumu şarj cihazına qoyun, yoxsa hamısı üçün kifayət qədər uzun sürmür
+
+01:01:59.520 --> 01:02:02.720
+ gün və indi pandemiya ilə bilirsiniz əlbətdə mənim
+
+01:02:02.720 --> 01:02:07.599
+ Uşaqlar indi zorla evdə təhsil alırlar və hamı hazırdır
+
+01:02:07.599 --> 01:02:11.839
+ cihazları hər zaman böyüdük, beləliklə telefonlarda zoom görüşləri olur
+
+01:02:11.839 --> 01:02:15.599
+ və işləyir, batareyanı tükəndirir bəli
+
+01:02:15.599 --> 01:02:21.440
+ amma bəyəndiyim odur ki, simsizdir, sadəcə simli deyil, heyrətamizdir
+
+01:02:21.440 --> 01:02:24.480
+ bu fikir kimi böyük simsizdir
+
+01:02:24.480 --> 01:02:27.200
+ Telefonumu götürə bilərəm ki, şarj cihazları və
+
+01:02:27.200 --> 01:02:30.960
+ yalnız gedin onu qurun 20 dəqiqədən sonra qoyun gedim yaxşıyam
+
+01:02:30.960 --> 01:02:34.000
+ sevdiyim başqa bir şeyi sevdiyimi
+
+01:02:34.000 --> 01:02:40.480
+ konsepsiya budur ki, bacardığım təqdirdə düşündüyün kimi düşünürəm
+
+01:02:40.480 --> 01:02:43.359
+ onu masaya qoyun, a
+
+01:02:43.359 --> 01:02:47.680
+ restoran masası bəli, çünki bir çox restoran marşrutu keçmişdi və mən
+
+01:02:47.680 --> 01:02:50.799
+ nümunə olaraq restoranlardan istifadə etmək, lakin bir çox yer marşrutu keçmişdir
+
+01:02:50.799 --> 01:02:54.480
+ usb-nu yerləşdirə bilmək üçün usb-nu qoşa bilərsiniz
+
+01:02:54.480 --> 01:02:58.640
+ telefonunuzu şarj etmək üçün kabel ancaq birdən insanlar var
+
+01:02:58.640 --> 01:03:03.200
+ oh bu usb portları zərərli ola bilər ki, müdrik
+
+01:03:03.200 --> 01:03:06.319
+ çünki usb da məlumat daşıyır və ya bu doğru
+
+01:03:06.319 --> 01:03:10.000
+ çox volt olub olmadığını kim bilir və bəlkə də bunun olduğunu bilirsiniz
+
+01:03:10.000 --> 01:03:13.280
+ qısa və ya buna bənzər bir şey var və telefonumu qızartdı
+
+01:03:13.280 --> 01:03:17.039
+ Beləliklə, birdən usb portuna qoşulmaqdan qorxuruq, çünki hey
+
+01:03:17.039 --> 01:03:20.400
+ yaxşı olan pis bir şey ola bilər
+
+01:03:20.400 --> 01:03:24.960
+ simsiz şarjı qurduğunuzda şarj olur və götürürsünüz
+
+01:03:24.960 --> 01:03:28.240
+ Bəli bitdi, ancaq bunu bəyəndiyiniz üçün qura bilərsiniz
+
+01:03:28.240 --> 01:03:31.119
+ üç dəqiqə və sizə çoxundan keçmək üçün kifayət qədər bir ödəniş verilir
+
+01:03:31.119 --> 01:03:35.680
+ günortadan sonra inanılmaz zəhmli olduğunu düşünürəm ii
+
+01:03:35.680 --> 01:03:40.559
+ ai deməkdir ki, indi ətrafınıza baxın və bütün bu doldurma stansiyalarına sahibsiniz
+
+01:03:40.559 --> 01:03:44.079
+ elektrikli nəqliyyat vasitələri az görməyə başlamaq əla olardı
+
+01:03:44.079 --> 01:03:48.640
+ ictimai yerlərdə açılan bu cür əşyalarla sanki qoya bilərsiniz
+
+01:03:48.640 --> 01:03:52.880
+ telefonunuzu beş dəqiqə aşağı saxlayın və zəng etmək üçün kifayətdir
+
+01:03:52.880 --> 01:03:56.319
+ kömək almaq və ya hər hansı bir şey almaq və sadəcə simsiz şəkildə təsvir etdiyim hər şey
+
+01:03:56.319 --> 01:04:01.760
+ bir uzanmış yol kimi və alıcıyı maşına yerləşdirin
+
+01:04:01.760 --> 01:04:05.599
+ avtonom avtomobili üzərində sürərkən onu yenidən doldurur
+
+01:04:05.599 --> 01:04:08.230
+ İndi texnologiyaya girdiyimiz bir şey kimdir
+
+01:04:08.230 --> 01:04:11.520
+ [Gülüşlər] yenə də xoşuma gəlir, buna görə həyəcanlıyam
+
+01:04:11.520 --> 01:04:15.839
+ dəli bir şey yalnız nəticədə budur ki, nə edərəm yalnız
+
+01:04:15.839 --> 01:04:18.319
+ dediyimiz, böyüdüyümüz zamanlardakı kimi çox fantastikdir
+
+01:04:18.319 --> 01:04:21.599
+ Gələcək kimi idi, tamamilə həyata keçirilə bilər
+
+01:04:21.599 --> 01:04:25.920
+ indi yep ki, moruq pi gülüncdür
+
+01:04:25.920 --> 01:04:31.200
+ fond bir moruq pi 4 xüsusiyyətləri ilə bir hesablama modulu başlatdı.
+
+01:04:31.200 --> 01:04:35.119
+ moruq pi təməli bazar ertəsi günü yeni bir məhsul təqdim etdi
+
+01:04:35.119 --> 01:04:39.440
+ hesablama modulu 4. bu qədər uzun olduğuna inanmaq çətindir, amma
+
+01:04:39.440 --> 01:04:43.359
+ moruq pi 4 2019-cu ilin iyun ayında çıxdı
+
+01:04:43.359 --> 01:04:48.079
+ hesablama modulu 4, pi 4'ü sənaye iot sahəsinə gətirir
+
+01:04:48.079 --> 01:04:52.240
+ bir hesablama modulu ilə eyni prosessora sahibdir
+
+01:04:52.240 --> 01:04:57.200
+ yalnız güclü iot cihazlarına inteqrasiya olunmasını xahiş edirəm
+
+01:04:57.200 --> 01:05:00.880
+ hesablama modulları ilə tanış deyilsinizsə, bunlar kimi düşünə bilərsiniz
+
+01:05:00.880 --> 01:05:05.280
+ bütün portları və gpio sancaqları olmayan tək taxta kompüterlər
+
+01:05:05.280 --> 01:05:09.440
+ moruq pi-nin beyninin kompüter komponentlərinin olmasına imkan verirlər
+
+01:05:09.440 --> 01:05:13.920
+ robotlara inteqrasiya edilmiş ağıllı cihazlar istehsalçısı texnoloji qrupları və ya
+
+01:05:13.920 --> 01:05:16.400
+ düşünə biləcəyiniz hər şey kiçik bir şey tələb edir
+
+01:05:16.400 --> 01:05:22.240
+ Hesablama modulu 4 paylaşdığı üçün ürəyində az güclü linux kompüter var
+
+01:05:22.240 --> 01:05:26.400
+ moruq pi 4 inkişaf etdiriciləri ilə spec bütün prototiplərini edə bilər
+
+01:05:26.400 --> 01:05:30.319
+ pi 4 sbc-də, lakin sonra bir dəstə hesablama modulu sifariş edin
+
+01:05:30.319 --> 01:05:33.520
+ Ticarət məhsullarına inteqrasiya etmək üçün 4s
+
+01:05:33.520 --> 01:05:38.559
+ moruq pi 4 kimi, hesablama modulu 4 də 64 bitlik bir qola malikdir
+
+01:05:38.559 --> 01:05:42.400
+ video çekirdekli vi qrafika ilə işləyən bu
+
+01:05:42.400 --> 01:05:45.520
+ əvvəlki hesablama üçün böyük bir yüksəlişi təmsil edəcək
+
+01:05:45.520 --> 01:05:49.839
+ modul müştəriləri və 4 k video çıxışı ilə qədər
+
+01:05:49.839 --> 01:05:55.039
+ Saniyədə 60 kare və h.265 videonun kodunu açma imkanı
+
+01:05:55.039 --> 01:05:58.480
+ hesablama modulu 4 üçün hesablama modulu
+
+01:05:58.480 --> 01:06:03.039
+ ağıllı televizorlar və ya kimi multimediya ilə idarə olunan cihazlar üçün oyun dəyişdirici ola bilər
+
+01:06:03.039 --> 01:06:06.960
+ hesablama modulu 4 dəsti qutular mövcuddur
+
+01:06:06.960 --> 01:06:11.599
+ seçiminiz 1 2 4 və ya 8 gigabayt ram və 8 16
+
+01:06:11.599 --> 01:06:18.000
+ və ya 32 gigabaytlıq emmc flash saxlama wi-fi və bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ qiymətlər yalnız 25-dən isteğe bağlıdır
+
+01:06:21.440 --> 01:06:27.599
+ 90 usd-a indi təsəvvür edin ki, Jeff ahududu pi hesablama modulu 4
+
+01:06:27.599 --> 01:06:31.359
+ Bəli, sbc layihələrinizdən birində və ya buna bənzər bir şəkildə gücləndirən bir şey
+
+01:06:31.359 --> 01:06:33.920
+ beyinlər bu qısa müddətdə olduqca həyəcanlıdır
+
+01:06:33.920 --> 01:06:39.440
+ becca h.265 deşifrini dedi, belə ki, video kimi
+
+01:06:39.440 --> 01:06:43.760
+ çox cpu intensiv bəli çox zəhmli olduğu kimi çox şey söyləyir
+
+01:06:43.760 --> 01:06:50.000
+ bu mənim pleks serverimdən daha çox gücdür, bəli, kimin harada olduğunu bilir
+
+01:06:50.000 --> 01:06:54.720
+ klaster hesablama fikrini bəyəndiyim şeyləri almağa gedirəm
+
+01:06:54.720 --> 01:06:58.480
+ və burada bir neçə kompüter götürürsən
+
+01:06:58.480 --> 01:07:01.520
+ onları şəbəkə vasitəsilə birləşdirin və
+
+01:07:01.520 --> 01:07:06.559
+ əsasən beowulf proqramı və ya buna bənzər bir şey qurun
+
+01:07:06.559 --> 01:07:09.359
+ onları yerinə yetirə bilmək üçün onları qruplaşdırır
+
+01:07:09.359 --> 01:07:14.400
+ Birlikdə tapşırıqları, əsasən bir super kompüter halına gətirəcək şəkildə
+
+01:07:14.400 --> 01:07:19.200
+ bu moruq pi haqqında düşünmək üçün bir neçə kompüterdən
+
+01:07:19.200 --> 01:07:25.839
+ cl uh kümesi ya da modüller və bunlardan 10-unu bir araya gətirin
+
+01:07:25.839 --> 01:07:30.400
+ bir çoxluqda və bu hesablama modulunu istərdiniz
+
+01:07:30.400 --> 01:07:34.559
+ bu qədər gücə sahib bir kompüter olardı
+
+01:07:34.559 --> 01:07:38.079
+ hər birində səkkiz konsert qoç ola biləndə
+
+01:07:38.079 --> 01:07:43.359
+ board dəfə 10. çox bir çox şey edə bilərsiniz
+
+01:07:43.359 --> 01:07:47.280
+ dünyadakı şeyləri dəyişdirir, şübhəsiz ki, dəyişir
+
+01:07:47.280 --> 01:07:50.960
+ bütün bu güclə nə edərdin
+
+01:07:52.160 --> 01:07:55.280
+ və sənin susmağına cavab verəcəyini gözləyir
+
+01:07:55.280 --> 01:07:58.480
+ Mən düşünürəm ki, nə qədər adamla nə edərdim
+
+01:07:58.480 --> 01:08:05.119
+ yalnız bitcoin madenciliğine getdim üzr istəyirik uşaqlar nə kədərli olduğunu bilirsiniz
+
+01:08:05.119 --> 01:08:10.880
+ ilk fikir bəzi kimi avtomatlaşdıra biləcəyimi düşünürdü
+
+01:08:10.880 --> 01:08:14.000
+ mənim üçün yemək hazırlamaq üçün mətbəxdə olan kommunal xidmətlər
+
+01:08:14.000 --> 01:08:17.600
+ Hesablama modulu dördüncü ilə ilk düşüncəm bu idi
+
+01:08:17.600 --> 01:08:22.319
+ Bəli, bundan çox şey alır, amma bunun belə bir əməliyyatın beyni ola biləcəyini bilirəm
+
+01:08:22.319 --> 01:08:27.759
+ açıqca acam da [Gülüşlər]
+
+01:08:27.759 --> 01:08:31.359
+ Düşüncələriniz aşağıda şərh edir, nə edəcəyinizi eşitmək istərdik
+
+01:08:31.359 --> 01:08:34.719
+ kateqoriyanı 5 nöqtə izlədiyiniz üçün təşəkkür modulu hesablayın
+
+01:08:34.719 --> 01:08:38.000
+ tv xəbər otağı bəyənməyi və abunə olmağı unutmayın
+
+01:08:38.000 --> 01:08:40.640
+ bütün texnoloji xəbərlərinizi yüngül bir Linux qərəzi ilə
+
+01:08:40.640 --> 01:08:46.000
+ və nə etdiyimizi qiymətləndirirsinizsə patreon.com saytında bir patron oluruq
+
+01:08:46.000 --> 01:08:53.839
+ kateqoriya 5. kateqoriyadan 5 nöqtəli tv xəbər otağı mən becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Musiqi]
+
+01:09:12.400 --> 01:09:16.159
+ yaxşı ki, bu həftədəki jeff-i hər zaman olduqca yaxşıdır
+
+01:09:16.159 --> 01:09:21.600
+ keçən həftə keçdik və bütün prosesi fiverr ilə etdim
+
+01:09:21.600 --> 01:09:25.359
+ remiksimizi edə biləcəyimiz bəzi insanları işə götürdük, bəli burada bir gülməli
+
+01:09:25.359 --> 01:09:29.040
+ hekayə tamam sözün əsl mənasında nə vaxt güləcəyini söylə
+
+01:09:29.040 --> 01:09:34.960
+ dodağı bil onsuz da güldü?
+
+01:09:34.960 --> 01:09:38.400
+ zibil şüası, oğlanlarımızdan biri idi bəli evet
+
+01:09:38.400 --> 01:09:42.560
+ remikserlərimizdən və ədəbi sincabımızdan biri
+
+01:09:42.560 --> 01:09:48.319
+ Bu xüsusiyyətə baxarkən bununla maraqlanmağa davam etdiyimi söylədi
+
+01:09:48.319 --> 01:09:51.199
+ sonra niyə olduğunuzu düşünməyə davam etdim
+
+01:09:51.199 --> 01:09:58.159
+ adımı səhv tələffüz etmək üçün bir dələ axıra görə yoxladım
+
+01:09:58.159 --> 01:10:02.960
+ profil və səhv yazdığımı gördüm oh hay
+
+01:10:02.960 --> 01:10:09.920
+ və heç vaxt fərq etmədim və üç ildir bu şəkildə ciddisən
+
+01:10:09.920 --> 01:10:17.600
+ adımı deyir qrupumun adı ədəbi dəlidir ay tanrım tərk etdi
+
+01:10:17.600 --> 01:10:21.040
+ gülməli olduğumuz üçün sizə bu hekayəni izah edirəm
+
+01:10:21.040 --> 01:10:25.600
+ bax gülməli görün bax sənə gülməli olduğunu söylədim elə oldu
+
+01:10:26.000 --> 01:10:29.679
+ bu hekayəni sənə danışıram, çünki sonra öz-özümə yaxşı dedim
+
+01:10:29.679 --> 01:10:35.120
+ sözləri görürəm və əksər hissələrini tələffüz edirəm
+
+01:10:35.120 --> 01:10:40.320
+ bunları ədəbi gördüyümdə bir söz olmasa da kifayət qədər titizliklə
+
+01:10:40.320 --> 01:10:44.800
+ bunu düzgün oxuduğu şəkildə qoyun, buna görə ehtimal ki, a olacağımı düşünürdüm
+
+01:10:44.800 --> 01:10:47.679
+ olduqca yaxşı korrektor, buna görə nə verəcəyimi dedim
+
+01:10:47.679 --> 01:10:50.960
+ gedin, yoxlayacağam deyən bir elan yerləşdirdim
+
+01:10:50.960 --> 01:10:54.480
+ beş dollar üçün 500 söz və ya daha az mətniniz
+
+01:10:54.480 --> 01:10:57.520
+ tamam və mən heç kimin buna heç vaxt getməyəcəyi kimiydi
+
+01:10:57.520 --> 01:11:01.840
+ Hər halda bir cəhd edəcəyimi düşündüyümü düşünürdüm və səhər bir e-poçtum var idi
+
+01:11:01.840 --> 01:11:08.239
+ İspaniyada um olan bir adamdan
+
+01:11:08.239 --> 01:11:13.120
+ bir sığorta brokeri yaxşıdır və ingilis dilində danışan bir müştərisi var
+
+01:11:13.120 --> 01:11:17.600
+ doğma və cavab olaraq doğru sözləri söylədiyindən əmin olmaq istədi
+
+01:11:17.600 --> 01:11:21.840
+ bir e-poçta göndərdi, buna görə bütün məxfi şeyləri sildi
+
+01:11:21.840 --> 01:11:26.400
+ yep və mənə cavabını göndərdi və dedi ki, mənim üçün bunu edə bilərsən və mən
+
+01:11:26.400 --> 01:11:28.400
+ etdim və keçdim və bəzilərini düzəltdim
+
+01:11:28.400 --> 01:11:31.840
+ şeylər və tərcümədə həqiqətən mənası olmayan bəzi sözləri var idi
+
+01:11:31.840 --> 01:11:35.760
+ və buna görə düzəltdim və qrammatikanı və kontekstini və bir az düzəltdim
+
+01:11:35.760 --> 01:11:39.760
+ orfoqrafiya və o, beş dollar sevirmiş kimi idi
+
+01:11:39.760 --> 01:11:42.000
+ həqiqətən mənə 10 dəqiqə çəkdi və bu sadəcə idi
+
+01:11:42.000 --> 01:11:44.480
+ səhər ilk olaraq bir fincan qəhvə ilə etdiyim bir şey
+
+01:11:44.480 --> 01:11:50.960
+ Bəli və mənə 5-dən 5-i nəzərdən keçirdi ki, bu da fiverr kimi zəhmlidir
+
+01:11:50.960 --> 01:11:54.480
+ flip perspektivi, belə olduğum üçün olduqca səliqəli olduğum üçün danışmağa başlayıram
+
+01:11:54.480 --> 01:11:58.400
+ Mənim uşaqlarınıza və sizin kimi uşaqların bir şey edə biləcəyini öyrənməliyik
+
+01:11:58.400 --> 01:12:01.199
+ orada bilirsiniz və mənim qızım bir sənətkardır və
+
+01:12:01.199 --> 01:12:05.280
+ insanlar bir növ səliqəli pul qazanmağa başlamaq üçün rəsmlər edə bilər
+
+01:12:05.280 --> 01:12:08.159
+ fikir qaydaları nə ilə əlaqəli olduğunu bilmirəm səliqəli bir platforma
+
+01:12:08.159 --> 01:12:11.120
+ minimum yaş və buna bənzər şeylər, ancaq bu növlərə baxa bilərik
+
+01:12:11.120 --> 01:12:13.360
+ şeylər ancaq bu həftə üçün hekayəm budur
+
+01:12:13.360 --> 01:12:18.719
+ hey mən də üz tərəfə keçdim və verdiyim öz xidmətimi satdım
+
+01:12:18.719 --> 01:12:23.120
+ ədəbi dələ bir sərbəst bir sərbəst um amma uh
+
+01:12:23.120 --> 01:12:30.000
+ indi mən satıram və ii üçün əyləncəli olacağını hiss edirəm
+
+01:12:30.000 --> 01:12:34.000
+ sənə beş dollar ver, sənə 500 sözlü sənəd göndərəcəm
+
+01:12:34.000 --> 01:12:38.640
+ bütün lorem ipsum və mənə deyin ki, mənada əlimdən gələni edəcəyəm
+
+01:12:38.640 --> 01:12:44.000
+ düzəltmisən, bəli tamam yaxşı ki, bu da Jeff
+
+01:12:44.000 --> 01:12:46.800
+ hər zaman yaxşıdır, amma çox əyləncəli oldum
+
+01:12:46.800 --> 01:12:50.080
+ gələn həftə bu həftə yenidən sizinlə birlikdə olmağın çox xoşuna gəldik 3d-ə giririk
+
+01:12:50.080 --> 01:12:52.560
+ çap edərək bir ender yığacağıq
+
+01:12:52.560 --> 01:12:55.440
+ 3v2, buna görə həqiqətən bir araya gətirəcəyik
+
+01:12:55.440 --> 01:12:58.640
+ və sonra prosesin nə olduğunu bildiyiniz barədə bir söhbət edəcəyik
+
+01:12:58.640 --> 01:13:03.760
+ mənim üçün 3d çap aləmində bir noob kimi
+
+01:13:03.760 --> 01:13:05.760
+ hansı çətinliklərlə qarşılaşdım
+
+01:13:05.760 --> 01:13:09.040
+ və bəlkə də işə başlayarkən qarşılaşa bilərsiniz
+
+01:13:09.040 --> 01:13:13.760
+ 3d çapında plus yalnız ilk çapımı sizə göstərmərəm
+
+01:13:13.760 --> 01:13:19.440
+ ancaq ilk çap dizaynlarımı önümüzdəki həftə qaçırmaq istəmirsiniz
+
+01:13:19.440 --> 01:13:22.960
+ hamınızı gözəl bir gün keçirəcəyik, görüşəcəyik
+
+01:13:24.100 --> 01:13:30.029
+ [Musiqi] [Alqışlar]
+
+01:13:30.840 --> 01:13:45.060
+ sağol [Musiqi]
+
+01:13:48.290 --> 01:13:56.319
+ [Musiqi]
+
+01:14:01.760 --> 01:14:03.840
+ Sən
+

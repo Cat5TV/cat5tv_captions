@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: vi
+
+00:00:00.320 --> 00:00:05.040
+ở loại 5 tv, chúng tôi tin tưởng các tệp của mình vào ổ đĩa thể rắn của kingston
+
+00:00:05.040 --> 00:00:07.839
+ công nghệ cho máy tính xách tay máy chủ của bạn hay
+
+00:00:07.839 --> 00:00:10.880
+ máy tính để bàn, bạn sẽ trải nghiệm hiệu suất được cải thiện
+
+00:00:10.880 --> 00:00:17.920
+ và độ tin cậy với các ssds của kingston đã sẵn sàng, đã đến lúc công nghệ
+
+00:00:22.320 --> 00:00:25.519
+ chào mừng mọi người đến với chương trình, đó là tập 2 của mùa 14
+
+00:00:25.519 --> 00:00:29.599
+ Tôi là robbie ferguson và tôi là jeff weston, thật tuyệt khi có bạn ở đây
+
+00:00:29.599 --> 00:00:32.800
+ và tôi hy vọng bạn đã có một tuần tuyệt vời mặc dù
+
+00:00:32.800 --> 00:00:37.760
+ tất cả mọi thứ nhưng chúng tôi đang ở đây và mong chờ một màn trình diễn tuyệt vời ở phía trước
+
+00:00:37.760 --> 00:00:40.960
+ tối nay chúng ta sẽ học cách tạo ra
+
+00:00:40.960 --> 00:00:45.840
+ máy chủ proxy được rồi, vì vậy tôi không muốn nói quá nhiều về nó ở đầu
+
+00:00:45.840 --> 00:00:49.200
+ chương trình nhưng tôi biết rằng bạn biết đôi khi rất khó để tìm thấy một cái hay
+
+00:00:49.200 --> 00:00:52.640
+ dịch vụ proxy miễn phí, vì vậy chúng tôi sẽ tạo
+
+00:00:52.640 --> 00:00:55.840
+ và tôi sẽ chỉ cho bạn cách đặt nó ở bất kỳ đâu trên thế giới
+
+00:00:55.840 --> 00:01:01.600
+ sử dụng dịch vụ đám mây aws nên nó khá thú vị và là một trong những điều
+
+00:01:01.600 --> 00:01:05.680
+ với điều đó khi chúng ta tìm hiểu một chút về cách
+
+00:01:05.680 --> 00:01:09.520
+ dịch vụ web amazon ec2 và các dịch vụ đám mây và khả năng
+
+00:01:09.520 --> 00:01:13.760
+ triển khai máy chủ debian trong cơ sở hạ tầng đám mây khi chúng ta tìm hiểu
+
+00:01:13.760 --> 00:01:18.799
+ làm thế nào để làm điều đó và cách hoạt động chỉ cần biết rằng một trong số
+
+00:01:18.799 --> 00:01:20.159
+ những điều chúng tôi sẽ làm là
+
+00:01:20.159 --> 00:01:24.000
+ di chuyển một số dữ liệu của chúng tôi vào cơ sở hạ tầng đó, vì vậy tôi nói rằng
+
+00:01:24.000 --> 00:01:26.960
+ bởi vì một số người xem luồng trực tiếp của chúng tôi có
+
+00:01:26.960 --> 00:01:29.600
+ gặp sự cố với bộ đệm và những thứ tương tự
+
+00:01:29.600 --> 00:01:32.799
+ và đó là vì chúng tôi có một máy tính bảng nhỏ
+
+00:01:32.799 --> 00:01:36.880
+ tất cả những thứ mà chúng tôi đang phát trực tuyến và sau đó nó sẽ phát lại tới
+
+00:01:36.880 --> 00:01:40.799
+ bất kỳ ai đang xem trên roku hoặc những người chơi hls khác và những thứ tương tự
+
+00:01:40.799 --> 00:01:44.399
+ nó có một streamer nhanh nhẹn chạy trên một máy tính bảng đơn thực sự là nó
+
+00:01:44.399 --> 00:01:47.759
+ tuyệt vời, tuy nhiên những gì tôi đã theo dõi thông qua
+
+00:01:47.759 --> 00:01:50.960
+ thử nghiệm là nó chạy lên một cpu khá cao khi mọi người
+
+00:01:50.960 --> 00:01:55.439
+ đang xem đúng để tôi tin rằng có thể là nguyên nhân gây ra một số
+
+00:01:55.439 --> 00:01:58.640
+ vấn đề về bộ đệm với luồng của chúng tôi, vì vậy có rất nhiều nội dung
+
+00:01:58.640 --> 00:02:03.520
+ ở hậu trường ở đây để cố gắng đạt được điều đó để bạn có được buổi biểu diễn cho bạn ở
+
+00:02:03.520 --> 00:02:07.840
+ một định dạng rất dễ tiếp cận và dễ truy cập và do đó bạn không
+
+00:02:07.840 --> 00:02:10.160
+ trải nghiệm những thứ như bánh xe quay
+
+00:02:10.160 --> 00:02:14.560
+ và những thứ như vậy nhưng uh vì chúng ta đang xem đêm nay
+
+00:02:14.560 --> 00:02:18.560
+ uh và tìm hiểu cách triển khai các máy chủ debian này trên đám mây
+
+00:02:18.560 --> 00:02:20.879
+ biết rằng đó là điều mà chúng tôi sẽ làm ở hậu trường ở đây
+
+00:02:20.879 --> 00:02:23.760
+ cũng như di chuyển các dịch vụ đó qua
+
+00:02:23.760 --> 00:02:27.120
+ đến một trong những trường hợp đó để
+
+00:02:27.120 --> 00:02:30.480
+ cố gắng cải thiện hiệu suất của chúng tôi ở đây tại studio để
+
+00:02:30.480 --> 00:02:34.400
+ vô số điều thú vị đang diễn ra phía sau chúng tôi bạn đã từng như thế nào
+
+00:02:34.400 --> 00:02:38.000
+ tôi đã rất tốt, chúng tôi sẽ nói chuyện với bạn một chút sau tối nay về
+
+00:02:38.000 --> 00:02:42.080
+ uh một số kỳ tích của bạn với nghề hàn vâng vâng bạn muốn cho chúng tôi biết một chút
+
+00:02:42.080 --> 00:02:44.720
+ chỉ là một chút trêu chọc nhanh chóng về những gì chúng ta sẽ trở thành
+
+00:02:44.720 --> 00:02:48.959
+ thảo luận về uh con trai tôi muốn tham gia vào nghề hàn
+
+00:02:48.959 --> 00:02:53.120
+ sinh nhật của anh ấy uh vì vậy chúng tôi đã đi xuống con đường đó
+
+00:02:53.120 --> 00:02:56.480
+ bắt đầu từ tháng trước uh chúng tôi đã chơi xung quanh một chút và nó có
+
+00:02:56.480 --> 00:03:01.200
+ tôi đang nghĩ làm thế nào tôi có thể tự làm đồ ở nhà
+
+00:03:01.200 --> 00:03:04.560
+ khi tôi không có một khu vực sản xuất lớn để tự làm
+
+00:03:04.560 --> 00:03:09.599
+ pcb vâng vâng, đó là nơi chúng tôi đã nói về điều đó, vì vậy nếu bạn quan tâm đến
+
+00:03:09.599 --> 00:03:15.040
+ Tự làm đồ điện tử chúng ta sẽ nói về điều đó và uh wow chúng ta đã có
+
+00:03:15.040 --> 00:03:19.840
+ một số điều thú vị mà chúng tôi đang chuẩn bị cũng như chương trình tuần tới
+
+00:03:19.840 --> 00:03:23.040
+ đã sẵn sàng hoạt động và chúng tôi rất vui khi được
+
+00:03:23.040 --> 00:03:26.640
+ cũng giới thiệu in 3d cho người xem của chúng tôi
+
+00:03:26.640 --> 00:03:29.680
+ vì vậy đó là điều mà chúng ta sẽ học trong suốt quá trình
+
+00:03:29.680 --> 00:03:36.080
+ tuần tới ở đây tại hạng 5 truyền hình, chúng ta có rất nhiều thứ đang diễn ra
+
+00:03:36.080 --> 00:03:39.200
+ hãy đảm bảo rằng bạn đăng ký với chúng tôi trên youtube
+
+00:03:39.200 --> 00:03:42.159
+ và nhấp vào chuông để bạn nhận được thông báo mỗi khi chúng tôi đăng một
+
+00:03:42.159 --> 00:03:46.560
+ video bất cứ lúc nào chúng tôi đang phát trực tiếp và cả nếu bạn muốn tham gia
+
+00:03:46.560 --> 00:03:49.280
+ cộng đồng tôi nghĩ đó là một cách thực sự tuyệt vời
+
+00:03:49.280 --> 00:03:54.000
+ trở thành một phần của truyền hình loại 5 một số người vẫn nói tốt với tôi những gì
+
+00:03:54.000 --> 00:03:58.400
+ bất hòa và thật tuyệt vời bạn không phải là một phần của sự bất hòa của chúng tôi
+
+00:03:58.400 --> 00:04:01.920
+ máy chủ bởi vì nếu bạn tham gia vào mối bất hòa của chúng tôi mà bạn sẽ tìm thấy nếu bạn đi
+
+00:04:01.920 --> 00:04:06.560
+ đến category5.tv nhấp vào tương tác, bạn sẽ thấy tham gia vào mối bất hòa
+
+00:04:06.560 --> 00:04:10.720
+ máy chủ đó là một trình duyệt miễn phí dựa trên hoặc dựa trên ứng dụng
+
+00:04:10.720 --> 00:04:14.720
+ dịch vụ mà bạn có thể đặt trên thiết bị của mình và hoặc truy cập
+
+00:04:14.720 --> 00:04:18.160
+ thông qua trình duyệt của bạn trên mọi thứ và về cơ bản bạn có thể trò chuyện với
+
+00:04:18.160 --> 00:04:22.079
+ cộng đồng nhưng nó thực sự gọn gàng ở chỗ nó không chỉ là một phòng trò chuyện
+
+00:04:22.079 --> 00:04:26.160
+ nó cũng có các phòng khác nhau được phân bổ cho
+
+00:04:26.160 --> 00:04:28.160
+ những thứ khác nhau nên những thứ chúng ta đang nói
+
+00:04:28.160 --> 00:04:31.280
+ về hoặc ví dụ như chúng tôi có hậu trường
+
+00:04:31.280 --> 00:04:35.680
+ vì vậy đằng sau hậu trường chỉ là một đống đầy hậu trường
+
+00:04:35.680 --> 00:04:42.320
+ những bức ảnh mà bạn sẽ không thấy nếu không và có rất nhiều ảnh có trên
+
+00:04:42.320 --> 00:04:44.400
+ máy chủ bất hòa vì vậy bạn thực sự phải đến đó
+
+00:04:44.400 --> 00:04:47.919
+ biết rằng nó giống như một nền tảng trò chuyện nhưng nó có một
+
+00:04:47.919 --> 00:04:51.360
+ nhiều hơn thế không chỉ là tương tác trò chuyện
+
+00:04:51.360 --> 00:04:54.880
+ đúng vậy và nó không chỉ hoạt động trong suốt chương trình
+
+00:04:54.880 --> 00:04:58.240
+ nó luôn luôn và ý tôi là nếu bạn có đồ công nghệ
+
+00:04:58.240 --> 00:05:01.360
+ giữa tuần bạn giống như oh tôi không biết làm thế nào để giải quyết vấn đề này bạn
+
+00:05:01.360 --> 00:05:04.080
+ có thể xuất hiện ở đó và cộng đồng thật tuyệt vời khi cho
+
+00:05:04.080 --> 00:05:07.680
+ lời khuyên và điều đó cũng khá đúng
+
+00:05:07.680 --> 00:05:10.720
+ được rồi nên chúng ta phải nghỉ giải lao thật nhanh và sau đó chúng ta sẽ nhảy đúng
+
+00:05:10.720 --> 00:05:14.800
+ vào nó sau lần ly khai ngắn này, chúng tôi sẽ xem xét
+
+00:05:14.800 --> 00:05:20.800
+ làm thế nào để thiết lập một phiên bản aws ec2 nghe có vẻ giống như technobabble
+
+00:05:20.800 --> 00:05:24.080
+ tôi nó làm rất nhanh
+
+00:05:24.080 --> 00:05:29.759
+ chúng tôi sẽ tạo ra dịch vụ proxy miễn phí của riêng mình, dễ nói hơn
+
+00:05:29.759 --> 00:05:36.240
+ tôi nắm quyền kiểm soát, tôi có quyền truy cập, chúng tôi có thanh kiểm soát xung quanh chúng tôi
+
+00:05:36.240 --> 00:05:51.920
+ quay lại ngay [Âm nhạc]
+
+00:05:58.560 --> 00:06:01.919
+ cho dù bạn đang hy vọng có thêm cho mình một chút riêng tư khi bạn lướt
+
+00:06:01.919 --> 00:06:04.720
+ internet hoặc bạn muốn truy cập các dịch vụ
+
+00:06:04.720 --> 00:06:10.160
+ có lẽ thường không có sẵn trong khu vực của bạn hoặc có thể đó là
+
+00:06:10.160 --> 00:06:13.680
+ trường hợp thực sự có địa chỉ ip của bạn
+
+00:06:13.680 --> 00:06:17.600
+ bị chặn bởi nhà cung cấp dịch vụ, nó có thể không phải là
+
+00:06:17.600 --> 00:06:20.960
+ điều độc hại tôi đã bị chặn địa chỉ ip của mình
+
+00:06:20.960 --> 00:06:24.639
+ youtube trước đây vì tôi tải lên rất nhiều video và
+
+00:06:24.639 --> 00:06:29.120
+ tải xuống phụ đề cho những người đó để
+
+00:06:29.120 --> 00:06:33.759
+ đã dẫn đến việc tôi vượt quá mức sử dụng của mình trong api youtube
+
+00:06:33.759 --> 00:06:38.800
+ vì vậy sau đó địa chỉ ip của tôi bị chặn để nó không phải là một thứ độc hại
+
+00:06:38.800 --> 00:06:44.319
+ tôi không muốn tạo ấn tượng đó nhưng có những lý do rất chính đáng
+
+00:06:44.319 --> 00:06:49.759
+ cần phải tìm hiểu về những thứ đó và những kẻ mọt sách đi đến
+
+00:06:49.759 --> 00:06:56.000
+ là một proxy, vấn đề là proxy có thể rất đắt để sử dụng và
+
+00:06:56.000 --> 00:07:00.160
+ những cái miễn phí trong khi sẵn có rất thường xuyên
+
+00:07:00.160 --> 00:07:04.800
+ hoặc không đáng tin cậy lắm thì một ngày nọ, họ xuống hôm sau và bạn mất
+
+00:07:04.800 --> 00:07:10.240
+ quyền truy cập vào các dịch vụ của bạn và mọi thứ khác hoặc thậm chí tệ hơn
+
+00:07:10.240 --> 00:07:14.960
+ chúng thật nguy hiểm khi bạn không biết những proxy đó đang theo dõi những gì
+
+00:07:14.960 --> 00:07:21.120
+ ghi nhật ký và thậm chí như chặn khi bạn đang xem xét bạn đang gửi
+
+00:07:21.120 --> 00:07:26.720
+ tất cả lưu lượng truy cập internet của bạn thông qua nhà cung cấp dịch vụ đó
+
+00:07:26.720 --> 00:07:35.199
+ vì vậy có một người mà tôi thực sự tin tưởng để ủy quyền tất cả dữ liệu của tôi
+
+00:07:35.199 --> 00:07:41.039
+ và đó là tôi tôi không phải là người mà bạn sẽ nói rằng bạn tin tưởng
+
+00:07:41.039 --> 00:07:45.199
+ người mà bạn tin tưởng là bạn vì vậy tôi sẽ chỉ cho bạn cách
+
+00:07:45.199 --> 00:07:53.280
+ tôi có thể thiết lập một dịch vụ proxy miễn phí của riêng mình và bạn có thể tái tạo nó và
+
+00:07:53.280 --> 00:07:56.319
+ tạo của riêng bạn cũng như chúng tôi sẽ làm điều này trên đám mây
+
+00:07:56.319 --> 00:07:58.800
+ sẽ sử dụng nhà cung cấp dịch vụ bên thứ ba
+
+00:07:58.800 --> 00:08:02.400
+ và đó là amazon, vì vậy bạn nói ồ ồ tuyệt vời thì sao
+
+00:08:02.400 --> 00:08:05.919
+ bạn biết đấy, chúng tôi có thể tin tưởng vào dữ liệu của chúng tôi cho họ hay những gì chúng tôi đang sử dụng
+
+00:08:05.919 --> 00:08:10.639
+ dịch vụ đám mây nó được gọi là dịch vụ web amazon vì vậy nó
+
+00:08:10.639 --> 00:08:14.319
+ tất cả đều là cơ sở hạ tầng đám mây của họ mà họ có
+
+00:08:14.319 --> 00:08:18.560
+ cho khách hàng về cơ bản thuê quyền truy cập vào máy chủ của họ và
+
+00:08:18.560 --> 00:08:23.360
+ không gian của họ và các máy chủ ảo và mọi thứ khác
+
+00:08:23.360 --> 00:08:29.680
+ cơ sở hạ tầng có sẵn cho bạn nhưng bản thân việc triển khai là
+
+00:08:29.680 --> 00:08:34.560
+ của bạn, tôi sẽ cho bạn thấy điều này được thực hiện như thế nào, chúng tôi sẽ tiếp tục với aws
+
+00:08:34.560 --> 00:08:40.719
+ và đặc biệt là ec2, nên tất nhiên nếu bạn không quen thuộc với aws chỉ
+
+00:08:40.719 --> 00:08:44.720
+ truy cập aws.amazon.com đăng nhập bằng tài khoản amazon của bạn
+
+00:08:44.720 --> 00:08:50.640
+ và sau đó thực hiện một tìm kiếm nhanh cho ec2 và điều đó sẽ đưa bạn về cơ bản
+
+00:08:50.640 --> 00:08:53.680
+ nền tảng ảo hóa của họ nghĩ về ec2 như
+
+00:08:53.680 --> 00:08:57.519
+ chỉ vậy nên điều đầu tiên tôi ghi nhận khi tôi ở đây
+
+00:08:57.519 --> 00:09:03.200
+ trong ec2 là khu vực của tôi và điều này rất quan trọng vì đây là nơi proxy của tôi
+
+00:09:03.200 --> 00:09:08.080
+ máy chủ sẽ hoạt động nếu tôi đặt nó ở đó tại sao lại như vậy
+
+00:09:08.080 --> 00:09:11.519
+ quan trọng là hãy nghĩ về điều này, giả sử tôi đang sử dụng một luồng video
+
+00:09:11.519 --> 00:09:15.680
+ dịch vụ hạn chế quyền truy cập của người Canada vào video của họ
+
+00:09:15.680 --> 00:09:19.440
+ dịch vụ phát trực tuyến như vậy bằng cách đặt máy chủ proxy của tôi ở phía bắc
+
+00:09:19.440 --> 00:09:23.360
+ California bây giờ đột nhiên họ về cơ bản
+
+00:09:23.360 --> 00:09:26.320
+ bằng địa chỉ ip sẽ nghĩ rằng tôi đang kết nối từ
+
+00:09:26.320 --> 00:09:29.360
+ California vì vậy tôi có thể làm việc xung quanh đó
+
+00:09:29.360 --> 00:09:32.720
+ tương tự, bạn có thể muốn thay đổi khu vực của mình dựa trên
+
+00:09:32.720 --> 00:09:37.200
+ những gì bạn đang cố gắng đạt được, bạn thậm chí có thể đặt một máy chủ ở Châu Phi
+
+00:09:37.200 --> 00:09:40.480
+ hoặc Châu Á nhìn vào đó bạn có thể đặt một ngay tại Hồng Kông
+
+00:09:40.480 --> 00:09:44.160
+ bạn có thể đặt một cái ở canada a uh ở châu Âu mà bạn có
+
+00:09:44.160 --> 00:09:49.680
+ ở khắp nơi và sau đó chúng ta có Trung Đông và Nam Mỹ ngay bây giờ
+
+00:09:49.680 --> 00:09:52.800
+ vì vậy đó là một danh sách khá lớn về nơi họ
+
+00:09:52.800 --> 00:09:57.360
+ có thiết lập cơ sở hạ tầng này cho các dịch vụ web amazon dịch vụ ec2 không
+
+00:09:57.360 --> 00:10:01.920
+ vì vậy hãy chọn một nơi mà bạn muốn máy chủ proxy của mình
+
+00:10:01.920 --> 00:10:05.600
+ tôi sẽ đặt của tôi, tôi sẽ để nó là bắc california đó là
+
+00:10:05.600 --> 00:10:09.279
+ chúng tôi về phía tây một và đó là nơi
+
+00:10:09.279 --> 00:10:13.760
+ máy chủ proxy của tôi sẽ hoạt động sẽ cho phép tôi kết nối
+
+00:10:13.760 --> 00:10:17.680
+ như thể tôi thực sự đang ngồi ở California
+
+00:10:17.680 --> 00:10:20.880
+ được rồi, vì vậy tôi sẽ nhấp vào phiên bản khởi chạy
+
+00:10:20.880 --> 00:10:24.880
+ và sau đó khởi chạy lại phiên bản vì nó thả xuống và điều này mang lại cho tôi
+
+00:10:24.880 --> 00:10:29.440
+ danh sách các hệ điều hành mà tôi có thể triển khai
+
+00:10:29.440 --> 00:10:33.760
+ trên phiên bản ec2 của tôi, vì vậy tôi đang sử dụng một số thuật ngữ ở đây mà bạn có thể không quen thuộc
+
+00:10:33.760 --> 00:10:38.240
+ aws là dịch vụ web của amazon về cơ bản là của amazon
+
+00:10:38.240 --> 00:10:44.560
+ đầy đủ các dịch vụ mà họ cung cấp cho người dùng đám mây ec2 là
+
+00:10:44.560 --> 00:10:48.160
+ nền tảng ảo hóa cho máy ảo
+
+00:10:48.160 --> 00:10:52.240
+ khi tôi nói ví dụ, tôi đang nói về một máy ảo
+
+00:10:52.240 --> 00:10:56.160
+ vì vậy đó thực sự là một máy ảo, vì vậy tôi sẽ triển khai một trong những
+
+00:10:56.160 --> 00:10:59.360
+ hệ điều hành cho một phiên bản của ec2 là
+
+00:10:59.360 --> 00:11:02.880
+ một máy ảo vậy tôi muốn nó trở thành cái gì
+
+00:11:02.880 --> 00:11:07.040
+ vì vậy và tôi đã nói hey bình luận bên dưới nếu tôi sử dụng một thuật ngữ mà bạn không quen thuộc
+
+00:11:07.040 --> 00:11:08.399
+ với tôi tôi sẽ tìm kiếm nhanh
+
+00:11:08.399 --> 00:11:11.120
+ đã làm trước đó vì tôi triển khai rất nhiều máy chủ
+
+00:11:11.120 --> 00:11:15.279
+ trên đám mây, tôi sẽ nhấp vào debian, chỉ cần nhập debian vào
+
+00:11:15.279 --> 00:11:19.279
+ tìm kiếm ở đây để sau đó tôi sẽ đi đến aws
+
+00:11:19.279 --> 00:11:24.640
+ kết quả thị trường cũng có những kết quả mà tôi đã tạo và những kết quả trong
+
+00:11:24.640 --> 00:11:27.120
+ cộng đồng bạn sẽ nghĩ ồ tôi muốn sử dụng
+
+00:11:27.120 --> 00:11:30.800
+ cộng đồng những người tốt không bạn không vì những người đó sẽ khiến bạn mất tiền
+
+00:11:30.800 --> 00:11:34.320
+ và bạn nói tốt nhưng cộng đồng là miễn phí, đó là nguồn mở và có
+
+00:11:34.320 --> 00:11:38.959
+ tuy nhiên nó không phải là một phần của thị trường aws và vì vậy bạn sẽ có
+
+00:11:38.959 --> 00:11:42.320
+ thanh toán cho việc sử dụng để có máy ảo đó
+
+00:11:42.320 --> 00:11:46.160
+ ví dụ đang chạy trên đám mây nên thay vào đó, chúng tôi sẽ
+
+00:11:46.160 --> 00:11:49.440
+ sử dụng một trong những cái chính thức từ thị trường aws, hãy xem kết quả
+
+00:11:49.440 --> 00:11:53.360
+ chúng tôi thấy chúng được sắp xếp khá tốt debian đưa ra kết quả đầu tiên là
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster một lớp miễn phí tương thích hoặc lớp miễn phí
+
+00:11:57.839 --> 00:12:00.560
+ phiên bản debian đủ điều kiện mà chúng ta sẽ
+
+00:12:00.560 --> 00:12:06.000
+ triển khai, vì vậy hãy chọn cấp miễn phí đủ điều kiện để chúng tôi có thể bỏ qua
+
+00:12:06.000 --> 00:12:09.360
+ định giá vì chúng tôi sẽ sử dụng lần truy cập cấp miễn phí tiếp tục
+
+00:12:09.360 --> 00:12:13.040
+ và đây là nơi chúng tôi chọn điều đó rất tốt nếu chúng tôi muốn cấp độ miễn phí mà chúng tôi phải đi
+
+00:12:13.040 --> 00:12:15.839
+ với một micro t2, vì vậy tôi sẽ chọn nó nhưng những gì
+
+00:12:15.839 --> 00:12:22.399
+ nó có cung cấp cho chúng ta nó cho chúng ta một cpu một gigabyte bộ nhớ không
+
+00:12:22.399 --> 00:12:25.600
+ và sau đó chúng tôi có bộ nhớ để giải quyết, chúng tôi không cần nhiều bộ nhớ vì
+
+00:12:25.600 --> 00:12:29.920
+ chúng tôi chỉ thiết lập một proxy cơ bản và đó là về nó, vì vậy tôi sẽ
+
+00:12:29.920 --> 00:12:34.079
+ triển khai như vậy để t2 micro là cái miễn phí
+
+00:12:34.079 --> 00:12:37.120
+ đủ điều kiện cấp không chọn một trong các cấp lớn hơn
+
+00:12:37.120 --> 00:12:38.720
+ những cái vì bạn sẽ trả tiền cho nó
+
+00:12:38.720 --> 00:12:42.079
+ ngay lập tức, tôi sẽ xem xét và khởi chạy, chúng tôi sẽ quay lại
+
+00:12:42.079 --> 00:12:45.839
+ thực hiện cài đặt như nhóm bảo mật của chúng tôi và những thứ tương tự như vậy, tôi sẽ rời khỏi
+
+00:12:45.839 --> 00:12:48.480
+ mọi thứ theo mặc định bây giờ và chúng tôi sẽ
+
+00:12:48.480 --> 00:12:52.000
+ khởi chạy nó vì vậy trước hết tôi cần tạo một khóa mới
+
+00:12:52.000 --> 00:12:55.360
+ ghép nối để đây là khóa ssh mà tôi sẽ sử dụng
+
+00:12:55.360 --> 00:12:59.680
+ để ssh vào máy chủ này, vì vậy tôi sẽ gọi đây là
+
+00:12:59.680 --> 00:13:04.160
+ một máy chủ proxy và sau đó tải xuống cặp khóa của tôi
+
+00:13:04.160 --> 00:13:06.320
+ hãy chắc chắn rằng bạn lưu cái đó ở một nơi an toàn mà tôi sẽ đến
+
+00:13:06.320 --> 00:13:10.800
+ ném nó vào máy chủ của tôi và thả nó ở đó
+
+00:13:10.800 --> 00:13:16.240
+ và bây giờ phiên bản khởi chạy có nghĩa là bật máy ảo của bạn, vì vậy tôi sẽ
+
+00:13:16.240 --> 00:13:20.000
+ đẩy nó đi và chúng ta bắt đầu nên về cơ bản
+
+00:13:20.000 --> 00:13:23.120
+ tạo ra nó là tạo một máy ảo
+
+00:13:23.120 --> 00:13:29.360
+ uh một phiên bản ec2 trong đám mây cho chúng tôi ở uh ở phía bắc California vì vậy chúng tôi ở đó
+
+00:13:29.360 --> 00:13:33.279
+ đi vì vậy tôi sẽ xem các phiên bản dưới đây
+
+00:13:33.279 --> 00:13:37.200
+ và bây giờ tôi có thể thấy bây giờ tôi có một phiên bản đang chạy vi mô t2
+
+00:13:37.200 --> 00:13:41.199
+ và nó chỉ là không có tên nên tôi sẽ nhấp vào chỉnh sửa và tôi sẽ gọi đây là
+
+00:13:41.199 --> 00:13:45.839
+ máy chủ máy chủ proxy của tôi thử xem ở đó chúng tôi ổn nên
+
+00:13:45.839 --> 00:13:49.519
+ đã được thiết lập và đang chạy vì vậy nếu tôi nhấp vào đó tôi có thể thấy ip
+
+00:13:49.519 --> 00:13:53.360
+ địa chỉ của máy chủ đó, tôi đã gọi nó là máy chủ proxy nhưng ngay bây giờ
+
+00:13:53.360 --> 00:13:56.720
+ hãy nhớ nó chỉ là debian 10. không có gì khác được cài đặt trên nó
+
+00:13:56.720 --> 00:14:02.480
+ vì vậy tôi cần sao chép địa chỉ ip đó và sau đó tôi sẽ chuyển vào
+
+00:14:02.480 --> 00:14:05.839
+ dấu nhắc lệnh vì tôi đã tải khóa xuống
+
+00:14:05.839 --> 00:14:17.839
+ máy chủ của tôi, cá nhân tôi sẽ chuyển ssh đến máy chủ nội bộ của tôi
+
+00:14:18.399 --> 00:14:22.079
+ được rồi, bây giờ tôi đang ở đó vì vậy bây giờ lệnh mà tôi sẽ sử dụng
+
+00:14:22.079 --> 00:14:28.079
+ là ssh và sau đó lướt qua tôi để tìm chìa khóa mà tôi sẽ sử dụng
+
+00:14:28.079 --> 00:14:31.040
+ vì vậy tệp đến mà tôi sẽ sử dụng cho khóa
+
+00:14:31.040 --> 00:14:35.760
+ và cái đó được gọi là máy chủ proxy. pem là thứ tôi đã tải xuống
+
+00:14:35.760 --> 00:14:39.920
+ sau đó tôi sẽ chuyển sang quản trị vì đó là đăng nhập mặc định cho debian
+
+00:14:39.920 --> 00:14:43.600
+ quản trị viên hình ảnh máy ami hoặc amazon tại
+
+00:14:43.600 --> 00:14:46.639
+ và sau đó là địa chỉ ip mà tôi đã sao chép vào khay nhớ tạm và nếu tôi
+
+00:14:46.639 --> 00:14:48.959
+ nhấn enter, nó sẽ yêu cầu tôi chấp nhận khóa đó
+
+00:14:48.959 --> 00:14:54.000
+ và tôi nói có và tôi bị từ chối
+
+00:14:54.000 --> 00:14:57.279
+ quyền trên tệp đó cuối cùng được lưu ý rằng
+
+00:14:57.279 --> 00:15:01.199
+ 766 để mọi người đều có quyền truy cập vào những tệp đó, điều đó thật thú vị
+
+00:15:01.199 --> 00:15:05.519
+ chính ssh đang bảo vệ tôi khỏi ai đó có thể xâm phạm khóa của tôi
+
+00:15:05.519 --> 00:15:13.120
+ vì vậy chmod 700 proxy server pam hãy thử điều đó và ngay bây giờ
+
+00:15:13.120 --> 00:15:16.000
+ thử lại để những gì tôi đã làm là ồ và bây giờ tôi là
+
+00:15:16.000 --> 00:15:20.800
+ kết nối nó chỉ hoạt động 700 có nghĩa là tôi là chủ sở hữu của chìa khóa đó
+
+00:15:20.800 --> 00:15:27.279
+ tôi được phép làm bất cứ điều gì với nó đọc ghi thực hiện không có nghĩa là
+
+00:15:27.279 --> 00:15:30.800
+ không ai trong nhóm không ai không phải là thành viên của nhóm
+
+00:15:30.800 --> 00:15:35.600
+ được phép truy cập vào điều đó nên về cơ bản nó là một tệp ngu ngốc mà họ không thể
+
+00:15:35.600 --> 00:15:39.519
+ thậm chí mở nhưng tôi có thể ổn nên bây giờ tôi
+
+00:15:39.519 --> 00:15:44.240
+ đã kết nối, tôi sẽ đi kiện vì đó là lệnh
+
+00:15:44.240 --> 00:15:47.440
+ trở thành root vì vậy bây giờ tôi root để cập nhật ứng dụng
+
+00:15:47.440 --> 00:15:50.399
+ bản cập nhật ứng dụng whoop sẽ lấy
+
+00:15:50.399 --> 00:15:55.680
+ kho bạn thấy đây là một máy tính debian thực sự nếu bạn muốn
+
+00:15:55.680 --> 00:16:01.680
+ trên đám mây, thật dễ dàng, tôi đã nâng cấp rồi tôi đang chạy debian
+
+00:16:01.680 --> 00:16:05.120
+ máy tính trên đám mây nên trong khoảng thời gian đó và tôi rất vui
+
+00:16:05.120 --> 00:16:11.360
+ blah blah đồng thời um chúng tôi có một máy chủ debian dựa trên đám mây
+
+00:16:11.360 --> 00:16:15.519
+ bạn có nhận ra điều đó dễ dàng và miễn phí không
+
+00:16:15.519 --> 00:16:18.720
+ được để chúng tôi có thể làm những việc khác với cái này, chúng tôi có thể thiết lập một cột đèn
+
+00:16:18.720 --> 00:16:23.600
+ có thể sử dụng nó cho mysql mariadb bất cứ thứ gì bạn có thể nghĩ ra nó
+
+00:16:23.600 --> 00:16:26.720
+ máy chủ debian vì vậy chúng tôi sẽ sử dụng nó làm
+
+00:16:26.720 --> 00:16:31.759
+ proxy vì vậy bây giờ điều tôi sẽ làm là tôi sẽ cài đặt một công cụ có tên là
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy đẹp và đơn giản để cài đặt apt install tiny proxy
+
+00:16:38.639 --> 00:16:45.600
+ thực sự đơn giản để định cấu hình nói có ở đây chúng ta bắt đầu
+
+00:16:47.120 --> 00:16:51.199
+ và bây giờ đã hoàn tất vì chúng tôi đã cài đặt proxy nhỏ, chúng tôi chỉ cần chỉnh sửa
+
+00:16:51.199 --> 00:16:59.440
+ tập tin cấu hình để gạch chéo vv thay đổi proxy nhỏ nhỏ vào đó
+
+00:16:59.440 --> 00:17:05.760
+ và sau đó tôi đang sử dụng nano tinyproxy.com và chỉnh sửa nó để kiểm soát w trong nano
+
+00:17:05.760 --> 00:17:08.799
+ cho phép tôi tìm kiếm nhưng trước khi tôi tìm kiếm, hãy lưu ý rằng
+
+00:17:08.799 --> 00:17:12.720
+ cổng theo mặc định đang sử dụng 888, chúng tôi sẽ cần biết rằng
+
+00:17:12.720 --> 00:17:15.679
+ thông tin bởi vì đó là những gì chúng tôi sẽ kết nối với
+
+00:17:15.679 --> 00:17:19.839
+ proxy của chúng tôi thực hiện tìm kiếm nhanh cho phép
+
+00:17:21.439 --> 00:17:25.679
+ alt w cho phép bạn tìm kiếm lại wow từ allow có lẽ không phải là từ tốt nhất
+
+00:17:25.679 --> 00:17:30.640
+ truy vấn tìm kiếm có thể tìm kiếm 127.0.0.1 và ngay bên dưới truy vấn mà tôi sẽ truy cập
+
+00:17:30.640 --> 00:17:34.720
+ cho phép và sau đó tôi cần thêm địa chỉ ip của mình để có thể kết nối với
+
+00:17:34.720 --> 00:17:37.440
+ máy chủ proxy này vì ngay bây giờ nó đã đóng cửa
+
+00:17:37.440 --> 00:17:40.640
+ chỉ localhost mới có thể truy cập nó, điều quan trọng cần lưu ý
+
+00:17:40.640 --> 00:17:44.720
+ rằng đây là trong khi đây là một máy chủ proxy miễn phí công cộng, tôi là người duy nhất
+
+00:17:44.720 --> 00:17:47.280
+ sẽ được phép truy cập nó sẽ được phép
+
+00:17:47.280 --> 00:17:52.400
+ ủy quyền cho nội dung của tôi kết nối của tôi thông qua nó để nó là riêng tư về mặt đó
+
+00:17:52.400 --> 00:17:55.919
+ tôi cần biết địa chỉ ip của mình vì vậy tôi sẽ chuyển đến
+
+00:17:55.919 --> 00:18:03.360
+ ip.xyz hiện tại và sao chép địa chỉ ip đó vào khay nhớ tạm của tôi và sau đó nhảy
+
+00:18:03.360 --> 00:18:09.840
+ quay lại đó và dán nó vào điều khiển cấu hình của tôi o nhập điều khiển x điều khiển o là
+
+00:18:09.840 --> 00:18:14.320
+ để ghi ra lưu tệp ngay bây giờ systemctl
+
+00:18:14.320 --> 00:18:21.039
+ khởi động lại proxy nhỏ gần như đã hoàn thành điều cuối cùng mà chúng tôi cần
+
+00:18:21.039 --> 00:18:26.000
+ việc cần làm là chúng ta chỉ cần nói với bảo mật ec2 rằng
+
+00:18:26.000 --> 00:18:29.840
+ chúng tôi sẽ thiết lập một chính sách nói rằng tôi chỉ được phép kết nối với điều đó
+
+00:18:29.840 --> 00:18:32.799
+ máy chủ để không ai khác có thể kết nối với nó
+
+00:18:32.799 --> 00:18:34.880
+ bất cứ điều gì vì vậy đó là những gì chúng tôi sẽ làm đúng
+
+00:18:34.880 --> 00:18:38.799
+ bây giờ vì vậy tôi sẽ quay lại đây và bạn thấy máy chủ này trên màn hình
+
+00:18:38.799 --> 00:18:43.840
+ tốt nếu tôi nhấp vào bảo mật thì tôi có thể nhấp vào nhóm bảo mật đó
+
+00:18:43.840 --> 00:18:46.240
+ được chỉ định tự động nên chỉ cần nhấp vào đó
+
+00:18:46.240 --> 00:18:50.480
+ và bây giờ nó đã để tôi lại cho các nhóm bảo mật ec2 và bảo mật chính xác
+
+00:18:50.480 --> 00:18:52.320
+ bạn sẽ nhận thấy rằng nó đã được thiết lập
+
+00:18:52.320 --> 00:18:56.960
+ một cho ssh vì nó được bật theo mặc định, tôi có thể đặt nó
+
+00:18:56.960 --> 00:18:59.440
+ chỉ cho phép tôi cũng như điều quan trọng
+
+00:18:59.440 --> 00:19:02.720
+ hãy làm điều đó chỉ để tuân thủ các phương pháp bảo mật tốt
+
+00:19:02.720 --> 00:19:06.160
+ ssh tôi sẽ thay đổi nó từ custom000
+
+00:19:06.160 --> 00:19:10.080
+ Tôi sẽ đóng x đó và sau đó thay đổi nó thành ip của tôi
+
+00:19:10.080 --> 00:19:14.480
+ sau đó tôi sẽ thêm một quy tắc mới mà bạn đã thấy làm thế nào tôi đến được đây đúng không tôi biết tôi đang di chuyển
+
+00:19:14.480 --> 00:19:18.080
+ thực sự rất nhanh, tôi vừa nhấp vào chỉnh sửa quy tắc gửi đến
+
+00:19:18.080 --> 00:19:22.960
+ ở đây được, vì vậy hãy thêm một quy tắc mới tcp tùy chỉnh là
+
+00:19:22.960 --> 00:19:27.120
+ số cổng mặc định bạn có nhớ 888 và chỉ
+
+00:19:27.120 --> 00:19:31.919
+ cho phép ip của tôi, tôi có thể gọi nó là cái gì đó nếu tôi muốn proxy
+
+00:19:31.919 --> 00:19:37.919
+ và sau đó lưu các quy tắc của tôi ở đó, chúng ta sẽ bắt đầu để bây giờ bạn thấy ssh và
+
+00:19:37.919 --> 00:19:44.160
+ tcp tùy chỉnh một được gọi là proxy trên cổng 888.
+
+00:19:44.160 --> 00:19:49.600
+ vậy làm thế nào để chúng tôi kiểm tra điều này ổn để địa chỉ ip hiện tại của chúng tôi là 99.233
+
+00:19:49.600 --> 00:19:52.640
+ và vì vậy tôi sẽ kết nối với proxy đây là
+
+00:19:52.640 --> 00:19:57.360
+ không phải là hướng dẫn về cách sử dụng proxy, đây không phải là
+
+00:19:57.360 --> 00:20:01.120
+ hướng dẫn về những gì để sử dụng nó cho nhất thiết đây là
+
+00:20:01.120 --> 00:20:04.720
+ điều này tôi đang đưa ra các giả định ở đây mà bạn có thể tự google nó
+
+00:20:04.720 --> 00:20:08.240
+ bởi vì nó sẽ khác nhau dựa trên trường hợp sử dụng của bạn cho dù bạn có muốn
+
+00:20:08.240 --> 00:20:11.600
+ chỉ proxy trình duyệt của bạn hoặc proxy một ứng dụng cụ thể hoặc toàn bộ
+
+00:20:11.600 --> 00:20:15.440
+ mạng sẽ tùy thuộc vào cá nhân của bạn
+
+00:20:15.440 --> 00:20:20.159
+ trường hợp sử dụng, đây hoàn toàn là một hướng dẫn về cách xây dựng
+
+00:20:20.159 --> 00:20:23.679
+ phiên bản ec2 thực sự nhanh chóng miễn phí
+
+00:20:23.679 --> 00:20:28.400
+ có một proxy sẵn sàng để chúng tôi sử dụng ở California hoặc bất cứ nơi nào
+
+00:20:28.400 --> 00:20:32.960
+ và uh đó là nó vì vậy trong trường hợp cụ thể của tôi ngay bây giờ
+
+00:20:32.960 --> 00:20:36.480
+ vì vậy khoảnh khắc này không nhất thiết là điều bạn muốn làm tiếp theo
+
+00:20:36.480 --> 00:20:41.120
+ đây chỉ là cách tôi sẽ kiểm tra proxy mà tôi tình cờ có trên windows 10 ở đây
+
+00:20:41.120 --> 00:20:47.280
+ vì vậy tôi sẽ chỉ cần nhập proxy và vào lại cài đặt proxy đây là
+
+00:20:47.280 --> 00:20:50.880
+ Có lẽ không phải bạn muốn làm như thế nào, tôi chỉ muốn kiểm tra nên tôi sẽ quay lại
+
+00:20:50.880 --> 00:20:53.679
+ trên proxy, tôi có thể thấy rằng có một proxy cũ
+
+00:20:53.679 --> 00:20:56.880
+ cài đặt ở đó để đảm bảo bạn lưu ý đến điều đó
+
+00:20:56.880 --> 00:21:00.240
+ nếu có cài đặt proxy cũ, bạn cần thay đổi nó, hãy chuyển đến
+
+00:21:00.240 --> 00:21:03.679
+ phiên bản trên ec2 nhấp vào id phiên bản của bạn
+
+00:21:03.679 --> 00:21:07.440
+ và lấy địa chỉ ip đó rồi dán vào
+
+00:21:07.440 --> 00:21:11.840
+ làm địa chỉ cho cổng máy chủ proxy của bạn 8888
+
+00:21:11.840 --> 00:21:17.120
+ và lưu để bây giờ tôi được kết nối với proxy ngay lập tức
+
+00:21:17.120 --> 00:21:20.559
+ không kết nối với cửa sổ bây giờ đang nói rằng tôi sẽ định tuyến tất cả giao thông của bạn
+
+00:21:20.559 --> 00:21:22.880
+ thông qua proxy, tôi nên tự sửa mình ở đó
+
+00:21:22.880 --> 00:21:29.520
+ vì vậy nếu tôi quay lại currentip.xyz 99.233 thì ip hiện tại của tôi sẽ đánh
+
+00:21:29.520 --> 00:21:38.159
+ f5 để làm mới và nếu tất cả đều ổn thì 3.101.108.211. tốt
+
+00:21:38.159 --> 00:21:44.720
+ đó là máy chủ của tôi là gì vậy bây giờ tôi thực sự
+
+00:21:44.720 --> 00:21:51.679
+ Tôi đang ở đâu, hãy cùng tìm hiểu maxmind.com hãy cùng tìm kiếm địa chỉ ip
+
+00:21:51.679 --> 00:21:59.120
+ rằng hiện tại tôi đang ở đâu, tôi đang ở đâu ở san jose california
+
+00:21:59.120 --> 00:22:02.559
+ đó là nơi tối đa của tôi xác định tôi là
+
+00:22:02.559 --> 00:22:05.600
+ vì vậy đó là tất cả những gì mọi người chúng ta có
+
+00:22:05.600 --> 00:22:10.640
+ đã tạo cấu hình đã triển khai một dịch vụ proxy miễn phí mà chúng tôi
+
+00:22:10.640 --> 00:22:14.559
+ sở hữu và vận hành, chúng tôi là những người duy nhất có cái đó
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh key nên nếu bạn muốn kết nối, hãy thực hiện thay đổi hãy sử dụng nó
+
+00:22:19.200 --> 00:22:23.840
+ là một máy chủ đa năng, bạn có thể làm điều đó nhưng chỉ cần để ý đến
+
+00:22:23.840 --> 00:22:27.120
+ nội dung thanh toán của bạn chỉ cần đảm bảo rằng bạn không vượt quá ngưỡng và
+
+00:22:27.120 --> 00:22:29.440
+ những thứ tương tự như vậy nếu bạn chỉ sử dụng nó như một proxy thì nó
+
+00:22:29.440 --> 00:22:32.159
+ rất ít khả năng bạn sẽ làm điều đó chỉ là một cái gì đó mà bạn đang đường ống
+
+00:22:32.159 --> 00:22:37.520
+ thông qua dữ liệu để kiểm tra xem đó là aws.amazon.com để bắt đầu
+
+00:22:37.520 --> 00:22:41.440
+ nếu bạn có câu hỏi, hãy đăng chúng lên cộng đồng của chúng tôi, hãy đến
+
+00:22:41.440 --> 00:22:44.480
+ mối bất hòa của chúng tôi, bạn sẽ tìm thấy liên kết ở loại 5
+
+00:22:44.480 --> 00:22:48.720
+ tv trên menu tương tác trong thời gian chờ đợi nếu bạn thích điều này nếu bạn đã sử dụng nó hoặc
+
+00:22:48.720 --> 00:22:53.039
+ thấy nó hữu ích, hãy ủng hộ tôi, hãy đăng ký và chúng tôi sẽ gặp bạn ngay
+
+00:22:53.039 --> 00:23:07.059
+ sau giờ giải lao [Âm nhạc]
+
+00:23:15.520 --> 00:23:18.559
+ chào mừng trở lại đây là loại 5 tv công nghệ
+
+00:23:18.559 --> 00:23:22.240
+ và tôi muốn nói về những gì tôi đang làm ở nhà
+
+00:23:22.240 --> 00:23:26.640
+ hay đúng hơn là tôi đang định làm gì khi ngồi xem Netflix
+
+00:23:26.640 --> 00:23:30.480
+ tôi không có thời gian để ngồi và xem Netflix, tôi ước tôi đã làm nhưng
+
+00:23:30.480 --> 00:23:34.960
+ uh không gia đình tôi luôn thích net Netflix và tôi thích tôi sẽ chỉ sử dụng máy tính
+
+00:23:34.960 --> 00:23:38.720
+ điều đó thật tuyệt vì nó buộc tôi phải bắt đầu có netflix trên máy tính
+
+00:23:38.720 --> 00:23:44.000
+ bây giờ jeff bạn đang phân tâm tôi uh không nhưng nó là
+
+00:23:44.000 --> 00:23:46.960
+ tuyệt vời vì nó buộc tôi phải bắt đầu xem xét một số việc chúng tôi làm
+
+00:23:46.960 --> 00:23:51.760
+ quanh nhà và đi làm sao tôi có thể làm cái này của riêng mình và như vậy
+
+00:23:51.760 --> 00:23:55.120
+ bạn biết tôi đã đề cập ở đầu chương trình rằng con trai của chúng tôi có
+
+00:23:55.120 --> 00:24:00.240
+ đã tham gia vào công việc hàn và anh ấy làm rất tốt công việc đó và nhắc chúng ta rằng anh ấy bao nhiêu tuổi
+
+00:24:00.240 --> 00:24:05.200
+ vừa bước sang tuổi 12. vừa bước sang tuổi 12. được rồi, ừm nhưng anh ấy đã xong
+
+00:24:05.200 --> 00:24:09.760
+ rất tốt với nó và uh anh ấy đã hàn hai máy tính cho đến nay
+
+00:24:09.760 --> 00:24:13.919
+ ừm và một trong số họ anh ấy được đưa đến trường mà giáo viên của anh ấy đã hoàn toàn bị thổi bay
+
+00:24:13.919 --> 00:24:16.000
+ đi bởi vâng tôi đang nghĩ 12 tuổi và anh ấy
+
+00:24:16.000 --> 00:24:20.320
+ đã làm một máy tính vâng vâng, anh ấy đã làm một máy tính, chúng tôi có một bộ dụng cụ tự làm từ
+
+00:24:20.320 --> 00:24:23.360
+ amazon và anh ấy đã xây dựng nó và nó có thể mất hai giờ
+
+00:24:23.360 --> 00:24:27.039
+ công việc nó thực sự phi thường và công việc hàn của anh ấy là
+
+00:24:27.039 --> 00:24:30.880
+ thực sự thực sự sạch sẽ xuất sắc như vẻ ngoài chuyên nghiệp
+
+00:24:30.880 --> 00:24:34.559
+ nhưng dù sao thì anh ấy cũng đang hỏi cách làm những việc khác và khi chúng tôi hàn, anh ấy
+
+00:24:34.559 --> 00:24:37.200
+ cũng như cái này là cái gì và cái này là gì và nó hoạt động như thế nào và
+
+00:24:37.200 --> 00:24:40.480
+ tôi đang đi tôi muốn có thể dạy anh ấy những điều này
+
+00:24:40.480 --> 00:24:46.480
+ tôi muốn có thể giải thích cho anh ấy cách một bảng mạch thực sự hoạt động không chỉ
+
+00:24:46.480 --> 00:24:49.360
+ hàn nó nhưng hiểu các thành phần và định tuyến và tất cả những điều đó
+
+00:24:49.360 --> 00:24:53.279
+ loại thứ và ý tôi là tôi biết bạn có thể mua ừm
+
+00:24:53.279 --> 00:25:00.400
+ chỉ là các bảng đơn giản chỉ là các hàng gồm các điểm kết nối nhỏ
+
+00:25:00.400 --> 00:25:03.840
+ nhưng tôi muốn có thể tạo ra hội đồng quản trị của riêng mình và vì vậy anh ấy đã yêu cầu
+
+00:25:03.840 --> 00:25:07.279
+ đặc biệt nếu chúng ta có thể tìm thấy một bộ dụng cụ tự làm cho
+
+00:25:07.279 --> 00:25:10.320
+ một hộp vô dụng mà bạn biết đó là hộp mà bạn nhấn nút vâng và
+
+00:25:10.320 --> 00:25:15.840
+ một thứ nhỏ xuất hiện và bật ra vâng, hãy thử xem
+
+00:25:17.600 --> 00:25:22.640
+ bạn đã làm gì bạn có nghiêm túc không
+
+00:25:25.039 --> 00:25:30.400
+ ôi trời thật vui nhộn
+
+00:25:32.720 --> 00:25:39.520
+ xin chào nó giống như có một con mèo con trong đó nó giống như con mèo của tôi
+
+00:25:40.240 --> 00:25:44.799
+ này này, bây giờ tôi đã tìm kiếm một cái nhưng tôi đã tìm thấy một cái nhưng tôi đã tìm thấy một loạt
+
+00:25:44.799 --> 00:25:48.080
+ mọi người thích ồ, bạn có thể làm một cái bằng arduino, bạn có thể tạo bằng cái này
+
+00:25:48.080 --> 00:25:55.520
+ và tôi giống như thể tôi sẽ làm một chiếc hộp vô dụng tự làm, tôi muốn xây nó từ đó
+
+00:25:55.520 --> 00:25:58.559
+ nền tảng vì vậy tôi đã nghiên cứu cách làm
+
+00:25:58.559 --> 00:26:03.679
+ pcbs của riêng tôi ở nhà không sao nó thực sự không khó
+
+00:26:03.679 --> 00:26:08.960
+ và tôi đã bị thổi bay rằng tất cả những gì tôi cần là một máy in laser để thiết lập định tuyến của tôi
+
+00:26:08.960 --> 00:26:12.880
+ giống như nơi các con đường đi để bạn sẽ thực sự khắc nó
+
+00:26:12.880 --> 00:26:15.919
+ tôi sẽ thực sự khắc nó ở nhà
+
+00:26:15.919 --> 00:26:20.159
+ đó là cách xa hơn tôi jeff nó thực sự liên quan đến hóa chất
+
+00:26:20.159 --> 00:26:23.679
+ nó có nhưng là một quá trình thực sự đơn giản nên tôi đã tìm thấy
+
+00:26:23.679 --> 00:26:26.880
+ tôi đã thực hiện một loạt các nghiên cứu về nó và vì vậy tôi đã tìm thấy aa
+
+00:26:26.880 --> 00:26:29.919
+ cách thực sự đơn giản dễ dàng để tạo pcb của riêng tôi
+
+00:26:29.919 --> 00:26:32.799
+ và đó là những gì chúng tôi sẽ làm nên dự án tiếp theo của tôi có thể là
+
+00:26:32.799 --> 00:26:35.600
+ vài tháng vì tôi phải học cách làm những thứ này
+
+00:26:35.600 --> 00:26:39.520
+ công việc là thiết kế một bảng mạch um mà tôi có
+
+00:26:39.520 --> 00:26:43.120
+ chưa bao giờ làm trước khi làm bảng mạch và sau đó là con trai tôi
+
+00:26:43.120 --> 00:26:45.919
+ sẽ hàn nó lại với nhau và chúng ta sẽ tạo ra
+
+00:26:45.919 --> 00:26:50.960
+ cái hộp vô dụng mà tôi hy vọng cũng sẽ in 3d cái hộp đó ồ thật tuyệt
+
+00:26:50.960 --> 00:26:56.480
+ vâng bạn chỉ lặn ngay trong tôi khi tôi làm điều gì đó tôi không làm nhỏ
+
+00:26:56.480 --> 00:27:00.320
+ và bạn biết cách tiếp cận của tôi hơi khác một chút bởi vì tôi rất
+
+00:27:00.320 --> 00:27:03.520
+ giống như tôi muốn học một cái gì đó trước
+
+00:27:03.520 --> 00:27:09.200
+ và sau đó tăng đầu tư của tôi vào quá trình đó và bạn đang nói
+
+00:27:09.200 --> 00:27:13.679
+ về việc chuyển ngay sang tạo pcb nên tôi sẽ sao lưu để bạn biết
+
+00:27:13.679 --> 00:27:16.799
+ nếu đây là bạn đang nghĩ này, có lẽ tôi muốn có thể tạo mạch của riêng mình
+
+00:27:16.799 --> 00:27:20.399
+ và những thứ như vậy điểm khởi đầu của tôi là một breadboard vâng
+
+00:27:20.399 --> 00:27:25.440
+ và breadboard cho phép bạn bố trí mạch mà bạn đã thiết kế hoặc
+
+00:27:25.440 --> 00:27:28.559
+ mà bạn đã tải xuống giống như một bản thiết kế mạch điện ừm
+
+00:27:28.559 --> 00:27:32.399
+ từ internet hoặc tuy nhiên bạn có, điều đó cho phép bạn đặt nó
+
+00:27:32.399 --> 00:27:36.799
+ về cơ bản trên một pcb giả
+
+00:27:36.799 --> 00:27:41.039
+ nó sẽ hoạt động giống như một pcb nhưng sau đó bạn có thể tách nó ra và
+
+00:27:41.039 --> 00:27:46.399
+ đặt các bộ phận ngay lập tức và nó rẻ rất rẻ và bạn chỉ cần bắt đầu
+
+00:27:46.399 --> 00:27:50.080
+ và sau đó, bước tiếp theo đối với tôi là cái được gọi là bảng tạo mẫu để bạn có
+
+00:27:50.080 --> 00:27:53.279
+ bo mạch pcb có tất cả các lỗ đúng và
+
+00:27:53.279 --> 00:27:57.840
+ họ có chất hàn um như điểm nhưng không có
+
+00:27:57.840 --> 00:28:02.080
+ kết nối giữa chúng để bạn thực sự chạy dây hoặc bạn
+
+00:28:02.080 --> 00:28:05.760
+ chạy một chút chất hàn giữa hai khớp khác nhau chẳng hạn
+
+00:28:05.760 --> 00:28:10.080
+ và bạn làm theo cách đó nên đó là bước thứ hai của tôi vâng, sau đó tôi sẽ xem xét
+
+00:28:10.080 --> 00:28:14.720
+ có thể đi theo con đường thực sự khắc của riêng bạn
+
+00:28:14.720 --> 00:28:19.200
+ pcbs bởi vì khi đó bạn đang tham gia vào các quá trình hóa học
+
+00:28:19.200 --> 00:28:24.960
+ và tôi là tôi chưa nghiên cứu nó nhưng ừm đó là một quá trình phức tạp hơn nhiều nên
+
+00:28:24.960 --> 00:28:27.919
+ tôi muốn bắt đầu đơn giản hơn một chút so với pcb đầu tiên của tôi
+
+00:28:27.919 --> 00:28:32.080
+ được xây dựng trên một breadboard rất cơ bản nhưng tôi đã thiết kế nó đúng
+
+00:28:32.080 --> 00:28:35.120
+ được thôi và tất cả chỉ là nó có 5 volt
+
+00:28:35.120 --> 00:28:38.880
+ tín hiệu và khi nó có năm vôn,
+
+00:28:38.880 --> 00:28:43.440
+ rơ le đóng nên nó có rơ le bên phải không sao khi nó không có năm vôn
+
+00:28:43.440 --> 00:28:47.520
+ rơ le mở để nó ngắt kết nối
+
+00:28:47.520 --> 00:28:51.440
+ lý do mà tôi tạo ra rằng đó là một ứng dụng được xây dựng có mục đích nên tôi đã xây dựng nó
+
+00:28:51.440 --> 00:28:56.000
+ trên breadboard và cho ăn ở mức 5 vôn đến từ
+
+00:28:56.000 --> 00:29:03.440
+ bất kỳ đoán bất kỳ đoán spc nope nó là một từ viết tắt ba chữ cái usb khác
+
+00:29:03.440 --> 00:29:07.360
+ usb usb kéo tín hiệu năm volt ra khỏi dấu tích micro
+
+00:29:07.360 --> 00:29:12.399
+ bộ định tuyến ổn và vì vậy sau đó trong vi tích tắc tôi đã lập trình mã cho biết
+
+00:29:12.399 --> 00:29:17.039
+ về cơ bản là để làm nó chết lặng nếu internet gặp sự cố
+
+00:29:17.039 --> 00:29:20.559
+ tắt nguồn trên usb oh và sau đó
+
+00:29:20.559 --> 00:29:25.520
+ mở rơ le và điều khiển rơ le là gì nhưng nguồn điện cho modem của tôi
+
+00:29:25.520 --> 00:29:29.919
+ vì vậy modem của tôi nếu internet bị hỏng sẽ tự động chuyển
+
+00:29:29.919 --> 00:29:33.120
+ sức mạnh của chính nó tắt vì rơ le của tôi
+
+00:29:33.120 --> 00:29:37.039
+ phải và đợi năm giây rồi bật lại, vì vậy về cơ bản nó là
+
+00:29:37.039 --> 00:29:41.200
+ phiên bản ảo của bạn đã tắt và bật lại vì
+
+00:29:41.200 --> 00:29:43.679
+ bạn làm gì khi kết nối Internet bị hỏng bạn kéo phích cắm
+
+00:29:43.679 --> 00:29:46.799
+ từ đà bạn đợi năm giây và bạn cắm lại và
+
+00:29:46.799 --> 00:29:50.240
+ bạn biết tám lần trong số mười lần nó sẽ hoạt động trở lại
+
+00:29:50.240 --> 00:29:54.559
+ đúng vậy, đó là mạch tôi đã xây dựng nên tôi đã xây dựng nó trên bảng tạo mẫu một lần
+
+00:29:54.559 --> 00:29:58.240
+ tôi đã có nó hoạt động và tôi chỉ hàn nó lại với nhau và nó rất đơn giản
+
+00:29:58.240 --> 00:30:00.799
+ mạch rất mát và nó hoạt động tốt, tôi thích
+
+00:30:00.799 --> 00:30:04.720
+ điều đó rất thú vị vì vậy các công cụ bạn đã có những gì
+
+00:30:04.720 --> 00:30:08.080
+ bạn đang ở đâu xa uh tốt như tôi đã nói tôi vừa mới làm
+
+00:30:08.080 --> 00:30:13.760
+ nghiên cứu tuần trước oh vì vậy tôi đang ở giai đoạn mua
+
+00:30:13.760 --> 00:30:17.679
+ uh vì vậy chúng tôi có tất cả các vật liệu hàn tôi sẽ mua bảng mua
+
+00:30:17.679 --> 00:30:21.919
+ hóa chất tôi đã tải xuống phần mềm um
+
+00:30:21.919 --> 00:30:25.600
+ để thiết kế pcb wow um
+
+00:30:25.600 --> 00:30:29.360
+ và tôi có một bộ linh kiện đang trên đường với tất cả
+
+00:30:29.360 --> 00:30:33.039
+ điện trở và tụ điện đúng vậy, tất cả những thứ đó là một thứ gọn gàng
+
+00:30:33.039 --> 00:30:36.559
+ cũng là những ngày này, ý tôi là bạn thực sự không thể đi bộ
+
+00:30:36.559 --> 00:30:39.039
+ vào một lán vô tuyến như chúng ta đã từng không thể ở đó
+
+00:30:39.039 --> 00:30:43.679
+ vẫn có những cửa hàng như ở đây trong quán bar mà chúng tôi có một cái gọi là seaal
+
+00:30:43.679 --> 00:30:47.039
+ đó là một cửa hàng rực rỡ giống như cái lán đài cũ nơi bạn
+
+00:30:47.039 --> 00:30:50.399
+ đi vào và giống như tôi chỉ cần một tụ điện
+
+00:30:50.399 --> 00:30:52.880
+ và nó giống như ở đây bạn đi bạn biết nó giống như ngăn kéo
+
+00:30:52.880 --> 00:30:57.279
+ và ngăn kéo của tụ điện và điện trở và mọi thứ khác điốt và bất cứ thứ gì
+
+00:30:57.279 --> 00:31:01.519
+ nhưng chỉ để có một bộ dụng cụ với giá 20 đô la
+
+00:31:01.519 --> 00:31:04.960
+ tất cả các loại tương tự như những thứ thông thường và đó là một bộ đi kèm với
+
+00:31:04.960 --> 00:31:07.440
+ breadboard và nó đi kèm với breadboard và
+
+00:31:07.440 --> 00:31:11.279
+ một trong những điều là tôi muốn giống như vâng, tôi sẽ thiết kế nó nhưng một phần
+
+00:31:11.279 --> 00:31:14.640
+ của quá trình lập kế hoạch giống như bạn đã nói bằng cách sử dụng breadboard để tìm ra
+
+00:31:14.640 --> 00:31:17.519
+ mạch điện sẽ diễn ra như thế nào và đó sẽ là một bài học tuyệt vời
+
+00:31:17.519 --> 00:31:19.840
+ kinh nghiệm cho luke bởi vì họ sẽ giống như đây là
+
+00:31:19.840 --> 00:31:23.200
+ cách này hoạt động như thế nào và hãy thử cái này và hãy làm cái đó và sau đó
+
+00:31:23.200 --> 00:31:26.080
+ bạn biết đấy, chúng tôi sẽ có thể thử ở đó mà không cần thực sự tự làm
+
+00:31:26.080 --> 00:31:30.880
+ điều đó thực sự gọn gàng, bạn cũng đã đề cập đến arduino và arduino là loại
+
+00:31:30.880 --> 00:31:34.159
+ giống như nó là một bộ điều khiển vậy bạn biết đấy, trong khi đó
+
+00:31:34.159 --> 00:31:37.200
+ một quả mâm xôi pi hoặc một máy tính bảng đơn khác là một sự thật
+
+00:31:37.200 --> 00:31:41.200
+ máy tính thực với hệ điều hành và mọi thứ mà arduino giống như bạn
+
+00:31:41.200 --> 00:31:45.519
+ chỉ cần lập trình nó để thực hiện một nhiệm vụ rất cụ thể, nó là một trạng thái rắn
+
+00:31:45.519 --> 00:31:48.960
+ và nó sẽ phản hồi và tôi nghĩ đây là
+
+00:31:48.960 --> 00:31:51.840
+ tại sao nó sẽ hoạt động thực sự tốt một arduino cho
+
+00:31:51.840 --> 00:31:55.679
+ uh cho một chiếc hộp vô dụng là bởi vì nó giống như
+
+00:31:55.679 --> 00:31:59.200
+ nó bật hoặc tắt thì đúng và nếu nó bật thì hãy làm điều này
+
+00:31:59.200 --> 00:32:03.200
+ và sau đó nó sẽ tắt, điều đó đúng, lập trình rất cơ bản
+
+00:32:03.200 --> 00:32:09.919
+ kỹ thuật số viết bốn dấu phẩy, chào hi dấu chấm phẩy và sau đó chúng tôi
+
+00:32:09.919 --> 00:32:13.519
+ sẽ trì hoãn trong một giây tức là một nghìn mili giây
+
+00:32:13.519 --> 00:32:17.039
+ và sau đó chúng ta sẽ sao chép dòng đó ngay bây giờ
+
+00:32:17.039 --> 00:32:20.960
+ bạn nghĩ cao có nghĩa là gì so với thấp, đó là những gì tôi sẽ đặt ở đây
+
+00:32:20.960 --> 00:32:27.440
+ chỉ là phỏng đoán bật hoặc tắt có để đó là mạch của tôi bây giờ trông như thế nào
+
+00:32:27.440 --> 00:32:32.399
+ và tôi sẽ chỉ cần cắm cái này vào nguồn usb nên tôi sẽ không cắm nó vào
+
+00:32:32.399 --> 00:32:36.240
+ máy tính tôi muốn thực sự cấp nguồn cho thiết bị này và xem nó có
+
+00:32:36.240 --> 00:32:40.840
+ chạy chương trình của tôi và nếu có, chúng ta sẽ thấy ánh sáng này
+
+00:32:40.840 --> 00:32:45.279
+ nhấp nháy ở đó, chúng tôi bắt đầu gọn gàng mỗi giây để chúng tôi
+
+00:32:45.279 --> 00:32:49.600
+ thực sự đã tạo ra mạch khá nhanh và tạo ra
+
+00:32:49.600 --> 00:32:53.919
+ chương trình bây giờ cho đèn này biết phải làm gì và chúng tôi đã nói với nó rất
+
+00:32:53.919 --> 00:32:57.760
+ chỉ cần bật và tắt lại nhưng nếu bạn
+
+00:32:57.760 --> 00:32:59.679
+ tạo mạch của riêng bạn mà bạn phải thích làm
+
+00:32:59.679 --> 00:33:04.159
+ ics bạn phải tự lập trình nó, bạn phải tìm ra cách
+
+00:33:04.159 --> 00:33:07.919
+ ồ, tôi muốn xem dự án này là một công việc đang được tiến hành
+
+00:33:07.919 --> 00:33:11.840
+ được rồi và sau đó xem uh làm thế nào nó kết hợp với nhau, nghe hay đấy
+
+00:33:11.840 --> 00:33:16.559
+ chúng tôi đã đề cập đến cộng đồng ở đây trong chương trình của chúng tôi và uh máy chủ bất hòa của chúng tôi trong
+
+00:33:16.559 --> 00:33:20.320
+ đặc biệt là tôi đã khai thác vào cộng đồng của chúng tôi để
+
+00:33:20.320 --> 00:33:23.760
+ vào và chia sẻ ý tưởng của tôi về mạch và vâng
+
+00:33:23.760 --> 00:33:27.519
+ những thứ như vậy và có một số người trong cộng đồng của chúng tôi chỉ
+
+00:33:27.519 --> 00:33:32.559
+ như lên đây miễn là khả năng và hiểu biết của họ về những
+
+00:33:32.559 --> 00:33:36.320
+ nhiều thứ vì vậy nó thực sự hữu ích cho tôi vì tôi
+
+00:33:36.320 --> 00:33:38.880
+ đã học được vì vậy tôi thậm chí tôi hoàn toàn có kế hoạch sử dụng
+
+00:33:38.880 --> 00:33:42.640
+ cộng đồng tận dụng công việc của tôi thông qua các lỗi và nếu bạn là một trong những người đó
+
+00:33:42.640 --> 00:33:46.159
+ cộng đồng ngay bây giờ hãy giơ tay lên và nói vâng tôi
+
+00:33:46.159 --> 00:33:48.480
+ hiểu cách hoạt động của tất cả những gì tôi muốn giúp đỡ
+
+00:33:48.480 --> 00:33:52.640
+ và uh và đó là điều mà tôi nghĩ rằng tôi nghĩ rằng điều đó sẽ thực sự gọn gàng
+
+00:33:52.640 --> 00:33:54.320
+ tính năng cho chương trình cũng như bạn học
+
+00:33:54.320 --> 00:33:57.200
+ vâng, chắc chắn hãy giữ cho chúng tôi đăng trên jeff đó chắc chắn tôi thực sự quan tâm
+
+00:33:57.200 --> 00:34:00.159
+ để biết mọi thứ diễn ra như thế nào, tôi sẽ đăng những điều đằng sau
+
+00:34:00.159 --> 00:34:06.320
+ cảnh một cái hộp vô dụng bất kỳ cái nào khác, bạn có ý kiến ​​gì chưa, tôi rất vui
+
+00:34:06.320 --> 00:34:09.520
+ khi tôi phát minh ra như khi tôi nghĩ về điều gì đó
+
+00:34:09.520 --> 00:34:13.200
+ bạn đã có bất kỳ khoảnh khắc nào mà tôi giống như tôi thực sự ước
+
+00:34:13.200 --> 00:34:16.240
+ đã có thứ gì đó sẽ làm được điều này nhưng nó không tồn tại
+
+00:34:16.240 --> 00:34:20.079
+ đây là nơi mà việc in 3D rất thú vị đối với tôi bởi vì tôi đang tạo ra những thứ
+
+00:34:20.079 --> 00:34:23.520
+ chưa tồn tại tôi chưa thực sự nghĩ
+
+00:34:23.520 --> 00:34:27.520
+ xa đến mức những gì tồn tại và không tồn tại
+
+00:34:27.520 --> 00:34:29.919
+ ừm
+
+00:34:30.960 --> 00:34:34.000
+ không, tôi chưa thực sự nghĩ rằng sẽ nảy ra một số ý tưởng
+
+00:34:34.000 --> 00:34:37.040
+ vâng và chia sẻ những thứ đó chắc chắn có rất nhiều thứ
+
+00:34:37.040 --> 00:34:43.679
+ vâng như tôi luôn muốn làm um chúng tôi một hệ thống âm thanh toàn nhà
+
+00:34:43.679 --> 00:34:48.879
+ liên kết đến um bạn biết thiết bị amazon của chúng tôi và những thứ như
+
+00:34:48.879 --> 00:34:52.079
+ điều đó nhưng tôi muốn có cảm biến ở đâu
+
+00:34:52.079 --> 00:34:56.320
+ khi tôi đi từ phòng này sang phòng khác, cảm biến chuyển động sẽ hoạt động và nó sẽ đóng lại
+
+00:34:56.320 --> 00:34:59.760
+ tắt loa một phòng và thêm nó vào nơi tôi vừa đi
+
+00:34:59.760 --> 00:35:02.000
+ đó là cách nâng cao hơn nhưng đó có thể là
+
+00:35:02.000 --> 00:35:05.119
+ điều duy nhất tôi có thể nghĩ về nơi tôi muốn làm điều này nhưng thấy bạn nói chuyện
+
+00:35:05.119 --> 00:35:08.960
+ về điều đó và sau đó tôi nghĩ không sao cả, bạn có thể sử dụng cảm biến hồng ngoại thụ động
+
+00:35:08.960 --> 00:35:14.640
+ vâng, được sử dụng trong cảm biến chuyển động, bạn có thể sử dụng cảm biến laser nhưng
+
+00:35:14.640 --> 00:35:19.200
+ pir rất rẻ vâng vâng và nó chỉ là một cảm biến nhỏ mà nó giống như
+
+00:35:19.200 --> 00:35:22.880
+ được rồi, đã có chuyển động làm điều gì đó vâng để bạn có thể tạo ra thứ gì đó
+
+00:35:22.880 --> 00:35:27.520
+ một lần nữa với một rơ le điều khiển xem loa có
+
+00:35:27.520 --> 00:35:31.599
+ một mạch đã hoàn thành hay không, vậy nếu nó chỉ là
+
+00:35:31.599 --> 00:35:36.160
+ nhiều loa được kết nối thông qua bộ khuếch đại mà bạn có thể thiết lập rơ le
+
+00:35:36.160 --> 00:35:40.000
+ với cảm biến pir mà bạn có thể điều khiển bằng chuyển động
+
+00:35:40.000 --> 00:35:44.160
+ vâng tốt và nếu không có chuyển động trong 10 phút, hãy tắt loa
+
+00:35:44.160 --> 00:35:45.760
+ tự động hoặc một cái gì đó tương tự
+
+00:35:45.760 --> 00:35:49.200
+ chính xác như những loại ý tưởng này như có rất nhiều thứ mà bạn có thể
+
+00:35:49.200 --> 00:35:51.359
+ làm khi bạn bắt đầu hiểu và sau đó
+
+00:35:51.359 --> 00:35:55.839
+ có toàn bộ mặt trái của nó, nơi một cái gì đó bị vỡ và bạn có thể sửa nó
+
+00:35:55.839 --> 00:35:59.200
+ đó là một cảm giác tốt và vậy là xong chúng ta đã làm được rồi
+
+00:35:59.200 --> 00:36:02.000
+ vâng, rất vui vì bạn biết bạn nhận được ít pin
+
+00:36:02.000 --> 00:36:07.280
+ người thử nghiệm uh thích kiểm tra khoản phí yeah vì vậy chúng tôi đã có một trong những người đó và nó
+
+00:36:07.280 --> 00:36:09.200
+ buồn cười khi con trai tôi đang xây dựng máy tính của mình
+
+00:36:09.200 --> 00:36:12.560
+ chúng tôi không chắc liệu pin có hoạt động hay không và chúng tôi không nhận được gì
+
+00:36:12.560 --> 00:36:15.760
+ Tôi thích điều này thật kỳ lạ là chúng tôi không thường xuyên nhận được ngay cả khi nó đã chết
+
+00:36:15.760 --> 00:36:18.640
+ bật lên màu đỏ nhưng không có gì nên chúng tôi đã mở nó ra
+
+00:36:18.640 --> 00:36:22.960
+ hóa ra kết nối thực tế đã bị phá vỡ oh
+
+00:36:22.960 --> 00:36:27.359
+ bây giờ tôi không có manh mối và vâng, con trai tôi giống như oh tôi có thể sửa chữa nó và
+
+00:36:27.359 --> 00:36:30.240
+ anh ấy đã sửa nó, chúng tôi đặt nó lại với nhau và sau đó chúng tôi và nó hoạt động và nó giống như oh
+
+00:36:30.240 --> 00:36:34.000
+ yeah, đó là một cục pin chết yeah, tôi cũng có thể liên tưởng đến điều đó, tôi cũng sử dụng
+
+00:36:34.000 --> 00:36:38.160
+ loa gối cho podcast không sao và uh vì bạn biết đấy
+
+00:36:38.160 --> 00:36:40.880
+ kết nối bằng một sợi dây với điện thoại của tôi, nó bị kéo
+
+00:36:40.880 --> 00:36:45.119
+ vâng và nó đã được kéo ra ngay vì vậy nó là một điều đơn giản như vậy nhưng tôi hoàn toàn
+
+00:36:45.119 --> 00:36:48.720
+ tôi đã không mua một cái khác không, không, tôi đã lấy
+
+00:36:48.720 --> 00:36:52.480
+ nó tách rời và tôi hàn lại nó và gia cố nó
+
+00:36:52.480 --> 00:36:56.160
+ vì vậy nó sẽ không xảy ra một lần nữa oh đẹp đã làm cho nó tốt hơn so với nó là anh ấy anh ấy
+
+00:36:56.160 --> 00:37:00.240
+ Anh ấy hướng tâm trí của mình sang những thứ như rác thải điện tử vâng và anh ấy giống như nếu ai đó
+
+00:37:00.240 --> 00:37:04.960
+ cơ hội thoát khỏi TV hoặc màn hình máy tính của họ là
+
+00:37:04.960 --> 00:37:08.240
+ nó vẫn đang hoạt động, bố nó chỉ là thứ gì đó bên trong bị vỡ
+
+00:37:08.240 --> 00:37:12.400
+ anh ấy giống như tôi có thể sửa nó. Tôi giống như bạn nghĩ về điều đó và vì vậy bánh xe của anh ấy
+
+00:37:12.400 --> 00:37:15.599
+ cuối cùng và anh ấy giống như tôi có thể làm những điều này và sau đó bán
+
+00:37:15.599 --> 00:37:20.160
+ 12 tuổi đó là một sự nghiệp
+
+00:37:20.160 --> 00:37:22.960
+ trong một số
+
+00:37:23.599 --> 00:37:27.359
+ uh như nó thực sự có giá trị khi có những khả năng đó
+
+00:37:27.359 --> 00:37:30.960
+ vì vậy tôi sẽ huấn luyện anh ta trong lần tới uh tốt anh ta 12 tuổi
+
+00:37:30.960 --> 00:37:38.560
+ tám sáu năm tôi nghỉ hưu tôi đã có một màn hình vào tôi không biết
+
+00:37:38.560 --> 00:37:42.960
+ có thể là màn hình đẹp rộng 23 inch hoặc 24 inch
+
+00:37:42.960 --> 00:37:47.359
+ đến như rác thải điện tử và vì vậy tôi thích
+
+00:37:47.359 --> 00:37:50.720
+ tôi sẽ xem xét và vì vậy con gái tôi và tôi đã xem xét nó
+
+00:37:50.720 --> 00:37:57.280
+ và có một tụ điện đã bị cháy nên tôi đã lên mạng và
+
+00:37:57.280 --> 00:37:59.920
+ tôi đã mua một trong những tụ điện mà họ bán chúng trong các gói
+
+00:37:59.920 --> 00:38:03.599
+ ba và nó là mười hai đô la cho 12
+
+00:38:03.599 --> 00:38:07.760
+ chúng tôi có một gói ba người, chúng tôi đã thay thế một trong những tụ điện đó và màn hình đó
+
+00:38:07.760 --> 00:38:13.520
+ bây giờ đang ngồi trên bàn của con gái tôi ôi trời ơi, thật tuyệt, thật tuyệt vời
+
+00:38:13.520 --> 00:38:16.720
+ và anh ấy hoàn toàn đúng nhưng bạn không chỉ có thể sửa chữa mọi thứ
+
+00:38:16.720 --> 00:38:19.920
+ giả sử có thứ gì đó trở thành rác thải điện tử hoặc bạn biết bạn tìm thấy thứ gì đó tại
+
+00:38:19.920 --> 00:38:22.320
+ bên đường mà ai đó đã bỏ đi vì họ không thể
+
+00:38:22.320 --> 00:38:26.480
+ biết làm thế nào để sửa nó và có thể nếu sửa nó là nhiều hơn
+
+00:38:26.480 --> 00:38:30.079
+ đắt hơn mua một cái mới trong nhiều trường hợp
+
+00:38:30.079 --> 00:38:35.119
+ um bạn có thể ngay cả khi bạn không thể sửa chữa nó, bạn có thể làm những gì được gọi là hoang tàn
+
+00:38:35.119 --> 00:38:39.440
+ điều đó đúng để bạn có thể xóa tất cả các thành phần tốt từ đó và
+
+00:38:39.440 --> 00:38:43.119
+ đặt chúng vào một ngăn tổ chức có để sau đó bạn có thể có đài phát thanh của riêng bạn
+
+00:38:43.119 --> 00:38:46.880
+ lán ở nhà, nơi bạn có các ngăn kéo của tất cả các bộ phận khác nhau này
+
+00:38:46.880 --> 00:38:50.079
+ và sau đó khi một cái gì đó bị hỏng, bạn không phải bỏ ra 12
+
+00:38:50.079 --> 00:38:53.280
+ trực tuyến để mua chúng tôi ước gì tôi không biết anh ấy sẽ tham gia vào việc này
+
+00:38:53.280 --> 00:38:57.040
+ bởi vì vào mùa hè tôi có khoảng bốn máy tính
+
+00:38:57.040 --> 00:39:00.320
+ một vài máy chiếu chúng tôi đã lấy chúng tất cả các rác thải điện tử
+
+00:39:00.320 --> 00:39:03.760
+ vì vậy nó giống như oh tôi có thể đã tháo dỡ rằng oh chắc chắn là có chúng
+
+00:39:03.760 --> 00:39:07.119
+ ồ, những phần chúng ta đang sống và học được
+
+00:39:07.119 --> 00:39:10.960
+ rất tuyệt, hãy giữ cho chúng tôi đăng về điều đó một cách chắc chắn và hãy bình luận bên dưới cho chúng tôi biết
+
+00:39:10.960 --> 00:39:13.359
+ về một số kỳ tích mà bạn đã có
+
+00:39:13.359 --> 00:39:18.560
+ uh liên quan đến các loại chủ đề này và nếu chúng là
+
+00:39:18.560 --> 00:39:20.880
+ điều gì đó khiến bạn hứng thú mà bạn chưa bao giờ quan tâm
+
+00:39:20.880 --> 00:39:24.720
+ này, hãy bình luận bên dưới, chúng tôi cũng rất muốn nghe ý kiến ​​của bạn và chúng tôi rất muốn có bạn
+
+00:39:24.720 --> 00:39:27.920
+ như một phần của quá trình đó khi jeff đang học hỏi
+
+00:39:27.920 --> 00:39:32.079
+ vì tôi cũng đang học và ngày càng hiểu nhiều hơn về những loại
+
+00:39:32.079 --> 00:39:36.800
+ như sửa chữa linh kiện và bảng mạch và mọi thứ khác
+
+00:39:36.800 --> 00:39:41.359
+ thật là thú vị vâng đó là một sở thích tuyệt vời và một sự nghiệp tuyệt vời nếu bạn
+
+00:39:41.359 --> 00:39:45.200
+ thực sự cũng muốn làm điều đó để điều đó thực sự tốt cho con trai của bạn, tôi muốn nghe
+
+00:39:45.200 --> 00:39:49.680
+ anh ấy thích nó như thế nào nên khi anh ấy ừm thì tôi đoán vậy
+
+00:39:49.680 --> 00:39:53.359
+ 13 cộng thêm nên năm sau bạn có thể đưa anh ấy vào phòng thu
+
+00:39:53.359 --> 00:39:56.560
+ và anh ấy có thể cho chúng tôi thấy cách anh ấy làm thế nào
+
+00:39:56.560 --> 00:40:00.480
+ nghe có vẻ tốt, rất tuyệt, hãy làm cho nó xảy ra, chúng ta phải đến tòa soạn
+
+00:40:00.480 --> 00:40:02.960
+ becca ở đó với những câu chuyện tin tức hàng đầu của chúng tôi trong tuần
+
+00:40:02.960 --> 00:40:08.800
+ đây cô ấy đây đây là những gì sắp xảy ra trong phòng tin tức TV 5 chấm
+
+00:40:08.800 --> 00:40:12.000
+ tin tặc đang sử dụng một lỗi windows nghiêm trọng để xâm nhập
+
+00:40:12.000 --> 00:40:17.280
+ máy chủ chưa được vá ba gói javascript đã bị xóa khỏi npm
+
+00:40:17.280 --> 00:40:22.560
+ cổng thông tin chứa mã độc nokia đã được giao nhiệm vụ xây dựng
+
+00:40:22.560 --> 00:40:27.040
+ mạng di động mới 4g trên mặt trăng một 80 mới
+
+00:40:27.040 --> 00:40:32.240
+ công nghệ sạc không dây watt từ xiaomi đang thổi bay tâm trí của chúng tôi và
+
+00:40:32.240 --> 00:40:36.240
+ raspberry pi compute module 4 đã được phát hành, chúng tôi sẽ
+
+00:40:36.240 --> 00:40:40.720
+ cho bạn biết các thông số kỹ thuật và cách điều này thay đổi mọi thứ đối với iot công nghiệp
+
+00:40:40.720 --> 00:40:44.000
+ bám sát các chi tiết đầy đủ và góc tiền điện tử của tuần này
+
+00:40:44.000 --> 00:40:48.640
+ sắp tới đây là thể loại 5 dot tv newsroom
+
+00:40:48.640 --> 00:40:52.079
+ bao gồm các câu chuyện công nghệ hàng đầu của tuần với một chút linux
+
+00:40:52.079 --> 00:40:54.480
+ Thiên kiến
+
+00:40:56.240 --> 00:41:00.319
+ từ tòa soạn, tôi là becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ tin tặc đang sử dụng một lỗi windows nghiêm trọng để xâm nhập
+
+00:41:03.920 --> 00:41:07.920
+ máy chủ chưa được vá một trong những lỗ hổng cửa sổ quan trọng nhất
+
+00:41:07.920 --> 00:41:10.400
+ tiết lộ năm nay đang bị tấn công tích cực
+
+00:41:10.400 --> 00:41:14.480
+ bởi tin tặc đang cố gắng mở cửa hậu máy chủ lưu trữ thông tin đăng nhập cho mọi
+
+00:41:14.480 --> 00:41:18.480
+ tài khoản người dùng và quản trị viên trên mạng
+
+00:41:18.480 --> 00:41:23.119
+ các nhà nghiên cứu đã đặt cho lỗ hổng này cái tên xerologon vì các cuộc tấn công hoạt động bằng cách
+
+00:41:23.119 --> 00:41:27.200
+ gửi một chuỗi số không trong một chuỗi tin nhắn sử dụng mạng
+
+00:41:27.200 --> 00:41:30.720
+ giao thức đăng nhập mà máy chủ windows dựa vào để
+
+00:41:30.720 --> 00:41:34.560
+ nhiều tác vụ bao gồm cho phép người dùng cuối đăng nhập
+
+00:41:34.560 --> 00:41:38.560
+ đăng nhập xero mạng vì lỗ hổng bảo mật đã
+
+00:41:38.560 --> 00:41:41.280
+ được lồng tiếng đã nhận được sự chú ý rộng rãi vào tháng trước
+
+00:41:41.280 --> 00:41:44.000
+ khi công ty phát hiện ra nó cho biết họ có thể cung cấp cho những kẻ tấn công
+
+00:41:44.000 --> 00:41:48.079
+ truy cập tức thì vào các thư mục đang hoạt động mà quản trị viên sử dụng để tạo
+
+00:41:48.079 --> 00:41:52.480
+ xóa và quản lý tài khoản mạng các thư mục hoạt động và miền
+
+00:41:52.480 --> 00:41:55.599
+ bộ điều khiển mà họ chạy là một trong những giải thưởng được thèm muốn nhất
+
+00:41:55.599 --> 00:42:00.480
+ trong việc tấn công bởi vì sau khi bị tấn công, chúng cho phép những kẻ tấn công thực thi mã và
+
+00:42:00.480 --> 00:42:03.839
+ bom, đạn trên tất cả các máy được kết nối microsoft
+
+00:42:03.839 --> 00:42:09.280
+ vá lỗ hổng bảo mật vào tháng 8 trên kevin beaumont thứ sáu
+
+00:42:09.280 --> 00:42:12.480
+ làm việc với tư cách là một nhà nghiên cứu độc lập
+
+00:42:12.480 --> 00:42:16.480
+ cho biết trong một bài đăng trên blog rằng anh ta đã phát hiện thấy các cuộc tấn công vào honeypot mà anh ta sử dụng để giữ
+
+00:42:16.480 --> 00:42:19.680
+ bám sát các cuộc tấn công tấn công mà tin tặc đang sử dụng trong
+
+00:42:19.680 --> 00:42:24.160
+ hoang dã khi máy chủ thu hút của anh ta không được vá, những kẻ tấn công có thể sử dụng
+
+00:42:24.160 --> 00:42:27.680
+ tập lệnh powershell để thay đổi thành công mật khẩu quản trị viên
+
+00:42:27.680 --> 00:42:31.920
+ và backdoor máy chủ beaumont nói rằng cuộc tấn công đã xuất hiện
+
+00:42:31.920 --> 00:42:36.480
+ hoàn toàn được viết theo kịch bản với tất cả các lệnh được hoàn thành trong vòng vài giây
+
+00:42:36.480 --> 00:42:40.160
+ với việc những kẻ tấn công đã cài đặt một cửa sau cho phép điều khiển từ xa
+
+00:42:40.160 --> 00:42:44.079
+ quyền truy cập quản trị vào các thiết bị bên trong mạng giả của anh ấy
+
+00:42:44.079 --> 00:42:48.400
+ những kẻ tấn công cũng kích hoạt máy tính để bàn từ xa do đó chúng sẽ tiếp tục
+
+00:42:48.400 --> 00:42:53.200
+ có quyền truy cập từ xa ngay cả khi quản trị viên sau đó vá máy chủ
+
+00:42:53.200 --> 00:42:57.520
+ những người không có xác thực đích thực có thể sử dụng khai thác để đạt được miền
+
+00:42:57.520 --> 00:43:00.800
+ thông tin đăng nhập quản trị miễn là những kẻ tấn công có khả năng
+
+00:43:00.800 --> 00:43:05.839
+ thiết lập kết nối tcp với bộ điều khiển miền dễ bị tấn công trong
+
+00:43:05.839 --> 00:43:10.160
+ một số trường hợp kẻ tấn công có thể sử dụng một lỗ hổng riêng biệt để có được chỗ đứng bên trong
+
+00:43:10.160 --> 00:43:13.359
+ một mạng và sau đó khai thác bằng không đăng nhập để tiếp quản
+
+00:43:13.359 --> 00:43:17.599
+ bộ điều khiển miền, tôi nghĩ một ví dụ điển hình về cách
+
+00:43:17.599 --> 00:43:20.319
+ những loại tập lệnh này để vào mạng
+
+00:43:20.319 --> 00:43:27.839
+ những máy tính lỗi thời trên mạng và cả những trò gian lận kỹ thuật xã hội
+
+00:43:27.839 --> 00:43:31.040
+ nghe nhiều về như bạn có thể nhận được những email này
+
+00:43:31.040 --> 00:43:34.800
+ cố gắng lừa bạn theo dõi thông qua một quá trình
+
+00:43:34.800 --> 00:43:38.319
+ nhập thông tin đăng nhập hoặc thứ gì đó tương tự
+
+00:43:38.319 --> 00:43:44.720
+ rủi ro mà chúng ta gặp phải và trường hợp đáng buồn mà tôi thấy là
+
+00:43:44.720 --> 00:43:48.880
+ trong đó, đôi khi người ta nghĩ tốt
+
+00:43:48.880 --> 00:43:52.319
+ tôi không cần cập nhật máy tính đó vì nó ở phòng sau không ai cả
+
+00:43:52.319 --> 00:43:55.680
+ thực sự sử dụng nó đúng hoặc ồ chúng tôi cần cái này để
+
+00:43:55.680 --> 00:43:58.800
+ vẫn có windows xp vì chúng tôi gặp sự cố với một trong những
+
+00:43:58.800 --> 00:44:02.880
+ nếu không, chúng tôi vẫn thấy rất nhiều cửa sổ 7
+
+00:44:02.880 --> 00:44:06.960
+ và đó là một bi kịch nếu bạn có
+
+00:44:06.960 --> 00:44:10.960
+ hệ thống windows 7 hoặc windows xp trên mạng của bạn chỉ cần biến nó
+
+00:44:10.960 --> 00:44:13.839
+ thoát khỏi nó, vâng thấy điều này là
+
+00:44:13.839 --> 00:44:20.480
+ là với những hệ thống đó, vì vậy microsoft có cái mà chúng ta gọi là eol hoặc end of life uh
+
+00:44:20.480 --> 00:44:24.240
+ đã kết thúc vòng đời của các hệ điều hành này
+
+00:44:24.240 --> 00:44:27.839
+ vì vậy họ đã nói rằng bạn phải nâng cấp lên windows 10. Tôi không muốn nâng cấp
+
+00:44:27.839 --> 00:44:32.000
+ đến windows 10 tôi thích windows của mình 7. tôi hiểu điều đó và tôi tôn trọng điều đó
+
+00:44:32.000 --> 00:44:37.119
+ tuy nhiên, đây là vấn đề của tin tặc
+
+00:44:37.119 --> 00:44:41.599
+ bây giờ có thể khai thác các hệ điều hành này
+
+00:44:41.599 --> 00:44:45.839
+ và khi họ làm điều đó khi họ tìm thấy lợi ích
+
+00:44:45.839 --> 00:44:48.960
+ có một vài điều xảy ra mà họ
+
+00:44:48.960 --> 00:44:55.520
+ hoặc cho đi hoặc bán những khai thác đó hoặc hai là chúng chỉ là chúng được phát hành
+
+00:44:55.520 --> 00:45:01.520
+ đến công chúng thông qua web đen hay thậm chí trên github
+
+00:45:01.520 --> 00:45:07.839
+ cũng như nghiên cứu bảo mật và vì vậy bây giờ những tin tặc này nếu bạn muốn, chúng tôi sẽ
+
+00:45:07.839 --> 00:45:11.599
+ gọi chúng như vậy nhưng thực tế trong nhiều trường hợp chúng là những gì chúng ta gọi là
+
+00:45:11.599 --> 00:45:16.800
+ script kitties và đây là um
+
+00:45:16.800 --> 00:45:21.680
+ thậm chí không giống như tin tặc, nhưng họ không cần phải có nhiều kiến ​​thức vì
+
+00:45:21.680 --> 00:45:28.160
+ việc khai thác được công khai, điều đó đúng được biết đến và hiểu rõ, vì vậy nếu
+
+00:45:28.160 --> 00:45:32.319
+ có những khai thác có sẵn cho một hệ điều hành
+
+00:45:32.319 --> 00:45:36.880
+ những gì chúng tôi mong đợi sẽ xảy ra, chúng tôi mong đợi nhà cung cấp hệ điều hành microsoft trong
+
+00:45:36.880 --> 00:45:41.200
+ trường hợp này để vá lỗi khai thác đó để sửa chữa nó
+
+00:45:41.200 --> 00:45:44.560
+ và đó là trường hợp của windows 10. Tuy nhiên, thật đáng buồn
+
+00:45:44.560 --> 00:45:49.040
+ đôi khi không phải như vậy với hệ điều hành eol
+
+00:45:49.040 --> 00:45:54.079
+ chúng tôi nghe nói rất tốt tôi không cần hỗ trợ, microsoft đã kết thúc hỗ trợ đó là
+
+00:45:54.079 --> 00:45:57.440
+ những gì chúng tôi đã nghe vâng, họ đã kết thúc hỗ trợ cho windows 7. họ đã kết thúc
+
+00:45:57.440 --> 00:46:01.920
+ hỗ trợ cho windows xp oh nhưng tôi chưa bao giờ phải gọi hỗ trợ
+
+00:46:01.920 --> 00:46:04.640
+ tôi có thể xử lý nó, đó không phải là những gì họ
+
+00:46:04.640 --> 00:46:06.640
+ nói về tất cả những gì họ đang nói là
+
+00:46:06.640 --> 00:46:12.640
+ họ sẽ không sửa các bản vá mà việc khai thác không thành vấn đề
+
+00:46:12.640 --> 00:46:16.160
+ mức độ nghiêm trọng của chúng không quan trọng chúng dễ dàng như thế nào
+
+00:46:16.160 --> 00:46:20.079
+ khai thác để bạn có một máy windows 7 trên mạng của mình tốt
+
+00:46:20.079 --> 00:46:26.319
+ bạn đang cấp quyền truy cập cho một trong những tin tặc thậm chí không có
+
+00:46:26.319 --> 00:46:31.040
+ rất giỏi trong việc hack bởi vì các khai thác được công khai
+
+00:46:31.040 --> 00:46:36.240
+ vâng đôi khi chúng là một phần của công cụ đôi khi chúng có thể tải xuống miễn phí
+
+00:46:36.240 --> 00:46:41.440
+ và họ có thể nói rằng tôi muốn với một lần kiểm tra khai thác cửa sổ 7
+
+00:46:41.440 --> 00:46:46.400
+ và do đó, họ vào hộp windows 7 hoặc họ đã lừa một trong những nhân viên của bạn
+
+00:46:46.400 --> 00:46:50.880
+ ngay cả khi họ chỉ là ai đó ở phía sau làm việc trong nhà kho
+
+00:46:50.880 --> 00:46:55.119
+ họ đã lừa ai đó mở một tệp hiện cấp cho họ quyền truy cập vào
+
+00:46:55.119 --> 00:46:59.359
+ máy windows 7 máy windows xp hoặc máy ở phòng sau
+
+00:46:59.359 --> 00:47:03.359
+ không quan trọng và ở đây chúng tôi đang tìm hiểu rằng microsoft
+
+00:47:03.359 --> 00:47:08.400
+ các máy chủ hiện có quyền khai thác miễn là
+
+00:47:08.400 --> 00:47:13.599
+ một bên độc hại có thể giành quyền truy cập vào bất kỳ máy tính nào trên mạng
+
+00:47:13.599 --> 00:47:20.480
+ bây giờ họ có thể có quyền truy cập của quản trị viên miền vào toàn bộ mạng
+
+00:47:20.480 --> 00:47:25.359
+ đáng sợ bây giờ máy windows 10 của bạn không còn nữa
+
+00:47:25.359 --> 00:47:31.440
+ an toàn là đúng vì bạn đã cho họ quyền truy cập vào mạng của mình như thể
+
+00:47:31.440 --> 00:47:39.200
+ họ là quản trị viên tên miền ồ, thấy đó chỉ là tin xấu thôi
+
+00:47:39.200 --> 00:47:42.319
+ đó là tin xấu tại sao ransomware lại là một thứ
+
+00:47:42.319 --> 00:47:46.400
+ bởi vì họ làm gì bây giờ họ không sao tôi đã có quyền truy cập vào mạng này
+
+00:47:46.400 --> 00:47:49.599
+ tôi sẽ bán trên dark web quyền truy cập vào mạng này
+
+00:47:49.599 --> 00:47:56.640
+ bạn thấy điều này với um với các thị trấn và vâng với các thành phố
+
+00:47:56.640 --> 00:48:00.000
+ có phải con mèo con trong kịch bản gốc đã làm điều đó không
+
+00:48:00.000 --> 00:48:03.680
+ anh ấy chỉ là họ chỉ muốn họ muốn vào
+
+00:48:03.680 --> 00:48:07.119
+ cài đặt phần mềm của họ và thoát ra và sau đó bán quyền truy cập
+
+00:48:07.119 --> 00:48:11.040
+ đúng vậy vì đó là tiền nhanh chóng vậy tại sao mọi người làm điều đó vì tiền
+
+00:48:11.040 --> 00:48:15.119
+ và đó là cách họ làm vậy nên ừm, bạn phải
+
+00:48:15.119 --> 00:48:18.319
+ đại loại là luôn cập nhật mọi thứ để bạn biết rằng đó chỉ là suy nghĩ nhanh
+
+00:48:18.319 --> 00:48:22.079
+ để suy nghĩ xem nếu bạn có bất kỳ máy lỗi thời nào trên mạng của mình, bạn phải
+
+00:48:22.079 --> 00:48:25.599
+ loại bỏ họ và yêu cầu nhân viên của bạn được đào tạo về mạng
+
+00:48:25.599 --> 00:48:29.119
+ thực hành bảo mật hiểu những gì là lừa đảo lừa đảo
+
+00:48:29.119 --> 00:48:32.720
+ bởi vì bạn biết rất rõ ai đó đã nhấp vào một liên kết và bây giờ họ
+
+00:48:32.720 --> 00:48:34.880
+ máy tính bị nhiễm nhưng máy tính của họ bị
+
+00:48:34.880 --> 00:48:41.839
+ trên mạng của bạn nhưng tôi sẽ nhận được một nửa số tiền của hoàng tử đó
+
+00:48:41.839 --> 00:48:45.359
+ đó là toàn bộ những con sâu khác ngay đó jeff
+
+00:48:45.359 --> 00:48:50.000
+ nhưng ý tôi là tôi khi nói đến những thứ này, hãy nhìn vào hệ thống của bạn và nói
+
+00:48:50.000 --> 00:48:52.559
+ ồ tôi không muốn dành bảy tám
+
+00:48:52.559 --> 00:48:55.599
+ trăm đô la cho một máy tính mới, tôi sẽ không lo lắng về việc cập nhật cái này
+
+00:48:55.599 --> 00:49:00.000
+ cuối cùng bạn sẽ chi tiêu nhiều hơn trong dài hạn hoặc trong ngắn hạn
+
+00:49:00.000 --> 00:49:05.040
+ ừm không về lâu dài nếu bạn không có bản vá hệ thống của mình vì một lần
+
+00:49:05.040 --> 00:49:09.200
+ họ có quyền truy cập vào mọi thứ bạn có thể xuống và ra nhưng và tôi
+
+00:49:09.200 --> 00:49:11.760
+ nghĩ khi họ có quyền truy cập vào mọi thứ tôi
+
+00:49:11.760 --> 00:49:13.760
+ nghĩ rằng điều quan trọng là nhận ra rằng
+
+00:49:13.760 --> 00:49:20.400
+ rằng một điểm vào trở thành quyền truy cập vào mọi thứ, vì vậy hãy chi tiêu vài trăm
+
+00:49:20.400 --> 00:49:24.160
+ kiếm được cái máy tính mới tự cứu mình, tôi không biết nó cần những gì
+
+00:49:24.160 --> 00:49:27.599
+ ý tôi là nó khác, nó khác nhau cho mọi trường hợp đúng vậy tôi có một người
+
+00:49:27.599 --> 00:49:30.800
+ hôm nay ai đã gọi và nói rằng tôi có một máy tính windows 7 duy nhất
+
+00:49:30.800 --> 00:49:33.920
+ tôi không muốn nâng cấp nó bởi vì nó chỉ hoạt động oh
+
+00:49:33.920 --> 00:49:38.400
+ vì vậy đây là lời giải thích và ở đây becca đã chia sẻ với chúng tôi một câu chuyện
+
+00:49:38.400 --> 00:49:43.200
+ điều đó chỉ đơn giản cho chúng tôi biết rằng tất cả những gì họ cần là quyền truy cập vào một máy tính
+
+00:49:43.200 --> 00:49:47.599
+ và bây giờ họ có quyền truy cập vào tất cả các máy tính của máy tính của bạn và không
+
+00:49:47.599 --> 00:49:52.240
+ giống như một cách samba chứ không phải theo một cách thân thiện và hy vọng họ
+
+00:49:52.240 --> 00:49:55.520
+ đừng tìm bất kỳ cách nào vào cửa sau trên những
+
+00:49:55.520 --> 00:49:59.200
+ máy tính không họ có thông tin đăng nhập quản trị viên
+
+00:49:59.200 --> 00:50:03.119
+ mạng của bạn để họ có thể làm bất cứ điều gì
+
+00:50:03.119 --> 00:50:07.280
+ đó là đúng bất cứ điều gì họ muốn khi tôi nghĩ về ngôi nhà của mình
+
+00:50:07.280 --> 00:50:10.880
+ tôi nghĩ rằng tôi đã làm xong bạn tôi nghĩ tôi có bảy
+
+00:50:10.880 --> 00:50:15.520
+ thiết bị không bao gồm điện thoại và máy tính bảng và những thứ tương tự được kết nối
+
+00:50:15.520 --> 00:50:18.960
+ vào mạng tôi không muốn họ có quyền truy cập vào mạng đó
+
+00:50:18.960 --> 00:50:21.200
+ vâng tôi chỉ không thể đủ căng thẳng mặc dù jeff
+
+00:50:21.200 --> 00:50:26.160
+ ý tôi là tôi nghĩ ở khía cạnh doanh nghiệp nhiều hơn nên người dùng gia đình nhưng
+
+00:50:26.160 --> 00:50:33.119
+ một khi họ ở trong họ ở trong bạn không thể là bạn hoàn thành vì bạn không thể bây giờ
+
+00:50:33.119 --> 00:50:36.240
+ tắt máy windows mà máy windows 7 không có
+
+00:50:36.240 --> 00:50:40.319
+ vào mọi thứ vậy bạn làm gì thay thế mọi thứ
+
+00:50:40.319 --> 00:50:44.240
+ xóa từng máy tính vì bạn không biết công cụ nào
+
+00:50:44.240 --> 00:50:50.079
+ họ đã cài đặt cái đó đắt tiền nên đừng rơi vào tình trạng đó
+
+00:50:50.079 --> 00:50:53.280
+ Dù sao thì đó cũng là một cách khai thác tồi, tôi hy vọng là những người thực sự nghiêm túc
+
+00:50:53.280 --> 00:50:56.720
+ chúng tôi đã nhấn mạnh điều đó đủ để bạn hiểu rằng đây là một điều tồi tệ
+
+00:50:56.720 --> 00:51:02.720
+ vì vậy hãy đảm bảo rằng các quản trị viên mạng của bạn luôn thành thạo và họ hiểu những
+
+00:51:02.720 --> 00:51:05.520
+ mọi thứ và bạn được bảo vệ và an toàn
+
+00:51:05.520 --> 00:51:09.920
+ chống lại những loại mối đe dọa này được rồi, chúng ta sẽ quay trở lại becca
+
+00:51:09.920 --> 00:51:13.920
+ ba gói javascript đã bị xóa khỏi cổng npm cho
+
+00:51:13.920 --> 00:51:18.000
+ chứa mã độc hại theo lời khuyên từ mpm
+
+00:51:18.000 --> 00:51:21.440
+ đội bảo mật mở ba thư viện javascript
+
+00:51:21.440 --> 00:51:24.480
+ shell trên máy tính của các nhà phát triển đã nhập các gói
+
+00:51:24.480 --> 00:51:29.200
+ trong các dự án của họ, vỏ cho phép các tác nhân đe dọa kết nối từ xa với
+
+00:51:29.200 --> 00:51:33.520
+ máy tính bị nhiễm và thực hiện các hoạt động độc hại npm
+
+00:51:33.520 --> 00:51:37.920
+ nhóm bảo mật nói rằng các shell không phụ thuộc vào một hệ điều hành cụ thể
+
+00:51:37.920 --> 00:51:41.760
+ và có thể được sử dụng để xâm phạm windows linux freebsd
+
+00:51:41.760 --> 00:51:46.960
+ openbsd và các hệ thống khác, tất cả ba gói đã được tải lên
+
+00:51:46.960 --> 00:51:50.880
+ cổng npm vào năm 2018 và mỗi cổng có hàng trăm
+
+00:51:50.880 --> 00:51:55.839
+ tải xuống kể từ đó tên của gói là dấu gạch ngang plutov
+
+00:51:55.839 --> 00:52:01.920
+ khách hàng slack dash gật gật đầu199 và gật đầu1010
+
+00:52:01.920 --> 00:52:07.119
+ nhóm bảo mật npm cho biết bất kỳ máy tính nào có điều này
+
+00:52:07.119 --> 00:52:10.800
+ gói được cài đặt hoặc đang chạy phải được coi là hoàn toàn bị xâm phạm
+
+00:52:10.800 --> 00:52:15.280
+ tất cả bí mật và khóa được lưu trữ trên máy tính đó phải được xoay ngay lập tức
+
+00:52:15.280 --> 00:52:20.559
+ từ một máy tính khác, họ cảnh báo gói nên được gỡ bỏ nhưng
+
+00:52:20.559 --> 00:52:24.160
+ toàn quyền kiểm soát máy tính có thể đã được trao cho một tổ chức bên ngoài
+
+00:52:24.160 --> 00:52:27.760
+ không có gì đảm bảo rằng việc xóa gói sẽ loại bỏ tất cả các phần mềm độc hại
+
+00:52:27.760 --> 00:52:32.079
+ phần mềm do cài đặt nó mpm
+
+00:52:32.079 --> 00:52:36.079
+ nhân viên an ninh thường xuyên quét bộ sưu tập thư viện javascript của nó
+
+00:52:36.079 --> 00:52:41.839
+ được coi là kho lưu trữ gói lớn nhất cho bất kỳ ngôn ngữ lập trình nào
+
+00:52:41.839 --> 00:52:46.079
+ trong khi tôi thậm chí không thể có được vùng phủ sóng di động tốt tại ngôi nhà của mình
+
+00:52:46.079 --> 00:52:52.240
+ nokia đang làm việc với nasa để mang 4g đến sứ mệnh artemis của mặt trăng.
+
+00:52:52.240 --> 00:52:56.559
+ để thiết lập sự hiện diện lâu dài của con người trên mặt trăng như một bước
+
+00:52:56.559 --> 00:53:01.040
+ đá hướng tới thuộc địa Mars và để bắt đầu mọi thứ, là
+
+00:53:01.040 --> 00:53:05.280
+ mở rộng 370 triệu đô la cho 14 công ty
+
+00:53:05.280 --> 00:53:08.400
+ để cung cấp công nghệ cho chương trình
+
+00:53:08.400 --> 00:53:12.400
+ từ chế tạo robot đến sản xuất điện và thậm chí cả kỹ thuật lạnh
+
+00:53:12.400 --> 00:53:16.240
+ nhưng điều hợp lý là các nhóm này sẽ cần có khả năng giao tiếp với
+
+00:53:16.240 --> 00:53:20.079
+ hành tinh mẹ mạng lưới mới sẽ được thiết kế
+
+00:53:20.079 --> 00:53:23.760
+ đặc biệt cho các điều kiện mặt trăng có thể chịu được khắc nghiệt
+
+00:53:23.760 --> 00:53:28.559
+ sự thay đổi nhiệt độ và bức xạ, công nghệ cũng sẽ sử dụng tế bào nhỏ
+
+00:53:28.559 --> 00:53:32.800
+ công nghệ như tên cho thấy nhỏ hơn đáng kể so với công nghệ cao
+
+00:53:32.800 --> 00:53:37.599
+ tháp di động mà họ đã quen nhìn thấy ở đây trên trái đất, họ cũng sử dụng ít hơn nhiều
+
+00:53:37.599 --> 00:53:41.200
+ sức mạnh của kế hoạch là cho một tàu đổ bộ mặt trăng thực hiện
+
+00:53:41.200 --> 00:53:44.480
+ hệ thống liên lạc 4g lên bề mặt mặt trăng
+
+00:53:44.480 --> 00:53:50.400
+ năm 2022, phòng thí nghiệm chuông của nokia đã được cấp 14,1 triệu đô la
+
+00:53:50.400 --> 00:53:55.119
+ về phần họ, công nghệ sạc không dây 80 watt mới từ
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi đang thổi bay tâm trí của chúng tôi và pi raspberry
+
+00:53:58.880 --> 00:54:03.839
+ mô-đun máy tính 4 đã được phát hành, chúng tôi sẽ cho bạn biết thông số kỹ thuật và cách thức
+
+00:54:03.839 --> 00:54:08.480
+ điều này thay đổi mọi thứ cho iot becca công nghiệp có những câu chuyện này sắp tới cộng với
+
+00:54:08.480 --> 00:54:25.839
+ robert ở đây với góc tiền điện tử không đi đâu cả
+
+00:54:28.079 --> 00:54:32.079
+ chào mừng trở lại thế giới tiền điện tử và chào mừng trở lại góc tiền điện tử
+
+00:54:32.079 --> 00:54:35.920
+ tuần trước chúng ta đã nói về các ngân hàng trong một vài năm nữa mà bạn sẽ không nhận ra chúng
+
+00:54:35.920 --> 00:54:39.839
+ nữa và tôi cũng đã đề cập với bạn cách đây không lâu
+
+00:54:39.839 --> 00:54:43.119
+ trước đây, tiền tệ kỹ thuật số của Trung Quốc sẽ
+
+00:54:43.119 --> 00:54:46.720
+ thay thế ong riemann và rằng họ đã triển khai nó và
+
+00:54:46.720 --> 00:54:50.400
+ họ đang chạy một số thử nghiệm ở Thâm Quyến ngay trong tuần này
+
+00:54:50.400 --> 00:54:54.400
+ đã có một số phát triển và tôi muốn nói về điều đó vì nó
+
+00:54:54.400 --> 00:54:58.319
+ sẽ ảnh hưởng trực tiếp đến cuộc sống của bạn và cuộc sống của tôi
+
+00:54:58.319 --> 00:55:03.760
+ vì vậy chúng ta hãy đi sâu vào vấn đề này ở đây, quỹ tiền tệ quốc tế, người đứng đầu
+
+00:55:03.760 --> 00:55:08.400
+ của tổ chức quốc tế đó là một phụ nữ tên là cristalina jojeva và
+
+00:55:08.400 --> 00:55:11.359
+ cô ấy đã có một bài phát biểu liên quan đến khu rừng bretton mới
+
+00:55:11.359 --> 00:55:14.240
+ thời điểm bây giờ một rừng bretton Anh là gì
+
+00:55:14.240 --> 00:55:17.440
+ hệ thống quản lý tiền tệ được thiết lập
+
+00:55:17.440 --> 00:55:21.760
+ các quy tắc của quan hệ tài chính thương mại giữa
+
+00:55:21.760 --> 00:55:25.920
+ các nước như chúng tôi canada tây âu úc và nhật bản
+
+00:55:25.920 --> 00:55:31.520
+ và vì vậy, hệ thống này là ví dụ đầu tiên về một đơn hàng được thương lượng đầy đủ
+
+00:55:31.520 --> 00:55:36.640
+ nhằm điều chỉnh các mối quan hệ tiền tệ giữa các quốc gia độc lập để
+
+00:55:36.640 --> 00:55:40.079
+ rừng bretton và cô ấy đang nói về sự thay đổi của
+
+00:55:40.079 --> 00:55:45.760
+ hệ thống đó thành một thứ gì đó hiện đại hơn bây giờ đủ thú vị
+
+00:55:45.760 --> 00:55:51.200
+ vào thứ hai, có một cuộc họp với một vài chủ ngân hàng trung ương nói về cái gọi là
+
+00:55:51.200 --> 00:55:56.319
+ thanh toán xuyên biên giới nhưng nếu bạn nghĩ về nó, hãy xem loại nào
+
+00:55:56.319 --> 00:55:59.520
+ những người mà họ có mặt, vì vậy bạn có người đứng đầu
+
+00:55:59.520 --> 00:56:03.040
+ ngân hàng trung ương saudi bạn có người đứng đầu tất cả các trung tâm
+
+00:56:03.040 --> 00:56:06.480
+ ngân hàng cái đầu của imf cái đầu của chúng tôi
+
+00:56:06.480 --> 00:56:10.319
+ ngân hàng trung ương và người đứng đầu ngân hàng trung ương malaysia mất tích là
+
+00:56:10.319 --> 00:56:13.200
+ Châu Âu thật thú vị nhưng tôi đoán sẽ có lý do
+
+00:56:13.200 --> 00:56:16.880
+ vì vậy họ đã gặp nhau để nói về tổng tiền nước
+
+00:56:16.880 --> 00:56:21.920
+ bây giờ tôi không tin rằng đó là một câu chuyện thực sự câu chuyện thực
+
+00:56:21.920 --> 00:56:26.079
+ uh cũng được xuất bản bởi một quý ông tên là raul paul
+
+00:56:26.079 --> 00:56:31.119
+ mà tôi hoàn toàn đồng ý với suy nghĩ của anh ấy chính xác là suy nghĩ của tôi
+
+00:56:31.119 --> 00:56:35.520
+ và những gì anh ấy nói về chính xác là cuộc gặp gỡ này diễn ra vào thứ hai
+
+00:56:35.520 --> 00:56:39.119
+ điều đó sẽ thay thế mối quan hệ lâu đời
+
+00:56:39.119 --> 00:56:46.319
+ giữa các quốc gia nên điều gì sẽ xảy ra, có vẻ như các ngân hàng trung ương
+
+00:56:46.319 --> 00:56:50.720
+ sẽ thông đồng và đưa ra một hệ thống
+
+00:56:50.720 --> 00:56:54.000
+ một hệ thống ngân hàng trung ương giữa tất cả chúng, vì vậy sẽ không có chúng tôi
+
+00:56:54.000 --> 00:56:56.640
+ hệ thống ngân hàng trung ương đô la sẽ có một
+
+00:56:56.640 --> 00:56:59.680
+ cho mỗi cho tất cả các tổ chức và sau đó từ
+
+00:56:59.680 --> 00:57:04.160
+ ở đó nó sẽ được đa dạng hóa và bạn có thể làm gì với
+
+00:57:04.160 --> 00:57:06.319
+ một hệ thống như vậy là một phần thú vị và
+
+00:57:06.319 --> 00:57:13.520
+ tôi thích điều đó vì vậy nó sẽ thay đổi phạm vi hoạt động của ngân hàng và tài chính
+
+00:57:13.520 --> 00:57:17.920
+ hệ thống tài chính vì bạn đang trực tiếp tương tác với mọi người
+
+00:57:17.920 --> 00:57:22.160
+ vâng, vì vậy hiện tại nó không giống như ngân hàng trung ương của chúng tôi hoặc
+
+00:57:22.160 --> 00:57:26.720
+ canada không quan trọng đưa ra một số chính sách và sau đó nó
+
+00:57:26.720 --> 00:57:32.400
+ nó nhỏ giọt xuống ô chuỗi và bạn với tư cách là cá nhân
+
+00:57:32.400 --> 00:57:35.440
+ người dùng mà bạn có thể thấy ít nhất
+
+00:57:35.440 --> 00:57:37.680
+ tiền và có thể ở mức lãi suất cao nhất
+
+00:57:37.680 --> 00:57:42.559
+ mà bạn có thể nghĩ rằng những người khác sẽ được hưởng lợi nhiều hơn với kỹ thuật số
+
+00:57:42.559 --> 00:57:46.799
+ tiền cộng với tiền điện tử hoặc có thể lập trình
+
+00:57:46.799 --> 00:57:50.400
+ tiền bạn có thể làm được nhiều hơn vì bây giờ
+
+00:57:50.400 --> 00:57:55.839
+ ngân hàng trung ương có thể ảnh hưởng trực tiếp đến hành vi của mọi người và làm thế nào để họ
+
+00:57:55.839 --> 00:58:00.400
+ làm điều đó có họ có thể nói tốt nếu bạn là chủ nhà hàng, bạn có thể bạn
+
+00:58:00.400 --> 00:58:03.839
+ nhận tiền trực tiếp vào túi của bạn từ chúng tôi, vì vậy không cần nữa
+
+00:58:03.839 --> 00:58:08.079
+ các ngân hàng liên quan, chúng tôi sẽ trực tiếp làm điều đó, có thể đó là tiền của ngân hàng trung ương
+
+00:58:08.079 --> 00:58:12.240
+ họ có thể thay đổi lãi suất để trong một trường hợp hoặc một ngành họ
+
+00:58:12.240 --> 00:58:16.480
+ có thể có lãi suất cao hơn một um khác điều gì sẽ xảy ra
+
+00:58:16.480 --> 00:58:19.839
+ với thuế vâng điều gì sẽ xảy ra với của tôi
+
+00:58:19.839 --> 00:58:22.079
+ bởi vì họ có thể giải quyết những việc này trực tiếp
+
+00:58:22.079 --> 00:58:25.200
+ thông qua tiền có thể lập trình, nó sẽ mất thời gian
+
+00:58:25.200 --> 00:58:28.799
+ để đạt được nó đến mức độ cuối cùng nhưng nó sẽ xảy ra
+
+00:58:28.799 --> 00:58:34.640
+ như bạn có thể thấy để có thể thanh toán trực tiếp
+
+00:58:34.799 --> 00:58:41.119
+ họ cũng đang nói ở đây về kinh tế học hành vi ừm ừ vậy
+
+00:58:41.119 --> 00:58:45.359
+ không phải thông qua một số nhà kinh tế đang nói
+
+00:58:45.359 --> 00:58:49.200
+ chính phủ phải làm gì và không nên làm gì vì điều đó đã thất bại trong
+
+00:58:49.200 --> 00:58:52.160
+ quá khứ mọi người đang nói nên những gì họ đang đi
+
+00:58:52.160 --> 00:58:56.400
+ việc cần làm giống như một loại ý tưởng trên facebook hoặc đánh dấu vào ý tưởng hoặc
+
+00:58:56.400 --> 00:58:59.520
+ ý tưởng youtube nơi bạn quan tâm đến mọi người
+
+00:58:59.520 --> 00:59:03.280
+ kết bạn với bạn hoặc nơi những người bạn quan tâm
+
+00:59:03.280 --> 00:59:06.799
+ nhận được nhiều lượt thích hơn và do đó bạn thay đổi hành vi của mình trong
+
+00:59:06.799 --> 00:59:10.079
+ liên quan đến việc nhận được nhiều lượt thích hơn và điều tương tự
+
+00:59:10.079 --> 00:59:13.839
+ sẽ xảy ra với tiền và điều đó sẽ được quy định
+
+00:59:13.839 --> 00:59:17.680
+ thông qua ngân hàng trung ương mà không có bất kỳ ai từ thế giới bên ngoài
+
+00:59:17.680 --> 00:59:22.000
+ có cơ hội có ảnh hưởng đáng kể nên làm thế nào
+
+00:59:22.000 --> 00:59:26.079
+ tất nhiên sẽ trông như thế nào cuối cùng không ai biết nhưng những
+
+00:59:26.079 --> 00:59:31.200
+ mọi người đang gặp nhau để thảo luận về thanh toán theo đơn đặt hàng chéo là điều mà tôi
+
+00:59:31.200 --> 00:59:36.079
+ thấy uh rất thú vị và đó dĩ nhiên là tin tuyệt vời
+
+00:59:36.079 --> 00:59:39.040
+ đối với bitcoin vì bitcoin nằm ngoài nó
+
+00:59:39.040 --> 00:59:44.839
+ hệ thống không có ai có thể điều chỉnh uh bitcoin, nó
+
+00:59:44.839 --> 00:59:48.400
+ phi tập trung um nó là bất biến, bạn biết tất cả
+
+00:59:48.400 --> 00:59:54.079
+ các tính năng của uh bitcoin vì vậy uh bitcoin là một sự thay thế tuyệt vời
+
+00:59:54.079 --> 00:59:57.839
+ tất cả các loại tiền điện tử khác, những loại tiền điện tử chính chắc chắn là một sự thay thế tốt
+
+00:59:57.839 --> 01:00:02.000
+ hãy xem những gì thủ thư sẽ đưa ra nhưng sẽ có một số lựa chọn thay thế tốt
+
+01:00:02.000 --> 01:00:06.480
+ đến trung tâm uh trung tâm
+
+01:00:06.480 --> 01:00:11.359
+ chuyển tiền qua các ngân hàng trung ương, vì vậy tôi hy vọng bạn thấy điều đó thú vị và
+
+01:00:11.359 --> 01:00:14.559
+ tôi hy vọng bạn thích nó và tôi hy vọng tôi nhận được sự thiếu sót từ bạn
+
+01:00:14.559 --> 01:00:18.799
+ và tôi chúc bạn một tuần tuyệt vời vì vậy cảm ơn bạn rất nhiều vì đã xem
+
+01:00:18.799 --> 01:00:23.200
+ tạm biệt, cảm ơn bạn robert chỉ là một lời nhắc nhở chúng tôi không cung cấp lời khuyên tài chính
+
+01:00:23.200 --> 01:00:26.400
+ nhưng chỉ chia sẻ những gì đang xảy ra trong thị trường tiền điện tử
+
+01:00:26.400 --> 01:00:29.599
+ luôn nhớ rằng thị trường tiền điện tử luôn thay đổi và
+
+01:00:29.599 --> 01:00:33.920
+ luôn biến động vì vậy bạn chỉ nên chi tiêu những gì bạn có thể đủ khả năng để mất
+
+01:00:33.920 --> 01:00:38.720
+ bây giờ trở lại becca trong tòa soạn cảm ơn bạn robbie
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi đã công bố kiểm tra sạc mới có thể sạc đầy
+
+01:00:42.799 --> 01:00:48.480
+ điện thoại thông minh trong vòng chưa đầy 20 phút nhưng nó làm điều đó mà không cần bất kỳ dây nhanh chóng
+
+01:00:48.480 --> 01:00:52.480
+ sạc đã trở thành một tính năng chính của nhiều điện thoại thông minh trong những năm gần đây và
+
+01:00:52.480 --> 01:00:56.160
+ Sạc không dây vì lợi ích tiện lợi có thể thực sự tuyệt vời
+
+01:00:56.160 --> 01:00:59.920
+ nhưng tất nhiên sạc không dây thường sạc một điện thoại có
+
+01:00:59.920 --> 01:01:05.359
+ Công suất 10 đến 15 watt một số điện thoại như Oneplus 8 pro có
+
+01:01:05.359 --> 01:01:10.160
+ sạc không dây lên đến 40 watt nhưng công nghệ sạc mới của xiaomi hứa hẹn
+
+01:01:10.160 --> 01:01:14.240
+ một con số khổng lồ 80 watt nước trái cây không dây
+
+01:01:14.240 --> 01:01:18.319
+ Điều đó có ý nghĩa gì về mặt thực tế theo thông báo
+
+01:01:18.319 --> 01:01:22.160
+ ra mắt công nghệ sạc không dây 80 watt cho tôi
+
+01:01:22.160 --> 01:01:26.720
+ một chiếc điện thoại thông minh có pin bốn nghìn miliamp giờ sạc bằng 0%
+
+01:01:26.720 --> 01:01:30.160
+ sẽ tính phí mười phần trăm chỉ sau một phút năm mươi phần trăm
+
+01:01:30.160 --> 01:01:34.160
+ trong tám phút và được sạc đầy sau 19 phút
+
+01:01:34.160 --> 01:01:37.599
+ cuối cùng là bộ sạc sẽ sạc điện thoại của tôi
+
+01:01:37.599 --> 01:01:43.359
+ từ không đến một trăm phần trăm ngay trong giờ nghỉ trưa của tôi thấy điều đó thật tuyệt
+
+01:01:43.359 --> 01:01:48.079
+ đó là một người thay đổi cuộc chơi, bạn có thể tưởng tượng tôi nghĩ về những đứa trẻ của tôi và cách chúng tôi có
+
+01:01:48.079 --> 01:01:51.440
+ như điện thoại ở khắp mọi nơi, rõ ràng là tôi muốn nói điều này là
+
+01:01:51.440 --> 01:01:56.319
+ công nghệ mới nhất và tuyệt vời nhất nhưng nó luôn là trường hợp ồ tôi đã quên
+
+01:01:56.319 --> 01:01:59.520
+ đặt điện thoại của tôi vào bộ sạc hoặc nó không đủ lâu cho toàn bộ
+
+01:01:59.520 --> 01:02:02.720
+ ngày và bây giờ mà bạn biết với đại dịch tất nhiên của tôi
+
+01:02:02.720 --> 01:02:07.599
+ trẻ em hiện đang được học tại nhà bằng vũ lực và mọi người đều
+
+01:02:07.599 --> 01:02:11.839
+ thiết bị của họ toàn thời gian, vì vậy chúng tôi đã có các cuộc họp thu phóng diễn ra trên điện thoại
+
+01:02:11.839 --> 01:02:15.599
+ và nó chạy nó làm cạn pin vâng
+
+01:02:15.599 --> 01:02:21.440
+ nhưng điều tôi thích là nó không dây, nó không chỉ có dây, điều đó thật tuyệt vời
+
+01:02:21.440 --> 01:02:24.480
+ nó không dây rất lớn giống như ý tưởng rằng
+
+01:02:24.480 --> 01:02:27.200
+ tôi có thể lấy điện thoại của mình mà không phải lo lắng về bộ sạc và
+
+01:02:27.200 --> 01:02:30.960
+ chỉ cần đi chỉ cần đặt nó xuống đặt nó xuống 20 phút sau, tôi sẵn sàng đi
+
+01:02:30.960 --> 01:02:34.000
+ rằng tôi yêu điều khác mà tôi yêu nó
+
+01:02:34.000 --> 01:02:40.480
+ khái niệm là ừm tôi nghĩ về như bạn vừa làm nếu tôi có thể
+
+01:02:40.480 --> 01:02:43.359
+ đặt nó xuống bàn nếu bạn có thể đặt nó xuống
+
+01:02:43.359 --> 01:02:47.680
+ bảng nhà hàng có vì rất nhiều nhà hàng đã đi theo lộ trình và tôi
+
+01:02:47.680 --> 01:02:50.799
+ sử dụng nhà hàng làm ví dụ nhưng rất nhiều nơi đã đi theo con đường
+
+01:02:50.799 --> 01:02:54.480
+ nhúng usb có để bạn có thể cắm usb của mình
+
+01:02:54.480 --> 01:02:58.640
+ cáp để sạc điện thoại của bạn nhưng đột nhiên mọi người nhận được
+
+01:02:58.640 --> 01:03:03.200
+ khôn ngoan với thực tế là oh những cổng usb đó có thể độc hại
+
+01:03:03.200 --> 01:03:06.319
+ vì usb cũng mang dữ liệu hay đúng vậy
+
+01:03:06.319 --> 01:03:10.000
+ ai biết nếu nó quá nhiều vôn và bạn biết có thể nó
+
+01:03:10.000 --> 01:03:13.280
+ có một đoạn ngắn hoặc một cái gì đó tương tự và có thể làm hỏng điện thoại của tôi
+
+01:03:13.280 --> 01:03:17.039
+ vì vậy, đột nhiên chúng tôi sợ cắm vào cổng usb bởi vì
+
+01:03:17.039 --> 01:03:20.400
+ nó có thể là một cái gì đó tồi tệ đó là đúng
+
+01:03:20.400 --> 01:03:24.960
+ sạc không dây, bạn đặt nó xuống, nó sẽ sạc và bạn nhấc nó lên và bạn
+
+01:03:24.960 --> 01:03:28.240
+ xong rồi nhưng bạn có thể đặt nó xuống cho thích
+
+01:03:28.240 --> 01:03:31.119
+ ba phút và nó cung cấp cho bạn đủ phí để vượt qua hầu hết các
+
+01:03:31.119 --> 01:03:35.680
+ buổi chiều thật tuyệt vời, tôi nghĩ
+
+01:03:35.680 --> 01:03:40.559
+ cũng như ai có nghĩa là bây giờ bạn nhìn xung quanh và bạn có tất cả các trạm thu phí này cho
+
+01:03:40.559 --> 01:03:44.079
+ xe điện sẽ thật tuyệt nếu bắt đầu ít thấy
+
+01:03:44.079 --> 01:03:48.640
+ cửa sổ bật lên ở những nơi công cộng với loại nội dung này mà bạn có thể đặt
+
+01:03:48.640 --> 01:03:52.880
+ điện thoại của bạn ngừng hoạt động trong năm phút và đủ để có một cuộc gọi đến
+
+01:03:52.880 --> 01:03:56.319
+ nhận trợ giúp hoặc bất cứ điều gì và tất cả đều không dây mà tôi vừa hình dung
+
+01:03:56.319 --> 01:04:01.760
+ giống như một đoạn đường và nhúng bộ thu vào ô tô và nó
+
+01:04:01.760 --> 01:04:05.599
+ sạc lại ô tô tự lái khi nó lái qua
+
+01:04:05.599 --> 01:04:08.230
+ điều mà bây giờ chúng ta đang tham gia vào công nghệ
+
+01:04:08.230 --> 01:04:11.520
+ [Tiếng cười] tôi vẫn thích nó, tôi vui mừng về nó
+
+01:04:11.520 --> 01:04:15.839
+ điều điên rồ chỉ là kết luận rằng trong khi những gì tôi chỉ
+
+01:04:15.839 --> 01:04:18.319
+ được cho là rất khoa học viễn tưởng như khi chúng ta còn lớn
+
+01:04:18.319 --> 01:04:21.599
+ nó giống như tương lai nó hoàn toàn có thể làm được
+
+01:04:21.599 --> 01:04:25.920
+ có thể bây giờ yep đó là vô lý pi raspberry
+
+01:04:25.920 --> 01:04:31.200
+ Foundation đã ra mắt một mô-đun máy tính với các thông số kỹ thuật của một chiếc pi 4 mâm xôi.
+
+01:04:31.200 --> 01:04:35.119
+ raspberry pi foundation ra mắt một sản phẩm mới vào thứ hai, comp
+
+01:04:35.119 --> 01:04:39.440
+ mô-đun máy tính 4. Thật khó tin là nó đã lâu như vậy nhưng
+
+01:04:39.440 --> 01:04:43.359
+ raspberry pi 4 được phát hành vào tháng 6 năm 2019
+
+01:04:43.359 --> 01:04:48.079
+ mô-đun máy tính 4 đưa pi 4 đến không gian iot công nghiệp
+
+01:04:48.079 --> 01:04:52.240
+ có cùng một bộ xử lý được đóng gói trong một mô-đun máy tính
+
+01:04:52.240 --> 01:04:57.200
+ chỉ cầu xin được tích hợp vào các thiết bị iot mạnh mẽ
+
+01:04:57.200 --> 01:05:00.880
+ nếu bạn không quen với các mô-đun tính toán, bạn có thể nghĩ về chúng như
+
+01:05:00.880 --> 01:05:05.280
+ máy tính bảng đơn không có tất cả các cổng và chân gpio
+
+01:05:05.280 --> 01:05:09.440
+ chúng cho phép các thành phần máy tính trở thành bộ não của một quả mâm xôi pi
+
+01:05:09.440 --> 01:05:13.920
+ tích hợp vào cụm công nghệ nhà sản xuất thiết bị thông minh robot hoặc
+
+01:05:13.920 --> 01:05:16.400
+ bất cứ điều gì bạn có thể nghĩ ra mà chỉ cần một
+
+01:05:16.400 --> 01:05:22.240
+ máy tính linux công suất thấp ở trung tâm của nó kể từ khi mô-đun máy tính 4 chia sẻ
+
+01:05:22.240 --> 01:05:26.400
+ thông số kỹ thuật với raspberry pi 4 các nhà phát triển có thể làm tất cả các nguyên mẫu của họ
+
+01:05:26.400 --> 01:05:30.319
+ trên pi 4 sbc nhưng sau đó đặt hàng một loạt mô-đun tính toán
+
+01:05:30.319 --> 01:05:33.520
+ 4s để tích hợp vào sản phẩm thương mại của họ
+
+01:05:33.520 --> 01:05:38.559
+ giống như raspberry pi 4, mô-đun máy tính 4 có tính năng dựa trên cánh tay 64-bit
+
+01:05:38.559 --> 01:05:42.400
+ bộ xử lý với video core vi đồ họa đây là
+
+01:05:42.400 --> 01:05:45.520
+ sẽ đại diện cho một bản nâng cấp lớn cho máy tính trước đó
+
+01:05:45.520 --> 01:05:49.839
+ khách hàng mô-đun và với đầu ra đầu ra video 4k tối đa
+
+01:05:49.839 --> 01:05:55.039
+ 60 khung hình / giây cộng với khả năng giải mã video h.265
+
+01:05:55.039 --> 01:05:58.480
+ mô-đun máy tính cho mô-đun máy tính 4
+
+01:05:58.480 --> 01:06:03.039
+ có thể là công cụ thay đổi trò chơi cho các thiết bị điều khiển đa phương tiện như tv thông minh hoặc
+
+01:06:03.039 --> 01:06:06.960
+ các hộp giải mã tín hiệu mà mô-đun máy tính 4 có sẵn với
+
+01:06:06.960 --> 01:06:11.599
+ sự lựa chọn của bạn về 1 2 4 hoặc 8 gigabyte ram và 8 16
+
+01:06:11.599 --> 01:06:18.000
+ hoặc 32 gigabyte trên bo mạch lưu trữ flash emmc wi-fi và bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ cũng là tùy chọn, giá dao động chỉ từ 25
+
+01:06:21.440 --> 01:06:27.599
+ đến 90 usd bây giờ hãy tưởng tượng rằng jeff mô-đun tính toán pi raspberry 4
+
+01:06:27.599 --> 01:06:31.359
+ vâng trong một trong những dự án sbc của bạn hoặc một cái gì đó tương tự như vậy cung cấp năng lượng cho nó như
+
+01:06:31.359 --> 01:06:33.920
+ não bộ đây là một điều khá thú vị ngay khi
+
+01:06:33.920 --> 01:06:39.440
+ becca cho biết giải mã h.265 để nó giống như video
+
+01:06:39.440 --> 01:06:43.760
+ rất chuyên sâu về cpu vâng, điều đó thật tuyệt vời như nó nói rất nhiều
+
+01:06:43.760 --> 01:06:50.000
+ đó là sức mạnh hơn máy chủ plex của tôi vâng, ai biết đó là đâu
+
+01:06:50.000 --> 01:06:54.720
+ sẽ lấy những thứ tôi thích là ý tưởng về điện toán cụm
+
+01:06:54.720 --> 01:06:58.480
+ và đó là nơi bạn lấy một số máy tính
+
+01:06:58.480 --> 01:07:01.520
+ kết nối họ với nhau thông qua mạng và
+
+01:07:01.520 --> 01:07:06.559
+ về cơ bản cài đặt phần mềm beowulf hoặc thứ gì đó tương tự
+
+01:07:06.559 --> 01:07:09.359
+ nhóm chúng để làm cho chúng có thể hoạt động
+
+01:07:09.359 --> 01:07:14.400
+ các nhiệm vụ cùng nhau theo cách về cơ bản nó tạo ra một siêu máy tính
+
+01:07:14.400 --> 01:07:19.200
+ ngay từ một số máy tính để bạn nghĩ về những pi mâm xôi này
+
+01:07:19.200 --> 01:07:25.839
+ cl uh cluster hoặc các mô-đun và đặt 10 trong số đó lại với nhau
+
+01:07:25.839 --> 01:07:30.400
+ trong một cụm aa và bạn muốn mô-đun tính toán này
+
+01:07:30.400 --> 01:07:34.559
+ cụm máy tính tốt với nhiều sức mạnh đó
+
+01:07:34.559 --> 01:07:38.079
+ khi bạn có thể có tám hợp đồng ram trên mỗi
+
+01:07:38.079 --> 01:07:43.359
+ lên bảng gấp 10. rất nhiều có thể làm rất nhiều
+
+01:07:43.359 --> 01:07:47.280
+ nó đang thay đổi mọi thứ mọi người trên thế giới đang thay đổi điều đó chắc chắn
+
+01:07:47.280 --> 01:07:50.960
+ bạn sẽ làm gì với tất cả sức mạnh đó
+
+01:07:52.160 --> 01:07:55.280
+ và im lặng, anh ấy đang đợi bạn trả lời tôi
+
+01:07:55.280 --> 01:07:58.480
+ tôi đang nghĩ tôi thích tôi sẽ làm gì với bao nhiêu người
+
+01:07:58.480 --> 01:08:05.119
+ vừa mới đi khai thác bitcoin, xin lỗi các bạn, các bạn biết điều gì đáng buồn không
+
+01:08:05.119 --> 01:08:10.880
+ suy nghĩ đầu tiên là tôi có thể tự động hóa như một số
+
+01:08:10.880 --> 01:08:14.000
+ tiện ích mà tôi có trong nhà bếp để làm thức ăn cho tôi
+
+01:08:14.000 --> 01:08:17.600
+ đó là suy nghĩ đầu tiên của tôi với một mô-đun máy tính bốn
+
+01:08:17.600 --> 01:08:22.319
+ vâng mất nhiều hơn thế nhưng tôi biết nó có thể là bộ não của một hoạt động như vậy
+
+01:08:22.319 --> 01:08:27.759
+ rõ ràng là tôi đói mặc dù [Tiếng cười]
+
+01:08:27.759 --> 01:08:31.359
+ suy nghĩ của bạn bình luận bên dưới, chúng tôi muốn biết bạn sẽ làm gì với
+
+01:08:31.359 --> 01:08:34.719
+ mô-đun máy tính cảm ơn vì đã xem chuyên mục 5 chấm
+
+01:08:34.719 --> 01:08:38.000
+ tòa soạn tv đừng quên like và subscribe cho
+
+01:08:38.000 --> 01:08:40.640
+ tất cả tin tức công nghệ của bạn với một chút thiên vị linux
+
+01:08:40.640 --> 01:08:46.000
+ và nếu bạn đánh giá cao những gì chúng tôi làm, hãy trở thành người bảo trợ tại patreon.com
+
+01:08:46.000 --> 01:08:53.839
+ thể loại 5. từ thể loại phòng tin tức truyền hình 5 chấm, tôi là becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Âm nhạc]
+
+01:09:12.400 --> 01:09:16.159
+ Vâng, đó là khá nhiều thời gian mà chúng tôi có trong tuần này jeff
+
+01:09:16.159 --> 01:09:21.600
+ tuần trước chúng tôi đã trải qua và tôi đã thực hiện toàn bộ quá trình với fiverr
+
+01:09:21.600 --> 01:09:25.359
+ đã thuê một số người để chúng ta có thể thực hiện bản phối lại của mình vâng, đây là một trò vui
+
+01:09:25.359 --> 01:09:29.040
+ câu chuyện ổn theo nghĩa đen nói cho tôi biết khi nào thì bạn sẽ cười
+
+01:09:29.040 --> 01:09:34.960
+ biết môi anh ấy đã làm anh ấy đã cười
+
+01:09:34.960 --> 01:09:38.400
+ Sóc-ray là một trong những người của chúng tôi vâng vâng
+
+01:09:38.400 --> 01:09:42.560
+ một trong những người phối khí và chú sóc văn học của chúng tôi
+
+01:09:42.560 --> 01:09:48.319
+ cho biết tôi cứ thắc mắc đây là khi anh ấy đang xem tính năng này
+
+01:09:48.319 --> 01:09:51.199
+ sau đó tôi cứ tự hỏi tại sao bạn lại như vậy
+
+01:09:51.199 --> 01:09:58.159
+ phát âm sai tên của tôi oh litter a sóc nên tôi đã kiểm tra
+
+01:09:58.159 --> 01:10:02.960
+ hồ sơ và thấy rằng tôi viết sai chính tả, ồ không
+
+01:10:02.960 --> 01:10:09.920
+ và không bao giờ nhận ra và nó đã như vậy trong ba năm bạn có nghiêm túc
+
+01:10:09.920 --> 01:10:17.600
+ anh ấy nói tên tôi tên ban nhạc của tôi là con sóc văn học, trời ơi anh ấy bỏ đi
+
+01:10:17.600 --> 01:10:21.040
+ trong của chúng tôi điều đó thật buồn cười nên tôi kể cho bạn nghe câu chuyện này
+
+01:10:21.040 --> 01:10:25.600
+ thấy nó buồn cười thấy tôi đã nói với bạn rằng nó thật buồn cười
+
+01:10:26.000 --> 01:10:29.679
+ tôi kể cho bạn câu chuyện này bởi vì sau đó tôi đã tự nói với chính mình
+
+01:10:29.679 --> 01:10:35.120
+ tôi thấy các từ và tôi và tôi nghĩ phần lớn tôi phát âm
+
+01:10:35.120 --> 01:10:40.320
+ chúng khá tỉ mỉ nên khi tôi thấy văn học mặc dù đó không phải là một từ, tôi
+
+01:10:40.320 --> 01:10:44.800
+ đặt nó theo cách nó đọc đúng để tôi nghĩ rằng tôi có thể sẽ là một
+
+01:10:44.800 --> 01:10:47.679
+ trình soát lỗi khá tốt nên tôi đã nói cái quái gì tôi sẽ cho nó
+
+01:10:47.679 --> 01:10:50.960
+ đi nên tôi đưa ra một quảng cáo nói rằng tôi sẽ đọc lại
+
+01:10:50.960 --> 01:10:54.480
+ văn bản của bạn 500 từ trở xuống với năm đô la
+
+01:10:54.480 --> 01:10:57.520
+ được rồi và tôi đã như thể không ai sẽ làm điều đó
+
+01:10:57.520 --> 01:11:01.840
+ thật là vui khi tôi nghĩ mình sẽ thử và sáng hôm sau tôi đã nhận được email
+
+01:11:01.840 --> 01:11:08.239
+ từ aa người tây ban nha
+
+01:11:08.239 --> 01:11:13.120
+ một nhà môi giới bảo hiểm ổn và có một khách hàng nói tiếng Anh
+
+01:11:13.120 --> 01:11:17.600
+ tự nhiên và muốn đảm bảo rằng anh ấy đang nói những điều đúng đắn để đáp lại
+
+01:11:17.600 --> 01:11:21.840
+ vào một email để anh ấy xóa tất cả những thứ bí mật
+
+01:11:21.840 --> 01:11:26.400
+ vâng và gửi cho tôi câu trả lời của anh ấy và nói rằng bạn có thể xem lại điều này cho tôi và tôi được không
+
+01:11:26.400 --> 01:11:28.400
+ đã làm và tôi đã trải qua và tôi đã sửa một số
+
+01:11:28.400 --> 01:11:31.840
+ và anh ấy có một số từ không thực sự có ý nghĩa trong bản dịch
+
+01:11:31.840 --> 01:11:35.760
+ và vì vậy tôi đã sửa nó và sửa ngữ pháp, ngữ cảnh và một chút
+
+01:11:35.760 --> 01:11:39.760
+ của chính tả và anh ấy giống như anh ấy yêu nó năm đô
+
+01:11:39.760 --> 01:11:42.000
+ tôi thực sự mất 10 phút và nó chỉ
+
+01:11:42.000 --> 01:11:44.480
+ điều đầu tiên tôi đã làm với một tách cà phê vào buổi sáng
+
+01:11:44.480 --> 01:11:50.960
+ vâng và anh ấy đã cho tôi 5 trong số 5 bài đánh giá tuyệt vời như đó là người đầu tiên từ
+
+01:11:50.960 --> 01:11:54.480
+ góc nhìn lật nên tôi thấy điều này khá gọn gàng nên tôi bắt đầu nói
+
+01:11:54.480 --> 01:11:58.400
+ cho các con của tôi và tôi muốn chúng ta tìm hiểu xem các bạn có thể làm những việc như trên
+
+01:11:58.400 --> 01:12:01.199
+ ở đó và bạn biết không con gái tôi là một nghệ sĩ và
+
+01:12:01.199 --> 01:12:05.280
+ cô ấy có thể vẽ những bức vẽ để mọi người bắt đầu kiếm tiền, nó khá là gọn gàng
+
+01:12:05.280 --> 01:12:08.159
+ ý tưởng về một nền tảng gọn gàng, tôi không biết các quy tắc là gì
+
+01:12:08.159 --> 01:12:11.120
+ như độ tuổi tối thiểu và những thứ tương tự nhưng chúng ta có thể xem xét những loại
+
+01:12:11.120 --> 01:12:13.360
+ nhưng đó là câu chuyện của tôi trong tuần này là
+
+01:12:13.360 --> 01:12:18.719
+ này, tôi cũng đã đi ngược lại và tôi đã bán dịch vụ của riêng mình mà tôi đã cung cấp
+
+01:12:18.719 --> 01:12:23.120
+ con sóc văn học một tự do một người tự do ừm nhưng uh
+
+01:12:23.120 --> 01:12:30.000
+ bây giờ tôi là tôi, tôi đang có sẵn để bán. Tôi cảm thấy sẽ rất vui nếu chỉ
+
+01:12:30.000 --> 01:12:34.000
+ đưa cho bạn năm đô la và tôi sẽ gửi cho bạn một tài liệu 500 từ
+
+01:12:34.000 --> 01:12:38.640
+ tất cả lorem ipsum và chỉ cần cho tôi biết nếu điều đó hợp lý, tôi sẽ cố gắng hết sức
+
+01:12:38.640 --> 01:12:44.000
+ bạn có sửa lại điều đó không, được rồi, đó là nó jeff
+
+01:12:44.000 --> 01:12:46.800
+ đó là tất cả thời gian ổn nhưng tôi đã rất vui
+
+01:12:46.800 --> 01:12:50.080
+ rất vui được ở đây với bạn một lần nữa vào tuần này vào tuần tới, chúng tôi sẽ bắt đầu với 3d
+
+01:12:50.080 --> 01:12:52.560
+ in ấn vì vậy chúng tôi sẽ lắp ráp một ender
+
+01:12:52.560 --> 01:12:55.440
+ 3v2 vì vậy chúng tôi sẽ thực sự kết hợp nó lại với nhau
+
+01:12:55.440 --> 01:12:58.640
+ và sau đó chúng ta sẽ có một cuộc trò chuyện để bạn biết quá trình đã diễn ra như thế nào
+
+01:12:58.640 --> 01:13:03.760
+ đối với tôi như một noob trong lĩnh vực in 3d vậy
+
+01:13:03.760 --> 01:13:05.760
+ những loại thử thách tôi đã gặp phải
+
+01:13:05.760 --> 01:13:09.040
+ và bạn có thể gặp phải khi bắt đầu
+
+01:13:09.040 --> 01:13:13.760
+ in 3d cộng với tôi sẽ chỉ cho bạn không chỉ bản in đầu tiên của tôi
+
+01:13:13.760 --> 01:13:19.440
+ nhưng những thiết kế in ấn đầu tiên của tôi mà bạn không muốn bỏ lỡ vào tuần tới
+
+01:13:19.440 --> 01:13:22.960
+ chúc mọi người một tuần tuyệt vời, chúng tôi sẽ gặp bạn
+
+01:13:24.100 --> 01:13:30.029
+ [Âm nhạc] [Vỗ tay]
+
+01:13:30.840 --> 01:13:45.060
+ tạm biệt [Âm nhạc]
+
+01:13:48.290 --> 01:13:56.319
+ [Âm nhạc]
+
+01:14:01.760 --> 01:14:03.840
+ bạn
+

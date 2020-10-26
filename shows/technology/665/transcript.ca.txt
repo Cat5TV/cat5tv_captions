@@ -1,0 +1,1051 @@
+a la categoria 5 tv confiem els nostres fitxers en discs d'estat sòlid de Kingston
+tecnologia ja sigui per al vostre ordinador portàtil de servidor o
+ordinador d’escriptori experimentareu un rendiment millorat
+i la fiabilitat amb els ssds de Kingston es prepara és el moment de la tecnologia
+Benvingut al programa per a tothom, és l'episodi 2 de la temporada 14
+sóc robbie ferguson i sóc jeff weston, és fantàstic tenir-te aquí
+i espero que hagis passat una setmana meravellosa malgrat
+tot, però aquí estem i esperem un gran espectacle per davant
+aquesta nit aprendrem a crear el nostre propi
+servidor proxy bé, així que no vull parlar-ne gaire
+l’espectacle, però sé que de vegades saps que és difícil trobar-ne un de bo
+servei de proxy gratuït, de manera que crearem el nostre
+i us mostraré com col·locar-lo a qualsevol lloc del món
+utilitzar serveis de núvols d’aws, de manera que és força emocionant i és una de les coses
+amb això també a mesura que aprenem una mica sobre com
+serveis web amazon ec2 i serveis al núvol i la possibilitat de
+desplegem servidors debian a la infraestructura del núvol a mesura que aprenem
+com fer això i com funciona això només sé que
+les coses que farem és
+migrant algunes de les nostres dades a aquesta infraestructura, així que ho dic
+perquè alguns dels nostres espectadors en directe ho tenen
+he experimentat problemes amb la memòria intermèdia i coses per l'estil
+i és perquè tenim un petit ordinador de bord únic
+de totes les coses a què estem transmetent i després les retransmetem
+qualsevol persona que estigui veient roku o altres reproductors hls i coses per l'estil
+té un streamer àgil que s’executa a l’ordinador de bord únic
+wow increïble, però, el que vaig controlar a través del meu
+la prova és que té una CPU bastant alta quan la gent
+Estic mirant bé perquè crec que pot ser el que provoca alguns
+problemes de memòria intermèdia amb el nostre flux, així que hi ha moltes coses que funcionen
+al darrere de les escenes aquí per intentar aconseguir-ho, obtindràs l'espectacle
+un format molt accessible i de fàcil accés i perquè no ho siguis
+experimentar coses com la roda giratòria
+i aquest tipus de coses, però eh, com estem veient aquesta nit
+uh i aprenent a desplegar aquests servidors debian al núvol
+sap que això és una cosa que farem entre bastidors aquí
+també i la migració d'aquests serveis
+a uh a una d'aquestes instàncies per tal de
+Intenta millorar el nostre rendiment aquí a l'estudi
+un munt de coses emocionants que passen darrere nostre com has estat
+he estat bé, et parlarem una mica més tard aquesta nit
+uh algunes de les teves gestions amb soldadura, sí, sí, ens vols explicar una mica
+una mica de broma ràpida sobre el que serem
+discutint uh el meu fill volia començar a soldar
+el seu aniversari, així que vam anar per aquesta carretera
+a partir del mes passat, he estat jugant una mica i ja està
+jo pensant com puc fer les meves coses a casa
+quan no tinc una àrea de producció gran per fer la meva
+pcb, sí, sí, aquí és on en vam parlar, per tant, si us interessa
+bricolatge, estarem parlant d'això i uh wow que tenim
+algunes coses emocionants per a les quals també estem preparant el programa de la setmana que ve
+ja està a punt i estem encantats de ser-ho
+introduint la impressió 3D també als nostres espectadors
+per tant, això és una cosa que anirem aprenent al llarg del curs
+les properes setmanes aquí a la categoria de televisió 5 tenim moltes coses, sí
+assegureu-vos que us subscriviu a YouTube
+i feu clic a la campana per rebre la notificació cada vegada que en publiquem una de nova
+vídeo sempre que estem en directe i també si voleu participar-hi
+la comunitat crec que és una manera molt divertida
+per formar part de la categoria de televisió 5, algunes persones encara em diuen bé què és
+discòrdia i és meravellós que no formeu part de la nostra discòrdia
+servidor perquè si us uniu a la nostra discòrdia que trobareu si hi aneu
+a categoria5.tv feu clic a interactua i veureu com s'uneix a la discòrdia
+servidor és un navegador gratuït o basat en aplicacions
+servei que podeu posar al dispositiu o bé accedir-hi
+a través del vostre navegador en qualsevol cosa i bàsicament podeu xatejar amb
+comunitat, però és realment ordenat perquè és més que una simple sala de xat
+també té diferents habitacions assignades
+coses diferents i coses que estem parlant
+sobre o, per exemple, tenim darrere de les escenes
+així que, darrere de les escenes, només hi ha ple de bastidors
+fotos que no veuríeu d’una altra manera i que hi ha tantes coses sí al nostre
+servidor de discòrdies, de manera que heu d'anar-hi
+sap que és com si fos una plataforma de xat, però que té un
+molt més que la interacció amb el xat
+és cert i no només està actiu durant el programa
+és encesa tot el temps i vull dir si teniu coses de tecnologia
+a la meitat de la setmana ets com oh, no sé com solucionar-te aquest problema
+podria aparèixer allà i la comunitat és increïble per donar
+un consell i això també és bastant clar, sí, és cert
+d’acord, així que hem de fer una pausa molt ràpida i després saltem a la dreta
+en aquesta breu escapada que estarem mirant
+com configurar una instància aws ec2 que soni com si fos tecnobabble
+jo ho fa molt ràpid, sí, què passa amb això?
+anem a crear el nostre propi servei proxy gratuït que és més fàcil de dir
+tinc el control, tinc accés, tenim el pal de control al voltant
+torna de tornada [Música]
+si voleu donar-vos una mica de privacitat addicional mentre navegueu per
+Internet o voleu accedir a serveis que
+potser no estan disponibles normalment a la vostra zona o potser és un
+cas d’haver tingut la vostra adreça IP
+bloquejat per un proveïdor de serveis pot no ser un
+cosa malintencionada que he bloquejat la meva adreça IP
+youtube abans perquè penjo molts vídeos i
+descarregueu els subtítols per tal que
+m'ha fet excedir el meu ús a l'api de youtube
+llavors la meva adreça IP es bloqueja, de manera que no ha de ser una cosa malintencionada
+No vull donar aquesta impressió, però hi ha raons molt legítimes
+a necessitar per evitar aquest tipus de coses i els nerds van a
+és un servidor intermediari, el problema és que els proxies poden ser molt cars d 'utilitzar i
+les gratuïtes, sempre que estiguin disponibles, són molt freqüents
+o bé no són molt fiables, un dia estan a l'alça, l'endemà, i perden
+accés als vostres serveis i a tota la resta o encara pitjor
+són perillosos, no sabeu què fan el seguiment d'aquests representants
+registre i fins i tot com interceptar mentre estàs passant que estàs enviant
+tot el trànsit d'Internet a través d'aquest proveïdor de serveis
+així que hi ha una persona en qui confio de debò per representar totes les meves dades
+i sóc jo, no sóc la mateixa persona que diries que confies
+la persona en qui confies ets tu, així que et mostraré com fer-ho
+Podria configurar un servei de proxy gratuït i el podeu reproduir i
+crea el teu propi i ho farem al núvol nosaltres
+utilitzarà un proveïdor de serveis aliè
+i això és amazon, de manera que dius, oh, amazon, què passa?
+ja sabeu que som capaços de confiar-los bé les nostres dades, el que estem fent servir és d'ells
+serveis al núvol s’anomena serveis web amazon, així és
+Totes les seves infraestructures de núvol són les que tenen
+perquè els clients lloguin bàsicament accés als seus servidors i als seus
+el seu espai i els servidors virtuals i tota la resta
+la vostra infraestructura està disponible, però el desplegament sí
+el teu, et mostraré com es fa això, anem a saltar a aws
+i, en particular, ec2, per descomptat, si no esteu familiaritzat amb aws just
+aneu a aws.amazon.com inicieu la sessió amb el vostre compte d'Amazon
+i després feu una cerca ràpida d'ec2 i això us portarà bàsicament
+la seva plataforma de virtualització pensa en ec2 com
+això és el primer que tinc en compte quan sóc aquí
+a ec2 és la meva regió i això és important perquè aquí és on hi ha el meu servidor intermediari
+el servidor residirà en cas que el configuri allà per què és això
+important bé, penseu en això, diguem que estic fent servir una transmissió de vídeo
+servei que restringeix l'accés canadenc al seu vídeo
+el servei de transmissió mitjançant la col·locació del servidor intermediari al nord
+Califòrnia ara de sobte són bàsicament
+per adreça IP, penso que em connecto
+Califòrnia, així que sóc capaç de solucionar-ho
+de la mateixa manera, és possible que vulgueu canviar la vostra regió en funció de
+el que intenteu aconseguir és que fins i tot pugueu posar un servidor a l'Àfrica
+o asia mireu que podeu posar-ne una a Hong Kong
+pots posar-ne un a Canadà i a Europa que tens
+a tot arreu i després tenim Orient Mitjà i Sud-Amèrica ara mateix
+per tant, és una llista bastant gran d’on es troben
+configurar aquesta infraestructura per als serveis web d'Amazon el servei ec2
+així que trieu el que vulgueu que estigui el vostre servidor intermediari
+Vaig a establir la meva, només la deixaré al nord de Califòrnia, que és
+nosaltres un oest i aquí és on
+el meu servidor intermediari residirà i això em permetrà connectar-me
+com si realment estigués assegut a Califòrnia
+bé, així que faré clic a la instància de llançament
+i després torna a iniciar la instància perquè fa un desplegable i això em dóna
+una llista de sistemes operatius que puc implementar
+a la meva instància ec2, així que estic fent servir alguns termes que potser no coneixeu
+aws és un servei web d'Amazon que bàsicament és Amazon
+La gamma completa de serveis que ofereixen als usuaris del núvol ec2 és seva
+plataforma de virtualització per a màquines virtuals
+quan vaig dir instància, parlo d'una màquina virtual
+de manera que literalment és una màquina virtual, així que en implementaré una
+sistemes operatius a una instància de ec2 que és
+una màquina virtual, doncs, què vull que sigui
+així, i deia que hey comentari a continuació si faig servir un terme que no coneixeu
+amb vaig a fer una cerca ràpida que tinc
+ja ho he fet abans perquè implemento un munt de servidors
+al núvol faré clic a debian només cal que escriviu debian al fitxer
+cerqueu aquí, així que aniré a aws
+Els resultats del mercat també n’hi ha que he creat i al
+comunitat que pensaries que bé vull utilitzar
+els de la comunitat, no, perquè no us costaran diners
+i dius bé, però la comunitat és gratuïta, és de codi obert i sí
+no obstant això, no forma part del mercat aws i, per tant, ho tindreu
+per pagar per l'ús que tingui aquesta màquina virtual que
+exemple que s’executa al núvol, així que ho farem
+utilitzeu un dels oficials del mercat aws per veure quins resultats
+aconseguim que estiguin ordenats força bé debian arriba el primer resultat és
+debian 10 buster un nivell lliure compatible o de nivell lliure
+versió elegible de debian que serem
+desplegament de manera que seleccioneu aquell nivell gratuït apte perquè puguem ignorar el
+preus perquè farem servir una petició de nivell gratuïta continuada
+i aquí és on ho seleccionem tan bé si volem el nivell gratuït que hem d’anar
+amb un micro t2, així que vaig a seleccionar això, però què
+ens dóna, ens dóna una CPU un gigabyte de memòria um
+i després tenim emmagatzematge per tractar, no necessitem molt d'emmagatzematge perquè
+només estem configurant un servidor intermediari bàsic i això és tot, així que ho faré
+desplegueu-ho de la mateixa manera que t2 micro és el que és gratuït
+el nivell apte no seleccioneu un dels més grans
+uns perquè ho pagareu
+de seguida, revisaré i llançaré on tornarem
+fer configuracions com ara els nostres grups de seguretat i coses per l'estil que només vaig a deixar
+tot per defecte per ara i ho farem
+llançar-ho, així que primer de tot necessito crear una nova clau
+parell, de manera que aquesta és la clau ssh que faré servir
+per introduir ssh en aquest servidor, així que vaig a trucar-ho
+un servidor intermediari i després descarregueu el meu parell de claus
+assegureu-vos de desar-lo en algun lloc segur on vaig
+llença-ho al meu servidor i deixa-ho allà
+i ara la instància de llançament significa alimentar la vostra màquina virtual, així que ho faré
+empeny això i allà anem perquè sigui bàsicament
+crear-lo és crear una màquina virtual
+uh, una instància ec2 al núvol per a nosaltres, al nord de califòrnia
+vaja, així que vaig a veure casos aquí
+i ara puc veure que ara tinc una instància amb un micro t2
+i simplement no té cap nom, així que faré clic a Edita i trucaré a això
+el meu servidor servidor intermediari prova que allà anem bé, així que és així
+ja està en funcionament, de manera que si faig clic sobre això puc veure la IP
+l'adreça d'aquest servidor és que l'he anomenat servidor intermediari, però ara mateix
+recordeu que només és debian 10. no hi ha res més instal·lat
+així que he de copiar aquesta adreça IP i després vaig a saltar a la meva
+símbol del sistema perquè he descarregat la clau a
+el meu servidor personalment aniré a ssh al meu servidor intern
+Molt bé, ara hi sóc, així que ara l'ordre que faré servir
+és ssh i, a continuació, guioneu i per la clau que faré servir
+de manera que el fitxer entrant que faré servir per a la clau
+i el que es diu servidor proxy.pem és el que he descarregat
+llavors vaig a ser administrador perquè és l'inici de sessió predeterminat per a debian
+administrador d'imatges de la màquina ami o amazon a
+i després l'adreça IP que ja he copiat al porta-retalls i si
+premeu Enter, em demanarà que accepti aquesta clau
+i dic que sí i se'm nega
+els permisos d'aquest fitxer van acabar sent notables
+766, de manera que tothom té accés a aquests fitxers, de manera que és interessant
+ssh mateix em protegeix perquè algú pugui comprometre la meva clau
+així que el servidor intermediari chmod 700 pam ho provem i ara
+torneu-ho a provar, així que el que he fet és oh i ara ho estic
+connectat acaba de funcionar 700 vol dir que sóc el propietari d'aquesta clau
+Estic autoritzat a fer qualsevol cosa amb ell llegir escriure executar zero zero significa
+ningú del grup ningú que no formi part del grup
+té permís per accedir-hi, de manera que bàsicament és un fitxer ximple que no poden
+fins i tot obert, però bé, ara que sóc
+connectat vaig a anar sudo sue perquè això és l'ordre
+converteix-te en root perquè ara sóc root so actualització de l'aplicació
+l'actualització de l'aplicació Whoop em prendrà
+els repositoris que veieu és un ordinador debian real si voleu
+al núvol és tan fàcil que ja estic actualitzant i ja estic executant un debian
+ordinador al núvol, així que en aquest temps i sóc bla
+bla bla, al mateix temps, tenim un servidor debian basat en el núvol
+T'has adonat que era tan fàcil i gratuït
+d'acord perquè puguem fer altres coses amb això també podríem muntar una pila de làmpades nosaltres
+el podríeu utilitzar per a qualsevol cosa que pugueu arribar a mysql mariadb
+servidor debian, de manera que utilitzarem això com a nostre
+proxy, així que ara el que faré és que instal·laré una eina anomenada
+tinyproxy agradable i senzill d'instal·lar apt install tiny proxy
+molt senzill de configurar dir que sí, aquí anem
+i ja està fet, ja que hem instal·lat un proxy petit que només hem d'editar
+el fitxer de configuració tan redueix la direcció, etc.
+i després estic fent servir nano tinyproxy.com i edito-ho per controlar w a nano
+em permet cercar oh, però abans de fer una cerca tingueu en compte que
+El port per defecte utilitza 888, ho haurem de saber
+informació perquè per això ens connectarem
+el nostre servidor intermediari fa una cerca ràpida de permetre
+alt w us permet cercar de nou wow la paraula permet probablement no sigui la millor
+consulta de cerca potser busqueu 127.0.0.1 i just a sota d'aquella a la que vaig
+permetre i després he d'afegir la meva adreça IP per poder connectar-me a
+aquest servidor intermediari perquè ara mateix està tancat
+només és possible que hi accedeixi localhost, cosa important a tenir en compte
+que això és mentre aquest és un servidor intermediari gratuït públic, sóc l'únic que ho és
+se’ls permetrà accedir-hi
+emmagatzema el meu contingut mitjançant la meva connexió, de manera que sigui privat en aquest sentit
+Necessito saber la meva adreça IP, així que vaig a saltar
+ip.xyz actual i copieu aquesta adreça IP al meu porta-retalls i després salteu
+enrere i enganxeu-lo al meu control de configuració o introduïu control x control o is
+per escriure deseu ara el fitxer systemctl
+reinicieu el proxy petit gairebé ha acabat l'últim que necessitem
+fer és que només hem de dir a aws la seguretat ec2 que
+establirem una política que diu que hey, només estic autoritzat a connectar-m'hi
+servidor perquè ningú més pugui connectar-s'hi
+sigui el que sigui el que farem bé
+Ara, doncs, tornaré aquí i veureu aquest servidor a la pantalla
+bé, si faig clic a seguretat, puc fer clic al grup de seguretat que és
+assignat automàticament, de manera que només cal que feu clic a això
+i ara m'ha deixat en mans dels grups de seguretat ec2 i de la seguretat correcta
+grup notareu que ja està configurat
+un per a ssh perquè està activat per defecte, puc configurar-ho
+només per permetre-m'ho, el que és important
+fem això només per estar en bones pràctiques de seguretat
+ssh el canviaré de custom000
+Vaig a tancar x això i després el canviaré al meu IP
+llavors vaig a afegir una nova regla, heu vist com he arribat fins aquí, ja sé que em moc
+realment molt ràpid, acabo de fer clic a Edita les regles entrants
+aquí bé, per tant, afegiu una nova regla tcp personalitzat
+recordeu el número de port per defecte i només el 888
+permetre la meva IP, puc dir-li alguna cosa si vull proxy
+i després guardeu les meves regles, anem així que ara veieu ssh i
+tcp personalitzat anomenat proxy al port 888.
+doncs, com ho provem, de manera que la nostra adreça IP actual és 99.233
+i així vaig a connectar-me al servidor intermediari
+no és un tutorial sobre com utilitzar un servidor intermediari, això no és un
+tutorial sobre per a què utilitzar-lo necessàriament
+aquí estic fent suposicions que podeu dirigir-vos a Google mateix
+perquè serà diferent en funció del vostre cas d'ús si voleu
+només heu de representar el vostre navegador o fer servir un servidor intermediari per a una aplicació concreta o la totalitat
+xarxa que dependrà de la vostra persona
+cas d’ús, aquest és estrictament un tutorial sobre com construir-lo
+instància ec2 molt ràpidament de forma gratuïta
+que té un servidor intermediari a punt per utilitzar-lo a Califòrnia o a qualsevol altre lloc
+i eh, això és tot, en el meu cas particular ara mateix
+per tant, aquest moment no és necessàriament el que voleu fer després
+així és com provaré el servidor intermediari que aquí estic a Windows 10
+així que simplement escriuré el servidor intermediari i tornaré a entrar a la configuració del servidor intermediari
+probablement no com vulgueu fer-ho, només vull provar, així que vaig a girar
+al servidor intermediari puc veure que hi ha un servidor intermediari antic
+configuració allà, així que assegureu-vos que en tingueu present
+si hi ha paràmetres antics del servidor intermediari, heu de canviar-lo, aneu a
+instàncies a ec2 feu clic a l'identificador de la vostra instància
+agafa aquesta adreça IP i després enganxa-la a
+com a adreça del port 8888 del servidor intermediari
+i estalvieu, de manera que ara estic connectat al servidor intermediari a l'instant
+Windows no connectat a Windows diu que vaig a encaminar tot el trànsit
+a través del servidor intermediari m'hi hauria de corregir
+així que si torno a currentip.xyz 99.233 és la meva IP actual vaig a tocar
+f5 per actualitzar i si tot va bé 3.101.108.211. bé
+Què és el que és el meu servidor, així que ara sóc?
+on estic, descobrim maxmind.com, fem una cerca de l'adreça IP
+que estic actualment a on sóc san jose california
+aquí és on el meu màxim determina que sóc
+així que això és tot el que tenim a la gent que tenim
+creat configurat desplegat un servei proxy gratuït que nosaltres
+posseir i operar som els únics que tenim això que tenim això
+uh ssh, per tant, si voleu connectar-vos-hi, feu-hi canvis
+com a servidor polivalent, podeu fer-ho, però només heu de vigilar el vostre
+les vostres coses de facturació assegureu-vos que no heu superat els llindars i
+coses així si només l'utilitzeu com a servidor intermediari, ho és
+molt poc probable que ho facis, només és una cosa que estàs preparant
+a través de les dades, així que comproveu que és aws.amazon.com per començar
+si teniu preguntes, publiqueu-les a la nostra comunitat
+la nostra discòrdia trobareu l'enllaç a la categoria 5
+Mentrestant, televisiu al menú interactua si us ha agradat això si l’heu utilitzat o
+M'ha semblat útil, doneu-me un gran dit polze cap amunt, si us plau subscriviu-vos i us veurem bé
+després del descans [Música]
+Benvingut de nou, aquesta és la tecnologia de categoria 5
+i vull parlar del que faig a casa
+o més aviat, què estic pensant fer assegut a veure Netflix
+No tinc temps de seure i mirar Netflix, voldria fer-ho, però
+uh no, la meva família sempre enganxa a Netflix i sóc com si anés a l'ordinador
+la qual cosa és fantàstic perquè m’ha obligat a començar hi ha netflix a l’ordinador
+ara jeff, em distreu, no, però és així
+genial perquè m'ha obligat a començar a mirar algunes de les coses que fem
+per tota la casa i ves, com puc fer que això sigui meu i així
+ja saps que he esmentat a la part superior del programa que té el nostre fill
+es va posar a soldar i ho ha fet molt bé i ens recorda quants anys té
+només compleixo 12. acaba de complir 12. bé, però sí, ja ho ha fet
+molt bé amb ell i uh que ha soldat dues calculadores fins ara
+um i un d'ells l'han portat a l'escola que el seu professor va quedar completament bufat
+sí, estic pensant que té 12 anys i ell
+ja fabricant una calculadora, sí, sí, va fer una calculadora de la qual vam obtenir un kit de bricolatge
+amazon i el va construir i potser dues hores
+de treball va ser realment fenomenal irreal i el seu treball de soldadura és
+realment molt net, excel·lent, sembla un professional
+però, de totes maneres, ha estat preguntant com fer altres coses i, a mesura que anem soldant, ho és
+M'agrada bé què és això i què és això i com funciona aquest treball i
+vaig, vull poder ensenyar-li aquestes coses
+vull poder-li explicar com funciona una placa de circuit, no només
+soldant-lo però entenent els components, l’encaminament i tot això
+tipus de coses i vull dir que sé que pots comprar um
+només taulers simples que són només files de pocs punts de connexió
+però vull ser capaç de crear el nostre propi tauler, i així ho ha demanat
+concretament si podem trobar un kit de bricolatge per
+una caixa inútil que saps que és la caixa on prems el botó i sí
+poca cosa surt i apareix, sí, proveu-ho
+el que faries és seriós
+oh, Déu, és divertit
+hola, és com tenir un gatet allà, és com el meu gat
+hey hey ara, així que he estat buscant-ne, no n'he trobat, però n'he trobat un munt
+gent com oh pots fer-ne un amb un arduino, pots fer-ne un amb aquest
+i era com si fes una caixa inútil de bricolatge amb la que vull construir-la
+en el fons, així que he estat investigant com fer-ho
+els meus propis ordinadors a casa bé, en realitat no és tan difícil
+i em va sorprendre que tot el que necessito és una impressora làser per configurar el meu encaminament
+com per on van els camins, de manera que realment el gravareu
+Vaig a gravar-lo a casa, oh home
+això és molt més enllà de mi Jeff, és realment el que implica productes químics
+sí, però només un procés molt senzill, així que he trobat
+hi he investigat un munt i, per tant, he trobat aa
+manera molt senzilla de fer el meu propi pcb
+i això és el que farem, de manera que el meu projecte per a la propera a
+un parell de mesos perquè he d’aprendre com funcionen aquestes coses
+funciona és dissenyar una placa de circuit um que tinc
+mai abans s'havia fet la placa de circuits i després la del meu fill
+el soldarem junts i el farem nostre
+caixa inútil que espero també imprimir en 3D la caixa, oh això és genial
+Sí, només estàs bussejant en mi quan faig alguna cosa, no em queda petit
+i ja saps que el meu plantejament és una mica diferent perquè sóc molt
+en com m'agrada aprendre alguna cosa primer
+i després augmentar la meva inversió en aquest procés i ja estàs parlant
+sobre saltar directament a la creació de PCB, així que faria una còpia de seguretat perquè ho sàpiga
+si estàs pensant que potser m'agradaria poder fer els meus propis circuits
+i coses així, el meu punt de partida és una taula de treball, sí
+i la taula de suport us permet dissenyar el circuit que heu dissenyat o
+que heu descarregat com un pla de circuit um
+des d'Internet o per molt que tingueu, això us permet establir-lo
+en un en un bàsicament un simulador de pcb
+que funcionarà com un pcb, però només podeu desmuntar-lo i
+deixeu les peces a l’altura i és barat, molt econòmic i només us farà començar
+i aleshores el següent pas per a mi és el que s’anomena un tauler de prototipatge per aconseguir-ho
+taules de PCB que tenen tots els forats adequats i
+tenen soldadura com punts, però no
+interconnexió entre ells perquè realment feu servir cables o vosaltres
+executeu una mica de soldadura entre dues juntes diferents, per exemple
+i ho fas així, així que aquest és el meu segon pas, sí
+potser seguir el camí per gravar el vostre
+pcbs perquè després us endinsareu com els processos químics
+i i no ho he investigat, però és un procés molt més complicat
+m'agrada començar una mica més senzill el meu primer pc i
+construït sobre una taula de treball molt bàsica, però l'he dissenyat bé
+d'acord i tot el que és és que es necessita un cinc volts
+senyal i quan té cinc volts el
+el relé està tancat, de manera que té un relleu correcte, si no té cinc volts
+el relé s'obre de manera que es desconnecta
+la raó per la qual he creat que és una aplicació específica, així que la vaig crear
+sobre una taula de pa i prové de l'alimentació a cinc volts
+qualsevol endevina qualsevol endevina spc no és un acrònim de tres lletres usb
+usb usb traient un senyal de cinc volts d’una micro tick
+enrutador d'acord i així a la micro tick he programat el codi que deia
+això bàsicament per deixar-ho en silenci si Internet no funciona
+mata el poder al usb oh i així llavors
+obre el relé i què és el control del relé, però la potència del meu mòdem
+de manera que el meu mòdem, si Internet no funciona, es convertirà automàticament
+el poder de si mateix a causa del meu relleu
+dreta i espereu cinc segons i torneu a engegar-lo, de manera que és essencialment un
+la versió virtual de la vau desactivar i tornar a activar perquè
+Què fas quan ets a Internet?
+a partir de l'impuls, espereu cinc segons i el torneu a endollar i
+saps que vuit vegades de cada deu, tornarà a funcionar i funcionarà
+correcte, així que era el circuit que vaig construir, de manera que el vaig construir en una placa de prototipatge una vegada
+el tenia funcionant i el vaig soldar junts i és molt senzill
+circuit molt xulo i ha funcionat molt bé m'agrada
+que molt divertit així que eines què tens tan
+on estàs, uh, bé, com deia que acabo de fer
+la investigació de la setmana passada ah, així que estic a la fase de compra
+uh, doncs, tenim tot el material de soldar que vaig a comprar comprant el tauler
+els productes químics que ja he descarregat el programari um
+per dissenyar el pcb wow um
+i tinc un kit de components que està en camí amb tots els
+resistències i condensadors, sí, tot aquest tipus de coses que són una cosa ordenada
+també és que en aquests dies vull dir que realment no es pot caminar
+a una barraca de ràdio com abans no hi podíem
+encara hi ha botigues com aquí a Barrie, en tenim una que es diu seaal
+que és una botiga brillant que és com aquella antiga barraca de ràdio on es troba
+entra i és com si només necessités un condensador, sí
+i és com aquí hi vas, saps que és com calaixos
+i calaixos de condensadors i resistències i tota la resta de díodes i el que sigui
+però només per aconseguir un kit de 20 dòlars que tingui
+és com un material comú i és un kit que inclou un
+taulell de pa i ve amb una tauleta de pa i això
+va ser una de les coses és que vull que sí que el dissenyaré, però en part
+del procés de planificació és com heu dit amb la taula de proves per esbrinar-ho
+com anirà el circuit i això serà un gran aprenentatge
+experiència per a Luke perquè seran com bé, això és així
+com funciona això i provem això i fem això i després
+ja saps que hi podrem provar sense fer realment les nostres pròpies peces
+això és realment ordenat que també heu mencionat arduino i arduino és una mena de
+com si fos un controlador, així que sí, ho saps
+un raspberry pi o un altre ordinador de placa única és cert
+ordinador real amb un sistema operatiu i tot el que un arduino és com vosaltres
+només cal programar-lo per fer una tasca molt específica, és un estat sòlid
+i respondrà i crec que és així
+per què funcionaria molt bé un arduino?
+uh per a una caixa inútil és perquè és així
+està activat o desactivat, i si està activat, feu això
+i després s'apagarà, és correcte, de manera que la programació és molt bàsica
+escriure digitalment quatre comes hola punt i coma i llavors estem
+es retardarà un segon, que és de mil mil·lisegons
+i després copiarem aquesta línia ara
+què creus que significa alt versus baix que és el que vaig a posar aquí
+només una conjectura activada o desactivada, així que ara és el que sembla el meu circuit
+i senzillament ho connectaré a l’alimentació USB, de manera que no el connectaré
+l'ordinador que vull alimentar aquest dispositiu i veure si funciona
+executa el meu programa i, si ho fa, hauríem de veure aquesta llum
+flash all we go que està net cada segon, així que nosaltres
+en realitat va crear el circuit bastant ràpidament eh i va crear el
+programa per dir ara a aquesta llum què cal fer i ho vam dir molt
+simplement torneu a activar i apagar, però si ho esteu
+fer el vostre propi circuit us ha de agradar fer
+I has de programar-ho tu mateix, sí, has d'esbrinar com
+wow vull veure aquest projecte com un treball en curs
+d'acord i, a continuació, veure com s'uneix, sí, sona bé
+hem esmentat la comunitat aquí al nostre programa i uh el nostre servidor de discòrdies
+en particular, he aprofitat la nostra comunitat jeff to
+entra i comparteix les meves idees sobre circuits i sí
+coses així i hi ha gent a la nostra comunitat que ho és
+com aquí fins aquí, pel que fa a les seves capacitats i la seva comprensió
+tipus de coses, de manera que m’ha estat molt útil com jo
+he après, oh, fins i tot tinc la intenció de fer servir el
+utilitzeu la comunitat per treballar amb errors, sí i si sou d’aquests
+la comunitat ara mateix aixeca la mà i digues que sí
+entenc com funciona tot el que m'agradaria ajudar
+i uh i això és una cosa que crec que crec que farà que sigui molt ordenat
+funció per a l’espectacle, a més d’aprendre
+Sí, de ben segur, mantingueu-nos informats sobre aquest jeff, sens dubte m'interessaria
+per saber com van les coses, sí, publicaré coses darrere del
+escenes una caixa inútil qualsevol altra Tens alguna idea però em fa il·lusió
+quan invento com quan penso en alguna cosa
+Has tingut algun d'aquests moments en què sóc com si realment ho desitgés?
+tenia alguna cosa que faria això, però no existeix
+Aquí és on la impressió 3D és interessant per a mi perquè estic creant coses que
+encara no existeixo, realment no he pensat
+pel que fa al que existeix i no existeix
+um
+no, realment no he pensat que fins ara se m'acudin algunes idees
+Sí i comparteix-los, hi ha un munt de coses segur
+Sí, com si sempre hagués volgut fer-nos un sistema de so per a tota la casa
+que enllaça amb um, ja coneixeu el nostre dispositiu amazon i coses semblants
+això, però m'agradaria tenir sensors on
+quan camino d'una habitació a una altra, s'inicia el sensor de moviment i es tanca
+apagueu els altaveus d’una sola habitació i afegiu-lo a on acabo d’anar
+això és molt més avançat, però probablement
+l'únic que se m'acut a on sóc com si vull fer això, però ens veiem parlar
+sobre això i després crec que bé, podríeu utilitzar un sensor d'infrarojos passiu
+Sí, que s'utilitza en sensors de moviment, podeu utilitzar un sensor làser, però
+pir és molt, molt barat, sí, i és només un sensor petit
+d'acord, hi va haver moviment, fes alguna cosa, sí, per poder crear alguna cosa
+de nou amb un relé que controla exactament si l’altaveu té
+un circuit completat o no, així que si només era un
+un munt d’altaveus connectats a través d’un amplificador que podríeu configurar els relés
+amb sensors pir que podreu controlar mitjançant el moviment
+Sí, bé i si no hi ha moviment durant 10 minuts, apagueu l’altaveu
+automàticament o alguna cosa semblant, sí
+exactament com aquest tipus d’idees com si hi hagués tantes coses que puguis
+fer quan comences a entendre i després
+hi ha tot el revers, on es trenca alguna cosa i ho podeu arreglar sí
+això és una bona sensació i això ja ho hem fet
+sí, bonic, així que saps que tens aquestes petites bateries
+als provadors, sí, ens agradaria comprovar el càrrec, de manera que en vam tenir un i ja és
+divertit quan el meu fill construïa la seva calculadora
+no estàvem segurs de si les piles funcionaven i no ens arribava res
+Em sembla que és estrany que no estiguem en general, encara que estigui mort
+apareix al vermell però no hi havia res, així que el vam obrir
+resulta que la connexió real s’havia trencat oh
+ara no tinc ni idea, sí, i el meu fill és com si ho pogués solucionar i
+ho va arreglar, el vam tornar a ajuntar i, després, ja funciona i és com oh
+Sí, això és una bateria esgotada, sí, també puc relacionar-me amb això
+altaveu de coixins per a podcasts, val, ja que ho saps
+connectat per un cable al meu telèfon s’estira
+Sí i es va treure de manera que és tan senzill, però no sé
+Vaig fer no en vaig comprar un altre no no no vaig agafar
+el vaig separar i el vaig tornar a soldar i el vaig reforçar
+així que no tornaria a passar oh bonic ho va fer millor del que era ell
+va dirigir la seva ment cap a coses com els residus electrònics, sí i és com si algú ho fes
+Desfer-se de la televisió o el monitor de l'ordinador és probable
+continua funcionant pare, només hi ha alguna cosa a dins que es va trencar
+és com si ho pogués arreglar, com si pensessis en això i així són les seves rodes
+es queda per darrere i és com si pogués fer aquestes coses i després vendre
+els 12 anys, és una carrera
+en un nombre de
+uh com si fos realment valuós tenir aquestes capacitats
+així que vaig a entrenar-lo per al pròxim uh bé, té 12 anys
+vuit i sis anys em retiro, vaig entrar un monitor, no ho sé
+potser un bonic monitor de pantalla de 23 polzades o 24 polzades d'ample
+Vaig entrar com a residus electrònics i així sóc com
+Vaig a fer una ullada i així ho vam mirar la meva filla
+i hi havia un condensador únic que es va cremar, així que vaig entrar en línia i
+He comprat un d'aquests condensadors que els venen en paquets de
+tres i eren dotze dòlars per 12
+tenim un paquet de tres, substituïm un d'aquests condensadors i aquest monitor és
+ara assegut a l'escriptori de la meva filla, oh, Déu, és increïble, és meravellós
+i té tota la raó, però no només pots arreglar coses jeff
+diguem que alguna cosa entra als residus electrònics o que saps que hi trobes alguna cosa
+el costat de la carretera que algú acaba de descartar perquè no pot, no ho fa
+sap com solucionar-ho i potser si solucionar-ho és més
+car que comprar-ne un de nou en molts casos també
+um, encara que no ho pugueu solucionar, podeu fer el que es diu dessoldar
+és així perquè pugueu eliminar tots els bons components i
+poseu-los en un organitzador de calaixos, sí, perquè pugueu tenir la vostra pròpia ràdio
+barraca a casa on teniu els calaixos de totes aquestes parts
+i després, quan es trenca alguna cosa, no cal gastar-ne 12
+en línia per comprar-los, voldria no haver sabut que hi entraria
+perquè a l’estiu tenia uns quatre ordinadors
+un parell de projectors els vam portar tots els residus electrònics
+així que és com si ho hagués pogut desmuntar, segur que sí que els he aconseguit
+oh bé, les parts que vivim i aprenem, sí, exactament
+molt bé, mantingueu-nos informats sobre això definitivament i bé, expliqueu-nos el comentari següent
+sobre algunes de les gestes que heu tingut
+eh, pel que fa a aquest tipus de temes i, si són, si és així
+una cosa que t’interessa i que mai no has entrat
+hola comentari a continuació, també ens encantaria tenir notícies vostres i ens encantaria tenir-vos
+com a part d’aquest procés, ja que Jeff està aprenent
+ja que també estic aprenent i aprofundint cada vegada més en aquests tipus de
+com ara reparacions de components i plaques de circuits i tota la resta
+és molt divertit, sí, és una gran afició i una carrera meravellosa
+Tinc moltes ganes de fer-ho també, així que és veritat bo per al teu fill que m'agradaria escoltar
+suposo que com ho gaudeix, quan és hum
+13 més, així que l'any que ve el podeu portar a l'estudi
+i ens pot ensenyar com se sent
+sona molt bé, fa que passi, hem de dirigir-nos a la redacció
+becca hi és amb les nostres notícies més destacades de la setmana
+aquí està aquí el que ve a la sala d'informatius de televisió de 5 punts
+els pirates informàtics utilitzen un greu error de Windows per comprometre’s
+servidors sense pegar s'han eliminat tres paquets javascript del npm
+El portal per contenir codi maliciós Nokia s'ha encarregat de construir un
+nova xarxa cel·lular 4g a la lluna un 80 nou
+La tecnologia de càrrega sense fils de watt de Xiaomi ens bufa la ment i el
+S'ha llançat el mòdul de càlcul 4 de raspberry pi
+feu-vos saber les especificacions i com això canvia les coses per al industrial
+seguiu els detalls complets i el cripto racó d'aquesta setmana
+estem presentant aquesta és la redacció de TV de 5 punts
+cobrint les històries tecnològiques més avançades de la setmana amb un lleuger Linux
+parcialitat
+de la redacció sóc becca ferguson
+servidors sense pegar una de les vulnerabilitats més importants de Windows
+divulgat aquest any està sota atac actiu
+per part de pirates informàtics que intenten fer servir servidors de portes posteriors que emmagatzemen credencials per a tots
+usuari i compte administratiu d'una xarxa
+els investigadors van donar a la vulnerabilitat el nom de xerologon perquè els atacs funcionen
+enviar una cadena de zeros en una sèrie de missatges que utilitzen la xarxa
+protocol d 'inici de sessió en què es basen els servidors Windows
+varietat de tasques, incloses les que permeten als usuaris finals iniciar la sessió
+a un inici de sessió xero de xarxa tal com ha estat la vulnerabilitat
+doblat va guanyar molta atenció el mes passat
+quan l'empresa que la va descobrir va dir que podia donar atacants
+accés instantani a directoris actius que fan servir els administradors per crear
+suprimiu i gestioneu els directoris actius i el domini dels comptes de xarxa
+els controladors en què s’executen es troben entre els premis més desitjats
+en pirateria perquè un cop segrestats permeten als atacants executar codi i
+munició a totes les màquines connectades microsoft
+divendres, va corregir el defecte de seguretat el divendres Kevin Beaumont
+treballant com a investigador independent
+va dir en una publicació al blog que havia detectat atacs a la tassa que utilitza per guardar
+al corrent d 'atacs d' atac que els pirates informàtics utilitzen a Internet
+salvatge quan el seu servidor d'atraccions no va ser correcte, els atacants van poder utilitzar un fitxer
+script de PowerShell per canviar amb èxit una contrasenya d'administrador
+i la porta del darrere del servidor beaumont va dir que va aparèixer l'atac
+per estar completament script amb totes les ordres completades en qüestió de segons
+amb això, els atacants van instal·lar una porta posterior que permetia el control remot
+accés administratiu als dispositius de la seva simulada xarxa
+els atacants també van habilitar l'escriptori remot com a resultat que continuarien
+per tenir accés remot fins i tot si l’administrador posteriorment pedaça el servidor
+les persones sense autenticació autèntica poden utilitzar l'explotació per guanyar domini
+credencials administratives sempre que els atacants puguin fer-ho
+establir connexions tcp amb un controlador de domini vulnerable a
+en alguns casos, els atacants poden utilitzar una vulnerabilitat diferent per establir-se a l'interior
+una xarxa i després explotar l'inici de sessió zero per fer-se càrrec
+el controlador de domini crec que és un bon exemple de manera
+aquest tipus de scripts per entrar a les xarxes
+no tenim ordinadors obsolets a la xarxa i també ens enganyem en enginyeria social
+escolta moltes coses sobre com probablement rebràs aquests correus electrònics
+que intenten enganyar-lo per seguir amb un procés de
+introduir una credencial o alguna cosa semblant
+el risc que correm i el trist cas que veig
+en això és que de vegades la gent pensa bé
+No necessito actualitzar aquest ordinador perquè ningú no és al darrere
+ho fa servir sí, o bé, ho necessitem
+Encara tenim Windows XP perquè tenim problemes amb un dels nostres
+Si no ho fem, continuem veient moltes finestres 7
+sistemes i això és una tragèdia si teniu un
+El sistema Windows 7 o Windows XP de la vostra xarxa només ha de girar-lo
+desfeu-vos-en, sí, veieu el cas
+és amb aquests sistemes, de manera que Microsoft té el que anomenem eol o final de vida
+ha acabat la vida d'aquests sistemes operatius
+així que han dit que heu d'actualitzar a Windows 10. bé, no vull actualitzar
+a Windows 10 m'agrada el meu Windows 7. ho entenc i ho respecto
+no obstant això, aquí teniu el problema dels pirates informàtics
+ara són capaços d’explotar aquests sistemes operatius
+i mentre ho fan mentre troben gestes
+hi ha un parell de coses que passen una
+ja sigui regalar o vendre aquestes gestes o dues, només són alliberades
+al públic, ja sigui a través de la web fosca o fins i tot a github
+com a investigació de seguretat, i ara ara, si voleu, aquests pirates informàtics
+anomeneu-los així, però de manera realista en molts casos són el que anomenem
+gatets de guió i aquests són um
+ni tan sols com els hackers, sí, però no han de tenir molts coneixements perquè
+l'explotació és pública, és ben conegut i entès, si és així
+hi ha exploits disponibles per a un sistema operatiu
+què esperem que passi, esperem el proveïdor del sistema operatiu Microsoft
+en aquest cas, es fa un pedaç que explota per solucionar-ho
+i aquest és el cas de Windows 10. per desgràcia
+els que són eol no passa de vegades amb un sistema operatiu eol
+escoltem, doncs bé, no necessito assistència. microsoft ha acabat amb el suport
+el que hem escoltat sí, han acabat el suport per a Windows 7. han acabat
+suport per a Windows XP oh, però mai he hagut de trucar al servei d'assistència
+ho puc manejar no és el que són
+parlant del que diuen
+no arreglaran els pedaços que fa, les explotacions no importen
+el greus que siguin, no importa el fàcil que siguin
+explotar perquè tingueu una màquina Windows 7 a la vostra xarxa
+Esteu donant entrada a un d’aquests pirates informàtics que ni tan sols en tenen
+per ser molt bo en el pirateig perquè les gestes són conegudes públicament
+Sí, de vegades formen part de les eines, de vegades només es poden descarregar gratis
+eina i poden dir que vull amb un sol control explotar Windows 7
+per tant, entren a una caixa de Windows 7 o han enganyat un dels vostres empleats
+fins i tot si només són algú del darrere que treballa al magatzem
+han enganyat algú perquè obrís un fitxer que ara els dóna accés al fitxer
+màquina Windows 7 la màquina Windows XP o la màquina del darrere
+no importa i aquí estem aprenent que Microsoft
+els servidors ara tenen un exploit que sempre
+una persona malintencionada pot accedir a qualsevol equip de la xarxa
+ara poden obtenir accés d'administrador de domini a tota la xarxa
+ara fa por les vostres màquines Windows 10 ja no són
+segur és correcte perquè els heu donat l'entrada a la vostra xarxa com si
+són administradors de dominis. Oh, veieu que són només males notícies
+bé, és una mala notícia per què és una cosa el ransomware
+perquè què fan ara bé, he accedit a aquesta xarxa
+Vaig a vendre a la xarxa fosca accés a aquesta xarxa
+ho veus amb um amb municipis i sí amb ciutats que
+va ser el gatet de guió original qui no ho va fer
+ell només volen que vulguin entrar
+instal·leu el seu programari i sortiu i després veniu l'accés
+és cert perquè són diners ràpids, per què la gent ho fa per diners?
+i així ho fan, així que sí, heu de fer-ho
+tipus de mantenir les coses al dia perquè sàpiga que és només un pensament ràpid
+per reflexionar, hey, si teniu màquines obsoletes a la vostra xarxa
+baixeu-los i formeu el vostre personal en ciber
+les pràctiques de seguretat comprenen què són les estafes de pesca
+perquè ja ho sabeu, algú va fer clic en un enllaç i ara el seu
+ordinadors infectats, però el seu ordinador està infectat
+a la vostra xarxa, però aconseguiria la meitat dels diners d’aquest príncep
+això és tot un altre cuc aquí jeff
+però vull dir que quan es tracta d’aquest tipus de coses, mirar el vostre sistema i dir-ne
+oh no vull gastar-ne set
+cent dòlars per a un ordinador nou no em preocuparia actualitzar-lo
+acabareu gastant més a la llarga o a curt termini
+no, a la llarga si no teniu el sistema pegat perquè una vegada
+tenen accés a tot el que podríeu estar fora i fora però i i
+pensa quan tenen accés a tot
+crec que és important adonar-se’n
+que un punt d’entrada es converteixi en accés a tot, així que gasta’n un parell de centenars
+dòlars aconseguir el nou ordinador estalviar-se i no sé què es necessita
+vull dir que és diferent, és diferent per a cada cas, sí, tenia una persona
+avui qui ha trucat i ha dit que tinc un únic equip Windows 7
+No vull actualitzar-lo perquè només funciona
+així que aquí teniu una explicació i aquí la becca ens ha compartit una història
+això simplement ens indica que tot el que necessiten és accedir a aquest ordinador
+i ara tenen accés a tots els ordinadors dels vostres ordinadors i no
+de la mateixa manera que una samba, no de manera amable i tant de bo
+no trobeu cap manera d’entrar a les portes del darrere
+ordinadors no tenen credencials d'administrador activades
+la vostra xarxa perquè puguin fer qualsevol cosa
+és correcte qualsevol cosa que vulguin quan pensi en casa meva
+crec que ja ho he fet, crec que en tinc set
+dispositius que no incloguin telèfons i tauletes i coses semblants que estiguin connectades
+a la xarxa no vull que hi tinguin accés
+Sí, no puc estressar-me prou, però Jeff
+vull dir que crec que en termes empresarials és més que l’usuari domèstic però
+un cop hi són, ja no hi pots fer, ja que ara no pots
+apagueu la màquina Windows que la màquina Windows 7 no ja ho són
+en tot, així que què fas substituir tot
+esborreu tots els ordinadors perquè no sabeu quines eines
+han instal·lat que és car, sí, així que no caieu en això
+de totes maneres, això és una mala explotació que espero que sigui gent molt seriosa
+ho hem destacat prou perquè entengueu que això és dolent
+per tant, assegureu-vos que els administradors de xarxa estiguin actualitzats i que ho entenguin
+coses i que esteu protegit i segur
+contra aquest tipus d'amenaces, anirem cap a la becca
+s'han eliminat tres paquets javascript del portal npm per
+que conté codi maliciós segons els avisos del MPM
+equip de seguretat obert les tres biblioteques javascript
+shell als ordinadors dels desenvolupadors que van importar els paquets
+en els seus projectes, les petxines permeten als actors amenaçadors connectar-se remotament amb el
+ordinador infectat i executar operacions malicioses a les npm
+L'equip de seguretat va dir que les versions no depenien d'un sistema operatiu concret
+i es podria utilitzar per comprometre Windows Linux Freebsd
+openbsd i altres sistemes, els tres paquets es van penjar al fitxer
+npm portal el 2018 i cadascun en tenia centenars
+descàrregues des de llavors els noms del paquet són plutovs dash
+client de slash dash nodetest199 i nodetest1010
+l'equip de seguretat de npm va dir que qualsevol equip que tingui això
+el paquet instal·lat o en execució s’hauria de considerar totalment compromès
+tots els secrets i claus emmagatzemats en aquest ordinador s'han de girar immediatament
+des d 'un ordinador diferent adverteixen que el paquet hauria de ser eliminat, però tal i com s'ha convertit
+és possible que s’hagi donat el control total de l’ordinador a una entitat externa
+no hi ha cap garantia que si elimineu el paquet s'eliminaran tots els maliciosos
+programari resultant d’instal·lar-lo mpm
+el personal de seguretat analitza regularment la seva col·lecció de biblioteques javascript
+considerat el dipòsit de paquets més gran per a qualsevol llenguatge de programació
+mentre que ni tan sols puc obtenir una bona cobertura cel·lular a la meva casa
+Nokia està treballant amb nasa per portar 4g a la Lluna amb els objectius de la missió artemis de Nasa
+establir una presència humana a llarg termini a la Lluna com a pas
+pedra cap a la colonització de Mart i per començar les coses nasa is
+ampliant 370 milions de dòlars a 14 empreses
+per proporcionar la tecnologia del programa
+des de la robòtica fins a la generació d’energia i fins i tot la criogènica
+però té sentit que aquests equips hagin de poder comunicar-se amb el
+planeta mare es dissenyarà la nova xarxa
+específicament per a condicions lunars capaces de suportar l’extrem
+canvis de temperatura i radiació, la tecnologia també utilitzarà cèl·lules petites
+tecnologia que, com el seu nom indica, és significativament més petita que l’alta
+les torres cel·lulars que estan acostumats a veure aquí a la terra també n’utilitzen molt menys
+Potència que el pla és que porti un lander lunar
+el sistema de comunicació 4g a la superfície lunar
+el 2022, els laboratoris de campanes de Nokia van rebre 14,1 milions de dòlars
+per la seva banda, una nova tecnologia de càrrega sense fils de 80 watts
+Xiaomi ens bufa la ment i el raspberry pi
+s'ha publicat el mòdul de càlcul 4, us farem saber les especificacions i com fer-ho
+això canvia les coses per al industrial, perquè aquestes històries apareixen a més
+Robert és aquí amb el crypto corner que no vagi enlloc
+Benvinguts de nou al món dels cryptos i Benvinguts al Crypto Corner
+la setmana passada vam parlar dels bancs d'aquí a uns anys que no els reconeixereu
+més i també et vaig esmentar no tant de temps
+fa la moneda digital xinesa que ho farà
+substituir l’abella riemann i que ja l’han implementat i
+ara estan realitzant algunes proves a Shenzhen aquesta setmana
+hi ha hagut una mica de desenvolupament i m'agradaria parlar-ne perquè
+tindrà un impacte directe en la vostra vida i la meva vida
+busquem-hi, doncs, el cap monetari internacional
+d'aquesta organització internacional és una dama anomenada cristalina jojeva i
+va pronunciar un discurs sobre els nous bretton woods
+moment ara el que era un bretton woods britànic
+sistema s’estableix la gestió monetària
+les regles de les relacions financeres comercials entre
+països com nosaltres Canadà Europa Occidental Austràlia i Japó
+El sistema va ser el primer exemple d'un ordre totalment negociat
+pretenia governar les relacions monetàries entre estats independents de manera que fos així
+bretton woods i parla del canvi de
+aquest sistema en quelcom més modern ara prou interessant
+el dilluns hi va haver una reunió amb uns quants banquers centrals parlant dels anomenats
+pagaments transfronterers, però si hi penseu, mireu de quin tipus
+de persones que hi eren presents, de manera que teniu el cap del
+banc central saudí teniu el cap de tota la central
+bancs el cap de l'IMF el cap dels EUA
+falta el banc central i el cap del banc central malaiès
+Europa, que és interessant, però hi haurà una raó, suposo
+de manera que es van reunir per parlar dels pagaments bruts de l’aigua
+ara no crec que sigui una història real la història real
+uh també va ser publicat per un senyor anomenat raul paul
+amb el que estic totalment d'acord, de manera que els seus pensaments són exactament com estic pensant
+i del que parla és exactament d’aquesta reunió que va tenir lloc el dilluns
+que substituirà l'antiga relació de Bretton Woods
+entre països, doncs, què passarà sembla que els bancs centrals
+coincidirà i crearà un sistema
+un sistema de banc central entre tots ells, de manera que no hi haurà nosaltres
+sistema del banc central en dòlars n'hi haurà un
+per a cadascuna per a totes les organitzacions i des de
+allà es diversificarà i amb què es pot fer
+aquest sistema és la part interessant i
+M'encanta que sigui així, canviarà eludir la banca i les finances
+sistema fiscal perquè interactueu directament amb la gent
+Sí, així que no és com en el moment en què el banc central dels EUA o
+Canadà, no importa, apareix amb alguna política i després
+va caure per la cadena i tu com a individu
+usuari del qual probablement en veureu menys
+diners i probablement al tipus d’interès més alt
+que puguis pensar en altres persones es beneficiarà molt més amb el digital
+diners més criptomonedes o programables
+diners que pots fer molt més perquè ara
+el banc central pot influir directament en el comportament de les persones i com ho fan
+fes això, sí que poden dir bé si ets propietari d'un restaurant, pots fer-ho
+treure’ns els diners directament a la butxaca, sí, així que no més
+els bancs implicats ho farem directament és possible que siguin diners del banc central
+poden canviar els tipus d'interès, de manera que en un cas o en una indústria
+pot tenir un tipus d'interès alt que un altre um el que passarà
+amb impostos, sí, què passarà amb els irs
+perquè poden tractar aquestes coses directament
+a través de diners programables trigarà temps
+per aconseguir-ho en aquesta mesura màxima, però passarà
+tal com es pot veure, podreu fer pagaments directes
+aquí també parlen d'economia del comportament, sí, eh
+no a través d’alguns economistes que ho expliquen
+el govern què fer i què no fer perquè això ha fallat al
+passat tothom diu així el que va
+fer és com un tipus d 'idea de Facebook o una idea de tick tick o
+idea de youtube on t’interessa la gent
+fer amistat amb tu o allà on t’interessa la gent
+aconseguint més "m'agrada" i així canvieu el vostre comportament
+pel que fa a obtenir més likes i el mateix
+passarà amb els diners així i tot estarà regulat
+a través del banc central sense ningú del món exterior
+tenir l'oportunitat de tenir una influència significativa, així com això
+es veurà com al final ningú ho sap, és clar, però això
+la gent es reuneix per discutir els pagaments entre ordres transversals
+trobo molt interessant i, per descomptat, és una notícia fantàstica
+per uh bitcoin perquè el bitcoin està fora d’això
+sistema no hi ha ningú que pugui regular uh bitcoin és
+descentralitzat um és immutable bé ho saps tot
+característiques de uh bitcoin així que um bitcoin és una alternativa fantàstica
+totes les altres criptomonedes, les principals, són sens dubte una bona alternativa
+anem a veure què aportarà la balança, però hi haurà algunes bones alternatives
+a um al centre uh centralment
+heu aconseguit diners a través dels bancs centrals, així que espero que us resulti interessant i
+espero que us hagi agradat i espero que em falti
+i us desitjo una setmana fantàstica, així que moltes gràcies per veure-ho
+adéu, gràcies, Robert, només un recordatori que no proporcionem assessorament financer
+però només compartint el que passa al mercat de criptomonedes
+recordeu sempre que els mercats de criptomonedes estan canviant i
+sempre volàtil, de manera que només heu de gastar el que us podeu permetre perdre
+ara torno a la becca a la redacció gràcies robbie
+xiaomi ha anunciat una nova comprovació de càrrega que pot carregar completament un esgotat
+telèfon intel·ligent en menys de 20 minuts, però ho fa sense cables ràpids
+la càrrega s'ha convertit en una característica clau de molts telèfons intel·ligents en els darrers anys i per a
+la comoditat de carregar sense fils pot ser realment fantàstica
+però, per descomptat, la càrrega sense fils sol carregar un telèfon entre
+De 10 a 15 watts de potència que tenen alguns telèfons com el oneplus 8 pro
+càrrega sense fils de fins a 40 watts, però la nova tecnologia de càrrega de Xiaomi promet
+una enorme quantitat de 80 watts de suc sense fils
+què vol dir això en termes pràctics segons l'anunci
+presentant la tecnologia de càrrega sense fils de 80 watts
+un telèfon intel·ligent amb una càrrega zero per cent d’una bateria de quatre mil miliampres d’hora
+cobrarà el deu per cent en només un minut el cinquanta per cent
+en vuit minuts i completament carregat al cap de 19 minuts
+finalment un carregador que carregarà el meu telèfon
+de zero a cent per cent just en la meva pausa per dinar, veig que està bé
+això és un canvi de joc. Us imagineu que penso en els meus fills i en com ho tenim?
+com els telèfons a tot arreu, òbviament, vull dir que això és per prendre com
+l'última i la millor tecnologia, però sempre és un cas que ho he oblidat
+col·loqueu el telèfon al carregador o no dura prou per a la totalitat
+dia i ara que ja saps amb la pandèmia, per descomptat, el meu
+els nens s’escolaritzen a casa ara per força i tothom hi està
+els seus dispositius tot el temps, de manera que tenim reunions de zoom als telèfons
+i i s'executa esgota la bateria, sí
+però el que m'agrada és que és sense fil, no només és cablejat, és increïble, sí
+és sense fil que és enorme com la idea que
+Podria agafar el telèfon sense haver de preocupar-me dels carregadors i
+només vés, fixa-la i fica-la 20 minuts més tard
+que m'encanta l'altra cosa que m'agrada
+el concepte és que um penso en el que acabes de fer si pogués
+col·loqueu-lo sobre una taula i si el poguéssiu col·locar en un
+taula del restaurant, sí, perquè molts restaurants han seguit la ruta i jo sóc
+utilitzant els restaurants com a exemple, però molts llocs han seguit la ruta
+incrustant usb sí perquè pugueu connectar-lo
+per carregar el telèfon, però de sobte la gent va aconseguir
+encertat pel fet que aquells ports USB podrien ser maliciosos
+perquè el USB també porta dades o és cert
+qui sap si són massa volts i això sap que potser sí
+Tinc un curt o alguna cosa semblant i em podria fregir el telèfon
+així que, de sobte, ens fa por connectar-nos al port USB perquè vaja
+podria ser una cosa dolenta que estigui bé
+carregant sense fils, ho establiu, es carrega i ho recolliu i ja ho esteu
+fet, sí, però podeu configurar-ho per
+tres minuts i us ha carregat prou per superar la major part del
+tarda, que és increïble
+de la mateixa manera que significa que mires al teu voltant ara i tens totes aquestes estacions de recàrrega
+vehicles elèctrics seria fantàstic començar a veure poc
+finestres emergents en llocs públics amb aquest tipus de coses on podeu posar literalment
+baixeu el telèfon durant cinc minuts i en tingueu prou per fer una trucada
+obtingueu ajuda o el que sigui i tot és sense fil
+com un tram de carretera i incrustar el receptor al cotxe i ell
+recarrega el cotxe autònom mentre circula per sobre d’aquest
+cosa whoa que estem entrant en la tecnologia ara gent
+[Rialles] encara m'agrada, m'entusiasma
+cosa boja és només en conclusió és que tot el que acabo de fer
+dit és molt de ciència ficció com quan creixíem
+fins que era com el futur, és totalment factible
+ara és possible que sigui ridícul el raspberry pi
+La fundació ha llançat un mòdul de càlcul amb les especificacions d’un raspberry pi 4.
+la fundació raspberry pi va llançar un nou producte dilluns el comp
+el mòdul de càlcul 4. és difícil de creure que hagi passat tant de temps, però el
+raspberry pi 4 es va publicar el juny de 2019
+el mòdul de càlcul 4 porta el pi 4 a l'espai industrial iot
+amb el mateix processador empaquetat en un mòdul de càlcul
+només demanant la integració en potents aparells iot
+si no esteu familiaritzat amb els mòduls de càlcul, podeu pensar en ells com
+ordinadors de placa única sense tots els ports i pins gpio
+permeten que els components de l'ordinador siguin els cervells d'un raspberry pi
+integrat a clústers de tecnologia de fabricants de dispositius intel·ligents de robòtica o
+qualsevol cosa que pugui arribar a això requereixi una petita
+un ordinador Linux de poca potència, ja que el mòdul de càlcul 4 comparteix el seu
+Les especificacions amb el raspberry pi 4 poden desenvolupar tots els seus prototips
+al pi 4 sbc, però després demaneu un munt de mòduls de càlcul
+4s per integrar-se al seu producte comercial
+de la mateixa manera que el raspberry pi 4, el mòdul de càlcul 4 presenta un braç de 64 bits
+processador amb gràfics de nucli de vídeo vi
+representarà una gran actualització per al càlcul anterior
+clients del mòdul i amb sortida de vídeo de 4 k fins a
+60 fotogrames per segon més la possibilitat de descodificar vídeo h.265
+el mòdul de càlcul per al mòdul de càlcul 4
+podria ser un canvi de jocs per a dispositius impulsats per multimèdia, com ara televisors intel·ligents o
+set-top boxes amb el mòdul de càlcul 4 està disponible
+la vostra elecció entre 1 2 4 o 8 gigabytes de RAM i 8 16
+o 32 gigabytes a bord emmc emmc flash wi-fi i bluetooth
+també són opcionals, el preu oscil·la entre només 25
+fins a 90 usd ara imaginem que jeff el mòdul de càlcul 4 de raspberry pi
+Sí, en un dels vostres projectes sbc o alguna cosa semblant que el potenciï com el
+cervells això és força emocionant tan aviat com
+becca va dir que la descodificació h.265 de manera que és com si fos un vídeo
+molt intensiu en CPU, sí, és fantàstic, com diu molt
+això és més poderós que el meu servidor de plex, sí, com qui sap on és
+Vaig a prendre coses que m'agraden la idea de computació en clúster
+i aquí és on agafeu diversos ordinadors
+connecteu - los junts a través de la xarxa i
+bàsicament instal·leu programari beowulf o alguna cosa semblant
+els agrupa perquè puguin actuar
+realitza tasques juntes de manera que bàsicament converteix un súper ordinador
+a la sortida de diversos ordinadors perquè penseu en aquests raspberry pi
+cl uh clúster o els mòduls i i posar com 10 d'aquests junts
+en un clúster i us agradaria aquest mòdul de càlcul
+un clúster que seria un bon ordinador amb tanta potència
+quan podeu tenir vuit concerts de carn a cada una
+temps de taula que abans de 10. molt pot fer molt
+està canviant les coses que la gent està canviant el món, és cert
+què faríeu amb tot aquest poder?
+i silenci espera que respongueu i
+Estic pensant que sóc com què faria amb això quanta gent
+acabo d'anar a l'extracció de bitcoins, ho sento, és que sabeu què és trist?
+el primer pensament va ser que podia automatitzar com alguns dels
+utilitats que tinc a la cuina per preparar-me menjar
+aquest va ser el meu primer pensament amb un mòdul de càlcul quatre
+Sí, necessita més que això, però sé que podria ser el cervell d'una operació així
+clar que tinc gana però [Rialles]
+comenta els teus pensaments a continuació, ens encantaria saber què faries amb un
+mòdul de càlcul per agrair-vos per veure el punt de la categoria 5
+redacció de televisió no oblideu agradar i subscriure-us
+totes les vostres notícies tecnològiques amb un lleuger biaix de Linux
+i si aprecieu el que fem, som patrons a patreon.com
+categoria 5. de la sala de notícies de la categoria 5 dot tv sóc becca ferguson
+[Música]
+bé, està bé gairebé tot el temps que tenim aquesta setmana jeff
+la setmana passada ho vam passar i vaig fer tot el procés amb fiverr
+Vaig contractar a alguns per poder fer el nostre remix, sí, aquí hi ha un divertit
+història bé, literalment, digueu-me quan riure
+saber llavi que ja va fer ja va riure
+l'esquirol de rajos era un dels nostres nois, sí, sí
+un dels nostres remixers i esquirol literari
+Va dir que em continuava preguntant que això era mentre estava veient la funció
+després em seguia preguntant per què eres
+pronunciant malament el meu nom, oh escombrar un esquirol, així que vaig comprovar el meu
+perfil i vaig trobar que l'he escrit malament oh no
+i mai me n'he adonat i així va ser durant tres anys que parles seriosament
+ell diu que el meu nom, el meu grup és un esquirol literari, oh Déu que va deixar
+en el nostre això és divertit, així que us explico aquesta història
+veieu que és divertit veieu que us he dit que era divertit era com
+t’explico aquesta història perquè llavors em vaig dir bé
+veig paraules i crec que pronuncio en la seva major part
+els faig bastant meticulosament, de manera que quan veig literatura encara que això no sigui una paraula
+configureu-lo de la manera que es llegeixi bé, així que vaig pensar que probablement seria un
+molt bo corrector, així que vaig dir què diables li donaré
+vaja, així que publico un anunci que deia que revisaré
+el text de 500 paraules o menys per cinc dòlars
+d'acord i estava com ah, ningú no hi anirà mai
+de tota manera és divertit, vaig pensar que ho provaria i al matí següent vaig rebre un correu electrònic
+d'una persona a Espanya que era um és
+un corredor d’assegurances està bé i té un client que parla anglès
+de manera nativa i volia assegurar-se que deia les coses correctes en resposta
+a un correu electrònic, de manera que va eliminar totes les coses confidencials
+sí, em va enviar la seva resposta i em va dir que podeu repassar això per a mi i per a mi
+vaig fer i vaig passar i en vaig corregir algunes
+i tenia algunes paraules que en realitat no tenien sentit en la traducció
+i així ho vaig arreglar i vaig corregir una mica la gramàtica i el context
+d’ortografia i era com si li encantés cinc dòlars
+realment em va costar 10 minuts i va ser just
+cosa que vaig fer amb una tassa de cafè a primera hora del matí
+Sí i em va fer una ressenya de 5 sobre 5, que és increïble, com si fos de cinc anys
+la perspectiva inversa, de manera que sóc així, és bastant ordenada, així que començo a parlar
+als meus fills i em sembla que hauríem de saber si podríeu fer coses com vosaltres
+allà i ja saps que la meva filla és artista i
+ella podria fer dibuixos perquè la gent comencés a guanyar diners, és una mica ordenat
+idea d'una plataforma ordenada, no sé de què es refereixen les regles
+com l'edat mínima i coses per l'estil, però podem examinar aquest tipus de
+coses, però aquesta és la meva història per a aquesta setmana
+que hey vaig anar també pel contrari i vaig vendre el meu propi servei que vaig donar
+esquirol literari a free a freebie um but uh
+ara estic estic disponible per a la venda ii em sembla que seria divertit
+et donaré els cinc dòlars i t’enviaré un document de 500 word
+tot lorem ipsum i digueu-me si té sentit que faré tot el possible
+ho has corregit, sí, bé, això és tot, jeff
+tot el temps està bé, però he estat molt divertit
+Hem gaudit de tornar a estar aquí amb vosaltres aquesta setmana que ve la setmana que ve ens posem en 3d
+imprimint, així que anem a muntar un ender
+3v2, així que ho farem junts
+i després farem un xat sobre si sabeu quin ha estat el procés
+M'agrada com a noob en l'àmbit de la impressió 3D
+quin tipus de reptes he trobat
+i es pot trobar a mesura que comença
+a la impressió 3D més, us mostraré no només la meva primera impressió
+però els meus primers dissenys impresos no els voleu perdre la setmana vinent
+que tingueu una bona setmana a tothom que us veurem
+[Música] [Aplaudiments]
+adéu [Música]
+vostè

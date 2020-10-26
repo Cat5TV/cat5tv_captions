@@ -1,0 +1,240 @@
+oavsett om du hoppas kunna ge dig själv lite extra integritet medan du surfar
+internet eller om du vill komma åt tjänster som kanske
+är vanligtvis inte tillgängliga i ditt område eller kanske är det ett faktum att du har det
+hade din IP-adress blockerats av en tjänsteleverantör
+det kan inte vara en skadlig sak jag har fått min IP-adress blockerad av youtube tidigare
+eftersom jag laddar upp så många videor och laddar ner
+undertexterna för dem så det har lett till att jag har överskridit min användning i
+YouTube-api så att min IP-adress blockeras så
+det behöver inte vara en skadlig sak, jag vill inte ge det intrycket
+men det finns mycket legitima skäl att behöva komma runt dessa typer av
+saker och nördar går till är en fullmakt, problemet är ombud
+kan vara mycket dyrt att använda och gratis
+medan lättillgängliga är mycket ofta antingen inte särskilt tillförlitliga är de uppe
+dagen är de nere nästa och du tappar åtkomst till dina tjänster
+och allt annat eller ännu värre de är farliga du vet inte vad
+dessa ombud spårar loggning och till och med gillar att fånga upp
+när du går igenom skickar du all din internettrafik
+genom den tjänsteleverantören så det finns en person som jag verkligen litar på
+att proxy alla mina data och det är jag jag är inte samma person
+att du skulle säga att du litar på personen du litar på är du så jag är
+kommer att visa dig hur jag kan skapa en gratis proxytjänst
+av min egen och du kan replikera det och skapa din egen också
+vi ska göra detta i molnet kommer vi att använda en tredje parts tjänst
+leverantör och det är amazon så du säger jaha
+amazon vad sägs om du vet att vi kan lita på våra uppgifter
+för dem, vad vi använder är deras molntjänster det heter amazon
+webbtjänster så det är allt det är deras moln
+infrastruktur som de har för kunderna att i princip hyra
+tillgång till deras servrar och deras utrymme och
+och de virtuella servrarna och allt annat som helhet
+infrastruktur är tillgänglig för dig men själva distributionen är
+din jag ska visa dig hur detta görs vi kommer att hoppa vidare till aws
+och i synnerhet ec2 så naturligtvis du om du inte känner till aws bara
+gå till aws.amazon.com logga in med ditt Amazon-konto och
+gör sedan en snabb sökning efter ec2 och det tar dig in
+i princip tänker deras virtualiseringsplattform på ec2 som
+just det så det första jag noterar när jag är här
+i ec2 är min region och detta är viktigt eftersom det är här min proxy
+servern kommer att bo om jag skulle ställa in den där varför är det
+viktigt väl tänka på detta låt oss säga att jag använder en videostreaming
+tjänst som begränsar kanadensisk åtkomst till deras video
+streamingtjänst så genom att placera min proxyserver nere i norr
+Kalifornien nu helt plötsligt är de i princip
+med IP-adress kommer att tro att jag ansluter från
+Kalifornien så jag kan klara det
+På samma sätt kanske du vill ändra din region baserat på
+vad det är du försöker uppnå kan du till och med placera en server i afrika
+eller Asien titta på att du kan sätta en rätt i Hong Kong
+du kan placera en i Kanada en öh i Europa du har
+överallt och sedan har vi Mellanöstern och Sydamerika just nu
+så det är en ganska stor lista över var de är
+har den här infrastrukturen inrättad för amazon
+webbtjänster ec2-tjänsten så välj den som
+är där du vill att din proxyserver ska vara
+Jag ska sätta mina jag ska bara lämna den som norra Kalifornien som är
+oss väster ett och det är där
+min proxyserver kommer att bo som kommer att tillåta mig att ansluta
+som om jag faktiskt satt i Kalifornien
+okej så jag tänker klicka på startinstans
+och sedan starta instans igen eftersom det gör en rullgardinsmeny och detta ger mig
+en lista med um operativsystem som jag kan distribuera
+på min ec2-instans så jag använder några termer här som du kanske inte känner till
+aws är amazon webbtjänster som i grund och botten
+amazons fullständiga sortiment av tjänster som de erbjuder
+för molnanvändare är ec2 deras virtualiseringsplattform för virtuell
+maskiner när jag sa exempel jag talar om en
+virtuell maskin så det är bokstavligen en virtuell maskin
+så jag ska distribuera ett av dessa operativsystem till en instans av ec2
+vilket är en virtuell maskin så vad vill jag ha den
+att vara så och jag sa hej kommentar nedan om
+jag använder en term som du inte känner till
+Jag kommer att göra en snabb sökning jag har redan gjort det för att jag distribuerar massor av
+servrar i molnet ska jag klicka på debian
+skriv bara in debian i sökningen här
+så då ska jag gå till aws marknadsresultat finns det också
+de som jag har skapat och de i samhället
+du skulle tro att jaha jag vill använda gemenskapens väl nej du inte för
+de kommer att kosta dig pengar och du säger bra men samhället är gratis
+det är öppen källkod och ja men det är inte en del av aws
+marknadsplats och så måste du betala för användningen
+att ha den virtuella maskinen som körs
+i molnet så istället ska vi använda en av de officiella från
+aws marketplace låt oss se vilka resultat vi får de sorteras ganska bra
+debian kommer upp det första resultatet är debian 10 buster
+en gratis nivå kompatibel eller gratis nivå berättigad
+version av debian som vi ska distribuera så välj det
+gratis nivå berättigad så att vi kan ignorera prissättningen eftersom vi ska använda en
+free tier hit fortsätter och det är här vi väljer det så bra
+om vi vill ha gratisnivån måste vi gå med en t2-mikro så
+Jag ska välja det men vad ger det oss det ger oss en CPU
+en gigabyte minne um och sedan har vi lagringsutrymme att hantera
+vi behöver inte mycket lagring eftersom vi bara skapar en grundläggande proxy
+och det är ungefär så jag tänker distribuera precis som
+att så t2 micro är den som är gratis nivå
+välj inte en av de större eftersom du kommer att betala
+för det genast ska jag granska och
+lansering kommer vi att komma tillbaka för att göra inställningar som våra säkerhetsgrupper och
+saker som jag ska bara lämna allt
+som standard för nu och vi kommer att lansera det så
+först och främst måste jag skapa ett nytt nyckelpar så det här är
+ssh-tangenten som jag ska använda för att ssh in
+den här servern så jag ska kalla den här proxyen
+servern och hämta sedan mitt nyckelpar och se till att du sparar det säkert
+Jag ska slänga det på min server och släppa det
+där och nu lanseringsinstans betyder kraft
+på din virtuella maskin så jag ska driva det
+och där går vi så det är i grunden att skapa det är att skapa en virtuell
+bearbeta en ec2-instans i molnet för oss i
+öh i norra Kalifornien så där går vi så
+Jag ska se instanser här nere och nu kan jag se att jag nu har en
+exempel kör en t2 mikro och det är bara inget namn så jag ska
+klicka på redigera och jag kommer att kalla detta min proxyserver
+server försök att där går vi okej så det är redan igång
+så om jag klickar på det kan jag se IP-adressen till den servern som jag har ringt
+det proxyserver men just nu kom ihåg att det bara är debian 10. det finns
+inget annat installerat på det så jag måste kopiera den ip-adressen
+och sedan ska jag hoppa in i min kommandotolk
+eftersom jag laddade ner nyckeln till min server kommer jag personligen till
+ssh till min interna server
+okej så nu är jag där så nu kommandot som jag ska använda
+är ssh och streck sedan efter den nyckel som jag ska använda
+så den inkommande filen som jag ska använda för nyckeln
+och att den heter proxy server.pem är vad jag laddade ner
+då ska jag gå admin eftersom det är standardinloggningen för debian
+ami eller amazon machine image admin på
+och sedan ip-adressen som jag redan har kopierat till mitt urklipp och om jag
+tryck Enter kommer att be mig att acceptera den nyckeln
+och jag säger ja och jag nekas
+behörigheterna för den filen slutade vara att notera det
+766 så att alla har tillgång till dessa filer så det är intressant
+ssh själv skyddar mig från att någon kan kompromissa med min nyckel
+så chmod 7 0 0 proxyserver dot pam låt oss prova det och
+försök nu igen så det jag har gjort är åh och nu är jag
+anslutna fungerade det bara sju noll noll betyder jag ägaren till
+den nyckeln jag får göra något med den
+läs skriv exekvera noll noll betyder ingen i gruppen ingen som inte är en
+en del av gruppen får åtkomst till det alls så det är
+i grund och botten en dum fil som de inte ens kan öppna
+uh men jag kan okej så nu när jag är ansluten ska jag gå sudo stämma
+för det är vad kommandot är att bli rot så nu är jag rot så apt
+uppdatera apt-uppdatering kommer att ta tag i mina förråd, du ser att det här är en
+en faktisk debian-dator om du vill i molnet
+det är så enkelt jag uppgraderar redan jag är redan
+kör en debian-dator i molnet så på den tiden och jag är bla
+bla bla samtidigt um, vi har en molnbaserad debianserver
+visste du att du insåg att det var så enkelt och det är gratis
+okej så att vi kan göra andra saker med detta också kan vi ställa in en lampstack vi
+kan använda den för mysql mariadb allt du kan komma på är en
+debianserver så vi kommer att använda detta som vårt
+proxy så nu vad jag ska göra är att jag ska installera ett verktyg som heter
+liten proxy trevligt och enkelt att installera apt installera liten proxy
+riktigt enkelt att konfigurera säg ja här går vi
+och det är gjort nu när vi har installerat liten proxy behöver vi bara redigera
+konfigurationsfilen så snedstreck etc snedstreck liten liten proxy förändrade henne till det
+och sedan använder jag nano tinyproxy.com och redigerar det så styr w i nano
+tillåter mig att söka oh men innan jag söker notera att
+port använder som standard 8888, vi behöver veta det
+information eftersom det är det vi ska ansluta till för
+vår proxy gör en snabb sökning efter allow
+alt w låter dig söka igen wow ordet allow är förmodligen inte det bästa
+sökfråga kanske söka efter 127.0.0.1 um och strax under den ska jag
+tillåt och sedan måste jag lägga till min ip-adress så att jag kan ansluta till den här
+proxyserver eftersom just nu är det stängt endast localhost kan komma åt den
+det är viktigt att notera att detta är medan detta är en allmänhet gratis
+proxyserver Jag är den enda som kommer att få åtkomst till den som är
+kommer att få proxy mitt innehåll min anslutning genom
+det så det är privat i det avseendet jag behöver veta min
+IP-adress så jag ska hoppa över till
+currentip.xyz och kopiera den IP-adressen till mitt urklipp
+och hoppa sedan tillbaka dit och klistra in den i min konfiguration
+kontroll o ange kontroll x kontroll o är att skriva ut
+spara filen nu system ctl starta om liten proxy
+nästan gjort det sista som vi behöver göra är att vi bara behöver berätta aws
+ec2-säkerheten som vi ska sätta upp en policy som säger
+hej bara jag får ansluta till den servern
+så ingen annan kan ansluta till det alls så det är vad vi ska
+gör just nu så jag ska hoppa tillbaka hit och du ser den här servern uppe på
+skärmen väl om jag klickar på säkerhet kan jag då
+klicka på säkerhetsgruppen som den tilldelas automatiskt så klicka bara
+det och nu har det lämnat mig över till ec2
+säkerhetsgrupper och rätt säkerhetsgrupp
+du kommer att märka att det redan har ställts in en för ssh eftersom
+det är som standard aktiverat kan jag ställa in att det bara tillåter mig också vilket är
+viktigt så låt oss göra det bara för att vara i gott skick
+säkerhetspraxis så ssh jag ska ändra det från
+custom0000 jag ska stänga x det och då
+ändra det till min ip då ska jag lägga till en ny regel du såg
+hur jag kom hit precis vet jag att jag går riktigt riktigt snabbt
+Jag har precis klickat på redigera inkommande regler här
+okej så lägg till en ny regel anpassad tcp är standard
+portnummer kommer du ihåg 888 och tillåter bara min ip jag kan kalla det något om jag
+vill ha proxy och spara sedan mina regler
+där går vi så nu ser du ssh och anpassad tcp
+en som heter proxy på port 8888 så hur testar vi det här okej så vårt
+nuvarande IP-adress är 99,233 och jag kommer därför att ansluta till proxyen
+detta är inte en handledning om hur man använder en proxy
+detta är inte en handledning om vad man ska använda den till
+nödvändigtvis är det här jag antar här att
+du kan antingen googla det själv eftersom det kommer att vara annorlunda baserat
+på ditt användningsfall om du bara vill proxy din webbläsare eller proxy
+särskild applikation eller hela nätverket
+det kommer att vara upp till ditt individuella användningsfall
+strikt en handledning om hur man bygger den här ec2-instansen riktigt snabbt för
+gratis som har en proxy redo att användas i
+Kalifornien eller var som helst och öh det är det så i mitt
+särskilt fall just nu så det här ögonblicket är inte nödvändigtvis vad
+du vill göra nästa så är det bara hur jag ska testa
+proxy jag råkar vara på Windows 10 här så jag ska helt enkelt skriva in proxy
+och gå in i proxyinställningar igen så är det förmodligen inte hur du vill göra det
+Jag vill bara testa så jag ska slå på proxy
+jag kan se att det finns gamla proxyinställningar där så se till att du är
+tänk på det om det finns gamla proxyinställningar du behöver
+för att ändra det, gå till instanser på ec2, klicka på din instans
+id och ta tag i den IP-adressen och klistra sedan in
+det som adressen för din proxyserver
+port 8888 och spara så nu är jag ansluten till
+proxy direkt inte ansluten till nu windows säger
+Jag ska dirigera all din trafik genom proxyen jag borde korrigera
+själv där så om jag går tillbaka till currentip.xyz
+99.233 är min nuvarande ip jag ska slå f5 för att uppdatera
+och om allt gick bra 3.101.108.211. ja vad är det?
+det är min server så jag är faktiskt nu var är jag låt oss ta reda på det
+maxmind.com låt oss söka efter den IP-adress som jag för närvarande är på
+var är jag san jose california det är där max mine bestämmer mig för
+var så det är allt som finns i det folk vi har
+skapad konfigurerad distribuerad en gratis proxytjänst
+att vi äger och driver är vi de enda
+vem har det som har den ssh-tangenten så om du vill
+anslut i gör ändringar använd den som en multifunktionell server du kan göra
+men håll bara ett öga på dina faktureringssaker, se bara till att
+du har inte överskridit trösklarna och sådant
+om du bara använder det som en proxy är det mycket osannolikt att du kommer att göra det
+det är bara något du rör data igenom
+så kolla att det är aws.amazon.com för att komma igång
+om du har frågor skicka dem till vårt samhälle
+till vår åsikt hittar du länken på category5.tv
+på interaktionsmenyn under tiden om du gillade det här om du har använt det eller
+tyckte att det var bra, ge mig stora tummen, prenumerera
+[Musik] gör
+[Musik]

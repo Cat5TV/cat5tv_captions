@@ -1,0 +1,1051 @@
+u kategoriji 5 TV vjerujemo našim datotekama na SSD diskove kompanije Kingston
+tehnologija bilo za vaš server laptop ili
+stolni računar doživjet ćete poboljšane performanse
+i pouzdanost s Kingston SSD-ovima pripremite se vrijeme je za tehnologiju
+dobrodošli u emisiju svima, to je epizoda 2 sezone 14
+Ja sam Robbie Ferguson i ja sam Jeff Weston, super je što ste ovdje
+i nadam se da ste uprkos tome imali divnu sedmicu
+sve smo, ali evo nas i radujemo se sjajnoj predstavi koja slijedi
+večeras ćemo učiti kako stvoriti vlastiti
+proxy server u redu, hm, pa ne želim previše pričati o tome s vrha
+emisija, ali znam da je to ponekad teško naći dobar
+besplatnu proxy uslugu pa ćemo stvoriti vlastiti
+i pokazat ću vam kako da ga smjestite bilo gdje u ljestvici svijeta
+koristeći usluge oblaka aws, tako da je to prilično uzbudljivo i jedna od stvari
+s tim i dok naučimo malo o tome kako
+Amazon web usluge ec2 i cloud usluge i mogućnost da
+rasporediti debian servere u cloud infrastrukturu kako učimo
+kako to učiniti i kako to funkcionira, samo znate to
+stvari koje ćemo raditi su
+migriranje nekih naših podataka u tu infrastrukturu, pa to kažem
+jer neki od naših gledatelja prijenosa uživo
+imao problema s međuspremnikom i sličnim stvarima
+a to je zato što imamo mali računar sa jednom pločom
+svih stvari na koje strimujemo, a zatim ih emitujemo
+svi koji gledaju roku ili druge hls igrače i slične stvari
+ima okretan streamer koji radi na računaru sa jednom pločom, to je stvarno
+nevjerojatno vau međutim ono što sam pratio kroz svoj
+testiranje je da pokreće prilično visok procesor kad ljudi
+dobro gledam, tako da vjerujem da je možda ono što uzrokuje neke
+problemi s međuspremnikom u našem streamu, tako da ima puno stvari
+na sceni iza scene da biste pokušali doći do nje
+vrlo pristupačan i lak pristup formatu i tako da niste
+doživljavanje stvari poput kolovrata
+i takve stvari, ali uh, dok gledamo večeras
+uh i učenje kako rasporediti ove debian servere u oblaku
+znajte da ćemo to raditi nešto iza kulisa
+kao i migraciju tih usluga
+na jedan od onih slučajeva da bi
+pokušajte poboljšati naše performanse ovdje u studiju
+gomila uzbudljivih stvari događa se iza nas kako ste bili
+bio sam dobar, razgovarat ćemo s vama kasnije večeras
+uh, neki od vaših podviga lemljenjem, da, želite nam reći malo
+samo na brzinu zadirkujem što ćemo biti
+raspravljajući o mom sinu je želio zalemiti
+njegov rođendan, pa smo išli tim putem
+od prošlog mjeseca malo smo se poigravali i ima
+ja razmišljam kako mogu napraviti svoje stvari kod kuće
+kada nemam veliku proizvodnu površinu da napravim svoju
+pcb da, da, tu smo o tome razgovarali, pa ako vas zanima
+uradi sam elektroniku razgovarat ćemo o tome i uh vau što imamo
+neke uzbudljive stvari za koje se spremamo i za emisiju sledeće nedelje
+je već spreman za polazak i mi smo uzbuđeni
+predstavljajući 3d štampu i našim gledaocima
+tako da je to nešto što ćemo naučiti tokom
+narednih tjedana ovdje na kategoriji 5 TV imamo puno toga da
+obavezno nas pretplatite na youtube
+i kliknite zvono tako da ćete dobiti obavijest svaki put kad objavimo novo
+video bilo kad uživo, a također ako se želite uključiti
+zajednica mislim da je to stvarno cool način
+da bih bio dio kategorije 5 televizije, neki mi ljudi i dalje govore dobro, šta
+nesloga i wow je što niste dio naše nesloge
+poslužitelju, jer ako se pridružite našoj neslozi koju ćete pronaći ako odete
+do category5.tv kliknite na interakciju vidjet ćete kako se pridružujete razdoru
+server je besplatan preglednik ili aplikacija
+uslugu koju možete staviti na svoj uređaj ili pristupiti
+putem preglednika na bilo čemu i u osnovi možete razgovarati s
+zajednica, ali je zaista uredno po tome što je više od puke chat sobe
+ima i različite prostorije namijenjene
+različite stvari pa stvari o kojima razgovaramo
+oko ili na primjer imamo iza kulisa
+tako da je iza kulisa samo prepun kulisa
+fotografije koje inače ne biste vidjeli, a na našem je toliko toga da
+discord server, pa stvarno moraš tamo ići
+znajte da je to kao da je chat platforma, ali ima
+mnogo više od obične interakcije putem chata
+to je tačno i nije samo aktivno tokom emisije
+stalno je uključen i mislim ako imate tehničke stvari
+sredinom tjedna ste poput oh, ne znam kako da riješim ovaj problem
+mogao doći tamo i zajednica je sjajna u vezi s davanjem
+savjet i to je prilično uočljivo, da, to je istina
+u redu, moramo napraviti vrlo brzu pauzu i onda skačemo udesno
+u to nakon ovog kratkog odlaska koji ćemo pogledati
+kako postaviti instancu aws ec2 za koju to zvuči tehnobobble
+ja to stvarno brzo radim da, kako bi bilo da smo ovo
+hoćemo li stvoriti vlastiti besplatni proxy servis koji je lakše reći
+Ja imam kontrolu. Imam pristup. Imamo kontrolni štap oko nas
+Vrati se odmah [Muzika]
+bez obzira nadate li se da ćete si dati malo dodatne privatnosti dok surfate
+Interneta ili želite pristupiti uslugama koje
+možda nisu obično dostupni u vašem području ili je možda
+slučaj da ste zaista imali svoju ip adresu
+blokirao dobavljač usluga, to možda nije
+zlonamjerna stvar kojoj je blokirana ip adresa
+youtube i prije jer otpremim toliko videozapisa i
+preuzmite natpise za one tako da
+dovelo je do toga da premašim upotrebu u YouTube api
+pa se moja ip adresa blokira, tako da to ne mora biti zlonamjerna stvar
+ne želim ostavljati takav dojam, ali postoje vrlo opravdani razlozi
+da treba zaobići te vrste stvari i štreberi idu na to
+je proxy problem je što proxyji mogu biti vrlo skupi za upotrebu i
+besplatni, iako lako dostupni, vrlo su često
+ili nisu baš pouzdani, oni gore jedan dan, drugi dan dolje, a vi gubite
+pristup vašim uslugama i svemu ostalom ili još gore
+opasni su, ne znate šta ti punomoćnici prate
+prijavljivanje i čak poput presretanja dok prolazite kroz slanje
+sav vaš internet promet preko tog dobavljača usluga
+tako da postoji jedna osoba kojoj zaista vjerujem da će proksirati sve moje podatke
+i to sam ja, nisam ista osoba za koju biste rekli da joj vjerujete
+osoba u koju imate povjerenja ste vi pa ću vam pokazati kako
+mogao bih postaviti vlastiti besplatni proxy servis i možete ga kopirati i
+kreirajte i svoj, to ćemo raditi u oblaku koji
+će koristiti nezavisnog dobavljača usluga
+a to je Amazon pa kažete o, pa Amazon o čemu se radi
+znate je li im možemo dobro povjeriti svoje podatke ono što koristimo je njihovo
+cloud usluge naziva se Amazon web usluge pa je tako
+sve je to njihova oblačna infrastruktura koju imaju
+kako bi kupci u osnovi unajmili pristup svojim serverima i njihovim
+njihov prostor i virtualni serveri i sve ostalo što je cjelina
+infrastruktura vam je dostupna, ali samo raspoređivanje jeste
+tvoje, pokazat ću ti kako se to radi, skočit ćemo na aws
+a posebno ec2 pa naravno i vi ako niste upoznati samo sa awsom
+idite na aws.amazon.com prijavite se svojim Amazon računom
+a zatim brzo potražite ec2 i to će vas u osnovi odvesti
+njihova platforma za virtualizaciju o ec2 misli kao o
+samo to, prvo što primijetim kad sam ovdje
+u ec2 je moj region i ovo je važno jer je tu moj proxy
+server će boraviti ako ga postavim tamo zašto je to tako
+važno, dobro razmislite o ovome, recimo da koristim video streaming
+usluga koja ograničava kanadski pristup njihovom video zapisu
+streaming uslugu tako što ćete moj proxy server smjestiti na sjever
+Kalifornija sada odjednom u osnovi jesu
+putem ip adrese pomislit ću da se povezujem sa
+Kalifornija, tako da sam u stanju da zaobiđem to
+slično ćete možda htjeti promijeniti svoj region na osnovu
+što pokušavate postići, možete čak i staviti afrički server
+ili u aziji pogledajte da jedan možete staviti u hong kong
+možete ga staviti u Kanadu, uh u Evropu koju imate
+posvuda i tada imamo Srednji Istok i Južnu Ameriku
+tako da je prilično velika lista mjesta gdje su
+postavite ovu infrastrukturu za Amazon web usluge ec2 uslugu
+pa odaberite onaj na kojem želite da bude vaš proxy server
+idem postaviti svoj, samo ću ga ostaviti kao sjevernu Kaliforniju koja je
+mi zapadni i tu je gde
+moj proxy server će boraviti što će mi omogućiti povezivanje
+kao da zapravo sjedim u Kaliforniji
+u redu, pa ću kliknuti na instancu pokretanja
+a zatim ponovo pokrenite instancu jer se padajuće pada i to mi daje
+popis operativnih sistema koje mogu primeniti
+na mom primjerku ec2, tako da ovdje koristim neke izraze koji vam možda nisu poznati
+aws je Amazon web usluga koja je u osnovi Amazon
+puni opseg usluga koje nude za korisnike oblaka ec2 je njihov
+platforma za virtualizaciju za virtualne mašine
+kad sam rekao instancu, govorim o virtualnoj mašini
+tako da je to doslovno virtualna mašina, pa ću implementirati jednu od njih
+operativni sistem do instance ec2 koja je
+virtualna mašina, pa šta želim da bude
+tako i ja sam rekao hej komentar ispod ako koristim izraz koji vam nije poznat
+sa brzom pretragom koju imam
+to sam već učinio jer postavljam tonu servera
+u oblaku ću kliknuti na debian, samo upišite debian u
+pretražite ovdje, pa ću ići na aws
+Rezultati na tržištu postoje i oni koje sam kreirao i oni u
+zajednicu za koju biste pomislili da je želim koristiti
+one iz zajednice, ne, ne morate jer će vas one koštati novca
+i kažete dobro, ali zajednica je besplatna, to je otvoreni izvor i da
+međutim, to nije dio tržišta aws, pa ćete ga imati
+platiti za upotrebu da bi imala tu virtualnu mašinu koja
+instanci koja se izvodi u oblaku, pa ćemo umjesto toga
+upotrijebite jedan od službenih sa aws tržišta, da vidimo kakve rezultate
+dobijemo da su prilično dobro sortirani, debian dolazi prvi rezultat je
+debian 10 buster besplatni nivo kompatibilan ili besplatan
+prihvatljiva verzija debiana koja ćemo biti
+postavljanjem, pa odaberite onaj slobodni nivo koji ispunjava uvjete kako bismo mogli zanemariti
+cijene jer ćemo koristiti besplatni hit pogotka i dalje
+i tu odabiremo tako dobro ako želimo besplatni nivo koji moramo ići
+s t2 mikro pa ću odabrati to ali što
+daje li nam daje jedan cpu jedan gigabajt memorije um
+i onda imamo skladište za rješavanje, ne treba nam puno prostora jer
+mi samo postavljamo osnovni proxy i to je to, pa ću i krenuti
+implementirajte baš kao što je tako i t2 micro onaj koji je besplatan
+nivo koji ne ispunjava uvjete ne odaberite jedan od većih
+one jer ćete to platiti
+odmah ću pregledati i pokrenuti čemu ćemo se vratiti
+radite postavke poput naših sigurnosnih grupa i slične stvari koje ću jednostavno napustiti
+sve po defaultu za sada i idemo
+lansirati da prije svega moram stvoriti novi ključ
+par, tako da je ovo ssh ključ u kojem ću koristiti
+kako bih ssh ušao na ovaj server pa ću ovo nazvati
+jedan proxy server, a zatim preuzmite moj par ključeva
+pobrinite se da to sačuvate negdje na sigurnom kamo idem
+baci to na moj server i baci tamo
+a sada instanca pokretanja znači napajanje na vašoj virtualnoj mašini pa ću i krenuti
+gurni to i eto, tako da je u osnovi
+stvaranje je stvaranje virtualne mašine
+uh ec2 instanca u oblaku za nas u uh u sjevernoj Kaliforniji, pa eto
+idi pa idem pogledati instance ovdje dolje
+i sada vidim da sada imam jednu instancu koja pokreće t2 micro
+i to je samo ime, pa ću kliknuti na edit i nazvat ću ovo
+moj proxy server server probaj da idemo dobro, tako je
+već pokrenut, pa ako kliknem na to, mogu vidjeti ip
+adresa tog servera je, nazvao sam ga proxy serverom, ali trenutno
+zapamtite da je to samo debian 10. na njemu nije instalirano ništa drugo
+pa moram kopirati tu ip adresu i onda ću uskočiti u svoju
+naredbeni redak jer sam preuzeo ključ za
+moj server, osobno idem na ssh na svoj interni server
+u redu, tako da sam sada tamo, pa sada naredba koju ću koristiti
+je ssh, a zatim crticom i stavite ključ koji ću koristiti
+tako da dolazna datoteka koju ću koristiti za ključ
+a taj se zove proxy server.pem je ono što sam preuzeo
+onda idem na admin jer je to zadana prijava za debian
+ami ili Amazon machine image image admin na
+a zatim ip adresu koju sam već kopirao u svoj međuspremnik i ako je
+pritisnite enter, tražit će od mene da prihvatim taj ključ
+i kažem da i odbijen sam
+dozvole za tu datoteku na kraju su to imajte na umu
+766, tako da svi imaju pristup tim datotekama, pa je to zanimljivo
+ssh me sam štiti od toga da neko može ugroziti moj ključ
+pa chmod 700 proxy server pam, probajmo to i sada
+pokušajte ponovo, pa ovo što sam učinio je oh i sada jesam
+spojen je upravo radio 700 znači da sam vlasnik tog ključa
+Dozvoljeno mi je učiniti bilo šta s tim čitanje pisanje izvršavanje nula nula znači
+niko u grupi niko, ko nije deo grupe
+uopće mu je dozvoljen pristup, tako da je u osnovi nijema datoteka koju oni ne mogu
+čak i otvoren, ali mogu u redu pa sad kad jesam
+povezan idem sudo tužiti jer je to ono što naredba treba
+postani root pa sam sada ja root pa ažuriranje aplikacije
+općenito ažuriranje aplikacije zgrabit će me
+spremišta koja vidite ovo je stvarno debian računalo ako želite
+u oblaku je tako lako već nadograđujem već koristim debian
+računalo u oblaku, tako u toliko vremena i ja sam bla
+bla bla u isto vrijeme um imamo debian poslužitelj zasnovan na oblaku
+jeste li shvatili da je to tako lako i besplatno
+u redu, tako da možemo i druge stvari s ovim, mogli bismo postaviti hrpu lampi
+mogao bi ga koristiti za mysql mariadb sve što dođete do toga je
+debian poslužitelju, pa ćemo ovo koristiti kao svoje
+proxy, pa ću sada instalirati alat koji se zove
+tinyproxy lijep i jednostavan za instalaciju apt install maleni proxy
+vrlo jednostavno za konfiguriranje, recimo da, krećemo
+i gotovo je sada kad smo instalirali maleni proxy koji samo trebamo urediti
+datoteka konfiguracije tako da kosa crta itd. maleni maleni proxy promijeni direktorijum u to
+a zatim koristim nano tinyproxy.com i to uređujem tako da kontrolišem w u nano-u
+omogućava mi pretraživanje, ali prije nego što pretražim, primijetite da
+port po defaultu koristi 888, to ćemo morati znati
+informacije jer ćemo se zbog toga povezati
+naš proxy brzo pretražuje dozvolu
+alt w vam omogućava ponovno pretraživanje, vau, riječ dopustiti vjerovatno nije najbolja
+upit za pretragu možda traži 127.0.0.1 i odmah ispod njega idem
+dopusti i tada moram dodati svoju ip adresu kako bih se mogao povezati
+ovaj proxy server jer je trenutno zatvoren
+samo localhost može pristupiti tome što je važno napomenuti
+da je ovo dok je ovo javni besplatni proxy server, ja sam jedini koji to radi
+moći će mu pristupiti što će biti dozvoljeno
+proxy moj sadržaj moja veza preko nje, tako da je privatna u tom pogledu
+Moram znati svoju ip adresu pa ću preskočiti
+trenutni ip.xyz i kopirajte tu ip adresu u moju međuspremnik, a zatim skočite
+tamo nazad i zalijepite je u moju config kontrolu o unesite control x control o is
+za ispis spremite datoteku sada systemctl
+restartujte maleni proxy gotovo da je završio posljednju stvar koja nam treba
+što trebamo učiniti, trebamo samo reći aws sigurnosnom sustavu ec2 da
+postavićemo politiku koja kaže da hej samo ja smijem da se povežem s tim
+server tako da se niko drugi ne može povezati s njim
+ma šta god, to ćemo učiniti ispravno
+sada ću se vratiti ovdje i vidite ovaj server gore na ekranu
+dobro, ako kliknem na sigurnost, onda mogu kliknuti na sigurnosnu grupu koja je to
+dodijeljeno automatski pa samo kliknite
+i sada mi je prepušteno na ec2 sigurnosne grupe i ispravnu sigurnost
+grupi primijetit ćete da je već postavljena
+jedan za ssh, jer je po defaultu omogućen, mogu to postaviti
+da dozvolim samo meni isto što je važno
+učinimo to samo da bismo bili u dobroj sigurnosnoj praksi
+ssh, promijenit ću ga iz custom000
+zatvorit ću x to, a zatim ga promijeniti u moj ip
+onda ću dodati novo pravilo, vidjeli ste kako sam stigao ovdje, znam da se selim
+stvarno jako brzo, upravo sam kliknuo na uređivanje ulaznih pravila
+ovdje u redu, pa dodajte novo pravilo, prilagođeni tcp je
+zadani broj porta sjećate li se samo 888
+dopusti moj ip mogu to nazvati ako želim proxy
+a onda spremite moja pravila, idemo, tako da sada vidite ssh i
+prilagođeni tcp onaj koji se zove proxy na portu 888.
+pa kako to testirati u redu pa je naša trenutna ip adresa 99.233
+i tako ću se povezati s proxyjem koji je ovo
+nije vodič o tome kako koristiti proxy, ovo nije
+tutorial o tome šta je nužno koristiti
+ovo ovdje pretpostavljam da to možete sami proguglati
+jer će biti različito na osnovu vašeg slučaja upotrebe bez obzira želite li
+samo proxy svoj pregledač ili proxy određene aplikacije ili cijelu
+mreža koja ovisi o vašem pojedincu
+Use case ovo je striktno uputstvo o tome kako se ovo gradi
+instanca ec2 zaista stvarno brzo, besplatno
+koji ima proxy spreman za upotrebu u Kaliforniji ili negdje drugdje
+i to je to, to je to sada u mom konkretnom slučaju
+tako da ovaj trenutak nije nužno ono što želite sljedeće raditi
+ovo je upravo način na koji ću testirati proxy koji sam slučajno na Windowsu 10 ovdje
+pa ću jednostavno otkucati proxy i ponovo ući u postavke proxyja, ovo je
+vjerovatno ne kako to želiš, samo želim testirati pa ću se okrenuti
+na proxyju vidim da postoji stari proxy
+postavke tamo, pa pripazite na to
+ako postoje stare postavke proxyja, morate ih promijeniti, idite na
+instance na ec2 kliknite na svoj ID instance
+i zgrabite tu ip adresu, a zatim je zalijepite
+kao adresa vašeg porta proxy servera 8888
+i spremi, tako da sam odmah povezan s proxyjem
+nije spojen na sada Windows govori da ću usmjeravati sav vaš promet
+preko proxyja bih se tamo trebao ispraviti
+pa ako se vratim na currentip.xyz 99.233 je moj trenutni ip, pogodit ću
+f5 za osvježavanje i ako je sve prošlo u redu 3.101.108.211. dobro
+šta je to moj server pa sam zapravo i sada
+gdje sam, idemo saznati maxmind.com idemo potražiti ip adresu
+da sam trenutno na mjestu gdje sam san jose kalifornija
+tu me određuje max mine
+tako da je to sve što imamo ljudi
+kreirano konfigurirano razmjestilo besplatnu proxy uslugu koju smo
+posjedovati i upravljati mi smo jedini koji to imamo i imamo to
+uh ssh ključ, pa ako se želite povezati i izvršite promjene, koristite ga
+kao višenamjenski server to možete učiniti, ali samo pripazite na svoj
+samo naplatite da niste prekoračili pragove i
+takve stvari ako ga samo koristite kao proxy, to je
+vrlo malo vjerojatno da ćete učiniti da je to samo nešto što cijevite
+podatke, pa provjerite je li to aws.amazon.com da biste započeli
+ako imate pitanja, pošaljite ih našoj zajednici
+naš nesklad naći ćete vezu u kategoriji 5
+tv u interaktivnom meniju u međuvremenu ako ste uživali u ovome ako ste ga koristili ili
+je bilo korisno dajte mi veliki palac molim vas pretplatite se i vidimo se dobro
+posle pauze [Muzika]
+dobrodošli nazad ovo je tehnologija 5 kategorije televizije
+i želim razgovarati o onome što radim kod kuće
+tačnije ono što planiram raditi sjedeći okolo gledajući netflix
+nemam vremena za sjedenje i gledanje netflixa, volio bih da jesam, ali
+uh, ne, moja porodica uvijek svodi netflix i ja bih kao da idem na računar
+što je sjajno jer me natjeralo da pokrenem Netflix na računaru
+sad jeff, odvlačiš mi pažnju, uh ne, ali je
+sjajno jer me natjeralo da počnem gledati neke stvari koje radimo
+oko kuće i idem kako da ovo napravim svojim i tako dalje
+znate da sam spomenuo na vrhu emisije koji ima naš sin
+uputio se u lemljenje, i to mu je vrlo dobro pošlo za rukom i podsjetite nas koliko ima godina
+samo sam napunio 12. upravo sam napunio 12. u redu, ali da, završio je
+vrlo dobro s tim i uh, zasad je zalemio dva kalkulatora
+hm i jednog od njih odveo je u školu koju je njegov učitelj potpuno raznio
+daleko da, mislim da imam 12 godina, a on je
+već je napravio kalkulator, da, da, napravio je kalkulator od kojeg smo dobili komplet za izradu "uradi sam"
+Amazon i sagradio ga je i to možda dva sata
+posla je bilo zaista fenomenalno nestvarno i njegov posao lemljenja je
+stvarno stvarno čisto izvrsno kao što izgleda profesionalno
+ali u svakom slučaju pitao je kako raditi druge stvari i dok lemimo on je
+kao dobro šta je ovo i šta je ovo i kako to funkcionira i
+idem želim da ga mogu naučiti tim stvarima
+Želim da mu budem u mogućnosti objasniti kako pločica zapravo radi ne samo
+lemljenje, ali razumijevanje komponenata i usmjeravanja i sve to
+takve stvari i mislim da znam da možeš kupiti hm
+obične ploče koje su samo redovi malih spojnih točaka
+ali želim biti u mogućnosti da napravimo vlastiti odbor da, pa je on zamoljen
+konkretno ako možemo pronaći komplet za kućne radinosti
+beskorisna kutija za koju znate da je ona kutija u kojoj pritisnete dugme da i
+mala stvar izađe i iskoči, da, probajte
+šta si radio ozbiljno
+oh moj Bože to je smiješno
+bok, to je kao da imaš mače unutra, to je kao moja mačka
+hej hej sad pa sam tražio nijednu nisam našao ali našao sam gomilu
+ljudi poput oh možete napraviti jedan koristeći arduino možete napraviti jedan koristeći ovaj
+i bio sam kao da ću napraviti beskorisnu kutiju iz koje želim da je napravim
+osnova pa istražujem kako napraviti
+moje vlastite PCB-ove kod kuće, u redu, zapravo nije tako teško
+i oduševio sam se da mi treba samo laserski printer za postavljanje usmjeravanja
+poput kuda idu staze pa ćete ga zapravo urezati
+Zapravo ću to urezati kod kuće, čovječe
+to je dalje od mene, Jeff, zaista uključuje hemikalije
+jeste, ali zaista jednostavan postupak pa sam pronašao
+Istraživao sam to gomilu i tako sam našao aa
+vrlo jednostavan način da napravim vlastiti PCB
+i to ćemo raditi, pa moj projekt za sljedeći vjerovatno a
+nekoliko mjeseci jer moram naučiti kako se to radi
+radi na dizajniranju pločice um koju sam već imao
+nikada prije nisam radio pločicu, a zatim i moju sinovu
+zalemimo zajedno i napravićemo svoje
+beskorisna kutija za koju se nadam da ću i 3d ispisati kutiju, oh to je super
+da, samo roniš točno u meni kad radim nešto što mi ne ide malo
+i znate da je moj pristup malo drugačiji, jer jesam mnogo
+kao da volim prvo nešto naučiti
+i onda povećati moje ulaganje u taj proces i i kao da razgovarate
+o skoku pravo na stvaranje PCB-a, tako da bih napravio sigurnosnu kopiju da znate
+ako ovo mislite, hej, možda bih volio da mogu napraviti svoj vlastiti krug
+i takve stvari su moja polazna osnova da
+a ploča vam omogućava da rasporedite svoj krug koji ste dizajnirali ili
+koje ste preuzeli poput nacrta kola
+s Interneta, ali kako god imate, to vam omogućava da to postavite
+izlazi na u osnovi lažnoj pločici
+koji će funkcionirati poput PCB-a, ali tada možete sve to rastaviti i
+odložite dijelove odmah, jeftino je, vrlo jeftino i jednostavno započinje
+i onda je sljedeći korak za mene ono što se zove prototipska ploča, tako da dobijete
+PCB ploče koje imaju sve rupe kako treba i
+imaju lemljenje poput bodova, ali nema
+međusobne veze između njih, tako da zapravo provodite žice ili vi
+naprimjer malo lemljenja između dva različita zgloba
+a vi to radite na taj način, pa je to moj drugi korak, pa onda bih pogledao
+možda ići putem da se zapravo urežete
+PCB, jer tada počinjete da se bavite hemijskim procesima
+i ja to nisam istraživao, ali um je to mnogo zamršeniji postupak
+Volim započeti malo jednostavnije sa svojim prvim PCB-om
+sagrađena na ploči sa vrlo osnovnim pločama, ali dobro sam je dizajnirala
+u redu i sve što je potrebno je pet volti
+signal i kada ima pet volti
+relej je zatvoren, tako da ima relej u redu, u redu kada nema pet volti
+relej se otvara pa se tako odvaja
+razlog zašto sam stvorio da je to namjenski napravljena aplikacija pa sam je i stvorio
+na ploči za prehranu i dolazi do napajanja na pet volti
+bilo koje pogađanje bilo koje pogađanje spc ne, to je još jedna kratica od tri slova usb
+usb usb izvlačeći signal od pet volti sa mikro tiketa
+router u redu i tako sam onda u mikro tiku programirao kod koji je rekao
+to u osnovi da se zanijemi ako padne internet
+ubiti napajanje na usb-u i tako onda
+otvara relej i koja je kontrola releja osim napajanja mog modema
+tako da će se moj modem, ako Internet padne, automatski uključiti
+napajanje samo zbog mog releja
+desno i pričekajte pet sekundi, a zatim se ponovo uključite, tako da je u stvari a
+da li ste ga isključili i ponovo uključili jer
+šta radite kad ste na Internetu i padnete, povucite utikač
+od momenta pričekate pet sekundi i ponovo ga uključite i
+znate osam puta od deset to će se vratiti i raditi
+tačno, to je bio sklop koji sam izgradio pa sam ga jednom napravio na prototipskoj ploči
+radio sam i samo sam ga zalemio i vrlo je jednostavno
+krug je vrlo cool i super je radio, sviđa mi se
+tako super, tako da alate šta ste dobili
+daleko gdje si ti uh, kao što sam rekao da sam upravo radio
+istraživanje protekle sedmice, oh, pa, um sam u fazi kupovine
+uh, imamo sve stvari za lemljenje koje ću kupiti kupujući ploču
+hemikalije već sam preuzeo um softver
+za dizajniranje PCB-a wow um
+i imam komplet komponenata koji je na putu sa svim
+otpornici i kondenzatori, da, sve te stvari su uredne
+također je da ovih dana mislim da zapravo ne možete hodati
+u radio baraku kao što smo nekada mogli tamo
+još uvijek postoje trgovine kao ovdje u barrie-u, imamo jednu koja se zove seaal
+što je sjajna trgovina koja je nekako poput one stare barake u kojoj ste
+uđite i kao da mi treba samo jedan kondenzator
+i kao da idete, znate da je poput ladica
+i ladice kondenzatora i otpornika i sve ostalo diode i što god
+već samo da nabavim komplet za 20 dolara koji ima
+sve vrste poput uobičajenih stvari i to je komplet koji dolazi sa
+ploča za ploču, a isporučuje se sa pločom za održavanje i s tim
+bila je jedna od stvari je da li želim poput da, dizajnirat ću to, ali dijelom
+procesa planiranja je baš kao što ste rekli koristeći ploču da biste shvatili
+kako će kola ići, a to će biti sjajno učenje
+iskustvo za luke jer će biti kao da je ovo
+kako ovo funkcionira i probajmo ovo, ajmo onda i onda
+znate da ćemo tamo moći probati bez stvaranja vlastitih komada
+to je stvarno uredno, spomenuli ste i arduino i arduino je vrsta
+kao da je to kontroler, pa da i znate
+Raspberry Pi ili drugi računar sa jednom pločom je istina
+pravi računar sa operativnim sistemom i sve što je arduino poput vas
+samo ga programirajte da radi vrlo specifičan zadatak, to je čvrsto stanje
+i odgovorit će i mislim da je ovo
+zašto bi to zaista dobro funkcioniralo za arduino
+uh, za beskorisnu kutiju je zato što je takva
+uključeno je ili isključeno, tačno je i ako je uključeno, učinite ovo
+i onda će se isključiti, tako je vrlo vrlo osnovno programiranje
+digitalno napiši četiri zareza hi hi tačka i zarez i onda smo
+odgodit ću jednu sekundu što je hiljadu milisekundi
+a onda ćemo kopirati tu liniju sada
+šta mislite da visoko znači nasuprot niskog što ću ovde staviti
+samo nagađanje uključeno ili isključeno da, pa tako sada izgleda moj sklop
+i jednostavno ću ovo priključiti na USB napajanje, tako da ga neću priključiti
+računar koji želim stvarno napajati ovaj uređaj i provjeriti da li ga
+pokreće moj program i ako se pojavi, trebali bismo vidjeti ovo svjetlo
+bljesnemo, uredni smo svake sekunde, pa je tako
+zapravo stvorio krug prilično brzo uh i stvorio
+program koji sada govori ovom svjetlu šta treba raditi, a mi smo mu rekli vrlo jako
+jednostavno uključite i isključite ponovo, ali ako jeste
+napraviti svoj vlastiti sklop što morate voljeti
+Ako to morate sami programirati, morate shvatiti kako
+vau, želim vidjeti ovaj projekat kao posao koji je u toku
+u redu i onda pogledajte kako uh kako to dolazi zajedno, da zvuči dobro
+spomenuli smo zajednicu ovdje u našoj emisiji i uh, naš server za razdor u
+posebno sam prisluškivao našu zajednicu Jeff
+uđite i podijelite moje ideje za sklopove i ja
+takve stvari i ima ljudi koji su u našoj zajednici pravedni
+poput ovog ovdje što se tiče njihovih mogućnosti i razumijevanja
+vrste stvari, pa mi je bilo od velike pomoći kao i ja
+naučio pa, čak i ja u potpunosti planiram koristiti
+zajednica koristi me rade kroz bugove da, i ako ste jedan od tih ljudi u
+zajednica trenutno samo digni ruku i reci da ja
+razumjeti kako sve to funkcionira volio bih pomoći
+i to je nešto što mislim da će zaista biti lijepo
+značajka za emisiju, kao što i vi učite
+da, sigurno nas obavještavajte o tom jeffu, definitivno bi me stvarno zanimalo
+da znam kako stvari idu, da, objavit ću stvari iza
+scene beskorisna kutija bilo koja druga imaš li ideja, ali uzbuđujem se
+kad izmišljam kao kad nešto mislim
+jesi li imao bilo koji od onih trenutaka u kojima sam takav kakav zaista želim
+imao nešto što bi to mogao učiniti, ali to ne postoji
+tu mi je 3D štampanje zanimljivo jer stvaram stvari koje
+još ne postoje ii nisam stvarno razmišljao
+što se tiče onoga što postoji, a što ne postoji
+hm
+ne, nisam stvarno mislio toliko daleko da imam neke ideje
+da i podijelite one, sigurno postoji gomila stvari
+da, kao što sam oduvijek želio raditi um, kućni zvučni sistem
+koji povezuje sa umom da znate naš Amazon uređaj i slično
+to, ali volio bih imati senzore gdje
+kad pređem iz jedne sobe u drugu, pokreće se senzor pokreta i on će se ugasiti
+isključite zvučnike za jednu sobu i dodajte ih tamo gdje sam upravo otišao
+to je puno naprednije, ali to je vjerovatno
+Jedino što mogu smisliti gdje sam, želim ovo raditi, ali vidim kako razgovarate
+o tome i onda mislim da bi dobro mogli koristiti pasivni infracrveni senzor
+da, koji se koristi u senzorima pokreta, mogli biste koristiti laserski senzor, ali
+pir je vrlo jeftin, da, i to je samo mali senzor kakav je
+u redu, bilo je pokreta, učini nešto, da bi mogao nešto stvoriti
+opet s relejem koji kontrolira samo ima li zvučnik
+završeni krug ili ne, da, pa ako je to samo a
+gomila zvučnika povezanih preko pojačala za koje biste mogli postaviti releje
+s pir senzorima kojima biste mogli upravljati pokretom
+da dobro i ako nema pokreta 10 minuta, isključite zvučnik
+automatski ili nešto slično, da
+upravo tako poput ovakvih ideja kao da ima toliko stvari koje možete
+učiniti kad počnete da razumijete i onda
+tu je cijela druga strana gdje se nešto pokvari i možete to popraviti da
+to je dobar osjećaj i to smo učinili, to smo već učinili
+da lijepo, tako da znate da ste dobili onu malu bateriju
+testeri uh vole provjeriti naboj, da, pa imali smo jedan od njih i to je
+smiješno kad je moj sin gradio svoj kalkulator
+nismo bili sigurni rade li baterije i nismo li dobili ništa
+Čini mi se da je ovo neobično što obično ne dobivamo čak i ako je mrtvo
+skoči u crveno, ali ništa nije bilo pa smo otvorili
+ispada da se stvarna veza raskinula oh
+sad nemam pojma da, a moj sin kao da to mogu popraviti i
+popravio je, vratili smo ga zajedno i onda smo i to funkcionira i to je kao oh
+da, to je prazna baterija, da, i s tim se mogu povezati, koristim a
+jastuk za podkastove u redu i ovaj jer to znate
+spojen žicom na moj telefon se izvlači
+da, i odmah je izvučeno, pa to je tako jednostavna stvar, ali ja u potpunosti što
+jesam li kupio još jedan ne ne ne uzeo sam
+razdvojio sam ga i ponovno zalemio i ojačao
+tako da se to više ne bi ponovilo, o lijepa je to učinila boljim nego što je on bio
+okrenuo se prema stvarima poput e-otpada, da i on je kao da je netko
+riješit će se TV-a ili računarskog monitora
+još uvijek radi tata, samo je nešto iznutra puklo
+on je kao da to mogu popraviti, ja sam kao da i ti razmišljaš o tome, pa su i njegovi točkovi
+okreće se zadnji i on kao da bih mogao učiniti te stvari, a zatim prodati
+njih 12 godina to je karijera
+u velikom broju
+uh, kao da je zaista vrijedno imati te mogućnosti
+pa ću ga trenirati za sljedeći uh, pa ima 12. godina
+osam šest godina odlazim u mirovinu, došao je monitor, ne znam
+možda prekrasan monitor od 23 ili 24 inča širokog ekrana
+ušao kao e-otpad i takav sam
+pogledaću, pa smo ga pogledali i moja kćer i ja
+i bio je jedan kondenzator koji je izgorio, pa sam otišao na mrežu i
+kupio sam jedan od onih kondenzatora koji ih prodaju u pakiranjima
+tri i bilo je dvanaest dolara pa za 12
+dobili smo paket od tri, zamijenili smo jedan od tih kondenzatora i taj monitor je
+sad sjedim na stolu moje kćeri, bože, to je nevjerovatno, predivno je
+i on je potpuno u pravu, ali ne samo da možete popraviti stvari Jeff
+recimo da nešto dođe u e-otpad ili ako znate da nešto pronađete
+stranu puta koju je neko upravo odbacio jer ne može, ne može
+znam kako to popraviti hm i možda ako je popravljanje i više
+skupo i od kupovine novog u puno slučajeva
+hm možete, čak i ako to ne možete popraviti, možete učiniti ono što se zove odlemljivanje
+to je točno, tako da možete ukloniti sve dobre komponente iz toga i
+stavite ih u organizator ladice da da biste tada mogli imati vlastiti radio
+koliba kod kuće gdje imate ladice svih ovih različitih dijelova
+a onda kad se nešto pokvari ne morate potrošiti 12
+na mreži da ih kupim, volio bih da nisam znao da će ući u ovo
+jer sam leti imao oko četiri računara
+nekoliko projektora uzeli smo im sav e-otpad
+pa to je kao da bih ih mogao demontirati, naravno da sam ih dobio
+o, pa dijelovi koje živimo i tačno učimo
+jako cool, pazi da nas o tome definitivno obavještavaš i hej, komentar u nastavku nam reci
+o nekim podvizima koje ste imali
+uh što se tiče ovih vrsta tema i ako jesu ako jesu
+nešto što vas zanima i u šta nikada niste zalazili
+hej, komentar ispod, voljeli bismo čuti vaše mišljenje i voljeli bismo vas imati
+kao dio tog procesa dok jeff uči
+kako i ja učim i sve više ulazim u te vrste
+poput popravaka komponenata i pločica i sve ostalo
+jako je zabavno, da, to je sjajan hobi i prekrasna karijera ako želite
+stvarno želim to učiniti, tako da je istinito dobro za vašeg sina, volio bih čuti
+kako uživa, pa kad je um, pretpostavljam
+13 plus, tako da ga sljedeće godine možete dovesti u studio
+i može nam pokazati kako se snalazi
+zvuči dobro, vrlo cool, ostvariti to, moramo krenuti u redakciju
+becca je tamo sa našim glavnim vijestima za ovu sedmicu
+evo je, evo šta se sprema u vijesti o kategoriji s 5 tačaka
+hakeri koriste ozbiljnu grešku u sustavu Windows da bi napravili kompromis
+unpatched serveri tri javascript paketa su uklonjena iz npm-a
+portal za sadržavanje zlonamernog koda nokia je zadužena za izgradnju a
+nova 4g ćelijska mreža na Mjesecu novih 80
+Watt tehnologija bežičnog punjenja od xiaomi-a oduševljava nas i pamet
+izdan je računalni modul Raspberry Pi 4
+upoznati vas sa specifikacijama i kako ovo mijenja stvari za industrijsku industriju
+držite se svih detalja i krivotvornog kutka ovog tjedna
+dolaze, ovo je redakcija za TV sa 5 tačaka
+pokrivajući najnovije tehnološke priče sedmice uz blagi linux
+pristranost
+iz redakcije sam becca ferguson
+unpatched serveri jedna od najkritičnijih Windows ranjivosti
+objelodanjena ove godine je pod aktivnim napadom
+od strane hakera koji pokušavaju napraviti backdoor servere koji pohranjuju vjerodajnice za svakoga
+korisnički i administrativni račun na mreži
+istraživači su ranjivosti dali ime xerologon jer napadi rade
+slanje niza nula u nizu poruka koje koriste mrežu
+protokol za prijavu na koji se Windows serveri oslanjaju za
+razne zadatke, uključujući omogućavanje prijavljivanja krajnjim korisnicima
+na mrežnu xero prijavu kakva je bila ranjivost
+sinhronizovani stekli su široku pažnju prošlog mjeseca
+kada je firma koja ga je otkrila rekla da može dati napadače
+trenutni pristup aktivnim direktorijima koje administratori koriste za stvaranje
+brisanje i upravljanje aktivnim direktorijima i domenom mrežnih računa
+kontroleri na kojima rade su među najtraženijim nagradama
+u hakiranju, jer jednom oteti omogućavaju napadačima da izvrše kod i
+municija na svim povezanim mašinama microsoft
+popravio sigurnosnu manu u avgustu u petak Kevin Beaumont
+radeći u svojstvu nezavisnog istraživača
+rekao je u postu na blogu da je otkrio napade na džezvu koju koristi
+u korak s napadima koje hakeri koriste u
+divlji kada je njegov mamac server otpakovan napadači su mogli koristiti a
+PowerShell skripta za uspješnu promjenu administratorske lozinke
+i backdoor poslužitelj Beaumont rekao je da se napad pojavio
+biti u potpunosti skriptiran sa svim naredbama dovršenim u roku od nekoliko sekundi
+s tim da su napadači instalirali stražnja vrata koja omogućavaju daljinsko upravljanje
+administrativni pristup uređajima unutar njegove lažne mreže
+napadači su takođe omogućili udaljenu radnu površinu kao rezultat nastavka
+imati daljinski pristup čak i ako administrator kasnije zakrpi server
+ljudi bez autentične autentifikacije mogu koristiti exploit za dobivanje domene
+administrativne vjerodajnice sve dok napadači imaju mogućnost
+uspostavite tcp veze s ranjivim kontrolerom domene u
+u nekim slučajevima napadači mogu koristiti zasebnu ranjivost kako bi se utvrdili iznutra
+mrežu, a zatim iskoristite nultu prijavu za preuzimanje
+kontroler domene mislim da je dobar primjer za
+ove vrste skripti za ulazak u mreže
+su zastarjeli računari na mreži, a također i prevare socijalnog inženjeringa
+čujte puno o tome kao da vjerojatno primate ove e-poruke
+koji vas pokušavaju prevariti da slijedite postupak
+unos akreditiva ili nešto slično
+rizik koji trčimo i tužan slučaj koji vidim
+u tome je što ljudi ponekad dobro misle
+ne moram ažurirati taj računar jer je niko u stražnjoj sobi
+stvarno koristi, da ili oh, pa i ovaj nam treba
+još uvijek imam windows xp jer imamo problema s jednim od naših
+ako ne, još uvijek imamo puno prozora 7
+sistema i to je tragedija ako imate
+Windows 7 ili Windows XP sistem na vašoj mreži samo ga okrenite
+makni se, da, stvar je u tome
+je s tim sistemima, tako da Microsoft ima ono što nazivamo eol ili kraj života, uh
+je završio životni vijek ovih operativnih sistema
+pa su rekli da morate nadograditi na Windows 10. pa ne želim nadograditi
+Windows 10-u sviđaju mi ​​se moji Windows 7. To razumijem i poštujem
+međutim ovdje je problem hakera
+sada su u mogućnosti da koriste ove operativne sisteme
+i dok to rade dok pronalaze podvige
+ima nekoliko stvari koje se dogode jedna
+ili poklonite ili prodajte te podvige ili su samo pušteni
+za javnost putem mračne mreže ili čak na githubu
+kao što je istraživanje sigurnosti, pa ćemo sada i ovi hakeri, ako želite
+zovite ih tako, ali realno u mnogim slučajevima oni su ono što mi zovemo
+mace scenarija i ovo su um
+čak ni poput hakera, ali ne moraju imati puno znanja jer
+eksploatacija je javno tačno poznata i razumljiva pa ako
+postoje eksploati koji su dostupni za operativni sistem
+šta očekujemo da se dogodi očekujemo dobavljača operativnog sistema microsoft
+ovaj slučaj da se popravi taj exploit da se popravi
+a to je slučaj sa Windowsom 10. nažalost
+oni koji su eol, to ponekad nije slučaj sa eol operativnim sistemom
+čujemo, dobro, ne treba mi podrška, pa je Microsoft prekinuo podršku koja je
+ono što smo čuli da su prekinuli podršku za Windows 7. završili su
+podrška za windows xp oh ali nikad nisam morao nazvati podršku
+mogu se nositi s tim da to nije ono što su oni
+uopće razgovarati o onome što oni govore
+oni neće popraviti zakrpe, jer eksploati nisu bitni
+koliko su teške nije važno koliko su lako
+iskoristite tako da imate Windows 7 mašinu na svojoj mreži dobro
+dajete ulaz jednom od ovih hakera koji čak i nema
+biti vrlo dobar u hakiranju jer su eksploati javno poznati
+da, ponekad su dio alata, ponekad ih mogu besplatno preuzeti
+alat i oni mogu reći da želim jednom provjeriti exploit windows 7
+i tako uđu u Windows 7 kutiju ili su prevarili jednog od vaših zaposlenih
+čak i ako je samo neko straga koji radi u skladištu
+prevarili su nekoga da otvori datoteku koja im sada daje pristup
+Windows 7 mašina Windows XP mašina ili mašina u zadnjoj sobi
+nije važno i ovdje učimo taj microsoft
+serveri sada imaju exploit koji dok god
+zlonamerna strana može dobiti pristup bilo kom računaru na mreži
+sada mogu dobiti administratorski pristup domeni cijeloj mreži
+sad je zastrašujuće, vaši računari s Windows 10 više nisu
+sigurno je to tačno jer ste im dali pristup vašoj mreži kao da su
+oni su administrator domene, vidite, upravo su to loše vijesti
+pa to su loše vijesti zašto je ransomware stvar
+jer šta rade sada su dobro, dobio sam pristup ovoj mreži
+prodavat ću na tamnoj mreži pristup ovoj mreži
+ovo vidite kod um s gradskim naseljima i da s gradovima koji
+da li je originalna maca koja je to radila ne zna šta
+on samo oni samo žele da žele ući
+instalirajte njihov softver i izađite, a zatim prodajte pristup
+to je tačno jer je to brz novac, pa zašto to ljudi rade zbog novca
+i tako to rade pa hm da moraš
+nekako redovito ažurirajte stvari, tako da znate da je to samo brza misao
+da razmislite, imate li zastarjele mašine na svojoj mreži koje morate
+skinite ih i osposobite svoje osoblje za cyber
+sigurnosne prakse razumiju šta su krađe identiteta
+jer dobro znate, netko je kliknuo na vezu, a sada i na njihovu
+računarski računari zaraženi, ali njihov računar jeste
+na vašoj mreži, ali htio sam dobiti pola novca tog princa
+to su sasvim drugi crvi, jeff
+ali mislim na to kad je riječ o ovakvim stvarima da pogledam vaš sistem i kažem
+oh, ne želim potrošiti sedam osam
+sto dolara za novi računar, ne bih brinuo da li ću ga ažurirati
+na kraju ćete potrošiti više dugoročno, uh ili kratkoročno
+hm, dugoročno ne, ako vam sistem nije zakrpan već jednom
+oni imaju pristup svemu što biste mogli biti dolje i van, ali i ja
+mislite kad imaju pristup svemu i
+mislim da je važno samo to shvatiti
+ta jedna ulazna točka postaje pristup svemu pa potrošite nekoliko stotina
+dolazite po novi računar, spasite se, ne znam šta je potrebno
+Mislim, to je drugačije, za svaki slučaj je drugačije. Da, imao sam jednu osobu
+danas koji je nazvao i rekao da imam jedan Windows 7 računar
+ne želim ga nadograditi jer to jednostavno djeluje oh
+pa evo objašnjenja i ovdje je becca podijelila s nama priču
+to nam jednostavno govori da im je potreban samo pristup tom jednom računaru
+i sada imaju pristup svim računarima vaših računara, a ne
+na način poput sambe, a ne na način koji je prijateljski raspoložen i nadam se da oni
+ne nalazite nikakav put na stražnja vrata na tim
+računari ne imaju administratorske vjerodajnice
+vašu mrežu kako bi mogli učiniti bilo što
+tačno je sve što žele kad razmišljam o svojoj kući
+mislim da sam završio, završio si mislim da ih imam sedam
+uređaji koji ne uključuju telefone i tablete i slične stvari koji su povezani
+na mrežu ne želim da imaju pristup tome
+da, jednostavno ne mogu naglasiti dovoljno, jeff
+mislim mislim u smislu poduzeća više nego kućni korisnik, ali
+kad jednom uđu unutra, ne možete da ste gotovi jer sada ne možete
+ugasio onu Windows mašinu i Windows 7 mašinu ne, već nisu
+u sve, pa šta radite, zamijenite sve
+obrišite svaki pojedini računar jer ne znate koji alati
+oni su instalirali to skupo, da, zato ne padajte u to
+u svakom slučaju to je loša eksploatacija, nadam se stvarno ozbiljni ljudi
+to smo dovoljno naglasili da razumijete da je ovo loše
+pa se pobrinite da vaši mrežni administratori rade i da ih razumiju
+stvari i da ste zaštićeni i sigurni
+protiv ove vrste prijetnji, dobro, vratit ćemo se u Becu
+tri paketa javascripta uklonjena su s npm portala za
+koji sadrže zlonamjeran kôd prema savjetima od mpm
+sigurnosni tim otvaraju se tri biblioteke javascripta
+ljuske na računarima programera koji su uvezli pakete
+u svoje projekte školjke omogućavaju akterima prijetnje da se daljinski povežu sa
+zaraženo računalo i izvršava zlonamjerne operacije npm
+sigurnosni tim rekao je da granate ne ovise o određenom operativnom sistemu
+i može se koristiti za ugrožavanje Windows linux freebsd
+openbsd i ostali sistemi sva tri paketa su učitana u
+npm portala u 2018. godini i svaki je imao stotine
+preuzimanja od tada su nazivi paketa plutovs crtica
+slack dash klijent nodetest199 i nodetest1010
+tim za sigurnost npm rekao je da bilo koji računar koji ima to ima
+paket instaliran ili pokrenut treba smatrati potpuno ugroženim
+sve tajne i ključeve pohranjene na tom računaru treba odmah okretati
+s drugog računara upozoravaju da paket treba ukloniti ali kao
+potpunu kontrolu nad računarom možda je dao vanjski entitet
+nema garancije da će uklanjanje paketa ukloniti sve zlonamjerne
+softver koji je rezultat njegove instalacije mpm
+osoblje osiguranja redovito skenira svoju kolekciju javascript biblioteka
+smatra najvećim spremištem paketa za bilo koji programski jezik
+dok u svojoj vikendici ne mogu dobiti ni dobro pokrivanje ćelija
+nokia radi sa nasa-om na donošenju 4g na Mjesec ciljevi misije nasa-artemida
+uspostaviti dugoročno ljudsko prisustvo na Mjesecu kao korak
+kamen prema kolonizaciji Marsa i za pokretanje stvari nasa je
+produžujući 370 miliona dolara za 14 kompanija
+kako bi se osigurala tehnologija za program
+od robotike do proizvodnje energije, pa čak i kriogeneze
+ali ima smisla da će ovi timovi trebati biti u mogućnosti komunicirati s
+majka planeta nova mreža će biti dizajnirana
+posebno za lunarne uslove sposobne da izdrže ekstreme
+temperaturnih pomaka i zračenja, tehnologija će takođe koristiti male ćelije
+tehnologija koja je, kao što i samo ime govori, znatno manja od visoke
+ćelijske tornjeve koje su navikli vidjeti ovdje na zemlji koriste i puno manje
+plan je da nosi lunarni spuštač
+4g komunikacijski sistem na lunarnu površinu
+2022. godine nokijskim laboratorijama za zvona dodijeljeno je 14,1 milion dolara
+sa svoje strane nova tehnologija bežičnog punjenja od 80 vati kompanije
+xiaomi nam puše pamet i malina pi
+računski modul 4 je objavljen, obavijestit ćemo vas o specifikacijama i kako
+ovo mijenja stvari za industrijske stvari, jer ove priče dolaze u plusu
+robert je ovdje s kripto kutom, ne idite nikamo
+dobrodošli natrag u svijet kriptopisa i dobrodošli natrag u kripto kutak
+prošle sedmice smo razgovarali o bankama za nekoliko godina ih nećete prepoznati
+već sam vam takođe spomenuo ne tako dugo
+prije kineska digitalna valuta koja hoće
+zamijeniti riemann pčelu i da su je već primijenili i
+oni vode ove sedmice suđenja u Šenženu
+došlo je do određenog razvoja i volio bih o tome razgovarati jer je tako
+imat će direktan utjecaj na vaš život i moj život
+pa zaronimo u ovo ovdje glava međunarodnog monetarnog fonda
+te međunarodne organizacije je dama koja se zove cristalina jojeva i
+održala je govor u vezi s novim bretonskim šumama
+trenutak šta je bretton woods britanija bila
+sistem je uspostavljen monetarni menadžment
+pravila komercijalnih finansijskih odnosa između
+zemlje poput nas kanada zapadna europa australija i japan
+i tako je to sistem prvi primjer u potpunosti dogovorene narudžbe
+namijenjen upravljanju monetarnim odnosima između neovisnih država pa je to i bilo
+bretton woods i ona govori o promjeni
+taj sistem u nešto modernije, sada dovoljno zanimljivo
+u ponedjeljak je bio sastanak s nekoliko centralnih banaka koji su razgovarali o tzv
+prekogranična plaćanja, ali ako razmislite, pogledajte koju vrstu
+ljudi koji su bili prisutni, tako da imate glavu
+saudijska centralna banka imate šefa sve centralne
+banke glava imf-a glava nas
+nedostaje centralna banka i šef malezijske centralne banke
+Europi što je zanimljivo, ali postojat će razlog, pretpostavljam
+pa su se sastali kako bi razgovarali o bruto plaćanju vode
+sada ne vjerujem da je to prava priča prava priča
+uh je također objavio gospodin zvan Raul Paul
+s čime se u potpunosti slažem, tako da njegove misli upravo razmišljaju
+a ono o čemu govori je upravo ovaj sastanak koji se dogodio u ponedjeljak
+koji će zamijeniti stari bretton woods uh odnos
+Između zemalja, pa šta će se dogoditi, izgleda da centralne banke
+dogovarat će se i smisliti sistem
+sistem centralne banke između svih njih, tako da neće biti nas
+postojat će sistem centralne banke dolara
+za svaku za sve organizacije, a zatim od
+tamo će biti raznolik i što možete učiniti s tim
+takav sistem je zanimljiv dio i
+volim to što je tako da će promijeniti zaobilaženje bankarstva i financija
+fiskalni sistem jer direktno komunicirate s ljudima
+da, to nije kao u trenutku kada centralna banka u SAD-u ili
+Kanada nema veze, donosi neku politiku i onda je
+kaže da se cijedi niz lanac i vi kao pojedinac
+korisnika kojeg vjerovatno vidite najmanje
+novac i vjerovatno po najvišoj kamatnoj stopi
+za koje možete misliti da će drugi ljudi imati puno veće koristi od digitalnih tehnologija
+novac plus kriptovalute ili programabilni
+novac možete učiniti mnogo više jer sada
+centralna banka može direktno utjecati na ponašanje ljudi i kako oni to čine
+učinite to da oni mogu dobro reći ako ste vlasnik restorana možete
+uzmite novac direktno u svoj džep od nas, da, tako da ne više
+uključene banke učinit ćemo to izravno moguće je da je riječ o novcu središnje banke
+oni mogu mijenjati kamatne stope, pa u jednom slučaju ili u jednoj industriji
+može imati visoku kamatnu stopu nego što će se još dogoditi
+s porezima, da, što će se dogoditi s IRS-om
+jer se s tim stvarima mogu nositi direktno
+putem programabilnog novca trebat će vremena
+doći do te krajnje mjere, ali dogodit će se
+kao što vidite, izravna plaćanja će biti moguća
+oni također ovdje govore o um da, ekonomiji ponašanja, uh
+ne preko nekih ekonomista koji govore
+vladi šta da radi, a šta ne, jer to nije uspjelo u
+prošli svi govore pa šta idu
+što treba učiniti je poput facebook vrste ideje ili tik tak ideje ili
+youtube ideja gdje vas zanimaju ljudi
+sprijateljiti se s vama ili gdje su ljudi zainteresirani
+dobivanje više lajkova i tako promijenite svoje ponašanje u
+s obzirom na dobivanje više lajkova i istu stvar
+dogodit će se s novcem pa će to biti sve regulirano
+preko centralne banke bez ikoga iz vanjskog svijeta
+imati priliku da imaju značajan uticaj, pa kako to
+na kraju će izgledati kao da niko naravno ne zna, ali da ovo
+ljudi se okupljaju kako bi razgovarali o plaćanju više naloga je nešto što ja
+smatrati uh vrlo zanimljivim i uh, to je naravno fantastična vijest
+za uh bitcoin jer je bitcoin izvan toga
+sustav ne postoji nitko tko može regulirati uh bitcoin to je
+decentralizirano, nepromjenjivo je, znate sve
+Značajke uh bitcoina, tako da je um bitcoin fantastična alternativa
+sve ostale glavne kriptovalute definitivno su dobra alternativa
+hajde da vidimo šta će vaga iznijeti, ali naći će se neke dobre alternative
+do um do središnjeg uh centralno
+vozio novac preko centralnih banaka, pa se nadam da vam je to bilo zanimljivo i
+nadam se da vam se svidio i nadam se da ću vam nedostajati
+i želim vam fantastičnu sedmicu pa vam puno hvala na gledanju
+bye bye hvala vam robert samo podsjetnik da ne pružamo financijske savjete
+već samo dijeljenje onoga što se događa na tržištu kriptovaluta
+uvijek se sjetite da se tržišta kriptovaluta neprestano mijenjaju i
+uvijek nestabilno, tako da biste trebali trošiti samo ono što si možete priuštiti da biste izgubili
+sada natrag na becca u redakciji hvala ti robija
+xiaomi je najavio novu provjeru punjenja koja može potpuno napuniti prazan
+pametni telefon za manje od 20 minuta, ali to brzo, bez ikakvih žica
+punjenje je postalo ključna karakteristika mnogih pametnih telefona posljednjih godina i za
+praktičnost, bežično punjenje može biti zaista sjajno
+ali naravno bežično punjenje obično puni telefon između
+10 do 15 vati snage koju imaju neki telefoni poput oneplus 8 pro
+bežično punjenje do 40 vati, ali nova tehnologija punjenja kompanije Xiaomi obećava
+ogromnih 80 vati bežičnog soka
+šta to u praksi znači dobro prema najavi
+otkrivajući tehnologiju bežičnog punjenja od 80 vati
+pametni telefon s nula posto napunjenosti baterije od četiri hiljade miliamper sati
+naplatit će deset posto u samo jednoj minuti pedeset posto
+za osam minuta i potpuno se napuni nakon 19 minuta
+napokon punjač koji će mi napuniti telefon
+od nule do sto posto, baš kao što je moja pauza za ručak, to je lijepo
+to je promjena igre, možete li zamisliti da razmišljam o svojoj djeci i kako imamo
+kao telefoni svugdje očito mislim da ovo treba uzeti kao
+najnovija i najbolja tehnologija, ali hm je to uvijek slučaj, oh, zaboravio sam
+stavi mi telefon na punjač ili ne traje dovoljno dugo
+dan i sada kada znate sa pandemijom naravno moju
+djeca se sada na silu školuju za djecu i svi su uključeni
+svojim uređajima cijelo vrijeme, tako da imamo sastanke za zumiranje na telefonima
+i i radi, prazni bateriju da
+ali ono što mi se sviđa je to što je bežični, nije samo ožičeno ono što je nevjerovatno
+bežična je mreža koja je ogromna poput ideje o tome
+mogao bih uzeti telefon da se ne brinem o punjačima i
+samo idi samo spusti to spusti 20 minuta kasnije, dobro je da krenem
+da volim drugu stvar koju volim u vezi s tim
+koncept je da hm razmišljam kao što ste i vi mislili da sam mogao
+odložite ga na stol, što ako biste ga mogli odložiti na a
+restoranski stol da, jer je puno restorana pošlo putem, a ja sam
+koristeći restorane kao primjer, ali mnoga mjesta su prošla put
+ugrađivanje USB-a da, tako da možete priključiti svoj USB
+kabel za punjenje telefona, ali onda su odjednom ljudi to dobili
+mudro na činjenicu da bi ti USB portovi mogli biti zlonamjerni
+jer USB također nosi podatke ili je to tačno
+ko zna je li to previše volti i da li vi znate da je možda
+dobio kratku ili nešto slično i mogao bi mi spržiti telefon
+pa se onda odjednom bojimo priključiti na USB port jer hej
+to može biti nešto loše što je dobro
+bežično punjenje ga odložite, puni se, a vi ga podignete i spremni ste
+gotovo da, ali možete ga postaviti za slično
+tri minute i dat vam je dovoljno punjenja da prođete kroz većinu
+popodne što je nevjerovatno sjajno, mislim
+baš kao što znači da sada gledate oko sebe i imate sve ove punionice
+električna vozila bilo bi sjajno početi malo vidjeti
+iskačuće prozore na javnim mjestima s ovakvim stvarima koje možete doslovno staviti
+isključite telefon pet minuta i imajte dovoljno za telefonski poziv
+potražite pomoć ili sve drugo i sve je to bežično, upravo sam slikao
+poput dionice ceste i ugradite prijemnik u automobil i to
+puni autonomni automobil dok vozi preko njega
+stvar, uh, sada ulazimo u tehnologiju, ljudi
+[Smijeh] Još uvijek mi se sviđa, uzbuđen sam zbog toga
+luda stvar je samo zaključak da je ono što ja samo
+rekao je vrlo znanstveno-fantastičan kao kad smo rasli
+to je bilo kao da je budućnost to je potpuno izvedivo
+moguće sada da, to je smiješno malina pi
+fondacija je lansirala računski modul sa specifikacijama maline pi 4.
+temelj malina pi lansirao je novi proizvod u ponedjeljak komp
+računski modul 4. teško je povjerovati da je prošlo toliko vremena, ali
+Raspberry Pi 4 objavljen je u junu 2019
+računski modul 4 dovodi pi 4 u industrijski iot prostor
+sadrži isti procesor upakovan u računski modul
+samo molim da bude integriran u moćne iot uređaje
+ako vam nisu poznati računski moduli, možete ih smatrati
+računari sa jednom pločom bez svih portova i gpio pinova
+omogućavaju računarskim komponentama da budu mozak maline pi
+integrirani u robotske pametne uređaje koji stvaraju tehnološke klastere ili
+za sve što možete smisliti potrebno je malo
+u osnovi je linux računar s malim pogonom, budući da ga računarski modul 4 dijeli
+specifikacije sa Raspberry Pi 4 programerima mogu napraviti sve svoje prototipove
+na pi 4 sbc, ali onda naručite gomilu računarskog modula
+4s kako bi se integrirali u svoj komercijalni proizvod
+baš kao i Raspberry Pi 4, računarski modul 4 ima 64-bitnu ruku
+ovo je procesor sa video jezgrom vi grafika
+predstavljat će veliku nadogradnju za prethodni proračun
+kupci modula i sa izlazom 4k video izlaza na do
+60 sličica u sekundi plus mogućnost dekodiranja h.265 video zapisa
+računski modul za računski modul 4
+može biti izmjenjivač igara za uređaje s multimedijskim pogonima kao što su pametni televizori ili
+set-top boxovi s kojima je dostupan računski modul 4
+po vašem izboru od 1 2 4 ili 8 gigabajta ram memorije i 8 16
+ili 32 gigabajta na brodu emmc flash memorija za wi-fi i bluetooth
+su takođe neobavezni, cijena se kreće od samo 25
+do 90 usd sada zamislite da je jeff the Raspberry Pi računski modul 4
+da, u nekom od vaših projekata SBC-a ili nešto slično pokreće ga poput
+mozak ovo je prilično uzbudljivo čim
+becca je rekla da dekodiranje h.265 znači da je to poput video zapisa
+vrlo intenzivan procesor da, to je sjajno kao da puno govori
+to je više snage od mog plex servera, da ko ko zna gdje je to
+uzeću stvari koje mi se sviđaju ideja klaster računanja
+i tu uzimate nekoliko računara
+povezati ih zajedno umrežavanjem i
+u osnovi instalirajte softver ispod ili nešto slično
+grupiše ih kako bi im omogućili izvođenje
+zadatke zajedno na takav način da u osnovi čini super računalo
+odmah iz nekoliko računara pa razmislite o ovim malina pi
+cl uh klaster ili module i i spojimo oko 10 takvih
+u klasteru i voljeli biste ovaj računski modul
+klaster koji bi bio fin računar s toliko snage
+kada na svakom možete imati po osam svirki ovna
+ukrcaj puta do 10. puno toga može puno učiniti
+to mijenja stvari ljudi mijenja svijet to je sigurno
+šta biste uradili sa svom tom snagom
+i tišina čeka da odgovorite i
+mislim da bih volio što bih s tim koliko ljudi
+upravo sam krenuo u bitcoin, žao mi je, znate što je tužno moj
+prva pomisao bila je mogu li automatizirati poput nekih
+komunalije koje imam u kuhinji da mi naprave hranu
+to je bila moja prva misao s računarskim modulom četiri
+da, treba i više od toga, ali znam da bi to mogao biti mozak takve operacije
+jasno da sam gladan [smeh]
+komentare vaših misli ispod voljeli bismo čuti što biste učinili s
+računski modul za zahvalnost za gledanje kategorije 5 tačaka
+TV redakcija ne zaboravite da lajkate i pretplatite se na nju
+sve vaše tehnološke vijesti uz malu pristranost linuxa
+i ako cijenite ono što radimo, postanite pokrovitelji na patreon.com
+kategorija 5. iz kategorije vijesti o televiziji sa 5 tačaka ja sam becca ferguson
+[Muzika]
+Pa to je prilično skoro cijelo vrijeme koje imamo ove sedmice, Jeff
+prošli tjedan smo prošli kroz i i odradio sam cijeli proces s fiverrom
+unajmio neke ljude da mogu napraviti naš remiks da, evo smiješno
+priča u redu doslovno mi recite kada ćete se nasmijati
+znam usnu već je nasmijao
+vjeverica iz legla bio je jedan od naših momaka, da
+jedan od naših remiksera i književne vjeverice
+rekao sam da se stalno pitam da je ovo dok je gledao prilog
+poslije sam se stalno pitao zašto si
+pogrešno izgovarajući moje ime oh leglo vjeverica pa sam provjerio svoje
+profila i otkrio da sam ga pogrešno napisao, ne
+i nikad nisam primijetio i to je tako bilo tri godine, ozbiljno li misliš
+on kaže da se zovem moje ime je književna vjeverica, bože moj, stao je
+u našem je to smiješno pa vam kažem ovu priču
+vidiš smiješno vidiš rekao sam ti da je smiješno bilo je
+pričam vam ovu priču jer sam tada dobro rekao sebi
+vidim riječi i ja i mislim da većinom izgovaram
+njih prilično pedantno pa kad vidim književno iako to nije riječ ja
+postavi to tako da dobro čita, pa sam mislio da bih vjerojatno bio
+prilično dobar lektor pa sam rekao što ću, dovraga, dati
+idi pa sam stavio oglas u kojem sam rekao da ću lektorirati
+vaš tekst 500 riječi ili manje za pet dolara
+u redu i bio sam kao da niko nikada neće pristati na to
+svejedno je zabavno, mislio sam da ću probati i sljedeće jutro dobio sam e-mail
+od osobe u Španiji koja je bila
+broker u osiguranju je u redu i ima kupca koji govori engleski jezik
+zavičajno i želio se uvjeriti da je rekao prave stvari kao odgovor
+na e-mail pa je uklonio sve povjerljive stvari
+da i poslao mi je svoj odgovor i rekao da li možete da pređete na ovo za mene i ja
+jesam i prošao sam i neke ispravio
+stvari i imao je neke riječi koje u prijevodu zapravo nisu imale smisla
+i tako sam ga popravio i ispravio sam gramatiku i kontekst i pomalo
+pravopisa i bio je kao da ga je volio pet dolara
+stvarno mi je trebalo 10 minuta i bilo je jednostavno
+nešto što sam prvo uradio sa šoljicom kafe ujutro
+da, i dao mi je ocjenu 5 od 5 koja je sjajna kao i ona iz prve
+flip perspektiva pa sam ovakav prilično uredan pa onda počnem pričati
+svojoj djeci i volio bih da otkrijemo da li biste poput vas mogli nešto raditi
+eto i znate da li je moja kćer umjetnica i
+mogla bi crtati crteže kako bi ljudi počeli zarađivati ​​novac, to je nekako uredno
+Ideja uredna platforma. Ne znam o čemu se radi
+poput minimalne starosti i sličnih stvari, ali možemo pogledati te vrste
+stvari, ali to je moja priča za ovu sedmicu
+da hej i ja sam otišao na drugu stranu i prodao sam svoju uslugu koju sam pružio
+književna vjeverica besplatni besplatnik, ali ovaj
+sad sam dostupan sam na prodaju ii osjećam da bi to bilo zabavno
+dat ću vam pet dolara i poslat ću vam dokument od 500 riječi
+sav lorem ipsum i samo mi recite ima li smisla dati sve od sebe
+jesi li ispravio da dobro, to je to, jeff
+to je sve vrijeme u redu, ali bilo mi je zabavno
+uživao sam biti ovdje s vama ove sedmice sljedeće sedmice, ulazimo u 3d
+ispis, tako da ćemo montirati ender
+3v2, pa ćemo ga zapravo sastaviti
+i onda ćemo razgovarati o tome da znate kakav je bio proces
+kao za mene kao nooba u području 3D štampe
+s kakvim sam se izazovima susretao
+i možete li se s tim susresti kad započnete
+u 3d ispisu plus pokazat ću vam ne samo svoj prvi otisak
+ali moje prve dizajne u štampi ne želite propustiti sljedeće sedmice
+ugodne sedmice svi ćemo vas vidjeti
+[Muzika] [Aplauz]
+ćao [muzika]
+ti

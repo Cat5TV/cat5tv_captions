@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: bs
+
+00:00:00.320 --> 00:00:05.040
+u kategoriji 5 TV vjerujemo našim datotekama na SSD diskove kompanije Kingston
+
+00:00:05.040 --> 00:00:07.839
+ tehnologija bilo za vaš server laptop ili
+
+00:00:07.839 --> 00:00:10.880
+ stolni računar doživjet ćete poboljšane performanse
+
+00:00:10.880 --> 00:00:17.920
+ i pouzdanost s Kingston SSD-ovima pripremite se vrijeme je za tehnologiju
+
+00:00:22.320 --> 00:00:25.519
+ dobrodošli u emisiju svima, to je epizoda 2 sezone 14
+
+00:00:25.519 --> 00:00:29.599
+ Ja sam Robbie Ferguson i ja sam Jeff Weston, super je što ste ovdje
+
+00:00:29.599 --> 00:00:32.800
+ i nadam se da ste uprkos tome imali divnu sedmicu
+
+00:00:32.800 --> 00:00:37.760
+ sve smo, ali evo nas i radujemo se sjajnoj predstavi koja slijedi
+
+00:00:37.760 --> 00:00:40.960
+ večeras ćemo učiti kako stvoriti vlastiti
+
+00:00:40.960 --> 00:00:45.840
+ proxy server u redu, hm, pa ne želim previše pričati o tome s vrha
+
+00:00:45.840 --> 00:00:49.200
+ emisija, ali znam da je to ponekad teško naći dobar
+
+00:00:49.200 --> 00:00:52.640
+ besplatnu proxy uslugu pa ćemo stvoriti vlastiti
+
+00:00:52.640 --> 00:00:55.840
+ i pokazat ću vam kako da ga smjestite bilo gdje u ljestvici svijeta
+
+00:00:55.840 --> 00:01:01.600
+ koristeći usluge oblaka aws, tako da je to prilično uzbudljivo i jedna od stvari
+
+00:01:01.600 --> 00:01:05.680
+ s tim i dok naučimo malo o tome kako
+
+00:01:05.680 --> 00:01:09.520
+ Amazon web usluge ec2 i cloud usluge i mogućnost da
+
+00:01:09.520 --> 00:01:13.760
+ rasporediti debian servere u cloud infrastrukturu kako učimo
+
+00:01:13.760 --> 00:01:18.799
+ kako to učiniti i kako to funkcionira, samo znate to
+
+00:01:18.799 --> 00:01:20.159
+ stvari koje ćemo raditi su
+
+00:01:20.159 --> 00:01:24.000
+ migriranje nekih naših podataka u tu infrastrukturu, pa to kažem
+
+00:01:24.000 --> 00:01:26.960
+ jer neki od naših gledatelja prijenosa uživo
+
+00:01:26.960 --> 00:01:29.600
+ imao problema s međuspremnikom i sličnim stvarima
+
+00:01:29.600 --> 00:01:32.799
+ a to je zato što imamo mali računar sa jednom pločom
+
+00:01:32.799 --> 00:01:36.880
+ svih stvari na koje strimujemo, a zatim ih emitujemo
+
+00:01:36.880 --> 00:01:40.799
+ svi koji gledaju roku ili druge hls igrače i slične stvari
+
+00:01:40.799 --> 00:01:44.399
+ ima okretan streamer koji radi na računaru sa jednom pločom, to je stvarno
+
+00:01:44.399 --> 00:01:47.759
+ nevjerojatno vau međutim ono što sam pratio kroz svoj
+
+00:01:47.759 --> 00:01:50.960
+ testiranje je da pokreće prilično visok procesor kad ljudi
+
+00:01:50.960 --> 00:01:55.439
+ dobro gledam, tako da vjerujem da je možda ono što uzrokuje neke
+
+00:01:55.439 --> 00:01:58.640
+ problemi s međuspremnikom u našem streamu, tako da ima puno stvari
+
+00:01:58.640 --> 00:02:03.520
+ na sceni iza scene da biste pokušali doći do nje
+
+00:02:03.520 --> 00:02:07.840
+ vrlo pristupačan i lak pristup formatu i tako da niste
+
+00:02:07.840 --> 00:02:10.160
+ doživljavanje stvari poput kolovrata
+
+00:02:10.160 --> 00:02:14.560
+ i takve stvari, ali uh, dok gledamo večeras
+
+00:02:14.560 --> 00:02:18.560
+ uh i učenje kako rasporediti ove debian servere u oblaku
+
+00:02:18.560 --> 00:02:20.879
+ znajte da ćemo to raditi nešto iza kulisa
+
+00:02:20.879 --> 00:02:23.760
+ kao i migraciju tih usluga
+
+00:02:23.760 --> 00:02:27.120
+ na jedan od onih slučajeva da bi
+
+00:02:27.120 --> 00:02:30.480
+ pokušajte poboljšati naše performanse ovdje u studiju
+
+00:02:30.480 --> 00:02:34.400
+ gomila uzbudljivih stvari događa se iza nas kako ste bili
+
+00:02:34.400 --> 00:02:38.000
+ bio sam dobar, razgovarat ćemo s vama kasnije večeras
+
+00:02:38.000 --> 00:02:42.080
+ uh, neki od vaših podviga lemljenjem, da, želite nam reći malo
+
+00:02:42.080 --> 00:02:44.720
+ samo na brzinu zadirkujem što ćemo biti
+
+00:02:44.720 --> 00:02:48.959
+ raspravljajući o mom sinu je želio zalemiti
+
+00:02:48.959 --> 00:02:53.120
+ njegov rođendan, pa smo išli tim putem
+
+00:02:53.120 --> 00:02:56.480
+ od prošlog mjeseca malo smo se poigravali i ima
+
+00:02:56.480 --> 00:03:01.200
+ ja razmišljam kako mogu napraviti svoje stvari kod kuće
+
+00:03:01.200 --> 00:03:04.560
+ kada nemam veliku proizvodnu površinu da napravim svoju
+
+00:03:04.560 --> 00:03:09.599
+ pcb da, da, tu smo o tome razgovarali, pa ako vas zanima
+
+00:03:09.599 --> 00:03:15.040
+ uradi sam elektroniku razgovarat ćemo o tome i uh vau što imamo
+
+00:03:15.040 --> 00:03:19.840
+ neke uzbudljive stvari za koje se spremamo i za emisiju sledeće nedelje
+
+00:03:19.840 --> 00:03:23.040
+ je već spreman za polazak i mi smo uzbuđeni
+
+00:03:23.040 --> 00:03:26.640
+ predstavljajući 3d štampu i našim gledaocima
+
+00:03:26.640 --> 00:03:29.680
+ tako da je to nešto što ćemo naučiti tokom
+
+00:03:29.680 --> 00:03:36.080
+ narednih tjedana ovdje na kategoriji 5 TV imamo puno toga da
+
+00:03:36.080 --> 00:03:39.200
+ obavezno nas pretplatite na youtube
+
+00:03:39.200 --> 00:03:42.159
+ i kliknite zvono tako da ćete dobiti obavijest svaki put kad objavimo novo
+
+00:03:42.159 --> 00:03:46.560
+ video bilo kad uživo, a također ako se želite uključiti
+
+00:03:46.560 --> 00:03:49.280
+ zajednica mislim da je to stvarno cool način
+
+00:03:49.280 --> 00:03:54.000
+ da bih bio dio kategorije 5 televizije, neki mi ljudi i dalje govore dobro, šta
+
+00:03:54.000 --> 00:03:58.400
+ nesloga i wow je što niste dio naše nesloge
+
+00:03:58.400 --> 00:04:01.920
+ poslužitelju, jer ako se pridružite našoj neslozi koju ćete pronaći ako odete
+
+00:04:01.920 --> 00:04:06.560
+ do category5.tv kliknite na interakciju vidjet ćete kako se pridružujete razdoru
+
+00:04:06.560 --> 00:04:10.720
+ server je besplatan preglednik ili aplikacija
+
+00:04:10.720 --> 00:04:14.720
+ uslugu koju možete staviti na svoj uređaj ili pristupiti
+
+00:04:14.720 --> 00:04:18.160
+ putem preglednika na bilo čemu i u osnovi možete razgovarati s
+
+00:04:18.160 --> 00:04:22.079
+ zajednica, ali je zaista uredno po tome što je više od puke chat sobe
+
+00:04:22.079 --> 00:04:26.160
+ ima i različite prostorije namijenjene
+
+00:04:26.160 --> 00:04:28.160
+ različite stvari pa stvari o kojima razgovaramo
+
+00:04:28.160 --> 00:04:31.280
+ oko ili na primjer imamo iza kulisa
+
+00:04:31.280 --> 00:04:35.680
+ tako da je iza kulisa samo prepun kulisa
+
+00:04:35.680 --> 00:04:42.320
+ fotografije koje inače ne biste vidjeli, a na našem je toliko toga da
+
+00:04:42.320 --> 00:04:44.400
+ discord server, pa stvarno moraš tamo ići
+
+00:04:44.400 --> 00:04:47.919
+ znajte da je to kao da je chat platforma, ali ima
+
+00:04:47.919 --> 00:04:51.360
+ mnogo više od obične interakcije putem chata
+
+00:04:51.360 --> 00:04:54.880
+ to je tačno i nije samo aktivno tokom emisije
+
+00:04:54.880 --> 00:04:58.240
+ stalno je uključen i mislim ako imate tehničke stvari
+
+00:04:58.240 --> 00:05:01.360
+ sredinom tjedna ste poput oh, ne znam kako da riješim ovaj problem
+
+00:05:01.360 --> 00:05:04.080
+ mogao doći tamo i zajednica je sjajna u vezi s davanjem
+
+00:05:04.080 --> 00:05:07.680
+ savjet i to je prilično uočljivo, da, to je istina
+
+00:05:07.680 --> 00:05:10.720
+ u redu, moramo napraviti vrlo brzu pauzu i onda skačemo udesno
+
+00:05:10.720 --> 00:05:14.800
+ u to nakon ovog kratkog odlaska koji ćemo pogledati
+
+00:05:14.800 --> 00:05:20.800
+ kako postaviti instancu aws ec2 za koju to zvuči tehnobobble
+
+00:05:20.800 --> 00:05:24.080
+ ja to stvarno brzo radim da, kako bi bilo da smo ovo
+
+00:05:24.080 --> 00:05:29.759
+ hoćemo li stvoriti vlastiti besplatni proxy servis koji je lakše reći
+
+00:05:29.759 --> 00:05:36.240
+ Ja imam kontrolu. Imam pristup. Imamo kontrolni štap oko nas
+
+00:05:36.240 --> 00:05:51.920
+ Vrati se odmah [Muzika]
+
+00:05:58.560 --> 00:06:01.919
+ bez obzira nadate li se da ćete si dati malo dodatne privatnosti dok surfate
+
+00:06:01.919 --> 00:06:04.720
+ Interneta ili želite pristupiti uslugama koje
+
+00:06:04.720 --> 00:06:10.160
+ možda nisu obično dostupni u vašem području ili je možda
+
+00:06:10.160 --> 00:06:13.680
+ slučaj da ste zaista imali svoju ip adresu
+
+00:06:13.680 --> 00:06:17.600
+ blokirao dobavljač usluga, to možda nije
+
+00:06:17.600 --> 00:06:20.960
+ zlonamjerna stvar kojoj je blokirana ip adresa
+
+00:06:20.960 --> 00:06:24.639
+ youtube i prije jer otpremim toliko videozapisa i
+
+00:06:24.639 --> 00:06:29.120
+ preuzmite natpise za one tako da
+
+00:06:29.120 --> 00:06:33.759
+ dovelo je do toga da premašim upotrebu u YouTube api
+
+00:06:33.759 --> 00:06:38.800
+ pa se moja ip adresa blokira, tako da to ne mora biti zlonamjerna stvar
+
+00:06:38.800 --> 00:06:44.319
+ ne želim ostavljati takav dojam, ali postoje vrlo opravdani razlozi
+
+00:06:44.319 --> 00:06:49.759
+ da treba zaobići te vrste stvari i štreberi idu na to
+
+00:06:49.759 --> 00:06:56.000
+ je proxy problem je što proxyji mogu biti vrlo skupi za upotrebu i
+
+00:06:56.000 --> 00:07:00.160
+ besplatni, iako lako dostupni, vrlo su često
+
+00:07:00.160 --> 00:07:04.800
+ ili nisu baš pouzdani, oni gore jedan dan, drugi dan dolje, a vi gubite
+
+00:07:04.800 --> 00:07:10.240
+ pristup vašim uslugama i svemu ostalom ili još gore
+
+00:07:10.240 --> 00:07:14.960
+ opasni su, ne znate šta ti punomoćnici prate
+
+00:07:14.960 --> 00:07:21.120
+ prijavljivanje i čak poput presretanja dok prolazite kroz slanje
+
+00:07:21.120 --> 00:07:26.720
+ sav vaš internet promet preko tog dobavljača usluga
+
+00:07:26.720 --> 00:07:35.199
+ tako da postoji jedna osoba kojoj zaista vjerujem da će proksirati sve moje podatke
+
+00:07:35.199 --> 00:07:41.039
+ i to sam ja, nisam ista osoba za koju biste rekli da joj vjerujete
+
+00:07:41.039 --> 00:07:45.199
+ osoba u koju imate povjerenja ste vi pa ću vam pokazati kako
+
+00:07:45.199 --> 00:07:53.280
+ mogao bih postaviti vlastiti besplatni proxy servis i možete ga kopirati i
+
+00:07:53.280 --> 00:07:56.319
+ kreirajte i svoj, to ćemo raditi u oblaku koji
+
+00:07:56.319 --> 00:07:58.800
+ će koristiti nezavisnog dobavljača usluga
+
+00:07:58.800 --> 00:08:02.400
+ a to je Amazon pa kažete o, pa Amazon o čemu se radi
+
+00:08:02.400 --> 00:08:05.919
+ znate je li im možemo dobro povjeriti svoje podatke ono što koristimo je njihovo
+
+00:08:05.919 --> 00:08:10.639
+ cloud usluge naziva se Amazon web usluge pa je tako
+
+00:08:10.639 --> 00:08:14.319
+ sve je to njihova oblačna infrastruktura koju imaju
+
+00:08:14.319 --> 00:08:18.560
+ kako bi kupci u osnovi unajmili pristup svojim serverima i njihovim
+
+00:08:18.560 --> 00:08:23.360
+ njihov prostor i virtualni serveri i sve ostalo što je cjelina
+
+00:08:23.360 --> 00:08:29.680
+ infrastruktura vam je dostupna, ali samo raspoređivanje jeste
+
+00:08:29.680 --> 00:08:34.560
+ tvoje, pokazat ću ti kako se to radi, skočit ćemo na aws
+
+00:08:34.560 --> 00:08:40.719
+ a posebno ec2 pa naravno i vi ako niste upoznati samo sa awsom
+
+00:08:40.719 --> 00:08:44.720
+ idite na aws.amazon.com prijavite se svojim Amazon računom
+
+00:08:44.720 --> 00:08:50.640
+ a zatim brzo potražite ec2 i to će vas u osnovi odvesti
+
+00:08:50.640 --> 00:08:53.680
+ njihova platforma za virtualizaciju o ec2 misli kao o
+
+00:08:53.680 --> 00:08:57.519
+ samo to, prvo što primijetim kad sam ovdje
+
+00:08:57.519 --> 00:09:03.200
+ u ec2 je moj region i ovo je važno jer je tu moj proxy
+
+00:09:03.200 --> 00:09:08.080
+ server će boraviti ako ga postavim tamo zašto je to tako
+
+00:09:08.080 --> 00:09:11.519
+ važno, dobro razmislite o ovome, recimo da koristim video streaming
+
+00:09:11.519 --> 00:09:15.680
+ usluga koja ograničava kanadski pristup njihovom video zapisu
+
+00:09:15.680 --> 00:09:19.440
+ streaming uslugu tako što ćete moj proxy server smjestiti na sjever
+
+00:09:19.440 --> 00:09:23.360
+ Kalifornija sada odjednom u osnovi jesu
+
+00:09:23.360 --> 00:09:26.320
+ putem ip adrese pomislit ću da se povezujem sa
+
+00:09:26.320 --> 00:09:29.360
+ Kalifornija, tako da sam u stanju da zaobiđem to
+
+00:09:29.360 --> 00:09:32.720
+ slično ćete možda htjeti promijeniti svoj region na osnovu
+
+00:09:32.720 --> 00:09:37.200
+ što pokušavate postići, možete čak i staviti afrički server
+
+00:09:37.200 --> 00:09:40.480
+ ili u aziji pogledajte da jedan možete staviti u hong kong
+
+00:09:40.480 --> 00:09:44.160
+ možete ga staviti u Kanadu, uh u Evropu koju imate
+
+00:09:44.160 --> 00:09:49.680
+ posvuda i tada imamo Srednji Istok i Južnu Ameriku
+
+00:09:49.680 --> 00:09:52.800
+ tako da je prilično velika lista mjesta gdje su
+
+00:09:52.800 --> 00:09:57.360
+ postavite ovu infrastrukturu za Amazon web usluge ec2 uslugu
+
+00:09:57.360 --> 00:10:01.920
+ pa odaberite onaj na kojem želite da bude vaš proxy server
+
+00:10:01.920 --> 00:10:05.600
+ idem postaviti svoj, samo ću ga ostaviti kao sjevernu Kaliforniju koja je
+
+00:10:05.600 --> 00:10:09.279
+ mi zapadni i tu je gde
+
+00:10:09.279 --> 00:10:13.760
+ moj proxy server će boraviti što će mi omogućiti povezivanje
+
+00:10:13.760 --> 00:10:17.680
+ kao da zapravo sjedim u Kaliforniji
+
+00:10:17.680 --> 00:10:20.880
+ u redu, pa ću kliknuti na instancu pokretanja
+
+00:10:20.880 --> 00:10:24.880
+ a zatim ponovo pokrenite instancu jer se padajuće pada i to mi daje
+
+00:10:24.880 --> 00:10:29.440
+ popis operativnih sistema koje mogu primeniti
+
+00:10:29.440 --> 00:10:33.760
+ na mom primjerku ec2, tako da ovdje koristim neke izraze koji vam možda nisu poznati
+
+00:10:33.760 --> 00:10:38.240
+ aws je Amazon web usluga koja je u osnovi Amazon
+
+00:10:38.240 --> 00:10:44.560
+ puni opseg usluga koje nude za korisnike oblaka ec2 je njihov
+
+00:10:44.560 --> 00:10:48.160
+ platforma za virtualizaciju za virtualne mašine
+
+00:10:48.160 --> 00:10:52.240
+ kad sam rekao instancu, govorim o virtualnoj mašini
+
+00:10:52.240 --> 00:10:56.160
+ tako da je to doslovno virtualna mašina, pa ću implementirati jednu od njih
+
+00:10:56.160 --> 00:10:59.360
+ operativni sistem do instance ec2 koja je
+
+00:10:59.360 --> 00:11:02.880
+ virtualna mašina, pa šta želim da bude
+
+00:11:02.880 --> 00:11:07.040
+ tako i ja sam rekao hej komentar ispod ako koristim izraz koji vam nije poznat
+
+00:11:07.040 --> 00:11:08.399
+ sa brzom pretragom koju imam
+
+00:11:08.399 --> 00:11:11.120
+ to sam već učinio jer postavljam tonu servera
+
+00:11:11.120 --> 00:11:15.279
+ u oblaku ću kliknuti na debian, samo upišite debian u
+
+00:11:15.279 --> 00:11:19.279
+ pretražite ovdje, pa ću ići na aws
+
+00:11:19.279 --> 00:11:24.640
+ Rezultati na tržištu postoje i oni koje sam kreirao i oni u
+
+00:11:24.640 --> 00:11:27.120
+ zajednicu za koju biste pomislili da je želim koristiti
+
+00:11:27.120 --> 00:11:30.800
+ one iz zajednice, ne, ne morate jer će vas one koštati novca
+
+00:11:30.800 --> 00:11:34.320
+ i kažete dobro, ali zajednica je besplatna, to je otvoreni izvor i da
+
+00:11:34.320 --> 00:11:38.959
+ međutim, to nije dio tržišta aws, pa ćete ga imati
+
+00:11:38.959 --> 00:11:42.320
+ platiti za upotrebu da bi imala tu virtualnu mašinu koja
+
+00:11:42.320 --> 00:11:46.160
+ instanci koja se izvodi u oblaku, pa ćemo umjesto toga
+
+00:11:46.160 --> 00:11:49.440
+ upotrijebite jedan od službenih sa aws tržišta, da vidimo kakve rezultate
+
+00:11:49.440 --> 00:11:53.360
+ dobijemo da su prilično dobro sortirani, debian dolazi prvi rezultat je
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster besplatni nivo kompatibilan ili besplatan
+
+00:11:57.839 --> 00:12:00.560
+ prihvatljiva verzija debiana koja ćemo biti
+
+00:12:00.560 --> 00:12:06.000
+ postavljanjem, pa odaberite onaj slobodni nivo koji ispunjava uvjete kako bismo mogli zanemariti
+
+00:12:06.000 --> 00:12:09.360
+ cijene jer ćemo koristiti besplatni hit pogotka i dalje
+
+00:12:09.360 --> 00:12:13.040
+ i tu odabiremo tako dobro ako želimo besplatni nivo koji moramo ići
+
+00:12:13.040 --> 00:12:15.839
+ s t2 mikro pa ću odabrati to ali što
+
+00:12:15.839 --> 00:12:22.399
+ daje li nam daje jedan cpu jedan gigabajt memorije um
+
+00:12:22.399 --> 00:12:25.600
+ i onda imamo skladište za rješavanje, ne treba nam puno prostora jer
+
+00:12:25.600 --> 00:12:29.920
+ mi samo postavljamo osnovni proxy i to je to, pa ću i krenuti
+
+00:12:29.920 --> 00:12:34.079
+ implementirajte baš kao što je tako i t2 micro onaj koji je besplatan
+
+00:12:34.079 --> 00:12:37.120
+ nivo koji ne ispunjava uvjete ne odaberite jedan od većih
+
+00:12:37.120 --> 00:12:38.720
+ one jer ćete to platiti
+
+00:12:38.720 --> 00:12:42.079
+ odmah ću pregledati i pokrenuti čemu ćemo se vratiti
+
+00:12:42.079 --> 00:12:45.839
+ radite postavke poput naših sigurnosnih grupa i slične stvari koje ću jednostavno napustiti
+
+00:12:45.839 --> 00:12:48.480
+ sve po defaultu za sada i idemo
+
+00:12:48.480 --> 00:12:52.000
+ lansirati da prije svega moram stvoriti novi ključ
+
+00:12:52.000 --> 00:12:55.360
+ par, tako da je ovo ssh ključ u kojem ću koristiti
+
+00:12:55.360 --> 00:12:59.680
+ kako bih ssh ušao na ovaj server pa ću ovo nazvati
+
+00:12:59.680 --> 00:13:04.160
+ jedan proxy server, a zatim preuzmite moj par ključeva
+
+00:13:04.160 --> 00:13:06.320
+ pobrinite se da to sačuvate negdje na sigurnom kamo idem
+
+00:13:06.320 --> 00:13:10.800
+ baci to na moj server i baci tamo
+
+00:13:10.800 --> 00:13:16.240
+ a sada instanca pokretanja znači napajanje na vašoj virtualnoj mašini pa ću i krenuti
+
+00:13:16.240 --> 00:13:20.000
+ gurni to i eto, tako da je u osnovi
+
+00:13:20.000 --> 00:13:23.120
+ stvaranje je stvaranje virtualne mašine
+
+00:13:23.120 --> 00:13:29.360
+ uh ec2 instanca u oblaku za nas u uh u sjevernoj Kaliforniji, pa eto
+
+00:13:29.360 --> 00:13:33.279
+ idi pa idem pogledati instance ovdje dolje
+
+00:13:33.279 --> 00:13:37.200
+ i sada vidim da sada imam jednu instancu koja pokreće t2 micro
+
+00:13:37.200 --> 00:13:41.199
+ i to je samo ime, pa ću kliknuti na edit i nazvat ću ovo
+
+00:13:41.199 --> 00:13:45.839
+ moj proxy server server probaj da idemo dobro, tako je
+
+00:13:45.839 --> 00:13:49.519
+ već pokrenut, pa ako kliknem na to, mogu vidjeti ip
+
+00:13:49.519 --> 00:13:53.360
+ adresa tog servera je, nazvao sam ga proxy serverom, ali trenutno
+
+00:13:53.360 --> 00:13:56.720
+ zapamtite da je to samo debian 10. na njemu nije instalirano ništa drugo
+
+00:13:56.720 --> 00:14:02.480
+ pa moram kopirati tu ip adresu i onda ću uskočiti u svoju
+
+00:14:02.480 --> 00:14:05.839
+ naredbeni redak jer sam preuzeo ključ za
+
+00:14:05.839 --> 00:14:17.839
+ moj server, osobno idem na ssh na svoj interni server
+
+00:14:18.399 --> 00:14:22.079
+ u redu, tako da sam sada tamo, pa sada naredba koju ću koristiti
+
+00:14:22.079 --> 00:14:28.079
+ je ssh, a zatim crticom i stavite ključ koji ću koristiti
+
+00:14:28.079 --> 00:14:31.040
+ tako da dolazna datoteka koju ću koristiti za ključ
+
+00:14:31.040 --> 00:14:35.760
+ a taj se zove proxy server.pem je ono što sam preuzeo
+
+00:14:35.760 --> 00:14:39.920
+ onda idem na admin jer je to zadana prijava za debian
+
+00:14:39.920 --> 00:14:43.600
+ ami ili Amazon machine image image admin na
+
+00:14:43.600 --> 00:14:46.639
+ a zatim ip adresu koju sam već kopirao u svoj međuspremnik i ako je
+
+00:14:46.639 --> 00:14:48.959
+ pritisnite enter, tražit će od mene da prihvatim taj ključ
+
+00:14:48.959 --> 00:14:54.000
+ i kažem da i odbijen sam
+
+00:14:54.000 --> 00:14:57.279
+ dozvole za tu datoteku na kraju su to imajte na umu
+
+00:14:57.279 --> 00:15:01.199
+ 766, tako da svi imaju pristup tim datotekama, pa je to zanimljivo
+
+00:15:01.199 --> 00:15:05.519
+ ssh me sam štiti od toga da neko može ugroziti moj ključ
+
+00:15:05.519 --> 00:15:13.120
+ pa chmod 700 proxy server pam, probajmo to i sada
+
+00:15:13.120 --> 00:15:16.000
+ pokušajte ponovo, pa ovo što sam učinio je oh i sada jesam
+
+00:15:16.000 --> 00:15:20.800
+ spojen je upravo radio 700 znači da sam vlasnik tog ključa
+
+00:15:20.800 --> 00:15:27.279
+ Dozvoljeno mi je učiniti bilo šta s tim čitanje pisanje izvršavanje nula nula znači
+
+00:15:27.279 --> 00:15:30.800
+ niko u grupi niko, ko nije deo grupe
+
+00:15:30.800 --> 00:15:35.600
+ uopće mu je dozvoljen pristup, tako da je u osnovi nijema datoteka koju oni ne mogu
+
+00:15:35.600 --> 00:15:39.519
+ čak i otvoren, ali mogu u redu pa sad kad jesam
+
+00:15:39.519 --> 00:15:44.240
+ povezan idem sudo tužiti jer je to ono što naredba treba
+
+00:15:44.240 --> 00:15:47.440
+ postani root pa sam sada ja root pa ažuriranje aplikacije
+
+00:15:47.440 --> 00:15:50.399
+ općenito ažuriranje aplikacije zgrabit će me
+
+00:15:50.399 --> 00:15:55.680
+ spremišta koja vidite ovo je stvarno debian računalo ako želite
+
+00:15:55.680 --> 00:16:01.680
+ u oblaku je tako lako već nadograđujem već koristim debian
+
+00:16:01.680 --> 00:16:05.120
+ računalo u oblaku, tako u toliko vremena i ja sam bla
+
+00:16:05.120 --> 00:16:11.360
+ bla bla u isto vrijeme um imamo debian poslužitelj zasnovan na oblaku
+
+00:16:11.360 --> 00:16:15.519
+ jeste li shvatili da je to tako lako i besplatno
+
+00:16:15.519 --> 00:16:18.720
+ u redu, tako da možemo i druge stvari s ovim, mogli bismo postaviti hrpu lampi
+
+00:16:18.720 --> 00:16:23.600
+ mogao bi ga koristiti za mysql mariadb sve što dođete do toga je
+
+00:16:23.600 --> 00:16:26.720
+ debian poslužitelju, pa ćemo ovo koristiti kao svoje
+
+00:16:26.720 --> 00:16:31.759
+ proxy, pa ću sada instalirati alat koji se zove
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy lijep i jednostavan za instalaciju apt install maleni proxy
+
+00:16:38.639 --> 00:16:45.600
+ vrlo jednostavno za konfiguriranje, recimo da, krećemo
+
+00:16:47.120 --> 00:16:51.199
+ i gotovo je sada kad smo instalirali maleni proxy koji samo trebamo urediti
+
+00:16:51.199 --> 00:16:59.440
+ datoteka konfiguracije tako da kosa crta itd. maleni maleni proxy promijeni direktorijum u to
+
+00:16:59.440 --> 00:17:05.760
+ a zatim koristim nano tinyproxy.com i to uređujem tako da kontrolišem w u nano-u
+
+00:17:05.760 --> 00:17:08.799
+ omogućava mi pretraživanje, ali prije nego što pretražim, primijetite da
+
+00:17:08.799 --> 00:17:12.720
+ port po defaultu koristi 888, to ćemo morati znati
+
+00:17:12.720 --> 00:17:15.679
+ informacije jer ćemo se zbog toga povezati
+
+00:17:15.679 --> 00:17:19.839
+ naš proxy brzo pretražuje dozvolu
+
+00:17:21.439 --> 00:17:25.679
+ alt w vam omogućava ponovno pretraživanje, vau, riječ dopustiti vjerovatno nije najbolja
+
+00:17:25.679 --> 00:17:30.640
+ upit za pretragu možda traži 127.0.0.1 i odmah ispod njega idem
+
+00:17:30.640 --> 00:17:34.720
+ dopusti i tada moram dodati svoju ip adresu kako bih se mogao povezati
+
+00:17:34.720 --> 00:17:37.440
+ ovaj proxy server jer je trenutno zatvoren
+
+00:17:37.440 --> 00:17:40.640
+ samo localhost može pristupiti tome što je važno napomenuti
+
+00:17:40.640 --> 00:17:44.720
+ da je ovo dok je ovo javni besplatni proxy server, ja sam jedini koji to radi
+
+00:17:44.720 --> 00:17:47.280
+ moći će mu pristupiti što će biti dozvoljeno
+
+00:17:47.280 --> 00:17:52.400
+ proxy moj sadržaj moja veza preko nje, tako da je privatna u tom pogledu
+
+00:17:52.400 --> 00:17:55.919
+ Moram znati svoju ip adresu pa ću preskočiti
+
+00:17:55.919 --> 00:18:03.360
+ trenutni ip.xyz i kopirajte tu ip adresu u moju međuspremnik, a zatim skočite
+
+00:18:03.360 --> 00:18:09.840
+ tamo nazad i zalijepite je u moju config kontrolu o unesite control x control o is
+
+00:18:09.840 --> 00:18:14.320
+ za ispis spremite datoteku sada systemctl
+
+00:18:14.320 --> 00:18:21.039
+ restartujte maleni proxy gotovo da je završio posljednju stvar koja nam treba
+
+00:18:21.039 --> 00:18:26.000
+ što trebamo učiniti, trebamo samo reći aws sigurnosnom sustavu ec2 da
+
+00:18:26.000 --> 00:18:29.840
+ postavićemo politiku koja kaže da hej samo ja smijem da se povežem s tim
+
+00:18:29.840 --> 00:18:32.799
+ server tako da se niko drugi ne može povezati s njim
+
+00:18:32.799 --> 00:18:34.880
+ ma šta god, to ćemo učiniti ispravno
+
+00:18:34.880 --> 00:18:38.799
+ sada ću se vratiti ovdje i vidite ovaj server gore na ekranu
+
+00:18:38.799 --> 00:18:43.840
+ dobro, ako kliknem na sigurnost, onda mogu kliknuti na sigurnosnu grupu koja je to
+
+00:18:43.840 --> 00:18:46.240
+ dodijeljeno automatski pa samo kliknite
+
+00:18:46.240 --> 00:18:50.480
+ i sada mi je prepušteno na ec2 sigurnosne grupe i ispravnu sigurnost
+
+00:18:50.480 --> 00:18:52.320
+ grupi primijetit ćete da je već postavljena
+
+00:18:52.320 --> 00:18:56.960
+ jedan za ssh, jer je po defaultu omogućen, mogu to postaviti
+
+00:18:56.960 --> 00:18:59.440
+ da dozvolim samo meni isto što je važno
+
+00:18:59.440 --> 00:19:02.720
+ učinimo to samo da bismo bili u dobroj sigurnosnoj praksi
+
+00:19:02.720 --> 00:19:06.160
+ ssh, promijenit ću ga iz custom000
+
+00:19:06.160 --> 00:19:10.080
+ zatvorit ću x to, a zatim ga promijeniti u moj ip
+
+00:19:10.080 --> 00:19:14.480
+ onda ću dodati novo pravilo, vidjeli ste kako sam stigao ovdje, znam da se selim
+
+00:19:14.480 --> 00:19:18.080
+ stvarno jako brzo, upravo sam kliknuo na uređivanje ulaznih pravila
+
+00:19:18.080 --> 00:19:22.960
+ ovdje u redu, pa dodajte novo pravilo, prilagođeni tcp je
+
+00:19:22.960 --> 00:19:27.120
+ zadani broj porta sjećate li se samo 888
+
+00:19:27.120 --> 00:19:31.919
+ dopusti moj ip mogu to nazvati ako želim proxy
+
+00:19:31.919 --> 00:19:37.919
+ a onda spremite moja pravila, idemo, tako da sada vidite ssh i
+
+00:19:37.919 --> 00:19:44.160
+ prilagođeni tcp onaj koji se zove proxy na portu 888.
+
+00:19:44.160 --> 00:19:49.600
+ pa kako to testirati u redu pa je naša trenutna ip adresa 99.233
+
+00:19:49.600 --> 00:19:52.640
+ i tako ću se povezati s proxyjem koji je ovo
+
+00:19:52.640 --> 00:19:57.360
+ nije vodič o tome kako koristiti proxy, ovo nije
+
+00:19:57.360 --> 00:20:01.120
+ tutorial o tome šta je nužno koristiti
+
+00:20:01.120 --> 00:20:04.720
+ ovo ovdje pretpostavljam da to možete sami proguglati
+
+00:20:04.720 --> 00:20:08.240
+ jer će biti različito na osnovu vašeg slučaja upotrebe bez obzira želite li
+
+00:20:08.240 --> 00:20:11.600
+ samo proxy svoj pregledač ili proxy određene aplikacije ili cijelu
+
+00:20:11.600 --> 00:20:15.440
+ mreža koja ovisi o vašem pojedincu
+
+00:20:15.440 --> 00:20:20.159
+ Use case ovo je striktno uputstvo o tome kako se ovo gradi
+
+00:20:20.159 --> 00:20:23.679
+ instanca ec2 zaista stvarno brzo, besplatno
+
+00:20:23.679 --> 00:20:28.400
+ koji ima proxy spreman za upotrebu u Kaliforniji ili negdje drugdje
+
+00:20:28.400 --> 00:20:32.960
+ i to je to, to je to sada u mom konkretnom slučaju
+
+00:20:32.960 --> 00:20:36.480
+ tako da ovaj trenutak nije nužno ono što želite sljedeće raditi
+
+00:20:36.480 --> 00:20:41.120
+ ovo je upravo način na koji ću testirati proxy koji sam slučajno na Windowsu 10 ovdje
+
+00:20:41.120 --> 00:20:47.280
+ pa ću jednostavno otkucati proxy i ponovo ući u postavke proxyja, ovo je
+
+00:20:47.280 --> 00:20:50.880
+ vjerovatno ne kako to želiš, samo želim testirati pa ću se okrenuti
+
+00:20:50.880 --> 00:20:53.679
+ na proxyju vidim da postoji stari proxy
+
+00:20:53.679 --> 00:20:56.880
+ postavke tamo, pa pripazite na to
+
+00:20:56.880 --> 00:21:00.240
+ ako postoje stare postavke proxyja, morate ih promijeniti, idite na
+
+00:21:00.240 --> 00:21:03.679
+ instance na ec2 kliknite na svoj ID instance
+
+00:21:03.679 --> 00:21:07.440
+ i zgrabite tu ip adresu, a zatim je zalijepite
+
+00:21:07.440 --> 00:21:11.840
+ kao adresa vašeg porta proxy servera 8888
+
+00:21:11.840 --> 00:21:17.120
+ i spremi, tako da sam odmah povezan s proxyjem
+
+00:21:17.120 --> 00:21:20.559
+ nije spojen na sada Windows govori da ću usmjeravati sav vaš promet
+
+00:21:20.559 --> 00:21:22.880
+ preko proxyja bih se tamo trebao ispraviti
+
+00:21:22.880 --> 00:21:29.520
+ pa ako se vratim na currentip.xyz 99.233 je moj trenutni ip, pogodit ću
+
+00:21:29.520 --> 00:21:38.159
+ f5 za osvježavanje i ako je sve prošlo u redu 3.101.108.211. dobro
+
+00:21:38.159 --> 00:21:44.720
+ šta je to moj server pa sam zapravo i sada
+
+00:21:44.720 --> 00:21:51.679
+ gdje sam, idemo saznati maxmind.com idemo potražiti ip adresu
+
+00:21:51.679 --> 00:21:59.120
+ da sam trenutno na mjestu gdje sam san jose kalifornija
+
+00:21:59.120 --> 00:22:02.559
+ tu me određuje max mine
+
+00:22:02.559 --> 00:22:05.600
+ tako da je to sve što imamo ljudi
+
+00:22:05.600 --> 00:22:10.640
+ kreirano konfigurirano razmjestilo besplatnu proxy uslugu koju smo
+
+00:22:10.640 --> 00:22:14.559
+ posjedovati i upravljati mi smo jedini koji to imamo i imamo to
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh ključ, pa ako se želite povezati i izvršite promjene, koristite ga
+
+00:22:19.200 --> 00:22:23.840
+ kao višenamjenski server to možete učiniti, ali samo pripazite na svoj
+
+00:22:23.840 --> 00:22:27.120
+ samo naplatite da niste prekoračili pragove i
+
+00:22:27.120 --> 00:22:29.440
+ takve stvari ako ga samo koristite kao proxy, to je
+
+00:22:29.440 --> 00:22:32.159
+ vrlo malo vjerojatno da ćete učiniti da je to samo nešto što cijevite
+
+00:22:32.159 --> 00:22:37.520
+ podatke, pa provjerite je li to aws.amazon.com da biste započeli
+
+00:22:37.520 --> 00:22:41.440
+ ako imate pitanja, pošaljite ih našoj zajednici
+
+00:22:41.440 --> 00:22:44.480
+ naš nesklad naći ćete vezu u kategoriji 5
+
+00:22:44.480 --> 00:22:48.720
+ tv u interaktivnom meniju u međuvremenu ako ste uživali u ovome ako ste ga koristili ili
+
+00:22:48.720 --> 00:22:53.039
+ je bilo korisno dajte mi veliki palac molim vas pretplatite se i vidimo se dobro
+
+00:22:53.039 --> 00:23:07.059
+ posle pauze [Muzika]
+
+00:23:15.520 --> 00:23:18.559
+ dobrodošli nazad ovo je tehnologija 5 kategorije televizije
+
+00:23:18.559 --> 00:23:22.240
+ i želim razgovarati o onome što radim kod kuće
+
+00:23:22.240 --> 00:23:26.640
+ tačnije ono što planiram raditi sjedeći okolo gledajući netflix
+
+00:23:26.640 --> 00:23:30.480
+ nemam vremena za sjedenje i gledanje netflixa, volio bih da jesam, ali
+
+00:23:30.480 --> 00:23:34.960
+ uh, ne, moja porodica uvijek svodi netflix i ja bih kao da idem na računar
+
+00:23:34.960 --> 00:23:38.720
+ što je sjajno jer me natjeralo da pokrenem Netflix na računaru
+
+00:23:38.720 --> 00:23:44.000
+ sad jeff, odvlačiš mi pažnju, uh ne, ali je
+
+00:23:44.000 --> 00:23:46.960
+ sjajno jer me natjeralo da počnem gledati neke stvari koje radimo
+
+00:23:46.960 --> 00:23:51.760
+ oko kuće i idem kako da ovo napravim svojim i tako dalje
+
+00:23:51.760 --> 00:23:55.120
+ znate da sam spomenuo na vrhu emisije koji ima naš sin
+
+00:23:55.120 --> 00:24:00.240
+ uputio se u lemljenje, i to mu je vrlo dobro pošlo za rukom i podsjetite nas koliko ima godina
+
+00:24:00.240 --> 00:24:05.200
+ samo sam napunio 12. upravo sam napunio 12. u redu, ali da, završio je
+
+00:24:05.200 --> 00:24:09.760
+ vrlo dobro s tim i uh, zasad je zalemio dva kalkulatora
+
+00:24:09.760 --> 00:24:13.919
+ hm i jednog od njih odveo je u školu koju je njegov učitelj potpuno raznio
+
+00:24:13.919 --> 00:24:16.000
+ daleko da, mislim da imam 12 godina, a on je
+
+00:24:16.000 --> 00:24:20.320
+ već je napravio kalkulator, da, da, napravio je kalkulator od kojeg smo dobili komplet za izradu "uradi sam"
+
+00:24:20.320 --> 00:24:23.360
+ Amazon i sagradio ga je i to možda dva sata
+
+00:24:23.360 --> 00:24:27.039
+ posla je bilo zaista fenomenalno nestvarno i njegov posao lemljenja je
+
+00:24:27.039 --> 00:24:30.880
+ stvarno stvarno čisto izvrsno kao što izgleda profesionalno
+
+00:24:30.880 --> 00:24:34.559
+ ali u svakom slučaju pitao je kako raditi druge stvari i dok lemimo on je
+
+00:24:34.559 --> 00:24:37.200
+ kao dobro šta je ovo i šta je ovo i kako to funkcionira i
+
+00:24:37.200 --> 00:24:40.480
+ idem želim da ga mogu naučiti tim stvarima
+
+00:24:40.480 --> 00:24:46.480
+ Želim da mu budem u mogućnosti objasniti kako pločica zapravo radi ne samo
+
+00:24:46.480 --> 00:24:49.360
+ lemljenje, ali razumijevanje komponenata i usmjeravanja i sve to
+
+00:24:49.360 --> 00:24:53.279
+ takve stvari i mislim da znam da možeš kupiti hm
+
+00:24:53.279 --> 00:25:00.400
+ obične ploče koje su samo redovi malih spojnih točaka
+
+00:25:00.400 --> 00:25:03.840
+ ali želim biti u mogućnosti da napravimo vlastiti odbor da, pa je on zamoljen
+
+00:25:03.840 --> 00:25:07.279
+ konkretno ako možemo pronaći komplet za kućne radinosti
+
+00:25:07.279 --> 00:25:10.320
+ beskorisna kutija za koju znate da je ona kutija u kojoj pritisnete dugme da i
+
+00:25:10.320 --> 00:25:15.840
+ mala stvar izađe i iskoči, da, probajte
+
+00:25:17.600 --> 00:25:22.640
+ šta si radio ozbiljno
+
+00:25:25.039 --> 00:25:30.400
+ oh moj Bože to je smiješno
+
+00:25:32.720 --> 00:25:39.520
+ bok, to je kao da imaš mače unutra, to je kao moja mačka
+
+00:25:40.240 --> 00:25:44.799
+ hej hej sad pa sam tražio nijednu nisam našao ali našao sam gomilu
+
+00:25:44.799 --> 00:25:48.080
+ ljudi poput oh možete napraviti jedan koristeći arduino možete napraviti jedan koristeći ovaj
+
+00:25:48.080 --> 00:25:55.520
+ i bio sam kao da ću napraviti beskorisnu kutiju iz koje želim da je napravim
+
+00:25:55.520 --> 00:25:58.559
+ osnova pa istražujem kako napraviti
+
+00:25:58.559 --> 00:26:03.679
+ moje vlastite PCB-ove kod kuće, u redu, zapravo nije tako teško
+
+00:26:03.679 --> 00:26:08.960
+ i oduševio sam se da mi treba samo laserski printer za postavljanje usmjeravanja
+
+00:26:08.960 --> 00:26:12.880
+ poput kuda idu staze pa ćete ga zapravo urezati
+
+00:26:12.880 --> 00:26:15.919
+ Zapravo ću to urezati kod kuće, čovječe
+
+00:26:15.919 --> 00:26:20.159
+ to je dalje od mene, Jeff, zaista uključuje hemikalije
+
+00:26:20.159 --> 00:26:23.679
+ jeste, ali zaista jednostavan postupak pa sam pronašao
+
+00:26:23.679 --> 00:26:26.880
+ Istraživao sam to gomilu i tako sam našao aa
+
+00:26:26.880 --> 00:26:29.919
+ vrlo jednostavan način da napravim vlastiti PCB
+
+00:26:29.919 --> 00:26:32.799
+ i to ćemo raditi, pa moj projekt za sljedeći vjerovatno a
+
+00:26:32.799 --> 00:26:35.600
+ nekoliko mjeseci jer moram naučiti kako se to radi
+
+00:26:35.600 --> 00:26:39.520
+ radi na dizajniranju pločice um koju sam već imao
+
+00:26:39.520 --> 00:26:43.120
+ nikada prije nisam radio pločicu, a zatim i moju sinovu
+
+00:26:43.120 --> 00:26:45.919
+ zalemimo zajedno i napravićemo svoje
+
+00:26:45.919 --> 00:26:50.960
+ beskorisna kutija za koju se nadam da ću i 3d ispisati kutiju, oh to je super
+
+00:26:50.960 --> 00:26:56.480
+ da, samo roniš točno u meni kad radim nešto što mi ne ide malo
+
+00:26:56.480 --> 00:27:00.320
+ i znate da je moj pristup malo drugačiji, jer jesam mnogo
+
+00:27:00.320 --> 00:27:03.520
+ kao da volim prvo nešto naučiti
+
+00:27:03.520 --> 00:27:09.200
+ i onda povećati moje ulaganje u taj proces i i kao da razgovarate
+
+00:27:09.200 --> 00:27:13.679
+ o skoku pravo na stvaranje PCB-a, tako da bih napravio sigurnosnu kopiju da znate
+
+00:27:13.679 --> 00:27:16.799
+ ako ovo mislite, hej, možda bih volio da mogu napraviti svoj vlastiti krug
+
+00:27:16.799 --> 00:27:20.399
+ i takve stvari su moja polazna osnova da
+
+00:27:20.399 --> 00:27:25.440
+ a ploča vam omogućava da rasporedite svoj krug koji ste dizajnirali ili
+
+00:27:25.440 --> 00:27:28.559
+ koje ste preuzeli poput nacrta kola
+
+00:27:28.559 --> 00:27:32.399
+ s Interneta, ali kako god imate, to vam omogućava da to postavite
+
+00:27:32.399 --> 00:27:36.799
+ izlazi na u osnovi lažnoj pločici
+
+00:27:36.799 --> 00:27:41.039
+ koji će funkcionirati poput PCB-a, ali tada možete sve to rastaviti i
+
+00:27:41.039 --> 00:27:46.399
+ odložite dijelove odmah, jeftino je, vrlo jeftino i jednostavno započinje
+
+00:27:46.399 --> 00:27:50.080
+ i onda je sljedeći korak za mene ono što se zove prototipska ploča, tako da dobijete
+
+00:27:50.080 --> 00:27:53.279
+ PCB ploče koje imaju sve rupe kako treba i
+
+00:27:53.279 --> 00:27:57.840
+ imaju lemljenje poput bodova, ali nema
+
+00:27:57.840 --> 00:28:02.080
+ međusobne veze između njih, tako da zapravo provodite žice ili vi
+
+00:28:02.080 --> 00:28:05.760
+ naprimjer malo lemljenja između dva različita zgloba
+
+00:28:05.760 --> 00:28:10.080
+ a vi to radite na taj način, pa je to moj drugi korak, pa onda bih pogledao
+
+00:28:10.080 --> 00:28:14.720
+ možda ići putem da se zapravo urežete
+
+00:28:14.720 --> 00:28:19.200
+ PCB, jer tada počinjete da se bavite hemijskim procesima
+
+00:28:19.200 --> 00:28:24.960
+ i ja to nisam istraživao, ali um je to mnogo zamršeniji postupak
+
+00:28:24.960 --> 00:28:27.919
+ Volim započeti malo jednostavnije sa svojim prvim PCB-om
+
+00:28:27.919 --> 00:28:32.080
+ sagrađena na ploči sa vrlo osnovnim pločama, ali dobro sam je dizajnirala
+
+00:28:32.080 --> 00:28:35.120
+ u redu i sve što je potrebno je pet volti
+
+00:28:35.120 --> 00:28:38.880
+ signal i kada ima pet volti
+
+00:28:38.880 --> 00:28:43.440
+ relej je zatvoren, tako da ima relej u redu, u redu kada nema pet volti
+
+00:28:43.440 --> 00:28:47.520
+ relej se otvara pa se tako odvaja
+
+00:28:47.520 --> 00:28:51.440
+ razlog zašto sam stvorio da je to namjenski napravljena aplikacija pa sam je i stvorio
+
+00:28:51.440 --> 00:28:56.000
+ na ploči za prehranu i dolazi do napajanja na pet volti
+
+00:28:56.000 --> 00:29:03.440
+ bilo koje pogađanje bilo koje pogađanje spc ne, to je još jedna kratica od tri slova usb
+
+00:29:03.440 --> 00:29:07.360
+ usb usb izvlačeći signal od pet volti sa mikro tiketa
+
+00:29:07.360 --> 00:29:12.399
+ router u redu i tako sam onda u mikro tiku programirao kod koji je rekao
+
+00:29:12.399 --> 00:29:17.039
+ to u osnovi da se zanijemi ako padne internet
+
+00:29:17.039 --> 00:29:20.559
+ ubiti napajanje na usb-u i tako onda
+
+00:29:20.559 --> 00:29:25.520
+ otvara relej i koja je kontrola releja osim napajanja mog modema
+
+00:29:25.520 --> 00:29:29.919
+ tako da će se moj modem, ako Internet padne, automatski uključiti
+
+00:29:29.919 --> 00:29:33.120
+ napajanje samo zbog mog releja
+
+00:29:33.120 --> 00:29:37.039
+ desno i pričekajte pet sekundi, a zatim se ponovo uključite, tako da je u stvari a
+
+00:29:37.039 --> 00:29:41.200
+ da li ste ga isključili i ponovo uključili jer
+
+00:29:41.200 --> 00:29:43.679
+ šta radite kad ste na Internetu i padnete, povucite utikač
+
+00:29:43.679 --> 00:29:46.799
+ od momenta pričekate pet sekundi i ponovo ga uključite i
+
+00:29:46.799 --> 00:29:50.240
+ znate osam puta od deset to će se vratiti i raditi
+
+00:29:50.240 --> 00:29:54.559
+ tačno, to je bio sklop koji sam izgradio pa sam ga jednom napravio na prototipskoj ploči
+
+00:29:54.559 --> 00:29:58.240
+ radio sam i samo sam ga zalemio i vrlo je jednostavno
+
+00:29:58.240 --> 00:30:00.799
+ krug je vrlo cool i super je radio, sviđa mi se
+
+00:30:00.799 --> 00:30:04.720
+ tako super, tako da alate šta ste dobili
+
+00:30:04.720 --> 00:30:08.080
+ daleko gdje si ti uh, kao što sam rekao da sam upravo radio
+
+00:30:08.080 --> 00:30:13.760
+ istraživanje protekle sedmice, oh, pa, um sam u fazi kupovine
+
+00:30:13.760 --> 00:30:17.679
+ uh, imamo sve stvari za lemljenje koje ću kupiti kupujući ploču
+
+00:30:17.679 --> 00:30:21.919
+ hemikalije već sam preuzeo um softver
+
+00:30:21.919 --> 00:30:25.600
+ za dizajniranje PCB-a wow um
+
+00:30:25.600 --> 00:30:29.360
+ i imam komplet komponenata koji je na putu sa svim
+
+00:30:29.360 --> 00:30:33.039
+ otpornici i kondenzatori, da, sve te stvari su uredne
+
+00:30:33.039 --> 00:30:36.559
+ također je da ovih dana mislim da zapravo ne možete hodati
+
+00:30:36.559 --> 00:30:39.039
+ u radio baraku kao što smo nekada mogli tamo
+
+00:30:39.039 --> 00:30:43.679
+ još uvijek postoje trgovine kao ovdje u barrie-u, imamo jednu koja se zove seaal
+
+00:30:43.679 --> 00:30:47.039
+ što je sjajna trgovina koja je nekako poput one stare barake u kojoj ste
+
+00:30:47.039 --> 00:30:50.399
+ uđite i kao da mi treba samo jedan kondenzator
+
+00:30:50.399 --> 00:30:52.880
+ i kao da idete, znate da je poput ladica
+
+00:30:52.880 --> 00:30:57.279
+ i ladice kondenzatora i otpornika i sve ostalo diode i što god
+
+00:30:57.279 --> 00:31:01.519
+ već samo da nabavim komplet za 20 dolara koji ima
+
+00:31:01.519 --> 00:31:04.960
+ sve vrste poput uobičajenih stvari i to je komplet koji dolazi sa
+
+00:31:04.960 --> 00:31:07.440
+ ploča za ploču, a isporučuje se sa pločom za održavanje i s tim
+
+00:31:07.440 --> 00:31:11.279
+ bila je jedna od stvari je da li želim poput da, dizajnirat ću to, ali dijelom
+
+00:31:11.279 --> 00:31:14.640
+ procesa planiranja je baš kao što ste rekli koristeći ploču da biste shvatili
+
+00:31:14.640 --> 00:31:17.519
+ kako će kola ići, a to će biti sjajno učenje
+
+00:31:17.519 --> 00:31:19.840
+ iskustvo za luke jer će biti kao da je ovo
+
+00:31:19.840 --> 00:31:23.200
+ kako ovo funkcionira i probajmo ovo, ajmo onda i onda
+
+00:31:23.200 --> 00:31:26.080
+ znate da ćemo tamo moći probati bez stvaranja vlastitih komada
+
+00:31:26.080 --> 00:31:30.880
+ to je stvarno uredno, spomenuli ste i arduino i arduino je vrsta
+
+00:31:30.880 --> 00:31:34.159
+ kao da je to kontroler, pa da i znate
+
+00:31:34.159 --> 00:31:37.200
+ Raspberry Pi ili drugi računar sa jednom pločom je istina
+
+00:31:37.200 --> 00:31:41.200
+ pravi računar sa operativnim sistemom i sve što je arduino poput vas
+
+00:31:41.200 --> 00:31:45.519
+ samo ga programirajte da radi vrlo specifičan zadatak, to je čvrsto stanje
+
+00:31:45.519 --> 00:31:48.960
+ i odgovorit će i mislim da je ovo
+
+00:31:48.960 --> 00:31:51.840
+ zašto bi to zaista dobro funkcioniralo za arduino
+
+00:31:51.840 --> 00:31:55.679
+ uh, za beskorisnu kutiju je zato što je takva
+
+00:31:55.679 --> 00:31:59.200
+ uključeno je ili isključeno, tačno je i ako je uključeno, učinite ovo
+
+00:31:59.200 --> 00:32:03.200
+ i onda će se isključiti, tako je vrlo vrlo osnovno programiranje
+
+00:32:03.200 --> 00:32:09.919
+ digitalno napiši četiri zareza hi hi tačka i zarez i onda smo
+
+00:32:09.919 --> 00:32:13.519
+ odgodit ću jednu sekundu što je hiljadu milisekundi
+
+00:32:13.519 --> 00:32:17.039
+ a onda ćemo kopirati tu liniju sada
+
+00:32:17.039 --> 00:32:20.960
+ šta mislite da visoko znači nasuprot niskog što ću ovde staviti
+
+00:32:20.960 --> 00:32:27.440
+ samo nagađanje uključeno ili isključeno da, pa tako sada izgleda moj sklop
+
+00:32:27.440 --> 00:32:32.399
+ i jednostavno ću ovo priključiti na USB napajanje, tako da ga neću priključiti
+
+00:32:32.399 --> 00:32:36.240
+ računar koji želim stvarno napajati ovaj uređaj i provjeriti da li ga
+
+00:32:36.240 --> 00:32:40.840
+ pokreće moj program i ako se pojavi, trebali bismo vidjeti ovo svjetlo
+
+00:32:40.840 --> 00:32:45.279
+ bljesnemo, uredni smo svake sekunde, pa je tako
+
+00:32:45.279 --> 00:32:49.600
+ zapravo stvorio krug prilično brzo uh i stvorio
+
+00:32:49.600 --> 00:32:53.919
+ program koji sada govori ovom svjetlu šta treba raditi, a mi smo mu rekli vrlo jako
+
+00:32:53.919 --> 00:32:57.760
+ jednostavno uključite i isključite ponovo, ali ako jeste
+
+00:32:57.760 --> 00:32:59.679
+ napraviti svoj vlastiti sklop što morate voljeti
+
+00:32:59.679 --> 00:33:04.159
+ Ako to morate sami programirati, morate shvatiti kako
+
+00:33:04.159 --> 00:33:07.919
+ vau, želim vidjeti ovaj projekat kao posao koji je u toku
+
+00:33:07.919 --> 00:33:11.840
+ u redu i onda pogledajte kako uh kako to dolazi zajedno, da zvuči dobro
+
+00:33:11.840 --> 00:33:16.559
+ spomenuli smo zajednicu ovdje u našoj emisiji i uh, naš server za razdor u
+
+00:33:16.559 --> 00:33:20.320
+ posebno sam prisluškivao našu zajednicu Jeff
+
+00:33:20.320 --> 00:33:23.760
+ uđite i podijelite moje ideje za sklopove i ja
+
+00:33:23.760 --> 00:33:27.519
+ takve stvari i ima ljudi koji su u našoj zajednici pravedni
+
+00:33:27.519 --> 00:33:32.559
+ poput ovog ovdje što se tiče njihovih mogućnosti i razumijevanja
+
+00:33:32.559 --> 00:33:36.320
+ vrste stvari, pa mi je bilo od velike pomoći kao i ja
+
+00:33:36.320 --> 00:33:38.880
+ naučio pa, čak i ja u potpunosti planiram koristiti
+
+00:33:38.880 --> 00:33:42.640
+ zajednica koristi me rade kroz bugove da, i ako ste jedan od tih ljudi u
+
+00:33:42.640 --> 00:33:46.159
+ zajednica trenutno samo digni ruku i reci da ja
+
+00:33:46.159 --> 00:33:48.480
+ razumjeti kako sve to funkcionira volio bih pomoći
+
+00:33:48.480 --> 00:33:52.640
+ i to je nešto što mislim da će zaista biti lijepo
+
+00:33:52.640 --> 00:33:54.320
+ značajka za emisiju, kao što i vi učite
+
+00:33:54.320 --> 00:33:57.200
+ da, sigurno nas obavještavajte o tom jeffu, definitivno bi me stvarno zanimalo
+
+00:33:57.200 --> 00:34:00.159
+ da znam kako stvari idu, da, objavit ću stvari iza
+
+00:34:00.159 --> 00:34:06.320
+ scene beskorisna kutija bilo koja druga imaš li ideja, ali uzbuđujem se
+
+00:34:06.320 --> 00:34:09.520
+ kad izmišljam kao kad nešto mislim
+
+00:34:09.520 --> 00:34:13.200
+ jesi li imao bilo koji od onih trenutaka u kojima sam takav kakav zaista želim
+
+00:34:13.200 --> 00:34:16.240
+ imao nešto što bi to mogao učiniti, ali to ne postoji
+
+00:34:16.240 --> 00:34:20.079
+ tu mi je 3D štampanje zanimljivo jer stvaram stvari koje
+
+00:34:20.079 --> 00:34:23.520
+ još ne postoje ii nisam stvarno razmišljao
+
+00:34:23.520 --> 00:34:27.520
+ što se tiče onoga što postoji, a što ne postoji
+
+00:34:27.520 --> 00:34:29.919
+ hm
+
+00:34:30.960 --> 00:34:34.000
+ ne, nisam stvarno mislio toliko daleko da imam neke ideje
+
+00:34:34.000 --> 00:34:37.040
+ da i podijelite one, sigurno postoji gomila stvari
+
+00:34:37.040 --> 00:34:43.679
+ da, kao što sam oduvijek želio raditi um, kućni zvučni sistem
+
+00:34:43.679 --> 00:34:48.879
+ koji povezuje sa umom da znate naš Amazon uređaj i slično
+
+00:34:48.879 --> 00:34:52.079
+ to, ali volio bih imati senzore gdje
+
+00:34:52.079 --> 00:34:56.320
+ kad pređem iz jedne sobe u drugu, pokreće se senzor pokreta i on će se ugasiti
+
+00:34:56.320 --> 00:34:59.760
+ isključite zvučnike za jednu sobu i dodajte ih tamo gdje sam upravo otišao
+
+00:34:59.760 --> 00:35:02.000
+ to je puno naprednije, ali to je vjerovatno
+
+00:35:02.000 --> 00:35:05.119
+ Jedino što mogu smisliti gdje sam, želim ovo raditi, ali vidim kako razgovarate
+
+00:35:05.119 --> 00:35:08.960
+ o tome i onda mislim da bi dobro mogli koristiti pasivni infracrveni senzor
+
+00:35:08.960 --> 00:35:14.640
+ da, koji se koristi u senzorima pokreta, mogli biste koristiti laserski senzor, ali
+
+00:35:14.640 --> 00:35:19.200
+ pir je vrlo jeftin, da, i to je samo mali senzor kakav je
+
+00:35:19.200 --> 00:35:22.880
+ u redu, bilo je pokreta, učini nešto, da bi mogao nešto stvoriti
+
+00:35:22.880 --> 00:35:27.520
+ opet s relejem koji kontrolira samo ima li zvučnik
+
+00:35:27.520 --> 00:35:31.599
+ završeni krug ili ne, da, pa ako je to samo a
+
+00:35:31.599 --> 00:35:36.160
+ gomila zvučnika povezanih preko pojačala za koje biste mogli postaviti releje
+
+00:35:36.160 --> 00:35:40.000
+ s pir senzorima kojima biste mogli upravljati pokretom
+
+00:35:40.000 --> 00:35:44.160
+ da dobro i ako nema pokreta 10 minuta, isključite zvučnik
+
+00:35:44.160 --> 00:35:45.760
+ automatski ili nešto slično, da
+
+00:35:45.760 --> 00:35:49.200
+ upravo tako poput ovakvih ideja kao da ima toliko stvari koje možete
+
+00:35:49.200 --> 00:35:51.359
+ učiniti kad počnete da razumijete i onda
+
+00:35:51.359 --> 00:35:55.839
+ tu je cijela druga strana gdje se nešto pokvari i možete to popraviti da
+
+00:35:55.839 --> 00:35:59.200
+ to je dobar osjećaj i to smo učinili, to smo već učinili
+
+00:35:59.200 --> 00:36:02.000
+ da lijepo, tako da znate da ste dobili onu malu bateriju
+
+00:36:02.000 --> 00:36:07.280
+ testeri uh vole provjeriti naboj, da, pa imali smo jedan od njih i to je
+
+00:36:07.280 --> 00:36:09.200
+ smiješno kad je moj sin gradio svoj kalkulator
+
+00:36:09.200 --> 00:36:12.560
+ nismo bili sigurni rade li baterije i nismo li dobili ništa
+
+00:36:12.560 --> 00:36:15.760
+ Čini mi se da je ovo neobično što obično ne dobivamo čak i ako je mrtvo
+
+00:36:15.760 --> 00:36:18.640
+ skoči u crveno, ali ništa nije bilo pa smo otvorili
+
+00:36:18.640 --> 00:36:22.960
+ ispada da se stvarna veza raskinula oh
+
+00:36:22.960 --> 00:36:27.359
+ sad nemam pojma da, a moj sin kao da to mogu popraviti i
+
+00:36:27.359 --> 00:36:30.240
+ popravio je, vratili smo ga zajedno i onda smo i to funkcionira i to je kao oh
+
+00:36:30.240 --> 00:36:34.000
+ da, to je prazna baterija, da, i s tim se mogu povezati, koristim a
+
+00:36:34.000 --> 00:36:38.160
+ jastuk za podkastove u redu i ovaj jer to znate
+
+00:36:38.160 --> 00:36:40.880
+ spojen žicom na moj telefon se izvlači
+
+00:36:40.880 --> 00:36:45.119
+ da, i odmah je izvučeno, pa to je tako jednostavna stvar, ali ja u potpunosti što
+
+00:36:45.119 --> 00:36:48.720
+ jesam li kupio još jedan ne ne ne uzeo sam
+
+00:36:48.720 --> 00:36:52.480
+ razdvojio sam ga i ponovno zalemio i ojačao
+
+00:36:52.480 --> 00:36:56.160
+ tako da se to više ne bi ponovilo, o lijepa je to učinila boljim nego što je on bio
+
+00:36:56.160 --> 00:37:00.240
+ okrenuo se prema stvarima poput e-otpada, da i on je kao da je netko
+
+00:37:00.240 --> 00:37:04.960
+ riješit će se TV-a ili računarskog monitora
+
+00:37:04.960 --> 00:37:08.240
+ još uvijek radi tata, samo je nešto iznutra puklo
+
+00:37:08.240 --> 00:37:12.400
+ on je kao da to mogu popraviti, ja sam kao da i ti razmišljaš o tome, pa su i njegovi točkovi
+
+00:37:12.400 --> 00:37:15.599
+ okreće se zadnji i on kao da bih mogao učiniti te stvari, a zatim prodati
+
+00:37:15.599 --> 00:37:20.160
+ njih 12 godina to je karijera
+
+00:37:20.160 --> 00:37:22.960
+ u velikom broju
+
+00:37:23.599 --> 00:37:27.359
+ uh, kao da je zaista vrijedno imati te mogućnosti
+
+00:37:27.359 --> 00:37:30.960
+ pa ću ga trenirati za sljedeći uh, pa ima 12. godina
+
+00:37:30.960 --> 00:37:38.560
+ osam šest godina odlazim u mirovinu, došao je monitor, ne znam
+
+00:37:38.560 --> 00:37:42.960
+ možda prekrasan monitor od 23 ili 24 inča širokog ekrana
+
+00:37:42.960 --> 00:37:47.359
+ ušao kao e-otpad i takav sam
+
+00:37:47.359 --> 00:37:50.720
+ pogledaću, pa smo ga pogledali i moja kćer i ja
+
+00:37:50.720 --> 00:37:57.280
+ i bio je jedan kondenzator koji je izgorio, pa sam otišao na mrežu i
+
+00:37:57.280 --> 00:37:59.920
+ kupio sam jedan od onih kondenzatora koji ih prodaju u pakiranjima
+
+00:37:59.920 --> 00:38:03.599
+ tri i bilo je dvanaest dolara pa za 12
+
+00:38:03.599 --> 00:38:07.760
+ dobili smo paket od tri, zamijenili smo jedan od tih kondenzatora i taj monitor je
+
+00:38:07.760 --> 00:38:13.520
+ sad sjedim na stolu moje kćeri, bože, to je nevjerovatno, predivno je
+
+00:38:13.520 --> 00:38:16.720
+ i on je potpuno u pravu, ali ne samo da možete popraviti stvari Jeff
+
+00:38:16.720 --> 00:38:19.920
+ recimo da nešto dođe u e-otpad ili ako znate da nešto pronađete
+
+00:38:19.920 --> 00:38:22.320
+ stranu puta koju je neko upravo odbacio jer ne može, ne može
+
+00:38:22.320 --> 00:38:26.480
+ znam kako to popraviti hm i možda ako je popravljanje i više
+
+00:38:26.480 --> 00:38:30.079
+ skupo i od kupovine novog u puno slučajeva
+
+00:38:30.079 --> 00:38:35.119
+ hm možete, čak i ako to ne možete popraviti, možete učiniti ono što se zove odlemljivanje
+
+00:38:35.119 --> 00:38:39.440
+ to je točno, tako da možete ukloniti sve dobre komponente iz toga i
+
+00:38:39.440 --> 00:38:43.119
+ stavite ih u organizator ladice da da biste tada mogli imati vlastiti radio
+
+00:38:43.119 --> 00:38:46.880
+ koliba kod kuće gdje imate ladice svih ovih različitih dijelova
+
+00:38:46.880 --> 00:38:50.079
+ a onda kad se nešto pokvari ne morate potrošiti 12
+
+00:38:50.079 --> 00:38:53.280
+ na mreži da ih kupim, volio bih da nisam znao da će ući u ovo
+
+00:38:53.280 --> 00:38:57.040
+ jer sam leti imao oko četiri računara
+
+00:38:57.040 --> 00:39:00.320
+ nekoliko projektora uzeli smo im sav e-otpad
+
+00:39:00.320 --> 00:39:03.760
+ pa to je kao da bih ih mogao demontirati, naravno da sam ih dobio
+
+00:39:03.760 --> 00:39:07.119
+ o, pa dijelovi koje živimo i tačno učimo
+
+00:39:07.119 --> 00:39:10.960
+ jako cool, pazi da nas o tome definitivno obavještavaš i hej, komentar u nastavku nam reci
+
+00:39:10.960 --> 00:39:13.359
+ o nekim podvizima koje ste imali
+
+00:39:13.359 --> 00:39:18.560
+ uh što se tiče ovih vrsta tema i ako jesu ako jesu
+
+00:39:18.560 --> 00:39:20.880
+ nešto što vas zanima i u šta nikada niste zalazili
+
+00:39:20.880 --> 00:39:24.720
+ hej, komentar ispod, voljeli bismo čuti vaše mišljenje i voljeli bismo vas imati
+
+00:39:24.720 --> 00:39:27.920
+ kao dio tog procesa dok jeff uči
+
+00:39:27.920 --> 00:39:32.079
+ kako i ja učim i sve više ulazim u te vrste
+
+00:39:32.079 --> 00:39:36.800
+ poput popravaka komponenata i pločica i sve ostalo
+
+00:39:36.800 --> 00:39:41.359
+ jako je zabavno, da, to je sjajan hobi i prekrasna karijera ako želite
+
+00:39:41.359 --> 00:39:45.200
+ stvarno želim to učiniti, tako da je istinito dobro za vašeg sina, volio bih čuti
+
+00:39:45.200 --> 00:39:49.680
+ kako uživa, pa kad je um, pretpostavljam
+
+00:39:49.680 --> 00:39:53.359
+ 13 plus, tako da ga sljedeće godine možete dovesti u studio
+
+00:39:53.359 --> 00:39:56.560
+ i može nam pokazati kako se snalazi
+
+00:39:56.560 --> 00:40:00.480
+ zvuči dobro, vrlo cool, ostvariti to, moramo krenuti u redakciju
+
+00:40:00.480 --> 00:40:02.960
+ becca je tamo sa našim glavnim vijestima za ovu sedmicu
+
+00:40:02.960 --> 00:40:08.800
+ evo je, evo šta se sprema u vijesti o kategoriji s 5 tačaka
+
+00:40:08.800 --> 00:40:12.000
+ hakeri koriste ozbiljnu grešku u sustavu Windows da bi napravili kompromis
+
+00:40:12.000 --> 00:40:17.280
+ unpatched serveri tri javascript paketa su uklonjena iz npm-a
+
+00:40:17.280 --> 00:40:22.560
+ portal za sadržavanje zlonamernog koda nokia je zadužena za izgradnju a
+
+00:40:22.560 --> 00:40:27.040
+ nova 4g ćelijska mreža na Mjesecu novih 80
+
+00:40:27.040 --> 00:40:32.240
+ Watt tehnologija bežičnog punjenja od xiaomi-a oduševljava nas i pamet
+
+00:40:32.240 --> 00:40:36.240
+ izdan je računalni modul Raspberry Pi 4
+
+00:40:36.240 --> 00:40:40.720
+ upoznati vas sa specifikacijama i kako ovo mijenja stvari za industrijsku industriju
+
+00:40:40.720 --> 00:40:44.000
+ držite se svih detalja i krivotvornog kutka ovog tjedna
+
+00:40:44.000 --> 00:40:48.640
+ dolaze, ovo je redakcija za TV sa 5 tačaka
+
+00:40:48.640 --> 00:40:52.079
+ pokrivajući najnovije tehnološke priče sedmice uz blagi linux
+
+00:40:52.079 --> 00:40:54.480
+ pristranost
+
+00:40:56.240 --> 00:41:00.319
+ iz redakcije sam becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ hakeri koriste ozbiljnu grešku u sustavu Windows da bi napravili kompromis
+
+00:41:03.920 --> 00:41:07.920
+ unpatched serveri jedna od najkritičnijih Windows ranjivosti
+
+00:41:07.920 --> 00:41:10.400
+ objelodanjena ove godine je pod aktivnim napadom
+
+00:41:10.400 --> 00:41:14.480
+ od strane hakera koji pokušavaju napraviti backdoor servere koji pohranjuju vjerodajnice za svakoga
+
+00:41:14.480 --> 00:41:18.480
+ korisnički i administrativni račun na mreži
+
+00:41:18.480 --> 00:41:23.119
+ istraživači su ranjivosti dali ime xerologon jer napadi rade
+
+00:41:23.119 --> 00:41:27.200
+ slanje niza nula u nizu poruka koje koriste mrežu
+
+00:41:27.200 --> 00:41:30.720
+ protokol za prijavu na koji se Windows serveri oslanjaju za
+
+00:41:30.720 --> 00:41:34.560
+ razne zadatke, uključujući omogućavanje prijavljivanja krajnjim korisnicima
+
+00:41:34.560 --> 00:41:38.560
+ na mrežnu xero prijavu kakva je bila ranjivost
+
+00:41:38.560 --> 00:41:41.280
+ sinhronizovani stekli su široku pažnju prošlog mjeseca
+
+00:41:41.280 --> 00:41:44.000
+ kada je firma koja ga je otkrila rekla da može dati napadače
+
+00:41:44.000 --> 00:41:48.079
+ trenutni pristup aktivnim direktorijima koje administratori koriste za stvaranje
+
+00:41:48.079 --> 00:41:52.480
+ brisanje i upravljanje aktivnim direktorijima i domenom mrežnih računa
+
+00:41:52.480 --> 00:41:55.599
+ kontroleri na kojima rade su među najtraženijim nagradama
+
+00:41:55.599 --> 00:42:00.480
+ u hakiranju, jer jednom oteti omogućavaju napadačima da izvrše kod i
+
+00:42:00.480 --> 00:42:03.839
+ municija na svim povezanim mašinama microsoft
+
+00:42:03.839 --> 00:42:09.280
+ popravio sigurnosnu manu u avgustu u petak Kevin Beaumont
+
+00:42:09.280 --> 00:42:12.480
+ radeći u svojstvu nezavisnog istraživača
+
+00:42:12.480 --> 00:42:16.480
+ rekao je u postu na blogu da je otkrio napade na džezvu koju koristi
+
+00:42:16.480 --> 00:42:19.680
+ u korak s napadima koje hakeri koriste u
+
+00:42:19.680 --> 00:42:24.160
+ divlji kada je njegov mamac server otpakovan napadači su mogli koristiti a
+
+00:42:24.160 --> 00:42:27.680
+ PowerShell skripta za uspješnu promjenu administratorske lozinke
+
+00:42:27.680 --> 00:42:31.920
+ i backdoor poslužitelj Beaumont rekao je da se napad pojavio
+
+00:42:31.920 --> 00:42:36.480
+ biti u potpunosti skriptiran sa svim naredbama dovršenim u roku od nekoliko sekundi
+
+00:42:36.480 --> 00:42:40.160
+ s tim da su napadači instalirali stražnja vrata koja omogućavaju daljinsko upravljanje
+
+00:42:40.160 --> 00:42:44.079
+ administrativni pristup uređajima unutar njegove lažne mreže
+
+00:42:44.079 --> 00:42:48.400
+ napadači su takođe omogućili udaljenu radnu površinu kao rezultat nastavka
+
+00:42:48.400 --> 00:42:53.200
+ imati daljinski pristup čak i ako administrator kasnije zakrpi server
+
+00:42:53.200 --> 00:42:57.520
+ ljudi bez autentične autentifikacije mogu koristiti exploit za dobivanje domene
+
+00:42:57.520 --> 00:43:00.800
+ administrativne vjerodajnice sve dok napadači imaju mogućnost
+
+00:43:00.800 --> 00:43:05.839
+ uspostavite tcp veze s ranjivim kontrolerom domene u
+
+00:43:05.839 --> 00:43:10.160
+ u nekim slučajevima napadači mogu koristiti zasebnu ranjivost kako bi se utvrdili iznutra
+
+00:43:10.160 --> 00:43:13.359
+ mrežu, a zatim iskoristite nultu prijavu za preuzimanje
+
+00:43:13.359 --> 00:43:17.599
+ kontroler domene mislim da je dobar primjer za
+
+00:43:17.599 --> 00:43:20.319
+ ove vrste skripti za ulazak u mreže
+
+00:43:20.319 --> 00:43:27.839
+ su zastarjeli računari na mreži, a također i prevare socijalnog inženjeringa
+
+00:43:27.839 --> 00:43:31.040
+ čujte puno o tome kao da vjerojatno primate ove e-poruke
+
+00:43:31.040 --> 00:43:34.800
+ koji vas pokušavaju prevariti da slijedite postupak
+
+00:43:34.800 --> 00:43:38.319
+ unos akreditiva ili nešto slično
+
+00:43:38.319 --> 00:43:44.720
+ rizik koji trčimo i tužan slučaj koji vidim
+
+00:43:44.720 --> 00:43:48.880
+ u tome je što ljudi ponekad dobro misle
+
+00:43:48.880 --> 00:43:52.319
+ ne moram ažurirati taj računar jer je niko u stražnjoj sobi
+
+00:43:52.319 --> 00:43:55.680
+ stvarno koristi, da ili oh, pa i ovaj nam treba
+
+00:43:55.680 --> 00:43:58.800
+ još uvijek imam windows xp jer imamo problema s jednim od naših
+
+00:43:58.800 --> 00:44:02.880
+ ako ne, još uvijek imamo puno prozora 7
+
+00:44:02.880 --> 00:44:06.960
+ sistema i to je tragedija ako imate
+
+00:44:06.960 --> 00:44:10.960
+ Windows 7 ili Windows XP sistem na vašoj mreži samo ga okrenite
+
+00:44:10.960 --> 00:44:13.839
+ makni se, da, stvar je u tome
+
+00:44:13.839 --> 00:44:20.480
+ je s tim sistemima, tako da Microsoft ima ono što nazivamo eol ili kraj života, uh
+
+00:44:20.480 --> 00:44:24.240
+ je završio životni vijek ovih operativnih sistema
+
+00:44:24.240 --> 00:44:27.839
+ pa su rekli da morate nadograditi na Windows 10. pa ne želim nadograditi
+
+00:44:27.839 --> 00:44:32.000
+ Windows 10-u sviđaju mi ​​se moji Windows 7. To razumijem i poštujem
+
+00:44:32.000 --> 00:44:37.119
+ međutim ovdje je problem hakera
+
+00:44:37.119 --> 00:44:41.599
+ sada su u mogućnosti da koriste ove operativne sisteme
+
+00:44:41.599 --> 00:44:45.839
+ i dok to rade dok pronalaze podvige
+
+00:44:45.839 --> 00:44:48.960
+ ima nekoliko stvari koje se dogode jedna
+
+00:44:48.960 --> 00:44:55.520
+ ili poklonite ili prodajte te podvige ili su samo pušteni
+
+00:44:55.520 --> 00:45:01.520
+ za javnost putem mračne mreže ili čak na githubu
+
+00:45:01.520 --> 00:45:07.839
+ kao što je istraživanje sigurnosti, pa ćemo sada i ovi hakeri, ako želite
+
+00:45:07.839 --> 00:45:11.599
+ zovite ih tako, ali realno u mnogim slučajevima oni su ono što mi zovemo
+
+00:45:11.599 --> 00:45:16.800
+ mace scenarija i ovo su um
+
+00:45:16.800 --> 00:45:21.680
+ čak ni poput hakera, ali ne moraju imati puno znanja jer
+
+00:45:21.680 --> 00:45:28.160
+ eksploatacija je javno tačno poznata i razumljiva pa ako
+
+00:45:28.160 --> 00:45:32.319
+ postoje eksploati koji su dostupni za operativni sistem
+
+00:45:32.319 --> 00:45:36.880
+ šta očekujemo da se dogodi očekujemo dobavljača operativnog sistema microsoft
+
+00:45:36.880 --> 00:45:41.200
+ ovaj slučaj da se popravi taj exploit da se popravi
+
+00:45:41.200 --> 00:45:44.560
+ a to je slučaj sa Windowsom 10. nažalost
+
+00:45:44.560 --> 00:45:49.040
+ oni koji su eol, to ponekad nije slučaj sa eol operativnim sistemom
+
+00:45:49.040 --> 00:45:54.079
+ čujemo, dobro, ne treba mi podrška, pa je Microsoft prekinuo podršku koja je
+
+00:45:54.079 --> 00:45:57.440
+ ono što smo čuli da su prekinuli podršku za Windows 7. završili su
+
+00:45:57.440 --> 00:46:01.920
+ podrška za windows xp oh ali nikad nisam morao nazvati podršku
+
+00:46:01.920 --> 00:46:04.640
+ mogu se nositi s tim da to nije ono što su oni
+
+00:46:04.640 --> 00:46:06.640
+ uopće razgovarati o onome što oni govore
+
+00:46:06.640 --> 00:46:12.640
+ oni neće popraviti zakrpe, jer eksploati nisu bitni
+
+00:46:12.640 --> 00:46:16.160
+ koliko su teške nije važno koliko su lako
+
+00:46:16.160 --> 00:46:20.079
+ iskoristite tako da imate Windows 7 mašinu na svojoj mreži dobro
+
+00:46:20.079 --> 00:46:26.319
+ dajete ulaz jednom od ovih hakera koji čak i nema
+
+00:46:26.319 --> 00:46:31.040
+ biti vrlo dobar u hakiranju jer su eksploati javno poznati
+
+00:46:31.040 --> 00:46:36.240
+ da, ponekad su dio alata, ponekad ih mogu besplatno preuzeti
+
+00:46:36.240 --> 00:46:41.440
+ alat i oni mogu reći da želim jednom provjeriti exploit windows 7
+
+00:46:41.440 --> 00:46:46.400
+ i tako uđu u Windows 7 kutiju ili su prevarili jednog od vaših zaposlenih
+
+00:46:46.400 --> 00:46:50.880
+ čak i ako je samo neko straga koji radi u skladištu
+
+00:46:50.880 --> 00:46:55.119
+ prevarili su nekoga da otvori datoteku koja im sada daje pristup
+
+00:46:55.119 --> 00:46:59.359
+ Windows 7 mašina Windows XP mašina ili mašina u zadnjoj sobi
+
+00:46:59.359 --> 00:47:03.359
+ nije važno i ovdje učimo taj microsoft
+
+00:47:03.359 --> 00:47:08.400
+ serveri sada imaju exploit koji dok god
+
+00:47:08.400 --> 00:47:13.599
+ zlonamerna strana može dobiti pristup bilo kom računaru na mreži
+
+00:47:13.599 --> 00:47:20.480
+ sada mogu dobiti administratorski pristup domeni cijeloj mreži
+
+00:47:20.480 --> 00:47:25.359
+ sad je zastrašujuće, vaši računari s Windows 10 više nisu
+
+00:47:25.359 --> 00:47:31.440
+ sigurno je to tačno jer ste im dali pristup vašoj mreži kao da su
+
+00:47:31.440 --> 00:47:39.200
+ oni su administrator domene, vidite, upravo su to loše vijesti
+
+00:47:39.200 --> 00:47:42.319
+ pa to su loše vijesti zašto je ransomware stvar
+
+00:47:42.319 --> 00:47:46.400
+ jer šta rade sada su dobro, dobio sam pristup ovoj mreži
+
+00:47:46.400 --> 00:47:49.599
+ prodavat ću na tamnoj mreži pristup ovoj mreži
+
+00:47:49.599 --> 00:47:56.640
+ ovo vidite kod um s gradskim naseljima i da s gradovima koji
+
+00:47:56.640 --> 00:48:00.000
+ da li je originalna maca koja je to radila ne zna šta
+
+00:48:00.000 --> 00:48:03.680
+ on samo oni samo žele da žele ući
+
+00:48:03.680 --> 00:48:07.119
+ instalirajte njihov softver i izađite, a zatim prodajte pristup
+
+00:48:07.119 --> 00:48:11.040
+ to je tačno jer je to brz novac, pa zašto to ljudi rade zbog novca
+
+00:48:11.040 --> 00:48:15.119
+ i tako to rade pa hm da moraš
+
+00:48:15.119 --> 00:48:18.319
+ nekako redovito ažurirajte stvari, tako da znate da je to samo brza misao
+
+00:48:18.319 --> 00:48:22.079
+ da razmislite, imate li zastarjele mašine na svojoj mreži koje morate
+
+00:48:22.079 --> 00:48:25.599
+ skinite ih i osposobite svoje osoblje za cyber
+
+00:48:25.599 --> 00:48:29.119
+ sigurnosne prakse razumiju šta su krađe identiteta
+
+00:48:29.119 --> 00:48:32.720
+ jer dobro znate, netko je kliknuo na vezu, a sada i na njihovu
+
+00:48:32.720 --> 00:48:34.880
+ računarski računari zaraženi, ali njihov računar jeste
+
+00:48:34.880 --> 00:48:41.839
+ na vašoj mreži, ali htio sam dobiti pola novca tog princa
+
+00:48:41.839 --> 00:48:45.359
+ to su sasvim drugi crvi, jeff
+
+00:48:45.359 --> 00:48:50.000
+ ali mislim na to kad je riječ o ovakvim stvarima da pogledam vaš sistem i kažem
+
+00:48:50.000 --> 00:48:52.559
+ oh, ne želim potrošiti sedam osam
+
+00:48:52.559 --> 00:48:55.599
+ sto dolara za novi računar, ne bih brinuo da li ću ga ažurirati
+
+00:48:55.599 --> 00:49:00.000
+ na kraju ćete potrošiti više dugoročno, uh ili kratkoročno
+
+00:49:00.000 --> 00:49:05.040
+ hm, dugoročno ne, ako vam sistem nije zakrpan već jednom
+
+00:49:05.040 --> 00:49:09.200
+ oni imaju pristup svemu što biste mogli biti dolje i van, ali i ja
+
+00:49:09.200 --> 00:49:11.760
+ mislite kad imaju pristup svemu i
+
+00:49:11.760 --> 00:49:13.760
+ mislim da je važno samo to shvatiti
+
+00:49:13.760 --> 00:49:20.400
+ ta jedna ulazna točka postaje pristup svemu pa potrošite nekoliko stotina
+
+00:49:20.400 --> 00:49:24.160
+ dolazite po novi računar, spasite se, ne znam šta je potrebno
+
+00:49:24.160 --> 00:49:27.599
+ Mislim, to je drugačije, za svaki slučaj je drugačije. Da, imao sam jednu osobu
+
+00:49:27.599 --> 00:49:30.800
+ danas koji je nazvao i rekao da imam jedan Windows 7 računar
+
+00:49:30.800 --> 00:49:33.920
+ ne želim ga nadograditi jer to jednostavno djeluje oh
+
+00:49:33.920 --> 00:49:38.400
+ pa evo objašnjenja i ovdje je becca podijelila s nama priču
+
+00:49:38.400 --> 00:49:43.200
+ to nam jednostavno govori da im je potreban samo pristup tom jednom računaru
+
+00:49:43.200 --> 00:49:47.599
+ i sada imaju pristup svim računarima vaših računara, a ne
+
+00:49:47.599 --> 00:49:52.240
+ na način poput sambe, a ne na način koji je prijateljski raspoložen i nadam se da oni
+
+00:49:52.240 --> 00:49:55.520
+ ne nalazite nikakav put na stražnja vrata na tim
+
+00:49:55.520 --> 00:49:59.200
+ računari ne imaju administratorske vjerodajnice
+
+00:49:59.200 --> 00:50:03.119
+ vašu mrežu kako bi mogli učiniti bilo što
+
+00:50:03.119 --> 00:50:07.280
+ tačno je sve što žele kad razmišljam o svojoj kući
+
+00:50:07.280 --> 00:50:10.880
+ mislim da sam završio, završio si mislim da ih imam sedam
+
+00:50:10.880 --> 00:50:15.520
+ uređaji koji ne uključuju telefone i tablete i slične stvari koji su povezani
+
+00:50:15.520 --> 00:50:18.960
+ na mrežu ne želim da imaju pristup tome
+
+00:50:18.960 --> 00:50:21.200
+ da, jednostavno ne mogu naglasiti dovoljno, jeff
+
+00:50:21.200 --> 00:50:26.160
+ mislim mislim u smislu poduzeća više nego kućni korisnik, ali
+
+00:50:26.160 --> 00:50:33.119
+ kad jednom uđu unutra, ne možete da ste gotovi jer sada ne možete
+
+00:50:33.119 --> 00:50:36.240
+ ugasio onu Windows mašinu i Windows 7 mašinu ne, već nisu
+
+00:50:36.240 --> 00:50:40.319
+ u sve, pa šta radite, zamijenite sve
+
+00:50:40.319 --> 00:50:44.240
+ obrišite svaki pojedini računar jer ne znate koji alati
+
+00:50:44.240 --> 00:50:50.079
+ oni su instalirali to skupo, da, zato ne padajte u to
+
+00:50:50.079 --> 00:50:53.280
+ u svakom slučaju to je loša eksploatacija, nadam se stvarno ozbiljni ljudi
+
+00:50:53.280 --> 00:50:56.720
+ to smo dovoljno naglasili da razumijete da je ovo loše
+
+00:50:56.720 --> 00:51:02.720
+ pa se pobrinite da vaši mrežni administratori rade i da ih razumiju
+
+00:51:02.720 --> 00:51:05.520
+ stvari i da ste zaštićeni i sigurni
+
+00:51:05.520 --> 00:51:09.920
+ protiv ove vrste prijetnji, dobro, vratit ćemo se u Becu
+
+00:51:09.920 --> 00:51:13.920
+ tri paketa javascripta uklonjena su s npm portala za
+
+00:51:13.920 --> 00:51:18.000
+ koji sadrže zlonamjeran kôd prema savjetima od mpm
+
+00:51:18.000 --> 00:51:21.440
+ sigurnosni tim otvaraju se tri biblioteke javascripta
+
+00:51:21.440 --> 00:51:24.480
+ ljuske na računarima programera koji su uvezli pakete
+
+00:51:24.480 --> 00:51:29.200
+ u svoje projekte školjke omogućavaju akterima prijetnje da se daljinski povežu sa
+
+00:51:29.200 --> 00:51:33.520
+ zaraženo računalo i izvršava zlonamjerne operacije npm
+
+00:51:33.520 --> 00:51:37.920
+ sigurnosni tim rekao je da granate ne ovise o određenom operativnom sistemu
+
+00:51:37.920 --> 00:51:41.760
+ i može se koristiti za ugrožavanje Windows linux freebsd
+
+00:51:41.760 --> 00:51:46.960
+ openbsd i ostali sistemi sva tri paketa su učitana u
+
+00:51:46.960 --> 00:51:50.880
+ npm portala u 2018. godini i svaki je imao stotine
+
+00:51:50.880 --> 00:51:55.839
+ preuzimanja od tada su nazivi paketa plutovs crtica
+
+00:51:55.839 --> 00:52:01.920
+ slack dash klijent nodetest199 i nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ tim za sigurnost npm rekao je da bilo koji računar koji ima to ima
+
+00:52:07.119 --> 00:52:10.800
+ paket instaliran ili pokrenut treba smatrati potpuno ugroženim
+
+00:52:10.800 --> 00:52:15.280
+ sve tajne i ključeve pohranjene na tom računaru treba odmah okretati
+
+00:52:15.280 --> 00:52:20.559
+ s drugog računara upozoravaju da paket treba ukloniti ali kao
+
+00:52:20.559 --> 00:52:24.160
+ potpunu kontrolu nad računarom možda je dao vanjski entitet
+
+00:52:24.160 --> 00:52:27.760
+ nema garancije da će uklanjanje paketa ukloniti sve zlonamjerne
+
+00:52:27.760 --> 00:52:32.079
+ softver koji je rezultat njegove instalacije mpm
+
+00:52:32.079 --> 00:52:36.079
+ osoblje osiguranja redovito skenira svoju kolekciju javascript biblioteka
+
+00:52:36.079 --> 00:52:41.839
+ smatra najvećim spremištem paketa za bilo koji programski jezik
+
+00:52:41.839 --> 00:52:46.079
+ dok u svojoj vikendici ne mogu dobiti ni dobro pokrivanje ćelija
+
+00:52:46.079 --> 00:52:52.240
+ nokia radi sa nasa-om na donošenju 4g na Mjesec ciljevi misije nasa-artemida
+
+00:52:52.240 --> 00:52:56.559
+ uspostaviti dugoročno ljudsko prisustvo na Mjesecu kao korak
+
+00:52:56.559 --> 00:53:01.040
+ kamen prema kolonizaciji Marsa i za pokretanje stvari nasa je
+
+00:53:01.040 --> 00:53:05.280
+ produžujući 370 miliona dolara za 14 kompanija
+
+00:53:05.280 --> 00:53:08.400
+ kako bi se osigurala tehnologija za program
+
+00:53:08.400 --> 00:53:12.400
+ od robotike do proizvodnje energije, pa čak i kriogeneze
+
+00:53:12.400 --> 00:53:16.240
+ ali ima smisla da će ovi timovi trebati biti u mogućnosti komunicirati s
+
+00:53:16.240 --> 00:53:20.079
+ majka planeta nova mreža će biti dizajnirana
+
+00:53:20.079 --> 00:53:23.760
+ posebno za lunarne uslove sposobne da izdrže ekstreme
+
+00:53:23.760 --> 00:53:28.559
+ temperaturnih pomaka i zračenja, tehnologija će takođe koristiti male ćelije
+
+00:53:28.559 --> 00:53:32.800
+ tehnologija koja je, kao što i samo ime govori, znatno manja od visoke
+
+00:53:32.800 --> 00:53:37.599
+ ćelijske tornjeve koje su navikli vidjeti ovdje na zemlji koriste i puno manje
+
+00:53:37.599 --> 00:53:41.200
+ plan je da nosi lunarni spuštač
+
+00:53:41.200 --> 00:53:44.480
+ 4g komunikacijski sistem na lunarnu površinu
+
+00:53:44.480 --> 00:53:50.400
+ 2022. godine nokijskim laboratorijama za zvona dodijeljeno je 14,1 milion dolara
+
+00:53:50.400 --> 00:53:55.119
+ sa svoje strane nova tehnologija bežičnog punjenja od 80 vati kompanije
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi nam puše pamet i malina pi
+
+00:53:58.880 --> 00:54:03.839
+ računski modul 4 je objavljen, obavijestit ćemo vas o specifikacijama i kako
+
+00:54:03.839 --> 00:54:08.480
+ ovo mijenja stvari za industrijske stvari, jer ove priče dolaze u plusu
+
+00:54:08.480 --> 00:54:25.839
+ robert je ovdje s kripto kutom, ne idite nikamo
+
+00:54:28.079 --> 00:54:32.079
+ dobrodošli natrag u svijet kriptopisa i dobrodošli natrag u kripto kutak
+
+00:54:32.079 --> 00:54:35.920
+ prošle sedmice smo razgovarali o bankama za nekoliko godina ih nećete prepoznati
+
+00:54:35.920 --> 00:54:39.839
+ već sam vam takođe spomenuo ne tako dugo
+
+00:54:39.839 --> 00:54:43.119
+ prije kineska digitalna valuta koja hoće
+
+00:54:43.119 --> 00:54:46.720
+ zamijeniti riemann pčelu i da su je već primijenili i
+
+00:54:46.720 --> 00:54:50.400
+ oni vode ove sedmice suđenja u Šenženu
+
+00:54:50.400 --> 00:54:54.400
+ došlo je do određenog razvoja i volio bih o tome razgovarati jer je tako
+
+00:54:54.400 --> 00:54:58.319
+ imat će direktan utjecaj na vaš život i moj život
+
+00:54:58.319 --> 00:55:03.760
+ pa zaronimo u ovo ovdje glava međunarodnog monetarnog fonda
+
+00:55:03.760 --> 00:55:08.400
+ te međunarodne organizacije je dama koja se zove cristalina jojeva i
+
+00:55:08.400 --> 00:55:11.359
+ održala je govor u vezi s novim bretonskim šumama
+
+00:55:11.359 --> 00:55:14.240
+ trenutak šta je bretton woods britanija bila
+
+00:55:14.240 --> 00:55:17.440
+ sistem je uspostavljen monetarni menadžment
+
+00:55:17.440 --> 00:55:21.760
+ pravila komercijalnih finansijskih odnosa između
+
+00:55:21.760 --> 00:55:25.920
+ zemlje poput nas kanada zapadna europa australija i japan
+
+00:55:25.920 --> 00:55:31.520
+ i tako je to sistem prvi primjer u potpunosti dogovorene narudžbe
+
+00:55:31.520 --> 00:55:36.640
+ namijenjen upravljanju monetarnim odnosima između neovisnih država pa je to i bilo
+
+00:55:36.640 --> 00:55:40.079
+ bretton woods i ona govori o promjeni
+
+00:55:40.079 --> 00:55:45.760
+ taj sistem u nešto modernije, sada dovoljno zanimljivo
+
+00:55:45.760 --> 00:55:51.200
+ u ponedjeljak je bio sastanak s nekoliko centralnih banaka koji su razgovarali o tzv
+
+00:55:51.200 --> 00:55:56.319
+ prekogranična plaćanja, ali ako razmislite, pogledajte koju vrstu
+
+00:55:56.319 --> 00:55:59.520
+ ljudi koji su bili prisutni, tako da imate glavu
+
+00:55:59.520 --> 00:56:03.040
+ saudijska centralna banka imate šefa sve centralne
+
+00:56:03.040 --> 00:56:06.480
+ banke glava imf-a glava nas
+
+00:56:06.480 --> 00:56:10.319
+ nedostaje centralna banka i šef malezijske centralne banke
+
+00:56:10.319 --> 00:56:13.200
+ Europi što je zanimljivo, ali postojat će razlog, pretpostavljam
+
+00:56:13.200 --> 00:56:16.880
+ pa su se sastali kako bi razgovarali o bruto plaćanju vode
+
+00:56:16.880 --> 00:56:21.920
+ sada ne vjerujem da je to prava priča prava priča
+
+00:56:21.920 --> 00:56:26.079
+ uh je također objavio gospodin zvan Raul Paul
+
+00:56:26.079 --> 00:56:31.119
+ s čime se u potpunosti slažem, tako da njegove misli upravo razmišljaju
+
+00:56:31.119 --> 00:56:35.520
+ a ono o čemu govori je upravo ovaj sastanak koji se dogodio u ponedjeljak
+
+00:56:35.520 --> 00:56:39.119
+ koji će zamijeniti stari bretton woods uh odnos
+
+00:56:39.119 --> 00:56:46.319
+ Između zemalja, pa šta će se dogoditi, izgleda da centralne banke
+
+00:56:46.319 --> 00:56:50.720
+ dogovarat će se i smisliti sistem
+
+00:56:50.720 --> 00:56:54.000
+ sistem centralne banke između svih njih, tako da neće biti nas
+
+00:56:54.000 --> 00:56:56.640
+ postojat će sistem centralne banke dolara
+
+00:56:56.640 --> 00:56:59.680
+ za svaku za sve organizacije, a zatim od
+
+00:56:59.680 --> 00:57:04.160
+ tamo će biti raznolik i što možete učiniti s tim
+
+00:57:04.160 --> 00:57:06.319
+ takav sistem je zanimljiv dio i
+
+00:57:06.319 --> 00:57:13.520
+ volim to što je tako da će promijeniti zaobilaženje bankarstva i financija
+
+00:57:13.520 --> 00:57:17.920
+ fiskalni sistem jer direktno komunicirate s ljudima
+
+00:57:17.920 --> 00:57:22.160
+ da, to nije kao u trenutku kada centralna banka u SAD-u ili
+
+00:57:22.160 --> 00:57:26.720
+ Kanada nema veze, donosi neku politiku i onda je
+
+00:57:26.720 --> 00:57:32.400
+ kaže da se cijedi niz lanac i vi kao pojedinac
+
+00:57:32.400 --> 00:57:35.440
+ korisnika kojeg vjerovatno vidite najmanje
+
+00:57:35.440 --> 00:57:37.680
+ novac i vjerovatno po najvišoj kamatnoj stopi
+
+00:57:37.680 --> 00:57:42.559
+ za koje možete misliti da će drugi ljudi imati puno veće koristi od digitalnih tehnologija
+
+00:57:42.559 --> 00:57:46.799
+ novac plus kriptovalute ili programabilni
+
+00:57:46.799 --> 00:57:50.400
+ novac možete učiniti mnogo više jer sada
+
+00:57:50.400 --> 00:57:55.839
+ centralna banka može direktno utjecati na ponašanje ljudi i kako oni to čine
+
+00:57:55.839 --> 00:58:00.400
+ učinite to da oni mogu dobro reći ako ste vlasnik restorana možete
+
+00:58:00.400 --> 00:58:03.839
+ uzmite novac direktno u svoj džep od nas, da, tako da ne više
+
+00:58:03.839 --> 00:58:08.079
+ uključene banke učinit ćemo to izravno moguće je da je riječ o novcu središnje banke
+
+00:58:08.079 --> 00:58:12.240
+ oni mogu mijenjati kamatne stope, pa u jednom slučaju ili u jednoj industriji
+
+00:58:12.240 --> 00:58:16.480
+ može imati visoku kamatnu stopu nego što će se još dogoditi
+
+00:58:16.480 --> 00:58:19.839
+ s porezima, da, što će se dogoditi s IRS-om
+
+00:58:19.839 --> 00:58:22.079
+ jer se s tim stvarima mogu nositi direktno
+
+00:58:22.079 --> 00:58:25.200
+ putem programabilnog novca trebat će vremena
+
+00:58:25.200 --> 00:58:28.799
+ doći do te krajnje mjere, ali dogodit će se
+
+00:58:28.799 --> 00:58:34.640
+ kao što vidite, izravna plaćanja će biti moguća
+
+00:58:34.799 --> 00:58:41.119
+ oni također ovdje govore o um da, ekonomiji ponašanja, uh
+
+00:58:41.119 --> 00:58:45.359
+ ne preko nekih ekonomista koji govore
+
+00:58:45.359 --> 00:58:49.200
+ vladi šta da radi, a šta ne, jer to nije uspjelo u
+
+00:58:49.200 --> 00:58:52.160
+ prošli svi govore pa šta idu
+
+00:58:52.160 --> 00:58:56.400
+ što treba učiniti je poput facebook vrste ideje ili tik tak ideje ili
+
+00:58:56.400 --> 00:58:59.520
+ youtube ideja gdje vas zanimaju ljudi
+
+00:58:59.520 --> 00:59:03.280
+ sprijateljiti se s vama ili gdje su ljudi zainteresirani
+
+00:59:03.280 --> 00:59:06.799
+ dobivanje više lajkova i tako promijenite svoje ponašanje u
+
+00:59:06.799 --> 00:59:10.079
+ s obzirom na dobivanje više lajkova i istu stvar
+
+00:59:10.079 --> 00:59:13.839
+ dogodit će se s novcem pa će to biti sve regulirano
+
+00:59:13.839 --> 00:59:17.680
+ preko centralne banke bez ikoga iz vanjskog svijeta
+
+00:59:17.680 --> 00:59:22.000
+ imati priliku da imaju značajan uticaj, pa kako to
+
+00:59:22.000 --> 00:59:26.079
+ na kraju će izgledati kao da niko naravno ne zna, ali da ovo
+
+00:59:26.079 --> 00:59:31.200
+ ljudi se okupljaju kako bi razgovarali o plaćanju više naloga je nešto što ja
+
+00:59:31.200 --> 00:59:36.079
+ smatrati uh vrlo zanimljivim i uh, to je naravno fantastična vijest
+
+00:59:36.079 --> 00:59:39.040
+ za uh bitcoin jer je bitcoin izvan toga
+
+00:59:39.040 --> 00:59:44.839
+ sustav ne postoji nitko tko može regulirati uh bitcoin to je
+
+00:59:44.839 --> 00:59:48.400
+ decentralizirano, nepromjenjivo je, znate sve
+
+00:59:48.400 --> 00:59:54.079
+ Značajke uh bitcoina, tako da je um bitcoin fantastična alternativa
+
+00:59:54.079 --> 00:59:57.839
+ sve ostale glavne kriptovalute definitivno su dobra alternativa
+
+00:59:57.839 --> 01:00:02.000
+ hajde da vidimo šta će vaga iznijeti, ali naći će se neke dobre alternative
+
+01:00:02.000 --> 01:00:06.480
+ do um do središnjeg uh centralno
+
+01:00:06.480 --> 01:00:11.359
+ vozio novac preko centralnih banaka, pa se nadam da vam je to bilo zanimljivo i
+
+01:00:11.359 --> 01:00:14.559
+ nadam se da vam se svidio i nadam se da ću vam nedostajati
+
+01:00:14.559 --> 01:00:18.799
+ i želim vam fantastičnu sedmicu pa vam puno hvala na gledanju
+
+01:00:18.799 --> 01:00:23.200
+ bye bye hvala vam robert samo podsjetnik da ne pružamo financijske savjete
+
+01:00:23.200 --> 01:00:26.400
+ već samo dijeljenje onoga što se događa na tržištu kriptovaluta
+
+01:00:26.400 --> 01:00:29.599
+ uvijek se sjetite da se tržišta kriptovaluta neprestano mijenjaju i
+
+01:00:29.599 --> 01:00:33.920
+ uvijek nestabilno, tako da biste trebali trošiti samo ono što si možete priuštiti da biste izgubili
+
+01:00:33.920 --> 01:00:38.720
+ sada natrag na becca u redakciji hvala ti robija
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi je najavio novu provjeru punjenja koja može potpuno napuniti prazan
+
+01:00:42.799 --> 01:00:48.480
+ pametni telefon za manje od 20 minuta, ali to brzo, bez ikakvih žica
+
+01:00:48.480 --> 01:00:52.480
+ punjenje je postalo ključna karakteristika mnogih pametnih telefona posljednjih godina i za
+
+01:00:52.480 --> 01:00:56.160
+ praktičnost, bežično punjenje može biti zaista sjajno
+
+01:00:56.160 --> 01:00:59.920
+ ali naravno bežično punjenje obično puni telefon između
+
+01:00:59.920 --> 01:01:05.359
+ 10 do 15 vati snage koju imaju neki telefoni poput oneplus 8 pro
+
+01:01:05.359 --> 01:01:10.160
+ bežično punjenje do 40 vati, ali nova tehnologija punjenja kompanije Xiaomi obećava
+
+01:01:10.160 --> 01:01:14.240
+ ogromnih 80 vati bežičnog soka
+
+01:01:14.240 --> 01:01:18.319
+ šta to u praksi znači dobro prema najavi
+
+01:01:18.319 --> 01:01:22.160
+ otkrivajući tehnologiju bežičnog punjenja od 80 vati
+
+01:01:22.160 --> 01:01:26.720
+ pametni telefon s nula posto napunjenosti baterije od četiri hiljade miliamper sati
+
+01:01:26.720 --> 01:01:30.160
+ naplatit će deset posto u samo jednoj minuti pedeset posto
+
+01:01:30.160 --> 01:01:34.160
+ za osam minuta i potpuno se napuni nakon 19 minuta
+
+01:01:34.160 --> 01:01:37.599
+ napokon punjač koji će mi napuniti telefon
+
+01:01:37.599 --> 01:01:43.359
+ od nule do sto posto, baš kao što je moja pauza za ručak, to je lijepo
+
+01:01:43.359 --> 01:01:48.079
+ to je promjena igre, možete li zamisliti da razmišljam o svojoj djeci i kako imamo
+
+01:01:48.079 --> 01:01:51.440
+ kao telefoni svugdje očito mislim da ovo treba uzeti kao
+
+01:01:51.440 --> 01:01:56.319
+ najnovija i najbolja tehnologija, ali hm je to uvijek slučaj, oh, zaboravio sam
+
+01:01:56.319 --> 01:01:59.520
+ stavi mi telefon na punjač ili ne traje dovoljno dugo
+
+01:01:59.520 --> 01:02:02.720
+ dan i sada kada znate sa pandemijom naravno moju
+
+01:02:02.720 --> 01:02:07.599
+ djeca se sada na silu školuju za djecu i svi su uključeni
+
+01:02:07.599 --> 01:02:11.839
+ svojim uređajima cijelo vrijeme, tako da imamo sastanke za zumiranje na telefonima
+
+01:02:11.839 --> 01:02:15.599
+ i i radi, prazni bateriju da
+
+01:02:15.599 --> 01:02:21.440
+ ali ono što mi se sviđa je to što je bežični, nije samo ožičeno ono što je nevjerovatno
+
+01:02:21.440 --> 01:02:24.480
+ bežična je mreža koja je ogromna poput ideje o tome
+
+01:02:24.480 --> 01:02:27.200
+ mogao bih uzeti telefon da se ne brinem o punjačima i
+
+01:02:27.200 --> 01:02:30.960
+ samo idi samo spusti to spusti 20 minuta kasnije, dobro je da krenem
+
+01:02:30.960 --> 01:02:34.000
+ da volim drugu stvar koju volim u vezi s tim
+
+01:02:34.000 --> 01:02:40.480
+ koncept je da hm razmišljam kao što ste i vi mislili da sam mogao
+
+01:02:40.480 --> 01:02:43.359
+ odložite ga na stol, što ako biste ga mogli odložiti na a
+
+01:02:43.359 --> 01:02:47.680
+ restoranski stol da, jer je puno restorana pošlo putem, a ja sam
+
+01:02:47.680 --> 01:02:50.799
+ koristeći restorane kao primjer, ali mnoga mjesta su prošla put
+
+01:02:50.799 --> 01:02:54.480
+ ugrađivanje USB-a da, tako da možete priključiti svoj USB
+
+01:02:54.480 --> 01:02:58.640
+ kabel za punjenje telefona, ali onda su odjednom ljudi to dobili
+
+01:02:58.640 --> 01:03:03.200
+ mudro na činjenicu da bi ti USB portovi mogli biti zlonamjerni
+
+01:03:03.200 --> 01:03:06.319
+ jer USB također nosi podatke ili je to tačno
+
+01:03:06.319 --> 01:03:10.000
+ ko zna je li to previše volti i da li vi znate da je možda
+
+01:03:10.000 --> 01:03:13.280
+ dobio kratku ili nešto slično i mogao bi mi spržiti telefon
+
+01:03:13.280 --> 01:03:17.039
+ pa se onda odjednom bojimo priključiti na USB port jer hej
+
+01:03:17.039 --> 01:03:20.400
+ to može biti nešto loše što je dobro
+
+01:03:20.400 --> 01:03:24.960
+ bežično punjenje ga odložite, puni se, a vi ga podignete i spremni ste
+
+01:03:24.960 --> 01:03:28.240
+ gotovo da, ali možete ga postaviti za slično
+
+01:03:28.240 --> 01:03:31.119
+ tri minute i dat vam je dovoljno punjenja da prođete kroz većinu
+
+01:03:31.119 --> 01:03:35.680
+ popodne što je nevjerovatno sjajno, mislim
+
+01:03:35.680 --> 01:03:40.559
+ baš kao što znači da sada gledate oko sebe i imate sve ove punionice
+
+01:03:40.559 --> 01:03:44.079
+ električna vozila bilo bi sjajno početi malo vidjeti
+
+01:03:44.079 --> 01:03:48.640
+ iskačuće prozore na javnim mjestima s ovakvim stvarima koje možete doslovno staviti
+
+01:03:48.640 --> 01:03:52.880
+ isključite telefon pet minuta i imajte dovoljno za telefonski poziv
+
+01:03:52.880 --> 01:03:56.319
+ potražite pomoć ili sve drugo i sve je to bežično, upravo sam slikao
+
+01:03:56.319 --> 01:04:01.760
+ poput dionice ceste i ugradite prijemnik u automobil i to
+
+01:04:01.760 --> 01:04:05.599
+ puni autonomni automobil dok vozi preko njega
+
+01:04:05.599 --> 01:04:08.230
+ stvar, uh, sada ulazimo u tehnologiju, ljudi
+
+01:04:08.230 --> 01:04:11.520
+ [Smijeh] Još uvijek mi se sviđa, uzbuđen sam zbog toga
+
+01:04:11.520 --> 01:04:15.839
+ luda stvar je samo zaključak da je ono što ja samo
+
+01:04:15.839 --> 01:04:18.319
+ rekao je vrlo znanstveno-fantastičan kao kad smo rasli
+
+01:04:18.319 --> 01:04:21.599
+ to je bilo kao da je budućnost to je potpuno izvedivo
+
+01:04:21.599 --> 01:04:25.920
+ moguće sada da, to je smiješno malina pi
+
+01:04:25.920 --> 01:04:31.200
+ fondacija je lansirala računski modul sa specifikacijama maline pi 4.
+
+01:04:31.200 --> 01:04:35.119
+ temelj malina pi lansirao je novi proizvod u ponedjeljak komp
+
+01:04:35.119 --> 01:04:39.440
+ računski modul 4. teško je povjerovati da je prošlo toliko vremena, ali
+
+01:04:39.440 --> 01:04:43.359
+ Raspberry Pi 4 objavljen je u junu 2019
+
+01:04:43.359 --> 01:04:48.079
+ računski modul 4 dovodi pi 4 u industrijski iot prostor
+
+01:04:48.079 --> 01:04:52.240
+ sadrži isti procesor upakovan u računski modul
+
+01:04:52.240 --> 01:04:57.200
+ samo molim da bude integriran u moćne iot uređaje
+
+01:04:57.200 --> 01:05:00.880
+ ako vam nisu poznati računski moduli, možete ih smatrati
+
+01:05:00.880 --> 01:05:05.280
+ računari sa jednom pločom bez svih portova i gpio pinova
+
+01:05:05.280 --> 01:05:09.440
+ omogućavaju računarskim komponentama da budu mozak maline pi
+
+01:05:09.440 --> 01:05:13.920
+ integrirani u robotske pametne uređaje koji stvaraju tehnološke klastere ili
+
+01:05:13.920 --> 01:05:16.400
+ za sve što možete smisliti potrebno je malo
+
+01:05:16.400 --> 01:05:22.240
+ u osnovi je linux računar s malim pogonom, budući da ga računarski modul 4 dijeli
+
+01:05:22.240 --> 01:05:26.400
+ specifikacije sa Raspberry Pi 4 programerima mogu napraviti sve svoje prototipove
+
+01:05:26.400 --> 01:05:30.319
+ na pi 4 sbc, ali onda naručite gomilu računarskog modula
+
+01:05:30.319 --> 01:05:33.520
+ 4s kako bi se integrirali u svoj komercijalni proizvod
+
+01:05:33.520 --> 01:05:38.559
+ baš kao i Raspberry Pi 4, računarski modul 4 ima 64-bitnu ruku
+
+01:05:38.559 --> 01:05:42.400
+ ovo je procesor sa video jezgrom vi grafika
+
+01:05:42.400 --> 01:05:45.520
+ predstavljat će veliku nadogradnju za prethodni proračun
+
+01:05:45.520 --> 01:05:49.839
+ kupci modula i sa izlazom 4k video izlaza na do
+
+01:05:49.839 --> 01:05:55.039
+ 60 sličica u sekundi plus mogućnost dekodiranja h.265 video zapisa
+
+01:05:55.039 --> 01:05:58.480
+ računski modul za računski modul 4
+
+01:05:58.480 --> 01:06:03.039
+ može biti izmjenjivač igara za uređaje s multimedijskim pogonima kao što su pametni televizori ili
+
+01:06:03.039 --> 01:06:06.960
+ set-top boxovi s kojima je dostupan računski modul 4
+
+01:06:06.960 --> 01:06:11.599
+ po vašem izboru od 1 2 4 ili 8 gigabajta ram memorije i 8 16
+
+01:06:11.599 --> 01:06:18.000
+ ili 32 gigabajta na brodu emmc flash memorija za wi-fi i bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ su takođe neobavezni, cijena se kreće od samo 25
+
+01:06:21.440 --> 01:06:27.599
+ do 90 usd sada zamislite da je jeff the Raspberry Pi računski modul 4
+
+01:06:27.599 --> 01:06:31.359
+ da, u nekom od vaših projekata SBC-a ili nešto slično pokreće ga poput
+
+01:06:31.359 --> 01:06:33.920
+ mozak ovo je prilično uzbudljivo čim
+
+01:06:33.920 --> 01:06:39.440
+ becca je rekla da dekodiranje h.265 znači da je to poput video zapisa
+
+01:06:39.440 --> 01:06:43.760
+ vrlo intenzivan procesor da, to je sjajno kao da puno govori
+
+01:06:43.760 --> 01:06:50.000
+ to je više snage od mog plex servera, da ko ko zna gdje je to
+
+01:06:50.000 --> 01:06:54.720
+ uzeću stvari koje mi se sviđaju ideja klaster računanja
+
+01:06:54.720 --> 01:06:58.480
+ i tu uzimate nekoliko računara
+
+01:06:58.480 --> 01:07:01.520
+ povezati ih zajedno umrežavanjem i
+
+01:07:01.520 --> 01:07:06.559
+ u osnovi instalirajte softver ispod ili nešto slično
+
+01:07:06.559 --> 01:07:09.359
+ grupiše ih kako bi im omogućili izvođenje
+
+01:07:09.359 --> 01:07:14.400
+ zadatke zajedno na takav način da u osnovi čini super računalo
+
+01:07:14.400 --> 01:07:19.200
+ odmah iz nekoliko računara pa razmislite o ovim malina pi
+
+01:07:19.200 --> 01:07:25.839
+ cl uh klaster ili module i i spojimo oko 10 takvih
+
+01:07:25.839 --> 01:07:30.400
+ u klasteru i voljeli biste ovaj računski modul
+
+01:07:30.400 --> 01:07:34.559
+ klaster koji bi bio fin računar s toliko snage
+
+01:07:34.559 --> 01:07:38.079
+ kada na svakom možete imati po osam svirki ovna
+
+01:07:38.079 --> 01:07:43.359
+ ukrcaj puta do 10. puno toga može puno učiniti
+
+01:07:43.359 --> 01:07:47.280
+ to mijenja stvari ljudi mijenja svijet to je sigurno
+
+01:07:47.280 --> 01:07:50.960
+ šta biste uradili sa svom tom snagom
+
+01:07:52.160 --> 01:07:55.280
+ i tišina čeka da odgovorite i
+
+01:07:55.280 --> 01:07:58.480
+ mislim da bih volio što bih s tim koliko ljudi
+
+01:07:58.480 --> 01:08:05.119
+ upravo sam krenuo u bitcoin, žao mi je, znate što je tužno moj
+
+01:08:05.119 --> 01:08:10.880
+ prva pomisao bila je mogu li automatizirati poput nekih
+
+01:08:10.880 --> 01:08:14.000
+ komunalije koje imam u kuhinji da mi naprave hranu
+
+01:08:14.000 --> 01:08:17.600
+ to je bila moja prva misao s računarskim modulom četiri
+
+01:08:17.600 --> 01:08:22.319
+ da, treba i više od toga, ali znam da bi to mogao biti mozak takve operacije
+
+01:08:22.319 --> 01:08:27.759
+ jasno da sam gladan [smeh]
+
+01:08:27.759 --> 01:08:31.359
+ komentare vaših misli ispod voljeli bismo čuti što biste učinili s
+
+01:08:31.359 --> 01:08:34.719
+ računski modul za zahvalnost za gledanje kategorije 5 tačaka
+
+01:08:34.719 --> 01:08:38.000
+ TV redakcija ne zaboravite da lajkate i pretplatite se na nju
+
+01:08:38.000 --> 01:08:40.640
+ sve vaše tehnološke vijesti uz malu pristranost linuxa
+
+01:08:40.640 --> 01:08:46.000
+ i ako cijenite ono što radimo, postanite pokrovitelji na patreon.com
+
+01:08:46.000 --> 01:08:53.839
+ kategorija 5. iz kategorije vijesti o televiziji sa 5 tačaka ja sam becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Muzika]
+
+01:09:12.400 --> 01:09:16.159
+ Pa to je prilično skoro cijelo vrijeme koje imamo ove sedmice, Jeff
+
+01:09:16.159 --> 01:09:21.600
+ prošli tjedan smo prošli kroz i i odradio sam cijeli proces s fiverrom
+
+01:09:21.600 --> 01:09:25.359
+ unajmio neke ljude da mogu napraviti naš remiks da, evo smiješno
+
+01:09:25.359 --> 01:09:29.040
+ priča u redu doslovno mi recite kada ćete se nasmijati
+
+01:09:29.040 --> 01:09:34.960
+ znam usnu već je nasmijao
+
+01:09:34.960 --> 01:09:38.400
+ vjeverica iz legla bio je jedan od naših momaka, da
+
+01:09:38.400 --> 01:09:42.560
+ jedan od naših remiksera i književne vjeverice
+
+01:09:42.560 --> 01:09:48.319
+ rekao sam da se stalno pitam da je ovo dok je gledao prilog
+
+01:09:48.319 --> 01:09:51.199
+ poslije sam se stalno pitao zašto si
+
+01:09:51.199 --> 01:09:58.159
+ pogrešno izgovarajući moje ime oh leglo vjeverica pa sam provjerio svoje
+
+01:09:58.159 --> 01:10:02.960
+ profila i otkrio da sam ga pogrešno napisao, ne
+
+01:10:02.960 --> 01:10:09.920
+ i nikad nisam primijetio i to je tako bilo tri godine, ozbiljno li misliš
+
+01:10:09.920 --> 01:10:17.600
+ on kaže da se zovem moje ime je književna vjeverica, bože moj, stao je
+
+01:10:17.600 --> 01:10:21.040
+ u našem je to smiješno pa vam kažem ovu priču
+
+01:10:21.040 --> 01:10:25.600
+ vidiš smiješno vidiš rekao sam ti da je smiješno bilo je
+
+01:10:26.000 --> 01:10:29.679
+ pričam vam ovu priču jer sam tada dobro rekao sebi
+
+01:10:29.679 --> 01:10:35.120
+ vidim riječi i ja i mislim da većinom izgovaram
+
+01:10:35.120 --> 01:10:40.320
+ njih prilično pedantno pa kad vidim književno iako to nije riječ ja
+
+01:10:40.320 --> 01:10:44.800
+ postavi to tako da dobro čita, pa sam mislio da bih vjerojatno bio
+
+01:10:44.800 --> 01:10:47.679
+ prilično dobar lektor pa sam rekao što ću, dovraga, dati
+
+01:10:47.679 --> 01:10:50.960
+ idi pa sam stavio oglas u kojem sam rekao da ću lektorirati
+
+01:10:50.960 --> 01:10:54.480
+ vaš tekst 500 riječi ili manje za pet dolara
+
+01:10:54.480 --> 01:10:57.520
+ u redu i bio sam kao da niko nikada neće pristati na to
+
+01:10:57.520 --> 01:11:01.840
+ svejedno je zabavno, mislio sam da ću probati i sljedeće jutro dobio sam e-mail
+
+01:11:01.840 --> 01:11:08.239
+ od osobe u Španiji koja je bila
+
+01:11:08.239 --> 01:11:13.120
+ broker u osiguranju je u redu i ima kupca koji govori engleski jezik
+
+01:11:13.120 --> 01:11:17.600
+ zavičajno i želio se uvjeriti da je rekao prave stvari kao odgovor
+
+01:11:17.600 --> 01:11:21.840
+ na e-mail pa je uklonio sve povjerljive stvari
+
+01:11:21.840 --> 01:11:26.400
+ da i poslao mi je svoj odgovor i rekao da li možete da pređete na ovo za mene i ja
+
+01:11:26.400 --> 01:11:28.400
+ jesam i prošao sam i neke ispravio
+
+01:11:28.400 --> 01:11:31.840
+ stvari i imao je neke riječi koje u prijevodu zapravo nisu imale smisla
+
+01:11:31.840 --> 01:11:35.760
+ i tako sam ga popravio i ispravio sam gramatiku i kontekst i pomalo
+
+01:11:35.760 --> 01:11:39.760
+ pravopisa i bio je kao da ga je volio pet dolara
+
+01:11:39.760 --> 01:11:42.000
+ stvarno mi je trebalo 10 minuta i bilo je jednostavno
+
+01:11:42.000 --> 01:11:44.480
+ nešto što sam prvo uradio sa šoljicom kafe ujutro
+
+01:11:44.480 --> 01:11:50.960
+ da, i dao mi je ocjenu 5 od 5 koja je sjajna kao i ona iz prve
+
+01:11:50.960 --> 01:11:54.480
+ flip perspektiva pa sam ovakav prilično uredan pa onda počnem pričati
+
+01:11:54.480 --> 01:11:58.400
+ svojoj djeci i volio bih da otkrijemo da li biste poput vas mogli nešto raditi
+
+01:11:58.400 --> 01:12:01.199
+ eto i znate da li je moja kćer umjetnica i
+
+01:12:01.199 --> 01:12:05.280
+ mogla bi crtati crteže kako bi ljudi počeli zarađivati ​​novac, to je nekako uredno
+
+01:12:05.280 --> 01:12:08.159
+ Ideja uredna platforma. Ne znam o čemu se radi
+
+01:12:08.159 --> 01:12:11.120
+ poput minimalne starosti i sličnih stvari, ali možemo pogledati te vrste
+
+01:12:11.120 --> 01:12:13.360
+ stvari, ali to je moja priča za ovu sedmicu
+
+01:12:13.360 --> 01:12:18.719
+ da hej i ja sam otišao na drugu stranu i prodao sam svoju uslugu koju sam pružio
+
+01:12:18.719 --> 01:12:23.120
+ književna vjeverica besplatni besplatnik, ali ovaj
+
+01:12:23.120 --> 01:12:30.000
+ sad sam dostupan sam na prodaju ii osjećam da bi to bilo zabavno
+
+01:12:30.000 --> 01:12:34.000
+ dat ću vam pet dolara i poslat ću vam dokument od 500 riječi
+
+01:12:34.000 --> 01:12:38.640
+ sav lorem ipsum i samo mi recite ima li smisla dati sve od sebe
+
+01:12:38.640 --> 01:12:44.000
+ jesi li ispravio da dobro, to je to, jeff
+
+01:12:44.000 --> 01:12:46.800
+ to je sve vrijeme u redu, ali bilo mi je zabavno
+
+01:12:46.800 --> 01:12:50.080
+ uživao sam biti ovdje s vama ove sedmice sljedeće sedmice, ulazimo u 3d
+
+01:12:50.080 --> 01:12:52.560
+ ispis, tako da ćemo montirati ender
+
+01:12:52.560 --> 01:12:55.440
+ 3v2, pa ćemo ga zapravo sastaviti
+
+01:12:55.440 --> 01:12:58.640
+ i onda ćemo razgovarati o tome da znate kakav je bio proces
+
+01:12:58.640 --> 01:13:03.760
+ kao za mene kao nooba u području 3D štampe
+
+01:13:03.760 --> 01:13:05.760
+ s kakvim sam se izazovima susretao
+
+01:13:05.760 --> 01:13:09.040
+ i možete li se s tim susresti kad započnete
+
+01:13:09.040 --> 01:13:13.760
+ u 3d ispisu plus pokazat ću vam ne samo svoj prvi otisak
+
+01:13:13.760 --> 01:13:19.440
+ ali moje prve dizajne u štampi ne želite propustiti sljedeće sedmice
+
+01:13:19.440 --> 01:13:22.960
+ ugodne sedmice svi ćemo vas vidjeti
+
+01:13:24.100 --> 01:13:30.029
+ [Muzika] [Aplauz]
+
+01:13:30.840 --> 01:13:45.060
+ ćao [muzika]
+
+01:13:48.290 --> 01:13:56.319
+ [Muzika]
+
+01:14:01.760 --> 01:14:03.840
+ ti
+

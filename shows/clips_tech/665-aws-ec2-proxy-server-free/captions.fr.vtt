@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: fr
+
+00:00:03.919 --> 00:00:07.120
+si vous souhaitez vous offrir un peu plus d'intimité pendant que vous surfez
+
+00:00:07.120 --> 00:00:10.639
+ Internet ou vous souhaitez accéder à des services qui
+
+00:00:10.639 --> 00:00:17.279
+ ne sont généralement pas disponibles dans votre région ou il s'agit peut-être d'avoir
+
+00:00:17.279 --> 00:00:22.000
+ votre adresse IP a été bloquée par un fournisseur de services
+
+00:00:22.000 --> 00:00:27.359
+ ce n'est peut-être pas une chose malveillante, mon adresse IP a déjà été bloquée par youtube
+
+00:00:27.359 --> 00:00:31.039
+ parce que je télécharge tellement de vidéos et télécharge
+
+00:00:31.039 --> 00:00:37.280
+ les sous-titres codés pour ceux-ci, ce qui m'a conduit à dépasser mon utilisation dans
+
+00:00:37.280 --> 00:00:42.239
+ l'api youtube alors mon adresse IP est bloquée alors
+
+00:00:42.239 --> 00:00:46.000
+ ça ne doit pas être une chose malveillante, je ne veux pas donner cette impression
+
+00:00:46.000 --> 00:00:52.399
+ mais il existe des raisons très légitimes de contourner ces types de
+
+00:00:52.399 --> 00:00:58.640
+ les choses et les nerds sont un proxy le problème est les proxies
+
+00:00:58.640 --> 00:01:02.160
+ peuvent être très coûteux à utiliser et les gratuits
+
+00:01:02.160 --> 00:01:08.240
+ alors que facilement disponibles sont très souvent pas très fiables, ils sont en haut
+
+00:01:08.240 --> 00:01:11.360
+ le jour où ils tombent le lendemain et vous perdez l'accès à vos services
+
+00:01:11.360 --> 00:01:18.320
+ et tout le reste ou pire encore, ils sont dangereux tu ne sais pas quoi
+
+00:01:18.320 --> 00:01:24.479
+ ces mandataires suivent la journalisation et aiment même intercepter
+
+00:01:24.479 --> 00:01:28.640
+ au fur et à mesure que vous passez, vous envoyez tout votre trafic Internet
+
+00:01:28.640 --> 00:01:36.159
+ via ce fournisseur de services, il y a donc une personne en qui j'ai vraiment confiance
+
+00:01:36.159 --> 00:01:44.079
+ pour proxy toutes mes données et c'est moi je ne suis pas la même personne
+
+00:01:44.079 --> 00:01:49.360
+ que vous diriez que vous faites confiance à la personne en qui vous avez confiance, donc je suis
+
+00:01:49.360 --> 00:01:54.399
+ va vous montrer comment je pourrais mettre en place un service proxy gratuit
+
+00:01:54.399 --> 00:02:00.000
+ de moi-même et vous pouvez reproduire cela et créer le vôtre aussi
+
+00:02:00.000 --> 00:02:03.200
+ nous allons le faire dans le cloud, nous allons utiliser un service tiers
+
+00:02:03.200 --> 00:02:06.399
+ fournisseur et c'est amazon alors vous dites oh bien
+
+00:02:06.399 --> 00:02:09.440
+ amazon et vous savez, sommes-nous en mesure de faire confiance à nos données
+
+00:02:09.440 --> 00:02:13.440
+ pour eux, ce que nous utilisons, ce sont leurs services cloud, ça s'appelle amazon
+
+00:02:13.440 --> 00:02:17.520
+ services Web, c'est donc leur cloud
+
+00:02:17.520 --> 00:02:22.000
+ infrastructure dont ils disposent pour que les clients louent essentiellement
+
+00:02:22.000 --> 00:02:25.120
+ accès à leurs serveurs et à leur espace et
+
+00:02:25.120 --> 00:02:28.640
+ et les serveurs virtuels et tout le reste
+
+00:02:28.640 --> 00:02:34.959
+ l'infrastructure est disponible pour vous mais le déploiement lui-même est
+
+00:02:34.959 --> 00:02:39.840
+ le vôtre, je vais vous montrer comment cela est fait, nous allons passer à aws
+
+00:02:39.840 --> 00:02:45.920
+ et en particulier ec2 donc bien sûr vous si vous n'êtes pas familier avec aws juste
+
+00:02:45.920 --> 00:02:50.160
+ allez sur aws.amazon.com connectez-vous avec votre compte Amazon et
+
+00:02:50.160 --> 00:02:55.519
+ puis faites une recherche rapide pour ec2 et cela vous mènera à
+
+00:02:55.519 --> 00:02:58.959
+ fondamentalement, leur plate-forme de virtualisation considère ec2 comme
+
+00:02:58.959 --> 00:03:02.800
+ juste ça, donc la première chose que je note quand je suis ici
+
+00:03:02.800 --> 00:03:08.480
+ dans ec2 est ma région et c'est important car c'est là que mon proxy
+
+00:03:08.480 --> 00:03:13.360
+ le serveur va résider si je le place ici pourquoi
+
+00:03:13.360 --> 00:03:16.720
+ important, pensez-y bien, disons que j'utilise un streaming vidéo
+
+00:03:16.720 --> 00:03:20.959
+ service qui restreint l'accès des Canadiens à leur vidéo
+
+00:03:20.959 --> 00:03:24.720
+ service de streaming donc en plaçant mon serveur proxy dans le nord
+
+00:03:24.720 --> 00:03:28.640
+ californie maintenant tout d'un coup ils sont fondamentalement
+
+00:03:28.640 --> 00:03:31.599
+ par adresse IP qui va penser que je me connecte depuis
+
+00:03:31.599 --> 00:03:34.640
+ Californie, donc je suis capable de contourner ça
+
+00:03:34.640 --> 00:03:37.920
+ de même, vous souhaiterez peut-être modifier votre région en fonction de
+
+00:03:37.920 --> 00:03:42.480
+ ce que vous essayez de réaliser, vous pouvez même mettre un serveur en afrique
+
+00:03:42.480 --> 00:03:45.760
+ ou asie regarde que tu peux en mettre un à hong kong
+
+00:03:45.760 --> 00:03:49.440
+ vous pouvez en mettre un au canada un euh en europe vous avez
+
+00:03:49.440 --> 00:03:55.040
+ partout et puis nous avons le Moyen-Orient et l'Amérique du Sud en ce moment
+
+00:03:55.040 --> 00:03:58.080
+ c'est donc une assez grande liste des endroits où ils
+
+00:03:58.080 --> 00:04:00.080
+ faire configurer cette infrastructure pour amazon
+
+00:04:00.080 --> 00:04:03.920
+ services Web le service ec2, alors choisissez celui qui
+
+00:04:03.920 --> 00:04:07.200
+ est l'endroit où vous voulez que votre serveur proxy soit
+
+00:04:07.200 --> 00:04:10.879
+ Je vais définir le mien, je vais juste le laisser comme la Californie du Nord qui est
+
+00:04:10.879 --> 00:04:14.560
+ nous ouest un et c'est là
+
+00:04:14.560 --> 00:04:19.040
+ mon serveur proxy va résider, ce qui me permettra de me connecter
+
+00:04:19.040 --> 00:04:22.880
+ comme si j'étais réellement assis en Californie
+
+00:04:22.880 --> 00:04:26.160
+ d'accord, je vais donc cliquer sur l'instance de lancement
+
+00:04:26.160 --> 00:04:30.160
+ puis relancez l'instance car elle fait une liste déroulante et cela me donne
+
+00:04:30.160 --> 00:04:34.720
+ une liste de systèmes d'exploitation um que je peux déployer
+
+00:04:34.720 --> 00:04:39.040
+ sur mon instance ec2, j'utilise donc ici des termes que vous ne connaissez peut-être pas
+
+00:04:39.040 --> 00:04:42.080
+ aws est un service Web d'Amazon qui est essentiellement
+
+00:04:42.080 --> 00:04:46.560
+ la gamme complète de services d'Amazon qu'ils offrent
+
+00:04:46.560 --> 00:04:52.000
+ pour les utilisateurs du cloud ec2 est leur plateforme de virtualisation pour le virtuel
+
+00:04:52.000 --> 00:04:55.840
+ machines quand j'ai dit instance je parle d'un
+
+00:04:55.840 --> 00:05:00.160
+ machine virtuelle, donc c'est littéralement une machine virtuelle
+
+00:05:00.160 --> 00:05:03.919
+ donc je vais déployer l'un de ces systèmes d'exploitation sur une instance d'ec2
+
+00:05:03.919 --> 00:05:06.560
+ qui est une machine virtuelle alors qu'est-ce que je veux
+
+00:05:06.560 --> 00:05:10.960
+ pour être ainsi et je disais bon commentaire ci-dessous si
+
+00:05:10.960 --> 00:05:12.639
+ j'utilise un terme que tu ne connais pas
+
+00:05:12.639 --> 00:05:15.600
+ je vais faire une recherche rapide, je l'ai déjà fait auparavant parce que je déploie une tonne de
+
+00:05:15.600 --> 00:05:18.960
+ serveurs dans le cloud, je vais cliquer sur debian
+
+00:05:18.960 --> 00:05:21.360
+ euh, tapez simplement debian dans la recherche ici
+
+00:05:21.360 --> 00:05:27.600
+ alors je vais aller voir les résultats du marché aws il y a aussi
+
+00:05:27.600 --> 00:05:30.960
+ ceux que j'ai créés et ceux de la communauté
+
+00:05:30.960 --> 00:05:34.000
+ tu penserais bien je veux utiliser ceux de la communauté non tu ne le fais pas parce que
+
+00:05:34.000 --> 00:05:37.919
+ ceux-là vont vous coûter de l'argent et vous dites bien mais la communauté est gratuite
+
+00:05:37.919 --> 00:05:42.800
+ c'est open source et oui mais ça ne fait pas partie du aws
+
+00:05:42.800 --> 00:05:45.919
+ marché et vous devrez donc payer pour l'utilisation
+
+00:05:45.919 --> 00:05:49.600
+ pour que cette machine virtuelle soit exécutée par cette instance
+
+00:05:49.600 --> 00:05:52.639
+ dans le cloud, nous allons donc utiliser l'un des logiciels officiels du
+
+00:05:52.639 --> 00:05:56.800
+ aws marketplace voyons quels résultats nous obtenons, ils sont assez bien triés
+
+00:05:56.800 --> 00:06:00.400
+ debian arrive le premier résultat est debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ un niveau gratuit compatible ou éligible au niveau gratuit
+
+00:06:04.479 --> 00:06:09.039
+ version de Debian que nous allons déployer, alors sélectionnez-la
+
+00:06:09.039 --> 00:06:12.720
+ éligible au niveau gratuit afin que nous puissions ignorer la tarification, car nous allons utiliser un
+
+00:06:12.720 --> 00:06:16.560
+ le niveau gratuit continue et c'est là que nous le sélectionnons si bien
+
+00:06:16.560 --> 00:06:20.000
+ si nous voulons le niveau gratuit, nous devons aller avec un micro t2 alors
+
+00:06:20.000 --> 00:06:24.080
+ je vais sélectionner ça mais qu'est-ce que ça nous donne ça nous donne un processeur
+
+00:06:24.080 --> 00:06:29.520
+ un gigaoctet de mémoire euh et puis nous avons du stockage à gérer
+
+00:06:29.520 --> 00:06:33.199
+ nous n'avons pas besoin de beaucoup de stockage car nous ne faisons que configurer un proxy de base
+
+00:06:33.199 --> 00:06:36.639
+ et c'est à peu près tout donc je vais déployer tout comme
+
+00:06:36.639 --> 00:06:40.080
+ donc t2 micro est celui qui est gratuit
+
+00:06:40.080 --> 00:06:43.440
+ éligible, ne sélectionnez pas l'un des plus gros car vous allez payer
+
+00:06:43.440 --> 00:06:45.919
+ pour cela tout de suite, je vais revoir et
+
+00:06:45.919 --> 00:06:50.080
+ lancer nous allons revenir pour faire des paramètres comme nos groupes de sécurité et
+
+00:06:50.080 --> 00:06:51.759
+ des choses comme ça, je vais tout quitter
+
+00:06:51.759 --> 00:06:54.880
+ par défaut pour le moment et nous allons le lancer donc
+
+00:06:54.880 --> 00:06:58.479
+ tout d'abord, je dois créer une nouvelle paire de clés, donc c'est
+
+00:06:58.479 --> 00:07:02.720
+ la clé ssh que je vais utiliser pour ssh dans
+
+00:07:02.720 --> 00:07:06.800
+ ce serveur donc je vais appeler ce proxy
+
+00:07:06.800 --> 00:07:11.120
+ serveur, puis téléchargez ma paire de clés, assurez-vous de la sauvegarder dans un endroit sûr
+
+00:07:11.120 --> 00:07:14.960
+ je vais jeter ça sur mon serveur et déposer ça
+
+00:07:14.960 --> 00:07:19.199
+ là et maintenant lancer l'instance signifie pouvoir
+
+00:07:19.199 --> 00:07:23.680
+ sur votre machine virtuelle donc je vais pousser ça
+
+00:07:23.680 --> 00:07:27.759
+ et là nous allons donc c'est essentiellement créer c'est créer un virtuel
+
+00:07:27.759 --> 00:07:32.240
+ machine une instance ec2 dans le cloud pour nous en
+
+00:07:32.240 --> 00:07:35.360
+ euh dans le nord de la californie donc on y va
+
+00:07:35.360 --> 00:07:40.400
+ Je vais voir les instances ici et maintenant je peux voir que j'en ai maintenant une
+
+00:07:40.400 --> 00:07:45.120
+ instance exécutant un micro t2 et ce n'est tout simplement pas de nom alors je vais
+
+00:07:45.120 --> 00:07:48.080
+ cliquez sur modifier et je vais l'appeler mon serveur proxy
+
+00:07:48.080 --> 00:07:52.720
+ serveur essaie que là nous allons bien donc il est déjà opérationnel
+
+00:07:52.720 --> 00:07:56.960
+ donc si je clique dessus, je peux voir l'adresse IP de ce serveur, c'est que j'ai appelé
+
+00:07:56.960 --> 00:08:00.400
+ c'est un serveur proxy, mais pour le moment, rappelez-vous que c'est juste Debian 10. il y a
+
+00:08:00.400 --> 00:08:05.120
+ rien d'autre n'est installé dessus, je dois donc copier cette adresse IP
+
+00:08:05.120 --> 00:08:09.759
+ et puis je vais sauter dans mon invite de commande
+
+00:08:09.759 --> 00:08:13.520
+ parce que j'ai téléchargé la clé sur mon serveur, je vais personnellement
+
+00:08:13.520 --> 00:08:17.440
+ ssh sur mon serveur interne
+
+00:08:23.680 --> 00:08:27.360
+ ok alors maintenant je suis là donc maintenant la commande que je vais utiliser
+
+00:08:27.360 --> 00:08:33.360
+ est ssh et puis tiret i pour la clé que je vais utiliser
+
+00:08:33.360 --> 00:08:36.320
+ donc le fichier entrant que je vais utiliser pour la clé
+
+00:08:36.320 --> 00:08:41.039
+ et celui-là s'appelle proxy server.pem est ce que j'ai téléchargé
+
+00:08:41.039 --> 00:08:45.200
+ alors je vais passer à l'administrateur car c'est la connexion par défaut pour le debian
+
+00:08:45.200 --> 00:08:48.880
+ administrateur d'image de machine ami ou amazon à
+
+00:08:48.880 --> 00:08:51.920
+ puis l'adresse IP que j'ai déjà copiée dans mon presse-papiers et si je
+
+00:08:51.920 --> 00:08:54.240
+ appuyez sur Entrée, il va me demander d'accepter cette clé
+
+00:08:54.240 --> 00:08:59.279
+ et je dis oui et je suis refusé
+
+00:08:59.279 --> 00:09:02.560
+ les autorisations sur ce fichier ont fini par être notées que
+
+00:09:02.560 --> 00:09:06.480
+ 766 donc tout le monde a accès à ces fichiers, donc c'est intéressant
+
+00:09:06.480 --> 00:09:10.800
+ ssh lui-même me protège de quelqu'un pouvant compromettre ma clé
+
+00:09:10.800 --> 00:09:18.160
+ donc chmod 7 0 0 serveur proxy dot pam essayons ça et
+
+00:09:18.160 --> 00:09:21.279
+ maintenant réessaye donc ce que j'ai fait est oh et maintenant je suis
+
+00:09:21.279 --> 00:09:25.360
+ connecté, il vient de fonctionner sept zéro zéro signifie que je suis le propriétaire de
+
+00:09:25.360 --> 00:09:29.120
+ cette clé, je suis autorisé à faire n'importe quoi avec
+
+00:09:29.120 --> 00:09:35.200
+ lecture écriture exécuter zéro zéro signifie personne dans le groupe personne qui n'est pas un
+
+00:09:35.200 --> 00:09:39.120
+ une partie du groupe est autorisée à y accéder, donc c'est
+
+00:09:39.120 --> 00:09:42.080
+ fondamentalement un fichier stupide qu'ils ne peuvent même pas ouvrir
+
+00:09:42.080 --> 00:09:46.800
+ euh mais je peux bien alors maintenant que je suis connecté je vais aller sudo poursuivre
+
+00:09:46.800 --> 00:09:52.080
+ parce que c'est ce que la commande est de devenir root alors maintenant je suis root donc apte
+
+00:09:52.080 --> 00:09:57.519
+ update apt update va récupérer mes référentiels vous voyez que c'est un
+
+00:09:57.519 --> 00:10:02.160
+ un véritable ordinateur Deian si vous voulez dans le cloud
+
+00:10:02.160 --> 00:10:05.600
+ c'est aussi simple que je suis déjà en train de mettre à jour je suis déjà
+
+00:10:05.600 --> 00:10:10.320
+ exécuter un ordinateur Debian dans le cloud donc dans ce laps de temps et je suis bla
+
+00:10:10.320 --> 00:10:16.640
+ bla bla en même temps euh nous avons un serveur debian basé sur le cloud
+
+00:10:16.640 --> 00:10:20.800
+ as-tu réalisé que c'était aussi simple et gratuit
+
+00:10:20.800 --> 00:10:24.000
+ d'accord pour que nous puissions faire d'autres choses avec cela aussi nous pourrions installer une pile de lampes que nous
+
+00:10:24.000 --> 00:10:28.880
+ pourrait l'utiliser pour mysql mariadb tout ce que vous pouvez trouver c'est un
+
+00:10:28.880 --> 00:10:32.000
+ serveur debian, nous allons donc l'utiliser comme notre
+
+00:10:32.000 --> 00:10:37.040
+ proxy alors maintenant, ce que je vais faire, c'est installer un outil appelé
+
+00:10:37.040 --> 00:10:43.920
+ petit proxy agréable et simple à installer pour installer un petit proxy
+
+00:10:43.920 --> 00:10:50.880
+ vraiment simple à configurer dire oui on y va
+
+00:10:52.399 --> 00:10:56.480
+ et c'est fait maintenant que nous avons installé un petit proxy que nous avons juste besoin de modifier
+
+00:10:56.480 --> 00:11:04.640
+ le fichier de configuration donc slash etc slash minuscule minuscule proxy l'a changée en cela
+
+00:11:04.640 --> 00:11:10.959
+ puis j'utilise nano tinyproxy.com et modifie cela pour contrôler w dans nano
+
+00:11:10.959 --> 00:11:14.079
+ me permet de rechercher oh mais avant de faire une recherche, notez que le
+
+00:11:14.079 --> 00:11:18.000
+ le port par défaut utilise 8888, nous allons avoir besoin de savoir que
+
+00:11:18.000 --> 00:11:20.959
+ informations parce que c'est pour cela que nous allons nous connecter
+
+00:11:20.959 --> 00:11:25.200
+ notre proxy effectue une recherche rapide pour allow
+
+00:11:26.720 --> 00:11:30.959
+ alt w vous permet de rechercher à nouveau wow le mot autoriser n'est probablement pas le meilleur
+
+00:11:30.959 --> 00:11:35.920
+ requête de recherche peut-être rechercher 127.0.0.1 um et juste en dessous de celui que je vais
+
+00:11:35.920 --> 00:11:40.399
+ autoriser et puis je dois ajouter mon adresse IP afin que je puisse me connecter à ceci
+
+00:11:40.399 --> 00:11:44.320
+ serveur proxy car pour l'instant il est fermé, seul l'hôte local peut y accéder
+
+00:11:44.320 --> 00:11:48.399
+ il est important de noter que c'est alors qu'il s'agit d'un public gratuit
+
+00:11:48.399 --> 00:11:51.519
+ serveur proxy, je suis le seul à pouvoir y accéder
+
+00:11:51.519 --> 00:11:54.959
+ va être autorisé à transmettre mon contenu via ma connexion
+
+00:11:54.959 --> 00:11:58.880
+ c'est donc privé à cet égard, j'ai besoin de connaître mon
+
+00:11:58.880 --> 00:12:02.959
+ adresse IP donc je vais passer à
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz et copiez cette adresse IP dans mon presse-papiers
+
+00:12:08.000 --> 00:12:11.279
+ puis retournez-y et collez-le dans ma config
+
+00:12:11.279 --> 00:12:15.839
+ contrôle o entrer le contrôle x contrôle o doit écrire
+
+00:12:15.839 --> 00:12:22.720
+ enregistrez le fichier maintenant système ctl redémarrer minuscule proxy
+
+00:12:22.720 --> 00:12:28.079
+ presque fini, la dernière chose que nous devons faire est de dire à aws
+
+00:12:28.079 --> 00:12:32.639
+ la sécurité ec2 que nous allons mettre en place une politique qui dit
+
+00:12:32.639 --> 00:12:35.920
+ hé seulement, je suis autorisé à me connecter à ce serveur
+
+00:12:35.920 --> 00:12:39.839
+ donc personne d'autre ne peut s'y connecter, c'est ce que nous allons faire
+
+00:12:39.839 --> 00:12:43.120
+ faites maintenant donc je vais revenir ici et vous verrez ce serveur sur le
+
+00:12:43.120 --> 00:12:47.279
+ écran bien si je clique sur la sécurité, je peux alors
+
+00:12:47.279 --> 00:12:50.880
+ cliquez sur le groupe de sécurité qui lui est attribué automatiquement donc cliquez simplement sur
+
+00:12:50.880 --> 00:12:53.680
+ ça et maintenant ça m'a laissé à ec2
+
+00:12:53.680 --> 00:12:56.240
+ groupes de sécurité et groupe de sécurité approprié
+
+00:12:56.240 --> 00:12:59.440
+ vous remarquerez qu'il en a déjà configuré un pour ssh car
+
+00:12:59.440 --> 00:13:03.760
+ il est activé par défaut, je peux définir cela pour ne m'autoriser que ce qui est
+
+00:13:03.760 --> 00:13:06.639
+ important alors faisons ça juste pour être en bonne santé
+
+00:13:06.639 --> 00:13:09.959
+ pratiques de sécurité donc ssh je vais le changer
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 je vais fermer x ça et puis
+
+00:13:13.440 --> 00:13:18.320
+ changez-le en mon ip puis je vais ajouter une nouvelle règle que vous avez vue
+
+00:13:18.320 --> 00:13:20.880
+ Comment je suis arrivé ici, je sais que je bouge vraiment très vite
+
+00:13:20.880 --> 00:13:24.079
+ je viens de cliquer sur modifier les règles entrantes ici
+
+00:13:24.079 --> 00:13:29.040
+ ok alors ajoutez une nouvelle règle tcp personnalisée est la valeur par défaut
+
+00:13:29.040 --> 00:13:35.120
+ numéro de port vous souvenez-vous de 888 et n'autorisez mon ip que je peux l'appeler quelque chose si je
+
+00:13:35.120 --> 00:13:40.320
+ veux un proxy, puis enregistre mes règles
+
+00:13:40.320 --> 00:13:44.639
+ on y va donc maintenant vous voyez ssh et tcp personnalisé
+
+00:13:44.639 --> 00:13:51.040
+ un appelé proxy sur le port 8888 alors comment pouvons-nous tester cela pour que notre
+
+00:13:51.040 --> 00:13:57.360
+ L'adresse IP actuelle est 99.233 et je vais donc me connecter au proxy
+
+00:13:57.360 --> 00:14:01.600
+ ce n'est pas un tutoriel sur la façon d'utiliser un proxy
+
+00:14:01.600 --> 00:14:04.480
+ ce n'est pas un tutoriel sur l'utilisation
+
+00:14:04.480 --> 00:14:08.079
+ c'est nécessairement ce que je fais ici pour supposer que
+
+00:14:08.079 --> 00:14:11.920
+ vous pouvez soit le rechercher sur Google vous-même, car il sera différent en fonction
+
+00:14:11.920 --> 00:14:15.199
+ sur votre cas d'utilisation, que vous souhaitiez simplement utiliser votre navigateur ou proxy
+
+00:14:15.199 --> 00:14:18.480
+ application particulière ou tout votre réseau
+
+00:14:18.480 --> 00:14:21.839
+ cela dépendra de votre cas d'utilisation individuel c'est
+
+00:14:21.839 --> 00:14:28.399
+ strictement un tutoriel sur la façon de construire cette instance ec2 très très rapidement pour
+
+00:14:28.399 --> 00:14:31.760
+ gratuit qui a un proxy prêt à être utilisé dans
+
+00:14:31.760 --> 00:14:36.639
+ californie ou n'importe où et euh c'est tout dans mon
+
+00:14:36.639 --> 00:14:40.720
+ cas particulier en ce moment donc ce moment n'est pas forcément ce que
+
+00:14:40.720 --> 00:14:43.680
+ vous voulez faire ensuite voici comment je vais tester le
+
+00:14:43.680 --> 00:14:50.000
+ proxy il se trouve que je suis sous Windows 10 ici, donc je vais simplement taper proxy
+
+00:14:50.000 --> 00:14:54.240
+ et entrez à nouveau dans les paramètres du proxy, ce n'est probablement pas la façon dont vous voulez le faire
+
+00:14:54.240 --> 00:14:57.279
+ je veux juste tester donc je vais activer le proxy
+
+00:14:57.279 --> 00:15:00.560
+ Je peux voir qu'il y a un ancien paramètre de proxy ici, alors assurez-vous que vous
+
+00:15:00.560 --> 00:15:03.839
+ en gardant à l'esprit que si vous avez besoin d'anciens paramètres de proxy
+
+00:15:03.839 --> 00:15:08.480
+ pour le changer, accédez aux instances sur ec2 cliquez sur votre instance
+
+00:15:08.480 --> 00:15:12.079
+ id et saisissez cette adresse IP, puis collez
+
+00:15:12.079 --> 00:15:15.519
+ que comme adresse de votre serveur proxy
+
+00:15:15.519 --> 00:15:20.800
+ port 8888 et économisez donc maintenant je suis connecté au
+
+00:15:20.800 --> 00:15:24.639
+ proxy instantanément non connecté à maintenant Windows dit
+
+00:15:24.639 --> 00:15:27.199
+ je vais acheminer tout votre trafic via le proxy que je dois corriger
+
+00:15:27.199 --> 00:15:32.199
+ moi-même là-bas donc si je retourne à currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 est mon ip actuel, je vais frapper f5 pour actualiser
+
+00:15:36.160 --> 00:15:44.639
+ et si tout s'est bien passé 3.101.108.211. bien qu'est-ce que c'est
+
+00:15:44.639 --> 00:15:52.839
+ c'est mon serveur donc je suis en fait maintenant où suis-je découvrons
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com recherchons l'adresse IP sur laquelle je suis actuellement
+
+00:15:59.759 --> 00:16:06.839
+ où suis-je san jose california c'est là que max mien me détermine
+
+00:16:06.839 --> 00:16:10.880
+ être ainsi c'est tout ce qu'il y a à faire les gens que nous avons
+
+00:16:10.880 --> 00:16:14.880
+ créé configuré déployé un service proxy gratuit
+
+00:16:14.880 --> 00:16:17.680
+ que nous possédons et exploitons nous sommes les seuls
+
+00:16:17.680 --> 00:16:22.560
+ qui a cela qui a cette clé ssh donc si vous voulez
+
+00:16:22.560 --> 00:16:26.079
+ connectez-vous apportez des modifications utilisez-le comme un serveur polyvalent que vous pouvez faire
+
+00:16:26.079 --> 00:16:30.720
+ mais gardez un œil sur vos informations de facturation, assurez-vous simplement que
+
+00:16:30.720 --> 00:16:33.120
+ vous n'avez pas dépassé les seuils et des choses comme ça
+
+00:16:33.120 --> 00:16:36.240
+ si vous ne l'utilisez que comme proxy, il est très peu probable que vous le fassiez
+
+00:16:36.240 --> 00:16:38.480
+ c'est juste quelque chose que vous transmettez des données
+
+00:16:38.480 --> 00:16:42.800
+ alors vérifiez que c'est aws.amazon.com pour vous lancer
+
+00:16:42.800 --> 00:16:45.920
+ si vous avez des questions, postez-les directement sur notre communauté
+
+00:16:45.920 --> 00:16:50.160
+ à notre discorde, vous trouverez le lien sur category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ dans le menu interactif en attendant si vous avez apprécié cela si vous l'avez utilisé ou
+
+00:16:54.000 --> 00:17:05.839
+ trouvé utile, donnez-moi un gros coup de pouce s'il vous plaît abonnez-vous
+
+00:17:08.849 --> 00:17:19.839
+ [Musique] faire
+
+00:17:23.599 --> 00:17:31.710
+ [La musique]
+

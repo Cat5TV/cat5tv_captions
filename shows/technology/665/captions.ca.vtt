@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: ca
+
+00:00:00.320 --> 00:00:05.040
+a la categoria 5 tv confiem els nostres fitxers en discs d'estat sòlid de Kingston
+
+00:00:05.040 --> 00:00:07.839
+ tecnologia ja sigui per al vostre ordinador portàtil de servidor o
+
+00:00:07.839 --> 00:00:10.880
+ ordinador d’escriptori experimentareu un rendiment millorat
+
+00:00:10.880 --> 00:00:17.920
+ i la fiabilitat amb els ssds de Kingston es prepara és el moment de la tecnologia
+
+00:00:22.320 --> 00:00:25.519
+ Benvingut al programa per a tothom, és l'episodi 2 de la temporada 14
+
+00:00:25.519 --> 00:00:29.599
+ sóc robbie ferguson i sóc jeff weston, és fantàstic tenir-te aquí
+
+00:00:29.599 --> 00:00:32.800
+ i espero que hagis passat una setmana meravellosa malgrat
+
+00:00:32.800 --> 00:00:37.760
+ tot, però aquí estem i esperem un gran espectacle per davant
+
+00:00:37.760 --> 00:00:40.960
+ aquesta nit aprendrem a crear el nostre propi
+
+00:00:40.960 --> 00:00:45.840
+ servidor proxy bé, així que no vull parlar-ne gaire
+
+00:00:45.840 --> 00:00:49.200
+ l’espectacle, però sé que de vegades saps que és difícil trobar-ne un de bo
+
+00:00:49.200 --> 00:00:52.640
+ servei de proxy gratuït, de manera que crearem el nostre
+
+00:00:52.640 --> 00:00:55.840
+ i us mostraré com col·locar-lo a qualsevol lloc del món
+
+00:00:55.840 --> 00:01:01.600
+ utilitzar serveis de núvols d’aws, de manera que és força emocionant i és una de les coses
+
+00:01:01.600 --> 00:01:05.680
+ amb això també a mesura que aprenem una mica sobre com
+
+00:01:05.680 --> 00:01:09.520
+ serveis web amazon ec2 i serveis al núvol i la possibilitat de
+
+00:01:09.520 --> 00:01:13.760
+ desplegem servidors debian a la infraestructura del núvol a mesura que aprenem
+
+00:01:13.760 --> 00:01:18.799
+ com fer això i com funciona això només sé que
+
+00:01:18.799 --> 00:01:20.159
+ les coses que farem és
+
+00:01:20.159 --> 00:01:24.000
+ migrant algunes de les nostres dades a aquesta infraestructura, així que ho dic
+
+00:01:24.000 --> 00:01:26.960
+ perquè alguns dels nostres espectadors en directe ho tenen
+
+00:01:26.960 --> 00:01:29.600
+ he experimentat problemes amb la memòria intermèdia i coses per l'estil
+
+00:01:29.600 --> 00:01:32.799
+ i és perquè tenim un petit ordinador de bord únic
+
+00:01:32.799 --> 00:01:36.880
+ de totes les coses a què estem transmetent i després les retransmetem
+
+00:01:36.880 --> 00:01:40.799
+ qualsevol persona que estigui veient roku o altres reproductors hls i coses per l'estil
+
+00:01:40.799 --> 00:01:44.399
+ té un streamer àgil que s’executa a l’ordinador de bord únic
+
+00:01:44.399 --> 00:01:47.759
+ wow increïble, però, el que vaig controlar a través del meu
+
+00:01:47.759 --> 00:01:50.960
+ la prova és que té una CPU bastant alta quan la gent
+
+00:01:50.960 --> 00:01:55.439
+ Estic mirant bé perquè crec que pot ser el que provoca alguns
+
+00:01:55.439 --> 00:01:58.640
+ problemes de memòria intermèdia amb el nostre flux, així que hi ha moltes coses que funcionen
+
+00:01:58.640 --> 00:02:03.520
+ al darrere de les escenes aquí per intentar aconseguir-ho, obtindràs l'espectacle
+
+00:02:03.520 --> 00:02:07.840
+ un format molt accessible i de fàcil accés i perquè no ho siguis
+
+00:02:07.840 --> 00:02:10.160
+ experimentar coses com la roda giratòria
+
+00:02:10.160 --> 00:02:14.560
+ i aquest tipus de coses, però eh, com estem veient aquesta nit
+
+00:02:14.560 --> 00:02:18.560
+ uh i aprenent a desplegar aquests servidors debian al núvol
+
+00:02:18.560 --> 00:02:20.879
+ sap que això és una cosa que farem entre bastidors aquí
+
+00:02:20.879 --> 00:02:23.760
+ també i la migració d'aquests serveis
+
+00:02:23.760 --> 00:02:27.120
+ a uh a una d'aquestes instàncies per tal de
+
+00:02:27.120 --> 00:02:30.480
+ Intenta millorar el nostre rendiment aquí a l'estudi
+
+00:02:30.480 --> 00:02:34.400
+ un munt de coses emocionants que passen darrere nostre com has estat
+
+00:02:34.400 --> 00:02:38.000
+ he estat bé, et parlarem una mica més tard aquesta nit
+
+00:02:38.000 --> 00:02:42.080
+ uh algunes de les teves gestions amb soldadura, sí, sí, ens vols explicar una mica
+
+00:02:42.080 --> 00:02:44.720
+ una mica de broma ràpida sobre el que serem
+
+00:02:44.720 --> 00:02:48.959
+ discutint uh el meu fill volia començar a soldar
+
+00:02:48.959 --> 00:02:53.120
+ el seu aniversari, així que vam anar per aquesta carretera
+
+00:02:53.120 --> 00:02:56.480
+ a partir del mes passat, he estat jugant una mica i ja està
+
+00:02:56.480 --> 00:03:01.200
+ jo pensant com puc fer les meves coses a casa
+
+00:03:01.200 --> 00:03:04.560
+ quan no tinc una àrea de producció gran per fer la meva
+
+00:03:04.560 --> 00:03:09.599
+ pcb, sí, sí, aquí és on en vam parlar, per tant, si us interessa
+
+00:03:09.599 --> 00:03:15.040
+ bricolatge, estarem parlant d'això i uh wow que tenim
+
+00:03:15.040 --> 00:03:19.840
+ algunes coses emocionants per a les quals també estem preparant el programa de la setmana que ve
+
+00:03:19.840 --> 00:03:23.040
+ ja està a punt i estem encantats de ser-ho
+
+00:03:23.040 --> 00:03:26.640
+ introduint la impressió 3D també als nostres espectadors
+
+00:03:26.640 --> 00:03:29.680
+ per tant, això és una cosa que anirem aprenent al llarg del curs
+
+00:03:29.680 --> 00:03:36.080
+ les properes setmanes aquí a la categoria de televisió 5 tenim moltes coses, sí
+
+00:03:36.080 --> 00:03:39.200
+ assegureu-vos que us subscriviu a YouTube
+
+00:03:39.200 --> 00:03:42.159
+ i feu clic a la campana per rebre la notificació cada vegada que en publiquem una de nova
+
+00:03:42.159 --> 00:03:46.560
+ vídeo sempre que estem en directe i també si voleu participar-hi
+
+00:03:46.560 --> 00:03:49.280
+ la comunitat crec que és una manera molt divertida
+
+00:03:49.280 --> 00:03:54.000
+ per formar part de la categoria de televisió 5, algunes persones encara em diuen bé què és
+
+00:03:54.000 --> 00:03:58.400
+ discòrdia i és meravellós que no formeu part de la nostra discòrdia
+
+00:03:58.400 --> 00:04:01.920
+ servidor perquè si us uniu a la nostra discòrdia que trobareu si hi aneu
+
+00:04:01.920 --> 00:04:06.560
+ a categoria5.tv feu clic a interactua i veureu com s'uneix a la discòrdia
+
+00:04:06.560 --> 00:04:10.720
+ servidor és un navegador gratuït o basat en aplicacions
+
+00:04:10.720 --> 00:04:14.720
+ servei que podeu posar al dispositiu o bé accedir-hi
+
+00:04:14.720 --> 00:04:18.160
+ a través del vostre navegador en qualsevol cosa i bàsicament podeu xatejar amb
+
+00:04:18.160 --> 00:04:22.079
+ comunitat, però és realment ordenat perquè és més que una simple sala de xat
+
+00:04:22.079 --> 00:04:26.160
+ també té diferents habitacions assignades
+
+00:04:26.160 --> 00:04:28.160
+ coses diferents i coses que estem parlant
+
+00:04:28.160 --> 00:04:31.280
+ sobre o, per exemple, tenim darrere de les escenes
+
+00:04:31.280 --> 00:04:35.680
+ així que, darrere de les escenes, només hi ha ple de bastidors
+
+00:04:35.680 --> 00:04:42.320
+ fotos que no veuríeu d’una altra manera i que hi ha tantes coses sí al nostre
+
+00:04:42.320 --> 00:04:44.400
+ servidor de discòrdies, de manera que heu d'anar-hi
+
+00:04:44.400 --> 00:04:47.919
+ sap que és com si fos una plataforma de xat, però que té un
+
+00:04:47.919 --> 00:04:51.360
+ molt més que la interacció amb el xat
+
+00:04:51.360 --> 00:04:54.880
+ és cert i no només està actiu durant el programa
+
+00:04:54.880 --> 00:04:58.240
+ és encesa tot el temps i vull dir si teniu coses de tecnologia
+
+00:04:58.240 --> 00:05:01.360
+ a la meitat de la setmana ets com oh, no sé com solucionar-te aquest problema
+
+00:05:01.360 --> 00:05:04.080
+ podria aparèixer allà i la comunitat és increïble per donar
+
+00:05:04.080 --> 00:05:07.680
+ un consell i això també és bastant clar, sí, és cert
+
+00:05:07.680 --> 00:05:10.720
+ d’acord, així que hem de fer una pausa molt ràpida i després saltem a la dreta
+
+00:05:10.720 --> 00:05:14.800
+ en aquesta breu escapada que estarem mirant
+
+00:05:14.800 --> 00:05:20.800
+ com configurar una instància aws ec2 que soni com si fos tecnobabble
+
+00:05:20.800 --> 00:05:24.080
+ jo ho fa molt ràpid, sí, què passa amb això?
+
+00:05:24.080 --> 00:05:29.759
+ anem a crear el nostre propi servei proxy gratuït que és més fàcil de dir
+
+00:05:29.759 --> 00:05:36.240
+ tinc el control, tinc accés, tenim el pal de control al voltant
+
+00:05:36.240 --> 00:05:51.920
+ torna de tornada [Música]
+
+00:05:58.560 --> 00:06:01.919
+ si voleu donar-vos una mica de privacitat addicional mentre navegueu per
+
+00:06:01.919 --> 00:06:04.720
+ Internet o voleu accedir a serveis que
+
+00:06:04.720 --> 00:06:10.160
+ potser no estan disponibles normalment a la vostra zona o potser és un
+
+00:06:10.160 --> 00:06:13.680
+ cas d’haver tingut la vostra adreça IP
+
+00:06:13.680 --> 00:06:17.600
+ bloquejat per un proveïdor de serveis pot no ser un
+
+00:06:17.600 --> 00:06:20.960
+ cosa malintencionada que he bloquejat la meva adreça IP
+
+00:06:20.960 --> 00:06:24.639
+ youtube abans perquè penjo molts vídeos i
+
+00:06:24.639 --> 00:06:29.120
+ descarregueu els subtítols per tal que
+
+00:06:29.120 --> 00:06:33.759
+ m'ha fet excedir el meu ús a l'api de youtube
+
+00:06:33.759 --> 00:06:38.800
+ llavors la meva adreça IP es bloqueja, de manera que no ha de ser una cosa malintencionada
+
+00:06:38.800 --> 00:06:44.319
+ No vull donar aquesta impressió, però hi ha raons molt legítimes
+
+00:06:44.319 --> 00:06:49.759
+ a necessitar per evitar aquest tipus de coses i els nerds van a
+
+00:06:49.759 --> 00:06:56.000
+ és un servidor intermediari, el problema és que els proxies poden ser molt cars d 'utilitzar i
+
+00:06:56.000 --> 00:07:00.160
+ les gratuïtes, sempre que estiguin disponibles, són molt freqüents
+
+00:07:00.160 --> 00:07:04.800
+ o bé no són molt fiables, un dia estan a l'alça, l'endemà, i perden
+
+00:07:04.800 --> 00:07:10.240
+ accés als vostres serveis i a tota la resta o encara pitjor
+
+00:07:10.240 --> 00:07:14.960
+ són perillosos, no sabeu què fan el seguiment d'aquests representants
+
+00:07:14.960 --> 00:07:21.120
+ registre i fins i tot com interceptar mentre estàs passant que estàs enviant
+
+00:07:21.120 --> 00:07:26.720
+ tot el trànsit d'Internet a través d'aquest proveïdor de serveis
+
+00:07:26.720 --> 00:07:35.199
+ així que hi ha una persona en qui confio de debò per representar totes les meves dades
+
+00:07:35.199 --> 00:07:41.039
+ i sóc jo, no sóc la mateixa persona que diries que confies
+
+00:07:41.039 --> 00:07:45.199
+ la persona en qui confies ets tu, així que et mostraré com fer-ho
+
+00:07:45.199 --> 00:07:53.280
+ Podria configurar un servei de proxy gratuït i el podeu reproduir i
+
+00:07:53.280 --> 00:07:56.319
+ crea el teu propi i ho farem al núvol nosaltres
+
+00:07:56.319 --> 00:07:58.800
+ utilitzarà un proveïdor de serveis aliè
+
+00:07:58.800 --> 00:08:02.400
+ i això és amazon, de manera que dius, oh, amazon, què passa?
+
+00:08:02.400 --> 00:08:05.919
+ ja sabeu que som capaços de confiar-los bé les nostres dades, el que estem fent servir és d'ells
+
+00:08:05.919 --> 00:08:10.639
+ serveis al núvol s’anomena serveis web amazon, així és
+
+00:08:10.639 --> 00:08:14.319
+ Totes les seves infraestructures de núvol són les que tenen
+
+00:08:14.319 --> 00:08:18.560
+ perquè els clients lloguin bàsicament accés als seus servidors i als seus
+
+00:08:18.560 --> 00:08:23.360
+ el seu espai i els servidors virtuals i tota la resta
+
+00:08:23.360 --> 00:08:29.680
+ la vostra infraestructura està disponible, però el desplegament sí
+
+00:08:29.680 --> 00:08:34.560
+ el teu, et mostraré com es fa això, anem a saltar a aws
+
+00:08:34.560 --> 00:08:40.719
+ i, en particular, ec2, per descomptat, si no esteu familiaritzat amb aws just
+
+00:08:40.719 --> 00:08:44.720
+ aneu a aws.amazon.com inicieu la sessió amb el vostre compte d'Amazon
+
+00:08:44.720 --> 00:08:50.640
+ i després feu una cerca ràpida d'ec2 i això us portarà bàsicament
+
+00:08:50.640 --> 00:08:53.680
+ la seva plataforma de virtualització pensa en ec2 com
+
+00:08:53.680 --> 00:08:57.519
+ això és el primer que tinc en compte quan sóc aquí
+
+00:08:57.519 --> 00:09:03.200
+ a ec2 és la meva regió i això és important perquè aquí és on hi ha el meu servidor intermediari
+
+00:09:03.200 --> 00:09:08.080
+ el servidor residirà en cas que el configuri allà per què és això
+
+00:09:08.080 --> 00:09:11.519
+ important bé, penseu en això, diguem que estic fent servir una transmissió de vídeo
+
+00:09:11.519 --> 00:09:15.680
+ servei que restringeix l'accés canadenc al seu vídeo
+
+00:09:15.680 --> 00:09:19.440
+ el servei de transmissió mitjançant la col·locació del servidor intermediari al nord
+
+00:09:19.440 --> 00:09:23.360
+ Califòrnia ara de sobte són bàsicament
+
+00:09:23.360 --> 00:09:26.320
+ per adreça IP, penso que em connecto
+
+00:09:26.320 --> 00:09:29.360
+ Califòrnia, així que sóc capaç de solucionar-ho
+
+00:09:29.360 --> 00:09:32.720
+ de la mateixa manera, és possible que vulgueu canviar la vostra regió en funció de
+
+00:09:32.720 --> 00:09:37.200
+ el que intenteu aconseguir és que fins i tot pugueu posar un servidor a l'Àfrica
+
+00:09:37.200 --> 00:09:40.480
+ o asia mireu que podeu posar-ne una a Hong Kong
+
+00:09:40.480 --> 00:09:44.160
+ pots posar-ne un a Canadà i a Europa que tens
+
+00:09:44.160 --> 00:09:49.680
+ a tot arreu i després tenim Orient Mitjà i Sud-Amèrica ara mateix
+
+00:09:49.680 --> 00:09:52.800
+ per tant, és una llista bastant gran d’on es troben
+
+00:09:52.800 --> 00:09:57.360
+ configurar aquesta infraestructura per als serveis web d'Amazon el servei ec2
+
+00:09:57.360 --> 00:10:01.920
+ així que trieu el que vulgueu que estigui el vostre servidor intermediari
+
+00:10:01.920 --> 00:10:05.600
+ Vaig a establir la meva, només la deixaré al nord de Califòrnia, que és
+
+00:10:05.600 --> 00:10:09.279
+ nosaltres un oest i aquí és on
+
+00:10:09.279 --> 00:10:13.760
+ el meu servidor intermediari residirà i això em permetrà connectar-me
+
+00:10:13.760 --> 00:10:17.680
+ com si realment estigués assegut a Califòrnia
+
+00:10:17.680 --> 00:10:20.880
+ bé, així que faré clic a la instància de llançament
+
+00:10:20.880 --> 00:10:24.880
+ i després torna a iniciar la instància perquè fa un desplegable i això em dóna
+
+00:10:24.880 --> 00:10:29.440
+ una llista de sistemes operatius que puc implementar
+
+00:10:29.440 --> 00:10:33.760
+ a la meva instància ec2, així que estic fent servir alguns termes que potser no coneixeu
+
+00:10:33.760 --> 00:10:38.240
+ aws és un servei web d'Amazon que bàsicament és Amazon
+
+00:10:38.240 --> 00:10:44.560
+ La gamma completa de serveis que ofereixen als usuaris del núvol ec2 és seva
+
+00:10:44.560 --> 00:10:48.160
+ plataforma de virtualització per a màquines virtuals
+
+00:10:48.160 --> 00:10:52.240
+ quan vaig dir instància, parlo d'una màquina virtual
+
+00:10:52.240 --> 00:10:56.160
+ de manera que literalment és una màquina virtual, així que en implementaré una
+
+00:10:56.160 --> 00:10:59.360
+ sistemes operatius a una instància de ec2 que és
+
+00:10:59.360 --> 00:11:02.880
+ una màquina virtual, doncs, què vull que sigui
+
+00:11:02.880 --> 00:11:07.040
+ així, i deia que hey comentari a continuació si faig servir un terme que no coneixeu
+
+00:11:07.040 --> 00:11:08.399
+ amb vaig a fer una cerca ràpida que tinc
+
+00:11:08.399 --> 00:11:11.120
+ ja ho he fet abans perquè implemento un munt de servidors
+
+00:11:11.120 --> 00:11:15.279
+ al núvol faré clic a debian només cal que escriviu debian al fitxer
+
+00:11:15.279 --> 00:11:19.279
+ cerqueu aquí, així que aniré a aws
+
+00:11:19.279 --> 00:11:24.640
+ Els resultats del mercat també n’hi ha que he creat i al
+
+00:11:24.640 --> 00:11:27.120
+ comunitat que pensaries que bé vull utilitzar
+
+00:11:27.120 --> 00:11:30.800
+ els de la comunitat, no, perquè no us costaran diners
+
+00:11:30.800 --> 00:11:34.320
+ i dius bé, però la comunitat és gratuïta, és de codi obert i sí
+
+00:11:34.320 --> 00:11:38.959
+ no obstant això, no forma part del mercat aws i, per tant, ho tindreu
+
+00:11:38.959 --> 00:11:42.320
+ per pagar per l'ús que tingui aquesta màquina virtual que
+
+00:11:42.320 --> 00:11:46.160
+ exemple que s’executa al núvol, així que ho farem
+
+00:11:46.160 --> 00:11:49.440
+ utilitzeu un dels oficials del mercat aws per veure quins resultats
+
+00:11:49.440 --> 00:11:53.360
+ aconseguim que estiguin ordenats força bé debian arriba el primer resultat és
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster un nivell lliure compatible o de nivell lliure
+
+00:11:57.839 --> 00:12:00.560
+ versió elegible de debian que serem
+
+00:12:00.560 --> 00:12:06.000
+ desplegament de manera que seleccioneu aquell nivell gratuït apte perquè puguem ignorar el
+
+00:12:06.000 --> 00:12:09.360
+ preus perquè farem servir una petició de nivell gratuïta continuada
+
+00:12:09.360 --> 00:12:13.040
+ i aquí és on ho seleccionem tan bé si volem el nivell gratuït que hem d’anar
+
+00:12:13.040 --> 00:12:15.839
+ amb un micro t2, així que vaig a seleccionar això, però què
+
+00:12:15.839 --> 00:12:22.399
+ ens dóna, ens dóna una CPU un gigabyte de memòria um
+
+00:12:22.399 --> 00:12:25.600
+ i després tenim emmagatzematge per tractar, no necessitem molt d'emmagatzematge perquè
+
+00:12:25.600 --> 00:12:29.920
+ només estem configurant un servidor intermediari bàsic i això és tot, així que ho faré
+
+00:12:29.920 --> 00:12:34.079
+ desplegueu-ho de la mateixa manera que t2 micro és el que és gratuït
+
+00:12:34.079 --> 00:12:37.120
+ el nivell apte no seleccioneu un dels més grans
+
+00:12:37.120 --> 00:12:38.720
+ uns perquè ho pagareu
+
+00:12:38.720 --> 00:12:42.079
+ de seguida, revisaré i llançaré on tornarem
+
+00:12:42.079 --> 00:12:45.839
+ fer configuracions com ara els nostres grups de seguretat i coses per l'estil que només vaig a deixar
+
+00:12:45.839 --> 00:12:48.480
+ tot per defecte per ara i ho farem
+
+00:12:48.480 --> 00:12:52.000
+ llançar-ho, així que primer de tot necessito crear una nova clau
+
+00:12:52.000 --> 00:12:55.360
+ parell, de manera que aquesta és la clau ssh que faré servir
+
+00:12:55.360 --> 00:12:59.680
+ per introduir ssh en aquest servidor, així que vaig a trucar-ho
+
+00:12:59.680 --> 00:13:04.160
+ un servidor intermediari i després descarregueu el meu parell de claus
+
+00:13:04.160 --> 00:13:06.320
+ assegureu-vos de desar-lo en algun lloc segur on vaig
+
+00:13:06.320 --> 00:13:10.800
+ llença-ho al meu servidor i deixa-ho allà
+
+00:13:10.800 --> 00:13:16.240
+ i ara la instància de llançament significa alimentar la vostra màquina virtual, així que ho faré
+
+00:13:16.240 --> 00:13:20.000
+ empeny això i allà anem perquè sigui bàsicament
+
+00:13:20.000 --> 00:13:23.120
+ crear-lo és crear una màquina virtual
+
+00:13:23.120 --> 00:13:29.360
+ uh, una instància ec2 al núvol per a nosaltres, al nord de califòrnia
+
+00:13:29.360 --> 00:13:33.279
+ vaja, així que vaig a veure casos aquí
+
+00:13:33.279 --> 00:13:37.200
+ i ara puc veure que ara tinc una instància amb un micro t2
+
+00:13:37.200 --> 00:13:41.199
+ i simplement no té cap nom, així que faré clic a Edita i trucaré a això
+
+00:13:41.199 --> 00:13:45.839
+ el meu servidor servidor intermediari prova que allà anem bé, així que és així
+
+00:13:45.839 --> 00:13:49.519
+ ja està en funcionament, de manera que si faig clic sobre això puc veure la IP
+
+00:13:49.519 --> 00:13:53.360
+ l'adreça d'aquest servidor és que l'he anomenat servidor intermediari, però ara mateix
+
+00:13:53.360 --> 00:13:56.720
+ recordeu que només és debian 10. no hi ha res més instal·lat
+
+00:13:56.720 --> 00:14:02.480
+ així que he de copiar aquesta adreça IP i després vaig a saltar a la meva
+
+00:14:02.480 --> 00:14:05.839
+ símbol del sistema perquè he descarregat la clau a
+
+00:14:05.839 --> 00:14:17.839
+ el meu servidor personalment aniré a ssh al meu servidor intern
+
+00:14:18.399 --> 00:14:22.079
+ Molt bé, ara hi sóc, així que ara l'ordre que faré servir
+
+00:14:22.079 --> 00:14:28.079
+ és ssh i, a continuació, guioneu i per la clau que faré servir
+
+00:14:28.079 --> 00:14:31.040
+ de manera que el fitxer entrant que faré servir per a la clau
+
+00:14:31.040 --> 00:14:35.760
+ i el que es diu servidor proxy.pem és el que he descarregat
+
+00:14:35.760 --> 00:14:39.920
+ llavors vaig a ser administrador perquè és l'inici de sessió predeterminat per a debian
+
+00:14:39.920 --> 00:14:43.600
+ administrador d'imatges de la màquina ami o amazon a
+
+00:14:43.600 --> 00:14:46.639
+ i després l'adreça IP que ja he copiat al porta-retalls i si
+
+00:14:46.639 --> 00:14:48.959
+ premeu Enter, em demanarà que accepti aquesta clau
+
+00:14:48.959 --> 00:14:54.000
+ i dic que sí i se'm nega
+
+00:14:54.000 --> 00:14:57.279
+ els permisos d'aquest fitxer van acabar sent notables
+
+00:14:57.279 --> 00:15:01.199
+ 766, de manera que tothom té accés a aquests fitxers, de manera que és interessant
+
+00:15:01.199 --> 00:15:05.519
+ ssh mateix em protegeix perquè algú pugui comprometre la meva clau
+
+00:15:05.519 --> 00:15:13.120
+ així que el servidor intermediari chmod 700 pam ho provem i ara
+
+00:15:13.120 --> 00:15:16.000
+ torneu-ho a provar, així que el que he fet és oh i ara ho estic
+
+00:15:16.000 --> 00:15:20.800
+ connectat acaba de funcionar 700 vol dir que sóc el propietari d'aquesta clau
+
+00:15:20.800 --> 00:15:27.279
+ Estic autoritzat a fer qualsevol cosa amb ell llegir escriure executar zero zero significa
+
+00:15:27.279 --> 00:15:30.800
+ ningú del grup ningú que no formi part del grup
+
+00:15:30.800 --> 00:15:35.600
+ té permís per accedir-hi, de manera que bàsicament és un fitxer ximple que no poden
+
+00:15:35.600 --> 00:15:39.519
+ fins i tot obert, però bé, ara que sóc
+
+00:15:39.519 --> 00:15:44.240
+ connectat vaig a anar sudo sue perquè això és l'ordre
+
+00:15:44.240 --> 00:15:47.440
+ converteix-te en root perquè ara sóc root so actualització de l'aplicació
+
+00:15:47.440 --> 00:15:50.399
+ l'actualització de l'aplicació Whoop em prendrà
+
+00:15:50.399 --> 00:15:55.680
+ els repositoris que veieu és un ordinador debian real si voleu
+
+00:15:55.680 --> 00:16:01.680
+ al núvol és tan fàcil que ja estic actualitzant i ja estic executant un debian
+
+00:16:01.680 --> 00:16:05.120
+ ordinador al núvol, així que en aquest temps i sóc bla
+
+00:16:05.120 --> 00:16:11.360
+ bla bla, al mateix temps, tenim un servidor debian basat en el núvol
+
+00:16:11.360 --> 00:16:15.519
+ T'has adonat que era tan fàcil i gratuït
+
+00:16:15.519 --> 00:16:18.720
+ d'acord perquè puguem fer altres coses amb això també podríem muntar una pila de làmpades nosaltres
+
+00:16:18.720 --> 00:16:23.600
+ el podríeu utilitzar per a qualsevol cosa que pugueu arribar a mysql mariadb
+
+00:16:23.600 --> 00:16:26.720
+ servidor debian, de manera que utilitzarem això com a nostre
+
+00:16:26.720 --> 00:16:31.759
+ proxy, així que ara el que faré és que instal·laré una eina anomenada
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy agradable i senzill d'instal·lar apt install tiny proxy
+
+00:16:38.639 --> 00:16:45.600
+ molt senzill de configurar dir que sí, aquí anem
+
+00:16:47.120 --> 00:16:51.199
+ i ja està fet, ja que hem instal·lat un proxy petit que només hem d'editar
+
+00:16:51.199 --> 00:16:59.440
+ el fitxer de configuració tan redueix la direcció, etc.
+
+00:16:59.440 --> 00:17:05.760
+ i després estic fent servir nano tinyproxy.com i edito-ho per controlar w a nano
+
+00:17:05.760 --> 00:17:08.799
+ em permet cercar oh, però abans de fer una cerca tingueu en compte que
+
+00:17:08.799 --> 00:17:12.720
+ El port per defecte utilitza 888, ho haurem de saber
+
+00:17:12.720 --> 00:17:15.679
+ informació perquè per això ens connectarem
+
+00:17:15.679 --> 00:17:19.839
+ el nostre servidor intermediari fa una cerca ràpida de permetre
+
+00:17:21.439 --> 00:17:25.679
+ alt w us permet cercar de nou wow la paraula permet probablement no sigui la millor
+
+00:17:25.679 --> 00:17:30.640
+ consulta de cerca potser busqueu 127.0.0.1 i just a sota d'aquella a la que vaig
+
+00:17:30.640 --> 00:17:34.720
+ permetre i després he d'afegir la meva adreça IP per poder connectar-me a
+
+00:17:34.720 --> 00:17:37.440
+ aquest servidor intermediari perquè ara mateix està tancat
+
+00:17:37.440 --> 00:17:40.640
+ només és possible que hi accedeixi localhost, cosa important a tenir en compte
+
+00:17:40.640 --> 00:17:44.720
+ que això és mentre aquest és un servidor intermediari gratuït públic, sóc l'únic que ho és
+
+00:17:44.720 --> 00:17:47.280
+ se’ls permetrà accedir-hi
+
+00:17:47.280 --> 00:17:52.400
+ emmagatzema el meu contingut mitjançant la meva connexió, de manera que sigui privat en aquest sentit
+
+00:17:52.400 --> 00:17:55.919
+ Necessito saber la meva adreça IP, així que vaig a saltar
+
+00:17:55.919 --> 00:18:03.360
+ ip.xyz actual i copieu aquesta adreça IP al meu porta-retalls i després salteu
+
+00:18:03.360 --> 00:18:09.840
+ enrere i enganxeu-lo al meu control de configuració o introduïu control x control o is
+
+00:18:09.840 --> 00:18:14.320
+ per escriure deseu ara el fitxer systemctl
+
+00:18:14.320 --> 00:18:21.039
+ reinicieu el proxy petit gairebé ha acabat l'últim que necessitem
+
+00:18:21.039 --> 00:18:26.000
+ fer és que només hem de dir a aws la seguretat ec2 que
+
+00:18:26.000 --> 00:18:29.840
+ establirem una política que diu que hey, només estic autoritzat a connectar-m'hi
+
+00:18:29.840 --> 00:18:32.799
+ servidor perquè ningú més pugui connectar-s'hi
+
+00:18:32.799 --> 00:18:34.880
+ sigui el que sigui el que farem bé
+
+00:18:34.880 --> 00:18:38.799
+ Ara, doncs, tornaré aquí i veureu aquest servidor a la pantalla
+
+00:18:38.799 --> 00:18:43.840
+ bé, si faig clic a seguretat, puc fer clic al grup de seguretat que és
+
+00:18:43.840 --> 00:18:46.240
+ assignat automàticament, de manera que només cal que feu clic a això
+
+00:18:46.240 --> 00:18:50.480
+ i ara m'ha deixat en mans dels grups de seguretat ec2 i de la seguretat correcta
+
+00:18:50.480 --> 00:18:52.320
+ grup notareu que ja està configurat
+
+00:18:52.320 --> 00:18:56.960
+ un per a ssh perquè està activat per defecte, puc configurar-ho
+
+00:18:56.960 --> 00:18:59.440
+ només per permetre-m'ho, el que és important
+
+00:18:59.440 --> 00:19:02.720
+ fem això només per estar en bones pràctiques de seguretat
+
+00:19:02.720 --> 00:19:06.160
+ ssh el canviaré de custom000
+
+00:19:06.160 --> 00:19:10.080
+ Vaig a tancar x això i després el canviaré al meu IP
+
+00:19:10.080 --> 00:19:14.480
+ llavors vaig a afegir una nova regla, heu vist com he arribat fins aquí, ja sé que em moc
+
+00:19:14.480 --> 00:19:18.080
+ realment molt ràpid, acabo de fer clic a Edita les regles entrants
+
+00:19:18.080 --> 00:19:22.960
+ aquí bé, per tant, afegiu una nova regla tcp personalitzat
+
+00:19:22.960 --> 00:19:27.120
+ recordeu el número de port per defecte i només el 888
+
+00:19:27.120 --> 00:19:31.919
+ permetre la meva IP, puc dir-li alguna cosa si vull proxy
+
+00:19:31.919 --> 00:19:37.919
+ i després guardeu les meves regles, anem així que ara veieu ssh i
+
+00:19:37.919 --> 00:19:44.160
+ tcp personalitzat anomenat proxy al port 888.
+
+00:19:44.160 --> 00:19:49.600
+ doncs, com ho provem, de manera que la nostra adreça IP actual és 99.233
+
+00:19:49.600 --> 00:19:52.640
+ i així vaig a connectar-me al servidor intermediari
+
+00:19:52.640 --> 00:19:57.360
+ no és un tutorial sobre com utilitzar un servidor intermediari, això no és un
+
+00:19:57.360 --> 00:20:01.120
+ tutorial sobre per a què utilitzar-lo necessàriament
+
+00:20:01.120 --> 00:20:04.720
+ aquí estic fent suposicions que podeu dirigir-vos a Google mateix
+
+00:20:04.720 --> 00:20:08.240
+ perquè serà diferent en funció del vostre cas d'ús si voleu
+
+00:20:08.240 --> 00:20:11.600
+ només heu de representar el vostre navegador o fer servir un servidor intermediari per a una aplicació concreta o la totalitat
+
+00:20:11.600 --> 00:20:15.440
+ xarxa que dependrà de la vostra persona
+
+00:20:15.440 --> 00:20:20.159
+ cas d’ús, aquest és estrictament un tutorial sobre com construir-lo
+
+00:20:20.159 --> 00:20:23.679
+ instància ec2 molt ràpidament de forma gratuïta
+
+00:20:23.679 --> 00:20:28.400
+ que té un servidor intermediari a punt per utilitzar-lo a Califòrnia o a qualsevol altre lloc
+
+00:20:28.400 --> 00:20:32.960
+ i eh, això és tot, en el meu cas particular ara mateix
+
+00:20:32.960 --> 00:20:36.480
+ per tant, aquest moment no és necessàriament el que voleu fer després
+
+00:20:36.480 --> 00:20:41.120
+ així és com provaré el servidor intermediari que aquí estic a Windows 10
+
+00:20:41.120 --> 00:20:47.280
+ així que simplement escriuré el servidor intermediari i tornaré a entrar a la configuració del servidor intermediari
+
+00:20:47.280 --> 00:20:50.880
+ probablement no com vulgueu fer-ho, només vull provar, així que vaig a girar
+
+00:20:50.880 --> 00:20:53.679
+ al servidor intermediari puc veure que hi ha un servidor intermediari antic
+
+00:20:53.679 --> 00:20:56.880
+ configuració allà, així que assegureu-vos que en tingueu present
+
+00:20:56.880 --> 00:21:00.240
+ si hi ha paràmetres antics del servidor intermediari, heu de canviar-lo, aneu a
+
+00:21:00.240 --> 00:21:03.679
+ instàncies a ec2 feu clic a l'identificador de la vostra instància
+
+00:21:03.679 --> 00:21:07.440
+ agafa aquesta adreça IP i després enganxa-la a
+
+00:21:07.440 --> 00:21:11.840
+ com a adreça del port 8888 del servidor intermediari
+
+00:21:11.840 --> 00:21:17.120
+ i estalvieu, de manera que ara estic connectat al servidor intermediari a l'instant
+
+00:21:17.120 --> 00:21:20.559
+ Windows no connectat a Windows diu que vaig a encaminar tot el trànsit
+
+00:21:20.559 --> 00:21:22.880
+ a través del servidor intermediari m'hi hauria de corregir
+
+00:21:22.880 --> 00:21:29.520
+ així que si torno a currentip.xyz 99.233 és la meva IP actual vaig a tocar
+
+00:21:29.520 --> 00:21:38.159
+ f5 per actualitzar i si tot va bé 3.101.108.211. bé
+
+00:21:38.159 --> 00:21:44.720
+ Què és el que és el meu servidor, així que ara sóc?
+
+00:21:44.720 --> 00:21:51.679
+ on estic, descobrim maxmind.com, fem una cerca de l'adreça IP
+
+00:21:51.679 --> 00:21:59.120
+ que estic actualment a on sóc san jose california
+
+00:21:59.120 --> 00:22:02.559
+ aquí és on el meu màxim determina que sóc
+
+00:22:02.559 --> 00:22:05.600
+ així que això és tot el que tenim a la gent que tenim
+
+00:22:05.600 --> 00:22:10.640
+ creat configurat desplegat un servei proxy gratuït que nosaltres
+
+00:22:10.640 --> 00:22:14.559
+ posseir i operar som els únics que tenim això que tenim això
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh, per tant, si voleu connectar-vos-hi, feu-hi canvis
+
+00:22:19.200 --> 00:22:23.840
+ com a servidor polivalent, podeu fer-ho, però només heu de vigilar el vostre
+
+00:22:23.840 --> 00:22:27.120
+ les vostres coses de facturació assegureu-vos que no heu superat els llindars i
+
+00:22:27.120 --> 00:22:29.440
+ coses així si només l'utilitzeu com a servidor intermediari, ho és
+
+00:22:29.440 --> 00:22:32.159
+ molt poc probable que ho facis, només és una cosa que estàs preparant
+
+00:22:32.159 --> 00:22:37.520
+ a través de les dades, així que comproveu que és aws.amazon.com per començar
+
+00:22:37.520 --> 00:22:41.440
+ si teniu preguntes, publiqueu-les a la nostra comunitat
+
+00:22:41.440 --> 00:22:44.480
+ la nostra discòrdia trobareu l'enllaç a la categoria 5
+
+00:22:44.480 --> 00:22:48.720
+ Mentrestant, televisiu al menú interactua si us ha agradat això si l’heu utilitzat o
+
+00:22:48.720 --> 00:22:53.039
+ M'ha semblat útil, doneu-me un gran dit polze cap amunt, si us plau subscriviu-vos i us veurem bé
+
+00:22:53.039 --> 00:23:07.059
+ després del descans [Música]
+
+00:23:15.520 --> 00:23:18.559
+ Benvingut de nou, aquesta és la tecnologia de categoria 5
+
+00:23:18.559 --> 00:23:22.240
+ i vull parlar del que faig a casa
+
+00:23:22.240 --> 00:23:26.640
+ o més aviat, què estic pensant fer assegut a veure Netflix
+
+00:23:26.640 --> 00:23:30.480
+ No tinc temps de seure i mirar Netflix, voldria fer-ho, però
+
+00:23:30.480 --> 00:23:34.960
+ uh no, la meva família sempre enganxa a Netflix i sóc com si anés a l'ordinador
+
+00:23:34.960 --> 00:23:38.720
+ la qual cosa és fantàstic perquè m’ha obligat a començar hi ha netflix a l’ordinador
+
+00:23:38.720 --> 00:23:44.000
+ ara jeff, em distreu, no, però és així
+
+00:23:44.000 --> 00:23:46.960
+ genial perquè m'ha obligat a començar a mirar algunes de les coses que fem
+
+00:23:46.960 --> 00:23:51.760
+ per tota la casa i ves, com puc fer que això sigui meu i així
+
+00:23:51.760 --> 00:23:55.120
+ ja saps que he esmentat a la part superior del programa que té el nostre fill
+
+00:23:55.120 --> 00:24:00.240
+ es va posar a soldar i ho ha fet molt bé i ens recorda quants anys té
+
+00:24:00.240 --> 00:24:05.200
+ només compleixo 12. acaba de complir 12. bé, però sí, ja ho ha fet
+
+00:24:05.200 --> 00:24:09.760
+ molt bé amb ell i uh que ha soldat dues calculadores fins ara
+
+00:24:09.760 --> 00:24:13.919
+ um i un d'ells l'han portat a l'escola que el seu professor va quedar completament bufat
+
+00:24:13.919 --> 00:24:16.000
+ sí, estic pensant que té 12 anys i ell
+
+00:24:16.000 --> 00:24:20.320
+ ja fabricant una calculadora, sí, sí, va fer una calculadora de la qual vam obtenir un kit de bricolatge
+
+00:24:20.320 --> 00:24:23.360
+ amazon i el va construir i potser dues hores
+
+00:24:23.360 --> 00:24:27.039
+ de treball va ser realment fenomenal irreal i el seu treball de soldadura és
+
+00:24:27.039 --> 00:24:30.880
+ realment molt net, excel·lent, sembla un professional
+
+00:24:30.880 --> 00:24:34.559
+ però, de totes maneres, ha estat preguntant com fer altres coses i, a mesura que anem soldant, ho és
+
+00:24:34.559 --> 00:24:37.200
+ M'agrada bé què és això i què és això i com funciona aquest treball i
+
+00:24:37.200 --> 00:24:40.480
+ vaig, vull poder ensenyar-li aquestes coses
+
+00:24:40.480 --> 00:24:46.480
+ vull poder-li explicar com funciona una placa de circuit, no només
+
+00:24:46.480 --> 00:24:49.360
+ soldant-lo però entenent els components, l’encaminament i tot això
+
+00:24:49.360 --> 00:24:53.279
+ tipus de coses i vull dir que sé que pots comprar um
+
+00:24:53.279 --> 00:25:00.400
+ només taulers simples que són només files de pocs punts de connexió
+
+00:25:00.400 --> 00:25:03.840
+ però vull ser capaç de crear el nostre propi tauler, i així ho ha demanat
+
+00:25:03.840 --> 00:25:07.279
+ concretament si podem trobar un kit de bricolatge per
+
+00:25:07.279 --> 00:25:10.320
+ una caixa inútil que saps que és la caixa on prems el botó i sí
+
+00:25:10.320 --> 00:25:15.840
+ poca cosa surt i apareix, sí, proveu-ho
+
+00:25:17.600 --> 00:25:22.640
+ el que faries és seriós
+
+00:25:25.039 --> 00:25:30.400
+ oh, Déu, és divertit
+
+00:25:32.720 --> 00:25:39.520
+ hola, és com tenir un gatet allà, és com el meu gat
+
+00:25:40.240 --> 00:25:44.799
+ hey hey ara, així que he estat buscant-ne, no n'he trobat, però n'he trobat un munt
+
+00:25:44.799 --> 00:25:48.080
+ gent com oh pots fer-ne un amb un arduino, pots fer-ne un amb aquest
+
+00:25:48.080 --> 00:25:55.520
+ i era com si fes una caixa inútil de bricolatge amb la que vull construir-la
+
+00:25:55.520 --> 00:25:58.559
+ en el fons, així que he estat investigant com fer-ho
+
+00:25:58.559 --> 00:26:03.679
+ els meus propis ordinadors a casa bé, en realitat no és tan difícil
+
+00:26:03.679 --> 00:26:08.960
+ i em va sorprendre que tot el que necessito és una impressora làser per configurar el meu encaminament
+
+00:26:08.960 --> 00:26:12.880
+ com per on van els camins, de manera que realment el gravareu
+
+00:26:12.880 --> 00:26:15.919
+ Vaig a gravar-lo a casa, oh home
+
+00:26:15.919 --> 00:26:20.159
+ això és molt més enllà de mi Jeff, és realment el que implica productes químics
+
+00:26:20.159 --> 00:26:23.679
+ sí, però només un procés molt senzill, així que he trobat
+
+00:26:23.679 --> 00:26:26.880
+ hi he investigat un munt i, per tant, he trobat aa
+
+00:26:26.880 --> 00:26:29.919
+ manera molt senzilla de fer el meu propi pcb
+
+00:26:29.919 --> 00:26:32.799
+ i això és el que farem, de manera que el meu projecte per a la propera a
+
+00:26:32.799 --> 00:26:35.600
+ un parell de mesos perquè he d’aprendre com funcionen aquestes coses
+
+00:26:35.600 --> 00:26:39.520
+ funciona és dissenyar una placa de circuit um que tinc
+
+00:26:39.520 --> 00:26:43.120
+ mai abans s'havia fet la placa de circuits i després la del meu fill
+
+00:26:43.120 --> 00:26:45.919
+ el soldarem junts i el farem nostre
+
+00:26:45.919 --> 00:26:50.960
+ caixa inútil que espero també imprimir en 3D la caixa, oh això és genial
+
+00:26:50.960 --> 00:26:56.480
+ Sí, només estàs bussejant en mi quan faig alguna cosa, no em queda petit
+
+00:26:56.480 --> 00:27:00.320
+ i ja saps que el meu plantejament és una mica diferent perquè sóc molt
+
+00:27:00.320 --> 00:27:03.520
+ en com m'agrada aprendre alguna cosa primer
+
+00:27:03.520 --> 00:27:09.200
+ i després augmentar la meva inversió en aquest procés i ja estàs parlant
+
+00:27:09.200 --> 00:27:13.679
+ sobre saltar directament a la creació de PCB, així que faria una còpia de seguretat perquè ho sàpiga
+
+00:27:13.679 --> 00:27:16.799
+ si estàs pensant que potser m'agradaria poder fer els meus propis circuits
+
+00:27:16.799 --> 00:27:20.399
+ i coses així, el meu punt de partida és una taula de treball, sí
+
+00:27:20.399 --> 00:27:25.440
+ i la taula de suport us permet dissenyar el circuit que heu dissenyat o
+
+00:27:25.440 --> 00:27:28.559
+ que heu descarregat com un pla de circuit um
+
+00:27:28.559 --> 00:27:32.399
+ des d'Internet o per molt que tingueu, això us permet establir-lo
+
+00:27:32.399 --> 00:27:36.799
+ en un en un bàsicament un simulador de pcb
+
+00:27:36.799 --> 00:27:41.039
+ que funcionarà com un pcb, però només podeu desmuntar-lo i
+
+00:27:41.039 --> 00:27:46.399
+ deixeu les peces a l’altura i és barat, molt econòmic i només us farà començar
+
+00:27:46.399 --> 00:27:50.080
+ i aleshores el següent pas per a mi és el que s’anomena un tauler de prototipatge per aconseguir-ho
+
+00:27:50.080 --> 00:27:53.279
+ taules de PCB que tenen tots els forats adequats i
+
+00:27:53.279 --> 00:27:57.840
+ tenen soldadura com punts, però no
+
+00:27:57.840 --> 00:28:02.080
+ interconnexió entre ells perquè realment feu servir cables o vosaltres
+
+00:28:02.080 --> 00:28:05.760
+ executeu una mica de soldadura entre dues juntes diferents, per exemple
+
+00:28:05.760 --> 00:28:10.080
+ i ho fas així, així que aquest és el meu segon pas, sí
+
+00:28:10.080 --> 00:28:14.720
+ potser seguir el camí per gravar el vostre
+
+00:28:14.720 --> 00:28:19.200
+ pcbs perquè després us endinsareu com els processos químics
+
+00:28:19.200 --> 00:28:24.960
+ i i no ho he investigat, però és un procés molt més complicat
+
+00:28:24.960 --> 00:28:27.919
+ m'agrada començar una mica més senzill el meu primer pc i
+
+00:28:27.919 --> 00:28:32.080
+ construït sobre una taula de treball molt bàsica, però l'he dissenyat bé
+
+00:28:32.080 --> 00:28:35.120
+ d'acord i tot el que és és que es necessita un cinc volts
+
+00:28:35.120 --> 00:28:38.880
+ senyal i quan té cinc volts el
+
+00:28:38.880 --> 00:28:43.440
+ el relé està tancat, de manera que té un relleu correcte, si no té cinc volts
+
+00:28:43.440 --> 00:28:47.520
+ el relé s'obre de manera que es desconnecta
+
+00:28:47.520 --> 00:28:51.440
+ la raó per la qual he creat que és una aplicació específica, així que la vaig crear
+
+00:28:51.440 --> 00:28:56.000
+ sobre una taula de pa i prové de l'alimentació a cinc volts
+
+00:28:56.000 --> 00:29:03.440
+ qualsevol endevina qualsevol endevina spc no és un acrònim de tres lletres usb
+
+00:29:03.440 --> 00:29:07.360
+ usb usb traient un senyal de cinc volts d’una micro tick
+
+00:29:07.360 --> 00:29:12.399
+ enrutador d'acord i així a la micro tick he programat el codi que deia
+
+00:29:12.399 --> 00:29:17.039
+ això bàsicament per deixar-ho en silenci si Internet no funciona
+
+00:29:17.039 --> 00:29:20.559
+ mata el poder al usb oh i així llavors
+
+00:29:20.559 --> 00:29:25.520
+ obre el relé i què és el control del relé, però la potència del meu mòdem
+
+00:29:25.520 --> 00:29:29.919
+ de manera que el meu mòdem, si Internet no funciona, es convertirà automàticament
+
+00:29:29.919 --> 00:29:33.120
+ el poder de si mateix a causa del meu relleu
+
+00:29:33.120 --> 00:29:37.039
+ dreta i espereu cinc segons i torneu a engegar-lo, de manera que és essencialment un
+
+00:29:37.039 --> 00:29:41.200
+ la versió virtual de la vau desactivar i tornar a activar perquè
+
+00:29:41.200 --> 00:29:43.679
+ Què fas quan ets a Internet?
+
+00:29:43.679 --> 00:29:46.799
+ a partir de l'impuls, espereu cinc segons i el torneu a endollar i
+
+00:29:46.799 --> 00:29:50.240
+ saps que vuit vegades de cada deu, tornarà a funcionar i funcionarà
+
+00:29:50.240 --> 00:29:54.559
+ correcte, així que era el circuit que vaig construir, de manera que el vaig construir en una placa de prototipatge una vegada
+
+00:29:54.559 --> 00:29:58.240
+ el tenia funcionant i el vaig soldar junts i és molt senzill
+
+00:29:58.240 --> 00:30:00.799
+ circuit molt xulo i ha funcionat molt bé m'agrada
+
+00:30:00.799 --> 00:30:04.720
+ que molt divertit així que eines què tens tan
+
+00:30:04.720 --> 00:30:08.080
+ on estàs, uh, bé, com deia que acabo de fer
+
+00:30:08.080 --> 00:30:13.760
+ la investigació de la setmana passada ah, així que estic a la fase de compra
+
+00:30:13.760 --> 00:30:17.679
+ uh, doncs, tenim tot el material de soldar que vaig a comprar comprant el tauler
+
+00:30:17.679 --> 00:30:21.919
+ els productes químics que ja he descarregat el programari um
+
+00:30:21.919 --> 00:30:25.600
+ per dissenyar el pcb wow um
+
+00:30:25.600 --> 00:30:29.360
+ i tinc un kit de components que està en camí amb tots els
+
+00:30:29.360 --> 00:30:33.039
+ resistències i condensadors, sí, tot aquest tipus de coses que són una cosa ordenada
+
+00:30:33.039 --> 00:30:36.559
+ també és que en aquests dies vull dir que realment no es pot caminar
+
+00:30:36.559 --> 00:30:39.039
+ a una barraca de ràdio com abans no hi podíem
+
+00:30:39.039 --> 00:30:43.679
+ encara hi ha botigues com aquí a Barrie, en tenim una que es diu seaal
+
+00:30:43.679 --> 00:30:47.039
+ que és una botiga brillant que és com aquella antiga barraca de ràdio on es troba
+
+00:30:47.039 --> 00:30:50.399
+ entra i és com si només necessités un condensador, sí
+
+00:30:50.399 --> 00:30:52.880
+ i és com aquí hi vas, saps que és com calaixos
+
+00:30:52.880 --> 00:30:57.279
+ i calaixos de condensadors i resistències i tota la resta de díodes i el que sigui
+
+00:30:57.279 --> 00:31:01.519
+ però només per aconseguir un kit de 20 dòlars que tingui
+
+00:31:01.519 --> 00:31:04.960
+ és com un material comú i és un kit que inclou un
+
+00:31:04.960 --> 00:31:07.440
+ taulell de pa i ve amb una tauleta de pa i això
+
+00:31:07.440 --> 00:31:11.279
+ va ser una de les coses és que vull que sí que el dissenyaré, però en part
+
+00:31:11.279 --> 00:31:14.640
+ del procés de planificació és com heu dit amb la taula de proves per esbrinar-ho
+
+00:31:14.640 --> 00:31:17.519
+ com anirà el circuit i això serà un gran aprenentatge
+
+00:31:17.519 --> 00:31:19.840
+ experiència per a Luke perquè seran com bé, això és així
+
+00:31:19.840 --> 00:31:23.200
+ com funciona això i provem això i fem això i després
+
+00:31:23.200 --> 00:31:26.080
+ ja saps que hi podrem provar sense fer realment les nostres pròpies peces
+
+00:31:26.080 --> 00:31:30.880
+ això és realment ordenat que també heu mencionat arduino i arduino és una mena de
+
+00:31:30.880 --> 00:31:34.159
+ com si fos un controlador, així que sí, ho saps
+
+00:31:34.159 --> 00:31:37.200
+ un raspberry pi o un altre ordinador de placa única és cert
+
+00:31:37.200 --> 00:31:41.200
+ ordinador real amb un sistema operatiu i tot el que un arduino és com vosaltres
+
+00:31:41.200 --> 00:31:45.519
+ només cal programar-lo per fer una tasca molt específica, és un estat sòlid
+
+00:31:45.519 --> 00:31:48.960
+ i respondrà i crec que és així
+
+00:31:48.960 --> 00:31:51.840
+ per què funcionaria molt bé un arduino?
+
+00:31:51.840 --> 00:31:55.679
+ uh per a una caixa inútil és perquè és així
+
+00:31:55.679 --> 00:31:59.200
+ està activat o desactivat, i si està activat, feu això
+
+00:31:59.200 --> 00:32:03.200
+ i després s'apagarà, és correcte, de manera que la programació és molt bàsica
+
+00:32:03.200 --> 00:32:09.919
+ escriure digitalment quatre comes hola punt i coma i llavors estem
+
+00:32:09.919 --> 00:32:13.519
+ es retardarà un segon, que és de mil mil·lisegons
+
+00:32:13.519 --> 00:32:17.039
+ i després copiarem aquesta línia ara
+
+00:32:17.039 --> 00:32:20.960
+ què creus que significa alt versus baix que és el que vaig a posar aquí
+
+00:32:20.960 --> 00:32:27.440
+ només una conjectura activada o desactivada, així que ara és el que sembla el meu circuit
+
+00:32:27.440 --> 00:32:32.399
+ i senzillament ho connectaré a l’alimentació USB, de manera que no el connectaré
+
+00:32:32.399 --> 00:32:36.240
+ l'ordinador que vull alimentar aquest dispositiu i veure si funciona
+
+00:32:36.240 --> 00:32:40.840
+ executa el meu programa i, si ho fa, hauríem de veure aquesta llum
+
+00:32:40.840 --> 00:32:45.279
+ flash all we go que està net cada segon, així que nosaltres
+
+00:32:45.279 --> 00:32:49.600
+ en realitat va crear el circuit bastant ràpidament eh i va crear el
+
+00:32:49.600 --> 00:32:53.919
+ programa per dir ara a aquesta llum què cal fer i ho vam dir molt
+
+00:32:53.919 --> 00:32:57.760
+ simplement torneu a activar i apagar, però si ho esteu
+
+00:32:57.760 --> 00:32:59.679
+ fer el vostre propi circuit us ha de agradar fer
+
+00:32:59.679 --> 00:33:04.159
+ I has de programar-ho tu mateix, sí, has d'esbrinar com
+
+00:33:04.159 --> 00:33:07.919
+ wow vull veure aquest projecte com un treball en curs
+
+00:33:07.919 --> 00:33:11.840
+ d'acord i, a continuació, veure com s'uneix, sí, sona bé
+
+00:33:11.840 --> 00:33:16.559
+ hem esmentat la comunitat aquí al nostre programa i uh el nostre servidor de discòrdies
+
+00:33:16.559 --> 00:33:20.320
+ en particular, he aprofitat la nostra comunitat jeff to
+
+00:33:20.320 --> 00:33:23.760
+ entra i comparteix les meves idees sobre circuits i sí
+
+00:33:23.760 --> 00:33:27.519
+ coses així i hi ha gent a la nostra comunitat que ho és
+
+00:33:27.519 --> 00:33:32.559
+ com aquí fins aquí, pel que fa a les seves capacitats i la seva comprensió
+
+00:33:32.559 --> 00:33:36.320
+ tipus de coses, de manera que m’ha estat molt útil com jo
+
+00:33:36.320 --> 00:33:38.880
+ he après, oh, fins i tot tinc la intenció de fer servir el
+
+00:33:38.880 --> 00:33:42.640
+ utilitzeu la comunitat per treballar amb errors, sí i si sou d’aquests
+
+00:33:42.640 --> 00:33:46.159
+ la comunitat ara mateix aixeca la mà i digues que sí
+
+00:33:46.159 --> 00:33:48.480
+ entenc com funciona tot el que m'agradaria ajudar
+
+00:33:48.480 --> 00:33:52.640
+ i uh i això és una cosa que crec que crec que farà que sigui molt ordenat
+
+00:33:52.640 --> 00:33:54.320
+ funció per a l’espectacle, a més d’aprendre
+
+00:33:54.320 --> 00:33:57.200
+ Sí, de ben segur, mantingueu-nos informats sobre aquest jeff, sens dubte m'interessaria
+
+00:33:57.200 --> 00:34:00.159
+ per saber com van les coses, sí, publicaré coses darrere del
+
+00:34:00.159 --> 00:34:06.320
+ escenes una caixa inútil qualsevol altra Tens alguna idea però em fa il·lusió
+
+00:34:06.320 --> 00:34:09.520
+ quan invento com quan penso en alguna cosa
+
+00:34:09.520 --> 00:34:13.200
+ Has tingut algun d'aquests moments en què sóc com si realment ho desitgés?
+
+00:34:13.200 --> 00:34:16.240
+ tenia alguna cosa que faria això, però no existeix
+
+00:34:16.240 --> 00:34:20.079
+ Aquí és on la impressió 3D és interessant per a mi perquè estic creant coses que
+
+00:34:20.079 --> 00:34:23.520
+ encara no existeixo, realment no he pensat
+
+00:34:23.520 --> 00:34:27.520
+ pel que fa al que existeix i no existeix
+
+00:34:27.520 --> 00:34:29.919
+ um
+
+00:34:30.960 --> 00:34:34.000
+ no, realment no he pensat que fins ara se m'acudin algunes idees
+
+00:34:34.000 --> 00:34:37.040
+ Sí i comparteix-los, hi ha un munt de coses segur
+
+00:34:37.040 --> 00:34:43.679
+ Sí, com si sempre hagués volgut fer-nos un sistema de so per a tota la casa
+
+00:34:43.679 --> 00:34:48.879
+ que enllaça amb um, ja coneixeu el nostre dispositiu amazon i coses semblants
+
+00:34:48.879 --> 00:34:52.079
+ això, però m'agradaria tenir sensors on
+
+00:34:52.079 --> 00:34:56.320
+ quan camino d'una habitació a una altra, s'inicia el sensor de moviment i es tanca
+
+00:34:56.320 --> 00:34:59.760
+ apagueu els altaveus d’una sola habitació i afegiu-lo a on acabo d’anar
+
+00:34:59.760 --> 00:35:02.000
+ això és molt més avançat, però probablement
+
+00:35:02.000 --> 00:35:05.119
+ l'únic que se m'acut a on sóc com si vull fer això, però ens veiem parlar
+
+00:35:05.119 --> 00:35:08.960
+ sobre això i després crec que bé, podríeu utilitzar un sensor d'infrarojos passiu
+
+00:35:08.960 --> 00:35:14.640
+ Sí, que s'utilitza en sensors de moviment, podeu utilitzar un sensor làser, però
+
+00:35:14.640 --> 00:35:19.200
+ pir és molt, molt barat, sí, i és només un sensor petit
+
+00:35:19.200 --> 00:35:22.880
+ d'acord, hi va haver moviment, fes alguna cosa, sí, per poder crear alguna cosa
+
+00:35:22.880 --> 00:35:27.520
+ de nou amb un relé que controla exactament si l’altaveu té
+
+00:35:27.520 --> 00:35:31.599
+ un circuit completat o no, així que si només era un
+
+00:35:31.599 --> 00:35:36.160
+ un munt d’altaveus connectats a través d’un amplificador que podríeu configurar els relés
+
+00:35:36.160 --> 00:35:40.000
+ amb sensors pir que podreu controlar mitjançant el moviment
+
+00:35:40.000 --> 00:35:44.160
+ Sí, bé i si no hi ha moviment durant 10 minuts, apagueu l’altaveu
+
+00:35:44.160 --> 00:35:45.760
+ automàticament o alguna cosa semblant, sí
+
+00:35:45.760 --> 00:35:49.200
+ exactament com aquest tipus d’idees com si hi hagués tantes coses que puguis
+
+00:35:49.200 --> 00:35:51.359
+ fer quan comences a entendre i després
+
+00:35:51.359 --> 00:35:55.839
+ hi ha tot el revers, on es trenca alguna cosa i ho podeu arreglar sí
+
+00:35:55.839 --> 00:35:59.200
+ això és una bona sensació i això ja ho hem fet
+
+00:35:59.200 --> 00:36:02.000
+ sí, bonic, així que saps que tens aquestes petites bateries
+
+00:36:02.000 --> 00:36:07.280
+ als provadors, sí, ens agradaria comprovar el càrrec, de manera que en vam tenir un i ja és
+
+00:36:07.280 --> 00:36:09.200
+ divertit quan el meu fill construïa la seva calculadora
+
+00:36:09.200 --> 00:36:12.560
+ no estàvem segurs de si les piles funcionaven i no ens arribava res
+
+00:36:12.560 --> 00:36:15.760
+ Em sembla que és estrany que no estiguem en general, encara que estigui mort
+
+00:36:15.760 --> 00:36:18.640
+ apareix al vermell però no hi havia res, així que el vam obrir
+
+00:36:18.640 --> 00:36:22.960
+ resulta que la connexió real s’havia trencat oh
+
+00:36:22.960 --> 00:36:27.359
+ ara no tinc ni idea, sí, i el meu fill és com si ho pogués solucionar i
+
+00:36:27.359 --> 00:36:30.240
+ ho va arreglar, el vam tornar a ajuntar i, després, ja funciona i és com oh
+
+00:36:30.240 --> 00:36:34.000
+ Sí, això és una bateria esgotada, sí, també puc relacionar-me amb això
+
+00:36:34.000 --> 00:36:38.160
+ altaveu de coixins per a podcasts, val, ja que ho saps
+
+00:36:38.160 --> 00:36:40.880
+ connectat per un cable al meu telèfon s’estira
+
+00:36:40.880 --> 00:36:45.119
+ Sí i es va treure de manera que és tan senzill, però no sé
+
+00:36:45.119 --> 00:36:48.720
+ Vaig fer no en vaig comprar un altre no no no vaig agafar
+
+00:36:48.720 --> 00:36:52.480
+ el vaig separar i el vaig tornar a soldar i el vaig reforçar
+
+00:36:52.480 --> 00:36:56.160
+ així que no tornaria a passar oh bonic ho va fer millor del que era ell
+
+00:36:56.160 --> 00:37:00.240
+ va dirigir la seva ment cap a coses com els residus electrònics, sí i és com si algú ho fes
+
+00:37:00.240 --> 00:37:04.960
+ Desfer-se de la televisió o el monitor de l'ordinador és probable
+
+00:37:04.960 --> 00:37:08.240
+ continua funcionant pare, només hi ha alguna cosa a dins que es va trencar
+
+00:37:08.240 --> 00:37:12.400
+ és com si ho pogués arreglar, com si pensessis en això i així són les seves rodes
+
+00:37:12.400 --> 00:37:15.599
+ es queda per darrere i és com si pogués fer aquestes coses i després vendre
+
+00:37:15.599 --> 00:37:20.160
+ els 12 anys, és una carrera
+
+00:37:20.160 --> 00:37:22.960
+ en un nombre de
+
+00:37:23.599 --> 00:37:27.359
+ uh com si fos realment valuós tenir aquestes capacitats
+
+00:37:27.359 --> 00:37:30.960
+ així que vaig a entrenar-lo per al pròxim uh bé, té 12 anys
+
+00:37:30.960 --> 00:37:38.560
+ vuit i sis anys em retiro, vaig entrar un monitor, no ho sé
+
+00:37:38.560 --> 00:37:42.960
+ potser un bonic monitor de pantalla de 23 polzades o 24 polzades d'ample
+
+00:37:42.960 --> 00:37:47.359
+ Vaig entrar com a residus electrònics i així sóc com
+
+00:37:47.359 --> 00:37:50.720
+ Vaig a fer una ullada i així ho vam mirar la meva filla
+
+00:37:50.720 --> 00:37:57.280
+ i hi havia un condensador únic que es va cremar, així que vaig entrar en línia i
+
+00:37:57.280 --> 00:37:59.920
+ He comprat un d'aquests condensadors que els venen en paquets de
+
+00:37:59.920 --> 00:38:03.599
+ tres i eren dotze dòlars per 12
+
+00:38:03.599 --> 00:38:07.760
+ tenim un paquet de tres, substituïm un d'aquests condensadors i aquest monitor és
+
+00:38:07.760 --> 00:38:13.520
+ ara assegut a l'escriptori de la meva filla, oh, Déu, és increïble, és meravellós
+
+00:38:13.520 --> 00:38:16.720
+ i té tota la raó, però no només pots arreglar coses jeff
+
+00:38:16.720 --> 00:38:19.920
+ diguem que alguna cosa entra als residus electrònics o que saps que hi trobes alguna cosa
+
+00:38:19.920 --> 00:38:22.320
+ el costat de la carretera que algú acaba de descartar perquè no pot, no ho fa
+
+00:38:22.320 --> 00:38:26.480
+ sap com solucionar-ho i potser si solucionar-ho és més
+
+00:38:26.480 --> 00:38:30.079
+ car que comprar-ne un de nou en molts casos també
+
+00:38:30.079 --> 00:38:35.119
+ um, encara que no ho pugueu solucionar, podeu fer el que es diu dessoldar
+
+00:38:35.119 --> 00:38:39.440
+ és així perquè pugueu eliminar tots els bons components i
+
+00:38:39.440 --> 00:38:43.119
+ poseu-los en un organitzador de calaixos, sí, perquè pugueu tenir la vostra pròpia ràdio
+
+00:38:43.119 --> 00:38:46.880
+ barraca a casa on teniu els calaixos de totes aquestes parts
+
+00:38:46.880 --> 00:38:50.079
+ i després, quan es trenca alguna cosa, no cal gastar-ne 12
+
+00:38:50.079 --> 00:38:53.280
+ en línia per comprar-los, voldria no haver sabut que hi entraria
+
+00:38:53.280 --> 00:38:57.040
+ perquè a l’estiu tenia uns quatre ordinadors
+
+00:38:57.040 --> 00:39:00.320
+ un parell de projectors els vam portar tots els residus electrònics
+
+00:39:00.320 --> 00:39:03.760
+ així que és com si ho hagués pogut desmuntar, segur que sí que els he aconseguit
+
+00:39:03.760 --> 00:39:07.119
+ oh bé, les parts que vivim i aprenem, sí, exactament
+
+00:39:07.119 --> 00:39:10.960
+ molt bé, mantingueu-nos informats sobre això definitivament i bé, expliqueu-nos el comentari següent
+
+00:39:10.960 --> 00:39:13.359
+ sobre algunes de les gestes que heu tingut
+
+00:39:13.359 --> 00:39:18.560
+ eh, pel que fa a aquest tipus de temes i, si són, si és així
+
+00:39:18.560 --> 00:39:20.880
+ una cosa que t’interessa i que mai no has entrat
+
+00:39:20.880 --> 00:39:24.720
+ hola comentari a continuació, també ens encantaria tenir notícies vostres i ens encantaria tenir-vos
+
+00:39:24.720 --> 00:39:27.920
+ com a part d’aquest procés, ja que Jeff està aprenent
+
+00:39:27.920 --> 00:39:32.079
+ ja que també estic aprenent i aprofundint cada vegada més en aquests tipus de
+
+00:39:32.079 --> 00:39:36.800
+ com ara reparacions de components i plaques de circuits i tota la resta
+
+00:39:36.800 --> 00:39:41.359
+ és molt divertit, sí, és una gran afició i una carrera meravellosa
+
+00:39:41.359 --> 00:39:45.200
+ Tinc moltes ganes de fer-ho també, així que és veritat bo per al teu fill que m'agradaria escoltar
+
+00:39:45.200 --> 00:39:49.680
+ suposo que com ho gaudeix, quan és hum
+
+00:39:49.680 --> 00:39:53.359
+ 13 més, així que l'any que ve el podeu portar a l'estudi
+
+00:39:53.359 --> 00:39:56.560
+ i ens pot ensenyar com se sent
+
+00:39:56.560 --> 00:40:00.480
+ sona molt bé, fa que passi, hem de dirigir-nos a la redacció
+
+00:40:00.480 --> 00:40:02.960
+ becca hi és amb les nostres notícies més destacades de la setmana
+
+00:40:02.960 --> 00:40:08.800
+ aquí està aquí el que ve a la sala d'informatius de televisió de 5 punts
+
+00:40:08.800 --> 00:40:12.000
+ els pirates informàtics utilitzen un greu error de Windows per comprometre’s
+
+00:40:12.000 --> 00:40:17.280
+ servidors sense pegar s'han eliminat tres paquets javascript del npm
+
+00:40:17.280 --> 00:40:22.560
+ El portal per contenir codi maliciós Nokia s'ha encarregat de construir un
+
+00:40:22.560 --> 00:40:27.040
+ nova xarxa cel·lular 4g a la lluna un 80 nou
+
+00:40:27.040 --> 00:40:32.240
+ La tecnologia de càrrega sense fils de watt de Xiaomi ens bufa la ment i el
+
+00:40:32.240 --> 00:40:36.240
+ S'ha llançat el mòdul de càlcul 4 de raspberry pi
+
+00:40:36.240 --> 00:40:40.720
+ feu-vos saber les especificacions i com això canvia les coses per al industrial
+
+00:40:40.720 --> 00:40:44.000
+ seguiu els detalls complets i el cripto racó d'aquesta setmana
+
+00:40:44.000 --> 00:40:48.640
+ estem presentant aquesta és la redacció de TV de 5 punts
+
+00:40:48.640 --> 00:40:52.079
+ cobrint les històries tecnològiques més avançades de la setmana amb un lleuger Linux
+
+00:40:52.079 --> 00:40:54.480
+ parcialitat
+
+00:40:56.240 --> 00:41:00.319
+ de la redacció sóc becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ els pirates informàtics utilitzen un greu error de Windows per comprometre’s
+
+00:41:03.920 --> 00:41:07.920
+ servidors sense pegar una de les vulnerabilitats més importants de Windows
+
+00:41:07.920 --> 00:41:10.400
+ divulgat aquest any està sota atac actiu
+
+00:41:10.400 --> 00:41:14.480
+ per part de pirates informàtics que intenten fer servir servidors de portes posteriors que emmagatzemen credencials per a tots
+
+00:41:14.480 --> 00:41:18.480
+ usuari i compte administratiu d'una xarxa
+
+00:41:18.480 --> 00:41:23.119
+ els investigadors van donar a la vulnerabilitat el nom de xerologon perquè els atacs funcionen
+
+00:41:23.119 --> 00:41:27.200
+ enviar una cadena de zeros en una sèrie de missatges que utilitzen la xarxa
+
+00:41:27.200 --> 00:41:30.720
+ protocol d 'inici de sessió en què es basen els servidors Windows
+
+00:41:30.720 --> 00:41:34.560
+ varietat de tasques, incloses les que permeten als usuaris finals iniciar la sessió
+
+00:41:34.560 --> 00:41:38.560
+ a un inici de sessió xero de xarxa tal com ha estat la vulnerabilitat
+
+00:41:38.560 --> 00:41:41.280
+ doblat va guanyar molta atenció el mes passat
+
+00:41:41.280 --> 00:41:44.000
+ quan l'empresa que la va descobrir va dir que podia donar atacants
+
+00:41:44.000 --> 00:41:48.079
+ accés instantani a directoris actius que fan servir els administradors per crear
+
+00:41:48.079 --> 00:41:52.480
+ suprimiu i gestioneu els directoris actius i el domini dels comptes de xarxa
+
+00:41:52.480 --> 00:41:55.599
+ els controladors en què s’executen es troben entre els premis més desitjats
+
+00:41:55.599 --> 00:42:00.480
+ en pirateria perquè un cop segrestats permeten als atacants executar codi i
+
+00:42:00.480 --> 00:42:03.839
+ munició a totes les màquines connectades microsoft
+
+00:42:03.839 --> 00:42:09.280
+ divendres, va corregir el defecte de seguretat el divendres Kevin Beaumont
+
+00:42:09.280 --> 00:42:12.480
+ treballant com a investigador independent
+
+00:42:12.480 --> 00:42:16.480
+ va dir en una publicació al blog que havia detectat atacs a la tassa que utilitza per guardar
+
+00:42:16.480 --> 00:42:19.680
+ al corrent d 'atacs d' atac que els pirates informàtics utilitzen a Internet
+
+00:42:19.680 --> 00:42:24.160
+ salvatge quan el seu servidor d'atraccions no va ser correcte, els atacants van poder utilitzar un fitxer
+
+00:42:24.160 --> 00:42:27.680
+ script de PowerShell per canviar amb èxit una contrasenya d'administrador
+
+00:42:27.680 --> 00:42:31.920
+ i la porta del darrere del servidor beaumont va dir que va aparèixer l'atac
+
+00:42:31.920 --> 00:42:36.480
+ per estar completament script amb totes les ordres completades en qüestió de segons
+
+00:42:36.480 --> 00:42:40.160
+ amb això, els atacants van instal·lar una porta posterior que permetia el control remot
+
+00:42:40.160 --> 00:42:44.079
+ accés administratiu als dispositius de la seva simulada xarxa
+
+00:42:44.079 --> 00:42:48.400
+ els atacants també van habilitar l'escriptori remot com a resultat que continuarien
+
+00:42:48.400 --> 00:42:53.200
+ per tenir accés remot fins i tot si l’administrador posteriorment pedaça el servidor
+
+00:42:53.200 --> 00:42:57.520
+ les persones sense autenticació autèntica poden utilitzar l'explotació per guanyar domini
+
+00:42:57.520 --> 00:43:00.800
+ credencials administratives sempre que els atacants puguin fer-ho
+
+00:43:00.800 --> 00:43:05.839
+ establir connexions tcp amb un controlador de domini vulnerable a
+
+00:43:05.839 --> 00:43:10.160
+ en alguns casos, els atacants poden utilitzar una vulnerabilitat diferent per establir-se a l'interior
+
+00:43:10.160 --> 00:43:13.359
+ una xarxa i després explotar l'inici de sessió zero per fer-se càrrec
+
+00:43:13.359 --> 00:43:17.599
+ el controlador de domini crec que és un bon exemple de manera
+
+00:43:17.599 --> 00:43:20.319
+ aquest tipus de scripts per entrar a les xarxes
+
+00:43:20.319 --> 00:43:27.839
+ no tenim ordinadors obsolets a la xarxa i també ens enganyem en enginyeria social
+
+00:43:27.839 --> 00:43:31.040
+ escolta moltes coses sobre com probablement rebràs aquests correus electrònics
+
+00:43:31.040 --> 00:43:34.800
+ que intenten enganyar-lo per seguir amb un procés de
+
+00:43:34.800 --> 00:43:38.319
+ introduir una credencial o alguna cosa semblant
+
+00:43:38.319 --> 00:43:44.720
+ el risc que correm i el trist cas que veig
+
+00:43:44.720 --> 00:43:48.880
+ en això és que de vegades la gent pensa bé
+
+00:43:48.880 --> 00:43:52.319
+ No necessito actualitzar aquest ordinador perquè ningú no és al darrere
+
+00:43:52.319 --> 00:43:55.680
+ ho fa servir sí, o bé, ho necessitem
+
+00:43:55.680 --> 00:43:58.800
+ Encara tenim Windows XP perquè tenim problemes amb un dels nostres
+
+00:43:58.800 --> 00:44:02.880
+ Si no ho fem, continuem veient moltes finestres 7
+
+00:44:02.880 --> 00:44:06.960
+ sistemes i això és una tragèdia si teniu un
+
+00:44:06.960 --> 00:44:10.960
+ El sistema Windows 7 o Windows XP de la vostra xarxa només ha de girar-lo
+
+00:44:10.960 --> 00:44:13.839
+ desfeu-vos-en, sí, veieu el cas
+
+00:44:13.839 --> 00:44:20.480
+ és amb aquests sistemes, de manera que Microsoft té el que anomenem eol o final de vida
+
+00:44:20.480 --> 00:44:24.240
+ ha acabat la vida d'aquests sistemes operatius
+
+00:44:24.240 --> 00:44:27.839
+ així que han dit que heu d'actualitzar a Windows 10. bé, no vull actualitzar
+
+00:44:27.839 --> 00:44:32.000
+ a Windows 10 m'agrada el meu Windows 7. ho entenc i ho respecto
+
+00:44:32.000 --> 00:44:37.119
+ no obstant això, aquí teniu el problema dels pirates informàtics
+
+00:44:37.119 --> 00:44:41.599
+ ara són capaços d’explotar aquests sistemes operatius
+
+00:44:41.599 --> 00:44:45.839
+ i mentre ho fan mentre troben gestes
+
+00:44:45.839 --> 00:44:48.960
+ hi ha un parell de coses que passen una
+
+00:44:48.960 --> 00:44:55.520
+ ja sigui regalar o vendre aquestes gestes o dues, només són alliberades
+
+00:44:55.520 --> 00:45:01.520
+ al públic, ja sigui a través de la web fosca o fins i tot a github
+
+00:45:01.520 --> 00:45:07.839
+ com a investigació de seguretat, i ara ara, si voleu, aquests pirates informàtics
+
+00:45:07.839 --> 00:45:11.599
+ anomeneu-los així, però de manera realista en molts casos són el que anomenem
+
+00:45:11.599 --> 00:45:16.800
+ gatets de guió i aquests són um
+
+00:45:16.800 --> 00:45:21.680
+ ni tan sols com els hackers, sí, però no han de tenir molts coneixements perquè
+
+00:45:21.680 --> 00:45:28.160
+ l'explotació és pública, és ben conegut i entès, si és així
+
+00:45:28.160 --> 00:45:32.319
+ hi ha exploits disponibles per a un sistema operatiu
+
+00:45:32.319 --> 00:45:36.880
+ què esperem que passi, esperem el proveïdor del sistema operatiu Microsoft
+
+00:45:36.880 --> 00:45:41.200
+ en aquest cas, es fa un pedaç que explota per solucionar-ho
+
+00:45:41.200 --> 00:45:44.560
+ i aquest és el cas de Windows 10. per desgràcia
+
+00:45:44.560 --> 00:45:49.040
+ els que són eol no passa de vegades amb un sistema operatiu eol
+
+00:45:49.040 --> 00:45:54.079
+ escoltem, doncs bé, no necessito assistència. microsoft ha acabat amb el suport
+
+00:45:54.079 --> 00:45:57.440
+ el que hem escoltat sí, han acabat el suport per a Windows 7. han acabat
+
+00:45:57.440 --> 00:46:01.920
+ suport per a Windows XP oh, però mai he hagut de trucar al servei d'assistència
+
+00:46:01.920 --> 00:46:04.640
+ ho puc manejar no és el que són
+
+00:46:04.640 --> 00:46:06.640
+ parlant del que diuen
+
+00:46:06.640 --> 00:46:12.640
+ no arreglaran els pedaços que fa, les explotacions no importen
+
+00:46:12.640 --> 00:46:16.160
+ el greus que siguin, no importa el fàcil que siguin
+
+00:46:16.160 --> 00:46:20.079
+ explotar perquè tingueu una màquina Windows 7 a la vostra xarxa
+
+00:46:20.079 --> 00:46:26.319
+ Esteu donant entrada a un d’aquests pirates informàtics que ni tan sols en tenen
+
+00:46:26.319 --> 00:46:31.040
+ per ser molt bo en el pirateig perquè les gestes són conegudes públicament
+
+00:46:31.040 --> 00:46:36.240
+ Sí, de vegades formen part de les eines, de vegades només es poden descarregar gratis
+
+00:46:36.240 --> 00:46:41.440
+ eina i poden dir que vull amb un sol control explotar Windows 7
+
+00:46:41.440 --> 00:46:46.400
+ per tant, entren a una caixa de Windows 7 o han enganyat un dels vostres empleats
+
+00:46:46.400 --> 00:46:50.880
+ fins i tot si només són algú del darrere que treballa al magatzem
+
+00:46:50.880 --> 00:46:55.119
+ han enganyat algú perquè obrís un fitxer que ara els dóna accés al fitxer
+
+00:46:55.119 --> 00:46:59.359
+ màquina Windows 7 la màquina Windows XP o la màquina del darrere
+
+00:46:59.359 --> 00:47:03.359
+ no importa i aquí estem aprenent que Microsoft
+
+00:47:03.359 --> 00:47:08.400
+ els servidors ara tenen un exploit que sempre
+
+00:47:08.400 --> 00:47:13.599
+ una persona malintencionada pot accedir a qualsevol equip de la xarxa
+
+00:47:13.599 --> 00:47:20.480
+ ara poden obtenir accés d'administrador de domini a tota la xarxa
+
+00:47:20.480 --> 00:47:25.359
+ ara fa por les vostres màquines Windows 10 ja no són
+
+00:47:25.359 --> 00:47:31.440
+ segur és correcte perquè els heu donat l'entrada a la vostra xarxa com si
+
+00:47:31.440 --> 00:47:39.200
+ són administradors de dominis. Oh, veieu que són només males notícies
+
+00:47:39.200 --> 00:47:42.319
+ bé, és una mala notícia per què és una cosa el ransomware
+
+00:47:42.319 --> 00:47:46.400
+ perquè què fan ara bé, he accedit a aquesta xarxa
+
+00:47:46.400 --> 00:47:49.599
+ Vaig a vendre a la xarxa fosca accés a aquesta xarxa
+
+00:47:49.599 --> 00:47:56.640
+ ho veus amb um amb municipis i sí amb ciutats que
+
+00:47:56.640 --> 00:48:00.000
+ va ser el gatet de guió original qui no ho va fer
+
+00:48:00.000 --> 00:48:03.680
+ ell només volen que vulguin entrar
+
+00:48:03.680 --> 00:48:07.119
+ instal·leu el seu programari i sortiu i després veniu l'accés
+
+00:48:07.119 --> 00:48:11.040
+ és cert perquè són diners ràpids, per què la gent ho fa per diners?
+
+00:48:11.040 --> 00:48:15.119
+ i així ho fan, així que sí, heu de fer-ho
+
+00:48:15.119 --> 00:48:18.319
+ tipus de mantenir les coses al dia perquè sàpiga que és només un pensament ràpid
+
+00:48:18.319 --> 00:48:22.079
+ per reflexionar, hey, si teniu màquines obsoletes a la vostra xarxa
+
+00:48:22.079 --> 00:48:25.599
+ baixeu-los i formeu el vostre personal en ciber
+
+00:48:25.599 --> 00:48:29.119
+ les pràctiques de seguretat comprenen què són les estafes de pesca
+
+00:48:29.119 --> 00:48:32.720
+ perquè ja ho sabeu, algú va fer clic en un enllaç i ara el seu
+
+00:48:32.720 --> 00:48:34.880
+ ordinadors infectats, però el seu ordinador està infectat
+
+00:48:34.880 --> 00:48:41.839
+ a la vostra xarxa, però aconseguiria la meitat dels diners d’aquest príncep
+
+00:48:41.839 --> 00:48:45.359
+ això és tot un altre cuc aquí jeff
+
+00:48:45.359 --> 00:48:50.000
+ però vull dir que quan es tracta d’aquest tipus de coses, mirar el vostre sistema i dir-ne
+
+00:48:50.000 --> 00:48:52.559
+ oh no vull gastar-ne set
+
+00:48:52.559 --> 00:48:55.599
+ cent dòlars per a un ordinador nou no em preocuparia actualitzar-lo
+
+00:48:55.599 --> 00:49:00.000
+ acabareu gastant més a la llarga o a curt termini
+
+00:49:00.000 --> 00:49:05.040
+ no, a la llarga si no teniu el sistema pegat perquè una vegada
+
+00:49:05.040 --> 00:49:09.200
+ tenen accés a tot el que podríeu estar fora i fora però i i
+
+00:49:09.200 --> 00:49:11.760
+ pensa quan tenen accés a tot
+
+00:49:11.760 --> 00:49:13.760
+ crec que és important adonar-se’n
+
+00:49:13.760 --> 00:49:20.400
+ que un punt d’entrada es converteixi en accés a tot, així que gasta’n un parell de centenars
+
+00:49:20.400 --> 00:49:24.160
+ dòlars aconseguir el nou ordinador estalviar-se i no sé què es necessita
+
+00:49:24.160 --> 00:49:27.599
+ vull dir que és diferent, és diferent per a cada cas, sí, tenia una persona
+
+00:49:27.599 --> 00:49:30.800
+ avui qui ha trucat i ha dit que tinc un únic equip Windows 7
+
+00:49:30.800 --> 00:49:33.920
+ No vull actualitzar-lo perquè només funciona
+
+00:49:33.920 --> 00:49:38.400
+ així que aquí teniu una explicació i aquí la becca ens ha compartit una història
+
+00:49:38.400 --> 00:49:43.200
+ això simplement ens indica que tot el que necessiten és accedir a aquest ordinador
+
+00:49:43.200 --> 00:49:47.599
+ i ara tenen accés a tots els ordinadors dels vostres ordinadors i no
+
+00:49:47.599 --> 00:49:52.240
+ de la mateixa manera que una samba, no de manera amable i tant de bo
+
+00:49:52.240 --> 00:49:55.520
+ no trobeu cap manera d’entrar a les portes del darrere
+
+00:49:55.520 --> 00:49:59.200
+ ordinadors no tenen credencials d'administrador activades
+
+00:49:59.200 --> 00:50:03.119
+ la vostra xarxa perquè puguin fer qualsevol cosa
+
+00:50:03.119 --> 00:50:07.280
+ és correcte qualsevol cosa que vulguin quan pensi en casa meva
+
+00:50:07.280 --> 00:50:10.880
+ crec que ja ho he fet, crec que en tinc set
+
+00:50:10.880 --> 00:50:15.520
+ dispositius que no incloguin telèfons i tauletes i coses semblants que estiguin connectades
+
+00:50:15.520 --> 00:50:18.960
+ a la xarxa no vull que hi tinguin accés
+
+00:50:18.960 --> 00:50:21.200
+ Sí, no puc estressar-me prou, però Jeff
+
+00:50:21.200 --> 00:50:26.160
+ vull dir que crec que en termes empresarials és més que l’usuari domèstic però
+
+00:50:26.160 --> 00:50:33.119
+ un cop hi són, ja no hi pots fer, ja que ara no pots
+
+00:50:33.119 --> 00:50:36.240
+ apagueu la màquina Windows que la màquina Windows 7 no ja ho són
+
+00:50:36.240 --> 00:50:40.319
+ en tot, així que què fas substituir tot
+
+00:50:40.319 --> 00:50:44.240
+ esborreu tots els ordinadors perquè no sabeu quines eines
+
+00:50:44.240 --> 00:50:50.079
+ han instal·lat que és car, sí, així que no caieu en això
+
+00:50:50.079 --> 00:50:53.280
+ de totes maneres, això és una mala explotació que espero que sigui gent molt seriosa
+
+00:50:53.280 --> 00:50:56.720
+ ho hem destacat prou perquè entengueu que això és dolent
+
+00:50:56.720 --> 00:51:02.720
+ per tant, assegureu-vos que els administradors de xarxa estiguin actualitzats i que ho entenguin
+
+00:51:02.720 --> 00:51:05.520
+ coses i que esteu protegit i segur
+
+00:51:05.520 --> 00:51:09.920
+ contra aquest tipus d'amenaces, anirem cap a la becca
+
+00:51:09.920 --> 00:51:13.920
+ s'han eliminat tres paquets javascript del portal npm per
+
+00:51:13.920 --> 00:51:18.000
+ que conté codi maliciós segons els avisos del MPM
+
+00:51:18.000 --> 00:51:21.440
+ equip de seguretat obert les tres biblioteques javascript
+
+00:51:21.440 --> 00:51:24.480
+ shell als ordinadors dels desenvolupadors que van importar els paquets
+
+00:51:24.480 --> 00:51:29.200
+ en els seus projectes, les petxines permeten als actors amenaçadors connectar-se remotament amb el
+
+00:51:29.200 --> 00:51:33.520
+ ordinador infectat i executar operacions malicioses a les npm
+
+00:51:33.520 --> 00:51:37.920
+ L'equip de seguretat va dir que les versions no depenien d'un sistema operatiu concret
+
+00:51:37.920 --> 00:51:41.760
+ i es podria utilitzar per comprometre Windows Linux Freebsd
+
+00:51:41.760 --> 00:51:46.960
+ openbsd i altres sistemes, els tres paquets es van penjar al fitxer
+
+00:51:46.960 --> 00:51:50.880
+ npm portal el 2018 i cadascun en tenia centenars
+
+00:51:50.880 --> 00:51:55.839
+ descàrregues des de llavors els noms del paquet són plutovs dash
+
+00:51:55.839 --> 00:52:01.920
+ client de slash dash nodetest199 i nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ l'equip de seguretat de npm va dir que qualsevol equip que tingui això
+
+00:52:07.119 --> 00:52:10.800
+ el paquet instal·lat o en execució s’hauria de considerar totalment compromès
+
+00:52:10.800 --> 00:52:15.280
+ tots els secrets i claus emmagatzemats en aquest ordinador s'han de girar immediatament
+
+00:52:15.280 --> 00:52:20.559
+ des d 'un ordinador diferent adverteixen que el paquet hauria de ser eliminat, però tal i com s'ha convertit
+
+00:52:20.559 --> 00:52:24.160
+ és possible que s’hagi donat el control total de l’ordinador a una entitat externa
+
+00:52:24.160 --> 00:52:27.760
+ no hi ha cap garantia que si elimineu el paquet s'eliminaran tots els maliciosos
+
+00:52:27.760 --> 00:52:32.079
+ programari resultant d’instal·lar-lo mpm
+
+00:52:32.079 --> 00:52:36.079
+ el personal de seguretat analitza regularment la seva col·lecció de biblioteques javascript
+
+00:52:36.079 --> 00:52:41.839
+ considerat el dipòsit de paquets més gran per a qualsevol llenguatge de programació
+
+00:52:41.839 --> 00:52:46.079
+ mentre que ni tan sols puc obtenir una bona cobertura cel·lular a la meva casa
+
+00:52:46.079 --> 00:52:52.240
+ Nokia està treballant amb nasa per portar 4g a la Lluna amb els objectius de la missió artemis de Nasa
+
+00:52:52.240 --> 00:52:56.559
+ establir una presència humana a llarg termini a la Lluna com a pas
+
+00:52:56.559 --> 00:53:01.040
+ pedra cap a la colonització de Mart i per començar les coses nasa is
+
+00:53:01.040 --> 00:53:05.280
+ ampliant 370 milions de dòlars a 14 empreses
+
+00:53:05.280 --> 00:53:08.400
+ per proporcionar la tecnologia del programa
+
+00:53:08.400 --> 00:53:12.400
+ des de la robòtica fins a la generació d’energia i fins i tot la criogènica
+
+00:53:12.400 --> 00:53:16.240
+ però té sentit que aquests equips hagin de poder comunicar-se amb el
+
+00:53:16.240 --> 00:53:20.079
+ planeta mare es dissenyarà la nova xarxa
+
+00:53:20.079 --> 00:53:23.760
+ específicament per a condicions lunars capaces de suportar l’extrem
+
+00:53:23.760 --> 00:53:28.559
+ canvis de temperatura i radiació, la tecnologia també utilitzarà cèl·lules petites
+
+00:53:28.559 --> 00:53:32.800
+ tecnologia que, com el seu nom indica, és significativament més petita que l’alta
+
+00:53:32.800 --> 00:53:37.599
+ les torres cel·lulars que estan acostumats a veure aquí a la terra també n’utilitzen molt menys
+
+00:53:37.599 --> 00:53:41.200
+ Potència que el pla és que porti un lander lunar
+
+00:53:41.200 --> 00:53:44.480
+ el sistema de comunicació 4g a la superfície lunar
+
+00:53:44.480 --> 00:53:50.400
+ el 2022, els laboratoris de campanes de Nokia van rebre 14,1 milions de dòlars
+
+00:53:50.400 --> 00:53:55.119
+ per la seva banda, una nova tecnologia de càrrega sense fils de 80 watts
+
+00:53:55.119 --> 00:53:58.880
+ Xiaomi ens bufa la ment i el raspberry pi
+
+00:53:58.880 --> 00:54:03.839
+ s'ha publicat el mòdul de càlcul 4, us farem saber les especificacions i com fer-ho
+
+00:54:03.839 --> 00:54:08.480
+ això canvia les coses per al industrial, perquè aquestes històries apareixen a més
+
+00:54:08.480 --> 00:54:25.839
+ Robert és aquí amb el crypto corner que no vagi enlloc
+
+00:54:28.079 --> 00:54:32.079
+ Benvinguts de nou al món dels cryptos i Benvinguts al Crypto Corner
+
+00:54:32.079 --> 00:54:35.920
+ la setmana passada vam parlar dels bancs d'aquí a uns anys que no els reconeixereu
+
+00:54:35.920 --> 00:54:39.839
+ més i també et vaig esmentar no tant de temps
+
+00:54:39.839 --> 00:54:43.119
+ fa la moneda digital xinesa que ho farà
+
+00:54:43.119 --> 00:54:46.720
+ substituir l’abella riemann i que ja l’han implementat i
+
+00:54:46.720 --> 00:54:50.400
+ ara estan realitzant algunes proves a Shenzhen aquesta setmana
+
+00:54:50.400 --> 00:54:54.400
+ hi ha hagut una mica de desenvolupament i m'agradaria parlar-ne perquè
+
+00:54:54.400 --> 00:54:58.319
+ tindrà un impacte directe en la vostra vida i la meva vida
+
+00:54:58.319 --> 00:55:03.760
+ busquem-hi, doncs, el cap monetari internacional
+
+00:55:03.760 --> 00:55:08.400
+ d'aquesta organització internacional és una dama anomenada cristalina jojeva i
+
+00:55:08.400 --> 00:55:11.359
+ va pronunciar un discurs sobre els nous bretton woods
+
+00:55:11.359 --> 00:55:14.240
+ moment ara el que era un bretton woods britànic
+
+00:55:14.240 --> 00:55:17.440
+ sistema s’estableix la gestió monetària
+
+00:55:17.440 --> 00:55:21.760
+ les regles de les relacions financeres comercials entre
+
+00:55:21.760 --> 00:55:25.920
+ països com nosaltres Canadà Europa Occidental Austràlia i Japó
+
+00:55:25.920 --> 00:55:31.520
+ El sistema va ser el primer exemple d'un ordre totalment negociat
+
+00:55:31.520 --> 00:55:36.640
+ pretenia governar les relacions monetàries entre estats independents de manera que fos així
+
+00:55:36.640 --> 00:55:40.079
+ bretton woods i parla del canvi de
+
+00:55:40.079 --> 00:55:45.760
+ aquest sistema en quelcom més modern ara prou interessant
+
+00:55:45.760 --> 00:55:51.200
+ el dilluns hi va haver una reunió amb uns quants banquers centrals parlant dels anomenats
+
+00:55:51.200 --> 00:55:56.319
+ pagaments transfronterers, però si hi penseu, mireu de quin tipus
+
+00:55:56.319 --> 00:55:59.520
+ de persones que hi eren presents, de manera que teniu el cap del
+
+00:55:59.520 --> 00:56:03.040
+ banc central saudí teniu el cap de tota la central
+
+00:56:03.040 --> 00:56:06.480
+ bancs el cap de l'IMF el cap dels EUA
+
+00:56:06.480 --> 00:56:10.319
+ falta el banc central i el cap del banc central malaiès
+
+00:56:10.319 --> 00:56:13.200
+ Europa, que és interessant, però hi haurà una raó, suposo
+
+00:56:13.200 --> 00:56:16.880
+ de manera que es van reunir per parlar dels pagaments bruts de l’aigua
+
+00:56:16.880 --> 00:56:21.920
+ ara no crec que sigui una història real la història real
+
+00:56:21.920 --> 00:56:26.079
+ uh també va ser publicat per un senyor anomenat raul paul
+
+00:56:26.079 --> 00:56:31.119
+ amb el que estic totalment d'acord, de manera que els seus pensaments són exactament com estic pensant
+
+00:56:31.119 --> 00:56:35.520
+ i del que parla és exactament d’aquesta reunió que va tenir lloc el dilluns
+
+00:56:35.520 --> 00:56:39.119
+ que substituirà l'antiga relació de Bretton Woods
+
+00:56:39.119 --> 00:56:46.319
+ entre països, doncs, què passarà sembla que els bancs centrals
+
+00:56:46.319 --> 00:56:50.720
+ coincidirà i crearà un sistema
+
+00:56:50.720 --> 00:56:54.000
+ un sistema de banc central entre tots ells, de manera que no hi haurà nosaltres
+
+00:56:54.000 --> 00:56:56.640
+ sistema del banc central en dòlars n'hi haurà un
+
+00:56:56.640 --> 00:56:59.680
+ per a cadascuna per a totes les organitzacions i des de
+
+00:56:59.680 --> 00:57:04.160
+ allà es diversificarà i amb què es pot fer
+
+00:57:04.160 --> 00:57:06.319
+ aquest sistema és la part interessant i
+
+00:57:06.319 --> 00:57:13.520
+ M'encanta que sigui així, canviarà eludir la banca i les finances
+
+00:57:13.520 --> 00:57:17.920
+ sistema fiscal perquè interactueu directament amb la gent
+
+00:57:17.920 --> 00:57:22.160
+ Sí, així que no és com en el moment en què el banc central dels EUA o
+
+00:57:22.160 --> 00:57:26.720
+ Canadà, no importa, apareix amb alguna política i després
+
+00:57:26.720 --> 00:57:32.400
+ va caure per la cadena i tu com a individu
+
+00:57:32.400 --> 00:57:35.440
+ usuari del qual probablement en veureu menys
+
+00:57:35.440 --> 00:57:37.680
+ diners i probablement al tipus d’interès més alt
+
+00:57:37.680 --> 00:57:42.559
+ que puguis pensar en altres persones es beneficiarà molt més amb el digital
+
+00:57:42.559 --> 00:57:46.799
+ diners més criptomonedes o programables
+
+00:57:46.799 --> 00:57:50.400
+ diners que pots fer molt més perquè ara
+
+00:57:50.400 --> 00:57:55.839
+ el banc central pot influir directament en el comportament de les persones i com ho fan
+
+00:57:55.839 --> 00:58:00.400
+ fes això, sí que poden dir bé si ets propietari d'un restaurant, pots fer-ho
+
+00:58:00.400 --> 00:58:03.839
+ treure’ns els diners directament a la butxaca, sí, així que no més
+
+00:58:03.839 --> 00:58:08.079
+ els bancs implicats ho farem directament és possible que siguin diners del banc central
+
+00:58:08.079 --> 00:58:12.240
+ poden canviar els tipus d'interès, de manera que en un cas o en una indústria
+
+00:58:12.240 --> 00:58:16.480
+ pot tenir un tipus d'interès alt que un altre um el que passarà
+
+00:58:16.480 --> 00:58:19.839
+ amb impostos, sí, què passarà amb els irs
+
+00:58:19.839 --> 00:58:22.079
+ perquè poden tractar aquestes coses directament
+
+00:58:22.079 --> 00:58:25.200
+ a través de diners programables trigarà temps
+
+00:58:25.200 --> 00:58:28.799
+ per aconseguir-ho en aquesta mesura màxima, però passarà
+
+00:58:28.799 --> 00:58:34.640
+ tal com es pot veure, podreu fer pagaments directes
+
+00:58:34.799 --> 00:58:41.119
+ aquí també parlen d'economia del comportament, sí, eh
+
+00:58:41.119 --> 00:58:45.359
+ no a través d’alguns economistes que ho expliquen
+
+00:58:45.359 --> 00:58:49.200
+ el govern què fer i què no fer perquè això ha fallat al
+
+00:58:49.200 --> 00:58:52.160
+ passat tothom diu així el que va
+
+00:58:52.160 --> 00:58:56.400
+ fer és com un tipus d 'idea de Facebook o una idea de tick tick o
+
+00:58:56.400 --> 00:58:59.520
+ idea de youtube on t’interessa la gent
+
+00:58:59.520 --> 00:59:03.280
+ fer amistat amb tu o allà on t’interessa la gent
+
+00:59:03.280 --> 00:59:06.799
+ aconseguint més "m'agrada" i així canvieu el vostre comportament
+
+00:59:06.799 --> 00:59:10.079
+ pel que fa a obtenir més likes i el mateix
+
+00:59:10.079 --> 00:59:13.839
+ passarà amb els diners així i tot estarà regulat
+
+00:59:13.839 --> 00:59:17.680
+ a través del banc central sense ningú del món exterior
+
+00:59:17.680 --> 00:59:22.000
+ tenir l'oportunitat de tenir una influència significativa, així com això
+
+00:59:22.000 --> 00:59:26.079
+ es veurà com al final ningú ho sap, és clar, però això
+
+00:59:26.079 --> 00:59:31.200
+ la gent es reuneix per discutir els pagaments entre ordres transversals
+
+00:59:31.200 --> 00:59:36.079
+ trobo molt interessant i, per descomptat, és una notícia fantàstica
+
+00:59:36.079 --> 00:59:39.040
+ per uh bitcoin perquè el bitcoin està fora d’això
+
+00:59:39.040 --> 00:59:44.839
+ sistema no hi ha ningú que pugui regular uh bitcoin és
+
+00:59:44.839 --> 00:59:48.400
+ descentralitzat um és immutable bé ho saps tot
+
+00:59:48.400 --> 00:59:54.079
+ característiques de uh bitcoin així que um bitcoin és una alternativa fantàstica
+
+00:59:54.079 --> 00:59:57.839
+ totes les altres criptomonedes, les principals, són sens dubte una bona alternativa
+
+00:59:57.839 --> 01:00:02.000
+ anem a veure què aportarà la balança, però hi haurà algunes bones alternatives
+
+01:00:02.000 --> 01:00:06.480
+ a um al centre uh centralment
+
+01:00:06.480 --> 01:00:11.359
+ heu aconseguit diners a través dels bancs centrals, així que espero que us resulti interessant i
+
+01:00:11.359 --> 01:00:14.559
+ espero que us hagi agradat i espero que em falti
+
+01:00:14.559 --> 01:00:18.799
+ i us desitjo una setmana fantàstica, així que moltes gràcies per veure-ho
+
+01:00:18.799 --> 01:00:23.200
+ adéu, gràcies, Robert, només un recordatori que no proporcionem assessorament financer
+
+01:00:23.200 --> 01:00:26.400
+ però només compartint el que passa al mercat de criptomonedes
+
+01:00:26.400 --> 01:00:29.599
+ recordeu sempre que els mercats de criptomonedes estan canviant i
+
+01:00:29.599 --> 01:00:33.920
+ sempre volàtil, de manera que només heu de gastar el que us podeu permetre perdre
+
+01:00:33.920 --> 01:00:38.720
+ ara torno a la becca a la redacció gràcies robbie
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi ha anunciat una nova comprovació de càrrega que pot carregar completament un esgotat
+
+01:00:42.799 --> 01:00:48.480
+ telèfon intel·ligent en menys de 20 minuts, però ho fa sense cables ràpids
+
+01:00:48.480 --> 01:00:52.480
+ la càrrega s'ha convertit en una característica clau de molts telèfons intel·ligents en els darrers anys i per a
+
+01:00:52.480 --> 01:00:56.160
+ la comoditat de carregar sense fils pot ser realment fantàstica
+
+01:00:56.160 --> 01:00:59.920
+ però, per descomptat, la càrrega sense fils sol carregar un telèfon entre
+
+01:00:59.920 --> 01:01:05.359
+ De 10 a 15 watts de potència que tenen alguns telèfons com el oneplus 8 pro
+
+01:01:05.359 --> 01:01:10.160
+ càrrega sense fils de fins a 40 watts, però la nova tecnologia de càrrega de Xiaomi promet
+
+01:01:10.160 --> 01:01:14.240
+ una enorme quantitat de 80 watts de suc sense fils
+
+01:01:14.240 --> 01:01:18.319
+ què vol dir això en termes pràctics segons l'anunci
+
+01:01:18.319 --> 01:01:22.160
+ presentant la tecnologia de càrrega sense fils de 80 watts
+
+01:01:22.160 --> 01:01:26.720
+ un telèfon intel·ligent amb una càrrega zero per cent d’una bateria de quatre mil miliampres d’hora
+
+01:01:26.720 --> 01:01:30.160
+ cobrarà el deu per cent en només un minut el cinquanta per cent
+
+01:01:30.160 --> 01:01:34.160
+ en vuit minuts i completament carregat al cap de 19 minuts
+
+01:01:34.160 --> 01:01:37.599
+ finalment un carregador que carregarà el meu telèfon
+
+01:01:37.599 --> 01:01:43.359
+ de zero a cent per cent just en la meva pausa per dinar, veig que està bé
+
+01:01:43.359 --> 01:01:48.079
+ això és un canvi de joc. Us imagineu que penso en els meus fills i en com ho tenim?
+
+01:01:48.079 --> 01:01:51.440
+ com els telèfons a tot arreu, òbviament, vull dir que això és per prendre com
+
+01:01:51.440 --> 01:01:56.319
+ l'última i la millor tecnologia, però sempre és un cas que ho he oblidat
+
+01:01:56.319 --> 01:01:59.520
+ col·loqueu el telèfon al carregador o no dura prou per a la totalitat
+
+01:01:59.520 --> 01:02:02.720
+ dia i ara que ja saps amb la pandèmia, per descomptat, el meu
+
+01:02:02.720 --> 01:02:07.599
+ els nens s’escolaritzen a casa ara per força i tothom hi està
+
+01:02:07.599 --> 01:02:11.839
+ els seus dispositius tot el temps, de manera que tenim reunions de zoom als telèfons
+
+01:02:11.839 --> 01:02:15.599
+ i i s'executa esgota la bateria, sí
+
+01:02:15.599 --> 01:02:21.440
+ però el que m'agrada és que és sense fil, no només és cablejat, és increïble, sí
+
+01:02:21.440 --> 01:02:24.480
+ és sense fil que és enorme com la idea que
+
+01:02:24.480 --> 01:02:27.200
+ Podria agafar el telèfon sense haver de preocupar-me dels carregadors i
+
+01:02:27.200 --> 01:02:30.960
+ només vés, fixa-la i fica-la 20 minuts més tard
+
+01:02:30.960 --> 01:02:34.000
+ que m'encanta l'altra cosa que m'agrada
+
+01:02:34.000 --> 01:02:40.480
+ el concepte és que um penso en el que acabes de fer si pogués
+
+01:02:40.480 --> 01:02:43.359
+ col·loqueu-lo sobre una taula i si el poguéssiu col·locar en un
+
+01:02:43.359 --> 01:02:47.680
+ taula del restaurant, sí, perquè molts restaurants han seguit la ruta i jo sóc
+
+01:02:47.680 --> 01:02:50.799
+ utilitzant els restaurants com a exemple, però molts llocs han seguit la ruta
+
+01:02:50.799 --> 01:02:54.480
+ incrustant usb sí perquè pugueu connectar-lo
+
+01:02:54.480 --> 01:02:58.640
+ per carregar el telèfon, però de sobte la gent va aconseguir
+
+01:02:58.640 --> 01:03:03.200
+ encertat pel fet que aquells ports USB podrien ser maliciosos
+
+01:03:03.200 --> 01:03:06.319
+ perquè el USB també porta dades o és cert
+
+01:03:06.319 --> 01:03:10.000
+ qui sap si són massa volts i això sap que potser sí
+
+01:03:10.000 --> 01:03:13.280
+ Tinc un curt o alguna cosa semblant i em podria fregir el telèfon
+
+01:03:13.280 --> 01:03:17.039
+ així que, de sobte, ens fa por connectar-nos al port USB perquè vaja
+
+01:03:17.039 --> 01:03:20.400
+ podria ser una cosa dolenta que estigui bé
+
+01:03:20.400 --> 01:03:24.960
+ carregant sense fils, ho establiu, es carrega i ho recolliu i ja ho esteu
+
+01:03:24.960 --> 01:03:28.240
+ fet, sí, però podeu configurar-ho per
+
+01:03:28.240 --> 01:03:31.119
+ tres minuts i us ha carregat prou per superar la major part del
+
+01:03:31.119 --> 01:03:35.680
+ tarda, que és increïble
+
+01:03:35.680 --> 01:03:40.559
+ de la mateixa manera que significa que mires al teu voltant ara i tens totes aquestes estacions de recàrrega
+
+01:03:40.559 --> 01:03:44.079
+ vehicles elèctrics seria fantàstic començar a veure poc
+
+01:03:44.079 --> 01:03:48.640
+ finestres emergents en llocs públics amb aquest tipus de coses on podeu posar literalment
+
+01:03:48.640 --> 01:03:52.880
+ baixeu el telèfon durant cinc minuts i en tingueu prou per fer una trucada
+
+01:03:52.880 --> 01:03:56.319
+ obtingueu ajuda o el que sigui i tot és sense fil
+
+01:03:56.319 --> 01:04:01.760
+ com un tram de carretera i incrustar el receptor al cotxe i ell
+
+01:04:01.760 --> 01:04:05.599
+ recarrega el cotxe autònom mentre circula per sobre d’aquest
+
+01:04:05.599 --> 01:04:08.230
+ cosa whoa que estem entrant en la tecnologia ara gent
+
+01:04:08.230 --> 01:04:11.520
+ [Rialles] encara m'agrada, m'entusiasma
+
+01:04:11.520 --> 01:04:15.839
+ cosa boja és només en conclusió és que tot el que acabo de fer
+
+01:04:15.839 --> 01:04:18.319
+ dit és molt de ciència ficció com quan creixíem
+
+01:04:18.319 --> 01:04:21.599
+ fins que era com el futur, és totalment factible
+
+01:04:21.599 --> 01:04:25.920
+ ara és possible que sigui ridícul el raspberry pi
+
+01:04:25.920 --> 01:04:31.200
+ La fundació ha llançat un mòdul de càlcul amb les especificacions d’un raspberry pi 4.
+
+01:04:31.200 --> 01:04:35.119
+ la fundació raspberry pi va llançar un nou producte dilluns el comp
+
+01:04:35.119 --> 01:04:39.440
+ el mòdul de càlcul 4. és difícil de creure que hagi passat tant de temps, però el
+
+01:04:39.440 --> 01:04:43.359
+ raspberry pi 4 es va publicar el juny de 2019
+
+01:04:43.359 --> 01:04:48.079
+ el mòdul de càlcul 4 porta el pi 4 a l'espai industrial iot
+
+01:04:48.079 --> 01:04:52.240
+ amb el mateix processador empaquetat en un mòdul de càlcul
+
+01:04:52.240 --> 01:04:57.200
+ només demanant la integració en potents aparells iot
+
+01:04:57.200 --> 01:05:00.880
+ si no esteu familiaritzat amb els mòduls de càlcul, podeu pensar en ells com
+
+01:05:00.880 --> 01:05:05.280
+ ordinadors de placa única sense tots els ports i pins gpio
+
+01:05:05.280 --> 01:05:09.440
+ permeten que els components de l'ordinador siguin els cervells d'un raspberry pi
+
+01:05:09.440 --> 01:05:13.920
+ integrat a clústers de tecnologia de fabricants de dispositius intel·ligents de robòtica o
+
+01:05:13.920 --> 01:05:16.400
+ qualsevol cosa que pugui arribar a això requereixi una petita
+
+01:05:16.400 --> 01:05:22.240
+ un ordinador Linux de poca potència, ja que el mòdul de càlcul 4 comparteix el seu
+
+01:05:22.240 --> 01:05:26.400
+ Les especificacions amb el raspberry pi 4 poden desenvolupar tots els seus prototips
+
+01:05:26.400 --> 01:05:30.319
+ al pi 4 sbc, però després demaneu un munt de mòduls de càlcul
+
+01:05:30.319 --> 01:05:33.520
+ 4s per integrar-se al seu producte comercial
+
+01:05:33.520 --> 01:05:38.559
+ de la mateixa manera que el raspberry pi 4, el mòdul de càlcul 4 presenta un braç de 64 bits
+
+01:05:38.559 --> 01:05:42.400
+ processador amb gràfics de nucli de vídeo vi
+
+01:05:42.400 --> 01:05:45.520
+ representarà una gran actualització per al càlcul anterior
+
+01:05:45.520 --> 01:05:49.839
+ clients del mòdul i amb sortida de vídeo de 4 k fins a
+
+01:05:49.839 --> 01:05:55.039
+ 60 fotogrames per segon més la possibilitat de descodificar vídeo h.265
+
+01:05:55.039 --> 01:05:58.480
+ el mòdul de càlcul per al mòdul de càlcul 4
+
+01:05:58.480 --> 01:06:03.039
+ podria ser un canvi de jocs per a dispositius impulsats per multimèdia, com ara televisors intel·ligents o
+
+01:06:03.039 --> 01:06:06.960
+ set-top boxes amb el mòdul de càlcul 4 està disponible
+
+01:06:06.960 --> 01:06:11.599
+ la vostra elecció entre 1 2 4 o 8 gigabytes de RAM i 8 16
+
+01:06:11.599 --> 01:06:18.000
+ o 32 gigabytes a bord emmc emmc flash wi-fi i bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ també són opcionals, el preu oscil·la entre només 25
+
+01:06:21.440 --> 01:06:27.599
+ fins a 90 usd ara imaginem que jeff el mòdul de càlcul 4 de raspberry pi
+
+01:06:27.599 --> 01:06:31.359
+ Sí, en un dels vostres projectes sbc o alguna cosa semblant que el potenciï com el
+
+01:06:31.359 --> 01:06:33.920
+ cervells això és força emocionant tan aviat com
+
+01:06:33.920 --> 01:06:39.440
+ becca va dir que la descodificació h.265 de manera que és com si fos un vídeo
+
+01:06:39.440 --> 01:06:43.760
+ molt intensiu en CPU, sí, és fantàstic, com diu molt
+
+01:06:43.760 --> 01:06:50.000
+ això és més poderós que el meu servidor de plex, sí, com qui sap on és
+
+01:06:50.000 --> 01:06:54.720
+ Vaig a prendre coses que m'agraden la idea de computació en clúster
+
+01:06:54.720 --> 01:06:58.480
+ i aquí és on agafeu diversos ordinadors
+
+01:06:58.480 --> 01:07:01.520
+ connecteu - los junts a través de la xarxa i
+
+01:07:01.520 --> 01:07:06.559
+ bàsicament instal·leu programari beowulf o alguna cosa semblant
+
+01:07:06.559 --> 01:07:09.359
+ els agrupa perquè puguin actuar
+
+01:07:09.359 --> 01:07:14.400
+ realitza tasques juntes de manera que bàsicament converteix un súper ordinador
+
+01:07:14.400 --> 01:07:19.200
+ a la sortida de diversos ordinadors perquè penseu en aquests raspberry pi
+
+01:07:19.200 --> 01:07:25.839
+ cl uh clúster o els mòduls i i posar com 10 d'aquests junts
+
+01:07:25.839 --> 01:07:30.400
+ en un clúster i us agradaria aquest mòdul de càlcul
+
+01:07:30.400 --> 01:07:34.559
+ un clúster que seria un bon ordinador amb tanta potència
+
+01:07:34.559 --> 01:07:38.079
+ quan podeu tenir vuit concerts de carn a cada una
+
+01:07:38.079 --> 01:07:43.359
+ temps de taula que abans de 10. molt pot fer molt
+
+01:07:43.359 --> 01:07:47.280
+ està canviant les coses que la gent està canviant el món, és cert
+
+01:07:47.280 --> 01:07:50.960
+ què faríeu amb tot aquest poder?
+
+01:07:52.160 --> 01:07:55.280
+ i silenci espera que respongueu i
+
+01:07:55.280 --> 01:07:58.480
+ Estic pensant que sóc com què faria amb això quanta gent
+
+01:07:58.480 --> 01:08:05.119
+ acabo d'anar a l'extracció de bitcoins, ho sento, és que sabeu què és trist?
+
+01:08:05.119 --> 01:08:10.880
+ el primer pensament va ser que podia automatitzar com alguns dels
+
+01:08:10.880 --> 01:08:14.000
+ utilitats que tinc a la cuina per preparar-me menjar
+
+01:08:14.000 --> 01:08:17.600
+ aquest va ser el meu primer pensament amb un mòdul de càlcul quatre
+
+01:08:17.600 --> 01:08:22.319
+ Sí, necessita més que això, però sé que podria ser el cervell d'una operació així
+
+01:08:22.319 --> 01:08:27.759
+ clar que tinc gana però [Rialles]
+
+01:08:27.759 --> 01:08:31.359
+ comenta els teus pensaments a continuació, ens encantaria saber què faries amb un
+
+01:08:31.359 --> 01:08:34.719
+ mòdul de càlcul per agrair-vos per veure el punt de la categoria 5
+
+01:08:34.719 --> 01:08:38.000
+ redacció de televisió no oblideu agradar i subscriure-us
+
+01:08:38.000 --> 01:08:40.640
+ totes les vostres notícies tecnològiques amb un lleuger biaix de Linux
+
+01:08:40.640 --> 01:08:46.000
+ i si aprecieu el que fem, som patrons a patreon.com
+
+01:08:46.000 --> 01:08:53.839
+ categoria 5. de la sala de notícies de la categoria 5 dot tv sóc becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Música]
+
+01:09:12.400 --> 01:09:16.159
+ bé, està bé gairebé tot el temps que tenim aquesta setmana jeff
+
+01:09:16.159 --> 01:09:21.600
+ la setmana passada ho vam passar i vaig fer tot el procés amb fiverr
+
+01:09:21.600 --> 01:09:25.359
+ Vaig contractar a alguns per poder fer el nostre remix, sí, aquí hi ha un divertit
+
+01:09:25.359 --> 01:09:29.040
+ història bé, literalment, digueu-me quan riure
+
+01:09:29.040 --> 01:09:34.960
+ saber llavi que ja va fer ja va riure
+
+01:09:34.960 --> 01:09:38.400
+ l'esquirol de rajos era un dels nostres nois, sí, sí
+
+01:09:38.400 --> 01:09:42.560
+ un dels nostres remixers i esquirol literari
+
+01:09:42.560 --> 01:09:48.319
+ Va dir que em continuava preguntant que això era mentre estava veient la funció
+
+01:09:48.319 --> 01:09:51.199
+ després em seguia preguntant per què eres
+
+01:09:51.199 --> 01:09:58.159
+ pronunciant malament el meu nom, oh escombrar un esquirol, així que vaig comprovar el meu
+
+01:09:58.159 --> 01:10:02.960
+ perfil i vaig trobar que l'he escrit malament oh no
+
+01:10:02.960 --> 01:10:09.920
+ i mai me n'he adonat i així va ser durant tres anys que parles seriosament
+
+01:10:09.920 --> 01:10:17.600
+ ell diu que el meu nom, el meu grup és un esquirol literari, oh Déu que va deixar
+
+01:10:17.600 --> 01:10:21.040
+ en el nostre això és divertit, així que us explico aquesta història
+
+01:10:21.040 --> 01:10:25.600
+ veieu que és divertit veieu que us he dit que era divertit era com
+
+01:10:26.000 --> 01:10:29.679
+ t’explico aquesta història perquè llavors em vaig dir bé
+
+01:10:29.679 --> 01:10:35.120
+ veig paraules i crec que pronuncio en la seva major part
+
+01:10:35.120 --> 01:10:40.320
+ els faig bastant meticulosament, de manera que quan veig literatura encara que això no sigui una paraula
+
+01:10:40.320 --> 01:10:44.800
+ configureu-lo de la manera que es llegeixi bé, així que vaig pensar que probablement seria un
+
+01:10:44.800 --> 01:10:47.679
+ molt bo corrector, així que vaig dir què diables li donaré
+
+01:10:47.679 --> 01:10:50.960
+ vaja, així que publico un anunci que deia que revisaré
+
+01:10:50.960 --> 01:10:54.480
+ el text de 500 paraules o menys per cinc dòlars
+
+01:10:54.480 --> 01:10:57.520
+ d'acord i estava com ah, ningú no hi anirà mai
+
+01:10:57.520 --> 01:11:01.840
+ de tota manera és divertit, vaig pensar que ho provaria i al matí següent vaig rebre un correu electrònic
+
+01:11:01.840 --> 01:11:08.239
+ d'una persona a Espanya que era um és
+
+01:11:08.239 --> 01:11:13.120
+ un corredor d’assegurances està bé i té un client que parla anglès
+
+01:11:13.120 --> 01:11:17.600
+ de manera nativa i volia assegurar-se que deia les coses correctes en resposta
+
+01:11:17.600 --> 01:11:21.840
+ a un correu electrònic, de manera que va eliminar totes les coses confidencials
+
+01:11:21.840 --> 01:11:26.400
+ sí, em va enviar la seva resposta i em va dir que podeu repassar això per a mi i per a mi
+
+01:11:26.400 --> 01:11:28.400
+ vaig fer i vaig passar i en vaig corregir algunes
+
+01:11:28.400 --> 01:11:31.840
+ i tenia algunes paraules que en realitat no tenien sentit en la traducció
+
+01:11:31.840 --> 01:11:35.760
+ i així ho vaig arreglar i vaig corregir una mica la gramàtica i el context
+
+01:11:35.760 --> 01:11:39.760
+ d’ortografia i era com si li encantés cinc dòlars
+
+01:11:39.760 --> 01:11:42.000
+ realment em va costar 10 minuts i va ser just
+
+01:11:42.000 --> 01:11:44.480
+ cosa que vaig fer amb una tassa de cafè a primera hora del matí
+
+01:11:44.480 --> 01:11:50.960
+ Sí i em va fer una ressenya de 5 sobre 5, que és increïble, com si fos de cinc anys
+
+01:11:50.960 --> 01:11:54.480
+ la perspectiva inversa, de manera que sóc així, és bastant ordenada, així que començo a parlar
+
+01:11:54.480 --> 01:11:58.400
+ als meus fills i em sembla que hauríem de saber si podríeu fer coses com vosaltres
+
+01:11:58.400 --> 01:12:01.199
+ allà i ja saps que la meva filla és artista i
+
+01:12:01.199 --> 01:12:05.280
+ ella podria fer dibuixos perquè la gent comencés a guanyar diners, és una mica ordenat
+
+01:12:05.280 --> 01:12:08.159
+ idea d'una plataforma ordenada, no sé de què es refereixen les regles
+
+01:12:08.159 --> 01:12:11.120
+ com l'edat mínima i coses per l'estil, però podem examinar aquest tipus de
+
+01:12:11.120 --> 01:12:13.360
+ coses, però aquesta és la meva història per a aquesta setmana
+
+01:12:13.360 --> 01:12:18.719
+ que hey vaig anar també pel contrari i vaig vendre el meu propi servei que vaig donar
+
+01:12:18.719 --> 01:12:23.120
+ esquirol literari a free a freebie um but uh
+
+01:12:23.120 --> 01:12:30.000
+ ara estic estic disponible per a la venda ii em sembla que seria divertit
+
+01:12:30.000 --> 01:12:34.000
+ et donaré els cinc dòlars i t’enviaré un document de 500 word
+
+01:12:34.000 --> 01:12:38.640
+ tot lorem ipsum i digueu-me si té sentit que faré tot el possible
+
+01:12:38.640 --> 01:12:44.000
+ ho has corregit, sí, bé, això és tot, jeff
+
+01:12:44.000 --> 01:12:46.800
+ tot el temps està bé, però he estat molt divertit
+
+01:12:46.800 --> 01:12:50.080
+ Hem gaudit de tornar a estar aquí amb vosaltres aquesta setmana que ve la setmana que ve ens posem en 3d
+
+01:12:50.080 --> 01:12:52.560
+ imprimint, així que anem a muntar un ender
+
+01:12:52.560 --> 01:12:55.440
+ 3v2, així que ho farem junts
+
+01:12:55.440 --> 01:12:58.640
+ i després farem un xat sobre si sabeu quin ha estat el procés
+
+01:12:58.640 --> 01:13:03.760
+ M'agrada com a noob en l'àmbit de la impressió 3D
+
+01:13:03.760 --> 01:13:05.760
+ quin tipus de reptes he trobat
+
+01:13:05.760 --> 01:13:09.040
+ i es pot trobar a mesura que comença
+
+01:13:09.040 --> 01:13:13.760
+ a la impressió 3D més, us mostraré no només la meva primera impressió
+
+01:13:13.760 --> 01:13:19.440
+ però els meus primers dissenys impresos no els voleu perdre la setmana vinent
+
+01:13:19.440 --> 01:13:22.960
+ que tingueu una bona setmana a tothom que us veurem
+
+01:13:24.100 --> 01:13:30.029
+ [Música] [Aplaudiments]
+
+01:13:30.840 --> 01:13:45.060
+ adéu [Música]
+
+01:13:48.290 --> 01:13:56.319
+ [Música]
+
+01:14:01.760 --> 01:14:03.840
+ vostè
+

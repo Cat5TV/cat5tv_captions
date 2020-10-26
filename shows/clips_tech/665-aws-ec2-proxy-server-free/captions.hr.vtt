@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: hr
+
+00:00:03.919 --> 00:00:07.120
+bez obzira nadate li se da ćete si dati malo dodatne privatnosti dok surfate
+
+00:00:07.120 --> 00:00:10.639
+ Internetu ili želite pristupiti uslugama koje možda
+
+00:00:10.639 --> 00:00:17.279
+ nisu obično dostupni u vašem području ili je to možda slučaj
+
+00:00:17.279 --> 00:00:22.000
+ je davatelj usluga blokirao vašu ip adresu
+
+00:00:22.000 --> 00:00:27.359
+ to možda nije zlonamjerno što mi je YouTube već blokirao ip adresu
+
+00:00:27.359 --> 00:00:31.039
+ jer prenosim toliko videozapisa i preuzimam
+
+00:00:31.039 --> 00:00:37.280
+ natpise za one tako da sam doveo do toga da premašim svoju upotrebu u
+
+00:00:37.280 --> 00:00:42.239
+ youtube api pa mi se ip adresa blokira pa
+
+00:00:42.239 --> 00:00:46.000
+ ne mora biti zlonamjerna stvar ne želim ostavljati takav dojam
+
+00:00:46.000 --> 00:00:52.399
+ ali postoje vrlo opravdani razlozi da trebate zaobići te vrste
+
+00:00:52.399 --> 00:00:58.640
+ stvari i štreberi idu kod proxyja, problem su proxyji
+
+00:00:58.640 --> 00:01:02.160
+ mogu biti vrlo skupi za upotrebu i oni besplatni
+
+00:01:02.160 --> 00:01:08.240
+ lako dostupni su vrlo često ili ne baš pouzdani, oni su na prvom mjestu
+
+00:01:08.240 --> 00:01:11.360
+ dan su sljedeći, a vi gubite pristup svojim uslugama
+
+00:01:11.360 --> 00:01:18.320
+ a sve ostalo ili još gore opasni su ne znate što
+
+00:01:18.320 --> 00:01:24.479
+ ti proxyji prate evidentiranje i čak poput presretanja
+
+00:01:24.479 --> 00:01:28.640
+ dok prolazite, šaljete sav internetski promet
+
+00:01:28.640 --> 00:01:36.159
+ preko tog davatelja usluga, tako da postoji jedna osoba kojoj zaista vjerujem
+
+00:01:36.159 --> 00:01:44.079
+ za proxy svih mojih podataka i to sam ja, nisam ista osoba
+
+00:01:44.079 --> 00:01:49.360
+ da biste rekli da vjerujete osobi u koju vjerujete ste vi pa sam i ja
+
+00:01:49.360 --> 00:01:54.399
+ pokazat ću vam kako mogu postaviti besplatnu proxy uslugu
+
+00:01:54.399 --> 00:02:00.000
+ mog vlastitog i to možete ponoviti i stvoriti i svoj
+
+00:02:00.000 --> 00:02:03.200
+ to ćemo raditi u oblaku koristit ćemo uslugu treće strane
+
+00:02:03.200 --> 00:02:06.399
+ davatelja usluga i to je Amazon, tako da vi kažete dobro
+
+00:02:06.399 --> 00:02:09.440
+ Amazon što ti znaš možemo li vjerovati našim podacima
+
+00:02:09.440 --> 00:02:13.440
+ njima dobro što koristimo su njihove usluge u oblaku koje se nazivaju Amazon
+
+00:02:13.440 --> 00:02:17.520
+ web usluge, tako da je sve njihovo, to je njihov oblak
+
+00:02:17.520 --> 00:02:22.000
+ infrastrukturu koju imaju za kupce u osnovi za iznajmljivanje
+
+00:02:22.000 --> 00:02:25.120
+ pristup njihovim poslužiteljima i njihovom prostoru i
+
+00:02:25.120 --> 00:02:28.640
+ i virtualni poslužitelji i sve ostalo što je cjelina
+
+00:02:28.640 --> 00:02:34.959
+ infrastruktura vam je dostupna, ali samo postavljanje jest
+
+00:02:34.959 --> 00:02:39.840
+ tvoj, pokazat ću ti kako se to radi, skočit ćemo na aws
+
+00:02:39.840 --> 00:02:45.920
+ a posebno ec2 pa naravno i vi ako niste upoznati samo s awsom
+
+00:02:45.920 --> 00:02:50.160
+ idite na aws.amazon.com prijavite se svojim Amazon računom i
+
+00:02:50.160 --> 00:02:55.519
+ zatim brzo potražite ec2 i to će vas odvesti
+
+00:02:55.519 --> 00:02:58.959
+ u osnovi njihova platforma za virtualizaciju o ec2 misli kao o
+
+00:02:58.959 --> 00:03:02.800
+ samo to, prvo što primijetim kad sam ovdje
+
+00:03:02.800 --> 00:03:08.480
+ u ec2 je moja regija i to je važno jer je ovdje moj proxy
+
+00:03:08.480 --> 00:03:13.360
+ poslužitelj će boraviti ako ga postavim tamo zašto je to tako
+
+00:03:13.360 --> 00:03:16.720
+ važno, dobro razmislite o ovome, recimo da koristim video streaming
+
+00:03:16.720 --> 00:03:20.959
+ usluga koja ograničava kanadski pristup njihovom videozapisu
+
+00:03:20.959 --> 00:03:24.720
+ uslugu streaminga tako da moj proxy poslužitelj smjestite na sjever
+
+00:03:24.720 --> 00:03:28.640
+ kalifornija sad odjednom u osnovi jesu
+
+00:03:28.640 --> 00:03:31.599
+ putem ip adrese pomislit ću da se povezujem s
+
+00:03:31.599 --> 00:03:34.640
+ Kalifornija pa sam u stanju zaobići to
+
+00:03:34.640 --> 00:03:37.920
+ slično tome možda biste željeli promijeniti svoju regiju na temelju
+
+00:03:37.920 --> 00:03:42.480
+ što pokušavate postići, možete čak i staviti server u Afriku
+
+00:03:42.480 --> 00:03:45.760
+ ili u aziji pogledajte da jedan možete staviti točno u hong kong
+
+00:03:45.760 --> 00:03:49.440
+ možete ga staviti u Kanadu, uh u Europu
+
+00:03:49.440 --> 00:03:55.040
+ posvuda i tada imamo Bliski Istok i Južnu Ameriku
+
+00:03:55.040 --> 00:03:58.080
+ tako da je to prilično velik popis mjesta gdje su
+
+00:03:58.080 --> 00:04:00.080
+ postavite ovu infrastrukturu za Amazon
+
+00:04:00.080 --> 00:04:03.920
+ web usluge ec2 usluga pa odaberite onu koja
+
+00:04:03.920 --> 00:04:07.200
+ je mjesto na kojem želite da bude vaš proxy poslužitelj
+
+00:04:07.200 --> 00:04:10.879
+ idem postaviti svoj, samo ću ga ostaviti kao sjevernu Kaliforniju koja je
+
+00:04:10.879 --> 00:04:14.560
+ nas zapadni i tu je gdje
+
+00:04:14.560 --> 00:04:19.040
+ moj proxy poslužitelj će boraviti što će mi omogućiti povezivanje
+
+00:04:19.040 --> 00:04:22.880
+ kao da zapravo sjedim u Kaliforniji
+
+00:04:22.880 --> 00:04:26.160
+ u redu, pa ću kliknuti na instancu pokretanja
+
+00:04:26.160 --> 00:04:30.160
+ a zatim ponovno pokrenite instancu jer se padajuće pada i to mi daje
+
+00:04:30.160 --> 00:04:34.720
+ popis um operativnih sustava koje mogu implementirati
+
+00:04:34.720 --> 00:04:39.040
+ na mom primjerku ec2, pa ovdje koristim neke izraze koji vam možda nisu poznati
+
+00:04:39.040 --> 00:04:42.080
+ aws je Amazon web usluga koja je u osnovi
+
+00:04:42.080 --> 00:04:46.560
+ puni opseg usluga koje nude
+
+00:04:46.560 --> 00:04:52.000
+ za korisnike oblaka ec2 je njihova virtualizacijska platforma za virtualnu
+
+00:04:52.000 --> 00:04:55.840
+ strojevi kad sam rekao da govorim o slučaju
+
+00:04:55.840 --> 00:05:00.160
+ virtualni stroj, tako da je to doslovno virtualni stroj
+
+00:05:00.160 --> 00:05:03.919
+ pa ću implementirati jedan od ovih operativnih sustava na instancu ec2
+
+00:05:03.919 --> 00:05:06.560
+ koji je virtualni stroj, pa što ja to želim
+
+00:05:06.560 --> 00:05:10.960
+ da bude tako i ja sam rekao hej komentar ispod ako
+
+00:05:10.960 --> 00:05:12.639
+ koristim izraz koji vam nije poznat
+
+00:05:12.639 --> 00:05:15.600
+ obavit ću brzu pretragu, već sam to radio, jer raspoređujem tonu
+
+00:05:15.600 --> 00:05:18.960
+ poslužitelje u oblaku, kliknut ću na debian
+
+00:05:18.960 --> 00:05:21.360
+ uh, samo upišite debian u pretragu ovdje
+
+00:05:21.360 --> 00:05:27.600
+ pa ću onda ići na aws rezultate na tržištu koji također postoje
+
+00:05:27.600 --> 00:05:30.960
+ one koje sam stvorio i one u zajednici
+
+00:05:30.960 --> 00:05:34.000
+ pomislili biste, pa dobro želim koristiti one iz zajednice pa ne, jer ne
+
+00:05:34.000 --> 00:05:37.919
+ oni će vas koštati novca, a vi kažete dobro, ali zajednica je besplatna
+
+00:05:37.919 --> 00:05:42.800
+ to je otvoreni izvor i da, međutim, um nije dio aws-a
+
+00:05:42.800 --> 00:05:45.919
+ na tržištu i tako ćete morati platiti za upotrebu
+
+00:05:45.919 --> 00:05:49.600
+ da taj virtualni stroj radi taj primjerak
+
+00:05:49.600 --> 00:05:52.639
+ u oblaku, pa ćemo umjesto toga koristiti jedan od službenih iz
+
+00:05:52.639 --> 00:05:56.800
+ aws marketplace, hajde da vidimo kakve ćemo rezultate dobiti prilično dobro poredane
+
+00:05:56.800 --> 00:06:00.400
+ debian dolazi prvi rezultat je debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ kompatibilni s besplatnom razinom ili prihvatljivi za besplatnu razinu
+
+00:06:04.479 --> 00:06:09.039
+ inačici debiana koju ćemo instalirati pa odaberite to
+
+00:06:09.039 --> 00:06:12.720
+ besplatni nivo, tako da možemo zanemariti cijene jer ćemo koristiti a
+
+00:06:12.720 --> 00:06:16.560
+ besplatni hit pogotka se nastavlja i tu smo to tako dobro odabrali
+
+00:06:16.560 --> 00:06:20.000
+ ako želimo besplatnu razinu, moramo ići s t2 micro pa
+
+00:06:20.000 --> 00:06:24.080
+ odabrat ću to, ali što nam daje, daje nam jedan procesor
+
+00:06:24.080 --> 00:06:29.520
+ jedan gigabajt memorije hm, a onda imamo prostora za pohranu
+
+00:06:29.520 --> 00:06:33.199
+ ne treba nam puno prostora za pohranu jer upravo postavljamo osnovni proxy
+
+00:06:33.199 --> 00:06:36.639
+ i to je otprilike tako da ću i ja rasporediti isto
+
+00:06:36.639 --> 00:06:40.080
+ tako da je t2 mikro onaj koji je besplatan
+
+00:06:40.080 --> 00:06:43.440
+ ispunjavaju uvjete, nemojte odabrati jedan od većih jer ćete plaćati
+
+00:06:43.440 --> 00:06:45.919
+ za to ću odmah pregledati i
+
+00:06:45.919 --> 00:06:50.080
+ pokretanje vratit ćemo se i izvršiti postavke poput naših sigurnosnih grupa i
+
+00:06:50.080 --> 00:06:51.759
+ takve stvari jednostavno ću ostaviti sve
+
+00:06:51.759 --> 00:06:54.880
+ po defaultu za sada i to ćemo pokrenuti
+
+00:06:54.880 --> 00:06:58.479
+ prije svega moram stvoriti novi par ključeva, pa ovo je
+
+00:06:58.479 --> 00:07:02.720
+ ssh ključ koji ću upotrijebiti za ssh
+
+00:07:02.720 --> 00:07:06.800
+ ovaj poslužitelj pa ću nazvati ovog proxyja
+
+00:07:06.800 --> 00:07:11.120
+ poslužitelja, a zatim preuzmite moj par ključeva, pazite da to spremite negdje na sigurno
+
+00:07:11.120 --> 00:07:14.960
+ bacit ću to na svoj poslužitelj i ispustiti to
+
+00:07:14.960 --> 00:07:19.199
+ tamo i sada instanca pokretanja znači snaga
+
+00:07:19.199 --> 00:07:23.680
+ na vašem virtualnom stroju, pa ću to progurati
+
+00:07:23.680 --> 00:07:27.759
+ i tamo krećemo, tako da u osnovi to stvara, stvara virtualno
+
+00:07:27.759 --> 00:07:32.240
+ obrađujemo primjerak ec2 u oblaku za nas u
+
+00:07:32.240 --> 00:07:35.360
+ uh u sjevernoj Kaliforniji, pa idemo
+
+00:07:35.360 --> 00:07:40.400
+ Idem pogledati primjerke ovdje dolje i sada vidim da ih sada imam
+
+00:07:40.400 --> 00:07:45.120
+ instanci pokreće t2 micro i to je jednostavno bez imena pa ću
+
+00:07:45.120 --> 00:07:48.080
+ kliknite na uredi i nazvat ću ovo svojim proxy poslužiteljem
+
+00:07:48.080 --> 00:07:52.720
+ poslužitelju pokušajte da idemo u redu, tako da je već pokrenut i pokrenut
+
+00:07:52.720 --> 00:07:56.960
+ pa ako kliknem na to, mogu vidjeti ip adresu tog poslužitelja, to sam nazvao
+
+00:07:56.960 --> 00:08:00.400
+ to je proxy poslužitelj, ali sada se sjetite da je to samo debian 10. postoji
+
+00:08:00.400 --> 00:08:05.120
+ ništa drugo nije instalirano na njemu pa moram kopirati tu ip adresu
+
+00:08:05.120 --> 00:08:09.759
+ a onda ću uskočiti u svoj naredbeni redak
+
+00:08:09.759 --> 00:08:13.520
+ jer sam preuzeo ključ svog poslužitelja na koji osobno idem
+
+00:08:13.520 --> 00:08:17.440
+ ssh na moj interni poslužitelj
+
+00:08:23.680 --> 00:08:27.360
+ u redu, pa sad sam tamo, pa sad naredba koju ću upotrijebiti
+
+00:08:27.360 --> 00:08:33.360
+ je ssh, a zatim crticom i unesite ključ koji ću koristiti
+
+00:08:33.360 --> 00:08:36.320
+ tako da dolazna datoteka koju ću koristiti za ključ
+
+00:08:36.320 --> 00:08:41.039
+ a taj se zove proxy server.pem je ono što sam preuzeo
+
+00:08:41.039 --> 00:08:45.200
+ onda idem na admin jer je to zadana prijava za debian
+
+00:08:45.200 --> 00:08:48.880
+ ami ili amazon slika stroja admin na
+
+00:08:48.880 --> 00:08:51.920
+ a zatim ip adresu koju sam već kopirao u svoj međuspremnik i ako je
+
+00:08:51.920 --> 00:08:54.240
+ pritisnite enter, tražit će od mene da prihvatim taj ključ
+
+00:08:54.240 --> 00:08:59.279
+ i kažem da i odbijen sam
+
+00:08:59.279 --> 00:09:02.560
+ dozvole za tu datoteku na kraju su imajući na umu da
+
+00:09:02.560 --> 00:09:06.480
+ 766, tako da svi imaju pristup tim datotekama, pa je to zanimljivo
+
+00:09:06.480 --> 00:09:10.800
+ ssh me sam štiti od toga da netko može ugroziti moj ključ
+
+00:09:10.800 --> 00:09:18.160
+ pa chmod 7 0 0 proxy poslužitelj dot pam pokušajmo to i
+
+00:09:18.160 --> 00:09:21.279
+ sada pokušajte ponovo, pa ovo što sam učinio je oh i sad jesam
+
+00:09:21.279 --> 00:09:25.360
+ spojen je upravo radio sedam nula nula znači da sam vlasnik
+
+00:09:25.360 --> 00:09:29.120
+ taj ključ smijem s njim učiniti bilo što
+
+00:09:29.120 --> 00:09:35.200
+ čitanje pisanje izvršavanje nula nula znači da nitko u grupi nitko nije a
+
+00:09:35.200 --> 00:09:39.120
+ dio grupe uopće smije pristupiti tome pa je tako
+
+00:09:39.120 --> 00:09:42.080
+ u osnovi nijema datoteka koju čak ne mogu otvoriti
+
+00:09:42.080 --> 00:09:46.800
+ uh, ali mogu sve u redu pa ću sada, kad sam povezan, krenuti u tužbu
+
+00:09:46.800 --> 00:09:52.080
+ jer to je ono što je naredba postati root tako da sam sada ja tako prikladan
+
+00:09:52.080 --> 00:09:57.519
+ update apt update će zgrabiti moja spremišta vidite da je ovo
+
+00:09:57.519 --> 00:10:02.160
+ stvarno debian računalo ako želite u oblaku
+
+00:10:02.160 --> 00:10:05.600
+ tako je lako da već nadograđujem već sam
+
+00:10:05.600 --> 00:10:10.320
+ pokretanje debian računala u oblaku tako u to vrijeme i ja sam bla
+
+00:10:10.320 --> 00:10:16.640
+ bla bla u isto vrijeme hm, imamo debian poslužitelj zasnovan na oblaku
+
+00:10:16.640 --> 00:10:20.800
+ jeste li shvatili da je to tako lako i da je besplatno
+
+00:10:20.800 --> 00:10:24.000
+ u redu, tako da možemo i druge stvari s ovim. Mogli bismo postaviti hrpu svjetiljki
+
+00:10:24.000 --> 00:10:28.880
+ mogao ga koristiti za mysql mariadb sve što se dosjeti to je
+
+00:10:28.880 --> 00:10:32.000
+ debian poslužitelja, pa ćemo ga koristiti kao svoj
+
+00:10:32.000 --> 00:10:37.040
+ proxy, pa ću sada instalirati alat koji se zove
+
+00:10:37.040 --> 00:10:43.920
+ maleni proxy lijep i jednostavan za instalaciju apt install maleni proxy
+
+00:10:43.920 --> 00:10:50.880
+ vrlo jednostavno za konfiguriranje, recimo da, krećemo
+
+00:10:52.399 --> 00:10:56.480
+ i gotovo je sada kad smo instalirali maleni proxy koji samo trebamo urediti
+
+00:10:56.480 --> 00:11:04.640
+ konfiguracijska datoteka pa kosa crta itd. kosa crta maleni maleni proxy ju je promijenio u to
+
+00:11:04.640 --> 00:11:10.959
+ a zatim koristim nano tinyproxy.com i to uređujem tako da kontroliram w u nano
+
+00:11:10.959 --> 00:11:14.079
+ omogućuje mi pretraživanje, ali prije nego što pretražim, imajte na umu da
+
+00:11:14.079 --> 00:11:18.000
+ port prema zadanim postavkama koristi 8888, to ćemo morati znati
+
+00:11:18.000 --> 00:11:20.959
+ informacije jer ćemo se zbog toga povezati
+
+00:11:20.959 --> 00:11:25.200
+ naš proxy brzo pretražuje dopuštenje
+
+00:11:26.720 --> 00:11:30.959
+ alt w omogućuje ponovno pretraživanje, wow riječ dopustiti vjerojatno nije najbolja
+
+00:11:30.959 --> 00:11:35.920
+ upit za pretragu možda traži 127.0.0.1 um i odmah ispod tog idem
+
+00:11:35.920 --> 00:11:40.399
+ dopusti i tada trebam dodati svoju ip adresu kako bih se mogao povezati s ovom
+
+00:11:40.399 --> 00:11:44.320
+ proxy poslužitelj jer je trenutno zatvoren jedino mu može pristupiti localhost
+
+00:11:44.320 --> 00:11:48.399
+ važno je napomenuti da je ovo dok je ovo javno besplatno
+
+00:11:48.399 --> 00:11:51.519
+ proxy poslužitelj ja sam jedini koji će mu biti dopušten pristup
+
+00:11:51.519 --> 00:11:54.959
+ bit će mi dopušteno da posreduju moj sadržaj putem moje veze
+
+00:11:54.959 --> 00:11:58.880
+ tako da je privatno u tom pogledu moram znati svoje
+
+00:11:58.880 --> 00:12:02.959
+ ip adresu pa ću preskočiti
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz i kopirajte tu ip adresu u moj međuspremnik
+
+00:12:08.000 --> 00:12:11.279
+ a zatim skočite tamo i zalijepite ga u moj config
+
+00:12:11.279 --> 00:12:15.839
+ control o unesite control x control o je ispisati
+
+00:12:15.839 --> 00:12:22.720
+ spremite datoteku sada sustav ctl restart mali proxy
+
+00:12:22.720 --> 00:12:28.079
+ skoro je gotovo, posljednja stvar koju trebamo učiniti je samo reći aws
+
+00:12:28.079 --> 00:12:32.639
+ ec2 sigurnost da ćemo postaviti politiku koja kaže
+
+00:12:32.639 --> 00:12:35.920
+ hej samo ja se smijem povezati s tim poslužiteljem
+
+00:12:35.920 --> 00:12:39.839
+ tako da se nitko drugi ne može s tim povezati pa ćemo to i učiniti
+
+00:12:39.839 --> 00:12:43.120
+ učinite sada, pa ću se vratiti ovdje i vidite ovaj poslužitelj gore na
+
+00:12:43.120 --> 00:12:47.279
+ dobro zaslon ako kliknem na sigurnost onda mogu
+
+00:12:47.279 --> 00:12:50.880
+ kliknite na sigurnosnu grupu koja joj je automatski dodijeljena pa samo kliknite
+
+00:12:50.880 --> 00:12:53.680
+ to i sada me prepustilo ec2
+
+00:12:53.680 --> 00:12:56.240
+ sigurnosne skupine i ispravnu sigurnosnu skupinu
+
+00:12:56.240 --> 00:12:59.440
+ primijetit ćete da je već postavljen jedan za ssh jer
+
+00:12:59.440 --> 00:13:03.760
+ to je prema zadanim postavkama omogućeno, mogu to postaviti tako da dopušta samo meni što i jest
+
+00:13:03.760 --> 00:13:06.639
+ važno pa učinimo to samo da bismo bili u dobru
+
+00:13:06.639 --> 00:13:09.959
+ sigurnosne prakse pa ssh da ću ih promijeniti
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 zatvorit ću x to i onda
+
+00:13:13.440 --> 00:13:18.320
+ promijeni ga u moj ip, a zatim ću dodati novo pravilo koje si vidio
+
+00:13:18.320 --> 00:13:20.880
+ kako sam stigao ovdje znam da se stvarno jako brzo krećem
+
+00:13:20.880 --> 00:13:24.079
+ upravo sam ovdje kliknuo na uređivanje ulaznih pravila
+
+00:13:24.079 --> 00:13:29.040
+ u redu, dodajte novo pravilo, a prilagođeni tcp je zadani
+
+00:13:29.040 --> 00:13:35.120
+ broja porta sjećate li se 888 i dopuštate moj ip mogu ga nazvati samo ako i
+
+00:13:35.120 --> 00:13:40.320
+ želim proxy i zatim spremi moja pravila
+
+00:13:40.320 --> 00:13:44.639
+ eto, sad vidite ssh i prilagođeni tcp
+
+00:13:44.639 --> 00:13:51.040
+ jedan nazvan proxy na portu 8888, pa kako to testirati u redu pa naš
+
+00:13:51.040 --> 00:13:57.360
+ trenutna ip adresa je 99.233 i zato ću se spojiti na proxy
+
+00:13:57.360 --> 00:14:01.600
+ ovo nije tutorial o tome kako koristiti proxy
+
+00:14:01.600 --> 00:14:04.480
+ ovo nije tutorial o tome za što ga koristiti
+
+00:14:04.480 --> 00:14:08.079
+ nužno je ovo ovo ovdje iznosim pretpostavke
+
+00:14:08.079 --> 00:14:11.920
+ možete i sami guglati jer će to biti drugačije
+
+00:14:11.920 --> 00:14:15.199
+ na slučaju upotrebe želite li samo proksirati svoj preglednik ili proxy
+
+00:14:15.199 --> 00:14:18.480
+ određenu aplikaciju ili cijelu vašu mrežu
+
+00:14:18.480 --> 00:14:21.839
+ to ovisi o vašem pojedinačnom slučaju upotrebe, ovo je
+
+00:14:21.839 --> 00:14:28.399
+ strogo tutorial o tome kako stvarno brzo stvoriti ovu instancu ec2 za
+
+00:14:28.399 --> 00:14:31.760
+ besplatan koji ima proxy spreman za upotrebu u
+
+00:14:31.760 --> 00:14:36.639
+ kalifornija ili bilo gdje drugo i uh to je to tako u mom
+
+00:14:36.639 --> 00:14:40.720
+ sada, tako da ovaj trenutak nije nužno što
+
+00:14:40.720 --> 00:14:43.680
+ želite li sljedeće, ovo je upravo način na koji ću testirati
+
+00:14:43.680 --> 00:14:50.000
+ proxy slučajno sam ovdje na Windowsu 10 pa ću jednostavno upisati proxy
+
+00:14:50.000 --> 00:14:54.240
+ i ponovno uđite u postavke proxyja, ovo vjerojatno nije način na koji to želite učiniti
+
+00:14:54.240 --> 00:14:57.279
+ samo želim testirati, pa ću uključiti proxy
+
+00:14:57.279 --> 00:15:00.560
+ vidim da tamo postoje stare postavke proxyja, pa provjerite jeste li
+
+00:15:00.560 --> 00:15:03.839
+ imajte na umu ako postoje stare postavke proxyja koje su vam potrebne
+
+00:15:03.839 --> 00:15:08.480
+ da biste ga promijenili idite na instance na ec2 kliknite na svoju instancu
+
+00:15:08.480 --> 00:15:12.079
+ id i zgrabite tu ip adresu, a zatim zalijepite
+
+00:15:12.079 --> 00:15:15.519
+ to kao adresu vašeg proxy poslužitelja
+
+00:15:15.519 --> 00:15:20.800
+ port 8888 i spremite, tako da sam sada spojen na
+
+00:15:20.800 --> 00:15:24.639
+ proxy odmah nije spojen na sada Windows kaže
+
+00:15:24.639 --> 00:15:27.199
+ Usmjerit ću sav vaš promet kroz proxy koji bih trebao ispraviti
+
+00:15:27.199 --> 00:15:32.199
+ ako se vratim na currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 je moj trenutni ip. Pritisnite f5 za osvježavanje
+
+00:15:36.160 --> 00:15:44.639
+ i ako je sve prošlo u redu 3.101.108.211. pa što je to
+
+00:15:44.639 --> 00:15:52.839
+ to je moj poslužitelj pa sam zapravo sad gdje bih to trebao otkriti
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com idemo potražiti ip adresu na kojoj sam trenutno
+
+00:15:59.759 --> 00:16:06.839
+ gdje sam ja san jose california, tu me određuje max mine
+
+00:16:06.839 --> 00:16:10.880
+ budite pa to je sve što ljudi imaju
+
+00:16:10.880 --> 00:16:14.880
+ stvoreno konfigurirano razmješteno besplatnu proxy uslugu
+
+00:16:14.880 --> 00:16:17.680
+ da smo jedini koji posjeduju i upravljaju njima
+
+00:16:17.680 --> 00:16:22.560
+ tko to ima tko ima taj ssh ključ pa ako želite
+
+00:16:22.560 --> 00:16:26.079
+ connect in napravi promjene koristite ga kao višenamjenski poslužitelj koji možete učiniti
+
+00:16:26.079 --> 00:16:30.720
+ to hm, ali samo pripazite na svoje stvari za naplatu, samo se pobrinite za to
+
+00:16:30.720 --> 00:16:33.120
+ niste prekoračili pragove i slične stvari
+
+00:16:33.120 --> 00:16:36.240
+ ako ga samo koristite kao proxy, vrlo je malo vjerojatno da ćete to učiniti
+
+00:16:36.240 --> 00:16:38.480
+ to je samo nešto kroz što prolazite kroz podatke
+
+00:16:38.480 --> 00:16:42.800
+ pa provjerite je li to aws.amazon.com da biste započeli
+
+00:16:42.800 --> 00:16:45.920
+ ako imate pitanja, pošaljite ih našoj zajednici
+
+00:16:45.920 --> 00:16:50.160
+ na našu neslogu vezu ćete pronaći na category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ na interaktivnom izborniku u međuvremenu ako ste uživali u ovome ako ste ga koristili ili
+
+00:16:54.000 --> 00:17:05.839
+ je korisno dajte mi veliki palac molim vas pretplatite se
+
+00:17:08.849 --> 00:17:19.839
+ [Glazba] učiniti
+
+00:17:23.599 --> 00:17:31.710
+ [Glazba, muzika]
+

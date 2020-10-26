@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: af
+
+00:00:00.320 --> 00:00:05.040
+by kategorie 5 TV vertrou ons dat ons lêers op vaste-stasie-aandrywings van Kingston vertrou
+
+00:00:05.040 --> 00:00:07.839
+ tegnologie, hetsy vir u bedienerrekenaar of
+
+00:00:07.839 --> 00:00:10.880
+ op die rekenaar, sal u beter werkverrigting ervaar
+
+00:00:10.880 --> 00:00:17.920
+ en betroubaarheid met Kingston ssds maak gereed, dit is tyd vir die tegnologie
+
+00:00:22.320 --> 00:00:25.519
+ welkom by die program almal, dit is episode 2 van seisoen 14
+
+00:00:25.519 --> 00:00:29.599
+ ek is robbie ferguson en ek is Jeff Weston. Dit is wonderlik om jou hier te hê
+
+00:00:29.599 --> 00:00:32.800
+ en uh ek hoop dat jy 'n wonderlike week gehad het ten spyte van
+
+00:00:32.800 --> 00:00:37.760
+ alles, maar hier is ons en sien uit na 'n wonderlike vertoning wat voorlê
+
+00:00:37.760 --> 00:00:40.960
+ vanaand gaan ons leer hoe om ons eie te skep
+
+00:00:40.960 --> 00:00:45.840
+ instaanbediener okay um so ek wil nie te veel daaroor praat nie
+
+00:00:45.840 --> 00:00:49.200
+ die show, maar ek weet dat dit soms moeilik is om 'n goed te vind
+
+00:00:49.200 --> 00:00:52.640
+ gratis proxy-diens, so ons gaan ons eie skep
+
+00:00:52.640 --> 00:00:55.840
+ en ek gaan jou wys hoe om dit op enige plek in die wêreld te plaas
+
+00:00:55.840 --> 00:01:01.600
+ die gebruik van aws wolkdienste, dus dit is redelik opwindend en een van die dinge
+
+00:01:01.600 --> 00:01:05.680
+ daarmee ook as ons 'n bietjie leer oor hoe
+
+00:01:05.680 --> 00:01:09.520
+ Amazon webdienste ec2 en wolk dienste en die vermoë om
+
+00:01:09.520 --> 00:01:13.760
+ ontplooi debian-bedieners in die wolkinfrastruktuur soos ons leer
+
+00:01:13.760 --> 00:01:18.799
+ hoe om dit te doen en hoe dit werk, weet net dat een van
+
+00:01:18.799 --> 00:01:20.159
+ die dinge wat ons gaan doen is
+
+00:01:20.159 --> 00:01:24.000
+ om van ons data ook na die infrastruktuur te migreer, so ek sê dit
+
+00:01:24.000 --> 00:01:26.960
+ omdat sommige van ons regstreekse kykers dit het
+
+00:01:26.960 --> 00:01:29.600
+ probleme met buffering en sulke dinge ervaar
+
+00:01:29.600 --> 00:01:32.799
+ en dit is omdat ons 'n klein enkele boordrekenaar het
+
+00:01:32.799 --> 00:01:36.880
+ van al die dinge waarna ons stroom en dan weer uitsaai na
+
+00:01:36.880 --> 00:01:40.799
+ enigiemand wat op roku of ander hls-spelers en sulke dinge kyk
+
+00:01:40.799 --> 00:01:44.399
+ dit het 'n vinnige streamer wat op die enkele boordrekenaar loop, dit is regtig
+
+00:01:44.399 --> 00:01:47.759
+ ongelooflike wow egter wat ek gedoen het monitor deur my
+
+00:01:47.759 --> 00:01:50.960
+ toetse is dat dit 'n redelike hoë CPU verwerk as mense
+
+00:01:50.960 --> 00:01:55.439
+ kyk reg sodat ek kan meen dat dit die oorsaak is
+
+00:01:55.439 --> 00:01:58.640
+ probleme ondervind met ons stroom, dus daar is baie dinge wat gaan
+
+00:01:58.640 --> 00:02:03.520
+ hier agter die skerms om dit te probeer kry, kry u die program vir u
+
+00:02:03.520 --> 00:02:07.840
+ 'n baie toeganklike en maklik toeganklike formaat en sodat u dit nie kan doen nie
+
+00:02:07.840 --> 00:02:10.160
+ dinge soos die draaiwiel ervaar
+
+00:02:10.160 --> 00:02:14.560
+ en sulke dinge, maar soos ons vanaand kyk
+
+00:02:14.560 --> 00:02:18.560
+ uh en leer hoe om hierdie debian-bedieners in die wolk te ontplooi
+
+00:02:18.560 --> 00:02:20.879
+ weet dat dit iets is wat ons hier agter die skerms gaan doen
+
+00:02:20.879 --> 00:02:23.760
+ asook om daardie dienste oor te trek
+
+00:02:23.760 --> 00:02:27.120
+ om na een van daardie gevalle te gaan om
+
+00:02:27.120 --> 00:02:30.480
+ probeer om ons optrede hier in die ateljee te verbeter so
+
+00:02:30.480 --> 00:02:34.400
+ hope opwindende dinge wat agter ons aangaan hoe jy was
+
+00:02:34.400 --> 00:02:38.000
+ Ek was goed, ons gaan later vanaand 'n bietjie met jou gesels
+
+00:02:38.000 --> 00:02:42.080
+ uh sommige van u voordele met soldeer ja ja, u wil ons 'n bietjie vertel
+
+00:02:42.080 --> 00:02:44.720
+ net 'n vinnige terging oor wat ons gaan wees
+
+00:02:44.720 --> 00:02:48.959
+ my seun wou soldeer vir
+
+00:02:48.959 --> 00:02:53.120
+ sy verjaarsdag uh so ons het daai pad af gegaan
+
+00:02:53.120 --> 00:02:56.480
+ begin verlede maand uh ons het 'n bietjie gespeel en dit het
+
+00:02:56.480 --> 00:03:01.200
+ ek dink hoe kan ek my eie goed by die huis maak
+
+00:03:01.200 --> 00:03:04.560
+ as ek nie 'n groot produksiegebied het om my eie te maak nie
+
+00:03:04.560 --> 00:03:09.599
+ pcb ja so ja, dit is waar ons daaroor gepraat het, so as u belangstel
+
+00:03:09.599 --> 00:03:15.040
+ DIY elektronika, ons gaan daaroor praat, en wow ons het
+
+00:03:15.040 --> 00:03:19.840
+ 'n paar opwindende dinge waarvoor ons gereed maak, sowel as die volgende week se vertoning
+
+00:03:19.840 --> 00:03:23.040
+ is reeds gereed om te gaan en ons is opgewonde om te wees
+
+00:03:23.040 --> 00:03:26.640
+ om ook 3D-drukwerk aan ons kykers bekend te stel
+
+00:03:26.640 --> 00:03:29.680
+ so dit is iets wat ons in die loop van die jaar gaan leer
+
+00:03:29.680 --> 00:03:36.080
+ komende weke hier by kategorie 5 tv het ons baie aangegaan ja
+
+00:03:36.080 --> 00:03:39.200
+ maak asseblief seker dat u op YouTube ingeteken is
+
+00:03:39.200 --> 00:03:42.159
+ en klik op die bel sodat u die kennisgewing kry elke keer as ons 'n nuwe boodskap plaas
+
+00:03:42.159 --> 00:03:46.560
+ video wanneer ons regstreeks is, en ook as u betrokke wil raak
+
+00:03:46.560 --> 00:03:49.280
+ die gemeenskap, ek dink dit is regtig 'n gawe manier
+
+00:03:49.280 --> 00:03:54.000
+ om deel te wees van kategorie 5 TV, sê sommige mense nog steeds vir my wat is
+
+00:03:54.000 --> 00:03:58.400
+ onenigheid en dis wow jy is nie deel van ons onenigheid nie
+
+00:03:58.400 --> 00:04:01.920
+ bediener, want as u by ons onenigheid aansluit, vind u dit as u gaan
+
+00:04:01.920 --> 00:04:06.560
+ klik op die kategorie5.tv om te kommunikeer om aan te sluit by die onenigheid
+
+00:04:06.560 --> 00:04:10.720
+ bediener, dit is 'n gratis blaaier- of app-gebaseerde
+
+00:04:10.720 --> 00:04:14.720
+ diens wat u op u toestel kan plaas en of toegang daartoe kan kry
+
+00:04:14.720 --> 00:04:18.160
+ deur u blaaier op enigiets en u kan basies met die
+
+00:04:18.160 --> 00:04:22.079
+ gemeenskap, maar dit is netjies in die sin dat dit meer is as net 'n kletskamer
+
+00:04:22.079 --> 00:04:26.160
+ daar is ook verskillende kamers toegewys vir
+
+00:04:26.160 --> 00:04:28.160
+ verskillende dinge sodat dinge wat ons praat
+
+00:04:28.160 --> 00:04:31.280
+ oor of byvoorbeeld ons het agter die skerms
+
+00:04:31.280 --> 00:04:35.680
+ so agter die skerms is net propvol backstage
+
+00:04:35.680 --> 00:04:42.320
+ foto's wat u nie anders sou sien nie en daar is soveel daar op ons
+
+00:04:42.320 --> 00:04:44.400
+ onenigheid bediener so regtig moet jy daarheen gaan
+
+00:04:44.400 --> 00:04:47.919
+ weet dat dit soos 'n kletsplatform is, maar dat dit 'n
+
+00:04:47.919 --> 00:04:51.360
+ soveel meer as net die kletsinteraksie
+
+00:04:51.360 --> 00:04:54.880
+ dit is reg en dit is nie net aktief tydens die vertoning nie
+
+00:04:54.880 --> 00:04:58.240
+ dit is die heeltyd aan en ek bedoel as u tegniese dinge het
+
+00:04:58.240 --> 00:05:01.360
+ die middel van die week is jy soos o, ek weet nie hoe om hierdie probleem op te los nie
+
+00:05:01.360 --> 00:05:04.080
+ kan daar inloer en die gemeenskap is wonderlik om te gee
+
+00:05:04.080 --> 00:05:07.680
+ raad en dit is ook mooi in die kol, ja, dit is waar
+
+00:05:07.680 --> 00:05:10.720
+ goed, so ons moet regtig vinnig breek en dan spring ons reg
+
+00:05:10.720 --> 00:05:14.800
+ dit na hierdie kort wegbreek waarna ons gaan kyk
+
+00:05:14.800 --> 00:05:20.800
+ hoe om 'n aws ec2-instelling op te stel, dit is wat klink soos 'n technobabble vir
+
+00:05:20.800 --> 00:05:24.080
+ my dit werk regtig vinnig ja, hoe gaan dit met ons?
+
+00:05:24.080 --> 00:05:29.759
+ ons gaan ons eie gratis proxy-diens skep wat makliker is om te sê
+
+00:05:29.759 --> 00:05:36.240
+ ek het beheer, ek het toegang, ons het die beheerstok wat ons sal hê
+
+00:05:36.240 --> 00:05:51.920
+ kom dadelik terug [Musiek]
+
+00:05:58.560 --> 00:06:01.919
+ of u nou 'n bietjie ekstra privaatheid wil gee terwyl u op die internet surf
+
+00:06:01.919 --> 00:06:04.720
+ internet of u wil toegang hê tot dienste wat
+
+00:06:04.720 --> 00:06:10.160
+ is miskien nie gewoonlik in u omgewing beskikbaar nie, of miskien is dit 'n
+
+00:06:10.160 --> 00:06:13.680
+ die geval dat u u IP-adres eintlik gehad het
+
+00:06:13.680 --> 00:06:17.600
+ geblokkeer deur 'n diensverskaffer, is dit miskien nie 'n
+
+00:06:17.600 --> 00:06:20.960
+ kwaadwillige ding wat my IP-adres deur my geblokkeer het
+
+00:06:20.960 --> 00:06:24.639
+ youtube voorheen omdat ek soveel video's oplaai en
+
+00:06:24.639 --> 00:06:29.120
+ laai die ondertitels vir diegene af sodat
+
+00:06:29.120 --> 00:06:33.759
+ het daartoe gelei dat ek my gebruik in die YouTube-api oorskry het
+
+00:06:33.759 --> 00:06:38.800
+ so dan word my ip adres geblokkeer sodat dit nie 'n kwaadwillige ding hoef te wees nie
+
+00:06:38.800 --> 00:06:44.319
+ Ek wil nie die indruk gee nie, maar daar is baie wettige redes
+
+00:06:44.319 --> 00:06:49.759
+ om die tipe dinge te moet omseil en die nerds gaan na
+
+00:06:49.759 --> 00:06:56.000
+ is 'n gevolmagtigde, die probleem is dat volmag baie duur kan wees om te gebruik en die
+
+00:06:56.000 --> 00:07:00.160
+ gratis, terwyl dit maklik beskikbaar is, is baie gereeld
+
+00:07:00.160 --> 00:07:04.800
+ óf nie baie betroubaar nie, hulle is die een dag op, die volgende dag en verloor u
+
+00:07:04.800 --> 00:07:10.240
+ toegang tot u dienste en alles wat nog erger is
+
+00:07:10.240 --> 00:07:14.960
+ dit is gevaarlik, jy weet nie wat die gevolmagtigde opspoor nie
+
+00:07:14.960 --> 00:07:21.120
+ aanmeld en hou selfs van onderskep soos wat u deurgaan, wat u stuur
+
+00:07:21.120 --> 00:07:26.720
+ al u internetverkeer deur daardie diensverskaffer
+
+00:07:26.720 --> 00:07:35.199
+ so daar is een persoon wat ek regtig vertrou om al my data te proxy
+
+00:07:35.199 --> 00:07:41.039
+ en dit is ek, ek is nie dieselfde persoon wat jy sou sê dat jy vertrou nie
+
+00:07:41.039 --> 00:07:45.199
+ die persoon wat jy vertrou, is jy, so ek gaan jou wys hoe
+
+00:07:45.199 --> 00:07:53.280
+ Ek kan 'n gratis proxy-diens van my eie instel en u kan dit herhaal en
+
+00:07:53.280 --> 00:07:56.319
+ skep ook u eie, ons gaan dit in die wolk doen
+
+00:07:56.319 --> 00:07:58.800
+ gaan 'n derdeparty-diensverskaffer gebruik
+
+00:07:58.800 --> 00:08:02.400
+ en dit is verbaas, so jy sê o wee amazon, wat daarvan
+
+00:08:02.400 --> 00:08:05.919
+ jy weet dat ons ons gegewens aan hulle goed kan vertrou
+
+00:08:05.919 --> 00:08:10.639
+ wolkdienste word dit amazon web services genoem, so dit is
+
+00:08:10.639 --> 00:08:14.319
+ dit alles is hul wolkinfrastruktuur wat hulle het
+
+00:08:14.319 --> 00:08:18.560
+ vir kliënte om basies toegang tot hul bedieners en hul te huur
+
+00:08:18.560 --> 00:08:23.360
+ hul ruimte en en die virtuele bedieners en al die ander dele
+
+00:08:23.360 --> 00:08:29.680
+ infrastruktuur is beskikbaar, maar die implementering self is wel beskikbaar
+
+00:08:29.680 --> 00:08:34.560
+ die uwe ek gaan jou wys hoe dit gedoen word, ons gaan na aws
+
+00:08:34.560 --> 00:08:40.719
+ en in die besonder ec2, natuurlik as jy nie net met aws vertroud is nie
+
+00:08:40.719 --> 00:08:44.720
+ gaan na aws.amazon.com meld aan met jou Amazon-rekening
+
+00:08:44.720 --> 00:08:50.640
+ en doen dan 'n vinnige soektog na ec2 en dit sal u basies neem
+
+00:08:50.640 --> 00:08:53.680
+ hul virtualiseringsplatform dink aan ec2 as
+
+00:08:53.680 --> 00:08:57.519
+ net dit so die eerste ding wat ek opmerk as ek hier is
+
+00:08:57.519 --> 00:09:03.200
+ in ec2 is my streek en dit is belangrik, want dit is waar my gevolmagtigde is
+
+00:09:03.200 --> 00:09:08.080
+ bediener gaan woon as ek dit daar stel, waarom is dit?
+
+00:09:08.080 --> 00:09:11.519
+ belangrik, dink goed hieraan, sê ons ek gebruik 'n videostreaming
+
+00:09:11.519 --> 00:09:15.680
+ diens wat die Kanadese toegang tot hul video beperk
+
+00:09:15.680 --> 00:09:19.440
+ stroomdiens so deur my proxy-bediener in die noorde te plaas
+
+00:09:19.440 --> 00:09:23.360
+ Kalifornië nou ewe skielik
+
+00:09:23.360 --> 00:09:26.320
+ deur ip adres gaan dink dat ek van
+
+00:09:26.320 --> 00:09:29.360
+ Kalifornië, so ek kan dit regkry
+
+00:09:29.360 --> 00:09:32.720
+ net so wil u dalk u streek verander op grond van
+
+00:09:32.720 --> 00:09:37.200
+ wat u probeer bereik, kan u selfs 'n bediener in Afrika plaas
+
+00:09:37.200 --> 00:09:40.480
+ of asia kyk dat jy een in Hong Kong kan regstel
+
+00:09:40.480 --> 00:09:44.160
+ u kan een in Kanada plaas, en u in Europa wat u het
+
+00:09:44.160 --> 00:09:49.680
+ oral en dan het ons nou die Midde-Ooste en Suid-Amerika
+
+00:09:49.680 --> 00:09:52.800
+ so dit is 'n redelik groot lys van waar hulle
+
+00:09:52.800 --> 00:09:57.360
+ laat hierdie infrastruktuur vir amazon-webdienste die ec2-diens opstel
+
+00:09:57.360 --> 00:10:01.920
+ kies dus die een waar u proxy-bediener moet wees
+
+00:10:01.920 --> 00:10:05.600
+ ek gaan myne stel, ek gaan dit net as Noord-Kalifornië los
+
+00:10:05.600 --> 00:10:09.279
+ ons wes een en dit is waar
+
+00:10:09.279 --> 00:10:13.760
+ my proxy-bediener gaan woon, wat my in staat stel om te koppel
+
+00:10:13.760 --> 00:10:17.680
+ asof ek eintlik in Kalifornië sit
+
+00:10:17.680 --> 00:10:20.880
+ goed, so ek gaan op die launch-instansie klik
+
+00:10:20.880 --> 00:10:24.880
+ en begin dan weer instansie, want dit is 'n vervolglys en dit gee my
+
+00:10:24.880 --> 00:10:29.440
+ 'n lys van bedryfstelsels wat ek kan gebruik
+
+00:10:29.440 --> 00:10:33.760
+ op my ec2-voorbeeld, dus gebruik ek 'n paar terme wat u miskien nie ken nie
+
+00:10:33.760 --> 00:10:38.240
+ aws is Amazon-webdienste wat basies Amazon's is
+
+00:10:38.240 --> 00:10:44.560
+ volle omvang van die dienste wat hulle bied vir wolke gebruikers ec2 is hul
+
+00:10:44.560 --> 00:10:48.160
+ virtualiseringsplatform vir virtuele masjiene
+
+00:10:48.160 --> 00:10:52.240
+ toe ek gesê het, praat ek van 'n virtuele masjien
+
+00:10:52.240 --> 00:10:56.160
+ so dit is letterlik 'n virtuele masjien, so ek gaan een daarvan gebruik
+
+00:10:56.160 --> 00:10:59.360
+ bedryfstelsels na 'n instansie van ec2 wat is
+
+00:10:59.360 --> 00:11:02.880
+ 'n virtuele masjien, so wat wil ek hê?
+
+00:11:02.880 --> 00:11:07.040
+ so en ek het gesê dat ek hier onder kommentaar moet lewer as ek 'n term gebruik wat jy nie ken nie
+
+00:11:07.040 --> 00:11:08.399
+ met ek gaan vinnig soek wat ek het
+
+00:11:08.399 --> 00:11:11.120
+ het dit al voorheen gedoen omdat ek 'n ton bedieners gebruik
+
+00:11:11.120 --> 00:11:15.279
+ in die wolk gaan ek op debian klik en tik debian in die
+
+00:11:15.279 --> 00:11:19.279
+ soek hier so dan gaan ek aws toe
+
+00:11:19.279 --> 00:11:24.640
+ markresultate daar is ook resultate wat ek geskep het en in die
+
+00:11:24.640 --> 00:11:27.120
+ gemeenskap sou jy dink o wee ek wil gebruik
+
+00:11:27.120 --> 00:11:30.800
+ gemeenskap mense wel nee jy nie, want diegene gaan jou geld kos
+
+00:11:30.800 --> 00:11:34.320
+ en jy sê goed, maar die gemeenskap is gratis, dit is open source en ja
+
+00:11:34.320 --> 00:11:38.959
+ dit is egter nie 'n deel van die aws-mark nie, en daarom sal u dit hê
+
+00:11:38.959 --> 00:11:42.320
+ om te betaal vir die gebruik om daardie virtuele masjien te hê
+
+00:11:42.320 --> 00:11:46.160
+ instansie loop in die wolk, dus gaan ons eerder
+
+00:11:46.160 --> 00:11:49.440
+ gebruik een van die amptelike artikels van die aws-mark, laat ons sien watter resultate dit behaal
+
+00:11:49.440 --> 00:11:53.360
+ ons kry hulle is redelik goed gesorteer debian kom na vore, die eerste resultaat is
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster 'n gratis vlakversoenbaar of gratis vlak
+
+00:11:57.839 --> 00:12:00.560
+ geskikte weergawe van debian wat ons gaan word
+
+00:12:00.560 --> 00:12:06.000
+ gebruik dus kies die gratis vlak wat in aanmerking kom, sodat ons die
+
+00:12:06.000 --> 00:12:09.360
+ pryse, want ons gaan 'n gratis treffer tref, gaan voort
+
+00:12:09.360 --> 00:12:13.040
+ en dit is waar ons dit so goed kies as ons die gratis vlak wil hê
+
+00:12:13.040 --> 00:12:15.839
+ met 'n t2 mikro, so ek gaan dit kies, maar wat
+
+00:12:15.839 --> 00:12:22.399
+ gee dit ons dit gee ons een cpu een gigabyte geheue um
+
+00:12:22.399 --> 00:12:25.600
+ en dan het ons stoorplek om te hanteer, ons benodig nie baie stoorplek nie
+
+00:12:25.600 --> 00:12:29.920
+ ons is net besig om 'n basiese proxy op te stel en dit gaan daaroor, so ek gaan
+
+00:12:29.920 --> 00:12:34.079
+ ontplooi net so dat t2 micro die een is wat gratis is
+
+00:12:34.079 --> 00:12:37.120
+ kies nie een van die groter nie
+
+00:12:37.120 --> 00:12:38.720
+ dié omdat jy daarvoor gaan betaal
+
+00:12:38.720 --> 00:12:42.079
+ dadelik gaan ek hersien en begin waarna ons sal terugkeer
+
+00:12:42.079 --> 00:12:45.839
+ doen instellings soos ons sekuriteitsgroepe en sulke dinge, ek gaan net vertrek
+
+00:12:45.839 --> 00:12:48.480
+ alles vir eers standaard en ons gaan
+
+00:12:48.480 --> 00:12:52.000
+ begin dat ek dus eerstens 'n nuwe sleutel moet skep
+
+00:12:52.000 --> 00:12:55.360
+ koppel so dit is die ssh-sleutel waarin ek gaan gebruik
+
+00:12:55.360 --> 00:12:59.680
+ om na hierdie bediener te ssh, so ek gaan dit noem
+
+00:12:59.680 --> 00:13:04.160
+ een proxy-bediener en laai dan my sleutelpaar af
+
+00:13:04.160 --> 00:13:06.320
+ maak seker dat u dit êrens veilig stoor waarheen ek gaan
+
+00:13:06.320 --> 00:13:10.800
+ gooi dit op my bediener en laat val dit daar
+
+00:13:10.800 --> 00:13:16.240
+ en nou begin instansie beteken krag op u virtuele masjien, so ek gaan
+
+00:13:16.240 --> 00:13:20.000
+ druk dit en daar gaan ons, so dit is basies
+
+00:13:20.000 --> 00:13:23.120
+ om dit te skep, is om 'n virtuele masjien te skep
+
+00:13:23.120 --> 00:13:29.360
+ uh 'n ec2-voorbeeld in die wolk vir ons in uh in Noord-Kalifornië, so daar is ons
+
+00:13:29.360 --> 00:13:33.279
+ gaan so ek gaan gevalle hier onder sien
+
+00:13:33.279 --> 00:13:37.200
+ en nou kan ek sien ek het nou een geval met 'n t2-mikro
+
+00:13:37.200 --> 00:13:41.199
+ en dit is net geen naam nie, so ek gaan op edit klik en ek noem dit
+
+00:13:41.199 --> 00:13:45.839
+ my proxy-bedienerbediener probeer dat daar goed gaan, so dit is
+
+00:13:45.839 --> 00:13:49.519
+ reeds aan die gang, so as ek daarop klik, kan ek die IP sien
+
+00:13:49.519 --> 00:13:53.360
+ adres van daardie bediener, dit het ek al 'n proxy-bediener genoem, maar nou
+
+00:13:53.360 --> 00:13:56.720
+ onthou dit is net debian 10. daar is niks anders daarop geïnstalleer nie
+
+00:13:56.720 --> 00:14:02.480
+ so ek moet daardie IP-adres kopieër en dan gaan ek in my
+
+00:14:02.480 --> 00:14:05.839
+ opdrag prompt omdat ek die sleutel afgelaai het na
+
+00:14:05.839 --> 00:14:17.839
+ my bediener gaan ek persoonlik na my interne bediener ssh
+
+00:14:18.399 --> 00:14:22.079
+ goed so nou is ek daar so nou die opdrag wat ek gaan gebruik
+
+00:14:22.079 --> 00:14:28.079
+ is ssh en druk dan i vir die sleutel wat ek gaan gebruik
+
+00:14:28.079 --> 00:14:31.040
+ dus die inkomende lêer wat ek gaan gebruik vir die sleutel
+
+00:14:31.040 --> 00:14:35.760
+ en die een word proxy server.pem genoem, het ek afgelaai
+
+00:14:35.760 --> 00:14:39.920
+ dan gaan ek admin, want dit is die standaard aanmelding vir die debian
+
+00:14:39.920 --> 00:14:43.600
+ ami of Amazon masjien beeld admin by
+
+00:14:43.600 --> 00:14:46.639
+ en dan die ip-adres wat ek al na my knipbord gekopieer het en as ek
+
+00:14:46.639 --> 00:14:48.959
+ druk enter, dit gaan my vra om die sleutel te aanvaar
+
+00:14:48.959 --> 00:14:54.000
+ en ek sê ja en ek word geweier
+
+00:14:54.000 --> 00:14:57.279
+ regte op daardie lêer was uiteindelik daarop dat
+
+00:14:57.279 --> 00:15:01.199
+ 766 sodat almal toegang tot die lêers het, so dit is interessant
+
+00:15:01.199 --> 00:15:05.519
+ ssh self beskerm my teen iemand wat my sleutel kan benadeel
+
+00:15:05.519 --> 00:15:13.120
+ so chmod 700 proxy server pam, laat ons dit nou probeer
+
+00:15:13.120 --> 00:15:16.000
+ probeer weer, so wat ek gedoen het, is o en nou
+
+00:15:16.000 --> 00:15:20.800
+ gekoppel dit het net gewerk 700 beteken dat ek die eienaar van die sleutel is
+
+00:15:20.800 --> 00:15:27.279
+ ek mag enigiets daarmee doen lees skryf voer nul nul beteken uit
+
+00:15:27.279 --> 00:15:30.800
+ niemand in die groep niemand wat nie deel uitmaak van die groep nie
+
+00:15:30.800 --> 00:15:35.600
+ is toegelaat om toegang daartoe te kry, sodat dit basies 'n dom lêer is wat hulle nie kan nie
+
+00:15:35.600 --> 00:15:39.519
+ selfs oop, maar ek kan reg so dat ek nou is
+
+00:15:39.519 --> 00:15:44.240
+ gekoppel ek gaan sudo dagvaar, want dit is waarvoor die opdrag is
+
+00:15:44.240 --> 00:15:47.440
+ word wortel, so nou is ek so app-opdatering
+
+00:15:47.440 --> 00:15:50.399
+ whoop app update gaan my aangryp
+
+00:15:50.399 --> 00:15:55.680
+ bewaarplekke u sien dit is 'n werklike debian-rekenaar as u wil
+
+00:15:55.680 --> 00:16:01.680
+ in die wolk is dit so maklik ek is al besig om op te gradeer dat ek al 'n debian bestuur
+
+00:16:01.680 --> 00:16:05.120
+ rekenaar in die wolk so in daardie tyd en ek is blah
+
+00:16:05.120 --> 00:16:11.360
+ bla bla terselfdertyd het ons 'n wolkgebaseerde debian-bediener
+
+00:16:11.360 --> 00:16:15.519
+ het jy besef dat dit so maklik was en dat dit gratis is?
+
+00:16:15.519 --> 00:16:18.720
+ oke, sodat ons ook ander dinge hiermee kan doen, kan ons 'n lampstapel opstel
+
+00:16:18.720 --> 00:16:23.600
+ kan dit gebruik vir mysql mariadb enigiets wat u kan bedink, dit is 'n
+
+00:16:23.600 --> 00:16:26.720
+ debian-bediener, so ons gaan dit as ons gebruik
+
+00:16:26.720 --> 00:16:31.759
+ proxy, so nou, wat ek gaan doen, is om 'n instrument met die naam te installeer
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy mooi en maklik om te installeer apt installeer klein proxy
+
+00:16:38.639 --> 00:16:45.600
+ regtig eenvoudig om te konfigureer, sê ja, hier gaan ons
+
+00:16:47.120 --> 00:16:51.199
+ en dit is gedoen nou dat ons 'n klein proxy geïnstalleer het wat ons net moet wysig
+
+00:16:51.199 --> 00:16:59.440
+ die config lêer so skuins ens klein klein proxy verander dir daarin
+
+00:16:59.440 --> 00:17:05.760
+ en dan gebruik ek nano tinyproxy.com en wysig dit so beheer w in nano
+
+00:17:05.760 --> 00:17:08.799
+ laat my toe om te soek, maar voordat ek dit gaan soek, let op dat die
+
+00:17:08.799 --> 00:17:12.720
+ poort gebruik standaard 888, ons sal dit moet weet
+
+00:17:12.720 --> 00:17:15.679
+ inligting, want dit is waarvoor ons gaan skakel
+
+00:17:15.679 --> 00:17:19.839
+ ons gevolmagtigde soek vinnig na laat
+
+00:17:21.439 --> 00:17:25.679
+ alt w laat jou toe om weer te soek wow die woord allow is waarskynlik nie die beste nie
+
+00:17:25.679 --> 00:17:30.640
+ soeknavorsing soek miskien na 127.0.0.1 en net onder die een gaan ek
+
+00:17:30.640 --> 00:17:34.720
+ laat toe en dan moet ek my ip-adres byvoeg sodat ek kan koppel
+
+00:17:34.720 --> 00:17:37.440
+ hierdie instaanbediener omdat dit tans gesluit is
+
+00:17:37.440 --> 00:17:40.640
+ net localhost het toegang tot dit wat belangrik is om op te let
+
+00:17:40.640 --> 00:17:44.720
+ dat dit is terwyl dit 'n openbare gratis proxy-bediener is, maar ek die enigste is
+
+00:17:44.720 --> 00:17:47.280
+ gaan toegang daartoe kry wat toegelaat sal word
+
+00:17:47.280 --> 00:17:52.400
+ volmag my inhoud my verbinding daardeur, sodat dit privaat is in die verband
+
+00:17:52.400 --> 00:17:55.919
+ ek moet my ip-adres ken, so ek gaan spring na
+
+00:17:55.919 --> 00:18:03.360
+ huidige ip.xyz en kopieer die IP-adres na my klembord en spring dan
+
+00:18:03.360 --> 00:18:09.840
+ daar agter en plak dit in my konfigurasiekontrole o voer beheer in x beheer o is
+
+00:18:09.840 --> 00:18:14.320
+ om uit te skryf, stoor die lêer nou systemctl
+
+00:18:14.320 --> 00:18:21.039
+ begin klein proxy, het amper die laaste ding gedoen wat ons nodig het
+
+00:18:21.039 --> 00:18:26.000
+ om te doen is dat ons net die ec2-sekuriteit moet vertel
+
+00:18:26.000 --> 00:18:29.840
+ ons gaan 'n beleid opstel wat sê dat hier slegs ek mag aansluit
+
+00:18:29.840 --> 00:18:32.799
+ bediener sodat niemand anders daaraan kan koppel nie
+
+00:18:32.799 --> 00:18:34.880
+ hoegenaamd so dit is wat ons reg gaan doen
+
+00:18:34.880 --> 00:18:38.799
+ nou so ek gaan hierheen spring en jy sien hierdie bediener op die skerm
+
+00:18:38.799 --> 00:18:43.840
+ wel as ek op sekuriteit klik, kan ek dan op die sekuriteitsgroep klik
+
+00:18:43.840 --> 00:18:46.240
+ outomaties toegeken, kliek net daarop
+
+00:18:46.240 --> 00:18:50.480
+ en nou het dit my oorgelaat aan ec2 sekuriteitsgroepe en die regte sekuriteit
+
+00:18:50.480 --> 00:18:52.320
+ groep, sal u sien dat dit reeds ingestel is
+
+00:18:52.320 --> 00:18:56.960
+ een vir ssh omdat dit standaard geaktiveer is, kan ek dit instel
+
+00:18:56.960 --> 00:18:59.440
+ om my ook net toe te laat wat so belangrik is
+
+00:18:59.440 --> 00:19:02.720
+ laat ons dit doen net om in goeie veiligheidspraktyke te wees
+
+00:19:02.720 --> 00:19:06.160
+ ssh ek gaan dit verander van custom000
+
+00:19:06.160 --> 00:19:10.080
+ ek gaan x dit toemaak en dan verander na my ip
+
+00:19:10.080 --> 00:19:14.480
+ dan gaan ek 'n nuwe reël byvoeg, jy het gesien hoe ek reg gekom het, ek weet ek beweeg
+
+00:19:14.480 --> 00:19:18.080
+ regtig vinnig, ek het net gekliek op wysig inkomende reëls
+
+00:19:18.080 --> 00:19:22.960
+ hier okei, so voeg 'n nuwe reël by tcp is die
+
+00:19:22.960 --> 00:19:27.120
+ verstek poortnommer, onthou u 888 en slegs
+
+00:19:27.120 --> 00:19:31.919
+ laat my ip toe, ek kan dit iets noem as ek 'n proxy wil hê
+
+00:19:31.919 --> 00:19:37.919
+ en dan stoor my reëls daar gaan ons so nou sien jy ssh en
+
+00:19:37.919 --> 00:19:44.160
+ persoonlike tcp een genaamd proxy op poort 888.
+
+00:19:44.160 --> 00:19:49.600
+ so hoe toets ons dit, so ons huidige IP-adres is 99.233
+
+00:19:49.600 --> 00:19:52.640
+ en daarom gaan ek 'n verbinding maak met die proxy
+
+00:19:52.640 --> 00:19:57.360
+ nie 'n handleiding oor hoe om 'n gevolmagtigde te gebruik nie, dit is nie 'n
+
+00:19:57.360 --> 00:20:01.120
+ handleiding oor waarvoor u dit noodwendig moet gebruik
+
+00:20:01.120 --> 00:20:04.720
+ dit maak ek hier aannames dat u dit self kan google
+
+00:20:04.720 --> 00:20:08.240
+ want dit gaan anders wees, afhangende van u gebruiksgeval, of u nou wil
+
+00:20:08.240 --> 00:20:11.600
+ proxy u blaaier of proxy 'n spesifieke program of u hele
+
+00:20:11.600 --> 00:20:15.440
+ netwerk wat aan u individu voldoen
+
+00:20:15.440 --> 00:20:20.159
+ gebruik geval dit is 'n handleiding oor hoe om dit te bou
+
+00:20:20.159 --> 00:20:23.679
+ ec2 instansie regtig baie vinnig gratis
+
+00:20:23.679 --> 00:20:28.400
+ daar is 'n proxy wat gereed is vir gebruik in Kalifornië of waar ook al
+
+00:20:28.400 --> 00:20:32.960
+ en uh, dis nou so in my spesifieke geval
+
+00:20:32.960 --> 00:20:36.480
+ hierdie oomblik is dus nie noodwendig wat u verder wil doen nie
+
+00:20:36.480 --> 00:20:41.120
+ dit is net hoe ek die proxy gaan toets wat ek toevallig op Windows 10 hier kan sien
+
+00:20:41.120 --> 00:20:47.280
+ so ek gaan eenvoudig proxy invoer en weer in proxy-instellings gaan dit is
+
+00:20:47.280 --> 00:20:50.880
+ waarskynlik nie hoe jy dit wil doen nie, ek wil net toets, so ek gaan draai
+
+00:20:50.880 --> 00:20:53.679
+ op proxy kan ek sien dat daar 'n ou proxy is
+
+00:20:53.679 --> 00:20:56.880
+ instellings daar, so maak seker dat u daarop let
+
+00:20:56.880 --> 00:21:00.240
+ as daar ou instaan-instellings is, moet u dit verander
+
+00:21:00.240 --> 00:21:03.679
+ gevalle op ec2 klik op u instansie-id
+
+00:21:03.679 --> 00:21:07.440
+ en gryp die IP-adres en plak dit dan in
+
+00:21:07.440 --> 00:21:11.840
+ as adres vir u instaanbedienerpoort 8888
+
+00:21:11.840 --> 00:21:17.120
+ en stoor so nou is ek onmiddellik aan die proxy gekoppel
+
+00:21:17.120 --> 00:21:20.559
+ nie gekoppel is aan windows nie, sê ek gaan al u verkeer lei
+
+00:21:20.559 --> 00:21:22.880
+ deur die volmag moet ek myself daar regstel
+
+00:21:22.880 --> 00:21:29.520
+ so as ek terug is na currentip.xyz 99.233 is my huidige IP, gaan ek slaan
+
+00:21:29.520 --> 00:21:38.159
+ f5 om te verfris en as dit goed gaan 3.101.108.211. wel
+
+00:21:38.159 --> 00:21:44.720
+ wat is dat dit my bediener is, so ek is nou eintlik
+
+00:21:44.720 --> 00:21:51.679
+ waar is ek, laat ons uitvind maxmind.com, laat ons die IP-adres soek
+
+00:21:51.679 --> 00:21:59.120
+ dat ek tans is waar is ek San Jose Kalifornië
+
+00:21:59.120 --> 00:22:02.559
+ dit is waar my maksimum my bepaal
+
+00:22:02.559 --> 00:22:05.600
+ so dit is al wat daar is, mense wat ons het
+
+00:22:05.600 --> 00:22:10.640
+ geskep gekonfigureer gebruik 'n gratis proxy diens wat ons
+
+00:22:10.640 --> 00:22:14.559
+ besit en bedryf, ons is die enigste wat dit het
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh-sleutel, dus as u 'n verbinding wil maak, gebruik dit
+
+00:22:19.200 --> 00:22:23.840
+ as 'n veeldoelige bediener kan u dit doen, maar hou u net dop
+
+00:22:23.840 --> 00:22:27.120
+ u faktuurgoed moet net seker maak dat u die drempels nie oorskry het nie
+
+00:22:27.120 --> 00:22:29.440
+ sulke dinge as jy dit net as volmag gebruik, is dit
+
+00:22:29.440 --> 00:22:32.159
+ baie onwaarskynlik dat u dit gaan doen, maar net iets wat u aan die gang het
+
+00:22:32.159 --> 00:22:37.520
+ data deur, so kyk of dit aws.amazon.com is om aan die gang te kom
+
+00:22:37.520 --> 00:22:41.440
+ indien u vrae het, stuur dit aan ons gemeenskap
+
+00:22:41.440 --> 00:22:44.480
+ ons verskil vind u die skakel in kategorie 5
+
+00:22:44.480 --> 00:22:48.720
+ TV op die interaksie-menu intussen as u dit geniet het as u dit gebruik het of
+
+00:22:48.720 --> 00:22:53.039
+ vind dit nuttig gee my 'n groot duim omhoog, skryf asseblief in en ons sien jou reg
+
+00:22:53.039 --> 00:23:07.059
+ na pouse [Musiek]
+
+00:23:15.520 --> 00:23:18.559
+ welkom terug dit is kategorie 5 tegnologie TV
+
+00:23:18.559 --> 00:23:22.240
+ en ek wil praat oor wat ek by die huis doen
+
+00:23:22.240 --> 00:23:26.640
+ of liewer wat ek beplan om te doen om netflix te kyk
+
+00:23:26.640 --> 00:23:30.480
+ ek het nie tyd om rond te sit en kyk na Netflix nie, maar ek wou
+
+00:23:30.480 --> 00:23:34.960
+ nee nee my familie hou altyd van Netflix en ek wil net op die rekenaar gaan
+
+00:23:34.960 --> 00:23:38.720
+ wat wonderlik is omdat dit my gedwing het om te begin daar is Netflix op die rekenaar
+
+00:23:38.720 --> 00:23:44.000
+ nou jeff jy trek my aandag af nee, maar dit is
+
+00:23:44.000 --> 00:23:46.960
+ wonderlik, want dit het my gedwing om te begin kyk na sommige van die dinge wat ons doen
+
+00:23:46.960 --> 00:23:51.760
+ rondom die huis en gaan hoe kan ek dit my eie maak en so
+
+00:23:51.760 --> 00:23:55.120
+ jy weet ek het bo-aan die program genoem dat ons seun het
+
+00:23:55.120 --> 00:24:00.240
+ het begin soldeer en hy het baie goed gedoen en herinner ons aan hoe oud hy is
+
+00:24:00.240 --> 00:24:05.200
+ word net 12. word net 12. draai goed, maar u ja hy is klaar
+
+00:24:05.200 --> 00:24:09.760
+ baie goed daarmee en uh hy het tot dusver twee sakrekenaars gesoldeer
+
+00:24:09.760 --> 00:24:13.919
+ en een van hulle het hy skool toe geneem, wat sy onderwyser heeltemal geblaas het
+
+00:24:13.919 --> 00:24:16.000
+ weg deur ja ek dink 12 jaar oud en hy is
+
+00:24:16.000 --> 00:24:20.320
+ al 'n sakrekenaar gemaak, ja, hy het 'n sakrekenaar gemaak, ons het 'n diy-kit daaruit gekry
+
+00:24:20.320 --> 00:24:23.360
+ amazon en hy het dit gebou en dit miskien twee uur
+
+00:24:23.360 --> 00:24:27.039
+ van werk was dit regtig fenomenaal onwerklik en sy soldeerwerk is
+
+00:24:27.039 --> 00:24:30.880
+ regtig regtig skoon uitstekend soos dit pro lyk
+
+00:24:30.880 --> 00:24:34.559
+ maar in elk geval het hy gevra hoe om ander dinge te doen en terwyl ons soldeer, is hy
+
+00:24:34.559 --> 00:24:37.200
+ soos wat is dit en wat is dit en hoe werk dit en
+
+00:24:37.200 --> 00:24:40.480
+ ek gaan, ek wil hom hierdie dinge kan leer
+
+00:24:40.480 --> 00:24:46.480
+ ek wil vir hom kan verduidelik hoe 'n stroombaan nie net werk nie
+
+00:24:46.480 --> 00:24:49.360
+ soldeer dit maar verstaan ​​die komponente en die routing en alles daarby
+
+00:24:49.360 --> 00:24:53.279
+ soort van dinge en ek bedoel ek weet jy kan koop um
+
+00:24:53.279 --> 00:25:00.400
+ net borde wat net rye van klein verbindingspunte is
+
+00:25:00.400 --> 00:25:03.840
+ maar ek wil in staat wees om ons eie bord te maak ja, en daarom het hy gevra
+
+00:25:03.840 --> 00:25:07.279
+ spesifiek as ons 'n diystel vir
+
+00:25:07.279 --> 00:25:10.320
+ 'n nuttelose boks, jy weet dit is die boks waar jy die knoppie ja druk en die
+
+00:25:10.320 --> 00:25:15.840
+ klein dingetjie kom uit en knal dit, probeer dit eers
+
+00:25:17.600 --> 00:25:22.640
+ wat het jy gedoen, is jy ernstig
+
+00:25:25.039 --> 00:25:30.400
+ o wee dit is skreeusnaaks
+
+00:25:32.720 --> 00:25:39.520
+ hallo dit is soos om 'n katjie daar in te hê, dit is soos my kat
+
+00:25:40.240 --> 00:25:44.799
+ hey hey nou so ek het op soek na een het nie een gevind nie, maar ek het 'n klomp
+
+00:25:44.799 --> 00:25:48.080
+ mense soos oh jy kan een maak met behulp van 'n arduino, jy kan een maak met behulp van hierdie
+
+00:25:48.080 --> 00:25:55.520
+ en ek was asof ek 'n doos-doos nuttelose doos gaan doen, waaruit ek dit wil bou
+
+00:25:55.520 --> 00:25:58.559
+ die grondslag, so ek het ondersoek ingestel na hoe om te maak
+
+00:25:58.559 --> 00:26:03.679
+ my eie pcbs by die huis okay dit is eintlik nie so moeilik nie
+
+00:26:03.679 --> 00:26:08.960
+ en ek is weggeslaan dat ek net 'n laserdrukker nodig het om my routing in te stel
+
+00:26:08.960 --> 00:26:12.880
+ soos waar die paadjies gaan, sodat u dit gaan ets
+
+00:26:12.880 --> 00:26:15.919
+ ek gaan dit eintlik by die huis ets o man
+
+00:26:15.919 --> 00:26:20.159
+ dit is ver buite my, dit is regtig chemikalieë wat betrokke is
+
+00:26:20.159 --> 00:26:23.679
+ dit doen maar 'n baie eenvoudige proses, so het ek gevind
+
+00:26:23.679 --> 00:26:26.880
+ ek het 'n klomp navorsing daaroor gedoen en daarom het ek aa gevind
+
+00:26:26.880 --> 00:26:29.919
+ regtig eenvoudige maklike manier om my eie pcb te maak
+
+00:26:29.919 --> 00:26:32.799
+ en dit is wat ons gaan doen, sodat my projek vir die volgende waarskynlik 'n
+
+00:26:32.799 --> 00:26:35.600
+ 'n paar maande, want ek moet leer hoe hierdie dinge
+
+00:26:35.600 --> 00:26:39.520
+ werk is om 'n stroombaanbord te ontwerp wat ek het
+
+00:26:39.520 --> 00:26:43.120
+ het nog nooit voorheen die kringbord gemaak nie en dan my seun s'n
+
+00:26:43.120 --> 00:26:45.919
+ gaan dit saam soldeer en ons gaan ons eie maak
+
+00:26:45.919 --> 00:26:50.960
+ nuttelose doos wat ek hoop om die doos ook 3d te druk, o dis cool
+
+00:26:50.960 --> 00:26:56.480
+ ja, jy duik net reg in as ek iets doen, word ek nie klein nie
+
+00:26:56.480 --> 00:27:00.320
+ en jy weet my benadering is 'n bietjie anders, want ek is baie
+
+00:27:00.320 --> 00:27:03.520
+ soos ek graag eers iets wil leer
+
+00:27:03.520 --> 00:27:09.200
+ en verhoog dan my belegging in die proses en dan hou u van praat
+
+00:27:09.200 --> 00:27:13.679
+ oor om reg te spring na PCB-skepping, sodat ek sou rugsteun sodat u weet
+
+00:27:13.679 --> 00:27:16.799
+ as u dit dink, wil ek miskien my eie stroombane maak
+
+00:27:16.799 --> 00:27:20.399
+ en sulke dinge is my beginpunt 'n broodbord ja
+
+00:27:20.399 --> 00:27:25.440
+ en die broodbord stel u in staat om die stroombaan wat u ontwerp het, uit te lê
+
+00:27:25.440 --> 00:27:28.559
+ wat u afgelaai het soos 'n stroombaanbloudruk um
+
+00:27:28.559 --> 00:27:32.399
+ vanaf die internet of hoe u dit ook al het, waarmee u dit kan neerlê
+
+00:27:32.399 --> 00:27:36.799
+ uit op 'n basies 'n skyn-pcb
+
+00:27:36.799 --> 00:27:41.039
+ dit sal soos 'n pcb funksioneer, maar dan kan u dit alles uitmekaar haal en
+
+00:27:41.039 --> 00:27:46.399
+ sit die onderdele reg weg, dit is goedkoop, baie goedkoop, en dit begin net
+
+00:27:46.399 --> 00:27:50.080
+ en dan is die volgende stap vir my 'n prototiperingbord wat jy kry
+
+00:27:50.080 --> 00:27:53.279
+ pcb-borde met al die gate wat reg is en
+
+00:27:53.279 --> 00:27:57.840
+ hulle het soldeersel soos punte, maar daar is geen
+
+00:27:57.840 --> 00:28:02.080
+ interkonneksie tussen hulle sodat u eintlik drade of u kan bestuur
+
+00:28:02.080 --> 00:28:05.760
+ loop byvoorbeeld 'n bietjie soldeersel tussen twee verskillende verbindings
+
+00:28:05.760 --> 00:28:10.080
+ en jy doen dit so, so dit is my tweede stap ja, dan sal ek kyk
+
+00:28:10.080 --> 00:28:14.720
+ gaan miskien die roete om jou eie te ets
+
+00:28:14.720 --> 00:28:19.200
+ pcbs, want dan begin u soos die chemiese prosesse
+
+00:28:19.200 --> 00:28:24.960
+ die en ek het nie ondersoek nie, maar dit is 'n baie ingewikkelder proses
+
+00:28:24.960 --> 00:28:27.919
+ ek wil graag my eerste pcb 'n bietjie eenvoudiger begin
+
+00:28:27.919 --> 00:28:32.080
+ gebou op 'n broodbord baie baie basies, maar ek het dit reg ontwerp
+
+00:28:32.080 --> 00:28:35.120
+ okay, en al wat dit is, is dat dit vyf volt benodig
+
+00:28:35.120 --> 00:28:38.880
+ sein en as dit vyf volt het, word die
+
+00:28:38.880 --> 00:28:43.440
+ die aflos is gesluit, dus dit het 'n aflosreg, oke wanneer dit nie vyf volt het nie
+
+00:28:43.440 --> 00:28:47.520
+ die aflos gaan oop sodat dit so ontkoppel
+
+00:28:47.520 --> 00:28:51.440
+ die rede dat ek geskep het dat dit 'n doelgerigte toepassing is, so ek het dit gebou
+
+00:28:51.440 --> 00:28:56.000
+ op 'n broodplank en daar word op vyf volt gevoed
+
+00:28:56.000 --> 00:29:03.440
+ enige raaiskote enige raaiskote spc nee, dit is nog 'n akroniem usb van drie letters
+
+00:29:03.440 --> 00:29:07.360
+ usb usb trek 'n vyf volt sein van 'n mikro regmerkie af
+
+00:29:07.360 --> 00:29:12.399
+ router okay en so dan in die mikro regmerkie ek geprogrammeerde kode wat gesê het
+
+00:29:12.399 --> 00:29:17.039
+ dit is basies om dit stom te maak as die internet ondergaan
+
+00:29:17.039 --> 00:29:20.559
+ vermoor die krag op die uself o en so dan
+
+00:29:20.559 --> 00:29:25.520
+ maak die aflos oop en wat is die aflosbeheer, maar die krag vir my modem
+
+00:29:25.520 --> 00:29:29.919
+ dus sal my modem outomaties draai as die internet ondergaan
+
+00:29:29.919 --> 00:29:33.120
+ die krag vanself af as gevolg van my aflos
+
+00:29:33.120 --> 00:29:37.039
+ regs en wag vyf sekondes en skakel dan weer aan sodat dit in wese 'n
+
+00:29:37.039 --> 00:29:41.200
+ virtuele weergawe van het jy dit uit en weer aangeskakel omdat
+
+00:29:41.200 --> 00:29:43.679
+ wat doen jy as jy op 'n internet gaan, trek jy die prop uit
+
+00:29:43.679 --> 00:29:46.799
+ vanaf die momentum wag jy vyf sekondes en steek dit weer in en
+
+00:29:46.799 --> 00:29:50.240
+ jy weet agt keer uit tien dat dit weer gaan werk en werk
+
+00:29:50.240 --> 00:29:54.559
+ reg so dit was die stroombaan wat ek gebou het, so ek het dit een keer op 'n prototipbord gebou
+
+00:29:54.559 --> 00:29:58.240
+ ek het dit laat werk en dit net aanmekaar gesoldeer en dit is baie eenvoudig
+
+00:29:58.240 --> 00:30:00.799
+ kring baie cool en dit het baie goed gewerk
+
+00:30:00.799 --> 00:30:04.720
+ wat baie cool is, so gereedskap wat het jy so
+
+00:30:04.720 --> 00:30:08.080
+ ver waar is jy nou, soos ek gesê het ek het net gedoen
+
+00:30:08.080 --> 00:30:13.760
+ die navorsing die afgelope week o, so ek is in die koopstadium
+
+00:30:13.760 --> 00:30:17.679
+ uh, so ons het al die soldeersels wat ek gaan koop
+
+00:30:17.679 --> 00:30:21.919
+ die chemikalieë ek het die um-sagteware al afgelaai
+
+00:30:21.919 --> 00:30:25.600
+ vir die ontwerp van die pcb wow um
+
+00:30:25.600 --> 00:30:29.360
+ en ek het 'n komponentstel wat op pad is met al die
+
+00:30:29.360 --> 00:30:33.039
+ weerstande en kondensators, ja, al die soort goed is 'n netjiese ding
+
+00:30:33.039 --> 00:30:36.559
+ dit is ook dat ek deesdae bedoel dat jy nie regtig kan loop nie
+
+00:30:36.559 --> 00:30:39.039
+ in 'n radiohut soos vroeër nie
+
+00:30:39.039 --> 00:30:43.679
+ daar is nog winkels soos hier in barrie ons het een genaamd seaal
+
+00:30:43.679 --> 00:30:47.039
+ wat 'n briljante winkel is, soos 'n ou radiohut waar jy is
+
+00:30:47.039 --> 00:30:50.399
+ gaan in en dit is asof ek net een kondensator nodig het
+
+00:30:50.399 --> 00:30:52.880
+ en dit is soos hier, jy weet dit is soos laaie
+
+00:30:52.880 --> 00:30:57.279
+ en laaie van kondensators en weerstande en al die ander diodes en wat ook al
+
+00:30:57.279 --> 00:31:01.519
+ maar net om 'n kit vir 20 dollar te kry
+
+00:31:01.519 --> 00:31:04.960
+ al die soort soos die gewone dinge en dit is 'n kit wat saam met 'n
+
+00:31:04.960 --> 00:31:07.440
+ broodbord en dit kom met 'n broodbord en dit
+
+00:31:07.440 --> 00:31:11.279
+ was een van die dinge is of ek wil hê ja, ek gaan dit ontwerp maar deel
+
+00:31:11.279 --> 00:31:14.640
+ van die beplanningsproses is net soos u gesê het met die broodbord om uit te vind
+
+00:31:14.640 --> 00:31:17.519
+ hoe die stroombane gaan verloop en dit sal 'n wonderlike leer wees
+
+00:31:17.519 --> 00:31:19.840
+ ervaring vir luke, want dit sal wees soos dit is
+
+00:31:19.840 --> 00:31:23.200
+ hoe werk dit en laat ons dit probeer en laat ons dit doen en dan
+
+00:31:23.200 --> 00:31:26.080
+ jy weet dat ons daar sal kan probeer sonder om ons eie stukke te maak
+
+00:31:26.080 --> 00:31:30.880
+ dit is regtig netjies wat jy genoem het ook arduino en arduino is soort van
+
+00:31:30.880 --> 00:31:34.159
+ asof dit 'n beheerder is, so ja, jy weet terwyl
+
+00:31:34.159 --> 00:31:37.200
+ 'n framboos pi of 'n ander enkelbordrekenaar is waar
+
+00:31:37.200 --> 00:31:41.200
+ regte rekenaar met 'n bedryfstelsel en alles wat 'n arduino is, is soos jy
+
+00:31:41.200 --> 00:31:45.519
+ programmeer dit net om 'n baie spesifieke taak te doen, dit is 'n vaste toestand
+
+00:31:45.519 --> 00:31:48.960
+ en dit sal reageer en ek dink dit is
+
+00:31:48.960 --> 00:31:51.840
+ waarom dit regtig goed sou werk, 'n arduino
+
+00:31:51.840 --> 00:31:55.679
+ uh vir 'n nuttelose doos is omdat dit soos is
+
+00:31:55.679 --> 00:31:59.200
+ dit is aan of uit, dit is reg, en as dit aan is, doen dit
+
+00:31:59.200 --> 00:32:03.200
+ en dan sal dit uitskakel wat reg is, dus baie basiese programmering
+
+00:32:03.200 --> 00:32:09.919
+ digitale skryf vier komma hi hi semikolon en dan is ons
+
+00:32:09.919 --> 00:32:13.519
+ gaan een sekonde vertraag wat duisend millisekondes is
+
+00:32:13.519 --> 00:32:17.039
+ en dan gaan ons daardie reël nou kopieer
+
+00:32:17.039 --> 00:32:20.960
+ wat dink jy beteken hoog teenoor laag? dit is wat ek hier gaan stel
+
+00:32:20.960 --> 00:32:27.440
+ net 'n raaiskoot aan of uit ja, so lyk my kring nou
+
+00:32:27.440 --> 00:32:32.399
+ en ek gaan dit eenvoudig in die usb-krag inprop sodat ek dit nie inprop nie
+
+00:32:32.399 --> 00:32:36.240
+ die rekenaar wil ek hierdie toestel daadwerklik aandryf en kyk of dit is
+
+00:32:36.240 --> 00:32:40.840
+ loop my program en as dit wel gebeur, moet ons hierdie lig sien
+
+00:32:40.840 --> 00:32:45.279
+ flits daar gaan ons is netjies elke sekonde, so ons
+
+00:32:45.279 --> 00:32:49.600
+ het die stroombaan eintlik redelik vinnig geskep en die
+
+00:32:49.600 --> 00:32:53.919
+ program om nou hierdie lig te vertel wat om te doen, en ons het dit net baie gesê
+
+00:32:53.919 --> 00:32:57.760
+ skakel eenvoudig aan en weer aan, maar as jy
+
+00:32:57.760 --> 00:32:59.679
+ om u eie kring te maak waarvan u hou
+
+00:32:59.679 --> 00:33:04.159
+ Ek moet dit self programmeer, maar jy moet uitvind hoe
+
+00:33:04.159 --> 00:33:07.919
+ sjoe ek wil hierdie projek sien as 'n lopende werk
+
+00:33:07.919 --> 00:33:11.840
+ okay en kyk dan hoe uh hoe dit bymekaar uitkom klink goed
+
+00:33:11.840 --> 00:33:16.559
+ ons het die gemeenskap hier op ons program genoem en ons tweesprekbediener in
+
+00:33:16.559 --> 00:33:20.320
+ Ek het veral in ons gemeenskap gebruik om
+
+00:33:20.320 --> 00:33:23.760
+ gaan in en deel my idees vir stroombane en ja
+
+00:33:23.760 --> 00:33:27.519
+ sulke dinge en daar is 'n paar mense in ons gemeenskap wat regverdig is
+
+00:33:27.519 --> 00:33:32.559
+ soos hier bo wat hul vermoëns en begrip daarvan betref
+
+00:33:32.559 --> 00:33:36.320
+ soorte dinge, sodat dit vir my baie nuttig was, aangesien ek
+
+00:33:36.320 --> 00:33:38.880
+ geleer, o ek beplan selfs om die
+
+00:33:38.880 --> 00:33:42.640
+ gemeenskap gebruik werk my deur foute ja, en as jy een van die mense in
+
+00:33:42.640 --> 00:33:46.159
+ die gemeenskap moet nou net jou hand opsteek en sê ja i
+
+00:33:46.159 --> 00:33:48.480
+ verstaan ​​hoe alles werk wat ek graag wil help
+
+00:33:48.480 --> 00:33:52.640
+ en uh en dit is iets wat ek dink dat ek regtig netjies sal wees
+
+00:33:52.640 --> 00:33:54.320
+ funksie vir die show sowel as wat jy leer
+
+00:33:54.320 --> 00:33:57.200
+ ja, hou ons seker op hoogte van daardie Jeff, ek sal regtig belangstel
+
+00:33:57.200 --> 00:34:00.159
+ om te weet hoe dinge gaan, ja, ek plaas dinge agter die
+
+00:34:00.159 --> 00:34:06.320
+ tonele 'n nuttelose boks enige ander het jy nog idees, ek raak opgewonde
+
+00:34:06.320 --> 00:34:09.520
+ as ek uitvind soos wanneer ek aan iets dink
+
+00:34:09.520 --> 00:34:13.200
+ het jy al een van daardie oomblikke gehad waar ek wil wees?
+
+00:34:13.200 --> 00:34:16.240
+ het iets gehad wat dit sou doen, maar dit bestaan ​​nie
+
+00:34:16.240 --> 00:34:20.079
+ dit is waar 3D-drukwerk vir my interessant is, want ek skep dinge wat
+
+00:34:20.079 --> 00:34:23.520
+ bestaan ​​nog nie ii het nie regtig gedink nie
+
+00:34:23.520 --> 00:34:27.520
+ so ver as wat bestaan ​​en nie bestaan ​​nie
+
+00:34:27.520 --> 00:34:29.919
+ um
+
+00:34:30.960 --> 00:34:34.000
+ nee, ek het nog nie regtig so ver gedink om idees uit te dink nie
+
+00:34:34.000 --> 00:34:37.040
+ ja, en deel dit daar is 'n klomp dinge vir seker
+
+00:34:37.040 --> 00:34:43.679
+ ja soos ek nog altyd 'n huisklankstelsel wou doen
+
+00:34:43.679 --> 00:34:48.879
+ wat skakel na u, u ken ons Amazon-toestel en sulke dinge
+
+00:34:48.879 --> 00:34:52.079
+ dit, maar ek wil graag sensors hê waar
+
+00:34:52.079 --> 00:34:56.320
+ as ek van die een kamer na die ander loop, skop die bewegingsensor in en dit sal sluit
+
+00:34:56.320 --> 00:34:59.760
+ van die luidsprekers van die een kamer af en voeg dit by waarheen ek pas gegaan het
+
+00:34:59.760 --> 00:35:02.000
+ dit is baie meer gevorderd, maar dit is waarskynlik
+
+00:35:02.000 --> 00:35:05.119
+ die enigste ding waaraan ek kan dink, ek wil dit doen, maar sien jy praat
+
+00:35:05.119 --> 00:35:08.960
+ daaroor en dan dink ek goed, jy kan 'n passiewe infrarooi sensor gebruik
+
+00:35:08.960 --> 00:35:14.640
+ ja, wat in bewegingsensors gebruik word, kan u 'n lasersensor gebruik, maar
+
+00:35:14.640 --> 00:35:19.200
+ pir is baie goedkoop ja ja, en dit is net 'n klein sensor wat dit lyk
+
+00:35:19.200 --> 00:35:22.880
+ oke daar was beweging, doen iets, ja, sodat jy iets kon skep
+
+00:35:22.880 --> 00:35:27.520
+ weer met 'n aflos wat bepaal of die spreker het
+
+00:35:27.520 --> 00:35:31.599
+ 'n voltooide stroombaan of nie ja, so as dit net 'n
+
+00:35:31.599 --> 00:35:36.160
+ 'n klomp luidsprekers wat deur 'n versterker gekoppel is, kan u relais opstel
+
+00:35:36.160 --> 00:35:40.000
+ met pir-sensors wat u met beweging kan beheer
+
+00:35:40.000 --> 00:35:44.160
+ ja goed, en as daar vir tien minute geen beweging is nie, skakel die luidspreker uit
+
+00:35:44.160 --> 00:35:45.760
+ outomaties of so iets ja
+
+00:35:45.760 --> 00:35:49.200
+ presies soos hierdie soort idees, of daar soveel dinge is wat u kan
+
+00:35:49.200 --> 00:35:51.359
+ doen as jy begin verstaan ​​en dan
+
+00:35:51.359 --> 00:35:55.839
+ daar is die hele keersy waar iets breek en jy kan dit regmaak
+
+00:35:55.839 --> 00:35:59.200
+ dit is 'n goeie gevoel en dit is gedoen, ons het dit al gedoen
+
+00:35:59.200 --> 00:36:02.000
+ ja lekker, sodat jy weet dat jy daardie klein battery kry
+
+00:36:02.000 --> 00:36:07.280
+ toetsers wil graag die heffing nagaan ja, so ons het een daarvan gehad en dit is
+
+00:36:07.280 --> 00:36:09.200
+ snaaks toe my seun besig was om sy sakrekenaar te bou
+
+00:36:09.200 --> 00:36:12.560
+ ons was nie seker of die batterye werk nie en ons het niks gekry nie
+
+00:36:12.560 --> 00:36:15.760
+ dit is vreemd dat ons gewoonlik nie kry nie, selfs al is dit dood
+
+00:36:15.760 --> 00:36:18.640
+ spring in die rooi, maar daar was niks, so ons het dit oopgemaak
+
+00:36:18.640 --> 00:36:22.960
+ blyk dat die werklike verbinding verbreek het oh
+
+00:36:22.960 --> 00:36:27.359
+ nou het ek geen idee nie, en my seun is soos oh, ek kan dit regmaak en
+
+00:36:27.359 --> 00:36:30.240
+ hy het dit reggemaak, ons sit dit weer saam en dan werk ons ​​en dit en dit is soos o
+
+00:36:30.240 --> 00:36:34.000
+ ja, dit is 'n leë battery, ja, ek kan ook daarmee verband hou, ek gebruik 'n
+
+00:36:34.000 --> 00:36:38.160
+ kussing luidspreker vir podcasts okay en uh want dit is jy weet
+
+00:36:38.160 --> 00:36:40.880
+ deur 'n draad aan my foon gekoppel word, word dit getrek
+
+00:36:40.880 --> 00:36:45.119
+ Jip en dit het reguit getrek, so dit is so 'n eenvoudige ding, maar ek is heeltemal wat
+
+00:36:45.119 --> 00:36:48.720
+ het ek nie nog een gekoop nie nee nee nee wat ek geneem het
+
+00:36:48.720 --> 00:36:52.480
+ dit uitmekaar gesoldeer en versterk
+
+00:36:52.480 --> 00:36:56.160
+ so dit sou nie weer gebeur nie o mooi het dit beter gemaak as wat hy was hy is
+
+00:36:56.160 --> 00:37:00.240
+ het sy gedagtes gedraai na dinge soos e-afval ja, en hy is soos iemand s'n
+
+00:37:00.240 --> 00:37:04.960
+ gaan ontslae raak van hul televisie of rekenaarmonitor
+
+00:37:04.960 --> 00:37:08.240
+ dit werk nog steeds pa, dit is net iets wat binne gebreek het
+
+00:37:08.240 --> 00:37:12.400
+ hy is asof ek dit kan regmaak. Ek is soos ja, jy dink daaraan en so is sy wiele ook
+
+00:37:12.400 --> 00:37:15.599
+ laaste draai en hy wil soos ek hierdie dinge doen en dan verkoop
+
+00:37:15.599 --> 00:37:20.160
+ hulle 12 jaar oud, dit is 'n loopbaan
+
+00:37:20.160 --> 00:37:22.960
+ in 'n aantal
+
+00:37:23.599 --> 00:37:27.359
+ dit is regtig waardevol om daardie vermoëns te hê
+
+00:37:27.359 --> 00:37:30.960
+ so ek gaan hom oplei vir die volgende uh hy is 12. so in
+
+00:37:30.960 --> 00:37:38.560
+ agt ses jaar is ek besig om af te tree, ek het 'n monitor laat inkom, ek weet nie
+
+00:37:38.560 --> 00:37:42.960
+ miskien 'n 23 'n of 24 duim wye skerm pragtige monitor
+
+00:37:42.960 --> 00:37:47.359
+ het as e-afval ingekom en ek wil
+
+00:37:47.359 --> 00:37:50.720
+ ek sal kyk en so kyk ek en my dogter daarna
+
+00:37:50.720 --> 00:37:57.280
+ en daar was 'n enkele kondensator wat uitgebrand was, so ek het aanlyn gegaan en
+
+00:37:57.280 --> 00:37:59.920
+ ek het een van die kondensators gekoop wat hulle in pakkies verkoop
+
+00:37:59.920 --> 00:38:03.599
+ drie en dit was twaalf dollar dus vir 12
+
+00:38:03.599 --> 00:38:07.760
+ ons het 'n pak van drie, ons het een van die kondensators vervang en die monitor is
+
+00:38:07.760 --> 00:38:13.520
+ sit nou op my dogter se lessenaar o wee dis wonderlik dis wonderlik
+
+00:38:13.520 --> 00:38:16.720
+ en hy is heeltemal reg, maar jy kan nie net dinge regmaak nie
+
+00:38:16.720 --> 00:38:19.920
+ kom ons sê iets kom in e-afval, of jy weet jy vind iets by
+
+00:38:19.920 --> 00:38:22.320
+ die kant van die pad wat iemand net weggegooi het omdat hy nie kan nie
+
+00:38:22.320 --> 00:38:26.480
+ weet hoe om dit op te los um en miskien is dit meer om dit reg te stel
+
+00:38:26.480 --> 00:38:30.079
+ duur as om in baie gevalle ook 'n nuwe een te koop
+
+00:38:30.079 --> 00:38:35.119
+ U kan selfs al kan u dit nie regmaak nie, u kan doen wat desoldering genoem word
+
+00:38:35.119 --> 00:38:39.440
+ dit is reg, sodat u al die goeie komponente daaruit kan verwyder en
+
+00:38:39.440 --> 00:38:43.119
+ sit dit in 'n laai-organiseerder, ja, sodat u dan u eie radio kan hê
+
+00:38:43.119 --> 00:38:46.880
+ huisie waar u die laaie van al hierdie verskillende dele het
+
+00:38:46.880 --> 00:38:50.079
+ en dan as iets breek, hoef jy nie 12 te spandeer nie
+
+00:38:50.079 --> 00:38:53.280
+ aanlyn om dit te koop, wens ek dat ek nie geweet het dat hy hieraan sou gaan nie
+
+00:38:53.280 --> 00:38:57.040
+ want in die somer het ek ongeveer vier rekenaars gehad
+
+00:38:57.040 --> 00:39:00.320
+ 'n paar projektors het ons al die e-afval vir hulle geneem
+
+00:39:00.320 --> 00:39:03.760
+ so dit is soos o, ek kon dit afgetakel het, o ja, dit het hulle gekry
+
+00:39:03.760 --> 00:39:07.119
+ o wee die dele wat ons leef en leer presies ja
+
+00:39:07.119 --> 00:39:10.960
+ baie cool, hou ons beslis op hoogte daarvan, en hier is die kommentaar hieronder
+
+00:39:10.960 --> 00:39:13.359
+ oor sommige voordele wat u gehad het
+
+00:39:13.359 --> 00:39:18.560
+ uh met betrekking tot hierdie soort onderwerpe en of dit nou is
+
+00:39:18.560 --> 00:39:20.880
+ iets wat jou interesseer wat jy nog nooit raakgeloop het nie
+
+00:39:20.880 --> 00:39:24.720
+ hey lewer ook kommentaar hieronder, ons hoor graag van u en ons wil u graag hê
+
+00:39:24.720 --> 00:39:27.920
+ as deel van die proses soos Jeff leer
+
+00:39:27.920 --> 00:39:32.079
+ soos ek ook leer en meer en meer besig raak met die soorte
+
+00:39:32.079 --> 00:39:36.800
+ soos onderdele herstelwerk en en stroombane en al die ander
+
+00:39:36.800 --> 00:39:41.359
+ dit is baie pret, ja, dit is 'n wonderlike stokperdjie en 'n wonderlike loopbaan as jy
+
+00:39:41.359 --> 00:39:45.200
+ wil dit regtig ook doen, dus is dit goed vir u seun, wil ek graag hoor
+
+00:39:45.200 --> 00:39:49.680
+ hoe hy dit geniet, so dink ek
+
+00:39:49.680 --> 00:39:53.359
+ 13 plus, sodat u hom volgende jaar in die ateljee kan bring
+
+00:39:53.359 --> 00:39:56.560
+ en hy kan ons wys hoe hy regkom
+
+00:39:56.560 --> 00:40:00.480
+ klink goed, baie cool, laat dit gebeur, ons moet na die nuuskantoor gaan
+
+00:40:00.480 --> 00:40:02.960
+ becca is daar met ons top nuusberigte vir die week
+
+00:40:02.960 --> 00:40:08.800
+ hier is sy hier, wat in die kategorie 5 dot tv-nuuskamer verskyn
+
+00:40:08.800 --> 00:40:12.000
+ kuberkrakers gebruik 'n ernstige Windows-fout om te kompromitteer
+
+00:40:12.000 --> 00:40:17.280
+ ongepakte bedieners drie JavaScript-pakkette is van die npm verwyder
+
+00:40:17.280 --> 00:40:22.560
+ 'n portaal vir die bevat van kwaadwillige kode, is opdrag gegee om 'n
+
+00:40:22.560 --> 00:40:27.040
+ nuwe 4g sellulêre netwerk op die maan 'n nuwe 80
+
+00:40:27.040 --> 00:40:32.240
+ watt draadlose laai tegnologie van xiaomi blaas ons gedagtes en die
+
+00:40:32.240 --> 00:40:36.240
+ framboos pi rekenaar module 4 is vrygestel
+
+00:40:36.240 --> 00:40:40.720
+ laat weet u die spesifikasies en hoe dit dinge vir industriële iot verander
+
+00:40:40.720 --> 00:40:44.000
+ hou die volledige besonderhede en die kripto-hoek van hierdie week vas
+
+00:40:44.000 --> 00:40:48.640
+ is aan die kom, dit is die kategorie 5 dot tv-nuuskantoor
+
+00:40:48.640 --> 00:40:52.079
+ die week se top-tegnologie-verhale met 'n effense linux bespreek
+
+00:40:52.079 --> 00:40:54.480
+ partydigheid
+
+00:40:56.240 --> 00:41:00.319
+ van die nuuskantoor af is ek becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ kuberkrakers gebruik 'n ernstige Windows-fout om te kompromitteer
+
+00:41:03.920 --> 00:41:07.920
+ ongeopte bedieners een van die belangrikste vensters in Windows
+
+00:41:07.920 --> 00:41:10.400
+ wat hierdie jaar bekend gemaak word, word aktief aangeval
+
+00:41:10.400 --> 00:41:14.480
+ deur kuberkrakers wat bedieners probeer agterdeur wat geloofsbriewe vir elkeen stoor
+
+00:41:14.480 --> 00:41:18.480
+ gebruikers- en administratiewe rekening op 'n netwerk
+
+00:41:18.480 --> 00:41:23.119
+ navorsers het die kwesbaarheid die naam xerologon gegee omdat aanvalle werk deur
+
+00:41:23.119 --> 00:41:27.200
+ stuur 'n string nulle in 'n reeks boodskappe wat die net gebruik
+
+00:41:27.200 --> 00:41:30.720
+ aanmeldingsprotokol waarop Windows-bedieners vir 'n
+
+00:41:30.720 --> 00:41:34.560
+ 'n verskeidenheid take, insluitend om gebruikers aan te meld
+
+00:41:34.560 --> 00:41:38.560
+ na 'n netwerk xero-aanmelding soos die kwesbaarheid was
+
+00:41:38.560 --> 00:41:41.280
+ gedoop het verlede maand wyd aandag gekry
+
+00:41:41.280 --> 00:41:44.000
+ toe die firma wat dit ontdek, sê dat dit aanvallers kan gee
+
+00:41:44.000 --> 00:41:48.079
+ direkte toegang tot aktiewe gidse wat administrateurs gebruik om te skep
+
+00:41:48.079 --> 00:41:52.480
+ verwyder en bestuur netwerkrekeninge aktiewe gidse en die domein
+
+00:41:52.480 --> 00:41:55.599
+ beheerders waarop hulle werk, is van die gewildste pryse
+
+00:41:55.599 --> 00:42:00.480
+ in inbraak omdat hulle eenmaal gekaap is, laat hulle aanvallers toe om kode uit te voer en
+
+00:42:00.480 --> 00:42:03.839
+ ammunisie op alle gekoppelde masjiene
+
+00:42:03.839 --> 00:42:09.280
+ het die veiligheidsfout in Augustus Vrydag Kevin Beaumont aangeplak
+
+00:42:09.280 --> 00:42:12.480
+ werk in sy hoedanigheid as onafhanklike navorser
+
+00:42:12.480 --> 00:42:16.480
+ het in 'n blogpos gesê dat hy aanvalle op die honingpot wat hy gebruik, opgespoor het
+
+00:42:16.480 --> 00:42:19.680
+ op hoogte van aanvalle wat hackers in die
+
+00:42:19.680 --> 00:42:24.160
+ wild toe sy lokbediener nie opgelaai is nie, kon die aanvallers 'n
+
+00:42:24.160 --> 00:42:27.680
+ powershell-skrif om 'n adminwagwoord suksesvol te verander
+
+00:42:27.680 --> 00:42:31.920
+ en agterdeur het die bediener beaumont gesê dat die aanval verskyn het
+
+00:42:31.920 --> 00:42:36.480
+ om volledig geskrewe te wees met alle opdragte binne sekondes voltooi
+
+00:42:36.480 --> 00:42:40.160
+ daarmee het die aanvallers 'n agterdeur geïnstalleer wat afstandbeheer moontlik gemaak het
+
+00:42:40.160 --> 00:42:44.079
+ administratiewe toegang tot toestelle in sy skynnetwerk
+
+00:42:44.079 --> 00:42:48.400
+ die aanvallers het ook 'n afgeleë lessenaar aangeskakel as gevolg daarvan sou hulle voortgaan
+
+00:42:48.400 --> 00:42:53.200
+ om toegang op afstand te hê, selfs al laai die admin die bediener later
+
+00:42:53.200 --> 00:42:57.520
+ mense met geen outentieke verifikasie kan die gebruik gebruik om domein te kry nie
+
+00:42:57.520 --> 00:43:00.800
+ administratiewe geloofsbriewe solank die aanvallers die vermoë het om
+
+00:43:00.800 --> 00:43:05.839
+ maak TCP-verbindings met 'n kwesbare domeinbeheerder in
+
+00:43:05.839 --> 00:43:10.160
+ in sommige gevalle kan aanvallers 'n afsonderlike kwesbaarheid gebruik om 'n vastrapplek binne te kry
+
+00:43:10.160 --> 00:43:13.359
+ netwerk en gebruik dan geen aanmelding om oor te neem nie
+
+00:43:13.359 --> 00:43:17.599
+ die domein beheerder ek dink 'n goeie voorbeeld van 'n manier vir
+
+00:43:17.599 --> 00:43:20.319
+ hierdie tipe skrifte om in netwerke te kom
+
+00:43:20.319 --> 00:43:27.839
+ is verouderde rekenaars op die netwerk en ook bedrogspul deur sosiale ingenieurswese
+
+00:43:27.839 --> 00:43:31.040
+ hoor baie soos u waarskynlik hierdie e-posse ontvang
+
+00:43:31.040 --> 00:43:34.800
+ wat u probeer mislei om 'n proses van
+
+00:43:34.800 --> 00:43:38.319
+ 'n geloofsbrief of iets dergeliks in te voer
+
+00:43:38.319 --> 00:43:44.720
+ die risiko dat ons loop en die hartseer saak wat ek sien
+
+00:43:44.720 --> 00:43:48.880
+ daarin is dat mense soms goed dink
+
+00:43:48.880 --> 00:43:52.319
+ ek hoef nie die rekenaar op te dateer nie, want dit is niemand in die agterkamer nie
+
+00:43:52.319 --> 00:43:55.680
+ gebruik dit regtig, ja, o ja, ons het dit nodig
+
+00:43:55.680 --> 00:43:58.800
+ het nog steeds Windows XP, want ons het probleme met een van ons
+
+00:43:58.800 --> 00:44:02.880
+ drukkers as ons dit nie doen nie, sien ons nog baie vensters 7
+
+00:44:02.880 --> 00:44:06.960
+ stelsels en dit is 'n tragedie as u 'n
+
+00:44:06.960 --> 00:44:10.960
+ Windows 7 of Windows XP-stelsel op u netwerk draai dit net
+
+00:44:10.960 --> 00:44:13.839
+ af ontslae te raak van dit ja sien die die ding is
+
+00:44:13.839 --> 00:44:20.480
+ is met daardie stelsels, so Microsoft het wat ons noem eol of einde van die lewe uh
+
+00:44:20.480 --> 00:44:24.240
+ het die lewensduur van hierdie bedryfstelsels beëindig
+
+00:44:24.240 --> 00:44:27.839
+ so hulle het gesê jy moet opgradeer na Windows 10. wel, ek wil nie opgradeer nie
+
+00:44:27.839 --> 00:44:32.000
+ na Windows 10 hou ek van my Windows 7. Ek verstaan ​​dit en ek respekteer dit
+
+00:44:32.000 --> 00:44:37.119
+ hier is egter die probleem hackers
+
+00:44:37.119 --> 00:44:41.599
+ nou in staat is om hierdie bedryfstelsels te benut
+
+00:44:41.599 --> 00:44:45.839
+ en as hulle dit doen as hulle voordele vind
+
+00:44:45.839 --> 00:44:48.960
+ daar is 'n paar dinge wat gebeur
+
+00:44:48.960 --> 00:44:55.520
+ gee of verkoop die voordele of twee dit is net vrygelaat
+
+00:44:55.520 --> 00:45:01.520
+ aan die publiek, hetsy deur die donker web of selfs op github
+
+00:45:01.520 --> 00:45:07.839
+ net soos sekuriteitsnavorsing, en nou sal hierdie hackers, as jy wil, ons gaan
+
+00:45:07.839 --> 00:45:11.599
+ noem hulle dit maar in baie gevalle is dit realisties wat ons noem
+
+00:45:11.599 --> 00:45:16.800
+ script katjies en dit is um
+
+00:45:16.800 --> 00:45:21.680
+ nie eens soos hackers nie, maar hulle hoef nie baie kennis te hê nie
+
+00:45:21.680 --> 00:45:28.160
+ die uitbuiting is in die openbaar, dit is goed bekend en verstaan ​​dit as
+
+00:45:28.160 --> 00:45:32.319
+ daar is gebruik wat beskikbaar is vir 'n bedryfstelsel
+
+00:45:32.319 --> 00:45:36.880
+ wat verwag ons sal gebeur, verwag ons dat die bedryfstelselverkoper Microsoft in
+
+00:45:36.880 --> 00:45:41.200
+ hierdie saak te pleister wat gebruik word om dit reg te stel
+
+00:45:41.200 --> 00:45:44.560
+ en dit is die geval met vensters 10. ongelukkig
+
+00:45:44.560 --> 00:45:49.040
+ diegene wat eol is, is soms nie die geval met 'n eol-bedryfstelsel nie
+
+00:45:49.040 --> 00:45:54.079
+ ons hoor goed, ek het nie ondersteuning nodig nie, maar Microsoft het ondersteuning beëindig
+
+00:45:54.079 --> 00:45:57.440
+ wat ons gehoor het, ja, hulle het ondersteuning vir Windows 7. beëindig
+
+00:45:57.440 --> 00:46:01.920
+ ondersteuning vir Windows XP oh maar ek het nog nooit ondersteuning nodig gehad om te bel nie
+
+00:46:01.920 --> 00:46:04.640
+ ek kan dit hanteer, dit is nie wat hulle is nie
+
+00:46:04.640 --> 00:46:06.640
+ praat oor wat hulle sê
+
+00:46:06.640 --> 00:46:12.640
+ hulle sal nie die pleisters regmaak nie, dit maak nie saak nie
+
+00:46:12.640 --> 00:46:16.160
+ hoe ernstig dit is, maak nie saak hoe maklik dit is nie
+
+00:46:16.160 --> 00:46:20.079
+ gebruik, sodat u 'n Windows 7-masjien goed in u netwerk het
+
+00:46:20.079 --> 00:46:26.319
+ u gee toegang tot een van hierdie kuberkrakers wat nie eens het nie
+
+00:46:26.319 --> 00:46:31.040
+ om baie goed te wees met inbraak, want die voordele is in die openbaar bekend
+
+00:46:31.040 --> 00:46:36.240
+ ja, soms is hulle deel van die gereedskap, soms kan hulle net gratis aflaai
+
+00:46:36.240 --> 00:46:41.440
+ hulpmiddel en hulle kan sê dat ek met een tjek Windows 7 wil gebruik
+
+00:46:41.440 --> 00:46:46.400
+ en so kom hulle in 'n Windows 7-boks, of hulle het een van u werknemers mislei
+
+00:46:46.400 --> 00:46:50.880
+ selfs al is hulle net iemand wat agter in die pakhuis werk
+
+00:46:50.880 --> 00:46:55.119
+ hulle het iemand mislei om 'n lêer te open wat hulle nou toegang gee tot die
+
+00:46:55.119 --> 00:46:59.359
+ Windows 7 masjien die Windows XP-masjien of die masjien in die agterkamer
+
+00:46:59.359 --> 00:47:03.359
+ maak nie saak nie en hier leer ons die Microsoft
+
+00:47:03.359 --> 00:47:08.400
+ bedieners het nou 'n gebruik dat so lank as
+
+00:47:08.400 --> 00:47:13.599
+ 'n kwaadwillige party kan toegang tot enige rekenaar in die netwerk verkry
+
+00:47:13.599 --> 00:47:20.480
+ hulle kan nou domeinadministrateur toegang tot die hele netwerk kry
+
+00:47:20.480 --> 00:47:25.359
+ nou vreesaanjaend nou is jou Windows 10-masjiene nie meer nie
+
+00:47:25.359 --> 00:47:31.440
+ veilig, dit is reg omdat u hulle toegang tot u netwerk gegee het asof
+
+00:47:31.440 --> 00:47:39.200
+ hulle is 'n domeinadministrateur o, kyk dis net slegte nuus daar
+
+00:47:39.200 --> 00:47:42.319
+ wel, dit is slegte nuus hoekom is ransomware iets
+
+00:47:42.319 --> 00:47:46.400
+ want wat doen hulle nou goed, ek het toegang tot hierdie netwerk gekry
+
+00:47:46.400 --> 00:47:49.599
+ Ek gaan op die donker toegang tot hierdie netwerk verkoop
+
+00:47:49.599 --> 00:47:56.640
+ jy sien dit met um met townships en ja met stede wat
+
+00:47:56.640 --> 00:48:00.000
+ was dit die oorspronklike draaikat wat dit nie gedoen het nie?
+
+00:48:00.000 --> 00:48:03.680
+ hy wil net hulle wil inkom
+
+00:48:03.680 --> 00:48:07.119
+ installeer hul sagteware en gaan uit en verkoop dan toegang
+
+00:48:07.119 --> 00:48:11.040
+ dit is reg, want dit is vinnige geld, so hoekom doen mense dit vir geld
+
+00:48:11.040 --> 00:48:15.119
+ en so doen hulle dit so um ja, jy moet
+
+00:48:15.119 --> 00:48:18.319
+ hou dinge op hoogte, sodat u weet dat dit net 'n vinnige gedagte is
+
+00:48:18.319 --> 00:48:22.079
+ om na te dink as u enige verouderde masjiene in u netwerk het
+
+00:48:22.079 --> 00:48:25.599
+ kry hulle af en kry u personeel opgelei in kuber
+
+00:48:25.599 --> 00:48:29.119
+ sekuriteitspraktyke verstaan ​​wat phishing-swendelary is
+
+00:48:29.119 --> 00:48:32.720
+ want jy weet goed dat iemand op 'n skakel geklik het en nou hul
+
+00:48:32.720 --> 00:48:34.880
+ rekenaarrekenaars besmet, maar hul rekenaar is
+
+00:48:34.880 --> 00:48:41.839
+ op u netwerk, maar ek sou die helfte van die prins se geld kry
+
+00:48:41.839 --> 00:48:45.359
+ dit is 'n hele ander wurms net daar Jeff
+
+00:48:45.359 --> 00:48:50.000
+ maar ek bedoel ek as dit by hierdie soort dinge gaan om na u stelsel te kyk en te sê
+
+00:48:50.000 --> 00:48:52.559
+ ag ek wil nie sewe agt bestee nie
+
+00:48:52.559 --> 00:48:55.599
+ honderd dollar vir 'n nuwe rekenaar, ek sal my nie daaroor bekommer om die een by te werk nie
+
+00:48:55.599 --> 00:49:00.000
+ U sal op die langtermyn meer spandeer uh of op kort termyn
+
+00:49:00.000 --> 00:49:05.040
+ um nee op die langtermyn as u nie een keer 'n patch vir u stelsel het nie
+
+00:49:05.040 --> 00:49:09.200
+ hulle kry toegang tot alles wat u onder en buite kan wees, maar en i
+
+00:49:09.200 --> 00:49:11.760
+ dink wanneer hulle toegang tot alles het i
+
+00:49:11.760 --> 00:49:13.760
+ dink dit is net belangrik om dit te besef
+
+00:49:13.760 --> 00:49:20.400
+ dat een toegangspunt toegang tot alles word, spandeer dus 'n paar honderd
+
+00:49:20.400 --> 00:49:24.160
+ dollar kry die nuwe rekenaar spaar jouself ek weet nie wat dit verg nie
+
+00:49:24.160 --> 00:49:27.599
+ ek bedoel dit is anders, dit verskil in elke geval, ja, ek het een persoon gehad
+
+00:49:27.599 --> 00:49:30.800
+ vandag wat gebel en gesê het ek het 'n enkele Windows 7 rekenaar
+
+00:49:30.800 --> 00:49:33.920
+ ek wil dit nie opgradeer nie, want dit werk net o
+
+00:49:33.920 --> 00:49:38.400
+ so hier is 'n verduideliking en hier het becca 'n verhaal met ons gedeel
+
+00:49:38.400 --> 00:49:43.200
+ dit vertel ons eenvoudig dat toegang tot die een rekenaar net nodig is
+
+00:49:43.200 --> 00:49:47.599
+ en nou het hulle toegang tot alle rekenaars van u rekenaars en nie
+
+00:49:47.599 --> 00:49:52.240
+ net soos 'n samba-manier, nie op 'n manier wat vriendelik is nie en hopelik
+
+00:49:52.240 --> 00:49:55.520
+ vind geen maniere om die agterdeure in te vind nie
+
+00:49:55.520 --> 00:49:59.200
+ rekenaars nee waarop hulle administrateurbewyse het
+
+00:49:59.200 --> 00:50:03.119
+ u netwerk sodat hulle enigiets kan doen
+
+00:50:03.119 --> 00:50:07.280
+ dit is reg alles wat hulle wil hê as ek aan my huis dink
+
+00:50:07.280 --> 00:50:10.880
+ ek dink ek het klaar jy dink ek het sewe
+
+00:50:10.880 --> 00:50:15.520
+ toestelle wat nie telefone en tablette insluit nie, en sulke goed wat verbind is
+
+00:50:15.520 --> 00:50:18.960
+ na die netwerk wil ek nie hê dat hulle toegang daartoe het nie
+
+00:50:18.960 --> 00:50:21.200
+ ja, ek kan net nie genoeg stres nie, maar Jeff
+
+00:50:21.200 --> 00:50:26.160
+ ek bedoel ek dink in terme van besighede meer so die tuisgebruiker maar
+
+00:50:26.160 --> 00:50:33.119
+ as hulle eers eenmaal binne is, kan jy nie dat jy klaar is nie, want jy kan nie nou nie
+
+00:50:33.119 --> 00:50:36.240
+ maak daardie vensters masjien af ​​dat vensters 7 masjien nee hulle is al
+
+00:50:36.240 --> 00:50:40.319
+ in alles so wat doen jy vervang alles
+
+00:50:40.319 --> 00:50:44.240
+ laat elke rekenaar vee, want u weet nie watter gereedskap u kan gebruik nie
+
+00:50:44.240 --> 00:50:50.079
+ hulle het duur geïnstalleer, ja, moenie daarin val nie
+
+00:50:50.079 --> 00:50:53.280
+ dit is in elk geval 'n slegte uitbuiting wat regtig ernstig is, hoop ek
+
+00:50:53.280 --> 00:50:56.720
+ Ons het genoeg beklemtoon dat u verstaan ​​dat dit sleg is
+
+00:50:56.720 --> 00:51:02.720
+ maak dus seker dat u netwerkadministrateurs op en op is en dat hulle dit verstaan
+
+00:51:02.720 --> 00:51:05.520
+ dinge en dat jy beskerm en veilig is
+
+00:51:05.520 --> 00:51:09.920
+ teen hierdie soort dreigemente gaan ons teruggaan na becca
+
+00:51:09.920 --> 00:51:13.920
+ drie JavaScript-pakkette is van die npm-portaal verwyder vir
+
+00:51:13.920 --> 00:51:18.000
+ bevat kwaadwillige kode volgens advies vanaf die MPM
+
+00:51:18.000 --> 00:51:21.440
+ sekuriteit span die drie javascript biblioteke oop
+
+00:51:21.440 --> 00:51:24.480
+ skulpe op die rekenaars van ontwikkelaars wat die pakkette ingevoer het
+
+00:51:24.480 --> 00:51:29.200
+ in hul projekte kan die skulpe bedreigingsaktore op afstand verbind met die
+
+00:51:29.200 --> 00:51:33.520
+ besmette rekenaar en kwaadwillige bewerkings die npm
+
+00:51:33.520 --> 00:51:37.920
+ 'n sekuriteitspan het gesê dat die skulpe nie van 'n spesifieke bedryfstelsel afhang nie
+
+00:51:37.920 --> 00:51:41.760
+ en kan gebruik word om Windows Linux freebsd te benadeel
+
+00:51:41.760 --> 00:51:46.960
+ openbsd en ander stelsels is al drie die pakkette na die
+
+00:51:46.960 --> 00:51:50.880
+ npm-portaal in 2018 gehad en elk honderde
+
+00:51:50.880 --> 00:51:55.839
+ aflaai sedertdien is die pakket se name plutovs dash
+
+00:51:55.839 --> 00:52:01.920
+ slap dash kliënt nodetest199 en nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ die npm-sekuriteitspan het gesê dat enige rekenaar dit het
+
+00:52:07.119 --> 00:52:10.800
+ pakket geïnstalleer of hardloop, moet as volledig benadeel beskou word
+
+00:52:10.800 --> 00:52:15.280
+ alle geheime en sleutels wat op die rekenaar gestoor is, moet onmiddellik geroteer word
+
+00:52:15.280 --> 00:52:20.559
+ vanaf 'n ander rekenaar waarsku hulle dat die pakket verwyder moet word, maar as
+
+00:52:20.559 --> 00:52:24.160
+ volle beheer van die rekenaar kan aan 'n buite-instansie gegee word
+
+00:52:24.160 --> 00:52:27.760
+ daar is geen waarborg dat die verwydering van die pakket alle kwaadwilliges sal verwyder nie
+
+00:52:27.760 --> 00:52:32.079
+ sagteware as gevolg van die installering daarvan mpm
+
+00:52:32.079 --> 00:52:36.079
+ sekuriteitspersoneel skandeer gereeld die versameling javascript-biblioteke
+
+00:52:36.079 --> 00:52:41.839
+ word beskou as die grootste pakketbewaarplek vir enige programmeertaal
+
+00:52:41.839 --> 00:52:46.079
+ terwyl ek nie eers 'n goeie dekking vir mobiele dekking by my huisie kan kry nie
+
+00:52:46.079 --> 00:52:52.240
+ Nokia werk saam met nasa om 4g na die maan te bring
+
+00:52:52.240 --> 00:52:56.559
+ om 'n langtermyn menslike teenwoordigheid op die maan te vestig
+
+00:52:56.559 --> 00:53:01.040
+ klip in die rigting van mars kolonisering en om dinge aan die gang te kry is nasa
+
+00:53:01.040 --> 00:53:05.280
+ 370 miljoen dollar uit te brei na 14 maatskappye
+
+00:53:05.280 --> 00:53:08.400
+ om die tegnologie vir die program te verskaf
+
+00:53:08.400 --> 00:53:12.400
+ van robotika tot kragopwekking en selfs kriogenie
+
+00:53:12.400 --> 00:53:16.240
+ maar dit is sinvol dat hierdie spanne in staat moet wees om met die
+
+00:53:16.240 --> 00:53:20.079
+ moeder planeet die nuwe netwerk sal ontwerp word
+
+00:53:20.079 --> 00:53:23.760
+ spesifiek vir maantoestande wat die uiterste kan weerstaan
+
+00:53:23.760 --> 00:53:28.559
+ temperatuurverskuiwings en bestraling sal die tegnologie ook klein selle gebruik
+
+00:53:28.559 --> 00:53:32.800
+ tegnologie wat soos die naam aandui aansienlik kleiner is as die lang
+
+00:53:32.800 --> 00:53:37.599
+ seltorings waaraan hulle hier op aarde gewoond is, gebruik dit ook baie minder
+
+00:53:37.599 --> 00:53:41.200
+ krag is die plan vir 'n maanlander om te dra
+
+00:53:41.200 --> 00:53:44.480
+ die 4g-kommunikasiestelsel na die maanoppervlak
+
+00:53:44.480 --> 00:53:50.400
+ in 2022 is 14,1 miljoen dollar aan Nokia se kloklaboratoriums toegeken
+
+00:53:50.400 --> 00:53:55.119
+ vir hul deel 'n nuwe 80 watt draadlose laai tegnologie van
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi blaas ons gedagtes en die framboos pi
+
+00:53:58.880 --> 00:54:03.839
+ rekenaarmodule 4 is vrygestel, laat ons u weet wat die spesifikasies is en hoe
+
+00:54:03.839 --> 00:54:08.480
+ dit verander dinge vir industriële dinge omdat hierdie verhale aan die kom is
+
+00:54:08.480 --> 00:54:25.839
+ Robert is hier met die crypto-hoek, gaan nêrens heen nie
+
+00:54:28.079 --> 00:54:32.079
+ welkom terug in die wêreld van cryptos en welkom terug in die crypto-hoek
+
+00:54:32.079 --> 00:54:35.920
+ verlede week het ons oor 'n paar jaar oor banke gepraat, u sal hulle nie herken nie
+
+00:54:35.920 --> 00:54:39.839
+ meer en ek het ook nie so lank aan u genoem nie
+
+00:54:39.839 --> 00:54:43.119
+ gelede die Chinese digitale geldeenheid wat sal
+
+00:54:43.119 --> 00:54:46.720
+ vervang die riemann-by en dat hulle dit reeds geïmplementeer het en
+
+00:54:46.720 --> 00:54:50.400
+ hulle hou nou hierdie week 'n paar proewe in Shenzhen
+
+00:54:50.400 --> 00:54:54.400
+ daar was 'n bietjie ontwikkeling en ek wil graag daaroor praat omdat dit
+
+00:54:54.400 --> 00:54:58.319
+ sal 'n direkte invloed op u lewe en my lewe hê
+
+00:54:58.319 --> 00:55:03.760
+ kom ons duik hierin in die internasionale monetêre fonds
+
+00:55:03.760 --> 00:55:08.400
+ van daardie internasionale organisasie is 'n dame genaamd cristalina jojeva en
+
+00:55:08.400 --> 00:55:11.359
+ sy het 'n toespraak gelewer oor die nuwe bretton-bos
+
+00:55:11.359 --> 00:55:14.240
+ oomblik wat was 'n bretton woods Brittanje was
+
+00:55:14.240 --> 00:55:17.440
+ stelsel is monetêre bestuur gevestig
+
+00:55:17.440 --> 00:55:21.760
+ die reëls van kommersiële finansiële verhoudings tussen
+
+00:55:21.760 --> 00:55:25.920
+ lande soos ons Kanada Wes-Europa Australië en Japan
+
+00:55:25.920 --> 00:55:31.520
+ en dus is die stelsel die eerste voorbeeld van 'n volledige onderhandelde bevel
+
+00:55:31.520 --> 00:55:36.640
+ bedoel om geldelike verhoudings tussen onafhanklike state te bestuur, so dit was
+
+00:55:36.640 --> 00:55:40.079
+ bretton woods en sy praat oor die verandering van
+
+00:55:40.079 --> 00:55:45.760
+ die stelsel tot iets moderner, nou interessant genoeg
+
+00:55:45.760 --> 00:55:51.200
+ op Maandag was daar 'n vergadering met 'n paar sentrale bankiers wat oor sg
+
+00:55:51.200 --> 00:55:56.319
+ oorgrensbetalings, maar as u daaraan dink, kyk watter tipe
+
+00:55:56.319 --> 00:55:59.520
+ mense wat hulle bygewoon het, sodat u die hoof van die
+
+00:55:59.520 --> 00:56:03.040
+ Saoedi-sentrale bank het u die hoof van al die sentrale
+
+00:56:03.040 --> 00:56:06.480
+ banke die hoof van die IMF die hoof van die VS.
+
+00:56:06.480 --> 00:56:10.319
+ sentrale bank en die hoof van die Maleisiese sentrale bank wat vermis word
+
+00:56:10.319 --> 00:56:13.200
+ Europa wat interessant is, maar daar sal 'n rede wees, dink ek
+
+00:56:13.200 --> 00:56:16.880
+ dus het hulle bymekaargekom om te praat oor bruto waterbetalings
+
+00:56:16.880 --> 00:56:21.920
+ nou glo ek nie dat dit 'n ware verhaal is nie, die regte verhaal
+
+00:56:21.920 --> 00:56:26.079
+ uh is ook gepubliseer deur 'n heer genaamd raul paul
+
+00:56:26.079 --> 00:56:31.119
+ waarmee ek heeltemal saamstem, so sy gedagtes is presies hoe ek dink
+
+00:56:31.119 --> 00:56:35.520
+ en waaroor hy praat, is presies hierdie vergadering wat op Maandag plaasgevind het
+
+00:56:35.520 --> 00:56:39.119
+ wat die ou bretton woods-verhouding sal vervang
+
+00:56:39.119 --> 00:56:46.319
+ tussen lande so wat sal gebeur lyk dit asof die sentrale banke
+
+00:56:46.319 --> 00:56:50.720
+ sal saamwerk en met 'n stelsel vorendag kom
+
+00:56:50.720 --> 00:56:54.000
+ 'n sentrale bankstelsel tussen almal, sodat daar nie 'n ons sal wees nie
+
+00:56:54.000 --> 00:56:56.640
+ dollar sentrale bankstelsel sal daar een wees
+
+00:56:56.640 --> 00:56:59.680
+ vir elkeen vir alle organisasies en dan van
+
+00:56:59.680 --> 00:57:04.160
+ daar sal dit gediversifiseer word en waarmee kan jy dit doen
+
+00:57:04.160 --> 00:57:06.319
+ so 'n stelsel wat die interessante deel is en
+
+00:57:06.319 --> 00:57:13.520
+ ek is dol daaroor, en dit sal die bankwese en finansies omseil
+
+00:57:13.520 --> 00:57:17.920
+ fiskale stelsel omdat u direk met mense verkeer
+
+00:57:17.920 --> 00:57:22.160
+ ja so dit is nie soos op die oomblik waar die sentrale bank in die VS of
+
+00:57:22.160 --> 00:57:26.720
+ Kanada maak nie saak nie, kom met een of ander beleid en dan
+
+00:57:26.720 --> 00:57:32.400
+ gaan dit om die ketting af en jy as individu
+
+00:57:32.400 --> 00:57:35.440
+ gebruiker wat u waarskynlik die minste hoeveelheid sien
+
+00:57:35.440 --> 00:57:37.680
+ geld en waarskynlik teen die hoogste rentekoers
+
+00:57:37.680 --> 00:57:42.559
+ dat u aan ander mense kan dink, sal baie sterker baat vind by digitale
+
+00:57:42.559 --> 00:57:46.799
+ geld plus kriptogeldeenhede of programmeerbaar
+
+00:57:46.799 --> 00:57:50.400
+ geld wat jy nou baie meer kan doen
+
+00:57:50.400 --> 00:57:55.839
+ die sentrale bank kan die gedrag van mense direk beïnvloed en hoe dit doen
+
+00:57:55.839 --> 00:58:00.400
+ doen dit ja, hulle kan goed sê as u 'n restauranteienaar is, kan u dit doen
+
+00:58:00.400 --> 00:58:03.839
+ kry die geld direk in u sak, ja, nie meer nie
+
+00:58:03.839 --> 00:58:08.079
+ betrokke banke, ons sal dit direk doen, dit is moontlik dat dit sentrale bankgeld is
+
+00:58:08.079 --> 00:58:12.240
+ hulle kan rentekoerse so verander in een of ander bedryf
+
+00:58:12.240 --> 00:58:16.480
+ kan 'n hoë rentekoers hê as wat nog sal gebeur
+
+00:58:16.480 --> 00:58:19.839
+ met belasting ja wat sal met die irs gebeur
+
+00:58:19.839 --> 00:58:22.079
+ omdat hulle hierdie dinge direk kan hanteer
+
+00:58:22.079 --> 00:58:25.200
+ deur programmeerbare geld sal dit tyd neem
+
+00:58:25.200 --> 00:58:28.799
+ om dit tot die uiterste mate te bereik, maar dit sal gebeur
+
+00:58:28.799 --> 00:58:34.640
+ soos u kan sien, sal direkte betalings moontlik wees
+
+00:58:34.799 --> 00:58:41.119
+ hulle praat ook hier oor um ja gedragsekonomie uh so
+
+00:58:41.119 --> 00:58:45.359
+ nie deur sommige ekonome wat vertel nie
+
+00:58:45.359 --> 00:58:49.200
+ die regering wat om te doen en wat nie, want dit het misluk in die
+
+00:58:49.200 --> 00:58:52.160
+ verby almal se so wat hulle gaan
+
+00:58:52.160 --> 00:58:56.400
+ om te doen is soos 'n facebook-idee of 'n regmerkie-idee of
+
+00:58:56.400 --> 00:58:59.520
+ youtube-idee waar u belangstel in mense
+
+00:58:59.520 --> 00:59:03.280
+ vriendskap met jou maak of waar mense belangstel in
+
+00:59:03.280 --> 00:59:06.799
+ om meer likes te kry en so verander u gedrag in
+
+00:59:06.799 --> 00:59:10.079
+ met betrekking tot meer likes en dieselfde ding
+
+00:59:10.079 --> 00:59:13.839
+ sal met die geld gebeur, en dit sal alles gereguleer word
+
+00:59:13.839 --> 00:59:17.680
+ deur die sentrale bank sonder iemand van buite
+
+00:59:17.680 --> 00:59:22.000
+ 'n kans om 'n beduidende invloed te hê, sodat dit
+
+00:59:22.000 --> 00:59:26.079
+ aan die einde sal lyk, weet niemand natuurlik nie, maar dat dit
+
+00:59:26.079 --> 00:59:31.200
+ mense vergader om kruisbestellings te bespreek, is iets wat ek
+
+00:59:31.200 --> 00:59:36.079
+ vind uh baie interessant en dit is natuurlik fantastiese nuus
+
+00:59:36.079 --> 00:59:39.040
+ vir uh bitcoin omdat bitcoin daarbuite is
+
+00:59:39.040 --> 00:59:44.839
+ stelsel is daar niemand wat uh bitcoin kan reguleer nie
+
+00:59:44.839 --> 00:59:48.400
+ gedesentraliseerd, dit is onveranderlik, maar jy weet alles
+
+00:59:48.400 --> 00:59:54.079
+ kenmerke van uh bitcoin so um bitcoin is 'n fantastiese alternatief
+
+00:59:54.079 --> 00:59:57.839
+ al die ander kripto-geldeenhede is beslis 'n goeie alternatief
+
+00:59:57.839 --> 01:00:02.000
+ kom ons kyk wat die weegskaal oplewer, maar daar sal goeie alternatiewe wees
+
+01:00:02.000 --> 01:00:06.480
+ om um na die sentrale uh sentraal
+
+01:00:06.480 --> 01:00:11.359
+ het geld deur sentrale banke gedryf, so ek hoop dat u dit interessant en
+
+01:00:11.359 --> 01:00:14.559
+ ek hoop dat jy daarvan gehou het en ek hoop dat ek 'n gebrek aan jou kry
+
+01:00:14.559 --> 01:00:18.799
+ en ek wens jou 'n fantastiese week toe, baie dankie dat jy gekyk het
+
+01:00:18.799 --> 01:00:23.200
+ totsiens dankie Robert, net 'n herinnering dat ons nie finansiële advies gee nie
+
+01:00:23.200 --> 01:00:26.400
+ maar deel net wat in die kripto-geldeenheidsmark gebeur
+
+01:00:26.400 --> 01:00:29.599
+ onthou altyd dat die kriptokurrency-markte voortdurend verander
+
+01:00:29.599 --> 01:00:33.920
+ altyd wisselvallig, dus moet u net spandeer wat u kan bekostig om te verloor
+
+01:00:33.920 --> 01:00:38.720
+ nou terug na becca in die nuuskantoor dankie robbie
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi het 'n nuwe laai-tjek aangekondig wat 'n uitgeputte laai volledig kan laai
+
+01:00:42.799 --> 01:00:48.480
+ slimfoon in minder as 20 minute, maar dit is vinnig sonder enige drade
+
+01:00:48.480 --> 01:00:52.480
+ laai het die afgelope paar jaar 'n belangrike kenmerk geword van baie slimfone
+
+01:00:52.480 --> 01:00:56.160
+ gemak draadlose laai kan regtig wonderlik wees
+
+01:00:56.160 --> 01:00:59.920
+ maar draadloos laai laai gewoonlik 'n telefoon tussenin
+
+01:00:59.920 --> 01:01:05.359
+ Sommige fone soos die oneplus 8 pro het 10 tot 15 watt krag
+
+01:01:05.359 --> 01:01:10.160
+ draadlose laai tot 40 watt, maar die nuwe laai-tegnologie van Xiaomi beloof
+
+01:01:10.160 --> 01:01:14.240
+ 'n yslike 80 watt draadlose sap
+
+01:01:14.240 --> 01:01:18.319
+ wat beteken dit in die praktyk goed volgens die aankondiging
+
+01:01:18.319 --> 01:01:22.160
+ die 80 watt draadlose laai-tegnologie bekend te stel
+
+01:01:22.160 --> 01:01:26.720
+ 'n slimfoon met 'n nul persent laai van 'n vierduisend milliampuur battery
+
+01:01:26.720 --> 01:01:30.160
+ sal tien persent in net een minuut vyftig persent hef
+
+01:01:30.160 --> 01:01:34.160
+ binne agt minute en is na 19 minute volledig gelaai
+
+01:01:34.160 --> 01:01:37.599
+ uiteindelik 'n laaier wat my foon sal laai
+
+01:01:37.599 --> 01:01:43.359
+ van nul tot honderd persent reg soos my middagete sien dis lekker
+
+01:01:43.359 --> 01:01:48.079
+ dit is 'n spelwisselaar, kan u dink dat ek aan my kinders dink en hoe ons dit het
+
+01:01:48.079 --> 01:01:51.440
+ soos telefone oral bedoel ek natuurlik dit is om soos te neem
+
+01:01:51.440 --> 01:01:56.319
+ die nuutste en beste tegnologie, maar dit is altyd 'n geval van o, ek het dit vergeet
+
+01:01:56.319 --> 01:01:59.520
+ sit my foon op die laaier, anders hou dit nie lank genoeg nie
+
+01:01:59.520 --> 01:02:02.720
+ dag en nou dat jy weet met die pandemie natuurlik my
+
+01:02:02.720 --> 01:02:07.599
+ kinders word nou met geweld tuisonderrig en almal gaan aan
+
+01:02:07.599 --> 01:02:11.839
+ hul toestelle die hele tyd, so ons het zoom-vergaderings op telefone
+
+01:02:11.839 --> 01:02:15.599
+ en en dit loop, dit leeg die battery ja
+
+01:02:15.599 --> 01:02:21.440
+ maar wat ek wil hê is dat dit draadloos is, dit is nie net bedraad nie, dit is ongelooflik
+
+01:02:21.440 --> 01:02:24.480
+ dit is draadloos wat groot is soos die idee
+
+01:02:24.480 --> 01:02:27.200
+ Ek kan my foon neem nie hoef te bekommer oor laaiers en
+
+01:02:27.200 --> 01:02:30.960
+ gaan net sit dit neer sit dit af 20 minute later is ek goed om te gaan
+
+01:02:30.960 --> 01:02:34.000
+ dat ek die ander ding waaroor ek lief is, liefhet
+
+01:02:34.000 --> 01:02:40.480
+ die konsep is dat um ek dink soos jy net gedoen het as ek kon
+
+01:02:40.480 --> 01:02:43.359
+ sit dit op 'n tafel neer, as u dit op 'n
+
+01:02:43.359 --> 01:02:47.680
+ restaurant tafel ja, want baie restaurante het die roete gevolg en ek is
+
+01:02:47.680 --> 01:02:50.799
+ met behulp van restaurante as voorbeeld, maar baie plekke het die roete van gevolg
+
+01:02:50.799 --> 01:02:54.480
+ USB in te bed, sodat u usb kan inprop
+
+01:02:54.480 --> 01:02:58.640
+ kabel om jou foon te laai, maar dan het mense ewe skielik
+
+01:02:58.640 --> 01:03:03.200
+ verstandig daaroor dat o daardie USB-poorte kwaadwillig kan wees
+
+01:03:03.200 --> 01:03:06.319
+ want usb dra ook data of dit is reg
+
+01:03:06.319 --> 01:03:10.000
+ wie weet of dit te veel volt is en dat jy weet miskien is dit
+
+01:03:10.000 --> 01:03:13.280
+ het 'n kort of iets dergeliks gekry en kon my foon braai
+
+01:03:13.280 --> 01:03:17.039
+ so ons is skielik bang om die usb-poort aan te sluit, want hey
+
+01:03:17.039 --> 01:03:20.400
+ dit kan iets sleg wees wat goed is
+
+01:03:20.400 --> 01:03:24.960
+ draadlose laai, jy sit dit neer, dit laai en jy tel dit op en jy is
+
+01:03:24.960 --> 01:03:28.240
+ ja gedoen, maar jy kan dit vir so bepaal
+
+01:03:28.240 --> 01:03:31.119
+ drie minute en dit kry u genoeg koste om die meeste van die
+
+01:03:31.119 --> 01:03:35.680
+ middag wat ongelooflik wonderlik is, dink ek
+
+01:03:35.680 --> 01:03:40.559
+ net soos ai bedoel, kyk jy nou rond en jy het al hierdie laaistasies vir
+
+01:03:40.559 --> 01:03:44.079
+ elektriese voertuie sou dit wonderlik wees om min te sien
+
+01:03:44.079 --> 01:03:48.640
+ pop-ups op openbare plekke met hierdie soort goed waar u letterlik kan sit
+
+01:03:48.640 --> 01:03:52.880
+ u telefoon vir vyf minute af is en genoeg het om na te bel
+
+01:03:52.880 --> 01:03:56.319
+ kry hulp of wat ook al en dit is alles draadloos, het ek net voorgestel
+
+01:03:56.319 --> 01:04:01.760
+ soos 'n stuk pad en die ontvanger in die motor insteek en dit
+
+01:04:01.760 --> 01:04:05.599
+ herlaai die outonome motor terwyl hy hieroor ry
+
+01:04:05.599 --> 01:04:08.230
+ ding whoa ons is besig met die tegnologie nou mense
+
+01:04:08.230 --> 01:04:11.520
+ [Gelag] nog steeds, ek hou daarvan, ek is opgewonde daaroor
+
+01:04:11.520 --> 01:04:15.839
+ mal ding is net ten slotte is dat terwyl wat ek net
+
+01:04:15.839 --> 01:04:18.319
+ gesê is baie wetenskaplik soos toe ons gegroei het
+
+01:04:18.319 --> 01:04:21.599
+ dit was soos die toekoms, dit is heeltemal uitvoerbaar
+
+01:04:21.599 --> 01:04:25.920
+ moontlik nou ja dit is belaglik die framboos pi
+
+01:04:25.920 --> 01:04:31.200
+ stigting het 'n rekenaarmodule geloods met die spesifikasies van 'n framboos pi 4.
+
+01:04:31.200 --> 01:04:35.119
+ die framboos pi-stigting het 'n nuwe produk op Maandag bekendgestel
+
+01:04:35.119 --> 01:04:39.440
+ die rekenaarmodule 4. dit is moeilik om te glo dat dit so lank is, maar die
+
+01:04:39.440 --> 01:04:43.359
+ framboos pi 4 is in Junie 2019 vrygestel
+
+01:04:43.359 --> 01:04:48.079
+ die rekenaarmodule 4 bring die pi 4 na die industriële ruimte
+
+01:04:48.079 --> 01:04:52.240
+ met dieselfde verwerker wat in 'n rekenaarmodule verpak is
+
+01:04:52.240 --> 01:04:57.200
+ smeek net om in kragtige iot-toestelle geïntegreer te word
+
+01:04:57.200 --> 01:05:00.880
+ as u nie vertroud is met rekenaarmodules nie, kan u dit beskou as
+
+01:05:00.880 --> 01:05:05.280
+ enkelbordrekenaars sonder al die poorte en gpio-penne
+
+01:05:05.280 --> 01:05:09.440
+ dit laat die rekenaarkomponente toe wat die brein van 'n framboos-pi is
+
+01:05:09.440 --> 01:05:13.920
+ geïntegreer in robotika-slimtoestelle wat tegnologiese trosse vervaardig of
+
+01:05:13.920 --> 01:05:16.400
+ enigiets waarmee u vorendag kan kom, benodig 'n klein bietjie
+
+01:05:16.400 --> 01:05:22.240
+ 'n lae-aangedrewe Linux-rekenaar in sy hart, aangesien die rekenaarmodule 4 dit deel
+
+01:05:22.240 --> 01:05:26.400
+ spesifikasie met die framboos pi 4 ontwikkelaars kan al hul prototipering doen
+
+01:05:26.400 --> 01:05:30.319
+ op die pi 4 sbc, maar bestel dan 'n klomp rekenaarmodules
+
+01:05:30.319 --> 01:05:33.520
+ 4's te integreer in hul kommersiële produk
+
+01:05:33.520 --> 01:05:38.559
+ net soos die framboos pi 4, bevat die rekenaarmodule 4 'n 64-bis-gebaseerde arm
+
+01:05:38.559 --> 01:05:42.400
+ verwerker met videokern vi grafika dit is
+
+01:05:42.400 --> 01:05:45.520
+ gaan 'n groot opgradering vir vorige rekenaar verteenwoordig
+
+01:05:45.520 --> 01:05:49.839
+ moduleklante en met 4k video-uitvoer op tot
+
+01:05:49.839 --> 01:05:55.039
+ 60 rame per sekonde plus die moontlikheid om h.265-video te dekodeer
+
+01:05:55.039 --> 01:05:58.480
+ die rekenaarmodule vir die rekenaarmodule 4
+
+01:05:58.480 --> 01:06:03.039
+ kan 'n spelwisselaar wees vir multimedia-aangedrewe toestelle soos slim-TV's of
+
+01:06:03.039 --> 01:06:06.960
+ set-top boxes waarmee die rekenaarmodule 4 beskikbaar is
+
+01:06:06.960 --> 01:06:11.599
+ u keuse van 1 2 4 of 8 gigabytes ram en 8 16
+
+01:06:11.599 --> 01:06:18.000
+ of 32 gigabytes aan boord van emmc-flitsberging wi-fi en bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ is ook opsioneel, die prys wissel van net 25
+
+01:06:21.440 --> 01:06:27.599
+ tot 90 usd verbeel jou nou dat jeff the framboos pi berekeningsmodule 4
+
+01:06:27.599 --> 01:06:31.359
+ ja in een van u sbc-projekte of iets dergeliks wat dit soos die
+
+01:06:31.359 --> 01:06:33.920
+ brein dit is 'n baie opwindende so gou as
+
+01:06:33.920 --> 01:06:39.440
+ becca het gesê h.265 dekodering, so dit is soos video
+
+01:06:39.440 --> 01:06:43.760
+ baie CPU intensief ja, dit is wonderlik soos dit baie sê
+
+01:06:43.760 --> 01:06:50.000
+ dit is meer krag as my plex-bediener, ja, wie weet waar dit is
+
+01:06:50.000 --> 01:06:54.720
+ gaan dinge neem, ek hou van die idee van cluster computing
+
+01:06:54.720 --> 01:06:58.480
+ en dit is waarheen jy verskeie rekenaars neem
+
+01:06:58.480 --> 01:07:01.520
+ verbind hulle deur middel van netwerke en
+
+01:07:01.520 --> 01:07:06.559
+ installeer basies sagteware beowulf of iets dergeliks
+
+01:07:06.559 --> 01:07:09.359
+ groepeer hulle sodat hulle kan optree
+
+01:07:09.359 --> 01:07:14.400
+ take saam op so 'n manier dat dit basies 'n superrekenaar maak
+
+01:07:14.400 --> 01:07:19.200
+ reg uit verskillende rekenaars, sodat u aan hierdie framboos pi dink
+
+01:07:19.200 --> 01:07:25.839
+ cl uh cluster of die modules en en sit soos tien daarvan bymekaar
+
+01:07:25.839 --> 01:07:30.400
+ in 'n groep en u wil hierdie rekenaarmodule hê
+
+01:07:30.400 --> 01:07:34.559
+ groep wat 'n goeie rekenaar met soveel krag sou wees
+
+01:07:34.559 --> 01:07:38.079
+ wanneer jy agt optredes ram op elk kan hê
+
+01:07:38.079 --> 01:07:43.359
+ raad tye wat teen 10. baie kan baie doen
+
+01:07:43.359 --> 01:07:47.280
+ dit verander dinge wat die wêreld verander, dit is beslis
+
+01:07:47.280 --> 01:07:50.960
+ wat sou jy met al daardie krag doen
+
+01:07:52.160 --> 01:07:55.280
+ en stilte wag hy vir jou om te antwoord i
+
+01:07:55.280 --> 01:07:58.480
+ Ek dink ek is soos wat sou ek met soveel mense doen
+
+01:07:58.480 --> 01:08:05.119
+ het net gegaan met bitcoin-myn, jammer ouens, dit weet jy wat is hartseer
+
+01:08:05.119 --> 01:08:10.880
+ eerste gedagte was, sou ek kon outomatiseer soos sommige van die
+
+01:08:10.880 --> 01:08:14.000
+ gereedskap wat ek in die kombuis het om kos vir my te maak
+
+01:08:14.000 --> 01:08:17.600
+ dit was my eerste gedagte met 'n rekenaarmodule vier
+
+01:08:17.600 --> 01:08:22.319
+ ja, dit verg meer as dit, maar ek weet dat dit die brein van so 'n operasie kan wees
+
+01:08:22.319 --> 01:08:27.759
+ duidelik is ek tog honger [Gelag]
+
+01:08:27.759 --> 01:08:31.359
+ u gedagtes lewer kommentaar hieronder, ons hoor graag wat u met 'n
+
+01:08:31.359 --> 01:08:34.719
+ berekeningsmodule vir dank vir die kyk na die kategorie 5-punt
+
+01:08:34.719 --> 01:08:38.000
+ TV-nuuskamer moet nie vergeet om van te hou en in te teken nie
+
+01:08:38.000 --> 01:08:40.640
+ al u tegniese nuus met 'n effense Linux-vooroordeel
+
+01:08:40.640 --> 01:08:46.000
+ en as u waardeer wat ons doen, word ons beskermheer by patreon.com
+
+01:08:46.000 --> 01:08:53.839
+ kategorie 5. uit die kategorie 5 dot tv-nuuskamer is ek becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Musiek]
+
+01:09:12.400 --> 01:09:16.159
+ wel, dit is goed al die tyd wat ons hierdie week het Jeff
+
+01:09:16.159 --> 01:09:21.600
+ verlede week het ons deurgeloop en ek het die hele proses met fiverr gedoen
+
+01:09:21.600 --> 01:09:25.359
+ het 'n paar mense gehuur om ons remix te kan doen, ja, dit is snaaks
+
+01:09:25.359 --> 01:09:29.040
+ storie okay, vertel my letterlik wanneer om te lag
+
+01:09:29.040 --> 01:09:34.960
+ weet lip hy al het hy al gelag
+
+01:09:34.960 --> 01:09:38.400
+ rommelstraal-eekhoring was een van ons ouens ja ja
+
+01:09:38.400 --> 01:09:42.560
+ een van ons remixers en literêre eekhoring
+
+01:09:42.560 --> 01:09:48.319
+ het gesê ek het bly wonder dit is terwyl hy na die funksie kyk
+
+01:09:48.319 --> 01:09:51.199
+ agterna het ek bly wonder hoekom jy was
+
+01:09:51.199 --> 01:09:58.159
+ ek spreek my naam verkeerd uit, strooi 'n eekhoring so dat ek my kyk
+
+01:09:58.159 --> 01:10:02.960
+ profiel en gevind dat ek dit verkeerd gespel het o nee
+
+01:10:02.960 --> 01:10:09.920
+ en nooit opgemerk nie en dit was drie jaar so, is jy ernstig
+
+01:10:09.920 --> 01:10:17.600
+ hy sê my naam my bandnaam is literêre eekhoring o my god hy het opgehou
+
+01:10:17.600 --> 01:10:21.040
+ in ons is dit snaaks, so ek vertel jou hierdie verhaal
+
+01:10:21.040 --> 01:10:25.600
+ sien dit is snaaks sien ek het jou gesê dit was snaaks dit was soos
+
+01:10:26.000 --> 01:10:29.679
+ Ek vertel jou hierdie storie, want toe sê ek goed vir myself
+
+01:10:29.679 --> 01:10:35.120
+ ek sien woorde en ek en ek dink ek spreek meestal uit
+
+01:10:35.120 --> 01:10:40.320
+ hulle redelik noukeurig, so as ek literêr sien, al is dit nie 'n woord nie
+
+01:10:40.320 --> 01:10:44.800
+ stel dit soos dit reg is, so ek het gedink dat ek waarskynlik 'n
+
+01:10:44.800 --> 01:10:47.679
+ redelik goeie proefleser, so ek het gesê wat ek wil gee
+
+01:10:47.679 --> 01:10:50.960
+ gaan, so ek plaas 'n advertensie wat sê dat ek proeflees
+
+01:10:50.960 --> 01:10:54.480
+ u teks van 500 woorde of minder vir vyf dollar
+
+01:10:54.480 --> 01:10:57.520
+ okay, en ek was soos ah niemand sal ooit daarvoor gaan nie
+
+01:10:57.520 --> 01:11:01.840
+ dit is in elk geval lekker, ek het gedink ek sal dit probeer en die volgende oggend het ek 'n e-pos gehad
+
+01:11:01.840 --> 01:11:08.239
+ van 'n persoon in Spanje wat um is
+
+01:11:08.239 --> 01:11:13.120
+ 'n versekeringsmakelaar is in orde en het 'n kliënt wat Engelssprekend is
+
+01:11:13.120 --> 01:11:17.600
+ oorspronklik en wou in antwoord daarop seker maak dat hy die regte dinge sê
+
+01:11:17.600 --> 01:11:21.840
+ na 'n e-pos sodat hy al die vertroulike goed verwyder het
+
+01:11:21.840 --> 01:11:26.400
+ Jip en sy antwoord vir my gestuur en gesê, kan u dit net vir my bespreek en ek
+
+01:11:26.400 --> 01:11:28.400
+ gedoen het en ek het deurgeloop en sommige reggestel
+
+01:11:28.400 --> 01:11:31.840
+ dinge en hy het 'n paar woorde gehad wat nie regtig sinvol was in vertaling nie
+
+01:11:31.840 --> 01:11:35.760
+ en so het ek dit reggestel en die grammatika en die konteks en 'n bietjie reggestel
+
+01:11:35.760 --> 01:11:39.760
+ van spelling en hy was soos hy dit vyf dollar liefgehad het
+
+01:11:39.760 --> 01:11:42.000
+ het my regtig 10 minute geneem en dit was net
+
+01:11:42.000 --> 01:11:44.480
+ iets wat ek die eerste oggend met 'n koppie koffie gedoen het
+
+01:11:44.480 --> 01:11:50.960
+ ja, en hy het my 'n 5 uit 5-resensie gegee wat wonderlik is soos dit hiervandaan is
+
+01:11:50.960 --> 01:11:54.480
+ die blikperspektief, so ek is so mooi, so ek begin praat
+
+01:11:54.480 --> 01:11:58.400
+ vir my kinders en ek wil hê ons moet uitvind of soos julle dinge kan doen
+
+01:11:58.400 --> 01:12:01.199
+ daar en jy weet is my dogter 'n kunstenaar en
+
+01:12:01.199 --> 01:12:05.280
+ sy kan tekeninge doen vir mense om geld te verdien, dit is netjies
+
+01:12:05.280 --> 01:12:08.159
+ idee 'n netjiese platform, ek weet nie waaroor die reëls gaan nie
+
+01:12:08.159 --> 01:12:11.120
+ soos minimum ouderdom en sulke dinge, maar ons kan na die soort
+
+01:12:11.120 --> 01:12:13.360
+ dinge, maar dit is my storie vir hierdie week
+
+01:12:13.360 --> 01:12:18.719
+ dat ek ook aan die ander kant gegaan het en dat ek my eie diens verkoop het
+
+01:12:18.719 --> 01:12:23.120
+ literêre eekhoring 'n gratis 'n freebie um maar uh
+
+01:12:23.120 --> 01:12:30.000
+ nou is ek beskikbaar, ek is beskikbaar om te koop, ek voel dit sou lekker wees om net te doen
+
+01:12:30.000 --> 01:12:34.000
+ gee u die vyf dollar en ek stuur u 'n dokument van 500 woorde
+
+01:12:34.000 --> 01:12:38.640
+ alle lorem ipsum en vertel my net as dit sinvol is, sal ek my bes doen
+
+01:12:38.640 --> 01:12:44.000
+ het jy dit reggestel, goed so, dis jeff
+
+01:12:44.000 --> 01:12:46.800
+ dit is heeltyd okay, maar dit was baie pret
+
+01:12:46.800 --> 01:12:50.080
+ het dit geniet om volgende week weer hier by u te wees
+
+01:12:50.080 --> 01:12:52.560
+ druk sodat ons 'n ender gaan saamstel
+
+01:12:52.560 --> 01:12:55.440
+ 3v2, so ons gaan dit eintlik saamstel
+
+01:12:55.440 --> 01:12:58.640
+ en dan gesels ons oor u weet wat die proses was
+
+01:12:58.640 --> 01:13:03.760
+ soos vir my as 'n noob in die 3D-drukwerk so
+
+01:13:03.760 --> 01:13:05.760
+ watter soort uitdagings het ek al teëgekom
+
+01:13:05.760 --> 01:13:09.040
+ en kan u moontlik teëkom as u begin
+
+01:13:09.040 --> 01:13:13.760
+ in 3D-drukwerk, en ek wys nie net my eerste druk nie
+
+01:13:13.760 --> 01:13:19.440
+ maar my eerste ontwerpe in druk wat u nie volgende week wil misloop nie
+
+01:13:19.440 --> 01:13:22.960
+ 'n wonderlike week vir almal, ons sien jou
+
+01:13:24.100 --> 01:13:30.029
+ [Musiek] [Applous]
+
+01:13:30.840 --> 01:13:45.060
+ totsiens [Musiek]
+
+01:13:48.290 --> 01:13:56.319
+ [Musiek]
+
+01:14:01.760 --> 01:14:03.840
+ jy
+

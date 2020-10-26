@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: sk
+
+00:00:00.320 --> 00:00:05.040
+v kategórii 5 TV dôverujeme našim súborom na disky SSD od spoločnosti Kingston
+
+00:00:05.040 --> 00:00:07.839
+ technológia pre váš serverový notebook alebo
+
+00:00:07.839 --> 00:00:10.880
+ stolný počítač zažijete zvýšený výkon
+
+00:00:10.880 --> 00:00:17.920
+ a spoľahlivosť s firmou kingston ssds pripravte sa, že je čas na technológiu
+
+00:00:22.320 --> 00:00:25.519
+ vitajte v šou, všetci, je to epizóda 2 sezóny 14
+
+00:00:25.519 --> 00:00:29.599
+ Som Robbie Ferguson a som Jeff Weston. Je skvelé mať ťa tu
+
+00:00:29.599 --> 00:00:32.800
+ a dúfam, že ste napriek tomu prežili krásny týždeň
+
+00:00:32.800 --> 00:00:37.760
+ všetko, len nie sme tu, a tešíme sa na skvelú šou vpred
+
+00:00:37.760 --> 00:00:40.960
+ dnes večer sa naučíme, ako si vytvoriť svoj vlastný
+
+00:00:40.960 --> 00:00:45.840
+ proxy server v poriadku, tak nechcem o tom príliš hovoriť
+
+00:00:45.840 --> 00:00:49.200
+ šou, ale viem, že niekedy je ťažké nájsť dobrého
+
+00:00:49.200 --> 00:00:52.640
+ bezplatná proxy služba, takže si vytvoríme vlastnú
+
+00:00:52.640 --> 00:00:55.840
+ a ukážem ti, ako to umiestniť kdekoľvek na svete
+
+00:00:55.840 --> 00:01:01.600
+ pomocou cloudových služieb AWS, takže je to veľmi vzrušujúce a jedna z vecí
+
+00:01:01.600 --> 00:01:05.680
+ aj s tým, keď sa dozvieme niečo o tom, ako
+
+00:01:05.680 --> 00:01:09.520
+ Amazon Web Services EC2 a cloudové služby a ich schopnosť
+
+00:01:09.520 --> 00:01:13.760
+ ako sa dozvedáme, nasadiť debian servery v cloudovej infraštruktúre
+
+00:01:13.760 --> 00:01:18.799
+ ako to urobiť a ako to funguje, len viem, že jeden z nich
+
+00:01:18.799 --> 00:01:20.159
+ veci, ktoré budeme robiť, sú
+
+00:01:20.159 --> 00:01:24.000
+ aj migráciu niektorých našich údajov do tejto infraštruktúry, tak to hovorím
+
+00:01:24.000 --> 00:01:26.960
+ pretože niektorí z našich divákov priameho prenosu majú
+
+00:01:26.960 --> 00:01:29.600
+ zažili problémy s ukladaním do vyrovnávacej pamäte a podobnými vecami
+
+00:01:29.600 --> 00:01:32.799
+ a je to preto, že máme malý jednodeskový počítač
+
+00:01:32.799 --> 00:01:36.880
+ všetkého, čo je, do ktorého streamujeme, a potom to znova vysiela
+
+00:01:36.880 --> 00:01:40.799
+ ktokoľvek, kto sleduje rok alebo iný HLS hráčov a podobné veci
+
+00:01:40.799 --> 00:01:44.399
+ má svižný streamer bežiaci na jednodeskovom počítači, naozaj je
+
+00:01:44.399 --> 00:01:47.759
+ úžasné wow však to, čo som sledoval cez môj
+
+00:01:47.759 --> 00:01:50.960
+ Testovanie spočíva v tom, že pri procesoroch beží dosť vysoký procesor
+
+00:01:50.960 --> 00:01:55.439
+ sledujú správne, takže verím, že to môže byť to, čo niektoré spôsobuje
+
+00:01:55.439 --> 00:01:58.640
+ ukladanie problémov s našim streamom, takže je tu ešte veľa vecí, ktoré treba vyriešiť
+
+00:01:58.640 --> 00:02:03.520
+ v zákulisí, aby som sa pokúsil dostať to k vám, predstavenie vám uh dovnútra
+
+00:02:03.520 --> 00:02:07.840
+ veľmi prístupný a ľahko prístupný formát a aby ste ním neboli
+
+00:02:07.840 --> 00:02:10.160
+ zažívanie vecí ako kolovrátok
+
+00:02:10.160 --> 00:02:14.560
+ a také veci, ale uh tak, ako to sledujeme dnes večer
+
+00:02:14.560 --> 00:02:18.560
+ uh a naučiť sa, ako nasadiť tieto debian servery v cloude
+
+00:02:18.560 --> 00:02:20.879
+ vedzte, že to je niečo, čo tu budeme robiť v zákulisí
+
+00:02:20.879 --> 00:02:23.760
+ a migráciu týchto služieb
+
+00:02:23.760 --> 00:02:27.120
+ do jedného z týchto prípadov, aby
+
+00:02:27.120 --> 00:02:30.480
+ skúste vylepšiť náš výkon tu v štúdiu, takže
+
+00:02:30.480 --> 00:02:34.400
+ kopa vzrušujúcich vecí, ktoré sa dejú za nami, ako ste sa mali
+
+00:02:34.400 --> 00:02:38.000
+ Bol som dobrý, že si s tebou dnes večer povieme niečo o
+
+00:02:38.000 --> 00:02:42.080
+ Uh, niektoré vaše výhody spojené s spájkovaním, áno, chcete nám niečo povedať
+
+00:02:42.080 --> 00:02:44.720
+ trochu len krátke podpichovanie ohľadom toho, čo budeme
+
+00:02:44.720 --> 00:02:48.959
+ keď som hovoril o mojom synovi, chcel sa zapojiť do spájkovania
+
+00:02:48.959 --> 00:02:53.120
+ jeho narodeniny, uh, tak sme išli tou cestou
+
+00:02:53.120 --> 00:02:56.480
+ od minulého mesiaca sme sa trochu hrali a je to
+
+00:02:56.480 --> 00:03:01.200
+ premýšľam, ako si môžem vyrobiť svoje vlastné veci doma
+
+00:03:01.200 --> 00:03:04.560
+ keď nemám veľkú výrobnú plochu na výrobu vlastných
+
+00:03:04.560 --> 00:03:09.599
+ pcb áno, áno, práve o tom sme hovorili, takže ak vás zaujíma
+
+00:03:09.599 --> 00:03:15.040
+ elektronika, o ktorej budeme hovoriť, a hm, máme
+
+00:03:15.040 --> 00:03:19.840
+ niekoľko vzrušujúcich vecí, ktoré chystáme aj na budúcotýždňovú šou
+
+00:03:19.840 --> 00:03:23.040
+ je už pripravený ísť a my sme nadšení, že budeme
+
+00:03:23.040 --> 00:03:26.640
+ predstavujeme 3D tlač aj našim divákom
+
+00:03:26.640 --> 00:03:29.680
+ takže to je niečo, čo sa budeme učiť v priebehu
+
+00:03:29.680 --> 00:03:36.080
+ nasledujúce týždne tu v kategórii 5 televízií máme toho veľa veľa
+
+00:03:36.080 --> 00:03:39.200
+ uistite sa, že ste sa na nás prihlásili na youtube
+
+00:03:39.200 --> 00:03:42.159
+ a kliknite na zvonček, aby ste dostali upozornenie vždy, keď zverejníme nový
+
+00:03:42.159 --> 00:03:46.560
+ video kedykoľvek sme naživo a tiež ak sa chcete zapojiť do
+
+00:03:46.560 --> 00:03:49.280
+ komunita si myslím, že je to naozaj super spôsob
+
+00:03:49.280 --> 00:03:54.000
+ byť súčasťou televízie kategórie 5, niektorí ľudia mi stále hovoria, čo je
+
+00:03:54.000 --> 00:03:58.400
+ svár a je úžasné, že nie ste súčasťou nášho sváru
+
+00:03:58.400 --> 00:04:01.920
+ pretože ak sa pripojíte k nášmu sváru, ktorý nájdete, ak pôjdete
+
+00:04:01.920 --> 00:04:06.560
+ do category5.tv klikni na interaktívne uvidíš sa pripoj k sváru
+
+00:04:06.560 --> 00:04:10.720
+ server je to zadarmo založené na prehliadači alebo aplikácii
+
+00:04:10.720 --> 00:04:14.720
+ službu, ktorú môžete vložiť do svojho prístroja alebo ku ktorej máte prístup
+
+00:04:14.720 --> 00:04:18.160
+ cez váš prehliadač na čomkoľvek a v podstate môžete chatovať s
+
+00:04:18.160 --> 00:04:22.079
+ komunita, ale je to skutočne elegantné v tom, že to nie je len chatovacia miestnosť
+
+00:04:22.079 --> 00:04:26.160
+ má tiež pridelené rôzne miestnosti
+
+00:04:26.160 --> 00:04:28.160
+ rôzne veci, takže veci, o ktorých hovoríme
+
+00:04:28.160 --> 00:04:31.280
+ o alebo napríklad sme sa dostali do zákulisia
+
+00:04:31.280 --> 00:04:35.680
+ takže v zákulisí je len plno zákulisia
+
+00:04:35.680 --> 00:04:42.320
+ fotografie, ktoré by ste inak nevideli a a na našich je toho toľko áno
+
+00:04:42.320 --> 00:04:44.400
+ diskordný server, takže tam naozaj musíte ísť
+
+00:04:44.400 --> 00:04:47.919
+ vedzte, že je to ako platforma na chatovanie, ale má
+
+00:04:47.919 --> 00:04:51.360
+ oveľa viac ako iba chatová interakcia
+
+00:04:51.360 --> 00:04:54.880
+ má to pravdu a nie je to aktívne iba počas predstavenia
+
+00:04:54.880 --> 00:04:58.240
+ je to stále a myslím tým, ak máte technické veci
+
+00:04:58.240 --> 00:05:01.360
+ v strede tyzdna si ako oh neviem, ako tento problem vyriesit ty
+
+00:05:01.360 --> 00:05:04.080
+ by sa tam mohlo objaviť a komunita je v obdarovaní úžasná
+
+00:05:04.080 --> 00:05:07.680
+ rady a to je tiež dosť na mieste, áno, je to pravda
+
+00:05:07.680 --> 00:05:10.720
+ v poriadku, takže si musíme dať skutočne rýchlu pauzu a potom skočíme správne
+
+00:05:10.720 --> 00:05:14.800
+ do toho po tomto krátkom úniku sa pozrieme
+
+00:05:14.800 --> 00:05:20.800
+ Ako nastaviť inštanciu AWS EC2, to znie ako technobabble
+
+00:05:20.800 --> 00:05:24.080
+ ja to robím rýchlo, áno, čo takhle to sme
+
+00:05:24.080 --> 00:05:29.759
+ vytvoríme si vlastnú bezplatnú službu proxy, ktorá sa ľahšie hovorí
+
+00:05:29.759 --> 00:05:36.240
+ mám kontrolu mám prístup mám ovládaciu páku okolo budeme
+
+00:05:36.240 --> 00:05:51.920
+ byť späť [hudba]
+
+00:05:58.560 --> 00:06:01.919
+ či už dúfate, že si pri surfovaní doprajete trochu viac súkromia
+
+00:06:01.919 --> 00:06:04.720
+ internet alebo chcete pristupovať k službám, ktoré
+
+00:06:04.720 --> 00:06:10.160
+ pravdepodobne nie sú k dispozícii zvyčajne vo vašej oblasti alebo je to a
+
+00:06:10.160 --> 00:06:13.680
+ v prípade, že ste skutočne mali svoju IP adresu
+
+00:06:13.680 --> 00:06:17.600
+ zablokovaný poskytovateľom služieb, nemusí to byť a
+
+00:06:17.600 --> 00:06:20.960
+ škodlivá vec, ktorú som nechal zablokovať pomocou svojej adresy IP
+
+00:06:20.960 --> 00:06:24.639
+ predtým, pretože nahrávam toľko videí a
+
+00:06:24.639 --> 00:06:29.120
+ stiahnite si pre nich skryté titulky, aby
+
+00:06:29.120 --> 00:06:33.759
+ viedol k tomu, že som prekročil svoje využitie v youtube api
+
+00:06:33.759 --> 00:06:38.800
+ takže moja IP adresa sa zablokuje, takže to nemusí byť škodlivá vec
+
+00:06:38.800 --> 00:06:44.319
+ Nechcem na to pôsobiť, ale existujú veľmi oprávnené dôvody
+
+00:06:44.319 --> 00:06:49.759
+ aby tieto typy vecí obišli a šprti šli do toho
+
+00:06:49.759 --> 00:06:56.000
+ je server proxy problém je použitie serverov proxy môže byť veľmi nákladné a
+
+00:06:56.000 --> 00:07:00.160
+ zadarmo, hoci sú ľahko dostupné, sú veľmi často
+
+00:07:00.160 --> 00:07:04.800
+ buď nie sú príliš spoľahlivé, jeden deň sú hore, ďalší deň sú stratené a vy prehráte
+
+00:07:04.800 --> 00:07:10.240
+ prístup k vašim službám a všetkým ostatným alebo ešte horším
+
+00:07:10.240 --> 00:07:14.960
+ sú nebezpečné, nevieš, čo títo zástupcovia sledujú
+
+00:07:14.960 --> 00:07:21.120
+ protokolovanie a dokonca ako odpočúvanie, keď prechádzate, odosielate
+
+00:07:21.120 --> 00:07:26.720
+ všetok váš internetový prenos prostredníctvom tohto poskytovateľa služieb
+
+00:07:26.720 --> 00:07:35.199
+ takže je tu jedna osoba, ktorej skutočne dôverujem, že zastupujem všetky moje údaje
+
+00:07:35.199 --> 00:07:41.039
+ a to som ja, nie som rovnaká osoba, o ktorej by si povedal, že jej dôveruješ
+
+00:07:41.039 --> 00:07:45.199
+ človek, ktorému dôverujete, ste vy, takže vám ukážem ako
+
+00:07:45.199 --> 00:07:53.280
+ Možno zriadim vlastnú bezplatnú službu proxy a môžete ju replikovať a
+
+00:07:53.280 --> 00:07:56.319
+ vytvorte si tiež svoje vlastné, urobíme to v cloude my
+
+00:07:56.319 --> 00:07:58.800
+ budete používať externého poskytovateľa služieb
+
+00:07:58.800 --> 00:08:02.400
+ a to je amazonka, tak si povieš, ach, amazon, čo s tým
+
+00:08:02.400 --> 00:08:05.919
+ viete, že sme schopní im dôverovať našim údajom, čo používame, sú ich
+
+00:08:05.919 --> 00:08:10.639
+ cloudové služby nazýva sa to amazonské webové služby, takže je
+
+00:08:10.639 --> 00:08:14.319
+ všetko to je ich cloudová infraštruktúra, ktorú majú
+
+00:08:14.319 --> 00:08:18.560
+ pre zákazníkov, aby si v podstate prenajali prístup k svojim serverom a k nim
+
+00:08:18.560 --> 00:08:23.360
+ ich priestor a virtuálne servery a všetko ostatné ako celok
+
+00:08:23.360 --> 00:08:29.680
+ máte k dispozícii infraštruktúru, ale samotné nasadenie je
+
+00:08:29.680 --> 00:08:34.560
+ tvoje, ukážem ti, ako sa to deje, skočíme na aws
+
+00:08:34.560 --> 00:08:40.719
+ a hlavne ec2, takže samozrejme ty, ak nepoznáš aws just
+
+00:08:40.719 --> 00:08:44.720
+ choďte na aws.amazon.com prihláste sa pomocou svojho účtu Amazon
+
+00:08:44.720 --> 00:08:50.640
+ a potom rýchlo vyhľadajte ec2 a tým sa v podstate dostanete
+
+00:08:50.640 --> 00:08:53.680
+ ich virtualizačná platforma uvažuje o ec2 ako
+
+00:08:53.680 --> 00:08:57.519
+ len to, takže ako prvé si všimnem, keď som tu
+
+00:08:57.519 --> 00:09:03.200
+ v ec2 je môj región a to je dôležité, pretože to je miesto, kde môj proxy
+
+00:09:03.200 --> 00:09:08.080
+ server sa bude zdržiavať, ak by som to tam nastavil, prečo je to tak
+
+00:09:08.080 --> 00:09:11.519
+ Je dôležité si o tom premyslieť, povedzme, že používam streamovanie videa
+
+00:09:11.519 --> 00:09:15.680
+ služba, ktorá obmedzuje kanadský prístup k ich videu
+
+00:09:15.680 --> 00:09:19.440
+ streamovaciu službu tak umiestnením môjho proxy servera dole na sever
+
+00:09:19.440 --> 00:09:23.360
+ Kalifornia teraz zrazu v podstate sú
+
+00:09:23.360 --> 00:09:26.320
+ podľa IP adresy si budem myslieť, že sa pripájam z
+
+00:09:26.320 --> 00:09:29.360
+ Kalifornia, takže som schopný to obísť
+
+00:09:29.360 --> 00:09:32.720
+ podobne možno budete chcieť zmeniť svoj región na základe
+
+00:09:32.720 --> 00:09:37.200
+ o čo sa snažíte dosiahnuť, môžete dokonca umiestniť server v Afrike
+
+00:09:37.200 --> 00:09:40.480
+ alebo azia pozrime sa na to, že jeden môžeš dať priamo do hong Kongu
+
+00:09:40.480 --> 00:09:44.160
+ môžete dať jeden do kanady a do európy, ktorú máte
+
+00:09:44.160 --> 00:09:49.680
+ všade naokolo a potom teraz máme strednú a južnú ameriku
+
+00:09:49.680 --> 00:09:52.800
+ takže je to dosť veľký zoznam toho, kde sú
+
+00:09:52.800 --> 00:09:57.360
+ mať túto infraštruktúru nastavenú pre amazonské webové služby službu ec2
+
+00:09:57.360 --> 00:10:01.920
+ vyberte ten, ktorý je tam, kde chcete, aby bol váš proxy server
+
+00:10:01.920 --> 00:10:05.600
+ idem nastaviť moje, len to nechám ako severnú kaliforniu čo je
+
+00:10:05.600 --> 00:10:09.279
+ nás západná jedna a to je miesto
+
+00:10:09.279 --> 00:10:13.760
+ môj proxy server sa bude zdržiavať, čo mi umožní pripojenie
+
+00:10:13.760 --> 00:10:17.680
+ akoby som vlastne sedel v kalifornii
+
+00:10:17.680 --> 00:10:20.880
+ v poriadku, takže kliknem na inštanciu spustenia
+
+00:10:20.880 --> 00:10:24.880
+ a potom znova spustiť inštanciu, pretože robí rozbaľovaciu ponuku a toto mi dáva
+
+00:10:24.880 --> 00:10:29.440
+ zoznam operačných systémov, ktoré môžem nasadiť
+
+00:10:29.440 --> 00:10:33.760
+ na mojej inštancii ec2, takže tu používam niektoré výrazy, s ktorými nemusíte byť oboznámení
+
+00:10:33.760 --> 00:10:38.240
+ aws sú amazonské webové služby, ktoré sú v podstate amazonské
+
+00:10:38.240 --> 00:10:44.560
+ celá škála služieb, ktoré ponúkajú pre používateľov cloudu, je ec2
+
+00:10:44.560 --> 00:10:48.160
+ virtualizačná platforma pre virtuálne stroje
+
+00:10:48.160 --> 00:10:52.240
+ keď som povedal inštanciu, hovorím o virtuálnom stroji
+
+00:10:52.240 --> 00:10:56.160
+ takže to je doslova virtuálny stroj, takže idem nasadiť jeden z nich
+
+00:10:56.160 --> 00:10:59.360
+ operačné systémy na inštanciu ec2, ktorá je
+
+00:10:59.360 --> 00:11:02.880
+ virtuálny stroj, tak čo to chcem
+
+00:11:02.880 --> 00:11:07.040
+ takže a ja som hovoril, že hej, komentár nižšie, ak použijem výraz, ktorý nepoznáš
+
+00:11:07.040 --> 00:11:08.399
+ chystám sa rýchlo vyhľadať
+
+00:11:08.399 --> 00:11:11.120
+ už som to urobil predtým, pretože nasadím tonu serverov
+
+00:11:11.120 --> 00:11:15.279
+ v cloude kliknem na debian, stačí napísať debian do
+
+00:11:15.279 --> 00:11:19.279
+ hľadať tu, takže potom idem do AWS
+
+00:11:19.279 --> 00:11:24.640
+ výsledky na trhu sú aj také, ktoré som vytvoril a tie v
+
+00:11:24.640 --> 00:11:27.120
+ komunitu, o ktorej by ste si mysleli, že by som ju chcel používať
+
+00:11:27.120 --> 00:11:30.800
+ komunitné, no nie, pretože tie vás budú stáť peniaze
+
+00:11:30.800 --> 00:11:34.320
+ a hovoríte dobre, ale komunita je zadarmo, je to open source a áno
+
+00:11:34.320 --> 00:11:38.959
+ nie je to však súčasť aws trhu, a preto budete mať
+
+00:11:38.959 --> 00:11:42.320
+ platiť za použitie, ktoré má tento virtuálny stroj
+
+00:11:42.320 --> 00:11:46.160
+ napríklad beží v cloude, takže namiesto toho ideme na
+
+00:11:46.160 --> 00:11:49.440
+ použite jeden z oficiálnych z trhu aws pozrime sa, aké výsledky
+
+00:11:49.440 --> 00:11:53.360
+ dostaneme, že sú pekne zoradené, debian vyjde ako prvý výsledok
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster free tier kompatibilný alebo free tier
+
+00:11:57.839 --> 00:12:00.560
+ oprávnená verzia debian, ktorou budeme
+
+00:12:00.560 --> 00:12:06.000
+ nasadenie, tak vyberte príslušnú bezplatnú vrstvu, aby sme mohli ignorovať
+
+00:12:06.000 --> 00:12:09.360
+ ceny, pretože použijeme prístup na úrovni zadarmo pokračovať
+
+00:12:09.360 --> 00:12:13.040
+ a tu si to tak dobre vyberieme, ak chceme voľnú úroveň, musíme ísť
+
+00:12:13.040 --> 00:12:15.839
+ s micro t2, tak to vyberiem, ale čo
+
+00:12:15.839 --> 00:12:22.399
+ dáva nám to dáva nám jeden procesor jeden gigabajt pamäte um
+
+00:12:22.399 --> 00:12:25.600
+ a potom musíme vybaviť úložisko, nepotrebujeme veľa úložiska, pretože
+
+00:12:25.600 --> 00:12:29.920
+ práve nastavujeme základný proxy server a to je asi tak všetko, tak sa chystám
+
+00:12:29.920 --> 00:12:34.079
+ nasadiť rovnako, takže t2 micro je ten, ktorý je zadarmo
+
+00:12:34.079 --> 00:12:37.120
+ úroveň oprávnená nevyberajte jednu z väčších
+
+00:12:37.120 --> 00:12:38.720
+ také, pretože za to budete platiť
+
+00:12:38.720 --> 00:12:42.079
+ Hneď idem skontrolovať a spustiť sa vrátime
+
+00:12:42.079 --> 00:12:45.839
+ robiť nastavenia, ako sú naše skupiny zabezpečenia, a podobné veci, práve odchádzam
+
+00:12:45.839 --> 00:12:48.480
+ zatiaľ všetko predvolene a chystáme sa
+
+00:12:48.480 --> 00:12:52.000
+ spustiť, že v prvom rade musím vytvoriť nový kľúč
+
+00:12:52.000 --> 00:12:55.360
+ pár, takže toto je ssh kľúč, ktorý budem používať v
+
+00:12:55.360 --> 00:12:59.680
+ aby som sa pripojil na tento server, tak to budem volať
+
+00:12:59.680 --> 00:13:04.160
+ jeden server proxy a potom stiahnite môj pár kľúčov
+
+00:13:04.160 --> 00:13:06.320
+ uistite sa, že ste to uložili niekde v bezpečí, kam idem
+
+00:13:06.320 --> 00:13:10.800
+ hodiť to na môj server a tam to umiestniť
+
+00:13:10.800 --> 00:13:16.240
+ a teraz spustenie inštancie znamená napájanie vášho virtuálneho stroja, takže sa chystám
+
+00:13:16.240 --> 00:13:20.000
+ tlačiť to a tam ideme, takže je to v podstate
+
+00:13:20.000 --> 00:13:23.120
+ jeho vytvorenie je vytvorenie virtuálneho stroja
+
+00:13:23.120 --> 00:13:29.360
+ hm instance EC2 v oblaku pre nas v uh v severnej kalifornii, tak sme tam
+
+00:13:29.360 --> 00:13:33.279
+ choď, takže si tu pozriem inštancie
+
+00:13:33.279 --> 00:13:37.200
+ a teraz vidím, že teraz na jednej inštancii beží t2 micro
+
+00:13:37.200 --> 00:13:41.199
+ a nie je to len meno, takže kliknem na editáciu a budem to volať
+
+00:13:41.199 --> 00:13:45.839
+ môj server proxy servera vyskúšajte, že sme v poriadku, takže je to tak
+
+00:13:45.839 --> 00:13:49.519
+ už je v prevádzke, takže ak na ňu kliknem, uvidím ip
+
+00:13:49.519 --> 00:13:53.360
+ adresu tohto servera je to, že som to nazval proxy server, ale práve teraz
+
+00:13:53.360 --> 00:13:56.720
+ pamätajte, že je to len debian 10. nie je na ňom nainštalované nič iné
+
+00:13:56.720 --> 00:14:02.480
+ takže potrebujem skopírovať túto ip adresu a potom skočím do svojej
+
+00:14:02.480 --> 00:14:05.839
+ príkazový riadok, pretože som si kľúč stiahol do
+
+00:14:05.839 --> 00:14:17.839
+ môj server osobne idem na ssh k môjmu internému serveru
+
+00:14:18.399 --> 00:14:22.079
+ v poriadku, takže teraz som tu, takže teraz príkaz, ktorý použijem
+
+00:14:22.079 --> 00:14:28.079
+ je ssh a potom pomlčku i pre kľúč, ktorý budem používať
+
+00:14:28.079 --> 00:14:31.040
+ takže prichádzajúci súbor, ktorý budem používať pre kľúč
+
+00:14:31.040 --> 00:14:35.760
+ a ten sa volá proxy server.pem je to, čo som si stiahol
+
+00:14:35.760 --> 00:14:39.920
+ potom idem do admin, pretože to je predvolené prihlásenie pre debian
+
+00:14:39.920 --> 00:14:43.600
+ sk Správca obrázkov stroja ami alebo amazon na
+
+00:14:43.600 --> 00:14:46.639
+ a potom ip adresa, ktorú som už skopíroval do svojej schránky a ak i
+
+00:14:46.639 --> 00:14:48.959
+ stlačte Enter, požiada ma o prijatie tohto kľúča
+
+00:14:48.959 --> 00:14:54.000
+ a ja hovorím áno a som odmietnutý
+
+00:14:54.000 --> 00:14:57.279
+ povolenia pre tento súbor skončili tak, že
+
+00:14:57.279 --> 00:15:01.199
+ 766, takže každý má prístup k týmto súborom, takže je to zaujímavé
+
+00:15:01.199 --> 00:15:05.519
+ Samotný ssh ma chráni pred tým, aby niekto nebol schopný kompromitovať môj kľúč
+
+00:15:05.519 --> 00:15:13.120
+ tak chmod 700 proxy server pam to skúsme a hneď
+
+00:15:13.120 --> 00:15:16.000
+ skúste to znova, takže to, čo som urobil, je och a teraz som
+
+00:15:16.000 --> 00:15:20.800
+ pripojený, práve fungoval 700 znamená, že som vlastníkom tohto kľúča
+
+00:15:20.800 --> 00:15:27.279
+ môžem s tým robiť čokoľvek, čítať, písať, vykonávať, nula, nula znamená
+
+00:15:27.279 --> 00:15:30.800
+ nikto v skupine nikto, kto nie je súčasťou skupiny
+
+00:15:30.800 --> 00:15:35.600
+ má k tomu vôbec prístup, takže je to v podstate hlúpy súbor, ktorý nemôžu
+
+00:15:35.600 --> 00:15:39.519
+ dokonca otvorené, ale môžem byť v poriadku, takže teraz, keď som
+
+00:15:39.519 --> 00:15:44.240
+ pripojený idem ísť sudo žalovať, pretože na to slúži príkaz
+
+00:15:44.240 --> 00:15:47.440
+ stať sa rootom, takže teraz som rootom, takže aktualizácia aplikácie
+
+00:15:47.440 --> 00:15:50.399
+ whoop app aktualizácia sa chystá chytiť moje
+
+00:15:50.399 --> 00:15:55.680
+ repozitáre, ktoré vidíte, je to skutočný počítač typu debian, ak chcete
+
+00:15:55.680 --> 00:16:01.680
+ v cloude je to také ľahké, že už upgradujem, už používam debian
+
+00:16:01.680 --> 00:16:05.120
+ počítač v cloude, takže za ten čas a ja som bla
+
+00:16:05.120 --> 00:16:11.360
+ bla bla bla zároveň máme cloudový debian server
+
+00:16:11.360 --> 00:16:15.519
+ uvedomili ste si, že to bolo také ľahké a zadarmo?
+
+00:16:15.519 --> 00:16:18.720
+ Dobre, takže s tým môžeme robiť aj iné veci, mohli by sme zostaviť súpravu žiaroviek
+
+00:16:18.720 --> 00:16:23.600
+ mohol použiť pre mysql mariadb čokoľvek, s čím by ste prišli, je to
+
+00:16:23.600 --> 00:16:26.720
+ debian server, takže ho budeme používať ako náš
+
+00:16:26.720 --> 00:16:31.759
+ proxy, takže teraz urobím to, že si nainštalujem nástroj s názvom
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy pekná a jednoduchá inštalácia apt nainštalovať malý proxy
+
+00:16:38.639 --> 00:16:45.600
+ konfigurácia je naozaj jednoduchá, áno, ideme na to
+
+00:16:47.120 --> 00:16:51.199
+ a je hotovo, keď sme nainštalovali malý proxy server, ktorý musíme len upraviť
+
+00:16:51.199 --> 00:16:59.440
+ konfiguračný súbor, takže lomítko, atď., maličký, malý proxy, sa do toho zmení
+
+00:16:59.440 --> 00:17:05.760
+ a potom používam nano tinyproxy.com a upravujem ich, takže ovládam w v nano
+
+00:17:05.760 --> 00:17:08.799
+ umožňuje mi vyhľadávať, ale skôr ako vyhľadám, všimnite si, že
+
+00:17:08.799 --> 00:17:12.720
+ port predvolene používa 888, čo budeme musieť vedieť
+
+00:17:12.720 --> 00:17:15.679
+ informácie, pretože k tomu sa pripojíme
+
+00:17:15.679 --> 00:17:19.839
+ náš proxy rýchlo vyhľadáva povolenie
+
+00:17:21.439 --> 00:17:25.679
+ alt w umožňuje vyhľadávať znova wow slovo allow nie je asi najlepšie
+
+00:17:25.679 --> 00:17:30.640
+ vyhľadávací dopyt možno vyhľadá 127.0.0.1 a hneď pod ním sa chystám
+
+00:17:30.640 --> 00:17:34.720
+ povoliť a potom musím pridať svoju IP adresu, aby som sa mohol pripojiť k
+
+00:17:34.720 --> 00:17:37.440
+ tento server proxy, pretože práve je zrušený
+
+00:17:37.440 --> 00:17:40.640
+ len localhost má prístup, čo je dôležité poznamenať
+
+00:17:40.640 --> 00:17:44.720
+ že toto je zatiaľ verejný bezplatný proxy server, som jediný, kto je
+
+00:17:44.720 --> 00:17:47.280
+ bude mať prístup k tomu, ku ktorému bude mať povolenie
+
+00:17:47.280 --> 00:17:52.400
+ proxy môj obsah moje pripojenie cez to, takže je súkromné ​​v tomto ohľade
+
+00:17:52.400 --> 00:17:55.919
+ Potrebujem poznať svoju IP adresu, takže skočím na
+
+00:17:55.919 --> 00:18:03.360
+ aktuálny ip.xyz a skopírujte túto adresu IP do mojej schránky a potom skočte
+
+00:18:03.360 --> 00:18:09.840
+ tam a vlož to do môjho konfiguračného ovládacieho prvku o zadajte ovládací prvok x ovládací prvok o je
+
+00:18:09.840 --> 00:18:14.320
+ vypísať uložte súbor teraz systemctl
+
+00:18:14.320 --> 00:18:21.039
+ reštartujte malý proxy server takmer dokončil poslednú vec, ktorú potrebujeme
+
+00:18:21.039 --> 00:18:26.000
+ je len potrebné povedať aws bezpečnosti EC2, že
+
+00:18:26.000 --> 00:18:29.840
+ nastavíme politiku, ktorá hovorí, že hej, iba ja sa môžem k tomu pripojiť
+
+00:18:29.840 --> 00:18:32.799
+ server, aby sa k nemu nikto iný nemohol pripojiť
+
+00:18:32.799 --> 00:18:34.880
+ urobíme to dobre
+
+00:18:34.880 --> 00:18:38.799
+ teraz sa chystám skočiť späť sem a uvidíte tento server na obrazovke
+
+00:18:38.799 --> 00:18:43.840
+ ak kliknem na zabezpečenie, potom môžem kliknúť na bezpečnostnú skupinu, ktorou je
+
+00:18:43.840 --> 00:18:46.240
+ priradené automaticky, takže na to stačí kliknúť
+
+00:18:46.240 --> 00:18:50.480
+ a teraz ma to prenechalo bezpečnostným skupinám ec2 a správnemu zabezpečeniu
+
+00:18:50.480 --> 00:18:52.320
+ skupina si všimnete, že už je nastavená
+
+00:18:52.320 --> 00:18:56.960
+ jeden pre ssh, pretože je to predvolene povolené, môžem to nastaviť
+
+00:18:56.960 --> 00:18:59.440
+ aby som tiež dovolil, čo je dôležité
+
+00:18:59.440 --> 00:19:02.720
+ urobme to preto, aby sme boli v dobrej bezpečnostnej praxi
+
+00:19:02.720 --> 00:19:06.160
+ ssh idem to zmeniť z custom000
+
+00:19:06.160 --> 00:19:10.080
+ idem to zavrieť x a potom to zmeniť na moje ip
+
+00:19:10.080 --> 00:19:14.480
+ potom pridám nové pravidlo, ktoré si videl, ako som sa sem dostal správne, viem, že sa hýbem
+
+00:19:14.480 --> 00:19:18.080
+ naozaj rýchlo, práve som klikol na úpravu prichádzajúcich pravidiel
+
+00:19:18.080 --> 00:19:22.960
+ tu v poriadku, takže pridajte nové pravidlo, vlastné tcp je
+
+00:19:22.960 --> 00:19:27.120
+ predvolené číslo portu, pamätáte si iba 888
+
+00:19:27.120 --> 00:19:31.919
+ povoliť môj ip môžem to nazvať ak chcem proxy
+
+00:19:31.919 --> 00:19:37.919
+ a potom tam ulož moje pravidlá, ideme, takže teraz vidíš ssh a
+
+00:19:37.919 --> 00:19:44.160
+ vlastný TCP, ktorý sa volá proxy na porte 888.
+
+00:19:44.160 --> 00:19:49.600
+ tak ako to otestujeme, takže naša súčasná ip adresa je 99.233
+
+00:19:49.600 --> 00:19:52.640
+ a tak sa pripojím k proxy, toto je
+
+00:19:52.640 --> 00:19:57.360
+ nie návod, ako používať proxy server, to nie je
+
+00:19:57.360 --> 00:20:01.120
+ tutoriál o tom, ako to nevyhnutne použiť, je
+
+00:20:01.120 --> 00:20:04.720
+ tu robím predpoklady, že si to môžete buď sami vygoogliť
+
+00:20:04.720 --> 00:20:08.240
+ pretože to sa bude líšiť na základe vášho prípadu použitia, či chcete
+
+00:20:08.240 --> 00:20:11.600
+ iba proxy prehliadač alebo proxy konkrétnu aplikáciu alebo celú
+
+00:20:11.600 --> 00:20:15.440
+ sieť, ktorá bude na vašom jednotlivcovi
+
+00:20:15.440 --> 00:20:20.159
+ prípad použitia je to striktne návod, ako to postaviť
+
+00:20:20.159 --> 00:20:23.679
+ inštancia ec2 naozaj rýchlo zadarmo
+
+00:20:23.679 --> 00:20:28.400
+ ktorá má proxy pripravené na použitie v Kalifornii alebo kdekoľvek inde
+
+00:20:28.400 --> 00:20:32.960
+ a uh, to je ono, tak v mojom konkrétnom prípade práve teraz
+
+00:20:32.960 --> 00:20:36.480
+ takže tento okamih nemusí byť nevyhnutne tým, čo chcete robiť ďalej
+
+00:20:36.480 --> 00:20:41.120
+ takto budem testovať proxy server, ktorý tu náhodou mám na Windows 10
+
+00:20:41.120 --> 00:20:47.280
+ idem teda jednoducho napísať proxy a ísť do nastavení proxy znova toto je
+
+00:20:47.280 --> 00:20:50.880
+ asi nie, ako to chceš urobiť, len chcem otestovať, takže sa obrátim
+
+00:20:50.880 --> 00:20:53.679
+ na serveri proxy vidím, že existuje starý server proxy
+
+00:20:53.679 --> 00:20:56.880
+ nastavenia, takže na to nezabudnite
+
+00:20:56.880 --> 00:21:00.240
+ Ak existujú staré nastavenia servera proxy, musíte ich zmeniť
+
+00:21:00.240 --> 00:21:03.679
+ inštancie na ec2 kliknite na vaše ID inštancie
+
+00:21:03.679 --> 00:21:07.440
+ a uchytiť túto IP adresu a potom ju vložiť do
+
+00:21:07.440 --> 00:21:11.840
+ ako adresa portu vášho servera proxy 8888
+
+00:21:11.840 --> 00:21:17.120
+ a uložte, takže som okamžite pripojený k proxy serveru
+
+00:21:17.120 --> 00:21:20.559
+ nie je teraz pripojený, systém Windows hovorí, že budem smerovať všetku vašu premávku
+
+00:21:20.559 --> 00:21:22.880
+ cez proxy by som sa tam mal opravit
+
+00:21:22.880 --> 00:21:29.520
+ takže ak sa vrátim späť k currentip.xyz 99.233 je môj aktuálny ip idem zasiahnuť
+
+00:21:29.520 --> 00:21:38.159
+ f5 na osvieženie a keby všetko dobre dopadlo 3.101.108.211. dobre
+
+00:21:38.159 --> 00:21:44.720
+ čo je to môj server, takže som vlastne teraz
+
+00:21:44.720 --> 00:21:51.679
+ kde to nájdem maxmind.com, poďme hľadať IP adresu
+
+00:21:51.679 --> 00:21:59.120
+ že som momentálne na tom, kde som v San Jose v Kalifornii
+
+00:21:59.120 --> 00:22:02.559
+ tam ma určuje max moja
+
+00:22:02.559 --> 00:22:05.600
+ takže to je všetko, čo máme, ľudia, ktorých máme
+
+00:22:05.600 --> 00:22:10.640
+ vytvoril nakonfigurovaný nasadený bezplatnú proxy službu, ktorú sme
+
+00:22:10.640 --> 00:22:14.559
+ vlastniť a prevádzkovať sme jediní, kto má to, kto to má
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh kľúč, takže ak sa chcete pripojiť, urobte zmeny, použite ho
+
+00:22:19.200 --> 00:22:23.840
+ ako viacúčelový server to môžete urobiť, ale dávajte pozor na svoje
+
+00:22:23.840 --> 00:22:27.120
+ vaše fakturačné údaje, len sa uistite, že ste neprekročili limity a
+
+00:22:27.120 --> 00:22:29.440
+ také veci, ak to práve používate ako server proxy, je to
+
+00:22:29.440 --> 00:22:32.159
+ veľmi nepravdepodobné, že urobíte, že je to len niečo, čo pipujete
+
+00:22:32.159 --> 00:22:37.520
+ údaje cez, tak skontrolujte, či je to aws.amazon.com, aby ste mohli začať
+
+00:22:37.520 --> 00:22:41.440
+ ak máte otázky, pošlite ich našej komunite na adresu
+
+00:22:41.440 --> 00:22:44.480
+ náš nesúlad nájdete odkaz v kategórii 5
+
+00:22:44.480 --> 00:22:48.720
+ tv v interaktívnej ponuke medzitým, ak sa vám to páčilo, ak ste to použili, alebo
+
+00:22:48.720 --> 00:22:53.039
+ považujem za užitočné dajte mi veľký palec hore, prosím prihláste sa a uvidíme sa dobre
+
+00:22:53.039 --> 00:23:07.059
+ po prestávke [Hudba]
+
+00:23:15.520 --> 00:23:18.559
+ vitajte späť, toto je televízna technológia kategórie 5
+
+00:23:18.559 --> 00:23:22.240
+ a chcem hovoriť o tom, čo robím doma
+
+00:23:22.240 --> 00:23:26.640
+ alebo skôr to, čo plánujem sedieť a pozerať netflix
+
+00:23:26.640 --> 00:23:30.480
+ nemám čas sedieť a pozerať sa na netflix, bol by som rád, ale
+
+00:23:30.480 --> 00:23:34.960
+ Uh, nie, moja rodina vždy prasa netflix a som rád, že pôjdem len na počítač
+
+00:23:34.960 --> 00:23:38.720
+ čo je skvelé, pretože ma to prinútilo začať, v počítači je netflix
+
+00:23:38.720 --> 00:23:44.000
+ teraz jeff, ty ma rušíš, uh nie, ale je to
+
+00:23:44.000 --> 00:23:46.960
+ super, pretože ma to prinútilo začať sa pozerať na niektoré z vecí, ktoré robíme
+
+00:23:46.960 --> 00:23:51.760
+ po dome a choď, ako si môžem tento svojpomocne vyrobiť a tak
+
+00:23:51.760 --> 00:23:55.120
+ vieš, že som spomenul v hornej časti šou, ktorú náš syn má
+
+00:23:55.120 --> 00:24:00.240
+ sa dal na spájkovanie a on to zvládol veľmi dobre a pripomeň nám, koľko má rokov
+
+00:24:00.240 --> 00:24:05.200
+ práve sa točí 12. práve sa točí 12. dobre, ale uh, jo, skončil
+
+00:24:05.200 --> 00:24:09.760
+ veľmi dobre a zatiaľ má pripájané dve kalkulačky
+
+00:24:09.760 --> 00:24:13.919
+ hm a jedného z nich vzal do školy, ktorú jeho učiteľ úplne vyhodil z práce
+
+00:24:13.919 --> 00:24:16.000
+ preč, jo, myslím na 12 rokov a on
+
+00:24:16.000 --> 00:24:20.320
+ už robil kalkulačku, jo, urobil kalkulačku, od ktorej sme dostali stavebnicu
+
+00:24:20.320 --> 00:24:23.360
+ amazon a postavil to a to mozno dve hodiny
+
+00:24:23.360 --> 00:24:27.039
+ práce to bolo naozaj fenomenálne nereálne a jeho spájkovacia práca je
+
+00:24:27.039 --> 00:24:30.880
+ naozaj čistý, vynikajúci ako profesionálny vzhľad
+
+00:24:30.880 --> 00:24:34.559
+ ale každopádne sa pýtal, ako robiť ďalšie veci, a keď spájkujeme, je to on
+
+00:24:34.559 --> 00:24:37.200
+ dobre, čo je to a čo je toto a ako to funguje a
+
+00:24:37.200 --> 00:24:40.480
+ idem chcem byt schopna ho tieto veci naucit
+
+00:24:40.480 --> 00:24:46.480
+ Chcem byť schopný vysvetliť mu, ako vlastne vlastne plošný spoj funguje nielen
+
+00:24:46.480 --> 00:24:49.360
+ spájkovať ho, ale porozumieť komponentom a smerovaniu a všetkým ostatným
+
+00:24:49.360 --> 00:24:53.279
+ niečo také a myslím, že viem, že si môžeš kúpiť hm
+
+00:24:53.279 --> 00:25:00.400
+ iba obyčajné dosky, ktoré sú iba radmi malých spojovacích bodov
+
+00:25:00.400 --> 00:25:03.840
+ ale chcem, aby som mohol vytvoriť našu vlastnú dosku, a tak sa ho spýtal
+
+00:25:03.840 --> 00:25:07.279
+ konkrétne ak nájdeme stavebnicu pre
+
+00:25:07.279 --> 00:25:10.320
+ zbytočná škatuľka, viete, že to je škatuľka, v ktorej stlačíte tlačidlo, jo a
+
+00:25:10.320 --> 00:25:15.840
+ malá vec vyjde a vyskočí to, áno, vyskúšajte to
+
+00:25:17.600 --> 00:25:22.640
+ čo si urobil, myslíš to vážne?
+
+00:25:25.039 --> 00:25:30.400
+ bože, to je veselé
+
+00:25:32.720 --> 00:25:39.520
+ ahojte, je to ako mať tam mačiatko, je to ako moja mačka
+
+00:25:40.240 --> 00:25:44.799
+ hej hej teraz, takže som hľadal jednu, nenašiel som žiadnu, ale našiel som veľa
+
+00:25:44.799 --> 00:25:48.080
+ ľudia ako oh, môžete si vytvoriť jeden pomocou arduina, môžete si ho vytvoriť pomocou tohto
+
+00:25:48.080 --> 00:25:55.520
+ a bol som rád, že ak urobím kutilskú krabičku, zbytočnú krabicu, z ktorej ju chcem postaviť
+
+00:25:55.520 --> 00:25:58.559
+ od základov, takže som skúmal, ako robiť
+
+00:25:58.559 --> 00:26:03.679
+ moje vlastné DPS doma v poriadku, nie je to také ťažké
+
+00:26:03.679 --> 00:26:08.960
+ a bol som unesený, že všetko, čo potrebujem, je laserová tlačiareň, ktorá nastaví moje smerovanie
+
+00:26:08.960 --> 00:26:12.880
+ ako to, kam idú cesty, takže to skutočne vyleptáte
+
+00:26:12.880 --> 00:26:15.919
+ Chystám sa to skutočne vyleptať doma, chlape
+
+00:26:15.919 --> 00:26:20.159
+ to je mimo mňa jeff, je to naozaj to, čo zahŕňa chemikálie
+
+00:26:20.159 --> 00:26:23.679
+ je, ale je to naozaj jednoduchý proces, takže som ho našiel
+
+00:26:23.679 --> 00:26:26.880
+ urobil som veľa výskumov a tak som našiel aa
+
+00:26:26.880 --> 00:26:29.919
+ naozaj jednoduchý a jednoduchý spôsob, ako si vyrobiť vlastný plošný spoj
+
+00:26:29.919 --> 00:26:32.799
+ a to je to, čo budeme robiť, aby môj projekt pre budúci pravdepodobne a
+
+00:26:32.799 --> 00:26:35.600
+ pár mesiacov, pretože sa musím naučiť, ako sa to deje
+
+00:26:35.600 --> 00:26:39.520
+ funguje je navrhnúť obvodovú dosku, ktorú mám
+
+00:26:39.520 --> 00:26:43.120
+ nikdy predtým neurobil obvodovú dosku a potom synčeka
+
+00:26:43.120 --> 00:26:45.919
+ ideme to spájkovať dokopy a budeme si vyrábať svoje vlastné
+
+00:26:45.919 --> 00:26:50.960
+ zbytočná škatuľka, v ktorú dúfam, že tiež 3D škatuľku vytlačím, to je v pohode
+
+00:26:50.960 --> 00:26:56.480
+ jo, práve sa potápate priamo v i, keď robím niečo, čo mi nejde
+
+00:26:56.480 --> 00:27:00.320
+ a viete, že môj prístup je trochu iný, pretože som veľmi
+
+00:27:00.320 --> 00:27:03.520
+ do akoby rád sa najskôr niečo naučím
+
+00:27:03.520 --> 00:27:09.200
+ a potom zvýši moje investície do tohto procesu a ty si rád hovoril
+
+00:27:09.200 --> 00:27:13.679
+ o prechode priamo na tvorbu DPS, takže by som zálohoval, aby ste vedeli
+
+00:27:13.679 --> 00:27:16.799
+ ak si to myslíš hej, možno by som chcel mať možnosť vytvárať svoje vlastné obvody
+
+00:27:16.799 --> 00:27:20.399
+ a podobné veci, mojím východiskovým bodom je nepájivá pole, áno
+
+00:27:20.399 --> 00:27:25.440
+ a nepájivá pole vám umožňuje rozložiť okruh, ktorý ste navrhli alebo
+
+00:27:25.440 --> 00:27:28.559
+ ktoré ste stiahli ako plán okruhu um
+
+00:27:28.559 --> 00:27:32.399
+ z internetu alebo akokoľvek to máte, ktoré vám to umožnia položiť
+
+00:27:32.399 --> 00:27:36.799
+ von na v podstate falošnom PCB
+
+00:27:36.799 --> 00:27:41.039
+ , ktoré budú fungovať ako PCB, ale potom ich môžete jednoducho rozobrať a
+
+00:27:41.039 --> 00:27:46.399
+ odložte diely správne a je to lacné, veľmi lacné a naštartuje vás to
+
+00:27:46.399 --> 00:27:50.080
+ a ďalší krok pre mňa je takzvaná prototypová doska, aby ste mali
+
+00:27:50.080 --> 00:27:53.279
+ dosky s plošnými spojmi, ktoré majú všetky správne otvory, a
+
+00:27:53.279 --> 00:27:57.840
+ majú spájku ako body, ale nie je
+
+00:27:57.840 --> 00:28:02.080
+ vzájomné prepojenie medzi nimi, takže v skutočnosti vediete drôty alebo vy
+
+00:28:02.080 --> 00:28:05.760
+ napustiť trochu spájky napríklad medzi dvoma rôznymi kĺbmi
+
+00:28:05.760 --> 00:28:10.080
+ a robíš to tak, takže to je môj druhý krok, áno, potom by som sa pozrel na
+
+00:28:10.080 --> 00:28:14.720
+ možno pôjdete cestou skutočného leptania svojho vlastného
+
+00:28:14.720 --> 00:28:19.200
+ pcbs, pretože potom sa dostanete do ako chemické procesy
+
+00:28:19.200 --> 00:28:24.960
+ a ja som to neskúmal, ale hm, je to oveľa zložitejší proces, takže
+
+00:28:24.960 --> 00:28:27.919
+ Rád by som začal trochu jednoduchšie svoje prvé PCB i
+
+00:28:27.919 --> 00:28:32.080
+ postavené na nepájivej doske veľmi základné, ale navrhol som to správne
+
+00:28:32.080 --> 00:28:35.120
+ v poriadku a všetko je to, že to trvá päť voltov
+
+00:28:35.120 --> 00:28:38.880
+ signál a keď má päť voltov,
+
+00:28:38.880 --> 00:28:43.440
+ relé je zatvorené, takže má relé v poriadku, keď nemá päť voltov
+
+00:28:43.440 --> 00:28:47.520
+ relé sa otvorí, takže sa tak odpojí
+
+00:28:47.520 --> 00:28:51.440
+ dôvod, prečo som vytvoril, že je to účelová aplikácia, tak som ju aj vytvoril
+
+00:28:51.440 --> 00:28:56.000
+ na sporáku a kŕmenie piatimi voltami pochádza z
+
+00:28:56.000 --> 00:29:03.440
+ akékoľvek odhady akékoľvek odhady spc nie, je to ďalšia trojpísmenová skratka usb
+
+00:29:03.440 --> 00:29:07.360
+ usb usb ťahanie päťvoltového signálu z mikro kliešťa
+
+00:29:07.360 --> 00:29:12.399
+ router v poriadku, a tak potom v mikroškrtnutí som naprogramoval kód, ktorý povedal
+
+00:29:12.399 --> 00:29:17.039
+ že v podstate to umlčať, ak vypadne internet
+
+00:29:17.039 --> 00:29:20.559
+ zabiť napájanie na usb oh a tak potom
+
+00:29:20.559 --> 00:29:25.520
+ otvára relé a čo je ovládanie relé, ale napájanie môjho modemu
+
+00:29:25.520 --> 00:29:29.919
+ takže môj modem, ak vypadne internet, sa automaticky otočí
+
+00:29:29.919 --> 00:29:33.120
+ moje relé vypnuté
+
+00:29:33.120 --> 00:29:37.039
+ vpravo a počkajte päť sekúnd a potom znova zapnite napájanie, takže je to v podstate a
+
+00:29:37.039 --> 00:29:41.200
+ virtuálna verzia, vypli ste to a znova, pretože
+
+00:29:41.200 --> 00:29:43.679
+ čo robíš, keď si na internete, padne ti zástrčka
+
+00:29:43.679 --> 00:29:46.799
+ od okamihu, keď počkáte päť sekúnd, a znova ho zapojte a
+
+00:29:46.799 --> 00:29:50.240
+ viete osemkrát z desiatich, že sa to vráti a bude fungovať
+
+00:29:50.240 --> 00:29:54.559
+ správne, to bol obvod, ktorý som postavil, takže som ho raz postavil na prototypovej doske
+
+00:29:54.559 --> 00:29:58.240
+ nechal som to fungovať a práve som to spájkoval dokopy a je to veľmi veľmi jednoduché
+
+00:29:58.240 --> 00:30:00.799
+ obvod veľmi v pohode a fungoval skvele mám rád
+
+00:30:00.799 --> 00:30:04.720
+ to je super, takže nástroje, čo máš
+
+00:30:04.720 --> 00:30:08.080
+ ďaleko, kde si, dobre, ako som povedal, že som práve robil
+
+00:30:08.080 --> 00:30:13.760
+ výskum, ktorý sa uskutočnil minulý týždeň, takže som vo fáze nákupu
+
+00:30:13.760 --> 00:30:17.679
+ uh, takže máme všetky spájkovacie materiály, ktoré budem kupovať
+
+00:30:17.679 --> 00:30:21.919
+ chemikálie, ktoré som si už stiahol
+
+00:30:21.919 --> 00:30:25.600
+ za návrh DPS wow um
+
+00:30:25.600 --> 00:30:29.360
+ a mám súpravu komponentov, ktorá je na ceste so všetkým
+
+00:30:29.360 --> 00:30:33.039
+ rezistory a kondenzátory, jo, všetky tie veci, ktoré sú elegantné
+
+00:30:33.039 --> 00:30:36.559
+ tiež je to, že v dnešnej dobe myslím, že nemôžeš skutočne chodiť
+
+00:30:36.559 --> 00:30:39.039
+ do rozhlasovej chatrče, ako sme bývali schopní tam nie
+
+00:30:39.039 --> 00:30:43.679
+ stále existujú obchody ako tu v Barrie, máme jeden, ktorý sa volá seaal
+
+00:30:43.679 --> 00:30:47.039
+ čo je vynikajúci obchod, ktorý sa trochu podobá tej starej rozhlasovej chatrči, kde ste vy
+
+00:30:47.039 --> 00:30:50.399
+ vstúpte a je to, akoby som práve potreboval jeden kondenzátor, áno
+
+00:30:50.399 --> 00:30:52.880
+ a je to ako tu máš, vieš, že je to ako zásuvky
+
+00:30:52.880 --> 00:30:57.279
+ a zásuvky kondenzátorov a odporov a všetko ostatné diódy a čokoľvek
+
+00:30:57.279 --> 00:31:01.519
+ ale len zohnať súpravu za 20 dolárov, ktorá má
+
+00:31:01.519 --> 00:31:04.960
+ bežné veci a je to súprava, ktorá je dodávaná s
+
+00:31:04.960 --> 00:31:07.440
+ Nepájivá doska a je dodávaná s nepájivou doskou a tak
+
+00:31:07.440 --> 00:31:11.279
+ bola jedna z vecí je, či chcem ako áno, budem to navrhovať, ale časť
+
+00:31:11.279 --> 00:31:14.640
+ procesu plánovania je, ako ste povedali, pomocou informačného panela na zistenie
+
+00:31:14.640 --> 00:31:17.519
+ ako pôjdu obvody a bude to skvelé učenie
+
+00:31:17.519 --> 00:31:19.840
+ skúsenosť pre luka, pretože budú ako hej, toto je
+
+00:31:19.840 --> 00:31:23.200
+ ako to funguje a skúsme to a urobme to a potom
+
+00:31:23.200 --> 00:31:26.080
+ viete, že si to budeme môcť vyskúšať bez toho, aby sme si vyrobili vlastné kúsky
+
+00:31:26.080 --> 00:31:30.880
+ to je naozaj pekné, spomenuli ste tiež arduino a arduino je akési
+
+00:31:30.880 --> 00:31:34.159
+ akoby to bol ovládač, takže áno, viete
+
+00:31:34.159 --> 00:31:37.200
+ malina pi alebo iný jednodeskový počítač je pravda
+
+00:31:37.200 --> 00:31:41.200
+ skutočný počítač s operačným systémom a všetkým, čím je arduino podobné ako vy
+
+00:31:41.200 --> 00:31:45.519
+ stačí ho naprogramovať na vykonanie veľmi konkrétnej úlohy, je to pevný stav
+
+00:31:45.519 --> 00:31:48.960
+ a bude reagovať a myslím si, že je to tak
+
+00:31:48.960 --> 00:31:51.840
+ prečo by to arduino fungovalo naozaj dobre
+
+00:31:51.840 --> 00:31:55.679
+ uh pre zbytočnú škatuľku je, pretože je to ako
+
+00:31:55.679 --> 00:31:59.200
+ je to správne alebo nie, ak je zapnuté, urobte to
+
+00:31:59.200 --> 00:32:03.200
+ a potom sa to vypne, takže veľmi veľmi základné programovanie
+
+00:32:03.200 --> 00:32:09.919
+ digitálny zápis štyri čiarky ahoj ahoj bodkočiarka a potom sme tu
+
+00:32:09.919 --> 00:32:13.519
+ sa oneskorí o jednu sekundu, čo je tisíc milisekúnd
+
+00:32:13.519 --> 00:32:17.039
+ a potom tento riadok teraz skopírujeme
+
+00:32:17.039 --> 00:32:20.960
+ čo si myslíš, že vysoká znamená verzus nízka, čo tu uvediem
+
+00:32:20.960 --> 00:32:27.440
+ stačí hádať zapnúť alebo vypnúť áno, takže tak vyzerá môj obvod
+
+00:32:27.440 --> 00:32:32.399
+ a idem to jednoducho zapojiť do USB napájania, takže to nezapojím
+
+00:32:32.399 --> 00:32:36.240
+ počítač, ktorý chcem skutočne napájať z tohto zariadenia a zistiť, či je
+
+00:32:36.240 --> 00:32:40.840
+ spustí môj program a ak sa to stane, mali by sme vidieť toto svetlo
+
+00:32:40.840 --> 00:32:45.279
+ záblesk, ideme, ktorý je čistý každú sekundu, takže my
+
+00:32:45.279 --> 00:32:49.600
+ skutočne vytvoril obvod pomerne rýchlo a vytvoril
+
+00:32:49.600 --> 00:32:53.919
+ program, ktorý teraz hovorí tomuto svetlu, čo má robiť, a my sme to povedali len veľmi dobre
+
+00:32:53.919 --> 00:32:57.760
+ jednoducho zapnite a vypnite znova, ale ak ste
+
+00:32:57.760 --> 00:32:59.679
+ vytvoriť si vlastný okruh, ktorý musíte robiť radi
+
+00:32:59.679 --> 00:33:04.159
+ Musíte si to sami naprogramovať a prísť na to, ako na to
+
+00:33:04.159 --> 00:33:07.919
+ wow, chcem vidieť tento projekt ako nedokončenú prácu
+
+00:33:07.919 --> 00:33:11.840
+ Dobre, a potom uvidíš, ako sa to dá dohromady, znie to dobre
+
+00:33:11.840 --> 00:33:16.559
+ spomenuli sme tu komunitu na našej šou a na našom serveri sváru
+
+00:33:16.559 --> 00:33:20.320
+ najmä som sa zapojil do našej komunity
+
+00:33:20.320 --> 00:33:23.760
+ choďte dnu a podeľte sa o moje nápady na okruhy a áno
+
+00:33:23.760 --> 00:33:27.519
+ také veci a v našej komunite sú ľudia, ktorí sú spravodliví
+
+00:33:27.519 --> 00:33:32.559
+ ako sem hore, pokiaľ ide o ich schopnosti a pochopenie
+
+00:33:32.559 --> 00:33:36.320
+ druhy vecí, takže pre mňa bolo skutočne užitočné, ako aj
+
+00:33:36.320 --> 00:33:38.880
+ sa naučil, takže aj ja plne plánujem používať
+
+00:33:38.880 --> 00:33:42.640
+ Využite komunitu, pracujte so mnou cez chyby, áno, a ak ste jedným z tých ľudí, ktorí sa tu nachádzajú
+
+00:33:42.640 --> 00:33:46.159
+ komunita práve teraz len hej zdvihni ruku a povedz áno
+
+00:33:46.159 --> 00:33:48.480
+ pochopiť, ako všetko funguje, rád pomôžem
+
+00:33:48.480 --> 00:33:52.640
+ a uh a to je niečo, čo si myslím, že si myslím, že to bude naozaj pekné
+
+00:33:52.640 --> 00:33:54.320
+ funkciu pre show, rovnako ako sa naučíte
+
+00:33:54.320 --> 00:33:57.200
+ áno, určite nás informujte o tom jeffovi, určite by ma to zaujímalo
+
+00:33:57.200 --> 00:34:00.159
+ vedieť, ako veci idú, budem zverejňovať veci pozadu
+
+00:34:00.159 --> 00:34:06.320
+ scény zbytočná krabica akékoľvek iné, máte nejaké nápady, napriek tomu sa vzrušujem
+
+00:34:06.320 --> 00:34:09.520
+ keď vymýšľam ako keď na niečo myslím
+
+00:34:09.520 --> 00:34:13.200
+ už ste mali niektorý z tých okamihov, keď som ako keby som si skutočne prial?
+
+00:34:13.200 --> 00:34:16.240
+ mal niečo, čo by to urobilo, ale neexistuje
+
+00:34:16.240 --> 00:34:20.079
+ tu je 3D tlač pre mňa zaujímavá, pretože tvorím také veci
+
+00:34:20.079 --> 00:34:23.520
+ ešte neexistujem ii som si v skutočnosti nemyslel
+
+00:34:23.520 --> 00:34:27.520
+ pokiaľ ide o to, čo existuje a neexistuje
+
+00:34:27.520 --> 00:34:29.919
+ hm
+
+00:34:30.960 --> 00:34:34.000
+ nie, naozaj som si nemyslel, že som až tak prišiel s nejakými nápadmi
+
+00:34:34.000 --> 00:34:37.040
+ áno a podeľ sa o tie, je tu kopa vecí určite
+
+00:34:37.040 --> 00:34:43.679
+ jo, ako by som vždy chcel robiť, um, um, celodomnícky zvukový systém
+
+00:34:43.679 --> 00:34:48.879
+ ktorý spája až hm, poznáte naše zariadenie Amazon a podobne
+
+00:34:48.879 --> 00:34:52.079
+ že ale chcel by som mať senzory kde
+
+00:34:52.079 --> 00:34:56.320
+ keď kráčam z jednej miestnosti do druhej, pohybový senzor sa spustí a zavrie sa
+
+00:34:56.320 --> 00:34:59.760
+ vypnite reproduktory jednej miestnosti a pridajte ich tam, kam som práve išiel
+
+00:34:59.760 --> 00:35:02.000
+ to je oveľa pokročilejšie, ale to je pravdepodobne
+
+00:35:02.000 --> 00:35:05.119
+ Jediná vec, na ktorú si myslím, je miesto, kde to chcem urobiť, ale uvidíme sa hovoriť
+
+00:35:05.119 --> 00:35:08.960
+ o tom a potom si myslím, že v poriadku, môžete použiť pasívny infračervený senzor
+
+00:35:08.960 --> 00:35:14.640
+ áno, ktorý sa používa v senzoroch pohybu, môžete použiť laserový senzor, ale
+
+00:35:14.640 --> 00:35:19.200
+ pir je veľmi lacný, áno, je to len malý senzor, ktorý vyzerá ako
+
+00:35:19.200 --> 00:35:22.880
+ Dobre, bol tam pohyb, urob niečo, áno, aby si mohol niečo vytvoriť
+
+00:35:22.880 --> 00:35:27.520
+ opäť s relé, ktoré ovláda iba to, či reproduktor má
+
+00:35:27.520 --> 00:35:31.599
+ dokončený okruh alebo nie, takže ak by to bol iba a
+
+00:35:31.599 --> 00:35:36.160
+ veľa reproduktorov pripojených cez zosilňovač, môžete mať nastavené relé
+
+00:35:36.160 --> 00:35:40.000
+ so senzormi pir, ktoré by ste boli schopní ovládať pohybom
+
+00:35:40.000 --> 00:35:44.160
+ áno, dobre a ak sa 10 minút nebudete pohybovať, vypnite reproduktor
+
+00:35:44.160 --> 00:35:45.760
+ automaticky alebo niečo také áno
+
+00:35:45.760 --> 00:35:49.200
+ presne tak, ako tieto druhy nápadov, ako napríklad toľko vecí, ktoré môžete
+
+00:35:49.200 --> 00:35:51.359
+ urob, keď začneš rozumieť a potom
+
+00:35:51.359 --> 00:35:55.839
+ je to celá jeho odvrátená strana, kde sa niečo zlomí a môžete to napraviť, áno
+
+00:35:55.839 --> 00:35:59.200
+ to je dobrý pocit a hotovo, už sme to dosiahli
+
+00:35:59.200 --> 00:36:02.000
+ jo pekné, takže vieš, že máš tú malú batériu
+
+00:36:02.000 --> 00:36:07.280
+ testeri uh chceli skontrolovať nabitie áno, takže sme mali jednu z nich a je
+
+00:36:07.280 --> 00:36:09.200
+ vtipné, keď môj syn staval svoju kalkulačku
+
+00:36:09.200 --> 00:36:12.560
+ neboli sme si istí, či batérie fungujú a nič sme nedostali
+
+00:36:12.560 --> 00:36:15.760
+ Som rád, že je to zvláštne, že sa nám zvyčajne nedarí, aj keď je to mŕtve
+
+00:36:15.760 --> 00:36:18.640
+ vyskočí do červenej, ale nič nebolo, tak sme to otvorili
+
+00:36:18.640 --> 00:36:22.960
+ Ukazuje sa, že skutočné spojenie sa rozpadlo
+
+00:36:22.960 --> 00:36:27.359
+ Teraz nemám potuchy, áno a môj syn je ako ach, môžem to napraviť a
+
+00:36:27.359 --> 00:36:30.240
+ opravil sme to dali dokopy a potom my a funguje to a je to ako oh
+
+00:36:30.240 --> 00:36:34.000
+ áno, to je vybitá batéria, áno, môžem s tým súvisieť aj ja
+
+00:36:34.000 --> 00:36:38.160
+ vankúšový reproduktor pre podcasty v poriadku a uh, pretože to viete
+
+00:36:38.160 --> 00:36:40.880
+ pripojený káblom k telefónu sa vytiahne
+
+00:36:40.880 --> 00:36:45.119
+ jo a hneď sa to vytiahlo, takže je to taká jednoduchá vec, ale ja úplne čo
+
+00:36:45.119 --> 00:36:48.720
+ urobil som nekúpil ďalší žiadny nie nie vzal som
+
+00:36:48.720 --> 00:36:52.480
+ rozobral to a znovu som to spájkoval a vystužil
+
+00:36:52.480 --> 00:36:56.160
+ aby sa to už nezopakovalo, ó, krásne, urobilo to lepšie, ako to on bol
+
+00:36:56.160 --> 00:37:00.240
+ obrátil svoju myseľ k veciam ako e-waste áno a je ako keby niekto
+
+00:37:00.240 --> 00:37:04.960
+ sa pravdepodobne zbavia svojich televíznych alebo počítačových monitorov
+
+00:37:04.960 --> 00:37:08.240
+ stále to funguje ocko, len sa niečo vnútri zlomilo
+
+00:37:08.240 --> 00:37:12.400
+ je ako by som to mohol napraviť som ako yeah myslíš na to a tak sú jeho kolesá
+
+00:37:12.400 --> 00:37:15.599
+ otočil sa ako posledný a on akoby robil tieto veci a potom predával
+
+00:37:15.599 --> 00:37:20.160
+ im 12 rokov je to kariéra
+
+00:37:20.160 --> 00:37:22.960
+ v rade
+
+00:37:23.599 --> 00:37:27.359
+ uh, akoby bolo skutočne cenné mať tieto schopnosti
+
+00:37:27.359 --> 00:37:30.960
+ tak ho vycvičím na najbližšie uh no má 12. tak dovnútra
+
+00:37:30.960 --> 00:37:38.560
+ osem šesť rokov idem do dôchodku mal som prísť monitor neviem
+
+00:37:38.560 --> 00:37:42.960
+ možno 23 palcový alebo 24 palcový širokouhlý krásny monitor
+
+00:37:42.960 --> 00:37:47.359
+ vošiel ako elektronický odpad, a preto sa mi páči
+
+00:37:47.359 --> 00:37:50.720
+ pozriem sa na to a tak sme sa na to s dcérou pozreli
+
+00:37:50.720 --> 00:37:57.280
+ a tam bol jediný kondenzátor, ktorý bol spálený, tak som šiel online a
+
+00:37:57.280 --> 00:37:59.920
+ Kúpil som jeden z kondenzátorov, ktoré predávajú v baleniach
+
+00:37:59.920 --> 00:38:03.599
+ tri a bolo to dvanásť dolárov, takže za 12
+
+00:38:03.599 --> 00:38:07.760
+ dostali sme balíček troch, nahradili sme jeden z tých kondenzátorov a ten monitor je
+
+00:38:07.760 --> 00:38:13.520
+ teraz sedím na stole mojej dcéry, bože, to je úžasné, je to úžasné
+
+00:38:13.520 --> 00:38:16.720
+ a má úplnú pravdu, ale nielen, že dokážeš opraviť veci jeff
+
+00:38:16.720 --> 00:38:19.920
+ povedzme, že niečo príde do elektronického odpadu, alebo viete, že niečo nájdete na
+
+00:38:19.920 --> 00:38:22.320
+ kraj cesty, ktorú niekto len zahodil, pretože nemôže
+
+00:38:22.320 --> 00:38:26.480
+ vedieť, ako to opraviť, hm a možno, ak to bude viac
+
+00:38:26.480 --> 00:38:30.079
+ v mnohých prípadoch tiež nákladné ako nákup nového
+
+00:38:30.079 --> 00:38:35.119
+ hm môžete, aj keď to nedokážete napraviť, môžete robiť takzvané odspájkovanie
+
+00:38:35.119 --> 00:38:39.440
+ máte pravdu, aby ste z toho mohli odstrániť všetky dobré súčasti a
+
+00:38:39.440 --> 00:38:43.119
+ vložte ich do organizéra zásuviek áno, aby ste potom mohli mať svoje vlastné rádio
+
+00:38:43.119 --> 00:38:46.880
+ chatrč doma, kde máte zásuvky všetkých týchto rôznych častí
+
+00:38:46.880 --> 00:38:50.079
+ a potom, keď sa niečo pokazí, nemusíte minúť 12
+
+00:38:50.079 --> 00:38:53.280
+ online, aby som ich kúpil, bol by som nevedel, že sa do toho dostane
+
+00:38:53.280 --> 00:38:57.040
+ pretože v lete som mal asi štyri počítače
+
+00:38:57.040 --> 00:39:00.320
+ pár projektorov, zobrali sme im všetok elektronický odpad
+
+00:39:00.320 --> 00:39:03.760
+ takže je to ako keby som ich mohol demontovať, ale určite ich mám
+
+00:39:03.760 --> 00:39:07.119
+ no dobre, časti, v ktorých žijeme, a učíme sa presne
+
+00:39:07.119 --> 00:39:10.960
+ veľmi dobre, informujte nás o tom definitívne a hej komentár nižšie nám to povedzte
+
+00:39:10.960 --> 00:39:13.359
+ o niektorých zneužitiach, ktoré ste mali
+
+00:39:13.359 --> 00:39:18.560
+ uh, čo sa týka týchto druhov tém a či sú, ak sú
+
+00:39:18.560 --> 00:39:20.880
+ niečo, čo vás zaujíma, do čoho ste sa nikdy nedostali
+
+00:39:20.880 --> 00:39:24.720
+ hej, komentár aj nižšie, radi by sme od vás počuli a radi by sme vás mali
+
+00:39:24.720 --> 00:39:27.920
+ ako súčasť tohto procesu, keď sa jeff učí
+
+00:39:27.920 --> 00:39:32.079
+ pretože sa tiež učím a čoraz viac sa dostávam do týchto typov
+
+00:39:32.079 --> 00:39:36.800
+ ako sú opravy komponentov a dosky s plošnými spojmi a všetko ostatné
+
+00:39:36.800 --> 00:39:41.359
+ je to veľká zábava, áno, je to vynikajúci koníček a skvelá kariéra, ak
+
+00:39:41.359 --> 00:39:45.200
+ naozaj to chcem urobiť tiež, takže je to naozaj dobré pre tvojho syna, ktorý by som rád počul
+
+00:39:45.200 --> 00:39:49.680
+ ako ho to baví, takže keď je hádam hm
+
+00:39:49.680 --> 00:39:53.359
+ 13 plus, takže budúci rok ho môžete priviesť do štúdia
+
+00:39:53.359 --> 00:39:56.560
+ a môže nám ukázať, ako sa má
+
+00:39:56.560 --> 00:40:00.480
+ znie dobre veľmi dobre, aby sa stalo, musíme ísť do redakcie
+
+00:40:00.480 --> 00:40:02.960
+ becca je tu s našimi najobľúbenejšími správami za tento týždeň
+
+00:40:02.960 --> 00:40:08.800
+ tu je to, čo sa chystá v kategórii 5 bodových televíznych správ
+
+00:40:08.800 --> 00:40:12.000
+ hackeri používajú závažnú chybu systému Windows na kompromitáciu
+
+00:40:12.000 --> 00:40:17.280
+ neopravené servery, tri balíčky javascript boli odstránené z npm
+
+00:40:17.280 --> 00:40:22.560
+ portál obsahujúci škodlivý kód nokia dostal za úlohu zostaviť a
+
+00:40:22.560 --> 00:40:27.040
+ nová 4g celulárna sieť na mesiaci nových 80
+
+00:40:27.040 --> 00:40:32.240
+ wattové bezdrôtové nabíjanie od spoločnosti xiaomi vyfukuje našu myseľ a
+
+00:40:32.240 --> 00:40:36.240
+ bol vydaný výpočtový modul raspberry pi 4
+
+00:40:36.240 --> 00:40:40.720
+ dajte mi vedieť špecifikácie a ako to mení veci pre priemyselnú iot
+
+00:40:40.720 --> 00:40:44.000
+ držať sa všetkých podrobností a kryptomeny tohto týždňa
+
+00:40:44.000 --> 00:40:48.640
+ prichádzajú toto je redakčná miestnosť s bodovou televíziou kategórie 5
+
+00:40:48.640 --> 00:40:52.079
+ pokrytie špičkových technologických príbehov tohto týždňa miernym linuxom
+
+00:40:52.079 --> 00:40:54.480
+ zaujatosť
+
+00:40:56.240 --> 00:41:00.319
+ z redakcie som becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ hackeri používajú závažnú chybu systému Windows na kompromitáciu
+
+00:41:03.920 --> 00:41:07.920
+ neopravené servery jednou z najdôležitejších zraniteľností systému Windows
+
+00:41:07.920 --> 00:41:10.400
+ zverejnené v tomto roku je pod aktívnym útokom
+
+00:41:10.400 --> 00:41:14.480
+ hackermi, ktorí sa snažia backdoor servery, ktoré ukladajú prihlasovacie údaje pre každého
+
+00:41:14.480 --> 00:41:18.480
+ používateľský a administratívny účet v sieti
+
+00:41:18.480 --> 00:41:23.119
+ vedci dali tejto zraniteľnosti názov xerologon, pretože útoky fungujú
+
+00:41:23.119 --> 00:41:27.200
+ posielanie reťazcov núl v sérii správ, ktoré používajú sieť
+
+00:41:27.200 --> 00:41:30.720
+ prihlasovací protokol, na ktorý sa servery Windows spoliehajú pre server
+
+00:41:30.720 --> 00:41:34.560
+ rôzne úlohy vrátane umožnenia koncovým používateľom prihlásiť sa
+
+00:41:34.560 --> 00:41:38.560
+ na sieťové xero prihlásenie, pretože došlo k chybe zabezpečenia
+
+00:41:38.560 --> 00:41:41.280
+ dabovaný si minulý mesiac získal širokú pozornosť
+
+00:41:41.280 --> 00:41:44.000
+ keď firma, ktorá to objavila, povedala, že by mohla dať útočníkom
+
+00:41:44.000 --> 00:41:48.079
+ okamžitý prístup k aktívnym adresárom, ktoré správcovia používajú na vytváranie
+
+00:41:48.079 --> 00:41:52.480
+ mazať a spravovať sieťové účty aktívnych adresárov a domény
+
+00:41:52.480 --> 00:41:55.599
+ ovládače, na ktorých pracujú, patria medzi najžiadanejšie ceny
+
+00:41:55.599 --> 00:42:00.480
+ pri hackovaní, pretože ak boli raz unesení, umožňujú útočníkom spustiť kód a
+
+00:42:00.480 --> 00:42:03.839
+ munícia na všetkých pripojených strojoch
+
+00:42:03.839 --> 00:42:09.280
+ opravila bezpečnostnú chybu v auguste v piatok kevin beaumont
+
+00:42:09.280 --> 00:42:12.480
+ pracuje ako nezávislý výskumný pracovník
+
+00:42:12.480 --> 00:42:16.480
+ v príspevku na blogu uviedol, že zistil útoky na honeypot, ktorý používa na uchovávanie
+
+00:42:16.480 --> 00:42:19.680
+ krok za útokmi, ktoré hackeri používajú v systéme Windows
+
+00:42:19.680 --> 00:42:24.160
+ divoký, keď jeho vábiaci server nebol opravený, útočníci boli schopní použiť a
+
+00:42:24.160 --> 00:42:27.680
+ skript powerhell na úspešnú zmenu hesla správcu
+
+00:42:27.680 --> 00:42:31.920
+ a backdoor na serveri beaumont uviedol, že sa útok objavil
+
+00:42:31.920 --> 00:42:36.480
+ byť úplne skriptovaný so všetkými príkazmi, ktoré sú hotové do niekoľkých sekúnd
+
+00:42:36.480 --> 00:42:40.160
+ s tým, že útočníci nainštalovali zadné vrátka umožňujúce diaľkové ovládanie
+
+00:42:40.160 --> 00:42:44.079
+ administratívny prístup k zariadeniam v jeho falošnej sieti
+
+00:42:44.079 --> 00:42:48.400
+ útočníci tiež povolili vzdialenú plochu, aby mohli pokračovať
+
+00:42:48.400 --> 00:42:53.200
+ mať vzdialený prístup, aj keď správca server neskôr opraví
+
+00:42:53.200 --> 00:42:57.520
+ ľudia bez autentického overenia môžu využiť zneužitie na získanie domény
+
+00:42:57.520 --> 00:43:00.800
+ administratívne údaje, pokiaľ majú útočníci schopnosť
+
+00:43:00.800 --> 00:43:05.839
+ Windows vytvoriť nadviazanie tcp spojení so zraniteľným radičom domény v systéme Windows
+
+00:43:05.839 --> 00:43:10.160
+ v niektorých prípadoch môžu útočníci použiť samostatnú chybu zabezpečenia, aby sa uchytili vo vnútri
+
+00:43:10.160 --> 00:43:13.359
+ sieť a potom zneužite nulové prihlásenie na prevzatie
+
+00:43:13.359 --> 00:43:17.599
+ radič domény si myslím, že je dobrým príkladom spôsobu, ako
+
+00:43:17.599 --> 00:43:20.319
+ tieto typy skriptov sa dostanú do sietí
+
+00:43:20.319 --> 00:43:27.839
+ sú zastarané počítače v sieti a tiež podvody v oblasti sociálneho inžinierstva
+
+00:43:27.839 --> 00:43:31.040
+ počujete veľa informácií o tom, že pravdepodobne dostávate tieto e-maily
+
+00:43:31.040 --> 00:43:34.800
+ ktoré sa vás snažia presvedčiť, aby ste postupovali ďalej
+
+00:43:34.800 --> 00:43:38.319
+ zadanie poverenia alebo podobne
+
+00:43:38.319 --> 00:43:44.720
+ riziko, ktoré podstupujeme, a smutný prípad, ktorý vidím ako
+
+00:43:44.720 --> 00:43:48.880
+ v tom je, že niekedy to ľudia myslia dobre
+
+00:43:48.880 --> 00:43:52.319
+ Ten počítač nemusím aktualizovať, pretože je v zadnej miestnosti, nikto
+
+00:43:52.319 --> 00:43:55.680
+ naozaj to používa, alebo áno, potrebujeme tento
+
+00:43:55.680 --> 00:43:58.800
+ stále mám Windows XP, pretože máme problémy s jedným z našich
+
+00:43:58.800 --> 00:44:02.880
+ tlačiarne, ak nie, stále vidíme veľa Windows 7
+
+00:44:02.880 --> 00:44:06.960
+ systémy a to je tragédia, ak máte
+
+00:44:06.960 --> 00:44:10.960
+ Windows 7 alebo Windows XP vo vašej sieti to jednoducho otočte
+
+00:44:10.960 --> 00:44:13.839
+ preč, zbav sa toho, jo, vec je taká
+
+00:44:13.839 --> 00:44:20.480
+ je s týmito systémami, takže Microsoft má niečo, čo nazývame eol alebo koniec životnosti uh
+
+00:44:20.480 --> 00:44:24.240
+ ukončila životnosť týchto operačných systémov
+
+00:44:24.240 --> 00:44:27.839
+ takže povedali, že musíte upgradovať na Windows 10. no nechcem upgradovať
+
+00:44:27.839 --> 00:44:32.000
+ do Windows 10 mám rád svoje Windows 7. Rozumiem tomu a rešpektujem to
+
+00:44:32.000 --> 00:44:37.119
+ tu sú však problémoví hackeri
+
+00:44:37.119 --> 00:44:41.599
+ teraz môžu tieto operačné systémy využívať
+
+00:44:41.599 --> 00:44:45.839
+ a keď to robia, keď nájdu zneužitie
+
+00:44:45.839 --> 00:44:48.960
+ stane sa pár vecí, ktoré sa stanú
+
+00:44:48.960 --> 00:44:55.520
+ buď tieto zneužitia rozdajú alebo predajú, alebo sú len prepustené
+
+00:44:55.520 --> 00:45:01.520
+ verejnosti, či už prostredníctvom temného webu alebo dokonca na stránkach github
+
+00:45:01.520 --> 00:45:07.839
+ ako bezpečnostný výskum a tak teraz títo hackeri, ak chcete, pôjdeme
+
+00:45:07.839 --> 00:45:11.599
+ nazvať ich tak, ale reálne v mnohých prípadoch sú to, čo my voláme
+
+00:45:11.599 --> 00:45:16.800
+ skriptové mačičky a to sú hm
+
+00:45:16.800 --> 00:45:21.680
+ ani ako hackeri áno, ale nemusia mať veľa vedomostí, pretože
+
+00:45:21.680 --> 00:45:28.160
+ zneužitie je verejne správne známe a pochopené, ak
+
+00:45:28.160 --> 00:45:32.319
+ pre operačný systém sú k dispozícii exploity
+
+00:45:32.319 --> 00:45:36.880
+ Čo očakávame, že sa stane, očakávame, že dodávateľ operačného systému Microsoft v
+
+00:45:36.880 --> 00:45:41.200
+ v tomto prípade opraviť to zneužitie
+
+00:45:41.200 --> 00:45:44.560
+ a to je prípad okien 10. bohužiaľ
+
+00:45:44.560 --> 00:45:49.040
+ tie, ktoré sú staré, to v prípade operačného systému eol niekedy neplatí
+
+00:45:49.040 --> 00:45:54.079
+ Počujeme, dobre, nepotrebujem podporu. Spoločnosť Microsoft ukončila podporu, ktorá je
+
+00:45:54.079 --> 00:45:57.440
+ to, čo sme počuli, áno, ukončili podporu systému Windows 7. skončili
+
+00:45:57.440 --> 00:46:01.920
+ podpora pre Windows XP Oh, ale nikdy som nemusel volať podporu
+
+00:46:01.920 --> 00:46:04.640
+ zvládnem to, že nie sú to, o čom sú
+
+00:46:04.640 --> 00:46:06.640
+ vôbec hovoria o tom, čo hovoria
+
+00:46:06.640 --> 00:46:12.640
+ neopravia opravy, na ktorých záleží, na čom záleží, na tom nezáleží
+
+00:46:12.640 --> 00:46:16.160
+ aké závažné sú, nezáleží na tom, aké ľahké sú
+
+00:46:16.160 --> 00:46:20.079
+ využívať, aby ste mali v sieti počítač so systémom Windows 7 dobre
+
+00:46:20.079 --> 00:46:26.319
+ dávate vstup jednému z týchto hackerov, ktorí ho ani nemajú
+
+00:46:26.319 --> 00:46:31.040
+ byť veľmi dobrý v hackovaní, pretože exploity sú verejne známe
+
+00:46:31.040 --> 00:46:36.240
+ Áno, niekedy sú súčasťou nástrojov, niekedy si môžu jednoducho stiahnuť zadarmo
+
+00:46:36.240 --> 00:46:41.440
+ nástroj a môžu povedať, že chcem pomocou jednej kontroly využiť Windows 7
+
+00:46:41.440 --> 00:46:46.400
+ a tak sa dostanú do krabice so systémom Windows 7 alebo oklamali jedného z vašich zamestnancov
+
+00:46:46.400 --> 00:46:50.880
+ aj keď len niekto vzadu pracuje v sklade
+
+00:46:50.880 --> 00:46:55.119
+ niekoho podviedli, aby otvoril súbor, ktorý mu teraz umožňuje prístup k súboru
+
+00:46:55.119 --> 00:46:59.359
+ Windows 7 stroj Windows XP stroj alebo stroj v zadnej miestnosti
+
+00:46:59.359 --> 00:47:03.359
+ na tom nezáleží a tu sa učíme ten Microsoft
+
+00:47:03.359 --> 00:47:08.400
+ servery majú teraz exploit, pokiaľ
+
+00:47:08.400 --> 00:47:13.599
+ zlomyseľná strana môže získať prístup k ľubovoľnému počítaču v sieti
+
+00:47:13.599 --> 00:47:20.480
+ teraz môžu získať prístup správcu domény k celej sieti
+
+00:47:20.480 --> 00:47:25.359
+ teraz strašidelné, vaše počítače so systémom Windows 10 už nie sú
+
+00:47:25.359 --> 00:47:31.440
+ bezpečné, to je správne, pretože ste im dali prístup do vašej siete, akoby
+
+00:47:31.440 --> 00:47:39.200
+ sú správcom domény, ach len vidíme, že práve tam sú len zlé správy
+
+00:47:39.200 --> 00:47:42.319
+ ale je to zlá správa, prečo je ransomvér vecou
+
+00:47:42.319 --> 00:47:46.400
+ pretože čo robia, teraz sú v poriadku, získal som prístup k tejto sieti
+
+00:47:46.400 --> 00:47:49.599
+ Chystám sa predať na tmavom webe prístup do tejto siete
+
+00:47:49.599 --> 00:47:56.640
+ toto vidíte s mestami a inými mestami
+
+00:47:56.640 --> 00:48:00.000
+ bolo to pôvodné mačiatko, ktoré to urobilo, čo?
+
+00:48:00.000 --> 00:48:03.680
+ on len oni chcú, aby sa chceli dostať dovnútra
+
+00:48:03.680 --> 00:48:07.119
+ nainštalovať ich softvér a dostať sa von a potom predať prístup
+
+00:48:07.119 --> 00:48:11.040
+ má to pravdu, pretože sú to rýchle peniaze, tak prečo to ľudia robia pre peniaze
+
+00:48:11.040 --> 00:48:15.119
+ a tak to robia, takže ehm, musíš
+
+00:48:15.119 --> 00:48:18.319
+ udržuje veci v aktualizovanom stave, aby ste vedeli, že je to len rýchla myšlienka
+
+00:48:18.319 --> 00:48:22.079
+ premýšľať hej, ak máte vo svojej sieti zastarané stroje, musíte sa dostať
+
+00:48:22.079 --> 00:48:25.599
+ stiahnite ich a nechajte svojich zamestnancov vyškoliť v oblasti kybernetiky
+
+00:48:25.599 --> 00:48:29.119
+ bezpečnostné postupy chápu, čo sú to phishingové podvody
+
+00:48:29.119 --> 00:48:32.720
+ pretože viete dobre, niekto klikol na odkaz a teraz jeho
+
+00:48:32.720 --> 00:48:34.880
+ napadnuté počítače, ale ich počítač je
+
+00:48:34.880 --> 00:48:41.839
+ vo vašej sieti, ale dostal som polovicu peňazí tohto princa
+
+00:48:41.839 --> 00:48:45.359
+ to je úplne iný červ, jeff
+
+00:48:45.359 --> 00:48:50.000
+ ale myslím tým, že keď sa jedná o tieto veci, musíš sa pozrieť na svoj systém a povedať
+
+00:48:50.000 --> 00:48:52.559
+ ach nechcem stráviť sedem osem
+
+00:48:52.559 --> 00:48:55.599
+ sto dolárov za nový počítač, s aktualizáciou tohto by som sa neobával
+
+00:48:55.599 --> 00:49:00.000
+ nakoniec utratíte viac z dlhodobého hľadiska uh alebo z krátkodobého hľadiska
+
+00:49:00.000 --> 00:49:05.040
+ hm nie z dlhodobého hľadiska, ak nemáte svoj systém opravený, pretože raz
+
+00:49:05.040 --> 00:49:09.200
+ získajú prístup ku všetkému, kde by ste mohli byť dole aj vonku, ale a i
+
+00:49:09.200 --> 00:49:11.760
+ myslieť, keď majú prístup ku všetkému i
+
+00:49:11.760 --> 00:49:13.760
+ si myslím, že je dôležité si to uvedomiť
+
+00:49:13.760 --> 00:49:20.400
+ že jeden vstupný bod sa stane prístupom ku všetkému, takže strávte pár stovák
+
+00:49:20.400 --> 00:49:24.160
+ doláre, získaj nový počítač, ušetri sa, neviem, čo to znamená
+
+00:49:24.160 --> 00:49:27.599
+ Myslím, že je to iné, je to iné pre každý prípad, áno, mal som jednu osobu
+
+00:49:27.599 --> 00:49:30.800
+ dnes kto volal a povedal, že mám jeden počítač so systémom Windows 7
+
+00:49:30.800 --> 00:49:33.920
+ Nechcem to upgradovať, pretože to jednoducho funguje
+
+00:49:33.920 --> 00:49:38.400
+ takže tu je vysvetlenie a tu sa s nami becca podelila o príbeh
+
+00:49:38.400 --> 00:49:43.200
+ to nám jednoducho hovorí, že všetko, čo potrebujú, je prístup k tomuto jednému počítaču
+
+00:49:43.200 --> 00:49:47.599
+ a teraz majú prístup ku všetkým počítačom vašich počítačov a nie
+
+00:49:47.599 --> 00:49:52.240
+ rovnako ako samba, nie spôsobom, ktorý je ako priateľský a dúfajme, že oni
+
+00:49:52.240 --> 00:49:55.520
+ nenájdete na nich nijaké spôsoby do zadných dverí
+
+00:49:55.520 --> 00:49:59.200
+ počítače, na ktorých nemajú prihlasovacie údaje správcu
+
+00:49:59.200 --> 00:50:03.119
+ vašej sieti, aby mohli robiť čokoľvek
+
+00:50:03.119 --> 00:50:07.280
+ to je pravda všetko, čo chcú, keď si myslím na môj dom
+
+00:50:07.280 --> 00:50:10.880
+ Myslím, že som skončil, myslím, že mám sedem
+
+00:50:10.880 --> 00:50:15.520
+ zariadenia okrem telefónov a tabletov a podobne, ktoré sú pripojené
+
+00:50:15.520 --> 00:50:18.960
+ nechcem, aby k tomu mali prístup
+
+00:50:18.960 --> 00:50:21.200
+ áno, jednoducho sa nemôžem dosť stresovať, aj keď jeff
+
+00:50:21.200 --> 00:50:26.160
+ Myslím tým, že pokiaľ ide o podnikanie, tak skôr domáci používateľ, ale
+
+00:50:26.160 --> 00:50:33.119
+ akonáhle sú v nich, nemôžete, že ste skončili, pretože teraz nemôžete
+
+00:50:33.119 --> 00:50:36.240
+ vypnite ten stroj so systémom Windows, že so systémom Windows 7 už nie sú
+
+00:50:36.240 --> 00:50:40.319
+ do všetkého, tak čo robíš, všetko nahrad
+
+00:50:40.319 --> 00:50:44.240
+ každý počítač vymazať, pretože neviete, aké nástroje
+
+00:50:44.240 --> 00:50:50.079
+ nainštalovali, že je to drahé, áno, takže do toho nespadajte
+
+00:50:50.079 --> 00:50:53.280
+ každopádne je to zlé zneužitie, to je naozaj vážny človek, dúfam
+
+00:50:53.280 --> 00:50:56.720
+ zdôraznili sme to dosť na to, aby ste pochopili, že je to zlé
+
+00:50:56.720 --> 00:51:02.720
+ takže sa uistite, či sú vaši správcovia siete hore a hore a či im rozumejú
+
+00:51:02.720 --> 00:51:05.520
+ veci a že ste chránení a v bezpečí
+
+00:51:05.520 --> 00:51:09.920
+ proti týmto druhom hrozieb, v poriadku, vrátime sa do beca
+
+00:51:09.920 --> 00:51:13.920
+ tri porty javascript boli odstránené z portálu npm pre
+
+00:51:13.920 --> 00:51:18.000
+ obsahujúci škodlivý kód podľa odporúčaní od mpm
+
+00:51:18.000 --> 00:51:21.440
+ bezpečnostný tím otvoria tri knižnice javascript
+
+00:51:21.440 --> 00:51:24.480
+ škrupiny na počítačoch vývojárov, ktorí importovali balíčky
+
+00:51:24.480 --> 00:51:29.200
+ do ich projektov škrupiny umožňujú aktérom hrozieb pripojiť sa na diaľku k
+
+00:51:29.200 --> 00:51:33.520
+ infikovaný počítač a vykonávať škodlivé operácie npm
+
+00:51:33.520 --> 00:51:37.920
+ bezpečnostný tím uviedol, že škrupiny nezávisia od konkrétneho operačného systému
+
+00:51:37.920 --> 00:51:41.760
+ a mohli by byť použité na kompromitáciu systému Windows linux freebsd
+
+00:51:41.760 --> 00:51:46.960
+ openbsd a ďalšie systémy boli všetky tri balíky nahrané do
+
+00:51:46.960 --> 00:51:50.880
+ portál NPM v roku 2018 a každý z nich mal stovky
+
+00:51:50.880 --> 00:51:55.839
+ na stiahnutie od tej doby sú názvy balíkov plutovs dash
+
+00:51:55.839 --> 00:52:01.920
+ klient slack dash nodetest199 a nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ bezpečnostný tím NPM povedal, že každý počítač, ktorý má toto
+
+00:52:07.119 --> 00:52:10.800
+ nainštalovaný alebo spustený balík by sa mal považovať za úplne ohrozený
+
+00:52:10.800 --> 00:52:15.280
+ všetky tajomstvá a kľúče uložené v danom počítači by sa mali okamžite striedať
+
+00:52:15.280 --> 00:52:20.559
+ z iného počítača varujú, že balík by mal byť odstránený, ale ako
+
+00:52:20.559 --> 00:52:24.160
+ úplnú kontrolu nad počítačom mohla mať externá entita
+
+00:52:24.160 --> 00:52:27.760
+ neexistuje záruka, že odstránením balíka odstránite všetky škodlivé súbory
+
+00:52:27.760 --> 00:52:32.079
+ softvér vyplývajúci z jeho inštalácie mpm
+
+00:52:32.079 --> 00:52:36.079
+ bezpečnostní pracovníci pravidelne skenujú svoju zbierku knižníc javascript
+
+00:52:36.079 --> 00:52:41.839
+ považované za najväčšie úložisko balíkov pre akýkoľvek programovací jazyk
+
+00:52:41.839 --> 00:52:46.079
+ zatiaľ čo na svojej chate nemôžem dosiahnuť dobré pokrytie bunkami
+
+00:52:46.079 --> 00:52:52.240
+ nokia spolupracuje s nasa na prinesení 4g na Mesiac nasa ciele misie artemis
+
+00:52:52.240 --> 00:52:56.559
+ ustanoviť dlhodobú prítomnosť človeka na Mesiaci ako krok
+
+00:52:56.559 --> 00:53:01.040
+ kameň smerom ku kolonizácii Marsu a ako začať, nasa je
+
+00:53:01.040 --> 00:53:05.280
+ rozšírenie 370 miliónov dolárov na 14 spoločností
+
+00:53:05.280 --> 00:53:08.400
+ poskytnúť technológiu pre program
+
+00:53:08.400 --> 00:53:12.400
+ od robotiky po výrobu energie a dokonca až po kryogeniku
+
+00:53:12.400 --> 00:53:16.240
+ ale dáva zmysel, že tieto tímy budú musieť byť schopné komunikovať s
+
+00:53:16.240 --> 00:53:20.079
+ materskej planéte bude navrhnutá nová sieť
+
+00:53:20.079 --> 00:53:23.760
+ špeciálne pre mesačné podmienky schopné odolávať extrémom
+
+00:53:23.760 --> 00:53:28.559
+ teplotné posuny a žiarenie bude technológia využívať aj malé články
+
+00:53:28.559 --> 00:53:32.800
+ technológia, ktorá ako už názov napovedá, je podstatne menšia ako vysoká
+
+00:53:32.800 --> 00:53:37.599
+ bunkové veže, ktoré tu na zemi zvyknú vidieť, tiež používajú oveľa menej
+
+00:53:37.599 --> 00:53:41.200
+ napájanie je v pláne na uskutočnenie mesačného pristávača
+
+00:53:41.200 --> 00:53:44.480
+ komunikačný systém 4g na mesačný povrch
+
+00:53:44.480 --> 00:53:50.400
+ v roku 2022 bolo laboratóriám spoločnosti Nokia pridelených 14,1 milióna dolárov
+
+00:53:50.400 --> 00:53:55.119
+ ich súčasťou je nová technológia bezdrôtového nabíjania s výkonom 80 W od spoločnosti
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi vyfukuje naše mysle a malinovú pí
+
+00:53:58.880 --> 00:54:03.839
+ bol vydaný výpočtový modul 4, informujeme vás o špecifikáciách a postupe
+
+00:54:03.839 --> 00:54:08.480
+ toto mení veci pre priemyselné iot becca, tieto príbehy prichádzajú navyše
+
+00:54:08.480 --> 00:54:25.839
+ Robert je tu s kryptokútom nikam nechoďte
+
+00:54:28.079 --> 00:54:32.079
+ vitajte späť vo svete kryptomien a vitajte späť v krypto kútiku
+
+00:54:32.079 --> 00:54:35.920
+ minulý týždeň sme hovorili o bankách, o pár rokov ich nespoznáte
+
+00:54:35.920 --> 00:54:39.839
+ už a tiež som ti spomínal, že nie tak dlho
+
+00:54:39.839 --> 00:54:43.119
+ čínska digitálna mena, ktorá bude
+
+00:54:43.119 --> 00:54:46.720
+ vymeniť riemannovú včelu a že ju už implementovali a
+
+00:54:46.720 --> 00:54:50.400
+ teraz tento týždeň vedú nejaké skúšky v Shenzhene
+
+00:54:50.400 --> 00:54:54.400
+ došlo k určitému vývoju a rád by som o tom hovoril, pretože
+
+00:54:54.400 --> 00:54:58.319
+ bude mať priamy dopad na váš život a môj život
+
+00:54:58.319 --> 00:55:03.760
+ Poďme sa teda venovať tomuto medzinárodnému menovému fondu
+
+00:55:03.760 --> 00:55:08.400
+ tejto medzinárodnej organizácie je dáma s názvom cristalina jojeva a
+
+00:55:08.400 --> 00:55:11.359
+ predniesla prejav v súvislosti s novými brettonovskými lesmi
+
+00:55:11.359 --> 00:55:14.240
+ Momentálne to, čo je brettonwoodská británia
+
+00:55:14.240 --> 00:55:17.440
+ systém je zavedený peňažný manažment
+
+00:55:17.440 --> 00:55:21.760
+ pravidlá obchodných finančných vzťahov medzi
+
+00:55:21.760 --> 00:55:25.920
+ krajiny ako my kanada západná európa austrália a japonsko
+
+00:55:25.920 --> 00:55:31.520
+ a tak je to systém, ktorý bol prvým príkladom plne dohodnutej objednávky
+
+00:55:31.520 --> 00:55:36.640
+ zamýšľal riadiť menové vzťahy medzi nezávislými štátmi tak, aby to bolo
+
+00:55:36.640 --> 00:55:40.079
+ bretton woods a ona hovorí o zmene
+
+00:55:40.079 --> 00:55:45.760
+ ten systém na niečo modernejšie, teraz dosť zaujímavé
+
+00:55:45.760 --> 00:55:51.200
+ v pondelok sa konalo stretnutie s niekoľkými centrálnymi bankármi, ktorí hovorili o tzv
+
+00:55:51.200 --> 00:55:56.319
+ cezhraničné platby, ale ak sa nad tým zamyslíte, pozrite sa, aký typ
+
+00:55:56.319 --> 00:55:59.520
+ ľudí, ktorých boli prítomní, takže máte hlavu
+
+00:55:59.520 --> 00:56:03.040
+ saudská centrálna banka, máte hlavu všetkých centrálnych bánk
+
+00:56:03.040 --> 00:56:06.480
+ banky hlava imf hlava nás
+
+00:56:06.480 --> 00:56:10.319
+ chýba centrálna banka a šéf malajzijskej centrálnej banky je
+
+00:56:10.319 --> 00:56:13.200
+ Európa, ktorá je zaujímavá, ale myslím, že bude mať dôvod
+
+00:56:13.200 --> 00:56:16.880
+ tak sa spolu stretli, aby hovorili o hrubých platbách za vodu
+
+00:56:16.880 --> 00:56:21.920
+ teraz neverím, že to je skutočný príbeh, skutočný príbeh
+
+00:56:21.920 --> 00:56:26.079
+ uverejnil ho aj pán, ktorý sa volá raul paul
+
+00:56:26.079 --> 00:56:31.119
+ s čím úplne súhlasím, takže jeho myšlienky sú presne také, ako si myslím
+
+00:56:31.119 --> 00:56:35.520
+ a o čom hovorí, je presne toto stretnutie, ktoré sa stalo v pondelok
+
+00:56:35.520 --> 00:56:39.119
+ ktorý nahradí vzťah starých brettonwoodskych lesov
+
+00:56:39.119 --> 00:56:46.319
+ medzi krajinami, tak čo sa stane, vyzerá to, že centrálne banky
+
+00:56:46.319 --> 00:56:50.720
+ sa dohodnú a vymyslia systém
+
+00:56:50.720 --> 00:56:54.000
+ medzi všetkými systém centrálnych bánk, takže tu nebudeme my
+
+00:56:54.000 --> 00:56:56.640
+ dolárový systém centrálnych bánk bude
+
+00:56:56.640 --> 00:56:59.680
+ pre každú pre všetky organizácie a potom od
+
+00:56:59.680 --> 00:57:04.160
+ tam to bude spestrene a co sa da robit
+
+00:57:04.160 --> 00:57:06.319
+ taký systém, ktorý je zaujímavou časťou a
+
+00:57:06.319 --> 00:57:13.520
+ Milujem to tak, že to zmení obchádzanie bankovníctva a financií
+
+00:57:13.520 --> 00:57:17.920
+ daňový systém, pretože ste v priamej interakcii s ľuďmi
+
+00:57:17.920 --> 00:57:22.160
+ áno, takže to nie je ako v súčasnosti, keď centrálna banka v USA alebo
+
+00:57:22.160 --> 00:57:26.720
+ Kanada nemá význam, príde s nejakou politikou a potom
+
+00:57:26.720 --> 00:57:32.400
+ ide to po reťazi a vy ako jednotlivec
+
+00:57:32.400 --> 00:57:35.440
+ používateľa pravdepodobne vidíte najmenšie množstvo
+
+00:57:35.440 --> 00:57:37.680
+ peniaze a pravdepodobne za najvyssi urok
+
+00:57:37.680 --> 00:57:42.559
+ že si môžete myslieť na iných ľudí, bude mať z digitálu oveľa väčší úžitok
+
+00:57:42.559 --> 00:57:46.799
+ peniaze plus kryptomeny alebo programovateľné
+
+00:57:46.799 --> 00:57:50.400
+ peniaze, ktoré ste schopní urobiť oveľa viac, pretože teraz
+
+00:57:50.400 --> 00:57:55.839
+ centrálna banka môže priamo ovplyvňovať správanie ľudí a ich správanie
+
+00:57:55.839 --> 00:58:00.400
+ urobte to áno, môžu dobre povedať, ak ste majiteľom reštaurácie, môžete
+
+00:58:00.400 --> 00:58:03.839
+ peniaze od nás dostanete priamo do vrecka, takže už nič
+
+00:58:03.839 --> 00:58:08.079
+ zúčastnené banky to urobíme priamo je možné, že sú to peniaze centrálnej banky
+
+00:58:08.079 --> 00:58:12.240
+ môžu meniť úrokové sadzby, takže v jednom prípade alebo v jednom odvetví môžu
+
+00:58:12.240 --> 00:58:16.480
+ môže mať vysokú úrokovú sadzbu ako iná, čo sa stane
+
+00:58:16.480 --> 00:58:19.839
+ s daňami áno, čo sa stane s IRS
+
+00:58:19.839 --> 00:58:22.079
+ pretože môžu tieto veci riešiť priamo
+
+00:58:22.079 --> 00:58:25.200
+ prostredníctvom programovateľných peňazí to bude trvať nejaký čas
+
+00:58:25.200 --> 00:58:28.799
+ dosiahnuť to v tomto konečnom rozsahu, ale stane sa to
+
+00:58:28.799 --> 00:58:34.640
+ ako vidíte, priame platby budú možné
+
+00:58:34.799 --> 00:58:41.119
+ tiež tu hovoria o hm, behaviorálnej ekonómii, hm
+
+00:58:41.119 --> 00:58:45.359
+ nie cez niektorých ekonómov, ktorí to hovoria
+
+00:58:45.359 --> 00:58:49.200
+ vláda, čo má robiť a čo nerobiť, pretože to zlyhalo v
+
+00:58:49.200 --> 00:58:52.160
+ minulosti všetci hovoria, tak čo idú
+
+00:58:52.160 --> 00:58:56.400
+ urobiť ako nápad typu facebook alebo zaškrtnúť nápad alebo
+
+00:58:56.400 --> 00:58:59.520
+ nápad na youtube, kde vás zaujímajú ľudia
+
+00:58:59.520 --> 00:59:03.280
+ spriateliť sa s vami alebo kde vás ľudia zaujímajú
+
+00:59:03.280 --> 00:59:06.799
+ získava viac lajkov, a tak zmeníš svoje správanie v
+
+00:59:06.799 --> 00:59:10.079
+ čo sa týka získavania ďalších lajkov a rovnakých vecí
+
+00:59:10.079 --> 00:59:13.839
+ stane sa s peniazmi, takže a to bude všetko regulované
+
+00:59:13.839 --> 00:59:17.680
+ cez centrálnu banku bez nikoho z vonkajšieho sveta
+
+00:59:17.680 --> 00:59:22.000
+ mať šancu mať výrazný vplyv, tak ako
+
+00:59:22.000 --> 00:59:26.079
+ bude vyzerať ako na konci, nikto samozrejme nevie, že iba tieto
+
+00:59:26.079 --> 00:59:31.200
+ ľudia sa stretávajú, aby diskutovali o platbách medzi objednávkami, je niečo, čo i
+
+00:59:31.200 --> 00:59:36.079
+ nájsť uh veľmi zaujímavé a to je samozrejme fantastická správa
+
+00:59:36.079 --> 00:59:39.040
+ pre uh bitcoin, pretože bitcoin je mimo toho
+
+00:59:39.040 --> 00:59:44.839
+ systému neexistuje nikto, kto by mohol regulovať uh bitcoin
+
+00:59:44.839 --> 00:59:48.400
+ decentralizované hm je to nemenné, dobre viete všetko
+
+00:59:48.400 --> 00:59:54.079
+ vlastnosti uh bitcoin, takže um bitcoin je fantastická alternatíva
+
+00:59:54.079 --> 00:59:57.839
+ všetky ostatné kryptomeny, tie hlavné, sú určite dobrou alternatívou
+
+00:59:57.839 --> 01:00:02.000
+ pozrime sa, čo váhy prinesú, ale bude tu niekoľko dobrých alternatív
+
+01:00:02.000 --> 01:00:06.480
+ do um do centrálneho uh centrálne
+
+01:00:06.480 --> 01:00:11.359
+ riadené peniaze cez centrálne banky, takže dúfam, že vás to zaujímalo a
+
+01:00:11.359 --> 01:00:14.559
+ Dúfam, že sa vám páčilo a dúfam, že od vás dostanem nedostatok
+
+01:00:14.559 --> 01:00:18.799
+ a prajem vám fantastický týždeň, takže vám veľmi pekne ďakujem za sledovanie
+
+01:00:18.799 --> 01:00:23.200
+ ahoj ahoj ďakujem robert len ​​pre pripomenutie, že neposkytujeme finančné poradenstvo
+
+01:00:23.200 --> 01:00:26.400
+ ale iba zdieľanie toho, čo sa deje na trhu s kryptomenami
+
+01:00:26.400 --> 01:00:29.599
+ vždy pamätajte na to, že trhy s kryptomenami sa neustále menia a
+
+01:00:29.599 --> 01:00:33.920
+ vždy nestabilné, takže by ste mali minúť iba to, o čo si môžete dovoliť prísť
+
+01:00:33.920 --> 01:00:38.720
+ teraz späť do becca v redakcii ďakujem robbie
+
+01:00:38.720 --> 01:00:42.799
+ Spoločnosť xiaomi oznámila novú kontrolu nabíjania, ktorá dokáže úplne nabiť vyčerpané
+
+01:00:42.799 --> 01:00:48.480
+ smartphone za menej ako 20 minút, ale zvládne to bez akýchkoľvek rýchlych káblov
+
+01:00:48.480 --> 01:00:52.480
+ nabíjanie sa stalo kľúčovou vlastnosťou mnohých smartfónov v posledných rokoch aj pre
+
+01:00:52.480 --> 01:00:56.160
+ pre pohodlie môže byť bezdrôtové nabíjanie naozaj skvelé
+
+01:00:56.160 --> 01:00:59.920
+ ale samozrejme bezdrôtové nabíjanie zvyčajne nabíja telefón medzi
+
+01:00:59.920 --> 01:01:05.359
+ Niektoré telefóny, ako napríklad oneplus 8 pro, majú výkon 10 až 15 wattov
+
+01:01:05.359 --> 01:01:10.160
+ bezdrôtové nabíjanie až 40 wattov, ale nová technológia nabíjania od xiaomi sľubuje
+
+01:01:10.160 --> 01:01:14.240
+ neuveriteľných 80 wattov bezdrôtovej šťavy
+
+01:01:14.240 --> 01:01:18.319
+ čo to znamená v praxi dobre podľa oznámenia
+
+01:01:18.319 --> 01:01:22.160
+ predstavenie technológie bezdrôtového nabíjania s výkonom 80 Watt
+
+01:01:22.160 --> 01:01:26.720
+ smartphone s nulovým percentom nabitia batérie štyri tisíce miliampérov
+
+01:01:26.720 --> 01:01:30.160
+ bude účtovať desať percent len ​​za jednu minútu päťdesiat percent
+
+01:01:30.160 --> 01:01:34.160
+ do ôsmich minút a úplne nabitá po 19 minútach
+
+01:01:34.160 --> 01:01:37.599
+ konečne nabíjačka, ktorá mi nabije telefón
+
+01:01:37.599 --> 01:01:43.359
+ z nuly na sto percent hneď ako moja obedná prestávka, uvidíte, že je to pekné
+
+01:01:43.359 --> 01:01:48.079
+ to je hra, ktorá zmenila hru, viete si predstaviť, že myslím na svoje deti a na to, ako ich máme
+
+01:01:48.079 --> 01:01:51.440
+ ako telefóny všade, samozrejme, myslím, že to je ako
+
+01:01:51.440 --> 01:01:56.319
+ najnovšia a najlepšia technológia, ale vždy je to tak, že som zabudol
+
+01:01:56.319 --> 01:01:59.520
+ položte môj telefón na nabíjačku, alebo nevydrží dosť dlho na celý
+
+01:01:59.520 --> 01:02:02.720
+ deň a teraz, keď viete o pandémii samozrejme môj
+
+01:02:02.720 --> 01:02:07.599
+ deti sú teraz doma vzdelávané akosi násilím a všetci sú na svete
+
+01:02:07.599 --> 01:02:11.839
+ ich zariadenia po celú dobu, takže sa na telefónoch konajú stretnutia so zoomom
+
+01:02:11.839 --> 01:02:15.599
+ a a beží, vyčerpáva to batériu, áno
+
+01:02:15.599 --> 01:02:21.440
+ ale čo sa mi páči je to, že je to bezdrôtové, nielen káblové, to je úžasné, áno
+
+01:02:21.440 --> 01:02:24.480
+ je to bezdrôtové pripojenie, ktoré je obrovské ako myšlienka
+
+01:02:24.480 --> 01:02:27.200
+ mohol by som si vziať telefón, aby som sa nemusel starať o nabíjačky a
+
+01:02:27.200 --> 01:02:30.960
+ proste choď proste nastav to nastav to o 20 minút neskôr, som dobrý
+
+01:02:30.960 --> 01:02:34.000
+ že milujem druhú vec, ktorú na nej milujem
+
+01:02:34.000 --> 01:02:40.480
+ koncept je taký, že myslím na to, ako si práve urobil, keby som mohol
+
+01:02:40.480 --> 01:02:43.359
+ položte ho na stôl, čo keby ste ho mohli položiť na a
+
+01:02:43.359 --> 01:02:47.680
+ reštauračný stôl áno, pretože veľa reštaurácií prešlo touto cestou a ja som
+
+01:02:47.680 --> 01:02:50.799
+ príkladom sú reštaurácie, ale veľa miest prešlo cestou
+
+01:02:50.799 --> 01:02:54.480
+ vkladanie usb áno, aby ste mohli zapojiť svoje usb
+
+01:02:54.480 --> 01:02:58.640
+ kábel na nabitie telefónu, ale potom sa zrazu dostali ľudia
+
+01:02:58.640 --> 01:03:03.200
+ múdre na to, že tie USB porty môžu byť škodlivé
+
+01:03:03.200 --> 01:03:06.319
+ pretože usb tiež prenáša dáta, alebo je to tak
+
+01:03:06.319 --> 01:03:10.000
+ ktovie, či je to príliš veľa voltov a že viete, že to možno je
+
+01:03:10.000 --> 01:03:13.280
+ dostal skrat alebo niečo podobné a mohol by vyprážať môj telefón
+
+01:03:13.280 --> 01:03:17.039
+ takže potom sa zrazu bojíme zapojiť do USB portu, pretože hej
+
+01:03:17.039 --> 01:03:20.400
+ mohlo by to byť niečo zlé, čo je v poriadku
+
+01:03:20.400 --> 01:03:24.960
+ bezdrôtové nabíjanie nastavíte to nabije a zdvihnete a ste
+
+01:03:24.960 --> 01:03:28.240
+ hotovo, ale môžete to nastaviť ako
+
+01:03:28.240 --> 01:03:31.119
+ tri minúty a dá vám to dosť náboja, aby ste zvládli väčšinu
+
+01:03:31.119 --> 01:03:35.680
+ popoludní, čo je neuveriteľné úžasné, myslím
+
+01:03:35.680 --> 01:03:40.559
+ rovnako znamená, že sa teraz rozhliadate a máte všetky tieto nabíjacie stanice
+
+01:03:40.559 --> 01:03:44.079
+ elektrických vozidiel by bolo skvelé začať vidieť málo
+
+01:03:44.079 --> 01:03:48.640
+ vyskakovacie okná na verejných miestach s týmto druhom vecí, ktoré môžete doslova umiestniť
+
+01:03:48.640 --> 01:03:52.880
+ vypnite telefón na päť minút a dosť na to, aby ste mohli telefonovať
+
+01:03:52.880 --> 01:03:56.319
+ získať pomoc alebo čokoľvek iné a všetko je to bezdrôtovo iba zobrazené
+
+01:03:56.319 --> 01:04:01.760
+ ako úsek cesty a vložiť prijímač do auta a tam
+
+01:04:01.760 --> 01:04:05.599
+ dobíja autonómne auto, keď jazdí
+
+01:04:05.599 --> 01:04:08.230
+ čo sa teraz dostávame do tejto technológie, priatelia
+
+01:04:08.230 --> 01:04:11.520
+ [Smiech] stále sa mi to páči, som z toho nadšený
+
+01:04:11.520 --> 01:04:15.839
+ šialená vec je len na záver je, že zatiaľ čo to, čo práve som
+
+01:04:15.839 --> 01:04:18.319
+ je veľmi sci-fi, ako keď sme rástli
+
+01:04:18.319 --> 01:04:21.599
+ hore, ktorá bola ako budúcnosť, je to celkom možné
+
+01:04:21.599 --> 01:04:25.920
+ teraz je to možné, smiešne, malinová pi
+
+01:04:25.920 --> 01:04:31.200
+ nadácia spustila výpočtový modul so špecifikáciami malinovej pí 4.
+
+01:04:31.200 --> 01:04:35.119
+ nadácia raspberry pi uviedla na trh v pondelok nový produkt comp
+
+01:04:35.119 --> 01:04:39.440
+ výpočtový modul 4. je ťažké uveriť, že to bolo tak dlho, ale
+
+01:04:39.440 --> 01:04:43.359
+ malina pi 4 bola vydaná v júni 2019
+
+01:04:43.359 --> 01:04:48.079
+ výpočtový modul 4 privádza pi 4 do priemyselného iot priestoru
+
+01:04:48.079 --> 01:04:52.240
+ s rovnakým procesorom zabaleným do výpočtového modulu
+
+01:04:52.240 --> 01:04:57.200
+ len prosia o integráciu do výkonných iot prístrojov
+
+01:04:57.200 --> 01:05:00.880
+ ak nie ste oboznámení s výpočtovými modulmi, môžete o nich uvažovať ako
+
+01:05:00.880 --> 01:05:05.280
+ jednodeskové počítače bez všetkých portov a pinov gpio
+
+01:05:05.280 --> 01:05:09.440
+ umožňujú počítačovým komponentom, aby mali mozog maliny pi
+
+01:05:09.440 --> 01:05:13.920
+ integrované do technologických klastrov výrobcu inteligentných zariadení pre robotiku alebo
+
+01:05:13.920 --> 01:05:16.400
+ čokoľvek, s čím by ste prišli, vyžaduje maličkosť
+
+01:05:16.400 --> 01:05:22.240
+ počítač s nízkym výkonom linux, ktorý je v jeho jadre, pretože výpočtový modul 4 ho zdieľa
+
+01:05:22.240 --> 01:05:26.400
+ spec s malinami pi 4 môžu vývojári robiť všetky svoje prototypy
+
+01:05:26.400 --> 01:05:30.319
+ na pi 4 sbc, ale potom si objednajte veľa výpočtového modulu
+
+01:05:30.319 --> 01:05:33.520
+ 4 roky integrovať do svojho komerčného produktu
+
+01:05:33.520 --> 01:05:38.559
+ rovnako ako malina pi 4 má aj výpočtový modul 4 64-bitové rameno
+
+01:05:38.559 --> 01:05:42.400
+ procesor s grafickou kartou video core vi to je
+
+01:05:42.400 --> 01:05:45.520
+ bude predstavovať obrovský upgrade pre predchádzajúci výpočet
+
+01:05:45.520 --> 01:05:49.839
+ zákazníkom modulu a s výstupom 4k video výstupu až do
+
+01:05:49.839 --> 01:05:55.039
+ 60 snímok za sekundu plus možnosť dekódovať video h.265
+
+01:05:55.039 --> 01:05:58.480
+ výpočtový modul pre výpočtový modul 4
+
+01:05:58.480 --> 01:06:03.039
+ môže byť hracím meničom pre zariadenia poháňané multimédiami, ako sú inteligentné televízory alebo
+
+01:06:03.039 --> 01:06:06.960
+ set-top boxy, s ktorými je výpočtový modul 4 k dispozícii
+
+01:06:06.960 --> 01:06:11.599
+ podľa vášho výberu 1 2 4 alebo 8 gigabajt RAM a 8 16
+
+01:06:11.599 --> 01:06:18.000
+ alebo 32 gigabajtov na palube úložiska flash emmc wi-fi a bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ sú tiež voliteľné, cenové rozpätie od iba 25
+
+01:06:21.440 --> 01:06:27.599
+ na 90 USD si teraz predstavte, že jeff výpočtový modul maliny pi 4
+
+01:06:27.599 --> 01:06:31.359
+ jo v jednom z tvojich sbc projektov alebo v niecom podobnom to napája ako
+
+01:06:31.359 --> 01:06:33.920
+ mozog je to dosť vzrušujúce, akonáhle
+
+01:06:33.920 --> 01:06:39.440
+ becca povedala, že dekódovanie h.265 je ako video
+
+01:06:39.440 --> 01:06:43.760
+ veľmi náročné na procesor, áno, je to úžasné, pretože to hovorí veľa
+
+01:06:43.760 --> 01:06:50.000
+ to je viac energie ako môj server plex, áno, kto rád, kto vie, kde to je
+
+01:06:50.000 --> 01:06:54.720
+ vezmem veci, ktoré sa mi páčia, myšlienka klastrových počítačov
+
+01:06:54.720 --> 01:06:58.480
+ a tam si vezmete niekoľko počítačov
+
+01:06:58.480 --> 01:07:01.520
+ - vzájomne ich prepojiť prostredníctvom sietí a -
+
+01:07:01.520 --> 01:07:06.559
+ v podstate inštalovať softvér beowulf alebo niečo podobné
+
+01:07:06.559 --> 01:07:09.359
+ zoskupuje ich, aby boli schopné vykonávať výkony
+
+01:07:09.359 --> 01:07:14.400
+ spoločné úlohy tak, že to v podstate robí super počítač
+
+01:07:14.400 --> 01:07:19.200
+ hneď z niekoľkých počítačov, takže premýšľate o týchto malinových pi
+
+01:07:19.200 --> 01:07:25.839
+ cl uh klaster alebo moduly a daj asi 10 z nich dokopy
+
+01:07:25.839 --> 01:07:30.400
+ v klastri aa chceli by ste tento výpočtový modul
+
+01:07:30.400 --> 01:07:34.559
+ zhluk, ktorý by bol pekný počítač s toľkou silou
+
+01:07:34.559 --> 01:07:38.079
+ keď na každom môžete mať osem koncertov barana
+
+01:07:38.079 --> 01:07:43.359
+ časy nástenky, že do 10. veľa môže veľa urobiť
+
+01:07:43.359 --> 01:07:47.280
+ to mení veci, ľudia sa mení svet, to je isté
+
+01:07:47.280 --> 01:07:50.960
+ čo by si robil s tou všetkou silou
+
+01:07:52.160 --> 01:07:55.280
+ a ticho čaká, že odpovieš i
+
+01:07:55.280 --> 01:07:58.480
+ Myslím, že som rád, čo by som s tým urobil, koľko ľudí
+
+01:07:58.480 --> 01:08:05.119
+ Práve som začal ťažiť bitcoiny prepáč chlapci, viete, čo je smutné, moje
+
+01:08:05.119 --> 01:08:10.880
+ Prvá myšlienka bola, že by som mohol automatizovať ako niektoré z
+
+01:08:10.880 --> 01:08:14.000
+ nástroje, ktoré mám v kuchyni na prípravu jedla
+
+01:08:14.000 --> 01:08:17.600
+ to bola moja prvá myšlienka s výpočtovým modulom štyri
+
+01:08:17.600 --> 01:08:22.319
+ áno, trvá to viac, ale viem, že to môže byť mozog takejto operácie
+
+01:08:22.319 --> 01:08:27.759
+ jasne, že mám hlad [smiech]
+
+01:08:27.759 --> 01:08:31.359
+ vaše myšlienky komentujú nižšie, radi by sme sa dozvedeli, čo by ste robili s
+
+01:08:31.359 --> 01:08:34.719
+ výpočtový modul s poďakovaním za sledovanie kategórie 5 bodov
+
+01:08:34.719 --> 01:08:38.000
+ televízna redakcia nezabudnite dať like a prihlásiť sa na odber
+
+01:08:38.000 --> 01:08:40.640
+ všetky vaše technologické novinky s miernou zaujatosťou pre linux
+
+01:08:40.640 --> 01:08:46.000
+ a ak si ceníte to, čo robíme, sme sa stali patrónom na patreon.com
+
+01:08:46.000 --> 01:08:53.839
+ kategória 5. z kategórie 5 dot tv news room som becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Hudba]
+
+01:09:12.400 --> 01:09:16.159
+ po celý čas, čo máme tento týždeň jeff
+
+01:09:16.159 --> 01:09:21.600
+ minulý týždeň sme prešli a ja som celý proces urobil s fiverr
+
+01:09:21.600 --> 01:09:25.359
+ Najal som si ľudí, aby sme mohli urobiť náš remix, áno, je to smiešne
+
+01:09:25.359 --> 01:09:29.040
+ príbeh v poriadku, doslova mi povedz, kedy sa mám smiať, budeš
+
+01:09:29.040 --> 01:09:34.960
+ ved peru už urobil už sa zasmial
+
+01:09:34.960 --> 01:09:38.400
+ veverička bola jedným z našich chlapov, áno, áno
+
+01:09:38.400 --> 01:09:42.560
+ jeden z našich remixérov a literárna veverička
+
+01:09:42.560 --> 01:09:48.319
+ povedal, že som stále premýšľal, čo to je, keď sledoval túto funkciu
+
+01:09:48.319 --> 01:09:51.199
+ potom som stále premýšľal, prečo si bol
+
+01:09:51.199 --> 01:09:58.159
+ nesprávne vyslovovanie môjho mena, vrh, veverička, tak som skontroloval svoje
+
+01:09:58.159 --> 01:10:02.960
+ profilu a zistil som, že som to napísal nesprávne, ach nie
+
+01:10:02.960 --> 01:10:09.920
+ a nikdy si to nevšimol a bolo to tak tri roky, myslíš to vážne
+
+01:10:09.920 --> 01:10:17.600
+ hovorí moje meno, meno mojej kapely je literárna veverička, bože, skončil
+
+01:10:17.600 --> 01:10:21.040
+ v našom je to vtipné, takže vám rozprávam tento príbeh
+
+01:10:21.040 --> 01:10:25.600
+ vidíš to je smiešne vidíš som ti povedal že to bolo smiešne bolo to ako
+
+01:10:26.000 --> 01:10:29.679
+ rozprávam ti tento príbeh, pretože potom som si povedal dobre
+
+01:10:29.679 --> 01:10:35.120
+ vidím slová a ja a myslím, že väčšinou vyslovujem
+
+01:10:35.120 --> 01:10:40.320
+ ich dosť precízne, takže keď vidím literárne, aj keď to nie je slovo, i
+
+01:10:40.320 --> 01:10:44.800
+ nastaviť to tak, ako sa to číta správne, tak som si myslel, že asi budem
+
+01:10:44.800 --> 01:10:47.679
+ celkom dobrý korektor, tak som povedal, čo to sakra dám
+
+01:10:47.679 --> 01:10:50.960
+ choď, tak som vložil inzerát, ktorý povedal, že budem robiť korektúry
+
+01:10:50.960 --> 01:10:54.480
+ text 500 slov alebo menej za päť dolárov
+
+01:10:54.480 --> 01:10:57.520
+ v poriadku a bol som ako ah, nikto do toho nikdy nepôjde
+
+01:10:57.520 --> 01:11:01.840
+ je to aj tak zábava, myslel som si, že to skúsim a na druhý deň ráno som dostal e-mail
+
+01:11:01.840 --> 01:11:08.239
+ od španielky, ktorá bola um
+
+01:11:08.239 --> 01:11:13.120
+ poisťovací maklér v poriadku a má zákazníka, ktorý hovorí po anglicky
+
+01:11:13.120 --> 01:11:17.600
+ natívne a chcel sa ubezpečiť, že v odpovedi hovorí správne veci
+
+01:11:17.600 --> 01:11:21.840
+ na e-mail, aby odstránil všetky dôverné údaje
+
+01:11:21.840 --> 01:11:26.400
+ áno, poslal mi jeho odpoveď a povedal, že by si to mohol pre mňa a ja jednoducho prejsť?
+
+01:11:26.400 --> 01:11:28.400
+ urobil a prešiel som a niektoré som opravil
+
+01:11:28.400 --> 01:11:31.840
+ veci a mal niekoľko slov, ktoré v preklade skutočne nemali zmysel
+
+01:11:31.840 --> 01:11:35.760
+ a tak som to napravil a trochu som opravil gramatiku a kontext
+
+01:11:35.760 --> 01:11:39.760
+ pravopisu a bol akoby miloval päť dolárov
+
+01:11:39.760 --> 01:11:42.000
+ naozaj mi to trvalo 10 minút a bolo to len
+
+01:11:42.000 --> 01:11:44.480
+ niečo, čo som urobil so šálkou kávy prvá vec ráno
+
+01:11:44.480 --> 01:11:50.960
+ jo a dal mi hodnotenie 5 z 5, ktoré je úžasné, akoby to bol fiverr
+
+01:11:50.960 --> 01:11:54.480
+ otočná perspektíva, takže som taký, je dosť elegantný, takže potom začnem rozprávať
+
+01:11:54.480 --> 01:11:58.400
+ mojim deťom a som rád, že by sme mali zistiť, či by ste ako vy mohli robiť veci
+
+01:11:58.400 --> 01:12:01.199
+ a viete, že moja dcéra je umelkyňa a
+
+01:12:01.199 --> 01:12:05.280
+ mohla robiť kresby pre ľudí, ktorí začali zarábať peniaze, je to akési upravené
+
+01:12:05.280 --> 01:12:08.159
+ vytvorte úhľadnú platformu, neviem o čom sú pravidlá
+
+01:12:08.159 --> 01:12:11.120
+ ako minimálny vek a podobné veci, ale môžeme sa pozrieť na tie druhy
+
+01:12:11.120 --> 01:12:13.360
+ veci, ale to je môj príbeh pre tento týždeň
+
+01:12:13.360 --> 01:12:18.719
+ že hej išiel som aj na druhú stranu a predal som svoju vlastnú službu, ktorú som dal
+
+01:12:18.719 --> 01:12:23.120
+ literárna veverička zadarmo freebie hm, ale uh
+
+01:12:23.120 --> 01:12:30.000
+ Teraz som k dispozícii na predaj. Mám pocit, že by to bola zábava
+
+01:12:30.000 --> 01:12:34.000
+ dám ti päť dolárov a pošlem ti 500 slovný dokument
+
+01:12:34.000 --> 01:12:38.640
+ všetko lorem ipsum a len mi povedz, či to má zmysel, urobím maximum
+
+01:12:38.640 --> 01:12:44.000
+ opravili ste to dobre, to je to jeff?
+
+01:12:44.000 --> 01:12:46.800
+ to je stále v poriadku, ale bola to veľká zábava
+
+01:12:46.800 --> 01:12:50.080
+ užil som si, že som tu opäť s vami tento týždeň budúci týždeň sa dostávame do 3d
+
+01:12:50.080 --> 01:12:52.560
+ tlač, takže budeme montovať koncovku
+
+01:12:52.560 --> 01:12:55.440
+ 3v2, takže to vlastne dáme dokopy
+
+01:12:55.440 --> 01:12:58.640
+ a potom sa porozprávame o tom, že vieš, aký bol proces
+
+01:12:58.640 --> 01:13:03.760
+ ako pre mňa ako noob v oblasti 3D tlače, takže
+
+01:13:03.760 --> 01:13:05.760
+ s akými výzvami som sa stretol
+
+01:13:05.760 --> 01:13:09.040
+ a môžete sa s tým stretnúť hneď na začiatku
+
+01:13:09.040 --> 01:13:13.760
+ v 3D tlači plus vám ukážem nielen môj prvý výtlačok
+
+01:13:13.760 --> 01:13:19.440
+ ale moje prvé tlačené návrhy, ktoré si nenechajte ujsť budúci týždeň
+
+01:13:19.440 --> 01:13:22.960
+ prajem skvelý týždeň, všetci sa uvidíme
+
+01:13:24.100 --> 01:13:30.029
+ [Hudba] [Potlesk]
+
+01:13:30.840 --> 01:13:45.060
+ ahoj [hudba]
+
+01:13:48.290 --> 01:13:56.319
+ [Hudba]
+
+01:14:01.760 --> 01:14:03.840
+ ty
+

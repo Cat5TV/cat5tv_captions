@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: hu
+
+00:00:00.320 --> 00:00:05.040
+az 5. kategória tv-nél a fájljainkat a kingston szilárdtest-meghajtóira bízzuk
+
+00:00:05.040 --> 00:00:07.839
+ akár a szerver laptopjához, akár a
+
+00:00:07.839 --> 00:00:10.880
+ asztali számítógép jobb teljesítményt fog elérni
+
+00:00:10.880 --> 00:00:17.920
+ és a megbízhatóság a kingston SDS-kkel készen áll, itt az ideje a technikának
+
+00:00:22.320 --> 00:00:25.519
+ Üdvözlöm mindenkit, a 14. évad 2. része
+
+00:00:25.519 --> 00:00:29.599
+ robbie ferguson vagyok és jeff weston, nagyon jó, hogy itt vagy
+
+00:00:29.599 --> 00:00:32.800
+ és uh, remélem, ennek ellenére csodálatos heted volt
+
+00:00:32.800 --> 00:00:37.760
+ mindent, csak itt vagyunk, és nagyszerű előadás elé nézünk
+
+00:00:37.760 --> 00:00:40.960
+ ma este megtanuljuk, hogyan hozzuk létre saját magunkat
+
+00:00:40.960 --> 00:00:45.840
+ proxykiszolgáló oké, szóval nem akarok túl sokat beszélni róla a tetején
+
+00:00:45.840 --> 00:00:49.200
+ a show, de tudom, hogy néha nehéz jót találni
+
+00:00:49.200 --> 00:00:52.640
+ ingyenes proxy szolgáltatás, ezért létrehozni fogjuk a sajátunkat
+
+00:00:52.640 --> 00:00:55.840
+ és megmutatom, hogyan lehet elhelyezni bárhol a világon
+
+00:00:55.840 --> 00:01:01.600
+ az aws felhőszolgáltatások használata, így nagyon izgalmas és az egyik dolog
+
+00:01:01.600 --> 00:01:05.680
+ ezzel is, amikor egy kicsit megtudjuk, hogyan
+
+00:01:05.680 --> 00:01:09.520
+ amazon webszolgáltatások ec2 és felhőszolgáltatások, valamint a képesség
+
+00:01:09.520 --> 00:01:13.760
+ telepítsük a debian szervereket a felhő infrastruktúrájába, amint megtanuljuk
+
+00:01:13.760 --> 00:01:18.799
+ hogyan kell ezt megtenni, és hogy működik, csak ismerje az egyiket
+
+00:01:18.799 --> 00:01:20.159
+ a dolgok, amiket meg fogunk tenni
+
+00:01:20.159 --> 00:01:24.000
+ adataink egy részének áttelepítése abba az infrastruktúrába, ezért ezt mondom
+
+00:01:24.000 --> 00:01:26.960
+ mert néhány élő közvetítésű nézőnknek van
+
+00:01:26.960 --> 00:01:29.600
+ puffereléssel és ehhez hasonló dolgokkal kapcsolatos problémákat tapasztalt
+
+00:01:29.600 --> 00:01:32.799
+ és azért, mert van egy kis fedélzeti számítógépünk
+
+00:01:32.799 --> 00:01:36.880
+ mindaz, amihez közvetítünk, és utána közvetítjük
+
+00:01:36.880 --> 00:01:40.799
+ bárki, aki manu vagy más hls játékosokat néz, és ilyesmi
+
+00:01:40.799 --> 00:01:44.399
+ fürge streamer fut az egy fedélzeti számítógépen, valójában
+
+00:01:44.399 --> 00:01:47.759
+ lenyűgöző wow azonban, amit figyeltem az én
+
+00:01:47.759 --> 00:01:50.960
+ tesztelés az, hogy elég magas processzor fut, amikor az emberek
+
+00:01:50.960 --> 00:01:55.439
+ jól néznek, hogy úgy gondolom, ez okozhat néhányat
+
+00:01:55.439 --> 00:01:58.640
+ pufferelési problémák az adatfolyamunkkal, így sok minden van
+
+00:01:58.640 --> 00:02:03.520
+ itt a kulisszák mögött, hogy megpróbálja eljuttatni, eljuttassa a műsort
+
+00:02:03.520 --> 00:02:07.840
+ egy nagyon hozzáférhető és könnyen elérhető formátum, és így nem
+
+00:02:07.840 --> 00:02:10.160
+ olyan dolgokat tapasztal, mint a forgó kerék
+
+00:02:10.160 --> 00:02:14.560
+ meg ilyenek, de hát így van, ahogy ma este nézzük
+
+00:02:14.560 --> 00:02:18.560
+ uh és megtanulják, hogyan telepítsék ezeket a debian szervereket a felhőbe
+
+00:02:18.560 --> 00:02:20.879
+ tudd, hogy ezt a színfalak mögött fogjuk csinálni itt
+
+00:02:20.879 --> 00:02:23.760
+ valamint e szolgáltatások áttelepítése
+
+00:02:23.760 --> 00:02:27.120
+ az egyik ilyen esetre annak érdekében
+
+00:02:27.120 --> 00:02:30.480
+ próbálja javítani a teljesítményünket itt, a stúdióban
+
+00:02:30.480 --> 00:02:34.400
+ rengeteg izgalmas dolog folyik mögöttünk, hogy voltál
+
+00:02:34.400 --> 00:02:38.000
+ jó voltam, ma este egy kicsit később beszélünk veled
+
+00:02:38.000 --> 00:02:42.080
+ uh néhány kihasználásod forrasztással igen, el akarsz mondani nekünk egy kicsit
+
+00:02:42.080 --> 00:02:44.720
+ csak egy gyors ugratás, hogy mi leszünk
+
+00:02:44.720 --> 00:02:48.959
+ megbeszélése uh, a fiam forrasztani akart
+
+00:02:48.959 --> 00:02:53.120
+ születésnapja uh, így mentünk azon az úton
+
+00:02:53.120 --> 00:02:56.480
+ a múlt hónaptól kezdve játszottunk egy kicsit, és megvan
+
+00:02:56.480 --> 00:03:01.200
+ én arra gondoltam, hogyan tudnék otthon elkészíteni a saját cuccaimat
+
+00:03:01.200 --> 00:03:04.560
+ amikor nincs nagy termelési terület, hogy saját készítsem
+
+00:03:04.560 --> 00:03:09.599
+ pcb igen, igen, itt beszéltünk erről, tehát ha érdekel
+
+00:03:09.599 --> 00:03:15.040
+ barkács elektronika erről fogunk beszélni, és uh wow van
+
+00:03:15.040 --> 00:03:19.840
+ néhány izgalmas dolog, amelyekre a jövő heti adásban is készülünk
+
+00:03:19.840 --> 00:03:23.040
+ már indulásra kész, és mi izgatottak vagyunk
+
+00:03:23.040 --> 00:03:26.640
+ bemutatva a nézőinknek a 3D nyomtatást is
+
+00:03:26.640 --> 00:03:29.680
+ szóval ezt meg fogjuk tanulni a
+
+00:03:29.680 --> 00:03:36.080
+ a következő hetekben itt, az 5. kategória tv-nél nagyon sok minden megy
+
+00:03:36.080 --> 00:03:39.200
+ kérlek, győződj meg róla, hogy feliratkoztál-e ránk a youtube-on
+
+00:03:39.200 --> 00:03:42.159
+ és kattintson a csengőre, hogy minden alkalommal értesítést kapjon, amikor újat küldünk
+
+00:03:42.159 --> 00:03:46.560
+ bármikor, amikor élünk, és ha be akarsz kapcsolódni
+
+00:03:46.560 --> 00:03:49.280
+ a közösség szerintem nagyon klassz mód
+
+00:03:49.280 --> 00:03:54.000
+ hogy az 5. kategóriába tartozó televízió részese lehessen, néhány ember még mindig azt mondja nekem, hogy mi van
+
+00:03:54.000 --> 00:03:58.400
+ ellentmondás, és hú, nem vagy része a viszálykodásunknak
+
+00:03:58.400 --> 00:04:01.920
+ szerver, mert ha csatlakozik a nézeteltérésünkhöz, amelyet megtalál, ha elmegy
+
+00:04:01.920 --> 00:04:06.560
+ a category5.tv-re, kattintson az interakcióra, és láthatja, hogy csatlakozik a viszályhoz
+
+00:04:06.560 --> 00:04:10.720
+ szerver ez egy ingyenes böngésző vagy alkalmazás alapú
+
+00:04:10.720 --> 00:04:14.720
+ szolgáltatás, amelyet feltölthet a készülékére, vagy amelyhez hozzáférhet
+
+00:04:14.720 --> 00:04:18.160
+ a böngészőn keresztül bármire, és alapvetően beszélgethet a
+
+00:04:18.160 --> 00:04:22.079
+ közösség, de nagyon szép abban a tekintetben, hogy nem csak csevegőszobát jelent
+
+00:04:22.079 --> 00:04:26.160
+ különböző szobákat is kiosztott
+
+00:04:26.160 --> 00:04:28.160
+ különböző dolgokat, tehát olyanokat, amikről beszélünk
+
+00:04:28.160 --> 00:04:31.280
+ vagy például a színfalak mögé kerültünk
+
+00:04:31.280 --> 00:04:35.680
+ így a kulisszák mögött csak tele van a kulisszák mögött
+
+00:04:35.680 --> 00:04:42.320
+ olyan fotók, amelyeket másként nem látna, és olyan sok minden van a mi oldalunkon
+
+00:04:42.320 --> 00:04:44.400
+ diszkord szerver, így tényleg oda kell menned
+
+00:04:44.400 --> 00:04:47.919
+ tudd, hogy ez olyan, mintha egy chat platform lenne, de van egy
+
+00:04:47.919 --> 00:04:51.360
+ sokkal több, mint csak a csevegés
+
+00:04:51.360 --> 00:04:54.880
+ ez így van, és nemcsak a műsor alatt aktív
+
+00:04:54.880 --> 00:04:58.240
+ állandóan be van kapcsolva, és úgy értem, ha van technikai cuccod
+
+00:04:58.240 --> 00:05:01.360
+ a hét közepén olyan vagy, mint ó, nem tudom, hogyan oldhatnám meg ezt a problémát
+
+00:05:01.360 --> 00:05:04.080
+ beugorhatna oda, és a közösség félelmetes az adakozással kapcsolatban
+
+00:05:04.080 --> 00:05:07.680
+ tanács, és ez is elég foltos, igen, ez igaz
+
+00:05:07.680 --> 00:05:10.720
+ rendben van, így egy igazán gyors szünetet kell tartanunk, majd jobbra ugrunk
+
+00:05:10.720 --> 00:05:14.800
+ e rövid szakadás után, amelyet meg fogunk nézni
+
+00:05:14.800 --> 00:05:20.800
+ hogyan állítsunk be egy aws ec2 példányt, ez technobabble-nek hangzik
+
+00:05:20.800 --> 00:05:24.080
+ nekem nagyon gyors, igen, mit szólnál ehhez?
+
+00:05:24.080 --> 00:05:29.759
+ Létrehozunk egy saját, könnyebben mondható ingyenes proxy szolgáltatást
+
+00:05:29.759 --> 00:05:36.240
+ én irányítok, hozzáférésem van, körül van az irányító bot
+
+00:05:36.240 --> 00:05:51.920
+ legyél vissza [Zene]
+
+00:05:58.560 --> 00:06:01.919
+ abban reménykedik-e, hogy adna magának egy kis extra adatvédelmet, miközben szörfözik
+
+00:06:01.919 --> 00:06:04.720
+ internetet, vagy olyan szolgáltatásokat szeretne elérni, amelyek
+
+00:06:04.720 --> 00:06:10.160
+ Lehet, hogy általában nem érhetők el az Ön területén, vagy talán a
+
+00:06:10.160 --> 00:06:13.680
+ abban az esetben, ha valóban megvan az IP-címed
+
+00:06:13.680 --> 00:06:17.600
+ szolgáltató blokkolta, lehet, hogy nem a
+
+00:06:17.600 --> 00:06:20.960
+ rosszindulatú dolog blokkolta az IP címemet
+
+00:06:20.960 --> 00:06:24.639
+ youtube előtt, mert ennyi videót feltöltök és
+
+00:06:24.639 --> 00:06:29.120
+ töltse le a zárt feliratokat azok számára, hogy
+
+00:06:29.120 --> 00:06:33.759
+ oda vezetett, hogy túlléptem a youtube api használatát
+
+00:06:33.759 --> 00:06:38.800
+ így az IP-címem blokkolva van, így nem kell rosszindulatú dolognak lennie
+
+00:06:38.800 --> 00:06:44.319
+ nem akarom ezt a benyomást kelteni, de nagyon jogos okai vannak
+
+00:06:44.319 --> 00:06:49.759
+ meg kell kerülni az ilyen típusú dolgokat, és a majmok elmennek
+
+00:06:49.759 --> 00:06:56.000
+ egy proxy, a probléma az, hogy a proxyk használata nagyon drága lehet, és a
+
+00:06:56.000 --> 00:07:00.160
+ ingyenesek, miközben könnyen elérhetőek, nagyon gyakran
+
+00:07:00.160 --> 00:07:04.800
+ vagy nem túl megbízhatóak, egyik nap fent vannak, a másikon pedig veszítenek
+
+00:07:04.800 --> 00:07:10.240
+ hozzáférés a szolgáltatásaihoz és minden máshoz, vagy még rosszabb
+
+00:07:10.240 --> 00:07:14.960
+ veszélyesek, nem tudod, mit követnek azok a meghatalmazottak
+
+00:07:14.960 --> 00:07:21.120
+ naplózni, sőt szeretni is a lehallgatást, miközben átmegy
+
+00:07:21.120 --> 00:07:26.720
+ az összes internet forgalmát az adott szolgáltatón keresztül
+
+00:07:26.720 --> 00:07:35.199
+ Tehát van egy személy, akiben nagyon megbízom az összes adat meghatalmazásában
+
+00:07:35.199 --> 00:07:41.039
+ és ez vagyok én, nem vagyok ugyanaz az ember, akiben azt mondanád, hogy bízol
+
+00:07:41.039 --> 00:07:45.199
+ az a személy, akiben megbízol, te vagy, ezért megmutatom, hogyan
+
+00:07:45.199 --> 00:07:53.280
+ lehet, hogy létrehozok egy ingyenes saját proxy szolgáltatást, és ezt megismételheti és
+
+00:07:53.280 --> 00:07:56.319
+ hozza létre sajátját is, ezt a felhőben fogjuk megtenni
+
+00:07:56.319 --> 00:07:58.800
+ külső szolgáltatót fog igénybe venni
+
+00:07:58.800 --> 00:08:02.400
+ és ez az amazon, szóval azt mondod, hogy igen, amazon mi van
+
+00:08:02.400 --> 00:08:05.919
+ tudod, hogy megbízhatjuk-e velük az adatainkat, amit használunk, az az övék
+
+00:08:05.919 --> 00:08:10.639
+ felhőszolgáltatásokat hívják amazon webszolgáltatásoknak, így van
+
+00:08:10.639 --> 00:08:14.319
+ mindegyikük a felhő-infrastruktúrájukkal rendelkezik
+
+00:08:14.319 --> 00:08:18.560
+ hogy az ügyfelek alapvetően bérelhessenek hozzáférést a szervereikhez és azokhoz
+
+00:08:18.560 --> 00:08:23.360
+ a virtuális szerverek és minden más, ami az egész
+
+00:08:23.360 --> 00:08:29.680
+ Az infrastruktúra elérhető az Ön számára, de maga a telepítés igen
+
+00:08:29.680 --> 00:08:34.560
+ a tiéd, megmutatom, hogyan történik ez, át fogunk ugrani az aw-okra
+
+00:08:34.560 --> 00:08:40.719
+ és különösen az ec2, így természetesen akkor, ha nem ismeri az aw-okat
+
+00:08:40.719 --> 00:08:44.720
+ látogasson el az aws.amazon.com oldalra, jelentkezzen be amazon fiókjával
+
+00:08:44.720 --> 00:08:50.640
+ majd gyorsan keressen az ec2-re, és ez alapvetően belevissza magát
+
+00:08:50.640 --> 00:08:53.680
+ virtualizációs platformjuk szerint az ec2
+
+00:08:53.680 --> 00:08:57.519
+ csak így, az első dolgot megjegyzem, amikor itt vagyok
+
+00:08:57.519 --> 00:09:03.200
+ Az ec2-ben az én régióm, és ez azért fontos, mert itt van a proxy-m
+
+00:09:03.200 --> 00:09:08.080
+ szerver fog lakni, ha beállítom oda, miért van ez
+
+00:09:08.080 --> 00:09:11.519
+ fontos jól gondolkodni ezen, mondjuk én egy video streaminget használok
+
+00:09:11.519 --> 00:09:15.680
+ szolgáltatás, amely korlátozza a kanadai hozzáférést a videóikhoz
+
+00:09:15.680 --> 00:09:19.440
+ streaming szolgáltatást úgy, hogy a proxy szerveremet északra helyezem
+
+00:09:19.440 --> 00:09:23.360
+ Kalifornia most hirtelen alapvetően azok
+
+00:09:23.360 --> 00:09:26.320
+ IP-címmel azt hiszem, hogy csatlakozom
+
+00:09:26.320 --> 00:09:29.360
+ Kalifornia, így képes vagyok megkerülni ezt
+
+00:09:29.360 --> 00:09:32.720
+ hasonlóan érdemes megváltoztatni a régióját
+
+00:09:32.720 --> 00:09:37.200
+ amit elérni próbál, akár szervert is telepíthet Afrikába
+
+00:09:37.200 --> 00:09:40.480
+ vagy Ázsia nézd meg, hogy hongkongban rendet lehet tenni
+
+00:09:40.480 --> 00:09:44.160
+ tehetsz egyet kanadában, uh Európában
+
+00:09:44.160 --> 00:09:49.680
+ és ott van Közép-Kelet és Dél-Amerika
+
+00:09:49.680 --> 00:09:52.800
+ szóval elég nagy lista, ahol vannak
+
+00:09:52.800 --> 00:09:57.360
+ állítsa be ezt az infrastruktúrát az amazon webszolgáltatásokhoz az ec2 szolgáltatást
+
+00:09:57.360 --> 00:10:01.920
+ Tehát válassza ki azt, ahol a proxykiszolgálót szeretné
+
+00:10:01.920 --> 00:10:05.600
+ meg fogom állítani az enyémet, csak otthagyom Észak-Kaliforniának, ami
+
+00:10:05.600 --> 00:10:09.279
+ nekünk nyugatra egyet, és itt van
+
+00:10:09.279 --> 00:10:13.760
+ a proxy szerverem fog lakni, ami lehetővé teszi a csatlakozást
+
+00:10:13.760 --> 00:10:17.680
+ mintha valóban Kaliforniában ülnék
+
+00:10:17.680 --> 00:10:20.880
+ rendben, ezért az indítási példányra fogok kattintani
+
+00:10:20.880 --> 00:10:24.880
+ majd indítsd újra a példányt, mert ez egy legördülő menü, és ez megadja nekem
+
+00:10:24.880 --> 00:10:29.440
+ az általam telepíthető operációs rendszerek listája
+
+00:10:29.440 --> 00:10:33.760
+ az ec2 példányomon, ezért itt használok néhány kifejezést, amelyek nem biztos, hogy ismerősek
+
+00:10:33.760 --> 00:10:38.240
+ Az aws az amazoni webszolgáltatások, amelyek alapvetően az amazoniak
+
+00:10:38.240 --> 00:10:44.560
+ A felhő felhasználók számára kínált szolgáltatások teljes skálája az ec2
+
+00:10:44.560 --> 00:10:48.160
+ virtualizációs platform virtuális gépek számára
+
+00:10:48.160 --> 00:10:52.240
+ amikor azt mondtam, hogy egy virtuális gépről beszélek
+
+00:10:52.240 --> 00:10:56.160
+ szóval ez szó szerint egy virtuális gép, ezért ezek egyikét fogom telepíteni
+
+00:10:56.160 --> 00:10:59.360
+ operációs rendszerek az ec2 egy példányára, amely
+
+00:10:59.360 --> 00:11:02.880
+ egy virtuális gép, akkor mit akarok
+
+00:11:02.880 --> 00:11:07.040
+ szóval, és azt mondtam, hé, kommentelj az alábbiakban, ha olyan kifejezést használok, amelyet nem ismersz
+
+00:11:07.040 --> 00:11:08.399
+ Gyors keresést fogok végezni
+
+00:11:08.399 --> 00:11:11.120
+ már korábban megtettem, mert rengeteg szervert telepítek
+
+00:11:11.120 --> 00:11:15.279
+ a felhőben a debian-ra fogok kattintani, csak írja be a debian-t a
+
+00:11:15.279 --> 00:11:19.279
+ keresgélj itt, hogy aztán aws-ba megyek
+
+00:11:19.279 --> 00:11:24.640
+ a piactéri eredmények között vannak olyanok is, amelyeket hoztam létre, és vannak olyanok is, amelyek
+
+00:11:24.640 --> 00:11:27.120
+ azt gondolná, hogy igen, használni akarom
+
+00:11:27.120 --> 00:11:30.800
+ közösségiek is, nem, mert nem, mert ezek pénzbe fognak kerülni
+
+00:11:30.800 --> 00:11:34.320
+ és jól mondod, de a közösség ingyenes, nyílt forráskódú és igen
+
+00:11:34.320 --> 00:11:38.959
+ azonban ez nem része az aws piacnak, és így lesz
+
+00:11:38.959 --> 00:11:42.320
+ fizetni a használatért, hogy az a virtuális gép legyen
+
+00:11:42.320 --> 00:11:46.160
+ a felhőben futó példány, így inkább megyünk
+
+00:11:46.160 --> 00:11:49.440
+ használja az egyik hivatalosat az aws piacról, nézzük meg, milyen eredményeket
+
+00:11:49.440 --> 00:11:53.360
+ azt kapjuk, hogy elég jól vannak rendezve a debian jön az első eredmény
+
+00:11:53.360 --> 00:11:57.839
+ A debian 10 buster egy ingyenes vagy kompatibilis
+
+00:11:57.839 --> 00:12:00.560
+ a debian megfelelő verziója, amik leszünk
+
+00:12:00.560 --> 00:12:06.000
+ a telepítéshez válassza ki azt az ingyenes szintet, amely alkalmas, így figyelmen kívül hagyhatjuk a
+
+00:12:06.000 --> 00:12:09.360
+ árképzés, mert egy ingyenes szintű hit folytatást fogunk használni
+
+00:12:09.360 --> 00:12:13.040
+ és itt választjuk ezt olyan jól, ha azt az ingyenes szintet akarjuk, amelyre mennünk kell
+
+00:12:13.040 --> 00:12:15.839
+ egy t2-es mikróval, ezért ezt fogom kiválasztani, de mit
+
+00:12:15.839 --> 00:12:22.399
+ ad-e nekünk egy cpu-t és egy gigabájt memóriát um
+
+00:12:22.399 --> 00:12:25.600
+ és akkor van tárhelyünk, amellyel foglalkozhatunk, nem kell sok tároló, mert
+
+00:12:25.600 --> 00:12:29.920
+ mi csak egy alapproxy-t állítunk fel, és kb. ennyit fogok tenni
+
+00:12:29.920 --> 00:12:34.079
+ telepíteni, ahogy a t2 micro az ingyenes
+
+00:12:34.079 --> 00:12:37.120
+ az elfogadható réteg nem választhat egyet a nagyobbak közül
+
+00:12:37.120 --> 00:12:38.720
+ egyeseket, mert fizetni fog érte
+
+00:12:38.720 --> 00:12:42.079
+ azonnal átnézem és elindítom, visszatérünk
+
+00:12:42.079 --> 00:12:45.839
+ végezzen olyan beállításokat, mint a biztonsági csoportjaink és ilyesmi, csak elmegyek
+
+00:12:45.839 --> 00:12:48.480
+ egyelőre mindent alapértelmezés szerint, és megyünk is
+
+00:12:48.480 --> 00:12:52.000
+ elindítom, hogy először is létre kell hoznom egy új kulcsot
+
+00:12:52.000 --> 00:12:55.360
+ pár, tehát ez az ssh kulcs, amelyet használni fogok
+
+00:12:55.360 --> 00:12:59.680
+ hogy ssh bejusson ebbe a szerverbe, így ezt fogom hívni
+
+00:12:59.680 --> 00:13:04.160
+ egy proxy szervert, majd töltsem le a kulcspáromat
+
+00:13:04.160 --> 00:13:06.320
+ győződjön meg róla, hogy ezt elmentette-e valahova biztonságos helyre
+
+00:13:06.320 --> 00:13:10.800
+ dobd a szerveremre, és dobd oda
+
+00:13:10.800 --> 00:13:16.240
+ és most az indítási példány energiát jelent a virtuális gépen, így fogok
+
+00:13:16.240 --> 00:13:20.000
+ nyomja meg, és megyünk, szóval alapvetően
+
+00:13:20.000 --> 00:13:23.120
+ létrehozása virtuális gép létrehozása
+
+00:13:23.120 --> 00:13:29.360
+ uh ec2 példány a felhőben nekünk uh-ban Észak-Kaliforniában, úgyhogy mi
+
+00:13:29.360 --> 00:13:33.279
+ menj, így itt lévő példányokat fogom megtekinteni
+
+00:13:33.279 --> 00:13:37.200
+ és most látom, hogy most van egy példányom, amely egy t2 mikrot futtat
+
+00:13:37.200 --> 00:13:41.199
+ és csak nem név, ezért rákattintok a szerkesztésre, és ezt fogom hívni
+
+00:13:41.199 --> 00:13:45.839
+ a proxykiszolgáló szerverem próbálja meg, hogy minden rendben legyen, így van
+
+00:13:45.839 --> 00:13:49.519
+ már működik és így ha rákattintok, akkor látom az ip-t
+
+00:13:49.519 --> 00:13:53.360
+ A szerver címe proxy szervernek hívtam, de most
+
+00:13:53.360 --> 00:13:56.720
+ ne feledje, hogy csak a debian 10. nincs más telepítve rajta
+
+00:13:56.720 --> 00:14:02.480
+ szóval le kell másolnom azt az IP címet, majd beugrok a sajátomba
+
+00:14:02.480 --> 00:14:05.839
+ parancssor, mert letöltöttem a kulcsot a
+
+00:14:05.839 --> 00:14:17.839
+ a szerverem személyesen megyek ssh-re a házon belüli szerverre
+
+00:14:18.399 --> 00:14:22.079
+ rendben, szóval most ott vagyok, tehát most a parancsot fogom használni
+
+00:14:22.079 --> 00:14:28.079
+ az ssh, majd kötőjel i a kulcshoz, amelyet használni fogok
+
+00:14:28.079 --> 00:14:31.040
+ tehát a bejövő fájl, amelyet a kulcshoz fogok használni
+
+00:14:31.040 --> 00:14:35.760
+ és ezt hívják proxy server.pem-nek, amit letöltöttem
+
+00:14:35.760 --> 00:14:39.920
+ akkor rendszergazda leszek, mert ez a debian alapértelmezett bejelentkezése
+
+00:14:39.920 --> 00:14:43.600
+ ami vagy amazon machine image admin itt:
+
+00:14:43.600 --> 00:14:46.639
+ majd az IP-címet, amelyet már átmásoltam a vágólapra, és ha igen
+
+00:14:46.639 --> 00:14:48.959
+ nyomja meg az Enter billentyűt, és megkéri, hogy fogadjam el ezt a kulcsot
+
+00:14:48.959 --> 00:14:54.000
+ és igent mondok, és megtagadnak tőlem
+
+00:14:54.000 --> 00:14:57.279
+ a fájl engedélyei végül megjegyezték
+
+00:14:57.279 --> 00:15:01.199
+ 766, így mindenki hozzáférhet ezekhez a fájlokhoz, így érdekes
+
+00:15:01.199 --> 00:15:05.519
+ Az ssh maga megvéd engem attól, hogy valaki képes legyen kompromittálni a kulcsomat
+
+00:15:05.519 --> 00:15:13.120
+ tehát chmod 700 proxy szerver pam próbáljuk ki ezt és most
+
+00:15:13.120 --> 00:15:16.000
+ próbálkozzon újra, így amit tettem, ó, és most vagyok
+
+00:15:16.000 --> 00:15:20.800
+ csatlakoztatva csak működött 700 azt jelenti, hogy én vagyok a kulcs tulajdonosa
+
+00:15:20.800 --> 00:15:27.279
+ bármit megtehetek vele, hogy írjon írjon végre nulla nulla eszközt
+
+00:15:27.279 --> 00:15:30.800
+ senki a csoportban senki, aki nem része a csoportnak
+
+00:15:30.800 --> 00:15:35.600
+ megengedett, hogy egyáltalán hozzáférjen ehhez, tehát alapvetően egy hülye fájl, amelyet nem tudnak
+
+00:15:35.600 --> 00:15:39.519
+ Még nyitva is vagyok, de jól tudom, hogy most vagyok
+
+00:15:39.519 --> 00:15:44.240
+ csatlakoztatva megyek sudo perelni, mert erre szolgál a parancs
+
+00:15:44.240 --> 00:15:47.440
+ vált root-ként, így most root vagyok, így az alkalmazás frissítése
+
+00:15:47.440 --> 00:15:50.399
+ whoop app update fogja megragadni a
+
+00:15:50.399 --> 00:15:55.680
+ tárak, amelyeket lát, ez egy tényleges debian számítógép, ha akarja
+
+00:15:55.680 --> 00:16:01.680
+ a felhőben ilyen könnyű már frissítek, már futok egy debiánt
+
+00:16:01.680 --> 00:16:05.120
+ számítógép a felhőben, ennyi idő alatt, és én bla vagyok
+
+00:16:05.120 --> 00:16:11.360
+ bla bla egyúttal um van egy felhő alapú debian szerverünk
+
+00:16:11.360 --> 00:16:15.519
+ rájöttél, hogy ez ilyen egyszerű és ingyenes
+
+00:16:15.519 --> 00:16:18.720
+ oké, hogy ezzel más dolgokat is megtehessünk, felállíthatnánk egy lámpabokrot
+
+00:16:18.720 --> 00:16:23.600
+ használhatná a mysql mariadb-hez, bármi, amit elő tud állítani a
+
+00:16:23.600 --> 00:16:26.720
+ debian szerver, ezért ezt fogjuk használni a miénkként
+
+00:16:26.720 --> 00:16:31.759
+ proxy, ezért most azt fogom csinálni, hogy telepítek egy nevű eszközt
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy szép és egyszerűen telepíthető apt install tiny proxy
+
+00:16:38.639 --> 00:16:45.600
+ nagyon egyszerűen konfigurálható, mondd, hogy itt vagyunk
+
+00:16:47.120 --> 00:16:51.199
+ és ez most megtörtént, amikor telepítettünk egy apró proxyt, amelyet csak szerkesztenünk kell
+
+00:16:51.199 --> 00:16:59.440
+ a config fájlt, így perjel stb apró apró proxy változás dir erre
+
+00:16:59.440 --> 00:17:05.760
+ és akkor a nano tinyproxy.com webhelyet használom, és ezt szerkesztem, így vezérelheted a nanót
+
+00:17:05.760 --> 00:17:08.799
+ lehetővé teszi számomra, hogy keressek ó, de mielőtt keresnék, vegye figyelembe, hogy a
+
+00:17:08.799 --> 00:17:12.720
+ A port alapértelmezés szerint a 888-at használja, ezt tudnunk kell
+
+00:17:12.720 --> 00:17:15.679
+ információkat, mert ehhez fogunk csatlakozni
+
+00:17:15.679 --> 00:17:19.839
+ meghatalmazottunk gyorsan megkeresi az engedélyt
+
+00:17:21.439 --> 00:17:25.679
+ Az alt w lehetővé teszi az újbóli keresést. wow az engedély szó valószínűleg nem a legjobb
+
+00:17:25.679 --> 00:17:30.640
+ keresési lekérdezés lehet, hogy a 127.0.0.1-re keres, és közvetlenül az alatt megyek
+
+00:17:30.640 --> 00:17:34.720
+ Engedélyezem, majd hozzá kell adnom az IP-címet, hogy csatlakozni tudjak
+
+00:17:34.720 --> 00:17:37.440
+ ezt a proxy szervert, mert jelenleg le van zárva
+
+00:17:37.440 --> 00:17:40.640
+ csak a localhost érheti el, amelyet fontos megjegyezni
+
+00:17:40.640 --> 00:17:44.720
+ hogy ez egy nyilvános ingyenes proxy szerver, csak én vagyok az
+
+00:17:44.720 --> 00:17:47.280
+ hozzáférni fog hozzá, amit meg fognak engedni
+
+00:17:47.280 --> 00:17:52.400
+ meghatalmazom a tartalmaimat, így a kapcsolatom privát
+
+00:17:52.400 --> 00:17:55.919
+ tudnom kell az ip címemet, így át fogok ugrani
+
+00:17:55.919 --> 00:18:03.360
+ aktuális ip.xyz fájlt, és másolja ezt az IP-címet a vágólapra, majd ugorjon
+
+00:18:03.360 --> 00:18:09.840
+ vissza, és illessze be a konfigurációs vezérlőmbe o írja be a vezérlőt x vezérlő o van
+
+00:18:09.840 --> 00:18:14.320
+ kiírni mentse a fájlt most systemctl
+
+00:18:14.320 --> 00:18:21.039
+ indítsa újra az apró proxyt, majdnem megtette a szükséges dolgot
+
+00:18:21.039 --> 00:18:26.000
+ csak annyit kell mondanunk aws az ec2 biztonságnak, hogy
+
+00:18:26.000 --> 00:18:29.840
+ olyan politikát fogunk létrehozni, amely azt mondja, hogy hé, én csak csatlakozhatok ehhez
+
+00:18:29.840 --> 00:18:32.799
+ szervert, így senki más nem tud csatlakozni hozzá
+
+00:18:32.799 --> 00:18:34.880
+ szóval ezt fogjuk jól csinálni
+
+00:18:34.880 --> 00:18:38.799
+ Most tehát vissza fogok ugrani ide, és ezt a szervert látja fent a képernyőn
+
+00:18:38.799 --> 00:18:43.840
+ Nos, ha rákattintok a biztonságra, akkor rákattinthatok arra a biztonsági csoportra, amelyik az
+
+00:18:43.840 --> 00:18:46.240
+ automatikusan hozzárendelve, csak kattintson erre
+
+00:18:46.240 --> 00:18:50.480
+ és most rám hagyott az ec2 biztonsági csoportokra és a megfelelő biztonságra
+
+00:18:50.480 --> 00:18:52.320
+ csoportot észreveszi, hogy már fel van állítva
+
+00:18:52.320 --> 00:18:56.960
+ egyet az ssh-hez, mert alapértelmezés szerint engedélyezve van, ezt beállíthatom
+
+00:18:56.960 --> 00:18:59.440
+ hogy csak nekem is megengedjem ami fontos
+
+00:18:59.440 --> 00:19:02.720
+ tegyük ezt csak azért, hogy jó biztonsági gyakorlatok szerint járjunk el
+
+00:19:02.720 --> 00:19:06.160
+ ssh megváltoztatom a custom000-ről
+
+00:19:06.160 --> 00:19:10.080
+ bezárom x-et, majd megváltoztatom az ip-re
+
+00:19:10.080 --> 00:19:14.480
+ majd hozzáadok egy új szabályt, amit láttál, hogyan kerültem ide, tudom, hogy mozogok
+
+00:19:14.480 --> 00:19:18.080
+ nagyon gyorsan, csak rákattintottam a bejövő szabályok szerkesztésére
+
+00:19:18.080 --> 00:19:22.960
+ ide rendben, így adj hozzá egy új szabályt, az egyéni tcp az
+
+00:19:22.960 --> 00:19:27.120
+ alapértelmezett portszámra emlékszel 888-ra és csak
+
+00:19:27.120 --> 00:19:31.919
+ engedélyezem az ip-t, hívhatom valaminek, ha proxyt akarok
+
+00:19:31.919 --> 00:19:37.919
+ és akkor mentse el a szabályaimat ott megyünk, így most látod az ssh és
+
+00:19:37.919 --> 00:19:44.160
+ az egyedi TCP egy proxyt hív a 888-as porton.
+
+00:19:44.160 --> 00:19:49.600
+ tehát hogyan teszteljük ezt rendben, így a jelenlegi IP-címünk 99,233
+
+00:19:49.600 --> 00:19:52.640
+ és így csatlakozni fogok a proxyhoz, ez az
+
+00:19:52.640 --> 00:19:57.360
+ nem egy ismertető a proxy használatáról, ez nem a
+
+00:19:57.360 --> 00:20:01.120
+ oktatóanyag, hogy mire használható, szükségszerűen ez az
+
+00:20:01.120 --> 00:20:04.720
+ itt feltételezéseket teszek, hogy vagy maga google-zhatja
+
+00:20:04.720 --> 00:20:08.240
+ mert a felhasználási eset alapján más lesz, akár akarod
+
+00:20:08.240 --> 00:20:11.600
+ csak proxy a böngésző, vagy proxy egy adott alkalmazás, vagy az egész
+
+00:20:11.600 --> 00:20:15.440
+ hálózat, amely az Ön egyénén múlik
+
+00:20:15.440 --> 00:20:20.159
+ használati eset, ez szigorúan oktatóanyag ennek felépítéséhez
+
+00:20:20.159 --> 00:20:23.679
+ Az ec2 példány nagyon gyorsan, ingyen
+
+00:20:23.679 --> 00:20:28.400
+ amelynek készen áll a proxy használatára Kaliforniában vagy bárhol
+
+00:20:28.400 --> 00:20:32.960
+ és uh ennyi az egész mostanában
+
+00:20:32.960 --> 00:20:36.480
+ így ez a pillanat nem feltétlenül az, amit te akarsz csinálni
+
+00:20:36.480 --> 00:20:41.120
+ így fogom tesztelni a proxyt, amely véletlenül itt van a Windows 10-en
+
+00:20:41.120 --> 00:20:47.280
+ szóval egyszerűen beírom a proxyt, és újra belépek a proxy beállításaiba
+
+00:20:47.280 --> 00:20:50.880
+ valószínűleg nem így akarod csinálni, csak tesztelni akarok, úgyhogy meg fogok fordulni
+
+00:20:50.880 --> 00:20:53.679
+ a proxy-n látom, hogy van egy régi proxy
+
+00:20:53.679 --> 00:20:56.880
+ beállításokat, ezért ügyeljen arra, hogy figyeljen erre
+
+00:20:56.880 --> 00:21:00.240
+ ha vannak régi proxy-beállítások, akkor meg kell változtatni
+
+00:21:00.240 --> 00:21:03.679
+ Az ec2-n lévő példányok kattintson a példányazonosítóra
+
+00:21:03.679 --> 00:21:07.440
+ és fogd meg azt az IP-címet, majd illessd be
+
+00:21:07.440 --> 00:21:11.840
+ a 8888-as proxykiszolgáló-port címeként
+
+00:21:11.840 --> 00:21:17.120
+ és mentse, így most azonnal csatlakozom a proxyhoz
+
+00:21:17.120 --> 00:21:20.559
+ nincs csatlakoztatva a Windowshoz, azt mondja, hogy az összes forgalmát át fogom vezetni
+
+00:21:20.559 --> 00:21:22.880
+ a meghatalmazáson keresztül javítanom kellene ott
+
+00:21:22.880 --> 00:21:29.520
+ tehát ha visszatérek a currentip.xyz 99.233-ra, akkor a jelenlegi ip-m lesz, el fogok ütni
+
+00:21:29.520 --> 00:21:38.159
+ f5 frissíteni, és ha minden jól ment 3.101.108.211. jól
+
+00:21:38.159 --> 00:21:44.720
+ mi az, hogy az én szerverem, úgyhogy valójában most vagyok
+
+00:21:44.720 --> 00:21:51.679
+ hol vagyok, derítsük ki a maxmind.com webhelyet, keressük meg az IP címet
+
+00:21:51.679 --> 00:21:59.120
+ hogy jelenleg azon vagyok, ahol San Jose Kaliforniában vagyok
+
+00:21:59.120 --> 00:22:02.559
+ ott az enyém határozza meg, hogy legyek
+
+00:22:02.559 --> 00:22:05.600
+ szóval ennyi van nálunk, emberek
+
+00:22:05.600 --> 00:22:10.640
+ létrehozott konfigurálva egy ingyenes proxy szolgáltatást telepítettünk, amelyet mi
+
+00:22:10.640 --> 00:22:14.559
+ a saját és működtetni csak nekünk van ilyenünk
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh kulcs, tehát ha csatlakozni szeretnél a módosításokhoz, használd
+
+00:22:19.200 --> 00:22:23.840
+ többcélú szerverként megteheti, de csak figyelje a sajátját
+
+00:22:23.840 --> 00:22:27.120
+ a számlázási dolgait csak győződjön meg arról, hogy nem lépte-e túl a küszöbértékeket és
+
+00:22:27.120 --> 00:22:29.440
+ az ilyen dolgok, ha csak proxyként használod, akkor az
+
+00:22:29.440 --> 00:22:32.159
+ nagyon valószínűtlen, hogy meg fogod csinálni, hogy ez csak valami, amit csövezel
+
+00:22:32.159 --> 00:22:37.520
+ Az adatok áttekintése érdekében ellenőrizze, hogy az aws.amazon.com webhelyen indítsa el
+
+00:22:37.520 --> 00:22:41.440
+ Ha kérdése van, küldje el őket a közösségünkhöz
+
+00:22:41.440 --> 00:22:44.480
+ ellentmondásunk az 5. kategóriában található
+
+00:22:44.480 --> 00:22:48.720
+ tv közben az interakció menüben, ha tetszett, ha használta, vagy
+
+00:22:48.720 --> 00:22:53.039
+ hasznosnak találta, adjon egy nagy remeket, kérem, iratkozzon fel, és találkozunk
+
+00:22:53.039 --> 00:23:07.059
+ szünet után [Zene]
+
+00:23:15.520 --> 00:23:18.559
+ üdvözlöm, ez az 5. kategóriás technológiai tv
+
+00:23:18.559 --> 00:23:22.240
+ és szeretnék beszélni arról, hogy mit csinálok otthon
+
+00:23:22.240 --> 00:23:26.640
+ vagy inkább mit tervezek ülve nézegetni a netflixet
+
+00:23:26.640 --> 00:23:30.480
+ nincs időm üldögélni és nézni a netflix-t bárcsak megtettem volna
+
+00:23:30.480 --> 00:23:34.960
+ uh no a családom mindig a netflix-et disználja, és én olyan vagyok, mintha csak a számítógépre mennék
+
+00:23:34.960 --> 00:23:38.720
+ ami nagyszerű, mert arra kényszerített, hogy elindítsam, a netflix van a számítógépen
+
+00:23:38.720 --> 00:23:44.000
+ most jeff, elvonod a figyelmemet uh nem, de az
+
+00:23:44.000 --> 00:23:46.960
+ nagyszerű, mert arra kényszerített, hogy elkezdjem vizsgálni néhány dolgot, amit csinálunk
+
+00:23:46.960 --> 00:23:51.760
+ a ház körül, és menj, hogyan tehetném ezt a sajátomnak, és így
+
+00:23:51.760 --> 00:23:55.120
+ tudod, hogy a műsor tetején említettem, hogy a fiunk
+
+00:23:55.120 --> 00:24:00.240
+ beleforrt a forrasztásba, és nagyon jól teljesített benne, és emlékeztette arra, hogy hány éves
+
+00:24:00.240 --> 00:24:05.200
+ csak fordult 12. éppen fordult 12. rendben hm, de igen, kész
+
+00:24:05.200 --> 00:24:09.760
+ nagyon jól van vele, és uh, eddig két számológépet forrasztott
+
+00:24:09.760 --> 00:24:13.919
+ ö és egyiküket iskolába vitték, amit a tanára teljesen lefújt
+
+00:24:13.919 --> 00:24:16.000
+ el, igen, azt gondolom, hogy 12 éves és ő
+
+00:24:16.000 --> 00:24:20.320
+ már készít egy számológépet igen igen ő készített egy számológépet, amiből kaptunk egy barkács készletet
+
+00:24:20.320 --> 00:24:23.360
+ amazon és ő építette, és talán két óra
+
+00:24:23.360 --> 00:24:27.039
+ a munka nagyon fenomenális irreális volt, és forrasztási munkája az
+
+00:24:27.039 --> 00:24:30.880
+ igazán tiszta, kiváló, mint a profi
+
+00:24:30.880 --> 00:24:34.559
+ de különben is azt kérdezte, hogyan kell más dolgokat csinálni, és ahogy forrasztjuk
+
+00:24:34.559 --> 00:24:37.200
+ mint hogy mi ez és mi ez és hogyan működik, és
+
+00:24:37.200 --> 00:24:40.480
+ megyek, szeretném, ha megtaníthatnám ezeket a dolgokat
+
+00:24:40.480 --> 00:24:46.480
+ szeretném tudni elmagyarázni neki, hogy az áramköri lap valójában hogyan működik
+
+00:24:46.480 --> 00:24:49.360
+ forrasztani, de megérteni az összetevőket, az útválasztást és mindezt
+
+00:24:49.360 --> 00:24:53.279
+ ilyesmi, és úgy értem, tudom, hogy megvásárolhatod
+
+00:24:53.279 --> 00:25:00.400
+ csak sima táblák, amelyek csak kis csatlakozási pontok sorai
+
+00:25:00.400 --> 00:25:03.840
+ de szeretném, ha saját táblánkat készíthetnénk, igen, és ezért megkérdezte
+
+00:25:03.840 --> 00:25:07.279
+ konkrétan, ha találunk egy barkács készletet
+
+00:25:07.279 --> 00:25:10.320
+ egy haszontalan doboz, tudod, hogy ez az a doboz, ahol megnyomod a gombot igen és a
+
+00:25:10.320 --> 00:25:15.840
+ kis dolog kijön és eldurran, igen, próbáld ki
+
+00:25:17.600 --> 00:25:22.640
+ mit tettél, komolyan gondolod
+
+00:25:25.039 --> 00:25:30.400
+ jajj, ez vidám
+
+00:25:32.720 --> 00:25:39.520
+ szia olyan mintha egy cica lenne bent olyan mint a macskámban
+
+00:25:40.240 --> 00:25:44.799
+ hé, hé, most, olyat kerestem, hogy nem találtam egyet, de találtam egy csomót
+
+00:25:44.799 --> 00:25:48.080
+ olyan emberek, mint ó, akkor készíthet egyet egy arduino segítségével, amelyet ezzel is elkészíthet
+
+00:25:48.080 --> 00:25:55.520
+ és olyan voltam, mintha csinálnék egy barkácsdobozt, haszontalan dobozt, abból szeretnék építeni
+
+00:25:55.520 --> 00:25:58.559
+ az alapoktól kezdve, így azt kutattam, hogyan lehet elkészíteni
+
+00:25:58.559 --> 00:26:03.679
+ a saját pcb -im otthon rendben ez valójában nem is olyan nehéz
+
+00:26:03.679 --> 00:26:08.960
+ és el voltam ragadtatva, hogy csak egy lézernyomtatóra van szükségem az útválasztás beállításához
+
+00:26:08.960 --> 00:26:12.880
+ mint ahová az utak járnak, így valóban maratni fogja
+
+00:26:12.880 --> 00:26:15.919
+ otthon valóban maratni fogom, ó ember
+
+00:26:15.919 --> 00:26:20.159
+ ez messze túlmutat rajtam jeff valójában vegyszerekkel jár
+
+00:26:20.159 --> 00:26:23.679
+ igen, de nagyon egyszerű folyamat, úgyhogy megtaláltam
+
+00:26:23.679 --> 00:26:26.880
+ egy csomó kutatást végeztem vele, és így találtam aa
+
+00:26:26.880 --> 00:26:29.919
+ nagyon egyszerű, egyszerű módja a saját NYÁK készítésének
+
+00:26:29.919 --> 00:26:32.799
+ és ezt fogjuk megtenni, így a következő projektem valószínűleg a
+
+00:26:32.799 --> 00:26:35.600
+ pár hónapig, mert meg kell tanulnom, hogyan kell ezeket a dolgokat
+
+00:26:35.600 --> 00:26:39.520
+ Az a feladat, hogy megtervezzek egy áramkört, amivel rendelkezem
+
+00:26:39.520 --> 00:26:43.120
+ még soha nem csinálták meg az áramköri lapot, majd a fiamét
+
+00:26:43.120 --> 00:26:45.919
+ együtt forrasztjuk, és saját magunk készítjük el
+
+00:26:45.919 --> 00:26:50.960
+ haszontalan doboz, amiben reménykedem, hogy a dobozt 3D-ben is kinyomtatom, ó, ez klassz
+
+00:26:50.960 --> 00:26:56.480
+ igen, csak belemerülsz az i-be, amikor valamit csinálok, nem leszek kicsi
+
+00:26:56.480 --> 00:27:00.320
+ és tudod, hogy a megközelítésem kicsit más, mert nagyon vagyok
+
+00:27:00.320 --> 00:27:03.520
+ olyan, mintha előbb szeretek valamit megtanulni
+
+00:27:03.520 --> 00:27:09.200
+ és akkor növeld a befektetésemet ebbe a folyamatba, és olyan vagy, mintha beszélnél
+
+00:27:09.200 --> 00:27:13.679
+ a PCB-készítéshez való ugrásról, így biztonsági másolatot készítenék, hogy tudd
+
+00:27:13.679 --> 00:27:16.799
+ ha erre gondolsz, hé, talán szeretném, ha saját áramköröket tudnék létrehozni
+
+00:27:16.799 --> 00:27:20.399
+ és az ilyen dolgok a kiindulópontom egy kenyérlemez igen
+
+00:27:20.399 --> 00:27:25.440
+ a kenyérlemez pedig lehetővé teszi, hogy elrendezze az Ön által tervezett vagy tervezett áramkört
+
+00:27:25.440 --> 00:27:28.559
+ hogy letöltötted, mint egy áramköri tervezetet
+
+00:27:28.559 --> 00:27:32.399
+ az internetről, vagy bárhogy is van, ez lehetővé teszi a lefektetését
+
+00:27:32.399 --> 00:27:36.799
+ ki egy alapvetően ál-PCB-n
+
+00:27:36.799 --> 00:27:41.039
+ ami úgy fog működni, mint egy NYÁK, de akkor csak szétszedheti az egészet és
+
+00:27:41.039 --> 00:27:46.399
+ azonnal tegye el az alkatrészeket, és olcsó, nagyon olcsó, és ez csak elindítja
+
+00:27:46.399 --> 00:27:50.080
+ és akkor a következő lépés számomra az úgynevezett prototípus-tábla, így kapsz
+
+00:27:50.080 --> 00:27:53.279
+ NYÁK-táblák, amelyeken minden lyuk megfelelő, és
+
+00:27:53.279 --> 00:27:57.840
+ vannak forrasztó um, mint a pontok, de nincs
+
+00:27:57.840 --> 00:28:02.080
+ összeköttetés közöttük, így ténylegesen vezetéket vezet, vagy Ön
+
+00:28:02.080 --> 00:28:05.760
+ futtasson egy kis forrasztást például két különböző ízület között
+
+00:28:05.760 --> 00:28:10.080
+ és így csinálod, szóval ez a második lépésem, akkor megnézném
+
+00:28:10.080 --> 00:28:14.720
+ talán a saját maratásának útját járja
+
+00:28:14.720 --> 00:28:19.200
+ PCB-k, mert akkor belemegy, mint a kémiai folyamatok
+
+00:28:19.200 --> 00:28:24.960
+ és én még nem kutattam, de ez sokkal bonyolultabb folyamat
+
+00:28:24.960 --> 00:28:27.919
+ szeretek egy kicsit egyszerűbben kezdeni az első NYÁK-t i
+
+00:28:27.919 --> 00:28:32.080
+ kenyérlapra épült nagyon nagyon egyszerű, de jól megterveztem
+
+00:28:32.080 --> 00:28:35.120
+ oké, és csak annyi, hogy öt voltra van szükség
+
+00:28:35.120 --> 00:28:38.880
+ jel és ha öt voltos a
+
+00:28:38.880 --> 00:28:43.440
+ a relé zárt, így rendben van egy relé, ha nincs öt voltja
+
+00:28:43.440 --> 00:28:47.520
+ a relé kinyílik, így leválasztja
+
+00:28:47.520 --> 00:28:51.440
+ az az ok, amiért létrehoztam, hogy ez egy erre a célra létrehozott alkalmazás, ezért megépítettem
+
+00:28:51.440 --> 00:28:56.000
+ kenyérlapon, és öt voltos etetés jön
+
+00:28:56.000 --> 00:29:03.440
+ bármilyen találgatás bármilyen találgatás spc nope ez egy újabb hárombetűs betűszó usb
+
+00:29:03.440 --> 00:29:07.360
+ usb usb húz egy öt voltos jelet egy mikropipáról
+
+00:29:07.360 --> 00:29:12.399
+ router rendben van, és akkor a micro tick i programozott kódban
+
+00:29:12.399 --> 00:29:17.039
+ hogy alapvetően azért, hogy lebutítsam, ha az internet leáll
+
+00:29:17.039 --> 00:29:20.559
+ megöli az áramot az USB-n oh, és akkor az
+
+00:29:20.559 --> 00:29:25.520
+ kinyitja a relét, és mi a relé vezérlése, de a modem áramellátása
+
+00:29:25.520 --> 00:29:29.919
+ tehát a modem, ha az internet leáll, automatikusan megfordul
+
+00:29:29.919 --> 00:29:33.120
+ a relé miatt kikapcsolja önmagát
+
+00:29:33.120 --> 00:29:37.039
+ jobbra, várjon öt másodpercet, majd kapcsolja be újra, így lényegében a
+
+00:29:37.039 --> 00:29:41.200
+ virtuális verziója kikapcsolta és újra be, mert
+
+00:29:41.200 --> 00:29:43.679
+ mit csinálsz, ha az interneten vagy, lemegy, meghúzod a csatlakozót
+
+00:29:43.679 --> 00:29:46.799
+ a lendülettől várva öt másodpercet, és újra csatlakoztatja, és
+
+00:29:46.799 --> 00:29:50.240
+ tízből nyolcszor tudod, hogy ez visszajön és működik
+
+00:29:50.240 --> 00:29:54.559
+ igaz, ez volt az általam felépített áramkör, így egyszer egy prototípus-táblára építettem
+
+00:29:54.559 --> 00:29:58.240
+ működött, és csak összeforrasztottam, és ez nagyon nagyon egyszerű
+
+00:29:58.240 --> 00:30:00.799
+ áramkör nagyon jó, és remekül működött, szeretem
+
+00:30:00.799 --> 00:30:04.720
+ hogy nagyon klassz, tehát eszközök, amiket kaptál
+
+00:30:04.720 --> 00:30:08.080
+ messze hol vagy uh-ban, mint mondtam, hogy most csináltam
+
+00:30:08.080 --> 00:30:13.760
+ az elmúlt héten végzett kutatás, szóval én vagyok a vásárlási szakaszban
+
+00:30:13.760 --> 00:30:17.679
+ uh, szóval megvan az összes forrasztási anyag, amit a deszkát vásárolok
+
+00:30:17.679 --> 00:30:21.919
+ a vegyszereket, amiket már letöltöttem az um szoftvert
+
+00:30:21.919 --> 00:30:25.600
+ a NYÁK tervezéséhez wow um
+
+00:30:25.600 --> 00:30:29.360
+ és van egy alkatrészkészletem, amely úton van az összes eszközzel
+
+00:30:29.360 --> 00:30:33.039
+ ellenállások és kondenzátorok, igen, minden ilyen dolog, ami ügyes dolog
+
+00:30:33.039 --> 00:30:36.559
+ az is, hogy manapság úgy értem, hogy nem nagyon tudsz járni
+
+00:30:36.559 --> 00:30:39.039
+ rádióállomásba, mint régen, ott tudtunk lenni
+
+00:30:39.039 --> 00:30:43.679
+ még mindig vannak olyan üzletek, mint itt a barrie-ben, úgynevezett tengeri
+
+00:30:43.679 --> 00:30:47.039
+ ami egy zseniális üzlet, olyan, mint egy régi rádióállomás, ahol te
+
+00:30:47.039 --> 00:30:50.399
+ menj be és mintha csak egy kondenzátorra lenne szükségem igen
+
+00:30:50.399 --> 00:30:52.880
+ és olyan, mint itt, tudod, olyan, mint a fiókok
+
+00:30:52.880 --> 00:30:57.279
+ és kondenzátorok és ellenállások fiókjai és minden más dióda és bármi más
+
+00:30:57.279 --> 00:31:01.519
+ de csak azért, hogy szerezzek egy készletet 20 dollárért
+
+00:31:01.519 --> 00:31:04.960
+ mindenféle, mint a közös dolgok, és ez egy készlet, amely a
+
+00:31:04.960 --> 00:31:07.440
+ kenyérdeszka és kenyérdeszka jár hozzá, meg az
+
+00:31:07.440 --> 00:31:11.279
+ volt az egyik dolog, hogy szeretnék-e igen, én fogom megtervezni, de részben
+
+00:31:11.279 --> 00:31:14.640
+ a tervezési folyamat pont olyan, mint amit a kenyérlemez segítségével mondtál ki
+
+00:31:14.640 --> 00:31:17.519
+ hogy fog menni az áramkör, és ez nagyszerű tanulás lesz
+
+00:31:17.519 --> 00:31:19.840
+ tapasztalat Luke számára, mert olyanok lesznek, mint hé ez
+
+00:31:19.840 --> 00:31:23.200
+ hogyan működik ez, és próbáljuk ki ezt, és akkor tegyük meg
+
+00:31:23.200 --> 00:31:26.080
+ tudod, hogy ott is kipróbálhatjuk, anélkül, hogy valóban elkészítenénk saját darabjainkat
+
+00:31:26.080 --> 00:31:30.880
+ ez nagyon szép, amit említettél, az arduino és az arduino is ilyen
+
+00:31:30.880 --> 00:31:34.159
+ mintha vezérlő lenne, így igen, mivel
+
+00:31:34.159 --> 00:31:37.200
+ egy málna pi vagy más egy fedélzeti számítógép igaz
+
+00:31:37.200 --> 00:31:41.200
+ valódi számítógép operációs rendszerrel és minden, amit egy arduino olyan, mint te
+
+00:31:41.200 --> 00:31:45.519
+ csak programozza be egy nagyon konkrét feladat elvégzésére, ez szilárd állapot
+
+00:31:45.519 --> 00:31:48.960
+ és válaszolni fog, és azt hiszem, hogy ez az
+
+00:31:48.960 --> 00:31:51.840
+ miért működne igazán jól egy arduino
+
+00:31:51.840 --> 00:31:55.679
+ uh egy haszontalan doboz azért, mert olyan
+
+00:31:55.679 --> 00:31:59.200
+ vagy be, vagy kikapcsol, ez helyes, és ha be van kapcsolva, tegye meg ezt
+
+00:31:59.200 --> 00:32:03.200
+ és akkor kikapcsolja a megfelelőt, tehát nagyon alapvető programozás
+
+00:32:03.200 --> 00:32:09.919
+ digitális írjon négy vesszőt sziasztok pontosvesszővel és akkor mi vagyunk
+
+00:32:09.919 --> 00:32:13.519
+ késni fog egy másodpercig, ami ezer milliszekundum
+
+00:32:13.519 --> 00:32:17.039
+ és akkor ezt a sort most átmásoljuk
+
+00:32:17.039 --> 00:32:20.960
+ mit gondolsz, mit jelent a magas vagy az alacsony, amit ide fogok tenni
+
+00:32:20.960 --> 00:32:27.440
+ csak találgatás be- vagy kikapcsolásra, igen, így néz ki most az áramköröm
+
+00:32:27.440 --> 00:32:32.399
+ és egyszerűen csatlakoztatni fogom ezt az USB tápellátáshoz, így nem csatlakoztatom
+
+00:32:32.399 --> 00:32:36.240
+ a számítógépet, amellyel ténylegesen áramellátásba akarom kapcsolni ezt az eszközt, és megnézem, hogy működik-e
+
+00:32:36.240 --> 00:32:40.840
+ futtatja a programomat, és ha mégis megtörténik, látnunk kell ezt a fényt
+
+00:32:40.840 --> 00:32:45.279
+ villogni megyünk, ami minden másodpercben szép, így mi
+
+00:32:45.279 --> 00:32:49.600
+ valójában meglehetősen gyorsan létrehozta az áramkört uh és létrehozta a
+
+00:32:49.600 --> 00:32:53.919
+ programot, hogy most megmondja ennek a fénynek, mit kell tennie, és csak nagyon elmondtuk
+
+00:32:53.919 --> 00:32:57.760
+ egyszerűen kapcsolja be és újra, de ha mégis
+
+00:32:57.760 --> 00:32:59.679
+ saját áramkör létrehozása, amit szeretnie kell
+
+00:32:59.679 --> 00:33:04.159
+ Önnek be kell programoznia magát, és meg kell találnia, hogyan
+
+00:33:04.159 --> 00:33:07.919
+ wow szeretném látni ezt a projektet folyamatban lévő munkának
+
+00:33:07.919 --> 00:33:11.840
+ oké, és akkor nézd meg, hogy uh, hogy jön össze, igen, jól hangzik
+
+00:33:11.840 --> 00:33:16.559
+ megemlítettük az itteni közösséget a műsorunkban, és a diszkord szerverünket
+
+00:33:16.559 --> 00:33:20.320
+ különösképpen megérintettem a közösségünket jeff
+
+00:33:20.320 --> 00:33:23.760
+ menjen be, és ossza meg ötleteimet áramkörökkel és igen
+
+00:33:23.760 --> 00:33:27.519
+ ilyen dolgok, és vannak olyan emberek a közösségünkben, akik igazságosak
+
+00:33:27.519 --> 00:33:32.559
+ mint idefelé, a képességeikig és azok megértéséig
+
+00:33:32.559 --> 00:33:36.320
+ típusú dolgokat, így nekem nagyon hasznos volt, mint én
+
+00:33:36.320 --> 00:33:38.880
+ megtanultam, így ó, én is teljesen tervezem használni a
+
+00:33:38.880 --> 00:33:42.640
+ a közösség hasznosítja a munkát nekem a hibák révén, igen, és ha te is ezek közé tartozol
+
+00:33:42.640 --> 00:33:46.159
+ a közösség most csak hé, emeld fel a kezed, és mondd, hogy igen
+
+00:33:46.159 --> 00:33:48.480
+ megértem, hogy mindez hogyan működik, szívesen segítek
+
+00:33:48.480 --> 00:33:52.640
+ és uh, és ez azt hiszem, hogy szerintem ez nagyon ügyes lesz
+
+00:33:52.640 --> 00:33:54.320
+ funkció a bemutatóhoz, valamint megtanulja
+
+00:33:54.320 --> 00:33:57.200
+ igen, biztosan tarts minket közzé azon a jeff-en, mindenképpen érdekelne
+
+00:33:57.200 --> 00:34:00.159
+ tudni, hogy mennek a dolgok, igen, a
+
+00:34:00.159 --> 00:34:06.320
+ jelenetek egy haszontalan doboz bármely más van ötleted mégis izgulok
+
+00:34:06.320 --> 00:34:09.520
+ amikor úgy találok ki, mint amikor gondolok valamire
+
+00:34:09.520 --> 00:34:13.200
+ volt-e olyan pillanata, amikor olyan vagyok, mintha nagyon szeretném
+
+00:34:13.200 --> 00:34:16.240
+ volt valami, ami ezt megtette volna, de nem létezik
+
+00:34:16.240 --> 00:34:20.079
+ itt érdekes a 3D nyomtatás, mert olyan dolgokat hozok létre
+
+00:34:20.079 --> 00:34:23.520
+ még nem léteznek, ii nem igazán gondoltam
+
+00:34:23.520 --> 00:34:27.520
+ annyiban, ami létezik és nem létezik
+
+00:34:27.520 --> 00:34:29.919
+ hm
+
+00:34:30.960 --> 00:34:34.000
+ nem, nem igazán gondoltam volna, hogy eddig valami ötlettel állnék elő
+
+00:34:34.000 --> 00:34:37.040
+ igen, és ossza meg azokat, rengeteg minden biztos
+
+00:34:37.040 --> 00:34:43.679
+ igen, mintha mindig is szerettem volna egy házi hangrendszert csinálni
+
+00:34:43.679 --> 00:34:48.879
+ ami összekapcsol um tudja amazon készülékünket és ilyesmi
+
+00:34:48.879 --> 00:34:52.079
+ azt szeretném, ha lennének érzékelőim
+
+00:34:52.079 --> 00:34:56.320
+ amikor egyik szobából a másikba sétálok, beindul a mozgásérzékelő, és leáll
+
+00:34:56.320 --> 00:34:59.760
+ kapcsolja ki az egyszobás hangszórókat, és tegye oda, ahova éppen mentem
+
+00:34:59.760 --> 00:35:02.000
+ ez így fejlettebb, de valószínűleg így van
+
+00:35:02.000 --> 00:35:05.119
+ csak arra tudok gondolni, hogy hol vagyok, mintha ezt szeretném megtenni, de látlak beszélgetni
+
+00:35:05.119 --> 00:35:08.960
+ erről, és akkor szerintem rendben van, használhatna passzív infravörös érzékelőt
+
+00:35:08.960 --> 00:35:14.640
+ igen, amelyet a mozgásérzékelőkben használhat, használhat lézer érzékelőt, de
+
+00:35:14.640 --> 00:35:19.200
+ a pir nagyon olcsó igen igen, és ez csak egy kis érzékelő, amire hasonlít
+
+00:35:19.200 --> 00:35:22.880
+ rendben volt mozgás, csinálj valamit igen, így létrehozhatsz valamit
+
+00:35:22.880 --> 00:35:27.520
+ ismét egy relével, amely csak azt ellenőrzi, hogy van-e a hangszóró
+
+00:35:27.520 --> 00:35:31.599
+ egy befejezett pálya, vagy nem, igen, ha csak a
+
+00:35:31.599 --> 00:35:36.160
+ egy csomó hangszóró csatlakoztatva egy erősítőn keresztül, relét állíthat be
+
+00:35:36.160 --> 00:35:40.000
+ pir szenzorokkal, amelyeket mozgással vezérelhetne
+
+00:35:40.000 --> 00:35:44.160
+ igen jó, és ha 10 percig nincs mozgás, kapcsolja ki a hangszórót
+
+00:35:44.160 --> 00:35:45.760
+ automatikusan vagy ilyesmi igen
+
+00:35:45.760 --> 00:35:49.200
+ pontosan olyan, mint az ilyen típusú ötletek, mintha annyi dolog lenne, amit tudsz
+
+00:35:49.200 --> 00:35:51.359
+ akkor tedd, amikor elkezdesz megérteni
+
+00:35:51.359 --> 00:35:55.839
+ ott van a teljes oldala, ahol valami elromlik, és kijavíthatod igen
+
+00:35:55.839 --> 00:35:59.200
+ ez jó érzés, és ez megtörtént, ezt már megtettük
+
+00:35:59.200 --> 00:36:02.000
+ igen szép, így tudod, hogy megkapod azt a kis elemet
+
+00:36:02.000 --> 00:36:07.280
+ tesztelők szeretik ellenőrizni a töltést igen, így volt egy ilyen, és ez van
+
+00:36:07.280 --> 00:36:09.200
+ vicces, amikor a fiam építette a számológépét
+
+00:36:09.200 --> 00:36:12.560
+ nem voltunk biztosak abban, hogy működnek-e az elemek, és nem kapunk semmit
+
+00:36:12.560 --> 00:36:15.760
+ Szeretem, hogy ez furcsa, hogy még akkor sem szoktunk megkapni, ha halott
+
+00:36:15.760 --> 00:36:18.640
+ beugrik a pirosba, de nem volt semmi, ezért kinyitottuk
+
+00:36:18.640 --> 00:36:22.960
+ kiderül, hogy a tényleges kapcsolat megszakadt ó
+
+00:36:22.960 --> 00:36:27.359
+ most fogalmam sincs igen, és a fiam olyan, hogy ó, ezt meg tudom javítani és
+
+00:36:27.359 --> 00:36:30.240
+ kijavította, összeraktuk, aztán mi és ez működik, és olyan, mint ó
+
+00:36:30.240 --> 00:36:34.000
+ igen, hogy lemerült az akkumulátor igen, ehhez is tudok kapcsolódni, a-t használom
+
+00:36:34.000 --> 00:36:38.160
+ párna hangszóró podcastokhoz rendben és uh, mert tudod
+
+00:36:38.160 --> 00:36:40.880
+ vezetékkel csatlakozik a telefonomhoz, húzódik
+
+00:36:40.880 --> 00:36:45.119
+ igen, és azonnal kihúzták, így olyan egyszerű dolog, de én teljesen mit
+
+00:36:45.119 --> 00:36:48.720
+ nem vettem másikat nem nem nem vettem
+
+00:36:48.720 --> 00:36:52.480
+ szétválasztottam, és újraforrasztottam és megerősítettem
+
+00:36:52.480 --> 00:36:56.160
+ szóval nem fordulna elő, ó, gyönyörű jobb lett, mint amilyen ő volt
+
+00:36:56.160 --> 00:37:00.240
+ olyan dolgok felé fordult, mint az e-hulladék igen, és olyan, mintha valakinek lenne
+
+00:37:00.240 --> 00:37:04.960
+ valószínűleg meg fog szabadulni a tévéjétől vagy a számítógép monitorától
+
+00:37:04.960 --> 00:37:08.240
+ még mindig működik apa csak valami bent tört el
+
+00:37:08.240 --> 00:37:12.400
+ olyan, mintha kijavítanám, olyan, mintha igen gondolkodnál ezen, és így vannak a kerekei
+
+00:37:12.400 --> 00:37:15.599
+ utoljára fordult, és olyan lenne, hogy meg tudnám csinálni ezeket a dolgokat, majd eladnám
+
+00:37:15.599 --> 00:37:20.160
+ 12 évesek, ez egy karrier
+
+00:37:20.160 --> 00:37:22.960
+ számos
+
+00:37:23.599 --> 00:37:27.359
+ uh, mint igazán értékes, hogy rendelkezzünk ilyen képességekkel
+
+00:37:27.359 --> 00:37:30.960
+ szóval felkészítem a következő uh-ra, hogy ő 12 éves
+
+00:37:30.960 --> 00:37:38.560
+ nyolc hat év nyugdíjba megy, bejött egy monitor, nem tudom
+
+00:37:38.560 --> 00:37:42.960
+ talán egy 23 hüvelykes vagy 24 hüvelykes széles képernyős gyönyörű monitor
+
+00:37:42.960 --> 00:37:47.359
+ e-hulladékként jött be, és úgy tetszik
+
+00:37:47.359 --> 00:37:50.720
+ megnézem, és így a lányommal megnéztük
+
+00:37:50.720 --> 00:37:57.280
+ és egyetlen kondenzátor volt, amely kiégett, így online voltam és
+
+00:37:57.280 --> 00:37:59.920
+ vettem egy ilyen kondenzátort, amit csomagokban árulnak
+
+00:37:59.920 --> 00:38:03.599
+ három és tizenkét dollár volt, tehát 12-ért
+
+00:38:03.599 --> 00:38:07.760
+ kaptunk egy három csomagot, kicseréltük az egyik ilyen kondenzátort, és ez a monitor az
+
+00:38:07.760 --> 00:38:13.520
+ most ül a lányom asztalán, jaj, ez csodálatos, csodálatos
+
+00:38:13.520 --> 00:38:16.720
+ és teljesen igaza van, de nem csak kijavíthatja a dolgokat Jeff
+
+00:38:16.720 --> 00:38:19.920
+ tegyük fel, hogy valami bekerül az e-hulladékba, vagy tudod, hogy találsz valamit
+
+00:38:19.920 --> 00:38:22.320
+ az út szélét, amelyet valaki csak eldobott, mert nem tud
+
+00:38:22.320 --> 00:38:26.480
+ tudja, hogyan kell kijavítani, és talán, ha a javítás több
+
+00:38:26.480 --> 00:38:30.079
+ drága, mint sok esetben újat vásárolni
+
+00:38:30.079 --> 00:38:35.119
+ um akkor is, ha nem tudja kijavítani, megteheti az úgynevezett deszatmentelést
+
+00:38:35.119 --> 00:38:39.440
+ ez így van, így eltávolíthatja az összes jó komponenst ebből és
+
+00:38:39.440 --> 00:38:43.119
+ tegye őket egy fiókszervezőbe igen, hogy akkor saját rádiót kaphasson
+
+00:38:43.119 --> 00:38:46.880
+ kunyhó otthon, ahol megvan a fiókja ezeknek a különböző részeknek
+
+00:38:46.880 --> 00:38:50.079
+ és amikor valami elromlik, nem kell 12-et költenie
+
+00:38:50.079 --> 00:38:53.280
+ online, hogy megvásárolhassam őket, bárcsak nem tudtam volna, hogy ebbe belemegy
+
+00:38:53.280 --> 00:38:57.040
+ mert nyáron körülbelül négy számítógépem volt
+
+00:38:57.040 --> 00:39:00.320
+ pár projektorral elvittük az összes e-hulladékot
+
+00:39:00.320 --> 00:39:03.760
+ szóval olyan, mintha ó, le tudtam volna szerelni, hogy igen, igen, megkaptam őket
+
+00:39:03.760 --> 00:39:07.119
+ Nos, azok a részek, amelyeket élünk, és pontosan megtanuljuk
+
+00:39:07.119 --> 00:39:10.960
+ nagyon jó, tarts minket közzé ezen a határozottan, és hé, az alábbi megjegyzés mondja el nekünk
+
+00:39:10.960 --> 00:39:13.359
+ néhány kihasználásodról
+
+00:39:13.359 --> 00:39:18.560
+ uh ilyen típusú témák tekintetében, és ha igen, akkor
+
+00:39:18.560 --> 00:39:20.880
+ valami, ami érdekel, amibe még soha nem került bele
+
+00:39:20.880 --> 00:39:24.720
+ hé, az alábbi megjegyzés is, szívesen hallanánk rólad, és örömmel vennénk
+
+00:39:24.720 --> 00:39:27.920
+ ennek a folyamatnak a részeként, miközben jeff tanul
+
+00:39:27.920 --> 00:39:32.079
+ mivel én is tanulok és egyre jobban belemerülök az ilyen típusokba
+
+00:39:32.079 --> 00:39:36.800
+ mint alkatrészek javítása, áramköri lapok és minden más
+
+00:39:36.800 --> 00:39:41.359
+ nagyon szórakoztató, igen, nagyszerű hobbi és csodálatos karrier, ha igen
+
+00:39:41.359 --> 00:39:45.200
+ nagyon szeretném megcsinálni, így igaz a fiának, akit szeretnék hallani
+
+00:39:45.200 --> 00:39:49.680
+ hogy élvezi, amikor azt hiszem, um
+
+00:39:49.680 --> 00:39:53.359
+ 13 plusz, így jövőre behozhatod a stúdióba
+
+00:39:53.359 --> 00:39:56.560
+ és megmutathatja nekünk, hogyan teljesít
+
+00:39:56.560 --> 00:40:00.480
+ jól hangzik, nagyon klassz, hogy ez megtörténjen, át kell mennünk az újságosba
+
+00:40:00.480 --> 00:40:02.960
+ becca ott van a heti legfrissebb híreinkkel
+
+00:40:02.960 --> 00:40:08.800
+ itt van itt van, mi következik az 5-ös kategóriájú dot tv hírszobában
+
+00:40:08.800 --> 00:40:12.000
+ a hackerek súlyos Windows hibát használnak a kompromisszumra
+
+00:40:12.000 --> 00:40:17.280
+ ki nem javított szerverek három javascript csomagot távolítottak el az npm-ből
+
+00:40:17.280 --> 00:40:22.560
+ rosszindulatú kódok tárolására szolgáló portál A nokia feladata a
+
+00:40:22.560 --> 00:40:27.040
+ új 4g mobilhálózat a holdon egy új 80
+
+00:40:27.040 --> 00:40:32.240
+ a wiati vezeték nélküli töltéstechnika a Xiaomi-tól fújja az elménk és a
+
+00:40:32.240 --> 00:40:36.240
+ megjelent a málna pi számítási 4. modulja
+
+00:40:36.240 --> 00:40:40.720
+ tudassa velünk a specifikációkat, és hogy ez hogyan változtatja meg az ipari iot dolgát
+
+00:40:40.720 --> 00:40:44.000
+ ragaszkodjon a részletekhez és az e heti kriptográfushoz
+
+00:40:44.000 --> 00:40:48.640
+ jönnek, ez az 5-ös kategóriájú pont TV hírszoba
+
+00:40:48.640 --> 00:40:52.079
+ a hét csúcstechnológiájú történeteinek enyhe linuxos lefedése
+
+00:40:52.079 --> 00:40:54.480
+ Elfogultság
+
+00:40:56.240 --> 00:41:00.319
+ az újságtól becca ferguson vagyok
+
+00:41:00.720 --> 00:41:03.920
+ a hackerek súlyos Windows hibát használnak a kompromisszumra
+
+00:41:03.920 --> 00:41:07.920
+ ki nem javított szerverek az egyik legkritikusabb Windows biztonsági rés
+
+00:41:07.920 --> 00:41:10.400
+ Az idén nyilvánosságra hozott nyilvánosság aktív támadás alatt áll
+
+00:41:10.400 --> 00:41:14.480
+ olyan hackerek, akik megpróbálnak olyan szervereket meghajtani, amelyek mindegyikhez hitelesítő adatokat tárolnak
+
+00:41:14.480 --> 00:41:18.480
+ felhasználói és adminisztrációs fiók egy hálózaton
+
+00:41:18.480 --> 00:41:23.119
+ a kutatók a sebezhetőségnek a xerologon nevet adták, mert a támadások működnek
+
+00:41:23.119 --> 00:41:27.200
+ nulla karakterlánc küldése a netet használó üzenetsorozatban
+
+00:41:27.200 --> 00:41:30.720
+ bejelentkezési protokoll, amelyre a Windows szerverek támaszkodnak a
+
+00:41:30.720 --> 00:41:34.560
+ különféle feladatok, beleértve a végfelhasználók bejelentkezésének engedélyezését
+
+00:41:34.560 --> 00:41:38.560
+ a hálózati xero bejelentkezéshez, mint a sérülékenység
+
+00:41:38.560 --> 00:41:41.280
+ szinkron a múlt hónapban széles körű figyelmet kapott
+
+00:41:41.280 --> 00:41:44.000
+ amikor a felfedező cég azt mondta, hogy támadóknak adhat
+
+00:41:44.000 --> 00:41:48.079
+ azonnali hozzáférés az aktív könyvtárakhoz, amelyeket az adminisztrátorok használnak a létrehozáshoz
+
+00:41:48.079 --> 00:41:52.480
+ törölje és kezelje a hálózati fiókok aktív könyvtárakat és a domaint
+
+00:41:52.480 --> 00:41:55.599
+ a vezérlők, amelyeken futnak, a legkívánatosabb díjak közé tartoznak
+
+00:41:55.599 --> 00:42:00.480
+ a hackelésben, mert miután eltérítették, lehetővé teszik a támadók számára a kód végrehajtását és
+
+00:42:00.480 --> 00:42:03.839
+ lőszer az összes csatlakoztatott gépen microsoft
+
+00:42:03.839 --> 00:42:09.280
+ javította a biztonsági hibát augusztusban, pénteken Kevin Beaumont
+
+00:42:09.280 --> 00:42:12.480
+ független kutatóként dolgozik
+
+00:42:12.480 --> 00:42:16.480
+ blogbejegyzésében elmondta, hogy támadásokat észlelt a mézescserép ellen, amelyet megtart
+
+00:42:16.480 --> 00:42:19.680
+ a támadókkal szemben, amelyeket a hackerek a
+
+00:42:19.680 --> 00:42:24.160
+ vad, amikor a csalogató szerverét kioldották, a támadók használhatták a
+
+00:42:24.160 --> 00:42:27.680
+ powershell szkript az adminisztrátor jelszavának sikeres megváltoztatásához
+
+00:42:27.680 --> 00:42:31.920
+ a hátsó ajtón pedig a beaumont szerver azt mondta, hogy a támadás megjelent
+
+00:42:31.920 --> 00:42:36.480
+ hogy teljes egészében szkript legyen, és az összes parancs másodperceken belül teljesüljön
+
+00:42:36.480 --> 00:42:40.160
+ ezzel a támadók beépítettek egy hátsó ajtót, amely lehetővé tette a távvezérlést
+
+00:42:40.160 --> 00:42:44.079
+ adminisztratív hozzáférés az álhálózatán belüli eszközökhöz
+
+00:42:44.079 --> 00:42:48.400
+ a támadók a távoli asztalt is engedélyezték, ennek eredményeként folytatják
+
+00:42:48.400 --> 00:42:53.200
+ távoli hozzáférés még akkor is, ha az admin később javítja a szervert
+
+00:42:53.200 --> 00:42:57.520
+ hiteles hitelesítés nélküli emberek használhatják a kihasználást a domain megszerzéséhez
+
+00:42:57.520 --> 00:43:00.800
+ adminisztratív adatok, amíg a támadók képesek erre
+
+00:43:00.800 --> 00:43:05.839
+ tcp - kapcsolatokat hozhat létre egy sérülékeny tartományvezérlővel
+
+00:43:05.839 --> 00:43:10.160
+ egyes esetekben a támadók külön sebezhetőséget használhatnak, hogy megalapozhassák bennüket
+
+00:43:10.160 --> 00:43:13.359
+ egy hálózatot, majd kihasználja a nulla bejelentkezést az átvételhez
+
+00:43:13.359 --> 00:43:17.599
+ a tartományvezérlő szerintem jó példa erre
+
+00:43:17.599 --> 00:43:20.319
+ ilyen típusú szkriptek a hálózatokba való bejutáshoz
+
+00:43:20.319 --> 00:43:27.839
+ elavultak a számítógépek a hálózaton, és a szociális mérnöki csalások is
+
+00:43:27.839 --> 00:43:31.040
+ sokat hallani arról, hogy valószínűleg kapja ezeket az e-maileket
+
+00:43:31.040 --> 00:43:34.800
+ hogy megpróbálja becsapni, hogy kövesse végig a
+
+00:43:34.800 --> 00:43:38.319
+ hitelesítő adat beírása vagy valami hasonló
+
+00:43:38.319 --> 00:43:44.720
+ a kockázat, amelyet vállalunk, és az a szomorú eset, amelyet én látok
+
+00:43:44.720 --> 00:43:48.880
+ abban van, hogy néha az emberek jól gondolkodnak
+
+00:43:48.880 --> 00:43:52.319
+ nem kell frissítenem azt a számítógépet, mert a hátsó szobában van senki
+
+00:43:52.319 --> 00:43:55.680
+ valóban használja, igen, vagy hát, szükségünk van erre
+
+00:43:55.680 --> 00:43:58.800
+ még mindig van Windows XP, mert problémáink vannak az egyikünkkel
+
+00:43:58.800 --> 00:44:02.880
+ nyomtatók, ha nem, akkor is sok Windows 7-et látunk
+
+00:44:02.880 --> 00:44:06.960
+ rendszerek, és ez tragédia, ha van egy
+
+00:44:06.960 --> 00:44:10.960
+ A Windows 7 vagy a Windows XP rendszer csak kapcsolja be
+
+00:44:10.960 --> 00:44:13.839
+ szabadulj meg tőle, igen, lásd a dolgot
+
+00:44:13.839 --> 00:44:20.480
+ azokkal a rendszerekkel van, így a microsoftnak van úgynevezett eol vagy az élet vége uh
+
+00:44:20.480 --> 00:44:24.240
+ befejezte ezen operációs rendszerek élettartamát
+
+00:44:24.240 --> 00:44:27.839
+ szóval azt mondták, hogy frissítenie kell Windows 10-re. Nos, nem akarok frissíteni
+
+00:44:27.839 --> 00:44:32.000
+ a Windows 10-hez szeretem a Windows 7-et. Megértem ezt és tiszteletben tartom
+
+00:44:32.000 --> 00:44:37.119
+ azonban itt vannak a problémás hackerek
+
+00:44:37.119 --> 00:44:41.599
+ most képesek kihasználni ezeket az operációs rendszereket
+
+00:44:41.599 --> 00:44:45.839
+ és ahogy ezt teszik, amikor kiaknázásokat találnak
+
+00:44:45.839 --> 00:44:48.960
+ van néhány dolog, ami történik
+
+00:44:48.960 --> 00:44:55.520
+ vagy adja el, vagy adja el azokat a kizsákmányolásokat, vagy kettőt, amiket éppen szabadon engednek
+
+00:44:55.520 --> 00:45:01.520
+ akár a sötét hálón, akár a githubon keresztül
+
+00:45:01.520 --> 00:45:07.839
+ mint biztonsági kutatás, és most ezek a hackerek, ha akarod, fogunk
+
+00:45:07.839 --> 00:45:11.599
+ hívjuk őket így, de reálisan sok esetben ők hívják őket
+
+00:45:11.599 --> 00:45:16.800
+ szkript kitties és ezek um
+
+00:45:16.800 --> 00:45:21.680
+ nem is, mint a hackerek igen, de nem kell sok tudásuk, mert
+
+00:45:21.680 --> 00:45:28.160
+ a kizsákmányolás nyilvánosan ismert, és ez igaz, ha igen
+
+00:45:28.160 --> 00:45:32.319
+ vannak olyan kihasználások, amelyek rendelkezésre állnak egy operációs rendszer számára
+
+00:45:32.319 --> 00:45:36.880
+ mire számítunk mi várható az operációs rendszer szállítója Microsoft
+
+00:45:36.880 --> 00:45:41.200
+ ezt az esetet annak javítására szolgáló javításra
+
+00:45:41.200 --> 00:45:44.560
+ és ez a helyzet a Windows 10. sajnos mégis
+
+00:45:44.560 --> 00:45:49.040
+ azok, amelyek eol, ez néha nem az eol operációs rendszer esetében van
+
+00:45:49.040 --> 00:45:54.079
+ azt halljuk, hogy nincs szükségem támogatásra, a Microsoft véget ért a támogatásnak
+
+00:45:54.079 --> 00:45:57.440
+ amit hallottunk, igen, befejezték a Windows 7 támogatását
+
+00:45:57.440 --> 00:46:01.920
+ támogatás a Windows XP-hez, de még soha nem kellett hívnom a támogatást
+
+00:46:01.920 --> 00:46:04.640
+ tudom kezelni, nem ők azok
+
+00:46:04.640 --> 00:46:06.640
+ egyáltalán arról beszélni, amit mondanak
+
+00:46:06.640 --> 00:46:12.640
+ nem fogják kijavítani a javításokat, a kihasználások nem számítanak
+
+00:46:12.640 --> 00:46:16.160
+ hogy mennyire súlyosak, nem számít, milyen könnyű
+
+00:46:16.160 --> 00:46:20.079
+ kihasználni, így jól van egy Windows 7 gép a hálózaton
+
+00:46:20.079 --> 00:46:26.319
+ belépsz egy ilyen hacker egyikébe, akinek még nincs is
+
+00:46:26.319 --> 00:46:31.040
+ hogy nagyon jól tudjon hackelni, mert a kihasználások nyilvánosan ismertek
+
+00:46:31.040 --> 00:46:36.240
+ igen, néha az eszközök részei, néha egyszerűen le tudnak tölteni egy ingyeneset
+
+00:46:36.240 --> 00:46:41.440
+ eszköz, és mondhatják, hogy egy ellenőrzéssel szeretném kihasználni a Windows 7-et
+
+00:46:41.440 --> 00:46:46.400
+ és így bejutnak egy Windows 7 dobozba, vagy becsapják az egyik alkalmazottját
+
+00:46:46.400 --> 00:46:50.880
+ még akkor is, ha csak a hátsó oldalon dolgoznak a raktárban
+
+00:46:50.880 --> 00:46:55.119
+ átvertek valakit egy fájl megnyitásával, amely most hozzáférést biztosít a fájlhoz
+
+00:46:55.119 --> 00:46:59.359
+ Windows 7 gép a Windows XP gépet vagy a hátsó szobában lévő gépet
+
+00:46:59.359 --> 00:47:03.359
+ nem számít, és itt megtanuljuk azt a microsoftot
+
+00:47:03.359 --> 00:47:08.400
+ A kiszolgálók már kihasználják ezt, amíg
+
+00:47:08.400 --> 00:47:13.599
+ egy rosszindulatú fél hozzáférhet a hálózat bármely számítógépéhez
+
+00:47:13.599 --> 00:47:20.480
+ mostantól hozzáférést kaphatnak a rendszergazdához az egész hálózathoz
+
+00:47:20.480 --> 00:47:25.359
+ most ijesztő most a Windows 10 géped már nem az
+
+00:47:25.359 --> 00:47:31.440
+ biztonságos, mert igaz, mert beléptél a hálózatodba, mintha
+
+00:47:31.440 --> 00:47:39.200
+ ők egy domain rendszergazda, jajj, csak rossz hír van ott
+
+00:47:39.200 --> 00:47:42.319
+ Nos, ez rossz hír, miért olyan dolog a ransomware
+
+00:47:42.319 --> 00:47:46.400
+ mert mit csinálnak, azok most rendben, hozzáférhettem ehhez a hálózathoz
+
+00:47:46.400 --> 00:47:49.599
+ a sötét webes hozzáférést fogom értékesíteni ehhez a hálózathoz
+
+00:47:49.599 --> 00:47:56.640
+ ezt látja um-val a településekkel és igen azokkal a városokkal
+
+00:47:56.640 --> 00:48:00.000
+ az eredeti forgatókönyv-cica volt az, aki nem mit csinált
+
+00:48:00.000 --> 00:48:03.680
+ ő csak azt akarja, hogy bejussanak
+
+00:48:03.680 --> 00:48:07.119
+ telepítsék a szoftverüket, és kijussanak, majd eladják a hozzáférést
+
+00:48:07.119 --> 00:48:11.040
+ így van, mert ez gyors pénz, akkor miért csinálják az emberek pénzért
+
+00:48:11.040 --> 00:48:15.119
+ és így csinálják, úgyhogy igen
+
+00:48:15.119 --> 00:48:18.319
+ tartsa naprakészen a dolgokat, hogy tudja, ez csak egy gyors gondolat
+
+00:48:18.319 --> 00:48:22.079
+ elgondolkodni, hé, ha van olyan elavult gépe a hálózatán, amelyhez eljutott
+
+00:48:22.079 --> 00:48:25.599
+ szállítsa le őket, és képezze ki személyzetét a számítógépes ismeretekről
+
+00:48:25.599 --> 00:48:29.119
+ a biztonsági gyakorlatok megértik az adathalász csalásokat
+
+00:48:29.119 --> 00:48:32.720
+ mert tudod, hogy valaki kattintott egy linkre, és most az övé
+
+00:48:32.720 --> 00:48:34.880
+ a számítógépek megfertőződtek, de a számítógépük az
+
+00:48:34.880 --> 00:48:41.839
+ a hálózaton, de a herceg pénzének felét megkaptam
+
+00:48:41.839 --> 00:48:45.359
+ ez egy egészen más féreg, ott jeff
+
+00:48:45.359 --> 00:48:50.000
+ de úgy értem, hogy amikor ilyen dolgokról van szó, meg kell néznem a rendszert és mondani
+
+00:48:50.000 --> 00:48:52.559
+ ó, nem akarok hét nyolcat költeni
+
+00:48:52.559 --> 00:48:55.599
+ száz dollár egy új számítógépért, nem aggódnék ennek frissítése miatt
+
+00:48:55.599 --> 00:49:00.000
+ a végén többet költ hosszú távon uh vagy rövid távon
+
+00:49:00.000 --> 00:49:05.040
+ um nem hosszú távon, ha nincs a rendszer javítva, mert egyszer
+
+00:49:05.040 --> 00:49:09.200
+ hozzáférnek mindenhez, ami lehet lent és kívül, de én
+
+00:49:09.200 --> 00:49:11.760
+ gondolj, amikor mindenhez hozzáférnek i
+
+00:49:11.760 --> 00:49:13.760
+ szerintem csak fontos ezt felismerni
+
+00:49:13.760 --> 00:49:20.400
+ hogy egy belépési pont hozzáféréssé válik mindenhez, ezért költsön el pár százat
+
+00:49:20.400 --> 00:49:24.160
+ dolcsi megkapja az új számítógépet, mentse meg magát, nem tudom, mi kell hozzá
+
+00:49:24.160 --> 00:49:27.599
+ úgy értem, hogy ez más, minden esetben más, igen, egy személyem volt
+
+00:49:27.599 --> 00:49:30.800
+ ma ki hívott és azt mondta, hogy egyetlen Windows 7 számítógépem van
+
+00:49:30.800 --> 00:49:33.920
+ nem akarom frissíteni, mert csak működik ó
+
+00:49:33.920 --> 00:49:38.400
+ szóval itt van egy magyarázat, és itt becca megosztott velünk egy történetet
+
+00:49:38.400 --> 00:49:43.200
+ ez egyszerűen azt mondja nekünk, hogy csak egy számítógép elérésére van szükségük
+
+00:49:43.200 --> 00:49:47.599
+ és most hozzáférnek a számítógépek összes számítógépéhez, és nem
+
+00:49:47.599 --> 00:49:52.240
+ csakúgy, mint egy szamba, nem pedig olyan barátságos és remélhetőleg ők
+
+00:49:52.240 --> 00:49:55.520
+ ne találjon bejáratot azokon a hátsó ajtókon
+
+00:49:55.520 --> 00:49:59.200
+ számítógépek nem rendelkeznek rendszergazdai hitelesítő adatokkal
+
+00:49:59.200 --> 00:50:03.119
+ a hálózatán, így bármit megtehetnek
+
+00:50:03.119 --> 00:50:07.280
+ igaz, amit akarnak, amikor a házamra gondolok
+
+00:50:07.280 --> 00:50:10.880
+ azt hiszem, hogy készen vagy, azt hiszem, nekem van hét
+
+00:50:10.880 --> 00:50:15.520
+ készülékek, beleértve a telefonokat és a táblagépeket, és ehhez hasonló eszközök, amelyek csatlakoztatva vannak
+
+00:50:15.520 --> 00:50:18.960
+ a hálózathoz nem akarom, hogy ehhez hozzáférjenek
+
+00:50:18.960 --> 00:50:21.200
+ igen, egyszerűen nem tudok eléggé stresszelni, bár jeff
+
+00:50:21.200 --> 00:50:26.160
+ mármint azt gondolom, hogy a vállalkozások szempontjából inkább az otthoni felhasználó, de
+
+00:50:26.160 --> 00:50:33.119
+ ha bent vannak, nem teheti meg, hogy kész, mert most nem teheti meg
+
+00:50:33.119 --> 00:50:36.240
+ állítsa le azt a Windows gépet, amelyet a Windows 7 gép nem, már ők is
+
+00:50:36.240 --> 00:50:40.319
+ mindenbe, tehát mit csinálsz, mindent lecserélsz
+
+00:50:40.319 --> 00:50:44.240
+ törölje minden számítógépet, mert nem tudja, milyen eszközök
+
+00:50:44.240 --> 00:50:50.079
+ telepítették, hogy drága igen, így ne essen bele
+
+00:50:50.079 --> 00:50:53.280
+ Egyébként ez egy rossz kihasználás, ami nagyon komoly emberek remélem
+
+00:50:53.280 --> 00:50:56.720
+ ezt eléggé hangsúlyoztuk ahhoz, hogy megértsd, ez rossz
+
+00:50:56.720 --> 00:51:02.720
+ ezért győződjön meg róla, hogy a hálózati rendszergazdák fel vannak-e kapcsolva, és megértik ezeket
+
+00:51:02.720 --> 00:51:05.520
+ és védett és biztonságos
+
+00:51:05.520 --> 00:51:09.920
+ az efféle fenyegetések ellen rendben, visszatérünk Beckához
+
+00:51:09.920 --> 00:51:13.920
+ három javascript csomagot eltávolítottak az npm portálról a következőhöz:
+
+00:51:13.920 --> 00:51:18.000
+ rosszindulatú kódot tartalmaz az mpm tanácsai szerint
+
+00:51:18.000 --> 00:51:21.440
+ biztonsági csapat megnyitja a három javascript könyvtárat
+
+00:51:21.440 --> 00:51:24.480
+ a csomagokat importáló fejlesztők számítógépein
+
+00:51:24.480 --> 00:51:29.200
+ projektjeikbe a héjak lehetővé teszik a fenyegetett szereplők számára, hogy távolról csatlakozzanak a
+
+00:51:29.200 --> 00:51:33.520
+ fertőzött számítógépet, és rosszindulatú műveleteket hajthat végre az npm-en
+
+00:51:33.520 --> 00:51:37.920
+ biztonsági csapat azt mondta, hogy a héjak nem függenek egy adott operációs rendszertől
+
+00:51:37.920 --> 00:51:41.760
+ és fel lehet használni a windows linux freebsd megsértésére
+
+00:51:41.760 --> 00:51:46.960
+ Az openbsd és más rendszerek mindhárom csomagját feltöltötték a
+
+00:51:46.960 --> 00:51:50.880
+ npm portál 2018-ban, és mindegyiknek százai voltak
+
+00:51:50.880 --> 00:51:55.839
+ letöltések azóta a csomag neve plutovs kötőjel
+
+00:51:55.839 --> 00:52:01.920
+ laza kötőjelű kliens nodetest199 és nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ az npm biztonsági csapata közölte, hogy minden számítógép rendelkezik ezzel
+
+00:52:07.119 --> 00:52:10.800
+ a telepített vagy futtatott csomagot teljesen veszélyeztetettnek kell tekinteni
+
+00:52:10.800 --> 00:52:15.280
+ a számítógépen tárolt összes titkot és kulcsot azonnal el kell forgatni
+
+00:52:15.280 --> 00:52:20.559
+ egy másik számítógépről arra figyelmeztetnek, hogy a csomagot el kell távolítani, de mint
+
+00:52:20.559 --> 00:52:24.160
+ Lehetséges, hogy a számítógép teljes irányítását egy külső entitás kapta meg
+
+00:52:24.160 --> 00:52:27.760
+ nincs garancia arra, hogy a csomag eltávolításával minden rosszindulatú eltávolítható
+
+00:52:27.760 --> 00:52:32.079
+ mpm telepítéséből származó szoftver
+
+00:52:32.079 --> 00:52:36.079
+ a biztonsági személyzet rendszeresen átvizsgálja a javascript könyvtárak gyűjteményét
+
+00:52:36.079 --> 00:52:41.839
+ minden programozási nyelv legnagyobb csomagtárának tekinthető
+
+00:52:41.839 --> 00:52:46.079
+ miközben még a házamban sem tudok jó sejt lefedettséget lefedni
+
+00:52:46.079 --> 00:52:52.240
+ A nokia a nasával dolgozik, hogy 4g-t vigyen a Holdra
+
+00:52:52.240 --> 00:52:56.559
+ hogy hosszú távon emberi jelenlétet teremtsen a Holdon, mint lépés
+
+00:52:56.559 --> 00:53:01.040
+ kő a mars gyarmatosítása és a dolgok megkezdése érdekében nasa is
+
+00:53:01.040 --> 00:53:05.280
+ 370 millió dollárt terjesztve 14 vállalatra
+
+00:53:05.280 --> 00:53:08.400
+ hogy biztosítsa a program technológiáját
+
+00:53:08.400 --> 00:53:12.400
+ a robotikától az áramtermelésig, sőt a kriogenikáig
+
+00:53:12.400 --> 00:53:16.240
+ de van értelme, hogy ezeknek a csapatoknak képesnek kell lenniük kommunikálni a
+
+00:53:16.240 --> 00:53:20.079
+ anyabolygó, megtervezik az új hálózatot
+
+00:53:20.079 --> 00:53:23.760
+ kifejezetten a szélsőségeknek ellenálló holdi körülményekhez
+
+00:53:23.760 --> 00:53:28.559
+ hőmérséklet-eltolódások és sugárzás, a technológia kis cellákat is felhasznál
+
+00:53:28.559 --> 00:53:32.800
+ tech, amely a név szerint lényegesen kisebb, mint a magas
+
+00:53:32.800 --> 00:53:37.599
+ sejttornyok, amelyeket itt a földön szoktak látni, ők is sokkal kevesebbet használnak
+
+00:53:37.599 --> 00:53:41.200
+ hatalom a terv egy holdi leszálló hordozható
+
+00:53:41.200 --> 00:53:44.480
+ a 4g kommunikációs rendszert a Hold felszínére
+
+00:53:44.480 --> 00:53:50.400
+ 2022-ben a nokia haranglabjai 14,1 millió dollárt kaptak
+
+00:53:50.400 --> 00:53:55.119
+ a maguk részéről egy új, 80 wattos vezeték nélküli töltési technológiát
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi fújja az elménk és a málna pi
+
+00:53:58.880 --> 00:54:03.839
+ a 4. számítási modul kiadásra került, tájékoztatjuk a specifikációkat és hogyan
+
+00:54:03.839 --> 00:54:08.480
+ ez megváltoztatja az ipari iot dolgokat, mert ezek a történetek pluszban megjelennek
+
+00:54:08.480 --> 00:54:25.839
+ Robert itt van, és a titkosítási sarok ne menjen sehova
+
+00:54:28.079 --> 00:54:32.079
+ Üdvözöljük a kriptók világában, és üdvözöljük a titkosítási sarokban
+
+00:54:32.079 --> 00:54:35.920
+ a múlt héten beszéltünk a bankokról néhány év múlva, amikor nem ismeri fel őket
+
+00:54:35.920 --> 00:54:39.839
+ már és nem is sokáig említettem nektek
+
+00:54:39.839 --> 00:54:43.119
+ ezelőtt a kínai digitális fizetőeszköz
+
+00:54:43.119 --> 00:54:46.720
+ cserélje ki a riemann méhet, és hogy már végrehajtották és
+
+00:54:46.720 --> 00:54:50.400
+ most ezen a héten tartanak néhány kísérletet Shenzhenben
+
+00:54:50.400 --> 00:54:54.400
+ történt némi fejlődés, és szeretnék erről beszélni, mert ez
+
+00:54:54.400 --> 00:54:58.319
+ közvetlen hatással lesz az életedre és az életemre
+
+00:54:58.319 --> 00:55:03.760
+ merüljünk el itt a fejében a nemzetközi monetáris alap
+
+00:55:03.760 --> 00:55:08.400
+ ennek a nemzetközi szervezetnek a neve egy cristalina jojeva és
+
+00:55:08.400 --> 00:55:11.359
+ beszédet mondott az új brettoni erdőkkel kapcsolatban
+
+00:55:11.359 --> 00:55:14.240
+ pillanat, mi az a bretton woods-britannia volt
+
+00:55:14.240 --> 00:55:17.440
+ a rendszer monetáris irányítás
+
+00:55:17.440 --> 00:55:21.760
+ közötti kereskedelmi pénzügyi kapcsolatok szabályai
+
+00:55:21.760 --> 00:55:25.920
+ hozzánk hasonló országok Kanada nyugat-európa Ausztrália és Japán
+
+00:55:25.920 --> 00:55:31.520
+ és ez a rendszer volt az első példa egy teljesen megtárgyalt megrendelésre
+
+00:55:31.520 --> 00:55:36.640
+ célja a független államok közötti monetáris kapcsolatok szabályozása, így volt
+
+00:55:36.640 --> 00:55:40.079
+ Bretton Woods és ő beszél a változásról
+
+00:55:40.079 --> 00:55:45.760
+ ezt a rendszert valami modernebbé, ami most már elég érdekes
+
+00:55:45.760 --> 00:55:51.200
+ hétfőn volt egy találkozó néhány jegybankárral, akik ún
+
+00:55:51.200 --> 00:55:56.319
+ határokon átnyúló fizetések, de ha belegondol, nézze meg, hogy milyen típusú
+
+00:55:56.319 --> 00:55:59.520
+ olyan emberek voltak, akik jelen voltak, így megvan a feje
+
+00:55:59.520 --> 00:56:03.040
+ saudi központi bank, megvan az összes központi vezetője
+
+00:56:03.040 --> 00:56:06.480
+ bankok az imf feje az us feje
+
+00:56:06.480 --> 00:56:10.319
+ hiányzik a malajziai központi bank vezetője
+
+00:56:10.319 --> 00:56:13.200
+ Európa, ami érdekes, de lesz egy oka, azt hiszem
+
+00:56:13.200 --> 00:56:16.880
+ így találkoztak, hogy a bruttó vízfizetésekről beszéljenek
+
+00:56:16.880 --> 00:56:21.920
+ most nem hiszem, hogy ez egy igazi történet, az igazi történet
+
+00:56:21.920 --> 00:56:26.079
+ uh-t is kiadta egy raul paul nevű úr
+
+00:56:26.079 --> 00:56:31.119
+ amivel teljesen egyetértek, így a gondolatai pontosan így gondolkodom
+
+00:56:31.119 --> 00:56:35.520
+ és amiről beszél, pontosan ez a hétfőn történt találkozó
+
+00:56:35.520 --> 00:56:39.119
+ ez felváltja a régi Bretton Woods uh kapcsolatot
+
+00:56:39.119 --> 00:56:46.319
+ országok között, tehát mi fog történni, úgy néz ki, hogy a központi bankok
+
+00:56:46.319 --> 00:56:50.720
+ összejátszik és előáll egy rendszerrel
+
+00:56:50.720 --> 00:56:54.000
+ központi banki rendszer mindegyikük között, így nem lesz egy mi
+
+00:56:54.000 --> 00:56:56.640
+ dolláros központi banki rendszer lesz
+
+00:56:56.640 --> 00:56:59.680
+ mindegyiknél az összes szervezet számára, majd a
+
+00:56:59.680 --> 00:57:04.160
+ ott változatos lesz, és mihez kezdhet
+
+00:57:04.160 --> 00:57:06.319
+ egy ilyen rendszer az érdekes rész és
+
+00:57:06.319 --> 00:57:13.520
+ imádom, így megváltoztatja a banki és pénzügyi megkerülést
+
+00:57:13.520 --> 00:57:17.920
+ fiskális rendszer, mert közvetlenül kommunikál az emberekkel
+
+00:57:17.920 --> 00:57:22.160
+ igen, tehát nem olyan, mint abban a pillanatban, amikor a központi bank az USA-ban vagy
+
+00:57:22.160 --> 00:57:26.720
+ Kanada nem számít, előáll valamilyen politikával, és akkor az
+
+00:57:26.720 --> 00:57:32.400
+ megy lefelé ömlik a lánc és te, mint egyén
+
+00:57:32.400 --> 00:57:35.440
+ felhasználó valószínűleg a legkevesebbet látja
+
+00:57:35.440 --> 00:57:37.680
+ pénz és valószínűleg a legmagasabb kamatlábbal
+
+00:57:37.680 --> 00:57:42.559
+ hogy gondolhat más emberekre, sokkal erősebb előnyökkel jár a digitális szolgáltatásokkal
+
+00:57:42.559 --> 00:57:46.799
+ pénz plusz kriptovaluta vagy programozható
+
+00:57:46.799 --> 00:57:50.400
+ sokkal többet tudsz megtenni, mert most
+
+00:57:50.400 --> 00:57:55.839
+ a központi bank közvetlenül befolyásolhatja az emberek viselkedését és hogyan
+
+00:57:55.839 --> 00:58:00.400
+ tedd azt igen, jól tudják mondani, ha étteremtulajdonos vagy, akkor tudsz
+
+00:58:00.400 --> 00:58:03.839
+ szerezd meg tőlünk a pénzt közvetlenül a zsebedbe, igen, ne több
+
+00:58:03.839 --> 00:58:08.079
+ érintett bankok közvetlenül meg fogjuk csinálni, lehetséges, hogy a központi bank pénzéről van szó
+
+00:58:08.079 --> 00:58:12.240
+ megváltoztathatják a kamatlábakat, így egy uh esetben vagy egy iparágban ők
+
+00:58:12.240 --> 00:58:16.480
+ magas kamatlába lehet, mint egy másik, mi fog történni
+
+00:58:16.480 --> 00:58:19.839
+ adókkal igen mi lesz az irs-szal
+
+00:58:19.839 --> 00:58:22.079
+ mert közvetlenül foglalkozhatnak ezekkel a dolgokkal
+
+00:58:22.079 --> 00:58:25.200
+ programozható pénzzel időbe telik
+
+00:58:25.200 --> 00:58:28.799
+ hogy elérje azt a végső mértékben, de meg fog történni
+
+00:58:28.799 --> 00:58:34.640
+ amint látja, így lehetséges lesz a közvetlen kifizetés
+
+00:58:34.799 --> 00:58:41.119
+ itt is beszélnek um igen, viselkedésgazdaságtanról, na igen
+
+00:58:41.119 --> 00:58:45.359
+ nem néhány közölő közgazdászon keresztül
+
+00:58:45.359 --> 00:58:49.200
+ a kormány mit és mit ne tegyen, mert ez kudarcot vallott a
+
+00:58:49.200 --> 00:58:52.160
+ mindenki mindenki azt mondja, hogy mit csinálnak
+
+00:58:52.160 --> 00:58:56.400
+ csinálni olyan, mint egy facebook típusú ötlet vagy tick tock ötlet vagy
+
+00:58:56.400 --> 00:58:59.520
+ youtube ötlet, ahol érdekli az embereket
+
+00:58:59.520 --> 00:59:03.280
+ barátkozni veled, vagy ahol érdekli az embereket
+
+00:59:03.280 --> 00:59:06.799
+ minél több lájkot szerez, és így megváltoztatja a viselkedését
+
+00:59:06.799 --> 00:59:10.079
+ több kedvelés és ugyanaz
+
+00:59:10.079 --> 00:59:13.839
+ pénzzel fog történni, és ez mind szabályozott lesz
+
+00:59:13.839 --> 00:59:17.680
+ a központi bankon keresztül, senki nélkül a külvilágból
+
+00:59:17.680 --> 00:59:22.000
+ esélye van arra, hogy jelentős befolyással bírjon, akkor hogyan
+
+00:59:22.000 --> 00:59:26.079
+ úgy fog kinézni, mint a végén, persze senki sem tudja, de hogy ezek
+
+00:59:26.079 --> 00:59:31.200
+ az emberek találkoznak, hogy megvitassák a keresztmegrendeléses fizetéseket, amit én
+
+00:59:31.200 --> 00:59:36.079
+ találd az uh-t nagyon érdekesnek, és ez persze fantasztikus hír
+
+00:59:36.079 --> 00:59:39.040
+ uh bitcoinért, mert a bitcoin ezen kívül van
+
+00:59:39.040 --> 00:59:44.839
+ rendszer senki nem tudja szabályozni uh bitcoin ez
+
+00:59:44.839 --> 00:59:48.400
+ decentralizált hm ez megváltoztathatatlan jól tudja az összes
+
+00:59:48.400 --> 00:59:54.079
+ az uh bitcoin tulajdonságai, így a bitcoin fantasztikus alternatíva
+
+00:59:54.079 --> 00:59:57.839
+ az összes többi kriptovaluta, a főbbek mindenképpen jó alternatíva
+
+00:59:57.839 --> 01:00:02.000
+ nézzük meg, mit hoz fel a mérleg, de lesz néhány jó alternatíva
+
+01:00:02.000 --> 01:00:06.480
+ hogy a központi uh-ra központilag
+
+01:00:06.480 --> 01:00:11.359
+ pénzt vezetett a központi bankokon keresztül, ezért remélem, hogy érdekesnek találta és
+
+01:00:11.359 --> 01:00:14.559
+ remélem tetszett és remélem hiányt kapok tőled
+
+01:00:14.559 --> 01:00:18.799
+ és fantasztikus hetet kívánok neked, ezért nagyon köszönöm, hogy megnézted
+
+01:00:18.799 --> 01:00:23.200
+ viszlát köszönöm Robert csak emlékeztetőül: nem nyújtunk pénzügyi tanácsadást
+
+01:00:23.200 --> 01:00:26.400
+ de csak megosztani, mi történik a kriptovaluta piacon
+
+01:00:26.400 --> 01:00:29.599
+ mindig emlékezzen arra, hogy a kriptovaluta piacok folyamatosan változnak és
+
+01:00:29.599 --> 01:00:33.920
+ mindig ingatag, ezért csak azt kell költenie, amit elveszíthet
+
+01:00:33.920 --> 01:00:38.720
+ most vissza a beccához a híradóban köszönöm robbie
+
+01:00:38.720 --> 01:00:42.799
+ A xiaomi új töltésellenőrzést jelentett be, amellyel teljesen lemerülhet
+
+01:00:42.799 --> 01:00:48.480
+ okostelefon kevesebb, mint 20 perc alatt, de vezeték nélkül gyorsan megteszi
+
+01:00:48.480 --> 01:00:52.480
+ a töltés az elmúlt években számos okostelefon kulcsfontosságú jellemzőjévé vált
+
+01:00:52.480 --> 01:00:56.160
+ A kényelem kedvéért a vezeték nélküli töltés igazán nagyszerű lehet
+
+01:00:56.160 --> 01:00:59.920
+ de természetesen a vezeték nélküli töltés általában egy telefont tölt fel
+
+01:00:59.920 --> 01:01:05.359
+ 10-15 wattos teljesítmény néhány olyan telefonnál, mint az oneplus 8 pro
+
+01:01:05.359 --> 01:01:10.160
+ vezeték nélküli töltés akár 40 wattig, de a xiaomi új töltési technológiája ígéretet tesz
+
+01:01:10.160 --> 01:01:14.240
+ óriási 80 watt vezeték nélküli gyümölcslé
+
+01:01:14.240 --> 01:01:18.319
+ mit jelent ez a gyakorlatban jól a közlemény szerint
+
+01:01:18.319 --> 01:01:22.160
+ bemutatva a 80 wattos vezeték nélküli töltési technológiát
+
+01:01:22.160 --> 01:01:26.720
+ egy okostelefon nulla százalékos töltöttséggel, négyezer milliamper órás akkumulátorral
+
+01:01:26.720 --> 01:01:30.160
+ tíz percet számít fel egyetlen perc alatt, ötven százalékot
+
+01:01:30.160 --> 01:01:34.160
+ nyolc perc múlva, és 19 perc után teljesen feltöltődik
+
+01:01:34.160 --> 01:01:37.599
+ végül egy töltő, amely feltölti a telefonomat
+
+01:01:37.599 --> 01:01:43.359
+ nullától száz százalékig úgy, mint az ebédszünetem, ez jó
+
+01:01:43.359 --> 01:01:48.079
+ ez egy játékváltó, el tudod képzelni, hogy a gyerekeimre gondolok, és hogy állunk
+
+01:01:48.079 --> 01:01:51.440
+ mint a telefonok mindenhol nyilvánvalóan arra gondolok, hogy ez tetszik
+
+01:01:51.440 --> 01:01:56.319
+ a legújabb és legjobb technika, de ez mindig olyan eset, hogy elfelejtettem
+
+01:01:56.319 --> 01:01:59.520
+ tedd a telefonomat a töltőre, különben nem elég sokáig az egész
+
+01:01:59.520 --> 01:02:02.720
+ nap és most, hogy ismered a járványt, természetesen az én
+
+01:02:02.720 --> 01:02:07.599
+ a gyerekeket most otthoni iskolában tartják, kényszerből, és mindenki tovább megy
+
+01:02:07.599 --> 01:02:11.839
+ készülékeik egész idő alatt, így nagyítású találkozók zajlanak telefonokon
+
+01:02:11.839 --> 01:02:15.599
+ és fut, kimeríti az akkumulátort igen
+
+01:02:15.599 --> 01:02:21.440
+ de azt szeretem, hogy vezeték nélküli, nem csak vezetékes, csodálatos igen
+
+01:02:21.440 --> 01:02:24.480
+ vezeték nélküli, hatalmas, mint az ötlet
+
+01:02:24.480 --> 01:02:27.200
+ vehetném a telefonomat, nem kell aggódnom a töltők miatt és
+
+01:02:27.200 --> 01:02:30.960
+ csak menj csak tedd le és tedd le 20 perccel később jó vagyok menni
+
+01:02:30.960 --> 01:02:34.000
+ hogy szeretem a másik dolgot, amit szeretek benne
+
+01:02:34.000 --> 01:02:40.480
+ a koncepció az, hogy hm én úgy gondolkodom, mint ahogy tetted, ha tudtam
+
+01:02:40.480 --> 01:02:43.359
+ letette egy asztalra, mi lenne, ha letenné a
+
+01:02:43.359 --> 01:02:47.680
+ éttermi asztal igen, mert sok étterem ment az útvonalon, és én vagyok
+
+01:02:47.680 --> 01:02:50.799
+ Az éttermek példáját használva, de sok helyen az utat választották
+
+01:02:50.799 --> 01:02:54.480
+ beágyazva az usb-t, hogy csatlakoztathassa az usb-t
+
+01:02:54.480 --> 01:02:58.640
+ kábelt a telefon töltésére, de aztán hirtelen az emberek kaptak
+
+01:02:58.640 --> 01:03:03.200
+ bölcs, hogy ó, ezek az usb portok rosszindulatúak lehetnek
+
+01:03:03.200 --> 01:03:06.319
+ mert az usb is hordoz adatokat, vagy így van
+
+01:03:06.319 --> 01:03:10.000
+ ki tudja, hogy túl sok volt-e, és hogy tudja-e, hogy van
+
+01:03:10.000 --> 01:03:13.280
+ kapott egy rövidet vagy valami hasonlót, és megsüthette a telefonomat
+
+01:03:13.280 --> 01:03:17.039
+ így aztán hirtelen félünk csatlakozni az usb porthoz, mert hé
+
+01:03:17.039 --> 01:03:20.400
+ lehet valami rossz, ami jól van
+
+01:03:20.400 --> 01:03:24.960
+ vezeték nélküli töltés leállítja azt tölti, és felveszi és kész
+
+01:03:24.960 --> 01:03:28.240
+ kész igen, de tetszés szerint beállíthatod
+
+01:03:28.240 --> 01:03:31.119
+ három perc, és elegendő töltést kap, hogy átvészelje a legtöbbet
+
+01:03:31.119 --> 01:03:35.680
+ délután ami hihetetlen fantasztikus ii gondolom
+
+01:03:35.680 --> 01:03:40.559
+ ahogy azt is jelenti, hogy most körülnéz, és megkapja ezeket a töltőállomásokat
+
+01:03:40.559 --> 01:03:44.079
+ nagyszerű lenne, ha keveset látnánk
+
+01:03:44.079 --> 01:03:48.640
+ felugró ablakok nyilvános helyeken ilyen jellegű dolgokkal, ahová szó szerint el lehet helyezni
+
+01:03:48.640 --> 01:03:52.880
+ telefonja öt percre leáll, és elegendő telefonhíváshoz
+
+01:03:52.880 --> 01:03:56.319
+ kap segítséget, vagy bármi, és mindez vezeték nélkül csak a képen látható
+
+01:03:56.319 --> 01:04:01.760
+ mint egy útszakasz és ágyazza be a kagylót a kocsiba és azt
+
+01:04:01.760 --> 01:04:05.599
+ újratölti az autonóm autót, amikor áthajt ezen
+
+01:04:05.599 --> 01:04:08.230
+ Ami most belemegyünk a technikába, emberek
+
+01:04:08.230 --> 01:04:11.520
+ [Nevetés] még mindig tetszik, izgatott vagyok a
+
+01:04:11.520 --> 01:04:15.839
+ őrült dolog csak arra a következtetésre jut, hogy bár amit én csak
+
+01:04:15.839 --> 01:04:18.319
+ mondta nagyon sci-fi, mint amikor mi nőttünk
+
+01:04:18.319 --> 01:04:21.599
+ olyan volt, mint a jövő, ez teljes mértékben kivitelezhető
+
+01:04:21.599 --> 01:04:25.920
+ lehetséges most igen, ez nevetséges a málna pi
+
+01:04:25.920 --> 01:04:31.200
+ alapítvány elindított egy számítási modult egy málna pi 4 specifikációival.
+
+01:04:31.200 --> 01:04:35.119
+ a málna pi alapítvány új terméket indított hétfőn a comp
+
+01:04:35.119 --> 01:04:39.440
+ a számítási modul 4. nehéz elhinni, hogy ilyen hosszú volt, de a
+
+01:04:39.440 --> 01:04:43.359
+ a málna pi 4 2019 júniusában jelent meg
+
+01:04:43.359 --> 01:04:48.079
+ a 4 számítási modul eljuttatja a pi 4-et az ipari iot térbe
+
+01:04:48.079 --> 01:04:52.240
+ ugyanazzal a processzorral, amely egy számítási modulba van csomagolva
+
+01:04:52.240 --> 01:04:57.200
+ csak könyörög, hogy integrálódjanak a nagy teljesítményű iot készülékekbe
+
+01:04:57.200 --> 01:05:00.880
+ ha nem ismeri a számítási modulokat, úgy gondolhatja őket
+
+01:05:00.880 --> 01:05:05.280
+ egylapos számítógépek az összes port és gpio tű nélkül
+
+01:05:05.280 --> 01:05:09.440
+ lehetővé teszik a számítógépes alkatrészeknek, hogy egy málna pi agya legyen
+
+01:05:09.440 --> 01:05:13.920
+ integrálva a robotika intelligens eszközöket gyártó technológiai klaszterekbe vagy
+
+01:05:13.920 --> 01:05:16.400
+ bármi, amivel elő tudsz állni, apróságot igényel
+
+01:05:16.400 --> 01:05:22.240
+ alacsony fogyasztású linuxos számítógép a szívében, mivel a 4. számítási modul megosztja ezt
+
+01:05:22.240 --> 01:05:26.400
+ spec a málna pi 4 fejlesztőkkel meg tudják csinálni az összes prototípusukat
+
+01:05:26.400 --> 01:05:30.319
+ a pi 4 sbc-n, de aztán rendeljen egy csomó számítási modult
+
+01:05:30.319 --> 01:05:33.520
+ 4-eseket integrálni a kereskedelmi termékeikbe
+
+01:05:33.520 --> 01:05:38.559
+ Csakúgy, mint a málna pi 4, a 4 számítási modul is 64 bites kar alapú
+
+01:05:38.559 --> 01:05:42.400
+ processzor video core vi grafikával ez
+
+01:05:42.400 --> 01:05:45.520
+ hatalmas frissítést jelent majd az előző számításhoz
+
+01:05:45.520 --> 01:05:49.839
+ modulos ügyfelek és 4k videokimenettel akár
+
+01:05:49.839 --> 01:05:55.039
+ 60 képkocka másodpercenként, valamint a h.265 videó dekódolásának lehetősége
+
+01:05:55.039 --> 01:05:58.480
+ a 4. számítási modul számítási modulja
+
+01:05:58.480 --> 01:06:03.039
+ lehet játékváltó multimédiás vezérelt eszközökhöz, például intelligens televíziókhoz vagy
+
+01:06:03.039 --> 01:06:06.960
+ set-top boxok, amelyekkel a 4-es számítási modul elérhető
+
+01:06:06.960 --> 01:06:11.599
+ 1 2 4 vagy 8 gigabájtos ram és 8 16 közül választhat
+
+01:06:11.599 --> 01:06:18.000
+ vagy 32 gigabájt az emmc flash memória wi-fi és bluetooth fedélzetén
+
+01:06:18.000 --> 01:06:21.440
+ választhatóak is, az ár mindössze 25-től mozog
+
+01:06:21.440 --> 01:06:27.599
+ 90 usd-ig képzeljük el, hogy Jeff a málna pi számítási modul 4
+
+01:06:27.599 --> 01:06:31.359
+ igen az egyik sbc projektedben, vagy valami ilyesmiben, ami ezt hatja
+
+01:06:31.359 --> 01:06:33.920
+ agy ez egy nagyon izgalmas, amint
+
+01:06:33.920 --> 01:06:39.440
+ becca azt mondta, hogy h.265 dekódol, tehát ez olyan, mint a videó
+
+01:06:39.440 --> 01:06:43.760
+ nagyon cpu intenzív igen, ez fantasztikus, sok mindent mond
+
+01:06:43.760 --> 01:06:50.000
+ ez nagyobb teljesítmény, mint a plex szerverem, igen, mint például ki tudja, hol van ez
+
+01:06:50.000 --> 01:06:54.720
+ olyan dolgokat fogok venni, amelyek tetszenek a fürt számítás ötletének
+
+01:06:54.720 --> 01:06:58.480
+ és ott több számítógépet vesz el
+
+01:06:58.480 --> 01:07:01.520
+ kapcsolja össze őket a hálózaton keresztül és
+
+01:07:01.520 --> 01:07:06.559
+ alapvetően beowulf szoftvert telepít, vagy ilyesmi
+
+01:07:06.559 --> 01:07:09.359
+ csoportosítja őket, hogy képesek legyenek fellépni
+
+01:07:09.359 --> 01:07:14.400
+ feladatokat úgy, hogy alapvetően szuper számítógéppé váljon
+
+01:07:14.400 --> 01:07:19.200
+ rögtön több számítógép közül, így ezekre a málna pi-re gondol
+
+01:07:19.200 --> 01:07:25.839
+ cl uh klaszter vagy a modulok, és és tedd össze, mint 10 ezekből
+
+01:07:25.839 --> 01:07:30.400
+ egy fürtben, és szeretné ezt a számítási modult
+
+01:07:30.400 --> 01:07:34.559
+ klaszter, amely jó számítógép lenne, annyi energiával
+
+01:07:34.559 --> 01:07:38.079
+ amikor mindegyiken nyolc giga báránya lehet
+
+01:07:38.079 --> 01:07:43.359
+ tábla idõpontja, hogy 10.-ig sok minden sokat tehet
+
+01:07:43.359 --> 01:07:47.280
+ ez megváltoztatja azokat a dolgokat, amelyeken a világ változik, az biztos
+
+01:07:47.280 --> 01:07:50.960
+ mit tenne mindazzal az erővel
+
+01:07:52.160 --> 01:07:55.280
+ és csendben várja, hogy válaszolj i
+
+01:07:55.280 --> 01:07:58.480
+ arra gondolok, hogy azt szeretném, hogy mit tennék ezzel, hogy hány emberrel
+
+01:07:58.480 --> 01:08:05.119
+ most ment bitcoin bányászat sajnálom srácok, hogy tudod mi a szomorú
+
+01:08:05.119 --> 01:08:10.880
+ Az első gondolat az volt, hogy tudok-e automatizálni, mint néhány
+
+01:08:10.880 --> 01:08:14.000
+ segédprogramok, amelyek a konyhában vannak, hogy ételt készítsenek nekem
+
+01:08:14.000 --> 01:08:17.600
+ ez volt az első gondolatom a négyes számítási modullal
+
+01:08:17.600 --> 01:08:22.319
+ igen ennél több kell, de tudom, hogy ez egy ilyen művelet agya lehet
+
+01:08:22.319 --> 01:08:27.759
+ bár egyértelműen éhes vagyok [Nevetés]
+
+01:08:27.759 --> 01:08:31.359
+ gondolatait alább kommentálja, szeretnénk hallani, hogy mit tenne a
+
+01:08:31.359 --> 01:08:34.719
+ számítási modul köszönettel, hogy megnézte az 5. kategóriájú pontot
+
+01:08:34.719 --> 01:08:38.000
+ a tv újságtermében ne felejtsd el kedvelni és feliratkozni
+
+01:08:38.000 --> 01:08:40.640
+ az összes technikai híred enyhe linux elfogultsággal
+
+01:08:40.640 --> 01:08:46.000
+ és ha értékeli, amit csinálunk, akkor a patreon.com védőszentjévé válunk
+
+01:08:46.000 --> 01:08:53.839
+ 5. kategória az 5. kategóriából dot tv hírszoba becca ferguson vagyok
+
+01:08:55.870 --> 01:09:04.029
+ [Zene]
+
+01:09:12.400 --> 01:09:16.159
+ Nos, nagyjából egész idő alatt ez a jeff van
+
+01:09:16.159 --> 01:09:21.600
+ a múlt héten átmentünk, és én fiverr-rel csináltuk az egész folyamatot
+
+01:09:21.600 --> 01:09:25.359
+ felbérelt néhány embert, meg tudjuk csinálni a remixünket, igen, itt egy vicces
+
+01:09:25.359 --> 01:09:29.040
+ történet rendben, szó szerint mondd meg, mikor nevetek
+
+01:09:29.040 --> 01:09:34.960
+ tudom, ajkát már tette, már nevetett
+
+01:09:34.960 --> 01:09:38.400
+ alom-mókus volt az egyik srácunk igen, igen
+
+01:09:38.400 --> 01:09:42.560
+ egyik remixelőnk és irodalmi mókusunk
+
+01:09:42.560 --> 01:09:48.319
+ azt mondta, folyton kíváncsi voltam, hogy éppen ő nézi-e a funkciót
+
+01:09:48.319 --> 01:09:51.199
+ utána folyton azon gondolkodtam, hogy miért vagy
+
+01:09:51.199 --> 01:09:58.159
+ rosszul ejtem ki a nevem, ó, szemetelj egy mókust, így ellenőriztem
+
+01:09:58.159 --> 01:10:02.960
+ profilját és azt tapasztaltam, hogy hibásan írtam, ó, nem
+
+01:10:02.960 --> 01:10:09.920
+ és soha nem vetted észre, és három évig így volt, komolyan gondolod
+
+01:10:09.920 --> 01:10:17.600
+ azt mondja, a nevem, az én nevem irodalmi mókus, istenem, otthagyta
+
+01:10:17.600 --> 01:10:21.040
+ a mi vicces, ezért elmondom neked ezt a történetet
+
+01:10:21.040 --> 01:10:25.600
+ vicces látni, mondtam, hogy vicces volt
+
+01:10:26.000 --> 01:10:29.679
+ azért mondom el neked ezt a történetet, mert akkor jól mondtam magamnak
+
+01:10:29.679 --> 01:10:35.120
+ szavakat látok, és azt hiszem, többnyire kiejtem
+
+01:10:35.120 --> 01:10:40.320
+ meglehetősen aprólékosan, így amikor irodalmi dolgokat látok, pedig ez nem egy szó, i
+
+01:10:40.320 --> 01:10:44.800
+ állítsd be úgy, ahogy jól olvassa, úgy gondoltam, hogy valószínűleg a
+
+01:10:44.800 --> 01:10:47.679
+ nagyon jó lektor, ezért mondtam, mi a fene adok neki
+
+01:10:47.679 --> 01:10:50.960
+ menj, így tettem fel egy hirdetést, amely azt mondta, hogy lektorálok
+
+01:10:50.960 --> 01:10:54.480
+ a szöveg legfeljebb 500 szó öt dollárért
+
+01:10:54.480 --> 01:10:57.520
+ rendben, és olyan voltam, mint ah soha senki nem fog érte menni
+
+01:10:57.520 --> 01:11:01.840
+ nagyon szórakoztató egyébként gondoltam kipróbálom és másnap reggel kaptam egy e-mailt
+
+01:11:01.840 --> 01:11:08.239
+ a spanyolországi személytől, aki um is
+
+01:11:08.239 --> 01:11:13.120
+ egy biztosítási alkusz rendben van, és van olyan vevője, aki angolul beszél
+
+01:11:13.120 --> 01:11:17.600
+ bennszülötten, és meg akarta győződni arról, hogy helyes dolgokat mond válaszként
+
+01:11:17.600 --> 01:11:21.840
+ egy e-mailre, így eltávolította az összes bizalmas dolgot
+
+01:11:21.840 --> 01:11:26.400
+ igen, elküldte nekem a válaszát, és azt mondta, át tudná ezt mondani nekem és nekem
+
+01:11:26.400 --> 01:11:28.400
+ tettem és átmentem, és kijavítottam néhányat
+
+01:11:28.400 --> 01:11:31.840
+ dolgokat, és voltak szavai, amelyeknek nem igazán volt értelme a fordításban
+
+01:11:31.840 --> 01:11:35.760
+ és így kijavítottam, és korrigáltam a nyelvtant és a kontextust, és egy kicsit
+
+01:11:35.760 --> 01:11:39.760
+ a helyesírásból, és olyan volt, mintha öt dollárt szeretett volna
+
+01:11:39.760 --> 01:11:42.000
+ 10 percbe telt, és csak az volt
+
+01:11:42.000 --> 01:11:44.480
+ amit reggel egy csésze kávéval csináltam
+
+01:11:44.480 --> 01:11:50.960
+ igen, és adott nekem egy 5-ből 5 véleményt, ami fantasztikus, mint amilyen a fiverr
+
+01:11:50.960 --> 01:11:54.480
+ a flip perspektíva, szóval nagyon ügyes vagyok, így elkezdek beszélni
+
+01:11:54.480 --> 01:11:58.400
+ a gyerekeimnek, és szeretném, ha megtudnánk, hogy hasonlóan önök is tudnának-e dolgozni
+
+01:11:58.400 --> 01:12:01.199
+ és tudod, hogy a lányom művész-e és
+
+01:12:01.199 --> 01:12:05.280
+ rajzokat tudna csinálni, hogy az emberek elkezdjenek pénzt keresni, ez nagyon szép
+
+01:12:05.280 --> 01:12:08.159
+ ötlet egy ügyes platform nem tudom, miről szólnak a szabályok
+
+01:12:08.159 --> 01:12:11.120
+ mint a minimális életkor és az ilyesmi, de megvizsgálhatjuk ezeket
+
+01:12:11.120 --> 01:12:13.360
+ dolgokat, de ez a történetem a héten
+
+01:12:13.360 --> 01:12:18.719
+ hogy hé, én is a másik oldalon mentem, és eladtam a saját szolgáltatásomat, amit adtam
+
+01:12:18.719 --> 01:12:23.120
+ irodalmi mókus egy ingyenes freebie um, de uh
+
+01:12:23.120 --> 01:12:30.000
+ most eladó vagyok, ii úgy érzem, hogy szórakoztató lenne csak
+
+01:12:30.000 --> 01:12:34.000
+ megadom az öt dollárt, és küldök egy 500 szavas dokumentumot
+
+01:12:34.000 --> 01:12:38.640
+ minden lorem ipsumot, és csak mondd meg, van-e értelme, mindent megteszek
+
+01:12:38.640 --> 01:12:44.000
+ kijavítottad, hogy igen, jól van, ez az a jeff
+
+01:12:44.000 --> 01:12:46.800
+ ez állandóan rendben van, de nagyon szórakoztató voltam
+
+01:12:46.800 --> 01:12:50.080
+ élveztem, hogy a jövő héten ismét itt lehetek veled, a 3d-be kezdünk
+
+01:12:50.080 --> 01:12:52.560
+ nyomtatás, úgyhogy egy endert fogunk összeszerelni
+
+01:12:52.560 --> 01:12:55.440
+ 3v2 tehát tényleg össze fogjuk rakni
+
+01:12:55.440 --> 01:12:58.640
+ és akkor beszélgetni fogunk arról, hogy tudja, mi volt a folyamat
+
+01:12:58.640 --> 01:13:03.760
+ mint nekem noobként a 3d nyomtatási birodalomban
+
+01:13:03.760 --> 01:13:05.760
+ milyen kihívásokkal találkoztam
+
+01:13:05.760 --> 01:13:09.040
+ és találkozhat-e esetleg az indulás során
+
+01:13:09.040 --> 01:13:13.760
+ 3d nyomtatásban plusz nem csak az első nyomtatásomat mutatom meg
+
+01:13:13.760 --> 01:13:19.440
+ de az első nyomtatott terveim nem akarnak lemaradni a jövő hétről
+
+01:13:19.440 --> 01:13:22.960
+ nagyszerű hetet mindenkinek látunk
+
+01:13:24.100 --> 01:13:30.029
+ [Zene] [Taps]
+
+01:13:30.840 --> 01:13:45.060
+ viszlát [zene]
+
+01:13:48.290 --> 01:13:56.319
+ [Zene]
+
+01:14:01.760 --> 01:14:03.840
+ te
+

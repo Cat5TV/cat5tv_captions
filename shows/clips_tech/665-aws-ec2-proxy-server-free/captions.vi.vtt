@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: vi
+
+00:00:03.919 --> 00:00:07.120
+cho dù bạn đang hy vọng có thêm cho mình một chút riêng tư khi lướt web
+
+00:00:07.120 --> 00:00:10.639
+ Internet hoặc bạn muốn truy cập các dịch vụ có thể
+
+00:00:10.639 --> 00:00:17.279
+ thường không có sẵn trong khu vực của bạn hoặc có thể đó là một trường hợp thực sự có
+
+00:00:17.279 --> 00:00:22.000
+ đã bị nhà cung cấp dịch vụ chặn địa chỉ ip của bạn
+
+00:00:22.000 --> 00:00:27.359
+ nó có thể không phải là một điều độc hại, trước đây tôi đã bị youtube chặn địa chỉ ip của mình
+
+00:00:27.359 --> 00:00:31.039
+ bởi vì tôi tải lên rất nhiều video và tải xuống
+
+00:00:31.039 --> 00:00:37.280
+ phụ đề chi tiết cho những người đó đã khiến tôi vượt quá mức sử dụng của mình trong
+
+00:00:37.280 --> 00:00:42.239
+ api youtube nên địa chỉ ip của tôi bị chặn
+
+00:00:42.239 --> 00:00:46.000
+ nó không phải là một điều độc hại, tôi không muốn tạo ra ấn tượng đó
+
+00:00:46.000 --> 00:00:52.399
+ nhưng có những lý do rất chính đáng để giải quyết những loại
+
+00:00:52.399 --> 00:00:58.640
+ mọi thứ và những kẻ mọt sách đi đến là một proxy, vấn đề là proxy
+
+00:00:58.640 --> 00:01:02.160
+ có thể rất tốn kém để sử dụng và những cái miễn phí
+
+00:01:02.160 --> 00:01:08.240
+ trong khi có sẵn rất thường xuyên hoặc không đáng tin cậy lắm, chúng lại là một
+
+00:01:08.240 --> 00:01:11.360
+ ngày hôm sau họ không hoạt động và bạn mất quyền truy cập vào các dịch vụ của mình
+
+00:01:11.360 --> 00:01:18.320
+ và mọi thứ khác hoặc thậm chí tệ hơn là chúng nguy hiểm mà bạn không biết
+
+00:01:18.320 --> 00:01:24.479
+ những proxy đó đang theo dõi ghi nhật ký và thậm chí giống như chặn
+
+00:01:24.479 --> 00:01:28.640
+ khi bạn đang trải qua, bạn đang gửi tất cả lưu lượng truy cập internet của mình
+
+00:01:28.640 --> 00:01:36.159
+ thông qua nhà cung cấp dịch vụ đó để có một người mà tôi thực sự tin tưởng
+
+00:01:36.159 --> 00:01:44.079
+ để ủy quyền tất cả dữ liệu của tôi và đó là tôi, tôi không phải là người như vậy
+
+00:01:44.079 --> 00:01:49.360
+ rằng bạn sẽ nói rằng bạn tin tưởng người mà bạn tin tưởng là bạn vì vậy tôi
+
+00:01:49.360 --> 00:01:54.399
+ sẽ chỉ cho bạn cách tôi có thể thiết lập một dịch vụ proxy miễn phí
+
+00:01:54.399 --> 00:02:00.000
+ của riêng tôi và bạn có thể sao chép điều đó và tạo ra của riêng bạn
+
+00:02:00.000 --> 00:02:03.200
+ chúng tôi sẽ làm điều này trên đám mây, chúng tôi sẽ sử dụng dịch vụ của bên thứ ba
+
+00:02:03.200 --> 00:02:06.399
+ nhà cung cấp và đó là amazon, vì vậy bạn nói ồ tốt
+
+00:02:06.399 --> 00:02:09.440
+ amazon thì sao, bạn biết không, chúng tôi có thể tin tưởng vào dữ liệu của mình không
+
+00:02:09.440 --> 00:02:13.440
+ đối với họ, những gì chúng tôi đang sử dụng là dịch vụ đám mây của họ, nó được gọi là amazon
+
+00:02:13.440 --> 00:02:17.520
+ dịch vụ web nên tất cả đều là đám mây của họ
+
+00:02:17.520 --> 00:02:22.000
+ cơ sở hạ tầng mà họ có để khách hàng thuê về cơ bản
+
+00:02:22.000 --> 00:02:25.120
+ quyền truy cập vào máy chủ và không gian của họ và
+
+00:02:25.120 --> 00:02:28.640
+ và các máy chủ ảo và mọi thứ khác
+
+00:02:28.640 --> 00:02:34.959
+ cơ sở hạ tầng có sẵn cho bạn nhưng bản thân việc triển khai là
+
+00:02:34.959 --> 00:02:39.840
+ của bạn, tôi sẽ cho bạn thấy điều này được thực hiện như thế nào, chúng tôi sẽ tiếp tục với aws
+
+00:02:39.840 --> 00:02:45.920
+ và đặc biệt là ec2, nên tất nhiên nếu bạn không quen thuộc với aws chỉ
+
+00:02:45.920 --> 00:02:50.160
+ truy cập aws.amazon.com đăng nhập bằng tài khoản amazon của bạn và
+
+00:02:50.160 --> 00:02:55.519
+ sau đó thực hiện tìm kiếm nhanh ec2 và điều đó sẽ đưa bạn vào
+
+00:02:55.519 --> 00:02:58.959
+ về cơ bản, nền tảng ảo hóa của họ coi ec2 là
+
+00:02:58.959 --> 00:03:02.800
+ chỉ vậy nên điều đầu tiên tôi ghi nhận khi tôi ở đây
+
+00:03:02.800 --> 00:03:08.480
+ trong ec2 là khu vực của tôi và điều này rất quan trọng vì đây là nơi proxy của tôi
+
+00:03:08.480 --> 00:03:13.360
+ máy chủ sẽ hoạt động nếu tôi đặt nó ở đó tại sao lại như vậy
+
+00:03:13.360 --> 00:03:16.720
+ quan trọng là hãy nghĩ về điều này, giả sử tôi đang sử dụng một luồng video
+
+00:03:16.720 --> 00:03:20.959
+ dịch vụ hạn chế quyền truy cập của người Canada vào video của họ
+
+00:03:20.959 --> 00:03:24.720
+ dịch vụ phát trực tuyến như vậy bằng cách đặt máy chủ proxy của tôi ở phía bắc
+
+00:03:24.720 --> 00:03:28.640
+ California bây giờ đột nhiên họ về cơ bản
+
+00:03:28.640 --> 00:03:31.599
+ bằng địa chỉ ip sẽ nghĩ rằng tôi đang kết nối từ
+
+00:03:31.599 --> 00:03:34.640
+ California vì vậy tôi có thể làm việc xung quanh đó
+
+00:03:34.640 --> 00:03:37.920
+ tương tự, bạn có thể muốn thay đổi khu vực của mình dựa trên
+
+00:03:37.920 --> 00:03:42.480
+ những gì bạn đang cố gắng đạt được, bạn thậm chí có thể đặt một máy chủ ở Châu Phi
+
+00:03:42.480 --> 00:03:45.760
+ hoặc Châu Á nhìn vào đó bạn có thể đặt một ngay tại Hồng Kông
+
+00:03:45.760 --> 00:03:49.440
+ bạn có thể đặt một cái ở canada a uh ở châu Âu mà bạn có
+
+00:03:49.440 --> 00:03:55.040
+ ở khắp nơi và sau đó chúng ta có Trung Đông và Nam Mỹ ngay bây giờ
+
+00:03:55.040 --> 00:03:58.080
+ vì vậy đó là một danh sách khá lớn về nơi họ
+
+00:03:58.080 --> 00:04:00.080
+ đã thiết lập cơ sở hạ tầng này cho amazon chưa
+
+00:04:00.080 --> 00:04:03.920
+ dịch vụ web dịch vụ ec2 vì vậy hãy chọn một dịch vụ
+
+00:04:03.920 --> 00:04:07.200
+ là nơi bạn muốn máy chủ proxy của mình
+
+00:04:07.200 --> 00:04:10.879
+ tôi sẽ đặt của tôi, tôi sẽ để nó là bắc california đó là
+
+00:04:10.879 --> 00:04:14.560
+ chúng tôi về phía tây một và đó là nơi
+
+00:04:14.560 --> 00:04:19.040
+ máy chủ proxy của tôi sẽ hoạt động sẽ cho phép tôi kết nối
+
+00:04:19.040 --> 00:04:22.880
+ như thể tôi thực sự đang ngồi ở California
+
+00:04:22.880 --> 00:04:26.160
+ được rồi, vì vậy tôi sẽ nhấp vào phiên bản khởi chạy
+
+00:04:26.160 --> 00:04:30.160
+ và sau đó khởi chạy lại phiên bản vì nó thả xuống và điều này mang lại cho tôi
+
+00:04:30.160 --> 00:04:34.720
+ danh sách các hệ điều hành um mà tôi có thể triển khai
+
+00:04:34.720 --> 00:04:39.040
+ trên phiên bản ec2 của tôi, vì vậy tôi đang sử dụng một số thuật ngữ ở đây mà bạn có thể không quen thuộc
+
+00:04:39.040 --> 00:04:42.080
+ aws là dịch vụ web amazon về cơ bản
+
+00:04:42.080 --> 00:04:46.560
+ đầy đủ các dịch vụ của amazon mà họ cung cấp
+
+00:04:46.560 --> 00:04:52.000
+ cho người dùng đám mây, ec2 là nền tảng ảo hóa của họ cho ảo
+
+00:04:52.000 --> 00:04:55.840
+ máy móc khi tôi nói ví dụ, tôi đang nói về một
+
+00:04:55.840 --> 00:05:00.160
+ máy ảo nên nó thực sự là một máy ảo
+
+00:05:00.160 --> 00:05:03.919
+ vì vậy tôi sẽ triển khai một trong những hệ điều hành này cho một phiên bản của ec2
+
+00:05:03.919 --> 00:05:06.560
+ đó là một máy ảo vậy tôi muốn nó làm gì
+
+00:05:06.560 --> 00:05:10.960
+ để được như vậy và tôi đã nói hey bình luận bên dưới nếu
+
+00:05:10.960 --> 00:05:12.639
+ tôi sử dụng một thuật ngữ mà bạn không quen thuộc
+
+00:05:12.639 --> 00:05:15.600
+ tôi sẽ thực hiện một tìm kiếm nhanh mà trước đây tôi đã thực hiện vì tôi triển khai rất nhiều
+
+00:05:15.600 --> 00:05:18.960
+ máy chủ trên đám mây tôi sẽ nhấp vào debian
+
+00:05:18.960 --> 00:05:21.360
+ uh chỉ cần gõ debian vào tìm kiếm ở đây
+
+00:05:21.360 --> 00:05:27.600
+ vì vậy sau đó tôi sẽ đi đến kết quả thị trường aws cũng có
+
+00:05:27.600 --> 00:05:30.960
+ những cái mà tôi đã tạo và những cái trong cộng đồng
+
+00:05:30.960 --> 00:05:34.000
+ bạn sẽ nghĩ ồ tôi muốn sử dụng cộng đồng tốt, không bạn không
+
+00:05:34.000 --> 00:05:37.919
+ những cái đó sẽ khiến bạn mất tiền và bạn nói tốt nhưng cộng đồng là miễn phí
+
+00:05:37.919 --> 00:05:42.800
+ nó là mã nguồn mở và có, tuy nhiên nó không phải là một phần của aws
+
+00:05:42.800 --> 00:05:45.919
+ thị trường và vì vậy bạn sẽ phải trả tiền cho việc sử dụng
+
+00:05:45.919 --> 00:05:49.600
+ để máy ảo đó chạy phiên bản
+
+00:05:49.600 --> 00:05:52.639
+ trên đám mây nên thay vào đó, chúng tôi sẽ sử dụng một trong những cái chính thức từ
+
+00:05:52.639 --> 00:05:56.800
+ xin chào thị trường, hãy xem những kết quả mà chúng tôi nhận được, chúng được sắp xếp khá tốt
+
+00:05:56.800 --> 00:06:00.400
+ debian đưa ra kết quả đầu tiên là debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ bậc miễn phí tương thích hoặc bậc miễn phí đủ điều kiện
+
+00:06:04.479 --> 00:06:09.039
+ phiên bản debian mà chúng tôi sẽ triển khai, vì vậy hãy chọn
+
+00:06:09.039 --> 00:06:12.720
+ bậc miễn phí đủ điều kiện để chúng tôi có thể bỏ qua việc định giá vì chúng tôi sẽ sử dụng
+
+00:06:12.720 --> 00:06:16.560
+ lượt truy cập cấp miễn phí tiếp tục và đây là nơi chúng tôi chọn điều đó rất tốt
+
+00:06:16.560 --> 00:06:20.000
+ nếu chúng ta muốn cấp miễn phí, chúng ta phải đi với một vi t2
+
+00:06:20.000 --> 00:06:24.080
+ tôi sẽ chọn cái đó nhưng nó cho chúng tôi cái gì nó cho chúng tôi một cpu
+
+00:06:24.080 --> 00:06:29.520
+ một gigabyte bộ nhớ um và sau đó chúng ta có bộ nhớ để giải quyết
+
+00:06:29.520 --> 00:06:33.199
+ chúng tôi không cần nhiều bộ nhớ vì chúng tôi chỉ thiết lập một proxy cơ bản
+
+00:06:33.199 --> 00:06:36.639
+ và đó là về nó, vì vậy tôi sẽ triển khai
+
+00:06:36.639 --> 00:06:40.080
+ vì vậy vi mô t2 là cấp miễn phí
+
+00:06:40.080 --> 00:06:43.440
+ đủ điều kiện, đừng chọn một trong những cái lớn hơn vì bạn sẽ phải trả tiền
+
+00:06:43.440 --> 00:06:45.919
+ cho nó ngay lập tức tôi sẽ xem xét và
+
+00:06:45.919 --> 00:06:50.080
+ khởi chạy, chúng tôi sẽ quay lại để thực hiện cài đặt như các nhóm bảo mật của chúng tôi và
+
+00:06:50.080 --> 00:06:51.759
+ những thứ như thế tôi sẽ bỏ lại mọi thứ
+
+00:06:51.759 --> 00:06:54.880
+ theo mặc định bây giờ và chúng tôi sẽ khởi chạy
+
+00:06:54.880 --> 00:06:58.479
+ trước hết tôi cần tạo một cặp khóa mới để đây là
+
+00:06:58.479 --> 00:07:02.720
+ khóa ssh mà tôi sẽ sử dụng để ssh vào
+
+00:07:02.720 --> 00:07:06.800
+ máy chủ này vì vậy tôi sẽ gọi đây là một proxy
+
+00:07:06.800 --> 00:07:11.120
+ máy chủ và sau đó tải xuống cặp khóa của tôi, đảm bảo rằng bạn lưu nó ở nơi an toàn
+
+00:07:11.120 --> 00:07:14.960
+ tôi sẽ ném nó vào máy chủ của mình và thả nó xuống
+
+00:07:14.960 --> 00:07:19.199
+ ở đó và bây giờ phiên bản khởi chạy có nghĩa là sức mạnh
+
+00:07:19.199 --> 00:07:23.680
+ trên máy ảo của bạn, vì vậy tôi sẽ đẩy nó
+
+00:07:23.680 --> 00:07:27.759
+ và chúng tôi bắt đầu vì vậy về cơ bản nó tạo ra nó là tạo ra một
+
+00:07:27.759 --> 00:07:32.240
+ tạo một phiên bản ec2 trên đám mây cho chúng tôi trong
+
+00:07:32.240 --> 00:07:35.360
+ uh ở bắc california nên chúng tôi đến đó
+
+00:07:35.360 --> 00:07:40.400
+ tôi sẽ xem các phiên bản ở đây và bây giờ tôi có thể thấy tôi hiện có một
+
+00:07:40.400 --> 00:07:45.120
+ ví dụ đang chạy một vi mô t2 và nó chỉ là không có tên, vì vậy tôi sẽ
+
+00:07:45.120 --> 00:07:48.080
+ nhấp vào chỉnh sửa và tôi sẽ gọi đây là máy chủ proxy của tôi
+
+00:07:48.080 --> 00:07:52.720
+ máy chủ thử xem ở đó chúng tôi ổn nên nó đã hoạt động
+
+00:07:52.720 --> 00:07:56.960
+ vì vậy nếu tôi nhấp vào đó, tôi có thể thấy địa chỉ ip của máy chủ đó, tôi đã gọi
+
+00:07:56.960 --> 00:08:00.400
+ nó là máy chủ proxy nhưng ngay bây giờ hãy nhớ nó chỉ là debian 10. có
+
+00:08:00.400 --> 00:08:05.120
+ không có gì khác được cài đặt trên đó nên tôi cần sao chép địa chỉ ip đó
+
+00:08:05.120 --> 00:08:09.759
+ và sau đó tôi sẽ nhảy vào dấu nhắc lệnh của mình
+
+00:08:09.759 --> 00:08:13.520
+ bởi vì tôi đã tải khóa xuống máy chủ của mình, tôi sẽ đích thân đến
+
+00:08:13.520 --> 00:08:17.440
+ ssh đến máy chủ nội bộ của tôi
+
+00:08:23.680 --> 00:08:27.360
+ được rồi vì vậy bây giờ tôi đang ở đó vì vậy bây giờ lệnh mà tôi sẽ sử dụng
+
+00:08:27.360 --> 00:08:33.360
+ là ssh và sau đó lướt qua tôi để tìm chìa khóa mà tôi sẽ sử dụng
+
+00:08:33.360 --> 00:08:36.320
+ vì vậy tệp đến mà tôi sẽ sử dụng cho khóa
+
+00:08:36.320 --> 00:08:41.039
+ và cái đó được gọi là máy chủ proxy. pem là thứ tôi đã tải xuống
+
+00:08:41.039 --> 00:08:45.200
+ sau đó tôi sẽ chuyển sang quản trị vì đó là đăng nhập mặc định cho debian
+
+00:08:45.200 --> 00:08:48.880
+ quản trị viên hình ảnh máy ami hoặc amazon tại
+
+00:08:48.880 --> 00:08:51.920
+ và sau đó là địa chỉ ip mà tôi đã sao chép vào khay nhớ tạm và nếu tôi
+
+00:08:51.920 --> 00:08:54.240
+ nhấn enter, nó sẽ yêu cầu tôi chấp nhận khóa đó
+
+00:08:54.240 --> 00:08:59.279
+ và tôi nói có và tôi bị từ chối
+
+00:08:59.279 --> 00:09:02.560
+ quyền trên tệp đó cuối cùng được lưu ý rằng
+
+00:09:02.560 --> 00:09:06.480
+ 766 để mọi người đều có quyền truy cập vào những tệp đó, điều đó thật thú vị
+
+00:09:06.480 --> 00:09:10.800
+ chính ssh đang bảo vệ tôi khỏi ai đó có thể xâm phạm khóa của tôi
+
+00:09:10.800 --> 00:09:18.160
+ vì vậy chmod 7 0 0 máy chủ proxy dot pam hãy thử điều đó và
+
+00:09:18.160 --> 00:09:21.279
+ bây giờ hãy thử lại để những gì tôi đã làm là ồ và bây giờ tôi là
+
+00:09:21.279 --> 00:09:25.360
+ kết nối nó chỉ hoạt động bảy không 0 có nghĩa là tôi là chủ sở hữu của
+
+00:09:25.360 --> 00:09:29.120
+ chìa khóa đó tôi được phép làm bất cứ điều gì với nó
+
+00:09:29.120 --> 00:09:35.200
+ đọc ghi thực thi bằng không số không có nghĩa là không ai trong nhóm không ai không phải là
+
+00:09:35.200 --> 00:09:39.120
+ một phần của nhóm được phép truy cập vào điều đó nên
+
+00:09:39.120 --> 00:09:42.080
+ về cơ bản là một tệp ngu ngốc mà họ thậm chí không thể mở
+
+00:09:42.080 --> 00:09:46.800
+ uh nhưng tôi có thể ổn nên bây giờ tôi đã kết nối được với nhau, tôi sẽ đi kiện
+
+00:09:46.800 --> 00:09:52.080
+ bởi vì đó là những gì lệnh để trở thành root nên bây giờ tôi đã root nên apt
+
+00:09:52.080 --> 00:09:57.519
+ cập nhật apt cập nhật sẽ lấy kho của tôi, bạn thấy đây là
+
+00:09:57.519 --> 00:10:02.160
+ một máy tính debian thực sự nếu bạn ở trên đám mây
+
+00:10:02.160 --> 00:10:05.600
+ thật dễ dàng, tôi đã nâng cấp tôi rồi
+
+00:10:05.600 --> 00:10:10.320
+ chạy một máy tính debian trên đám mây nên trong khoảng thời gian đó và tôi rất vui
+
+00:10:10.320 --> 00:10:16.640
+ blah blah đồng thời um chúng tôi có một máy chủ debian dựa trên đám mây
+
+00:10:16.640 --> 00:10:20.800
+ bạn có nhận ra điều đó dễ dàng và miễn phí không
+
+00:10:20.800 --> 00:10:24.000
+ được để chúng tôi có thể làm những việc khác với cái này, chúng tôi có thể thiết lập một cột đèn
+
+00:10:24.000 --> 00:10:28.880
+ có thể sử dụng nó cho mysql mariadb bất cứ thứ gì bạn có thể nghĩ ra nó
+
+00:10:28.880 --> 00:10:32.000
+ máy chủ debian vì vậy chúng tôi sẽ sử dụng nó làm
+
+00:10:32.000 --> 00:10:37.040
+ proxy vì vậy bây giờ điều tôi sẽ làm là tôi sẽ cài đặt một công cụ có tên là
+
+00:10:37.040 --> 00:10:43.920
+ proxy nhỏ gọn đẹp và dễ cài đặt apt cài đặt proxy nhỏ
+
+00:10:43.920 --> 00:10:50.880
+ thực sự đơn giản để định cấu hình nói có ở đây chúng ta bắt đầu
+
+00:10:52.399 --> 00:10:56.480
+ và bây giờ đã hoàn tất vì chúng tôi đã cài đặt proxy nhỏ, chúng tôi chỉ cần chỉnh sửa
+
+00:10:56.480 --> 00:11:04.640
+ tập tin cấu hình nên dấu gạch chéo, vv chém proxy nhỏ xíu đã thay đổi cô ấy thành đó
+
+00:11:04.640 --> 00:11:10.959
+ và sau đó tôi đang sử dụng nano tinyproxy.com và chỉnh sửa nó để kiểm soát w trong nano
+
+00:11:10.959 --> 00:11:14.079
+ cho phép tôi tìm kiếm nhưng trước khi tôi tìm kiếm, hãy lưu ý rằng
+
+00:11:14.079 --> 00:11:18.000
+ cổng theo mặc định đang sử dụng 8888, chúng tôi sẽ cần biết rằng
+
+00:11:18.000 --> 00:11:20.959
+ thông tin bởi vì đó là những gì chúng tôi sẽ kết nối với
+
+00:11:20.959 --> 00:11:25.200
+ proxy của chúng tôi thực hiện tìm kiếm nhanh cho phép
+
+00:11:26.720 --> 00:11:30.959
+ alt w cho phép bạn tìm kiếm lại wow từ allow có lẽ không phải là từ tốt nhất
+
+00:11:30.959 --> 00:11:35.920
+ truy vấn tìm kiếm có thể tìm kiếm 127.0.0.1 um và ngay bên dưới truy vấn mà tôi sẽ truy cập
+
+00:11:35.920 --> 00:11:40.399
+ cho phép và sau đó tôi cần thêm địa chỉ ip của mình để có thể kết nối với cái này
+
+00:11:40.399 --> 00:11:44.320
+ máy chủ proxy vì ngay bây giờ nó đã đóng cửa chỉ máy chủ cục bộ mới có thể truy cập nó
+
+00:11:44.320 --> 00:11:48.399
+ điều quan trọng cần lưu ý là điều này trong khi đây là
+
+00:11:48.399 --> 00:11:51.519
+ máy chủ proxy tôi là người duy nhất được phép truy cập
+
+00:11:51.519 --> 00:11:54.959
+ sẽ được phép ủy quyền cho nội dung của tôi mà kết nối của tôi thông qua
+
+00:11:54.959 --> 00:11:58.880
+ vì vậy nó là riêng tư về vấn đề đó tôi cần biết
+
+00:11:58.880 --> 00:12:02.959
+ địa chỉ ip vì vậy tôi sẽ chuyển qua
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz và sao chép địa chỉ ip đó vào khay nhớ tạm của tôi
+
+00:12:08.000 --> 00:12:11.279
+ và sau đó quay lại đó và dán nó vào cấu hình của tôi
+
+00:12:11.279 --> 00:12:15.839
+ điều khiển o nhập điều khiển x điều khiển o là viết ra
+
+00:12:15.839 --> 00:12:22.720
+ lưu tệp bây giờ hệ thống ctl khởi động lại proxy nhỏ
+
+00:12:22.720 --> 00:12:28.079
+ gần như đã xong việc cuối cùng mà chúng ta cần làm là chúng ta chỉ cần nói với aws
+
+00:12:28.079 --> 00:12:32.639
+ bảo mật ec2 mà chúng tôi sẽ thiết lập một chính sách nói rằng
+
+00:12:32.639 --> 00:12:35.920
+ này chỉ tôi được phép kết nối với máy chủ đó
+
+00:12:35.920 --> 00:12:39.839
+ vì vậy không ai khác có thể kết nối với nó, vì vậy đó là những gì chúng tôi sẽ
+
+00:12:39.839 --> 00:12:43.120
+ làm ngay bây giờ vì vậy tôi sẽ quay lại đây và bạn thấy máy chủ này trên
+
+00:12:43.120 --> 00:12:47.279
+ màn hình tốt nếu tôi nhấp vào bảo mật thì tôi có thể
+
+00:12:47.279 --> 00:12:50.880
+ nhấp vào nhóm bảo mật mà nó được chỉ định tự động, vì vậy chỉ cần nhấp vào
+
+00:12:50.880 --> 00:12:53.680
+ điều đó và bây giờ nó đã để tôi lại với ec2
+
+00:12:53.680 --> 00:12:56.240
+ nhóm bảo mật và nhóm bảo mật chính xác
+
+00:12:56.240 --> 00:12:59.440
+ bạn sẽ nhận thấy rằng nó đã được thiết lập một cho ssh vì
+
+00:12:59.440 --> 00:13:03.760
+ nó được kích hoạt theo mặc định, tôi có thể đặt điều đó để chỉ cho phép tôi
+
+00:13:03.760 --> 00:13:06.639
+ quan trọng vì vậy hãy làm điều đó chỉ để có lợi
+
+00:13:06.639 --> 00:13:09.959
+ thực hành bảo mật vì vậy ssh tôi sẽ thay đổi nó từ
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 tôi sẽ đóng x đó và sau đó
+
+00:13:13.440 --> 00:13:18.320
+ thay đổi nó thành ip của tôi, sau đó tôi sẽ thêm một quy tắc mới mà bạn đã thấy
+
+00:13:18.320 --> 00:13:20.880
+ làm thế nào tôi đến được đây đúng như vậy tôi biết tôi đang di chuyển rất nhanh
+
+00:13:20.880 --> 00:13:24.079
+ tôi vừa nhấp vào chỉnh sửa quy tắc gửi đến ở đây
+
+00:13:24.079 --> 00:13:29.040
+ được rồi, vì vậy hãy thêm một quy tắc mới tcp tùy chỉnh là mặc định
+
+00:13:29.040 --> 00:13:35.120
+ số cổng bạn có nhớ 888 và chỉ cho phép ip của tôi, tôi có thể gọi nó là gì đó nếu tôi
+
+00:13:35.120 --> 00:13:40.320
+ muốn proxy và sau đó lưu các quy tắc của tôi
+
+00:13:40.320 --> 00:13:44.639
+ chúng tôi bắt đầu để bây giờ bạn thấy ssh và tcp tùy chỉnh
+
+00:13:44.639 --> 00:13:51.040
+ một người được gọi là proxy trên cổng 8888, vậy làm cách nào để chúng tôi kiểm tra điều này.
+
+00:13:51.040 --> 00:13:57.360
+ địa chỉ ip hiện tại là 99.233 và vì vậy tôi sẽ kết nối với proxy
+
+00:13:57.360 --> 00:14:01.600
+ đây không phải là hướng dẫn về cách sử dụng proxy
+
+00:14:01.600 --> 00:14:04.480
+ đây không phải là hướng dẫn về việc sử dụng nó để làm gì
+
+00:14:04.480 --> 00:14:08.079
+ nhất thiết đây là điều này tôi đang đưa ra giả định rằng
+
+00:14:08.079 --> 00:14:11.920
+ bạn có thể tự google nó vì nó sẽ khác dựa trên
+
+00:14:11.920 --> 00:14:15.199
+ trong trường hợp sử dụng của bạn cho dù bạn muốn chỉ proxy trình duyệt hay proxy của bạn
+
+00:14:15.199 --> 00:14:18.480
+ ứng dụng cụ thể hoặc toàn bộ mạng của bạn
+
+00:14:18.480 --> 00:14:21.839
+ Điều đó sẽ tùy thuộc vào trường hợp sử dụng cá nhân của bạn, đây là
+
+00:14:21.839 --> 00:14:28.399
+ đúng là hướng dẫn về cách xây dựng phiên bản ec2 này thực sự nhanh chóng cho
+
+00:14:28.399 --> 00:14:31.760
+ miễn phí có proxy sẵn sàng để chúng tôi sử dụng
+
+00:14:31.760 --> 00:14:36.639
+ California hoặc bất cứ nơi nào và đó là điều đó trong tôi
+
+00:14:36.639 --> 00:14:40.720
+ trường hợp cụ thể ngay bây giờ vì vậy thời điểm này không nhất thiết là
+
+00:14:40.720 --> 00:14:43.680
+ bạn muốn làm tiếp theo đây chỉ là cách tôi sẽ kiểm tra
+
+00:14:43.680 --> 00:14:50.000
+ proxy, tôi tình cờ có trên windows 10 ở đây nên tôi sẽ chỉ cần nhập proxy
+
+00:14:50.000 --> 00:14:54.240
+ và vào cài đặt proxy một lần nữa, đây có thể không phải là cách bạn muốn làm
+
+00:14:54.240 --> 00:14:57.279
+ tôi chỉ muốn kiểm tra nên tôi sẽ bật proxy
+
+00:14:57.279 --> 00:15:00.560
+ tôi có thể thấy rằng có một cài đặt proxy cũ ở đó, vì vậy hãy đảm bảo rằng bạn
+
+00:15:00.560 --> 00:15:03.839
+ lưu ý đến điều đó nếu có cài đặt proxy cũ bạn cần
+
+00:15:03.839 --> 00:15:08.480
+ để thay đổi nó, hãy chuyển đến phiên bản trên ec2 nhấp vào phiên bản của bạn
+
+00:15:08.480 --> 00:15:12.079
+ id và lấy địa chỉ ip đó rồi dán
+
+00:15:12.079 --> 00:15:15.519
+ đó là địa chỉ cho máy chủ proxy của bạn
+
+00:15:15.519 --> 00:15:20.800
+ cổng 8888 và lưu để bây giờ tôi đã kết nối với
+
+00:15:20.800 --> 00:15:24.639
+ proxy ngay lập tức không được kết nối với cửa sổ bây giờ đang nói
+
+00:15:24.639 --> 00:15:27.199
+ Tôi sẽ định tuyến tất cả lưu lượng truy cập của bạn thông qua proxy mà tôi nên sửa
+
+00:15:27.199 --> 00:15:32.199
+ bản thân tôi ở đó nên nếu tôi quay lại currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 là ip hiện tại của tôi, tôi sẽ nhấn f5 để làm mới
+
+00:15:36.160 --> 00:15:44.639
+ và nếu mọi việc suôn sẻ thì 3.101.108.211. tốt đó là gì
+
+00:15:44.639 --> 00:15:52.839
+ đó là máy chủ của tôi vì vậy tôi thực sự bây giờ tôi đang ở đâu, hãy cùng tìm hiểu
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com hãy thực hiện tìm kiếm địa chỉ ip mà tôi hiện đang sử dụng
+
+00:15:59.759 --> 00:16:06.839
+ tôi đang ở đâu san jose california đó là nơi tối đa của tôi xác định tôi đến
+
+00:16:06.839 --> 00:16:10.880
+ vì vậy đó là tất cả những gì mọi người chúng ta có
+
+00:16:10.880 --> 00:16:14.880
+ đã tạo cấu hình đã triển khai một dịch vụ proxy miễn phí
+
+00:16:14.880 --> 00:16:17.680
+ mà chúng tôi sở hữu và vận hành, chúng tôi là những người duy nhất
+
+00:16:17.680 --> 00:16:22.560
+ ai có cái đó ai có khóa ssh đó, vậy nếu bạn muốn
+
+00:16:22.560 --> 00:16:26.079
+ kết nối trong thực hiện thay đổi sử dụng nó như một máy chủ đa năng mà bạn có thể làm
+
+00:16:26.079 --> 00:16:30.720
+ điều đó nhưng chỉ cần theo dõi nội dung thanh toán của bạn và đảm bảo rằng
+
+00:16:30.720 --> 00:16:33.120
+ bạn chưa vượt quá ngưỡng và những thứ tương tự
+
+00:16:33.120 --> 00:16:36.240
+ nếu bạn chỉ sử dụng nó như một proxy thì rất ít khả năng bạn sẽ làm điều đó
+
+00:16:36.240 --> 00:16:38.480
+ nó chỉ là thứ mà bạn đang chuyển dữ liệu qua
+
+00:16:38.480 --> 00:16:42.800
+ vì vậy hãy kiểm tra nó aws.amazon.com để bắt đầu
+
+00:16:42.800 --> 00:16:45.920
+ nếu bạn có câu hỏi, hãy đăng chúng lên đầu cộng đồng của chúng tôi
+
+00:16:45.920 --> 00:16:50.160
+ theo mối bất hòa của chúng tôi, bạn sẽ tìm thấy liên kết tại category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ trên menu tương tác trong thời gian chờ đợi nếu bạn thích điều này nếu bạn đã sử dụng nó hoặc
+
+00:16:54.000 --> 00:17:05.839
+ thấy nó hữu ích, hãy ủng hộ tôi, vui lòng đăng ký
+
+00:17:08.849 --> 00:17:19.839
+ [Âm nhạc] làm
+
+00:17:23.599 --> 00:17:31.710
+ [Âm nhạc]
+

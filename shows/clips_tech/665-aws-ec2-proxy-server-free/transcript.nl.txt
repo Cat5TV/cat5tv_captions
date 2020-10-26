@@ -1,0 +1,240 @@
+of u zichzelf wat extra privacy wilt geven terwijl u surft
+internet of u wilt toegang krijgen tot diensten die misschien
+zijn meestal niet beschikbaar in uw regio of misschien is het een kwestie van daadwerkelijk hebben
+uw ip-adres laten blokkeren door een serviceprovider
+het is misschien niet kwaadaardig dat mijn ip-adres eerder door youtube is geblokkeerd
+omdat ik zoveel video's upload en download
+de ondertitels voor degenen, dus dat heeft ertoe geleid dat ik mijn gebruik in
+de youtube api dus dan wordt mijn ip-adres zo geblokkeerd
+het hoeft niet kwaadaardig te zijn, ik wil die indruk niet wekken
+maar er zijn zeer legitieme redenen om dit soort
+dingen en de nerds gaan naar is een proxy het probleem is proxies
+kunnen erg duur zijn in het gebruik en de gratis
+hoewel direct beschikbaar, zijn ze vaak ofwel niet erg betrouwbaar, ze zijn er één
+de volgende dag zijn ze down en verlies je de toegang tot je services
+en al het andere, of erger nog, ze zijn gevaarlijk, weet je niet wat
+die proxy's volgen logboekregistratie en houden zelfs van onderscheppen
+terwijl je doorgaat, verstuur je al je internetverkeer
+via die serviceprovider, dus er is één persoon die ik echt vertrouw
+om al mijn gegevens te proxy en dat ben ik, ik ben niet dezelfde persoon
+dat je zou zeggen dat je de persoon vertrouwt die je vertrouwt, jij bent dus ik ben
+ik zal je laten zien hoe ik een gratis proxyservice kan opzetten
+van mijn eigen en u kunt dat repliceren en ook uw eigen maken
+we gaan dit in de cloud doen, we gaan een externe dienst gebruiken
+provider en dat is amazon, dus je zegt nou ja
+amazon en hoe zit het met u, weten we of we onze gegevens kunnen vertrouwen
+voor hen gebruiken we hun clouddiensten, het heet amazon
+webservices, dus het is allemaal hun cloud
+infrastructuur die ze hebben voor klanten om in principe te huren
+toegang tot hun servers en hun ruimte en
+en de virtuele servers en al het andere dat geheel
+infrastructuur is voor u beschikbaar, maar de implementatie zelf is
+de jouwe, ik ga je laten zien hoe dit wordt gedaan, we gaan verder met aws
+en in het bijzonder ec2 dus natuurlijk als je niet bekend bent met aws gewoon
+ga naar aws.amazon.com meld u aan met uw Amazon-account en
+zoek dan snel naar ec2 en u komt in
+in feite beschouwen hun virtualisatieplatforms ec2 als
+alleen dat, dus het eerste dat ik opmerk als ik hier ben
+in ec2 is mijn regio en dit is belangrijk omdat dit is waar mijn proxy
+de server gaat verblijven als ik het daar instel, waarom is dat
+Denk hier goed over na, laten we zeggen dat ik een videostreaming gebruik
+service die Canadese toegang tot hun video beperkt
+streamingdienst dus door mijn proxyserver in het noorden te plaatsen
+Californië nu ineens zijn ze eigenlijk
+door IP-adres te denken dat ik verbinding maak
+Californië, dus ik kan daar omheen werken
+op dezelfde manier wilt u misschien uw regio wijzigen op basis van
+wat u probeert te bereiken, kunt u zelfs een server in afrika plaatsen
+of azië kijk daarnaar, je kunt er een recht in hong kong zetten
+je kunt er een in Canada plaatsen en in Europa die je hebt
+overal en dan hebben we nu Midden-Oosten en Zuid-Amerika
+dus het is een behoorlijk grote lijst van waar ze
+laat deze infrastructuur opzetten voor amazon
+webservices de ec2-service, dus kies degene die
+is waar u uw proxyserver wilt hebben
+Ik ga de mijne instellen. Ik laat het gewoon achter als Noord-Californië, dat is
+ons west een en dat is waar
+mijn proxyserver zal blijven staan, zodat ik verbinding kan maken
+alsof ik echt in Californië zat
+oké, dus ik klik op de startinstantie
+en start het exemplaar opnieuw omdat het een vervolgkeuzelijst maakt en dit geeft me
+een lijst met um-besturingssystemen die ik kan implementeren
+op mijn ec2-instantie, dus ik gebruik hier enkele termen die u misschien niet kent
+aws is amazon webservices dat is eigenlijk
+amazon's volledige scala aan diensten die ze aanbieden
+voor cloudgebruikers is ec2 hun virtualisatieplatform voor virtual
+machines toen ik zei dat ik het over een
+virtuele machine, dus dat is letterlijk een virtuele machine
+dus ik ga een van deze besturingssystemen implementeren op een exemplaar van ec2
+dat is een virtuele machine, dus wat wil ik het
+om zo te zijn en ik zei hey commentaar hieronder als
+Ik gebruik een term die je niet kent
+ik ga snel zoeken. Ik heb het al eerder gedaan omdat ik er een heleboel inzet
+servers in de cloud ga ik op debian klikken
+uh typ gewoon debian in de zoekopdracht hier
+dus dan ga ik naar geweldige marktresultaten die er ook zijn
+degenen die ik heb gemaakt en degenen in de gemeenschap
+je zou denken, nou ja, ik wil community-ones gebruiken, nee dat doe je niet omdat
+die gaan je geld kosten en je zegt het goed, maar gemeenschap is gratis
+het is open source en ja, maar het maakt geen deel uit van de aws
+marketplace en dus moet je betalen voor het gebruik
+om die virtuele machine die instantie te laten draaien
+in de cloud, dus in plaats daarvan gaan we een van de officiële gebruiken van de
+aws marketplace laten we eens kijken welke resultaten we krijgen, ze zijn redelijk goed gesorteerd
+debian verschijnt, het eerste resultaat is debian 10 buster
+een gratis tier-compatibele of gratis tier die in aanmerking komt
+versie van debian die we gaan implementeren, dus selecteer dat
+gratis tier komt in aanmerking, dus we kunnen de prijzen negeren omdat we een
+free tier hit continue en dit is waar we dat zo goed selecteren
+als we de gratis laag willen, moeten we gaan met een t2 micro dus
+ik ga dat selecteren, maar wat geeft het ons, het geeft ons één cpu
+één gigabyte aan geheugen eh en dan hebben we opslagruimte om mee om te gaan
+we hebben niet veel opslagruimte nodig omdat we alleen een basisproxy opzetten
+en dat is het zo'n beetje, dus ik ga het net zo inzetten
+dat dus t2 micro degene is die gratis is
+die in aanmerking komen, selecteer niet een van de grotere omdat u gaat betalen
+voor het meteen ga ik beoordelen en
+lancering gaan we terugkomen om instellingen te doen zoals onze beveiligingsgroepen en
+dat soort dingen ga ik gewoon alles achterlaten
+voorlopig standaard en we gaan dat zo lanceren
+Allereerst moet ik een nieuw sleutelpaar maken, dus dit is
+de ssh-sleutel die ik ga gebruiken om in te sshen
+deze server, dus ik ga deze een proxy noemen
+server en download dan mijn sleutelpaar zorg ervoor dat je dat ergens veilig opslaat
+Ik ga dat op mijn server gooien en dat laten vallen
+daar en nu betekent lanceringsinstantie macht
+op je virtuele machine, dus ik ga dat pushen
+en daar gaan we, dus het is eigenlijk creëren, het is het creëren van een virtueel
+machine een ec2-instantie in de cloud voor ons in
+uh in Noord-Californië dus daar gaan we dus
+Ik ga hier voorbeelden bekijken en nu kan ik zien dat ik er nu een heb
+instantie met een t2 micro en het is gewoon geen naam, dus ik ga het doen
+klik op bewerken en ik ga dit mijn proxyserver noemen
+server probeer dat daar gaan we oké, dus het is al actief
+dus als ik daarop klik, kan ik het ip-adres van die server zien die ik heb gebeld
+it proxy server, maar onthoud nu dat het gewoon debian 10 is
+er is niets anders op geïnstalleerd, dus ik moet dat ip-adres kopiëren
+en dan ga ik naar mijn opdrachtprompt springen
+omdat ik de sleutel naar mijn server heb gedownload waar ik persoonlijk naartoe ga
+ssh naar mijn interne server
+oke dus nu ben ik daar, dus nu het commando dat ik ga gebruiken
+is ssh en dan streepje i voor de sleutel die ik ga gebruiken
+dus het inkomende bestand dat ik voor de sleutel ga gebruiken
+en die heet proxyserver. pem is wat ik heb gedownload
+dan ga ik naar admin, want dat is de standaard login voor debian
+ami of amazon machine image admin op
+en dan het ip-adres dat ik al naar mijn klembord heb gekopieerd en als ik
+druk op enter, het zal me vragen om die sleutel te accepteren
+en ik zeg ja en ik word geweigerd
+machtigingen voor dat bestand bleven er rekening mee houden
+766 dus iedereen heeft toegang tot die bestanden, dus dat is interessant
+ssh zelf beschermt me tegen iemand die mijn sleutel kan compromitteren
+dus chmod 7 0 0 proxy server dot pam laten we dat proberen en
+probeer het nu opnieuw, dus wat ik heb gedaan is oh en nu ben ik
+aangesloten het werkte gewoon zeven nul nul betekent dat ik de eigenaar van
+met die sleutel mag ik er alles mee doen
+lezen schrijven uitvoeren nul nul betekent niemand in de groep niemand die geen
+een deel van de groep heeft daar überhaupt toegang toe, dus het is
+eigenlijk een stom bestand dat ze niet eens kunnen openen
+maar ik kan het goed, dus nu ik verbonden ben, ga ik sudo aanklagen
+want dat is wat het commando is om root te worden, dus nu ben ik root zo geschikt
+update apt update gaat mijn repositories pakken, zie je dat dit een
+een echte debian-computer als u wilt in de cloud
+zo eenvoudig ben ik al aan het upgraden ben ik al
+het runnen van een debian-computer in de cloud dus in die tijd en ik ben blah
+blah blah tegelijkertijd hebben we een debian-server in de cloud
+wist je dat het zo gemakkelijk was en het is gratis?
+oke dus we kunnen hier ook andere dingen mee doen, we zouden een lampenstapel kunnen opzetten
+zou het kunnen gebruiken voor mysql mariadb alles wat je kunt bedenken het is een
+debian-server, dus we gaan dit gebruiken als onze
+proxy, dus wat ik nu ga doen, is dat ik een tool met de naam
+tiny proxy mooi en eenvoudig te installeren apt install tiny proxy
+heel eenvoudig te configureren, zeg ja, hier gaan we
+en het is klaar nu we een kleine proxy hebben geïnstalleerd die we alleen nog maar hoeven te bewerken
+het configuratiebestand dus slash etc slash piepkleine proxy veranderde haar daarin
+en dan gebruik ik nano tinyproxy.com en bewerk dat dus controle w in nano
+staat me toe om te zoeken, maar voordat ik zoek, merk op dat de
+poort gebruikt standaard 8888, dat moeten we weten
+informatie, want daarvoor gaan we verbinding maken
+onze proxy zoekt snel naar allow
+alt w stelt je in staat om opnieuw te zoeken wow het woord allow is waarschijnlijk niet de beste
+zoekopdracht misschien zoeken naar 127.0.0.1 um en net daaronder die ik ga
+toestaan ​​en dan moet ik mijn ip-adres toevoegen zodat ik hier verbinding mee kan maken
+proxyserver omdat het momenteel is gesloten, heeft alleen localhost er toegang toe
+het is belangrijk op te merken dat dit is terwijl dit een openbare gratis is
+proxyserver ik ben de enige die er toegang toe zal krijgen dat is
+mag mijn inhoud mijn verbinding doorgeven
+het is dus het is privé in dat opzicht, ik moet mijn weten
+ip-adres, dus ik ga naar
+currentip.xyz en kopieer dat ip-adres naar mijn klembord
+en spring dan daar terug en plak het in mijn config
+controle o voer controle x controle o is om uit te schrijven
+sla het bestand nu op systeem ctl herstart kleine proxy
+bijna klaar, het laatste wat we moeten doen, is dat we het gewoon moeten vertellen
+de ec2-beveiliging dat we een beleid gaan opzetten dat zegt
+alleen ik mag verbinding maken met die server
+zodat niemand anders er verbinding mee kan maken, dus dat is wat we gaan doen
+doe het nu, dus ik ga hier terug springen en je ziet deze server op de
+scherm goed als ik op beveiliging klik, kan ik het dan
+klik op de beveiligingsgroep waaraan deze automatisch is toegewezen, dus klik gewoon
+dat en nu heeft het me overgelaten aan ec2
+beveiligingsgroepen en de juiste beveiligingsgroep
+je zult merken dat er al een is ingesteld voor ssh omdat
+het is standaard ingeschakeld, ik kan dat instellen om alleen mij toe te staan ​​en dat is het
+belangrijk dus laten we dat doen om goed te zijn
+beveiligingspraktijken dus ssh ik ga het veranderen van
+custom0000 ik ga x dat en dan sluiten
+verander het in mijn ip, dan ga ik een nieuwe regel toevoegen die je zag
+hoe ik hier ben gekomen, ik weet dat ik echt heel snel beweeg
+ik heb zojuist hier op inkomende regels bewerken geklikt
+oke dus voeg een nieuwe regel toe aangepaste tcp is de standaard
+poortnummer herinner je je 888 en sta alleen mijn ip toe ik kan het iets noemen als ik
+wil proxy en sla dan mijn regels op
+daar gaan we dus nu zie je ssh en custom tcp
+een genaamd proxy op poort 8888, dus hoe kunnen we dit testen, dus onze
+het huidige IP-adres is 99.233 en dus ga ik verbinding maken met de proxy
+dit is geen tutorial over het gebruik van een proxy
+dit is geen tutorial over waarvoor je het moet gebruiken
+noodzakelijkerwijs is dit dit. Ik ga hier aannemen dat
+je kunt het zelf googlen omdat het anders zal zijn gebaseerd
+afhankelijk van uw gebruik, of u alleen uw browser of proxy wilt proxy
+specifieke applicatie of uw hele netwerk
+dat is afhankelijk van uw individuele gebruikssituatie
+strikt een tutorial over hoe je deze ec2-instantie echt heel snel kunt bouwen
+gratis met een proxy die we kunnen gebruiken in
+Californië of waar dan ook en uh dat is het zo in mijn
+een specifiek geval op dit moment, dus dit moment is niet noodzakelijk wat
+je wilt het volgende doen, dit is precies hoe ik het ga testen
+proxy Ik ben hier toevallig op Windows 10, dus ik ga gewoon proxy typen
+en ga opnieuw naar de proxy-instellingen, dit is waarschijnlijk niet hoe u het wilt doen
+ik wil gewoon testen, dus ik ga proxy inschakelen
+ik kan zien dat er een oude proxy-instellingen zijn, dus zorg ervoor dat je
+houd daar rekening mee als er oude proxy-instellingen zijn die u nodig heeft
+om het te wijzigen ga naar instanties op ec2 klik op uw instantie
+id en pak dat ip-adres en plak
+dat in als het adres voor uw proxyserver
+poort 8888 en sla op, dus nu ben ik verbonden met de
+proxy onmiddellijk niet verbonden met nu Windows zegt
+Ik ga al je verkeer door de proxy leiden die ik zou moeten corrigeren
+mezelf daar dus als ik terugga naar currentip.xyz
+99.233 is mijn huidige ip.Ik ga op f5 drukken om te vernieuwen
+en als alles goed is gegaan 3.101.108.211. nou wat is dat
+dat is mijn server, dus ik ben nu eigenlijk waar ik ben, laten we het uitzoeken
+maxmind.com laten we zoeken naar het ip-adres waarop ik momenteel ben
+waar ben ik san jose californië dat is waar max van mij mij bepaalt
+wees dus dat is alles wat er is, mensen die we hebben
+gemaakt geconfigureerd geïmplementeerd een gratis proxyservice
+die we bezitten en exploiteren, we zijn de enigen
+wie heeft dat wie heeft die ssh-sleutel, dus als je wilt
+maak verbinding om wijzigingen aan te brengen gebruik het als een multifunctionele server die u kunt doen
+dat ehm maar houd uw facturering in de gaten, zorg er gewoon voor dat
+je hebt geen drempels overschreden en dat soort dingen
+als u het alleen als proxy gebruikt, is het zeer onwaarschijnlijk dat u dat gaat doen
+het is gewoon iets waar u gegevens doorheen stuurt
+dus kijk of het aws.amazon.com is om aan de slag te gaan
+als je vragen hebt, stel ze dan direct aan onze community
+naar onze onenigheid vind je de link op category5.tv
+op het interact-menu in de tussentijd als je hiervan genoten hebt als je het hebt gebruikt of
+vond het nuttig geef me een dikke duim omhoog, abonneer je
+[Muziek] doen
+[Muziek]

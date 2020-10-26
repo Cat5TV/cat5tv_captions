@@ -1,0 +1,240 @@
+bez obzira nadate li se da ćete si dati malo dodatne privatnosti dok surfate
+Interneta ili želite pristupiti uslugama koje možda
+nisu obično dostupni u vašem području ili je to možda slučaj
+je blokirao vašu ip adresu davatelj usluga
+to možda nije zlonamjerno što mi je YouTube već blokirao ip adresu
+jer prenosim toliko videozapisa i preuzimam
+natpise za one tako da sam doveo do toga da premašim svoju upotrebu u
+youtube api pa mi se ip adresa blokira
+ne mora biti zlonamjerna stvar. Ne želim ostavljati takav dojam
+ali postoje vrlo opravdani razlozi da trebate zaobići te vrste
+stvari i štreberi idu kod proxyja, problem su proxyji
+mogu biti vrlo skupe za upotrebu i one besplatne
+lako dostupni su vrlo često ili ne baš pouzdani, oni su na prvom mjestu
+dan su sljedeći, a vi gubite pristup svojim uslugama
+a sve ostalo ili još gore su opasni, ne znate šta
+ti posrednici prate evidentiranje i čak vole presretanje
+dok prolazite, šaljete sav svoj internet promet
+preko tog dobavljača usluga, tako da postoji jedna osoba kojoj zaista vjerujem
+da posredujem sve svoje podatke i to sam ja, nisam ista osoba
+da biste rekli da imate povjerenja u osobu u koju imate povjerenja, to sam i ja
+pokazat ću vam kako mogu postaviti besplatnu proxy uslugu
+mog vlastitog i to možete kopirati i stvoriti i svoj
+to ćemo raditi u oblaku koristit ćemo uslugu treće strane
+davatelja usluga i to je Amazon, pa vi kažete, dobro
+amazone šta ti znaš da li možemo vjerovati našim podacima
+za njih dobro ono što mi koristimo su njihove usluge u oblaku koje se nazivaju Amazon
+web usluge, tako da je sve njihovo, to je njihov oblak
+infrastrukturu koju kupci u osnovi mogu unajmiti
+pristup njihovim serverima i njihovom prostoru i
+i virtualni serveri i sve ostalo što je cjelina
+infrastruktura vam je dostupna, ali samo raspoređivanje jeste
+tvoje, pokazat ću ti kako se to radi, skočit ćemo na aws
+a posebno ec2 pa naravno i vi ako niste upoznati samo sa awsom
+idite na aws.amazon.com prijavite se sa svojim Amazon računom i
+zatim brzo potražite ec2 i to će vas odvesti
+u osnovi njihova platforma za virtualizaciju podrazumijeva ec2 kao
+samo to, prvo što primijetim kad sam ovdje
+u ec2 je moj region i ovo je važno jer je tu moj proxy
+server će boraviti ako ga postavim tamo zašto je to tako
+važno, dobro razmislite o ovome, recimo da koristim video streaming
+usluga koja ograničava kanadski pristup njihovom video zapisu
+streaming uslugu tako što ćete moj proxy server smjestiti na sjever
+Kalifornija sada odjednom u osnovi jesu
+putem ip adrese pomislit ću da se povezujem sa
+Kalifornija, tako da sam u stanju da zaobiđem to
+slično ćete možda htjeti promijeniti svoj region na osnovu
+što pokušavate postići, možete čak i staviti afrički server
+ili u aziji pogledajte da jedan možete staviti u hong kong
+možete ga staviti u Kanadu, uh u Evropu koju imate
+posvuda i tada imamo Srednji Istok i Južnu Ameriku
+tako da je prilično velika lista mjesta gdje su
+postavite ovu infrastrukturu za Amazon
+web usluge ec2 usluga pa odaberite onu koja
+je mjesto na kojem želite da bude vaš proxy server
+idem postaviti svoj, samo ću ga ostaviti kao sjevernu Kaliforniju koja je
+mi zapadni i tu je gde
+moj proxy server će boraviti što će mi omogućiti povezivanje
+kao da zapravo sjedim u Kaliforniji
+u redu, pa ću kliknuti na instancu pokretanja
+a zatim ponovo pokrenite instancu jer se padajuće pada i to mi daje
+spisak um operativnih sistema koje mogu primeniti
+na mom primjerku ec2, tako da ovdje koristim neke izraze koji vam možda nisu poznati
+aws je Amazon web usluga koja je u osnovi
+puni spektar usluga koje Amazon nudi
+za korisnike oblaka ec2 je njihova virtualizacijska platforma za virtualnu
+mašinama kada sam rekao da govorim o slučaju
+virtualna mašina, tako da je to doslovno virtualna mašina
+pa ću postaviti jedan od ovih operativnih sistema na instancu ec2
+koja je virtualna mašina, pa šta ja to želim
+da bude tako i ja sam rekao hej komentar ispod ako
+koristim izraz koji vam nije poznat
+obavit ću brzu pretragu, već sam to već radio, jer raspoređujem tonu
+servere u oblaku, kliknut ću na debian
+uh, samo upišite debian u pretragu ovdje
+pa ću onda ići na aws rezultate na tržištu koji takođe postoje
+one koje sam kreirao i one u zajednici
+pomislili biste, pa dobro, želim koristiti one iz zajednice, pa ne, jer ne
+oni će vas koštati novca, a vi kažete dobro, ali zajednica je besplatna
+to je otvoreni izvor i da, međutim, um nije dio aws-a
+tržište i tako ćete morati platiti za upotrebu
+da se ta virtualna mašina pokreće
+u oblaku, pa ćemo umjesto toga koristiti jedan od službenih iz
+aws marketplace, hajde da vidimo kakve ćemo rezultate dobiti prilično dobro poredane
+debian dolazi prvi rezultat je debian 10 buster
+besplatni nivo kompatibilan ili besplatan nivo odgovara
+verziju debiana koju ćemo implementirati, pa odaberite to
+besplatni nivo, tako da možemo zanemariti cijene jer ćemo koristiti a
+besplatni hit pogotka se nastavlja i tu smo to tako dobro odabrali
+ako želimo besplatnu razinu, moramo ići s t2 micro pa
+odabrat ću to, ali što nam daje, daje nam jedan procesor
+jedan gigabajt memorije hm, a onda imamo prostora za pohranu
+ne treba nam puno prostora za pohranu, jer upravo postavljamo osnovni proxy
+i to je to, tako da ću i ja rasporediti isto
+tako da je t2 mikro onaj koji je besplatan
+ispunjavaju uvjete, nemojte odabrati jednog od većih jer ćete platiti
+za to ću odmah pregledati i
+pokretanje vratit ćemo se da napravimo postavke poput naših sigurnosnih grupa i
+takve stvari jednostavno ću ostaviti sve
+po defaultu za sada i to ćemo pokrenuti
+prije svega trebam stvoriti novi par ključeva, pa ovo je
+ssh ključ koji ću koristiti za ssh
+ovaj server, pa ću nazvati ovog proxyja
+poslužitelja, a zatim preuzmite moj par ključeva, pazite da to sačuvate na sigurnom mjestu
+Baciću to na svoj server i baciti to
+tamo i sada instanca pokretanja znači snaga
+na vašoj virtualnoj mašini, pa ću to progurati
+i tu smo krenuli, tako da je u osnovi stvaranje to je stvaranje virtualnog
+obrađujemo ec2 instancu u oblaku za nas u
+uh u sjevernoj Kaliforniji, pa idemo
+Idem pogledati instance ovdje dolje i sada vidim da ih sada imam
+instanci pokreće t2 micro i to je jednostavno bez imena pa ću
+kliknite na edit i nazvat ću ovaj moj proxy server
+poslužitelju pokušajte da krenemo dobro, tako da je već pokrenut i pokrenut
+pa ako kliknem na to, mogu vidjeti ip adresu tog poslužitelja, to sam nazvao
+to je proxy server, ali sada zapamtite da je to samo debian 10. postoji
+ništa drugo nije instalirano na njemu pa moram kopirati tu ip adresu
+a onda ću uskočiti u svoj naredbeni redak
+jer sam preuzeo ključ za svoj server na koji osobno idem
+ssh na moj interni server
+u redu, tako da sam sada tamo, pa sada naredba koju ću koristiti
+je ssh, a zatim crticom i stavite ključ koji ću koristiti
+tako da dolazna datoteka koju ću koristiti za ključ
+a taj se zove proxy server.pem je ono što sam preuzeo
+onda idem na admin jer je to zadana prijava za debian
+ami ili Amazon machine image image admin na
+a zatim ip adresu koju sam već kopirao u svoj međuspremnik i ako je
+pritisnite enter, tražit će od mene da prihvatim taj ključ
+i kažem da i odbijen sam
+dozvole za tu datoteku na kraju su to imajte na umu
+766, tako da svi imaju pristup tim datotekama, pa je to zanimljivo
+ssh me sam štiti od toga da neko može ugroziti moj ključ
+pa chmod 7 0 0 proxy server dot pam, probajmo to i
+sada pokušajte ponovo, pa ovo što sam učinio je oh i sada jesam
+spojen je upravo radio sedam nula nula znači da sam vlasnik
+taj ključ smijem s njim bilo što učiniti
+čitanje pisanje izvršavanje nula nula znači da niko u grupi niko nije a
+dijelu grupe je uopće omogućen pristup tome, pa je tako
+u osnovi nijema datoteka koju ne mogu ni otvoriti
+uh, ali mogu sve u redu pa ću sada, kad sam povezan, krenuti u tužbu
+jer je to ono što je naredba da postanete root, tako da sam ja sada koristan
+update apt update će zgrabiti moja spremišta, vidite da je ovo
+stvarni debian računar ako želite u oblaku
+tako je lako da već nadograđujem već sam
+pokretanje debian računara u oblaku tako za toliko vremena i ja sam bla
+bla bla u isto vrijeme um imamo debian poslužitelj zasnovan na oblaku
+jeste li shvatili da je to tako lako i besplatno
+u redu, tako da možemo i druge stvari s ovim, mogli bismo postaviti hrpu lampi
+mogao bi ga koristiti za mysql mariadb sve što dođete do toga je
+debian poslužitelju, pa ćemo ovo koristiti kao svoje
+proxy, pa ću sada instalirati alat koji se zove
+maleni proxy lijep i jednostavan za instalaciju apt install maleni proxy
+vrlo jednostavno za konfiguriranje, recimo da, krećemo
+i gotovo je sada kad smo instalirali maleni proxy koji samo trebamo urediti
+datoteka konfiguracije tako da je crta itd. kosa crta maleni maleni proxy pretvorio u nju
+a zatim koristim nano tinyproxy.com i to uređujem tako da kontrolišem w u nano-u
+omogućava mi pretraživanje, ali prije nego što pretražim, primijetite da
+port po defaultu koristi 8888, to ćemo morati znati
+informacije jer ćemo se zbog toga povezati
+naš proxy brzo pretražuje dozvolu
+alt w vam omogućava ponovno pretraživanje, vau, riječ dopustiti vjerovatno nije najbolja
+upit za pretragu možda traži 127.0.0.1 um i odmah ispod tog idem
+dopusti i tada trebam dodati svoju ip adresu kako bih se mogao povezati s ovom
+proxy server jer je trenutno zatvoren samo mu localhost može pristupiti
+važno je napomenuti da je ovo dok je ovo javno besplatno
+proxy poslužitelj ja sam jedini kome će biti omogućen pristup
+bit će mi dozvoljeno da posreduju moj sadržaj putem moje veze
+tako da je privatno u tom pogledu moram znati svoje
+ip adresu pa ću preskočiti
+currentip.xyz i kopirajte tu ip adresu u moj međuspremnik
+a zatim skočite tamo i zalijepite ga u moj config
+kontrola o ulazak u kontrolu x kontrola o je zapisivanje
+spremite datoteku sada sistem ctl ponovo pokrenite maleni proxy
+skoro smo završili zadnja stvar koju trebamo učiniti je samo reći aws
+ec2 sigurnost da ćemo postaviti politiku koja kaže
+hej samo ja se smijem povezati s tim serverom
+tako da se niko drugi ne može s tim povezati, pa ćemo to i učiniti
+uradi to odmah, pa ću se vratiti ovdje, a ti vidiš ovaj server na
+dobro zaslon ako kliknem na sigurnost onda mogu
+kliknite na sigurnosnu grupu koja joj se automatski dodjeljuje, pa samo kliknite
+to i sada me ostavilo na ec2
+sigurnosne grupe i ispravnu sigurnosnu grupu
+primijetit ćete da je već postavljen za ssh jer
+to je po defaultu omogućeno, mogu to podesiti tako da dozvoljava samo meni što i jest
+važno pa učinimo to samo da bismo bili u dobru
+sigurnosne prakse pa ssh da ću ih promijeniti
+custom0000 zatvorit ću x to i onda
+promijenite ga u moj ip, a zatim ću dodati novo pravilo koje ste vidjeli
+kako sam stigao ovdje znam da se jako brzo krećem
+upravo sam ovdje kliknuo na uređivanje ulaznih pravila
+u redu, tako da dodajte novo pravilo, prilagođeni tcp je zadani
+broja porta sjećate li se 888 i dopuštate moj ip mogu ga nazvati samo ako ja
+želim proxy i zatim sačuvaj moja pravila
+eto, tako da sada vidite ssh i prilagođeni tcp
+jedan nazvan proxy na portu 8888, pa kako ćemo to testirati u redu, tako da je naš
+trenutna ip adresa je 99.233 i zato ću se spojiti na proxy
+ovo nije vodič o tome kako koristiti proxy
+ovo nije vodič za šta ga koristiti
+nužno je ovo ovo ovdje iznosim pretpostavke
+možete i sami guglati jer će to biti drugačije
+na vašem slučaju upotrebe da li želite samo proksirati svoj preglednik ili proxy
+određenu aplikaciju ili cijelu vašu mrežu
+to zavisi od vašeg pojedinačnog slučaja upotrebe, ovo je
+strogo tutorial o tome kako stvarno brzo stvoriti ovu instancu ec2
+besplatan koji ima proxy spreman za upotrebu u
+Kalifornija ili bilo gdje drugo i uh, to je to tako u mom
+trenutno, tako da ovaj trenutak nije nužno šta
+želite li sljedeće, ovo je upravo način na koji ću testirati
+proxy slučajno sam ovdje na Windowsu 10, pa ću jednostavno otkucati proxy
+i ponovo uđite u postavke proxyja, ovo vjerovatno ne želite učiniti
+samo želim testirati, pa ću uključiti proxy
+vidim da tamo postoje stare postavke proxyja, pa provjerite jeste li
+Imajte na umu ako postoje stare postavke proxyja koje su vam potrebne
+da biste ga promijenili idite na instance na ec2 kliknite na svoju instancu
+id i zgrabite tu ip adresu, a zatim zalijepite
+to kao adresu vašeg proxy servera
+port 8888 i spremite tako da sam sada spojen na
+proxy koji trenutno nije povezan sa Windowsom kaže
+Usmjerit ću sav vaš promet preko proxyja kojeg bih trebao ispraviti
+tu sam, pa ako se vratim na currentip.xyz
+99.233 je moj trenutni ip. Idem pritisnuti f5 da se osvježim
+i ako je sve prošlo u redu 3.101.108.211. pa šta je to
+to je moj server, pa zapravo sam sada gdje bih to trebao otkriti
+maxmind.com idemo potražiti ip adresu na kojoj sam trenutno
+gdje sam ja san jose kalifornija, tu me određuje max mine
+budite tako, to je sve što ljudi imaju
+kreirano konfigurirano razmjestilo besplatnu proxy uslugu
+da smo jedini i posjedujemo i upravljamo njima
+tko to ima tko ima taj ssh ključ pa ako želite
+connect in make changes koristite ga kao višenamjenski poslužitelj koji možete učiniti
+to hm, ali samo pripazite na svoje račune, samo se pobrinite za to
+niste prešli pragove i slične stvari
+ako ga samo koristite kao proxy, vrlo je malo vjerojatno da ćete to učiniti
+to je samo nešto kroz što prolazite kroz podatke
+pa provjerite je li to aws.amazon.com da započnete
+ako imate pitanja, pošaljite ih našoj zajednici
+na našu neslogu link ćete naći na category5.tv
+na interaktivnom meniju u međuvremenu ako ste uživali u ovome ako ste ga koristili ili
+Smatram korisnim dajte mi veliki palac molim vas pretplatite se
+[Music] do
+[Muzika]

@@ -1,0 +1,240 @@
+si desea tener un poco más de privacidad mientras navega
+Internet o desea acceder a servicios que tal vez
+no están disponibles normalmente en su área o tal vez se trate de tener
+un proveedor de servicios bloqueó su dirección IP
+puede que no sea algo malintencionado, ya he tenido mi dirección IP bloqueada por youtube antes
+porque subo tantos videos y descargo
+los subtítulos para aquellos que me han llevado a exceder mi uso en
+la api de youtube, entonces mi dirección IP se bloquea, así que
+no tiene por qué ser algo malicioso, no quiero dar esa impresión
+pero existen razones muy legítimas para evitar ese tipo de
+cosas y los nerds van a es un proxy el problema son los proxies
+pueden ser muy caras de usar y las gratuitas
+si bien están fácilmente disponibles, a menudo no son muy confiables, suben uno
+día que caen al siguiente y pierdes el acceso a tus servicios
+y todo lo demás o peor aún son peligrosos no sabes qué
+esos proxies están rastreando el registro e incluso les gusta interceptar
+a medida que avanza, envía todo su tráfico de Internet
+a través de ese proveedor de servicios, así que hay una persona en la que realmente confío
+para proxy todos mis datos y ese soy yo, no soy la misma persona
+que dirías que confías en la persona en la que confías eres tú, así que yo soy
+te voy a mostrar cómo puedo configurar un servicio de proxy gratuito
+propio y puedes replicarlo y crear el tuyo propio también
+vamos a hacer esto en la nube vamos a utilizar un servicio de terceros
+proveedor y eso es amazon así que dices oh bueno
+amazon, ¿qué pasa con usted? ¿Sabemos que podemos confiar en nuestros datos?
+para ellos, lo que estamos usando son sus servicios en la nube, se llama amazon
+servicios web, por lo que es todo su es su nube
+infraestructura que tienen los clientes para alquilar
+acceso a sus servidores y su espacio y
+y los servidores virtuales y todo lo demás que todo
+la infraestructura está disponible para usted, pero la implementación en sí
+el tuyo voy a mostrarte cómo se hace esto vamos a saltar a aws
+y en particular ec2, así que, por supuesto, si no está familiarizado con AWS,
+vaya a aws.amazon.com inicie sesión con su cuenta de Amazon y
+luego haga una búsqueda rápida de ec2 y eso lo llevará a
+básicamente, su plataforma de virtualización piensa en ec2 como
+solo eso, lo primero que noto cuando estoy aquí
+en ec2 es mi región y esto es importante porque aquí es donde mi proxy
+el servidor va a residir si lo configuro allí, ¿por qué es eso?
+importante, piensa en esto, digamos que estoy usando una transmisión de video
+servicio que restringe el acceso de los canadienses a su video
+servicio de transmisión por lo que colocando mi servidor proxy en el norte
+California ahora, de repente, son básicamente
+por dirección IP voy a pensar que me estoy conectando desde
+California, así que puedo solucionar eso
+de manera similar, es posible que desee cambiar su región según
+¿Qué es lo que estás tratando de lograr? Incluso puedes poner un servidor en África.
+o asia mira que puedes arreglar uno en hong kong
+puedes poner uno en canadá uh en europa tienes
+por todas partes y luego tenemos Oriente Medio y Sudamérica ahora mismo
+por lo que es una lista bastante grande de dónde
+tener esta infraestructura configurada para amazon
+servicios web el servicio ec2, así que elija el que
+es donde quieres que esté tu servidor proxy
+Voy a configurar el mío, solo lo dejaré como el norte de California, que es
+nosotros al oeste uno y ahí es donde
+mi servidor proxy va a residir y eso me permitirá conectarme
+como si estuviera realmente sentado en california
+bien, voy a hacer clic en iniciar instancia
+y luego lanzar la instancia nuevamente porque hace un menú desplegable y esto me da
+una lista de los sistemas operativos de um que puedo implementar
+en mi instancia ec2, por lo que estoy usando algunos términos aquí con los que puede que no esté familiarizado
+aws son los servicios web de Amazon que básicamente
+la gama completa de servicios de Amazon que ofrecen
+para los usuarios de la nube, ec2 es su plataforma de virtualización para
+Máquinas cuando dije instancia, estoy hablando de una
+máquina virtual para que sea literalmente una máquina virtual
+así que voy a implementar uno de estos sistemas operativos en una instancia de ec2
+que es una máquina virtual, entonces, ¿qué quiero?
+para ser así y estaba diciendo hola comenta abajo si
+uso un término con el que no estás familiarizado
+Voy a hacer una búsqueda rápida. Ya lo hice antes porque implementé un montón de
+servidores en la nube voy a hacer clic en debian
+uh solo escribe debian en la búsqueda aquí
+Entonces iré a los resultados del mercado de AWS. También hay
+los que he creado y los de la comunidad
+pensarías oh bueno, quiero usar los de la comunidad, bueno, no, porque
+esos te van a costar dinero y dices bien pero la comunidad es gratis
+es de código abierto y sí, sin embargo, no es parte de las AWS
+marketplace y tendrás que pagar por el uso
+tener esa máquina virtual esa instancia en ejecución
+en la nube, así que en su lugar usaremos uno de los oficiales del
+aws marketplace veamos qué resultados obtenemos están bastante bien ordenados
+debian aparece el primer resultado es debian 10 buster
+un nivel gratuito compatible o elegible para un nivel gratuito
+versión de Debian que vamos a implementar, así que seleccione esa
+nivel gratuito elegible para que podamos ignorar el precio porque vamos a utilizar un
+el golpe de nivel gratuito continúa y aquí es donde lo seleccionamos tan bien
+si queremos el nivel gratuito, tenemos que ir con un micro t2 así que
+Voy a seleccionar eso, pero ¿qué nos da? Nos da una CPU.
+un gigabyte de memoria um y luego tenemos que ocuparnos del almacenamiento
+no necesitamos mucho almacenamiento porque solo estamos configurando un proxy básico
+y eso es todo, así que voy a implementar como
+que t2 micro es el que es de nivel gratuito
+elegible no seleccione uno de los más grandes porque va a pagar
+para ello de inmediato voy a revisar y
+lanzamiento, volveremos a hacer configuraciones como nuestros grupos de seguridad y
+cosas así solo voy a dejar todo
+por defecto por ahora y lo lanzaremos
+En primer lugar, necesito crear un nuevo par de claves, así que esto es
+la clave ssh que voy a usar para entrar en
+este servidor, así que voy a llamar a este proxy
+servidor y luego descargar mi par de claves, asegúrese de guardarlo en un lugar seguro
+voy a poner eso en mi servidor y dejarlo
+allí y ahora la instancia de lanzamiento significa poder
+en su máquina virtual, así que voy a impulsar eso
+y ahí vamos, así que básicamente es crearlo, es crear un virtual
+mecanizar una instancia ec2 en la nube para nosotros en
+uh en el norte de california, así que ahí vamos
+voy a ver instancias aquí y ahora puedo ver que ahora tengo una
+instancia ejecutando un micro t2 y simplemente no tiene nombre, así que voy a
+haga clic en editar y voy a llamar a este mi servidor proxy
+servidor intente que ahí vamos bien, así que ya está en funcionamiento
+así que si hago clic en eso, puedo ver la dirección IP de ese servidor al que he llamado
+es un servidor proxy, pero ahora recuerde que es solo debian 10. hay
+nada más instalado en él, así que necesito copiar esa dirección IP
+y luego voy a saltar a mi símbolo del sistema
+porque descargué la clave en mi servidor, personalmente voy a
+ssh a mi servidor interno
+bien, ahora estoy allí, así que ahora el comando que voy a usar
+es ssh y luego guión i para la clave que voy a usar
+entonces el archivo entrante que voy a usar para la clave
+y ese se llama servidor proxy.pem es lo que descargué
+luego me convertiré en administrador porque ese es el inicio de sesión predeterminado para debian
+administrador de imagen de máquina ami o amazon en
+y luego la dirección IP que ya he copiado en mi portapapeles y si
+presione enter me va a pedir que acepte esa clave
+y digo que si y me niegan
+los permisos en ese archivo terminaron siendo nota que
+766 para que todos tengan acceso a esos archivos, eso es interesante
+ssh mismo me está protegiendo de que alguien pueda comprometer mi clave
+entonces chmod 7 0 0 servidor proxy dot pam probemos eso y
+ahora inténtalo de nuevo, así que lo que he hecho es oh y ahora estoy
+conectado, acaba de funcionar siete cero cero significa que soy el propietario de
+esa llave me permite hacer cualquier cosa con ella
+leer escribir ejecutar cero cero significa que nadie en el grupo nadie que no sea un
+parte del grupo tiene permiso para acceder a eso, por lo que es
+básicamente un archivo tonto que ni siquiera pueden abrir
+uh, pero puedo estar bien, así que ahora que estoy conectado voy a ir a sudo sue
+porque eso es lo que el comando es convertirse en root, así que ahora soy root tan apto
+update apt update va a tomar mis repositorios, ves que esto es un
+una computadora debian real si lo desea en la nube
+es así de fácil ya estoy actualizando ya estoy
+ejecutando una computadora Debian en la nube, así que en esa cantidad de tiempo y soy bla
+bla bla al mismo tiempo um tenemos un servidor debian basado en la nube
+¿Te diste cuenta de que era así de fácil y es gratis?
+bien, entonces podemos hacer otras cosas con esto también, podríamos configurar una pila de lámparas que
+podría usarlo para mysql mariadb cualquier cosa que se le ocurra es un
+servidor Debian, así que vamos a usar esto como nuestro
+proxy, así que ahora lo que voy a hacer es instalar una herramienta llamada
+tiny proxy agradable y simple de instalar apt install tiny proxy
+realmente simple de configurar di que sí aquí vamos
+y está hecho ahora que hemos instalado un pequeño proxy, solo necesitamos editar
+el archivo de configuración, así que barra, etc., barra diminuta y diminuta proxy la cambió a eso
+y luego estoy usando nano tinyproxy.com y edito eso para controlar w en nano
+me permite buscar oh pero antes de buscar tenga en cuenta que el
+puerto por defecto está usando 8888, vamos a necesitar saber que
+información porque a eso nos vamos a conectar para
+nuestro proxy realiza una búsqueda rápida para permitir
+alt w te permite buscar de nuevo wow, la palabra permitir probablemente no sea la mejor
+consulta de búsqueda tal vez busque 127.0.0.1 um y justo debajo de esa voy a
+permitir y luego necesito agregar mi dirección IP para poder conectarme a este
+servidor proxy porque en este momento está cerrado, solo localhost puede acceder a él
+es importante tener en cuenta que esto es mientras se trata de un público gratuito
+servidor proxy Soy el único al que se le permitirá acceder a él que es
+se le permitirá transferir mi contenido a través de mi conexión
+es así que es privado en ese sentido necesito saber mi
+dirección IP, así que voy a saltar a
+currentip.xyz y copia esa dirección IP en mi portapapeles
+y luego volver allí y pegarlo en mi configuración
+control o ingresar control x control o es escribir
+guardar el archivo ahora sistema ctl reiniciar diminuto proxy
+casi hecho lo último que tenemos que hacer es decir aws
+la seguridad ec2 de que vamos a establecer una política que diga
+oye, solo yo puedo conectarme a ese servidor
+para que nadie más pueda conectarse a él, así que eso es lo que vamos a hacer
+hacer ahora mismo, así que volveré aquí y verá este servidor en el
+bien, si hago clic en seguridad, entonces puedo
+haga clic en el grupo de seguridad que se asigna automáticamente, así que simplemente haga clic en
+eso y ahora me ha dejado en ec2
+grupos de seguridad y el grupo de seguridad correcto
+notarás que ya está configurado para ssh porque
+está habilitado de forma predeterminada, puedo configurarlo para que solo me permita a mí, lo cual es
+importante, así que hagamos eso solo para estar bien
+prácticas de seguridad, así que voy a cambiarlo de
+custom0000 voy a cerrar x eso y luego
+cámbielo a mi ip, luego voy a agregar una nueva regla que vio
+cómo llegué aquí, sé que me estoy moviendo muy, muy rápido
+acabo de hacer clic en editar reglas de entrada aquí
+bien, así que agregue una nueva regla personalizada tcp es el predeterminado
+número de puerto ¿recuerdas 888 y solo permites mi ip? Puedo llamarlo de alguna manera si
+quiero proxy y luego guardar mis reglas
+ahí vamos, así que ahora ves ssh y tcp personalizado
+uno llamado proxy en el puerto 8888, entonces, ¿cómo probamos esto?
+La dirección IP actual es 99.233, así que me voy a conectar al proxy.
+este no es un tutorial sobre cómo usar un proxy
+este no es un tutorial sobre para qué usarlo
+necesariamente esto es esto, estoy haciendo suposiciones aquí que
+puedes buscarlo en Google tú mismo porque será diferente según
+en su caso de uso, ya sea que solo desee usar un proxy de su navegador o proxy
+aplicación particular o toda su red
+eso dependerá de su caso de uso individual.
+estrictamente un tutorial sobre cómo construir esta instancia ec2 realmente muy rápido para
+gratis que tiene un proxy listo para que lo usemos en
+California o donde sea y eso es así en mi
+caso particular en este momento, por lo que este momento no es necesariamente lo que
+quieres hacer a continuación, así es como voy a probar el
+proxy, estoy en Windows 10 aquí, así que simplemente escribiré proxy
+y vuelva a la configuración del proxy, probablemente no sea así como lo desea
+solo quiero probar, así que voy a activar el proxy
+puedo ver que hay una configuración de proxy antigua allí, así que asegúrese de estar
+tenga en cuenta que si hay configuraciones de proxy antiguas que necesita
+para cambiarlo, vaya a las instancias en ec2 haga clic en su instancia
+id y toma esa dirección IP y luego pega
+que en como la dirección de su servidor proxy
+puerto 8888 y guardar, así que ahora estoy conectado al
+proxy instantáneamente no conectado ahora Windows está diciendo
+voy a enrutar todo su tráfico a través del proxy debo corregir
+yo mismo allí, así que si vuelvo a currentip.xyz
+99.233 es mi ip actual, voy a presionar f5 para actualizar
+y si todo ha ido bien 3.101.108.211. bueno que es eso
+ese es mi servidor, así que en realidad estoy ahora, ¿dónde estoy, averigüémoslo?
+maxmind.com hagamos una búsqueda de la dirección IP en la que estoy actualmente
+donde estoy san josé california ahí es donde max mine me determina
+así que eso es todo lo que hay que hacer amigos que tenemos
+creado configurado desplegado un servicio de proxy gratuito
+que poseemos y operamos somos los únicos
+quién tiene eso quién tiene esa clave ssh así que si quieres
+conéctese para hacer cambios úselo como un servidor multipropósito que puede hacer
+eso um, pero vigile sus cosas de facturación, asegúrese de que
+no has superado los umbrales y cosas así
+si solo lo está usando como proxy, es muy poco probable que lo haga
+es solo algo por lo que estás canalizando datos
+así que echa un vistazo a aws.amazon.com para empezar
+Si tiene preguntas, publíquelas en nuestra comunidad.
+a nuestra discordia encontrará el enlace en category5.tv
+en el menú de interacción mientras tanto si te gustó esto si lo has usado o
+lo encontré útil dame un gran aprobado, suscríbete
+[Música] hacer
+[Música]

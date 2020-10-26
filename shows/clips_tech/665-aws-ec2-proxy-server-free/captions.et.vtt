@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: et
+
+00:00:03.919 --> 00:00:07.120
+kas loodate surfamise ajal endale veidi privaatsust pakkuda
+
+00:00:07.120 --> 00:00:10.639
+ Interneti kaudu või soovite juurdepääsu teenustele
+
+00:00:10.639 --> 00:00:17.279
+ pole teie piirkonnas tavaliselt saadaval või võib-olla on see tegelikult olemas
+
+00:00:17.279 --> 00:00:22.000
+ lasi teenusepakkuja blokeerida teie ip-aadressi
+
+00:00:22.000 --> 00:00:27.359
+ see ei pruugi olla pahatahtlik asi, mille mul on varem ip-aadress youtube poolt blokeeritud
+
+00:00:27.359 --> 00:00:31.039
+ sest ma laadin üles nii palju videoid ja laadin alla
+
+00:00:31.039 --> 00:00:37.280
+ suletud subtiitrid, mis on viinud selleni, et ma ületasin oma kasutust aastal
+
+00:00:37.280 --> 00:00:42.239
+ youtube api, siis mu IP-aadress blokeeritakse nii
+
+00:00:42.239 --> 00:00:46.000
+ see ei pea olema pahatahtlik asi, ma ei taha seda muljet jätta
+
+00:00:46.000 --> 00:00:52.399
+ kuid on väga õigustatud põhjuseid, miks seda tüüpi liikumist vajavad
+
+00:00:52.399 --> 00:00:58.640
+ asjad ja nohikud lähevad on puhverserver probleem on volikirjad
+
+00:00:58.640 --> 00:01:02.160
+ võib olla väga kulukas ja tasuta
+
+00:01:02.160 --> 00:01:08.240
+ kuigi hõlpsasti kättesaadavad on väga sageli kas mitte eriti usaldusväärsed, on nad üleval
+
+00:01:08.240 --> 00:01:11.360
+ päeval, kui nad on järgmisel päeval maas ja kaotate juurdepääsu oma teenustele
+
+00:01:11.360 --> 00:01:18.320
+ ja kõik muu või veel hullem, nad on ohtlikud, sa ei tea mida
+
+00:01:18.320 --> 00:01:24.479
+ need volikirjad jälgivad metsaraiet ja meeldivad isegi pealtkuulamisele
+
+00:01:24.479 --> 00:01:28.640
+ kui te seda läbi elate, saadate kogu oma Interneti-liikluse
+
+00:01:28.640 --> 00:01:36.159
+ selle teenusepakkuja kaudu, nii et on üks inimene, keda ma tõesti usaldan
+
+00:01:36.159 --> 00:01:44.079
+ kõigi minu andmete volitamiseks ja see olen mina, ma ei ole sama inimene
+
+00:01:44.079 --> 00:01:49.360
+ et sa ütleksid, et usaldad inimest, keda usaldad, oled sina, nii et olen
+
+00:01:49.360 --> 00:01:54.399
+ näitan teile, kuidas ma saaksin luua tasuta puhverserveri
+
+00:01:54.399 --> 00:02:00.000
+ minu oma ja saate seda korrata ja luua ka oma
+
+00:02:00.000 --> 00:02:03.200
+ me teeme seda pilves, me kasutame kolmanda osapoole teenust
+
+00:02:03.200 --> 00:02:06.399
+ pakkuja ja see on Amazon, nii et te ütlete oh hästi
+
+00:02:06.399 --> 00:02:09.440
+ amazon mis te teate, kas suudame oma andmeid usaldada
+
+00:02:09.440 --> 00:02:13.440
+ neile, mida me kasutame, on nende pilveteenused, mida nimetatakse Amazoniks
+
+00:02:13.440 --> 00:02:17.520
+ veebiteenused, nii et see kõik on nende pilv
+
+00:02:17.520 --> 00:02:22.000
+ infrastruktuuri, mida klientidel on põhimõtteliselt võimalik rentida
+
+00:02:22.000 --> 00:02:25.120
+ juurdepääs nende serveritele ja nende ruumile ning
+
+00:02:25.120 --> 00:02:28.640
+ ja virtuaalserverid ja kõik muu see tervik
+
+00:02:28.640 --> 00:02:34.959
+ infrastruktuur on teile kättesaadav, kuid juurutamine ise on
+
+00:02:34.959 --> 00:02:39.840
+ sinu oma, ma näitan sulle, kuidas seda tehakse, hüppame edasi aws-i
+
+00:02:39.840 --> 00:02:45.920
+ ja eriti ec2, nii et muidugi ka sina, kui sa pole lihtsalt kursustega tuttav
+
+00:02:45.920 --> 00:02:50.160
+ minge saidile aws.amazon.com. logige sisse oma amazoni kontoga ja
+
+00:02:50.160 --> 00:02:55.519
+ siis otsige ec2 kiirelt ja see viib teid sellesse
+
+00:02:55.519 --> 00:02:58.959
+ põhimõtteliselt arvavad nende virtualiseerimisplatvorm ec2-st
+
+00:02:58.959 --> 00:03:02.800
+ just nii, et esimene asi, mida ma siin olles tähele panen
+
+00:03:02.800 --> 00:03:08.480
+ ec2-s on minu piirkond ja see on oluline, sest just siin on minu puhverserver
+
+00:03:08.480 --> 00:03:13.360
+ server hakkab elama, kas peaksin selle sinna seadma, miks see nii on
+
+00:03:13.360 --> 00:03:16.720
+ oluline, mõelge sellele, oletame, et kasutan video voogesitust
+
+00:03:16.720 --> 00:03:20.959
+ teenus, mis piirab Kanada juurdepääsu nende videole
+
+00:03:20.959 --> 00:03:24.720
+ voogesitusteenus, asetades oma puhverserveri põhja poole
+
+00:03:24.720 --> 00:03:28.640
+ Kalifornias on nad järsku põhimõtteliselt nii
+
+00:03:28.640 --> 00:03:31.599
+ ip-aadressi järgi arvan, et ma ühendan
+
+00:03:31.599 --> 00:03:34.640
+ Californias, nii et ma saan sellega ümber käia
+
+00:03:34.640 --> 00:03:37.920
+ samamoodi võiksite oma piirkonna muuta
+
+00:03:37.920 --> 00:03:42.480
+ mida te üritate saavutada, võite isegi serveri Aafrikasse panna
+
+00:03:42.480 --> 00:03:45.760
+ või Aasia vaata, et Hong Kongis saab ühe õigeks panna
+
+00:03:45.760 --> 00:03:49.440
+ võite panna ühe Kanadasse uh europias, mis teil on
+
+00:03:49.440 --> 00:03:55.040
+ ja siis on meil praegu Lähis-Ida ja Lõuna-Ameerika
+
+00:03:55.040 --> 00:03:58.080
+ nii et see on päris suur nimekiri, kus nad asuvad
+
+00:03:58.080 --> 00:04:00.080
+ lase see infrastruktuur Amazoni jaoks üles seada
+
+00:04:00.080 --> 00:04:03.920
+ veebiteenused ec2 teenus, nii et valige see, mis
+
+00:04:03.920 --> 00:04:07.200
+ on koht, kus soovite oma puhverserverit
+
+00:04:07.200 --> 00:04:10.879
+ ma panen oma üles, ma lihtsalt jätan selle Põhja-Kaliforniasse, mis on
+
+00:04:10.879 --> 00:04:14.560
+ meid läände ja see on koht
+
+00:04:14.560 --> 00:04:19.040
+ minu puhverserver hakkab elama, mis võimaldab mul ühenduse luua
+
+00:04:19.040 --> 00:04:22.880
+ nagu istuksin tegelikult Californias
+
+00:04:22.880 --> 00:04:26.160
+ hästi, nii et ma klõpsan käivitusinstantsil
+
+00:04:26.160 --> 00:04:30.160
+ ja siis käivita eksemplar uuesti, kuna see teeb rippmenüü ja see annab mulle
+
+00:04:30.160 --> 00:04:34.720
+ loetelu um opsüsteemidest, mida saan juurutada
+
+00:04:34.720 --> 00:04:39.040
+ minu ec2 eksemplaris, seega kasutan siin mõningaid termineid, mis ei pruugi teile tuttavad olla
+
+00:04:39.040 --> 00:04:42.080
+ aws on Amazoni veebiteenused, mis põhimõtteliselt on
+
+00:04:42.080 --> 00:04:46.560
+ Amazoni pakutavad teenused
+
+00:04:46.560 --> 00:04:52.000
+ pilvekasutajate jaoks on ec2 nende virtualiseerimise platvorm
+
+00:04:52.000 --> 00:04:55.840
+ masinad, kui ma ütlesin, et ma räägin a
+
+00:04:55.840 --> 00:05:00.160
+ virtuaalne masin, nii et see on sõna otseses mõttes virtuaalne masin
+
+00:05:00.160 --> 00:05:03.919
+ nii et kavatsen ühe neist operatsioonisüsteemidest installida ec2 eksemplari
+
+00:05:03.919 --> 00:05:06.560
+ mis on virtuaalne masin, mida ma siis tahan
+
+00:05:06.560 --> 00:05:10.960
+ nii olla ja ma ütlesin, et hei kommenteerige allpool, kui
+
+00:05:10.960 --> 00:05:12.639
+ ma kasutan terminit, mida te ei tunne
+
+00:05:12.639 --> 00:05:15.600
+ Ma teen kiire otsingu, olen seda juba varem teinud, kuna kasutan tonni
+
+00:05:15.600 --> 00:05:18.960
+ serverid pilves klõpsan debianil
+
+00:05:18.960 --> 00:05:21.360
+ kirjuta siia otsingusse lihtsalt debian
+
+00:05:21.360 --> 00:05:27.600
+ nii et siis ma lähen ka aws marketplace'i tulemustele
+
+00:05:27.600 --> 00:05:30.960
+ need, mis ma olen loonud, ja need, mis on kogukonnas
+
+00:05:30.960 --> 00:05:34.000
+ sa arvaksid, et hästi, ma tahan kasutada kogukonna omad ka ei, sest sa ei
+
+00:05:34.000 --> 00:05:37.919
+ need maksavad teile raha ja te ütlete hästi, kuid kogukond on vaba
+
+00:05:37.919 --> 00:05:42.800
+ see on avatud lähtekoodiga ja jah, aga see pole osa aws-ist
+
+00:05:42.800 --> 00:05:45.919
+ turul ja nii peate selle kasutamise eest maksma
+
+00:05:45.919 --> 00:05:49.600
+ et see virtuaalmasin selle eksemplari töötaks
+
+00:05:49.600 --> 00:05:52.639
+ pilves, nii et selle asemel kasutame ühte ametlikest
+
+00:05:52.639 --> 00:05:56.800
+ aws marketplace vaatame, milliseid tulemusi saame, need on päris hästi sorteeritud
+
+00:05:56.800 --> 00:06:00.400
+ debian tuleb üles esimene tulemus on debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ ühilduv tasuta tasemega või kõlblik tasuta tasemega
+
+00:06:04.479 --> 00:06:09.039
+ Debiani versioon, mida me juurutame, valige see
+
+00:06:09.039 --> 00:06:12.720
+ sobilik tasuta tase, et saaksime hinnakujundust ignoreerida, kuna kavatseme kasutada a
+
+00:06:12.720 --> 00:06:16.560
+ tasuta taseme tabamine jätkub ja siin me valime selle nii hästi
+
+00:06:16.560 --> 00:06:20.000
+ kui tahame tasuta taset, peame minema koos t2 mikroga
+
+00:06:20.000 --> 00:06:24.080
+ ma valin selle välja, kuid mida see meile annab, see annab meile ühe protsessori
+
+00:06:24.080 --> 00:06:29.520
+ üks gigabait mälu jne ja siis on meil ruumi, millega tegeleda
+
+00:06:29.520 --> 00:06:33.199
+ me ei vaja palju salvestusruumi, sest me lihtsalt seadistame põhiproksi
+
+00:06:33.199 --> 00:06:36.639
+ ja see on kõik, nii et ma kavatsen kasutada sama
+
+00:06:36.639 --> 00:06:40.080
+ nii et t2 micro on see, mis on vabatasandiline
+
+00:06:40.080 --> 00:06:43.440
+ kõlblikud ei vali ühtegi suuremat, sest maksate
+
+00:06:43.440 --> 00:06:45.919
+ selle jaoks vaatan kohe üle ja
+
+00:06:45.919 --> 00:06:50.080
+ käivitame, me tuleme tagasi, et teha selliseid seadeid nagu meie turvarühmad ja
+
+00:06:50.080 --> 00:06:51.759
+ sellised asjad jätan lihtsalt kõik maha
+
+00:06:51.759 --> 00:06:54.880
+ praegu vaikimisi ja me kavatseme selle käivitada
+
+00:06:54.880 --> 00:06:58.479
+ esiteks pean looma uue võtmepaari, nii see on
+
+00:06:58.479 --> 00:07:02.720
+ ssh-võti, mida ma hakkan kasutama ssh-i jaoks
+
+00:07:02.720 --> 00:07:06.800
+ see server, nii et ma nimetan seda ühte puhverserverit
+
+00:07:06.800 --> 00:07:11.120
+ serveri ja seejärel laadige alla minu võtmepaar, veenduge, et salvestaksite selle kuhugi ohutusse kohta
+
+00:07:11.120 --> 00:07:14.960
+ viskan selle oma serverisse ja viskan selle maha
+
+00:07:14.960 --> 00:07:19.199
+ seal ja praegu tähendab käivitusinstitutsioon jõudu
+
+00:07:19.199 --> 00:07:23.680
+ oma virtuaalses masinas, nii et ma kavatsen seda lükata
+
+00:07:23.680 --> 00:07:27.759
+ ja seal me läheme, nii et selle loomine on põhimõtteliselt virtuaalse loomine
+
+00:07:27.759 --> 00:07:32.240
+ masinaga pilve pilti ec2 eksemplari meie jaoks
+
+00:07:32.240 --> 00:07:35.360
+ uh Põhja-Californias, nii et me läheme nii
+
+00:07:35.360 --> 00:07:40.400
+ Vaatan siin olevaid eksemplare ja nüüd näen, et mul on see üks
+
+00:07:40.400 --> 00:07:45.120
+ Näiteks töötab t2 mikro ja see pole lihtsalt nimi, nii et ma lähen
+
+00:07:45.120 --> 00:07:48.080
+ klõpsake nuppu Muuda ja ma nimetan seda oma puhverserveriks
+
+00:07:48.080 --> 00:07:52.720
+ server proovige, et seal läheksime hästi, nii et see on juba töökorras
+
+00:07:52.720 --> 00:07:56.960
+ nii et kui klõpsan sellel, näen selle serveri ip-aadressi, kuhu ma olen kutsutud
+
+00:07:56.960 --> 00:08:00.400
+ see puhverserver, kuid pea praegu meeles, et see on lihtsalt debian 10. seal on
+
+00:08:00.400 --> 00:08:05.120
+ sinna pole midagi muud installitud, nii et pean selle IP-aadressi kopeerima
+
+00:08:05.120 --> 00:08:09.759
+ ja siis hüppan oma käsureale
+
+00:08:09.759 --> 00:08:13.520
+ sest laadisin võtme alla oma serverisse, kuhu lähen isiklikult
+
+00:08:13.520 --> 00:08:17.440
+ ssh minu majaserverisse
+
+00:08:23.680 --> 00:08:27.360
+ olgu, nüüd olen seal, nii et nüüd käsk, mida hakkan kasutama
+
+00:08:27.360 --> 00:08:33.360
+ on ssh ja seejärel kriips i selle võtme jaoks, mida ma kasutan
+
+00:08:33.360 --> 00:08:36.320
+ nii et sissetulev fail, mida ma võtme jaoks kasutan
+
+00:08:36.320 --> 00:08:41.039
+ ja seda nimetatakse puhverserveriks. pem on see, mida ma alla laadisin
+
+00:08:41.039 --> 00:08:45.200
+ siis lähen administraatoriks, kuna see on debiani vaikelogi
+
+00:08:45.200 --> 00:08:48.880
+ ami või amazoni masinpildi admin aadressil
+
+00:08:48.880 --> 00:08:51.920
+ ja siis ip-aadress, mille olen juba oma lõikelauale kopeerinud ja kui
+
+00:08:51.920 --> 00:08:54.240
+ vajutage sisestusklahvi, see palub mul selle võtmega nõustuda
+
+00:08:54.240 --> 00:08:59.279
+ ja ma ütlen jah ja mind keelatakse
+
+00:08:59.279 --> 00:09:02.560
+ selle faili õigused lõpuks märkisid seda
+
+00:09:02.560 --> 00:09:06.480
+ 766, nii et kõigil on juurdepääs nendele failidele, nii et see on huvitav
+
+00:09:06.480 --> 00:09:10.800
+ ssh ise kaitseb mind selle eest, et keegi saaks mu võtit kompromiteerida
+
+00:09:10.800 --> 00:09:18.160
+ nii chmod 7 0 0 puhverserver dot pam proovime seda ja
+
+00:09:18.160 --> 00:09:21.279
+ proovige nüüd uuesti, nii et mida ma olen teinud, on oh ja nüüd ma olen
+
+00:09:21.279 --> 00:09:25.360
+ ühendatud see lihtsalt töötas seitse nulli nulli tähendab i omanik
+
+00:09:25.360 --> 00:09:29.120
+ see võti on mul lubatud sellega midagi peale hakata
+
+00:09:29.120 --> 00:09:35.200
+ read kirjuta execute null null tähendab kedagi rühmas kedagi, kes pole a
+
+00:09:35.200 --> 00:09:39.120
+ osal grupist on sellele juurdepääs, nii et see on nii
+
+00:09:39.120 --> 00:09:42.080
+ põhimõtteliselt tumm fail, mida nad ei saa isegi avada
+
+00:09:42.080 --> 00:09:46.800
+ uh, aga mul on kõik nii hästi, et nüüd, kui mul on ühendus, lähen sudo kohtusse
+
+00:09:46.800 --> 00:09:52.080
+ sest see on see, mis käsk on saada root, nii et nüüd olen root nii sobiv
+
+00:09:52.080 --> 00:09:57.519
+ värskenda apt update haarab mu hoidlad, näete, et see on
+
+00:09:57.519 --> 00:10:02.160
+ tegelik debiani arvuti, kui soovite pilves
+
+00:10:02.160 --> 00:10:05.600
+ see on nii lihtne, ma juba täiendan juba
+
+00:10:05.600 --> 00:10:10.320
+ debian arvuti käitamine pilves, nii palju aega ja ma olen blla
+
+00:10:10.320 --> 00:10:16.640
+ blah blah samal ajal ee, meil on pilvepõhine debiani server
+
+00:10:16.640 --> 00:10:20.800
+ kas saite aru, et see on nii lihtne ja tasuta
+
+00:10:20.800 --> 00:10:24.000
+ Okei, et saaksime ka sellega muid asju teha, võiksime üles seada lambivirna
+
+00:10:24.000 --> 00:10:28.880
+ võiks seda kasutada mysql mariadb jaoks, mida iganes võite selle välja mõelda
+
+00:10:28.880 --> 00:10:32.000
+ debiani server, nii et me kasutame seda oma
+
+00:10:32.000 --> 00:10:37.040
+ puhverserver, nii et nüüd kavatsen installida tööriista nimega
+
+00:10:37.040 --> 00:10:43.920
+ pisike puhverserver kena ja hõlpsasti installitav apt install pisikest puhverserverit
+
+00:10:43.920 --> 00:10:50.880
+ väga lihtne seadistada, öelge jah, siin me läheme
+
+00:10:52.399 --> 00:10:56.480
+ ja see on tehtud nüüd, kui oleme installinud pisikese puhverserveri, mida peame lihtsalt muutma
+
+00:10:56.480 --> 00:11:04.640
+ konfiguratsioonifail nii kaldkriips jne kaldkriips pisike pisike puhverserver muutis ta selleks
+
+00:11:04.640 --> 00:11:10.959
+ ja siis ma kasutan nano tinyproxy.com ja redigeeri seda nii, et saaksite n-is kontrollida w-d
+
+00:11:10.959 --> 00:11:14.079
+ lubab mul otsida oh, kuid enne otsingu tegemist pange tähele, et
+
+00:11:14.079 --> 00:11:18.000
+ Vaikimisi kasutab port 8888, peame seda teadma
+
+00:11:18.000 --> 00:11:20.959
+ teavet, sest selleks me ühendame
+
+00:11:20.959 --> 00:11:25.200
+ meie volikiri teeb kiire lubamise otsingu
+
+00:11:26.720 --> 00:11:30.959
+ alt w võimaldab teil uuesti otsida wow sõna sõna pole ilmselt parim
+
+00:11:30.959 --> 00:11:35.920
+ otsingupäring võib otsida 127.0.0.1 um ja veidi alla selle, kuhu lähen
+
+00:11:35.920 --> 00:11:40.399
+ ja siis pean lisama oma ip-aadressi, et saaksin sellega ühendust luua
+
+00:11:40.399 --> 00:11:44.320
+ puhverserver, sest praegu on see suletud, vaid sellele pääseb juurde ainult localhost
+
+00:11:44.320 --> 00:11:48.399
+ see on oluline märkida, et see on see, kui see on avalik tasuta
+
+00:11:48.399 --> 00:11:51.519
+ puhverserver olen ainus, kellel lubatakse sellele juurde pääseda
+
+00:11:51.519 --> 00:11:54.959
+ mul lubatakse puhastada minu sisu, mille kaudu mu ühendus on loodud
+
+00:11:54.959 --> 00:11:58.880
+ nii et see on selles osas privaatne, pean teadma oma
+
+00:11:58.880 --> 00:12:02.959
+ IP-aadress, nii et ma lähen sellele üle hüpata
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz ja kopeerige see IP-aadress minu lõikelauale
+
+00:12:08.000 --> 00:12:11.279
+ ja siis hüpake sinna tagasi ja kleepige see minu konfiguratsiooni
+
+00:12:11.279 --> 00:12:15.839
+ kontroll o sisestage kontroll x juhtimine o on välja kirjutamine
+
+00:12:15.839 --> 00:12:22.720
+ salvestage fail nüüd süsteem ctl taaskäivitage pisike puhverserver
+
+00:12:22.720 --> 00:12:28.079
+ peaaegu valmis viimane asi, mida peame tegema, on lihtsalt öelda aws
+
+00:12:28.079 --> 00:12:32.639
+ ec2 turvalisus, mille loome poliitika, mis ütleb
+
+00:12:32.639 --> 00:12:35.920
+ hei ainult mul on lubatud selle serveriga ühendust luua
+
+00:12:35.920 --> 00:12:39.839
+ nii et keegi teine ​​ei saa sellega üldse ühendust luua, nii et me kavatseme
+
+00:12:39.839 --> 00:12:43.120
+ tehke kohe, nii et lähen siia tagasi ja näete seda serverit üleval
+
+00:12:43.120 --> 00:12:47.279
+ ekraani hästi, kui klõpsan turvalisusel, siis saan
+
+00:12:47.279 --> 00:12:50.880
+ klõpsake turbegrupil, millele see automaatselt määratakse, nii et klõpsake lihtsalt
+
+00:12:50.880 --> 00:12:53.680
+ ja nüüd on see mind jätnud ec2-le
+
+00:12:53.680 --> 00:12:56.240
+ turvarühmad ja õige turvarühm
+
+00:12:56.240 --> 00:12:59.440
+ märkate, et see on juba ssh jaoks seadistatud, kuna
+
+00:12:59.440 --> 00:13:03.760
+ see on vaikimisi lubatud ja saan selle lubada ka mulle
+
+00:13:03.760 --> 00:13:06.639
+ oluline, nii et teeme seda lihtsalt selleks, et heas korras olla
+
+00:13:06.639 --> 00:13:09.959
+ turvatavad, nii et ma hakkan seda muutma
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 sulgen x ja siis
+
+00:13:13.440 --> 00:13:18.320
+ muuda see minu ip-ks, siis lisan uue reegli, mida nägid
+
+00:13:18.320 --> 00:13:20.880
+ kuidas ma siia jõudsin, ma tean, et ma liigun tõesti väga kiiresti
+
+00:13:20.880 --> 00:13:24.079
+ klõpsasin just siin sissetulevate reeglite muutmise nupul
+
+00:13:24.079 --> 00:13:29.040
+ olgu, nii et lisage uus reegel vaikimisi kohandatud TCP
+
+00:13:29.040 --> 00:13:35.120
+ pordi number, kas mäletate 888 ja lubate mu ip-d ainult siis, kui ma seda nimetan
+
+00:13:35.120 --> 00:13:40.320
+ tahan puhverserverit ja siis salvestage minu reeglid
+
+00:13:40.320 --> 00:13:44.639
+ seal me läheme, nii et nüüd näete ssh ja kohandatud TCP
+
+00:13:44.639 --> 00:13:51.040
+ üks nimega puhverserver pordil 8888, et kuidas me seda proovime, nii et meie oma
+
+00:13:51.040 --> 00:13:57.360
+ praegune IP-aadress on 99.233 ja seega kavatsen ühenduda puhverserveriga
+
+00:13:57.360 --> 00:14:01.600
+ see ei ole puhverserveri kasutamise õpetus
+
+00:14:01.600 --> 00:14:04.480
+ see pole õpetus, milleks seda kasutada
+
+00:14:04.480 --> 00:14:08.079
+ tingimata see on see, mida ma siin oletan
+
+00:14:08.079 --> 00:14:11.920
+ võite selle kas ise googeldada, sest see põhineb teistmoodi
+
+00:14:11.920 --> 00:14:15.199
+ Kas soovite oma puhverserveri või puhverserveri puhverserverit kasutada
+
+00:14:15.199 --> 00:14:18.480
+ konkreetses rakenduses või kogu teie võrgus
+
+00:14:18.480 --> 00:14:21.839
+ see sõltub teie individuaalsest kasutamisest
+
+00:14:21.839 --> 00:14:28.399
+ rangelt õpetus selle kohta, kuidas seda ec2-eksemplari tõesti kiiresti luua
+
+00:14:28.399 --> 00:14:31.760
+ tasuta, millel on meil kasutamiseks valmis puhverserver
+
+00:14:31.760 --> 00:14:36.639
+ california või kus iganes ja uh see on nii minu minus
+
+00:14:36.639 --> 00:14:40.720
+ konkreetne juhtum praegu, nii et see hetk pole tingimata mis
+
+00:14:40.720 --> 00:14:43.680
+ mida soovite järgmisena teha, proovin just seda
+
+00:14:43.680 --> 00:14:50.000
+ puhverserver olen juhtumisi siin Windows 10-s, nii et kirjutan lihtsalt puhverserveri
+
+00:14:50.000 --> 00:14:54.240
+ ja minge uuesti puhverserveri seadistustesse. See pole ilmselt nii, nagu soovite seda teha
+
+00:14:54.240 --> 00:14:57.279
+ ma tahan lihtsalt testida, nii et lülitan puhverserveri sisse
+
+00:14:57.279 --> 00:15:00.560
+ ma näen, et seal on vanad puhverserveri seaded, nii et veenduge, et olete
+
+00:15:00.560 --> 00:15:03.839
+ Pidage meeles, et kui teil on vaja vanu puhverserveri seadeid
+
+00:15:03.839 --> 00:15:08.480
+ selle muutmiseks minge eksemplaridele ec2-s, klõpsake oma eksemplaril
+
+00:15:08.480 --> 00:15:12.079
+ ID ja haarake see IP-aadress ning kleepige seejärel
+
+00:15:12.079 --> 00:15:15.519
+ see on teie puhverserveri aadress
+
+00:15:15.519 --> 00:15:20.800
+ port 8888 ja salvestage, nii et nüüd olen ühendatud
+
+00:15:20.800 --> 00:15:24.639
+ puhverserver pole praegu Windowsi ühenduses, ütleb
+
+00:15:24.639 --> 00:15:27.199
+ suunan kogu teie liikluse puhverserveri kaudu, mida peaksin parandama
+
+00:15:27.199 --> 00:15:32.199
+ ennast seal, nii et kui ma lähen tagasi saidile currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 on minu praegune ip, hakkan värskendamiseks vajutama f5
+
+00:15:36.160 --> 00:15:44.639
+ ja kui kõik sujus, siis 3.101.108.211. mis see on
+
+00:15:44.639 --> 00:15:52.839
+ see on minu server, nii et ma olen tegelikult nüüd kus ma olen, uurime
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com otsime üles ip-aadressi, mis mul praegu on
+
+00:15:59.759 --> 00:16:06.839
+ kus ma olen san jose california, kus max mine määrab mind
+
+00:16:06.839 --> 00:16:10.880
+ olgu nii, et see on kõik, mis meil on
+
+00:16:10.880 --> 00:16:14.880
+ loodud konfigureeritud juurutas tasuta puhverserveri
+
+00:16:14.880 --> 00:16:17.680
+ et me omame ja tegutseme, oleme ainsad
+
+00:16:17.680 --> 00:16:22.560
+ kellel on see, kellel on see ssh-võti, nii et kui soovite
+
+00:16:22.560 --> 00:16:26.079
+ ühenduse loomine muudatuste tegemiseks kasutage seda mitmeotstarbelise serverina, mida saate teha
+
+00:16:26.079 --> 00:16:30.720
+ et hoidke silma peal oma arveldusasjadel, lihtsalt veenduge selles
+
+00:16:30.720 --> 00:16:33.120
+ te pole künniseid ja selliseid asju ületanud
+
+00:16:33.120 --> 00:16:36.240
+ kui kasutate seda lihtsalt puhverserverina, on väga ebatõenäoline, et teete seda
+
+00:16:36.240 --> 00:16:38.480
+ see on lihtsalt midagi, mille kaudu andmeid edastate
+
+00:16:38.480 --> 00:16:42.800
+ nii et kontrollige, kas see on aws.amazon.com, et ennast alustada
+
+00:16:42.800 --> 00:16:45.920
+ kui teil on küsimusi, postitage need meie kogukonnale
+
+00:16:45.920 --> 00:16:50.160
+ meie lahkhelile leiate lingi kategoorias5.tv
+
+00:16:50.160 --> 00:16:54.000
+ vahepeal suhtlusmenüüs, kui see teile meeldis, kui olete seda kasutanud või
+
+00:16:54.000 --> 00:17:05.839
+ leidis, et see on kasulik, andke mulle suur pöidla püsti, palun tellige
+
+00:17:08.849 --> 00:17:19.839
+ [Muusika] tee
+
+00:17:23.599 --> 00:17:31.710
+ [Muusika]
+

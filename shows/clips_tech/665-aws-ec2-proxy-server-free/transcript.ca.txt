@@ -1,0 +1,240 @@
+si voleu donar-vos una mica de privacitat addicional mentre navegueu
+Internet o voleu accedir a serveis que potser
+no estan disponibles normalment a la vostra zona o potser és un cas que en tingueu
+un proveïdor de serveis ha bloquejat la vostra adreça IP
+pot ser que no sigui una cosa malintencionada que he tingut la meva adreça IP bloquejada per youtube abans
+perquè penjo tants vídeos i descarrego
+els subtítols per a aquells, de manera que m'ha fet excedir el meu ús a
+l'API de YouTube, de manera que la meva adreça IP queda bloquejada
+no ha de ser una cosa maliciosa, no vull donar aquesta impressió
+però hi ha raons molt legítimes per necessitar per evitar aquests tipus de
+les coses i els nerds van a és un proxy, el problema són els proxies
+pot ser molt car d’utilitzar i els gratuïts
+Tot i que, de vegades, hi ha disponibles fàcilment, o bé no són molt fiables, en fan un
+el dia que caigui l'endemà i perdreu l'accés als vostres serveis
+i la resta o encara pitjor són perillosos, no se sap què
+aquests servidors intermediaris fan un seguiment del registre i fins i tot els agrada interceptar
+a mesura que avança, envieu tot el trànsit d'Internet
+a través d’aquest proveïdor de serveis, de manera que hi ha una persona en qui confio de debò
+per representar totes les meves dades i jo sóc la mateixa persona
+que diries que confies en la persona en qui confies ets tu, així que sóc
+us mostraré com puc configurar un servei proxy gratuït
+per part meva i també podeu reproduir-la i crear-ne la vostra
+ho farem al núvol, farem servir un servei de tercers
+proveïdor i això és amazon, de manera que dius que bé
+amazon, què en sabeu de nosaltres, podem confiar en les nostres dades?
+per a ells, el que estem fent servir és que els seus serveis al núvol es diuen amazon
+serveis web, de manera que tot és el seu núvol
+infraestructura que tenen per llogar bàsicament els clients
+accés als seus servidors i al seu espai i
+i els servidors virtuals i tota la resta
+la vostra infraestructura està disponible, però el desplegament sí
+el teu, et mostraré com es fa això, anem a saltar a aws
+i, en particular, ec2, per descomptat, si no esteu familiaritzat amb aws just
+aneu a aws.amazon.com inicieu la sessió amb el vostre compte d'Amazon i
+després feu una cerca ràpida d'ec2 i això us portarà
+bàsicament, la seva plataforma de virtualització pensa en ec2 com
+això és el primer que tinc en compte quan sóc aquí
+a ec2 és la meva regió i això és important perquè aquí és on hi ha el meu servidor intermediari
+el servidor residirà en cas que el configuri allà per què és això
+important bé, penseu en això, diguem que estic fent servir una transmissió de vídeo
+servei que restringeix l'accés canadenc al seu vídeo
+el servei de transmissió mitjançant la col·locació del servidor intermediari al nord
+Califòrnia ara de sobte són bàsicament
+per adreça IP, penso que em connecto
+Califòrnia, així que sóc capaç de solucionar-ho
+de la mateixa manera, és possible que vulgueu canviar la vostra regió en funció de
+el que intenteu aconseguir és que fins i tot pugueu posar un servidor a l'Àfrica
+o asia mireu que podeu posar-ne una a Hong Kong
+pots posar-ne un a Canadà i a Europa que tens
+a tot arreu i després tenim Orient Mitjà i Sud-Amèrica ara mateix
+per tant, és una llista bastant gran d’on es troben
+configurar aquesta infraestructura per a Amazon
+serveis web el servei ec2, així que trieu el que
+és on voleu que estigui el vostre servidor intermediari
+Vaig a establir la meva, només la deixaré al nord de Califòrnia, que és
+nosaltres un oest i aquí és on
+el meu servidor intermediari residirà i això em permetrà connectar-me
+com si realment estigués assegut a Califòrnia
+bé, així que faré clic a la instància de llançament
+i després torna a iniciar la instància perquè fa un desplegable i això em dóna
+una llista de sistemes operatius que puc implementar
+a la meva instància ec2, així que estic fent servir alguns termes que potser no coneixeu
+Aws és bàsicament serveis web d'Amazon
+tota la gamma de serveis que ofereixen a Amazon
+per als usuaris del núvol ec2 és la seva plataforma de virtualització per a virtuals
+màquines quan vaig dir instància estic parlant d'un
+màquina virtual, de manera que literalment és una màquina virtual
+així que vaig a desplegar un d'aquests sistemes operatius en una instància d'ec2
+que és una màquina virtual, doncs què vull
+per ser així i deia hey comentari a continuació si
+faig servir un terme que no coneixeu
+faré una cerca ràpida, ja ho he fet abans perquè hi desplego un munt de
+servidors al núvol faré clic a debian
+simplement escriviu debian a la cerca aquí
+així que aniré als resultats del mercat aws que també hi ha
+els que he creat i els de la comunitat
+pensaria que vull utilitzar bé els de la comunitat, no, perquè no
+aquests us costaran diners i dieu bé, però la comunitat és gratuïta
+és de codi obert i sí, però no és una part del aws
+al mercat i, per tant, haurà de pagar l’ús
+tenir aquesta màquina virtual en execució
+al núvol, per la qual cosa utilitzarem un dels oficials de
+aws market, vegem quins resultats obtenim, estan ordenats força bé
+debian apareix; el primer resultat és debian 10 buster
+un nivell gratuït compatible o un nivell gratuït apte
+versió de debian que implementarem, seleccioneu-la
+Nivell gratuït apte perquè puguem ignorar els preus perquè utilitzarem un
+continuació de la secció gratuïta de nivell i aquí és on ho seleccionem tan bé
+si volem el nivell gratuït, haurem d’anar amb un micro t2
+Vaig a seleccionar això, però què ens dóna, ens dóna una CPU
+un gigabyte de memòria i després tenim emmagatzematge
+no necessitem molt d'emmagatzematge perquè només estem configurant un servidor intermediari bàsic
+i això és tot, així que vaig a desplegar igual que
+que so t2 micro és el que té un nivell lliure
+elegibles no seleccioneu un dels més grans perquè pagareu
+per això de seguida vaig a revisar i
+llançament, tornarem a fer configuracions com els nostres grups de seguretat i
+coses així, només ho deixaré tot
+per defecte per ara i ho llançarem
+primer de tot, he de crear un nou parell de claus, així que és així
+la clau ssh que faré servir per aprofundir en ssh
+aquest servidor, així que vaig a trucar a aquest proxy
+servidor i baixeu el meu parell de claus i assegureu-vos de desar-lo en algun lloc segur
+Vaig a llançar això al meu servidor i deixar-ho caure
+allà i ara la instància de llançament significa poder
+a la vostra màquina virtual, així que ho faré
+i aquí anem, així que bàsicament està creant és creant un virtual
+màquina una instància ec2 al núvol per a nosaltres
+uh al nord de califòrnia, així que hi anem
+Vaig a veure casos aquí i ara puc veure que ara en tinc un
+exemple que executa un micro t2 i no té nom, així que ho faré
+feu clic a Edita i vaig a anomenar-lo el meu servidor intermediari
+servidor prova que allà anem bé, així que ja està en funcionament
+així que si faig clic en això, puc veure l'adreça IP del servidor al qual he trucat
+és servidor proxy però ara mateix recordeu que només és debian 10. hi ha
+res més instal·lat, de manera que he de copiar aquesta adreça IP
+i després saltaré al meu símbol del sistema
+perquè he descarregat la clau del meu servidor al qual aniré personalment
+ssh al meu servidor intern
+Molt bé, ara hi sóc, així que ara l'ordre que faré servir
+és ssh i, a continuació, guioneu i per la clau que faré servir
+de manera que el fitxer entrant que faré servir per a la clau
+i el que es diu servidor proxy.pem és el que he descarregat
+llavors vaig a ser administrador perquè és l'inici de sessió predeterminat per a debian
+administrador d'imatges de la màquina ami o amazon a
+i després l'adreça IP que ja he copiat al porta-retalls i si
+premeu Enter, em demanarà que accepti aquesta clau
+i dic que sí i se'm nega
+els permisos d'aquest fitxer van acabar sent notables
+766, de manera que tothom té accés a aquests fitxers, de manera que és interessant
+ssh mateix em protegeix perquè algú pugui comprometre la meva clau
+així que el servidor intermediari chmod 7 0 0 dot pam provem-ho i
+ara torna-ho a provar, així que el que he fet és oh i ara ho estic
+connectat acaba de funcionar set zero zero significa que sóc el propietari de
+aquesta clau tinc permís per fer-hi qualsevol cosa
+llegir escriure executar zero zero significa ningú del grup ningú que no sigui un
+una part del grup té permís per accedir-hi, així que ho és
+bàsicament, un fitxer ximple que ni tan sols poden obrir
+uh, però puc estar bé, ara que estic connectat aniré a buscar-me
+perquè això és el que vol dir convertir-se en root, de manera que ara sóc root tan apte
+update apt update agafarà els meus repositoris, veieu que això és un
+un equip debian real si voleu al núvol
+és tan fàcil que ja estic actualitzant ja ho estic
+executant un ordinador debian al núvol, així en aquest temps i sóc bla
+bla bla, al mateix temps, tenim un servidor debian basat en el núvol
+T'has adonat que era tan fàcil i gratuït
+d'acord perquè puguem fer altres coses amb això també podríem muntar una pila de làmpades nosaltres
+el podríeu utilitzar per a qualsevol cosa que pugueu arribar a mysql mariadb
+servidor debian, de manera que utilitzarem això com a nostre
+proxy, així que ara el que faré és que instal·laré una eina anomenada
+proxy tiny agradable i senzill d'instal·lar apt proxy tiny
+molt senzill de configurar dir que sí, aquí anem
+i ja està fet, ja que hem instal·lat un proxy petit que només hem d'editar
+el fitxer de configuració, per tant, barra barra, etc. barra petita, un petit proxy la va canviar en això
+i després estic fent servir nano tinyproxy.com i edito-ho per controlar w a nano
+em permet cercar oh, però abans de fer una cerca tingueu en compte que
+El port per defecte utilitza 8888, ho haurem de saber
+informació perquè per això ens connectarem
+el nostre servidor intermediari fa una cerca ràpida de permetre
+alt w us permet cercar de nou wow la paraula permet probablement no sigui la millor
+consulta de cerca potser busqueu 127.0.0.1 um i just a sota d'aquell on vaig
+permetre-ho i després he d'afegir la meva adreça IP per poder connectar-m'hi
+servidor intermediari perquè ara mateix està tancat només hi pot accedir localhost
+això és important tenir en compte que això és públic i gratuït
+servidor proxy, sóc l'únic que se'm permetrà accedir-hi
+se’m permetrà representar el meu contingut mitjançant la meva connexió
+per tant, és privat en aquest sentit, he de conèixer el meu
+adreça IP, així que vaig a saltar a
+currentip.xyz i copia aquesta adreça IP al porta-retalls
+i després salta cap enrere i enganxa-la a la meva configuració
+control o introduïu control x control o és escriure
+deseu el fitxer ara sistema ctl reinicieu el proxy petit
+gairebé acabat l'últim que hem de fer és que només hem de dir aws
+la seguretat ec2 que establirem una política que diu
+Ei, només em permeten connectar-me a aquest servidor
+de manera que ningú més no hi pugui connectar, així que anem a això
+fes ara mateix, així que tornaré aquí i veuràs aquest servidor a
+pantalla bé si faig clic a Seguretat i puc
+feu clic al grup de seguretat que s'assigna automàticament, així que només cal que feu clic a
+això i ara m'ha deixat a ec2
+grups de seguretat i el grup de seguretat correcte
+notareu que ja està configurat per a ssh perquè
+està activat per defecte, puc configurar-ho només perquè em permeti
+important, així que fem això només per estar bé
+pràctiques de seguretat, així que ho canviaré
+custom0000 vaig a tancar x allò i després
+canvieu-lo a la meva IP i afegiré una nova regla que heu vist
+com he arribat fins aquí, sé que em moc molt ràpid
+Acabo de fer clic a Edita les regles entrants aquí
+d'acord, per tant, afegiu una nova regla tcp personalitzat és el valor per defecte
+recordeu el número de port 888 i només permeteu la meva IP. Puc dir-li alguna cosa si
+vull proxy i desa les meves regles
+hi anem, així que ara veieu ssh i tcp personalitzat
+un anomenat proxy al port 8888, així que, com ho podem provar, de manera que el nostre
+l’adreça IP actual és 99.233 i, per tant, em connectaré al servidor intermediari
+no es tracta d'un tutorial sobre com utilitzar un servidor intermediari
+no és un tutorial sobre per a què utilitzar-lo
+necessàriament això és això, estic fent suposicions aquí
+Podeu buscar-lo a Google mateix, ja que serà diferent
+sobre el vostre cas d'ús, si només voleu representar el vostre navegador o el servidor intermediari
+aplicació en concret o tota la vostra xarxa
+això dependrà del vostre cas d'ús individual
+estrictament un tutorial sobre com construir aquesta instància ec2 molt ràpidament per a
+gratuït que té un servidor intermediari a punt per utilitzar-lo
+Califòrnia o on sigui i eh, això és tot, a la meva
+cas particular ara mateix, de manera que aquest moment no és necessàriament el que
+que voleu fer a continuació, això és exactament com provaré el
+proxy que estic aquí a Windows 10, així que simplement escriuré el proxy
+i torneu a entrar a la configuració del servidor intermediari, probablement no sigui com voleu fer-ho
+només vull provar, així que activaré el servidor intermediari
+puc veure que hi ha una configuració de servidor intermediari antiga, així que assegureu-vos que ho sou
+Tingueu present que si hi ha paràmetres de servidor intermediari antics que necessiteu
+per canviar-lo, aneu a instàncies a ec2 feu clic a la vostra instància
+identifiqui i agafeu aquesta adreça IP i després enganxeu-la
+que és com a adreça del servidor intermediari
+port 8888 i estalvieu, així que ara estic connectat a
+proxy instantàniament no està connectat a Windows ara diu
+Vaig a encaminar tot el trànsit pel servidor intermediari que hauria de corregir
+jo mateix, així que si torno a currentip.xyz
+99.233 és la meva IP actual. Vaig a tocar F5 per actualitzar-la
+i si tot anava bé 3.101.108.211. bé què és això
+aquest és el meu servidor, així que ara sóc on ho descobriré
+maxmind.com anem a cercar l'adreça IP en què estic
+on sóc san jose california, aquí és on em determina el màxim meu
+sigueu així que això és tot el que hi ha a la gent que tenim
+creat configurat desplegat un servei proxy gratuït
+que posseïm i operem som els únics
+qui té aquell qui té aquesta clau ssh, per tant, si voleu
+connectar-se a fer canvis, feu-lo servir com a servidor polivalent que podeu fer
+això, però només heu de vigilar les vostres coses de facturació
+no heu superat els llindars i coses per l'estil
+si només el feu servir com a servidor intermediari, és molt poc probable que ho feu
+només és una cosa que feu servir
+així que comproveu que és aws.amazon.com per començar
+si teniu preguntes, publiqueu-les a la nostra comunitat
+a la nostra discordança, trobareu l'enllaç a category5.tv
+Mentrestant, al menú interactua, si us ha agradat això si l'heu utilitzat o
+M'ha semblat útil, doneu-me un gran dit per favor subscriviu-vos
+[Música] fer
+[Música]

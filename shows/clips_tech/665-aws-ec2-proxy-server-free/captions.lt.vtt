@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: lt
+
+00:00:03.919 --> 00:00:07.120
+ar jūs tikitės suteikti sau šiek tiek papildomo privatumo, kol naršote
+
+00:00:07.120 --> 00:00:10.639
+ internete ar norite prieiti prie tokių paslaugų
+
+00:00:10.639 --> 00:00:17.279
+ paprastai nėra jūsų vietovėje, o galbūt tai iš tikrųjų yra
+
+00:00:17.279 --> 00:00:22.000
+ jūsų paslaugų teikėjas užblokavo jūsų IP adresą
+
+00:00:22.000 --> 00:00:27.359
+ gali būti, kad tai nėra kenkėjiškas dalykas, kurį anksčiau „YouTube“ užblokavau savo IP adresą
+
+00:00:27.359 --> 00:00:31.039
+ nes įkeliu tiek daug vaizdo įrašų ir atsisiunčiu
+
+00:00:31.039 --> 00:00:37.280
+ uždarieji subtitrai tiems, kurie privertė mane viršyti mano naudojimą
+
+00:00:37.280 --> 00:00:42.239
+ „YouTube“ api, taigi mano IP adresas taip užblokuojamas
+
+00:00:42.239 --> 00:00:46.000
+ tai nebūtinai turi būti kenkėjiškas dalykas, nenoriu susidaryti tokio įspūdžio
+
+00:00:46.000 --> 00:00:52.399
+ tačiau yra labai teisėtų priežasčių, kodėl reikia apeiti tokius tipus
+
+00:00:52.399 --> 00:00:58.640
+ dalykai, į kuriuos kreipiasi nerčiai, yra įgaliotiniai, problema yra įgaliotiniai
+
+00:00:58.640 --> 00:01:02.160
+ gali būti labai brangu naudoti ir nemokami
+
+00:01:02.160 --> 00:01:08.240
+ nors lengvai prieinami yra arba labai nepatikimi, jie yra vienas
+
+00:01:08.240 --> 00:01:11.360
+ tą dieną, kai jie žengia kitą dieną, ir jūs prarandate prieigą prie savo paslaugų
+
+00:01:11.360 --> 00:01:18.320
+ o visa kita ar dar blogiau, kad jie pavojingi, tu nežinai ką
+
+00:01:18.320 --> 00:01:24.479
+ tie įgaliotiniai stebi registravimą ir netgi mėgsta perimti
+
+00:01:24.479 --> 00:01:28.640
+ eidami visą interneto srautą
+
+00:01:28.640 --> 00:01:36.159
+ per tą paslaugų teikėją, todėl yra vienas asmuo, kuriuo tikrai pasitikiu
+
+00:01:36.159 --> 00:01:44.079
+ įgalioti visus mano duomenis ir tai aš, aš nesu tas pats asmuo
+
+00:01:44.079 --> 00:01:49.360
+ kad sakytum, jog pasitiki žmogumi, kuriuo pasitiki, ar tu toks
+
+00:01:49.360 --> 00:01:54.399
+ parodysiu, kaip galėčiau nustatyti nemokamą tarpinio serverio paslaugą
+
+00:01:54.399 --> 00:02:00.000
+ mano paties, ir jūs galite tai pakartoti ir sukurti savo
+
+00:02:00.000 --> 00:02:03.200
+ tai padarysime debesyje, naudosime trečiosios šalies paslaugą
+
+00:02:03.200 --> 00:02:06.399
+ teikėjas ir tai yra „Amazon“, todėl jūs sakote, kad gerai
+
+00:02:06.399 --> 00:02:09.440
+ amazon, ką jūs žinote, ar mes galime pasitikėti savo duomenimis
+
+00:02:09.440 --> 00:02:13.440
+ jiems gerai, ką mes naudojame, yra jų debesų paslaugos, vadinamos „Amazon“
+
+00:02:13.440 --> 00:02:17.520
+ žiniatinklio paslaugų, todėl visa tai yra jų debesis
+
+00:02:17.520 --> 00:02:22.000
+ infrastruktūrą, kurią klientai iš esmės gali išsinuomoti
+
+00:02:22.000 --> 00:02:25.120
+ prieigą prie savo serverių ir jų vietos ir
+
+00:02:25.120 --> 00:02:28.640
+ virtualieji serveriai ir visa kita
+
+00:02:28.640 --> 00:02:34.959
+ infrastruktūra yra jums prieinama, bet pats diegimas yra
+
+00:02:34.959 --> 00:02:39.840
+ tavo aš jums parodysiu, kaip tai daroma, mes pereisime prie aws
+
+00:02:39.840 --> 00:02:45.920
+ ir ypač ec2, taigi, žinoma, jūs, jei nesate susipažinę tik su aws
+
+00:02:45.920 --> 00:02:50.160
+ eikite į aws.amazon.com prisijunkite naudodami savo „Amazon“ paskyrą ir
+
+00:02:50.160 --> 00:02:55.519
+ tada atlikite greitą ec2 paiešką ir tai jus nuveš
+
+00:02:55.519 --> 00:02:58.959
+ iš esmės jų virtualizavimo platforma galvoja apie ec2 kaip
+
+00:02:58.959 --> 00:03:02.800
+ tik tiek, kad pirmas dalykas, kurį pastebiu būdamas čia
+
+00:03:02.800 --> 00:03:08.480
+ ec2 yra mano regionas ir tai yra svarbu, nes čia yra mano įgaliotasis atstovas
+
+00:03:08.480 --> 00:03:13.360
+ serveris ketina gyventi, jei turėčiau jį nustatyti, kodėl taip yra
+
+00:03:13.360 --> 00:03:16.720
+ svarbu gerai pagalvoti apie tai, tarkime, aš naudoju vaizdo transliaciją
+
+00:03:16.720 --> 00:03:20.959
+ paslauga, ribojanti Kanados prieigą prie jų vaizdo įrašo
+
+00:03:20.959 --> 00:03:24.720
+ srauto paslauga, padėdamas savo tarpinį serverį šiaurėje
+
+00:03:24.720 --> 00:03:28.640
+ Kalifornijoje, staiga jie iš esmės yra
+
+00:03:28.640 --> 00:03:31.599
+ pagal IP adresą ketina manyti, kad prisijungiu iš
+
+00:03:31.599 --> 00:03:34.640
+ Kalifornijoje, todėl galiu tai apeiti
+
+00:03:34.640 --> 00:03:37.920
+ panašiai galbūt norėsite pakeisti savo regioną pagal
+
+00:03:37.920 --> 00:03:42.480
+ ką jūs bandote pasiekti, jūs netgi galite įdėti serverį į Afriką
+
+00:03:42.480 --> 00:03:45.760
+ ar Azija pažvelk į tai, kad Honkonge gali padaryti vieną teisę
+
+00:03:45.760 --> 00:03:49.440
+ galite įdėti vieną į Kanadą uh europoje, kurią turite
+
+00:03:49.440 --> 00:03:55.040
+ ir tada mes turime Vidurinius Rytus ir Pietų Ameriką
+
+00:03:55.040 --> 00:03:58.080
+ taigi tai gana didelis sąrašas, kur jie
+
+00:03:58.080 --> 00:04:00.080
+ kad ši infrastruktūra būtų sukurta „Amazon“
+
+00:04:00.080 --> 00:04:03.920
+ žiniatinklio paslaugos „ec2“ paslauga, todėl pasirinkite tą, kuri
+
+00:04:03.920 --> 00:04:07.200
+ yra ten, kur norite, kad būtų jūsų tarpinis serveris
+
+00:04:07.200 --> 00:04:10.879
+ Aš ketinu nustatyti savo, aš tiesiog paliksiu jį kaip šiaurinę Kaliforniją, kuri yra
+
+00:04:10.879 --> 00:04:14.560
+ mus į vakarus ir būtent ten
+
+00:04:14.560 --> 00:04:19.040
+ mano proxy serveris apsigyvens ir leis man prisijungti
+
+00:04:19.040 --> 00:04:22.880
+ tarsi iš tikrųjų sėdėčiau Kalifornijoje
+
+00:04:22.880 --> 00:04:26.160
+ viskas gerai, todėl spustelėsiu paleidimo egzempliorių
+
+00:04:26.160 --> 00:04:30.160
+ tada paleiskite egzempliorių dar kartą, nes jis išskleidžiamasis meniu ir tai man suteikia
+
+00:04:30.160 --> 00:04:34.720
+ um operacinių sistemų, kurias galiu įdiegti, sąrašas
+
+00:04:34.720 --> 00:04:39.040
+ mano ec2 egzemplioriuje, todėl čia vartoju keletą terminų, kurie gali būti jums nežinomi
+
+00:04:39.040 --> 00:04:42.080
+ AWS yra „Amazon“ interneto paslaugos, kurios iš esmės yra
+
+00:04:42.080 --> 00:04:46.560
+ visą „Amazon“ siūlomų paslaugų spektrą
+
+00:04:46.560 --> 00:04:52.000
+ debesies vartotojams „ec2“ yra jų virtualizavimo platforma
+
+00:04:52.000 --> 00:04:55.840
+ mašinos, kai sakiau, kad aš kalbu apie a
+
+00:04:55.840 --> 00:05:00.160
+ virtuali mašina, taigi pažodžiui yra virtuali mašina
+
+00:05:00.160 --> 00:05:03.919
+ taigi ketinu diegti vieną iš šių operacinių sistemų į ec2 egzempliorių
+
+00:05:03.919 --> 00:05:06.560
+ kuri yra virtuali mašina, ko aš noriu
+
+00:05:06.560 --> 00:05:10.960
+ taip būti ir aš sakiau, kad komentuokit žemiau, jei
+
+00:05:10.960 --> 00:05:12.639
+ aš vartoju terminą, kuris jums nėra žinomas
+
+00:05:12.639 --> 00:05:15.600
+ Aš atliksiu greitą paiešką, aš tai jau padariau anksčiau, nes aš įdiegiau daugybę
+
+00:05:15.600 --> 00:05:18.960
+ serveriai debesyje spustelėsiu debianą
+
+00:05:18.960 --> 00:05:21.360
+ tiesiog įveskite debianą į paiešką čia
+
+00:05:21.360 --> 00:05:27.600
+ Taigi, aš eisiu į AWS rinkos rezultatus, taip pat yra
+
+00:05:27.600 --> 00:05:30.960
+ tuos, kuriuos sukūriau, ir bendruomenėje
+
+00:05:30.960 --> 00:05:34.000
+ galėtum pagalvoti, kad aš noriu naudoti bendruomeniškus, o ne, nes
+
+00:05:34.000 --> 00:05:37.919
+ tie kainuos jums pinigus ir jūs sakote gerai, bet bendruomenė yra laisva
+
+00:05:37.919 --> 00:05:42.800
+ tai atviro kodo ir taip, bet tai ne aws dalis
+
+00:05:42.800 --> 00:05:45.919
+ prekyvietėje, todėl turėsite sumokėti už naudojimąsi
+
+00:05:45.919 --> 00:05:49.600
+ kad ta virtuali mašina tą egzempliorių veiktų
+
+00:05:49.600 --> 00:05:52.639
+ debesyje, taigi mes naudosime vieną iš oficialių
+
+00:05:52.639 --> 00:05:56.800
+ „aws marketplace“ pažiūrėkime, kokius rezultatus gauname, jie gana gerai surūšiuoti
+
+00:05:56.800 --> 00:06:00.400
+ debianas pasirodo pirmasis rezultatas yra debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ suderinama su laisva pakopa arba tinkama laisva pakopa
+
+00:06:04.479 --> 00:06:09.039
+ „Debian“ versiją, kurią ketiname diegti, pasirinkite ją
+
+00:06:09.039 --> 00:06:12.720
+ tinkama nemokama pakopa, todėl galime nepaisyti kainodaros, nes ketiname naudoti a
+
+00:06:12.720 --> 00:06:16.560
+ laisvos pakopos smūgis tęsiasi ir čia mes taip gerai pasirenkame
+
+00:06:16.560 --> 00:06:20.000
+ jei norime nemokamos pakopos, turime pereiti su „t2 micro“
+
+00:06:20.000 --> 00:06:24.080
+ aš pasirinksiu tai, bet ką jis mums duoda, tai duoda mums vieną procesorių
+
+00:06:24.080 --> 00:06:29.520
+ vienas gigabaitas atminties ir tada turėsime saugyklos vietos
+
+00:06:29.520 --> 00:06:33.199
+ mums nereikia daug vietos, nes mes tik nustatome pagrindinį tarpinį serverį
+
+00:06:33.199 --> 00:06:36.639
+ ir viskas apie tai, todėl ketinu dislokuoti taip pat
+
+00:06:36.639 --> 00:06:40.080
+ kad t2 mikro yra tas, kuris yra laisvos pakopos
+
+00:06:40.080 --> 00:06:43.440
+ tinkami, nesirinkite vieno iš didesnių, nes mokėsite
+
+00:06:43.440 --> 00:06:45.919
+ už tai tuoj pat ketinu peržiūrėti ir
+
+00:06:45.919 --> 00:06:50.080
+ paleisti grįšime atlikti nustatymų, pvz., mūsų saugos grupių ir
+
+00:06:50.080 --> 00:06:51.759
+ tokius dalykus aš tiesiog paliksiu viską
+
+00:06:51.759 --> 00:06:54.880
+ pagal nutylėjimą kol kas ir mes tai paleisime
+
+00:06:54.880 --> 00:06:58.479
+ visų pirma man reikia sukurti naują raktų porą, taigi taip yra
+
+00:06:58.479 --> 00:07:02.720
+ ssh raktą, kurį ketinu naudoti norėdamas į ssh
+
+00:07:02.720 --> 00:07:06.800
+ šį serverį, todėl aš tai pavadinsiu vienu tarpiniu serveriu
+
+00:07:06.800 --> 00:07:11.120
+ serverį ir tada atsisiųskite mano raktų porą ir įsitikinkite, kad išsaugojote tai kur nors saugiai
+
+00:07:11.120 --> 00:07:14.960
+ aš mesti tai į savo serverį ir mesti
+
+00:07:14.960 --> 00:07:19.199
+ ten ir dabar paleidimo egzempliorius reiškia galią
+
+00:07:19.199 --> 00:07:23.680
+ savo virtualioje mašinoje, todėl aš tai pasistūmėsiu
+
+00:07:23.680 --> 00:07:27.759
+ ir mes einame, todėl iš esmės tai yra sukurti virtualų
+
+00:07:27.759 --> 00:07:32.240
+ sukurkite ec2 egzempliorių debesyje mums
+
+00:07:32.240 --> 00:07:35.360
+ uh šiaurinėje Kalifornijoje, taigi mes taip ir einame
+
+00:07:35.360 --> 00:07:40.400
+ Aš apžiūrėsiu pavyzdžius čia ir dabar matau, kad dabar turiu vieną
+
+00:07:40.400 --> 00:07:45.120
+ egzempliorius, kuriame veikia „t2 micro“, ir jis tiesiog nėra vardas, todėl ketinu
+
+00:07:45.120 --> 00:07:48.080
+ spustelėkite Redaguoti ir aš tai vadinu savo tarpiniu serveriu
+
+00:07:48.080 --> 00:07:52.720
+ serveris pabandykite, kad ten viskas gerai, taigi jis jau veikia ir veikia
+
+00:07:52.720 --> 00:07:56.960
+ taigi, jei spusteliu ant to, aš galiu pamatyti to serverio, į kurį aš skambinau, IP adresą
+
+00:07:56.960 --> 00:08:00.400
+ tai tarpinis serveris, bet dabar atminkite, kad tai tik „debian“ 10. yra
+
+00:08:00.400 --> 00:08:05.120
+ nieko kito jame neįdiegta, todėl man reikia nukopijuoti tą IP adresą
+
+00:08:05.120 --> 00:08:09.759
+ tada eisiu į savo komandų eilutę
+
+00:08:09.759 --> 00:08:13.520
+ nes atsisiunčiau raktą į savo serverį, į kurį einu asmeniškai
+
+00:08:13.520 --> 00:08:17.440
+ ssh į mano vidaus serverį
+
+00:08:23.680 --> 00:08:27.360
+ gerai, dabar aš ten, taigi dabar komanda, kurią ketinu naudoti
+
+00:08:27.360 --> 00:08:33.360
+ yra ssh ir tada brūkšneliu i raktą, kurį naudosiu
+
+00:08:33.360 --> 00:08:36.320
+ taigi gaunamasis failas, kurį naudosiu raktui
+
+00:08:36.320 --> 00:08:41.039
+ ir tas vienas vadinamas proxy server.pem yra tai, ką aš atsisiunčiau
+
+00:08:41.039 --> 00:08:45.200
+ tada eisiu į administratorių, nes tai yra numatytasis debiano prisijungimas
+
+00:08:45.200 --> 00:08:48.880
+ „ami“ arba „Amazon“ mašinos vaizdo administratorius
+
+00:08:48.880 --> 00:08:51.920
+ ir tada IP adresą, kurį jau nukopijavau į savo mainų sritį, ir jei aš
+
+00:08:51.920 --> 00:08:54.240
+ paspauskite Enter, ji paprašys manęs priimti tą raktą
+
+00:08:54.240 --> 00:08:59.279
+ ir aš sakau „taip“ ir man yra paneigta
+
+00:08:59.279 --> 00:09:02.560
+ galiausiai to failo leidimai buvo pažymėti
+
+00:09:02.560 --> 00:09:06.480
+ 766, todėl visi turi prieigą prie tų failų, todėl įdomu
+
+00:09:06.480 --> 00:09:10.800
+ Pats ssh apsaugo mane nuo to, kad kažkas negalėtų pakenkti mano raktui
+
+00:09:10.800 --> 00:09:18.160
+ taigi chmod 7 0 0 proxy serverio dot pam pabandykime tai ir
+
+00:09:18.160 --> 00:09:21.279
+ dabar bandykite dar kartą, taigi, ką aš padariau, tai aš ir dabar
+
+00:09:21.279 --> 00:09:25.360
+ prijungtas jis ką tik veikė septyni nulis nulis reiškia aš savininkas
+
+00:09:25.360 --> 00:09:29.120
+ tą raktą man leidžiama daryti bet ką
+
+00:09:29.120 --> 00:09:35.200
+ skaityti rašyti vykdyti nulį nulis reiškia niekas grupėje niekas, kuris nėra a
+
+00:09:35.200 --> 00:09:39.120
+ daliai grupės iš viso leidžiama prieiti, todėl taip yra
+
+00:09:39.120 --> 00:09:42.080
+ iš esmės nebylus failas, kurio jie net negali atidaryti
+
+00:09:42.080 --> 00:09:46.800
+ oh, bet man viskas gerai, todėl dabar, kai esu prisijungęs, eisiu į teismą
+
+00:09:46.800 --> 00:09:52.080
+ nes būtent tokia komanda turi tapti šaknine, todėl dabar aš esu toks tinkamas
+
+00:09:52.080 --> 00:09:57.519
+ pateksite į savo saugyklas, matote, kad tai yra
+
+00:09:57.519 --> 00:10:02.160
+ tikras debian kompiuteris, jei norite debesyje
+
+00:10:02.160 --> 00:10:05.600
+ taip lengva, aš jau atnaujinu
+
+00:10:05.600 --> 00:10:10.320
+ paleisti debian kompiuterį debesyje, per tiek laiko ir aš blaha
+
+00:10:10.320 --> 00:10:16.640
+ blah blah tuo pačiu metu um mes turime debesų pagrindu veikiantį debian serverį
+
+00:10:16.640 --> 00:10:20.800
+ ar supratote, kad taip lengva ir nemokama
+
+00:10:20.800 --> 00:10:24.000
+ gerai, kad ir su tuo galėtume padaryti kitus dalykus, mes galėtume pastatyti žibintų rietuvę
+
+00:10:24.000 --> 00:10:28.880
+ gali naudoti jį mysql mariadb bet ką galite sugalvoti tai
+
+00:10:28.880 --> 00:10:32.000
+ „Debian“ serveris, todėl mes tai naudosime kaip savo
+
+00:10:32.000 --> 00:10:37.040
+ proxy, taigi dabar aš ketinu įdiegti įrankį, vadinamą
+
+00:10:37.040 --> 00:10:43.920
+ gražus ir paprastas įdiegimas. įdiegti mažą tarpinį serverį
+
+00:10:43.920 --> 00:10:50.880
+ tikrai nesudėtinga sukonfigūruoti, sakykime taip
+
+00:10:52.399 --> 00:10:56.480
+ ir tai padaryta dabar, kai jau įdiegėme mažą tarpinį serverį, kurį mums tereikia redaguoti
+
+00:10:56.480 --> 00:11:04.640
+ konfigūracijos failas, todėl pasvirasis brūkšnys ir pan. mažasis mažytis tarpinis serveris ją pakeitė
+
+00:11:04.640 --> 00:11:10.959
+ tada naudoju „nano tinyproxy.com“ ir redaguoju, kad valdytumėte „n“
+
+00:11:10.959 --> 00:11:14.079
+ leidžia man ieškoti oh, bet prieš atlikdamas paiešką atkreipkite dėmesį, kad
+
+00:11:14.079 --> 00:11:18.000
+ uostas pagal nutylėjimą naudoja 8888, mes turėsime tai žinoti
+
+00:11:18.000 --> 00:11:20.959
+ informacijos, nes prie to mes prisijungsime
+
+00:11:20.959 --> 00:11:25.200
+ mūsų įgaliotinis greitai ieško leidimo
+
+00:11:26.720 --> 00:11:30.959
+ „Alt w“ leidžia ieškoti dar kartą, o žodis leisti tikriausiai nėra pats geriausias
+
+00:11:30.959 --> 00:11:35.920
+ paieškos užklausa galbūt ieškos 127.0.0.1 um ir šiek tiek žemiau tos, į kurią einu
+
+00:11:35.920 --> 00:11:40.399
+ leisti ir tada turiu pridėti savo IP adresą, kad galėčiau prisijungti prie šio
+
+00:11:40.399 --> 00:11:44.320
+ tarpinis serveris, nes dabar jis uždarytas, prie jo gali prisijungti tik vietinis kompiuteris
+
+00:11:44.320 --> 00:11:48.399
+ svarbu pažymėti, kad tai yra vieša nemokama
+
+00:11:48.399 --> 00:11:51.519
+ tarpinis serveris Aš esu vienintelis, kuriam bus leista prie jo prisijungti
+
+00:11:51.519 --> 00:11:54.959
+ bus leidžiama proxy mano turinį per mano ryšį
+
+00:11:54.959 --> 00:11:58.880
+ tai yra privati ​​šiuo atžvilgiu, turiu žinoti savo
+
+00:11:58.880 --> 00:12:02.959
+ IP adresą, todėl pereisiu prie
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz ir nukopijuokite tą IP adresą į mano mainų sritį
+
+00:12:08.000 --> 00:12:11.279
+ tada pereikite ten ir įklijuokite jį į mano konfigūraciją
+
+00:12:11.279 --> 00:12:15.839
+ kontrolė o įveskite kontrolę x kontrolė o yra išrašyti
+
+00:12:15.839 --> 00:12:22.720
+ išsaugokite failą dabar sistema ctl paleiskite mažą tarpinį serverį
+
+00:12:22.720 --> 00:12:28.079
+ beveik padarėme paskutinį dalyką, kurį turime padaryti, tai tiesiog turime pasakyti aws
+
+00:12:28.079 --> 00:12:32.639
+ „ec2“ saugumą, kurį nustatysime
+
+00:12:32.639 --> 00:12:35.920
+ ei, tik man leidžiama prisijungti prie to serverio
+
+00:12:35.920 --> 00:12:39.839
+ todėl niekas kitas negali prie jo prisijungti, todėl mes tai ir ketiname
+
+00:12:39.839 --> 00:12:43.120
+ darykite dabar, todėl grįšiu atgal čia ir pamatysite šį serverį
+
+00:12:43.120 --> 00:12:47.279
+ ekranas gerai, jei aš spustelėti saugos aš galiu tada
+
+00:12:47.279 --> 00:12:50.880
+ spustelėkite saugos grupę, kuriai ji priskiriama automatiškai, todėl tiesiog spustelėkite
+
+00:12:50.880 --> 00:12:53.680
+ tai ir dabar mane paliko ec2
+
+00:12:53.680 --> 00:12:56.240
+ apsaugos grupes ir teisingą saugos grupę
+
+00:12:56.240 --> 00:12:59.440
+ pastebėsite, kad jis jau sukurtas ssh, nes
+
+00:12:59.440 --> 00:13:03.760
+ tai pagal numatytuosius nustatymus įgalinta, kad galėčiau tai leisti tik man
+
+00:13:03.760 --> 00:13:06.639
+ svarbu, todėl darykime tai tik tam, kad būtų gera
+
+00:13:06.639 --> 00:13:09.959
+ saugumo praktiką, todėl aš ją pakeisiu
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 aš uždarysiu x ir tada
+
+00:13:13.440 --> 00:13:18.320
+ pakeiskite jį į mano ip, tada aš pridėsiu naują taisyklę, kurią matėte
+
+00:13:18.320 --> 00:13:20.880
+ kaip aš čia patekau, žinau, kad judu tikrai greitai
+
+00:13:20.880 --> 00:13:24.079
+ Aš ką tik spustelėjau čia redaguoti gaunamas taisykles
+
+00:13:24.079 --> 00:13:29.040
+ gerai, todėl pridėkite naują taisyklę numatytasis pasirinktinis TCP
+
+00:13:29.040 --> 00:13:35.120
+ prievado numerį, ar atsimenate 888, ir leisti savo ip tik vadinti, jei aš
+
+00:13:35.120 --> 00:13:40.320
+ nori tarpinio serverio ir tada išsaugok mano taisykles
+
+00:13:40.320 --> 00:13:44.639
+ mes einame, todėl dabar matote ssh ir pasirinktinį TCP
+
+00:13:44.639 --> 00:13:51.040
+ vienas vadinamas proxy 8888 prievade, tai kaip mes tai išbandysime gerai, kad mūsų
+
+00:13:51.040 --> 00:13:57.360
+ Dabartinis IP adresas yra 99.233, todėl prisijungsiu prie tarpinio serverio
+
+00:13:57.360 --> 00:14:01.600
+ tai nėra pamoka, kaip naudoti tarpinį serverį
+
+00:14:01.600 --> 00:14:04.480
+ tai nėra pamoka, kam ją naudoti
+
+00:14:04.480 --> 00:14:08.079
+ būtinai tai aš darau prielaidas, kad
+
+00:14:08.079 --> 00:14:11.920
+ galite patys ieškoti „Google“, nes tai bus kitokia
+
+00:14:11.920 --> 00:14:15.199
+ jūsų naudojimo atveju, ar norite tiesiog įgalioti savo naršyklę, ar tarpinį serverį
+
+00:14:15.199 --> 00:14:18.480
+ konkrečią programą ar visą jūsų tinklą
+
+00:14:18.480 --> 00:14:21.839
+ tai priklausys nuo jūsų individualaus naudojimo atvejo
+
+00:14:21.839 --> 00:14:28.399
+ griežtai pamoka, kaip tikrai greitai sukurti šį „ec2“ egzempliorių
+
+00:14:28.399 --> 00:14:31.760
+ nemokamai, kuriame yra parengtas tarpinis serveris, kurį galime naudoti
+
+00:14:31.760 --> 00:14:36.639
+ Kalifornijoje ar kur ir uh, taip yra mano
+
+00:14:36.639 --> 00:14:40.720
+ konkretus atvejis, todėl šis momentas nebūtinai yra koks
+
+00:14:40.720 --> 00:14:43.680
+ norite daryti toliau, tai tik aš išbandysiu
+
+00:14:43.680 --> 00:14:50.000
+ tarpinis serveris, aš čia atsiduriu „Windows 10“, todėl tiesiog įvesiu tarpinį serverį
+
+00:14:50.000 --> 00:14:54.240
+ ir vėl eikite į tarpinio serverio nustatymus, tikriausiai ne taip norite tai padaryti
+
+00:14:54.240 --> 00:14:57.279
+ aš tiesiog noriu išbandyti, todėl įsijungsiu tarpinį serverį
+
+00:14:57.279 --> 00:15:00.560
+ matau, kad ten yra seni tarpinio serverio nustatymai, todėl įsitikinkite, kad esate
+
+00:15:00.560 --> 00:15:03.839
+ turint omenyje tai, kad jums reikia senų tarpinio serverio nustatymų
+
+00:15:03.839 --> 00:15:08.480
+ norėdami jį pakeisti, eikite į egzempliorius spustelėdami savo egzempliorių
+
+00:15:08.480 --> 00:15:12.079
+ ID ir paimkite tą IP adresą, tada įklijuokite
+
+00:15:12.079 --> 00:15:15.519
+ tai kaip jūsų tarpinio serverio adresas
+
+00:15:15.519 --> 00:15:20.800
+ 8888 prievadą ir išsaugokite, todėl dabar esu prisijungęs prie
+
+00:15:20.800 --> 00:15:24.639
+ proxy akimirksniu neprijungtas prie dabar langai sako
+
+00:15:24.639 --> 00:15:27.199
+ Aš eisiu visą jūsų srautą per tarpinį serverį, kurį turėčiau ištaisyti
+
+00:15:27.199 --> 00:15:32.199
+ Aš pats ten, jei grįšiu į currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 yra dabartinis mano ip, aš norėčiau atnaujinti norėdamas paspausti f5
+
+00:15:36.160 --> 00:15:44.639
+ o jei viskas gerai pavyko 3.101.108.211. na kas tai
+
+00:15:44.639 --> 00:15:52.839
+ tai yra mano serveris, todėl iš tikrųjų dabar esu, kur aš sužinosime
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com ieškokime IP adreso, kurį šiuo metu naudojau
+
+00:15:59.759 --> 00:16:06.839
+ kur aš esu San Chosė Kalifornijoje, kur mane nustato mano
+
+00:16:06.839 --> 00:16:10.880
+ būk tiek, kad viskas, ką turime, žmonės
+
+00:16:10.880 --> 00:16:14.880
+ sukurta sukonfigūruota įdiegta nemokama tarpinė paslauga
+
+00:16:14.880 --> 00:16:17.680
+ kad mes turime ir valdome mes vieninteliai
+
+00:16:17.680 --> 00:16:22.560
+ kas tą turi, kas turi tą ssh raktą, taigi, jei norite
+
+00:16:22.560 --> 00:16:26.079
+ prisijunkite atlikti pakeitimus naudokite jį kaip universalų serverį, kurį galite padaryti
+
+00:16:26.079 --> 00:16:30.720
+ Tai tiesiog stebėkite atsiskaitymo dalykus, tiesiog įsitikinkite
+
+00:16:30.720 --> 00:16:33.120
+ jūs neviršijote ribų ir panašių dalykų
+
+00:16:33.120 --> 00:16:36.240
+ jei jūs tiesiog naudojate jį kaip tarpinį serverį, mažai tikėtina, kad tai padarysite
+
+00:16:36.240 --> 00:16:38.480
+ tiesiog perduodate duomenis
+
+00:16:38.480 --> 00:16:42.800
+ todėl patikrinkite, ar tai aws.amazon.com, kad galėtumėte pradėti
+
+00:16:42.800 --> 00:16:45.920
+ jei turite klausimų, rašykite juos į mūsų bendruomenę
+
+00:16:45.920 --> 00:16:50.160
+ į mūsų nesantaiką nuorodą rasite category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ tuo tarpu sąveikos meniu, jei jums tai patiko, jei naudojote jį ar
+
+00:16:54.000 --> 00:17:05.839
+ manau, kad tai naudinga duok man didelį nykštį, prašau užsiprenumeruoti
+
+00:17:08.849 --> 00:17:19.839
+ [Muzika] daryti
+
+00:17:23.599 --> 00:17:31.710
+ [Muzika]
+

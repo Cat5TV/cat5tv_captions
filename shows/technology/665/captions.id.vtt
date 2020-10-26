@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: id
+
+00:00:00.320 --> 00:00:05.040
+di tv kategori 5 kami mempercayakan file kami ke solid-state drive oleh kingston
+
+00:00:05.040 --> 00:00:07.839
+ teknologi baik untuk laptop server Anda atau
+
+00:00:07.839 --> 00:00:10.880
+ komputer desktop Anda akan mengalami peningkatan kinerja
+
+00:00:10.880 --> 00:00:17.920
+ dan kehandalan dengan ssds kingston bersiaplah saatnya untuk teknologi
+
+00:00:22.320 --> 00:00:25.519
+ selamat datang di acara semuanya, ini adalah episode 2 musim 14
+
+00:00:25.519 --> 00:00:29.599
+ saya robbie ferguson dan saya jeff weston senang memiliki anda di sini
+
+00:00:29.599 --> 00:00:32.800
+ dan eh saya harap Anda memiliki minggu yang luar biasa
+
+00:00:32.800 --> 00:00:37.760
+ segalanya kecuali di sinilah kami dan menantikan pertunjukan hebat ke depan
+
+00:00:37.760 --> 00:00:40.960
+ malam ini kita akan belajar cara membuat milik kita sendiri
+
+00:00:40.960 --> 00:00:45.840
+ proxy server oke um jadi saya tidak ingin membicarakannya terlalu banyak
+
+00:00:45.840 --> 00:00:49.200
+ pertunjukan tetapi saya tahu bahwa Anda tahu terkadang sulit untuk menemukan yang baik
+
+00:00:49.200 --> 00:00:52.640
+ layanan proxy gratis jadi kami akan membuatnya sendiri
+
+00:00:52.640 --> 00:00:55.840
+ dan saya akan menunjukkan kepada Anda bagaimana menempatkannya di hampir semua tempat di dunia
+
+00:00:55.840 --> 00:01:01.600
+ menggunakan layanan cloud aws sehingga cukup menarik dan salah satunya
+
+00:01:01.600 --> 00:01:05.680
+ dengan itu juga saat kita belajar sedikit tentang caranya
+
+00:01:05.680 --> 00:01:09.520
+ layanan web amazon ec2 dan layanan cloud dan kemampuan untuk
+
+00:01:09.520 --> 00:01:13.760
+ menyebarkan server debian di infrastruktur cloud saat kita belajar
+
+00:01:13.760 --> 00:01:18.799
+ bagaimana melakukan itu dan bagaimana itu bekerja ketahuilah yang itu
+
+00:01:18.799 --> 00:01:20.159
+ hal-hal yang akan kita lakukan adalah
+
+00:01:20.159 --> 00:01:24.000
+ memigrasi beberapa data kami ke infrastruktur itu juga jadi saya katakan itu
+
+00:01:24.000 --> 00:01:26.960
+ karena beberapa pemirsa streaming langsung kami memilikinya
+
+00:01:26.960 --> 00:01:29.600
+ mengalami masalah dengan buffering dan hal-hal seperti itu
+
+00:01:29.600 --> 00:01:32.799
+ dan itu karena kami memiliki komputer papan tunggal kecil
+
+00:01:32.799 --> 00:01:36.880
+ dari semua hal yang kami streaming dan kemudian disiarkan ulang
+
+00:01:36.880 --> 00:01:40.799
+ siapa pun yang menonton di roku atau pemain hls lainnya dan hal-hal semacam itu
+
+00:01:40.799 --> 00:01:44.399
+ Ini memiliki streamer gesit yang berjalan di komputer papan tunggal
+
+00:01:44.399 --> 00:01:47.759
+ wow luar biasa namun apa yang saya lakukan memantau melalui saya
+
+00:01:47.759 --> 00:01:50.960
+ pengujian adalah bahwa ia menjalankan cpu yang cukup tinggi saat orang
+
+00:01:50.960 --> 00:01:55.439
+ menonton dengan benar sehingga saya percaya mungkin apa yang menyebabkan beberapa
+
+00:01:55.439 --> 00:01:58.640
+ masalah buffering dengan streaming kami um jadi ada banyak hal yang terjadi
+
+00:01:58.640 --> 00:02:03.520
+ di balik layar di sini untuk mencoba membuat Anda mendapatkan pertunjukan untuk Anda
+
+00:02:03.520 --> 00:02:07.840
+ format yang sangat mudah diakses dan mudah diakses dan begitu juga sebaliknya
+
+00:02:07.840 --> 00:02:10.160
+ mengalami hal-hal seperti roda berputar
+
+00:02:10.160 --> 00:02:14.560
+ dan hal-hal semacam itu tapi uh jadi saat kita menonton malam ini
+
+00:02:14.560 --> 00:02:18.560
+ uh dan mempelajari cara menerapkan server debian ini di cloud
+
+00:02:18.560 --> 00:02:20.879
+ ketahuilah bahwa itu adalah sesuatu yang akan kami lakukan di balik layar di sini
+
+00:02:20.879 --> 00:02:23.760
+ serta dan memindahkan layanan tersebut
+
+00:02:23.760 --> 00:02:27.120
+ untuk uh ke salah satu contoh tersebut untuk
+
+00:02:27.120 --> 00:02:30.480
+ coba tingkatkan performa kami di sini, di studio jadi
+
+00:02:30.480 --> 00:02:34.400
+ banyak hal menarik yang terjadi di belakang kami bagaimana keadaanmu
+
+00:02:34.400 --> 00:02:38.000
+ Aku baik-baik saja, kami akan berbicara denganmu nanti malam
+
+00:02:38.000 --> 00:02:42.080
+ eh beberapa eksploitasi Anda dengan menyolder ya ya Anda ingin memberi tahu kami sedikit
+
+00:02:42.080 --> 00:02:44.720
+ sedikit godaan singkat tentang akan menjadi apa kita nanti
+
+00:02:44.720 --> 00:02:48.959
+ berdiskusi eh anak saya ingin masuk ke penyolderan
+
+00:02:48.959 --> 00:02:53.120
+ ulang tahunnya uh jadi kami pergi ke jalan itu
+
+00:02:53.120 --> 00:02:56.480
+ mulai bulan lalu eh kami telah bermain-main sedikit dan itu berhasil
+
+00:02:56.480 --> 00:03:01.200
+ saya berpikir bagaimana saya bisa membuat barang-barang saya sendiri di rumah
+
+00:03:01.200 --> 00:03:04.560
+ ketika saya tidak memiliki area produksi yang besar untuk membuatnya sendiri
+
+00:03:04.560 --> 00:03:09.599
+ PCB ya jadi ya di situlah kita membicarakannya jadi jika Anda tertarik
+
+00:03:09.599 --> 00:03:15.040
+ elektronik diy kita akan membicarakannya dan uh wow kita punya
+
+00:03:15.040 --> 00:03:19.840
+ beberapa hal menarik yang kami persiapkan untuk pertunjukan minggu depan
+
+00:03:19.840 --> 00:03:23.040
+ sudah siap dan kami senang melakukannya
+
+00:03:23.040 --> 00:03:26.640
+ memperkenalkan pencetakan 3d kepada pemirsa kami juga
+
+00:03:26.640 --> 00:03:29.680
+ jadi itu adalah sesuatu yang akan kita pelajari selama ini
+
+00:03:29.680 --> 00:03:36.080
+ berminggu-minggu di sini di TV kategori 5, banyak hal yang terjadi ya
+
+00:03:36.080 --> 00:03:39.200
+ pastikan Anda berlangganan kami di youtube
+
+00:03:39.200 --> 00:03:42.159
+ dan klik bel sehingga Anda mendapatkan notifikasi setiap kali kami memposting yang baru
+
+00:03:42.159 --> 00:03:46.560
+ video kapan pun kami siaran langsung dan juga jika Anda ingin terlibat di dalamnya
+
+00:03:46.560 --> 00:03:49.280
+ komunitas saya pikir itu cara yang sangat keren
+
+00:03:49.280 --> 00:03:54.000
+ Untuk menjadi bagian dari TV kategori 5 beberapa orang masih mengatakan kepada saya apa
+
+00:03:54.000 --> 00:03:58.400
+ perselisihan dan wow kamu bukan bagian dari perselisihan kami
+
+00:03:58.400 --> 00:04:01.920
+ server karena jika Anda bergabung dengan perselisihan kami yang akan Anda temukan jika Anda pergi
+
+00:04:01.920 --> 00:04:06.560
+ ke category5.tv klik berinteraksi, Anda akan melihat bergabung dalam perselisihan
+
+00:04:06.560 --> 00:04:10.720
+ server ini berbasis browser atau aplikasi gratis
+
+00:04:10.720 --> 00:04:14.720
+ layanan yang dapat Anda gunakan pada perangkat dan atau akses Anda
+
+00:04:14.720 --> 00:04:18.160
+ melalui browser Anda tentang apa saja dan pada dasarnya Anda dapat mengobrol dengan
+
+00:04:18.160 --> 00:04:22.079
+ komunitas tetapi sangat rapi karena lebih dari sekadar ruang obrolan
+
+00:04:22.079 --> 00:04:26.160
+ itu juga mendapat alokasi kamar berbeda
+
+00:04:26.160 --> 00:04:28.160
+ hal yang berbeda jadi hal yang kita bicarakan
+
+00:04:28.160 --> 00:04:31.280
+ tentang atau misalnya kami punya di balik layar
+
+00:04:31.280 --> 00:04:35.680
+ jadi di belakang layar hanya dipenuhi dengan backstage
+
+00:04:35.680 --> 00:04:42.320
+ foto yang tidak akan Anda lihat sebaliknya dan dan ada begitu banyak di sana ya di kami
+
+00:04:42.320 --> 00:04:44.400
+ server perselisihan jadi Anda harus pergi ke sana
+
+00:04:44.400 --> 00:04:47.919
+ tahu bahwa ini seperti platform obrolan tetapi memiliki
+
+00:04:47.919 --> 00:04:51.360
+ lebih dari sekadar interaksi obrolan
+
+00:04:51.360 --> 00:04:54.880
+ itu benar dan tidak hanya aktif selama pertunjukan
+
+00:04:54.880 --> 00:04:58.240
+ itu selalu aktif dan maksud saya jika Anda memiliki barang-barang teknologi
+
+00:04:58.240 --> 00:05:01.360
+ tengah minggu Anda seperti oh saya tidak tahu bagaimana menyelesaikan masalah ini Anda
+
+00:05:01.360 --> 00:05:04.080
+ bisa muncul di sana dan komunitasnya luar biasa dalam memberi
+
+00:05:04.080 --> 00:05:07.680
+ saran dan itu cukup tepat juga ya itu benar
+
+00:05:07.680 --> 00:05:10.720
+ baiklah jadi kita harus istirahat sebentar lalu kita melompat dengan benar
+
+00:05:10.720 --> 00:05:14.800
+ ke dalamnya setelah perpisahan singkat ini yang akan kita lihat
+
+00:05:14.800 --> 00:05:20.800
+ cara menyiapkan instance aws ec2 yang kedengarannya seperti technobabble
+
+00:05:20.800 --> 00:05:24.080
+ saya itu sangat cepat ya bagaimana dengan ini kita
+
+00:05:24.080 --> 00:05:29.759
+ kami akan membuat layanan proxy gratis kami sendiri yang lebih mudah untuk dikatakan
+
+00:05:29.759 --> 00:05:36.240
+ Saya memegang kendali saya punya akses. Kita memiliki kendali tetap di sekitar kita
+
+00:05:36.240 --> 00:05:51.920
+ segera kembali [Musik]
+
+00:05:58.560 --> 00:06:01.919
+ apakah Anda berharap memberi diri Anda sedikit privasi ekstra saat menjelajahi
+
+00:06:01.919 --> 00:06:04.720
+ internet atau Anda ingin mengakses layanan itu
+
+00:06:04.720 --> 00:06:10.160
+ mungkin tidak tersedia biasanya di daerah Anda atau mungkin itu a
+
+00:06:10.160 --> 00:06:13.680
+ kasus benar-benar memiliki alamat ip Anda
+
+00:06:13.680 --> 00:06:17.600
+ diblokir oleh penyedia layanan, ini mungkin bukan a
+
+00:06:17.600 --> 00:06:20.960
+ hal jahat yang alamat ip saya diblokir
+
+00:06:20.960 --> 00:06:24.639
+ youtube sebelumnya karena saya mengunggah begitu banyak video dan
+
+00:06:24.639 --> 00:06:29.120
+ unduh teks tertutup untuk itu
+
+00:06:29.120 --> 00:06:33.759
+ telah menyebabkan saya melebihi penggunaan saya di api youtube
+
+00:06:33.759 --> 00:06:38.800
+ jadi alamat ip saya diblokir sehingga tidak harus menjadi hal yang berbahaya
+
+00:06:38.800 --> 00:06:44.319
+ saya tidak ingin memberikan kesan itu tetapi ada alasan yang sangat sah
+
+00:06:44.319 --> 00:06:49.759
+ perlu menyiasati hal-hal semacam itu dan para kutu buku pergi
+
+00:06:49.759 --> 00:06:56.000
+ adalah proxy masalahnya adalah proxy bisa sangat mahal untuk digunakan dan
+
+00:06:56.000 --> 00:07:00.160
+ yang gratis sementara tersedia sangat sering
+
+00:07:00.160 --> 00:07:04.800
+ entah tidak terlalu bisa diandalkan, mereka naik suatu hari mereka turun di hari berikutnya dan Anda kalah
+
+00:07:04.800 --> 00:07:10.240
+ akses ke layanan Anda dan segalanya atau bahkan lebih buruk
+
+00:07:10.240 --> 00:07:14.960
+ berbahaya, Anda tidak tahu apa yang dilacak oleh proxy tersebut
+
+00:07:14.960 --> 00:07:21.120
+ logging dan bahkan seperti mencegat saat Anda melakukan pengiriman
+
+00:07:21.120 --> 00:07:26.720
+ semua lalu lintas internet Anda melalui penyedia layanan itu
+
+00:07:26.720 --> 00:07:35.199
+ jadi ada satu orang yang sangat saya percayai untuk mem-proxy semua data saya
+
+00:07:35.199 --> 00:07:41.039
+ dan itu aku, aku bukan orang yang sama yang kamu percayai
+
+00:07:41.039 --> 00:07:45.199
+ orang yang Anda percayai adalah Anda jadi saya akan menunjukkan caranya
+
+00:07:45.199 --> 00:07:53.280
+ saya mungkin menyiapkan layanan proxy gratis saya sendiri dan Anda dapat meniru itu dan
+
+00:07:53.280 --> 00:07:56.319
+ buat milik Anda sendiri juga, kami akan melakukan ini di cloud kami
+
+00:07:56.319 --> 00:07:58.800
+ akan menggunakan penyedia layanan pihak ketiga
+
+00:07:58.800 --> 00:08:02.400
+ dan itu amazon jadi Anda bilang oh baiklah amazon bagaimana
+
+00:08:02.400 --> 00:08:05.919
+ Anda tahu apakah kami dapat mempercayai data kami kepada mereka dengan baik, apa yang kami gunakan adalah milik mereka
+
+00:08:05.919 --> 00:08:10.639
+ layanan cloud itu disebut layanan web amazon jadi itu
+
+00:08:10.639 --> 00:08:14.319
+ semua itu adalah infrastruktur cloud yang mereka miliki
+
+00:08:14.319 --> 00:08:18.560
+ bagi pelanggan untuk menyewa akses ke server mereka dan mereka
+
+00:08:18.560 --> 00:08:23.360
+ ruang mereka dan dan server virtual serta segala sesuatu yang utuh
+
+00:08:23.360 --> 00:08:29.680
+ infrastruktur tersedia untuk Anda, tetapi penerapannya sendiri tersedia
+
+00:08:29.680 --> 00:08:34.560
+ milik Anda, saya akan menunjukkan kepada Anda bagaimana ini dilakukan. Kita akan beralih ke aws
+
+00:08:34.560 --> 00:08:40.719
+ dan khususnya ec2 jadi tentu saja Anda jika Anda tidak terbiasa dengan aws saja
+
+00:08:40.719 --> 00:08:44.720
+ buka aws.amazon.com masuk dengan akun amazon Anda
+
+00:08:44.720 --> 00:08:50.640
+ dan kemudian lakukan pencarian cepat untuk ec2 dan itu akan membawa Anda ke dasarnya
+
+00:08:50.640 --> 00:08:53.680
+ platform virtualisasi mereka menganggap ec2 sebagai
+
+00:08:53.680 --> 00:08:57.519
+ Hanya itu yang jadi hal pertama yang saya perhatikan ketika saya di sini
+
+00:08:57.519 --> 00:09:03.200
+ di ec2 adalah wilayah saya dan ini penting karena di sinilah proxy saya
+
+00:09:03.200 --> 00:09:08.080
+ Server akan berada jika saya mengaturnya di sana mengapa demikian
+
+00:09:08.080 --> 00:09:11.519
+ penting baik pikirkan tentang ini katakanlah saya menggunakan streaming video
+
+00:09:11.519 --> 00:09:15.680
+ layanan yang membatasi akses Kanada ke video mereka
+
+00:09:15.680 --> 00:09:19.440
+ layanan streaming jadi dengan menempatkan server proxy saya di utara
+
+00:09:19.440 --> 00:09:23.360
+ california sekarang tiba-tiba mereka pada dasarnya
+
+00:09:23.360 --> 00:09:26.320
+ dengan alamat ip akan berpikir bahwa saya terhubung dari
+
+00:09:26.320 --> 00:09:29.360
+ california jadi saya bisa mengatasinya
+
+00:09:29.360 --> 00:09:32.720
+ demikian pula Anda mungkin ingin mengubah wilayah Anda berdasarkan
+
+00:09:32.720 --> 00:09:37.200
+ apa yang ingin Anda capai, Anda bahkan dapat menempatkan server di Afrika
+
+00:09:37.200 --> 00:09:40.480
+ atau asia lihat bahwa Anda dapat menempatkannya dengan benar di hong kong
+
+00:09:40.480 --> 00:09:44.160
+ Anda bisa menempatkan satu di Kanada, eh di Eropa Anda punya
+
+00:09:44.160 --> 00:09:49.680
+ di mana-mana dan kemudian kita punya timur tengah dan Amerika Selatan sekarang
+
+00:09:49.680 --> 00:09:52.800
+ jadi ini adalah daftar yang cukup besar di mana mereka
+
+00:09:52.800 --> 00:09:57.360
+ siapkan infrastruktur ini untuk layanan web amazon, layanan ec2
+
+00:09:57.360 --> 00:10:01.920
+ jadi pilih salah satu yang Anda inginkan untuk server proxy Anda
+
+00:10:01.920 --> 00:10:05.600
+ Saya akan menetapkan milik saya, saya hanya akan membiarkannya sebagai California Utara
+
+00:10:05.600 --> 00:10:09.279
+ kita barat satu dan disitulah
+
+00:10:09.279 --> 00:10:13.760
+ server proxy saya akan berada yang memungkinkan saya untuk terhubung
+
+00:10:13.760 --> 00:10:17.680
+ seolah-olah saya benar-benar sedang duduk di california
+
+00:10:17.680 --> 00:10:20.880
+ baiklah jadi saya akan mengklik contoh peluncuran
+
+00:10:20.880 --> 00:10:24.880
+ dan kemudian meluncurkan instance lagi karena melakukan drop down dan ini memberi saya
+
+00:10:24.880 --> 00:10:29.440
+ daftar sistem operasi yang dapat saya terapkan
+
+00:10:29.440 --> 00:10:33.760
+ pada contoh ec2 saya jadi saya menggunakan beberapa istilah di sini yang mungkin tidak Anda kenal
+
+00:10:33.760 --> 00:10:38.240
+ aws adalah layanan web amazon yang pada dasarnya adalah milik amazon
+
+00:10:38.240 --> 00:10:44.560
+ Keseluruhan layanan yang mereka tawarkan untuk pengguna cloud ec2 adalah milik mereka
+
+00:10:44.560 --> 00:10:48.160
+ platform virtualisasi untuk mesin virtual
+
+00:10:48.160 --> 00:10:52.240
+ ketika saya berkata misalnya saya sedang berbicara tentang mesin virtual
+
+00:10:52.240 --> 00:10:56.160
+ jadi itu benar-benar mesin virtual jadi saya akan menerapkan salah satunya
+
+00:10:56.160 --> 00:10:59.360
+ sistem operasi ke turunan ec2 yaitu
+
+00:10:59.360 --> 00:11:02.880
+ mesin virtual jadi apa yang saya inginkan
+
+00:11:02.880 --> 00:11:07.040
+ begitu dan saya mengatakan hey komentar di bawah jika saya menggunakan istilah yang Anda tidak familiar
+
+00:11:07.040 --> 00:11:08.399
+ dengan saya akan melakukan pencarian cepat
+
+00:11:08.399 --> 00:11:11.120
+ sudah melakukannya sebelumnya karena saya menggunakan banyak server
+
+00:11:11.120 --> 00:11:15.279
+ di awan saya akan mengklik debian cukup ketik debian ke file
+
+00:11:15.279 --> 00:11:19.279
+ cari di sini jadi saya akan pergi ke aws
+
+00:11:19.279 --> 00:11:24.640
+ hasil marketplace ada juga yang sudah saya buat dan yang ada di
+
+00:11:24.640 --> 00:11:27.120
+ komunitas Anda akan berpikir oh baiklah saya ingin menggunakan
+
+00:11:27.120 --> 00:11:30.800
+ komunitas baik tidak Anda tidak karena itu akan menghabiskan uang Anda
+
+00:11:30.800 --> 00:11:34.320
+ dan Anda berkata baik tetapi komunitas itu gratis, itu open source dan ya
+
+00:11:34.320 --> 00:11:38.959
+ namun ini bukan bagian dari pasar aws dan Anda akan memilikinya
+
+00:11:38.959 --> 00:11:42.320
+ untuk membayar penggunaan untuk memiliki mesin virtual itu
+
+00:11:42.320 --> 00:11:46.160
+ Misalnya berjalan di cloud jadi kita akan pergi
+
+00:11:46.160 --> 00:11:49.440
+ gunakan salah satu yang resmi dari pasar aws mari kita lihat hasilnya
+
+00:11:49.440 --> 00:11:53.360
+ kami mendapatkan mereka diurutkan dengan cukup baik debian muncul hasil pertama adalah
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster tingkat gratis yang kompatibel atau tingkat gratis
+
+00:11:57.839 --> 00:12:00.560
+ versi debian yang memenuhi syarat yang kami inginkan
+
+00:12:00.560 --> 00:12:06.000
+ menerapkan, jadi pilih tingkat gratis yang memenuhi syarat sehingga kami dapat mengabaikan
+
+00:12:06.000 --> 00:12:09.360
+ harga karena kita akan menggunakan klik tingkat gratis terus
+
+00:12:09.360 --> 00:12:13.040
+ dan ini adalah tempat kami memilihnya dengan sangat baik jika kami ingin tingkat gratis kami harus pergi
+
+00:12:13.040 --> 00:12:15.839
+ dengan mikro t2 jadi saya akan memilih itu tapi apa
+
+00:12:15.839 --> 00:12:22.399
+ apakah itu memberi kita itu memberi kita satu cpu satu gigabyte memori um
+
+00:12:22.399 --> 00:12:25.600
+ dan kemudian kami memiliki penyimpanan yang harus ditangani, kami tidak memerlukan banyak penyimpanan karena
+
+00:12:25.600 --> 00:12:29.920
+ kami hanya menyiapkan proxy dasar dan hanya itu saja, jadi saya akan melakukannya
+
+00:12:29.920 --> 00:12:34.079
+ terapkan seperti itu sehingga t2 micro adalah salah satu yang gratis
+
+00:12:34.079 --> 00:12:37.120
+ tingkat yang memenuhi syarat jangan pilih salah satu yang lebih besar
+
+00:12:37.120 --> 00:12:38.720
+ karena Anda akan membayarnya
+
+00:12:38.720 --> 00:12:42.079
+ segera saya akan meninjau dan meluncurkan yang akan kita lihat kembali
+
+00:12:42.079 --> 00:12:45.839
+ lakukan pengaturan seperti grup keamanan kami dan hal-hal seperti itu saya akan pergi begitu saja
+
+00:12:45.839 --> 00:12:48.480
+ semuanya secara default untuk saat ini dan kami akan melakukannya
+
+00:12:48.480 --> 00:12:52.000
+ luncurkan itu jadi pertama-tama saya perlu membuat kunci baru
+
+00:12:52.000 --> 00:12:55.360
+ pasangkan jadi ini adalah kunci ssh yang akan saya gunakan
+
+00:12:55.360 --> 00:12:59.680
+ memesan ssh ke server ini jadi saya akan memanggil ini
+
+00:12:59.680 --> 00:13:04.160
+ satu server proxy dan kemudian unduh pasangan kunci saya
+
+00:13:04.160 --> 00:13:06.320
+ pastikan Anda menyimpannya di tempat yang aman yang akan saya kunjungi
+
+00:13:06.320 --> 00:13:10.800
+ membuangnya ke server saya dan meletakkannya di sana
+
+00:13:10.800 --> 00:13:16.240
+ dan sekarang meluncurkan instance berarti menghidupkan mesin virtual Anda, jadi saya akan melakukannya
+
+00:13:16.240 --> 00:13:20.000
+ dorong itu dan begitulah jadi pada dasarnya
+
+00:13:20.000 --> 00:13:23.120
+ membuatnya berarti membuat mesin virtual
+
+00:13:23.120 --> 00:13:29.360
+ uh contoh ec2 di awan untuk kami di uh di california utara jadi begitulah
+
+00:13:29.360 --> 00:13:33.279
+ pergi jadi saya akan melihat contoh di sini
+
+00:13:33.279 --> 00:13:37.200
+ dan sekarang saya dapat melihat saya sekarang memiliki satu contoh menjalankan mikro t2
+
+00:13:37.200 --> 00:13:41.199
+ dan itu hanya tanpa nama jadi saya akan mengklik edit dan saya akan menyebutnya
+
+00:13:41.199 --> 00:13:45.839
+ server server proxy saya mencoba di sana kami pergi baik-baik saja jadi itu
+
+00:13:45.839 --> 00:13:49.519
+ sudah aktif dan berjalan jadi jika saya klik itu saya bisa melihat ip
+
+00:13:49.519 --> 00:13:53.360
+ alamat server itu, saya menyebutnya server proxy tetapi sekarang
+
+00:13:53.360 --> 00:13:56.720
+ ingat itu hanya debian 10. tidak ada lagi yang diinstal di dalamnya
+
+00:13:56.720 --> 00:14:02.480
+ jadi saya perlu menyalin alamat ip itu dan kemudian saya akan masuk ke saya
+
+00:14:02.480 --> 00:14:05.839
+ prompt perintah karena saya mengunduh kunci ke
+
+00:14:05.839 --> 00:14:17.839
+ server saya, saya pribadi akan ssh ke server internal saya
+
+00:14:18.399 --> 00:14:22.079
+ baiklah jadi sekarang saya di sana jadi sekarang perintah yang akan saya gunakan
+
+00:14:22.079 --> 00:14:28.079
+ adalah ssh dan kemudian hubung i untuk kunci yang akan saya gunakan
+
+00:14:28.079 --> 00:14:31.040
+ jadi file masuk yang akan saya gunakan untuk kuncinya
+
+00:14:31.040 --> 00:14:35.760
+ dan yang satu itu disebut server proxy.pem adalah apa yang saya unduh
+
+00:14:35.760 --> 00:14:39.920
+ maka saya akan pergi ke admin karena itulah login default untuk debian
+
+00:14:39.920 --> 00:14:43.600
+ ami atau admin gambar mesin amazon di
+
+00:14:43.600 --> 00:14:46.639
+ dan kemudian alamat ip yang sudah saya salin ke clipboard saya dan jika i
+
+00:14:46.639 --> 00:14:48.959
+ tekan enter, itu akan meminta saya untuk menerima kunci itu
+
+00:14:48.959 --> 00:14:54.000
+ dan saya mengatakan ya dan saya ditolak
+
+00:14:54.000 --> 00:14:57.279
+ izin pada file itu akhirnya dicatat itu
+
+00:14:57.279 --> 00:15:01.199
+ 766 sehingga setiap orang memiliki akses ke file-file itu jadi itu menarik
+
+00:15:01.199 --> 00:15:05.519
+ ssh sendiri melindungi saya dari seseorang yang dapat membahayakan kunci saya
+
+00:15:05.519 --> 00:15:13.120
+ jadi chmod 700 proxy server pam mari kita coba dan sekarang
+
+00:15:13.120 --> 00:15:16.000
+ coba lagi jadi apa yang telah saya lakukan adalah oh dan sekarang saya
+
+00:15:16.000 --> 00:15:20.800
+ terhubung itu baru saja bekerja 700 berarti saya pemilik kunci itu
+
+00:15:20.800 --> 00:15:27.279
+ Saya diizinkan untuk melakukan apa saja dengan itu baca tulis mengeksekusi nol berarti nol
+
+00:15:27.279 --> 00:15:30.800
+ tidak ada orang di grup, tidak ada orang yang bukan bagian dari grup
+
+00:15:30.800 --> 00:15:35.600
+ diizinkan untuk mengaksesnya sama sekali jadi itu pada dasarnya adalah file bodoh yang tidak bisa mereka akses
+
+00:15:35.600 --> 00:15:39.519
+ bahkan terbuka tetapi saya bisa baik-baik saja jadi sekarang saya
+
+00:15:39.519 --> 00:15:44.240
+ terhubung saya akan pergi sudo sue karena itulah perintahnya
+
+00:15:44.240 --> 00:15:47.440
+ menjadi root jadi sekarang saya root jadi pembaruan aplikasi
+
+00:15:47.440 --> 00:15:50.399
+ teriakan pembaruan aplikasi akan mengambil saya
+
+00:15:50.399 --> 00:15:55.680
+ repositori yang Anda lihat ini adalah komputer debian yang sebenarnya jika Anda mau
+
+00:15:55.680 --> 00:16:01.680
+ di cloud semudah itu saya sudah mengupgrade saya sudah menjalankan debian
+
+00:16:01.680 --> 00:16:05.120
+ komputer di cloud jadi dalam jumlah waktu itu dan saya bla
+
+00:16:05.120 --> 00:16:11.360
+ bla bla pada saat yang sama um kami memiliki server debian berbasis cloud
+
+00:16:11.360 --> 00:16:15.519
+ apakah Anda tahu bahwa itu mudah dan gratis
+
+00:16:15.519 --> 00:16:18.720
+ oke jadi kita bisa melakukan hal lain dengan ini juga kita bisa mengatur tumpukan lampu kita
+
+00:16:18.720 --> 00:16:23.600
+ bisa menggunakannya untuk mysql mariadb apa pun yang Anda bisa dapatkan itu a
+
+00:16:23.600 --> 00:16:26.720
+ debian server jadi kami akan menggunakan ini sebagai milik kami
+
+00:16:26.720 --> 00:16:31.759
+ proxy jadi sekarang apa yang akan saya lakukan adalah saya akan menginstal alat bernama
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy bagus dan mudah dipasang apt install proxy kecil
+
+00:16:38.639 --> 00:16:45.600
+ sangat mudah untuk dikonfigurasi, katakan ya ini dia
+
+00:16:47.120 --> 00:16:51.199
+ dan selesai sekarang kita telah menginstal proxy kecil yang hanya perlu kita edit
+
+00:16:51.199 --> 00:16:59.440
+ file konfigurasi jadi slash dll proxy kecil ubah dir menjadi itu
+
+00:16:59.440 --> 00:17:05.760
+ dan kemudian saya menggunakan nano tinyproxy.com dan mengeditnya jadi kontrol w di nano
+
+00:17:05.760 --> 00:17:08.799
+ memungkinkan saya untuk mencari oh tetapi sebelum saya melakukan pencarian, perhatikan bahwa file
+
+00:17:08.799 --> 00:17:12.720
+ port secara default menggunakan 888, kita perlu mengetahuinya
+
+00:17:12.720 --> 00:17:15.679
+ informasi karena itulah yang akan kita hubungkan
+
+00:17:15.679 --> 00:17:19.839
+ proxy kami melakukan pencarian cepat untuk mengizinkan
+
+00:17:21.439 --> 00:17:25.679
+ alt w memungkinkan Anda untuk mencari lagi wow kata allow mungkin bukan yang terbaik
+
+00:17:25.679 --> 00:17:30.640
+ permintaan pencarian mungkin mencari 127.0.0.1 dan tepat di bawah yang saya akan
+
+00:17:30.640 --> 00:17:34.720
+ izinkan dan kemudian saya perlu menambahkan alamat ip saya agar saya dapat terhubung ke
+
+00:17:34.720 --> 00:17:37.440
+ server proxy ini karena saat ini sedang ditutup
+
+00:17:37.440 --> 00:17:40.640
+ hanya localhost yang dapat mengaksesnya, itu penting untuk diperhatikan
+
+00:17:40.640 --> 00:17:44.720
+ bahwa ini adalah sementara ini adalah server proxy gratis publik, saya satu-satunya yang melakukannya
+
+00:17:44.720 --> 00:17:47.280
+ akan diizinkan untuk mengaksesnya yang akan diizinkan
+
+00:17:47.280 --> 00:17:52.400
+ proxy konten saya koneksi saya melaluinya sehingga bersifat pribadi dalam hal itu
+
+00:17:52.400 --> 00:17:55.919
+ saya perlu mengetahui alamat ip saya jadi saya akan beralih ke
+
+00:17:55.919 --> 00:18:03.360
+ ip.xyz saat ini dan salin alamat ip itu ke clipboard saya lalu lompat
+
+00:18:03.360 --> 00:18:09.840
+ kembali ke sana dan tempelkan ke kontrol konfigurasi saya o masukkan kontrol x kontrol o ada
+
+00:18:09.840 --> 00:18:14.320
+ untuk menulis simpan file sekarang systemctl
+
+00:18:14.320 --> 00:18:21.039
+ restart proxy kecil hampir menyelesaikan hal terakhir yang kita butuhkan
+
+00:18:21.039 --> 00:18:26.000
+ yang harus kita lakukan adalah kita hanya perlu memberi tahu aws the ec2 security itu
+
+00:18:26.000 --> 00:18:29.840
+ kami akan menyiapkan kebijakan yang mengatakan hai, hanya saya yang diizinkan untuk terhubung dengan itu
+
+00:18:29.840 --> 00:18:32.799
+ server sehingga tidak ada orang lain yang dapat menyambungkannya
+
+00:18:32.799 --> 00:18:34.880
+ apapun jadi itulah yang akan kami lakukan dengan benar
+
+00:18:34.880 --> 00:18:38.799
+ sekarang jadi saya akan kembali ke sini dan Anda melihat server ini di layar
+
+00:18:38.799 --> 00:18:43.840
+ baik jika saya mengklik keamanan saya kemudian dapat mengklik grup keamanan itu
+
+00:18:43.840 --> 00:18:46.240
+ ditetapkan secara otomatis jadi cukup klik itu
+
+00:18:46.240 --> 00:18:50.480
+ dan sekarang telah menyerahkan saya ke grup keamanan ec2 dan keamanan yang benar
+
+00:18:50.480 --> 00:18:52.320
+ grup Anda akan melihat bahwa itu sudah diatur
+
+00:18:52.320 --> 00:18:56.960
+ satu untuk ssh karena secara default diaktifkan saya dapat mengaturnya
+
+00:18:56.960 --> 00:18:59.440
+ untuk hanya mengizinkan saya juga yang penting begitu
+
+00:18:59.440 --> 00:19:02.720
+ mari kita lakukan itu hanya untuk menerapkan praktik keamanan yang baik
+
+00:19:02.720 --> 00:19:06.160
+ ssh saya akan mengubahnya dari custom000
+
+00:19:06.160 --> 00:19:10.080
+ Saya akan menutup x itu dan kemudian mengubahnya ke ip saya
+
+00:19:10.080 --> 00:19:14.480
+ lalu saya akan menambahkan aturan baru yang Anda lihat bagaimana saya sampai di sini, benar, saya tahu saya akan pindah
+
+00:19:14.480 --> 00:19:18.080
+ sangat sangat cepat saya baru saja mengklik edit aturan masuk
+
+00:19:18.080 --> 00:19:22.960
+ di sini oke jadi tambahkan aturan baru tcp kustom adalah
+
+00:19:22.960 --> 00:19:27.120
+ nomor port default yang Anda ingat 888 dan hanya
+
+00:19:27.120 --> 00:19:31.919
+ izinkan ip saya, saya dapat menyebutnya sesuatu jika saya ingin proxy
+
+00:19:31.919 --> 00:19:37.919
+ dan kemudian simpan aturan saya di sana kita pergi jadi sekarang Anda melihat ssh dan
+
+00:19:37.919 --> 00:19:44.160
+ tcp khusus yang disebut proxy pada port 888.
+
+00:19:44.160 --> 00:19:49.600
+ jadi bagaimana kita menguji ini oke jadi alamat ip kita saat ini adalah 99.233
+
+00:19:49.600 --> 00:19:52.640
+ jadi saya akan terhubung ke proxy ini
+
+00:19:52.640 --> 00:19:57.360
+ bukan tutorial tentang cara menggunakan proxy, ini bukan
+
+00:19:57.360 --> 00:20:01.120
+ tutorial tentang apa yang harus digunakan untuk ini
+
+00:20:01.120 --> 00:20:04.720
+ ini saya membuat asumsi di sini bahwa Anda dapat mencari di Google sendiri
+
+00:20:04.720 --> 00:20:08.240
+ karena itu akan berbeda berdasarkan kasus penggunaan Anda apakah Anda mau
+
+00:20:08.240 --> 00:20:11.600
+ cukup proxy browser Anda atau proxy aplikasi tertentu atau keseluruhan Anda
+
+00:20:11.600 --> 00:20:15.440
+ jaringan yang akan terserah individu Anda
+
+00:20:15.440 --> 00:20:20.159
+ use case ini hanyalah tutorial tentang cara membangun ini
+
+00:20:20.159 --> 00:20:23.679
+ Contoh ec2 sangat cepat dan gratis
+
+00:20:23.679 --> 00:20:28.400
+ yang memiliki proxy yang siap digunakan di california atau di mana pun
+
+00:20:28.400 --> 00:20:32.960
+ dan uh hanya itu yang terjadi dalam kasus saya sekarang
+
+00:20:32.960 --> 00:20:36.480
+ jadi momen ini belum tentu ingin Anda lakukan selanjutnya
+
+00:20:36.480 --> 00:20:41.120
+ ini hanya bagaimana saya akan menguji proxy yang kebetulan saya ada di windows 10 di sini
+
+00:20:41.120 --> 00:20:47.280
+ jadi saya akan cukup mengetikkan proxy dan masuk ke pengaturan proxy lagi ini
+
+00:20:47.280 --> 00:20:50.880
+ mungkin tidak bagaimana Anda ingin melakukannya, saya hanya ingin menguji jadi saya akan berbalik
+
+00:20:50.880 --> 00:20:53.679
+ di proxy saya dapat melihat bahwa ada proxy lama
+
+00:20:53.679 --> 00:20:56.880
+ pengaturan di sana jadi pastikan Anda memperhatikannya
+
+00:20:56.880 --> 00:21:00.240
+ jika ada pengaturan proxy lama Anda perlu mengubahnya pergi ke
+
+00:21:00.240 --> 00:21:03.679
+ instance di ec2 klik pada id instance Anda
+
+00:21:03.679 --> 00:21:07.440
+ dan ambil alamat ip itu lalu tempelkan
+
+00:21:07.440 --> 00:21:11.840
+ sebagai alamat untuk port server proxy 8888 Anda
+
+00:21:11.840 --> 00:21:17.120
+ dan simpan jadi sekarang saya langsung terhubung ke proxy
+
+00:21:17.120 --> 00:21:20.559
+ tidak tersambung ke jendela sekarang mengatakan saya akan mengarahkan semua lalu lintas Anda
+
+00:21:20.559 --> 00:21:22.880
+ melalui proxy saya harus memperbaiki diri sendiri di sana
+
+00:21:22.880 --> 00:21:29.520
+ jadi jika saya kembali ke currentip.xyz 99.233 adalah ip saya saat ini yang akan saya tekan
+
+00:21:29.520 --> 00:21:38.159
+ f5 untuk menyegarkan dan jika semuanya berjalan dengan baik 3.101.108.211. baik
+
+00:21:38.159 --> 00:21:44.720
+ apa itu server saya jadi saya sebenarnya sekarang
+
+00:21:44.720 --> 00:21:51.679
+ di mana saya, mari kita cari tahu maxmind.com mari kita lakukan pencarian untuk alamat ip
+
+00:21:51.679 --> 00:21:59.120
+ bahwa saya saat ini berada di tempat saya san jose california
+
+00:21:59.120 --> 00:22:02.559
+ di situlah max milik saya menentukan saya
+
+00:22:02.559 --> 00:22:05.600
+ jadi itu saja yang kami miliki
+
+00:22:05.600 --> 00:22:10.640
+ dibuat dikonfigurasi menyebarkan layanan proxy gratis yang kami
+
+00:22:10.640 --> 00:22:14.559
+ memiliki dan mengoperasikan kami satu-satunya yang memiliki yang memiliki itu
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh kunci jadi jika Anda ingin terhubung membuat perubahan gunakan itu
+
+00:22:19.200 --> 00:22:23.840
+ sebagai server multiguna, Anda dapat melakukannya tetapi tetap awasi
+
+00:22:23.840 --> 00:22:27.120
+ hal-hal penagihan Anda hanya memastikan bahwa Anda belum melebihi ambang dan
+
+00:22:27.120 --> 00:22:29.440
+ hal-hal seperti itu jika Anda hanya menggunakannya sebagai proxy
+
+00:22:29.440 --> 00:22:32.159
+ sangat tidak mungkin Anda akan melakukannya, itu hanya sesuatu yang Anda ucapkan
+
+00:22:32.159 --> 00:22:37.520
+ data melalui jadi periksa itu aws.amazon.com untuk memulai sendiri
+
+00:22:37.520 --> 00:22:41.440
+ Jika Anda memiliki pertanyaan, kirimkan pertanyaan tersebut ke komunitas kami
+
+00:22:41.440 --> 00:22:44.480
+ perselisihan kami, Anda akan menemukan tautannya di kategori 5
+
+00:22:44.480 --> 00:22:48.720
+ TV pada menu interaksi sementara itu jika Anda menikmati ini jika Anda telah menggunakannya atau
+
+00:22:48.720 --> 00:22:53.039
+ merasa bermanfaat beri saya jempol besar, silakan berlangganan dan sampai jumpa
+
+00:22:53.039 --> 00:23:07.059
+ setelah istirahat [Musik]
+
+00:23:15.520 --> 00:23:18.559
+ Selamat datang kembali ini adalah TV teknologi kategori 5
+
+00:23:18.559 --> 00:23:22.240
+ dan saya ingin berbicara tentang apa yang saya lakukan di rumah
+
+00:23:22.240 --> 00:23:26.640
+ atau lebih tepatnya apa yang saya rencanakan untuk dilakukan sambil duduk-duduk menonton Netflix
+
+00:23:26.640 --> 00:23:30.480
+ saya tidak punya waktu untuk duduk-duduk dan menonton netflix saya berharap saya melakukannya tetapi
+
+00:23:30.480 --> 00:23:34.960
+ uh tidak keluarga saya selalu babi Netflix dan saya seperti saya hanya akan pergi ke komputer
+
+00:23:34.960 --> 00:23:38.720
+ dan itu bagus karena memaksa saya untuk memulai ada Netflix di komputer
+
+00:23:38.720 --> 00:23:44.000
+ sekarang jeff kamu mengganggu saya uh tidak tapi itu
+
+00:23:44.000 --> 00:23:46.960
+ hebat karena memaksa saya untuk mulai melihat beberapa hal yang kami lakukan
+
+00:23:46.960 --> 00:23:51.760
+ di sekitar rumah dan pergi bagaimana saya bisa membuat ini milik saya dan sebagainya
+
+00:23:51.760 --> 00:23:55.120
+ Anda tahu saya sebutkan di bagian atas pertunjukan yang dimiliki putra kami
+
+00:23:55.120 --> 00:24:00.240
+ menyolder dan dia melakukannya dengan sangat baik dan mengingatkan kita berapa usianya
+
+00:24:00.240 --> 00:24:05.200
+ baru saja memasuki usia 12. baru saja berusia 12. baiklah um tapi uh ya dia sudah selesai
+
+00:24:05.200 --> 00:24:09.760
+ sangat baik dengan itu dan uh dia menyolder dua kalkulator sejauh ini
+
+00:24:09.760 --> 00:24:13.919
+ um dan salah satu dari mereka dia dibawa ke sekolah yang gurunya benar-benar kaget
+
+00:24:13.919 --> 00:24:16.000
+ pergi dengan ya saya pikir 12 tahun dan dia
+
+00:24:16.000 --> 00:24:20.320
+ udah bikin kalkulator ya ya dia bikin kalkulator kita dapat dari kit diy
+
+00:24:20.320 --> 00:24:23.360
+ amazon dan dia membangunnya dan mungkin dua jam
+
+00:24:23.360 --> 00:24:27.039
+ pekerjaan itu benar-benar fenomenal tidak nyata dan pekerjaan menyoldernya adalah
+
+00:24:27.039 --> 00:24:30.880
+ benar-benar bersih luar biasa seperti terlihat profesional
+
+00:24:30.880 --> 00:24:34.559
+ tapi bagaimanapun dia telah menanyakan bagaimana melakukan hal-hal lain dan saat kita sedang menyolder dia
+
+00:24:34.559 --> 00:24:37.200
+ seperti baik apa ini dan apa ini dan bagaimana itu bekerja dan
+
+00:24:37.200 --> 00:24:40.480
+ Aku akan, aku ingin bisa mengajarinya hal-hal ini
+
+00:24:40.480 --> 00:24:46.480
+ saya ingin dapat menjelaskan kepadanya bagaimana sebenarnya papan sirkuit bekerja tidak hanya
+
+00:24:46.480 --> 00:24:49.360
+ menyoldernya tetapi memahami komponen dan perutean dan semua itu
+
+00:24:49.360 --> 00:24:53.279
+ jenis barang dan maksud saya saya tahu Anda dapat membeli um
+
+00:24:53.279 --> 00:25:00.400
+ hanya papan biasa yang hanya berupa deretan titik sambungan kecil
+
+00:25:00.400 --> 00:25:03.840
+ tapi saya ingin bisa membuat papan sendiri ya dan begitu dia bertanya
+
+00:25:03.840 --> 00:25:07.279
+ khususnya jika kita dapat menemukan kit diy untuk
+
+00:25:07.279 --> 00:25:10.320
+ kotak yang tidak berguna, Anda tahu itulah kotak tempat Anda menekan tombol ya dan
+
+00:25:10.320 --> 00:25:15.840
+ hal kecil keluar dan muncul, ya cobalah
+
+00:25:17.600 --> 00:25:22.640
+ apa yang kamu lakukan apakah kamu serius
+
+00:25:25.039 --> 00:25:30.400
+ Ya ampun itu lucu
+
+00:25:32.720 --> 00:25:39.520
+ halo itu seperti memiliki anak kucing di sana, itu seperti kucing saya
+
+00:25:40.240 --> 00:25:44.799
+ hei hei sekarang jadi saya sudah mencari satu belum menemukan satu tetapi saya menemukan banyak
+
+00:25:44.799 --> 00:25:48.080
+ orang-orang seperti oh Anda dapat membuatnya menggunakan arduino Anda dapat membuatnya menggunakan ini
+
+00:25:48.080 --> 00:25:55.520
+ dan saya seperti jika saya akan membuat kotak diy yang tidak berguna tempat saya ingin membuatnya
+
+00:25:55.520 --> 00:25:58.559
+ dasar jadi saya telah meneliti cara membuatnya
+
+00:25:58.559 --> 00:26:03.679
+ pcbs saya sendiri di rumah oke sebenarnya tidak terlalu sulit
+
+00:26:03.679 --> 00:26:08.960
+ dan saya terpesona bahwa yang saya butuhkan hanyalah printer laser untuk mengatur perutean saya
+
+00:26:08.960 --> 00:26:12.880
+ seperti ke mana jalannya pergi sehingga Anda akan benar-benar menggoresnya
+
+00:26:12.880 --> 00:26:15.919
+ Saya akan benar-benar menggoresnya di rumah
+
+00:26:15.919 --> 00:26:20.159
+ itu jauh melampaui saya jeff itu benar-benar melibatkan bahan kimia
+
+00:26:20.159 --> 00:26:23.679
+ itu tetapi tetapi proses yang sangat sederhana jadi saya telah menemukan
+
+00:26:23.679 --> 00:26:26.880
+ Saya telah melakukan banyak penelitian ke dalamnya dan jadi saya menemukan aa
+
+00:26:26.880 --> 00:26:29.919
+ cara mudah sangat sederhana untuk membuat pcb saya sendiri
+
+00:26:29.919 --> 00:26:32.799
+ dan itulah yang akan kami lakukan jadi proyek saya untuk selanjutnya mungkin a
+
+00:26:32.799 --> 00:26:35.600
+ beberapa bulan karena saya harus belajar bagaimana hal ini
+
+00:26:35.600 --> 00:26:39.520
+ bekerja adalah merancang um papan sirkuit yang saya miliki
+
+00:26:39.520 --> 00:26:43.120
+ tidak pernah dilakukan sebelumnya membuat papan sirkuit dan kemudian anak saya
+
+00:26:43.120 --> 00:26:45.919
+ akan menyoldernya bersama-sama dan kami akan membuatnya sendiri
+
+00:26:45.919 --> 00:26:50.960
+ kotak tidak berguna yang saya harap juga dapat mencetak kotak 3d juga oh itu keren
+
+00:26:50.960 --> 00:26:56.480
+ ya Anda hanya menyelam tepat di saya ketika saya melakukan sesuatu saya tidak pergi kecil
+
+00:26:56.480 --> 00:27:00.320
+ dan Anda tahu pendekatan saya sedikit berbeda karena saya sangat banyak
+
+00:27:00.320 --> 00:27:03.520
+ menjadi seperti saya suka mempelajari sesuatu terlebih dahulu
+
+00:27:03.520 --> 00:27:09.200
+ dan kemudian meningkatkan investasi saya dalam proses itu dan Anda suka berbicara
+
+00:27:09.200 --> 00:27:13.679
+ tentang langsung melompat ke pembuatan PCB jadi saya akan mendukung jadi Anda tahu
+
+00:27:13.679 --> 00:27:16.799
+ jika ini yang Anda pikirkan, mungkin saya ingin bisa membuat sirkuit sendiri
+
+00:27:16.799 --> 00:27:20.399
+ dan hal-hal seperti itu titik awal saya adalah papan tempat memotong roti ya
+
+00:27:20.399 --> 00:27:25.440
+ dan papan tempat memotong roti memungkinkan Anda untuk mengatur sirkuit yang telah Anda rancang atau
+
+00:27:25.440 --> 00:27:28.559
+ yang telah Anda unduh seperti cetak biru sirkuit um
+
+00:27:28.559 --> 00:27:32.399
+ dari internet atau bagaimanapun Anda punya yang memungkinkan Anda meletakkannya
+
+00:27:32.399 --> 00:27:36.799
+ pada dasarnya adalah tiruan PCB
+
+00:27:36.799 --> 00:27:41.039
+ yang akan berfungsi seperti PCB, tetapi Anda dapat membongkar semuanya dan
+
+00:27:41.039 --> 00:27:46.399
+ letakkan bagian-bagiannya dengan benar dan itu sangat murah dan sangat murah dan itu baru saja Anda mulai
+
+00:27:46.399 --> 00:27:50.080
+ dan kemudian langkah selanjutnya bagi saya adalah apa yang disebut papan prototipe sehingga Anda mengerti
+
+00:27:50.080 --> 00:27:53.279
+ papan PCB yang memiliki semua lubang yang benar dan
+
+00:27:53.279 --> 00:27:57.840
+ mereka punya solder um seperti poin tapi tidak ada
+
+00:27:57.840 --> 00:28:02.080
+ interkoneksi di antara mereka sehingga Anda benar-benar menjalankan kabel atau Anda
+
+00:28:02.080 --> 00:28:05.760
+ jalankan sedikit solder antara dua sambungan yang berbeda misalnya
+
+00:28:05.760 --> 00:28:10.080
+ dan Anda melakukannya dengan cara itu jadi itu langkah kedua saya ya maka saya akan melihatnya
+
+00:28:10.080 --> 00:28:14.720
+ mungkin mengikuti rute mengetsa sendiri
+
+00:28:14.720 --> 00:28:19.200
+ PCB karena Anda sedang memasuki proses kimia
+
+00:28:19.200 --> 00:28:24.960
+ dan saya belum menelitinya tapi um itu proses yang jauh lebih rumit jadi
+
+00:28:24.960 --> 00:28:27.919
+ Saya ingin memulai sedikit lebih sederhana dengan PCB pertama saya
+
+00:28:27.919 --> 00:28:32.080
+ dibangun di atas papan tempat memotong roti sangat sangat mendasar tetapi saya merancangnya dengan benar
+
+00:28:32.080 --> 00:28:35.120
+ oke dan semua itu membutuhkan lima volt
+
+00:28:35.120 --> 00:28:38.880
+ sinyal dan ketika memiliki lima volt itu
+
+00:28:38.880 --> 00:28:43.440
+ Relai ditutup sehingga relai benar oke bila tidak memiliki tegangan lima volt
+
+00:28:43.440 --> 00:28:47.520
+ relai terbuka sehingga terputus
+
+00:28:47.520 --> 00:28:51.440
+ alasan saya membuat bahwa itu adalah aplikasi yang dibuat khusus jadi saya membuatnya
+
+00:28:51.440 --> 00:28:56.000
+ di papan tempat memotong roti dan memberi makan pada lima volt berasal
+
+00:28:56.000 --> 00:29:03.440
+ tebakan apapun tebakan spc bukan itu lagi tiga huruf akronim usb
+
+00:29:03.440 --> 00:29:07.360
+ usb usb menarik sinyal lima volt dari centang mikro
+
+00:29:07.360 --> 00:29:12.399
+ router oke dan kemudian di centang mikro saya kode program yang mengatakan
+
+00:29:12.399 --> 00:29:17.039
+ yang pada dasarnya untuk membodohi jika internet mati
+
+00:29:17.039 --> 00:29:20.559
+ mematikan daya pada usb oh dan kemudian itu
+
+00:29:20.559 --> 00:29:25.520
+ membuka relai dan apa kontrol relai tetapi daya ke modem saya
+
+00:29:25.520 --> 00:29:29.919
+ jadi modem saya kalau internet mati otomatis mati
+
+00:29:29.919 --> 00:29:33.120
+ kekuatan itu sendiri mati karena relay saya
+
+00:29:33.120 --> 00:29:37.039
+ kanan dan tunggu lima detik lalu nyalakan kembali sehingga pada dasarnya a
+
+00:29:37.039 --> 00:29:41.200
+ versi virtual apakah Anda mematikannya dan menyalakannya lagi karena
+
+00:29:41.200 --> 00:29:43.679
+ apa yang Anda lakukan saat Anda berada di internet turun, Anda mencabutnya
+
+00:29:43.679 --> 00:29:46.799
+ dari momentum Anda menunggu lima detik dan Anda pasang kembali dan
+
+00:29:46.799 --> 00:29:50.240
+ Anda tahu delapan kali dari sepuluh itu akan kembali dan bekerja
+
+00:29:50.240 --> 00:29:54.559
+ benar jadi itulah sirkuit yang saya bangun jadi saya membangunnya di papan prototipe sekali
+
+00:29:54.559 --> 00:29:58.240
+ Saya membuatnya berfungsi dan saya hanya menyoldernya bersama-sama dan itu sangat sangat sederhana
+
+00:29:58.240 --> 00:30:00.799
+ sirkuit sangat keren dan bekerja dengan baik saya suka
+
+00:30:00.799 --> 00:30:04.720
+ itu sangat keren jadi alat apa yang Anda punya
+
+00:30:04.720 --> 00:30:08.080
+ jauh di mana kamu di uh baik seperti yang saya katakan baru saja saya lakukan
+
+00:30:08.080 --> 00:30:13.760
+ penelitian minggu lalu ini oh jadi saya um saya pada tahap pembelian
+
+00:30:13.760 --> 00:30:17.679
+ eh jadi kita punya semua barang solder yang akan saya beli papan beli
+
+00:30:17.679 --> 00:30:21.919
+ bahan kimia yang sudah saya unduh perangkat lunak um
+
+00:30:21.919 --> 00:30:25.600
+ untuk mendesain pcb wow um
+
+00:30:25.600 --> 00:30:29.360
+ dan saya punya kit komponen yang sedang diproses dengan semua
+
+00:30:29.360 --> 00:30:33.039
+ resistor dan kapasitor benar ya semua hal semacam itu itu hal yang rapi
+
+00:30:33.039 --> 00:30:36.559
+ juga bahwa akhir-akhir ini maksud saya Anda tidak bisa berjalan
+
+00:30:36.559 --> 00:30:39.039
+ ke gubuk radio seperti dulu kami bisa ada disana
+
+00:30:39.039 --> 00:30:43.679
+ masih ada toko seperti di sini di barrie kita punya yang bernama seaal
+
+00:30:43.679 --> 00:30:47.039
+ yang merupakan toko brilian yang seperti gubuk radio tua di mana Anda
+
+00:30:47.039 --> 00:30:50.399
+ masuk dan itu seperti saya hanya perlu satu kapasitor ya
+
+00:30:50.399 --> 00:30:52.880
+ dan ini seperti di sini Anda pergi, Anda tahu itu seperti laci
+
+00:30:52.880 --> 00:30:57.279
+ dan laci kapasitor dan resistor dan segala sesuatu dioda dan apa pun
+
+00:30:57.279 --> 00:31:01.519
+ tetapi hanya untuk mendapatkan kit seharga 20 dolar yang dimilikinya
+
+00:31:01.519 --> 00:31:04.960
+ semua jenis seperti hal-hal biasa dan ini adalah kit yang dilengkapi dengan file
+
+00:31:04.960 --> 00:31:07.440
+ papan tempat memotong roti dan itu dilengkapi dengan papan tempat memotong roti dan itu
+
+00:31:07.440 --> 00:31:11.279
+ adalah salah satu hal yang saya ingin suka ya saya akan merancangnya tetapi sebagian
+
+00:31:11.279 --> 00:31:14.640
+ proses perencanaan seperti yang Anda katakan menggunakan papan tempat memotong roti untuk mencari tahu
+
+00:31:14.640 --> 00:31:17.519
+ bagaimana sirkuit akan berjalan dan itu akan menjadi pembelajaran yang bagus
+
+00:31:17.519 --> 00:31:19.840
+ pengalaman untuk Luke karena mereka akan menjadi seperti ini
+
+00:31:19.840 --> 00:31:23.200
+ bagaimana ini bekerja dan mari kita coba ini dan mari kita lakukan itu dan kemudian
+
+00:31:23.200 --> 00:31:26.080
+ Anda tahu kami akan bisa mencobanya di sana tanpa benar-benar membuat karya kami sendiri
+
+00:31:26.080 --> 00:31:30.880
+ Itu sangat bagus Anda sebutkan juga arduino dan arduino semacam itu
+
+00:31:30.880 --> 00:31:34.159
+ seperti itu pengontrol jadi ya Anda tahu sedangkan
+
+00:31:34.159 --> 00:31:37.200
+ raspberry pi atau komputer papan tunggal lainnya adalah benar
+
+00:31:37.200 --> 00:31:41.200
+ komputer nyata dengan sistem operasi dan segala sesuatu yang dimiliki Arduino seperti Anda
+
+00:31:41.200 --> 00:31:45.519
+ cukup program untuk melakukan tugas yang sangat spesifik itu adalah keadaan padat
+
+00:31:45.519 --> 00:31:48.960
+ dan itu akan menanggapi dan saya pikir ini
+
+00:31:48.960 --> 00:31:51.840
+ mengapa itu akan bekerja sangat baik untuk sebuah Arduino
+
+00:31:51.840 --> 00:31:55.679
+ eh untuk kotak yang tidak berguna adalah karena itu seperti
+
+00:31:55.679 --> 00:31:59.200
+ itu baik hidup atau mati itu benar dan jika aktif lakukan ini
+
+00:31:59.200 --> 00:32:03.200
+ dan kemudian itu akan mematikan pemrograman yang sangat sangat dasar
+
+00:32:03.200 --> 00:32:09.919
+ digital tulis empat koma hi hi titik koma dan kemudian kita
+
+00:32:09.919 --> 00:32:13.519
+ akan menunda selama satu detik yaitu seribu milidetik
+
+00:32:13.519 --> 00:32:17.039
+ dan kemudian kita akan menyalin baris itu sekarang
+
+00:32:17.039 --> 00:32:20.960
+ menurut Anda apa artinya tinggi versus rendah yang akan saya taruh di sini
+
+00:32:20.960 --> 00:32:27.440
+ hanya menebak atau menonaktifkan ya jadi seperti itulah sirkuit saya sekarang
+
+00:32:27.440 --> 00:32:32.399
+ dan saya akan cukup mencolokkannya ke daya usb jadi saya tidak akan mencolokkannya
+
+00:32:32.399 --> 00:32:36.240
+ komputer saya ingin benar-benar menyalakan perangkat ini dan melihat apakah itu
+
+00:32:36.240 --> 00:32:40.840
+ menjalankan program saya dan jika ya kita akan melihat cahaya ini
+
+00:32:40.840 --> 00:32:45.279
+ flash di sana kami pergi yang rapi setiap satu detik jadi kami
+
+00:32:45.279 --> 00:32:49.600
+ sebenarnya membuat sirkuit cukup cepat uh dan menciptakan
+
+00:32:49.600 --> 00:32:53.919
+ Program untuk sekarang memberi tahu cahaya ini apa yang harus dilakukan dan kami mengatakannya dengan sangat
+
+00:32:53.919 --> 00:32:57.760
+ cukup hidupkan dan matikan lagi tetapi jika Anda
+
+00:32:57.760 --> 00:32:59.679
+ membuat sirkuit Anda sendiri yang harus Anda lakukan
+
+00:32:59.679 --> 00:33:04.159
+ ics Anda harus memprogramnya sendiri yup Anda harus memikirkan caranya
+
+00:33:04.159 --> 00:33:07.919
+ wow saya ingin melihat proyek ini sebagai pekerjaan yang sedang berjalan
+
+00:33:07.919 --> 00:33:11.840
+ oke dan kemudian lihat bagaimana uh bagaimana itu bersatu ya kedengarannya bagus
+
+00:33:11.840 --> 00:33:16.559
+ kami menyebutkan komunitas di sini di acara kami dan eh server perselisihan kami di
+
+00:33:16.559 --> 00:33:20.320
+ khususnya saya telah memanfaatkan jeff komunitas kami untuk
+
+00:33:20.320 --> 00:33:23.760
+ masuk dan berbagi ide-ide saya untuk sirkuit dan ya
+
+00:33:23.760 --> 00:33:27.519
+ hal-hal seperti itu dan ada beberapa orang di komunitas kami yang adil
+
+00:33:27.519 --> 00:33:32.559
+ seperti jauh di sini sejauh kemampuan dan pemahaman mereka tentang itu
+
+00:33:32.559 --> 00:33:36.320
+ jenis hal jadi itu sangat membantu saya sebagai saya
+
+00:33:36.320 --> 00:33:38.880
+ belajar begitu oh saya bahkan saya sepenuhnya berencana untuk menggunakan
+
+00:33:38.880 --> 00:33:42.640
+ komunitas memanfaatkan bekerja saya melalui bug ya dan jika Anda salah satu dari orang-orang itu
+
+00:33:42.640 --> 00:33:46.159
+ komunitas sekarang, angkat tangan dan katakan ya saya
+
+00:33:46.159 --> 00:33:48.480
+ memahami bagaimana semua itu bekerja saya ingin membantu
+
+00:33:48.480 --> 00:33:52.640
+ dan eh dan itu adalah sesuatu yang menurut saya akan membuat sangat rapi
+
+00:33:52.640 --> 00:33:54.320
+ fitur untuk pertunjukan serta Anda belajar
+
+00:33:54.320 --> 00:33:57.200
+ ya pasti buat kami tetap diposting di jeff itu pasti saya akan benar-benar tertarik
+
+00:33:57.200 --> 00:34:00.159
+ untuk mengetahui bagaimana keadaannya ya saya akan memposting hal-hal di belakang
+
+00:34:00.159 --> 00:34:06.320
+ adegan a kotak tidak berguna lainnya apakah Anda punya ide, tapi saya bersemangat
+
+00:34:06.320 --> 00:34:09.520
+ ketika saya menemukan seperti ketika saya memikirkan sesuatu
+
+00:34:09.520 --> 00:34:13.200
+ Pernahkah Anda mengalami saat-saat di mana saya seperti saya sangat berharap saya
+
+00:34:13.200 --> 00:34:16.240
+ memiliki sesuatu yang akan melakukan ini tetapi itu tidak ada
+
+00:34:16.240 --> 00:34:20.079
+ Di sinilah percetakan 3d menarik bagi saya karena saya sedang membuat hal-hal itu
+
+00:34:20.079 --> 00:34:23.520
+ belum ada, saya belum benar-benar berpikir
+
+00:34:23.520 --> 00:34:27.520
+ sejauh itu untuk apa yang ada dan tidak ada
+
+00:34:27.520 --> 00:34:29.919
+ um
+
+00:34:30.960 --> 00:34:34.000
+ tidak, saya belum benar-benar berpikir sejauh itu untuk mendapatkan beberapa ide
+
+00:34:34.000 --> 00:34:37.040
+ ya dan berbagi itu pasti ada banyak hal
+
+00:34:37.040 --> 00:34:43.679
+ ya seperti saya selalu ingin melakukan um kami um sistem suara di seluruh rumah
+
+00:34:43.679 --> 00:34:48.879
+ yang terhubung ke um Anda tahu perangkat amazon kami dan hal-hal seperti itu
+
+00:34:48.879 --> 00:34:52.079
+ itu tetapi saya ingin memiliki sensor di mana
+
+00:34:52.079 --> 00:34:56.320
+ ketika saya berjalan dari satu ruangan ke ruangan lain, sensor gerak bekerja dan akan menutup
+
+00:34:56.320 --> 00:34:59.760
+ dari speaker satu ruangan dan tambahkan ke tempat yang baru saja saya kunjungi
+
+00:34:59.760 --> 00:35:02.000
+ itu jauh lebih maju tapi itu mungkin
+
+00:35:02.000 --> 00:35:05.119
+ satu-satunya hal yang dapat saya pikirkan di mana saya seperti saya ingin melakukan ini tetapi melihat Anda berbicara
+
+00:35:05.119 --> 00:35:08.960
+ tentang itu dan kemudian saya pikir baik-baik saja Anda dapat menggunakan sensor inframerah pasif
+
+00:35:08.960 --> 00:35:14.640
+ ya yang digunakan dalam sensor gerak Anda bisa menggunakan sensor laser tapi
+
+00:35:14.640 --> 00:35:19.200
+ pir sangat sangat murah ya ya dan itu hanya sensor kecil yang seperti itu
+
+00:35:19.200 --> 00:35:22.880
+ oke ada gerakan lakukan sesuatu ya jadi kamu bisa menciptakan sesuatu
+
+00:35:22.880 --> 00:35:27.520
+ lagi dengan relai yang mengontrol apakah speaker memiliki
+
+00:35:27.520 --> 00:35:31.599
+ sirkuit yang sudah selesai atau tidak ya jadi jika itu hanya a
+
+00:35:31.599 --> 00:35:36.160
+ sekelompok speaker yang terhubung melalui amplifier Anda dapat mengatur relai
+
+00:35:36.160 --> 00:35:40.000
+ dengan sensor pir yang dapat Anda kendalikan dengan gerakan
+
+00:35:40.000 --> 00:35:44.160
+ ya bagus dan jika tidak ada gerakan selama 10 menit matikan speaker
+
+00:35:44.160 --> 00:35:45.760
+ otomatis atau sesuatu seperti itu ya
+
+00:35:45.760 --> 00:35:49.200
+ Persis seperti ide semacam ini seperti ada begitu banyak hal yang Anda bisa
+
+00:35:49.200 --> 00:35:51.359
+ lakukan saat Anda mulai memahami dan kemudian
+
+00:35:51.359 --> 00:35:55.839
+ ada sisi lain di mana ada sesuatu yang rusak dan Anda bisa memperbaikinya ya
+
+00:35:55.839 --> 00:35:59.200
+ itu perasaan yang bagus dan itu sudah selesai. Kami sudah melakukannya
+
+00:35:59.200 --> 00:36:02.000
+ ya bagus jadi Anda tahu Anda mendapatkan baterai kecil itu
+
+00:36:02.000 --> 00:36:07.280
+ penguji ingin memeriksa muatannya ya jadi kami punya salah satunya dan itu
+
+00:36:07.280 --> 00:36:09.200
+ lucu ketika anak saya sedang membangun kalkulatornya
+
+00:36:09.200 --> 00:36:12.560
+ kami tidak yakin apakah baterainya berfungsi dan kami tidak mendapatkan apa-apa
+
+00:36:12.560 --> 00:36:15.760
+ Saya seperti ini adalah aneh bahwa kita biasanya tidak mendapatkan meskipun sudah mati
+
+00:36:15.760 --> 00:36:18.640
+ muncul di merah tapi tidak ada apa-apa jadi kami membukanya
+
+00:36:18.640 --> 00:36:22.960
+ ternyata koneksi sebenarnya telah putus oh
+
+00:36:22.960 --> 00:36:27.359
+ sekarang saya tidak tahu ya dan anak saya seperti oh saya bisa memperbaikinya dan
+
+00:36:27.359 --> 00:36:30.240
+ dia memperbaikinya, kami menyatukannya kembali dan kemudian kami dan itu berhasil dan itu seperti oh
+
+00:36:30.240 --> 00:36:34.000
+ ya itu baterai mati ya saya bisa berhubungan dengan itu juga saya menggunakan a
+
+00:36:34.000 --> 00:36:38.160
+ bantal speaker untuk podcast oke dan eh karena itu lho
+
+00:36:38.160 --> 00:36:40.880
+ terhubung dengan kabel ke telepon saya itu ditarik
+
+00:36:40.880 --> 00:36:45.119
+ ya dan itu ditarik keluar jadi itu hal yang sederhana tapi saya benar-benar apa
+
+00:36:45.119 --> 00:36:48.720
+ apakah saya tidak membeli yang lain, tidak, tidak, saya mengambil
+
+00:36:48.720 --> 00:36:52.480
+ itu terpisah dan saya menyolder ulang dan memperkuatnya
+
+00:36:52.480 --> 00:36:56.160
+ jadi itu tidak akan terjadi lagi oh cantik membuatnya lebih baik daripada dia dia
+
+00:36:56.160 --> 00:37:00.240
+ mengalihkan pikirannya ke hal-hal seperti e-waste ya dan dia seperti jika seseorang
+
+00:37:00.240 --> 00:37:04.960
+ akan menyingkirkan kemungkinan tv atau monitor komputer mereka
+
+00:37:04.960 --> 00:37:08.240
+ itu masih bekerja ayah itu hanya sesuatu di dalam bangkrut
+
+00:37:08.240 --> 00:37:12.400
+ dia seperti saya bisa memperbaikinya saya seperti ya Anda memikirkannya dan begitu juga rodanya
+
+00:37:12.400 --> 00:37:15.599
+ berbalik terakhir dan dia seperti dapatkah saya melakukan hal-hal ini dan kemudian menjualnya
+
+00:37:15.599 --> 00:37:20.160
+ mereka berusia 12 tahun itu adalah karier
+
+00:37:20.160 --> 00:37:22.960
+ di sejumlah
+
+00:37:23.599 --> 00:37:27.359
+ eh sepertinya sangat berharga memiliki kemampuan itu
+
+00:37:27.359 --> 00:37:30.960
+ jadi aku akan melatihnya untuk selanjutnya uh yah dia 12 tahun
+
+00:37:30.960 --> 00:37:38.560
+ delapan enam tahun saya pensiun saya punya monitor masuk saya tidak tahu
+
+00:37:38.560 --> 00:37:42.960
+ mungkin monitor cantik dengan layar 23 inci atau 24 inci
+
+00:37:42.960 --> 00:37:47.359
+ masuk sebagai limbah elektronik dan saya menyukainya
+
+00:37:47.359 --> 00:37:50.720
+ Aku akan melihatnya dan jadi putriku dan aku melihatnya
+
+00:37:50.720 --> 00:37:57.280
+ dan ada satu kapasitor yang terbakar jadi saya online dan
+
+00:37:57.280 --> 00:37:59.920
+ saya membeli salah satu kapasitor yang mereka jual dalam kemasan
+
+00:37:59.920 --> 00:38:03.599
+ tiga dan itu dua belas dolar jadi untuk 12
+
+00:38:03.599 --> 00:38:07.760
+ kami mendapat paket tiga kami mengganti salah satu kapasitor dan monitor itu
+
+00:38:07.760 --> 00:38:13.520
+ sekarang duduk di meja putri saya oh astaga itu luar biasa itu luar biasa
+
+00:38:13.520 --> 00:38:16.720
+ dan dia benar, tapi Anda tidak hanya bisa memperbaiki barang jeff
+
+00:38:16.720 --> 00:38:19.920
+ katakanlah sesuatu menjadi sampah elektronik atau Anda tahu Anda menemukan sesuatu di
+
+00:38:19.920 --> 00:38:22.320
+ sisi jalan yang baru saja dibuang seseorang karena tidak bisa, mereka tidak bisa
+
+00:38:22.320 --> 00:38:26.480
+ tahu bagaimana memperbaikinya um dan mungkin jika memperbaikinya lebih
+
+00:38:26.480 --> 00:38:30.079
+ mahal daripada membeli yang baru dalam banyak kasus juga
+
+00:38:30.079 --> 00:38:35.119
+ um Anda bisa bahkan jika Anda tidak bisa memperbaikinya Anda bisa melakukan apa yang disebut pematrian
+
+00:38:35.119 --> 00:38:39.440
+ itu benar sehingga Anda dapat menghapus semua komponen yang baik dari itu dan
+
+00:38:39.440 --> 00:38:43.119
+ letakkan di laci pengatur ya sehingga Anda bisa memiliki radio sendiri
+
+00:38:43.119 --> 00:38:46.880
+ gubuk di rumah tempat Anda memiliki laci dari semua bagian yang berbeda ini
+
+00:38:46.880 --> 00:38:50.079
+ dan kemudian ketika ada sesuatu yang rusak Anda tidak perlu menghabiskan 12
+
+00:38:50.079 --> 00:38:53.280
+ online untuk membelinya. Saya berharap saya tidak tahu dia akan terlibat dalam hal ini
+
+00:38:53.280 --> 00:38:57.040
+ karena di musim panas saya punya sekitar empat komputer
+
+00:38:57.040 --> 00:39:00.320
+ beberapa proyektor kami membawa mereka semua limbah elektronik
+
+00:39:00.320 --> 00:39:03.760
+ jadi seperti oh saya bisa membongkar itu oh tentu ya mendapatkannya
+
+00:39:03.760 --> 00:39:07.119
+ oh baiklah bagian-bagian yang kita jalani dan pelajari ya tepatnya
+
+00:39:07.119 --> 00:39:10.960
+ sangat keren baik terus kami diposting pasti dan hey komentar di bawah memberitahu kami
+
+00:39:10.960 --> 00:39:13.359
+ tentang beberapa eksploitasi yang Anda miliki
+
+00:39:13.359 --> 00:39:18.560
+ eh berkaitan dengan jenis topik ini dan jika memang demikian
+
+00:39:18.560 --> 00:39:20.880
+ sesuatu yang menarik minat Anda yang belum pernah Anda ikuti
+
+00:39:20.880 --> 00:39:24.720
+ hai beri komentar di bawah, kami juga ingin mendengar dari Anda dan kami ingin sekali menerima Anda
+
+00:39:24.720 --> 00:39:27.920
+ sebagai bagian dari proses itu sebagaimana jeff sedang belajar
+
+00:39:27.920 --> 00:39:32.079
+ karena saya juga belajar dan semakin mempelajari jenis-jenis itu
+
+00:39:32.079 --> 00:39:36.800
+ seperti perbaikan komponen dan papan sirkuit dan yang lainnya
+
+00:39:36.800 --> 00:39:41.359
+ Ini sangat menyenangkan ya itu hobi yang hebat dan karir yang luar biasa jika Anda
+
+00:39:41.359 --> 00:39:45.200
+ benar-benar ingin melakukannya juga jadi itu benar-benar bagus untuk putra Anda yang ingin saya dengar
+
+00:39:45.200 --> 00:39:49.680
+ bagaimana dia menikmatinya jadi ketika dia um kurasa
+
+00:39:49.680 --> 00:39:53.359
+ 13 plus jadi tahun depan Anda bisa membawanya ke studio
+
+00:39:53.359 --> 00:39:56.560
+ dan dia bisa menunjukkan bagaimana dia bercumbu
+
+00:39:56.560 --> 00:40:00.480
+ kedengarannya bagus sangat keren buat itu terjadi kita harus pergi ke ruang redaksi
+
+00:40:00.480 --> 00:40:02.960
+ becca ada di sana dengan berita utama kami untuk minggu ini
+
+00:40:02.960 --> 00:40:08.800
+ ini dia, inilah yang akan muncul di kategori ruang berita 5 dot tv
+
+00:40:08.800 --> 00:40:12.000
+ peretas menggunakan bug windows yang parah untuk berkompromi
+
+00:40:12.000 --> 00:40:17.280
+ server yang belum ditambal, tiga paket javascript telah dihapus dari npm
+
+00:40:17.280 --> 00:40:22.560
+ portal berisi kode berbahaya nokia telah ditugaskan untuk membangun a
+
+00:40:22.560 --> 00:40:27.040
+ jaringan seluler 4g baru di bulan 80 baru
+
+00:40:27.040 --> 00:40:32.240
+ Teknologi pengisian daya nirkabel watt dari xiaomi mengejutkan kami
+
+00:40:32.240 --> 00:40:36.240
+ raspberry pi compute module 4 telah dirilis
+
+00:40:36.240 --> 00:40:40.720
+ beri tahu Anda spesifikasi dan bagaimana hal ini mengubah banyak hal untuk industri
+
+00:40:40.720 --> 00:40:44.000
+ tetap berpegang pada detail lengkap dan sudut crypto minggu ini
+
+00:40:44.000 --> 00:40:48.640
+ yang akan datang ini adalah ruang berita kategori 5 dot tv
+
+00:40:48.640 --> 00:40:52.079
+ meliput berita teknologi teratas minggu ini dengan sedikit linux
+
+00:40:52.079 --> 00:40:54.480
+ bias
+
+00:40:56.240 --> 00:41:00.319
+ dari ruang redaksi saya becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ peretas menggunakan bug windows yang parah untuk berkompromi
+
+00:41:03.920 --> 00:41:07.920
+ server yang belum ditambal salah satu kerentanan jendela paling kritis
+
+00:41:07.920 --> 00:41:10.400
+ diungkapkan tahun ini sedang diserang aktif
+
+00:41:10.400 --> 00:41:14.480
+ oleh peretas yang mencoba membuka pintu belakang server yang menyimpan kredensial untuk setiap
+
+00:41:14.480 --> 00:41:18.480
+ akun pengguna dan administratif di jaringan
+
+00:41:18.480 --> 00:41:23.119
+ peneliti memberi nama kerentanan xerologon karena serangan bekerja dengan
+
+00:41:23.119 --> 00:41:27.200
+ mengirim string nol dalam serangkaian pesan yang menggunakan internet
+
+00:41:27.200 --> 00:41:30.720
+ protokol logon yang diandalkan oleh server windows untuk file
+
+00:41:30.720 --> 00:41:34.560
+ berbagai tugas termasuk mengizinkan pengguna akhir untuk masuk
+
+00:41:34.560 --> 00:41:38.560
+ ke logon xero jaringan karena kerentanan telah
+
+00:41:38.560 --> 00:41:41.280
+ dijuluki mendapat perhatian luas bulan lalu
+
+00:41:41.280 --> 00:41:44.000
+ ketika perusahaan yang menemukannya mengatakan dapat memberikan penyerang
+
+00:41:44.000 --> 00:41:48.079
+ akses cepat ke direktori aktif yang digunakan admin untuk membuat
+
+00:41:48.079 --> 00:41:52.480
+ hapus dan kelola akun jaringan, direktori aktif dan domain
+
+00:41:52.480 --> 00:41:55.599
+ pengendali yang mereka jalankan adalah salah satu hadiah yang paling didambakan
+
+00:41:55.599 --> 00:42:00.480
+ dalam peretasan karena sekali dibajak mereka mengizinkan penyerang untuk mengeksekusi kode dan
+
+00:42:00.480 --> 00:42:03.839
+ amunisi di semua mesin yang terhubung microsoft
+
+00:42:03.839 --> 00:42:09.280
+ menambal kelemahan keamanan pada bulan Agustus pada hari Jumat kevin beaumont
+
+00:42:09.280 --> 00:42:12.480
+ bekerja dalam kapasitasnya sebagai peneliti independen
+
+00:42:12.480 --> 00:42:16.480
+ mengatakan dalam posting blog bahwa dia telah mendeteksi serangan pada honeypot yang dia gunakan untuk menyimpannya
+
+00:42:16.480 --> 00:42:19.680
+ mengikuti serangan serangan yang digunakan peretas di
+
+00:42:19.680 --> 00:42:24.160
+ liar ketika server umpannya dilepas, para penyerang dapat menggunakan file
+
+00:42:24.160 --> 00:42:27.680
+ PowerShell agar berhasil mengubah kata sandi admin
+
+00:42:27.680 --> 00:42:31.920
+ dan pintu belakang server beaumont mengatakan bahwa serangan itu muncul
+
+00:42:31.920 --> 00:42:36.480
+ untuk sepenuhnya ditulis dengan semua perintah diselesaikan dalam hitungan detik
+
+00:42:36.480 --> 00:42:40.160
+ dengan itu penyerang memasang pintu belakang yang memungkinkan remote
+
+00:42:40.160 --> 00:42:44.079
+ akses administratif ke perangkat di dalam jaringan tiruannya
+
+00:42:44.079 --> 00:42:48.400
+ penyerang juga mengaktifkan desktop jarak jauh sebagai akibatnya mereka akan melanjutkan
+
+00:42:48.400 --> 00:42:53.200
+ untuk memiliki akses jarak jauh meskipun admin kemudian menambal server
+
+00:42:53.200 --> 00:42:57.520
+ orang-orang tanpa otentikasi otentik dapat menggunakan exploit untuk mendapatkan domain
+
+00:42:57.520 --> 00:43:00.800
+ kredensial administratif selama penyerang memiliki kemampuan untuk melakukannya
+
+00:43:00.800 --> 00:43:05.839
+ membangun koneksi tcp dengan pengontrol domain yang rentan di
+
+00:43:05.839 --> 00:43:10.160
+ beberapa kasus penyerang mungkin menggunakan kerentanan terpisah untuk mendapatkan pijakan di dalamnya
+
+00:43:10.160 --> 00:43:13.359
+ jaringan dan kemudian memanfaatkan zero logon untuk mengambil alih
+
+00:43:13.359 --> 00:43:17.599
+ kontroler domain saya rasa contoh yang baik untuk cara
+
+00:43:17.599 --> 00:43:20.319
+ jenis skrip ini untuk masuk ke jaringan
+
+00:43:20.319 --> 00:43:27.839
+ adalah komputer lama di jaringan dan juga penipuan rekayasa sosial
+
+00:43:27.839 --> 00:43:31.040
+ mendengar banyak tentang seperti Anda mungkin menerima email ini
+
+00:43:31.040 --> 00:43:34.800
+ yang mencoba menipu Anda agar menindaklanjuti dengan proses
+
+00:43:34.800 --> 00:43:38.319
+ memasukkan kredensial atau sesuatu seperti itu
+
+00:43:38.319 --> 00:43:44.720
+ risiko yang kami jalankan dan kasus menyedihkan yang saya lihat
+
+00:43:44.720 --> 00:43:48.880
+ di dalamnya ada kalanya orang berpikir dengan baik
+
+00:43:48.880 --> 00:43:52.319
+ saya tidak perlu memperbarui komputer itu karena tidak ada di ruang belakang
+
+00:43:52.319 --> 00:43:55.680
+ benar-benar menggunakannya ya atau oh baiklah kita membutuhkan yang ini
+
+00:43:55.680 --> 00:43:58.800
+ masih memiliki windows xp karena kami memiliki masalah dengan salah satu kami
+
+00:43:58.800 --> 00:44:02.880
+ printer jika tidak, kami masih melihat banyak jendela 7
+
+00:44:02.880 --> 00:44:06.960
+ sistem dan itu adalah tragedi jika Anda memiliki file
+
+00:44:06.960 --> 00:44:10.960
+ windows 7 atau sistem windows xp di jaringan Anda cukup hidupkan saja
+
+00:44:10.960 --> 00:44:13.839
+ singkirkan itu ya lihat masalahnya
+
+00:44:13.839 --> 00:44:20.480
+ adalah dengan sistem tersebut sehingga microsoft memiliki apa yang kita sebut eol atau akhir masa pakai uh
+
+00:44:20.480 --> 00:44:24.240
+ telah mengakhiri masa pakai sistem operasi ini
+
+00:44:24.240 --> 00:44:27.839
+ jadi mereka mengatakan Anda harus mengupgrade ke windows 10. saya tidak ingin mengupgrade
+
+00:44:27.839 --> 00:44:32.000
+ ke windows 10 saya suka windows 7. saya mengerti itu dan saya menghormatinya
+
+00:44:32.000 --> 00:44:37.119
+ Namun inilah masalahnya para peretas
+
+00:44:37.119 --> 00:44:41.599
+ sekarang dapat memanfaatkan sistem operasi ini
+
+00:44:41.599 --> 00:44:45.839
+ dan saat mereka melakukannya saat menemukan eksploitasi
+
+00:44:45.839 --> 00:44:48.960
+ ada beberapa hal yang terjadi salah satunya
+
+00:44:48.960 --> 00:44:55.520
+ berikan atau jual eksploitasi itu atau dua eksploitasi itu baru saja dilepaskan
+
+00:44:55.520 --> 00:45:01.520
+ kepada publik melalui web gelap atau bahkan di github
+
+00:45:01.520 --> 00:45:07.839
+ sebagai penelitian keamanan dan sekarang para peretas ini jika Anda mau, kami akan melakukannya
+
+00:45:07.839 --> 00:45:11.599
+ menyebutnya begitu, tetapi secara realistis dalam banyak kasus, itulah yang kami sebut
+
+00:45:11.599 --> 00:45:16.800
+ kucing naskah dan ini um
+
+00:45:16.800 --> 00:45:21.680
+ bahkan tidak seperti peretas ya tetapi mereka tidak harus memiliki banyak pengetahuan karena
+
+00:45:21.680 --> 00:45:28.160
+ eksploitasi adalah publik yang benar diketahui dan dipahami jadi jika
+
+00:45:28.160 --> 00:45:32.319
+ ada eksploitasi yang tersedia untuk sistem operasi
+
+00:45:32.319 --> 00:45:36.880
+ apa yang kami harapkan terjadi kami mengharapkan vendor sistem operasi microsoft masuk
+
+00:45:36.880 --> 00:45:41.200
+ kasus ini untuk menambal exploit tersebut untuk memperbaikinya
+
+00:45:41.200 --> 00:45:44.560
+ dan itulah yang terjadi dengan windows 10. sayangnya
+
+00:45:44.560 --> 00:45:49.040
+ mereka yang eol kadang-kadang tidak demikian halnya dengan sistem operasi eol
+
+00:45:49.040 --> 00:45:54.079
+ Kami mendengar oh baiklah saya tidak membutuhkan dukungan dengan baik microsoft telah mengakhiri dukungan itu
+
+00:45:54.079 --> 00:45:57.440
+ apa yang kami dengar ya mereka telah mengakhiri dukungan untuk windows 7. mereka telah berakhir
+
+00:45:57.440 --> 00:46:01.920
+ dukungan untuk windows xp oh tetapi saya tidak pernah menghubungi dukungan
+
+00:46:01.920 --> 00:46:04.640
+ saya bisa mengatasinya bukan itu mereka
+
+00:46:04.640 --> 00:46:06.640
+ berbicara tentang apa yang mereka katakan
+
+00:46:06.640 --> 00:46:12.640
+ mereka tidak akan memperbaiki tambalan itu tidak masalah eksploitnya
+
+00:46:12.640 --> 00:46:16.160
+ seberapa parah mereka tidak peduli betapa mudahnya mereka
+
+00:46:16.160 --> 00:46:20.079
+ eksploitasi sehingga Anda memiliki mesin windows 7 di jaringan Anda dengan baik
+
+00:46:20.079 --> 00:46:26.319
+ Anda memberikan akses ke salah satu peretas ini yang bahkan tidak memilikinya
+
+00:46:26.319 --> 00:46:31.040
+ menjadi pandai meretas karena eksploitanya diketahui publik
+
+00:46:31.040 --> 00:46:36.240
+ ya terkadang mereka adalah bagian dari alat terkadang mereka dapat mengunduh secara gratis
+
+00:46:36.240 --> 00:46:41.440
+ alat dan mereka dapat mengatakan saya ingin dengan satu centang mengeksploitasi windows 7
+
+00:46:41.440 --> 00:46:46.400
+ dan mereka masuk ke kotak windows 7 atau mereka menipu salah satu karyawan Anda
+
+00:46:46.400 --> 00:46:50.880
+ bahkan jika mereka hanya seseorang di belakang yang bekerja di gudang
+
+00:46:50.880 --> 00:46:55.119
+ mereka telah menipu seseorang untuk membuka file yang sekarang memberi mereka akses ke
+
+00:46:55.119 --> 00:46:59.359
+ mesin windows 7 mesin windows xp atau mesin di ruang belakang
+
+00:46:59.359 --> 00:47:03.359
+ tidak masalah dan di sini kami mempelajari microsoft itu
+
+00:47:03.359 --> 00:47:08.400
+ server sekarang memiliki eksploitasi yang selama itu
+
+00:47:08.400 --> 00:47:13.599
+ pihak jahat bisa mendapatkan akses ke komputer manapun di jaringan
+
+00:47:13.599 --> 00:47:20.480
+ mereka sekarang bisa mendapatkan akses administrator domain ke seluruh jaringan
+
+00:47:20.480 --> 00:47:25.359
+ sekarang menakutkan sekarang mesin windows 10 Anda tidak lagi
+
+00:47:25.359 --> 00:47:31.440
+ aman itu benar karena Anda telah memberi mereka akses ke jaringan Anda seolah-olah
+
+00:47:31.440 --> 00:47:39.200
+ mereka adalah administrator domain oh lihat itu hanya berita buruk di sana
+
+00:47:39.200 --> 00:47:42.319
+ baik itu berita buruk mengapa ransomware itu penting
+
+00:47:42.319 --> 00:47:46.400
+ karena apa yang mereka lakukan sekarang mereka baik-baik saja, saya telah memperoleh akses ke jaringan ini
+
+00:47:46.400 --> 00:47:49.599
+ Saya akan menjual akses web gelap ke jaringan ini
+
+00:47:49.599 --> 00:47:56.640
+ Anda melihat ini dengan um dengan kota-kota dan ya dengan kota-kota itu
+
+00:47:56.640 --> 00:48:00.000
+ apakah itu kucing naskah asli yang tidak melakukan apa
+
+00:48:00.000 --> 00:48:03.680
+ dia hanya mereka hanya ingin mereka ingin masuk
+
+00:48:03.680 --> 00:48:07.119
+ menginstal perangkat lunak mereka dan keluar lalu menjual akses
+
+00:48:07.119 --> 00:48:11.040
+ itu benar karena itu uang cepat jadi mengapa orang melakukannya demi uang
+
+00:48:11.040 --> 00:48:15.119
+ dan itulah cara mereka melakukannya jadi um ya Anda harus
+
+00:48:15.119 --> 00:48:18.319
+ menjaga segala sesuatunya tetap mutakhir sehingga Anda tahu itu hanya pemikiran singkat
+
+00:48:18.319 --> 00:48:22.079
+ untuk merenungkan, hei, jika Anda memiliki mesin usang di jaringan Anda, Anda harus melakukannya
+
+00:48:22.079 --> 00:48:25.599
+ lepaskan mereka dan minta staf Anda dilatih tentang dunia maya
+
+00:48:25.599 --> 00:48:29.119
+ praktik keamanan memahami apa itu penipuan phishing
+
+00:48:29.119 --> 00:48:32.720
+ karena Anda tahu, oh yah, seseorang mengeklik tautan dan sekarang tautannya
+
+00:48:32.720 --> 00:48:34.880
+ komputer komputer terinfeksi tetapi komputer mereka terinfeksi
+
+00:48:34.880 --> 00:48:41.839
+ di jaringan Anda, tetapi saya akan mendapatkan setengah dari uang pangeran itu
+
+00:48:41.839 --> 00:48:45.359
+ itu cacing lain di sana jeff
+
+00:48:45.359 --> 00:48:50.000
+ tapi maksud saya saya ketika datang ke hal-hal semacam ini untuk melihat sistem Anda dan berkata
+
+00:48:50.000 --> 00:48:52.559
+ oh saya tidak ingin menghabiskan tujuh delapan
+
+00:48:52.559 --> 00:48:55.599
+ seratus dolar untuk komputer baru saya tidak akan khawatir tentang memperbarui yang satu ini
+
+00:48:55.599 --> 00:49:00.000
+ Anda akan menghabiskan lebih banyak dalam jangka panjang atau dalam jangka pendek
+
+00:49:00.000 --> 00:49:05.040
+ um tidak dalam jangka panjang jika sistem Anda tidak ditambal karena sekali
+
+00:49:05.040 --> 00:49:09.200
+ mereka mendapatkan akses ke semua yang Anda bisa turun dan keluar tetapi dan saya
+
+00:49:09.200 --> 00:49:11.760
+ berpikir ketika mereka memiliki akses ke semua hal i
+
+00:49:11.760 --> 00:49:13.760
+ pikir itu penting untuk menyadari itu
+
+00:49:13.760 --> 00:49:20.400
+ bahwa satu titik masuk menjadi akses ke segala sesuatu jadi belanjakan beberapa ratus
+
+00:49:20.400 --> 00:49:24.160
+ uang mendapatkan komputer baru menyelamatkan diri saya tidak tahu apa yang diperlukan
+
+00:49:24.160 --> 00:49:27.599
+ Maksud saya itu berbeda, itu berbeda untuk setiap kasus, ya saya punya satu orang
+
+00:49:27.599 --> 00:49:30.800
+ hari ini yang menelepon dan mengatakan saya memiliki satu komputer windows 7
+
+00:49:30.800 --> 00:49:33.920
+ saya tidak ingin memutakhirkannya karena itu berfungsi begitu saja
+
+00:49:33.920 --> 00:49:38.400
+ jadi inilah penjelasannya dan di sini becca telah berbagi dengan kami sebuah cerita
+
+00:49:38.400 --> 00:49:43.200
+ yang hanya memberi tahu kita bahwa yang mereka butuhkan hanyalah akses ke satu komputer itu
+
+00:49:43.200 --> 00:49:47.599
+ dan sekarang mereka memiliki akses ke semua komputer di komputer Anda dan tidak
+
+00:49:47.599 --> 00:49:52.240
+ dengan cara samba bukan dengan cara yang seperti ramah dan mudah-mudahan begitu
+
+00:49:52.240 --> 00:49:55.520
+ tidak menemukan jalan ke pintu belakang itu
+
+00:49:55.520 --> 00:49:59.200
+ komputer tidak memiliki kredensial administrator
+
+00:49:59.200 --> 00:50:03.119
+ jaringan Anda sehingga mereka dapat melakukan apa saja
+
+00:50:03.119 --> 00:50:07.280
+ itu benar apa pun yang mereka inginkan ketika saya memikirkan rumah saya
+
+00:50:07.280 --> 00:50:10.880
+ saya pikir saya sudah selesai saya pikir saya punya tujuh
+
+00:50:10.880 --> 00:50:15.520
+ perangkat yang tidak termasuk ponsel dan tablet dan hal-hal seperti itu yang terhubung
+
+00:50:15.520 --> 00:50:18.960
+ ke jaringan saya tidak ingin mereka memiliki akses ke sana
+
+00:50:18.960 --> 00:50:21.200
+ ya saya tidak bisa cukup stres meskipun jeff
+
+00:50:21.200 --> 00:50:26.160
+ Maksud saya, saya pikir dalam istilah bisnis lebih banyak pengguna rumahan tetapi
+
+00:50:26.160 --> 00:50:33.119
+ begitu mereka berada di dalamnya, Anda tidak dapat menyelesaikannya karena Anda tidak dapat melakukannya sekarang
+
+00:50:33.119 --> 00:50:36.240
+ matikan mesin windows yang mesin windows 7 tidak mereka sudah
+
+00:50:36.240 --> 00:50:40.319
+ menjadi segala sesuatu jadi apa yang Anda lakukan menggantikan segalanya
+
+00:50:40.319 --> 00:50:44.240
+ mintalah setiap komputer dihapus karena Anda tidak tahu alat apa
+
+00:50:44.240 --> 00:50:50.079
+ mereka memasang itu mahal ya jadi jangan jatuh ke dalamnya
+
+00:50:50.079 --> 00:50:53.280
+ lagian itu adalah eksploitasi buruk yang saya harap benar-benar serius
+
+00:50:53.280 --> 00:50:56.720
+ kami telah cukup menekankan hal itu sehingga Anda memahami bahwa ini buruk
+
+00:50:56.720 --> 00:51:02.720
+ jadi pastikan administrator jaringan Anda aktif dan mereka memahami ini
+
+00:51:02.720 --> 00:51:05.520
+ hal-hal dan bahwa Anda dilindungi dan aman
+
+00:51:05.520 --> 00:51:09.920
+ terhadap jenis ancaman ini baiklah kita akan kembali ke becca
+
+00:51:09.920 --> 00:51:13.920
+ tiga paket javascript telah dihapus dari portal npm untuk
+
+00:51:13.920 --> 00:51:18.000
+ mengandung kode berbahaya menurut nasihat dari mpm
+
+00:51:18.000 --> 00:51:21.440
+ tim keamanan membuka tiga perpustakaan javascript
+
+00:51:21.440 --> 00:51:24.480
+ kerang di komputer pengembang yang mengimpor paket
+
+00:51:24.480 --> 00:51:29.200
+ ke dalam proyek mereka, cangkang memungkinkan aktor ancaman untuk terhubung dari jarak jauh ke
+
+00:51:29.200 --> 00:51:33.520
+ komputer yang terinfeksi dan menjalankan operasi jahat npm
+
+00:51:33.520 --> 00:51:37.920
+ Tim keamanan mengatakan bahwa shell tidak bergantung pada sistem operasi tertentu
+
+00:51:37.920 --> 00:51:41.760
+ dan dapat digunakan untuk kompromi windows linux freebsd
+
+00:51:41.760 --> 00:51:46.960
+ openbsd dan sistem lain ketiga paket tersebut diunggah ke file
+
+00:51:46.960 --> 00:51:50.880
+ portal npm pada tahun 2018 dan masing-masing memiliki ratusan
+
+00:51:50.880 --> 00:51:55.839
+ unduhan sejak saat itu nama paketnya adalah tanda pisah plutov
+
+00:51:55.839 --> 00:52:01.920
+ klien slack dash nodetest199 dan nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ tim keamanan npm mengatakan komputer mana pun yang memiliki ini
+
+00:52:07.119 --> 00:52:10.800
+ paket yang diinstal atau dijalankan harus dianggap sepenuhnya disusupi
+
+00:52:10.800 --> 00:52:15.280
+ semua rahasia dan kunci yang disimpan di komputer itu harus segera diputar
+
+00:52:15.280 --> 00:52:20.559
+ dari komputer yang berbeda mereka memperingatkan paket harus dihapus tetapi sebagai
+
+00:52:20.559 --> 00:52:24.160
+ kendali penuh atas komputer mungkin telah diberikan kepada entitas luar
+
+00:52:24.160 --> 00:52:27.760
+ tidak ada jaminan bahwa menghapus paket akan menghapus semua yang berbahaya
+
+00:52:27.760 --> 00:52:32.079
+ perangkat lunak yang dihasilkan dari menginstalnya mpm
+
+00:52:32.079 --> 00:52:36.079
+ staf keamanan secara teratur memindai koleksi perpustakaan javascriptnya
+
+00:52:36.079 --> 00:52:41.839
+ dianggap sebagai repositori paket terbesar untuk bahasa pemrograman apa pun
+
+00:52:41.839 --> 00:52:46.079
+ sementara saya bahkan tidak bisa mendapatkan cakupan ponsel yang baik di pondok saya
+
+00:52:46.079 --> 00:52:52.240
+ nokia bekerja sama dengan nasa untuk membawa 4g ke bulan tujuan misi artemis nasa
+
+00:52:52.240 --> 00:52:56.559
+ untuk membangun kehadiran manusia jangka panjang di bulan sebagai pijakan
+
+00:52:56.559 --> 00:53:01.040
+ batu menuju penjajahan mars dan untuk memulai sesuatu nasa adalah
+
+00:53:01.040 --> 00:53:05.280
+ memperluas 370 juta dolar menjadi 14 perusahaan
+
+00:53:05.280 --> 00:53:08.400
+ untuk menyediakan teknologi untuk program tersebut
+
+00:53:08.400 --> 00:53:12.400
+ dari robotika hingga pembangkit listrik dan bahkan kriogenik
+
+00:53:12.400 --> 00:53:16.240
+ tetapi masuk akal bahwa tim ini harus dapat berkomunikasi dengan
+
+00:53:16.240 --> 00:53:20.079
+ planet induk jaringan baru akan dirancang
+
+00:53:20.079 --> 00:53:23.760
+ khusus untuk kondisi bulan yang mampu menahan ekstrim
+
+00:53:23.760 --> 00:53:28.559
+ Pergeseran suhu dan radiasi, teknologi juga akan memanfaatkan sel kecil
+
+00:53:28.559 --> 00:53:32.800
+ tech yang seperti namanya secara signifikan lebih kecil dari tinggi
+
+00:53:32.800 --> 00:53:37.599
+ menara seluler yang biasa mereka lihat di bumi ini juga lebih jarang mereka gunakan
+
+00:53:37.599 --> 00:53:41.200
+ kekuatan yang direncanakan untuk dibawa oleh pendarat bulan
+
+00:53:41.200 --> 00:53:44.480
+ sistem komunikasi 4g ke permukaan bulan
+
+00:53:44.480 --> 00:53:50.400
+ pada tahun 2022 lab lonceng nokia telah diberikan 14,1 juta dolar
+
+00:53:50.400 --> 00:53:55.119
+ untuk bagian mereka, teknologi pengisian nirkabel 80 watt baru dari
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi meniup pikiran kita dan raspberry pi
+
+00:53:58.880 --> 00:54:03.839
+ compute module 4 telah dirilis, kami akan memberi tahu Anda spesifikasi dan caranya
+
+00:54:03.839 --> 00:54:08.480
+ ini mengubah banyak hal untuk industri ini karena memiliki cerita-cerita ini ditambah
+
+00:54:08.480 --> 00:54:25.839
+ robert ada di sini dengan sudut crypto jangan pergi ke mana pun
+
+00:54:28.079 --> 00:54:32.079
+ selamat datang kembali di dunia cryptos dan selamat datang kembali di pojok crypto
+
+00:54:32.079 --> 00:54:35.920
+ minggu lalu kita berbicara tentang bank dalam beberapa tahun waktu Anda tidak akan mengenalinya
+
+00:54:35.920 --> 00:54:39.839
+ lagi dan saya juga menyebutkan kepada Anda tidak begitu lama
+
+00:54:39.839 --> 00:54:43.119
+ lalu mata uang digital Cina yang akan
+
+00:54:43.119 --> 00:54:46.720
+ mengganti lebah riemann dan bahwa mereka sudah menerapkannya dan
+
+00:54:46.720 --> 00:54:50.400
+ mereka menjalankan beberapa uji coba di shenzhen sekarang minggu ini
+
+00:54:50.400 --> 00:54:54.400
+ ada beberapa perkembangan dan saya ingin membicarakannya karena itu
+
+00:54:54.400 --> 00:54:58.319
+ akan berdampak langsung pada hidup Anda dan hidup saya
+
+00:54:58.319 --> 00:55:03.760
+ jadi mari selami ini di sini dana moneter internasional kepala
+
+00:55:03.760 --> 00:55:08.400
+ dari organisasi internasional itu adalah seorang wanita bernama cristalina jojeva dan
+
+00:55:08.400 --> 00:55:11.359
+ dia menyampaikan pidato tentang hutan bretton baru
+
+00:55:11.359 --> 00:55:14.240
+ Saat ini apa bretton Woods britain dulu
+
+00:55:14.240 --> 00:55:17.440
+ sistem adalah manajemen moneter yang ditetapkan
+
+00:55:17.440 --> 00:55:21.760
+ aturan hubungan keuangan komersial antara
+
+00:55:21.760 --> 00:55:25.920
+ negara-negara seperti kita kanada eropa barat australia dan jepang
+
+00:55:25.920 --> 00:55:31.520
+ dan sistem adalah contoh pertama dari pesanan yang sepenuhnya dinegosiasikan
+
+00:55:31.520 --> 00:55:36.640
+ dimaksudkan untuk mengatur hubungan moneter antara negara merdeka jadi itu
+
+00:55:36.640 --> 00:55:40.079
+ bretton Woods dan dia berbicara tentang perubahan
+
+00:55:40.079 --> 00:55:45.760
+ sistem itu menjadi sesuatu yang lebih modern sekarang cukup menarik
+
+00:55:45.760 --> 00:55:51.200
+ pada hari Senin ada pertemuan dengan beberapa bankir sentral membicarakan apa yang disebut
+
+00:55:51.200 --> 00:55:56.319
+ pembayaran lintas batas tetapi jika Anda memikirkannya lihat jenis apa
+
+00:55:56.319 --> 00:55:59.520
+ orang-orang yang mereka hadapi sehingga Anda memiliki kepala
+
+00:55:59.520 --> 00:56:03.040
+ bank sentral saudi Anda memiliki kepala semua pusat
+
+00:56:03.040 --> 00:56:06.480
+ bank kepala imf kepala kita
+
+00:56:06.480 --> 00:56:10.319
+ bank sentral dan kepala bank sentral Malaysia hilang
+
+00:56:10.319 --> 00:56:13.200
+ eropa yang menarik tetapi saya kira akan ada alasannya
+
+00:56:13.200 --> 00:56:16.880
+ jadi mereka bertemu bersama untuk membicarakan tentang pembayaran air kotor
+
+00:56:16.880 --> 00:56:21.920
+ sekarang saya tidak percaya bahwa itu adalah kisah nyata, kisah nyata
+
+00:56:21.920 --> 00:56:26.079
+ uh juga diterbitkan oleh seorang pria bernama raul paul
+
+00:56:26.079 --> 00:56:31.119
+ yang benar-benar saya setujui sehingga pikirannya persis seperti yang saya pikirkan
+
+00:56:31.119 --> 00:56:35.520
+ dan yang dia bicarakan adalah pertemuan yang terjadi pada hari senin
+
+00:56:35.520 --> 00:56:39.119
+ yang akan menggantikan hubungan uh bretton Woods tua
+
+00:56:39.119 --> 00:56:46.319
+ antar negara jadi apa yang akan terjadi sepertinya bank sentral
+
+00:56:46.319 --> 00:56:50.720
+ akan berkolusi dan menghasilkan sebuah sistem
+
+00:56:50.720 --> 00:56:54.000
+ sistem bank sentral di antara mereka semua sehingga tidak akan ada kita
+
+00:56:54.000 --> 00:56:56.640
+ sistem bank sentral dolar akan ada satu
+
+00:56:56.640 --> 00:56:59.680
+ untuk masing-masing untuk semua organisasi dan kemudian dari
+
+00:56:59.680 --> 00:57:04.160
+ di sana itu akan beragam dan apa yang dapat Anda lakukan
+
+00:57:04.160 --> 00:57:06.319
+ sistem seperti itulah bagian yang menarik dan
+
+00:57:06.319 --> 00:57:13.520
+ Saya suka itu sehingga akan mengubah dunia perbankan dan keuangan
+
+00:57:13.520 --> 00:57:17.920
+ sistem fiskal karena Anda berinteraksi langsung dengan orang
+
+00:57:17.920 --> 00:57:22.160
+ ya jadi tidak seperti saat di mana bank sentral di AS atau
+
+00:57:22.160 --> 00:57:26.720
+ kanada tidak masalah datang dengan beberapa kebijakan dan kemudian itu
+
+00:57:26.720 --> 00:57:32.400
+ berjalan itu menetes ke bawah um rantai dan Anda sebagai individu
+
+00:57:32.400 --> 00:57:35.440
+ pengguna yang mungkin Anda lihat paling sedikit
+
+00:57:35.440 --> 00:57:37.680
+ uang dan mungkin dengan tingkat bunga tertinggi
+
+00:57:37.680 --> 00:57:42.559
+ yang menurut Anda orang lain akan mendapatkan manfaat yang lebih kuat dengan digital
+
+00:57:42.559 --> 00:57:46.799
+ uang plus cryptocurrency atau dapat diprogram
+
+00:57:46.799 --> 00:57:50.400
+ uang Anda dapat melakukan lebih banyak karena sekarang
+
+00:57:50.400 --> 00:57:55.839
+ bank sentral dapat secara langsung mempengaruhi perilaku masyarakat dan bagaimana mereka melakukannya
+
+00:57:55.839 --> 00:58:00.400
+ lakukan itu ya mereka bisa mengatakan dengan baik jika Anda adalah pemilik restoran, Anda bisa
+
+00:58:00.400 --> 00:58:03.839
+ dapatkan uang langsung ke saku Anda dari kami ya jadi tidak lebih
+
+00:58:03.839 --> 00:58:08.079
+ bank yang terlibat kami akan melakukannya secara langsung itu mungkin itu uang bank sentral
+
+00:58:08.079 --> 00:58:12.240
+ mereka dapat mengubah tingkat suku bunga jadi dalam satu contoh atau satu industri saja
+
+00:58:12.240 --> 00:58:16.480
+ dapat memiliki tingkat bunga yang tinggi dari um apa yang akan terjadi
+
+00:58:16.480 --> 00:58:19.839
+ dengan pajak ya apa yang akan terjadi dengan irs
+
+00:58:19.839 --> 00:58:22.079
+ karena mereka dapat menangani hal-hal ini secara langsung
+
+00:58:22.079 --> 00:58:25.200
+ melalui uang yang dapat diprogram itu akan membutuhkan waktu
+
+00:58:25.200 --> 00:58:28.799
+ untuk mencapai tingkat tertinggi tetapi itu akan terjadi
+
+00:58:28.799 --> 00:58:34.640
+ seperti yang Anda lihat sehingga pembayaran langsung dapat dilakukan
+
+00:58:34.799 --> 00:58:41.119
+ di sini mereka juga berbicara tentang ekonomi perilaku, ya
+
+00:58:41.119 --> 00:58:45.359
+ bukan melalui beberapa ekonom yang jitu
+
+00:58:45.359 --> 00:58:49.200
+ pemerintah apa yang harus dilakukan dan apa yang tidak boleh dilakukan karena telah gagal di
+
+00:58:49.200 --> 00:58:52.160
+ melewati semua orang mengatakan jadi apa yang mereka lakukan
+
+00:58:52.160 --> 00:58:56.400
+ yang dilakukan adalah seperti jenis ide facebook atau ide centang centang atau
+
+00:58:56.400 --> 00:58:59.520
+ ide youtube di mana Anda tertarik pada orang
+
+00:58:59.520 --> 00:59:03.280
+ berteman dengan Anda atau di mana orang-orang yang Anda minati
+
+00:59:03.280 --> 00:59:06.799
+ mendapatkan lebih banyak suka sehingga Anda mengubah perilaku Anda
+
+00:59:06.799 --> 00:59:10.079
+ tentang mendapatkan lebih banyak suka dan hal yang sama
+
+00:59:10.079 --> 00:59:13.839
+ akan terjadi dengan uang itu dan itu semua akan diatur
+
+00:59:13.839 --> 00:59:17.680
+ melalui bank sentral tanpa siapapun dari dunia luar
+
+00:59:17.680 --> 00:59:22.000
+ memiliki peluang untuk memiliki pengaruh yang signifikan jadi bagaimana itu
+
+00:59:22.000 --> 00:59:26.079
+ akan terlihat seperti pada akhirnya tidak ada yang tahu tentu saja kecuali ini
+
+00:59:26.079 --> 00:59:31.200
+ orang-orang bertemu bersama untuk membahas pembayaran lintas pesanan adalah sesuatu yang i
+
+00:59:31.200 --> 00:59:36.079
+ menemukan uh sangat menarik dan uh itu tentu saja berita yang fantastis
+
+00:59:36.079 --> 00:59:39.040
+ untuk uh bitcoin karena bitcoin berada di luar itu
+
+00:59:39.040 --> 00:59:44.839
+ sistem tidak ada orang yang bisa mengatur uh bitcoin itu
+
+00:59:44.839 --> 00:59:48.400
+ terdesentralisasi um itu tetap baik Anda tahu semua
+
+00:59:48.400 --> 00:59:54.079
+ fitur uh bitcoin jadi um bitcoin adalah alternatif yang fantastis
+
+00:59:54.079 --> 00:59:57.839
+ semua cryptocurrency lainnya, yang utama pasti merupakan alternatif yang baik
+
+00:59:57.839 --> 01:00:02.000
+ mari kita lihat apa yang akan dimunculkan libra tetapi akan ada beberapa alternatif yang baik
+
+01:00:02.000 --> 01:00:06.480
+ ke um ke pusat uh terpusat
+
+01:00:06.480 --> 01:00:11.359
+ mendorong uang melalui bank sentral jadi saya harap Anda menganggapnya menarik dan
+
+01:00:11.359 --> 01:00:14.559
+ Saya harap Anda menyukainya dan saya harap saya mendapatkan kekurangan dari Anda
+
+01:00:14.559 --> 01:00:18.799
+ dan saya berharap Anda mendapatkan minggu yang luar biasa, jadi terima kasih banyak telah menonton
+
+01:00:18.799 --> 01:00:23.200
+ selamat tinggal, terima kasih robert, hanya pengingat bahwa kami tidak memberikan nasihat keuangan
+
+01:00:23.200 --> 01:00:26.400
+ tetapi hanya membagikan apa yang terjadi di pasar cryptocurrency
+
+01:00:26.400 --> 01:00:29.599
+ selalu ingat bahwa pasar mata uang kripto selalu berubah dan
+
+01:00:29.599 --> 01:00:33.920
+ selalu berubah-ubah sehingga Anda hanya menghabiskan apa yang Anda mampu untuk kehilangan
+
+01:00:33.920 --> 01:00:38.720
+ sekarang kembali ke becca di ruang redaksi terima kasih robbie
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi telah mengumumkan pemeriksaan pengisian daya baru yang dapat mengisi penuh yang habis
+
+01:00:42.799 --> 01:00:48.480
+ smartphone dalam waktu kurang dari 20 menit tetapi tanpa kabel apa pun dengan cepat
+
+01:00:48.480 --> 01:00:52.480
+ pengisian daya telah menjadi fitur utama dari banyak ponsel cerdas dalam beberapa tahun terakhir dan untuk tahun ini
+
+01:00:52.480 --> 01:00:56.160
+ kenyamanan demi pengisian nirkabel bisa sangat bagus
+
+01:00:56.160 --> 01:00:59.920
+ tetapi tentu saja pengisian nirkabel biasanya mengisi daya ponsel dengan antara keduanya
+
+01:00:59.920 --> 01:01:05.359
+ Daya 10 hingga 15 watt yang dimiliki beberapa ponsel seperti oneplus 8 pro
+
+01:01:05.359 --> 01:01:10.160
+ pengisian nirkabel hingga 40 watt tetapi teknologi pengisian daya baru Xiaomi menjanjikan
+
+01:01:10.160 --> 01:01:14.240
+ jus nirkabel 80 watt yang luar biasa
+
+01:01:14.240 --> 01:01:18.319
+ apa artinya secara praktis baik menurut pengumuman
+
+01:01:18.319 --> 01:01:22.160
+ mengungkap teknologi pengisian daya nirkabel 80 watt me
+
+01:01:22.160 --> 01:01:26.720
+ smartphone dengan nol persen pengisian baterai empat ribu miliamp jam
+
+01:01:26.720 --> 01:01:30.160
+ akan menagih sepuluh persen hanya dalam satu menit lima puluh persen
+
+01:01:30.160 --> 01:01:34.160
+ dalam delapan menit dan terisi penuh setelah 19 menit
+
+01:01:34.160 --> 01:01:37.599
+ akhirnya pengisi daya yang akan mengisi daya ponsel saya
+
+01:01:37.599 --> 01:01:43.359
+ dari nol hingga seratus persen tepat seperti istirahat makan siang saya, lihat itu bagus
+
+01:01:43.359 --> 01:01:48.079
+ Itu adalah pengubah permainan, dapatkah Anda bayangkan saya memikirkan anak-anak saya dan bagaimana kita memilikinya
+
+01:01:48.079 --> 01:01:51.440
+ seperti telepon di mana-mana jelas maksud saya ini adalah untuk mengambil suka
+
+01:01:51.440 --> 01:01:56.319
+ teknologi terbaru dan terhebat tapi um itu selalu kasus oh saya lupa
+
+01:01:56.319 --> 01:01:59.520
+ letakkan ponsel saya di pengisi daya atau tidak bertahan cukup lama untuk keseluruhan
+
+01:01:59.520 --> 01:02:02.720
+ hari dan sekarang Anda tahu dengan pandemi tentu saja saya
+
+01:02:02.720 --> 01:02:07.599
+ anak-anak sekarang belajar di rumah secara paksa dan semua orang aktif
+
+01:02:07.599 --> 01:02:11.839
+ perangkat mereka sepanjang waktu, jadi kami mengadakan rapat zoom di ponsel
+
+01:02:11.839 --> 01:02:15.599
+ dan dan berjalan itu menghabiskan baterai ya
+
+01:02:15.599 --> 01:02:21.440
+ Tapi yang saya suka adalah nirkabel itu bukan hanya kabel yang luar biasa ya
+
+01:02:21.440 --> 01:02:24.480
+ nirkabellah yang besar seperti gagasan itu
+
+01:02:24.480 --> 01:02:27.200
+ saya bisa mengambil ponsel saya tidak perlu khawatir tentang pengisi daya dan
+
+01:02:27.200 --> 01:02:30.960
+ pergi saja, letakkan saja, letakkan 20 menit kemudian, saya siap berangkat
+
+01:02:30.960 --> 01:02:34.000
+ bahwa saya menyukai hal lain yang saya suka tentang itu
+
+01:02:34.000 --> 01:02:40.480
+ Konsepnya adalah um yang saya pikirkan seperti yang baru saja Anda lakukan jika saya bisa
+
+01:02:40.480 --> 01:02:43.359
+ meletakkannya di atas meja bagaimana jika Anda bisa meletakkannya di atas
+
+01:02:43.359 --> 01:02:47.680
+ meja restoran ya karena banyak restoran telah menempuh rute dan saya
+
+01:02:47.680 --> 01:02:50.799
+ menggunakan restoran sebagai contoh tetapi banyak tempat telah dilalui
+
+01:02:50.799 --> 01:02:54.480
+ embedding usb ya agar anda bisa pasang usb anda
+
+01:02:54.480 --> 01:02:58.640
+ kabel untuk mengisi daya ponsel Anda tetapi kemudian tiba-tiba orang-orang mendapatkannya
+
+01:02:58.640 --> 01:03:03.200
+ bijaksana untuk fakta bahwa oh port usb itu bisa berbahaya
+
+01:03:03.200 --> 01:03:06.319
+ karena usb juga membawa data atau itu benar
+
+01:03:06.319 --> 01:03:10.000
+ siapa yang tahu jika itu terlalu banyak volt dan Anda tahu mungkin itu
+
+01:03:10.000 --> 01:03:13.280
+ mendapat korsleting atau semacamnya dan bisa menggoreng ponsel saya
+
+01:03:13.280 --> 01:03:17.039
+ jadi tiba-tiba kami takut untuk mencolokkan ke port usb karena hei
+
+01:03:17.039 --> 01:03:20.400
+ bisa jadi sesuatu yang buruk itu benar
+
+01:03:20.400 --> 01:03:24.960
+ pengisian nirkabel Anda mengaturnya itu biaya dan Anda mengambilnya dan Anda
+
+01:03:24.960 --> 01:03:28.240
+ selesai ya tetapi Anda dapat mengaturnya untuk suka
+
+01:03:28.240 --> 01:03:31.119
+ tiga menit dan ini memberi Anda cukup daya untuk melewati sebagian besar
+
+01:03:31.119 --> 01:03:35.680
+ sore yang luar biasa luar biasa menurutku
+
+01:03:35.680 --> 01:03:40.559
+ sama seperti maksud saya, Anda melihat-lihat sekarang dan Anda sudah mendapatkan semua stasiun pengisian daya ini
+
+01:03:40.559 --> 01:03:44.079
+ kendaraan listrik akan sangat bagus untuk mulai melihat sedikit
+
+01:03:44.079 --> 01:03:48.640
+ pop-up di tempat umum dengan hal-hal semacam ini yang dapat Anda letakkan secara harfiah
+
+01:03:48.640 --> 01:03:52.880
+ telepon Anda mati selama lima menit dan cukup untuk menerima panggilan telepon
+
+01:03:52.880 --> 01:03:56.319
+ mendapatkan bantuan atau apa pun dan itu semua tanpa kabel yang baru saja saya bayangkan
+
+01:03:56.319 --> 01:04:01.760
+ seperti hamparan jalan dan menyematkan penerima di dalam mobil dan itu
+
+01:04:01.760 --> 01:04:05.599
+ mengisi ulang mobil otonom saat melaju di atasnya
+
+01:04:05.599 --> 01:04:08.230
+ hal whoa kita masuk ke teknologi sekarang orang-orang
+
+01:04:08.230 --> 01:04:11.520
+ [Tertawa] masih saya suka saya senang tentang itu
+
+01:04:11.520 --> 01:04:15.839
+ Hal gila hanya kesimpulannya adalah sementara apa yang saya adil
+
+01:04:15.839 --> 01:04:18.319
+ sangat sci-fi seperti saat kita tumbuh
+
+01:04:18.319 --> 01:04:21.599
+ up itu seperti masa depan itu benar-benar bisa dilakukan itu
+
+01:04:21.599 --> 01:04:25.920
+ mungkin sekarang ya itu konyol pi raspberry
+
+01:04:25.920 --> 01:04:31.200
+ yayasan telah meluncurkan modul komputasi dengan spesifikasi raspberry pi 4.
+
+01:04:31.200 --> 01:04:35.119
+ yayasan raspberry pi meluncurkan produk baru senin comp
+
+01:04:35.119 --> 01:04:39.440
+ modul komputasi 4. Sulit dipercaya bahwa ini sudah lama sekali, tetapi file
+
+01:04:39.440 --> 01:04:43.359
+ raspberry pi 4 dirilis pada Juni 2019
+
+01:04:43.359 --> 01:04:48.079
+ modul komputasi 4 membawa pi 4 ke ruang iot industri
+
+01:04:48.079 --> 01:04:52.240
+ menampilkan prosesor yang sama yang dikemas dalam modul komputasi
+
+01:04:52.240 --> 01:04:57.200
+ hanya memohon untuk diintegrasikan ke dalam peralatan iot yang kuat
+
+01:04:57.200 --> 01:05:00.880
+ jika Anda tidak terbiasa dengan modul komputasi, Anda dapat menganggapnya sebagai
+
+01:05:00.880 --> 01:05:05.280
+ komputer papan tunggal tanpa semua port dan pin gpio
+
+01:05:05.280 --> 01:05:09.440
+ mereka memungkinkan komponen komputer menjadi otak raspberry pi
+
+01:05:09.440 --> 01:05:13.920
+ diintegrasikan ke dalam kelompok teknologi pembuat perangkat pintar robotika atau
+
+01:05:13.920 --> 01:05:16.400
+ apa pun yang dapat Anda hasilkan yang membutuhkan sedikit
+
+01:05:16.400 --> 01:05:22.240
+ komputer linux bertenaga rendah di jantungnya sejak modul komputasi 4 membagikannya
+
+01:05:22.240 --> 01:05:26.400
+ spec dengan raspberry pi 4 pengembang dapat melakukan semua prototipe mereka
+
+01:05:26.400 --> 01:05:30.319
+ pada pi 4 sbc tetapi kemudian memesan banyak modul komputasi
+
+01:05:30.319 --> 01:05:33.520
+ 4s untuk diintegrasikan ke dalam produk komersial mereka
+
+01:05:33.520 --> 01:05:38.559
+ seperti raspberry pi 4, compute module 4 memiliki fitur berbasis 64-bit arm
+
+01:05:38.559 --> 01:05:42.400
+ prosesor dengan video core vi grafis ini
+
+01:05:42.400 --> 01:05:45.520
+ akan mewakili peningkatan besar untuk komputasi sebelumnya
+
+01:05:45.520 --> 01:05:49.839
+ modul pelanggan dan dengan output video 4k hingga
+
+01:05:49.839 --> 01:05:55.039
+ 60 frame per detik ditambah kemampuan untuk memecahkan kode video h.265
+
+01:05:55.039 --> 01:05:58.480
+ modul komputasi untuk modul komputasi 4
+
+01:05:58.480 --> 01:06:03.039
+ bisa menjadi pengubah permainan untuk perangkat berbasis multimedia seperti smart TV atau
+
+01:06:03.039 --> 01:06:06.960
+ set-top boxes modul komputasi 4 tersedia dengan
+
+01:06:06.960 --> 01:06:11.599
+ pilihan Anda dari 1 2 4 atau 8 gigabyte ram dan 8 16
+
+01:06:11.599 --> 01:06:18.000
+ atau 32 gigabyte pada penyimpanan flash emmc wi-fi dan bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ juga opsional dengan kisaran harga mulai dari 25 saja
+
+01:06:21.440 --> 01:06:27.599
+ untuk 90 usd sekarang bayangkan bahwa jeff modul komputasi pi raspberry 4
+
+01:06:27.599 --> 01:06:31.359
+ ya di salah satu proyek sbc Anda atau sesuatu seperti itu memberdayakannya seperti
+
+01:06:31.359 --> 01:06:33.920
+ otak ini cukup mengasyikkan sekali
+
+01:06:33.920 --> 01:06:39.440
+ becca mengatakan decoding h.265 jadi seperti video itu
+
+01:06:39.440 --> 01:06:43.760
+ sangat intensif cpu ya itu luar biasa seperti yang dikatakan banyak
+
+01:06:43.760 --> 01:06:50.000
+ itu lebih kekuatan dari server plex saya ya yang seperti siapa yang tahu di mana itu
+
+01:06:50.000 --> 01:06:54.720
+ akan mengambil hal-hal yang saya suka gagasan komputasi cluster
+
+01:06:54.720 --> 01:06:58.480
+ dan di sanalah Anda menggunakan beberapa komputer
+
+01:06:58.480 --> 01:07:01.520
+ menghubungkan mereka bersama melalui jaringan dan
+
+01:07:01.520 --> 01:07:06.559
+ pada dasarnya instal perangkat lunak beowulf atau semacamnya
+
+01:07:06.559 --> 01:07:09.359
+ mengelompokkan mereka agar mereka dapat melakukan
+
+01:07:09.359 --> 01:07:14.400
+ tugas bersama sedemikian rupa sehingga pada dasarnya membuat komputer super
+
+01:07:14.400 --> 01:07:19.200
+ langsung dari beberapa komputer sehingga Anda memikirkan tentang raspberry pi ini
+
+01:07:19.200 --> 01:07:25.839
+ cl uh cluster atau modul dan dan menempatkan seperti 10 dari mereka bersama-sama
+
+01:07:25.839 --> 01:07:30.400
+ dalam sebuah cluster dan Anda akan menyukai modul komputasi ini
+
+01:07:30.400 --> 01:07:34.559
+ cluster itu akan menjadi komputer yang bagus dengan kekuatan sebesar itu
+
+01:07:34.559 --> 01:07:38.079
+ ketika Anda dapat memiliki delapan pertunjukan domba jantan di masing-masing
+
+01:07:38.079 --> 01:07:43.359
+ papan waktu yang pukul 10. banyak yang bisa melakukan banyak hal
+
+01:07:43.359 --> 01:07:47.280
+ itu mengubah hal-hal yang pasti sedang diubah dunia
+
+01:07:47.280 --> 01:07:50.960
+ apa yang akan kamu lakukan dengan semua kekuatan itu
+
+01:07:52.160 --> 01:07:55.280
+ dan diam dia menunggumu untuk menjawab i
+
+01:07:55.280 --> 01:07:58.480
+ Saya berpikir saya seperti apa yang akan saya lakukan dengan berapa banyak orang
+
+01:07:58.480 --> 01:08:05.119
+ baru saja menambang bitcoin, maaf kawan, Anda tahu apa yang menyedihkan saya
+
+01:08:05.119 --> 01:08:10.880
+ Pikiran pertama adalah dapatkah saya mengotomatiskan seperti beberapa file
+
+01:08:10.880 --> 01:08:14.000
+ utilitas yang saya miliki di dapur untuk membuat makanan untuk saya
+
+01:08:14.000 --> 01:08:17.600
+ Itu adalah pemikiran pertama saya dengan modul komputasi empat
+
+01:08:17.600 --> 01:08:22.319
+ ya membutuhkan lebih dari itu tetapi saya tahu itu bisa menjadi otak dari operasi semacam itu
+
+01:08:22.319 --> 01:08:27.759
+ jelas saya lapar [Tertawa]
+
+01:08:27.759 --> 01:08:31.359
+ pendapat Anda berkomentar di bawah ini, kami ingin mendengar apa yang akan Anda lakukan dengan a
+
+01:08:31.359 --> 01:08:34.719
+ modul komputasi untuk terima kasih telah menonton kategori 5 titik
+
+01:08:34.719 --> 01:08:38.000
+ ruang berita tv jangan lupa like dan subscribe
+
+01:08:38.000 --> 01:08:40.640
+ semua berita teknologi Anda dengan sedikit bias linux
+
+01:08:40.640 --> 01:08:46.000
+ dan jika Anda menghargai apa yang kami lakukan, jadilah pelindung di patreon.com
+
+01:08:46.000 --> 01:08:53.839
+ kategori 5. dari kategori 5 ruang berita tv dot saya becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Musik]
+
+01:09:12.400 --> 01:09:16.159
+ baik itu cukup banyak sepanjang waktu yang kita miliki minggu ini jeff
+
+01:09:16.159 --> 01:09:21.600
+ minggu lalu kami melalui dan dan saya melakukan seluruh proses dengan fiverr
+
+01:09:21.600 --> 01:09:25.359
+ menyewa beberapa orang untuk dapat membuat remix kami ya ini lucu
+
+01:09:25.359 --> 01:09:29.040
+ cerita oke secara harfiah memberitahu saya kapan harus tertawa Anda akan
+
+01:09:29.040 --> 01:09:34.960
+ tahu bibir dia sudah dia sudah tertawa
+
+01:09:34.960 --> 01:09:38.400
+ tupai sampah adalah salah satu dari orang-orang kami ya ya
+
+01:09:38.400 --> 01:09:42.560
+ salah satu remixer dan tupai sastra kami
+
+01:09:42.560 --> 01:09:48.319
+ Saya terus bertanya-tanya ini karena dia menonton fitur tersebut
+
+01:09:48.319 --> 01:09:51.199
+ setelah itu saya terus bertanya-tanya mengapa Anda
+
+01:09:51.199 --> 01:09:58.159
+ salah mengucapkan nama saya oh tupai sampah jadi saya memeriksa saya
+
+01:09:58.159 --> 01:10:02.960
+ profil dan menemukan bahwa saya salah mengeja oh tidak
+
+01:10:02.960 --> 01:10:09.920
+ dan tidak pernah menyadarinya dan begitulah selama tiga tahun apakah Anda serius
+
+01:10:09.920 --> 01:10:17.600
+ dia mengatakan nama saya nama band saya adalah tupai sastra ya Tuhan dia tinggalkan
+
+01:10:17.600 --> 01:10:21.040
+ di kami itu lucu jadi saya ceritakan kisah ini
+
+01:10:21.040 --> 01:10:25.600
+ lihat itu lucu lihat saya katakan itu lucu itu seperti
+
+01:10:26.000 --> 01:10:29.679
+ Saya menceritakan kisah ini kepada Anda karena kemudian saya berkata pada diri saya sendiri dengan baik
+
+01:10:29.679 --> 01:10:35.120
+ saya melihat kata-kata dan saya dan saya pikir sebagian besar saya ucapkan
+
+01:10:35.120 --> 01:10:40.320
+ mereka cukup teliti jadi ketika saya melihat sastra meskipun itu bukan kata saya
+
+01:10:40.320 --> 01:10:44.800
+ atur cara pembacaannya dengan benar jadi saya pikir saya mungkin akan menjadi
+
+01:10:44.800 --> 01:10:47.679
+ proofreader yang cukup bagus jadi saya mengatakan apa yang akan saya berikan
+
+01:10:47.679 --> 01:10:50.960
+ pergi jadi saya memasang iklan yang mengatakan saya akan mengoreksi
+
+01:10:50.960 --> 01:10:54.480
+ teks Anda 500 kata atau kurang untuk lima dolar
+
+01:10:54.480 --> 01:10:57.520
+ oke dan saya seperti ah tidak ada yang akan pernah melakukannya
+
+01:10:57.520 --> 01:11:01.840
+ menyenangkan lagian saya pikir saya akan mencobanya dan keesokan paginya saya mendapat email
+
+01:11:01.840 --> 01:11:08.239
+ dari seseorang di spanyol yang um
+
+01:11:08.239 --> 01:11:13.120
+ broker asuransi baik-baik saja dan memiliki pelanggan yang berbahasa Inggris
+
+01:11:13.120 --> 01:11:17.600
+ aslinya dan ingin memastikan bahwa dia mengatakan hal yang benar sebagai tanggapan
+
+01:11:17.600 --> 01:11:21.840
+ ke email jadi dia menghapus semua barang rahasia
+
+01:11:21.840 --> 01:11:26.400
+ ya dan mengirimi saya tanggapannya dan berkata bisakah Anda membahas ini untuk saya dan saya
+
+01:11:26.400 --> 01:11:28.400
+ lakukan dan saya melalui dan saya mengoreksi beberapa
+
+01:11:28.400 --> 01:11:31.840
+ hal-hal dan dia memiliki beberapa kata yang tidak masuk akal dalam terjemahan
+
+01:11:31.840 --> 01:11:35.760
+ dan jadi saya memperbaikinya dan saya mengoreksi tata bahasa dan konteksnya dan sedikit
+
+01:11:35.760 --> 01:11:39.760
+ ejaan dan dia seperti dia menyukainya lima dolar
+
+01:11:39.760 --> 01:11:42.000
+ benar-benar membutuhkan waktu 10 menit dan itu adil
+
+01:11:42.000 --> 01:11:44.480
+ sesuatu yang saya lakukan dengan secangkir kopi di pagi hari
+
+01:11:44.480 --> 01:11:50.960
+ ya dan dia memberi saya 5 dari 5 ulasan yang luar biasa seperti itu dari fiverr
+
+01:11:50.960 --> 01:11:54.480
+ Perspektif terbalik jadi saya seperti ini cukup rapi sehingga saya mulai berbicara
+
+01:11:54.480 --> 01:11:58.400
+ kepada anak-anak saya dan saya seperti kita harus mencari tahu apakah kalian bisa melakukan sesuatu
+
+01:11:58.400 --> 01:12:01.199
+ di sana dan Anda tahu apakah putri saya seorang seniman dan
+
+01:12:01.199 --> 01:12:05.280
+ dia bisa menggambar untuk orang-orang yang mulai menghasilkan uang. Itu agak rapi
+
+01:12:05.280 --> 01:12:08.159
+ Ide platform yang rapi saya tidak tahu apa aturannya
+
+01:12:08.159 --> 01:12:11.120
+ seperti usia minimum dan hal-hal seperti itu, tetapi kita dapat melihat jenis-jenis itu
+
+01:12:11.120 --> 01:12:13.360
+ hal-hal tapi itu cerita saya untuk minggu ini
+
+01:12:13.360 --> 01:12:18.719
+ bahwa hei saya pergi ke sisi lain juga dan saya menjual layanan saya sendiri yang saya berikan
+
+01:12:18.719 --> 01:12:23.120
+ sastra tupai gratis, um tapi eh
+
+01:12:23.120 --> 01:12:30.000
+ sekarang saya saya saya tersedia untuk dijual ii saya merasa itu akan menyenangkan untuk saja
+
+01:12:30.000 --> 01:12:34.000
+ memberi Anda lima dolar dan saya akan mengirimkan dokumen 500 kata
+
+01:12:34.000 --> 01:12:38.640
+ semua lorem ipsum dan beri tahu saya jika masuk akal saya akan melakukan yang terbaik
+
+01:12:38.640 --> 01:12:44.000
+ sudahkah Anda memperbaikinya ya baiklah itu saja jeff
+
+01:12:44.000 --> 01:12:46.800
+ itu semua baik-baik saja tapi itu sangat menyenangkan saya
+
+01:12:46.800 --> 01:12:50.080
+ senang berada di sini bersama Anda lagi minggu ini minggu depan kita masuk ke 3d
+
+01:12:50.080 --> 01:12:52.560
+ mencetak jadi kita akan merakit ender
+
+01:12:52.560 --> 01:12:55.440
+ 3v2 jadi kami akan menyatukannya
+
+01:12:55.440 --> 01:12:58.640
+ dan kemudian kami akan mengobrol tentang Anda tahu bagaimana prosesnya
+
+01:12:58.640 --> 01:13:03.760
+ seperti bagi saya sebagai noob di ranah pencetakan 3d begitu
+
+01:13:03.760 --> 01:13:05.760
+ tantangan seperti apa yang saya temui
+
+01:13:05.760 --> 01:13:09.040
+ dan mungkin Anda temui saat Anda memulai
+
+01:13:09.040 --> 01:13:13.760
+ dalam pencetakan 3d plus saya akan menunjukkan tidak hanya cetakan pertama saya
+
+01:13:13.760 --> 01:13:19.440
+ tapi desain pertama saya sudah dicetak, Anda tidak ingin ketinggalan minggu depan
+
+01:13:19.440 --> 01:13:22.960
+ semoga minggumu menyenangkan semuanya sampai jumpa
+
+01:13:24.100 --> 01:13:30.029
+ [Musik] [Tepuk tangan]
+
+01:13:30.840 --> 01:13:45.060
+ selamat tinggal [Musik]
+
+01:13:48.290 --> 01:13:56.319
+ [Musik]
+
+01:14:01.760 --> 01:14:03.840
+ kamu
+

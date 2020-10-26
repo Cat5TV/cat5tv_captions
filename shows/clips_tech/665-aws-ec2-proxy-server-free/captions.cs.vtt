@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: cs
+
+00:00:03.919 --> 00:00:07.120
+ať už doufáte, že si při surfování dáte trochu víc soukromí
+
+00:00:07.120 --> 00:00:10.639
+ internet nebo chcete přistupovat ke službám, které možná
+
+00:00:10.639 --> 00:00:17.279
+ nejsou obvykle k dispozici ve vaší oblasti, nebo je možné, že je skutečně máte
+
+00:00:17.279 --> 00:00:22.000
+ zablokoval vaši IP adresu poskytovatel služeb
+
+00:00:22.000 --> 00:00:27.359
+ nemusí to být zákeřná věc, dříve jsem měl zablokován svou ip adresu na youtube
+
+00:00:27.359 --> 00:00:31.039
+ protože nahrávám tolik videí a stahuji
+
+00:00:31.039 --> 00:00:37.280
+ skryté titulky pro ty, což mě vedlo k překročení mého použití v systému Windows
+
+00:00:37.280 --> 00:00:42.239
+ API na YouTube, takže moje IP adresa bude blokována
+
+00:00:42.239 --> 00:00:46.000
+ nemusí to být zákeřná věc, nechci na ni působit dojmem
+
+00:00:46.000 --> 00:00:52.399
+ ale existují velmi oprávněné důvody, proč je třeba tyto typy obejít
+
+00:00:52.399 --> 00:00:58.640
+ věci a pitomci jdou na proxy, problémem jsou proxy
+
+00:00:58.640 --> 00:01:02.160
+ může být velmi nákladné a bezplatné
+
+00:01:02.160 --> 00:01:08.240
+ I když jsou snadno dostupné, velmi často buď nejsou příliš spolehlivé, jsou o jednu lepší
+
+00:01:08.240 --> 00:01:11.360
+ den budou další a vy ztratíte přístup ke svým službám
+
+00:01:11.360 --> 00:01:18.320
+ a všechno ostatní nebo ještě horší jsou nebezpečné, nevíš co
+
+00:01:18.320 --> 00:01:24.479
+ tito proxy sledují protokolování a dokonce rádi zachycují
+
+00:01:24.479 --> 00:01:28.640
+ při procházení posíláte veškerý svůj internetový provoz
+
+00:01:28.640 --> 00:01:36.159
+ prostřednictvím tohoto poskytovatele služeb, takže je tu jedna osoba, které opravdu věřím
+
+00:01:36.159 --> 00:01:44.079
+ zastupovat všechna svá data a to jsem já, nejsem stejná osoba
+
+00:01:44.079 --> 00:01:49.360
+ že byste řekli, že důvěřujete tomu, komu důvěřujete, to jste vy, takže jsem
+
+00:01:49.360 --> 00:01:54.399
+ ukážu vám, jak mohu nastavit bezplatnou službu proxy
+
+00:01:54.399 --> 00:02:00.000
+ z mého vlastního a můžete to replikovat a vytvořit si také svůj vlastní
+
+00:02:00.000 --> 00:02:03.200
+ uděláme to v cloudu, budeme používat službu třetí strany
+
+00:02:03.200 --> 00:02:06.399
+ poskytovatel a to je Amazon, takže říkáte, dobře
+
+00:02:06.399 --> 00:02:09.440
+ amazon a co ty víš, že jsme schopni důvěřovat našim datům
+
+00:02:09.440 --> 00:02:13.440
+ to, co používáme, je jejich cloudové služby, které se říká amazon
+
+00:02:13.440 --> 00:02:17.520
+ webové služby, takže je to jen jejich cloud
+
+00:02:17.520 --> 00:02:22.000
+ infrastrukturu, kterou si zákazníci mohou v zásadě pronajmout
+
+00:02:22.000 --> 00:02:25.120
+ přístup k jejich serverům a jejich prostoru a
+
+00:02:25.120 --> 00:02:28.640
+ a virtuální servery a všechno ostatní
+
+00:02:28.640 --> 00:02:34.959
+ infrastruktura je vám k dispozici, ale samotné nasazení ano
+
+00:02:34.959 --> 00:02:39.840
+ vaše, ukážu vám, jak se to dělá, skočíme na aws
+
+00:02:39.840 --> 00:02:45.920
+ a zejména ec2, takže samozřejmě, pokud nejste obeznámeni s aws just
+
+00:02:45.920 --> 00:02:50.160
+ přejděte na aws.amazon.com, přihlaste se pomocí svého účtu Amazon a
+
+00:02:50.160 --> 00:02:55.519
+ pak rychle vyhledejte ec2 a tím se dostanete do
+
+00:02:55.519 --> 00:02:58.959
+ v podstatě jejich virtualizační platforma myslí na ec2 jako
+
+00:02:58.959 --> 00:03:02.800
+ jen to, takže první věc, kterou si všimnu, když jsem tady
+
+00:03:02.800 --> 00:03:08.480
+ v ec2 je můj region a to je důležité, protože to je místo, kde můj proxy
+
+00:03:08.480 --> 00:03:13.360
+ server se bude nacházet, pokud to tam nastavím, proč je to tak
+
+00:03:13.360 --> 00:03:16.720
+ důležité dobře o tom přemýšlejte, řekněme, že používám streamování videa
+
+00:03:16.720 --> 00:03:20.959
+ služba, která omezuje kanadský přístup k jejich videu
+
+00:03:20.959 --> 00:03:24.720
+ streamovací službu tak umístěním mého proxy serveru dolů na sever
+
+00:03:24.720 --> 00:03:28.640
+ Kalifornie teď najednou jsou v podstatě
+
+00:03:28.640 --> 00:03:31.599
+ podle IP adresy si budu myslet, že se připojuji z
+
+00:03:31.599 --> 00:03:34.640
+ Kalifornie, takže jsem schopen to vyřešit
+
+00:03:34.640 --> 00:03:37.920
+ podobně můžete chtít změnit svůj region na základě
+
+00:03:37.920 --> 00:03:42.480
+ čeho se snažíte dosáhnout, můžete dokonce umístit server do afriky
+
+00:03:42.480 --> 00:03:45.760
+ nebo asie podívejte se na to, že můžete dát jeden přímo do hong Kongu
+
+00:03:45.760 --> 00:03:49.440
+ můžete dát jeden do kanady a uh v evropě máte
+
+00:03:49.440 --> 00:03:55.040
+ všude a pak právě teď máme Střední východ a Jižní Ameriku
+
+00:03:55.040 --> 00:03:58.080
+ takže je to docela velký seznam toho, kde jsou
+
+00:03:58.080 --> 00:04:00.080
+ nechat tuto infrastrukturu nastavit pro Amazon
+
+00:04:00.080 --> 00:04:03.920
+ webové služby služba ec2, takže si vyberte tu
+
+00:04:03.920 --> 00:04:07.200
+ je místo, kde chcete, aby byl váš proxy server
+
+00:04:07.200 --> 00:04:10.879
+ Chystám se nastavit moje, prostě to nechám jako severní Kalifornii, což je
+
+00:04:10.879 --> 00:04:14.560
+ nás na západ a to je místo
+
+00:04:14.560 --> 00:04:19.040
+ můj proxy server bude bydlet, což mi umožní připojení
+
+00:04:19.040 --> 00:04:22.880
+ jako bych vlastně seděl v Kalifornii
+
+00:04:22.880 --> 00:04:26.160
+ dobře, takže kliknu na instanci spuštění
+
+00:04:26.160 --> 00:04:30.160
+ a pak znovu spustit instanci, protože to rozbalovací a to mi dává
+
+00:04:30.160 --> 00:04:34.720
+ seznam operačních systémů um, které mohu nasadit
+
+00:04:34.720 --> 00:04:39.040
+ na mé instanci EC2, takže používám některé výrazy, se kterými možná nebudete obeznámeni
+
+00:04:39.040 --> 00:04:42.080
+ AWS je Amazon Web Services, který je v podstatě
+
+00:04:42.080 --> 00:04:46.560
+ Amazon je plný rozsah služeb, které nabízejí
+
+00:04:46.560 --> 00:04:52.000
+ pro uživatele cloudu je ec2 jejich virtualizační platformou pro virtuální
+
+00:04:52.000 --> 00:04:55.840
+ stroje, když jsem řekl instanci mluvím o a
+
+00:04:55.840 --> 00:05:00.160
+ virtuální stroj, takže je to doslova virtuální stroj
+
+00:05:00.160 --> 00:05:03.919
+ Chystám se tedy nasadit jeden z těchto operačních systémů na instanci ec2
+
+00:05:03.919 --> 00:05:06.560
+ což je virtuální stroj, tak co to chci
+
+00:05:06.560 --> 00:05:10.960
+ být tak a já jsem říkal hej komentář níže, pokud
+
+00:05:10.960 --> 00:05:12.639
+ Používám výraz, který neznáš
+
+00:05:12.639 --> 00:05:15.600
+ Chystám se rychle hledat, už jsem to udělal, protože jsem nasadil spoustu
+
+00:05:15.600 --> 00:05:18.960
+ servery v cloudu kliknu na debian
+
+00:05:18.960 --> 00:05:21.360
+ stačí zadat debian do vyhledávání zde
+
+00:05:21.360 --> 00:05:27.600
+ takže půjdu na výsledky aws marketplace tam jsou také
+
+00:05:27.600 --> 00:05:30.960
+ ty, které jsem vytvořil, a ty v komunitě
+
+00:05:30.960 --> 00:05:34.000
+ myslíte si, že dobře, chci použít komunitní, ne, protože ne
+
+00:05:34.000 --> 00:05:37.919
+ ti vás budou stát peníze a vy si říkáte dobře, ale komunita je zdarma
+
+00:05:37.919 --> 00:05:42.800
+ je to open source a ano, ale není to součást aws
+
+00:05:42.800 --> 00:05:45.919
+ tržiště, takže za používání budete muset zaplatit
+
+00:05:45.919 --> 00:05:49.600
+ mít tento virtuální stroj spuštěnou tuto instanci
+
+00:05:49.600 --> 00:05:52.639
+ v cloudu, takže místo toho použijeme jeden z oficiálních z
+
+00:05:52.639 --> 00:05:56.800
+ aws marketplace pojďme se podívat, jaké výsledky dostaneme, jsou tříděny docela dobře
+
+00:05:56.800 --> 00:06:00.400
+ debian přijde první výsledek je debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ bezplatná úroveň kompatibilní nebo volná úroveň způsobilá
+
+00:06:04.479 --> 00:06:09.039
+ verzi debianu, kterou budeme zavádět, proto ji vyberte
+
+00:06:09.039 --> 00:06:12.720
+ volná úroveň způsobilá, abychom mohli ceny ignorovat, protože použijeme a
+
+00:06:12.720 --> 00:06:16.560
+ free tier hit continue a to je místo, kde to tak dobře vybereme
+
+00:06:16.560 --> 00:06:20.000
+ pokud chceme volnou vrstvu, musíme jít s mikroskopem t2
+
+00:06:20.000 --> 00:06:24.080
+ Chystám se to vybrat, ale co nám to dá, dá nám to jeden procesor
+
+00:06:24.080 --> 00:06:29.520
+ jeden gigabajt paměti um a pak musíme vyřešit úložiště
+
+00:06:29.520 --> 00:06:33.199
+ nepotřebujeme mnoho úložného prostoru, protože právě nastavujeme základní proxy
+
+00:06:33.199 --> 00:06:36.639
+ a to je asi tak vše, takže se chystám nasadit stejně
+
+00:06:36.639 --> 00:06:40.080
+ že tak t2 micro je ten, který je zdarma
+
+00:06:40.080 --> 00:06:43.440
+ způsobilí nevyberou jednu z větších, protože budete platit
+
+00:06:43.440 --> 00:06:45.919
+ hned to přezkoumám a
+
+00:06:45.919 --> 00:06:50.080
+ spuštění se vrátíme, abychom provedli nastavení, jako jsou naše skupiny zabezpečení a
+
+00:06:50.080 --> 00:06:51.759
+ takové věci prostě všechno nechám
+
+00:06:51.759 --> 00:06:54.880
+ ve výchozím nastavení nyní a my to spustíme
+
+00:06:54.880 --> 00:06:58.479
+ Nejprve musím vytvořit nový pár klíčů, takže je
+
+00:06:58.479 --> 00:07:02.720
+ klíč ssh, který použiji, abych se do něj mohl ssh
+
+00:07:02.720 --> 00:07:06.800
+ tento server, takže zavolám tomuto jednomu proxy
+
+00:07:06.800 --> 00:07:11.120
+ server a poté si stáhněte pár klíčů. Nezapomeňte je uložit někam v bezpečí
+
+00:07:11.120 --> 00:07:14.960
+ Hodím to na svůj server a hodím to
+
+00:07:14.960 --> 00:07:19.199
+ tam a teď spuštění instance znamená sílu
+
+00:07:19.199 --> 00:07:23.680
+ na vašem virtuálním stroji, takže to budu tlačit
+
+00:07:23.680 --> 00:07:27.759
+ a jdeme na to, takže to v podstatě vytváří, vytváří virtuální
+
+00:07:27.759 --> 00:07:32.240
+ vytvořte instanci ec2 v cloudu pro nás
+
+00:07:32.240 --> 00:07:35.360
+ eh v severní Kalifornii, takže jdeme na to
+
+00:07:35.360 --> 00:07:40.400
+ Chystám se zobrazit instance tady dole a teď vidím, že teď mám jednu
+
+00:07:40.400 --> 00:07:45.120
+ instance běží t2 micro a to je prostě žádné jméno, takže jdu
+
+00:07:45.120 --> 00:07:48.080
+ klikněte na Upravit a budu to nazývat můj proxy server
+
+00:07:48.080 --> 00:07:52.720
+ server zkuste, že tam jdeme dobře, takže je to už funkční
+
+00:07:52.720 --> 00:07:56.960
+ takže když kliknu na to, že vidím IP adresu tohoto serveru, je to, že jsem volal
+
+00:07:56.960 --> 00:08:00.400
+ to proxy server, ale právě teď si pamatujte, že je to jen debian 10. tam je
+
+00:08:00.400 --> 00:08:05.120
+ na něm není nainstalováno nic jiného, ​​takže musím zkopírovat tu adresu IP
+
+00:08:05.120 --> 00:08:09.759
+ a pak skočím do mého příkazového řádku
+
+00:08:09.759 --> 00:08:13.520
+ protože jsem si stáhl klíč na svůj server, na který se osobně chystám
+
+00:08:13.520 --> 00:08:17.440
+ ssh na můj interní server
+
+00:08:23.680 --> 00:08:27.360
+ v pořádku, takže teď jsem tam, takže teď příkaz, který budu používat
+
+00:08:27.360 --> 00:08:33.360
+ je ssh a pak pomlčka i pro klíč, který budu používat
+
+00:08:33.360 --> 00:08:36.320
+ takže příchozí soubor, který pro klíč použiji
+
+00:08:36.320 --> 00:08:41.039
+ a ten se jmenuje proxy server. pem je to, co jsem stáhl
+
+00:08:41.039 --> 00:08:45.200
+ pak půjdu do admin, protože to je výchozí přihlášení pro debian
+
+00:08:45.200 --> 00:08:48.880
+ ami nebo amazon machine image admin na
+
+00:08:48.880 --> 00:08:51.920
+ a pak IP adresa, kterou jsem již zkopíroval do své schránky a pokud i
+
+00:08:51.920 --> 00:08:54.240
+ stiskněte Enter, požádá mě o přijetí tohoto klíče
+
+00:08:54.240 --> 00:08:59.279
+ a já říkám ano a jsem odepřen
+
+00:08:59.279 --> 00:09:02.560
+ oprávnění k tomuto souboru skončilo tím, že
+
+00:09:02.560 --> 00:09:06.480
+ 766, takže k těmto souborům má přístup každý, takže je to zajímavé
+
+00:09:06.480 --> 00:09:10.800
+ Samotný ssh mě chrání před tím, aby někdo mohl kompromitovat můj klíč
+
+00:09:10.800 --> 00:09:18.160
+ tak chmod 7 0 0 proxy server dot pam to zkusme a
+
+00:09:18.160 --> 00:09:21.279
+ teď to zkuste znovu, takže to, co jsem udělal, je oh a teď jsem
+
+00:09:21.279 --> 00:09:25.360
+ připojeno to právě fungovalo sedm nula nula znamená, že jsem vlastníkem
+
+00:09:25.360 --> 00:09:29.120
+ ten klíč mám dovoleno s tím dělat cokoli
+
+00:09:29.120 --> 00:09:35.200
+ číst zápis spouštět nula nula znamená nikdo ve skupině nikdo, kdo není a
+
+00:09:35.200 --> 00:09:39.120
+ část skupiny má k tomu vůbec přístup, takže je
+
+00:09:39.120 --> 00:09:42.080
+ v podstatě hloupý soubor, který nemohou ani otevřít
+
+00:09:42.080 --> 00:09:46.800
+ uh, ale můžu být v pořádku, takže teď, když jsem připojený, půjdu sudo žalovat
+
+00:09:46.800 --> 00:09:52.080
+ protože to je to, co má příkaz stát se rootem, takže teď jsem root tak trefný
+
+00:09:52.080 --> 00:09:57.519
+ aktualizace apt aktualizace mě chytí za repozitáře, vidíte, že toto je
+
+00:09:57.519 --> 00:10:02.160
+ skutečný počítač debian, pokud chcete v cloudu
+
+00:10:02.160 --> 00:10:05.600
+ je to tak snadné, že už upgraduji, už jsem
+
+00:10:05.600 --> 00:10:10.320
+ běh počítače debian v cloudu, takže za tu dobu a já jsem bla
+
+00:10:10.320 --> 00:10:16.640
+ bla bla bla a zároveň máme cloudový debian server
+
+00:10:16.640 --> 00:10:20.800
+ uvědomili jste si, že je to tak snadné a je to zdarma
+
+00:10:20.800 --> 00:10:24.000
+ Dobře, takže s tím můžeme dělat i jiné věci, mohli bychom nastavit lampu
+
+00:10:24.000 --> 00:10:28.880
+ mohl použít pro mysql mariadb cokoli, s čím přijdete, je to
+
+00:10:28.880 --> 00:10:32.000
+ debian server, takže to budeme používat jako náš
+
+00:10:32.000 --> 00:10:37.040
+ proxy, takže teď se chystám nainstalovat nástroj s názvem
+
+00:10:37.040 --> 00:10:43.920
+ pěkný a jednoduchý na instalaci apt nainstalujte malý proxy
+
+00:10:43.920 --> 00:10:50.880
+ opravdu jednoduché nastavení, řekněte ano, jdeme na to
+
+00:10:52.399 --> 00:10:56.480
+ a je hotovo, když jsme nainstalovali malý proxy server, který musíme upravit
+
+00:10:56.480 --> 00:11:04.640
+ konfigurační soubor, takže lomítko atd. lomítko malý malý proxy ji změnil na to
+
+00:11:04.640 --> 00:11:10.959
+ a pak používám nano tinyproxy.com a upravuji to, takže ovládání w v nano
+
+00:11:10.959 --> 00:11:14.079
+ umožňuje mi hledat oh, ale než vyhledám, všimněte si, že
+
+00:11:14.079 --> 00:11:18.000
+ port ve výchozím nastavení používá 8888, to budeme muset vědět
+
+00:11:18.000 --> 00:11:20.959
+ informace, protože k tomu se připojíme
+
+00:11:20.959 --> 00:11:25.200
+ náš proxy rychle vyhledá povolení
+
+00:11:26.720 --> 00:11:30.959
+ alt w umožňuje znovu vyhledávat wow slovo allow pravděpodobně není nejlepší
+
+00:11:30.959 --> 00:11:35.920
+ vyhledávací dotaz možná hledá 127.0.0.1 um a těsně pod tím se chystám
+
+00:11:35.920 --> 00:11:40.399
+ povolit a pak musím přidat svou IP adresu, abych se k tomu mohl připojit
+
+00:11:40.399 --> 00:11:44.320
+ proxy server, protože právě teď je zavřený, má k němu přístup pouze localhost
+
+00:11:44.320 --> 00:11:48.399
+ je důležité si uvědomit, že se jedná o veřejné zdarma
+
+00:11:48.399 --> 00:11:51.519
+ proxy server, jsem jediný, komu bude umožněn přístup, to je
+
+00:11:51.519 --> 00:11:54.959
+ bude povoleno proxyovat můj obsah prostřednictvím mého připojení
+
+00:11:54.959 --> 00:11:58.880
+ je to tedy v tomto ohledu soukromé, potřebuji znát své
+
+00:11:58.880 --> 00:12:02.959
+ IP adresa, takže na to skočím
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz a zkopírujte tuto adresu IP do mé schránky
+
+00:12:08.000 --> 00:12:11.279
+ a pak tam skočit zpět a vložit to do mé konfigurace
+
+00:12:11.279 --> 00:12:15.839
+ ovládání o zadejte ovládání x ovládání o je vypsat
+
+00:12:15.839 --> 00:12:22.720
+ uložte soubor nyní systém ctl restartujte malý proxy
+
+00:12:22.720 --> 00:12:28.079
+ téměř hotová poslední věc, kterou musíme udělat, je jen to říct aws
+
+00:12:28.079 --> 00:12:32.639
+ zabezpečení ec2, že nastavíme politiku, která říká
+
+00:12:32.639 --> 00:12:35.920
+ hej, mám povolení se připojit k tomuto serveru
+
+00:12:35.920 --> 00:12:39.839
+ takže se k tomu nikdo jiný nemůže připojit, takže to je to, o co se chystáme
+
+00:12:39.839 --> 00:12:43.120
+ právě teď, takže skočím zpět sem a uvidíte tento server na
+
+00:12:43.120 --> 00:12:47.279
+ obrazovka dobře, když kliknu na zabezpečení, pak mohu
+
+00:12:47.279 --> 00:12:50.880
+ klikněte na skupinu zabezpečení, která je přiřazena automaticky, takže stačí kliknout
+
+00:12:50.880 --> 00:12:53.680
+ a teď mě to nechalo na ec2
+
+00:12:53.680 --> 00:12:56.240
+ skupiny zabezpečení a správná skupina zabezpečení
+
+00:12:56.240 --> 00:12:59.440
+ všimnete si, že již je nastaven pro ssh, protože
+
+00:12:59.440 --> 00:13:03.760
+ je to ve výchozím nastavení povoleno, mohu to nastavit tak, aby umožňovalo pouze mě, což je
+
+00:13:03.760 --> 00:13:06.639
+ důležité, tak to udělejme jen proto, abychom byli dobří
+
+00:13:06.639 --> 00:13:09.959
+ bezpečnostní postupy, takže ssh to změním
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 to zavřu x a potom
+
+00:13:13.440 --> 00:13:18.320
+ změňte to na moji IP a pak přidám nové pravidlo, které jste viděli
+
+00:13:18.320 --> 00:13:20.880
+ jak jsem se sem dostal správně, vím, že se pohybuji opravdu rychle
+
+00:13:20.880 --> 00:13:24.079
+ Právě jsem klikl na upravit příchozí pravidla zde
+
+00:13:24.079 --> 00:13:29.040
+ v pořádku, takže přidejte nové pravidlo, vlastní tcp je výchozí
+
+00:13:29.040 --> 00:13:35.120
+ číslo portu, pamatuješ si 888 a povolím pouze můj ip, mohu tomu něco říkat, když?
+
+00:13:35.120 --> 00:13:40.320
+ chtít proxy a poté uložit svá pravidla
+
+00:13:40.320 --> 00:13:44.639
+ tam jdeme, takže teď vidíte ssh a vlastní tcp
+
+00:13:44.639 --> 00:13:51.040
+ jeden volal proxy na portu 8888, tak jak to otestujeme, je to v pořádku, takže náš
+
+00:13:51.040 --> 00:13:57.360
+ aktuální IP adresa je 99.233, a proto se připojím k proxy
+
+00:13:57.360 --> 00:14:01.600
+ toto není návod, jak používat proxy
+
+00:14:01.600 --> 00:14:04.480
+ nejedná se o výukový program o tom, pro co jej použít
+
+00:14:04.480 --> 00:14:08.079
+ nutně to je toto, zde vytvářím předpoklady
+
+00:14:08.079 --> 00:14:11.920
+ buď si to můžete vygooglit sami, protože to bude odlišné
+
+00:14:11.920 --> 00:14:15.199
+ ve vašem případu použití, zda chcete pouze proxy prohlížeč nebo proxy
+
+00:14:15.199 --> 00:14:18.480
+ konkrétní aplikaci nebo celou vaši síť
+
+00:14:18.480 --> 00:14:21.839
+ to bude na vašem individuálním případu použití
+
+00:14:21.839 --> 00:14:28.399
+ přísně návod, jak vytvořit tuto instanci ec2 opravdu rychle pro
+
+00:14:28.399 --> 00:14:31.760
+ zdarma, který má pro nás připraven proxy server pro použití v
+
+00:14:31.760 --> 00:14:36.639
+ v Kalifornii nebo kdekoli a uh, to je tak v mém
+
+00:14:36.639 --> 00:14:40.720
+ konkrétní případ právě teď, takže tento okamžik nemusí být nutně jaký
+
+00:14:40.720 --> 00:14:43.680
+ chcete udělat další, to je to, jak budu testovat
+
+00:14:43.680 --> 00:14:50.000
+ proxy jsem náhodou v systému Windows 10, takže prostě zadám proxy
+
+00:14:50.000 --> 00:14:54.240
+ a znovu přejděte do nastavení serveru proxy, pravděpodobně to tak není
+
+00:14:54.240 --> 00:14:57.279
+ chci jen otestovat, takže zapnu proxy
+
+00:14:57.279 --> 00:15:00.560
+ Vidím, že tam je staré nastavení proxy, takže se ujistěte, že jste
+
+00:15:00.560 --> 00:15:03.839
+ mějte na paměti, že pokud potřebujete staré nastavení serveru proxy, které potřebujete
+
+00:15:03.839 --> 00:15:08.480
+ Chcete-li to změnit, přejděte na instance na ec2, klikněte na svou instanci
+
+00:15:08.480 --> 00:15:12.079
+ id a chytit tuto IP adresu a pak vložit
+
+00:15:12.079 --> 00:15:15.519
+ jako adresu vašeho proxy serveru
+
+00:15:15.519 --> 00:15:20.800
+ port 8888 a uložte, takže jsem nyní připojen k
+
+00:15:20.800 --> 00:15:24.639
+ proxy okamžitě není připojen k nyní Windows říká
+
+00:15:24.639 --> 00:15:27.199
+ Chystám se směrovat veškerý váš provoz přes proxy server, který bych měl opravit
+
+00:15:27.199 --> 00:15:32.199
+ jsem tam, takže pokud se vrátím zpět na currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 je moje aktuální IP adresa, kterou zasáhnu f5 pro obnovení
+
+00:15:36.160 --> 00:15:44.639
+ a pokud vše proběhlo dobře 3.101.108.211. co to je?
+
+00:15:44.639 --> 00:15:52.839
+ to je můj server, takže jsem teď vlastně tam, kde to zjistím
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com, pojďme hledat IP adresu, na které se právě nacházím
+
+00:15:59.759 --> 00:16:06.839
+ kde jsem v San Jose v Kalifornii, to je místo, kde mě max určuje
+
+00:16:06.839 --> 00:16:10.880
+ buďte, takže to je vše, co máme, lidi, které máme
+
+00:16:10.880 --> 00:16:14.880
+ vytvořený nakonfigurovaný nasadil bezplatnou službu proxy
+
+00:16:14.880 --> 00:16:17.680
+ že vlastníme a provozujeme jsme jediní
+
+00:16:17.680 --> 00:16:22.560
+ kdo to má, kdo má ten ssh klíč, takže pokud chcete
+
+00:16:22.560 --> 00:16:26.079
+ připojte se, proveďte změny, použijte jej jako víceúčelový server, který můžete udělat
+
+00:16:26.079 --> 00:16:30.720
+ to um, ale dávej pozor na své fakturační věci, jen se ujisti, že
+
+00:16:30.720 --> 00:16:33.120
+ nepřekročili jste prahové hodnoty a podobné věci
+
+00:16:33.120 --> 00:16:36.240
+ pokud jej právě používáte jako proxy, je velmi nepravděpodobné, že to uděláte
+
+00:16:36.240 --> 00:16:38.480
+ je to jen něco, čím procházíte data
+
+00:16:38.480 --> 00:16:42.800
+ tak se podívejte, jestli je to aws.amazon.com, abyste mohli začít
+
+00:16:42.800 --> 00:16:45.920
+ pokud máte nějaké dotazy, pošlete je naší komunitě na hlavu
+
+00:16:45.920 --> 00:16:50.160
+ k našemu sváru najdete odkaz na category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ mezitím v interaktivním menu, pokud se vám to líbilo, pokud jste jej použili, nebo
+
+00:16:54.000 --> 00:17:05.839
+ zjistil, že je to užitečné, dejte mi velký palec nahoru, přihlaste se prosím
+
+00:17:08.849 --> 00:17:19.839
+ [Hudba] dělat
+
+00:17:23.599 --> 00:17:31.710
+ [Hudba]
+

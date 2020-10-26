@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: ro
+
+00:00:03.919 --> 00:00:07.120
+indiferent dacă sperați să vă oferiți o intimitate suplimentară în timp ce navigați
+
+00:00:07.120 --> 00:00:10.639
+ internet sau doriți să accesați servicii care poate
+
+00:00:10.639 --> 00:00:17.279
+ nu sunt disponibile în mod obișnuit în zona dvs. sau poate este un caz de a avea
+
+00:00:17.279 --> 00:00:22.000
+ a avut adresa IP blocată de un furnizor de servicii
+
+00:00:22.000 --> 00:00:27.359
+ s-ar putea să nu fie un lucru rău intenționat. Am avut adresa IP blocată de youtube înainte
+
+00:00:27.359 --> 00:00:31.039
+ pentru că am încărcat atât de multe videoclipuri și descarc
+
+00:00:31.039 --> 00:00:37.280
+ subtitrările pentru aceștia, ceea ce mi-a permis să depășesc utilizarea mea în
+
+00:00:37.280 --> 00:00:42.239
+ API-ul YouTube, deci adresa mea IP este blocată, așa că
+
+00:00:42.239 --> 00:00:46.000
+ nu trebuie să fie un lucru rău intenționat, nu vreau să dau acea impresie
+
+00:00:46.000 --> 00:00:52.399
+ dar există motive foarte legitime pentru care trebuie să ocolim aceste tipuri de
+
+00:00:52.399 --> 00:00:58.640
+ lucrurile și tocilarii merg la un proxy, problema este proxy
+
+00:00:58.640 --> 00:01:02.160
+ pot fi foarte scumpe de utilizat și cele gratuite
+
+00:01:02.160 --> 00:01:08.240
+ în timp ce sunt ușor disponibile, sunt foarte deseori fie foarte puțin fiabile, dar sunt unul
+
+00:01:08.240 --> 00:01:11.360
+ în ziua următoare sunt în jos și pierzi accesul la serviciile tale
+
+00:01:11.360 --> 00:01:18.320
+ și orice altceva sau chiar mai rău sunt periculoase, nu știi ce
+
+00:01:18.320 --> 00:01:24.479
+ acele proxy urmăresc înregistrarea și chiar le place interceptarea
+
+00:01:24.479 --> 00:01:28.640
+ pe măsură ce treceți, vă trimiteți tot traficul de internet
+
+00:01:28.640 --> 00:01:36.159
+ prin acel furnizor de servicii, deci există o persoană în care am încredere
+
+00:01:36.159 --> 00:01:44.079
+ să-mi înfrunt toate datele și asta sunt eu, nu sunt aceeași persoană
+
+00:01:44.079 --> 00:01:49.360
+ că ai spune că ai încredere în persoana în care ai încredere în tine, așa că sunt
+
+00:01:49.360 --> 00:01:54.399
+ vă voi arăta cum aș putea configura un serviciu proxy gratuit
+
+00:01:54.399 --> 00:02:00.000
+ al meu și poți să-l replici și să-l creezi și pe al tău
+
+00:02:00.000 --> 00:02:03.200
+ vom face asta în cloud, vom folosi un serviciu terță parte
+
+00:02:03.200 --> 00:02:06.399
+ furnizor și asta este amazon, așa că spui bine
+
+00:02:06.399 --> 00:02:09.440
+ amazon ce știi despre noi suntem capabili să avem încredere în datele noastre
+
+00:02:09.440 --> 00:02:13.440
+ pentru ei, ceea ce folosim este serviciile lor în cloud, se numește Amazon
+
+00:02:13.440 --> 00:02:17.520
+ serviciile web, deci toate acestea sunt cloud-ul lor
+
+00:02:17.520 --> 00:02:22.000
+ infrastructura pe care o au pentru ca clienții să o închirieze practic
+
+00:02:22.000 --> 00:02:25.120
+ acces la serverele lor și spațiul lor și
+
+00:02:25.120 --> 00:02:28.640
+ și serverele virtuale și orice altceva
+
+00:02:28.640 --> 00:02:34.959
+ infrastructura vă este disponibilă, dar implementarea însăși este
+
+00:02:34.959 --> 00:02:39.840
+ al tău, îți voi arăta cum se face acest lucru, vom trece la aws
+
+00:02:39.840 --> 00:02:45.920
+ și în special ec2, deci, bineînțeles, dacă nu sunteți familiarizați cu aws
+
+00:02:45.920 --> 00:02:50.160
+ accesați aws.amazon.com conectați-vă cu contul dvs. Amazon și
+
+00:02:50.160 --> 00:02:55.519
+ apoi faceți o căutare rapidă pentru ec2 și asta vă va duce în
+
+00:02:55.519 --> 00:02:58.959
+ practic platforma lor de virtualizare se gândește la ec2 ca la
+
+00:02:58.959 --> 00:03:02.800
+ doar așa că primul lucru pe care îl observ când sunt aici
+
+00:03:02.800 --> 00:03:08.480
+ în ec2 este regiunea mea și acest lucru este important, deoarece aici este proxy-ul meu
+
+00:03:08.480 --> 00:03:13.360
+ serverul va locui dacă îl setez acolo de ce este asta
+
+00:03:13.360 --> 00:03:16.720
+ important bine gândiți-vă la asta să spunem că folosesc un flux video
+
+00:03:16.720 --> 00:03:20.959
+ serviciu care restricționează accesul canadian la videoclipul lor
+
+00:03:20.959 --> 00:03:24.720
+ serviciul de streaming, așadar plasând serverul proxy în nord
+
+00:03:24.720 --> 00:03:28.640
+ California acum dintr-o dată sunt practic
+
+00:03:28.640 --> 00:03:31.599
+ prin adresa IP mă voi gândi că mă conectez de la
+
+00:03:31.599 --> 00:03:34.640
+ California, așa că pot să mă descurc
+
+00:03:34.640 --> 00:03:37.920
+ în mod similar, poate doriți să vă schimbați regiunea pe baza
+
+00:03:37.920 --> 00:03:42.480
+ ceea ce încercați să realizați, puteți chiar să puneți un server în Africa
+
+00:03:42.480 --> 00:03:45.760
+ sau Asia uită-te că poți pune unul chiar în Hong Kong
+
+00:03:45.760 --> 00:03:49.440
+ poți pune unul în Canada, uh, în Europa pe care o ai
+
+00:03:49.440 --> 00:03:55.040
+ peste tot și apoi avem Orientul Mijlociu și America de Sud chiar acum
+
+00:03:55.040 --> 00:03:58.080
+ deci este o listă destul de mare de unde se află
+
+00:03:58.080 --> 00:04:00.080
+ să configurați această infrastructură pentru Amazon
+
+00:04:00.080 --> 00:04:03.920
+ servicii web serviciul ec2 deci alegeți-l pe cel care
+
+00:04:03.920 --> 00:04:07.200
+ este locul în care doriți să fie serverul proxy
+
+00:04:07.200 --> 00:04:10.879
+ Am de gând să o stabilesc pe a mea, doar o voi lăsa în California de Nord, care este
+
+00:04:10.879 --> 00:04:14.560
+ noi vestul unu și acolo este
+
+00:04:14.560 --> 00:04:19.040
+ serverul meu proxy va locui, ceea ce îmi va permite să mă conectez
+
+00:04:19.040 --> 00:04:22.880
+ de parcă aș fi stat de fapt în California
+
+00:04:22.880 --> 00:04:26.160
+ bine, așa că voi face clic pe instanța de lansare
+
+00:04:26.160 --> 00:04:30.160
+ și apoi lansează din nou instanța pentru că face o listă verticală și asta îmi dă
+
+00:04:30.160 --> 00:04:34.720
+ o listă de sisteme de operare um pe care le pot implementa
+
+00:04:34.720 --> 00:04:39.040
+ pe instanța mea ec2, așa că folosesc câțiva termeni aici cu care este posibil să nu fiți familiarizați
+
+00:04:39.040 --> 00:04:42.080
+ aws este serviciile web Amazon care sunt practic
+
+00:04:42.080 --> 00:04:46.560
+ gama completă de servicii oferite de Amazon
+
+00:04:46.560 --> 00:04:52.000
+ pentru utilizatorii cloud ec2 este platforma lor de virtualizare pentru virtual
+
+00:04:52.000 --> 00:04:55.840
+ mașini când am spus instanță vorbesc despre un
+
+00:04:55.840 --> 00:05:00.160
+ mașină virtuală, astfel încât este literalmente o mașină virtuală
+
+00:05:00.160 --> 00:05:03.919
+ așa că voi implementa unul dintre aceste sisteme de operare într-o instanță de ec2
+
+00:05:03.919 --> 00:05:06.560
+ care este o mașină virtuală deci ce vreau
+
+00:05:06.560 --> 00:05:10.960
+ ca să fiu așa și spuneam hei comentariu mai jos dacă
+
+00:05:10.960 --> 00:05:12.639
+ Folosesc un termen cu care nu ești familiarizat
+
+00:05:12.639 --> 00:05:15.600
+ Voi face o căutare rapidă, am făcut-o deja înainte, pentru că implementez o tonă de
+
+00:05:15.600 --> 00:05:18.960
+ serverele din cloud voi face clic pe debian
+
+00:05:18.960 --> 00:05:21.360
+ Tastați doar debian în căutare aici
+
+00:05:21.360 --> 00:05:27.600
+ așa că atunci voi merge la rezultatele pieței aws, de asemenea
+
+00:05:27.600 --> 00:05:30.960
+ cele pe care le-am creat și cele din comunitate
+
+00:05:30.960 --> 00:05:34.000
+ ai crede bine că vreau să le folosesc bine pe cele din comunitate, nu, pentru că nu
+
+00:05:34.000 --> 00:05:37.919
+ aceia îți vor costa bani și spui bine, dar comunitatea este gratuită
+
+00:05:37.919 --> 00:05:42.800
+ este open source și da, totuși nu face parte din aws
+
+00:05:42.800 --> 00:05:45.919
+ pe piață și așa că va trebui să plătiți pentru utilizare
+
+00:05:45.919 --> 00:05:49.600
+ să aibă acea mașină virtuală care rulează instanța
+
+00:05:49.600 --> 00:05:52.639
+ în cloud, deci vom folosi unul dintre cele oficiale din
+
+00:05:52.639 --> 00:05:56.800
+ aws marketplace să vedem ce rezultate obținem, sunt sortate destul de bine
+
+00:05:56.800 --> 00:06:00.400
+ debian apare primul rezultat este debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ un nivel gratuit compatibil sau nivel gratuit eligibil
+
+00:06:04.479 --> 00:06:09.039
+ versiunea debian pe care o vom implementa, deci selectați-o
+
+00:06:09.039 --> 00:06:12.720
+ nivel gratuit eligibil, astfel încât să putem ignora prețurile, deoarece vom folosi un
+
+00:06:12.720 --> 00:06:16.560
+ lovirea gratuită de nivel continuă și aici selectăm atât de bine
+
+00:06:16.560 --> 00:06:20.000
+ dacă vrem nivelul gratuit, trebuie să mergem cu un micro t2
+
+00:06:20.000 --> 00:06:24.080
+ Voi selecta asta, dar ce ne oferă ne oferă un singur procesor
+
+00:06:24.080 --> 00:06:29.520
+ un gigabyte de memorie um și apoi avem spațiu de stocat
+
+00:06:29.520 --> 00:06:33.199
+ nu avem nevoie de mult spațiu de stocare pentru că doar configurăm un proxy de bază
+
+00:06:33.199 --> 00:06:36.639
+ și cam atât, așa că voi implementa la fel
+
+00:06:36.639 --> 00:06:40.080
+ că so t2 micro este cel cu nivel gratuit
+
+00:06:40.080 --> 00:06:43.440
+ eligibil nu selectați una dintre cele mai mari pentru că veți plăti
+
+00:06:43.440 --> 00:06:45.919
+ pentru asta imediat voi revizui și
+
+00:06:45.919 --> 00:06:50.080
+ lansare vom reveni pentru a face setări precum grupurile noastre de securitate și
+
+00:06:50.080 --> 00:06:51.759
+ lucruri de genul ăsta doar voi lăsa totul
+
+00:06:51.759 --> 00:06:54.880
+ în mod implicit deocamdată și vom lansa asta
+
+00:06:54.880 --> 00:06:58.479
+ în primul rând trebuie să creez o nouă pereche de chei, așa că este
+
+00:06:58.479 --> 00:07:02.720
+ tasta ssh pe care o voi folosi pentru a intra în ssh
+
+00:07:02.720 --> 00:07:06.800
+ acest server, așa că am să-l numesc pe proxy
+
+00:07:06.800 --> 00:07:11.120
+ server și apoi descărcați perechea mea de chei asigurați-vă că salvați acest lucru undeva în siguranță
+
+00:07:11.120 --> 00:07:14.960
+ Voi arunca asta pe serverul meu și o voi arunca
+
+00:07:14.960 --> 00:07:19.199
+ acolo și acum instanța de lansare înseamnă putere
+
+00:07:19.199 --> 00:07:23.680
+ pe mașina dvs. virtuală, așa că voi împinge asta
+
+00:07:23.680 --> 00:07:27.759
+ și acolo mergem, așa că, practic, creăm, este să creăm un virtual
+
+00:07:27.759 --> 00:07:32.240
+ automatizați o instanță ec2 în cloud pentru noi
+
+00:07:32.240 --> 00:07:35.360
+ uh în nordul californiei, așa că mergem așa
+
+00:07:35.360 --> 00:07:40.400
+ Voi vedea instanțe aici și acum pot vedea că am unul
+
+00:07:40.400 --> 00:07:45.120
+ instanță care rulează un micro t2 și este doar un nume, așa că voi merge
+
+00:07:45.120 --> 00:07:48.080
+ dați clic pe editați și voi numi acest server proxy meu
+
+00:07:48.080 --> 00:07:52.720
+ server încearcă să mergem bine, deci este deja funcțional
+
+00:07:52.720 --> 00:07:56.960
+ deci, dacă fac clic pe asta, pot vedea adresa IP a serverului pe care l-am sunat
+
+00:07:56.960 --> 00:08:00.400
+ este server proxy, dar acum amintiți-vă că este doar debian 10. există
+
+00:08:00.400 --> 00:08:05.120
+ nimic altceva instalat pe el, așa că trebuie să copiez acea adresă IP
+
+00:08:05.120 --> 00:08:09.759
+ și apoi voi sări în linia de comandă
+
+00:08:09.759 --> 00:08:13.520
+ pentru că am descărcat cheia de pe serverul meu la care merg personal
+
+00:08:13.520 --> 00:08:17.440
+ ssh către serverul meu intern
+
+00:08:23.680 --> 00:08:27.360
+ bine, deci acum sunt acolo, deci acum comanda pe care o voi folosi
+
+00:08:27.360 --> 00:08:33.360
+ este ssh și apoi dash i pentru cheia pe care o voi folosi
+
+00:08:33.360 --> 00:08:36.320
+ deci fișierul de intrare pe care îl voi folosi pentru cheie
+
+00:08:36.320 --> 00:08:41.039
+ și cel numit proxy server.pem este ceea ce am descărcat
+
+00:08:41.039 --> 00:08:45.200
+ atunci voi merge la admin deoarece este autentificarea implicită pentru debian
+
+00:08:45.200 --> 00:08:48.880
+ ami sau administratorul de imagine al mașinii amazon la
+
+00:08:48.880 --> 00:08:51.920
+ și apoi adresa IP pe care am copiat-o deja în clipboard și dacă i
+
+00:08:51.920 --> 00:08:54.240
+ apasă pe Enter, îmi va cere să accept acea cheie
+
+00:08:54.240 --> 00:08:59.279
+ și spun da și mi se refuză
+
+00:08:59.279 --> 00:09:02.560
+ permisiunile pentru acel fișier au ajuns să fie luate în considerare faptul că
+
+00:09:02.560 --> 00:09:06.480
+ 766, deci toată lumea are acces la aceste fișiere, așa că este interesant
+
+00:09:06.480 --> 00:09:10.800
+ ssh în sine mă protejează împotriva faptului că cineva îmi poate compromite cheia
+
+00:09:10.800 --> 00:09:18.160
+ deci chmod 7 0 0 server proxy dot pam hai să încercăm asta și
+
+00:09:18.160 --> 00:09:21.279
+ acum încearcă din nou, așa că ceea ce am făcut este oh și acum sunt
+
+00:09:21.279 --> 00:09:25.360
+ conectat tocmai a funcționat șapte zero zero înseamnă că sunt proprietarul
+
+00:09:25.360 --> 00:09:29.120
+ cheia aia am voie să fac orice cu ea
+
+00:09:29.120 --> 00:09:35.200
+ citire scriere executare zero zero înseamnă nimeni din grup nimeni care nu este un
+
+00:09:35.200 --> 00:09:39.120
+ unei părți a grupului i se permite să acceseze acest lucru, așa că este
+
+00:09:39.120 --> 00:09:42.080
+ practic un fișier prost pe care nici măcar nu îl pot deschide
+
+00:09:42.080 --> 00:09:46.800
+ uh, dar pot în regulă, așa că acum, când sunt conectat, o să mă duc în judecată
+
+00:09:46.800 --> 00:09:52.080
+ pentru că asta este comanda de a deveni root, așa că acum sunt root atât de apt
+
+00:09:52.080 --> 00:09:57.519
+ actualizare apt actualizare îmi va apuca depozitele, vedeți că acesta este un
+
+00:09:57.519 --> 00:10:02.160
+ un computer debian real dacă doriți în cloud
+
+00:10:02.160 --> 00:10:05.600
+ este atât de ușor că deja fac upgrade, deja sunt
+
+00:10:05.600 --> 00:10:10.320
+ rularea unui computer debian în cloud, deci în acea perioadă de timp și sunt bla
+
+00:10:10.320 --> 00:10:16.640
+ bla bla în același timp um avem un server debian bazat pe cloud
+
+00:10:16.640 --> 00:10:20.800
+ ți-ai dat seama că este atât de ușor și este gratuit
+
+00:10:20.800 --> 00:10:24.000
+ bine, așa că putem face și alte lucruri cu acest lucru
+
+00:10:24.000 --> 00:10:28.880
+ l-ar putea folosi pentru mysql mariadb orice poți veni cu el este un
+
+00:10:28.880 --> 00:10:32.000
+ server debian, așa că vom folosi acest lucru ca al nostru
+
+00:10:32.000 --> 00:10:37.040
+ proxy deci acum ce voi face este să instalez un instrument numit
+
+00:10:37.040 --> 00:10:43.920
+ proxy tiny frumos și simplu de instalat apt install proxy tiny
+
+00:10:43.920 --> 00:10:50.880
+ foarte simplu de configurat spune da, iată-ne
+
+00:10:52.399 --> 00:10:56.480
+ și s-a făcut acum că am instalat un proxy mic pe care trebuie doar să îl edităm
+
+00:10:56.480 --> 00:11:04.640
+ fișierul de configurare, așa că slash etc slash, un mic proxy mic, a schimbat-o în asta
+
+00:11:04.640 --> 00:11:10.959
+ și apoi folosesc nano tinyproxy.com și o editez, așa că controlează w în nano
+
+00:11:10.959 --> 00:11:14.079
+ îmi permite să caut oh, dar înainte de a căuta rețineți că
+
+00:11:14.079 --> 00:11:18.000
+ portul implicit folosește 8888, va trebui să știm asta
+
+00:11:18.000 --> 00:11:20.959
+ informații pentru că la asta ne vom conecta
+
+00:11:20.959 --> 00:11:25.200
+ proxy-ul nostru caută rapid permisiunea
+
+00:11:26.720 --> 00:11:30.959
+ alt w vă permite să căutați din nou wow cuvântul permit nu este probabil cel mai bun
+
+00:11:30.959 --> 00:11:35.920
+ interogarea de căutare poate căuta 127.0.0.1 um și chiar sub cea pe care o voi merge
+
+00:11:35.920 --> 00:11:40.399
+ permit și apoi trebuie să adaug adresa mea IP, astfel încât să mă pot conecta la aceasta
+
+00:11:40.399 --> 00:11:44.320
+ server proxy deoarece acum este închis doar localhost îl poate accesa
+
+00:11:44.320 --> 00:11:48.399
+ este important să rețineți că acest lucru este în timp ce acesta este public gratuit
+
+00:11:48.399 --> 00:11:51.519
+ server proxy sunt singurul căruia i se va permite să îl acceseze
+
+00:11:51.519 --> 00:11:54.959
+ îmi va fi permis să-mi proxyez conținutul prin intermediul conexiunii mele
+
+00:11:54.959 --> 00:11:58.880
+ este deci privat în această privință, trebuie să-l știu
+
+00:11:58.880 --> 00:12:02.959
+ adresa IP, așa că voi sări peste
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz și copiați acea adresă IP în clipboard
+
+00:12:08.000 --> 00:12:11.279
+ și apoi săriți înapoi acolo și lipiți-l în config
+
+00:12:11.279 --> 00:12:15.839
+ control o introduce control x control o este să scrii
+
+00:12:15.839 --> 00:12:22.720
+ salvați fișierul acum sistemul ctl reporniți proxy-ul mic
+
+00:12:22.720 --> 00:12:28.079
+ Aproape am terminat ultimul lucru pe care trebuie să-l facem este doar să-i spunem aws
+
+00:12:28.079 --> 00:12:32.639
+ securitatea ec2 că vom stabili o politică care spune
+
+00:12:32.639 --> 00:12:35.920
+ hei, numai că am voie să mă conectez la acel server
+
+00:12:35.920 --> 00:12:39.839
+ deci nimeni altcineva nu se poate conecta la el, așa că vom face asta
+
+00:12:39.839 --> 00:12:43.120
+ faceți acum, așa că voi sări înapoi aici și veți vedea acest server pe
+
+00:12:43.120 --> 00:12:47.279
+ ecran bine dacă fac clic pe securitate pot atunci
+
+00:12:47.279 --> 00:12:50.880
+ faceți clic pe grupul de securitate căruia i se atribuie automat, deci faceți clic pe
+
+00:12:50.880 --> 00:12:53.680
+ asta și acum m-a lăsat peste ec2
+
+00:12:53.680 --> 00:12:56.240
+ grupuri de securitate și grupul de securitate corect
+
+00:12:56.240 --> 00:12:59.440
+ veți observa că este deja configurat unul pentru ssh deoarece
+
+00:12:59.440 --> 00:13:03.760
+ este activat în mod implicit, pot seta ca să îmi permită doar și mie care este
+
+00:13:03.760 --> 00:13:06.639
+ important, așa că hai să facem asta doar pentru a ne simți bine
+
+00:13:06.639 --> 00:13:09.959
+ practici de securitate, așa că am să o schimb
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 Voi închide x asta și apoi
+
+00:13:13.440 --> 00:13:18.320
+ schimbați-l la IP-ul meu, apoi voi adăuga o nouă regulă pe care ați văzut-o
+
+00:13:18.320 --> 00:13:20.880
+ cum am ajuns aici, știu că mă mișc foarte repede
+
+00:13:20.880 --> 00:13:24.079
+ Tocmai am dat clic pe editarea regulilor de intrare aici
+
+00:13:24.079 --> 00:13:29.040
+ bine, așa că adăugați o nouă regulă tcp personalizat este implicit
+
+00:13:29.040 --> 00:13:35.120
+ Numărul portului îți amintești 888 și îmi permiți IP-ul doar îl pot numi ceva dacă i
+
+00:13:35.120 --> 00:13:40.320
+ doresc proxy și apoi salvează regulile mele
+
+00:13:40.320 --> 00:13:44.639
+ acolo mergem, așa că acum vedeți ssh și tcp personalizat
+
+00:13:44.639 --> 00:13:51.040
+ unul numit proxy pe portul 8888, deci cum putem testa acest lucru bine, așa că al nostru
+
+00:13:51.040 --> 00:13:57.360
+ adresa IP curentă este 99.233 și așa că mă voi conecta la proxy
+
+00:13:57.360 --> 00:14:01.600
+ acesta nu este un tutorial despre cum să utilizați un proxy
+
+00:14:01.600 --> 00:14:04.480
+ acesta nu este un tutorial pentru ce să-l folosiți
+
+00:14:04.480 --> 00:14:08.079
+ neapărat asta fac presupuneri aici că
+
+00:14:08.079 --> 00:14:11.920
+ îl poți face pe google singur, pentru că va fi diferit
+
+00:14:11.920 --> 00:14:15.199
+ în cazul dvs. de utilizare, indiferent dacă doriți doar să vă proxy browserul sau proxy-ul
+
+00:14:15.199 --> 00:14:18.480
+ o anumită aplicație sau întreaga dvs. rețea
+
+00:14:18.480 --> 00:14:21.839
+ asta va depinde de cazul dvs. de utilizare individual
+
+00:14:21.839 --> 00:14:28.399
+ strict un tutorial despre cum să construiți această instanță ec2 foarte rapid pentru
+
+00:14:28.399 --> 00:14:31.760
+ gratuit, care are un proxy pregătit pentru a fi folosit
+
+00:14:31.760 --> 00:14:36.639
+ California sau oriunde și uh asta e atât de mult în mine
+
+00:14:36.639 --> 00:14:40.720
+ caz special chiar acum, deci acest moment nu este neapărat ce
+
+00:14:40.720 --> 00:14:43.680
+ pe care doriți să o faceți în continuare, acesta este modul în care voi testa
+
+00:14:43.680 --> 00:14:50.000
+ proxy se întâmplă să fie pe Windows 10 aici, așa că voi tasta pur și simplu în proxy
+
+00:14:50.000 --> 00:14:54.240
+ și accesați din nou setările proxy, probabil că nu așa doriți să o faceți
+
+00:14:54.240 --> 00:14:57.279
+ Vreau doar să testez, așa că voi activa proxy-ul
+
+00:14:57.279 --> 00:15:00.560
+ Văd că există setări proxy vechi acolo, așa că asigurați-vă că sunteți
+
+00:15:00.560 --> 00:15:03.839
+ rețineți că, dacă există setări de proxy vechi de care aveți nevoie
+
+00:15:03.839 --> 00:15:08.480
+ pentru a-l schimba, accesați instanțele de pe ec2, faceți clic pe instanța dvs.
+
+00:15:08.480 --> 00:15:12.079
+ id și apucați acea adresă IP și apoi lipiți
+
+00:15:12.079 --> 00:15:15.519
+ ca în adresa serverului proxy
+
+00:15:15.519 --> 00:15:20.800
+ portul 8888 și salvați, așa că acum sunt conectat la
+
+00:15:20.800 --> 00:15:24.639
+ proxy nu este conectat instantaneu la Windows, spune acum
+
+00:15:24.639 --> 00:15:27.199
+ Voi direcționa tot traficul prin proxy pe care ar trebui să îl corectez
+
+00:15:27.199 --> 00:15:32.199
+ eu însumi acolo, deci dacă mă întorc la currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 este IP-ul meu curent, voi atinge f5 pentru a reîmprospăta
+
+00:15:36.160 --> 00:15:44.639
+ și dacă totul a mers bine 3.101.108.211. Ei bine, ce este asta
+
+00:15:44.639 --> 00:15:52.839
+ acesta este serverul meu, așa că sunt de fapt acum unde sunt să aflăm
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com hai să căutăm adresa IP pe care mă aflu în prezent
+
+00:15:59.759 --> 00:16:06.839
+ unde sunt san jose california acolo unde mă determină max mine
+
+00:16:06.839 --> 00:16:10.880
+ fii așa că asta e tot ce avem de făcut cu oamenii
+
+00:16:10.880 --> 00:16:14.880
+ creat configurat implementat un serviciu proxy gratuit
+
+00:16:14.880 --> 00:16:17.680
+ că deținem și operăm suntem singurii
+
+00:16:17.680 --> 00:16:22.560
+ cine are acel cine are cheia ssh așa că dacă vrei
+
+00:16:22.560 --> 00:16:26.079
+ conectați-vă faceți modificări folosiți-l ca un server multifuncțional pe care îl puteți face
+
+00:16:26.079 --> 00:16:30.720
+ dar nu uitați-vă la lucrurile dvs. de facturare, asigurați-vă că
+
+00:16:30.720 --> 00:16:33.120
+ nu ați depășit pragurile și așa ceva
+
+00:16:33.120 --> 00:16:36.240
+ dacă îl folosești doar ca proxy, este foarte puțin probabil să faci asta
+
+00:16:36.240 --> 00:16:38.480
+ este doar ceva prin care trimiți date
+
+00:16:38.480 --> 00:16:42.800
+ deci verificați dacă este aws.amazon.com pentru a începe
+
+00:16:42.800 --> 00:16:45.920
+ dacă aveți întrebări, postați-le în comunitatea noastră
+
+00:16:45.920 --> 00:16:50.160
+ la discordia noastră veți găsi linkul la categoria5.tv
+
+00:16:50.160 --> 00:16:54.000
+ între timp, în meniul de interacțiune, dacă v-a plăcut acest lucru dacă l-ați folosit sau
+
+00:16:54.000 --> 00:17:05.839
+ mi s-a părut util să-mi dai un deget mare în sus, te rog să te abonezi
+
+00:17:08.849 --> 00:17:19.839
+ [Muzica] da
+
+00:17:23.599 --> 00:17:31.710
+ [Muzică]
+

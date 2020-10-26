@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: fi
+
+00:00:00.320 --> 00:00:05.040
+luokan 5 televisiossa luotamme tiedostomme kingstonin SSD-asemille
+
+00:00:05.040 --> 00:00:07.839
+ palvelintietokoneellesi tai
+
+00:00:07.839 --> 00:00:10.880
+ Pöytätietokone kokee paremman suorituskyvyn
+
+00:00:10.880 --> 00:00:17.920
+ ja luotettavuus kingston ssds: n kanssa valmistautuu, on aika tekniikalle
+
+00:00:22.320 --> 00:00:25.519
+ tervetuloa näyttelyyn kaikille se on kauden 14 jakso 2
+
+00:00:25.519 --> 00:00:29.599
+ Olen robbie ferguson ja olen jeff weston, on hienoa olla täällä
+
+00:00:29.599 --> 00:00:32.800
+ ja uh toivon, että sinulla on ollut ihana viikko huolimatta
+
+00:00:32.800 --> 00:00:37.760
+ kaikki, mutta tässä olemme ja odotamme suurta näyttelyä eteenpäin
+
+00:00:37.760 --> 00:00:40.960
+ tänä iltana aiomme oppia luomaan oman
+
+00:00:40.960 --> 00:00:45.840
+ välityspalvelin okei, joten en halua puhua siitä liikaa ylhäältä
+
+00:00:45.840 --> 00:00:49.200
+ näyttely, mutta tiedän, että tiedät, että joskus on vaikea löytää hyvää
+
+00:00:49.200 --> 00:00:52.640
+ ilmainen välityspalvelu, joten aiomme luoda oman
+
+00:00:52.640 --> 00:00:55.840
+ ja aion näyttää, kuinka sijoittaa se mihin tahansa melko paljon maailmaan
+
+00:00:55.840 --> 00:01:01.600
+ käyttää aws-pilvipalveluita, joten se on aika jännittävää ja yksi asioista
+
+00:01:01.600 --> 00:01:05.680
+ myös sen kanssa, kun opimme vähän miten
+
+00:01:05.680 --> 00:01:09.520
+ Amazon-verkkopalvelut ec2 ja pilvipalvelut ja kyky
+
+00:01:09.520 --> 00:01:13.760
+ ottaa Debian-palvelimet käyttöön pilvi-infrastruktuurissa, kun opimme
+
+00:01:13.760 --> 00:01:18.799
+ miten se tehdään ja miten se toimii, tiedä vain se
+
+00:01:18.799 --> 00:01:20.159
+ mitä aiomme tehdä, on
+
+00:01:20.159 --> 00:01:24.000
+ siirrämme osan tiedoistamme myös kyseiseen infrastruktuuriin, joten sanon sen
+
+00:01:24.000 --> 00:01:26.960
+ koska joillakin suoratoiston katsojillamme on
+
+00:01:26.960 --> 00:01:29.600
+ kokenut ongelmia puskuroinnissa ja vastaavissa asioissa
+
+00:01:29.600 --> 00:01:32.799
+ ja se johtuu siitä, että meillä on pieni yksi lautatietokone
+
+00:01:32.799 --> 00:01:36.880
+ Kaikista asioista, joihin me suoratoistamme, ja sitten se lähetetään uudelleen
+
+00:01:36.880 --> 00:01:40.799
+ kuka tahansa, joka katselee roku tai muita hls-pelaajia ja vastaavia
+
+00:01:40.799 --> 00:01:44.399
+ sillä on ketterä suoratoistolaite käynnissä yhden kortin tietokoneella
+
+00:01:44.399 --> 00:01:47.759
+ hämmästyttävä wow, mutta mitä seurasin läpi
+
+00:01:47.759 --> 00:01:50.960
+ testaus on, että se kulkee melko korkealla prosessorilla, kun ihmiset
+
+00:01:50.960 --> 00:01:55.439
+ katsomme oikein, jotta uskon, että se voi aiheuttaa joitain
+
+00:01:55.439 --> 00:01:58.640
+ puskurointiongelmia streamissamme, joten menee paljon tavaraa
+
+00:01:58.640 --> 00:02:03.520
+ kulissien takana täällä yrittää saada se saamaan show sinulle uh sisään
+
+00:02:03.520 --> 00:02:07.840
+ erittäin helppokäyttöinen ja helposti käytettävä muoto ja niin, ettet ole
+
+00:02:07.840 --> 00:02:10.160
+ kokea esimerkiksi pyörivää pyörää
+
+00:02:10.160 --> 00:02:14.560
+ ja sellaisia ​​asioita, mutta niin, kun katsomme tänään
+
+00:02:14.560 --> 00:02:18.560
+ ja opitaan, miten nämä debian-palvelimet otetaan käyttöön pilvessä
+
+00:02:18.560 --> 00:02:20.879
+ tiedämme, että me teemme sen kulissien takana
+
+00:02:20.879 --> 00:02:23.760
+ samoin kuin näiden palvelujen siirtäminen
+
+00:02:23.760 --> 00:02:27.120
+ johonkin näistä tapauksista, jotta
+
+00:02:27.120 --> 00:02:30.480
+ yritä parantaa suorituskykyä täällä studiossa
+
+00:02:30.480 --> 00:02:34.400
+ paljon jännittäviä juttuja menee takanamme miten olit
+
+00:02:34.400 --> 00:02:38.000
+ olen ollut hyvä, puhumme sinulle hieman myöhemmin tänä iltana
+
+00:02:38.000 --> 00:02:42.080
+ jotkut hyödyntämisistänne juottamalla kyllä, haluatte kertoa meille vähän
+
+00:02:42.080 --> 00:02:44.720
+ vähän vain nopea kiusaus siitä, mistä tulemme
+
+00:02:44.720 --> 00:02:48.959
+ keskustelemalla uh poikani halusi päästä juottamaan
+
+00:02:48.959 --> 00:02:53.120
+ hänen syntymäpäivänsä, joten menimme sinne
+
+00:02:53.120 --> 00:02:56.480
+ viime kuusta lähtien olemme soittaneet vähän ja se on tullut
+
+00:02:56.480 --> 00:03:01.200
+ minä ajattelen kuinka voin tehdä omia juttujani kotona
+
+00:03:01.200 --> 00:03:04.560
+ kun minulla ei ole suurta tuotantotilaa tehdä oma
+
+00:03:04.560 --> 00:03:09.599
+ piirilevy joo niin joo siellä puhuimme siitä, joten jos olet kiinnostunut
+
+00:03:09.599 --> 00:03:15.040
+ DIY elektroniikka me puhumme siitä ja uh wow meillä on
+
+00:03:15.040 --> 00:03:19.840
+ joitain jännittäviä asioita, joihin olemme myös valmistautumassa ensi viikon näyttelyssä
+
+00:03:19.840 --> 00:03:23.040
+ on jo valmis lähtemään ja olemme innoissamme olla
+
+00:03:23.040 --> 00:03:26.640
+ 3D-tulostuksen esittely myös katsojillemme
+
+00:03:26.640 --> 00:03:29.680
+ joten se on jotain, jota aiomme oppia
+
+00:03:29.680 --> 00:03:36.080
+ tulevina viikkoina kategorian 5 televisiossa meillä on paljon meneillään joo
+
+00:03:36.080 --> 00:03:39.200
+ varmista, että olet tilannut meidät youtubessa
+
+00:03:39.200 --> 00:03:42.159
+ ja napsauta kelloa, niin saat ilmoituksen aina, kun lähetämme uuden
+
+00:03:42.159 --> 00:03:46.560
+ video milloin tahansa olemme läsnä ja myös jos haluat osallistua
+
+00:03:46.560 --> 00:03:49.280
+ mielestäni se on todella hieno tapa
+
+00:03:49.280 --> 00:03:54.000
+ olla osa luokan 5 televisiota, jotkut ihmiset vielä sanovat minulle hyvin mitä
+
+00:03:54.000 --> 00:03:58.400
+ ristiriita ja wow et ole osa erimielisyyttämme
+
+00:03:58.400 --> 00:04:01.920
+ palvelimelle, koska jos liityt ristiriitaan, jonka löydät, jos menet
+
+00:04:01.920 --> 00:04:06.560
+ to category5.tv napsauta vuorovaikutuksessa, niin näet liittyneen eriarvoisuuteen
+
+00:04:06.560 --> 00:04:10.720
+ palvelin on ilmainen selain- tai sovelluspohjainen
+
+00:04:10.720 --> 00:04:14.720
+ palvelu, jonka voit laittaa laitteellesi ja / tai käyttää
+
+00:04:14.720 --> 00:04:18.160
+ selaimesi kautta mitä tahansa ja voit pohjimmiltaan keskustella
+
+00:04:18.160 --> 00:04:22.079
+ yhteisö, mutta se on todella siisti, koska se on enemmän kuin vain chat-huone
+
+00:04:22.079 --> 00:04:26.160
+ sille on myös varattu erilaisia ​​huoneita
+
+00:04:26.160 --> 00:04:28.160
+ erilaisia ​​asioita niin asioita, joista puhumme
+
+00:04:28.160 --> 00:04:31.280
+ tai olemme päässeet esimerkiksi kulissien taakse
+
+00:04:31.280 --> 00:04:35.680
+ joten kulissien takana on vain täynnä kulissien takana
+
+00:04:35.680 --> 00:04:42.320
+ valokuvia, joita et muuten näe, ja meillä on niin paljon kyllä
+
+00:04:42.320 --> 00:04:44.400
+ ristiriitapalvelin, joten sinun täytyy mennä sinne
+
+00:04:44.400 --> 00:04:47.919
+ tietää, että se on kuin chat-foorumi, mutta sillä on
+
+00:04:47.919 --> 00:04:51.360
+ niin paljon enemmän kuin vain chat-vuorovaikutus
+
+00:04:51.360 --> 00:04:54.880
+ se on totta ja se ei ole vain aktiivinen esityksen aikana
+
+00:04:54.880 --> 00:04:58.240
+ se on päällä koko ajan ja tarkoitan jos sinulla on teknisiä juttuja
+
+00:04:58.240 --> 00:05:01.360
+ keskellä viikkoa olet kuin oh en tiedä miten ratkaista tämä ongelma sinulle
+
+00:05:01.360 --> 00:05:04.080
+ voisi poppi siellä ja yhteisö on mahtava antaa
+
+00:05:04.080 --> 00:05:07.680
+ neuvoja ja se on melko paikalla myös joo, se on totta
+
+00:05:07.680 --> 00:05:10.720
+ ok, joten meidän on pidettävä todella nopea tauko ja sitten hyppäämme oikealle
+
+00:05:10.720 --> 00:05:14.800
+ siihen tämän lyhyen irtautumisen jälkeen, jota aiomme tarkastella
+
+00:05:14.800 --> 00:05:20.800
+ kuinka perustaa aws ec2 -esiintymä, joka kuulostaa tekniseltä
+
+00:05:20.800 --> 00:05:24.080
+ minulle se tekee todella nopeasti, niin entä tässä olemme
+
+00:05:24.080 --> 00:05:29.759
+ Aiomme luoda oman ilmaisen välityspalvelun, joka on helpompi sanoa
+
+00:05:29.759 --> 00:05:36.240
+ hallitsen. Minulla on pääsy, meillä on ohjaussauva
+
+00:05:36.240 --> 00:05:51.920
+ ole heti takaisin [musiikki]
+
+00:05:58.560 --> 00:06:01.919
+ haluatko antaa itsellesi hieman ylimääräistä yksityisyyttä surffaillessasi
+
+00:06:01.919 --> 00:06:04.720
+ Internetissä tai haluat käyttää niitä palveluja
+
+00:06:04.720 --> 00:06:10.160
+ eivät ehkä ole saatavilla tyypillisesti omalla alueellasi tai ehkä se on
+
+00:06:10.160 --> 00:06:13.680
+ jos sinulla on todella ollut IP-osoitteesi
+
+00:06:13.680 --> 00:06:17.600
+ palveluntarjoajan estämä se ei välttämättä ole a
+
+00:06:17.600 --> 00:06:20.960
+ ilkeä asia, jonka IP-osoitteeni on estetty
+
+00:06:20.960 --> 00:06:24.639
+ youtube ennen kuin lähetin niin monta videota ja
+
+00:06:24.639 --> 00:06:29.120
+ lataa tekstitykset niille niin
+
+00:06:29.120 --> 00:06:33.759
+ on johtanut siihen, että olen ylittänyt käyttöni youtube-apissa
+
+00:06:33.759 --> 00:06:38.800
+ joten ip-osoitteeni estetään, joten sen ei tarvitse olla ilkeä asia
+
+00:06:38.800 --> 00:06:44.319
+ en halua antaa sellaista vaikutelmaa, mutta siihen on hyvin perusteltuja syitä
+
+00:06:44.319 --> 00:06:49.759
+ täytyy kiertää tällaisia ​​asioita, ja nörtit menevät
+
+00:06:49.759 --> 00:06:56.000
+ on välityspalvelin, ongelma on se, että välityspalvelinten käyttö voi olla erittäin kallista ja
+
+00:06:56.000 --> 00:07:00.160
+ ilmaisia, vaikka ne ovat helposti saatavilla, ovat hyvin usein
+
+00:07:00.160 --> 00:07:04.800
+ joko eivät ole kovin luotettavia, he nousevat yhtenä päivänä he ovat alas seuraavana ja menetät
+
+00:07:04.800 --> 00:07:10.240
+ pääsy palveluihisi ja kaikkeen muuhun tai vielä pahempaa
+
+00:07:10.240 --> 00:07:14.960
+ ne ovat vaarallisia, et tiedä mitä valtakirjat seuraavat
+
+00:07:14.960 --> 00:07:21.120
+ kirjaaminen ja jopa sieppaaminen, kun olet läpi lähettämässäsi
+
+00:07:21.120 --> 00:07:26.720
+ koko Internet-liikenteesi kyseisen palveluntarjoajan kautta
+
+00:07:26.720 --> 00:07:35.199
+ Joten siellä on yksi henkilö, johon luotan välityspalvelimeen kaikki tietoni
+
+00:07:35.199 --> 00:07:41.039
+ ja se olen minä, en ole sama henkilö, johon voisit sanoa luottavasi
+
+00:07:41.039 --> 00:07:45.199
+ henkilö, johon luotat, olet sinä, joten aion näyttää sinulle miten
+
+00:07:45.199 --> 00:07:53.280
+ voisin perustaa oman ilmaisen välityspalvelun ja voit kopioida sen ja
+
+00:07:53.280 --> 00:07:56.319
+ luo myös omasi, aiomme tehdä tämän pilvessä
+
+00:07:56.319 --> 00:07:58.800
+ käyttävät kolmannen osapuolen palveluntarjoajaa
+
+00:07:58.800 --> 00:08:02.400
+ ja se on amazon, joten sanot kyllä ​​amazon entä
+
+00:08:02.400 --> 00:08:05.919
+ tiedätkö voimme luottaa tietoihin heille hyvin, mitä käytämme on heidän
+
+00:08:05.919 --> 00:08:10.639
+ pilvipalveluita kutsutaan Amazon-verkkopalveluiksi, niin se on
+
+00:08:10.639 --> 00:08:14.319
+ kaikki heistä ovat heidän pilviinfrastruktuurinsa
+
+00:08:14.319 --> 00:08:18.560
+ Asiakkaat voivat periaatteessa vuokrata pääsyn palvelimiinsa ja palvelimiinsa
+
+00:08:18.560 --> 00:08:23.360
+ niiden tilaa ja virtuaalipalvelimia ja kaikkea muuta
+
+00:08:23.360 --> 00:08:29.680
+ infrastruktuuri on käytettävissäsi, mutta itse käyttöönotto on
+
+00:08:29.680 --> 00:08:34.560
+ sinun aion näyttää sinulle, miten tämä tehdään, siirrymme aws: iin
+
+00:08:34.560 --> 00:08:40.719
+ ja erityisesti ec2, joten tietysti sinä, jos et ole perehtynyt aws vain
+
+00:08:40.719 --> 00:08:44.720
+ Siirry osoitteeseen aws.amazon.com kirjaudu sisään Amazon-tililläsi
+
+00:08:44.720 --> 00:08:50.640
+ ja tee sitten nopea haku ec2: lle ja se vie sinut pohjimmiltaan
+
+00:08:50.640 --> 00:08:53.680
+ heidän virtualisointialustansa ajattelee ec2: ta
+
+00:08:53.680 --> 00:08:57.519
+ juuri niin, ensimmäinen asia, jonka huomaan, kun olen täällä
+
+00:08:57.519 --> 00:09:03.200
+ ec2: ssä on alueeni ja tämä on tärkeää, koska tässä välityspalvelimeni
+
+00:09:03.200 --> 00:09:08.080
+ palvelin aikoo asua, pitäisikö minun asettaa se sinne miksi
+
+00:09:08.080 --> 00:09:11.519
+ tärkeää miettiä tätä, sanotaan, että käytän videoiden suoratoistoa
+
+00:09:11.519 --> 00:09:15.680
+ palvelu, joka rajoittaa Kanadan pääsyä heidän videoonsa
+
+00:09:15.680 --> 00:09:19.440
+ suoratoistopalvelu sijoittamalla välityspalvelimeni pohjoiseen
+
+00:09:19.440 --> 00:09:23.360
+ Kaliforniassa yhtäkkiä he ovat periaatteessa
+
+00:09:23.360 --> 00:09:26.320
+ IP-osoitteen perusteella luulen, että muodostan yhteyden
+
+00:09:26.320 --> 00:09:29.360
+ Kaliforniassa, joten pystyn kiertämään sitä
+
+00:09:29.360 --> 00:09:32.720
+ vastaavasti haluat ehkä muuttaa alueesi perusteella
+
+00:09:32.720 --> 00:09:37.200
+ mitä yrität saavuttaa, voit jopa laittaa palvelimen Afrikkaan
+
+00:09:37.200 --> 00:09:40.480
+ tai aasia katso, että voit laittaa yhden oikealle Hongkongissa
+
+00:09:40.480 --> 00:09:44.160
+ voit laittaa yhden kanadaan uh Euroopassa
+
+00:09:44.160 --> 00:09:49.680
+ ja sitten meillä on Lähi-itä ja Etelä-Amerikka juuri nyt
+
+00:09:49.680 --> 00:09:52.800
+ joten se on melko iso luettelo heistä
+
+00:09:52.800 --> 00:09:57.360
+ pyydä tätä infrastruktuuria luomaan Amazon-verkkopalveluille ec2-palvelu
+
+00:09:57.360 --> 00:10:01.920
+ joten valitse se, missä haluat välityspalvelimesi olla
+
+00:10:01.920 --> 00:10:05.600
+ asetan omani, aion vain jättää sen Pohjois-Kaliforniaksi, joka on
+
+00:10:05.600 --> 00:10:09.279
+ meidät länteen ja siellä
+
+00:10:09.279 --> 00:10:13.760
+ välityspalvelimeni asuu, mikä antaa minun muodostaa yhteyden
+
+00:10:13.760 --> 00:10:17.680
+ ikään kuin istuisin todella Kaliforniassa
+
+00:10:17.680 --> 00:10:20.880
+ Hyvä on, joten aion napsauttaa käynnistysistuntoa
+
+00:10:20.880 --> 00:10:24.880
+ ja käynnistä sitten instanssi uudelleen, koska se pudottaa alas ja antaa minulle
+
+00:10:24.880 --> 00:10:29.440
+ luettelo käyttöjärjestelmistä, jotka voin ottaa käyttöön
+
+00:10:29.440 --> 00:10:33.760
+ ec2-instanssissani, joten käytän joitain termejä, joita et ehkä tunne
+
+00:10:33.760 --> 00:10:38.240
+ aws on Amazonin verkkopalvelut, jotka ovat pohjimmiltaan Amazonin
+
+00:10:38.240 --> 00:10:44.560
+ koko valikoima palveluja, joita he tarjoavat pilvikäyttäjille, ec2 on heidän
+
+00:10:44.560 --> 00:10:48.160
+ virtualisointikoneiden virtualisointialusta
+
+00:10:48.160 --> 00:10:52.240
+ kun sanoin esimerkiksi puhun virtuaalikoneesta
+
+00:10:52.240 --> 00:10:56.160
+ joten se on kirjaimellisesti virtuaalikone, joten aion ottaa käyttöön yhden näistä
+
+00:10:56.160 --> 00:10:59.360
+ käyttöjärjestelmät ec2-ilmentymään, joka on
+
+00:10:59.360 --> 00:11:02.880
+ virtuaalikone, joten mitä haluan sen olevan
+
+00:11:02.880 --> 00:11:07.040
+ niin ja sanoin hei kommentti alla, jos käytän termiä, jota et tunne
+
+00:11:07.040 --> 00:11:08.399
+ kanssa aion tehdä nopean haun
+
+00:11:08.399 --> 00:11:11.120
+ olen jo tehnyt sen aiemmin, koska olen ottanut käyttöön paljon palvelimia
+
+00:11:11.120 --> 00:11:15.279
+ napsautan pilvessä debiania, kirjoita vain debian
+
+00:11:15.279 --> 00:11:19.279
+ etsi täältä, niin aion mennä aws
+
+00:11:19.279 --> 00:11:24.640
+ markkinatuloksia on myös itse luomiani ja
+
+00:11:24.640 --> 00:11:27.120
+ luulisi, että haluan käyttää
+
+00:11:27.120 --> 00:11:30.800
+ yhteisö hyvin no et, koska ne maksavat sinulle rahaa
+
+00:11:30.800 --> 00:11:34.320
+ ja sanot hyvin, mutta yhteisö on ilmaista, se on avointa lähdekoodia ja kyllä
+
+00:11:34.320 --> 00:11:38.959
+ se ei kuitenkaan ole osa aws-markkinapaikkaa, joten sinulla on
+
+00:11:38.959 --> 00:11:42.320
+ maksamaan käytöstä, että sillä virtuaalikoneella on
+
+00:11:42.320 --> 00:11:46.160
+ esimerkki, joka toimii pilvessä, joten sen sijaan aiomme
+
+00:11:46.160 --> 00:11:49.440
+ käytä yhtä aws-markkinoiden virallisista, katsotaanpa mitä tuloksia
+
+00:11:49.440 --> 00:11:53.360
+ saamme heidät lajiteltu melko hyvin debian tulee ensimmäinen tulos on
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster ilmainen taso yhteensopiva tai ilmainen taso
+
+00:11:57.839 --> 00:12:00.560
+ hyväksyttävä versio debianista, josta me tulemme
+
+00:12:00.560 --> 00:12:06.000
+ käyttöönotossa, valitse se ilmaiskerroin, joka on kelvollinen, jotta voimme sivuuttaa
+
+00:12:06.000 --> 00:12:09.360
+ hinnoittelu, koska aiomme käyttää ilmaisen tason jatkoa
+
+00:12:09.360 --> 00:12:13.040
+ ja tässä valitsemme sen niin hyvin, jos haluamme vapaan tason, jonka meidän on mentävä
+
+00:12:13.040 --> 00:12:15.839
+ t2-mikrolla, joten aion valita sen, mutta mitä
+
+00:12:15.839 --> 00:12:22.399
+ antaako se meille yhden prosessorin yhden gigatavun muistia um
+
+00:12:22.399 --> 00:12:25.600
+ ja sitten meillä on tallennustilaa käsitelläksemme, emme tarvitse paljon tallennustilaa, koska
+
+00:12:25.600 --> 00:12:29.920
+ olemme vasta perustamassa välityspalvelimen ja se on siitä, joten aion
+
+00:12:29.920 --> 00:12:34.079
+ ottaa käyttöön juuri niin, että t2-mikro on ilmainen
+
+00:12:34.079 --> 00:12:37.120
+ kelvollinen taso ei valitse suurempaa
+
+00:12:37.120 --> 00:12:38.720
+ sellaisia, koska maksat siitä
+
+00:12:38.720 --> 00:12:42.079
+ heti aion tarkastella ja käynnistää, palaamme
+
+00:12:42.079 --> 00:12:45.839
+ tehdä asetuksia, kuten turvaryhmämme ja vastaavat, aion vain lähteä
+
+00:12:45.839 --> 00:12:48.480
+ kaikki oletuksena toistaiseksi ja aiomme
+
+00:12:48.480 --> 00:12:52.000
+ käynnistää, että minun on ensin luotava uusi avain
+
+00:12:52.000 --> 00:12:55.360
+ pariksi, joten tämä on ssh-avain, jota aion käyttää
+
+00:12:55.360 --> 00:12:59.680
+ jotta ssh tälle palvelimelle, joten aion soittaa tälle
+
+00:12:59.680 --> 00:13:04.160
+ yhden välityspalvelimen ja lataa sitten avainparini
+
+00:13:04.160 --> 00:13:06.320
+ varmista, että tallennat sen turvalliseen paikkaan, johon aion mennä
+
+00:13:06.320 --> 00:13:10.800
+ heitä se palvelimelleni ja pudota se sinne
+
+00:13:10.800 --> 00:13:16.240
+ ja nyt käynnistysesimerkki tarkoittaa virtaa virtuaalikoneellesi, joten aion
+
+00:13:16.240 --> 00:13:20.000
+ työnnä sitä ja mennään niin se on pohjimmiltaan
+
+00:13:20.000 --> 00:13:23.120
+ sen luominen on virtuaalikoneen luominen
+
+00:13:23.120 --> 00:13:29.360
+ uh ec2-esimerkki pilvessä meille uh Pohjois-Kaliforniassa, niin me siellä
+
+00:13:29.360 --> 00:13:33.279
+ menen niin aion tarkastella tapauksia täällä
+
+00:13:33.279 --> 00:13:37.200
+ ja nyt näen, että minulla on nyt yksi esiintymä, joka käyttää t2-mikroa
+
+00:13:37.200 --> 00:13:41.199
+ ja se ei ole vain nimeä, joten aion napsauttaa muokata ja kutsun tätä
+
+00:13:41.199 --> 00:13:45.839
+ välityspalvelinpalvelin yrittää, että menemme kunnossa, niin se on
+
+00:13:45.839 --> 00:13:49.519
+ jo käynnissä, joten jos napsautan sitä, näen ip: n
+
+00:13:49.519 --> 00:13:53.360
+ Tämän palvelimen osoite on, olen kutsunut sitä välityspalvelimeksi, mutta juuri nyt
+
+00:13:53.360 --> 00:13:56.720
+ muista, että se on vain debian 10. siihen ei ole asennettu mitään muuta
+
+00:13:56.720 --> 00:14:02.480
+ joten minun on kopioitava IP-osoite ja sitten aion hypätä omaan
+
+00:14:02.480 --> 00:14:05.839
+ komentokehote, koska latain avaimen
+
+00:14:05.839 --> 00:14:17.839
+ palvelimeni aion henkilökohtaisesti ssh: n taloni palvelimelle
+
+00:14:18.399 --> 00:14:22.079
+ Selvä, joten nyt olen siellä, joten nyt komento, jota aion käyttää
+
+00:14:22.079 --> 00:14:28.079
+ on ssh ja sitten viiva i avaimelle, jota aion käyttää
+
+00:14:28.079 --> 00:14:31.040
+ joten saapuva tiedosto, jota aion käyttää avaimeen
+
+00:14:31.040 --> 00:14:35.760
+ ja sitä kutsutaan välityspalvelimeksi. pem on mitä latain
+
+00:14:35.760 --> 00:14:39.920
+ sitten aion mennä järjestelmänvalvojaksi, koska se on debianin oletustunnus
+
+00:14:39.920 --> 00:14:43.600
+ ami tai amazon machine image admin osoitteessa
+
+00:14:43.600 --> 00:14:46.639
+ ja sitten IP-osoite, jonka olen jo kopioinut leikepöydälle ja jos minä
+
+00:14:46.639 --> 00:14:48.959
+ paina Enter se pyytää minua hyväksymään sen avaimen
+
+00:14:48.959 --> 00:14:54.000
+ ja sanon kyllä ​​ja minulta evätään
+
+00:14:54.000 --> 00:14:57.279
+ kyseisen tiedoston käyttöoikeudet päätyivät siihen
+
+00:14:57.279 --> 00:15:01.199
+ 766, joten kaikilla on pääsy kyseisiin tiedostoihin, joten se on mielenkiintoista
+
+00:15:01.199 --> 00:15:05.519
+ ssh itse suojaa minua siltä, ​​että joku voi vaarantaa avaimen
+
+00:15:05.519 --> 00:15:13.120
+ joten chmod 700 -välityspalvelin pam kokeillaan sitä ja nyt
+
+00:15:13.120 --> 00:15:16.000
+ yritä uudelleen, joten mitä olen tehnyt, on oh ja nyt olen
+
+00:15:16.000 --> 00:15:20.800
+ kytketty se toimi vain 700 tarkoittaa, että olen kyseisen avaimen omistaja
+
+00:15:20.800 --> 00:15:27.279
+ Minulla on oikeus tehdä mitään sen kanssa lukea kirjoittaa suorittaa nolla nolla tarkoittaa
+
+00:15:27.279 --> 00:15:30.800
+ kukaan ryhmässä kukaan, joka ei ole osa ryhmää
+
+00:15:30.800 --> 00:15:35.600
+ on pääsy siihen ollenkaan, joten se on pohjimmiltaan tyhmä tiedosto, jota he eivät voi
+
+00:15:35.600 --> 00:15:39.519
+ jopa auki, mutta voin olla kunnossa niin nyt, kun olen
+
+00:15:39.519 --> 00:15:44.240
+ kytketty, aion mennä sudo-haastetta vastaan, koska komento on se
+
+00:15:44.240 --> 00:15:47.440
+ tullut juureksi, joten nyt olen juuri niinpä sovelluksen päivitys
+
+00:15:47.440 --> 00:15:50.399
+ whoop-sovelluksen päivitys tarttuu minun
+
+00:15:50.399 --> 00:15:55.680
+ arkistoista näet, että tämä on todellinen debian-tietokone, jos haluat
+
+00:15:55.680 --> 00:16:01.680
+ pilvessä se on niin helppoa, olen jo päivittänyt, olen jo suorittamassa debiania
+
+00:16:01.680 --> 00:16:05.120
+ tietokone pilvessä niin tuossa ajassa ja minä olen bllah
+
+00:16:05.120 --> 00:16:11.360
+ blah blah samaan aikaan um meillä on pilvipohjainen debian-palvelin
+
+00:16:11.360 --> 00:16:15.519
+ tiesitkö, että se oli niin helppoa ja ilmaista
+
+00:16:15.519 --> 00:16:18.720
+ Okei, jotta voimme tehdä muita asioita myös tämän kanssa, voisimme perustaa lampun pinon
+
+00:16:18.720 --> 00:16:23.600
+ voisi käyttää sitä mysql mariadb: ssä mitä tahansa mitä keksiä sen on
+
+00:16:23.600 --> 00:16:26.720
+ Debian-palvelin, joten aiomme käyttää tätä meidän
+
+00:16:26.720 --> 00:16:31.759
+ välityspalvelin, joten nyt aion asentaa työkalun nimeltä
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy mukava ja helppo asentaa apt install pieni välityspalvelin
+
+00:16:38.639 --> 00:16:45.600
+ todella helppo konfiguroida, sano kyllä ​​tässä
+
+00:16:47.120 --> 00:16:51.199
+ ja se on tehty nyt, kun olemme asentaneet pienen välityspalvelimen, jota meidän on vain muokattava
+
+00:16:51.199 --> 00:16:59.440
+ konfigurointitiedosto niin kauttaviiva jne. pieni pieni välityspalvelimen muutos dir siihen
+
+00:16:59.440 --> 00:17:05.760
+ ja sitten käytän nanoa tinyproxy.com ja muokkaan sitä niin, että hallitset w nanossa
+
+00:17:05.760 --> 00:17:08.799
+ sallii minun etsiä oh, mutta ennen kuin etsin hakua, huomaa, että
+
+00:17:08.799 --> 00:17:12.720
+ oletusarvoisesti 888 käyttää porttia, meidän on tiedettävä se
+
+00:17:12.720 --> 00:17:15.679
+ tietoa, koska siihen aiomme muodostaa yhteyden
+
+00:17:15.679 --> 00:17:19.839
+ välityspalvelimemme etsivät nopeaa lupaa
+
+00:17:21.439 --> 00:17:25.679
+ alt w antaa sinun etsiä uudelleen wow sana salli ei todennäköisesti ole paras
+
+00:17:25.679 --> 00:17:30.640
+ hakukysely saattaa etsiä 127.0.0.1 ja juuri sen alapuolelle, johon aion mennä
+
+00:17:30.640 --> 00:17:34.720
+ salli ja sitten minun on lisättävä IP-osoitteeni, jotta voin muodostaa yhteyden
+
+00:17:34.720 --> 00:17:37.440
+ tämä välityspalvelin, koska se on nyt suljettu
+
+00:17:37.440 --> 00:17:40.640
+ vain paikallinen isäntä voi käyttää sitä tärkeän huomata
+
+00:17:40.640 --> 00:17:44.720
+ että tämä on vaikka tämä on julkinen ilmainen välityspalvelin, olen ainoa, joka on
+
+00:17:44.720 --> 00:17:47.280
+ saa käyttää sitä, joka sallitaan
+
+00:17:47.280 --> 00:17:52.400
+ välityspalvelin sisältöni yhteyden kautta, joten se on tältä osin yksityinen
+
+00:17:52.400 --> 00:17:55.919
+ minun on tiedettävä IP-osoitteeni, joten aion siirtyä
+
+00:17:55.919 --> 00:18:03.360
+ nykyinen ip.xyz ja kopioi IP-osoite leikepöydälle ja hyppää sitten
+
+00:18:03.360 --> 00:18:09.840
+ takaisin sinne ja liitä se määritysohjaimeen o anna ohjaus x ohjaus o on
+
+00:18:09.840 --> 00:18:14.320
+ kirjoittaa ulos, tallenna tiedosto nyt systemctl
+
+00:18:14.320 --> 00:18:21.039
+ Käynnistä pieni välityspalvelin melkein tekemällä viimeisen tarvitsemamme asian
+
+00:18:21.039 --> 00:18:26.000
+ meidän on vain kerrottava aws ec2 -turvallisuudelle se
+
+00:18:26.000 --> 00:18:29.840
+ aiomme laatia käytännön, joka sanoo, että vain minulla on oikeus olla yhteydessä siihen
+
+00:18:29.840 --> 00:18:32.799
+ palvelinta, joten kukaan muu ei voi muodostaa yhteyttä siihen
+
+00:18:32.799 --> 00:18:34.880
+ mitä tahansa, niin aiomme tehdä oikein
+
+00:18:34.880 --> 00:18:38.799
+ nyt, joten aion hypätä takaisin tänne ja näet tämän palvelimen näytöllä
+
+00:18:38.799 --> 00:18:43.840
+ No, jos napsautan tietoturvaa, voin napsauttaa sen suojausryhmää, joka se on
+
+00:18:43.840 --> 00:18:46.240
+ määritetään automaattisesti, joten napsauta sitä
+
+00:18:46.240 --> 00:18:50.480
+ ja nyt se on jättänyt minut EC2-suojausryhmien ja oikean tietoturvan piiriin
+
+00:18:50.480 --> 00:18:52.320
+ huomaat, että se on jo perustettu
+
+00:18:52.320 --> 00:18:56.960
+ yksi ssh: lle, koska se on oletusarvoisesti käytössä, voin asettaa sen
+
+00:18:56.960 --> 00:18:59.440
+ sallia vain minulle, mikä on niin tärkeää
+
+00:18:59.440 --> 00:19:02.720
+ Tehdään se vain ollaksemme hyvissä turvallisuuskäytännöissä
+
+00:19:02.720 --> 00:19:06.160
+ ssh aion muuttaa sen custom000: sta
+
+00:19:06.160 --> 00:19:10.080
+ Aion sulkea x sen ja muuttaa sen sitten ip: ksi
+
+00:19:10.080 --> 00:19:14.480
+ sitten aion lisätä uuden säännön, jonka näit kuinka pääsin tänne oikein, tiedän että olen liikkeellä
+
+00:19:14.480 --> 00:19:18.080
+ todella nopeasti, olen juuri napsauttanut muokkaa saapuvia sääntöjä
+
+00:19:18.080 --> 00:19:22.960
+ täältä okei joten lisää uusi sääntö mukautettu TCP on
+
+00:19:22.960 --> 00:19:27.120
+ oletusporttinumero muistatko 888 ja vain
+
+00:19:27.120 --> 00:19:31.919
+ Salli ip voin kutsua sitä jollekin, jos haluan välityspalvelinta
+
+00:19:31.919 --> 00:19:37.919
+ ja tallenna sitten sääntöni, niin menemme, joten nyt näet ssh ja
+
+00:19:37.919 --> 00:19:44.160
+ mukautettu TCP, jota kutsutaan välityspalvelimeksi portissa 888.
+
+00:19:44.160 --> 00:19:49.600
+ Joten miten testataan tämä kunnossa, joten nykyinen IP-osoitteemme on 99.233
+
+00:19:49.600 --> 00:19:52.640
+ ja joten aion muodostaa yhteyden välityspalvelimeen, tämä on
+
+00:19:52.640 --> 00:19:57.360
+ ei opetusohjelma välityspalvelimen käytöstä, tämä ei ole a
+
+00:19:57.360 --> 00:20:01.120
+ opetusohjelma mihin sitä käytetään välttämättä
+
+00:20:01.120 --> 00:20:04.720
+ teen tässä oletuksia, että voit joko googlata sen itse
+
+00:20:04.720 --> 00:20:08.240
+ koska se tulee olemaan erilainen käyttötapauksesi mukaan, jos haluat
+
+00:20:08.240 --> 00:20:11.600
+ vain välityspalvelin selaimesi tai välityspalvelin tietyn sovelluksen tai koko
+
+00:20:11.600 --> 00:20:15.440
+ verkko, joka tulee olemaan yksilönne tehtävä
+
+00:20:15.440 --> 00:20:20.159
+ käyttötapauksessa tämä on ehdottomasti opetusohjelma tämän rakentamiseksi
+
+00:20:20.159 --> 00:20:23.679
+ ec2-ilmentymä todella nopeasti ilmaiseksi
+
+00:20:23.679 --> 00:20:28.400
+ jonka välityspalvelin on valmis käytettäväksi Kaliforniassa tai missä tahansa
+
+00:20:28.400 --> 00:20:32.960
+ ja se on se, niin minun erityistapauksessani juuri nyt
+
+00:20:32.960 --> 00:20:36.480
+ joten tämä hetki ei välttämättä ole se, mitä haluat tehdä seuraavaksi
+
+00:20:36.480 --> 00:20:41.120
+ näin aion testata välityspalvelinta, jonka satun olemaan Windows 10: ssä täällä
+
+00:20:41.120 --> 00:20:47.280
+ joten aion yksinkertaisesti kirjoittaa välityspalvelimen ja mennä välityspalvelinasetuksiin uudelleen
+
+00:20:47.280 --> 00:20:50.880
+ luultavasti ei, miten haluat tehdä sen, haluan vain testata, joten aion kääntyä
+
+00:20:50.880 --> 00:20:53.679
+ välityspalvelimessa näen, että siellä on vanha välityspalvelin
+
+00:20:53.679 --> 00:20:56.880
+ asetuksia, joten varmista, että olet tietoinen siitä
+
+00:20:56.880 --> 00:21:00.240
+ jos on olemassa vanhoja välityspalvelinasetuksia, sinun on muutettava sitä
+
+00:21:00.240 --> 00:21:03.679
+ ec2-esiintymät napsauttavat instanssitunnustasi
+
+00:21:03.679 --> 00:21:07.440
+ ja tartu siihen IP-osoitteeseen ja liitä se sitten
+
+00:21:07.440 --> 00:21:11.840
+ välityspalvelimen portin 8888 osoitteeksi
+
+00:21:11.840 --> 00:21:17.120
+ ja tallenna, joten nyt olen yhteydessä välityspalvelimeen heti
+
+00:21:17.120 --> 00:21:20.559
+ ei ole kytketty nyt ikkunoihin, sanon, että aion reitittää kaiken liikenteen
+
+00:21:20.559 --> 00:21:22.880
+ välityspalvelimen kautta minun pitäisi korjata itseni siellä
+
+00:21:22.880 --> 00:21:29.520
+ joten jos palaan nykyiseen ip.xyz 99.233: een, olen nykyinen ip, osun
+
+00:21:29.520 --> 00:21:38.159
+ f5 päivittää ja jos kaikki meni hyvin 3.101.108.211. hyvin
+
+00:21:38.159 --> 00:21:44.720
+ mikä on se palvelimeni, joten olen itse asiassa nyt
+
+00:21:44.720 --> 00:21:51.679
+ missä olen selvitämme maxmind.com haetaan IP-osoite
+
+00:21:51.679 --> 00:21:59.120
+ että olen tällä hetkellä missä olen San Jose Kaliforniassa
+
+00:21:59.120 --> 00:22:02.559
+ siellä minun kaivokseni määrää minut olemaan
+
+00:22:02.559 --> 00:22:05.600
+ joten siinä on kaikki, mitä meillä on
+
+00:22:05.600 --> 00:22:10.640
+ luotu määritetty käyttöön otettu ilmainen välityspalvelin, jonka me
+
+00:22:10.640 --> 00:22:14.559
+ omistaa ja toimia, meillä on ainoa, jolla on sellainen
+
+00:22:14.559 --> 00:22:19.200
+ uh ssh-avain, joten jos haluat muodostaa yhteyden, tee muutokset
+
+00:22:19.200 --> 00:22:23.840
+ monikäyttöisenä palvelimena voit tehdä sen, mutta vain pitää silmällä omaa
+
+00:22:23.840 --> 00:22:27.120
+ varmista vain, että et ole ylittänyt kynnysarvoja ja
+
+00:22:27.120 --> 00:22:29.440
+ Tällaisia ​​asioita, jos käytät sitä vain välityspalvelimena, se on
+
+00:22:29.440 --> 00:22:32.159
+ hyvin epätodennäköistä, että aiot tehdä sen, että se on vain jotain, mitä olet tekemässä
+
+00:22:32.159 --> 00:22:37.520
+ tietoja, joten tarkista, että pääset alkuun osoitteessa aws.amazon.com
+
+00:22:37.520 --> 00:22:41.440
+ jos sinulla on kysyttävää, lähetä ne yhteisöömme
+
+00:22:41.440 --> 00:22:44.480
+ ristiriitamme löydät linkin kategoriasta 5
+
+00:22:44.480 --> 00:22:48.720
+ TV vuorovaikutusvalikossa sillä välin, jos nautit tästä, jos olet käyttänyt sitä tai
+
+00:22:48.720 --> 00:22:53.039
+ piti sitä hyödyllisenä, anna minulle iso peukalo, ole hyvä ja tilaa ja näemme sinut oikein
+
+00:22:53.039 --> 00:23:07.059
+ tauon jälkeen [musiikki]
+
+00:23:15.520 --> 00:23:18.559
+ tervetuloa takaisin tämä on luokan 5 tekniikka-tv
+
+00:23:18.559 --> 00:23:22.240
+ ja haluan puhua siitä, mitä teen kotona
+
+00:23:22.240 --> 00:23:26.640
+ tai pikemminkin mitä aion tehdä istuen netflixiä katsellen
+
+00:23:26.640 --> 00:23:30.480
+ minulla ei ole aikaa istua ja katsella netflixiä
+
+00:23:30.480 --> 00:23:34.960
+ uh ei perheeni aina tarttuu netflixiin ja olen kuin menisin vain tietokoneelle
+
+00:23:34.960 --> 00:23:38.720
+ mikä on hienoa, koska se pakotti minut käynnistämään, että tietokoneessa on netflix
+
+00:23:38.720 --> 00:23:44.000
+ nyt jeff, sinä häirit minua, ei, mutta se on
+
+00:23:44.000 --> 00:23:46.960
+ hienoa, koska se on pakottanut minut alkamaan tarkastella joitain asioita, joita teemme
+
+00:23:46.960 --> 00:23:51.760
+ ympäri taloa ja mene kuinka voin tehdä tästä omani ja niin
+
+00:23:51.760 --> 00:23:55.120
+ tiedät, että mainitsin esityksen yläosassa, että poikamme on
+
+00:23:55.120 --> 00:24:00.240
+ on juottanut juottamisen, ja hän on onnistunut siinä hyvin ja muistuttanut kuinka vanha hän on
+
+00:24:00.240 --> 00:24:05.200
+ vain kääntymässä 12. juuri kääntynyt 12. okei hmm, mutta joo, hän on valmis
+
+00:24:05.200 --> 00:24:09.760
+ erittäin hyvin sen kanssa ja uh hän on juotanut kaksi laskinta toistaiseksi
+
+00:24:09.760 --> 00:24:13.919
+ um ja yksi heistä on viety kouluun, jonka hänen opettajansa räjäytti kokonaan
+
+00:24:13.919 --> 00:24:16.000
+ poissa joen ajattelen 12-vuotiaita ja hän
+
+00:24:16.000 --> 00:24:20.320
+ jo tekemällä laskinta joo joo hän teki laskimen, josta saimme DIY-paketin
+
+00:24:20.320 --> 00:24:23.360
+ Amazon ja hän rakensi sen ja ehkä kaksi tuntia
+
+00:24:23.360 --> 00:24:27.039
+ työstä se oli todella ilmiömäistä epärealistista ja hänen juottotyö on
+
+00:24:27.039 --> 00:24:30.880
+ todella puhdas erinomainen kuin näyttää ammattilaiselta
+
+00:24:30.880 --> 00:24:34.559
+ mutta joka tapauksessa hän on kysynyt, miten tehdä muita juttuja ja kun juotamme häntä
+
+00:24:34.559 --> 00:24:37.200
+ kuten mikä tämä ja mikä tämä ja miten se toimii ja
+
+00:24:37.200 --> 00:24:40.480
+ olen menossa, haluan pystyä opettamaan hänelle näitä asioita
+
+00:24:40.480 --> 00:24:46.480
+ Haluan pystyä selittämään hänelle, kuinka piirilevy todella toimii paitsi
+
+00:24:46.480 --> 00:24:49.360
+ juottamalla se, mutta ymmärtämällä komponentit ja reititys ja kaikki muu
+
+00:24:49.360 --> 00:24:53.279
+ sellaista tavaraa ja tarkoitan, että tiedän, että voit ostaa um
+
+00:24:53.279 --> 00:25:00.400
+ vain tavalliset levyt, jotka ovat vain pieniä liitäntäpisteitä
+
+00:25:00.400 --> 00:25:03.840
+ mutta haluan pystyä tekemään oman lautamme joo, ja niin hän kysyi
+
+00:25:03.840 --> 00:25:07.279
+ erityisesti jos löydämme DIY-paketin
+
+00:25:07.279 --> 00:25:10.320
+ hyödytön laatikko, jonka tiedät olevan laatikko, johon painat nappia ja
+
+00:25:10.320 --> 00:25:15.840
+ pieni asia tulee esiin ja ponnahtaa sen joo kokeilla
+
+00:25:17.600 --> 00:25:22.640
+ mitä teit, olet tosissasi
+
+00:25:25.039 --> 00:25:30.400
+ oi jumala, se on hauskaa
+
+00:25:32.720 --> 00:25:39.520
+ hei se on kuin kissanpentu olisi kuin kissani
+
+00:25:40.240 --> 00:25:44.799
+ hei hei nyt, joten olen etsinyt sellaista, jota en ole löytänyt, mutta löysin joukon
+
+00:25:44.799 --> 00:25:48.080
+ ihmiset, kuten oh, voit tehdä yhden käyttämällä arduinoa, voit tehdä sellaisen tällä
+
+00:25:48.080 --> 00:25:55.520
+ ja olin kuin jos teen DIY-laatikon hyödytön laatikko, josta haluan rakentaa sen
+
+00:25:55.520 --> 00:25:58.559
+ pohjassa, joten olen tutkinut miten tehdä
+
+00:25:58.559 --> 00:26:03.679
+ omat piirilevyt kotona okei, se ei todellakaan ole niin vaikeaa
+
+00:26:03.679 --> 00:26:08.960
+ ja minut räjäytettiin, että tarvitsen vain lasertulostimen reitityksen asettamiseksi
+
+00:26:08.960 --> 00:26:12.880
+ kuten missä polut kulkevat, joten aiot syövyttää sen
+
+00:26:12.880 --> 00:26:15.919
+ syövyn sen todella kotona oh mies
+
+00:26:15.919 --> 00:26:20.159
+ se on paljon pidempi kuin minua jeff se todella liittyy kemikaaleja
+
+00:26:20.159 --> 00:26:23.679
+ se tekee, mutta todella yksinkertainen prosessi, joten olen löytänyt
+
+00:26:23.679 --> 00:26:26.880
+ Olen tehnyt joukon tutkimuksia siitä ja löysin aa
+
+00:26:26.880 --> 00:26:29.919
+ todella yksinkertainen helppo tapa tehdä oma piirilevy
+
+00:26:29.919 --> 00:26:32.799
+ ja sitä me aiomme tehdä niin projektini seuraavaksi todennäköisesti a
+
+00:26:32.799 --> 00:26:35.600
+ pari kuukautta, koska minun on opittava, miten nämä tavarat
+
+00:26:35.600 --> 00:26:39.520
+ on suunnitella piirilevy um, jonka olen
+
+00:26:39.520 --> 00:26:43.120
+ En ole koskaan ennen tehnyt piirilevystä ja sitten poikani
+
+00:26:43.120 --> 00:26:45.919
+ juotamme sen yhdessä ja teemme oman
+
+00:26:45.919 --> 00:26:50.960
+ hyödytön laatikko, jonka toivon myös 3D-tulostuksen laatikkoon, oi se on hienoa
+
+00:26:50.960 --> 00:26:56.480
+ kyllä ​​sinä sukelat vain minussa, kun teen jotain, en mene pieneksi
+
+00:26:56.480 --> 00:27:00.320
+ ja tiedät, että lähestymistapani on hieman erilainen, koska olen hyvin paljon
+
+00:27:00.320 --> 00:27:03.520
+ haluaisin oppia jotain ensin
+
+00:27:03.520 --> 00:27:09.200
+ ja sitten lisää investointejani prosessiin ja olet kuin puhuisit
+
+00:27:09.200 --> 00:27:13.679
+ noin siirtymisestä suoraan piirilevyn luomiseen, jotta varmuuskopioisin, jotta tiedät
+
+00:27:13.679 --> 00:27:16.799
+ jos ajattelet hei, ehkä haluaisin pystyä tekemään omat piirini
+
+00:27:16.799 --> 00:27:20.399
+ ja sellaiset asiat lähtökohtani on leipälauta kyllä
+
+00:27:20.399 --> 00:27:25.440
+ ja leipälaudan avulla voit sijoittaa piirisi, jonka olet suunnitellut tai
+
+00:27:25.440 --> 00:27:28.559
+ jonka olet ladannut kuin piirin suunnitelma um
+
+00:27:28.559 --> 00:27:32.399
+ Internetistä tai kuitenkin, miten sinulla onkin, jonka avulla voit antaa sen
+
+00:27:32.399 --> 00:27:36.799
+ ulos pohjimmiltaan mallikortille
+
+00:27:36.799 --> 00:27:41.039
+ joka toimii kuin piirilevy, mutta sitten voit vain hajottaa sen kaiken ja
+
+00:27:41.039 --> 00:27:46.399
+ laita osat oikealle ja se on halpaa, erittäin halpaa ja se vain saa sinut alkuun
+
+00:27:46.399 --> 00:27:50.080
+ ja sitten seuraava askel minulle on niin kutsuttu prototyyppikortti, jotta saat
+
+00:27:50.080 --> 00:27:53.279
+ piirilevyt, joissa on kaikki oikeat reiät ja
+
+00:27:53.279 --> 00:27:57.840
+ heillä on juote um kuten pisteitä, mutta ei ole
+
+00:27:57.840 --> 00:28:02.080
+ niiden välinen yhteenliittäminen niin, että käytät itse asiassa johtoja tai itseäsi
+
+00:28:02.080 --> 00:28:05.760
+ ajaa vähän juotetta esimerkiksi kahden eri liitoksen välillä
+
+00:28:05.760 --> 00:28:10.080
+ ja teet sen tällä tavalla, joten se on toinen askelni kyllä, sitten katson
+
+00:28:10.080 --> 00:28:14.720
+ ehkä etsimällä reittiä itse syövyttää
+
+00:28:14.720 --> 00:28:19.200
+ piirilevyjä, koska silloin olet joutumassa kemiallisten prosessien tapaan
+
+00:28:19.200 --> 00:28:24.960
+ ja en ole tutkinut sitä, mutta se on paljon monimutkaisempi prosessi
+
+00:28:24.960 --> 00:28:27.919
+ haluan aloittaa hieman yksinkertaisemman ensimmäisen piirilevyn i
+
+00:28:27.919 --> 00:28:32.080
+ rakennettu leipälaudalle erittäin hyvin yksinkertainen, mutta suunnittelin sen oikein
+
+00:28:32.080 --> 00:28:35.120
+ okei ja kaikki se on, se vie viisi volttia
+
+00:28:35.120 --> 00:28:38.880
+ signaali ja kun sillä on viisi volttia,
+
+00:28:38.880 --> 00:28:43.440
+ rele on suljettu, joten sillä on rele oikein, kun sillä ei ole viittä volttia
+
+00:28:43.440 --> 00:28:47.520
+ rele avautuu, joten se irtoaa
+
+00:28:47.520 --> 00:28:51.440
+ syystä, jonka olen luonut, että se on tarkoitukseen rakennettu sovellus, joten rakensin sen
+
+00:28:51.440 --> 00:28:56.000
+ leipälaudalla ja ruokinta viidellä voltilla tulee
+
+00:28:56.000 --> 00:29:03.440
+ kaikki arvaukset kaikki arvaukset spc nope, se on toinen kolmen kirjaimen lyhenne usb
+
+00:29:03.440 --> 00:29:07.360
+ usb usb vetää viiden voltin signaalin pois mikro-rasti
+
+00:29:07.360 --> 00:29:12.399
+ reititin kunnossa ja niin sitten mikroruudussa i ohjelmoidussa koodissa
+
+00:29:12.399 --> 00:29:17.039
+ että pohjimmiltaan mykistää se, jos Internet menee alas
+
+00:29:17.039 --> 00:29:20.559
+ tappaa USB: n virta ja niin sitten
+
+00:29:20.559 --> 00:29:25.520
+ avaa releen ja mikä on releen hallinta, mutta modeemini virta
+
+00:29:25.520 --> 00:29:29.919
+ joten modeemini, jos Internet menee alas, kääntyy automaattisesti
+
+00:29:29.919 --> 00:29:33.120
+ itsensä virta pois releeni takia
+
+00:29:33.120 --> 00:29:37.039
+ oikein ja odota viisi sekuntia ja kytke sitten virta uudelleen, joten se on pohjimmiltaan a
+
+00:29:37.039 --> 00:29:41.200
+ Virtuaaliversio siitä, sammutitko sen uudelleen ja uudelleen, koska
+
+00:29:41.200 --> 00:29:43.679
+ mitä teet kun olet Internetissä menee alas vedät pistokkeen
+
+00:29:43.679 --> 00:29:46.799
+ odottaa viisi sekuntia ja kytket sen takaisin
+
+00:29:46.799 --> 00:29:50.240
+ tiedät kahdeksan kertaa kymmenestä, että se palaa takaisin ja toimii
+
+00:29:50.240 --> 00:29:54.559
+ oikein, se oli piiri, jonka rakensin, joten rakensin sen prototyyppikortille kerran
+
+00:29:54.559 --> 00:29:58.240
+ Minulla oli se toimiva ja juotin sen vain yhteen ja se on hyvin yksinkertainen
+
+00:29:58.240 --> 00:30:00.799
+ piiri erittäin siisti ja se toimi hyvin pidän
+
+00:30:00.799 --> 00:30:04.720
+ se on todella siistiä työkaluja, mitä sinulla on
+
+00:30:04.720 --> 00:30:08.080
+ kauas missä olet uh hyvin, kuten sanoin, että olen juuri tehnyt
+
+00:30:08.080 --> 00:30:13.760
+ viime viikolla tehty tutkimus, joten olen osto-vaiheessa
+
+00:30:13.760 --> 00:30:17.679
+ uh niin, että meillä on kaikki juotosmateriaalit, ostan laudan ostamista
+
+00:30:17.679 --> 00:30:21.919
+ kemikaalit, jotka olen jo ladannut um-ohjelmiston
+
+00:30:21.919 --> 00:30:25.600
+ suunnitteluun piirilevy wow um
+
+00:30:25.600 --> 00:30:29.360
+ ja minulla on komponenttisarja, joka on matkalla kaikkien
+
+00:30:29.360 --> 00:30:33.039
+ vastukset ja kondensaattorit oikein joo kaikenlaista tavaraa, joka on siisti asia
+
+00:30:33.039 --> 00:30:36.559
+ liian on se, että näinä päivinä tarkoitan, että et voi todella kävellä
+
+00:30:36.559 --> 00:30:39.039
+ radio-häkkiin, kuten aikaisemmin pystyimme siihen
+
+00:30:39.039 --> 00:30:43.679
+ siellä on vielä myymälöitä kuten täällä barrie, meillä on yksi nimeltään seaal
+
+00:30:43.679 --> 00:30:47.039
+ joka on loistava myymälä, joka on tavallaan kuin vanha radiohaku, jossa sinä olet
+
+00:30:47.039 --> 00:30:50.399
+ mene sisään ja se on kuin tarvitsisin vain yhden kondensaattorin joo
+
+00:30:50.399 --> 00:30:52.880
+ ja se on kuin täällä, tiedät että se on kuin laatikot
+
+00:30:52.880 --> 00:30:57.279
+ ja kondensaattoreiden ja vastusten laatikot ja kaikki muut diodit ja mitä tahansa
+
+00:30:57.279 --> 00:31:01.519
+ mutta vain saadaksesi paketin 20 taalalle, jolla on
+
+00:31:01.519 --> 00:31:04.960
+ kaikenlaisia ​​kuin tavalliset tavarat ja se on paketti, joka tulee a
+
+00:31:04.960 --> 00:31:07.440
+ leipälauta ja sen mukana tulee leipälauta ja se
+
+00:31:07.440 --> 00:31:11.279
+ oli yksi asioista, haluan kuin kyllä ​​aion suunnitella sen, mutta osa
+
+00:31:11.279 --> 00:31:14.640
+ suunnitteluprosessista on aivan kuten sanoit selvittääksesi leipälautaa
+
+00:31:14.640 --> 00:31:17.519
+ kuinka piirit menevät ja se tulee olemaan hieno oppiminen
+
+00:31:17.519 --> 00:31:19.840
+ kokemus lukelle, koska he ovat kuin hei tämä on
+
+00:31:19.840 --> 00:31:23.200
+ miten tämä toimii ja kokeillaan tätä ja tehdään sitten ja sitten
+
+00:31:23.200 --> 00:31:26.080
+ tiedät, että voimme kokeilla siellä tekemättä itse kappaleitamme
+
+00:31:26.080 --> 00:31:30.880
+ se on todella siisti mainitsit myös arduino ja arduino on eräänlainen
+
+00:31:30.880 --> 00:31:34.159
+ kuin se olisi ohjain, joten joo tiedät
+
+00:31:34.159 --> 00:31:37.200
+ vadelma pi tai muu yksittäinen lautatietokone on totta
+
+00:31:37.200 --> 00:31:41.200
+ oikea tietokone, jossa on käyttöjärjestelmä ja kaikki arduino on kuin sinä
+
+00:31:41.200 --> 00:31:45.519
+ vain ohjelmoi se tekemään hyvin erityinen tehtävä, se on kiinteä tila
+
+00:31:45.519 --> 00:31:48.960
+ ja se reagoi ja mielestäni näin on
+
+00:31:48.960 --> 00:31:51.840
+ miksi se toimisi todella hyvin arduinolle
+
+00:31:51.840 --> 00:31:55.679
+ uh hyödytön laatikko on, koska se on kuin
+
+00:31:55.679 --> 00:31:59.200
+ se on joko päällä tai pois päältä, se on oikein, ja jos se on päällä, tee tämä
+
+00:31:59.200 --> 00:32:03.200
+ ja sitten se sammuu, mikä on oikein, niin hyvin perusohjelmointi
+
+00:32:03.200 --> 00:32:09.919
+ digitaalinen kirjoita neljä pilkua hei puolipiste ja sitten olemme
+
+00:32:09.919 --> 00:32:13.519
+ viivytän yhden sekunnin ajan, joka on tuhat millisekuntia
+
+00:32:13.519 --> 00:32:17.039
+ ja sitten kopioimme sen rivin nyt
+
+00:32:17.039 --> 00:32:20.960
+ mitä luulet korkealla tarkoittaa verrattuna matalaan, minkä aion laittaa tänne
+
+00:32:20.960 --> 00:32:27.440
+ vain arvaus päälle tai pois kyllä, joten piirini näyttää nyt
+
+00:32:27.440 --> 00:32:32.399
+ ja aion yksinkertaisesti liittää tämän USB-virtaan, joten en kytke sitä
+
+00:32:32.399 --> 00:32:36.240
+ tietokone, jonka haluan todella virrata tähän laitteeseen ja nähdä, onko se
+
+00:32:36.240 --> 00:32:40.840
+ ajaa ohjelmaa ja jos niin tapahtuu, meidän pitäisi nähdä tämä valo
+
+00:32:40.840 --> 00:32:45.279
+ salama siellä mennään joka on siisti joka sekunti niin me
+
+00:32:45.279 --> 00:32:49.600
+ todella loi piirin melko nopeasti uh ja loi
+
+00:32:49.600 --> 00:32:53.919
+ ohjelman kertoa tälle valolle mitä tehdä, ja kerroimme sen hyvin
+
+00:32:53.919 --> 00:32:57.760
+ yksinkertaisesti kytke virta päälle ja pois päältä, mutta jos olet
+
+00:32:57.760 --> 00:32:59.679
+ oman piirisi tekeminen, josta sinun on pidettävä
+
+00:32:59.679 --> 00:33:04.159
+ sinun on ohjelmoitava se itse, sinun on selvitettävä miten
+
+00:33:04.159 --> 00:33:07.919
+ wow haluan nähdä tämän projektin olevan kesken
+
+00:33:07.919 --> 00:33:11.840
+ Okei ja katso sitten, kuinka uh, miten se muodostuu, niin kuulostaa hyvältä
+
+00:33:11.840 --> 00:33:16.559
+ mainitsimme yhteisön täällä näyttelyssämme ja uhriheikkopalvelimemme sisään
+
+00:33:16.559 --> 00:33:20.320
+ erityisesti olen hyödyntänyt yhteisöämme jeff
+
+00:33:20.320 --> 00:33:23.760
+ mene sisään ja jaa ideani piireistä ja joo
+
+00:33:23.760 --> 00:33:27.519
+ sellaisia ​​asioita ja yhteisössämme on joitain ihmisiä, jotka ovat oikeudenmukaisia
+
+00:33:27.519 --> 00:33:32.559
+ kuten tiensä ylöspäin heidän mahdollisuuksiensa ja ymmärryksensä suhteen
+
+00:33:32.559 --> 00:33:36.320
+ tyyppisiä asioita, joten siitä on ollut minulle todella hyödyllistä
+
+00:33:36.320 --> 00:33:38.880
+ oppinut niin ai, vaikka aion täysin käyttää
+
+00:33:38.880 --> 00:33:42.640
+ yhteisö hyödyntää minua vikojen kautta, joo ja jos olet yksi niistä ihmisistä
+
+00:33:42.640 --> 00:33:46.159
+ yhteisö juuri nyt hei nosta kätesi ja sano kyllä ​​minä
+
+00:33:46.159 --> 00:33:48.480
+ ymmärrän kuinka kaikki tämä toimii, haluaisin auttaa
+
+00:33:48.480 --> 00:33:52.640
+ ja uh, ja luulen, että siitä tulee todella siisti
+
+00:33:52.640 --> 00:33:54.320
+ ominaisuus näyttelyyn sekä opit
+
+00:33:54.320 --> 00:33:57.200
+ joo varmasti pidä meidät lähetettyinä siihen Jeffiin, olisin todella kiinnostunut
+
+00:33:57.200 --> 00:34:00.159
+ tietää miten asiat menevät joo aion lähettää asioita takana
+
+00:34:00.159 --> 00:34:06.320
+ kohtaukset hyödytön laatikko muu onko sinulla ideoita, mutta innostun
+
+00:34:06.320 --> 00:34:09.520
+ kun keksin kuin ajattelen jotain
+
+00:34:09.520 --> 00:34:13.200
+ onko sinulla ollut hetkiä, jolloin olen kuin haluaisin todella
+
+00:34:13.200 --> 00:34:16.240
+ oli jotain, joka tekisi tämän, mutta sitä ei ole olemassa
+
+00:34:16.240 --> 00:34:20.079
+ tässä 3D-tulostus on mielenkiintoista minulle, koska luon sellaisia ​​asioita
+
+00:34:20.079 --> 00:34:23.520
+ ei ole vielä olemassa, en ole oikeastaan ​​ajatellut
+
+00:34:23.520 --> 00:34:27.520
+ niin pitkälle kuin mitä on olemassa ja mitä ei ole olemassa
+
+00:34:27.520 --> 00:34:29.919
+ hmm
+
+00:34:30.960 --> 00:34:34.000
+ ei, en ole oikeastaan ​​ajatellut niin pitkälle keksiä ideoita
+
+00:34:34.000 --> 00:34:37.040
+ kyllä ​​ja jaa ne, siellä on paljon asioita varmasti
+
+00:34:37.040 --> 00:34:43.679
+ joo kuin olen aina halunnut tehdä um meille um talonlaajuisen äänijärjestelmän
+
+00:34:43.679 --> 00:34:48.879
+ joka linkittää um, tiedät Amazon-laitteemme ja vastaavia
+
+00:34:48.879 --> 00:34:52.079
+ mutta haluaisin saada antureita missä
+
+00:34:52.079 --> 00:34:56.320
+ kun kävelen huoneesta toiseen, liiketunnistin käynnistyy ja se sammuu
+
+00:34:56.320 --> 00:34:59.760
+ pois yhden huoneen kaiuttimista ja lisää se minne olen juuri mennyt
+
+00:34:59.760 --> 00:35:02.000
+ se on paljon edistyneempi, mutta se on luultavasti
+
+00:35:02.000 --> 00:35:05.119
+ ainoa asia mitä voin ajatella missä olen kuin haluan tehdä tämän, mutta nähdään puhuvan
+
+00:35:05.119 --> 00:35:08.960
+ siitä ja sitten mielestäni okei, voit käyttää passiivista infrapunatunnistinta
+
+00:35:08.960 --> 00:35:14.640
+ jep, jota käytetään liiketunnistimissa, voit käyttää lasersensoria, mutta
+
+00:35:14.640 --> 00:35:19.200
+ pir on erittäin halpa kyllä ​​joo ja se on vain pieni anturi, joka se on
+
+00:35:19.200 --> 00:35:22.880
+ okei siellä oli liikettä tee jotain joo jotta voisit luoda jotain
+
+00:35:22.880 --> 00:35:27.520
+ jälleen releellä, joka ohjaa vain sitä, onko kaiuttimella
+
+00:35:27.520 --> 00:35:31.599
+ valmis piiri tai ei, niin jos se olisi vain a
+
+00:35:31.599 --> 00:35:36.160
+ joukko kaiuttimia, jotka on kytketty vahvistimen kautta, sinulla saattaa olla releitä
+
+00:35:36.160 --> 00:35:40.000
+ pir-antureilla, joita voit hallita liikkeellä
+
+00:35:40.000 --> 00:35:44.160
+ joo hyvä ja jos et liiku 10 minuutin ajan, sammuta kaiutin
+
+00:35:44.160 --> 00:35:45.760
+ automaattisesti tai jotain sellaista
+
+00:35:45.760 --> 00:35:49.200
+ aivan kuten tällaiset ideat, kuten siellä on niin paljon tavaraa, että voit
+
+00:35:49.200 --> 00:35:51.359
+ tehdä, kun alkaa ymmärtää ja sitten
+
+00:35:51.359 --> 00:35:55.839
+ siinä on koko kääntöpuoli, jossa jotain rikkoutuu, ja voit korjata sen kyllä
+
+00:35:55.839 --> 00:35:59.200
+ se on hyvä tunne ja se on tehty, olemme jo tehneet sen
+
+00:35:59.200 --> 00:36:02.000
+ joo, niin tiedät, että saat ne pienet paristot
+
+00:36:02.000 --> 00:36:07.280
+ testaajat haluavat tarkistaa latauksen joo, joten meillä oli yksi niistä ja se on
+
+00:36:07.280 --> 00:36:09.200
+ hauska, kun poikani rakensi laskinta
+
+00:36:09.200 --> 00:36:12.560
+ emme olleet varmoja, toimivatko paristot ja emme saaneet mitään
+
+00:36:12.560 --> 00:36:15.760
+ Olen kuin tämä on outoa, että emme yleensä tule, vaikka se olisi kuollut
+
+00:36:15.760 --> 00:36:18.640
+ ponnahtaa punaiseen, mutta mitään ei ollut, joten avasimme sen
+
+00:36:18.640 --> 00:36:22.960
+ käy ilmi, että todellinen yhteys oli hajonnut oh
+
+00:36:22.960 --> 00:36:27.359
+ nyt minulla ei ole aavistustakaan joo ja poikani on kuin voin korjata sen ja
+
+00:36:27.359 --> 00:36:30.240
+ hän korjasi sen, laitimme sen takaisin yhteen ja sitten me ja se toimii ja se on kuin oi
+
+00:36:30.240 --> 00:36:34.000
+ jo se on tyhjä akku joo voin liittyä siihen myös käytän a
+
+00:36:34.000 --> 00:36:38.160
+ tyynykaiutin podcasteille okei ja uh, koska tiedät sen
+
+00:36:38.160 --> 00:36:40.880
+ kytketty johdolla puhelimeeni, se vedetään
+
+00:36:40.880 --> 00:36:45.119
+ jep ja se vedettiin heti ulos, joten se on niin yksinkertainen asia, mutta olen täysin mitä
+
+00:36:45.119 --> 00:36:48.720
+ enkö ostanut toista ei ei ei otin
+
+00:36:48.720 --> 00:36:52.480
+ se irti ja juotin sen uudelleen ja vahvistin sitä
+
+00:36:52.480 --> 00:36:56.160
+ joten sitä ei enää tapahtuisi, oi kaunis teki siitä paremman kuin hän oli
+
+00:36:56.160 --> 00:37:00.240
+ käänsi mielensä sellaisiin asioihin kuin e-jätteet kyllä ​​ja hän on kuin jos joku
+
+00:37:00.240 --> 00:37:04.960
+ päästä eroon televisiosta tai tietokoneen näytöstä mahdollisuudet ovat
+
+00:37:04.960 --> 00:37:08.240
+ se toimii edelleen isä, se vain jotain sisällä hajosi
+
+00:37:08.240 --> 00:37:12.400
+ hän on kuin voin korjata sen, olen kuin kyllä ​​ajattelet sitä ja niin hänen pyöränsä ovat
+
+00:37:12.400 --> 00:37:15.599
+ kääntyy viimeiseksi ja hän haluaisi tehdä nämä asiat ja sitten myydä
+
+00:37:15.599 --> 00:37:20.160
+ heistä 12-vuotiaita, se on ura
+
+00:37:20.160 --> 00:37:22.960
+ useissa
+
+00:37:23.599 --> 00:37:27.359
+ Ehkä on todella arvokasta saada nämä ominaisuudet
+
+00:37:27.359 --> 00:37:30.960
+ Joten aion kouluttaa hänet seuraavaan uh hyvin, hän on 12. joten sisään
+
+00:37:30.960 --> 00:37:38.560
+ kahdeksan kuusi vuotta olen eläkkeellä. Minulla oli monitori, en tiedä
+
+00:37:38.560 --> 00:37:42.960
+ ehkä 23 tuuman tai 24 tuuman laajakuvanäyttö
+
+00:37:42.960 --> 00:37:47.359
+ tuli sähköjätteenä, joten olen
+
+00:37:47.359 --> 00:37:50.720
+ katson ja niin tyttäreni ja minä katsoimme sitä
+
+00:37:50.720 --> 00:37:57.280
+ ja siellä oli yksi kondensaattori, joka oli palanut, joten menin verkkoon ja
+
+00:37:57.280 --> 00:37:59.920
+ ostin yhden niistä kondensaattoreista, joita he myyvät niitä pakkauksissa
+
+00:37:59.920 --> 00:38:03.599
+ kolme ja se oli kaksitoista dollaria niin 12: lle
+
+00:38:03.599 --> 00:38:07.760
+ saimme kolmen pakkauksen, vaihdoimme yhden kondensaattoreista ja se monitori on
+
+00:38:07.760 --> 00:38:13.520
+ istuu nyt tyttäreni pöydällä, oi, se on hämmästyttävää, se on hienoa
+
+00:38:13.520 --> 00:38:16.720
+ ja hän on aivan oikeassa, mutta et voi vain korjata tavaraa jeff
+
+00:38:16.720 --> 00:38:19.920
+ sanotaan, että jotain tulee sähköiseen jätteeseen tai tiedät, että löydät jotain osoitteesta
+
+00:38:19.920 --> 00:38:22.320
+ tien reunalla, jonka joku on juuri heittänyt pois, koska he eivät voi
+
+00:38:22.320 --> 00:38:26.480
+ osaa korjata se um ja ehkä jos sen korjaaminen on enemmän
+
+00:38:26.480 --> 00:38:30.079
+ kallista kuin uuden ostaminen myös monissa tapauksissa
+
+00:38:30.079 --> 00:38:35.119
+ um voit, vaikka et pysty korjaamaan sitä, voit tehdä niin kutsutun juotteenpoiston
+
+00:38:35.119 --> 00:38:39.440
+ se on oikein, jotta voit poistaa kaikki hyvät komponentit tältä ja
+
+00:38:39.440 --> 00:38:43.119
+ laita ne laatikon järjestäjään kyllä, jotta sinulla on sitten oma radio
+
+00:38:43.119 --> 00:38:46.880
+ hökkeli kotona, jossa sinulla on kaikkien näiden osien laatikot
+
+00:38:46.880 --> 00:38:50.079
+ ja sitten kun jokin rikkoutuu, sinun ei tarvitse kuluttaa 12
+
+00:38:50.079 --> 00:38:53.280
+ verkossa ostaa niitä, toivoisin, etten olisi tiennyt, että hän aikoo päästä tähän
+
+00:38:53.280 --> 00:38:57.040
+ koska kesällä minulla oli noin neljä tietokonetta
+
+00:38:57.040 --> 00:39:00.320
+ pari projektoria otimme heille kaikki sähköjätteet
+
+00:39:00.320 --> 00:39:03.760
+ joten se on kuin olisin voinut purkaa sen, että kyllä ​​sain ne
+
+00:39:03.760 --> 00:39:07.119
+ No, osat, joita elämme ja oppimme kyllä ​​tarkalleen
+
+00:39:07.119 --> 00:39:10.960
+ erittäin viileä, pidä meidät lähetettyinä ehdottomasti ja hei kommentti alla kerro meille
+
+00:39:10.960 --> 00:39:13.359
+ noin joistakin hyödyistä, joita sinulla on ollut
+
+00:39:13.359 --> 00:39:18.560
+ uh tällaisten aiheiden suhteen ja jos ovat, jos on
+
+00:39:18.560 --> 00:39:20.880
+ jotain, joka kiinnostaa sinua, johon et ole koskaan joutunut
+
+00:39:20.880 --> 00:39:24.720
+ Hei kommentti myös alla, haluaisimme kuulla sinusta ja haluaisimme saada sinut
+
+00:39:24.720 --> 00:39:27.920
+ osana tätä prosessia, kun jeff oppii
+
+00:39:27.920 --> 00:39:32.079
+ koska olen myös oppinut ja pääsen yhä enemmän tällaisiin
+
+00:39:32.079 --> 00:39:36.800
+ kuten komponenttien korjaukset ja piirilevyt ja kaikki muu
+
+00:39:36.800 --> 00:39:41.359
+ se on hauskaa, joo, se on hieno harrastus ja upea ura, jos sinä
+
+00:39:41.359 --> 00:39:45.200
+ todella haluavat tehdä sen myös, joten se on tosi hyvä poikallesi, jonka haluaisin kuulla
+
+00:39:45.200 --> 00:39:49.680
+ kuinka hän nauttii siitä niin kun hän on luulen
+
+00:39:49.680 --> 00:39:53.359
+ 13 plus, joten ensi vuonna voit tuoda hänet studioon
+
+00:39:53.359 --> 00:39:56.560
+ ja hän voi näyttää meille kuinka hän tekee
+
+00:39:56.560 --> 00:40:00.480
+ kuulostaa hyvältä erittäin siistiltä, ​​jotta se tapahtuisi, meidän on mentävä uutishuoneeseen
+
+00:40:00.480 --> 00:40:02.960
+ becca on siellä viikon tärkeimpien uutisten kanssa
+
+00:40:02.960 --> 00:40:08.800
+ Tässä hän on tässä, mitä on tulossa luokan 5 pistetelevisio -uutishuoneessa
+
+00:40:08.800 --> 00:40:12.000
+ hakkerit käyttävät vakavaa Windows-virhettä kompromisseihin
+
+00:40:12.000 --> 00:40:17.280
+ avaamattomat palvelimet kolme javascript-pakettia on poistettu npm: stä
+
+00:40:17.280 --> 00:40:22.560
+ haittaohjelmakoodin sisältävä portaali nokia on saanut tehtävänsä rakentaa a
+
+00:40:22.560 --> 00:40:27.040
+ uusi 4g-matkapuhelinverkko kuussa uusi 80
+
+00:40:27.040 --> 00:40:32.240
+ Xiaomi watin langaton lataustekniikka puhaltaa mielemme ja
+
+00:40:32.240 --> 00:40:36.240
+ vadelma pi -laskentamoduuli 4 on julkaistu
+
+00:40:36.240 --> 00:40:40.720
+ kerro sinulle tekniset tiedot ja miten tämä muuttaa teollisen iotin asioita
+
+00:40:40.720 --> 00:40:44.000
+ pidä kiinni kaikista yksityiskohdista ja tämän viikon salausnurkasta
+
+00:40:44.000 --> 00:40:48.640
+ ovat tulossa tämä on luokan 5 pistetelevisio uutishuone
+
+00:40:48.640 --> 00:40:52.079
+ kattaa viikon huipputeknologian tarinat pienellä linuxilla
+
+00:40:52.079 --> 00:40:54.480
+ puolueellisuus
+
+00:40:56.240 --> 00:41:00.319
+ uutishuoneesta olen becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ hakkerit käyttävät vakavaa Windows-virhettä kompromisseihin
+
+00:41:03.920 --> 00:41:07.920
+ avaamattomat palvelimet yksi kriittisimmistä Windowsin haavoittuvuuksista
+
+00:41:07.920 --> 00:41:10.400
+ tänä vuonna julkistettu on aktiivisen hyökkäyksen kohteena
+
+00:41:10.400 --> 00:41:14.480
+ hakkerit, jotka yrittävät takaoven palvelimia, jotka tallentavat tunnistetiedot kaikille
+
+00:41:14.480 --> 00:41:18.480
+ käyttäjän ja järjestelmänvalvojan tili verkossa
+
+00:41:18.480 --> 00:41:23.119
+ tutkijat antoivat haavoittuvuudelle nimen xerologon, koska hyökkäykset toimivat
+
+00:41:23.119 --> 00:41:27.200
+ lähettämällä nollajonon sarjaa viestejä, jotka käyttävät verkkoa
+
+00:41:27.200 --> 00:41:30.720
+ kirjautumisprotokolla, johon Windows-palvelimet luottavat a
+
+00:41:30.720 --> 00:41:34.560
+ erilaisia ​​tehtäviä, mukaan lukien käyttäjien salliminen kirjautua sisään
+
+00:41:34.560 --> 00:41:38.560
+ verkon xero-kirjautumiseen, koska haavoittuvuus on ollut
+
+00:41:38.560 --> 00:41:41.280
+ dubbed sai laajaa huomiota viime kuussa
+
+00:41:41.280 --> 00:41:44.000
+ kun sen löytänyt yritys sanoi voivansa antaa hyökkääjille
+
+00:41:44.000 --> 00:41:48.079
+ välitön pääsy aktiivisiin hakemistoihin, joita järjestelmänvalvojat käyttävät luomiseen
+
+00:41:48.079 --> 00:41:52.480
+ poistaa ja hallita verkkotilien aktiivisia hakemistoja ja verkkotunnusta
+
+00:41:52.480 --> 00:41:55.599
+ ohjaimet, joilla he ajavat, ovat halutuimpia palkintoja
+
+00:41:55.599 --> 00:42:00.480
+ hakkeroinnissa, koska kaapattuaan ne sallivat hyökkääjien suorittaa koodin ja
+
+00:42:00.480 --> 00:42:03.839
+ ammukset kaikilla liitetyillä koneilla Microsoft
+
+00:42:03.839 --> 00:42:09.280
+ korjasi turvallisuusvirheen elokuussa perjantaina kevin beaumont
+
+00:42:09.280 --> 00:42:12.480
+ työskentelee riippumattomana tutkijana
+
+00:42:12.480 --> 00:42:16.480
+ sanoi blogikirjoituksessaan, että hän oli havainnut hyökkäyksiä hunajapottiin, jota hän käyttää pitämäänsä
+
+00:42:16.480 --> 00:42:19.680
+ hakkerit käyttävät hyökkäyshyökkäyksiä
+
+00:42:19.680 --> 00:42:24.160
+ villi, kun hänen viehätyspalvelimensa oli purettu, hyökkääjät pystyivät käyttämään a
+
+00:42:24.160 --> 00:42:27.680
+ powershell-komentosarja järjestelmänvalvojan salasanan vaihtamiseksi onnistuneesti
+
+00:42:27.680 --> 00:42:31.920
+ ja takaoven palvelin beaumont sanoi, että hyökkäys ilmestyi
+
+00:42:31.920 --> 00:42:36.480
+ komentosarjat ja kaikki komennot suoritetaan muutamassa sekunnissa
+
+00:42:36.480 --> 00:42:40.160
+ Tämän kanssa hyökkääjät asensivat takaoven, joka mahdollistaa kauko-ohjauksen
+
+00:42:40.160 --> 00:42:44.079
+ järjestelmänvalvojan pääsy näennäisverkossa oleviin laitteisiin
+
+00:42:44.079 --> 00:42:48.400
+ hyökkääjät ottivat myös etätyöpöydän käyttöön, minkä seurauksena he jatkoivat
+
+00:42:48.400 --> 00:42:53.200
+ saada etäkäyttö, vaikka järjestelmänvalvoja myöhemmin korjaa palvelimen
+
+00:42:53.200 --> 00:42:57.520
+ ihmiset, joilla ei ole aitoa todennusta, voivat käyttää hyväksikäyttöä verkkotunnuksen hankkimiseen
+
+00:42:57.520 --> 00:43:00.800
+ hallinnolliset valtakirjat niin kauan kuin hyökkääjät pystyvät
+
+00:43:00.800 --> 00:43:05.839
+ luoda TCP - yhteydet haavoittuvan toimialueen ohjaimen kanssa
+
+00:43:05.839 --> 00:43:10.160
+ Joissakin tapauksissa hyökkääjät voivat käyttää erillistä haavoittuvuutta saadakseen jalansijaa sisällä
+
+00:43:10.160 --> 00:43:13.359
+ verkko ja hyödynnä sitten nolla sisäänkirjautumista haltuunsa
+
+00:43:13.359 --> 00:43:17.599
+ verkkotunnuksen ohjain mielestäni hyvä esimerkki
+
+00:43:17.599 --> 00:43:20.319
+ tämän tyyppisiä komentosarjoja päästäksesi verkkoihin
+
+00:43:20.319 --> 00:43:27.839
+ ovat vanhentuneita tietokoneita verkossa ja myös sosiaalinen suunnittelu huijaa meitä
+
+00:43:27.839 --> 00:43:31.040
+ kuulla paljon siitä, että saat todennäköisesti nämä sähköpostit
+
+00:43:31.040 --> 00:43:34.800
+ jotka yrittävät huijata sinua seuraamaan läpi prosessilla
+
+00:43:34.800 --> 00:43:38.319
+ syöttämällä valtakirja tai jotain sellaista
+
+00:43:38.319 --> 00:43:44.720
+ riski, jonka käytämme, ja surullinen tapaus, jonka pidän
+
+00:43:44.720 --> 00:43:48.880
+ siinä on, että joskus ihmiset ajattelevat hyvin
+
+00:43:48.880 --> 00:43:52.319
+ Minun ei tarvitse päivittää tietokonetta, koska se ei ole takahuoneessa
+
+00:43:52.319 --> 00:43:55.680
+ todella käyttää sitä joo tai no niin tarvitsemme tämän
+
+00:43:55.680 --> 00:43:58.800
+ on vielä Windows XP, koska meillä on ongelmia yhden meidän
+
+00:43:58.800 --> 00:44:02.880
+ tulostimet, jos emme, näemme silti paljon Windows 7: tä
+
+00:44:02.880 --> 00:44:06.960
+ järjestelmiä ja se on tragedia, jos sinulla on
+
+00:44:06.960 --> 00:44:10.960
+ Windows 7 tai Windows XP -järjestelmä verkossa vain kääntää sitä
+
+00:44:10.960 --> 00:44:13.839
+ pois päästä eroon siitä joo asia on
+
+00:44:13.839 --> 00:44:20.480
+ on näiden järjestelmien kanssa, joten Microsoftilla on niin sanottu eol tai elämän loppu uh
+
+00:44:20.480 --> 00:44:24.240
+ on päättänyt näiden käyttöjärjestelmien käyttöiän
+
+00:44:24.240 --> 00:44:27.839
+ joten he ovat sanoneet, että sinun on päivitettävä Windows 10: ksi. No, en halua päivittää
+
+00:44:27.839 --> 00:44:32.000
+ Windows 10: een pidän Windows 7: stä. Ymmärrän sen ja kunnioitan sitä
+
+00:44:32.000 --> 00:44:37.119
+ kuitenkin tässä on ongelma hakkereita
+
+00:44:37.119 --> 00:44:41.599
+ nyt pystyvät hyödyntämään näitä käyttöjärjestelmiä
+
+00:44:41.599 --> 00:44:45.839
+ ja kun he tekevät niin, kun he löytävät hyväksikäytöt
+
+00:44:45.839 --> 00:44:48.960
+ pari asiaa tapahtuu yksi heistä
+
+00:44:48.960 --> 00:44:55.520
+ joko lahjoittaa tai myydä ne hyväksikäytöt tai kaksi he vain vapautetaan
+
+00:44:55.520 --> 00:45:01.520
+ yleisölle joko pimeän verkon kautta tai jopa githubissa
+
+00:45:01.520 --> 00:45:07.839
+ kuten turvallisuustutkimuksena ja nyt nämä hakkerit, jos aiot
+
+00:45:07.839 --> 00:45:11.599
+ kutsumme heitä niin, mutta realistisesti monissa tapauksissa me kutsumme niitä
+
+00:45:11.599 --> 00:45:16.800
+ käsikirjoituksen kitit ja nämä ovat um
+
+00:45:16.800 --> 00:45:21.680
+ ei edes hakkereiden tavoin kyllä, mutta heidän ei tarvitse olla paljon tietoa, koska
+
+00:45:21.680 --> 00:45:28.160
+ hyväksikäyttö on julkisesti, se on oikein tiedossa ja ymmärretty, jos
+
+00:45:28.160 --> 00:45:32.319
+ on käyttöjärjestelmälle käytettävissä olevia hyväksikäyttöjä
+
+00:45:32.319 --> 00:45:36.880
+ mitä odotamme tapahtuvan, odotamme käyttöjärjestelmän toimittaja microsoft vuonna
+
+00:45:36.880 --> 00:45:41.200
+ tässä tapauksessa korjaamaan korjaavat ongelmat
+
+00:45:41.200 --> 00:45:44.560
+ ja näin on Windows 10. valitettavasti
+
+00:45:44.560 --> 00:45:49.040
+ ne, jotka ovat eol, ei ole tapana eol-käyttöjärjestelmässä
+
+00:45:49.040 --> 00:45:54.079
+ kuulemme, että en tarvitse tukea hyvin, Microsoft on lopettanut tuen
+
+00:45:54.079 --> 00:45:57.440
+ mitä olemme kuulleet, niin he ovat lopettaneet Windows 7: n tuen. he ovat päättyneet
+
+00:45:57.440 --> 00:46:01.920
+ tuki Windows XP: lle, mutta en ole koskaan joutunut soittamaan tukeen
+
+00:46:01.920 --> 00:46:04.640
+ pystyn käsittelemään sen, mitä he eivät ole
+
+00:46:04.640 --> 00:46:06.640
+ puhuvat ollenkaan mitä he sanovat olevan
+
+00:46:06.640 --> 00:46:12.640
+ he eivät korjaa korjauksia, joita se tekee hyödyntämisillä
+
+00:46:12.640 --> 00:46:16.160
+ kuinka vakavia he ovat, ei ole väliä kuinka helppoa heillä on
+
+00:46:16.160 --> 00:46:20.079
+ hyödyntää niin, että verkossasi on Windows 7-kone
+
+00:46:20.079 --> 00:46:26.319
+ annat pääsyn yhdelle näistä hakkereista, joilla ei edes ole
+
+00:46:26.319 --> 00:46:31.040
+ olla erittäin hyvä hakkeroinnissa, koska hyödyntäminen on julkisesti tiedossa
+
+00:46:31.040 --> 00:46:36.240
+ kyllä, joskus ne ovat osa työkaluja, joskus he voivat vain ladata ilmaisen
+
+00:46:36.240 --> 00:46:41.440
+ työkalu ja he voivat sanoa, että haluan yhdellä tarkistuksella hyödyntää Windows 7: tä
+
+00:46:41.440 --> 00:46:46.400
+ ja niin he pääsevät Windows 7 -laatikkoon tai huijaavat yhtä työntekijöistänne
+
+00:46:46.400 --> 00:46:50.880
+ vaikka he olisivatkin vain takana työskenteleviä varastossa
+
+00:46:50.880 --> 00:46:55.119
+ he ovat huijaaneet jonkun avaamaan tiedoston, joka antaa heille nyt pääsyn
+
+00:46:55.119 --> 00:46:59.359
+ Windows 7-kone Windows XP-kone tai takahuoneessa oleva kone
+
+00:46:59.359 --> 00:47:03.359
+ ei ole väliä, ja täällä opimme mikrosoftin
+
+00:47:03.359 --> 00:47:08.400
+ palvelimilla on nyt hyödyntäminen niin kauan kuin
+
+00:47:08.400 --> 00:47:13.599
+ ilkeä osapuoli voi päästä käsiksi mihin tahansa verkon tietokoneeseen
+
+00:47:13.599 --> 00:47:20.480
+ he voivat nyt saada verkkotunnuksen järjestelmänvalvojan käyttöoikeudet koko verkkoon
+
+00:47:20.480 --> 00:47:25.359
+ nyt pelottavaa nyt Windows 10-koneesi eivät ole enää
+
+00:47:25.359 --> 00:47:31.440
+ turvallista, mikä on oikein, koska olet antanut heille pääsyn verkkoosi ikään kuin
+
+00:47:31.440 --> 00:47:39.200
+ he ovat verkkotunnuksen järjestelmänvalvoja, oi, se on vain huonoja uutisia siellä
+
+00:47:39.200 --> 00:47:42.319
+ No, se on huono uutinen, miksi ransomware on asia
+
+00:47:42.319 --> 00:47:46.400
+ koska mitä he tekevät, ne ovat nyt kunnossa. Olen päässyt tähän verkkoon
+
+00:47:46.400 --> 00:47:49.599
+ Aion myydä pimeässä verkossa pääsyn tähän verkkoon
+
+00:47:49.599 --> 00:47:56.640
+ näet tämän mm. kaupunkien kanssa ja joo niiden kaupunkien kanssa
+
+00:47:56.640 --> 00:48:00.000
+ se oli alkuperäinen käsikirjoitus kisu, joka ei tehnyt sitä mitä
+
+00:48:00.000 --> 00:48:03.680
+ hän vain he vain haluavat haluavansa päästä sisään
+
+00:48:03.680 --> 00:48:07.119
+ Asenna ohjelmistonsa ja mene ulos ja myy sitten pääsy
+
+00:48:07.119 --> 00:48:11.040
+ se on oikein, koska se on nopeaa rahaa, joten miksi ihmiset tekevät sitä rahasta
+
+00:48:11.040 --> 00:48:15.119
+ ja niin he tekevät sen niin, joo sinun täytyy
+
+00:48:15.119 --> 00:48:18.319
+ tavallaan pitää asiat ajan tasalla, jotta tiedät, että se on vain nopea ajatus
+
+00:48:18.319 --> 00:48:22.079
+ mietiskellä hei, jos verkossa on vanhentuneita koneita, joihin joudut
+
+00:48:22.079 --> 00:48:25.599
+ ota heidät pois ja kouluta henkilöstösi verkko-opetukseen
+
+00:48:25.599 --> 00:48:29.119
+ tietoturvakäytännöt ymmärtävät, mitä phishing-huijaukset ovat
+
+00:48:29.119 --> 00:48:32.720
+ koska tiedät, että joku napsautti linkkiä ja nyt heidän
+
+00:48:32.720 --> 00:48:34.880
+ tietokoneet ovat saaneet tartunnan, mutta heidän tietokoneensa on
+
+00:48:34.880 --> 00:48:41.839
+ verkossa, mutta aion saada puolet tuon prinssin rahasta
+
+00:48:41.839 --> 00:48:45.359
+ se on aivan muita matoja siellä Jeff
+
+00:48:45.359 --> 00:48:50.000
+ mutta tarkoitan tällaisten asioiden tarkastelemista järjestelmääsi ja sanomista
+
+00:48:50.000 --> 00:48:52.559
+ Voi en halua viettää seitsemän kahdeksan
+
+00:48:52.559 --> 00:48:55.599
+ sata taalaa uudelle tietokoneelle, en ole huolissani tämän päivittämisestä
+
+00:48:55.599 --> 00:49:00.000
+ päädyt kuluttamaan enemmän pitkällä aikavälillä uh tai lyhyellä aikavälillä
+
+00:49:00.000 --> 00:49:05.040
+ um ei pitkällä aikavälillä, jos järjestelmääsi ei ole korjattu kerran
+
+00:49:05.040 --> 00:49:09.200
+ he pääsevät kaikkeen, mitä voisit olla alas ja ulos, mutta minä
+
+00:49:09.200 --> 00:49:11.760
+ ajatella, kun heillä on pääsy kaikkeen minä
+
+00:49:11.760 --> 00:49:13.760
+ mielestäni on vain tärkeää ymmärtää se
+
+00:49:13.760 --> 00:49:20.400
+ että yhdestä lähtökohdasta pääsee kaikkeen, viettäkää pari sataa
+
+00:49:20.400 --> 00:49:24.160
+ taalaa saada uusi tietokone säästää itseäsi, en tiedä mitä se vie
+
+00:49:24.160 --> 00:49:27.599
+ tarkoitan, että se on erilainen, se on erilainen jokaisessa tapauksessa, joo, minulla oli yksi henkilö
+
+00:49:27.599 --> 00:49:30.800
+ tänään kuka soitti ja sanoi, että minulla on yksi Windows 7 -tietokone
+
+00:49:30.800 --> 00:49:33.920
+ en halua päivittää sitä, koska se vain toimii oh
+
+00:49:33.920 --> 00:49:38.400
+ joten tässä on selitys ja täällä becca on jakanut meille tarinan
+
+00:49:38.400 --> 00:49:43.200
+ se vain kertoo meille, että he tarvitsevat vain pääsyn kyseiseen tietokoneeseen
+
+00:49:43.200 --> 00:49:47.599
+ ja nyt heillä on pääsy kaikkiin tietokoneidesi tietokoneisiin etkä
+
+00:49:47.599 --> 00:49:52.240
+ aivan kuten samba-tapa ei tavalla, joka on kuin ystävällinen ja toivottavasti he
+
+00:49:52.240 --> 00:49:55.520
+ älä löydä mitään tapaa noita takaoviin
+
+00:49:55.520 --> 00:49:59.200
+ tietokoneissa ei ole järjestelmänvalvojan kirjautumistietoja
+
+00:49:59.200 --> 00:50:03.119
+ verkkoosi, jotta he voivat tehdä mitä tahansa
+
+00:50:03.119 --> 00:50:07.280
+ se on oikein mitä he haluavat, kun ajattelen taloni
+
+00:50:07.280 --> 00:50:10.880
+ luulen, että olet saanut kaiken valmiiksi, mielestäni minulla on seitsemän
+
+00:50:10.880 --> 00:50:15.520
+ laitteet, jotka eivät sisällä puhelimia, tabletteja ja vastaavia, jotka on kytketty
+
+00:50:15.520 --> 00:50:18.960
+ verkkoon en halua heidän pääsevän siihen
+
+00:50:18.960 --> 00:50:21.200
+ kyllä, en vain voi stressiä tarpeeksi, vaikka jeff
+
+00:50:21.200 --> 00:50:26.160
+ tarkoitan mielestäni yritysten kannalta enemmän kodinkäyttäjä, mutta
+
+00:50:26.160 --> 00:50:33.119
+ Kun he ovat sisällä, et voi, että olet valmis, koska et voi nyt
+
+00:50:33.119 --> 00:50:36.240
+ sammuta Windows-kone, että Windows 7-kone ei, he ovat jo
+
+00:50:36.240 --> 00:50:40.319
+ kaikkeen, joten mitä teet, korvaa kaiken
+
+00:50:40.319 --> 00:50:44.240
+ Pyydä jokainen tietokone pyyhkimään, koska et tiedä mitä työkaluja
+
+00:50:44.240 --> 00:50:50.079
+ he ovat asentaneet kalliita joo, joten älä putoa siihen
+
+00:50:50.079 --> 00:50:53.280
+ joka tapauksessa se on huono hyväksikäyttö, joka on todella vakavia ihmisiä, toivon
+
+00:50:53.280 --> 00:50:56.720
+ Olemme korostaneet tarpeeksi, että ymmärrät, että tämä on huono
+
+00:50:56.720 --> 00:51:02.720
+ joten varmista, että verkon järjestelmänvalvojat ovat ylöspäin ja ymmärtävät nämä
+
+00:51:02.720 --> 00:51:05.520
+ asioita ja että olet suojattu ja turvallinen
+
+00:51:05.520 --> 00:51:09.920
+ tällaisia ​​uhkia vastaan, menemme takaisin Beckaan
+
+00:51:09.920 --> 00:51:13.920
+ kolme javascript-pakettia on poistettu verkkotunnuksen npm portaalista
+
+00:51:13.920 --> 00:51:18.000
+ sisältää haitallista koodia mpm: n ohjeiden mukaan
+
+00:51:18.000 --> 00:51:21.440
+ turvallisuusjoukkue kolme javascript-kirjastoa avautuu
+
+00:51:21.440 --> 00:51:24.480
+ pakettien tuojien kehittäjien tietokoneiden kuoret
+
+00:51:24.480 --> 00:51:29.200
+ Shellit antavat projektiinsä uhkatoimijoille yhteyden etäyhteyteen
+
+00:51:29.200 --> 00:51:33.520
+ tartunnan saaneen tietokoneen ja suorittaa ilkeä toimia npm
+
+00:51:33.520 --> 00:51:37.920
+ turvallisuusryhmä sanoi, että kuoret eivät ole riippuvaisia ​​tietystä käyttöjärjestelmästä
+
+00:51:37.920 --> 00:51:41.760
+ ja sitä voidaan käyttää vaarantamaan windows linux freebsd
+
+00:51:41.760 --> 00:51:46.960
+ openbsd ja muut järjestelmät, kaikki kolme pakettia ladattiin
+
+00:51:46.960 --> 00:51:50.880
+ npm -portaalissa vuonna 2018 ja jokaisella oli satoja
+
+00:51:50.880 --> 00:51:55.839
+ lataukset siitä lähtien paketin nimet ovat plutovien viiva
+
+00:51:55.839 --> 00:52:01.920
+ löysä viiva-asiakkaan nodetest199 ja nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ npm-tietoturvaryhmä ilmoitti, että tietokoneella on tämä
+
+00:52:07.119 --> 00:52:10.800
+ asennetun tai käynnissä olevan paketin on katsottava olevan täysin vaarantunut
+
+00:52:10.800 --> 00:52:15.280
+ kaikki tietokoneelle tallennetut salaisuudet ja avaimet on käännettävä välittömästi
+
+00:52:15.280 --> 00:52:20.559
+ toisesta tietokoneesta he varoittavat paketin poistamisen, mutta kuten
+
+00:52:20.559 --> 00:52:24.160
+ Tietokoneen täydellinen hallinta on saatettu antaa ulkopuoliselle taholle
+
+00:52:24.160 --> 00:52:27.760
+ ei ole takeita siitä, että paketin poistaminen poistaa kaikki haitalliset
+
+00:52:27.760 --> 00:52:32.079
+ sen asentamisesta johtuva ohjelmisto mpm
+
+00:52:32.079 --> 00:52:36.079
+ turvallisuushenkilöstö tarkistaa säännöllisesti sen kokoelman javascript-kirjastoja
+
+00:52:36.079 --> 00:52:41.839
+ pidetään kaikkien ohjelmointikielien suurimpana pakettivarastona
+
+00:52:41.839 --> 00:52:46.079
+ vaikka en voi edes saada hyvää solujen peittoa mökissäni
+
+00:52:46.079 --> 00:52:52.240
+ nokia työskentelee NASAn kanssa 4g: n tuomiseksi kuuhun NASAn artemis-tehtävän tavoitteet
+
+00:52:52.240 --> 00:52:56.559
+ vakiinnuttaa ihmisen pitkäaikainen läsnäolo kuussa askelena
+
+00:52:56.559 --> 00:53:01.040
+ kivi kohti mars kolonisaatiota ja saada asiat alkuun nasa on
+
+00:53:01.040 --> 00:53:05.280
+ 370 miljoonaa dollaria 14 yritykselle
+
+00:53:05.280 --> 00:53:08.400
+ tarjota tekniikkaa ohjelmaa varten
+
+00:53:08.400 --> 00:53:12.400
+ robotiikasta energiantuotantoon ja jopa kryogeniikkaan
+
+00:53:12.400 --> 00:53:16.240
+ mutta on järkevää, että näiden joukkueiden on kyettävä kommunikoimaan
+
+00:53:16.240 --> 00:53:20.079
+ äiti-planeetta uusi verkko suunnitellaan
+
+00:53:20.079 --> 00:53:23.760
+ erityisesti kuun olosuhteisiin, jotka kestävät äärimmäisyyksiä
+
+00:53:23.760 --> 00:53:28.559
+ lämpötilanmuutokset ja säteily, tekniikka käyttää myös pieniä kennoja
+
+00:53:28.559 --> 00:53:32.800
+ tekniikka, joka nimensä mukaan on huomattavasti pienempi kuin pitkä
+
+00:53:32.800 --> 00:53:37.599
+ solutornit, joita he ovat tottuneet näkemään täällä maan päällä, käyttävät myös paljon vähemmän
+
+00:53:37.599 --> 00:53:41.200
+ voimana suunnitelman on kuun laskeutuja kantaa
+
+00:53:41.200 --> 00:53:44.480
+ 4g-viestintäjärjestelmä kuun pinnalle
+
+00:53:44.480 --> 00:53:50.400
+ vuonna 2022 Nokian kellolaboratorioille on myönnetty 14,1 miljoonaa dollaria
+
+00:53:50.400 --> 00:53:55.119
+ puolestaan ​​uusi 80 watin langaton lataustekniikka
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi puhaltaa mieltämme ja vadelma pi
+
+00:53:58.880 --> 00:54:03.839
+ laskentamoduuli 4 on julkaistu, kerromme sinulle tekniset tiedot ja miten
+
+00:54:03.839 --> 00:54:08.480
+ tämä muuttaa asioita teollisuuden iot becca on nämä tarinat tulossa plus
+
+00:54:08.480 --> 00:54:25.839
+ robert on täällä salakulman kanssa, älä mene minnekään
+
+00:54:28.079 --> 00:54:32.079
+ Tervetuloa takaisin kryptojen maailmaan ja tervetuloa salausnurkkaan
+
+00:54:32.079 --> 00:54:35.920
+ viime viikolla puhuimme pankeista muutaman vuoden kuluttua, et tunnista niitä
+
+00:54:35.920 --> 00:54:39.839
+ enää ja mainitsin myös sinulle ei niin kauan
+
+00:54:39.839 --> 00:54:43.119
+ sitten kiinalainen digitaalinen valuutta, joka tulee
+
+00:54:43.119 --> 00:54:46.720
+ korvata riemann mehiläinen ja että he ovat jo toteuttaneet sen ja
+
+00:54:46.720 --> 00:54:50.400
+ he suorittavat joitain kokeita Shenzhenissä tällä viikolla
+
+00:54:50.400 --> 00:54:54.400
+ siellä on tapahtunut jonkin verran kehitystä ja haluaisin puhua siitä, koska se
+
+00:54:54.400 --> 00:54:58.319
+ on suora vaikutus elämääsi ja elämääni
+
+00:54:58.319 --> 00:55:03.760
+ joten sukelkaamme tähän kansainvälisen valuuttarahaston päähän
+
+00:55:03.760 --> 00:55:08.400
+ tuon kansainvälisen järjestön jäsen on nimeltään cristalina jojeva ja
+
+00:55:08.400 --> 00:55:11.359
+ hän piti puheen uudesta Bretton Woodsista
+
+00:55:11.359 --> 00:55:14.240
+ hetki nyt mikä on bretton woods britannia oli
+
+00:55:14.240 --> 00:55:17.440
+ järjestelmä on vakiintunut rahanhallinta
+
+00:55:17.440 --> 00:55:21.760
+ - kaupallisten taloudellisten suhteiden säännöt
+
+00:55:21.760 --> 00:55:25.920
+ maat, kuten me, Kanada Länsi-Eurooppa, Australia ja Japani
+
+00:55:25.920 --> 00:55:31.520
+ joten järjestelmä on ensimmäinen esimerkki täysin neuvoteltusta tilauksesta
+
+00:55:31.520 --> 00:55:36.640
+ tarkoitettu hallitsemaan itsenäisten valtioiden välisiä rahasuhteita niin
+
+00:55:36.640 --> 00:55:40.079
+ Bretton Woods ja hän puhuu muutoksesta
+
+00:55:40.079 --> 00:55:45.760
+ tuosta järjestelmästä jotain nykyaikaisempaa, nyt mielenkiintoinen
+
+00:55:45.760 --> 00:55:51.200
+ maanantaina oli tapaaminen muutaman keskuspankkiirin kanssa, jotka puhuivat ns
+
+00:55:51.200 --> 00:55:56.319
+ rajatylittäviä maksuja, mutta jos ajattelet sitä, katso millaista
+
+00:55:56.319 --> 00:55:59.520
+ ihmisistä, joita he olivat läsnä, joten sinulla on
+
+00:55:59.520 --> 00:56:03.040
+ saudin keskuspankki, sinulla on kaikkien keskuspankkien pää
+
+00:56:03.040 --> 00:56:06.480
+ pankit päällikkö imf pää USA
+
+00:56:06.480 --> 00:56:10.319
+ Malesian keskuspankin päällikkö puuttuu
+
+00:56:10.319 --> 00:56:13.200
+ Eurooppa, joka on mielenkiintoista, mutta luulen syyn olevan
+
+00:56:13.200 --> 00:56:16.880
+ joten he tapasivat yhdessä puhuakseen bruttomääräisistä vesimaksuista
+
+00:56:16.880 --> 00:56:21.920
+ nyt en usko, että se on todellinen tarina
+
+00:56:21.920 --> 00:56:26.079
+ uh julkaisi myös herra Raul Paul
+
+00:56:26.079 --> 00:56:31.119
+ jonka kanssa olen täysin samaa mieltä, joten hänen ajatuksensa ovat tarkalleen miten ajattelen
+
+00:56:31.119 --> 00:56:35.520
+ ja mitä hän puhuu, on juuri tämä kokous, joka tapahtui maanantaina
+
+00:56:35.520 --> 00:56:39.119
+ se korvaa vanhan Bretton Woods uh -suhteen
+
+00:56:39.119 --> 00:56:46.319
+ maiden välillä, joten mitä tapahtuu, näyttää siltä, ​​että keskuspankit
+
+00:56:46.319 --> 00:56:50.720
+ salaa ja keksivät järjestelmän
+
+00:56:50.720 --> 00:56:54.000
+ keskuspankkijärjestelmä niiden kaikkien välillä, joten meitä ei tule olemaan
+
+00:56:54.000 --> 00:56:56.640
+ dollarin keskuspankkijärjestelmä tulee olemaan yksi
+
+00:56:56.640 --> 00:56:59.680
+ jokaiselle kaikille organisaatioille ja sitten
+
+00:56:59.680 --> 00:57:04.160
+ siellä se monipuolistuu ja mitä voit tehdä
+
+00:57:04.160 --> 00:57:06.319
+ sellainen järjestelmä, joka on mielenkiintoinen osa ja
+
+00:57:06.319 --> 00:57:13.520
+ rakastan sitä, joten se muuttaa kiertämistä pankki- ja rahoitusalalla
+
+00:57:13.520 --> 00:57:17.920
+ verojärjestelmään, koska olet suoraan vuorovaikutuksessa ihmisten kanssa
+
+00:57:17.920 --> 00:57:22.160
+ joo, joten se ei ole kuin tällä hetkellä, kun keskuspankki Yhdysvalloissa tai
+
+00:57:22.160 --> 00:57:26.720
+ Kanadalla ei ole väliä, tulee jonkinlainen politiikka ja sitten se
+
+00:57:26.720 --> 00:57:32.400
+ menee se tippuu alas ketjussa ja sinä yksilönä
+
+00:57:32.400 --> 00:57:35.440
+ käyttäjän, jonka näet todennäköisesti vähiten
+
+00:57:35.440 --> 00:57:37.680
+ rahaa ja todennäköisesti korkeimmalla korolla
+
+00:57:37.680 --> 00:57:42.559
+ että voit ajatella muita ihmisiä, hyötyvät paljon vahvemmin digitaalisesta
+
+00:57:42.559 --> 00:57:46.799
+ rahaa plus kryptovaluuttoja tai ohjelmoitavia
+
+00:57:46.799 --> 00:57:50.400
+ rahaa voit tehdä paljon enemmän, koska nyt
+
+00:57:50.400 --> 00:57:55.839
+ keskuspankki voi suoraan vaikuttaa ihmisten käyttäytymiseen ja miten he tekevät
+
+00:57:55.839 --> 00:58:00.400
+ tee kyllä, he voivat sanoa hyvin, jos olet ravintolan omistaja, voit
+
+00:58:00.400 --> 00:58:03.839
+ saat rahat suoraan taskuusi meiltä, ​​niin ei enempää
+
+00:58:03.839 --> 00:58:08.079
+ mukana olevat pankit teemme sen suoraan, on mahdollista, että se on keskuspankin rahaa
+
+00:58:08.079 --> 00:58:12.240
+ he voivat muuttaa korkoja niin yhdessä tai yhdessä teollisuudessa
+
+00:58:12.240 --> 00:58:16.480
+ voi olla korkea korko kuin toisella um mitä tapahtuu
+
+00:58:16.480 --> 00:58:19.839
+ veroilla joo mitä irsille tapahtuu
+
+00:58:19.839 --> 00:58:22.079
+ koska he voivat käsitellä näitä asioita suoraan
+
+00:58:22.079 --> 00:58:25.200
+ ohjelmoitavan rahan kautta se vie aikaa
+
+00:58:25.200 --> 00:58:28.799
+ saada se siihen lopulliseen määrään, mutta se tapahtuu
+
+00:58:28.799 --> 00:58:34.640
+ niin kuin näet, niin suorat maksut ovat mahdollisia
+
+00:58:34.799 --> 00:58:41.119
+ he puhuvat täällä myös um kyllä ​​käyttäytymistaloudesta
+
+00:58:41.119 --> 00:58:45.359
+ ei joidenkin kertovien taloustieteilijöiden kautta
+
+00:58:45.359 --> 00:58:49.200
+ hallitukselle mitä tehdä ja mitä ei tehdä, koska se on epäonnistunut
+
+00:58:49.200 --> 00:58:52.160
+ ohi kaikki sanovat niin mitä he menevät
+
+00:58:52.160 --> 00:58:56.400
+ tehtävä on kuin facebook-tyyppinen idea tai rasti tock-idea tai
+
+00:58:56.400 --> 00:58:59.520
+ youtube-idea, josta olet kiinnostunut ihmisistä
+
+00:58:59.520 --> 00:59:03.280
+ ystävystyä kanssasi tai missä olet kiinnostunut ihmisistä
+
+00:59:03.280 --> 00:59:06.799
+ saada enemmän tykkäyksiä ja niin muutat käyttäytymistäsi
+
+00:59:06.799 --> 00:59:10.079
+ lisää tykkäyksiä ja samaa
+
+00:59:10.079 --> 00:59:13.839
+ tapahtuu rahan kanssa, joten kaikki on säännelty
+
+00:59:13.839 --> 00:59:17.680
+ keskuspankin kautta ilman ketään ulkomaailmasta
+
+00:59:17.680 --> 00:59:22.000
+ joilla on mahdollisuus saada merkittävä vaikutus, niin miten
+
+00:59:22.000 --> 00:59:26.079
+ näyttää lopulta kukaan ei tietenkään tietenkään, mutta että nämä
+
+00:59:26.079 --> 00:59:31.200
+ ihmiset kokoontuvat yhdessä keskustelemaan ristikkäismaksuista
+
+00:59:31.200 --> 00:59:36.079
+ löytää uh erittäin mielenkiintoinen ja uh, joka on tietysti fantastinen uutinen
+
+00:59:36.079 --> 00:59:39.040
+ uh bitcoinille, koska bitcoin on sen ulkopuolella
+
+00:59:39.040 --> 00:59:44.839
+ järjestelmässä ei ole ketään, joka voi säätää uh bitcoinia
+
+00:59:44.839 --> 00:59:48.400
+ hajautettu um se on muuttumaton hyvin tiedät kaikki
+
+00:59:48.400 --> 00:59:54.079
+ ominaisuudet uh bitcoin joten um bitcoin on loistava vaihtoehto
+
+00:59:54.079 --> 00:59:57.839
+ kaikki muut kryptovaluutat, suurimmat, ovat ehdottomasti hyvä vaihtoehto
+
+00:59:57.839 --> 01:00:02.000
+ Katsotaanpa, mitä vaaka tuo esiin, mutta on olemassa hyviä vaihtoehtoja
+
+01:00:02.000 --> 01:00:06.480
+ um keskustaan ​​keskelle
+
+01:00:06.480 --> 01:00:11.359
+ ajaa rahaa keskuspankkien kautta, joten toivon, että löysit sen mielenkiintoisen ja
+
+01:00:11.359 --> 01:00:14.559
+ toivon, että pidit siitä ja toivon, että saan sinulta puutteen
+
+01:00:14.559 --> 01:00:18.799
+ ja toivotan teille upean viikon, joten paljon kiitoksia katselusta
+
+01:00:18.799 --> 01:00:23.200
+ hei hei kiitos robert vain muistutuksena siitä, ettemme tarjoa taloudellista neuvontaa
+
+01:00:23.200 --> 01:00:26.400
+ mutta vain jakamalla mitä kryptovaluuttamarkkinoilla tapahtuu
+
+01:00:26.400 --> 01:00:29.599
+ muista aina, että kryptovaluuttamarkkinat muuttuvat jatkuvasti ja
+
+01:00:29.599 --> 01:00:33.920
+ aina epävakaata, joten sinun tulisi käyttää vain sitä, mitä sinulla on varaa menettää
+
+01:00:33.920 --> 01:00:38.720
+ nyt takaisin beccaan uutishuoneessa kiitos robbie
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi on ilmoittanut uudesta lataustarkastuksesta, joka voi ladata loppuun kuluneen
+
+01:00:42.799 --> 01:00:48.480
+ älypuhelin alle 20 minuutissa, mutta se tekee sen ilman johtoja nopeasti
+
+01:00:48.480 --> 01:00:52.480
+ lataamisesta on tullut keskeinen piirre monissa älypuhelimissa viime vuosina
+
+01:00:52.480 --> 01:00:56.160
+ mukavuuden vuoksi langaton lataus voi olla todella hienoa
+
+01:00:56.160 --> 01:00:59.920
+ mutta tietysti langaton lataus yleensä lataa puhelimen välillä
+
+01:00:59.920 --> 01:01:05.359
+ 10-15 wattia virtaa joillakin puhelimilla, kuten oneplus 8 pro: lla
+
+01:01:05.359 --> 01:01:10.160
+ langaton lataus jopa 40 wattia, mutta xiaomin uusi lataustekniikka lupaa
+
+01:01:10.160 --> 01:01:14.240
+ huikeat 80 wattia langatonta mehua
+
+01:01:14.240 --> 01:01:18.319
+ mitä tämä tarkoittaa käytännössä hyvin ilmoituksen mukaan
+
+01:01:18.319 --> 01:01:22.160
+ paljastaa langattoman 80 watin lataustekniikan
+
+01:01:22.160 --> 01:01:26.720
+ älypuhelin, jolla on nolla prosenttia neljän tuhannen milliampeeritunnin akun latauksella
+
+01:01:26.720 --> 01:01:30.160
+ veloittaa kymmenen prosenttia vain yhdessä minuutissa viisikymmentä prosenttia
+
+01:01:30.160 --> 01:01:34.160
+ latautuu kahdeksassa minuutissa ja latautuu täysin 19 minuutin kuluttua
+
+01:01:34.160 --> 01:01:37.599
+ vihdoin laturi, joka lataa puhelimeni
+
+01:01:37.599 --> 01:01:43.359
+ nollasta sataan prosenttiin aivan kuten lounastauollani, katso, se on mukavaa
+
+01:01:43.359 --> 01:01:48.079
+ se on pelinvaihtaja. Voitteko kuvitella, että ajattelen lasteni ja miten meillä on
+
+01:01:48.079 --> 01:01:51.440
+ kuten puhelimet kaikkialla ilmeisesti tarkoitan tämän olevan kuin
+
+01:01:51.440 --> 01:01:56.319
+ uusin ja paras tekniikka, mutta um se on aina oh unohdin
+
+01:01:56.319 --> 01:01:59.520
+ laita puhelimeni laturiin tai se ei kestä tarpeeksi kauan koko ajan
+
+01:01:59.520 --> 01:02:02.720
+ päivä ja nyt, kun tiedät pandemian tietysti minun
+
+01:02:02.720 --> 01:02:07.599
+ lapset kotikoulutetaan nyt tavallaan väkisin ja kaikki ovat mukana
+
+01:02:07.599 --> 01:02:11.839
+ heidän laitteitaan koko ajan, joten meillä on zoomauskokouksia puhelimissa
+
+01:02:11.839 --> 01:02:15.599
+ ja ja se käyttää sitä kuluttaa akkua kyllä
+
+01:02:15.599 --> 01:02:21.440
+ mutta pidän siitä, että se on langaton, se ei ole vain langallinen, mikä on hämmästyttävää joo
+
+01:02:21.440 --> 01:02:24.480
+ se on langaton, joka on valtava kuin ajatus
+
+01:02:24.480 --> 01:02:27.200
+ Voisin ottaa puhelimeni ei tarvitse huolehtia latureista ja
+
+01:02:27.200 --> 01:02:30.960
+ vain mene vain laske se alas 20 minuuttia myöhemmin, olen hyvä mennä
+
+01:02:30.960 --> 01:02:34.000
+ että rakastan sitä muuta asiaa, josta rakastan
+
+01:02:34.000 --> 01:02:40.480
+ ajatuksena on, että ajattelen niin kuin sinä juuri teit, jos voisin
+
+01:02:40.480 --> 01:02:43.359
+ aseta se pöydälle, mitä jos voisit asettaa sen alas a
+
+01:02:43.359 --> 01:02:47.680
+ ravintolapöytä kyllä, koska monet ravintolat ovat menneet reittiä ja olen
+
+01:02:47.680 --> 01:02:50.799
+ käyttämällä ravintoloita esimerkkinä, mutta monissa paikoissa on mennyt reitti
+
+01:02:50.799 --> 01:02:54.480
+ upottamalla usb kyllä, jotta voit kytkeä USB: n
+
+01:02:54.480 --> 01:02:58.640
+ kaapeli puhelimesi lataamiseen, mutta yhtäkkiä ihmiset saivat
+
+01:02:58.640 --> 01:03:03.200
+ viisasta sille, että oi ne USB-portit voivat olla haitallisia
+
+01:03:03.200 --> 01:03:06.319
+ koska usb myös kuljettaa tietoja tai se on totta
+
+01:03:06.319 --> 01:03:10.000
+ kuka tietää, onko se liian monta volttia ja että tiedät ehkä sen
+
+01:03:10.000 --> 01:03:13.280
+ sain oikosulun tai jotain sellaista ja voisin paistaa puhelintani
+
+01:03:13.280 --> 01:03:17.039
+ joten sitten yhtäkkiä pelkäämme liittää USB-porttiin, koska hei
+
+01:03:17.039 --> 01:03:20.400
+ se voi olla jotain pahaa, joka on oikein
+
+01:03:20.400 --> 01:03:24.960
+ langaton lataus, asetat sen alas, se latautuu ja nostat sen ja olet valmis
+
+01:03:24.960 --> 01:03:28.240
+ tehty joo, mutta voit asettaa sen alas kuten
+
+01:03:28.240 --> 01:03:31.119
+ kolme minuuttia ja se antaa sinulle tarpeeksi varausta päästäksesi läpi suurimman osan
+
+01:03:31.119 --> 01:03:35.680
+ iltapäivä, joka on uskomatonta mahtavaa, luulen
+
+01:03:35.680 --> 01:03:40.559
+ aivan kuten tarkoitat, että katsot nyt ympärillesi ja sinulla on kaikki nämä latausasemat
+
+01:03:40.559 --> 01:03:44.079
+ sähköautojen kanssa olisi hienoa alkaa nähdä vähän
+
+01:03:44.079 --> 01:03:48.640
+ ponnahdusikkunoita julkisilla paikoilla, joissa on sellaisia ​​juttuja, joihin voit kirjaimellisesti laittaa
+
+01:03:48.640 --> 01:03:52.880
+ puhelimesi alas viiden minuutin ajan, ja sinulla on tarpeeksi puhelua
+
+01:03:52.880 --> 01:03:56.319
+ saada apua tai mitä tahansa, ja kaikki on langattomasti, kuvasin juuri
+
+01:03:56.319 --> 01:04:01.760
+ kuin tieosuus ja upota vastaanotin autoon ja siihen
+
+01:04:01.760 --> 01:04:05.599
+ lataa itsenäisen auton ajon aikana
+
+01:04:05.599 --> 01:04:08.230
+ asia, joka olemme tekemisissä tekniikan kanssa, ihmiset
+
+01:04:08.230 --> 01:04:11.520
+ [Naurua] silti pidän siitä, olen innoissani siitä
+
+01:04:11.520 --> 01:04:15.839
+ hullu asia on vain johtopäätöksenä, että vaikka mitä minä vain
+
+01:04:15.839 --> 01:04:18.319
+ sanoi on hyvin scifi, kuten silloin kun kasvoimme
+
+01:04:18.319 --> 01:04:21.599
+ se oli kuin tulevaisuus, se on täysin toteutettavissa
+
+01:04:21.599 --> 01:04:25.920
+ mahdollista nyt jep, se on naurettavaa vadelma pi
+
+01:04:25.920 --> 01:04:31.200
+ säätiö on käynnistänyt laskentamoduulin, jossa on vadelma pi 4: n tekniset tiedot.
+
+01:04:31.200 --> 01:04:35.119
+ vadelma pi -säätiö toi markkinoille uuden tuotteen komp
+
+01:04:35.119 --> 01:04:39.440
+ laskentamoduuli 4. on vaikea uskoa, että se on ollut niin kauan, mutta
+
+01:04:39.440 --> 01:04:43.359
+ vadelma pi 4 julkaistiin kesäkuussa 2019
+
+01:04:43.359 --> 01:04:48.079
+ laskentamoduuli 4 tuo pi 4 teolliseen iot-tilaan
+
+01:04:48.079 --> 01:04:52.240
+ sisältää saman prosessorin, joka on pakattu laskentamoduuliin
+
+01:04:52.240 --> 01:04:57.200
+ vain kerjäämään integroitumista tehokkaisiin iot-laitteisiin
+
+01:04:57.200 --> 01:05:00.880
+ jos et tunne laskentamoduuleja, voit ajatella niitä sellaisina
+
+01:05:00.880 --> 01:05:05.280
+ yhden kortin tietokoneet ilman kaikkia portteja ja gpio-nastoja
+
+01:05:05.280 --> 01:05:09.440
+ ne antavat tietokonekomponenttien olevan vadelma pi: n aivot
+
+01:05:09.440 --> 01:05:13.920
+ integroitu robotiikan älylaitteiden valmistajan teknologiaklustereihin tai
+
+01:05:13.920 --> 01:05:16.400
+ kaikki mitä keksiä vaatii pienen
+
+01:05:16.400 --> 01:05:22.240
+ pienitehoinen linux-tietokone sydämessään, koska laskentamoduuli 4 jakaa sen
+
+01:05:22.240 --> 01:05:26.400
+ spec kanssa vadelma pi 4 -kehittäjät voivat tehdä kaikki prototyyppinsä
+
+01:05:26.400 --> 01:05:30.319
+ pi 4 sbc: llä, mutta tilaa sitten joukko laskentamoduulia
+
+01:05:30.319 --> 01:05:33.520
+ 4s integroida kaupalliseen tuotteeseensa
+
+01:05:33.520 --> 01:05:38.559
+ aivan kuten vadelma pi 4, laskentamoduulissa 4 on 64-bittinen varsi
+
+01:05:38.559 --> 01:05:42.400
+ prosessori, jossa on video core vi -grafiikka
+
+01:05:42.400 --> 01:05:45.520
+ edustaa valtavaa päivitystä edelliseen laskentaan
+
+01:05:45.520 --> 01:05:49.839
+ moduuliasiakkaille ja 4k-videolähdöllä enintään
+
+01:05:49.839 --> 01:05:55.039
+ 60 kuvaa sekunnissa sekä kyky purkaa h.265-video
+
+01:05:55.039 --> 01:05:58.480
+ laskentamoduulin laskentamoduuli 4
+
+01:05:58.480 --> 01:06:03.039
+ voisi olla pelinvaihtaja multimediaohjattuille laitteille, kuten älytelevisioille tai
+
+01:06:03.039 --> 01:06:06.960
+ digisovittimet, joiden kanssa laskentamoduuli 4 on saatavana
+
+01:06:06.960 --> 01:06:11.599
+ valitsemasi 1 2 4 tai 8 gigatavun ram ja 8 16
+
+01:06:11.599 --> 01:06:18.000
+ tai 32 gigatavua emmc-salamalaitteella, wi-fi ja bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ ovat myös valinnaisia, hinta vaihtelee vain 25: stä
+
+01:06:21.440 --> 01:06:27.599
+ 90 usd: iin kuvittele nyt, että jeff vadelma pi laskee moduulin 4
+
+01:06:27.599 --> 01:06:31.359
+ joo jossakin sbc-projektissasi tai jotain sellaista, joka käyttää sitä kuten
+
+01:06:31.359 --> 01:06:33.920
+ aivot, tämä on aika jännittävä heti
+
+01:06:33.920 --> 01:06:39.440
+ becca sanoi h.265-dekoodauksen, joten se on kuin video
+
+01:06:39.440 --> 01:06:43.760
+ erittäin prosessori intensiivinen joo, se on mahtavaa, kuten se sanoo paljon
+
+01:06:43.760 --> 01:06:50.000
+ se on enemmän voimaa kuin minun plex-palvelimeni kyllä, kuten kuka tietää missä se on
+
+01:06:50.000 --> 01:06:54.720
+ aikoo ottaa asioita, joista pidän ajatuksesta klusterilaskennasta
+
+01:06:54.720 --> 01:06:58.480
+ ja sinä otat useita tietokoneita
+
+01:06:58.480 --> 01:07:01.520
+ yhdistää ne yhteen verkottumisen kautta ja
+
+01:07:01.520 --> 01:07:06.559
+ asenna periaatteessa ohjelmisto beowulf tai jotain sellaista
+
+01:07:06.559 --> 01:07:09.359
+ klustereita heitä tekemään niistä kykeneviä esiintymään
+
+01:07:09.359 --> 01:07:14.400
+ tehtäviä yhdessä siten, että se periaatteessa tekee supertietokoneesta
+
+01:07:14.400 --> 01:07:19.200
+ heti useista tietokoneista, joten ajattelet näitä vadelma pi
+
+01:07:19.200 --> 01:07:25.839
+ cl uh klusteri tai moduulit ja ja laita kuin 10 niistä yhteen
+
+01:07:25.839 --> 01:07:30.400
+ klusterissa ja haluat tämän laskentamoduulin
+
+01:07:30.400 --> 01:07:34.559
+ klusteri, joka olisi mukava tietokone, jolla on paljon virtaa
+
+01:07:34.559 --> 01:07:38.079
+ kun kullakin voi olla kahdeksan oina-keikkaa
+
+01:07:38.079 --> 01:07:43.359
+ lauta kertaa, että 10. mennessä paljon voi tehdä paljon
+
+01:07:43.359 --> 01:07:47.280
+ se muuttaa asioita, joita maailma muuttaa, se on varmaa
+
+01:07:47.280 --> 01:07:50.960
+ mitä tekisit kaikella voimalla
+
+01:07:52.160 --> 01:07:55.280
+ ja hiljaisuus hän odottaa sinun vastaavan minulle
+
+01:07:55.280 --> 01:07:58.480
+ ajattelen, että haluaisin mitä tekisin sen kanssa kuinka moni ihminen
+
+01:07:58.480 --> 01:08:05.119
+ meni juuri bitcoinin louhintaan anteeksi kaverit, tiedät mikä on surullista
+
+01:08:05.119 --> 01:08:10.880
+ Ensimmäinen ajatus oli, voinko automatisoida kuten jotkut
+
+01:08:10.880 --> 01:08:14.000
+ apuvälineet, jotka minulla on keittiössä ruoan valmistamiseksi minulle
+
+01:08:14.000 --> 01:08:17.600
+ se oli ensimmäinen ajatukseni laskentamoduulilla neljä
+
+01:08:17.600 --> 01:08:22.319
+ joo vie enemmän, mutta tiedän, että se voi olla tällaisen operaation aivot
+
+01:08:22.319 --> 01:08:27.759
+ olen selvästikin nälkäinen [Naurua]
+
+01:08:27.759 --> 01:08:31.359
+ ajatuksesi kommentoivat alla, haluaisimme kuulla, mitä tekisit a
+
+01:08:31.359 --> 01:08:34.719
+ Laske moduuli kiitoksesta luokan 5 pisteen katselemisesta
+
+01:08:34.719 --> 01:08:38.000
+ TV-uutishuone älä unohda pitää ja tilata
+
+01:08:38.000 --> 01:08:40.640
+ kaikki tekniikkauutesi pienellä linux-puolueellisuudella
+
+01:08:40.640 --> 01:08:46.000
+ ja jos arvostat sitä, mitä teemme, tulee patreon.com -sivuston suojelija
+
+01:08:46.000 --> 01:08:53.839
+ luokka 5. luokan 5 piste-tv-uutishuoneesta olen Becca Ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Musiikki]
+
+01:09:12.400 --> 01:09:16.159
+ No, se on hyvin melkein koko ajan, mitä meillä on tällä viikolla jeff
+
+01:09:16.159 --> 01:09:21.600
+ viime viikolla kävelimme läpi ja tein koko prosessin fiverrin kanssa
+
+01:09:21.600 --> 01:09:25.359
+ palkkasi joitain ihmisiä, voimmeko tehdä remiximme, tässä on hauska
+
+01:09:25.359 --> 01:09:29.040
+ tarina okei sanoa minulle kirjaimellisesti milloin nauraa
+
+01:09:29.040 --> 01:09:34.960
+ tiedä huuli hän jo teki hän jo nauroi
+
+01:09:34.960 --> 01:09:38.400
+ pentue-orava oli yksi kavereistamme kyllä ​​joo
+
+01:09:38.400 --> 01:09:42.560
+ yksi remiksereistämme ja kirjallisuuden orava
+
+01:09:42.560 --> 01:09:48.319
+ sanoi, että ihmettelin jatkuvasti, koska hän katseli ominaisuutta
+
+01:09:48.319 --> 01:09:51.199
+ jälkeenpäin mietin jatkuvasti, miksi olit
+
+01:09:51.199 --> 01:09:58.159
+ väärin nimeni lausuminen, oh pentue orava, joten tarkistan
+
+01:09:58.159 --> 01:10:02.960
+ profiilin ja huomasin, että kirjoitin väärin
+
+01:10:02.960 --> 01:10:09.920
+ enkä koskaan huomannut ja se oli niin kolmen vuoden ajan, oletko tosissasi
+
+01:10:09.920 --> 01:10:17.600
+ hän sanoo nimeni, bändini nimi on kirjallinen orava oi jumalani hän jätti
+
+01:10:17.600 --> 01:10:21.040
+ se on hauskaa, joten kerron sinulle tämän tarinan
+
+01:10:21.040 --> 01:10:25.600
+ katso se on hauskaa nähdä minä sanoin että se oli hauskaa se oli
+
+01:10:26.000 --> 01:10:29.679
+ kerron sinulle tämän tarinan, koska sitten sanoin itselleni hyvin
+
+01:10:29.679 --> 01:10:35.120
+ näen sanoja ja mielestäni enimmäkseen lausun
+
+01:10:35.120 --> 01:10:40.320
+ heitä melko huolellisesti, joten kun näen kirjallisuutta, vaikka se ei ole sana minä
+
+01:10:40.320 --> 01:10:44.800
+ aseta se siten, että se lukee oikein, joten luulin olevani a
+
+01:10:44.800 --> 01:10:47.679
+ melko hyvä oikoluku joten sanoin mitä helvettiä annan sille
+
+01:10:47.679 --> 01:10:50.960
+ mene niin laitoin ilmoituksen, jonka mukaan luen oikolukun
+
+01:10:50.960 --> 01:10:54.480
+ tekstisi 500 sanaa tai vähemmän viidellä taalalla
+
+01:10:54.480 --> 01:10:57.520
+ Okei ja olin kuin ah kukaan ei koskaan mene siihen
+
+01:10:57.520 --> 01:11:01.840
+ se on hauskaa joka tapauksessa ajattelin kokeilla sitä ja seuraavana aamuna sain sähköpostia
+
+01:11:01.840 --> 01:11:08.239
+ espanjalaiselta henkilöltä, joka oli um is
+
+01:11:08.239 --> 01:11:13.120
+ vakuutusvälittäjä kunnossa ja asiakkaan, joka puhuu englantia
+
+01:11:13.120 --> 01:11:17.600
+ ja halusi varmistaa, että hän sanoi oikeita asioita vastauksena
+
+01:11:17.600 --> 01:11:21.840
+ sähköpostiin, joten hän poisti kaikki luottamukselliset asiat
+
+01:11:21.840 --> 01:11:26.400
+ jep ja lähetti minulle vastauksensa ja sanoi, voitko vain mennä tämän yli minulle ja minä
+
+01:11:26.400 --> 01:11:28.400
+ tein ja menin läpi ja korjasin joitain
+
+01:11:28.400 --> 01:11:31.840
+ ja hänellä oli joitain sanoja, joilla ei ollut oikeastaan ​​järkeä käännöksessä
+
+01:11:31.840 --> 01:11:35.760
+ joten korjasin sen ja korjasin kieliopin ja kontekstin ja hieman
+
+01:11:35.760 --> 01:11:39.760
+ oikeinkirjoituksesta ja hän oli kuin rakasti sitä viisi taalaa
+
+01:11:39.760 --> 01:11:42.000
+ kesti todella 10 minuuttia ja se oli vain
+
+01:11:42.000 --> 01:11:44.480
+ jotain tein kupin kahvin kanssa ensimmäisenä aamulla
+
+01:11:44.480 --> 01:11:50.960
+ kyllä, ja hän antoi minulle 5 viidestä arvostelun, joka on mahtavaa kuin se olisi fiverr
+
+01:11:50.960 --> 01:11:54.480
+ läppä perspektiivi, joten olen kuin tämä on melko siisti, joten aloitan puhumisen
+
+01:11:54.480 --> 01:11:58.400
+ lapsilleni ja haluaisin, että meidän pitäisi selvittää, voisitteko te kuten tavata
+
+01:11:58.400 --> 01:12:01.199
+ siellä ja tiedätkö tyttäreni taiteilija ja
+
+01:12:01.199 --> 01:12:05.280
+ hän voisi tehdä piirustuksia ihmisille, jotka alkavat ansaita rahaa, se on tavallaan siisti
+
+01:12:05.280 --> 01:12:08.159
+ idea siististä alustasta en tiedä mistä säännöistä on kyse
+
+01:12:08.159 --> 01:12:11.120
+ kuten alaikäraja ja vastaavat, mutta voimme tutkia tällaisia
+
+01:12:11.120 --> 01:12:13.360
+ asioita, mutta se on minun tarinani tällä viikolla
+
+01:12:13.360 --> 01:12:18.719
+ että hei menin myös kääntöpuolelle ja myin oman palveluni, jonka annoin
+
+01:12:18.719 --> 01:12:23.120
+ kirjallinen orava ilmainen ilmaistarjous um, mutta uh
+
+01:12:23.120 --> 01:12:30.000
+ nyt olen myynnissä ii. Minusta tuntuu olevan hauskaa vain
+
+01:12:30.000 --> 01:12:34.000
+ annan sinulle viisi taalaa ja lähetän sinulle 500 sanan asiakirjan
+
+01:12:34.000 --> 01:12:38.640
+ kaikki lorem ipsum ja kerro vain, jos on järkevää, teen parhaani
+
+01:12:38.640 --> 01:12:44.000
+ oletko korjannut, että joo hyvin, se on se jeff
+
+01:12:44.000 --> 01:12:46.800
+ se on koko ajan okei, mutta se on ollut hauskaa
+
+01:12:46.800 --> 01:12:50.080
+ nautin olla täällä kanssasi jälleen tällä viikolla ensi viikolla, olemme siirtymässä 3D: hen
+
+01:12:50.080 --> 01:12:52.560
+ tulostamme, joten aiomme koota enderin
+
+01:12:52.560 --> 01:12:55.440
+ 3v2, joten aiomme itse koota sen
+
+01:12:55.440 --> 01:12:58.640
+ ja sitten keskustelemme sinusta tiedät mikä prosessi on ollut
+
+01:12:58.640 --> 01:13:03.760
+ kuten minulle noobina 3D-tulostusmaailmassa niin
+
+01:13:03.760 --> 01:13:05.760
+ millaisia ​​haasteita olen kohdannut
+
+01:13:05.760 --> 01:13:09.040
+ ja voitko kohdata aloittaessasi
+
+01:13:09.040 --> 01:13:13.760
+ 3D-tulostuksessa plus näytän sinulle paitsi ensimmäisen tulosteen
+
+01:13:13.760 --> 01:13:19.440
+ mutta ensimmäisiä painotuotteitani et halua missata ensi viikolla
+
+01:13:19.440 --> 01:13:22.960
+ hauskaa viikkoa kaikille, näemme sinut
+
+01:13:24.100 --> 01:13:30.029
+ [Musiikki] [Suosionosoituksia]
+
+01:13:30.840 --> 01:13:45.060
+ hei [musiikki]
+
+01:13:48.290 --> 01:13:56.319
+ [Musiikki]
+
+01:14:01.760 --> 01:14:03.840
+ sinä
+

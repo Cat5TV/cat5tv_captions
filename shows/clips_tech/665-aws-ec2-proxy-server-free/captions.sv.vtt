@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: sv
+
+00:00:03.919 --> 00:00:07.120
+oavsett om du hoppas kunna ge dig själv lite extra integritet medan du surfar
+
+00:00:07.120 --> 00:00:10.639
+ internet eller om du vill komma åt tjänster som kanske
+
+00:00:10.639 --> 00:00:17.279
+ är vanligtvis inte tillgängliga i ditt område eller kanske är det ett faktum att du har det
+
+00:00:17.279 --> 00:00:22.000
+ hade din IP-adress blockerats av en tjänsteleverantör
+
+00:00:22.000 --> 00:00:27.359
+ det kan inte vara en skadlig sak jag har fått min IP-adress blockerad av youtube tidigare
+
+00:00:27.359 --> 00:00:31.039
+ eftersom jag laddar upp så många videor och laddar ner
+
+00:00:31.039 --> 00:00:37.280
+ undertexterna för dem så det har lett till att jag har överskridit min användning i
+
+00:00:37.280 --> 00:00:42.239
+ YouTube-api så att min IP-adress blockeras så
+
+00:00:42.239 --> 00:00:46.000
+ det behöver inte vara en skadlig sak, jag vill inte ge det intrycket
+
+00:00:46.000 --> 00:00:52.399
+ men det finns mycket legitima skäl att behöva komma runt dessa typer av
+
+00:00:52.399 --> 00:00:58.640
+ saker och nördar går till är en fullmakt, problemet är ombud
+
+00:00:58.640 --> 00:01:02.160
+ kan vara mycket dyrt att använda och gratis
+
+00:01:02.160 --> 00:01:08.240
+ medan lättillgängliga är mycket ofta antingen inte särskilt tillförlitliga är de uppe
+
+00:01:08.240 --> 00:01:11.360
+ dagen är de nere nästa och du tappar åtkomst till dina tjänster
+
+00:01:11.360 --> 00:01:18.320
+ och allt annat eller ännu värre de är farliga du vet inte vad
+
+00:01:18.320 --> 00:01:24.479
+ dessa ombud spårar loggning och till och med gillar att fånga upp
+
+00:01:24.479 --> 00:01:28.640
+ när du går igenom skickar du all din internettrafik
+
+00:01:28.640 --> 00:01:36.159
+ genom den tjänsteleverantören så det finns en person som jag verkligen litar på
+
+00:01:36.159 --> 00:01:44.079
+ att proxy alla mina data och det är jag jag är inte samma person
+
+00:01:44.079 --> 00:01:49.360
+ att du skulle säga att du litar på personen du litar på är du så jag är
+
+00:01:49.360 --> 00:01:54.399
+ kommer att visa dig hur jag kan skapa en gratis proxytjänst
+
+00:01:54.399 --> 00:02:00.000
+ av min egen och du kan replikera det och skapa din egen också
+
+00:02:00.000 --> 00:02:03.200
+ vi ska göra detta i molnet kommer vi att använda en tredje parts tjänst
+
+00:02:03.200 --> 00:02:06.399
+ leverantör och det är amazon så du säger jaha
+
+00:02:06.399 --> 00:02:09.440
+ amazon vad sägs om du vet att vi kan lita på våra uppgifter
+
+00:02:09.440 --> 00:02:13.440
+ för dem, vad vi använder är deras molntjänster det heter amazon
+
+00:02:13.440 --> 00:02:17.520
+ webbtjänster så det är allt det är deras moln
+
+00:02:17.520 --> 00:02:22.000
+ infrastruktur som de har för kunderna att i princip hyra
+
+00:02:22.000 --> 00:02:25.120
+ tillgång till deras servrar och deras utrymme och
+
+00:02:25.120 --> 00:02:28.640
+ och de virtuella servrarna och allt annat som helhet
+
+00:02:28.640 --> 00:02:34.959
+ infrastruktur är tillgänglig för dig men själva distributionen är
+
+00:02:34.959 --> 00:02:39.840
+ din jag ska visa dig hur detta görs vi kommer att hoppa vidare till aws
+
+00:02:39.840 --> 00:02:45.920
+ och i synnerhet ec2 så naturligtvis du om du inte känner till aws bara
+
+00:02:45.920 --> 00:02:50.160
+ gå till aws.amazon.com logga in med ditt Amazon-konto och
+
+00:02:50.160 --> 00:02:55.519
+ gör sedan en snabb sökning efter ec2 och det tar dig in
+
+00:02:55.519 --> 00:02:58.959
+ i princip tänker deras virtualiseringsplattform på ec2 som
+
+00:02:58.959 --> 00:03:02.800
+ just det så det första jag noterar när jag är här
+
+00:03:02.800 --> 00:03:08.480
+ i ec2 är min region och detta är viktigt eftersom det är här min proxy
+
+00:03:08.480 --> 00:03:13.360
+ servern kommer att bo om jag skulle ställa in den där varför är det
+
+00:03:13.360 --> 00:03:16.720
+ viktigt väl tänka på detta låt oss säga att jag använder en videostreaming
+
+00:03:16.720 --> 00:03:20.959
+ tjänst som begränsar kanadensisk åtkomst till deras video
+
+00:03:20.959 --> 00:03:24.720
+ streamingtjänst så genom att placera min proxyserver nere i norr
+
+00:03:24.720 --> 00:03:28.640
+ Kalifornien nu helt plötsligt är de i princip
+
+00:03:28.640 --> 00:03:31.599
+ med IP-adress kommer att tro att jag ansluter från
+
+00:03:31.599 --> 00:03:34.640
+ Kalifornien så jag kan klara det
+
+00:03:34.640 --> 00:03:37.920
+ På samma sätt kanske du vill ändra din region baserat på
+
+00:03:37.920 --> 00:03:42.480
+ vad det är du försöker uppnå kan du till och med placera en server i afrika
+
+00:03:42.480 --> 00:03:45.760
+ eller Asien titta på att du kan sätta en rätt i Hong Kong
+
+00:03:45.760 --> 00:03:49.440
+ du kan placera en i Kanada en öh i Europa du har
+
+00:03:49.440 --> 00:03:55.040
+ överallt och sedan har vi Mellanöstern och Sydamerika just nu
+
+00:03:55.040 --> 00:03:58.080
+ så det är en ganska stor lista över var de är
+
+00:03:58.080 --> 00:04:00.080
+ har den här infrastrukturen inrättad för amazon
+
+00:04:00.080 --> 00:04:03.920
+ webbtjänster ec2-tjänsten så välj den som
+
+00:04:03.920 --> 00:04:07.200
+ är där du vill att din proxyserver ska vara
+
+00:04:07.200 --> 00:04:10.879
+ Jag ska sätta mina jag ska bara lämna den som norra Kalifornien som är
+
+00:04:10.879 --> 00:04:14.560
+ oss väster ett och det är där
+
+00:04:14.560 --> 00:04:19.040
+ min proxyserver kommer att bo som kommer att tillåta mig att ansluta
+
+00:04:19.040 --> 00:04:22.880
+ som om jag faktiskt satt i Kalifornien
+
+00:04:22.880 --> 00:04:26.160
+ okej så jag tänker klicka på startinstans
+
+00:04:26.160 --> 00:04:30.160
+ och sedan starta instans igen eftersom det gör en rullgardinsmeny och detta ger mig
+
+00:04:30.160 --> 00:04:34.720
+ en lista med um operativsystem som jag kan distribuera
+
+00:04:34.720 --> 00:04:39.040
+ på min ec2-instans så jag använder några termer här som du kanske inte känner till
+
+00:04:39.040 --> 00:04:42.080
+ aws är amazon webbtjänster som i grund och botten
+
+00:04:42.080 --> 00:04:46.560
+ amazons fullständiga sortiment av tjänster som de erbjuder
+
+00:04:46.560 --> 00:04:52.000
+ för molnanvändare är ec2 deras virtualiseringsplattform för virtuell
+
+00:04:52.000 --> 00:04:55.840
+ maskiner när jag sa exempel jag talar om en
+
+00:04:55.840 --> 00:05:00.160
+ virtuell maskin så det är bokstavligen en virtuell maskin
+
+00:05:00.160 --> 00:05:03.919
+ så jag ska distribuera ett av dessa operativsystem till en instans av ec2
+
+00:05:03.919 --> 00:05:06.560
+ vilket är en virtuell maskin så vad vill jag ha den
+
+00:05:06.560 --> 00:05:10.960
+ att vara så och jag sa hej kommentar nedan om
+
+00:05:10.960 --> 00:05:12.639
+ jag använder en term som du inte känner till
+
+00:05:12.639 --> 00:05:15.600
+ Jag kommer att göra en snabb sökning jag har redan gjort det för att jag distribuerar massor av
+
+00:05:15.600 --> 00:05:18.960
+ servrar i molnet ska jag klicka på debian
+
+00:05:18.960 --> 00:05:21.360
+ skriv bara in debian i sökningen här
+
+00:05:21.360 --> 00:05:27.600
+ så då ska jag gå till aws marknadsresultat finns det också
+
+00:05:27.600 --> 00:05:30.960
+ de som jag har skapat och de i samhället
+
+00:05:30.960 --> 00:05:34.000
+ du skulle tro att jaha jag vill använda gemenskapens väl nej du inte för
+
+00:05:34.000 --> 00:05:37.919
+ de kommer att kosta dig pengar och du säger bra men samhället är gratis
+
+00:05:37.919 --> 00:05:42.800
+ det är öppen källkod och ja men det är inte en del av aws
+
+00:05:42.800 --> 00:05:45.919
+ marknadsplats och så måste du betala för användningen
+
+00:05:45.919 --> 00:05:49.600
+ att ha den virtuella maskinen som körs
+
+00:05:49.600 --> 00:05:52.639
+ i molnet så istället ska vi använda en av de officiella från
+
+00:05:52.639 --> 00:05:56.800
+ aws marketplace låt oss se vilka resultat vi får de sorteras ganska bra
+
+00:05:56.800 --> 00:06:00.400
+ debian kommer upp det första resultatet är debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ en gratis nivå kompatibel eller gratis nivå berättigad
+
+00:06:04.479 --> 00:06:09.039
+ version av debian som vi ska distribuera så välj det
+
+00:06:09.039 --> 00:06:12.720
+ gratis nivå berättigad så att vi kan ignorera prissättningen eftersom vi ska använda en
+
+00:06:12.720 --> 00:06:16.560
+ free tier hit fortsätter och det är här vi väljer det så bra
+
+00:06:16.560 --> 00:06:20.000
+ om vi vill ha gratisnivån måste vi gå med en t2-mikro så
+
+00:06:20.000 --> 00:06:24.080
+ Jag ska välja det men vad ger det oss det ger oss en CPU
+
+00:06:24.080 --> 00:06:29.520
+ en gigabyte minne um och sedan har vi lagringsutrymme att hantera
+
+00:06:29.520 --> 00:06:33.199
+ vi behöver inte mycket lagring eftersom vi bara skapar en grundläggande proxy
+
+00:06:33.199 --> 00:06:36.639
+ och det är ungefär så jag tänker distribuera precis som
+
+00:06:36.639 --> 00:06:40.080
+ att så t2 micro är den som är gratis nivå
+
+00:06:40.080 --> 00:06:43.440
+ välj inte en av de större eftersom du kommer att betala
+
+00:06:43.440 --> 00:06:45.919
+ för det genast ska jag granska och
+
+00:06:45.919 --> 00:06:50.080
+ lansering kommer vi att komma tillbaka för att göra inställningar som våra säkerhetsgrupper och
+
+00:06:50.080 --> 00:06:51.759
+ saker som jag ska bara lämna allt
+
+00:06:51.759 --> 00:06:54.880
+ som standard för nu och vi kommer att lansera det så
+
+00:06:54.880 --> 00:06:58.479
+ först och främst måste jag skapa ett nytt nyckelpar så det här är
+
+00:06:58.479 --> 00:07:02.720
+ ssh-tangenten som jag ska använda för att ssh in
+
+00:07:02.720 --> 00:07:06.800
+ den här servern så jag ska kalla den här proxyen
+
+00:07:06.800 --> 00:07:11.120
+ servern och hämta sedan mitt nyckelpar och se till att du sparar det säkert
+
+00:07:11.120 --> 00:07:14.960
+ Jag ska slänga det på min server och släppa det
+
+00:07:14.960 --> 00:07:19.199
+ där och nu lanseringsinstans betyder kraft
+
+00:07:19.199 --> 00:07:23.680
+ på din virtuella maskin så jag ska driva det
+
+00:07:23.680 --> 00:07:27.759
+ och där går vi så det är i grunden att skapa det är att skapa en virtuell
+
+00:07:27.759 --> 00:07:32.240
+ bearbeta en ec2-instans i molnet för oss i
+
+00:07:32.240 --> 00:07:35.360
+ öh i norra Kalifornien så där går vi så
+
+00:07:35.360 --> 00:07:40.400
+ Jag ska se instanser här nere och nu kan jag se att jag nu har en
+
+00:07:40.400 --> 00:07:45.120
+ exempel kör en t2 mikro och det är bara inget namn så jag ska
+
+00:07:45.120 --> 00:07:48.080
+ klicka på redigera och jag kommer att kalla detta min proxyserver
+
+00:07:48.080 --> 00:07:52.720
+ server försök att där går vi okej så det är redan igång
+
+00:07:52.720 --> 00:07:56.960
+ så om jag klickar på det kan jag se IP-adressen till den servern som jag har ringt
+
+00:07:56.960 --> 00:08:00.400
+ det proxyserver men just nu kom ihåg att det bara är debian 10. det finns
+
+00:08:00.400 --> 00:08:05.120
+ inget annat installerat på det så jag måste kopiera den ip-adressen
+
+00:08:05.120 --> 00:08:09.759
+ och sedan ska jag hoppa in i min kommandotolk
+
+00:08:09.759 --> 00:08:13.520
+ eftersom jag laddade ner nyckeln till min server kommer jag personligen till
+
+00:08:13.520 --> 00:08:17.440
+ ssh till min interna server
+
+00:08:23.680 --> 00:08:27.360
+ okej så nu är jag där så nu kommandot som jag ska använda
+
+00:08:27.360 --> 00:08:33.360
+ är ssh och streck sedan efter den nyckel som jag ska använda
+
+00:08:33.360 --> 00:08:36.320
+ så den inkommande filen som jag ska använda för nyckeln
+
+00:08:36.320 --> 00:08:41.039
+ och att den heter proxy server.pem är vad jag laddade ner
+
+00:08:41.039 --> 00:08:45.200
+ då ska jag gå admin eftersom det är standardinloggningen för debian
+
+00:08:45.200 --> 00:08:48.880
+ ami eller amazon machine image admin på
+
+00:08:48.880 --> 00:08:51.920
+ och sedan ip-adressen som jag redan har kopierat till mitt urklipp och om jag
+
+00:08:51.920 --> 00:08:54.240
+ tryck Enter kommer att be mig att acceptera den nyckeln
+
+00:08:54.240 --> 00:08:59.279
+ och jag säger ja och jag nekas
+
+00:08:59.279 --> 00:09:02.560
+ behörigheterna för den filen slutade vara att notera det
+
+00:09:02.560 --> 00:09:06.480
+ 766 så att alla har tillgång till dessa filer så det är intressant
+
+00:09:06.480 --> 00:09:10.800
+ ssh själv skyddar mig från att någon kan kompromissa med min nyckel
+
+00:09:10.800 --> 00:09:18.160
+ så chmod 7 0 0 proxyserver dot pam låt oss prova det och
+
+00:09:18.160 --> 00:09:21.279
+ försök nu igen så det jag har gjort är åh och nu är jag
+
+00:09:21.279 --> 00:09:25.360
+ anslutna fungerade det bara sju noll noll betyder jag ägaren till
+
+00:09:25.360 --> 00:09:29.120
+ den nyckeln jag får göra något med den
+
+00:09:29.120 --> 00:09:35.200
+ läs skriv exekvera noll noll betyder ingen i gruppen ingen som inte är en
+
+00:09:35.200 --> 00:09:39.120
+ en del av gruppen får åtkomst till det alls så det är
+
+00:09:39.120 --> 00:09:42.080
+ i grund och botten en dum fil som de inte ens kan öppna
+
+00:09:42.080 --> 00:09:46.800
+ uh men jag kan okej så nu när jag är ansluten ska jag gå sudo stämma
+
+00:09:46.800 --> 00:09:52.080
+ för det är vad kommandot är att bli rot så nu är jag rot så apt
+
+00:09:52.080 --> 00:09:57.519
+ uppdatera apt-uppdatering kommer att ta tag i mina förråd, du ser att det här är en
+
+00:09:57.519 --> 00:10:02.160
+ en faktisk debian-dator om du vill i molnet
+
+00:10:02.160 --> 00:10:05.600
+ det är så enkelt jag uppgraderar redan jag är redan
+
+00:10:05.600 --> 00:10:10.320
+ kör en debian-dator i molnet så på den tiden och jag är bla
+
+00:10:10.320 --> 00:10:16.640
+ bla bla samtidigt um, vi har en molnbaserad debianserver
+
+00:10:16.640 --> 00:10:20.800
+ visste du att du insåg att det var så enkelt och det är gratis
+
+00:10:20.800 --> 00:10:24.000
+ okej så att vi kan göra andra saker med detta också kan vi ställa in en lampstack vi
+
+00:10:24.000 --> 00:10:28.880
+ kan använda den för mysql mariadb allt du kan komma på är en
+
+00:10:28.880 --> 00:10:32.000
+ debianserver så vi kommer att använda detta som vårt
+
+00:10:32.000 --> 00:10:37.040
+ proxy så nu vad jag ska göra är att jag ska installera ett verktyg som heter
+
+00:10:37.040 --> 00:10:43.920
+ liten proxy trevligt och enkelt att installera apt installera liten proxy
+
+00:10:43.920 --> 00:10:50.880
+ riktigt enkelt att konfigurera säg ja här går vi
+
+00:10:52.399 --> 00:10:56.480
+ och det är gjort nu när vi har installerat liten proxy behöver vi bara redigera
+
+00:10:56.480 --> 00:11:04.640
+ konfigurationsfilen så snedstreck etc snedstreck liten liten proxy förändrade henne till det
+
+00:11:04.640 --> 00:11:10.959
+ och sedan använder jag nano tinyproxy.com och redigerar det så styr w i nano
+
+00:11:10.959 --> 00:11:14.079
+ tillåter mig att söka oh men innan jag söker notera att
+
+00:11:14.079 --> 00:11:18.000
+ port använder som standard 8888, vi behöver veta det
+
+00:11:18.000 --> 00:11:20.959
+ information eftersom det är det vi ska ansluta till för
+
+00:11:20.959 --> 00:11:25.200
+ vår proxy gör en snabb sökning efter allow
+
+00:11:26.720 --> 00:11:30.959
+ alt w låter dig söka igen wow ordet allow är förmodligen inte det bästa
+
+00:11:30.959 --> 00:11:35.920
+ sökfråga kanske söka efter 127.0.0.1 um och strax under den ska jag
+
+00:11:35.920 --> 00:11:40.399
+ tillåt och sedan måste jag lägga till min ip-adress så att jag kan ansluta till den här
+
+00:11:40.399 --> 00:11:44.320
+ proxyserver eftersom just nu är det stängt endast localhost kan komma åt den
+
+00:11:44.320 --> 00:11:48.399
+ det är viktigt att notera att detta är medan detta är en allmänhet gratis
+
+00:11:48.399 --> 00:11:51.519
+ proxyserver Jag är den enda som kommer att få åtkomst till den som är
+
+00:11:51.519 --> 00:11:54.959
+ kommer att få proxy mitt innehåll min anslutning genom
+
+00:11:54.959 --> 00:11:58.880
+ det så det är privat i det avseendet jag behöver veta min
+
+00:11:58.880 --> 00:12:02.959
+ IP-adress så jag ska hoppa över till
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz och kopiera den IP-adressen till mitt urklipp
+
+00:12:08.000 --> 00:12:11.279
+ och hoppa sedan tillbaka dit och klistra in den i min konfiguration
+
+00:12:11.279 --> 00:12:15.839
+ kontroll o ange kontroll x kontroll o är att skriva ut
+
+00:12:15.839 --> 00:12:22.720
+ spara filen nu system ctl starta om liten proxy
+
+00:12:22.720 --> 00:12:28.079
+ nästan gjort det sista som vi behöver göra är att vi bara behöver berätta aws
+
+00:12:28.079 --> 00:12:32.639
+ ec2-säkerheten som vi ska sätta upp en policy som säger
+
+00:12:32.639 --> 00:12:35.920
+ hej bara jag får ansluta till den servern
+
+00:12:35.920 --> 00:12:39.839
+ så ingen annan kan ansluta till det alls så det är vad vi ska
+
+00:12:39.839 --> 00:12:43.120
+ gör just nu så jag ska hoppa tillbaka hit och du ser den här servern uppe på
+
+00:12:43.120 --> 00:12:47.279
+ skärmen väl om jag klickar på säkerhet kan jag då
+
+00:12:47.279 --> 00:12:50.880
+ klicka på säkerhetsgruppen som den tilldelas automatiskt så klicka bara
+
+00:12:50.880 --> 00:12:53.680
+ det och nu har det lämnat mig över till ec2
+
+00:12:53.680 --> 00:12:56.240
+ säkerhetsgrupper och rätt säkerhetsgrupp
+
+00:12:56.240 --> 00:12:59.440
+ du kommer att märka att det redan har ställts in en för ssh eftersom
+
+00:12:59.440 --> 00:13:03.760
+ det är som standard aktiverat kan jag ställa in att det bara tillåter mig också vilket är
+
+00:13:03.760 --> 00:13:06.639
+ viktigt så låt oss göra det bara för att vara i gott skick
+
+00:13:06.639 --> 00:13:09.959
+ säkerhetspraxis så ssh jag ska ändra det från
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 jag ska stänga x det och då
+
+00:13:13.440 --> 00:13:18.320
+ ändra det till min ip då ska jag lägga till en ny regel du såg
+
+00:13:18.320 --> 00:13:20.880
+ hur jag kom hit precis vet jag att jag går riktigt riktigt snabbt
+
+00:13:20.880 --> 00:13:24.079
+ Jag har precis klickat på redigera inkommande regler här
+
+00:13:24.079 --> 00:13:29.040
+ okej så lägg till en ny regel anpassad tcp är standard
+
+00:13:29.040 --> 00:13:35.120
+ portnummer kommer du ihåg 888 och tillåter bara min ip jag kan kalla det något om jag
+
+00:13:35.120 --> 00:13:40.320
+ vill ha proxy och spara sedan mina regler
+
+00:13:40.320 --> 00:13:44.639
+ där går vi så nu ser du ssh och anpassad tcp
+
+00:13:44.639 --> 00:13:51.040
+ en som heter proxy på port 8888 så hur testar vi det här okej så vårt
+
+00:13:51.040 --> 00:13:57.360
+ nuvarande IP-adress är 99,233 och jag kommer därför att ansluta till proxyen
+
+00:13:57.360 --> 00:14:01.600
+ detta är inte en handledning om hur man använder en proxy
+
+00:14:01.600 --> 00:14:04.480
+ detta är inte en handledning om vad man ska använda den till
+
+00:14:04.480 --> 00:14:08.079
+ nödvändigtvis är det här jag antar här att
+
+00:14:08.079 --> 00:14:11.920
+ du kan antingen googla det själv eftersom det kommer att vara annorlunda baserat
+
+00:14:11.920 --> 00:14:15.199
+ på ditt användningsfall om du bara vill proxy din webbläsare eller proxy
+
+00:14:15.199 --> 00:14:18.480
+ särskild applikation eller hela nätverket
+
+00:14:18.480 --> 00:14:21.839
+ det kommer att vara upp till ditt individuella användningsfall
+
+00:14:21.839 --> 00:14:28.399
+ strikt en handledning om hur man bygger den här ec2-instansen riktigt snabbt för
+
+00:14:28.399 --> 00:14:31.760
+ gratis som har en proxy redo att användas i
+
+00:14:31.760 --> 00:14:36.639
+ Kalifornien eller var som helst och öh det är det så i mitt
+
+00:14:36.639 --> 00:14:40.720
+ särskilt fall just nu så det här ögonblicket är inte nödvändigtvis vad
+
+00:14:40.720 --> 00:14:43.680
+ du vill göra nästa så är det bara hur jag ska testa
+
+00:14:43.680 --> 00:14:50.000
+ proxy jag råkar vara på Windows 10 här så jag ska helt enkelt skriva in proxy
+
+00:14:50.000 --> 00:14:54.240
+ och gå in i proxyinställningar igen så är det förmodligen inte hur du vill göra det
+
+00:14:54.240 --> 00:14:57.279
+ Jag vill bara testa så jag ska slå på proxy
+
+00:14:57.279 --> 00:15:00.560
+ jag kan se att det finns gamla proxyinställningar där så se till att du är
+
+00:15:00.560 --> 00:15:03.839
+ tänk på det om det finns gamla proxyinställningar du behöver
+
+00:15:03.839 --> 00:15:08.480
+ för att ändra det, gå till instanser på ec2, klicka på din instans
+
+00:15:08.480 --> 00:15:12.079
+ id och ta tag i den IP-adressen och klistra sedan in
+
+00:15:12.079 --> 00:15:15.519
+ det som adressen för din proxyserver
+
+00:15:15.519 --> 00:15:20.800
+ port 8888 och spara så nu är jag ansluten till
+
+00:15:20.800 --> 00:15:24.639
+ proxy direkt inte ansluten till nu windows säger
+
+00:15:24.639 --> 00:15:27.199
+ Jag ska dirigera all din trafik genom proxyen jag borde korrigera
+
+00:15:27.199 --> 00:15:32.199
+ själv där så om jag går tillbaka till currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 är min nuvarande ip jag ska slå f5 för att uppdatera
+
+00:15:36.160 --> 00:15:44.639
+ och om allt gick bra 3.101.108.211. ja vad är det?
+
+00:15:44.639 --> 00:15:52.839
+ det är min server så jag är faktiskt nu var är jag låt oss ta reda på det
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com låt oss söka efter den IP-adress som jag för närvarande är på
+
+00:15:59.759 --> 00:16:06.839
+ var är jag san jose california det är där max mine bestämmer mig för
+
+00:16:06.839 --> 00:16:10.880
+ var så det är allt som finns i det folk vi har
+
+00:16:10.880 --> 00:16:14.880
+ skapad konfigurerad distribuerad en gratis proxytjänst
+
+00:16:14.880 --> 00:16:17.680
+ att vi äger och driver är vi de enda
+
+00:16:17.680 --> 00:16:22.560
+ vem har det som har den ssh-tangenten så om du vill
+
+00:16:22.560 --> 00:16:26.079
+ anslut i gör ändringar använd den som en multifunktionell server du kan göra
+
+00:16:26.079 --> 00:16:30.720
+ men håll bara ett öga på dina faktureringssaker, se bara till att
+
+00:16:30.720 --> 00:16:33.120
+ du har inte överskridit trösklarna och sådant
+
+00:16:33.120 --> 00:16:36.240
+ om du bara använder det som en proxy är det mycket osannolikt att du kommer att göra det
+
+00:16:36.240 --> 00:16:38.480
+ det är bara något du rör data igenom
+
+00:16:38.480 --> 00:16:42.800
+ så kolla att det är aws.amazon.com för att komma igång
+
+00:16:42.800 --> 00:16:45.920
+ om du har frågor skicka dem till vårt samhälle
+
+00:16:45.920 --> 00:16:50.160
+ till vår åsikt hittar du länken på category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ på interaktionsmenyn under tiden om du gillade det här om du har använt det eller
+
+00:16:54.000 --> 00:17:05.839
+ tyckte att det var bra, ge mig stora tummen, prenumerera
+
+00:17:08.849 --> 00:17:19.839
+ [Musik] gör
+
+00:17:23.599 --> 00:17:31.710
+ [Musik]
+

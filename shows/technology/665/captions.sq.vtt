@@ -1,0 +1,3163 @@
+WEBVTT
+Kind: captions
+Language: sq
+
+00:00:00.320 --> 00:00:05.040
+në kategorinë 5 tv ne i besojmë skedarët tanë në disqet e ngurta nga kingston
+
+00:00:05.040 --> 00:00:07.839
+ teknologji qoftë për laptopin e serverit tuaj ose
+
+00:00:07.839 --> 00:00:10.880
+ kompjuteri desktop do të përjetoni performancë të përmirësuar
+
+00:00:10.880 --> 00:00:17.920
+ dhe besueshmëria me kingston ssds bëhen gati është koha për teknologjinë
+
+00:00:22.320 --> 00:00:25.519
+ mirëseardhje në shfaqjen e të gjithëve është episodi 2 i sezonit 14
+
+00:00:25.519 --> 00:00:29.599
+ Unë jam Robbie Ferguson dhe jam Jeff Weston është mirë të jem këtu
+
+00:00:29.599 --> 00:00:32.800
+ dhe uh shpresoj të kesh kaluar një javë të mrekullueshme pavarësisht
+
+00:00:32.800 --> 00:00:37.760
+ gjithçka, por këtu jemi dhe presim me padurim një shfaqje të shkëlqyer përpara
+
+00:00:37.760 --> 00:00:40.960
+ sonte ne do të mësojmë se si të krijojmë tonat
+
+00:00:40.960 --> 00:00:45.840
+ server proxy në rregull um kështu që unë nuk dua të flas shumë rreth kësaj
+
+00:00:45.840 --> 00:00:49.200
+ shfaqje, por unë e di se ju e dini ndonjëherë e vështirë për të gjetur një të mirë
+
+00:00:49.200 --> 00:00:52.640
+ shërbim falas proxy kështu që ne do të krijojmë tonën
+
+00:00:52.640 --> 00:00:55.840
+ dhe unë do t'ju tregoj se si ta vendosni atë kudo në botë
+
+00:00:55.840 --> 00:01:01.600
+ duke përdorur shërbimet cloud aws kështu që është mjaft emocionuese dhe një nga gjërat
+
+00:01:01.600 --> 00:01:05.680
+ edhe me këtë ndërsa mësojmë pak se si
+
+00:01:05.680 --> 00:01:09.520
+ shërbime të amazon web ec2 dhe shërbime cloud dhe aftësia për të
+
+00:01:09.520 --> 00:01:13.760
+ vendosni serverat debian në infrastrukturën cloud siç mësojmë
+
+00:01:13.760 --> 00:01:18.799
+ si ta bëjmë atë dhe si funksionon ajo vetëm di atë
+
+00:01:18.799 --> 00:01:20.159
+ gjërat që ne do të bëjmë është
+
+00:01:20.159 --> 00:01:24.000
+ migrimi i disa prej të dhënave tona në atë infrastrukturë gjithashtu, kështu që unë e them atë
+
+00:01:24.000 --> 00:01:26.960
+ sepse kanë disa nga shikuesit tanë të transmetimit të drejtpërdrejtë
+
+00:01:26.960 --> 00:01:29.600
+ përjetoi telashe me tamponën dhe gjëra të tilla
+
+00:01:29.600 --> 00:01:32.799
+ dhe kjo është për shkak se ne kemi një kompjuter të vogël me një bord të vetëm
+
+00:01:32.799 --> 00:01:36.880
+ për të gjitha gjërat që është ajo në të cilën po transmetojmë dhe pastaj ajo ritransmetohet
+
+00:01:36.880 --> 00:01:40.799
+ kushdo që shikon në roku ose lojtarë të tjerë të hls dhe gjëra të tilla
+
+00:01:40.799 --> 00:01:44.399
+ ka një transmetues të shkathët që ekzekutohet në kompjuterin e vetëm të bordit, vërtet është
+
+00:01:44.399 --> 00:01:47.759
+ mrekulli e mrekullueshme megjithatë ajo që kam monitoruar përmes tim
+
+00:01:47.759 --> 00:01:50.960
+ testimi është se ajo drejton një CPU mjaft të lartë kur njerëzit
+
+00:01:50.960 --> 00:01:55.439
+ po shikojnë drejt ashtu që besoj se mund të jetë ajo që i shkakton disa
+
+00:01:55.439 --> 00:01:58.640
+ çështjet e buffering me um tonë lumë kështu që ka shumë gjëra që shkojnë
+
+00:01:58.640 --> 00:02:03.520
+ në prapaskenë këtu në përpjekje për të marrë atë që ju të merrni shfaqjen për ju uh in
+
+00:02:03.520 --> 00:02:07.840
+ një format shumë i arritshëm dhe i lehtë për t'u përdorur dhe kështu që ju të mos jeni
+
+00:02:07.840 --> 00:02:10.160
+ duke përjetuar gjëra të tilla si rrota rrotulluese
+
+00:02:10.160 --> 00:02:14.560
+ dhe ato lloj gjërash por uh ashtu siç po shikojmë sonte
+
+00:02:14.560 --> 00:02:18.560
+ uh dhe duke mësuar se si të vendosen këta serverë debian në re
+
+00:02:18.560 --> 00:02:20.879
+ e di se kjo është diçka që ne do të bëjmë prapa skenave këtu
+
+00:02:20.879 --> 00:02:23.760
+ si dhe migrimi i atyre shërbimeve mbi
+
+00:02:23.760 --> 00:02:27.120
+ në një nga ato raste në mënyrë që të
+
+00:02:27.120 --> 00:02:30.480
+ përpiquni të përmirësoni performancën tonë këtu në studio kështu
+
+00:02:30.480 --> 00:02:34.400
+ shumë gjëra interesante që po ndodhin pas nesh si keni qenë
+
+00:02:34.400 --> 00:02:38.000
+ Unë kam qenë mirë ne do të flasim me ju pak më vonë sonte rreth
+
+00:02:38.000 --> 00:02:42.080
+ uh disa nga shfrytëzimet tuaja me bashkim po po dëshironi të na tregoni pak
+
+00:02:42.080 --> 00:02:44.720
+ pak vetëm një ngacmim të shpejtë për atë që do të jemi
+
+00:02:44.720 --> 00:02:48.959
+ duke diskutuar uh djali im donte të hynte në bashkim
+
+00:02:48.959 --> 00:02:53.120
+ ditëlindjen e tij uh kështu që ne shkuam në atë rrugë
+
+00:02:53.120 --> 00:02:56.480
+ duke filluar muajin e kaluar, ne kemi luajtur pak dhe është e mirë
+
+00:02:56.480 --> 00:03:01.200
+ mua duke menduar se si mund t'i bëj gjërat e mia në shtëpi
+
+00:03:01.200 --> 00:03:04.560
+ kur nuk kam një zonë të madhe prodhimi për ta bërë timen
+
+00:03:04.560 --> 00:03:09.599
+ PCB po kështu po aty kemi biseduar për këtë kështu që nëse ju intereson
+
+00:03:09.599 --> 00:03:15.040
+ elektronike diy ne do të flasim për këtë dhe uh wow kemi
+
+00:03:15.040 --> 00:03:19.840
+ disa gjëra emocionuese për të cilat ne jemi duke u përgatitur gjithashtu edhe shfaqjen e javës tjetër
+
+00:03:19.840 --> 00:03:23.040
+ tashmë është gati për të shkuar dhe ne jemi të ngazëllyer që do të jemi
+
+00:03:23.040 --> 00:03:26.640
+ prezantimi i printimit 3D edhe për shikuesit tanë
+
+00:03:26.640 --> 00:03:29.680
+ kështu që kjo është diçka që ne do të mësojmë gjatë
+
+00:03:29.680 --> 00:03:36.080
+ javët e ardhshme këtu në kategorinë 5 tv kemi shumë gjëra po ndodhin po
+
+00:03:36.080 --> 00:03:39.200
+ ju lutem sigurohuni që të na abonoheni në youtube
+
+00:03:39.200 --> 00:03:42.159
+ dhe klikoni në zile në mënyrë që të merrni njoftimin sa herë që postojmë një të ri
+
+00:03:42.159 --> 00:03:46.560
+ video në çdo kohë që jemi drejtpërdrejt dhe gjithashtu nëse doni të përfshiheni
+
+00:03:46.560 --> 00:03:49.280
+ komuniteti mendoj se kjo është një mënyrë vërtet interesante
+
+00:03:49.280 --> 00:03:54.000
+ të jesh pjesë e kategorisë 5 tv disa njerëz ende më thonë mirë se çfarë është
+
+00:03:54.000 --> 00:03:58.400
+ mosmarrëveshje dhe është wow ju nuk jeni pjesë e mosmarrëveshjes sonë
+
+00:03:58.400 --> 00:04:01.920
+ server sepse nëse bashkoheni me mosmarrëveshjen tonë të cilën do ta gjeni nëse shkoni
+
+00:04:01.920 --> 00:04:06.560
+ në kategorinë5.tv klikoni në bashkëveprim ju do të shihni bashkohen në mosmarrëveshje
+
+00:04:06.560 --> 00:04:10.720
+ server është një shfletues falas ose i bazuar në aplikacion
+
+00:04:10.720 --> 00:04:14.720
+ shërbim që mund të vendosni në pajisjen tuaj dhe ose të përdorni
+
+00:04:14.720 --> 00:04:18.160
+ përmes shfletuesit tuaj për çdo gjë dhe ju në thelb mund të bisedoni me
+
+00:04:18.160 --> 00:04:22.079
+ komunitet, por është me të vërtetë i zoti në atë që është më shumë sesa thjesht një dhomë bisede
+
+00:04:22.079 --> 00:04:26.160
+ gjithashtu ka dhoma të ndryshme të alokuara për të
+
+00:04:26.160 --> 00:04:28.160
+ gjëra të ndryshme, pra gjëra që ne po flasim
+
+00:04:28.160 --> 00:04:31.280
+ rreth ose për shembull ne kemi marrë prapa skenave
+
+00:04:31.280 --> 00:04:35.680
+ kështu që prapa skenave është vetëm një mbushje plot prapaskena
+
+00:04:35.680 --> 00:04:42.320
+ foto që nuk do t'i shihni ndryshe dhe ka kaq shumë po në tonat
+
+00:04:42.320 --> 00:04:44.400
+ server mosmarrëveshje, kështu që vërtet duhet të shkosh atje
+
+00:04:44.400 --> 00:04:47.919
+ e di që është si një platformë bisede por ka një
+
+00:04:47.919 --> 00:04:51.360
+ shumë më tepër sesa thjesht ndërveprimi në chat
+
+00:04:51.360 --> 00:04:54.880
+ është e drejtë dhe nuk është vetëm aktive gjatë shfaqjes
+
+00:04:54.880 --> 00:04:58.240
+ është e ndezur gjatë gjithë kohës dhe dua të them nëse keni gjëra teknike
+
+00:04:58.240 --> 00:05:01.360
+ në mes të javës je si oh nuk di si ta zgjidh këtë çështje ty
+
+00:05:01.360 --> 00:05:04.080
+ mund të shfaqet atje dhe komuniteti është i mrekullueshëm për të dhënë
+
+00:05:04.080 --> 00:05:07.680
+ këshilla dhe kjo është goxha spot-on too po kjo është e vërtetë
+
+00:05:07.680 --> 00:05:10.720
+ në rregull, kështu që duhet të bëjmë një pushim me të vërtetë të shpejtë dhe pastaj do të kërcejmë mirë
+
+00:05:10.720 --> 00:05:14.800
+ në të pas kësaj shkëputjeje të shkurtër që do të shqyrtojmë
+
+00:05:14.800 --> 00:05:20.800
+ si të krijoni një shembull aws ec2 që tingëllon si teknobabble
+
+00:05:20.800 --> 00:05:24.080
+ mua kjo më bën vërtet shpejt po si jemi në lidhje me këtë
+
+00:05:24.080 --> 00:05:29.759
+ do të krijojmë shërbimin tonë falas për përfaqësues që është më lehtë të thuhet
+
+00:05:29.759 --> 00:05:36.240
+ Unë jam në kontroll Unë kam marrë qasje ne kemi shkopin e kontrollit rreth ne do
+
+00:05:36.240 --> 00:05:51.920
+ kthehu mbrapa [Muzika]
+
+00:05:58.560 --> 00:06:01.919
+ nëse jeni duke shpresuar t'i jepni vetes pak privatësi shtesë ndërsa shfletoni
+
+00:06:01.919 --> 00:06:04.720
+ internet ose dëshironi të përdorni shërbime që
+
+00:06:04.720 --> 00:06:10.160
+ mbase nuk janë në dispozicion zakonisht në zonën tuaj ose ndoshta është një
+
+00:06:10.160 --> 00:06:13.680
+ rast se në të vërtetë keni pasur adresën tuaj ip
+
+00:06:13.680 --> 00:06:17.600
+ bllokuar nga një ofrues i shërbimit mund të mos jetë një
+
+00:06:17.600 --> 00:06:20.960
+ gjë e dëmshme që më është bllokuar adresa ip
+
+00:06:20.960 --> 00:06:24.639
+ youtube më parë sepse unë ngarkoj kaq shumë video dhe
+
+00:06:24.639 --> 00:06:29.120
+ shkarkoni titrat e mbyllur për ata në mënyrë që
+
+00:06:29.120 --> 00:06:33.759
+ ka çuar në mua që të tejkaloj përdorimin tim në YouTube API
+
+00:06:33.759 --> 00:06:38.800
+ kështu që atëherë adresa ip ime bllokohet kështu që nuk duhet të jetë një gjë me qëllim të keq
+
+00:06:38.800 --> 00:06:44.319
+ nuk dua ta jap atë përshtypje, por ka arsye shumë të ligjshme
+
+00:06:44.319 --> 00:06:49.759
+ të keni nevojë për të marrë rreth atyre llojeve të gjërave dhe nerds shkojnë në
+
+00:06:49.759 --> 00:06:56.000
+ është një përfaqësues problemi është që përfaqësuesit mund të jenë shumë të kushtueshëm për t'u përdorur dhe
+
+00:06:56.000 --> 00:07:00.160
+ ato falas ndërsa janë në dispozicion janë shumë shpesh
+
+00:07:00.160 --> 00:07:04.800
+ ose jo shumë të besueshëm ata janë ngritur një ditë ata janë poshtë të nesërmen dhe ju humbni
+
+00:07:04.800 --> 00:07:10.240
+ qasje në shërbimet tuaja dhe gjithçka tjetër ose edhe më keq
+
+00:07:10.240 --> 00:07:14.960
+ ata janë të rrezikshëm nuk e dini se çfarë po ndjekin ata përfaqësues
+
+00:07:14.960 --> 00:07:21.120
+ prerjet dhe madje të pëlqen përgjimi ndërsa kalon duke dërguar
+
+00:07:21.120 --> 00:07:26.720
+ të gjithë trafikun tuaj të internetit përmes atij ofruesi të shërbimit
+
+00:07:26.720 --> 00:07:35.199
+ kështu që ka një person të cilit i besoj vërtet se i përfaqëson të gjitha të dhënat e mia
+
+00:07:35.199 --> 00:07:41.039
+ dhe kjo jam unë nuk jam i njëjti person që do të thoshesh se i beson
+
+00:07:41.039 --> 00:07:45.199
+ personi të cilit i beson je ti kështu që do të të tregoj se si
+
+00:07:45.199 --> 00:07:53.280
+ Unë mund të krijoj një shërbim falas të përfaqësuesit tim dhe ju mund ta kopjoni atë dhe
+
+00:07:53.280 --> 00:07:56.319
+ krijoni edhe tuajin, ne do ta bëjmë këtë në renë tonë
+
+00:07:56.319 --> 00:07:58.800
+ do të përdorin një ofrues të shërbimit të palëve të treta
+
+00:07:58.800 --> 00:08:02.400
+ dhe kjo eshte amazona keshtu qe ju thoni oh amazon po
+
+00:08:02.400 --> 00:08:05.919
+ ju e dini a jemi në gjendje t'u besojmë mirë të dhënave tona se çfarë po përdorim është e tyre
+
+00:08:05.919 --> 00:08:10.639
+ shërbimet cloud quhen shërbime të internetit amazon kështu që është
+
+00:08:10.639 --> 00:08:14.319
+ të gjitha ato janë infrastruktura e tyre cloud që ata kanë
+
+00:08:14.319 --> 00:08:18.560
+ për klientët që në thelb të marrin me qira hyrjen në serverat e tyre dhe të tyre
+
+00:08:18.560 --> 00:08:23.360
+ hapësira e tyre dhe serverat virtualë dhe gjithçka tjetër, e tërë kjo
+
+00:08:23.360 --> 00:08:29.680
+ infrastruktura është në dispozicion për ju, por vendosja në vetvete është
+
+00:08:29.680 --> 00:08:34.560
+ e juaja do t'ju tregoj se si është bërë kjo ne do të shkojmë në aws
+
+00:08:34.560 --> 00:08:40.719
+ dhe në veçanti ec2 kështu që sigurisht ju nëse nuk jeni njohur me aws thjesht
+
+00:08:40.719 --> 00:08:44.720
+ shkoni te aws.amazon.com identifikohuni me llogarinë tuaj në amazon
+
+00:08:44.720 --> 00:08:50.640
+ dhe pastaj bëni një kërkim të shpejtë për ec2 dhe kjo do t'ju marrë në thelb
+
+00:08:50.640 --> 00:08:53.680
+ platforma e tyre e virtualizimit mendojnë për ec2 si
+
+00:08:53.680 --> 00:08:57.519
+ vetëm kaq, gjëja e parë që vë re kur jam këtu
+
+00:08:57.519 --> 00:09:03.200
+ në ec2 është rajoni im dhe kjo është e rëndësishme sepse këtu është përfaqësuesi im
+
+00:09:03.200 --> 00:09:08.080
+ serveri do të banojë nëse duhet ta vendos atje pse është kështu
+
+00:09:08.080 --> 00:09:11.519
+ e rëndësishme mirë mendoni për këtë le të themi se po përdor një transmetim video
+
+00:09:11.519 --> 00:09:15.680
+ shërbim që kufizon aksesin kanadez në videon e tyre
+
+00:09:15.680 --> 00:09:19.440
+ shërbim transmetimi kështu duke vendosur serverin tim të përfaqësimit në veri
+
+00:09:19.440 --> 00:09:23.360
+ kalifornia tani krejt papritur ato janë në thelb
+
+00:09:23.360 --> 00:09:26.320
+ nga ip adresa do të mendoj se jam duke u lidhur nga
+
+00:09:26.320 --> 00:09:29.360
+ California kështu që unë jam në gjendje të punoj rreth kësaj
+
+00:09:29.360 --> 00:09:32.720
+ në mënyrë të ngjashme ju mund të dëshironi të ndryshoni rajonin tuaj bazuar në
+
+00:09:32.720 --> 00:09:37.200
+ çfarë jeni duke u përpjekur të arrini, madje mund të vendosni një server në Afrikë
+
+00:09:37.200 --> 00:09:40.480
+ ose aziatike shikoni që ju mund ta vendosni një të drejtë në Hong Kong
+
+00:09:40.480 --> 00:09:44.160
+ ju mund të vendosni një në Kanada një uh në evropë që keni
+
+00:09:44.160 --> 00:09:49.680
+ në të gjithë vendin dhe pastaj kemi Amerikën e Lindjes së Mesme dhe Jugut tani
+
+00:09:49.680 --> 00:09:52.800
+ kështu që është një listë mjaft e madhe se ku ndodhen
+
+00:09:52.800 --> 00:09:57.360
+ ketë këtë infrastrukturë të vendosur për shërbimet e internetit amazon shërbimin ec2
+
+00:09:57.360 --> 00:10:01.920
+ zgjidh atë që është vendi ku dëshiron të jetë serveri yt proxy
+
+00:10:01.920 --> 00:10:05.600
+ Unë jam duke shkuar për të vendosur timen Unë jam vetëm duke shkuar për të lënë atë si California veriore e cila është
+
+00:10:05.600 --> 00:10:09.279
+ ne perëndimi një dhe kjo është ku
+
+00:10:09.279 --> 00:10:13.760
+ serveri im i përfaqësimit do të banojë që do të më lejojë të lidhem
+
+00:10:13.760 --> 00:10:17.680
+ sikur në të vërtetë isha ulur në California
+
+00:10:17.680 --> 00:10:20.880
+ në rregull, kështu që unë do të klikoj në shembullin e nisjes
+
+00:10:20.880 --> 00:10:24.880
+ dhe pastaj nis përsëri shembullin sepse bën një zbritje dhe kjo më jep
+
+00:10:24.880 --> 00:10:29.440
+ një listë e sistemeve operative që mund të vendos
+
+00:10:29.440 --> 00:10:33.760
+ në rastin tim ec2 kështu që unë jam duke përdorur disa terma këtu ju mund të mos jeni njohur me të
+
+00:10:33.760 --> 00:10:38.240
+ aws është shërbime në internet amazon që në thelb janë të Amazon
+
+00:10:38.240 --> 00:10:44.560
+ gamën e plotë të shërbimeve që ata ofrojnë për përdoruesit e cloud ec2 është e tyre
+
+00:10:44.560 --> 00:10:48.160
+ platformë virtualizimi për makinat virtuale
+
+00:10:48.160 --> 00:10:52.240
+ kur thashë shembull po flas për një makinë virtuale
+
+00:10:52.240 --> 00:10:56.160
+ kështu që kjo është fjalë për fjalë një makinë virtuale, kështu që unë jam duke shkuar për të vendosur një nga këto
+
+00:10:56.160 --> 00:10:59.360
+ sistemet operative në një shembull të ec2 që është
+
+00:10:59.360 --> 00:11:02.880
+ një makinë virtuale kështu që çfarë dua të jetë
+
+00:11:02.880 --> 00:11:07.040
+ kështu që dhe unë isha duke thënë hej komenti më poshtë nëse përdor një term që nuk je i njohur
+
+00:11:07.040 --> 00:11:08.399
+ me unë do të bëj një kërkim të shpejtë që kam
+
+00:11:08.399 --> 00:11:11.120
+ tashmë e kam bërë më parë sepse vendos një ton serverash
+
+00:11:11.120 --> 00:11:15.279
+ në re do të klikoj në debian vetëm shkruaj në debian
+
+00:11:15.279 --> 00:11:19.279
+ kërko këtu, kështu që unë jam duke shkuar për të shkuar në aws
+
+00:11:19.279 --> 00:11:24.640
+ rezultatet e tregut ka edhe ato që unë kam krijuar dhe ato në
+
+00:11:24.640 --> 00:11:27.120
+ komunitet që do të mendonit oh mirë që dua të përdor
+
+00:11:27.120 --> 00:11:30.800
+ ato të komunitetit mirë jo nuk i bëni sepse ato do t'ju kushtojnë para
+
+00:11:30.800 --> 00:11:34.320
+ dhe ju thoni mirë por komuniteti është falas është burim i hapur dhe po
+
+00:11:34.320 --> 00:11:38.959
+ megjithatë nuk është pjesë e tregut të aws dhe kështu do të keni
+
+00:11:38.959 --> 00:11:42.320
+ të paguajnë për përdorimin për të pasur atë makinë virtuale që
+
+00:11:42.320 --> 00:11:46.160
+ shembulli drejtimin në re, kështu që në vend të kësaj ne do të
+
+00:11:46.160 --> 00:11:49.440
+ përdorni një nga ato zyrtare nga tregu aws le të shohim se çfarë rezultatesh
+
+00:11:49.440 --> 00:11:53.360
+ ne kemi marrë ata janë të renditura mjaft mirë debian del rezultati i parë është
+
+00:11:53.360 --> 00:11:57.839
+ debian 10 buster një shkallë e pajtueshme ose e nivelit falas
+
+00:11:57.839 --> 00:12:00.560
+ version i pranueshëm i debianit që do të jemi
+
+00:12:00.560 --> 00:12:06.000
+ duke vendosur kështu që zgjidhni atë rresht të lirë të pranueshëm në mënyrë që të mund të injorojmë
+
+00:12:06.000 --> 00:12:09.360
+ çmimi sepse ne do të përdorim një hit të nivelit falas të vazhdojë
+
+00:12:09.360 --> 00:12:13.040
+ dhe kjo është ajo ku ne e zgjedhim aq mirë nëse duam të shkojmë në nivelin e lirë
+
+00:12:13.040 --> 00:12:15.839
+ me një mikro t2 kështu që unë do të zgjedh atë por çfarë
+
+00:12:15.839 --> 00:12:22.399
+ a na jep ajo na jep një CPU një gigabajt memorie um
+
+00:12:22.399 --> 00:12:25.600
+ dhe pastaj kemi hapësirë ​​ruajtëse për tu marrë me ne nuk kemi nevojë për shumë hapësirë ​​për ruajtje sepse
+
+00:12:25.600 --> 00:12:29.920
+ ne thjesht po krijojmë një përfaqësues themelor dhe kjo është rreth tij, kështu që unë jam duke shkuar për të
+
+00:12:29.920 --> 00:12:34.079
+ vendosni ashtu si edhe t2 mikro është ai që është falas
+
+00:12:34.079 --> 00:12:37.120
+ niveli i përshtatshëm mos zgjidh një nga më të mëdhenjtë
+
+00:12:37.120 --> 00:12:38.720
+ ato sepse do të paguani për të
+
+00:12:38.720 --> 00:12:42.079
+ menjëherë unë jam duke shkuar për të shqyrtuar dhe nisur ne do të kthehemi
+
+00:12:42.079 --> 00:12:45.839
+ bëj cilësime si grupet tona të sigurisë dhe gjëra të tilla thjesht do të largohem
+
+00:12:45.839 --> 00:12:48.480
+ gjithçka nga default për tani dhe ne do të
+
+00:12:48.480 --> 00:12:52.000
+ nis atë që para së gjithash më duhet të krijoj një çelës të ri
+
+00:12:52.000 --> 00:12:55.360
+ palë kështu që ky është çelësi ssh në të cilin do të përdor
+
+00:12:55.360 --> 00:12:59.680
+ për të hyrë në këtë server kështu që unë jam duke shkuar për të thirrur këtë
+
+00:12:59.680 --> 00:13:04.160
+ një server proxy dhe më pas shkarko çiftin tim të çelësave
+
+00:13:04.160 --> 00:13:06.320
+ sigurohuni që ta ruani atë diku të sigurt ku do të shkoj
+
+00:13:06.320 --> 00:13:10.800
+ hidhe atë në serverin tim dhe hidhe atje
+
+00:13:10.800 --> 00:13:16.240
+ dhe tani lëshimi i shembullit do të thotë fuqi në makinerinë tuaj virtuale, kështu që do të shkoj
+
+00:13:16.240 --> 00:13:20.000
+ shtyje atë dhe atje ne do të shkojmë kështu që është në thelb
+
+00:13:20.000 --> 00:13:23.120
+ krijimi i tij është krijimi i një makine virtuale
+
+00:13:23.120 --> 00:13:29.360
+ uh një rast ec2 në re për ne në uh në California veriore kështu që atje ne
+
+00:13:29.360 --> 00:13:33.279
+ shkoni kështu që unë jam duke shkuar për të parë raste këtu
+
+00:13:33.279 --> 00:13:37.200
+ dhe tani mund ta shoh që tani kam një rast që ekzekuton një mikro t2
+
+00:13:37.200 --> 00:13:41.199
+ dhe thjesht nuk ka emër kështu që unë do të klikoj në edit dhe do ta quaj këtë
+
+00:13:41.199 --> 00:13:45.839
+ serveri im i serverit proxy provo që atje të shkojmë në rregull kështu që është
+
+00:13:45.839 --> 00:13:49.519
+ tashmë është në funksionim dhe kështu që nëse klikoj mbi të mund të shoh ip-in
+
+00:13:49.519 --> 00:13:53.360
+ adresa e atij serveri është e kam quajtur atë proxy server por tani
+
+00:13:53.360 --> 00:13:56.720
+ mos harroni se është vetëm debian 10. nuk ka asgjë tjetër të instaluar në të
+
+00:13:56.720 --> 00:14:02.480
+ kështu që unë kam nevojë për të kopjuar atë adresë IP dhe pastaj unë jam duke shkuar për të hidhen në tim
+
+00:14:02.480 --> 00:14:05.839
+ komanda e shpejtë sepse kam shkarkuar çelësin për
+
+00:14:05.839 --> 00:14:17.839
+ serveri im unë personalisht jam duke shkuar për të ssh në serverin tim në shtëpi
+
+00:14:18.399 --> 00:14:22.079
+ në rregull kështu që tani unë jam atje, kështu që tani komanda që unë do të përdor
+
+00:14:22.079 --> 00:14:28.079
+ është ssh dhe pastaj dash i për çelësin që do të përdor
+
+00:14:28.079 --> 00:14:31.040
+ kështu që skedari në hyrje që do të përdor për çelësin
+
+00:14:31.040 --> 00:14:35.760
+ dhe ai quhet proxy server.pem është ajo që kam shkarkuar
+
+00:14:35.760 --> 00:14:39.920
+ atëherë do të shkoj te administratori sepse kjo është hyrja e paracaktuar për debian
+
+00:14:39.920 --> 00:14:43.600
+ ami ose amazon makinë admin në imazhin
+
+00:14:43.600 --> 00:14:46.639
+ dhe pastaj adresa ip që unë kam kopjuar tashmë në kujtesën time dhe nëse i
+
+00:14:46.639 --> 00:14:48.959
+ goditi enter do të më kërkojë ta pranoj atë çelës
+
+00:14:48.959 --> 00:14:54.000
+ dhe unë them po dhe më mohojnë
+
+00:14:54.000 --> 00:14:57.279
+ lejet në atë skedar përfunduan duke qenë se
+
+00:14:57.279 --> 00:15:01.199
+ 766 kështu që të gjithë kanë qasje në ato skedarë kështu që është interesante
+
+00:15:01.199 --> 00:15:05.519
+ Vetë ssh po më mbron që dikush të mos jetë në gjendje të kompromentojë çelësin tim
+
+00:15:05.519 --> 00:15:13.120
+ pra chmod 700 server proxy le ta provojmë dhe tani
+
+00:15:13.120 --> 00:15:16.000
+ provo përsëri kështu që ajo që kam bërë është oh dhe tani jam
+
+00:15:16.000 --> 00:15:20.800
+ e lidhur sapo ka punuar 700 do të thotë unë pronari i asaj çelësi
+
+00:15:20.800 --> 00:15:27.279
+ më lejohet të bëj gjithçka me të lexuar shkruaj ekzekutoj mjete zero zero
+
+00:15:27.279 --> 00:15:30.800
+ askush në grup askush që nuk është pjesë e grupit
+
+00:15:30.800 --> 00:15:35.600
+ lejohet të ketë qasje fare, kështu që në thelb është një skedar memec që ata nuk munden
+
+00:15:35.600 --> 00:15:39.519
+ edhe e hapur por mund te jem mire tani qe jam
+
+00:15:39.519 --> 00:15:44.240
+ i lidhur unë jam duke shkuar për të shkuar sudo padisë, sepse kjo është ajo që komanda është për të
+
+00:15:44.240 --> 00:15:47.440
+ bëhuni rrënjë, kështu që tani jam root, kështu që azhurnoni aplikacionin
+
+00:15:47.440 --> 00:15:50.399
+ azhurnimi i aplikacionit do të më kapë
+
+00:15:50.399 --> 00:15:55.680
+ depot që shihni se ky është një kompjuter aktual debian nëse dëshironi
+
+00:15:55.680 --> 00:16:01.680
+ në re është aq e lehtë që unë jam tashmë upgrade Unë jam tashmë duke përdorur një debian
+
+00:16:01.680 --> 00:16:05.120
+ kompjuteri në re kështu që në atë sasi kohe dhe unë jam blah
+
+00:16:05.120 --> 00:16:11.360
+ blah blah në të njëjtën kohë um kemi një server debian të bazuar në re
+
+00:16:11.360 --> 00:16:15.519
+ a e kuptove që ishte kaq e lehtë dhe është falas
+
+00:16:15.519 --> 00:16:18.720
+ në rregull kështu që ne mund të bëjmë gjëra të tjera me këtë gjithashtu mund të krijojmë një pirg llambë ne
+
+00:16:18.720 --> 00:16:23.600
+ mund ta përdorni atë për mysql mariadb gjithçka që mund të gjeni me të është një
+
+00:16:23.600 --> 00:16:26.720
+ server debian kështu që ne do ta përdorim këtë si tonin
+
+00:16:26.720 --> 00:16:31.759
+ proxy kështu që tani ajo që unë do të bëj është të instaloj një mjet të quajtur
+
+00:16:31.759 --> 00:16:38.639
+ tinyproxy e bukur dhe e thjeshtë për tu instaluar proxy i vogël i instaluar me vend
+
+00:16:38.639 --> 00:16:45.600
+ me të vërtetë e thjeshtë për tu konfiguruar thuaj po këtu
+
+00:16:47.120 --> 00:16:51.199
+ dhe është bërë tani që kemi instaluar përfaqësues të vegjël, thjesht duhet të redaktojmë
+
+00:16:51.199 --> 00:16:59.440
+ skedari konfigurues aq i pjerrët, etj
+
+00:16:59.440 --> 00:17:05.760
+ dhe pastaj unë jam duke përdorur nano tinyproxy.com dhe redaktoni që kështu të kontrolloni w në nano
+
+00:17:05.760 --> 00:17:08.799
+ më lejon të kërkoj oh, por para se të bëj kërkimin vini re se
+
+00:17:08.799 --> 00:17:12.720
+ porti si parazgjedhje është duke përdorur 888 ne do të duhet ta dimë atë
+
+00:17:12.720 --> 00:17:15.679
+ informacion sepse kjo është ajo për të cilën do të lidhemi
+
+00:17:15.679 --> 00:17:19.839
+ përfaqësuesi ynë bën një kërkim të shpejtë për lejimin
+
+00:17:21.439 --> 00:17:25.679
+ alt w ju lejon të kërkoni përsëri wow fjala lejoj nuk është ndoshta më e mira
+
+00:17:25.679 --> 00:17:30.640
+ kërkimi i kërkimit mbase kërkoni për 127.0.0.1 dhe pikërisht poshtë kësaj do të shkoj
+
+00:17:30.640 --> 00:17:34.720
+ lejoj dhe pastaj më duhet të shtoj adresën time ip në mënyrë që të mund të lidhem
+
+00:17:34.720 --> 00:17:37.440
+ ky server proxy sepse tani është mbyllur
+
+00:17:37.440 --> 00:17:40.640
+ vetëm localhost mund të ketë qasje te ajo që është e rëndësishme të theksohet
+
+00:17:40.640 --> 00:17:44.720
+ se kjo është ndërsa ky është një server proxy publik falas, unë jam i vetmi që jam
+
+00:17:44.720 --> 00:17:47.280
+ do të lejohen të hyjnë në atë që do të lejohet
+
+00:17:47.280 --> 00:17:52.400
+ përfaqësoj përmbajtjen time lidhjen time përmes saj kështu që është private në atë drejtim
+
+00:17:52.400 --> 00:17:55.919
+ Unë duhet të di adresën time IP kështu që unë jam duke shkuar për të kërcejnë mbi të
+
+00:17:55.919 --> 00:18:03.360
+ ip.xyz aktuale dhe kopjo atë adresë ip në kujtesën time dhe pastaj kërce
+
+00:18:03.360 --> 00:18:09.840
+ përsëri atje dhe ngjisni atë në kontrollin tim të konfigurimit o futni kontrollin x kontrolloni është
+
+00:18:09.840 --> 00:18:14.320
+ për të shkruar ruani skedarin tani systemctl
+
+00:18:14.320 --> 00:18:21.039
+ rinisni përfaqësuesin e vogël gati e bëra gjënë përfundimtare që na nevojitet
+
+00:18:21.039 --> 00:18:26.000
+ për të bërë është se ne vetëm duhet të themi aws sigurinë ec2 që
+
+00:18:26.000 --> 00:18:29.840
+ ne do të krijojmë një politikë që thotë hej, vetëm unë jam i lejuar të lidhem me këtë
+
+00:18:29.840 --> 00:18:32.799
+ server kështu që askush tjetër nuk mund të lidhet me të
+
+00:18:32.799 --> 00:18:34.880
+ sido që të jetë kjo është ajo që ne do të bëjmë si duhet
+
+00:18:34.880 --> 00:18:38.799
+ tani kështu që unë jam duke shkuar për të kërcej përsëri këtu dhe ju e shihni këtë server deri në ekran
+
+00:18:38.799 --> 00:18:43.840
+ mirë nëse klikoj mbi sigurinë atëherë mund të klikoj në grupin e sigurisë që është
+
+00:18:43.840 --> 00:18:46.240
+ caktohet automatikisht, kështu që thjesht kliko atë
+
+00:18:46.240 --> 00:18:50.480
+ dhe tani më ka lënë në grupet e sigurisë ec2 dhe sigurinë e duhur
+
+00:18:50.480 --> 00:18:52.320
+ grupi do të vëreni që është konfiguruar tashmë
+
+00:18:52.320 --> 00:18:56.960
+ një për ssh sepse është aktivizuar në mënyrë të paracaktuar unë mund ta vendos atë
+
+00:18:56.960 --> 00:18:59.440
+ vetëm të më lejoni mua, e cila është e rëndësishme kështu
+
+00:18:59.440 --> 00:19:02.720
+ le ta bëjmë atë vetëm që të jemi në praktikat e mira të sigurisë kështu
+
+00:19:02.720 --> 00:19:06.160
+ ssh do ta ndryshoj nga custom000
+
+00:19:06.160 --> 00:19:10.080
+ Unë jam duke shkuar për të mbyllur x atë dhe pastaj të ndryshojë atë në ip tim
+
+00:19:10.080 --> 00:19:14.480
+ atëherë unë jam duke shkuar për të shtuar një rregull të ri ju pashë se si kam ardhur këtu të drejtë unë e di që unë jam duke lëvizur
+
+00:19:14.480 --> 00:19:18.080
+ me të vërtetë me të vërtetë të shpejtë unë sapo kam klikuar në rregullat për hyrje
+
+00:19:18.080 --> 00:19:22.960
+ mbi këtu në rregull, kështu që shtoni një rregull të ri tcp me porosi është
+
+00:19:22.960 --> 00:19:27.120
+ numrin e paracaktuar të portës a e mbani mend 888 dhe vetëm
+
+00:19:27.120 --> 00:19:31.919
+ lejo ip-in tim mund ta quaj diçka nëse dua përfaqësues
+
+00:19:31.919 --> 00:19:37.919
+ dhe pastaj ruaj rregullat e mia atje ne do të shkojmë kështu që tani ju shihni ssh dhe
+
+00:19:37.919 --> 00:19:44.160
+ tcp me porosi i quajtur proxy në portin 888.
+
+00:19:44.160 --> 00:19:49.600
+ kështu që si ta provojmë këtë në rregull, kështu që adresa jonë aktuale e ip është 99.233
+
+00:19:49.600 --> 00:19:52.640
+ dhe kështu do të lidhem me përfaqësuesin
+
+00:19:52.640 --> 00:19:57.360
+ nuk është një udhëzues se si të përdorni një përfaqësues, ky nuk është një
+
+00:19:57.360 --> 00:20:01.120
+ tutorial se për çfarë ta përdorim domosdoshmërisht kjo është
+
+00:20:01.120 --> 00:20:04.720
+ këtu po bëj supozime se ose mund ta google atë vetë
+
+00:20:04.720 --> 00:20:08.240
+ sepse do të jetë ndryshe bazuar në rastin tuaj të përdorimit nëse dëshironi
+
+00:20:08.240 --> 00:20:11.600
+ thjesht proxy shfletuesin tuaj ose proxy një aplikacion të veçantë ose të gjithë tuaj
+
+00:20:11.600 --> 00:20:15.440
+ rrjeti që do të varet nga individi juaj
+
+00:20:15.440 --> 00:20:20.159
+ rasti i përdorimit ky është rreptësisht një udhëzues se si ta ndërtojmë këtë
+
+00:20:20.159 --> 00:20:23.679
+ ec2 shembull me të vërtetë shumë shpejt falas
+
+00:20:23.679 --> 00:20:28.400
+ që ka një përfaqësues të gatshëm që ne ta përdorim në Kaliforni ose kudo tjetër
+
+00:20:28.400 --> 00:20:32.960
+ dhe uh kjo është ajo kështu që në rastin tim të veçantë tani
+
+00:20:32.960 --> 00:20:36.480
+ kështu që ky moment nuk është domosdoshmërisht ajo që dëshiron të bësh më tej
+
+00:20:36.480 --> 00:20:41.120
+ kjo është vetëm mënyra se si unë do të testoj përfaqësuesin që rastësisht ndodhem në Windows 10 këtu
+
+00:20:41.120 --> 00:20:47.280
+ kështu që unë do të shkruaj thjesht proxy dhe do të hyj përsëri në cilësimet e proxy
+
+00:20:47.280 --> 00:20:50.880
+ ndoshta jo se si doni ta bëni unë thjesht dua të provoj kështu që do të kthehem
+
+00:20:50.880 --> 00:20:53.679
+ në proxy unë mund të shoh se ka një përfaqësues të vjetër
+
+00:20:53.679 --> 00:20:56.880
+ cilësimet atje, kështu që sigurohuni që të jeni të vëmendshëm për këtë
+
+00:20:56.880 --> 00:21:00.240
+ nëse ka cilësime të vjetra të përfaqësuesit, duhet ta ndryshoni
+
+00:21:00.240 --> 00:21:03.679
+ instancat në ec2 klikoni në id-në tuaj shembullore
+
+00:21:03.679 --> 00:21:07.440
+ dhe kap atë adresë ip dhe pastaj ngjit atë në
+
+00:21:07.440 --> 00:21:11.840
+ si adresë për portin tuaj të serverit proxy 8888
+
+00:21:11.840 --> 00:21:17.120
+ dhe ruaj kështu që tani unë jam i lidhur me përfaqësuesin menjëherë
+
+00:21:17.120 --> 00:21:20.559
+ nuk është i lidhur me tani windows po thotë se do të drejtoj të gjithë trafikun tuaj
+
+00:21:20.559 --> 00:21:22.880
+ përmes proxy unë duhet të korrigjohem veten atje
+
+00:21:22.880 --> 00:21:29.520
+ kështu që nëse kthehem te currentip.xyz 99.233 është ip-i im aktual që do ta godas
+
+00:21:29.520 --> 00:21:38.159
+ f5 për të rifreskuar dhe nëse gjithçka shkon mirë 3.101.108.211. mirë
+
+00:21:38.159 --> 00:21:44.720
+ çfarë është ai server im, kështu që unë jam tani
+
+00:21:44.720 --> 00:21:51.679
+ ku jam le të zbulojmë maxmind.com le të bëjmë një kërkim për adresën ip
+
+00:21:51.679 --> 00:21:59.120
+ aktualisht jam në vendin ku jam san jose California
+
+00:21:59.120 --> 00:22:02.559
+ aty përcakton e imja max
+
+00:22:02.559 --> 00:22:05.600
+ kështu që është gjithçka që ka për të njerëz që kemi
+
+00:22:05.600 --> 00:22:10.640
+ krijuar konfiguruar vendosur një shërbim falas proxy që ne
+
+00:22:10.640 --> 00:22:14.559
+ zotërojnë dhe veprojnë ne jemi të vetmit që e kanë atë që kanë atë
+
+00:22:14.559 --> 00:22:19.200
+ çelësi uh ssh kështu që nëse dëshironi të lidheni, bëni përdorimin e tij
+
+00:22:19.200 --> 00:22:23.840
+ si një server me shumë qëllime mund ta bëni këtë, por vetëm mbani një sy në tuajin
+
+00:22:23.840 --> 00:22:27.120
+ sendet tuaja të faturimit thjesht sigurohuni që nuk i keni tejkaluar pragjet dhe
+
+00:22:27.120 --> 00:22:29.440
+ gjëra të tilla nëse thjesht po e përdorni si proxy, është
+
+00:22:29.440 --> 00:22:32.159
+ ka shumë të ngjarë që ju do ta bëni se është thjesht diçka që po e bëni me tuba
+
+00:22:32.159 --> 00:22:37.520
+ të dhëna përmes, kështu që kontrolloni nëse është aws.amazon.com për të filluar vetë
+
+00:22:37.520 --> 00:22:41.440
+ nëse keni pyetje, postojini ato drejt komunitetit tonë
+
+00:22:41.440 --> 00:22:44.480
+ mosmarrëveshja jonë do ta gjeni lidhjen në kategorinë 5
+
+00:22:44.480 --> 00:22:48.720
+ tv në menunë ndërveprojnë ndërkohë nëse e ke shijuar këtë nëse e ke përdorur ose
+
+00:22:48.720 --> 00:22:53.039
+ e gjeti të dobishme më jep një gisht të madh, të lutem abonohu ​​dhe do të shihemi mirë
+
+00:22:53.039 --> 00:23:07.059
+ pas pushimit [Muzika]
+
+00:23:15.520 --> 00:23:18.559
+ mirëseardhja përsëri kjo është TV e kategorisë 5 të teknologjisë
+
+00:23:18.559 --> 00:23:22.240
+ dhe unë dua të flas për atë që po bëj në shtëpi
+
+00:23:22.240 --> 00:23:26.640
+ ose më mirë atë që unë jam duke planifikuar të bëj ulur rreth shikuar netflix
+
+00:23:26.640 --> 00:23:30.480
+ nuk kam kohe te ulem dhe te shikoj netflix do te doja ta kisha por
+
+00:23:30.480 --> 00:23:34.960
+ uh jo familja ime gjithmonë hogs netflix dhe unë jam si unë vetëm do të shkoj në kompjuter
+
+00:23:34.960 --> 00:23:38.720
+ e cila është e shkëlqyeshme sepse më ka detyruar të filloj se ka netflix në kompjuter
+
+00:23:38.720 --> 00:23:44.000
+ tani jeff po më tërheq vëmendjen jo, por është
+
+00:23:44.000 --> 00:23:46.960
+ shkëlqyeshëm sepse më ka detyruar të filloj të shikoj disa nga gjërat që bëjmë
+
+00:23:46.960 --> 00:23:51.760
+ rreth shtëpisë dhe shko si mund ta bëj këtë timin dhe kështu
+
+00:23:51.760 --> 00:23:55.120
+ e dini që përmenda në krye të emisionit që djali ynë ka
+
+00:23:55.120 --> 00:24:00.240
+ është futur në bashkim dhe ai ka bërë shumë mirë në të dhe na kujtojë sa vjeç është ai
+
+00:24:00.240 --> 00:24:05.200
+ sapo u kthye 12. sapo u kthye 12. në rregull um por uh po ai ka bërë
+
+00:24:05.200 --> 00:24:09.760
+ shumë mirë me të dhe uh ai ka bashkuar dy kalkulator deri më tani
+
+00:24:09.760 --> 00:24:13.919
+ um dhe njërin prej tyre ai e ka çuar në shkollë, e cila mësuesit të tij i është djegur plotësisht
+
+00:24:13.919 --> 00:24:16.000
+ larg nga po, unë jam duke menduar 12 vjeç dhe ai është
+
+00:24:16.000 --> 00:24:20.320
+ tashmë duke bërë një kalkulator vërtet po ai bëri një kalkulator nga ku morëm një kit diy
+
+00:24:20.320 --> 00:24:23.360
+ amazon dhe ai e ndërtoi atë dhe ndoshta dy orë
+
+00:24:23.360 --> 00:24:27.039
+ e punës ishte me të vërtetë fenomenale joreale dhe puna e tij e bashkimit është
+
+00:24:27.039 --> 00:24:30.880
+ me të vërtetë me të vërtetë të pastër të shkëlqyer si duket pro
+
+00:24:30.880 --> 00:24:34.559
+ por gjithsesi ai ka pyetur se si të bëjë gjëra të tjera dhe ndërsa ne po bashkojmë ai
+
+00:24:34.559 --> 00:24:37.200
+ si edhe çfarë është kjo dhe çfarë është kjo dhe si është ajo punë dhe
+
+00:24:37.200 --> 00:24:40.480
+ unë jam duke shkuar unë dua të jem në gjendje t'i mësoj atij këto gjëra
+
+00:24:40.480 --> 00:24:46.480
+ Unë dua të jem në gjendje t'i shpjegoj atij se si një bord qark punon në të vërtetë jo vetëm
+
+00:24:46.480 --> 00:24:49.360
+ bashkimin e tij, por duke kuptuar përbërësit dhe kursin dhe gjithçka
+
+00:24:49.360 --> 00:24:53.279
+ lloj sendesh dhe dua të them se e di që mund të blini um
+
+00:24:53.279 --> 00:25:00.400
+ thjesht tabela të thjeshta që janë vetëm rreshta të pikave të lidhjes së vogël
+
+00:25:00.400 --> 00:25:03.840
+ por unë dua të jem në gjendje ta bëj vetë bordin tonë dhe kështu është pyetur ai
+
+00:25:03.840 --> 00:25:07.279
+ posaçërisht nëse mund të gjejmë një paketë diy për të
+
+00:25:07.279 --> 00:25:10.320
+ një kuti e padobishme e dini që është kutia ku shtypni butonin po dhe
+
+00:25:10.320 --> 00:25:15.840
+ gjë e vogël del dhe e nxjerr po provojeni
+
+00:25:17.600 --> 00:25:22.640
+ cfare do besh a je serioz
+
+00:25:25.039 --> 00:25:30.400
+ oh zoti im qesharak
+
+00:25:32.720 --> 00:25:39.520
+ pershendetje eshte sikur te kesh nje kotele aty eshte si macja ime
+
+00:25:40.240 --> 00:25:44.799
+ hej hej tani kështu që unë kam qenë duke kërkuar për një nuk e kam gjetur një, por kam gjetur një bandë e
+
+00:25:44.799 --> 00:25:48.080
+ njerëzit pëlqejnë oh ju mund ta bëni një duke përdorur një arduino mund ta bëni një duke përdorur këtë
+
+00:25:48.080 --> 00:25:55.520
+ dhe unë isha sikur të bëja një kuti diy të padobishme nga e cila dua ta ndërtoj
+
+00:25:55.520 --> 00:25:58.559
+ në terren, kështu që unë kam qenë duke studjuar se si të bëj
+
+00:25:58.559 --> 00:26:03.679
+ pcbs e mia në shtëpi në rregull nuk është në të vërtetë aq e vështirë
+
+00:26:03.679 --> 00:26:08.960
+ dhe unë u hodh larg se të gjitha më duhet është një printer lazer për të vendosur rrugën time
+
+00:26:08.960 --> 00:26:12.880
+ si atje ku shkojnë shtigjet kështu që ju do ta gdhendni atë në të vërtetë
+
+00:26:12.880 --> 00:26:15.919
+ unë do ta gdhend në të vërtetë në shtëpi o burrë
+
+00:26:15.919 --> 00:26:20.159
+ kjo është mënyra përtej meje, me të vërtetë që përfshin kimikate
+
+00:26:20.159 --> 00:26:23.679
+ po, por një proces me të vërtetë i thjeshtë, kështu që e kam gjetur
+
+00:26:23.679 --> 00:26:26.880
+ Unë kam bërë një bandë kërkimesh në të dhe kështu e gjeta aa
+
+00:26:26.880 --> 00:26:29.919
+ me të vërtetë mënyrë e thjeshtë e thjeshtë për të bërë PCB tim
+
+00:26:29.919 --> 00:26:32.799
+ dhe kjo është ajo që ne do të bëjmë kështu që projekti im për një tjetër ndoshta një
+
+00:26:32.799 --> 00:26:35.600
+ nja dy muaj sepse duhet të mësoj se si këto gjëra
+
+00:26:35.600 --> 00:26:39.520
+ punon është për të hartuar një bord um që kam
+
+00:26:39.520 --> 00:26:43.120
+ kurrë nuk është bërë më parë bëj tabelën e qarkut dhe më pas atë të djalit tim
+
+00:26:43.120 --> 00:26:45.919
+ do ta bashkojmë atë së bashku dhe ne do ta bëjmë tonën
+
+00:26:45.919 --> 00:26:50.960
+ Kutia e padobishme që shpresoj ta printoj edhe 3d kutinë, oh që është mirë
+
+00:26:50.960 --> 00:26:56.480
+ po thjesht po zhytesh në të mirë kur bëj diçka nuk bëhem i vogël
+
+00:26:56.480 --> 00:27:00.320
+ dhe ju e dini që qasja ime është pak më ndryshe, sepse unë jam shumë
+
+00:27:00.320 --> 00:27:03.520
+ në si më pëlqen të mësoj diçka së pari
+
+00:27:03.520 --> 00:27:09.200
+ dhe pastaj rrit investimet e mia në atë proces dhe dhe ti je si të flasësh
+
+00:27:09.200 --> 00:27:13.679
+ në lidhje me kërcimin drejt në krijimin e PCB kështu që do të mbështesja kështu që ju ta dini
+
+00:27:13.679 --> 00:27:16.799
+ nëse po mendoni hej, ndoshta do të doja të isha në gjendje të bëja qarqet e mia
+
+00:27:16.799 --> 00:27:20.399
+ dhe gjëra të tilla si pika ime e fillimit është një fletëpjekje po
+
+00:27:20.399 --> 00:27:25.440
+ dhe tabela e bukës ju lejon të vendosni qarkun që keni krijuar ose
+
+00:27:25.440 --> 00:27:28.559
+ që e keni shkarkuar si një plan qark um
+
+00:27:28.559 --> 00:27:32.399
+ nga interneti ose sidoqoftë keni që ju lejon ta vendosni
+
+00:27:32.399 --> 00:27:36.799
+ jashtë në një në thelb një PCB tallen
+
+00:27:36.799 --> 00:27:41.039
+ që do të funksionojë si një PCB, por atëherë thjesht mund t'i heqësh të gjitha veç e veç
+
+00:27:41.039 --> 00:27:46.399
+ vendosni pjesët menjëherë dhe është e lirë shumë e lirë dhe sapo ju fillon
+
+00:27:46.399 --> 00:27:50.080
+ dhe pastaj hapi tjetër për mua është ajo që quhet një bord prototyping kështu që ju të merrni
+
+00:27:50.080 --> 00:27:53.279
+ bordet PCB që kanë të gjitha vrimat që është e drejtë dhe
+
+00:27:53.279 --> 00:27:57.840
+ ata kanë ngjitur um si pikë, por nuk ka
+
+00:27:57.840 --> 00:28:02.080
+ ndërlidhja ndërmjet tyre, kështu që ju në të vërtetë përdorni tela ose ju
+
+00:28:02.080 --> 00:28:05.760
+ drejtoni pak lidhës midis dy nyjeve të ndryshme për shembull
+
+00:28:05.760 --> 00:28:10.080
+ dhe ju e bëni në atë mënyrë kështu që është hapi im i dytë po atëherë do të shikoja
+
+00:28:10.080 --> 00:28:14.720
+ ndoshta duke shkuar në rrugën e gdhendjes në të vërtetë tuajin
+
+00:28:14.720 --> 00:28:19.200
+ pcbs sepse atëherë ju jeni duke marrë si proceset kimike
+
+00:28:19.200 --> 00:28:24.960
+ dhe unë nuk e kam hulumtuar por um është një proces shumë më i ndërlikuar kështu
+
+00:28:24.960 --> 00:28:27.919
+ më pëlqen të filloj pak më e thjeshtë PCB-ja ime e parë
+
+00:28:27.919 --> 00:28:32.080
+ ndërtuar në një tavë buke shumë shumë themelore, por unë e projektova atë si duhet
+
+00:28:32.080 --> 00:28:35.120
+ në rregull dhe gjithçka që është është se duhet një pesë volt
+
+00:28:35.120 --> 00:28:38.880
+ sinjal dhe kur ka pesë volt
+
+00:28:38.880 --> 00:28:43.440
+ rele është e mbyllur kështu që ka një rele djathtas në rregull kur nuk ka pesë volt
+
+00:28:43.440 --> 00:28:47.520
+ rele hapet kështu që shkëputet kështu
+
+00:28:47.520 --> 00:28:51.440
+ arsyeja që unë krijova që është një aplikacion i ndërtuar me qëllim, kështu që e ndërtova atë
+
+00:28:51.440 --> 00:28:56.000
+ në një pllakë buke dhe ushqimi me pesë volt po vjen nga
+
+00:28:56.000 --> 00:29:03.440
+ ndonjë hamendje ndonjë hamendje spc jo është një tjetër akronim me tre shkronja usb
+
+00:29:03.440 --> 00:29:07.360
+ usb usb duke tërhequr një sinjal pesë volt nga një mikro tik-tak
+
+00:29:07.360 --> 00:29:12.399
+ router në rregull dhe kështu që atëherë në mikro shënoni i programuar kodin që tha
+
+00:29:12.399 --> 00:29:17.039
+ që në thelb për ta memecur nëse interneti bie
+
+00:29:17.039 --> 00:29:20.559
+ vrasin fuqinë në usb oh dhe kështu që atëherë
+
+00:29:20.559 --> 00:29:25.520
+ hap stafetën dhe çfarë është kontrolli i stafit, por fuqia në modemin tim
+
+00:29:25.520 --> 00:29:29.919
+ kështu që modemi im nëse bie interneti automatikisht do të kthehet
+
+00:29:29.919 --> 00:29:33.120
+ fuqia e vetvetes fiket për shkak të stafetës sime
+
+00:29:33.120 --> 00:29:37.039
+ djathtas dhe prisni pesë sekonda dhe pastaj ndizeni përsëri kështu që është në thelb a
+
+00:29:37.039 --> 00:29:41.200
+ version virtual i a e keni fikur dhe ndezur përsëri sepse
+
+00:29:41.200 --> 00:29:43.679
+ cfare beni kur jeni ne internet bie ju e hiqni spinen
+
+00:29:43.679 --> 00:29:46.799
+ nga vrulli ju prisni pesë sekonda dhe e lidhni përsëri dhe
+
+00:29:46.799 --> 00:29:50.240
+ ju e dini tetë herë në dhjetë do të kthehet dhe do të punojë
+
+00:29:50.240 --> 00:29:54.559
+ e drejtë, kështu që ishte qarku i ndërtuar kështu që e ndërtova atë në një bord prototipi një herë
+
+00:29:54.559 --> 00:29:58.240
+ e kisha duke punuar dhe thjesht e bashkova së bashku dhe është një gjë shumë e thjeshtë
+
+00:29:58.240 --> 00:30:00.799
+ qark shumë i ftohtë dhe funksionoi shumë më pëlqen
+
+00:30:00.799 --> 00:30:04.720
+ që shumë të ftohtë aq mjete çfarë ke kaq shumë
+
+00:30:04.720 --> 00:30:08.080
+ tani ku jeni në uh ashtu si thashë që kam bërë vetëm
+
+00:30:08.080 --> 00:30:13.760
+ hulumtimi këtë javë të kaluar oh kështu që jam um jam në fazën e blerjes
+
+00:30:13.760 --> 00:30:17.679
+ uh kështu që ne kemi të gjitha sendet e bashkimit që do të blej blerjen e bordit
+
+00:30:17.679 --> 00:30:21.919
+ kimikatet që kam shkarkuar tashmë programin um
+
+00:30:21.919 --> 00:30:25.600
+ për dizajnimin e pcb wow um
+
+00:30:25.600 --> 00:30:29.360
+ dhe unë kam një komplet përbërës që është në rrugë e sipër me të gjitha
+
+00:30:29.360 --> 00:30:33.039
+ rezistencat dhe kondensatorët po, e gjithë ajo lloj sendi që është një gjë e mirë
+
+00:30:33.039 --> 00:30:36.559
+ gjithashtu është se këto ditë dua të them që nuk mund të ecësh vërtet
+
+00:30:36.559 --> 00:30:39.039
+ në një kasolle radioje si dikur që ishim në gjendje të kishim nr
+
+00:30:39.039 --> 00:30:43.679
+ ka akoma dyqane si këtu në barrie kemi një të quajtur deti
+
+00:30:43.679 --> 00:30:47.039
+ i cili është një dyqan i shkëlqyeshëm që i ngjan disi asaj kasolle të vjetër radioje ku je
+
+00:30:47.039 --> 00:30:50.399
+ hyj brenda dhe është sikur të më duhet vetëm një kondensator po
+
+00:30:50.399 --> 00:30:52.880
+ dhe është si këtu ku shkoni e dini se është si sirtarë
+
+00:30:52.880 --> 00:30:57.279
+ dhe sirtarët e kondensatorëve dhe rezistencave dhe gjithçka tjetër diodë dhe çfarëdo tjetër
+
+00:30:57.279 --> 00:31:01.519
+ por vetëm për të marrë një çantë për 20 dollarë që ka
+
+00:31:01.519 --> 00:31:04.960
+ të gjitha llojet e gjëra të zakonshme dhe është një çantë që vjen me një
+
+00:31:04.960 --> 00:31:07.440
+ tabela e bukës dhe vjen me një tavë buke dhe kjo
+
+00:31:07.440 --> 00:31:11.279
+ ishte një nga gjërat është se dua të them sikur po do ta dizajnoj atë por një pjesë të saj
+
+00:31:11.279 --> 00:31:14.640
+ i procesit të planifikimit është ashtu si ju thatë duke përdorur fletën e bukës për të kuptuar
+
+00:31:14.640 --> 00:31:17.519
+ si do të shkojë qarku dhe kjo do të jetë një mësim i shkëlqyeshëm
+
+00:31:17.519 --> 00:31:19.840
+ përvojë për luke sepse ata do të jenë si hej kjo është
+
+00:31:19.840 --> 00:31:23.200
+ si funksionon kjo dhe le ta provojmë këtë dhe le ta bëjmë atë dhe pastaj
+
+00:31:23.200 --> 00:31:26.080
+ ju e dini që ne do të jemi në gjendje të provojmë atje pa bërë në fakt pjesët tona
+
+00:31:26.080 --> 00:31:30.880
+ që është me të vërtetë i zoti që përmendët gjithashtu arduino dhe arduino është lloj
+
+00:31:30.880 --> 00:31:34.159
+ sikur të jetë kontrollues kështu që po e dini ndërsa
+
+00:31:34.159 --> 00:31:37.200
+ një mjedër pi ose një kompjuter tjetër i vetëm është i vërtetë
+
+00:31:37.200 --> 00:31:41.200
+ kompjuter i vërtetë me një sistem operativ dhe gjithçka që një arduino është si ju
+
+00:31:41.200 --> 00:31:45.519
+ thjesht programojeni atë për të bërë një detyrë shumë specifike është një gjendje solide
+
+00:31:45.519 --> 00:31:48.960
+ dhe do t'i përgjigjet dhe mendoj se kjo është
+
+00:31:48.960 --> 00:31:51.840
+ pse do të funksiononte shumë mirë për një arduino
+
+00:31:51.840 --> 00:31:55.679
+ uh për një kuti të padobishme është sepse është si
+
+00:31:55.679 --> 00:31:59.200
+ është ose në ose jashtë është e drejtë dhe nëse është në të bëjë këtë
+
+00:31:59.200 --> 00:32:03.200
+ dhe pastaj do të fiket që është e drejtë, kështu që programimi shumë bazik
+
+00:32:03.200 --> 00:32:09.919
+ dixhital shkruaj katër presje hi hi pikëpresje dhe atëherë jemi
+
+00:32:09.919 --> 00:32:13.519
+ do të vonoj për një sekondë që është një mijë milisekonda
+
+00:32:13.519 --> 00:32:17.039
+ dhe pastaj do ta kopjojmë atë rresht tani
+
+00:32:17.039 --> 00:32:20.960
+ çfarë mendoni se do të thotë e lartë përkundrejt së ulëtës që do të vendos këtu
+
+00:32:20.960 --> 00:32:27.440
+ vetëm një hamendje ose jo, po kështu duket tani qarku im
+
+00:32:27.440 --> 00:32:32.399
+ dhe unë do ta fus thjesht këtë në rrymën e USB-së kështu që nuk do ta fut në të
+
+00:32:32.399 --> 00:32:36.240
+ kompjuteri unë dua që në të vërtetë ta furnizoj këtë pajisje dhe të shoh nëse është
+
+00:32:36.240 --> 00:32:40.840
+ ekzekuton programin tim dhe nëse e bën, duhet ta shohim këtë dritë
+
+00:32:40.840 --> 00:32:45.279
+ flash atje ne do të shkojmë që është i zoti çdo një sekondë kështu që ne
+
+00:32:45.279 --> 00:32:49.600
+ në të vërtetë krijoi qark mjaft shpejt uh dhe krijoi
+
+00:32:49.600 --> 00:32:53.919
+ program për të treguar tani këtë dritë se çfarë të bëjmë dhe ne i thamë atë vetëm shumë
+
+00:32:53.919 --> 00:32:57.760
+ thjesht ndizni dhe fikni përsëri por nëse jeni
+
+00:32:57.760 --> 00:32:59.679
+ duke e bërë qarkun tuaj që ju duhet të pëlqeni të bëni
+
+00:32:59.679 --> 00:33:04.159
+ ikët duhet ta programoni vetë, nëse keni për të kuptuar se si
+
+00:33:04.159 --> 00:33:07.919
+ wow unë dua ta shoh këtë projekt si një punë në progres
+
+00:33:07.919 --> 00:33:11.840
+ në rregull dhe pastaj shiko se si uh si bashkohet po tingëllon mirë
+
+00:33:11.840 --> 00:33:16.559
+ ne përmendëm komunitetin këtu në emisionin tonë dhe uh serverin tonë të mosmarrëveshjeve në
+
+00:33:16.559 --> 00:33:20.320
+ posaçërisht unë kam përdorur në komunitetin tonë Jeff për të
+
+00:33:20.320 --> 00:33:23.760
+ hyni dhe ndani idetë e mia për qarqet dhe po
+
+00:33:23.760 --> 00:33:27.519
+ gjëra të tilla dhe ka disa njerëz në komunitetin tonë që janë të drejtë
+
+00:33:27.519 --> 00:33:32.559
+ si ngjitja këtu për sa i përket aftësive dhe kuptimit të tyre
+
+00:33:32.559 --> 00:33:36.320
+ llojet e gjërave, kështu që ka qenë vërtet e dobishme për mua, si i
+
+00:33:36.320 --> 00:33:38.880
+ mësuar kështu oh edhe unë planifikoj plotësisht të përdor
+
+00:33:38.880 --> 00:33:42.640
+ komuniteti përdor punën time përmes të metave po dhe nëse je një nga ata njerëz në
+
+00:33:42.640 --> 00:33:46.159
+ komuniteti tani thjesht hej ngre dorën dhe thuaj po i
+
+00:33:46.159 --> 00:33:48.480
+ kuptoj se si funksionon gjithçka që unë do të doja të ndihmoja
+
+00:33:48.480 --> 00:33:52.640
+ dhe uh dhe kjo është diçka që unë mendoj se unë do të bëjë një të vërtetë i zoti
+
+00:33:52.640 --> 00:33:54.320
+ funksion për shfaqjen, si dhe mësoni
+
+00:33:54.320 --> 00:33:57.200
+ po me siguri na mbani të postuar në atë Jeff patjetër që do të interesohesha vërtet
+
+00:33:57.200 --> 00:34:00.159
+ të di se si shkojnë gjërat po, unë do të postoj gjëra prapa
+
+00:34:00.159 --> 00:34:06.320
+ skena një kuti të padobishme ndonjë tjetër keni ndonjë ide akoma unë ngazëllehem
+
+00:34:06.320 --> 00:34:09.520
+ kur shpik si kur mendoj për diçka
+
+00:34:09.520 --> 00:34:13.200
+ keni pasur ndonjë nga ato momente ku unë jam si unë dëshiroj me të vërtetë unë
+
+00:34:13.200 --> 00:34:16.240
+ kishte diçka që do ta bënte këtë por nuk ekziston
+
+00:34:16.240 --> 00:34:20.079
+ kjo është ajo ku shtypja 3D është interesante për mua, sepse unë jam duke krijuar gjëra që
+
+00:34:20.079 --> 00:34:23.520
+ nuk ekzistojnë akoma ii vërtetë nuk kam menduar
+
+00:34:23.520 --> 00:34:27.520
+ sa i përket asaj që ekziston dhe nuk ekziston
+
+00:34:27.520 --> 00:34:29.919
+ um
+
+00:34:30.960 --> 00:34:34.000
+ jo nuk e kam menduar me të vërtetë që deri tani të dal me disa ide
+
+00:34:34.000 --> 00:34:37.040
+ po dhe ndani ato me siguri se ka një shumë gjëra
+
+00:34:37.040 --> 00:34:43.679
+ po sikur gjithmonë kam dashur të bëj um na një sistem të shëndoshë shtëpiak
+
+00:34:43.679 --> 00:34:48.879
+ që lidhet me um ju e dini pajisjen tonë amazon dhe gjëra të tilla si
+
+00:34:48.879 --> 00:34:52.079
+ që por do të doja të kisha sensorë ku
+
+00:34:52.079 --> 00:34:56.320
+ kur ec nga një dhomë në tjetrën sensori i lëvizjes fillon dhe ai do të mbyllet
+
+00:34:56.320 --> 00:34:59.760
+ jashtë altoparlantëve të një dhome dhe shtojeni atje ku kam shkuar
+
+00:34:59.760 --> 00:35:02.000
+ kjo është mënyra më e përparuar por kjo ndoshta është
+
+00:35:02.000 --> 00:35:05.119
+ e vetmja gjë që unë mund të mendoj se ku unë jam si unë dua ta bëj këtë, por ju shoh duke folur
+
+00:35:05.119 --> 00:35:08.960
+ në lidhje me këtë dhe pastaj unë mendoj në rregull mirë ju mund të përdorni një sensor pasiv infra të kuqe
+
+00:35:08.960 --> 00:35:14.640
+ po që është përdorur në sensorë lëvizje ju mund të përdorni një sensor lazer por
+
+00:35:14.640 --> 00:35:19.200
+ pir është shumë shumë i lirë po, dhe është vetëm një sensor i vogël që është si
+
+00:35:19.200 --> 00:35:22.880
+ në rregull ka pasur lëvizje të bëjë diçka po kështu që ju mund të krijoni diçka
+
+00:35:22.880 --> 00:35:27.520
+ përsëri me një stafetë që kontrollon vetëm nëse ka altoparlanti
+
+00:35:27.520 --> 00:35:31.599
+ një qark i përfunduar apo jo po kështu që nëse do të ishte vetëm një
+
+00:35:31.599 --> 00:35:36.160
+ një bandë altoparlantësh të lidhur përmes një amplifikatori që mund të keni të instaluar rele
+
+00:35:36.160 --> 00:35:40.000
+ me sensorë pir që do të ishit në gjendje t'i kontrollonit me lëvizje
+
+00:35:40.000 --> 00:35:44.160
+ po mirë dhe nëse nuk ka lëvizje për 10 minuta fikni altoparlantin
+
+00:35:44.160 --> 00:35:45.760
+ automatikisht apo diçka e tillë po
+
+00:35:45.760 --> 00:35:49.200
+ pikërisht ashtu si këto lloj idesh sikur ka kaq shumë gjëra që mund të mundesh
+
+00:35:49.200 --> 00:35:51.359
+ bëni kur të filloni të kuptoni dhe pastaj
+
+00:35:51.359 --> 00:35:55.839
+ ekziston e gjithë ana tjetër e tij ku diçka prishet dhe mund ta rregulloni po
+
+00:35:55.839 --> 00:35:59.200
+ kjo është një ndjenjë e mirë dhe kjo është bërë ne e kemi bërë atë tashmë
+
+00:35:59.200 --> 00:36:02.000
+ po bukur, kështu që e dini që i merrni ato pak bateri
+
+00:36:02.000 --> 00:36:07.280
+ testuesit uh si të kontrolloni akuzën po kështu që ne kishim një nga ato dhe është
+
+00:36:07.280 --> 00:36:09.200
+ qesharake kur djali im po ndërtonte llogaritësin e tij
+
+00:36:09.200 --> 00:36:12.560
+ nuk ishim të sigurt nëse bateritë po funksiononin dhe nuk po merrnim asgjë
+
+00:36:12.560 --> 00:36:15.760
+ Unë jam si kjo është e çuditshme që ne nuk jemi duke marrë zakonisht edhe nëse është e vdekur atë
+
+00:36:15.760 --> 00:36:18.640
+ del në të kuqe, por nuk kishte asgjë, kështu që ne e hapëm atë
+
+00:36:18.640 --> 00:36:22.960
+ rezulton se lidhja aktuale ishte prishur oh
+
+00:36:22.960 --> 00:36:27.359
+ tani nuk kam asnjë të dhënë po dhe djali im është si oh unë mund ta rregulloj atë dhe
+
+00:36:27.359 --> 00:36:30.240
+ ai e rregulloi ne e vendosëm përsëri së bashku dhe pastaj ne dhe funksionon dhe është si oh
+
+00:36:30.240 --> 00:36:34.000
+ po kjo është një bateri e vdekur po unë mund të lidhem me atë gjithashtu përdor një
+
+00:36:34.000 --> 00:36:38.160
+ altoparlant jastëk për podcast në rregull dhe uh sepse e dini
+
+00:36:38.160 --> 00:36:40.880
+ i lidhur me një tel në telefonin tim ajo tërhiqet
+
+00:36:40.880 --> 00:36:45.119
+ po dhe ajo u tërhoq menjëherë, kështu që është një gjë kaq e thjeshtë, por unë plotësisht çfarë
+
+00:36:45.119 --> 00:36:48.720
+ a nuk e bleva një tjetër jo jo jo e mora
+
+00:36:48.720 --> 00:36:52.480
+ veç e veç dhe unë e ri-bashkova dhe e përforcova
+
+00:36:52.480 --> 00:36:56.160
+ kështu që nuk do të ndodhte përsëri oh bukur e bëri atë më mirë se sa ishte ai që është ai
+
+00:36:56.160 --> 00:37:00.240
+ e ktheu mendjen e tij drejt gjërave si e-mbeturinat po dhe ai është sikur dikush
+
+00:37:00.240 --> 00:37:04.960
+ do të heqin qafe tv e tyre ose monitori i kompjuterit shanset janë
+
+00:37:04.960 --> 00:37:08.240
+ është akoma duke punuar baba është thjesht diçka që u prish brenda
+
+00:37:08.240 --> 00:37:12.400
+ ai është si unë mund ta rregulloj unë jam si po ju mendoni për këtë dhe kështu rrotat e tij janë
+
+00:37:12.400 --> 00:37:15.599
+ duke u bërë i fundit dhe ai është si të mund t'i bëj këto gjëra dhe pastaj të shes
+
+00:37:15.599 --> 00:37:20.160
+ ata 12 vjeç që është një karrierë
+
+00:37:20.160 --> 00:37:22.960
+ në një numër të
+
+00:37:23.599 --> 00:37:27.359
+ uh sikur është vërtet e vlefshme të kesh ato aftësi
+
+00:37:27.359 --> 00:37:30.960
+ kështu që unë jam do ta stërvitje atë për tjetër uh mirë ai është 12. kështu që në
+
+00:37:30.960 --> 00:37:38.560
+ tetë gjashtë vjet po pensionohem më erdhi një monitor nuk e di
+
+00:37:38.560 --> 00:37:42.960
+ mbase një monitor i bukur me ekran të gjerë 23 inç ose 24 inç
+
+00:37:42.960 --> 00:37:47.359
+ hyri si mbeturinë elektronike dhe kështu më pëlqen
+
+00:37:47.359 --> 00:37:50.720
+ do të hedh një vështrim dhe kështu vajza ime dhe unë e shikuam atë
+
+00:37:50.720 --> 00:37:57.280
+ dhe ishte një kondensator i vetëm që ishte djegur, kështu që unë shkova në internet dhe
+
+00:37:57.280 --> 00:37:59.920
+ bleva një nga ata kondensatorë që i shesin në pako
+
+00:37:59.920 --> 00:38:03.599
+ tre dhe ishte dymbëdhjetë dollarë kështu që për 12
+
+00:38:03.599 --> 00:38:07.760
+ kemi një paketë prej tre kemi zëvendësuar një nga ata kondensatorë dhe ai monitor është
+
+00:38:07.760 --> 00:38:13.520
+ tani ulur në tryezën e vajzës sime o zot im që është mahnitëse është e mrekullueshme
+
+00:38:13.520 --> 00:38:16.720
+ dhe ai ka absolutisht të drejtë, por jo vetëm që mund të rregulloni gjëra nga Jeff
+
+00:38:16.720 --> 00:38:19.920
+ le të themi se diçka vjen në e-mbeturina ose ju e dini që gjeni diçka në
+
+00:38:19.920 --> 00:38:22.320
+ buzë rrugës që dikush sapo e ka hedhur, sepse nuk mundet, nuk e bën
+
+00:38:22.320 --> 00:38:26.480
+ di ta rregulloje um dhe mbase nëse e rregullon është më shumë
+
+00:38:26.480 --> 00:38:30.079
+ e shtrenjtë sesa blerja e një të re në shumë raste gjithashtu
+
+00:38:30.079 --> 00:38:35.119
+ um ju mund edhe nëse nuk mund ta rregulloni mund të bëni atë që quhet shkëputje
+
+00:38:35.119 --> 00:38:39.440
+ është e drejtë kështu që ju mund të hiqni të gjithë përbërësit e mirë nga kjo dhe
+
+00:38:39.440 --> 00:38:43.119
+ vendosi ato në një organizator sirtar po që të mund të kesh radion tënde
+
+00:38:43.119 --> 00:38:46.880
+ kasolle në shtëpi ku keni sirtarët e të gjitha këtyre pjesëve të ndryshme
+
+00:38:46.880 --> 00:38:50.079
+ dhe pastaj kur diçka prishet nuk keni pse të shpenzoni 12
+
+00:38:50.079 --> 00:38:53.280
+ në internet për t'i blerë ata, uroj të mos e kisha ditur se ai do të merrte këtë
+
+00:38:53.280 --> 00:38:57.040
+ sepse gjatë verës kisha rreth katër kompjuterë
+
+00:38:57.040 --> 00:39:00.320
+ një çift projektorësh i morëm të gjitha mbeturinat elektronike
+
+00:39:00.320 --> 00:39:03.760
+ kështu që është si oh unë mund të ketë çmontuar se oh sigurt po i mori ato
+
+00:39:03.760 --> 00:39:07.119
+ oh mirë pjesët që jetojmë dhe mësojmë po saktësisht
+
+00:39:07.119 --> 00:39:10.960
+ shumë e ftohtë, mirë na mbani të postuar në atë patjetër dhe hej komenti më poshtë na tregoni
+
+00:39:10.960 --> 00:39:13.359
+ në lidhje me disa nga shfrytëzimet që keni pasur
+
+00:39:13.359 --> 00:39:18.560
+ në lidhje me këto lloje temash dhe nëse janë nëse janë
+
+00:39:18.560 --> 00:39:20.880
+ diçka që ju intereson dhe nuk e keni marrë kurrë
+
+00:39:20.880 --> 00:39:24.720
+ hej komenti më poshtë gjithashtu do të dëshironim të dëgjonim nga ju dhe do të dëshironim t'ju kishim
+
+00:39:24.720 --> 00:39:27.920
+ si pjesë e atij procesi pasi jeff po mëson
+
+00:39:27.920 --> 00:39:32.079
+ pasi edhe unë po mësoj dhe po futem gjithnjë e më shumë në ato lloje të
+
+00:39:32.079 --> 00:39:36.800
+ si riparimet e komponentëve dhe dhe bordet e qarqeve dhe gjithçka tjetër
+
+00:39:36.800 --> 00:39:41.359
+ është shumë argëtuese po është një hobi i shkëlqyeshëm dhe një karrierë e mrekullueshme nëse jeni
+
+00:39:41.359 --> 00:39:45.200
+ me të vërtetë dua ta bëj gjithashtu, kështu që është mirë për djalin tuaj që do të doja ta dëgjoja
+
+00:39:45.200 --> 00:39:49.680
+ si e kenaq ate keshtu qe kur eshte um mendoj
+
+00:39:49.680 --> 00:39:53.359
+ 13 plus kështu që vitin e ardhshëm mund ta sillni në studio
+
+00:39:53.359 --> 00:39:56.560
+ dhe ai mund të na tregojë se si po arrin
+
+00:39:56.560 --> 00:40:00.480
+ tingëllon mirë shumë bukur bëj që të ndodhë ne duhet të kalojmë në redaksi
+
+00:40:00.480 --> 00:40:02.960
+ becca është atje me lajmet tona kryesore për javën
+
+00:40:02.960 --> 00:40:08.800
+ këtu ajo është këtu është ajo që vjen në dhomën e lajmeve në kategorinë 5 pikë tv
+
+00:40:08.800 --> 00:40:12.000
+ hakerat janë duke përdorur një bug të rëndë windows për të bërë kompromis
+
+00:40:12.000 --> 00:40:17.280
+ serverat e pahapur tre paketa javascript janë hequr nga npm
+
+00:40:17.280 --> 00:40:22.560
+ portali për përmbajtjen e kodit dashakeq nokia është ngarkuar të ndërtojë një
+
+00:40:22.560 --> 00:40:27.040
+ rrjet i ri 4g qelizor në hënë një 80 i ri
+
+00:40:27.040 --> 00:40:32.240
+ vat teknologjia e karikimit pa tel nga xiaomi po na fryn në mendje dhe
+
+00:40:32.240 --> 00:40:36.240
+ moduli 4 i llogaritjes së mjedrës pi është lëshuar ne do të bëjmë
+
+00:40:36.240 --> 00:40:40.720
+ ju tregoni specifikat dhe si kjo i ndryshon gjërat për industrinë e brendshme
+
+00:40:40.720 --> 00:40:44.000
+ qëndroni rreth detajeve të plota dhe këndit të kriptos të kësaj jave
+
+00:40:44.000 --> 00:40:48.640
+ po vijnë kjo është redaksia e kategorisë 5 pikë tv
+
+00:40:48.640 --> 00:40:52.079
+ duke mbuluar historitë kryesore teknike të javës me një linux të lehtë
+
+00:40:52.079 --> 00:40:54.480
+ paragjykim
+
+00:40:56.240 --> 00:41:00.319
+ nga redaksia jam becca ferguson
+
+00:41:00.720 --> 00:41:03.920
+ hakerat janë duke përdorur një bug të rëndë windows për të bërë kompromis
+
+00:41:03.920 --> 00:41:07.920
+ serverat e pahapur një nga dobësitë më kritike të dritareve
+
+00:41:07.920 --> 00:41:10.400
+ zbuluar këtë vit është nën sulm aktiv
+
+00:41:10.400 --> 00:41:14.480
+ nga hakerat që janë duke u përpjekur të bëjnë servera backdoor që ruajnë kredencialet për secilin
+
+00:41:14.480 --> 00:41:18.480
+ përdorues dhe llogari administrative në një rrjet
+
+00:41:18.480 --> 00:41:23.119
+ studiuesit i dhanë cenueshmërisë emrin xerologon sepse sulmet funksionojnë
+
+00:41:23.119 --> 00:41:27.200
+ dërgimi i një vargu zero në një seri mesazhesh që përdorin rrjetën
+
+00:41:27.200 --> 00:41:30.720
+ protokolli i hyrjes në të cilin mbështeten serverat e windows-it për një
+
+00:41:30.720 --> 00:41:34.560
+ shumëllojshmëri detyrash duke përfshirë lejimin e përdoruesve përfundimtarë për t'u identifikuar
+
+00:41:34.560 --> 00:41:38.560
+ në një hyrje të rrjetit xero siç ka qenë dobësia
+
+00:41:38.560 --> 00:41:41.280
+ dubluar mori vëmendje të gjerë muajin e kaluar
+
+00:41:41.280 --> 00:41:44.000
+ kur firma që e zbuloi tha se mund të jepte sulmues
+
+00:41:44.000 --> 00:41:48.079
+ qasje e menjëhershme në drejtoritë aktive të cilat administratorët i përdorin për të krijuar
+
+00:41:48.079 --> 00:41:52.480
+ fshini dhe menaxhoni llogaritë e rrjetit direktoritë aktive dhe domenin
+
+00:41:52.480 --> 00:41:55.599
+ kontrollorët me të cilët funksionojnë janë ndër çmimet më të lakmuara
+
+00:41:55.599 --> 00:42:00.480
+ në pirateri sepse pasi të rrëmbehen ata lejojnë sulmuesit të ekzekutojnë kodin dhe
+
+00:42:00.480 --> 00:42:03.839
+ municion në të gjitha makineritë e lidhura
+
+00:42:03.839 --> 00:42:09.280
+ rregulloi difektin e sigurisë në gusht të premten e kevin beaumont
+
+00:42:09.280 --> 00:42:12.480
+ duke punuar në cilësinë e tij si një studiues i pavarur
+
+00:42:12.480 --> 00:42:16.480
+ tha në një postim në blog se ai kishte zbuluar sulme në vazo që përdor për të mbajtur
+
+00:42:16.480 --> 00:42:19.680
+ në dijeni të sulmeve sulmuese që hakerat janë duke përdorur në
+
+00:42:19.680 --> 00:42:24.160
+ e egër kur serveri i tij joshës ishte i papatched sulmuesit ishin në gjendje të përdorin një
+
+00:42:24.160 --> 00:42:27.680
+ skenari PowerShell për të ndryshuar me sukses një fjalëkalim administratori
+
+00:42:27.680 --> 00:42:31.920
+ dhe backdoor serveri beaumont tha se sulmi u shfaq
+
+00:42:31.920 --> 00:42:36.480
+ të shkruhet plotësisht me të gjitha komandat që përfundojnë brenda sekondave
+
+00:42:36.480 --> 00:42:40.160
+ me atë sulmuesit instaluan një derë të pasme që lejonte telekomandën
+
+00:42:40.160 --> 00:42:44.079
+ aksesi administrativ në pajisjet brenda rrjetit të tij të tallur
+
+00:42:44.079 --> 00:42:48.400
+ sulmuesit gjithashtu mundësuan desktopin e largët si rezultat që ata do të vazhdonin
+
+00:42:48.400 --> 00:42:53.200
+ të ketë qasje në distancë edhe nëse administratori më vonë arnon serverin
+
+00:42:53.200 --> 00:42:57.520
+ njerëzit pa vërtetim autentik mund të përdorin shfrytëzimin për të fituar domenin
+
+00:42:57.520 --> 00:43:00.800
+ kredencialet administrative për sa kohë që sulmuesit kanë aftësinë për të
+
+00:43:00.800 --> 00:43:05.839
+ vendosni lidhje tcp me një kontrollues domain të prekshëm në
+
+00:43:05.839 --> 00:43:10.160
+ disa raste sulmuesit mund të përdorin një cenueshmëri të veçantë për të fituar një themel brenda
+
+00:43:10.160 --> 00:43:13.359
+ një rrjet dhe më pas shfrytëzoni hyrjen zero për të marrë përsipër
+
+00:43:13.359 --> 00:43:17.599
+ kontrolluesin e domain-it mendoj se është një shembull i mirë i një mënyre për të
+
+00:43:17.599 --> 00:43:20.319
+ këto lloj skriptesh për të hyrë në rrjete
+
+00:43:20.319 --> 00:43:27.839
+ janë kompjutera të vjetër në rrjet dhe gjithashtu mashtrime të inxhinierisë sociale ne
+
+00:43:27.839 --> 00:43:31.040
+ dëgjoni shumë për të sikur ju ndoshta i merrni këto email
+
+00:43:31.040 --> 00:43:34.800
+ që përpiqen t'ju mashtrojnë duke ndjekur me një proces të
+
+00:43:34.800 --> 00:43:38.319
+ hyrja në një letër kredenciale ose diçka e tillë
+
+00:43:38.319 --> 00:43:44.720
+ rreziku që kemi përpara dhe rasti i trishtuar që unë shoh si
+
+00:43:44.720 --> 00:43:48.880
+ në të është që ndonjëherë njerëzit mendojnë mirë
+
+00:43:48.880 --> 00:43:52.319
+ nuk kam nevojë ta azhurnoj atë kompjuter sepse është në dhomën e pasme askush
+
+00:43:52.319 --> 00:43:55.680
+ me të vërtetë e përdor atë po ose oh mirë kemi nevojë për këtë
+
+00:43:55.680 --> 00:43:58.800
+ ende kemi windows xp sepse kemi probleme me njërën nga ato
+
+00:43:58.800 --> 00:44:02.880
+ printerë nëse nuk e shohim akoma po shohim shumë dritare 7
+
+00:44:02.880 --> 00:44:06.960
+ sistemet dhe kjo është një tragjedi nëse keni një
+
+00:44:06.960 --> 00:44:10.960
+ windows 7 ose sistemi windows xp në rrjetin tuaj thjesht kthejeni atë
+
+00:44:10.960 --> 00:44:13.839
+ largohu prej tij po shiko gjë është
+
+00:44:13.839 --> 00:44:20.480
+ është me ato sisteme kështu që Microsoft ka atë që ne e quajmë eol ose fund të jetës uh
+
+00:44:20.480 --> 00:44:24.240
+ i ka dhënë fund jetës së këtyre sistemeve operative
+
+00:44:24.240 --> 00:44:27.839
+ kështu që ata kanë thënë që ju keni për të azhurnuar në Windows 10. edhe unë nuk dua të azhurnuar
+
+00:44:27.839 --> 00:44:32.000
+ tek dritaret 10 më pëlqejnë dritaret e mia 7. Unë e kuptoj atë dhe e respektoj atë
+
+00:44:32.000 --> 00:44:37.119
+ megjithatë këtu është problemi i hakerëve
+
+00:44:37.119 --> 00:44:41.599
+ tani janë në gjendje të shfrytëzojnë këto sisteme operative
+
+00:44:41.599 --> 00:44:45.839
+ dhe ndërsa e bëjnë këtë ndërsa gjejnë shfrytëzime
+
+00:44:45.839 --> 00:44:48.960
+ ka disa gjëra që ndodhin një nga ato
+
+00:44:48.960 --> 00:44:55.520
+ ose jepni ose shisni ato shfrytëzime ose dy, ata thjesht janë lëshuar
+
+00:44:55.520 --> 00:45:01.520
+ për publikun përmes nëse është përmes rrjetit të errët apo edhe në github
+
+00:45:01.520 --> 00:45:07.839
+ si hulumtim të sigurisë dhe kështu që tani këta hakera nëse doni do të shkojmë
+
+00:45:07.839 --> 00:45:11.599
+ i quajti ashtu, por realisht në shumë raste ato janë ato që ne i quajmë ne
+
+00:45:11.599 --> 00:45:16.800
+ kitties skenari dhe këto janë um
+
+00:45:16.800 --> 00:45:21.680
+ madje as si hakerat po por nuk duhet te kene shume njohuri sepse
+
+00:45:21.680 --> 00:45:28.160
+ shfrytëzimi është publikisht që dihet dhe kuptohet drejt, nëse
+
+00:45:28.160 --> 00:45:32.319
+ ka shfrytëzime që janë në dispozicion për një sistem operativ
+
+00:45:32.319 --> 00:45:36.880
+ çfarë presim të ndodhë ne presim që shitësi i sistemit operativ Microsoft
+
+00:45:36.880 --> 00:45:41.200
+ këtë rast për të patch që shfrytëzojnë për të rregulluar atë
+
+00:45:41.200 --> 00:45:44.560
+ dhe ky është rasti me dritaret 10. sidoqoftë fatkeqësisht
+
+00:45:44.560 --> 00:45:49.040
+ ato që janë eol nuk është rasti me një sistem operativ eol ndonjëherë
+
+00:45:49.040 --> 00:45:54.079
+ ne dëgjojmë oh mirë nuk kam nevojë për mbështetje mirë Microsoft ka përfunduar mbështetjen që është
+
+00:45:54.079 --> 00:45:57.440
+ atë që kemi dëgjuar po ata kanë përfunduar mbështetjen për Windows 7. ato kanë mbaruar
+
+00:45:57.440 --> 00:46:01.920
+ mbështetje për Windows XP oh, por unë kurrë nuk kam pasur për të thirrur mbështetje
+
+00:46:01.920 --> 00:46:04.640
+ Unë mund ta trajtojë atë që nuk është ajo që ata janë
+
+00:46:04.640 --> 00:46:06.640
+ duke folur fare për atë që ata janë duke thënë është
+
+00:46:06.640 --> 00:46:12.640
+ ata nuk do të rregullojnë arna që bën shfrytëzimet nuk ka rëndësi
+
+00:46:12.640 --> 00:46:16.160
+ sa të rënda janë nuk ka rëndësi se sa lehtë janë
+
+00:46:16.160 --> 00:46:20.079
+ shfrytëzoni kështu që të keni një makinë Windows 7 në rrjetin tuaj mirë
+
+00:46:20.079 --> 00:46:26.319
+ ju po i jepni hyrje njërit prej këtyre hakerëve që as nuk kanë
+
+00:46:26.319 --> 00:46:31.040
+ të jetë shumë i mirë në piraterinë sepse shfrytëzimet dihen publikisht
+
+00:46:31.040 --> 00:46:36.240
+ po nganjëherë ato janë pjesë e mjeteve nganjëherë ata thjesht mund të shkarkojnë falas
+
+00:46:36.240 --> 00:46:41.440
+ mjet dhe ata mund të thonë se unë dua të me një kontroll të shfrytëzojë Windows 7
+
+00:46:41.440 --> 00:46:46.400
+ dhe kështu ata futen në një kuti windows 7 ose ata kanë mashtruar një nga punonjësit tuaj
+
+00:46:46.400 --> 00:46:50.880
+ edhe nëse ata janë thjesht dikush në pjesën e prapme që punon në depo
+
+00:46:50.880 --> 00:46:55.119
+ ata kanë mashtruar dikë në hapjen e një skedari që tani u jep atyre hyrje në
+
+00:46:55.119 --> 00:46:59.359
+ Windows 7 makineria Windows XP makinë ose makina në dhomën e pasme
+
+00:46:59.359 --> 00:47:03.359
+ nuk ka rëndësi dhe këtu po mësojmë atë Microsoft
+
+00:47:03.359 --> 00:47:08.400
+ serverat tani kanë një shfrytëzim për aq kohë sa
+
+00:47:08.400 --> 00:47:13.599
+ një palë me qëllim të keq mund të fitojë qasje në çdo kompjuter në rrjet
+
+00:47:13.599 --> 00:47:20.480
+ ata tani mund të kenë akses të administratorit të fushës në të gjithë rrjetin
+
+00:47:20.480 --> 00:47:25.359
+ tani e frikshme tani makinat tuaja windows 10 nuk janë më
+
+00:47:25.359 --> 00:47:31.440
+ e sigurt është e drejtë sepse ju u keni dhënë atyre hyrje në rrjetin tuaj sikur
+
+00:47:31.440 --> 00:47:39.200
+ ata janë një administrator domain, shiko se është thjesht një lajm i keq atje
+
+00:47:39.200 --> 00:47:42.319
+ mirë është lajm i keq pse është ransomware një gjë
+
+00:47:42.319 --> 00:47:46.400
+ sepse çfarë bëjnë ata tani në rregull unë kam fituar qasje në këtë rrjet
+
+00:47:46.400 --> 00:47:49.599
+ Unë jam duke shkuar për të shitur në rrjetin e errët hyrjen në këtë rrjet
+
+00:47:49.599 --> 00:47:56.640
+ ju e shihni këtë me um me vendbanime dhe po me qytete që
+
+00:47:56.640 --> 00:48:00.000
+ ishte kotele origjinale e skenarit që e bëri atë jo çfarë
+
+00:48:00.000 --> 00:48:03.680
+ ai vetëm ata thjesht duan që ata duan të futen brenda
+
+00:48:03.680 --> 00:48:07.119
+ instaloni softuerin e tyre dhe dilni dhe më pas shesni aksesin
+
+00:48:07.119 --> 00:48:11.040
+ është e drejtë sepse ato janë para të shpejta, prandaj pse njerëzit e bëjnë atë për para
+
+00:48:11.040 --> 00:48:15.119
+ dhe kështu e bëjnë ata kështu që um po ju duhet
+
+00:48:15.119 --> 00:48:18.319
+ lloj i mbajtur gjërat në azhurnim kështu që ju e dini se është vetëm një mendim i shpejtë
+
+00:48:18.319 --> 00:48:22.079
+ të meditoni hej nëse keni ndonjë makinë të vjetëruar në rrjetin tuaj ku keni arritur
+
+00:48:22.079 --> 00:48:25.599
+ largojini ata dhe stërvitni stafin tuaj në internet
+
+00:48:25.599 --> 00:48:29.119
+ praktikat e sigurisë kuptojnë se çfarë janë mashtrimet phishing
+
+00:48:29.119 --> 00:48:32.720
+ sepse e dini oh mirë dikush klikoi në një lidhje dhe tani e tyre
+
+00:48:32.720 --> 00:48:34.880
+ kompjuterët kompjuterikë të infektuar por kompjuteri i tyre është
+
+00:48:34.880 --> 00:48:41.839
+ në rrjetin tuaj por unë do të merrja gjysmën e parave të princit
+
+00:48:41.839 --> 00:48:45.359
+ kjo është një krimb i tërë krejtësisht tjetër atje
+
+00:48:45.359 --> 00:48:50.000
+ por dua të them unë kur bëhet fjalë për këto gjëra për të parë sistemin tuaj dhe për të thënë
+
+00:48:50.000 --> 00:48:52.559
+ oh nuk dua të shpenzoj shtatë e tetë
+
+00:48:52.559 --> 00:48:55.599
+ qindra dollarë për një kompjuter të ri nuk do të shqetësohesha për azhurnimin e këtij
+
+00:48:55.599 --> 00:49:00.000
+ ju do të përfundoni duke shpenzuar më shumë në planin afatgjatë uh ose në afat të shkurtër
+
+00:49:00.000 --> 00:49:05.040
+ jo jo në planin afatgjatë nëse nuk e keni sistemin tuaj të rregulluar sepse një herë
+
+00:49:05.040 --> 00:49:09.200
+ ata marrin qasje në gjithçka që ju mund të jeni poshtë dhe jashtë, por dhe unë
+
+00:49:09.200 --> 00:49:11.760
+ mendoni kur ata kanë qasje në gjithçka i
+
+00:49:11.760 --> 00:49:13.760
+ mendoj se është thjesht e rëndësishme ta kuptosh këtë
+
+00:49:13.760 --> 00:49:20.400
+ që një pikë hyrëse bëhet qasja në gjithçka, kështu që kaloni nja dyqind
+
+00:49:20.400 --> 00:49:24.160
+ dollarë marrin kompjuterin e ri kurseni veten nuk e di se çfarë duhet
+
+00:49:24.160 --> 00:49:27.599
+ dua të them është ndryshe është ndryshe për çdo rast po, unë kisha një person
+
+00:49:27.599 --> 00:49:30.800
+ sot kush thirri dhe tha se kam një kompjuter të vetëm windows 7
+
+00:49:30.800 --> 00:49:33.920
+ nuk dua ta azhurnoj sepse funksionon thjesht oh
+
+00:49:33.920 --> 00:49:38.400
+ kështu që këtu është një shpjegim dhe këtu becca ka ndarë me ne një histori
+
+00:49:38.400 --> 00:49:43.200
+ që thjesht na tregon se gjithçka që ata kanë nevojë është qasja në atë kompjuter
+
+00:49:43.200 --> 00:49:47.599
+ dhe tani ata kanë qasje në të gjithë kompjuterët e kompjuterëve tuaj dhe jo
+
+00:49:47.599 --> 00:49:52.240
+ ashtu si një mënyrë samba jo në një mënyrë që është si miqësore dhe shpresojmë se ata
+
+00:49:52.240 --> 00:49:55.520
+ mos gjeni ndonjë mënyrë në dyert e pasme për ato
+
+00:49:55.520 --> 00:49:59.200
+ kompjuterat jo ata kanë kredencialet e administratorit
+
+00:49:59.200 --> 00:50:03.119
+ rrjeti juaj kështu që ata të mund të bëjnë gjithçka
+
+00:50:03.119 --> 00:50:07.280
+ është e drejtë çdo gjë që ata duan kur mendoj për shtëpinë time
+
+00:50:07.280 --> 00:50:10.880
+ mendoj se kam mbaruar mendoj se kam shtatë
+
+00:50:10.880 --> 00:50:15.520
+ pajisje që nuk përfshijnë telefona dhe tableta dhe gjëra të tilla si ato që janë të lidhura
+
+00:50:15.520 --> 00:50:18.960
+ në rrjet nuk dua që ata të kenë qasje në këtë
+
+00:50:18.960 --> 00:50:21.200
+ po thjesht nuk mund të stresohem mjaftueshëm edhe pse jeff
+
+00:50:21.200 --> 00:50:26.160
+ dua të them mendoj se në terma të bizneseve më shumë përdoruesi i shtëpisë por
+
+00:50:26.160 --> 00:50:33.119
+ sapo të jenë brenda, ato nuk mund të mbarojnë sepse nuk mundesh tani
+
+00:50:33.119 --> 00:50:36.240
+ mbylleni atë makinë Windows që makina Windows 7 jo tashmë janë
+
+00:50:36.240 --> 00:50:40.319
+ në gjithçka, kështu që çfarë bëni ju të zëvendësoni gjithçka
+
+00:50:40.319 --> 00:50:44.240
+ fshini çdo kompjuter të vetëm sepse nuk dini çfarë mjetesh
+
+00:50:44.240 --> 00:50:50.079
+ ata kanë instaluar që është e shtrenjtë po, kështu që mos bini në të
+
+00:50:50.079 --> 00:50:53.280
+ gjithsesi kjo është një shfrytëzim i keq që shpresoj vërtet seriozisht
+
+00:50:53.280 --> 00:50:56.720
+ ne e kemi theksuar aq sa të kuptoni se kjo është një gjë e keqe
+
+00:50:56.720 --> 00:51:02.720
+ kështu që sigurohuni që administratorët e rrjetit tuaj janë lart dhe lart dhe ata i kuptojnë këto
+
+00:51:02.720 --> 00:51:05.520
+ gjërat dhe se ju jeni të mbrojtur dhe të sigurt
+
+00:51:05.520 --> 00:51:09.920
+ kundër këtyre llojeve të kërcënimeve në rregull, ne do të kthehemi te becca
+
+00:51:09.920 --> 00:51:13.920
+ tre paketa javascript janë hequr nga portali npm për
+
+00:51:13.920 --> 00:51:18.000
+ që përmban kod të dëmshëm sipas këshillave nga mpm
+
+00:51:18.000 --> 00:51:21.440
+ ekipi i sigurisë hapin tre bibliotekat javascript
+
+00:51:21.440 --> 00:51:24.480
+ predha në kompjuterët e zhvilluesve që importuan paketat
+
+00:51:24.480 --> 00:51:29.200
+ në projektet e tyre predhat lejojnë aktorët e kërcënimit të lidhen në distancë me
+
+00:51:29.200 --> 00:51:33.520
+ kompjuterin e infektuar dhe ekzekutuar operacione të dëmshme npm
+
+00:51:33.520 --> 00:51:37.920
+ ekipi i sigurisë tha që predhat nuk varen nga një sistem i veçantë operativ
+
+00:51:37.920 --> 00:51:41.760
+ dhe mund të përdoret për të kompromentuar windows linux freebsd
+
+00:51:41.760 --> 00:51:46.960
+ openbsd dhe sisteme të tjerë të tre paketat u ngarkuan në
+
+00:51:46.960 --> 00:51:50.880
+ npm portal në 2018 dhe secili kishte qindra
+
+00:51:50.880 --> 00:51:55.839
+ shkarkime që atëherë emrat e paketës janë plutovs dash
+
+00:51:55.839 --> 00:52:01.920
+ klienti i plogët nodetest199 dhe nodetest1010
+
+00:52:01.920 --> 00:52:07.119
+ ekipi i sigurisë npm tha çdo kompjuter që është ai që e ka këtë
+
+00:52:07.119 --> 00:52:10.800
+ paketa e instaluar ose e ekzekutuar duhet të konsiderohet plotësisht e kompromentuar
+
+00:52:10.800 --> 00:52:15.280
+ të gjitha sekretet dhe çelësat e ruajtur në atë kompjuter duhet të ndërrohen menjëherë
+
+00:52:15.280 --> 00:52:20.559
+ nga një kompjuter tjetër ata paralajmërojnë që paketa duhet të hiqet por si
+
+00:52:20.559 --> 00:52:24.160
+ kontrolli i plotë i kompjuterit mund t'i jetë dhënë një subjekti të jashtëm
+
+00:52:24.160 --> 00:52:27.760
+ nuk ka asnjë garanci se heqja e paketës do të heqë të gjitha dashakeqësit
+
+00:52:27.760 --> 00:52:32.079
+ softuer që rezulton nga instalimi i tij mpm
+
+00:52:32.079 --> 00:52:36.079
+ stafi i sigurisë skanon rregullisht koleksionin e tij të bibliotekave javascript
+
+00:52:36.079 --> 00:52:41.839
+ konsiderohet depoja më e madhe e paketave për çdo gjuhë programimi
+
+00:52:41.839 --> 00:52:46.079
+ ndërsa unë nuk mund të marr mbulim të mirë të qelizave në vilën time
+
+00:52:46.079 --> 00:52:52.240
+ nokia po punon me nasa për të sjellë 4g në hënë qëllimet e misionit arta të nasës
+
+00:52:52.240 --> 00:52:56.559
+ për të vendosur një prani afatgjatë njerëzore në hënë si një hap
+
+00:52:56.559 --> 00:53:01.040
+ guri drejt kolonizimit të marsit dhe për të filluar gjërat nasa është
+
+00:53:01.040 --> 00:53:05.280
+ duke zgjatur 370 milion dollarë në 14 kompani
+
+00:53:05.280 --> 00:53:08.400
+ për të siguruar teknologjinë për programin
+
+00:53:08.400 --> 00:53:12.400
+ nga robotika në prodhimin e energjisë dhe madje edhe kriogjenika
+
+00:53:12.400 --> 00:53:16.240
+ por ka kuptim që këto ekipe do të duhet të jenë në gjendje të komunikojnë me
+
+00:53:16.240 --> 00:53:20.079
+ planeti amë rrjeti i ri do të projektohet
+
+00:53:20.079 --> 00:53:23.760
+ posaçërisht për kushtet hënore në gjendje të përballojnë ekstremin
+
+00:53:23.760 --> 00:53:28.559
+ ndërrimet e temperaturës dhe rrezatimi teknologjia do të përdorë edhe qelizat e vogla
+
+00:53:28.559 --> 00:53:32.800
+ teknologji e cila siç sugjeron emri është dukshëm më e vogël se e gjatë
+
+00:53:32.800 --> 00:53:37.599
+ kullat e qelive që janë mësuar të shohin këtu në tokë ato gjithashtu përdorin shumë më pak
+
+00:53:37.599 --> 00:53:41.200
+ fuqia që plani ka për të kryer një zbarkues hënor
+
+00:53:41.200 --> 00:53:44.480
+ sistemi i komunikimit 4g në sipërfaqen hënore
+
+00:53:44.480 --> 00:53:50.400
+ në vitin 2022 laboratorëve të ziles së Nokia-s u janë dhënë 14.1 milion dollarë
+
+00:53:50.400 --> 00:53:55.119
+ nga ana e tyre një teknologji e re e karikimit pa tel 80 vat nga
+
+00:53:55.119 --> 00:53:58.880
+ xiaomi po na fryn mendjen dhe mjedrën pi
+
+00:53:58.880 --> 00:54:03.839
+ llogarit moduli 4 është lëshuar ne do t'ju njoftojmë specifikat dhe si
+
+00:54:03.839 --> 00:54:08.480
+ kjo i ndryshon gjërat për industriale becca ka këto histori që vijnë plus
+
+00:54:08.480 --> 00:54:25.839
+ roberti eshte ketu me cepin e kriptos mos shko askund
+
+00:54:28.079 --> 00:54:32.079
+ mirëseardhja përsëri në botën e kriptos dhe mirëseardhja përsëri në këndin e kriptos
+
+00:54:32.079 --> 00:54:35.920
+ javën e kaluar kemi folur për bankat pas disa vitesh që ju nuk do t'i njihni ato
+
+00:54:35.920 --> 00:54:39.839
+ më dhe gjithashtu ju përmenda jo shumë kohë
+
+00:54:39.839 --> 00:54:43.119
+ më parë monedha dixhitale kineze që do
+
+00:54:43.119 --> 00:54:46.720
+ zëvendësojnë bletën riemann dhe se ata tashmë e kanë zbatuar atë dhe
+
+00:54:46.720 --> 00:54:50.400
+ ata po zhvillojnë disa prova në Shenzhen tani këtë javë
+
+00:54:50.400 --> 00:54:54.400
+ ka pasur një zhvillim dhe unë do të doja të flisja për këtë sepse
+
+00:54:54.400 --> 00:54:58.319
+ do të ketë një ndikim të drejtpërdrejtë në jetën tuaj dhe jetën time
+
+00:54:58.319 --> 00:55:03.760
+ le të zhytemi në këtë këtu fondi monetar ndërkombëtar
+
+00:55:03.760 --> 00:55:08.400
+ e asaj organizate ndërkombëtare është një zonjë e quajtur cristalina jojeva dhe
+
+00:55:08.400 --> 00:55:11.359
+ ajo mbajti një fjalim në lidhje me pyjet e reja të Bretton
+
+00:55:11.359 --> 00:55:14.240
+ moment tani çfarë ishte një Britani e Bretton Woods
+
+00:55:14.240 --> 00:55:17.440
+ sistemi është vendosur menaxhim monetar
+
+00:55:17.440 --> 00:55:21.760
+ rregullat e marrëdhënieve financiare tregtare ndërmjet
+
+00:55:21.760 --> 00:55:25.920
+ vende si ne canada europe perëndimore Australi dhe Japoni
+
+00:55:25.920 --> 00:55:31.520
+ dhe kështu është sistemi ishte shembulli i parë i një urdhri plotësisht të negociuar
+
+00:55:31.520 --> 00:55:36.640
+ synonte të qeveriste marrëdhëniet monetare midis shteteve të pavarura kështu që ishte
+
+00:55:36.640 --> 00:55:40.079
+ Bretton Woods dhe ajo po flet për ndryshimin e
+
+00:55:40.079 --> 00:55:45.760
+ ai sistem në diçka më moderne tani mjaft interesant
+
+00:55:45.760 --> 00:55:51.200
+ të hënën ka pasur një takim me disa bankierë qendrorë duke folur për të ashtuquajturit
+
+00:55:51.200 --> 00:55:56.319
+ pagesa ndërkufitare por nëse e mendoni shikoni se çfarë lloji
+
+00:55:56.319 --> 00:55:59.520
+ të njerëzve ata ishin të pranishëm kështu që ju keni marrë kokën e
+
+00:55:59.520 --> 00:56:03.040
+ banka qendrore saudite keni drejtuar të gjitha qendrat
+
+00:56:03.040 --> 00:56:06.480
+ bankat kreu i FMN kreu i us
+
+00:56:06.480 --> 00:56:10.319
+ banka qendrore dhe kreu i bankës qendrore malajziane që mungon është
+
+00:56:10.319 --> 00:56:13.200
+ evropa e cila është interesante, por do të ketë një arsye
+
+00:56:13.200 --> 00:56:16.880
+ kështu që ata u takuan së bashku për të biseduar në lidhje me pagesat bruto të ujit
+
+00:56:16.880 --> 00:56:21.920
+ tani nuk besoj se kjo është një histori e vërtetë historia e vërtetë
+
+00:56:21.920 --> 00:56:26.079
+ uh u botua gjithashtu nga një zotëri i quajtur raul paul
+
+00:56:26.079 --> 00:56:31.119
+ me të cilën unë pajtohem plotësisht, kështu që mendimet e tij janë saktësisht se si po mendoj
+
+00:56:31.119 --> 00:56:35.520
+ dhe ajo për të cilën ai po flet është pikërisht ky takim që ndodhi të hënën
+
+00:56:35.520 --> 00:56:39.119
+ që do të zëvendësojë marrëdhëniet e vjetra të Bretton Woods
+
+00:56:39.119 --> 00:56:46.319
+ midis vendeve kështu që çfarë do të ndodhë duket se bankat qendrore
+
+00:56:46.319 --> 00:56:50.720
+ do të bashkëpunojnë dhe do të vijnë me një sistem
+
+00:56:50.720 --> 00:56:54.000
+ një sistem i bankës qendrore midis të gjithë atyre kështu që nuk do të ekzistojë një ne
+
+00:56:54.000 --> 00:56:56.640
+ dollar i sistemit të bankës qendrore do të ketë një të tillë
+
+00:56:56.640 --> 00:56:59.680
+ për secilën për të gjitha organizatat dhe pastaj nga
+
+00:56:59.680 --> 00:57:04.160
+ atje do të diversifikohet dhe me çfarë mund të bësh
+
+00:57:04.160 --> 00:57:06.319
+ një sistem i tillë është pjesa interesante dhe
+
+00:57:06.319 --> 00:57:13.520
+ Unë e dua këtë, kështu që do të ndryshojë anashkalimin e bankave dhe financave
+
+00:57:13.520 --> 00:57:17.920
+ sistemi fiskal sepse drejtpërdrejt po ndërveproni me njerëzit
+
+00:57:17.920 --> 00:57:22.160
+ po kështu që nuk është si në momentin kur banka qendrore në SHBA apo
+
+00:57:22.160 --> 00:57:26.720
+ Kanada nuk ka rëndësi del me disa politika dhe pastaj
+
+00:57:26.720 --> 00:57:32.400
+ shkon ajo rrjedh poshtë um zinxhir dhe ju si individ
+
+00:57:32.400 --> 00:57:35.440
+ përdorues ju ndoshta shihni sasinë më të vogël të
+
+00:57:35.440 --> 00:57:37.680
+ para dhe ndoshta me normën më të lartë të interesit
+
+00:57:37.680 --> 00:57:42.559
+ që ju mund të mendoni për njerëzit e tjerë do të përfitojnë shumë më të fortë me dixhital
+
+00:57:42.559 --> 00:57:46.799
+ para plus kriptovaluta ose të programueshme
+
+00:57:46.799 --> 00:57:50.400
+ para mund të bësh shumë më tepër sepse tani
+
+00:57:50.400 --> 00:57:55.839
+ banka qendrore mund të ndikojë drejtpërdrejt në sjelljen e njerëzve dhe si i bëjnë ata
+
+00:57:55.839 --> 00:58:00.400
+ bëje atë po ata mund të thonë mirë nëse je pronar restorantesh mundesh ti
+
+00:58:00.400 --> 00:58:03.839
+ merrni paratë direkt në xhepin tuaj nga ne po kështu që jo më shumë
+
+00:58:03.839 --> 00:58:08.079
+ bankat e përfshira ne do ta bëjmë direkt është e mundur që janë para të bankës qendrore
+
+00:58:08.079 --> 00:58:12.240
+ ato mund të ndryshojnë normat e interesit kështu që në një rast uh ose një industri ata
+
+00:58:12.240 --> 00:58:16.480
+ çfarë mund të ketë interes të lartë se një um tjetër
+
+00:58:16.480 --> 00:58:19.839
+ me taksa po çfarë do të ndodhë me timen
+
+00:58:19.839 --> 00:58:22.079
+ sepse ata mund të merren me këto gjëra drejtpërdrejt
+
+00:58:22.079 --> 00:58:25.200
+ përmes parave të programueshme do të duhet kohë
+
+00:58:25.200 --> 00:58:28.799
+ për ta arritur atë në atë masë maksimale por do të ndodhë
+
+00:58:28.799 --> 00:58:34.640
+ siç mund ta shihni, kështu që pagesat direkte do të jenë të mundshme
+
+00:58:34.799 --> 00:58:41.119
+ ata po flasin këtu edhe për ekonominë e sjelljes um yeah po kështu
+
+00:58:41.119 --> 00:58:45.359
+ jo përmes disa ekonomistëve që po tregojnë
+
+00:58:45.359 --> 00:58:49.200
+ qeveria çfarë të bëjë dhe çfarë të mos bëjë sepse kjo ka dështuar në
+
+00:58:49.200 --> 00:58:52.160
+ kaluar të gjithë duke thënë kështu që çfarë ata janë duke shkuar
+
+00:58:52.160 --> 00:58:56.400
+ të bësh është si një lloj ideje në facebook ose tik-tak idenë ose
+
+00:58:56.400 --> 00:58:59.520
+ ide në youtube ku jeni të interesuar për njerëzit
+
+00:58:59.520 --> 00:59:03.280
+ duke u miqësuar me ju ose atje ku njerëzit ju interesojnë
+
+00:59:03.280 --> 00:59:06.799
+ duke marrë më shumë pëlqime dhe kështu ju të ndryshoni sjelljen tuaj në
+
+00:59:06.799 --> 00:59:10.079
+ në lidhje me marrjen e më shumë pëlqimeve dhe të njëjtën gjë
+
+00:59:10.079 --> 00:59:13.839
+ do të ndodhë me paratë kështu dhe që do të rregullohen të gjitha
+
+00:59:13.839 --> 00:59:17.680
+ përmes bankës qendrore pa askënd nga bota e jashtme
+
+00:59:17.680 --> 00:59:22.000
+ të kesh një shans për të pasur një ndikim të rëndësishëm kështu që si
+
+00:59:22.000 --> 00:59:26.079
+ do të duket si në fund askush nuk e di sigurisht por që këto
+
+00:59:26.079 --> 00:59:31.200
+ njerëzit po takohen së bashku për të diskutuar pagesa me porosi është diçka që i
+
+00:59:31.200 --> 00:59:36.079
+ gjeni uh shumë interesante dhe sigurisht që është një lajm fantastik
+
+00:59:36.079 --> 00:59:39.040
+ për uh bitcoin sepse bitcoin është jashtë kësaj
+
+00:59:39.040 --> 00:59:44.839
+ sistemi nuk ka askush që mund të rregullojë uh bitcoin është
+
+00:59:44.839 --> 00:59:48.400
+ decentralizuar um është e pandryshueshme mirë, ju i dini të gjitha
+
+00:59:48.400 --> 00:59:54.079
+ tiparet e uh bitcoin kështu që um bitcoin është një alternativë fantastike
+
+00:59:54.079 --> 00:59:57.839
+ të gjitha kriptovalutat e tjera ato kryesore janë padyshim një alternativë e mirë
+
+00:59:57.839 --> 01:00:02.000
+ le të shohim se çfarë biblioteka do të sjellë por do të ketë disa alternativa të mira
+
+01:00:02.000 --> 01:00:06.480
+ të um në qendër uh nga qendra
+
+01:00:06.480 --> 01:00:11.359
+ drejtuar paratë përmes bankave qendrore, kështu që unë shpresoj se ju duket se interesante dhe
+
+01:00:11.359 --> 01:00:14.559
+ shpresoj se të ka pëlqyer dhe shpresoj të marr një mungesë nga ti
+
+01:00:14.559 --> 01:00:18.799
+ dhe ju uroj nje jave fantastike keshtu faleminderit shume qe keni shikuar
+
+01:00:18.799 --> 01:00:23.200
+ mirupafshim faleminderit robert vetëm një kujtesë që nuk po japim këshilla financiare
+
+01:00:23.200 --> 01:00:26.400
+ por vetëm duke ndarë atë që po ndodh në tregun e kriptovalutave
+
+01:00:26.400 --> 01:00:29.599
+ gjithmonë mbani mend se tregjet e kriptovalutave janë gjithnjë në ndryshim dhe
+
+01:00:29.599 --> 01:00:33.920
+ gjithmonë e paqëndrueshme kështu që ju duhet të shpenzoni vetëm atë që keni mundësi të humbni
+
+01:00:33.920 --> 01:00:38.720
+ tani kthehemi te becca në redaksi faleminderit robbie
+
+01:00:38.720 --> 01:00:42.799
+ xiaomi ka njoftuar një kontroll të ri të karikimit që mund të karikojë plotësisht një të varfëruar
+
+01:00:42.799 --> 01:00:48.480
+ smartphone në më pak se 20 minuta, por e bën atë pa asnjë tela shpejt
+
+01:00:48.480 --> 01:00:52.480
+ karikimi është bërë një tipar kryesor i shumë telefonave inteligjentë vitet e fundit dhe për të
+
+01:00:52.480 --> 01:00:56.160
+ për lehtësi karikimi pa tel mund të jetë vërtet i shkëlqyeshëm
+
+01:00:56.160 --> 01:00:59.920
+ por sigurisht që karikimi pa tel në mënyrë tipike karikon një telefon mes
+
+01:00:59.920 --> 01:01:05.359
+ 10 deri në 15 vat energji që kanë disa telefona si oneplus 8 pro
+
+01:01:05.359 --> 01:01:10.160
+ karikim pa tel deri në 40 watts por premtimet e reja të teknologjisë së karikimit të xiaomi
+
+01:01:10.160 --> 01:01:14.240
+ 80 vat lëng dajak
+
+01:01:14.240 --> 01:01:18.319
+ çfarë do të thotë kjo në terma praktikë mirë sipas njoftimit
+
+01:01:18.319 --> 01:01:22.160
+ duke zbuluar teknologjinë e karikimit pa tel 80 vat me
+
+01:01:22.160 --> 01:01:26.720
+ një smartphone me karikim zero për qind të një baterie katër mijë miliamp orë
+
+01:01:26.720 --> 01:01:30.160
+ do të ngarkojë dhjetë përqind në vetëm një minutë pesëdhjetë përqind
+
+01:01:30.160 --> 01:01:34.160
+ në tetë minuta dhe karikohet plotësisht pas 19 minutash
+
+01:01:34.160 --> 01:01:37.599
+ më në fund një karikues që do të karikojë telefonin tim
+
+01:01:37.599 --> 01:01:43.359
+ nga zero deri në njëqind përqind ashtu si pushimi im i drekës shoh se është bukur
+
+01:01:43.359 --> 01:01:48.079
+ ai është një ndërrues loje, a mund ta imagjinoni mendoj për fëmijët e mi dhe si kemi
+
+01:01:48.079 --> 01:01:51.440
+ si telefona kudo padyshim që dua të them se kjo është për të marrë si
+
+01:01:51.440 --> 01:01:56.319
+ teknologjia më e fundit dhe më e shkëlqyera, por gjithmonë është një rast i harruar
+
+01:01:56.319 --> 01:01:59.520
+ vendos telefonin tim në karikues ose nuk zgjat mjaftueshëm për tërë
+
+01:01:59.520 --> 01:02:02.720
+ dite dhe tani qe e dini me pandemine sigurisht timen
+
+01:02:02.720 --> 01:02:07.599
+ fëmijët po shkollohen në shtëpi tani me forcë dhe të gjithë janë në rregull
+
+01:02:07.599 --> 01:02:11.839
+ pajisjet e tyre gjatë gjithë kohës kështu që kemi takime zmadhimi që ndodhin në telefona
+
+01:02:11.839 --> 01:02:15.599
+ dhe dhe ajo funksionon e zbraz baterinë po
+
+01:02:15.599 --> 01:02:21.440
+ por ajo që më pëlqen është se është pa tel, nuk është vetëm me tela që është mahnitëse po
+
+01:02:21.440 --> 01:02:24.480
+ është pa tel që është e madhe si ideja që
+
+01:02:24.480 --> 01:02:27.200
+ Unë mund të marrë telefonin tim nuk duhet të shqetësohen për ngarkuesit dhe
+
+01:02:27.200 --> 01:02:30.960
+ thjesht shkoni thjesht vendoseni poshtë vendoseni poshtë 20 minuta më vonë jam mirë të shkoj
+
+01:02:30.960 --> 01:02:34.000
+ se unë dua gjënë tjetër që unë dua në lidhje me të
+
+01:02:34.000 --> 01:02:40.480
+ koncepti është që um unë mendoj për të ashtu siç bëtë nëse do të mundja
+
+01:02:40.480 --> 01:02:43.359
+ vendoseni poshtë në një tavolinë, po sikur të mund ta vendosnit në një
+
+01:02:43.359 --> 01:02:47.680
+ tryeza e restorantit po sepse shume restorante kane shkuar ne rruge dhe une jam
+
+01:02:47.680 --> 01:02:50.799
+ duke përdorur restorantet si shembull, por shumë vende kanë shkuar në rrugën e tyre
+
+01:02:50.799 --> 01:02:54.480
+ duke vendosur usb po që të mund të futni usb-in tuaj
+
+01:02:54.480 --> 01:02:58.640
+ kabllo për të ngarkuar telefonin tuaj, por më pas papritmas njerëzit morën
+
+01:02:58.640 --> 01:03:03.200
+ e mençur për faktin se oh ato porte usb mund të jenë me qëllim të keq
+
+01:03:03.200 --> 01:03:06.319
+ sepse usb gjithashtu mbart të dhëna ose është e drejtë
+
+01:03:06.319 --> 01:03:10.000
+ kush e di nëse është shumë volt dhe se ju e dini mbase është
+
+01:03:10.000 --> 01:03:13.280
+ kam një të shkurtër apo diçka të tillë dhe mund të skuq telefonin tim
+
+01:03:13.280 --> 01:03:17.039
+ kështu që papritmas kemi frikë të futemi në portin USB sepse hej
+
+01:03:17.039 --> 01:03:20.400
+ mund të jetë diçka e keqe që është mirë
+
+01:03:20.400 --> 01:03:24.960
+ karikimi pa tel ju e ulni atë ngarkohet dhe ju e merrni atë dhe ju jeni
+
+01:03:24.960 --> 01:03:28.240
+ bërë po, por ju mund ta vendosni atë për të ngjashme
+
+01:03:28.240 --> 01:03:31.119
+ tre minuta dhe ju është dhënë një ngarkesë e mjaftueshme për të kaluar pjesën më të madhe të
+
+01:03:31.119 --> 01:03:35.680
+ pasdite e cila është e jashtëzakonshme e tmerrshme ii mendoj
+
+01:03:35.680 --> 01:03:40.559
+ ashtu si ai do të thotë që ju shikoni përreth tani dhe keni të gjitha këto stacione të ngarkuar për të
+
+01:03:40.559 --> 01:03:44.079
+ automjete elektrike do të ishte mirë të fillosh të shohësh pak
+
+01:03:44.079 --> 01:03:48.640
+ pop-up në vende publike me këtë lloj sendi ku mund të vendosni fjalë për fjalë
+
+01:03:48.640 --> 01:03:52.880
+ telefoni juaj është ulur për pesë minuta dhe keni mjaftueshëm për të pasur një telefonatë
+
+01:03:52.880 --> 01:03:56.319
+ merrni ndihmë ose çfarëdo tjetër dhe e gjitha është pa tel, unë vetëm në foto
+
+01:03:56.319 --> 01:04:01.760
+ si një rrugë e gjatë dhe vendosi marrësin në makinë dhe atë
+
+01:04:01.760 --> 01:04:05.599
+ rimbush makinën autonome ndërsa lëviz mbi këtë
+
+01:04:05.599 --> 01:04:08.230
+ gjë kush po hyjmë në teknologji tani njerëz
+
+01:04:08.230 --> 01:04:11.520
+ [Të qeshura] ende më pëlqen jam i ngazëllyer për këtë
+
+01:04:11.520 --> 01:04:15.839
+ gjë e çmendur është vetëm në përfundim është se ndërsa ajo që unë vetëm
+
+01:04:15.839 --> 01:04:18.319
+ tha është shumë sci-fi si kur ishim në rritje
+
+01:04:18.319 --> 01:04:21.599
+ lart që ishte si e ardhmja është plotësisht e mundur është
+
+01:04:21.599 --> 01:04:25.920
+ e mundur tani po qe eshte qesharake mjedra pi
+
+01:04:25.920 --> 01:04:31.200
+ fondacioni ka nisur një modul llogaritës me specifikat e një mjedre pi 4.
+
+01:04:31.200 --> 01:04:35.119
+ themeli i mjedrës pi lançoi një produkt të ri të hënën e komp
+
+01:04:35.119 --> 01:04:39.440
+ moduli i llogaritjes 4. është e vështirë të besohet se ka kaluar kaq shumë kohë por
+
+01:04:39.440 --> 01:04:43.359
+ raspberry pi 4 u lëshua në qershor 2019
+
+01:04:43.359 --> 01:04:48.079
+ moduli i llogaritjes 4 sjell pi 4 në hapësirën industriale të iot
+
+01:04:48.079 --> 01:04:52.240
+ duke shfaqur të njëjtin procesor të paketuar në një modul llogaritës
+
+01:04:52.240 --> 01:04:57.200
+ thjesht duke u lutur që të integrohen në pajisje të fuqishme iot
+
+01:04:57.200 --> 01:05:00.880
+ nëse nuk jeni të njohur me modulet e llogaritjes mund t'i mendoni si të tilla
+
+01:05:00.880 --> 01:05:05.280
+ kompjutera me një bord pa të gjitha portet dhe kunjat e gpio
+
+01:05:05.280 --> 01:05:09.440
+ ato lejojnë që përbërësit e kompjuterit të jenë trurin e një mjedre pi
+
+01:05:09.440 --> 01:05:13.920
+ të integruara në grupe të teknologjisë së krijuesit të pajisjeve inteligjente të robotikës
+
+01:05:13.920 --> 01:05:16.400
+ çdo gjë që ju mund të gjeni me të cilën kërkon një gjë të vogël
+
+01:05:16.400 --> 01:05:22.240
+ kompjuteri linux me fuqi të ulët në zemrën e tij pasi moduli i llogaritjes 4 ndan atë
+
+01:05:22.240 --> 01:05:26.400
+ specifikimet me mjedër pi 4 zhvilluesit mund të bëjnë të gjithë prototipizimin e tyre
+
+01:05:26.400 --> 01:05:30.319
+ në pi 4 sbc por pastaj porosit një bandë të modulit llogaritës
+
+01:05:30.319 --> 01:05:33.520
+ 4s për t'u integruar në produktin e tyre komercial
+
+01:05:33.520 --> 01:05:38.559
+ ashtu si mjedra pi 4, moduli i llogaritjes 4 përmban një krah 64-bit të bazuar
+
+01:05:38.559 --> 01:05:42.400
+ procesor me grafikë video core vi është ky
+
+01:05:42.400 --> 01:05:45.520
+ do të përfaqësojë një azhurnim të madh për llogaritjen e mëparshme
+
+01:05:45.520 --> 01:05:49.839
+ klientët e modulit dhe me dalje video 4k deri në
+
+01:05:49.839 --> 01:05:55.039
+ 60 korniza për sekondë plus aftësinë për të deshifruar videon h.265
+
+01:05:55.039 --> 01:05:58.480
+ moduli i llogaritjes për modulin e llogaritjes 4
+
+01:05:58.480 --> 01:06:03.039
+ mund të jetë një ndërrues lojërash për pajisje të drejtuara nga multimedia të tilla si televizorë inteligjentë ose
+
+01:06:03.039 --> 01:06:06.960
+ set-top kuti është në dispozicion me modulin llogarit 4
+
+01:06:06.960 --> 01:06:11.599
+ zgjedhja juaj e ramit 1 2 4 ose 8 gigabajt dhe 8 16
+
+01:06:11.599 --> 01:06:18.000
+ ose 32 gigabajt në bordin e ruajtjes së flash-it të wm-fi dhe Bluetooth
+
+01:06:18.000 --> 01:06:21.440
+ janë gjithashtu opsionale çmimi varion nga vetëm 25
+
+01:06:21.440 --> 01:06:27.599
+ në 90 usd tani imagjinoni se jeff the mjedër pi llogarit modulin 4
+
+01:06:27.599 --> 01:06:31.359
+ po në një nga projektet tuaja sbc ose diçka të tillë që e fuqizon atë si
+
+01:06:31.359 --> 01:06:33.920
+ truri ky është mjaft emocionues sa më shpejt
+
+01:06:33.920 --> 01:06:39.440
+ becca tha dekodimin h.265 kështu që është si video që është
+
+01:06:39.440 --> 01:06:43.760
+ shumë CPU po vërtet që është e mrekullueshme siç thotë shumë
+
+01:06:43.760 --> 01:06:50.000
+ kjo është më shumë fuqi se serveri im plex po që pëlqen kush e di se ku është kjo
+
+01:06:50.000 --> 01:06:54.720
+ do t'i marr gjërat më pëlqen ideja e llogaritjes së grupeve
+
+01:06:54.720 --> 01:06:58.480
+ dhe këtu ju merrni disa kompjuterë
+
+01:06:58.480 --> 01:07:01.520
+ lidhni ato së bashku përmes rrjeteve dhe
+
+01:07:01.520 --> 01:07:06.559
+ në thelb instaloni softuerin beowulf ose diçka të tillë
+
+01:07:06.559 --> 01:07:09.359
+ i bashkon ato për t'i bërë ata të aftë për të kryer
+
+01:07:09.359 --> 01:07:14.400
+ detyrat së bashku në një mënyrë të tillë që në thelb bën një super kompjuter
+
+01:07:14.400 --> 01:07:19.200
+ menjëherë nga disa kompjuterë kështu që ju mendoni për këto pi mjedër
+
+01:07:19.200 --> 01:07:25.839
+ cl uh ose modulet dhe dhe vendosni si 10 prej tyre së bashku
+
+01:07:25.839 --> 01:07:30.400
+ në një grumbull aa dhe do të donit këtë modul të llogaritjes
+
+01:07:30.400 --> 01:07:34.559
+ grumbull që do të ishte një kompjuter i bukur me kaq shumë fuqi
+
+01:07:34.559 --> 01:07:38.079
+ kur mund të keni tetë koncerte dashi në secilën
+
+01:07:38.079 --> 01:07:43.359
+ kohët e bordit që me 10. një shumë mund të bëjë shumë
+
+01:07:43.359 --> 01:07:47.280
+ po ndryshon gjërat njerëz që bota po ndryshon kjo është e sigurt
+
+01:07:47.280 --> 01:07:50.960
+ çfarë do të bënit me gjithë atë fuqi
+
+01:07:52.160 --> 01:07:55.280
+ dhe heshtja ai po pret që ti të përgjigjesh i
+
+01:07:55.280 --> 01:07:58.480
+ po mendoj se më pëlqen çfarë do të bëja me kaq shumë njerëz
+
+01:07:58.480 --> 01:08:05.119
+ sapo shkoi në miniera të bitcoin djema vjen keq e dini se çfarë është e trishtuar imja
+
+01:08:05.119 --> 01:08:10.880
+ mendimi i parë ishte mund të automatizoj si disa nga
+
+01:08:10.880 --> 01:08:14.000
+ shërbime komunale që kam në kuzhinë për të bërë ushqim për mua
+
+01:08:14.000 --> 01:08:17.600
+ ky ishte mendimi im i parë me një me një modul llogaritës katër
+
+01:08:17.600 --> 01:08:22.319
+ po kërkon më shumë se kaq, por unë e di që mund të jetë truri i një operacioni të tillë
+
+01:08:22.319 --> 01:08:27.759
+ qartë unë jam i uritur edhe pse [Të qeshura]
+
+01:08:27.759 --> 01:08:31.359
+ mendimet tuaja komentojnë më poshtë, ne do të dëshironim të dëgjonim se çfarë do të bënit me një
+
+01:08:31.359 --> 01:08:34.719
+ llogarit modulin për faleminderit për shikimin e kategorisë 5 pikë
+
+01:08:34.719 --> 01:08:38.000
+ redaksia në TV mos harroni të pëlqeni dhe të regjistroheni për të
+
+01:08:38.000 --> 01:08:40.640
+ të gjitha lajmet tuaja teknologjike me një paragjykim të lehtë linux
+
+01:08:40.640 --> 01:08:46.000
+ dhe nëse e vlerësoni atë që bëjmë bëhemi mbrojtës në patreon.com
+
+01:08:46.000 --> 01:08:53.839
+ kategoria 5. nga kategoria 5 pika të lajmeve në TV Unë jam becca ferguson
+
+01:08:55.870 --> 01:09:04.029
+ [Muzika]
+
+01:09:12.400 --> 01:09:16.159
+ mirë që është mjaft shumë gjatë gjithë kohës që kemi këtë javë jeff
+
+01:09:16.159 --> 01:09:21.600
+ javën e kaluar kaluam dhe dhe unë e bëra të gjithë procesin me Fiverr
+
+01:09:21.600 --> 01:09:25.359
+ punësoi disa njerëz për të mund të bëjmë remix tonë po këtu është një qesharake
+
+01:09:25.359 --> 01:09:29.040
+ histori në rregull fjalë për fjalë më trego kur të qesh do
+
+01:09:29.040 --> 01:09:34.960
+ e di cik ai tashmë e bëri ai tashmë qeshi
+
+01:09:34.960 --> 01:09:38.400
+ ketri me rreze mbeturinash ishte një nga djemtë tanë po po
+
+01:09:38.400 --> 01:09:42.560
+ një nga ribërësit tanë dhe ketri letrar
+
+01:09:42.560 --> 01:09:48.319
+ tha që unë vazhdoja të pyesja se kjo është ndërsa ai ishte duke parë funksionin
+
+01:09:48.319 --> 01:09:51.199
+ me pas vazhdoja te pyesja pse ishe
+
+01:09:51.199 --> 01:09:58.159
+ shqiptimi i gabuar i emrit tim o pjellë një ketër kështu që unë kontrollova timen
+
+01:09:58.159 --> 01:10:02.960
+ profili dhe zbulova se e shkruajta gabim oh jo
+
+01:10:02.960 --> 01:10:09.920
+ dhe kurrë nuk e vura re dhe kështu ishte për tre vjet a je serioz
+
+01:10:09.920 --> 01:10:17.600
+ ai thotë se emri im emri i grupit tim është ketri letrar o zoti im që la
+
+01:10:17.600 --> 01:10:21.040
+ në tonë kjo është qesharake kështu që unë ju tregoj këtë histori
+
+01:10:21.040 --> 01:10:25.600
+ shiko eshte qesharake shih te thash ishte qesharake ishte si
+
+01:10:26.000 --> 01:10:29.679
+ Unë ju tregoj këtë histori sepse atëherë thashë me vete mirë
+
+01:10:29.679 --> 01:10:35.120
+ i shoh fjalët dhe i dhe i mendoj në pjesën më të madhe shqiptoj
+
+01:10:35.120 --> 01:10:40.320
+ ato mjaft përpikërisht, kështu që kur shoh letrare edhe pse kjo nuk është një fjalë i
+
+01:10:40.320 --> 01:10:44.800
+ vendosur atë mënyrë që të lexoni të drejtë kështu që unë mendova se unë do të jetë ndoshta një
+
+01:10:44.800 --> 01:10:47.679
+ korrektor mjaft i mirë kështu që thashë atë dreq që do t'i jap
+
+01:10:47.679 --> 01:10:50.960
+ shko kështu që vendos një reklamë që thotë se do të korrigjoj korrekte
+
+01:10:50.960 --> 01:10:54.480
+ teksti juaj 500 fjalë ose më pak për pesë para
+
+01:10:54.480 --> 01:10:57.520
+ në rregull dhe unë isha si ah askush nuk do të shkojë për të
+
+01:10:57.520 --> 01:11:01.840
+ gjithsesi është kënaqësi mendova ta provoja dhe mëngjesin tjetër kisha një email
+
+01:11:01.840 --> 01:11:08.239
+ nga një person në Spanjë që ishte um is
+
+01:11:08.239 --> 01:11:13.120
+ një ndërmjetës sigurimesh në rregull dhe ka një klient që flet anglisht
+
+01:11:13.120 --> 01:11:17.600
+ vendas dhe donte të sigurohej që ai po thoshte gjërat e duhura si përgjigje
+
+01:11:17.600 --> 01:11:21.840
+ në një email kështu që ai hoqi të gjitha gjërat konfidenciale
+
+01:11:21.840 --> 01:11:26.400
+ po dhe më dërgove përgjigjen e tij dhe më tha mund ta kalosh këtë për mua dhe unë
+
+01:11:26.400 --> 01:11:28.400
+ bëra dhe unë kalova dhe i korrigjova disa
+
+01:11:28.400 --> 01:11:31.840
+ gjërat dhe ai kishte disa fjalë që me të vërtetë nuk kishin kuptim në përkthim
+
+01:11:31.840 --> 01:11:35.760
+ dhe kështu e rregullova dhe e korrigjova gramatikën dhe kontekstin dhe pak
+
+01:11:35.760 --> 01:11:39.760
+ të drejtshkrimit dhe ai ishte si ta donte pesë dollarë
+
+01:11:39.760 --> 01:11:42.000
+ më duheshin vërtet 10 minuta dhe ishte thjesht
+
+01:11:42.000 --> 01:11:44.480
+ diçka që bëra me një filxhan kafe gjëja e parë në mëngjes
+
+01:11:44.480 --> 01:11:50.960
+ po dhe ai më dha një rishikim 5 nga 5 që është i mrekullueshëm si nga ai pesëdhjetë
+
+01:11:50.960 --> 01:11:54.480
+ perspektiva rrokullisje kështu që unë jam si kjo është shumë e bukur, kështu që atëherë unë filloj të flas
+
+01:11:54.480 --> 01:11:58.400
+ për fëmijët e mi dhe unë jam si unë duhet të gjejmë nëse si ju djema mund të bëjë gjëra të tjera
+
+01:11:58.400 --> 01:12:01.199
+ atje dhe ti e di a vajza ime është një artist dhe
+
+01:12:01.199 --> 01:12:05.280
+ ajo mund të bënte vizatime për njerëzit që fillojnë të fitojnë para është një lloj i zoti
+
+01:12:05.280 --> 01:12:08.159
+ ide një platformë e zoti nuk e di se për çfarë rregullash bëhet fjalë
+
+01:12:08.159 --> 01:12:11.120
+ si mosha minimale dhe gjëra të tilla, por ne mund t'i shqyrtojmë ato lloje
+
+01:12:11.120 --> 01:12:13.360
+ gjërat por kjo është historia ime për këtë javë është
+
+01:12:13.360 --> 01:12:18.719
+ se hej edhe unë shkova në anën tjetër dhe shita vetë shërbimin që i dhashë
+
+01:12:18.719 --> 01:12:23.120
+ ketri letrar një falas një freebie um por uh
+
+01:12:23.120 --> 01:12:30.000
+ tani unë jam jam në dispozicion për shitje ii ndjehem sikur do të ishte kënaqësi thjesht
+
+01:12:30.000 --> 01:12:34.000
+ ju jap pesë dollarë dhe unë do t'ju dërgoj një dokument me 500 fjalë
+
+01:12:34.000 --> 01:12:38.640
+ të gjithë lorem ipsum dhe vetëm më tregoni nëse ka kuptim unë do të bëj më të mirën
+
+01:12:38.640 --> 01:12:44.000
+ a keni korrigjuar se po mirë, kjo është gjithçka
+
+01:12:44.000 --> 01:12:46.800
+ kjo është gjatë gjithë kohës në rregull, por ka qenë shumë kënaqësi që kam
+
+01:12:46.800 --> 01:12:50.080
+ kënaqur të qenit këtu përsëri me ju këtë javë javën e ardhshme ne jemi duke marrë në 3d
+
+01:12:50.080 --> 01:12:52.560
+ shtypjen kështu që ne do të mbledhim një ender
+
+01:12:52.560 --> 01:12:55.440
+ 3v2 kështu që ne do ta bëjmë së bashku
+
+01:12:55.440 --> 01:12:58.640
+ dhe pastaj do të bëjmë një bisedë për ju e dini se cili ka qenë procesi
+
+01:12:58.640 --> 01:13:03.760
+ si për mua si një noob në fushën e shtypjes 3d kështu
+
+01:13:03.760 --> 01:13:05.760
+ çfarë lloj sfidash kam hasur
+
+01:13:05.760 --> 01:13:09.040
+ dhe a mund të hasni kur të filloni
+
+01:13:09.040 --> 01:13:13.760
+ në shtypjen 3D plus unë do t'ju tregoj jo vetëm shtypjen time të parë
+
+01:13:13.760 --> 01:13:19.440
+ por dizenjot e mia të para në shtyp nuk dëshiron të humbasësh javën e ardhshme
+
+01:13:19.440 --> 01:13:22.960
+ kalofshi nje jave te mbare te gjithe do ju shohim
+
+01:13:24.100 --> 01:13:30.029
+ [Muzikë] [Duartrokitje]
+
+01:13:30.840 --> 01:13:45.060
+ mirupafshim [Muzikë]
+
+01:13:48.290 --> 01:13:56.319
+ [Muzika]
+
+01:14:01.760 --> 01:14:03.840
+ ti
+

@@ -1,0 +1,724 @@
+WEBVTT
+Kind: captions
+Language: is
+
+00:00:03.919 --> 00:00:07.120
+hvort sem þú ert að vonast til að veita þér smá aukið næði á meðan þú vafrar
+
+00:00:07.120 --> 00:00:10.639
+ internetið eða þú vilt fá aðgang að þjónustu sem kannski
+
+00:00:10.639 --> 00:00:17.279
+ eru ekki fáanlegar venjulega á þínu svæði eða kannski er um raun að ræða
+
+00:00:17.279 --> 00:00:22.000
+ lét loka á IP-tölu þína af þjónustuaðila
+
+00:00:22.000 --> 00:00:27.359
+ það er kannski ekki illgjarn hlutur ég hef lokað á IP-tölu mína af youtube áður
+
+00:00:27.359 --> 00:00:31.039
+ vegna þess að ég hleyp inn svo mörgum myndskeiðum og hala niður
+
+00:00:31.039 --> 00:00:37.280
+ myndatexti fyrir þá svo að það hefur leitt til þess að ég fer yfir notkun mína í
+
+00:00:37.280 --> 00:00:42.239
+ youtube api svo að IP-tölu mín verður lokað svo
+
+00:00:42.239 --> 00:00:46.000
+ það þarf ekki að vera illgjarn hlutur ég vil ekki gefa þann svip
+
+00:00:46.000 --> 00:00:52.399
+ en það eru mjög lögmætar ástæður fyrir því að þurfa að komast í kringum þessar tegundir af
+
+00:00:52.399 --> 00:00:58.640
+ hlutirnir og nördarnir fara í er umboð vandamálið er umboðsmenn
+
+00:00:58.640 --> 00:01:02.160
+ getur verið mjög dýrt í notkun og ókeypis
+
+00:01:02.160 --> 00:01:08.240
+ meðan aðgengilegt er mjög oft annaðhvort ekki mjög áreiðanlegt, þá er það upp á eitt
+
+00:01:08.240 --> 00:01:11.360
+ daginn líður þeim næsta og þú missir aðgang að þjónustunni þinni
+
+00:01:11.360 --> 00:01:18.320
+ og allt annað eða jafnvel það sem verra er að þeir eru hættulegir þú veist ekki hvað
+
+00:01:18.320 --> 00:01:24.479
+ þessi umboð eru að fylgjast með skógarhöggi og jafnvel eins og hlerun
+
+00:01:24.479 --> 00:01:28.640
+ þegar þú ert að fara í gegnum sendirðu alla netumferð þína
+
+00:01:28.640 --> 00:01:36.159
+ í gegnum þann þjónustuaðila svo það er ein manneskja sem ég treysti virkilega
+
+00:01:36.159 --> 00:01:44.079
+ að setja umboð allra gagna minna og það er ég, ég er ekki sami aðilinn
+
+00:01:44.079 --> 00:01:49.360
+ að þú myndir segja að þú treystir manneskjunni sem þú treystir er þú svo ég er
+
+00:01:49.360 --> 00:01:54.399
+ ætla að sýna þér hvernig ég gæti sett upp ókeypis umboðsþjónustu
+
+00:01:54.399 --> 00:02:00.000
+ af mínum eigin og þú getur endurtekið það og búið til þitt eigið líka
+
+00:02:00.000 --> 00:02:03.200
+ við gerum þetta í skýinu og við munum nota þjónustu þriðja aðila
+
+00:02:03.200 --> 00:02:06.399
+ veitandi og það er amazon svo þú segir oh well
+
+00:02:06.399 --> 00:02:09.440
+ amazon hvað um þig veistu að við getum treyst gögnum okkar
+
+00:02:09.440 --> 00:02:13.440
+ þeim vel það sem við erum að nota er skýjaþjónustan þeirra það kallast amazon
+
+00:02:13.440 --> 00:02:17.520
+ vefþjónusta svo það er allt þeirra það er þeirra ský
+
+00:02:17.520 --> 00:02:22.000
+ innviði sem þeir hafa fyrir viðskiptavini að leigja í grundvallaratriðum
+
+00:02:22.000 --> 00:02:25.120
+ aðgangur að netþjónum þeirra og rými þeirra og
+
+00:02:25.120 --> 00:02:28.640
+ og sýndarþjónarnir og allt hitt sem allt
+
+00:02:28.640 --> 00:02:34.959
+ uppbygging er í boði fyrir þig en dreifingin sjálf
+
+00:02:34.959 --> 00:02:39.840
+ þitt ég ætla að sýna þér hvernig þetta er gert við munum hoppa á aws
+
+00:02:39.840 --> 00:02:45.920
+ og sérstaklega ec2 svo auðvitað þú ef þú þekkir ekki aws bara
+
+00:02:45.920 --> 00:02:50.160
+ farðu á aws.amazon.com skráðu þig inn með Amazon reikningnum þínum og
+
+00:02:50.160 --> 00:02:55.519
+ leitaðu síðan að ec2 og það tekur þig inn
+
+00:02:55.519 --> 00:02:58.959
+ í grundvallaratriðum hugsa virtualization vettvangur þeirra um ec2 sem
+
+00:02:58.959 --> 00:03:02.800
+ bara það svo það fyrsta sem ég tek eftir þegar ég er hér
+
+00:03:02.800 --> 00:03:08.480
+ í ec2 er mitt svæði og þetta er mikilvægt vegna þess að þetta er þar umboð mitt
+
+00:03:08.480 --> 00:03:13.360
+ netþjónninn er að fara að búa ætti ég að setja hann þar af hverju er það
+
+00:03:13.360 --> 00:03:16.720
+ mikilvægt og hugsaðu um þetta segjum að ég sé að nota vídeóstreymi
+
+00:03:16.720 --> 00:03:20.959
+ þjónustu sem takmarkar kanadískan aðgang að myndbandinu
+
+00:03:20.959 --> 00:03:24.720
+ streymisþjónustu svo með því að setja umboðsmiðlarann ​​minn niðri í norðri
+
+00:03:24.720 --> 00:03:28.640
+ Kalifornía núna allt í einu eru þau í rauninni
+
+00:03:28.640 --> 00:03:31.599
+ eftir IP tölu að fara að halda að ég sé að tengjast frá
+
+00:03:31.599 --> 00:03:34.640
+ Kaliforníu svo ég er fær um að vinna í kringum það
+
+00:03:34.640 --> 00:03:37.920
+ á sama hátt gætirðu viljað breyta þínu svæði miðað við
+
+00:03:37.920 --> 00:03:42.480
+ hvað það er sem þú ert að reyna að ná geturðu jafnvel sett netþjón í afríku
+
+00:03:42.480 --> 00:03:45.760
+ eða Asía horfðu á að þú getur sett einn rétt í Hong Kong
+
+00:03:45.760 --> 00:03:49.440
+ þú getur sett einn í Kanada og uh í Evrópu sem þú átt
+
+00:03:49.440 --> 00:03:55.040
+ út um allt og þá erum við komin með Mið-Austurlönd og Suður Ameríku núna
+
+00:03:55.040 --> 00:03:58.080
+ svo það er ansi stór listi yfir hvar þeir
+
+00:03:58.080 --> 00:04:00.080
+ láta setja upp þessa innviði fyrir amazon
+
+00:04:00.080 --> 00:04:03.920
+ vefþjónusta ec2 þjónustan svo veldu þann sem
+
+00:04:03.920 --> 00:04:07.200
+ er þar sem þú vilt að umboðsmiðlarinn þinn sé
+
+00:04:07.200 --> 00:04:10.879
+ ég ætla að stilla mína ég ætla bara að láta það vera eins og norður Kalifornía sem er
+
+00:04:10.879 --> 00:04:14.560
+ okkur vestur eitt og það er þar sem
+
+00:04:14.560 --> 00:04:19.040
+ umboðsmiðlarinn minn mun búa þar sem gerir mér kleift að tengjast
+
+00:04:19.040 --> 00:04:22.880
+ eins og ég hafi í raun setið í Kaliforníu
+
+00:04:22.880 --> 00:04:26.160
+ allt í lagi svo ég ætla að smella á launch dæmi
+
+00:04:26.160 --> 00:04:30.160
+ og ræst síðan dæmi aftur því það fellur niður og þetta gefur mér
+
+00:04:30.160 --> 00:04:34.720
+ lista yfir um stýrikerfi sem ég get dreift
+
+00:04:34.720 --> 00:04:39.040
+ á ec2 dæmi mínu svo ég er að nota nokkur hugtök hér sem þú þekkir kannski ekki
+
+00:04:39.040 --> 00:04:42.080
+ aws er amazon vefþjónusta það er í rauninni
+
+00:04:42.080 --> 00:04:46.560
+ fullt þjónustusvið Amazon sem þeir bjóða
+
+00:04:46.560 --> 00:04:52.000
+ fyrir notendur skýja er ec2 sýndarvettvangur þeirra fyrir sýndar
+
+00:04:52.000 --> 00:04:55.840
+ vélar þegar ég sagði dæmi ég er að tala um a
+
+00:04:55.840 --> 00:05:00.160
+ sýndarvél svo það er bókstaflega sýndarvél
+
+00:05:00.160 --> 00:05:03.919
+ svo ég ætla að dreifa einu af þessum stýrikerfum í dæmi um ec2
+
+00:05:03.919 --> 00:05:06.560
+ sem er sýndarvél svo hvað vil ég hafa hana
+
+00:05:06.560 --> 00:05:10.960
+ að vera það og ég var að segja hey comment hér að neðan ef
+
+00:05:10.960 --> 00:05:12.639
+ ég nota hugtak sem þú þekkir ekki
+
+00:05:12.639 --> 00:05:15.600
+ ég ætla að gera skyndileit, ég hef þegar gert það áður vegna þess að ég sendi tonn af
+
+00:05:15.600 --> 00:05:18.960
+ netþjóna í skýinu, ég ætla að smella á debian
+
+00:05:18.960 --> 00:05:21.360
+ uh sláðu bara inn debian í leitina hérna
+
+00:05:21.360 --> 00:05:27.600
+ svo þá ætla ég að fara í aws markaðsniðurstöður það eru líka
+
+00:05:27.600 --> 00:05:30.960
+ þær sem ég hef búið til og þær í samfélaginu
+
+00:05:30.960 --> 00:05:34.000
+ þú myndir halda að jæja, ég vil nota samfélagið sjálfur vel nei ekki vegna
+
+00:05:34.000 --> 00:05:37.919
+ þeir ætla að kosta þig peninga og þú segir vel en samfélagið er ókeypis
+
+00:05:37.919 --> 00:05:42.800
+ það er opinn uppspretta og já þó það er um ekki hluti af aws
+
+00:05:42.800 --> 00:05:45.919
+ markaðstorg og svo verður þú að borga fyrir notkunina
+
+00:05:45.919 --> 00:05:49.600
+ að hafa þessa sýndarvél í gangi
+
+00:05:49.600 --> 00:05:52.639
+ í skýinu svo í staðinn ætlum við að nota einn af þeim opinberu frá
+
+00:05:52.639 --> 00:05:56.800
+ aws marketplace við skulum sjá hvaða árangur við fáum þeir eru flokkaðir nokkuð vel
+
+00:05:56.800 --> 00:06:00.400
+ debian kemur upp fyrsta niðurstaðan er debian 10 buster
+
+00:06:00.400 --> 00:06:04.479
+ samhæft ókeypis þrep eða gjaldfrjálst þrep
+
+00:06:04.479 --> 00:06:09.039
+ útgáfa af debian sem við erum að fara að dreifa svo veldu það
+
+00:06:09.039 --> 00:06:12.720
+ gjaldfrjálst flokkaupplýsingar svo við getum hunsað verðlagninguna vegna þess að við ætlum að nota a
+
+00:06:12.720 --> 00:06:16.560
+ ókeypis flokkauppstreymi heldur áfram og það er þar sem við veljum það svo vel
+
+00:06:16.560 --> 00:06:20.000
+ ef við viljum ókeypis flokkinn verðum við að fara með t2 micro svo
+
+00:06:20.000 --> 00:06:24.080
+ ég ætla að velja það en hvað gefur það okkur það gefur okkur eina CPU
+
+00:06:24.080 --> 00:06:29.520
+ eitt gígabæti af minni um og svo höfum við geymslu til að takast á við
+
+00:06:29.520 --> 00:06:33.199
+ við þurfum ekki mikla geymslu því við erum bara að setja upp grunnumboð
+
+00:06:33.199 --> 00:06:36.639
+ og það er um það svo ég ætla að dreifa eins og
+
+00:06:36.639 --> 00:06:40.080
+ að svo t2 micro er sá sem er ókeypis tier
+
+00:06:40.080 --> 00:06:43.440
+ gjaldgengir ekki velja einn af þeim stærri vegna þess að þú ert að borga
+
+00:06:43.440 --> 00:06:45.919
+ fyrir það strax ætla ég að rifja upp og
+
+00:06:45.919 --> 00:06:50.080
+ sjósetja við munum koma aftur til að gera stillingar eins og öryggishópa okkar og
+
+00:06:50.080 --> 00:06:51.759
+ svona hluti ég ætla bara að láta allt eftir mér
+
+00:06:51.759 --> 00:06:54.880
+ sjálfgefið í bili og við ætlum að koma því af stað
+
+00:06:54.880 --> 00:06:58.479
+ fyrst af öllu þarf ég að búa til nýtt lykilpar svo þetta er
+
+00:06:58.479 --> 00:07:02.720
+ ssh lykilinn sem ég ætla að nota til þess að ssh inn
+
+00:07:02.720 --> 00:07:06.800
+ þessi netþjónn svo ég ætla að hringja í þetta eina umboð
+
+00:07:06.800 --> 00:07:11.120
+ miðlara og hlaðið síðan niður lykilparinu mínu og vertu viss um að vista það einhvers staðar öruggt
+
+00:07:11.120 --> 00:07:14.960
+ ég ætla að henda því á netþjóninn minn og sleppa því
+
+00:07:14.960 --> 00:07:19.199
+ þar og nú sjósetja dæmi þýðir máttur
+
+00:07:19.199 --> 00:07:23.680
+ á sýndarvélinni þinni svo ég ætla að ýta því
+
+00:07:23.680 --> 00:07:27.759
+ og þar förum við þannig að það er í grundvallaratriðum að búa til það er að búa til raunverulegt
+
+00:07:27.759 --> 00:07:32.240
+ vél ec2 dæmi í skýinu fyrir okkur í
+
+00:07:32.240 --> 00:07:35.360
+ uh í norður Kaliforníu svo þangað förum við svo
+
+00:07:35.360 --> 00:07:40.400
+ ég ætla að skoða dæmi hérna niðri og núna get ég séð að ég á núna einn slíkan
+
+00:07:40.400 --> 00:07:45.120
+ dæmi keyrir t2 ör og það er bara ekkert nafn svo ég ætla að
+
+00:07:45.120 --> 00:07:48.080
+ smelltu á edit og ég ætla að kalla þetta proxy netþjóninn minn
+
+00:07:48.080 --> 00:07:52.720
+ netþjóninn reynir að þar förum við í lagi svo það sé þegar í gangi
+
+00:07:52.720 --> 00:07:56.960
+ svo ef ég smelli á það get ég séð ip tölu þess netþjóns sem það er sem ég hef hringt í
+
+00:07:56.960 --> 00:08:00.400
+ það proxy-netþjónn en mundu núna að það er bara debian 10. það er
+
+00:08:00.400 --> 00:08:05.120
+ ekkert annað uppsett á því svo ég þarf að afrita það ip netfang
+
+00:08:05.120 --> 00:08:09.759
+ og þá ætla ég að hoppa í stjórn hvetja
+
+00:08:09.759 --> 00:08:13.520
+ vegna þess að ég sótti lykilinn á netþjóninn minn sem ég er persónulega að fara á
+
+00:08:13.520 --> 00:08:17.440
+ ssh á netþjóninn minn
+
+00:08:23.680 --> 00:08:27.360
+ allt í lagi svo nú er ég þarna svo núna skipunin sem ég ætla að nota
+
+00:08:27.360 --> 00:08:33.360
+ er ssh og strikaðu síðan í lykilinn sem ég ætla að nota
+
+00:08:33.360 --> 00:08:36.320
+ svo komandi skrá sem ég ætla að nota fyrir lykilinn
+
+00:08:36.320 --> 00:08:41.039
+ og sá heitir proxy server.pem er það sem ég halaði niður
+
+00:08:41.039 --> 00:08:45.200
+ þá ætla ég að fara admin því það er sjálfgefið innskráning fyrir debian
+
+00:08:45.200 --> 00:08:48.880
+ ami eða amazon vélamyndastjóri hjá
+
+00:08:48.880 --> 00:08:51.920
+ og svo ip-tölu sem ég hef þegar afritað á klemmuspjaldið mitt og ef ég
+
+00:08:51.920 --> 00:08:54.240
+ ýttu á Enter það ætlar að biðja mig um að samþykkja þennan lykil
+
+00:08:54.240 --> 00:08:59.279
+ og ég segi já og mér er neitað
+
+00:08:59.279 --> 00:09:02.560
+ heimildir á þeirri skrá enduðu á því að vera ath
+
+00:09:02.560 --> 00:09:06.480
+ 766 svo allir hafa aðgang að þessum skrám svo það er áhugavert
+
+00:09:06.480 --> 00:09:10.800
+ ssh sjálft verndar mig frá því að einhver geti málamiðlað lyklinum mínum
+
+00:09:10.800 --> 00:09:18.160
+ svo chmod 7 0 0 proxy server dot pam við skulum reyna það og
+
+00:09:18.160 --> 00:09:21.279
+ reyndu aftur svo það sem ég hef gert er ó og núna er ég það
+
+00:09:21.279 --> 00:09:25.360
+ tengdi það virkaði bara sjö núll núll þýðir að ég er eigandi
+
+00:09:25.360 --> 00:09:29.120
+ þessi lykill mér er leyft að gera hvað sem er við hann
+
+00:09:29.120 --> 00:09:35.200
+ lesa skrifa framkvæma núll núll þýðir enginn í hópnum enginn sem er ekki a
+
+00:09:35.200 --> 00:09:39.120
+ hluti hópsins fær yfirleitt aðgang að því svo það sé
+
+00:09:39.120 --> 00:09:42.080
+ í rauninni mállaus skrá sem þeir geta ekki einu sinni opnað
+
+00:09:42.080 --> 00:09:46.800
+ uh en ég get allt í lagi þannig að núna þegar ég er tengdur ætla ég að fara í sudo mál
+
+00:09:46.800 --> 00:09:52.080
+ því það er það sem skipunin er að verða rót svo ég er rót svo viðeigandi
+
+00:09:52.080 --> 00:09:57.519
+ uppfærsla líklegur uppfærsla er að fara grípa geymslur mínar þú sérð að þetta er a
+
+00:09:57.519 --> 00:10:02.160
+ raunveruleg debian tölva ef þú vilt í skýinu
+
+00:10:02.160 --> 00:10:05.600
+ það er svo auðvelt að ég er þegar að uppfæra ég er þegar
+
+00:10:05.600 --> 00:10:10.320
+ að keyra debian tölvu í skýinu svo á þeim tíma og ég er bla
+
+00:10:10.320 --> 00:10:16.640
+ bla bla á sama tíma um, við höfum fengið skýjabundinn Debian netþjóna
+
+00:10:16.640 --> 00:10:20.800
+ gerðirðu þér grein fyrir að þetta var svo auðvelt og það er ókeypis
+
+00:10:20.800 --> 00:10:24.000
+ allt í lagi svo við getum gert aðra hluti með þessu líka gætum við sett upp lampastafla við
+
+00:10:24.000 --> 00:10:28.880
+ gæti notað það fyrir mysql mariadb hvað sem þér dettur í hug það er a
+
+00:10:28.880 --> 00:10:32.000
+ debian netþjóni svo við ætlum að nota þetta sem okkar
+
+00:10:32.000 --> 00:10:37.040
+ umboð svo núna það sem ég ætla að gera er að fara að setja upp tól sem kallast
+
+00:10:37.040 --> 00:10:43.920
+ örlítið umboð gott og einfalt að setja upp apt setja örlítið umboð
+
+00:10:43.920 --> 00:10:50.880
+ virkilega einfalt að stilla segðu já hérna
+
+00:10:52.399 --> 00:10:56.480
+ og það er gert núna þegar við höfum sett upp örlítið umboð sem við þurfum bara að breyta
+
+00:10:56.480 --> 00:11:04.640
+ config skráin svo skástrik osfrv rista pínulítill örlítinn umboð breytti henni í það
+
+00:11:04.640 --> 00:11:10.959
+ og þá er ég að nota nano tinyproxy.com og breyta því svo stjórna w í nano
+
+00:11:10.959 --> 00:11:14.079
+ leyfir mér að leita ó en áður en ég leita athugaðu að
+
+00:11:14.079 --> 00:11:18.000
+ höfn er sjálfgefið að nota 8888 við verðum að þurfa að vita það
+
+00:11:18.000 --> 00:11:20.959
+ upplýsingar vegna þess að það er það sem við ætlum að tengjast
+
+00:11:20.959 --> 00:11:25.200
+ umboðsmaður okkar leitar fljótt að leyfum
+
+00:11:26.720 --> 00:11:30.959
+ alt w leyfir þér að leita aftur wow orðið leyfa er líklega ekki það besta
+
+00:11:30.959 --> 00:11:35.920
+ leitarfyrirspurn leitaðu kannski að 127.0.0.1 um og rétt fyrir neðan þann sem ég er að fara í
+
+00:11:35.920 --> 00:11:40.399
+ leyfa og þá þarf ég að bæta við ip tölunni minni svo að ég geti tengst þessu
+
+00:11:40.399 --> 00:11:44.320
+ proxy-netþjónn vegna þess að núna er hann lokaður aðeins localhost hefur aðgang að honum
+
+00:11:44.320 --> 00:11:48.399
+ það er mikilvægt að hafa í huga að þetta er meðan þetta er almenningur ókeypis
+
+00:11:48.399 --> 00:11:51.519
+ proxy server ég er sá eini sem á eftir að fá aðgang að honum það er
+
+00:11:51.519 --> 00:11:54.959
+ ætla að fá umboð efnis míns tengingar í gegnum
+
+00:11:54.959 --> 00:11:58.880
+ það svo það er einkamál í þeim efnum ég þarf að vita mitt
+
+00:11:58.880 --> 00:12:02.959
+ ip heimilisfang svo ég ætla að hoppa yfir í
+
+00:12:03.160 --> 00:12:08.000
+ currentip.xyz og afritaðu IP-tölu yfir á klemmuspjaldið mitt
+
+00:12:08.000 --> 00:12:11.279
+ og hoppaðu síðan aftur þangað og límdu það í configið mitt
+
+00:12:11.279 --> 00:12:15.839
+ stjórn o sláðu inn stjórn x stjórn o er að skrifa út
+
+00:12:15.839 --> 00:12:22.720
+ vistaðu skrána núna kerfi ctl endurræsa pínulítið umboð
+
+00:12:22.720 --> 00:12:28.079
+ næstum gert það síðasta sem við þurfum að gera er að við þurfum bara að segja frá aws
+
+00:12:28.079 --> 00:12:32.639
+ ec2 öryggið sem við ætlum að setja upp stefnu sem segir
+
+00:12:32.639 --> 00:12:35.920
+ hey aðeins mér er heimilt að tengjast þessum netþjóni
+
+00:12:35.920 --> 00:12:39.839
+ svo enginn annar geti tengst því neitt svo það er það sem við erum að fara í
+
+00:12:39.839 --> 00:12:43.120
+ gerðu núna svo ég ætla að hoppa aftur hingað og þú sérð þennan netþjón uppi á
+
+00:12:43.120 --> 00:12:47.279
+ skjár vel ef ég smelli á öryggi get ég þá
+
+00:12:47.279 --> 00:12:50.880
+ smelltu á öryggishópinn sem honum er úthlutað sjálfkrafa svo smelltu bara
+
+00:12:50.880 --> 00:12:53.680
+ það og nú hefur það skilið mig eftir í ec2
+
+00:12:53.680 --> 00:12:56.240
+ öryggishópar og réttur öryggishópur
+
+00:12:56.240 --> 00:12:59.440
+ þú munt taka eftir því að það er þegar sett upp eitt fyrir ssh vegna þess
+
+00:12:59.440 --> 00:13:03.760
+ það er sjálfgefið virkt ég get stillt það þannig að það leyfi mér bara eins vel og það er
+
+00:13:03.760 --> 00:13:06.639
+ mikilvægt svo við skulum gera það bara til að vera í góðu
+
+00:13:06.639 --> 00:13:09.959
+ öryggisvenjur svo ssh ég ætla að breyta því frá
+
+00:13:09.959 --> 00:13:13.440
+ custom0000 ég ætla að loka x það og þá
+
+00:13:13.440 --> 00:13:18.320
+ breyttu því í ip minn þá ætla ég að bæta við nýrri reglu sem þú sást
+
+00:13:18.320 --> 00:13:20.880
+ hvernig ég kom hingað rétt ég veit að ég hreyfi mig virkilega hratt
+
+00:13:20.880 --> 00:13:24.079
+ ég er nýbúinn að smella á breyta reglum um heimleið hérna
+
+00:13:24.079 --> 00:13:29.040
+ allt í lagi svo að bæta við nýrri reglu sérsniðin tcp er sjálfgefið
+
+00:13:29.040 --> 00:13:35.120
+ port númer manstu eftir 888 og leyfðu aðeins ipnum mínum ég get kallað það eitthvað ef ég
+
+00:13:35.120 --> 00:13:40.320
+ langar í umboð og vista síðan reglurnar mínar
+
+00:13:40.320 --> 00:13:44.639
+ þar förum við svo nú sérðu ssh og sérsniðin tcp
+
+00:13:44.639 --> 00:13:51.040
+ einn sem heitir proxy á port 8888 svo hvernig prófum við þetta í lagi svo okkar
+
+00:13:51.040 --> 00:13:57.360
+ núverandi IP-tala er 99,233 og því ætla ég að tengjast umboðinu
+
+00:13:57.360 --> 00:14:01.600
+ þetta er ekki leiðbeining um hvernig á að nota umboð
+
+00:14:01.600 --> 00:14:04.480
+ þetta er ekki kennsla í hvað á að nota það
+
+00:14:04.480 --> 00:14:08.079
+ endilega þetta er þetta ég er að gera forsendur hér að
+
+00:14:08.079 --> 00:14:11.920
+ þú getur annað hvort googlað það sjálfur vegna þess að það verður mismunandi byggt
+
+00:14:11.920 --> 00:14:15.199
+ um notkunarmál þitt hvort sem þú vilt bara umboð vafra þíns eða umboðsmanns
+
+00:14:15.199 --> 00:14:18.480
+ sérstakt forrit eða allt netið þitt
+
+00:14:18.480 --> 00:14:21.839
+ þetta mun vera undir þínu einstaka notkunarmáli þetta er
+
+00:14:21.839 --> 00:14:28.399
+ strangt til tekið námskeið um hvernig á að byggja þetta ec2 dæmi virkilega mjög fljótt fyrir
+
+00:14:28.399 --> 00:14:31.760
+ ókeypis sem hefur umboð tilbúið til að nota í
+
+00:14:31.760 --> 00:14:36.639
+ Kaliforníu eða hvar sem er og uh það er það svo í mínu
+
+00:14:36.639 --> 00:14:40.720
+ sérstakt tilfelli núna svo að þetta augnablik er ekki endilega það
+
+00:14:40.720 --> 00:14:43.680
+ þú vilt gera næst þetta er bara hvernig ég ætla að prófa
+
+00:14:43.680 --> 00:14:50.000
+ umboð ég er til í Windows 10 hér svo ég ætla einfaldlega að slá inn umboð
+
+00:14:50.000 --> 00:14:54.240
+ og farðu í proxy stillingar aftur þetta er líklega ekki hvernig þú vilt gera það
+
+00:14:54.240 --> 00:14:57.279
+ ég vil bara prófa svo ég ætla að kveikja á umboðsmanni
+
+00:14:57.279 --> 00:15:00.560
+ ég get séð að það eru gamlar proxy stillingar þarna svo vertu viss um að þú sért
+
+00:15:00.560 --> 00:15:03.839
+ hafðu í huga að ef það eru gamlar proxy stillingar sem þú þarft
+
+00:15:03.839 --> 00:15:08.480
+ til að breyta því farðu í dæmi á ec2 smelltu á þitt dæmi
+
+00:15:08.480 --> 00:15:12.079
+ id og gríptu til IP-tölu og límdu síðan
+
+00:15:12.079 --> 00:15:15.519
+ það sem heimilisfang fyrir umboðsmanninn þinn
+
+00:15:15.519 --> 00:15:20.800
+ höfn 8888 og vistaðu svo núna er ég tengdur við
+
+00:15:20.800 --> 00:15:24.639
+ umboð samstundis ekki tengt við núna windows er að segja
+
+00:15:24.639 --> 00:15:27.199
+ ég ætla að leiða alla þína umferð í gegnum umboðsmanninn sem ég ætti að leiðrétta
+
+00:15:27.199 --> 00:15:32.199
+ sjálfur þar svo ef ég fer aftur á currentip.xyz
+
+00:15:32.199 --> 00:15:36.160
+ 99.233 er núverandi ip minn ég ætla að lemja f5 til að endurnýja
+
+00:15:36.160 --> 00:15:44.639
+ og ef allt fór vel 3.101.108.211. jæja hvað er það
+
+00:15:44.639 --> 00:15:52.839
+ það er netþjónninn minn svo ég er í rauninni núna hvar er ég að komast að því
+
+00:15:52.839 --> 00:15:59.759
+ maxmind.com við skulum leita að ip-tölunni sem ég er núna á
+
+00:15:59.759 --> 00:16:06.839
+ hvar er ég san jose california það er þar sem max minn ræður mér
+
+00:16:06.839 --> 00:16:10.880
+ vertu svo að það er allt til staðar það gott fólk sem við höfum
+
+00:16:10.880 --> 00:16:14.880
+ búið til stillt dreift ókeypis proxy þjónustu
+
+00:16:14.880 --> 00:16:17.680
+ að við eigum og rekum erum við einir
+
+00:16:17.680 --> 00:16:22.560
+ hver hefur það sem hefur þennan ssh lykil svo ef þú vilt
+
+00:16:22.560 --> 00:16:26.079
+ tengjast í gera breytingar nota það sem fjölnota netþjóna sem þú getur gert
+
+00:16:26.079 --> 00:16:30.720
+ það um en fylgstu bara með innheimtu hlutunum þínum bara vertu viss um það
+
+00:16:30.720 --> 00:16:33.120
+ þú hefur ekki farið yfir þröskuld og svoleiðis hluti
+
+00:16:33.120 --> 00:16:36.240
+ ef þú ert bara að nota það sem umboð er mjög ólíklegt að þú ætlir að gera það
+
+00:16:36.240 --> 00:16:38.480
+ það er bara eitthvað sem þú ert að leiða gögn í gegnum
+
+00:16:38.480 --> 00:16:42.800
+ svo athugaðu að það er aws.amazon.com til að koma þér af stað
+
+00:16:42.800 --> 00:16:45.920
+ ef þú hefur spurningar skaltu senda þær til samfélagsins okkar
+
+00:16:45.920 --> 00:16:50.160
+ að ósætti okkar finnurðu krækjuna á category5.tv
+
+00:16:50.160 --> 00:16:54.000
+ á samskipta matseðlinum í millitíðinni ef þú hafðir gaman af þessu ef þú hefur notað það eða
+
+00:16:54.000 --> 00:17:05.839
+ fannst það gagnlegt gefðu mér stóra þumalfingur vinsamlegast gerðu áskrift
+
+00:17:08.849 --> 00:17:19.839
+ [Tónlist] gera
+
+00:17:23.599 --> 00:17:31.710
+ [Tónlist]
+
