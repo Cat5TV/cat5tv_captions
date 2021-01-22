@@ -1,0 +1,546 @@
+un poco de historia de fondo para ti antes de saltar a una entrevista con Mark Noland
+En Kingston Technology, el servidor que usamos aquí en el estudio tiene
+he tenido poco espacio durante algún tiempo, de hecho tuve que eliminar cosas en
+para hacer espacio para los espectáculos cada semana
+es un servidor antiguo, pero todavía funciona un poco en el lado ruidoso con esos
+ventiladores de refrigeración de Dell, pero funciona bien, por lo que no hay razón para
+reemplácelo pero el almacenamiento, sin embargo, podría usar una actualización
+desde que hicimos la transición de nuestra edición a 4k el otoño pasado, es obvio que no
+solo la matriz de almacenamiento es demasiado pequeña pero las unidades no son lo suficientemente rápidas
+o así después de algunas investigaciones recogí
+ssds del centro de datos de kingston tienen ecc para proteger contra la corrupción de datos
+y están pensados ​​para uso empresarial en el centro de datos, ahora mi centro de datos es
+puedes, esto es, tengo un solo servidor dell r510 antiguo
+pero lo que cubriremos hoy es completamente escalable, no quiero darte la
+impresión errónea si eres una empresa muy pequeña
+como yo, incluso un servidor doméstico o un servidor web o un gran
+empresa con muchos servidores, el punto es
+que estos ssds empresariales de kingston a precios competitivos
+realmente puede mejorar el rendimiento de su servidor ahora para mi uso aquí en
+TV de categoría 5 elegí la dc 500rs porque están optimizadas para leer
+aplicación intensiva que debería funcionar muy bien para nuestro video
+edición, por supuesto, también uso el servidor para el almacenamiento de datos generales
+para guardar temporadas pasadas de videos y ejecuto algunas máquinas virtuales allí para
+ejecutar nuestra infraestructura interna por lo que no hace falta decir dc 500rs de kingston
+van a ser ideales no solo para mi uso general, sino también para las ráfagas de
+velocidad de lectura que necesito al cargar archivos de video grandes
+también tienen dc500ms y si lo necesita
+mayor velocidad de escritura, los que encajarán en el proyecto de ley son realmente excelentes
+big bang for the buck all round ssd para servidores
+Quería saber cuánta diferencia hizo realmente la actualización
+así que establecí una comparación con la esperanza de hacerlo lo más cercano a uno a uno como
+posible, así que elegí un raid 5 con 4 discos cada uno
+y antes de ejecutar las pruebas, actualicé el firmware del controlador raid
+si bien es un servidor antiguo, pensé que sería mejor asegurarme de que todo esté
+lo más actualizado posible a partir de ahí
+con algunos consejos útiles del experto en fio de kingston, matt eaton
+escribí un script de referencia que podría ejecutar tanto en mi giro original
+y los nuevos SSD de Kingston, lo que me da una visión bastante buena de cómo
+el rendimiento compara el código en mi página de github y el
+El enlace está en la descripción del video a continuación. Muchas gracias a Matt por toda su ayuda.
+y también dave leung por, entre otras cosas, ayudarme a conectarme
+con las personas adecuadas en kingston hice una buena cantidad de preacondicionamiento
+en las unidades, aunque el tiempo también fue un factor aquí y
+dado que los hilanderos tardaban una cantidad de tiempo irreal en acondicionar
+Corté ese proceso, también debe tenerse en cuenta que las unidades están
+diferentes capacidades, por lo que esto de ninguna manera
+manzanas a manzanas, pero en un entorno del mundo real como el nuestro aquí en el
+estudio, estoy feliz de saber que hay un
+mejora perceptible con números razonablemente precisos para respaldar
+que levanté al servidor casi de rodillas
+las pruebas de archivos fueron brutales en estas viejas unidades giratorias
+pero se completaron mucho más rápido en los ssds, así que agarré unas 2.5 a 3.5 pulgadas
+adaptadores que encajarán muy bien con el
+plano posterior del servidor, ya que las bandejas dell solo admiten unidades de 3,5 pulgadas
+encender el servidor con los ssds y todo parece funcionar muy bien
+pero todas las unidades están parpadeando con luz ámbar. Le pregunté a Mark de Kingston si esto
+era una preocupación bueno, uh con Dell, ¿de dónde sacaste el
+Conduce el trineo espera un minuto, así que me estás diciendo estas
+adaptadores de disco caros y elegantes o lo que está causando esto
+es el trineo de la unidad, el conjunto de la unidad tiene un conjunto de chips
+de acuerdo, intentemos un enfoque diferente, entonces el comandante muff publicó algo
+1830990 a thingiverse que parece prometedor
+Tengo el enlace en la descripción a continuación, intentemos
+[Música] oh
+[Música]
+éxito el kingston dc 500s conectado directamente al backplane usando 3d
+adaptadores impresos hicieron el truco ahora me gustaría brevemente
+divagar porque este es otro testimonio de la
+Ahorro de costos de tener una impresora 3D ahora pagué
+dieciséis dólares cada uno por estos adaptadores los que imprimí yo mismo
+Estos funcionaron mejor y ahora, mientras usaba el costoso filamento pla plus que costaba
+cuarenta dólares por kilogramo cada adaptador de bandeja
+que es 14 gramos uh precio que lo pone a solo
+56 centavos cada uno, por lo que el costo del material es de 56 centavos
+Ahorré 15,44 por adaptador de bandeja, un total de
+123,52 centavos ahorrados para imprimir ocho adaptadores yo mismo
+si hice eso solo dos veces más, ya lo he compensado
+el gasto inicial de comprar mi impresora 3D en
+ahorros solos de todos modos de regreso a nuestro tema, pero primero
+unas palabras de nuestros patrocinadores cuando volvamos, mark nolan se une a nosotros desde kingston
+para entender los resultados del archivo y hablar sobre cómo los usuarios comerciales pueden
+mejorar aún más el rendimiento del centro de datos
+quédate [Música]
+He ejecutado las pruebas de fio en todas las unidades y he pasado los números al
+equipo en kingston para que puedan ayudar a tener sentido
+de los resultados de la prueba y así se ven esos números
+así que en la columna del medio tengo los cuatro
+las unidades dell constellation es que tienen la interfaz sas funcionando a 7200 rpm
+y los he configurado en un raid 5. puedes ver la salida de entrada de iops por
+segundo es muy muy pobre en contraste con el
+ssds en la columna de la derecha son los dc 500rs de kingston y
+esos nuevamente están configurados de la misma manera que un raid 5 con cuatro unidades, sin embargo
+estos son unidades de un terabyte frente a las unidades giratorias que son dos
+terabytes cada uno no es de manzanas a manzanas, pero puedes ver claramente
+que la velocidad se mejora significativamente en los ssds
+mark noland es un ingeniero de aplicaciones de campo de kingston technology mark
+gracias por tomarse el tiempo de hablar conmigo
+hola como estas hoy bien cuéntanos un poco sobre
+qué es lo que haces en Kingston eh, así que mi título es aplicaciones de campo
+ingeniero, pero me relaciono mucho con los clientes.
+y usuarios en los centros de datos, yo también lo conozco en mi experiencia ii
+solía trabajar para autodesk uh en la película y
+industria del video y se trata como una especie de
+todo, desde la aplicación de escritorio hasta el centro de datos que conoce
+uh así que si rompes un cuello de botella en el escritorio
+Sabes que tu próximo cuello de botella es la red y una vez que lo rompes,
+su cuello de botella está en el servidor, así que básicamente estoy tratando de
+solucionar problemas y resolver cuellos de botella, ya sea usted
+conoces bases de datos o sabes uh
+Sistemas de edición de video 8k, cosas así
+todos necesitan grandes datos rápidos a través de tuberías
+¿No lo sé, no lo sé, oh sí, así que has visto que es una gran trampa
+llegué, saludos, sí, bueno, y has visto nuestros números de archivo
+nuestra prueba de hoy y me doy cuenta de que
+esos números son ligeramente arbitrarios, sin embargo, lo que hice es ejecutar lo mismo
+prueba contra el mismo escenario en nuestro antiguo
+discos giratorios como lo hice en dc500rs, así que
+con solo mirar esos números, ¿puede ayudarnos a entender
+¿Qué es lo que realmente está pasando ahí?
+Está bien, sí, así que, antes que nada, ambos conocen los dos ssds
+y los discos duros están conectados al bus sata exactamente igual
+servidor todo el hardware es el mismo solo el
+las unidades han cambiado, sí, el bus sata es uno de los más antiguos, um
+métodos de conexión en esto en la computadora
+uh y tiene uh, sabes algunas uh debilidades y esa uh tipo de
+solo puedes leerlo o escribirlo a la vez
+uh, pero sabes con los controladores de incursión y que se han vuelto muy buenos en
+poder optimizar eso de la mejor manera posible para que
+baja a la interfaz cruda que conoces
+diferencias entre un disco giratorio de disco duro y ssds
+y sabes que los ssds de s han sido modificados, sabes que es un
+un disco de estado sólido es básicamente que tienes memoria de computadora y eso
+está siendo enrutado para hablar el idioma del disco correctamente y entonces uh
+en cierto modo estás cojeando el uh
+el uh rápido y eso está ahí al hacer que pase
+la uh uh interfaz sata pero uh tiene que fingir que es uh
+tiene que gustar al menos traducir para hablar disco
+lenguaje así que cuando tienes como uh el viejo
+corazón de la escuela girando unidades de descarte um sabes que son bastante buenas
+al hacer cosas secuenciales, uh al azar, comienzan a ahogarse y cuando
+viene a iops realmente lo pasan mal
+mantenerse al día con la memoria, puedes ver, sabes qué
+las partes están en la diferencia entre tu prueba
+puntajes, puedes ver qué partes sabes que son bajas
+debido al disco giratorio y a los
+que tu sabes uh uh eres como el uh
+nand en un ssd es capaz de saber todavía
+poner un ancho de banda bastante bueno, así que como
+en tu en tu uh lectura y escritura rendimiento
+um, sabes que los ssds están en cualquier lugar entre como en la lectura
+tal vez cuatro veces más rápido que el más rápido
+tasa de discos duros que tiene funcionando bien, esto también es
+estás haciendo la incursión cinco, así que hay un poco de sobrecarga con el disco
+gestión, así que si hiciste una incursión cero en ambos ssds
+y necesito redundancia, si, si, si tu
+no tiene redundancia, pero si ataca a cero, entonces lo sabe
+puedes ver el ancho de banda sin procesar, seguro que sucede bien, sí
+uh pero y eso es cuando ssds incluso
+da un paso por encima, sabes que los tristes ssds serían aún más rápidos
+uh sin que ocurra esa redundancia porque hay una cierta cantidad de uh
+sobrecarga que está sucediendo para hacer eso, pero incluso con su configuración de raid 5
+todavía estás mirando tres veces más rápido
+para ssds que discos duros uh on uh on a re on a
+correcto y cuatro veces más rápido en la lectura, uh normalmente, pero el único tipo de
+lugar secreto que termina siendo mucho mas rapido
+está en la latencia, así que es como el tiempo entre el momento en que hago clic
+y envíe una solicitud en el momento en que, en realidad,
+comienza a pasar bien um si es como un io aleatorio
+caso de que sepa cuándo se calientan las unidades y
+todo podría ser uh como 0,8 milisegundos a 1,2
+milisegundos dependiendo uh mientras que en el ssd va a ser
+microsegundos, incluso si son 20 microsegundos
+eh, y tiene una tasa de cuatro unidades si dice que su latencia promedio por
+la unidad era un milisegundo en un disco duro
+y son como 20 microsegundos en el ssd, entonces ni siquiera has llegado a un
+microsegundo para el momento en que sume esa latencia
+a través de las cuatro unidades
+la latencia es una gran diferencia y luego la calidad del servicio
+así que una de las cosas que realmente probamos es el centro de datos, el dc 500 y
+Unidades 450 y dc 1000 para las que se han probado exhaustivamente
+usted sabe que la calidad del servicio es la principal
+lo principal que está buscando si los está poniendo en un
+centro de datos como nube de nivel dos algo así
+uh quieres una calidad de servicio donde sabes que un ssd de consumidor podría alcanzar su punto máximo
+y ofrece un excelente rendimiento por un corto
+período de tiempo y si solo está transfiriendo un par
+conciertos a la vez eso es lo que quieres está en tu computadora portátil
+bien sabes que estás tratando de hacer que las cosas se enciendan y apaguen muy rápido
+impresionante, pero si estás ejecutando un disco
+usted sabe 24 7 con una base de datos para transacciones en línea
+eh, estás escribiendo y leyendo de él como constantemente
+y no quiere ver grandes picos hacia arriba o hacia abajo en el rendimiento que desea
+ver como una línea muy plana en eso
+rendimiento y lo verás con una dura
+en coche sabes que aumentará muy rápido al principio porque tiene un
+dram cat cada vez que estás transfiriendo un archivo de video o algo así como
+rápido y luego y luego caerá en picado a
+a la derecha 200 megabytes por segundo y luego va a 30 megabytes, sí
+y eres como lo que paso si uh y el problema es
+en cierto momento te estás quedando sin efectivo o algo así,
+en eso uh sabes en tu script fio
+uh, una de las cosas importantes que debe hacer si quiere probar
+El uso del centro de datos es hacer eso, uh, calentar el disco para quemarlo en
+para que no sea como recién salido de la caja, lo acabo de instalar y todo
+los sectores están en blanco y sabes como uh porque no es
+tener que tener alguna sobrecarga de administrar uh datos en la unidad, vería qué
+las unidades en uso, por lo que es ese tipo de
+la diferencia clave entre los SSD del consumidor que tengo en mi computadora portátil en mi hogar
+computadoras versus estas unidades de centro de datos, sí
+eso y es posible que vea diferencias de aprovisionamiento
+um como nuestro uh dc uh unidades um número uno tienen un
+una cantidad decente de uh dram en efectivo en ellos uh donde una gran cantidad de
+las unidades de consumo pueden tener un pseudo slc donde toman tlc o
+qlc y programarlo como slc para que en lugar de saber que
+puede tomar un sector una sección de la unidad y
+y decir que esto se va a programar como slc, así que solo voy a almacenar
+un bit de datos en esta celda en lugar de los tres o cuatro como si fuera
+uh tlc estás almacenando tres bits de datos y
+uh o bytes y uh y qlc estás almacenando cuatro, así que has
+tengo muchos más datos que se están almacenando allí uh sabes que teníamos mlc uh
+pero luego fue tlc y uh qlc y sabes que lo estamos intentando
+para planificar más bits en uh uh
+cuantas más celdas eh y mientras lo haces se pone
+sabes que se tarda un poco más en programar
+uh, todos esos bytes y bits en las diferentes celdas, así que si usa el
+pseudo caché de slc que también hacemos en algunas unidades y
+consumidor uh pero uh usted es la razón por la que lo hace es
+es mucho menos costoso que usar dram y, por lo tanto, en nuestro centro de datos
+Conduce hasta allí, todos tienen como un buen trago
+almacenar en ellos esa es una de las grandes diferencias
+Oh, está bien y eso se combina con el final
+aprovisionamiento que se encuentra en las unidades de nuestro centro de datos
+permite uh así como ajustes en el firmware
+permite realmente un alto nivel de calidad de servicio, por lo que
+no ves grandes picos hacia arriba y luego hacia abajo y
+y sabes exactamente dónde estás en el rendimiento máximo del autobús
+hasta cero de vuelta al medio y estás cuando dices
+cuando dices sobre aprovisionamiento, estás hablando de io
+ahora el aprovisionamiento es donde si tengo como si ves un ssd que tiene
+digamos que tiene 940 o 960 gigas, sí, de 960 gigas
+realmente común, sí, eso es un terabyte de NA y eso está ahí
+y tiene un aprovisionamiento excesivo del tres al cinco por ciento
+para los datos en sí, por lo que el almacenamiento sí está bien y cuando
+cuando veas un disco que dice un terabyte
+uh muchas veces sigue siendo la misma cantidad de nand que si compraras un
+960, pero lo que notará es como en una unidad de consumo si se levanta
+a tener 90 en uno que no ha terminado
+aprovisionado, comenzará verá el rendimiento
+también comienza a tanque mientras que si tienes uno que si tienes
+el sabes que el disco de 960 gig puede estar lleno a 90 y todavía
+estar conduciendo a la misma velocidad que cuando estaba vacío, ya sabes
+tú, bueno, no diré cuándo estaba vacío porque una de las cosas
+Hacemos ese preacondicionamiento, eso es parte de nuestro
+guión en el que estamos trabajando, um, que el preacondicionamiento básicamente hace
+seguro de que las unidades están un poco sucias y
+uh está haciendo cosas de tipo carga de trabajo real, así que chicos
+porque puedes probar cualquier cosa lista para usar y puede parecer espectacular, pero
+luego, cuando lo ponga en uso real, tírelo a un centro de datos y
+saber débil para ser usado, es como si esto no estuviera realizando el
+¿Cómo sabías que lancé estas campañas para consumidores?
+y fueron geniales y ahora uh son terribles
+sí, oh, veo que sí, lo he visto en unidades de escritorio y
+cosas así, sí, cuando se calientan y ensucian y tienen sentido
+ellos están en condiciones de trabajo del mundo real y no solo
+ejecutando un punto de referencia y ahora mi iops en el y usted mencionó iops tal vez yo
+podría hacer que nos explique brevemente lo que eso significa para nosotros
+um, pero es a través del techo más alto uh en los SSD, ¿qué es eso?
+¿Eso nos dice que parte de eso se debe a
+es física, así que en el ssd
+es ciencia estamos hablando de física porque
+el disco duro en realidad depende de los iops que tiene que
+esa aguja que se mueve hacia adelante y hacia atrás con
+las unidades físicas del lector, sí, las unidades giratorias, por lo que
+tiene que hacerlo para leer un punto, tiene que
+muévete físicamente a algún lugar encuentra que lo leas uh verifícalo
+y luego pasar al siguiente punto encontrarlo, leerlo y verificarlo
+uh solo por la forma en que la física y la termodinámica funcionan
+el disco no puede girar más rápido ellos saben que los discos duros son
+realmente genial para lo que hacen y que obtienes discos duros realmente grandes
+y son bastante duraderos, pero
+la física no puede llevarlos más lejos porque y así cuando vas
+a un ssd uh, solo estás todo, uh
+hecho a través de estado sólido no estás moviendo nada
+excepto electrones y entonces sabes que eres tú tienes como tu
+los tiempos de búsqueda bajan mil veces y es por eso que verás lo que
+la diferencia de iops um la lectura aleatoria que fue la mejor en el
+lectura aleatoria de discos duros de 673 iops
+mientras que la lectura aleatoria del raid de dc 500r fue de 121 000 iops
+entonces 180 veces la velocidad, sí, es solo un poco más rápido
+un poco eso es asombroso, así que ahora entendemos ahora
+así que salté de ir desde el
+girando discos a los ssds ahora mi cuello de botella es sata
+la conexión para que 121 000 iops
+con eso si fueras a ahora vas a unidades basadas en pcie
+Unidades de tipo nvme pcie gen 3, por lo que m.2 o u.2
+u.2 es más amigable para un centro de datos porque
+tiene ese factor de forma de dos pulgadas y media en lugar de la forma de barra de chicle
+factor que es un poco difícil de manejar hay un
+pocas personas que tienen adaptadores y cosas así para poner
+un montón de m.2s en servidores, pero um sabes, creo que el u.2 y el
+va a ser mucho más común en el futuro para poner un montón de
+sabes como 24 o más uh uh 2 unidades uh
+como nvme ssds en un servidor uh pero ahora estás hablando como iops
+sube otro factor a la derecha, así que como un disco nvme
+porque no está limitado a uh por el bus sata uh
+Está limitado por el bus pcie, así que sabes que vas a la generación cuatro y
+eso es dos veces más rápido que la generación tres, así que ya sabes
+potencialmente el doble de rápido, no he visto ningún modelo donde esté
+dos veces más rápido, pero sabes significativamente la generación 4
+las demostraciones que he visto son significativamente más rápidas, como uh
+sabes que estás hablando a las 16 uh creo que la demostración más rápida que he visto
+hasta ahora es de unos 25 gigabytes por segundo de uno
+dispositivo en una generación 4 bytes por segundo wow
+y no sé qué tan escalable es eso actualmente, pero
+Eso fue cuando la generación 4 todavía era experimental, lo que es un poco
+experimental, creo que el amd se ve realmente
+bueno, pero lo llamaré un poco experimental hasta
+Intel y amd tienen su generación 4 y todos los servidores empresariales son
+envío con pcie gen 4 porque en este punto
+es una caja de jugador realmente genial o una muy alta gama
+una estación de trabajo realmente de alta gama que sabe que le gusta
+nvidia tiene muchas demostraciones geniales con cuatro gpus en un proceso amd con uh
+conoces muchas unidades nvme uh uh conectadas a él y lo están haciendo
+algunas demostraciones realmente interesantes y como está y con sus
+su gpus pero todo eso ahora mismo parece que es como
+Si tengo que gastar de cinco a 20 mil dólares en una estación de trabajo, voy a
+espera hasta que sea uh alguien más uh
+resuelve todas las arrugas en ese experimento, así que
+pensando en mi caso de uso, así que obviamente trabajo aquí en un estudio, así que estoy
+haciendo mucha producción de video, tal vez algunos de nuestros espectadores estén trabajando en
+un entorno de oficina donde tienen escenarios similares donde
+oye, tenemos que reemplazar las unidades en un servidor antiguo o tal vez ni siquiera
+tan viejos pero no son necesariamente
+reemplazando un servidor completo que solo quieren poner
+ssds en lugar de las unidades giratorias porque son
+tipo de camino a seguir en este momento y ciertamente estamos viendo un gran rendimiento
+impulso aquí um ¿ahí sabes dónde está el
+ganancia de rendimiento, así que para mí es en la edición de video 4k en tiempo real
+es brillante en el dc 500rs um donde está el promedio
+El departamento de TI del consumidor empresarial obtendrá ganancias al
+actualizar los servidores a ssd well ii pienso en la satisfacción del cliente y
+mi papá es dentista y mi mamá es abogada
+y yo solía hacer algo de soporte técnico informático para
+gente en esas comunidades y sabes como uh
+uh, los doctores y abogados son notoriamente baratos cuando se trata de saber como uh
+gastar dinero en sistemas como ese, pero los sistemas también impulsan todos los
+todos los ingresos de su negocio, por lo que es muy importante para
+para mantenerlos actualizados y creo que lo que
+pasar de disco duro a ssds en una actualización de un sistema anterior que
+sabe que podrá llamar al menos dos o tres años más de
+si no mas um tu sabes que tu tu tu tu siempre
+golpear un cuello de botella en alguna parte, pero en lugar de que su sistema sea el
+cuello de botella puede ser el sistema operativo o la versión del software
+que estás usando o algo así pero uh
+Harás algo mucho más útil ¿Alguna vez has tomado un disco duro viejo?
+o una vieja computadora portátil con disco duro y coloque un SSD en ella y
+sabes que es como de repente es como por qué iba a deshacerme de esta cosa
+es tan rápido exactamente como si le diera nueva vida
+un sistema antiguo y eso es exactamente lo que ha hecho
+para nuestro servidor y para mí, y como estás hablando de cuellos de botella, estoy pensando
+está bien, sata son seis conciertos por segundo, así que creo que mi cuello de botella en realidad marca
+va a ser mi networking porque solo estoy en un concierto
+Ethernet, así que sí, ese es mi cuello de botella, pero
+siendo una empresa muy pequeña, yo mismo tengo un concierto
+ethernet y poder editar video sobre
+un concierto por segundo es estelar es excelente
+bueno, el truco que sabes para eso es porque mi trabajo estaba rompiendo esos
+tipo de cuellos de botella uh anteriormente es que pondría un 10 gig
+uh en su servidor y tiene un interruptor que lo distribuye a
+sus clientes gigabit y hasta que obtenga 10 gig uh o escritorio o algo
+pero siempre puedes ir, sabes como lo haces
+es como agregar uh ssds a sus sistemas heredados uh uh
+sí, esa es una buena idea, simplemente actualiza la red
+a medida que avanzo, ese es el siguiente paso, sí, ¿qué tipo de longevidad voy a tener?
+mirando um para ssds sé como cuando ssds primero
+salió hace tantos años, hubo algunos de nosotros que
+dudaban y tenían miedo de cambiar a ssd
+porque no eran tan fiables, pero eso ha cambiado por completo
+en los últimos años, ¿nos preguntamos qué tipo de vida útil esperamos de
+como si su centro de datos impulsa uh, entonces nuestro centro de datos impulsa lo garantizamos
+ellos por cinco años uh sí y luego sabes como ellos
+tienen diferentes derechos de conducción de um por día
+garantías, así que, como el dc 500, es un viaje de 0.3 a la derecha por día, así que si
+tienes cuatro terabytes o tres tres puntos uh
+era 3,86 uh si tienes un cuatro esencialmente hay
+cuatro terabytes al final, pero si tienes como cuatro terabytes
+unidad o una unidad de ocho terabytes de la r, que es un modelo centrado en lectura
+puedes conseguir uh hasta uh puedes hacer uh 0.3 drive
+derechos por día um uh la m
+versión de eso es 1,5 derechos de conducción por día
+y si piensas en eso por una unidad de cuatro terabytes
+Eso es mucho escribir, sí, si estás montando uh
+sabes como seis terabytes al día, es posible que estés ejecutando facebook desde
+su servidor, no sé, es una gran cantidad de datos para llenar y
+eliminar porque eso no se trata tanto de um
+sabe como si solo estuviera recopilando unidades o recopilando datos en sus unidades
+de eso se trata la r, así que la lectura centrada en uno si quiero
+Me gusta tener una base de datos llena de videos y
+imágenes y archivos de texto y hojas de cálculo y
+cosas que van a vivir allí para siempre
+el dc 500r es un disco realmente genial porque solo estoy agregando cosas a todo
+el momento en que no estoy agregando sabes como un terabyte en un
+tiempo y luego calcular esos datos y eliminar todo y
+y poniendo la respuesta que es otro terabyte um
+sabes que eso es algo como uh uh lámpara donde tienes
+conoces el servidor apache yo un oltp
+servidor o conoce algún tipo de transacción en línea donde sabe
+uh uh, solo estás revisando los datos como si supieras
+Facebook donde solo agregas nuevos videos de gatos todo el tiempo y luego
+eliminándolos a medida que envejecen, ya sabes, la mayoría de la gente
+no hagas eso como si tuviera un servidor drobo uh al que solo agrego cosas
+constantemente así que de hecho tuve que desconectarlo
+porque es tan ruidoso por todos los discos duros que voy a poner uh
+cuatro ssds de cuatro terabytes allí perfectos que lo harán tranquilo, sí, sí
+es bastante silencioso de repente es interesante que digas eso como
+porque esa es la otra cosa en la que no pensamos necesariamente con el
+actualizar es este el silencio de ellos la energía
+eficiencia, sí, tengo que decir que ssds uh
+en comparación con el disco duro, los discos duros de eficiencia energética son realmente buenos en
+cuando no están siendo utilizados cerrándose como lo han hecho
+realmente me volví bueno en ser eficiente en energía eh y y
+no creo que nadie esté reemplazando discos duros
+con como bueno tienen que eso es exactamente lo que somos exactamente
+reemplazando drogas duras pero tienen sus lugares como si quisiera almacenar
+40 uh terabytes de datos que son solo datos fríos
+que no voy a acceder todo el tiempo, pero realmente necesito legal
+razones o sabes como hacerme sentir seguro o
+es mi copia de seguridad que es un uso perfecto para discos duros si
+tiene datos que desea poder leer y trabajar con
+los discos duros son terribles para eso solo porque la latencia y sabes que es
+como si fuera un usuario y estuviera recibiendo
+los datos de los discos duros son lo suficientemente malos como para tener que esperarlos
+pero si tienes como 10 usuarios o incluso conoces a tres o cuatro usuarios
+que están golpeando esa matriz de disco duro al mismo tiempo
+puedes empezar sabes como hey sabes como por qué todo se está ralentizando
+tanto es como si supieras que también verás un
+mucha mejor eficacia multiusuario uh cuando
+uh cuando vas a uh ssds solo porque la latencia
+gran información, quiero decir, soy todo tipo de pensamientos pasando por mi
+cabeza, estoy pensando en cómo algunos servidores como tú tienen múltiples usuarios todos
+conectarse para compartir samba y acceder a archivos o incluso
+acceder a cosas como su software de contabilidad
+simultáneamente en un solo disco duro giratorio en un
+sistema o algo que es como la diferencia en el pozo si
+piensas en el lenguaje uh vm de spin-up
+uh, una máquina virtual, sí, cuando sales de uh sata drive, hay
+todavía un poco de tiempo de giro, pero es como una fracción de lo que el giro
+tiempo de actividad porque realmente es un tiempo libre de giro
+de discos duros eh y luego si vas a nvme es
+casi como si estuviera en dram, sabes que es porque el nvme conduce
+siendo el sabes que está fuera del bus sata y en el bus pcie es un paso
+más cerca del procesador mm-hmm y podemos, por eso, como dram es el mejor
+porque está en el procesador, seguro, incluso tú sabes, supongo que el caché
+y el procesador está en el procesador, pero tampoco
+conectado a tu pantalla uh y todo eso
+dram es una especie de rey y que también hacemos
+hay todos estos puntos de referencia casi irrelevantes de
+personas que encienden su computadora y cuánto tiempo se tarda en arrancar y es
+y es algo irrelevante en muchos sentidos y me hace pensar en
+los que giran esos discos giran hacia arriba tenemos tal
+uh, tenemos una tendencia a mirar bien cuando
+hago clic en algo qué tan rápido sucede qué tan rápido
+aparece esa aplicación y para mí en este escenario qué tan rápido
+¿Puedo abrir archivos de video grandes en mi editor y derecho
+eso es como si, sí, no tengo que esperar
+por que ese momento es solo un momento instantáneo para mi
+Yo haría, uh, así que creo que muchas de las demostraciones para cuando vayamos al comercio
+muestra como nib las emisoras uh norteamericanas
+programa de radiodifusión o ibc en amsterdam uh crearía algunas demostraciones
+con adobe y uh ya sabes una de las cosas que
+que tendríamos que hacer es como si estuviéramos editando 8k o sabes video de 4k o 8k
+tienes que asegurarte de que los clips sean lo suficientemente largos para soplar cualquier
+dram que tienes lo sabes porque si sabes como si estoy editando y es
+archivos realmente pequeños que podrían vivir en dram
+O sabes y yo no sabría la diferencia, sabes que es como si pudiera
+viene de un disco duro, pero el primero
+vez que lo leo es muy lento, pero después de eso es
+agradable y rápido, porque si los archivos son pequeños
+pero si está intentando extraer como imágenes fijas de 4k en lugar de un avi o un
+tiempo rápido uh lo sabes porque el avr
+Quicktime podría almacenarse si tiene 64 o 128 gigas
+de memoria en su sistema, es posible que pueda almacenar
+la mayor parte del video allí, pero realmente no ves la actuación
+de los ssds hasta que tenga algo que supere
+la cantidad de dram que tienes disponible
+marca si puedo cambiar de dirección solo un poquito
+a medida que nos acercamos al cierre de nuestra entrevista de una de las cosas como usuario empresarial
+lo que es realmente importante para mí es saber que puedo obtener apoyo cuando
+lo necesite y durante el transcurso de este
+El proceso de actualización de mi servidor es una de las cosas que
+Realmente me llama la atención el hecho de que tu equipo estuvo ahí para mí.
+cada paso del camino es bastante típico de Kingston uh
+antes de trabajar aquí no sabía mucho sobre kingston
+he trabajado aquí por un par de años
+y una de las cosas que realmente me impresionó fue el nivel de apoyo
+uh, si tiene un problema con un
+micrófono Hyperx como este o un auricular o un teclado o dram o uh
+un ssd si llama a nuestro número de soporte, tenemos gente aquí en el sur
+california en el condado de orange que atienden el teléfono no hay un centro de datos
+en algún lugar del mundo así que durante el día
+va a haber gente en el condado de Orange si lo llamas a las tres de la mañana es
+van a ser personas en Inglaterra, así que tenemos un gran apoyo
+donde si tienes un problema real que ellos
+no se puede resolver con uh, ya sabes, toda su base de datos conocida de
+problemas uh me termina en la ingeniería
+equipo para ssds si va a nosotros um como dentro
+media hora está en nuestra bandeja de entrada y tienes como una ingeniería
+equipo desde el sur de california hasta europa y
+y taiwán que están lidiando con eso personalmente, así que
+fantástico, creo que esa es una de las grandes diferencias, como si hubiera tenido problemas
+con unidades de otros fabricantes que
+He trabajado en otros fabricantes y no pude conseguir que nadie me apoyara.
+en el fabricante en el que trabajé anteriormente wow
+eso es genial y hay algo que decir para un buen apoyo
+Absolutamente ahora mencionaste la línea Hyperx de productos de consumo, por supuesto que he
+lo experimenté desde el tipo de empresa de nivel um es esto
+sabe el nivel de soporte, algo que se puede esperar de
+tanto a los consumidores como a los usuarios empresariales, absolutamente como decía como
+uh, hemos tenido gente que conoces como
+con teclados rotos o sabes que es un uh sabes que es
+es todo un número cada Kingston uh sabes que tiene el hyperx
+marca para juegos, pero también sabemos de alta gama
+uh productos de servidor dram y ssds para los datos
+centro tan bien como usted sabe dram del consumidor y
+ssds y memorias USB para consumidores desde las de los consumidores hasta todos los
+camino a los cifrados con teclados en ellos
+um una de las otras cosas que también me sorprendieron viniendo de
+Otra empresa de Kingston fue el nivel de pruebas, así que cien
+porcentaje de nuestro centro de datos uh ssds y dram
+ellos son ellos son como cada pieza es probada
+uh, saben como lo han hecho uh, las cosas del servidor pasan por un proceso más
+prueba rigurosa uh pero simulan como tres
+meses de uso uh uh en el d
+en el lado de la dram y uh uh como todos los ssds se prueban en
+uh en un horno básicamente mientras se fabrican son
+todos probados a alta temperatura para asegurarse de que
+están funcionando de manera óptima
+muchas gracias a nuestro invitado Mark Noland que
+se unió a nosotros desde Kingston hoy para hablar sobre esas unidades realmente, realmente
+cosas emocionantes hey um asegúrate de suscribirte a nosotros en youtube
+linuxtechshow.com es una excelente manera de encontrarnos allí también si
+te encanta lo que hacemos por favor conviértete en un patrón patreon.com
+categoría 5, pero eso es todo el tiempo que tenemos, así que nos vamos
+de nuevo la semana que viene [Música]
+[Aplausos] [Música]
+tú

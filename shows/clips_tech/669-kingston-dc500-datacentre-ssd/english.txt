@@ -1,0 +1,1068 @@
+a bit of back story for you before we
+jump into an interview with mark noland
+at kingston technology
+the server we use here at the studio has
+been low on space for some time
+i've actually had to delete things in
+order to make room for the shows each
+week
+it's an old server but it still runs
+great a bit on the loud side with those
+dell cooling fans but
+it runs well so there's no reason to
+replace it yet
+the storage however could use an upgrade
+since transitioning our editing to 4k
+last fall it's become obvious that not
+only is the storage array too
+small but the drives aren't fast enough
+either
+so after some research i picked up
+kingston data center ssds they've got
+ecc to protect against data corruption
+and they're meant for business use in
+the data center now my data center as
+you can this is it
+i've got a single old dell r510 server
+but what we'll cover today is completely
+scalable i don't want to give you the
+wrong impression
+whether you're a very small business
+like myself even a
+home server or a web host or large
+enterprise with many servers the point
+is
+that these competitively priced
+enterprise ssds from kingston
+can really improve your server's
+performance now for my use here at
+category 5 tv i went with the dc
+500rs because they're optimized for read
+intensive application
+that should do really well for our video
+editing of course i also use the server
+for general data storage
+to hold past seasons of videos plus i
+run a few virtual machines on there to
+run our internal infrastructure
+so needless to say kingston's dc 500rs
+are going to be ideal not just for my
+general use but the bursts of sudden
+read speed i need when loading big video
+files
+they've also got dc500ms as well and if
+you need
+higher write speed those will fit the
+bill being a really great
+big bang for the buck all round ssd for
+servers
+i wanted to know how much of a
+difference the upgrade actually made
+so i set up a comparison with the hopes
+of making it as close of a one to one as
+possible
+so i chose a raid 5 with 4 disks each
+and before i ran the tests i updated the
+raid controller firmware
+while it is an old server i thought it
+would be best to make sure everything is
+as
+up to date as possible from there along
+with some helpful advice from kingston's
+fio expert matt eaton
+i wrote a benchmark script that i could
+run against both my original spinning
+drives and the new kingston ssds
+giving me a pretty good view of how the
+performance compares
+the code's on my github page and the
+link is in the video description below
+huge thanks to matt for all of his help
+and also dave leung for
+among other things helping connect me
+with the right people at kingston
+i did a fair amount of preconditioning
+on the drives though
+time was of a factor here as well and
+since the spinners were taking an
+unreal amount of time to precondition
+i did cut that process short it should
+be noted too that the drives are
+different capacities so this is by no
+means
+apples to apples but in a real world
+environment such as ours here at the
+studio
+i'm happy just to know that there's a
+perceptible improvement
+with reasonably accurate numbers to back
+that up
+i brought the server nearly to its knees
+the file tests were
+brutal on these old spinner drives
+but they completed way faster on the
+ssds so i grabbed some 2.5 to 3.5 inch
+adapters
+that'll match up nicely with the
+server's backplane since the dell trays
+only support 3.5 inch drives
+firing up the server with the ssds and
+all appears to work great
+but all the drives are flashing in amber
+light i asked mark from kingston if this
+was a concern
+well uh with dell where did you get the
+drive sled
+wait a minute so you're telling me these
+fancy expensive drive adapters or what's
+causing this
+it's the drive sled the drive set has a
+chipset on it
+all right let's try a different approach
+then commander muff posted thing
+1830990 to thingiverse which looks
+promising
+i've got the link in the description
+below let's give it a shot
+[Music]
+oh
+success the kingston dc 500s connected
+directly to the backplane using 3d
+printed adapters
+did the trick now i'd like to briefly
+digress
+because this is another testament to the
+cost savings
+of owning a 3d printer now i paid
+sixteen dollars each for these adapters
+the ones i printed myself
+these worked better and now while i used
+expensive pla plus filament which cost
+forty dollars per kilogram each tray
+adapter
+which is 14 grams uh price that prices
+it at only
+56 cents each
+so the material cost being 56 cents
+i saved 15.44
+per tray adapter that's a grand total of
+123.52 cents
+saved to print eight adapters myself
+if i did that just two more times i've
+already offset
+the upfront expense of buying my 3d
+printer in
+savings alone anyway back to our subject
+but first
+a quick word from our sponsors when we
+return mark nolan joins us from kingston
+to make sense of the file results and
+talk about how business users can
+further improve the performance of the
+data center
+stick around
+i've run the fio tests on all the drives
+and i've passed the numbers on to the
+team
+at kingston so they can help make sense
+of the test results
+and here's what those numbers look like
+so in the middle column there i've got
+the four
+dell constellation es drives those have
+the sas interface running at 7200 rpm
+and i've configured them in a raid 5.
+you can see the iops input output per
+second
+is very very poor by contrast to the
+ssds in the far right column
+those are the dc 500rs from kingston and
+those again are configured in the same
+way a raid 5 with four drives however
+these ones are one terabyte drives
+versus the spinning drives that are two
+terabytes each not
+apples to apples but you can see clearly
+that the speed
+is significantly improved on the ssds
+mark noland is a field application
+engineer from kingston technology mark
+thanks for taking the time to speak with
+me
+howdy how are you today great tell us a
+little bit about
+what it is that you do at kingston
+uh so i'm my title is field applications
+engineer
+uh but i interface a lot with uh clients
+and users at data centers
+um i also you know in my background i i
+used to work for autodesk uh in the film
+and
+video industry um and dealt with like
+sort of
+everything from the desktop application
+back to the data center you know
+uh so if you if you break a bottleneck
+at the desktop
+you know then your next bottleneck is
+the network and once you break that then
+your bottleneck is on the server
+and so um just basically trying to
+troubleshoot and
+and break bottlenecks whether it's you
+know uh
+databases or you know uh
+8k video editing systems uh things like
+that
+they all need big fast data going
+through pipes
+don't i know it don't i know it oh yeah
+so you've seen that's quite a setup you
+got there cheers yeah well and you've
+seen our file numbers from
+our test today um and i i do realize
+those numbers are slightly arbitrary um
+however what i did is i ran the same
+test
+against the same scenario on our old
+spinning drives
+as i did on dc500rs so
+just looking at those numbers can you
+help us to make sense of
+what's what's actually happening there
+uh
+okay yeah so uh you know
+first of all both you know both the ssds
+and the hard drives are
+connected to the sata bus right same
+server
+all the hardware is the same just the
+drives have changed yeah
+the sata bus is one of the older um
+connection methods in in this in the
+computer
+uh and and it has uh you know
+a few uh weaknesses and that uh sort of
+you can only be reading or writing to it
+at any one time
+uh but you know with raid controllers
+and that they've gotten really good at
+being able to optimize that
+uh the best way possible so then you
+come down to the
+raw you know interface
+differences between a hard drive
+spinning disk and ssds
+and you know s's
+ssds have been modified you know it's a
+a solid-state disk it's basically you've
+got computer memory nand that
+is being uh routed to speak uh
+disk language right and so uh
+in a way you're sort of uh hobbling the
+the uh fast nand that's in there by
+making it go through
+the uh uh sata interface but
+uh it has to pretend that it is uh it
+has to
+like at least translate to speak disc
+language
+so when you've got like uh the old
+school heart spinning discard drives
+um you know they're they're pretty good
+at doing sequential stuff
+uh random they start choking and when it
+comes to
+iops they really have a hard time
+keeping up with
+the memory you can see you know which
+parts are
+uh in the difference between your test
+scores
+you can see which parts are you know low
+because
+of the spinning disc itself and ones
+that you know
+uh uh are like the uh
+nand on an ssd is actually able to you
+know still
+put pretty good uh bandwidth through so
+like
+in your in your uh read and write
+performance
+um you know the ssds are
+anywhere between like on the read
+maybe four times faster than uh the
+fastest
+rate of hard drives that you have going
+right um this is also
+you're doing raid five so there's a
+little bit of overhead with disk
+management so
+if you did raid zero on both the ssds
+i need redundancy yeah yeah yeah you
+have no redundancy but if you do raid
+zero you know then
+you can see raw bandwidth sure uh
+happening right yeah
+uh but and and that that's when ssds
+would even
+take a step above you know sad ssds
+would be even faster
+uh without that redundancy happening
+because there's a certain amount of uh
+overhead that's happening to to do that
+but even with your raid 5 setup
+you're still looking at about three
+times faster
+for ssds than hard drives uh
+on uh on a re on a
+right and four times faster on the read
+uh typically but the the one sort of
+secret place that it ends up being much
+much faster
+is uh in the latency so that's like the
+time between when i click
+and submit a request to the time that uh
+it actually
+starts happening right um if
+if it's like a random io
+event it might be you know
+when your drives are warmed up and
+everything it might be uh
+like 0.8 milliseconds to 1.2
+milliseconds depending
+uh whereas on the ssd it's going to be
+microseconds so even if it's 20
+microseconds
+uh and you have a rate of four drives if
+you say that your average latency per
+drive was one millisecond on a hard
+drive
+and it's like 20 microseconds on the ssd
+then uh you haven't even gotten to a
+microsecond by the time you add up that
+latency
+across the four drives
+the latency is a big difference and then
+the quality of service
+so one of the things that we really
+tested the data center the dc 500 and
+450 and dc 1000 drives
+they're they're tested extensively for
+you know
+quality of service that's the main the
+main thing you're looking for if you're
+putting them into a
+data center like tier two cloud
+something like that
+uh you want a quality of service where
+uh you know a consumer ssd might peak
+deliver super performance for a short
+period of time
+and if you're only transferring a couple
+gigs at a time that's what you want it's
+on your laptop
+right you know you're trying to get
+things on and off really quick that's
+awesome
+but if you're if you're running a drive
+you know 24 7 with a database with for
+online transactions
+uh you're writing to it and reading from
+it like constantly
+and you you don't want to see big spikes
+up or down in the performance you want
+to see
+like a really flat line in that
+performance and
+and you'll see that with like a hard
+drive you know uh it'll spike up really
+fast initially because it's got a
+dram cat anytime you're transferring a
+video file or something it's like
+fast and then and then it'll plummet
+down to
+right 200 megabytes per second and then
+it goes 30 megabytes yes
+and you're like what happened yeah uh
+and the problem is
+at a certain point you're running out of
+cash or something like that so
+in that uh you know in in your fio
+script
+uh one of the important things to do if
+you're wanting to test for
+data center use is to do that uh warm up
+on the drive to have it burned in
+so that uh it's not just like fresh out
+of the box i just installed it and all
+the sectors are blank and
+and you know like uh because it's not
+having to have any overhead of managing
+uh data on the drive i would see what
+the
+drives in use so is that is that kind of
+the key difference between the consumer
+ssds that i have in my laptop in my home
+computers
+versus these data center drives yeah
+that and you might see over provisioning
+differences
+um like our uh dc
+uh drives um number one they have a
+decent amount of uh
+dram cash on them uh where a lot of
+consumer drives might have
+uh a pseudo slc where they take tlc or
+qlc memory and program it
+as slc so rather than you know they
+might take a sector a section of the
+drive and
+and say this is going to be programmed
+as slc so i'm only going to store
+one bit of data in this cell instead of
+the three or four like if it's
+uh tlc you're storing three bits of data
+uh or bytes and and uh
+and qlc you're storing four so you've
+got much more data that's being
+stored there uh you know we had mlc uh
+but then it was tlc and
+uh qlc and you know we're we're trying
+to plan
+more more bits into uh uh
+the more cells uh and as you do that it
+gets
+you know it takes a little longer to
+program
+uh all those uh bytes and bits into
+uh the different cells so if you use the
+pseudo cache of slc
+which we do on a few drives as well and
+consumer uh but
+uh you're it the reason you do it is
+it's much less expensive than using
+dram and so uh on our on our data center
+drives
+there they all have like a nice big dram
+cache on them that's one of the big
+oh okay and so uh that
+that combined with uh the over
+provisioning
+that is on uh our data center drives
+allows for
+uh as well as tweaks in the firmware
+it allows for really a high level of
+quality of service so
+you don't see big spikes way up and then
+weight down and
+and going you know right where you're at
+the max performance of the bus
+down to zero back to the middle and are
+you when you say
+when you say over provisioning are you
+talking about io
+now over provisioning is where if i have
+like if you see uh an ssd that has
+say it has 940 or 960 gigs
+yeah uh of 960 gig capacities
+really common right yeah that that's a
+terabyte of nand that's on there
+and it has over provisioning of uh three
+to five percent
+for the data itself so the storage yeah
+okay and so when
+when you see a drive that says one
+terabyte
+uh lots of times that's still the same
+amount of nand as if you bought a
+960 but the the thing you'll notice is
+like on a consumer drive if you get up
+to being
+90 full on one that's not over
+provisioned
+you'll start you'll see the performance
+also start to tank
+whereas if you have one that if you have
+the you know the 960 gig
+drive it can be 90 full and you'll still
+be riding at the same speed
+as when it was empty uh you know
+you it well i won't say when it was
+empty because one of the things
+we do that uh preconditioning right
+that's part of our
+script that we we're working on there
+um that preconditioning basically make
+sure that
+the drives sort of dirtied up and and
+uh is doing real workload type stuff so
+you guys
+because you can test anything out of the
+box and it might look spectacular but
+then when you put it into real use
+uh throw it into a data center and you
+know weak into being used
+you're like this is not performing the
+way it did you know
+i threw these consumer drives in there
+and they were great and now they uh are
+terrible
+yeah um oh i see that yeah i've seen
+that on desktop drives and
+things like that yeah when they get
+warmed up and dirty and make sense
+they they're under real world working
+conditions and not just
+running a benchmark and now my iops
+on the and you mentioned iops maybe i
+could get you to briefly explain what
+that means to us
+um but it is through the roof
+higher uh on the ssds what is that what
+does that tell us
+so uh part of that is it's because of
+it's physics right so on the ssd
+it's science we're talking about physics
+the hard drive is actually relying
+uh for the iops it actually has that
+needle that moves back and forth with
+the reader physical drives yeah
+the the spinning drives and so it
+actually has to
+in order to read a point it has to
+physically move to somewhere
+find that read it uh verify it
+and then move to the next point find it
+read it and verify it so
+uh just because of the way
+physics and thermodynamics work the
+drive can't spin
+any faster they you know hard drives are
+really really great for what they do
+and that you get really big hard drives
+they're pretty durable uh but
+physics can't take them any farther
+because and and so when you go
+over to an ssd
+uh you're just everything's uh
+done through solid state you're not
+moving anything
+except electrons and so uh
+you know you're you you have like your
+seek times go down by a thousand
+fold uh and that's why you'll see what
+the iops difference um the
+random read which was your best on the
+hard drives random read of
+673 iops
+whereas the random read on the raid of
+dc 500r was 121 000 iops
+so 180 times the speed
+yeah it's it's just a little faster a
+little bit
+that's amazing so now we understand now
+so i've jumped from going from the
+spinning drives to the
+ssds now my bottleneck is sata
+the the connection so
+that 121 000 iops
+with that if you went to
+now you go to pcie based drives
+pcie gen 3 nvme type drives
+so either m.2 or u.2
+u.2 is more friendly to a data center
+because it
+is in that two and a half inch form
+factor rather than the gum stick form
+factor which is
+a little difficult to manage there's a
+few people that have
+uh adapters and things like that to put
+lots of m.2s into servers but
+um you know i think the the u.2 and the
+ruler are going to be much more common
+uh going forward for putting in lots of
+you know like 24
+or more uh u.2 drives uh
+like nvme ssds into a server
+uh but now you're talking like the iops
+go up another
+factor right um so like an nvme drive
+because it's not limited
+to uh by the sata bus uh
+it uh is limited by the pcie bus so
+um you know you go to gen four and
+that's
+twice as fast as gen three so you know
+potentially twice as fast i
+haven't seen any models where like it is
+twice as fast but you know significantly
+gen 4
+demos that i've seen are significantly
+faster like uh
+you know you're talking off of by 16
+uh i think uh the fastest demo i've seen
+so far is about
+25 gigabytes per second off of one
+device
+on one gen 4 bytes per second wow
+and and i don't know how scalable that
+is currently but
+that was when gen 4 was still
+experimental which it's a little
+experimental
+i think the amd one is is looking really
+good but uh
+i'll call it kind of experimental until
+intel and amd both have their gen 4 out
+and all of the enterprise servers are
+shipping with gen 4 pcie because at this
+point
+it's a really cool gamer box or a really
+high-end
+a really high-end workstation you know
+like it
+uh nvidia's got a lot of cool demos with
+four gpus on an amd proc with uh
+you know lots of nvme uh uh
+drives connected to it and they're doing
+some really neat demos and as is amd
+with their
+their gpus but
+all that right now seems it it's like
+if i have to go drop five to
+20 grand on a workstation um i i'm gonna
+wait
+until it's uh somebody else uh
+works out all the wrinkles in that
+experiment so
+thinking about my use case so i
+obviously work here in a studio so i'm
+doing a lot of video production
+maybe some of our viewers are working in
+an office environment where they've got
+similar scenarios where
+hey we've got to replace the drives in
+an older server or maybe it's not even
+that old but
+they're they're not necessarily
+replacing an entire server they just
+want to put
+ssds in instead of the spinning drives
+because they're
+kind of the way to go right now and
+we're certainly seeing a big performance
+boost here
+um is there you know where where is the
+performance gain so for me it's
+it's in editing real-time 4k video it's
+it's brilliant on the on the dc 500rs
+um where where is the the average
+business consumer
+i.t department going to find gains by
+upgrading the servers to ssd
+well i i think client satisfaction and
+my uh dad's a dentist and my mom's a
+lawyer
+and and uh i've used to do some computer
+tech support for
+people in those communities and and you
+know like uh
+uh doctors and lawyers are notoriously
+cheap when it comes to you know like uh
+spending money on on systems like that
+but the systems also drive all of the
+uh all of the uh revenue in their
+business so it's really important for
+them to keep them updated
+and i think the thing that you
+get by going from hard drive to ssds
+on an upgrade of an older system you
+know you'll be able to ring
+at least two or three more years out of
+it if not more
+um you know you'll you you'll you always
+hit a bottleneck somewhere but
+rather than your system being the
+bottleneck it might be the os or the
+version of the software
+that you're using or something like that
+but uh
+you'll make something much more usable
+have you ever taken an old hard drive ss
+or a whole old hard drive laptop and put
+an ssd in it and
+you know it's like all sudden it's like
+why was i going to get rid of this thing
+it's so fast
+exactly it like breathes new life into
+an old system and that's exactly what
+this has done
+for our server and i and as you're
+talking about bottlenecks i'm thinking
+okay well sata is six gig a second
+so i think my bottleneck actually mark
+is going to be my networking because i'm
+only on gig
+ethernet so yeah that's my bottleneck
+but
+being a very small business myself
+having gig
+ethernet and being able to edit video
+over
+one gig a second is is stellar it's
+superb
+um well the the trick you know for that
+like because my job was breaking those
+kind of bottlenecks
+uh previously is i would put a 10 gig
+uh on your server and have a switch that
+distributes it out to
+your gigabit clients and and until you
+get a 10 gig uh or desktop or something
+you could always go you know like uh do
+it gradually just like adding
+uh ssds to your uh uh legacy systems
+yeah uh that's a good idea just kind of
+upgrade the the networking
+as i go that's the next step yeah um
+what kind of longevity am i going to be
+looking at um
+for ssds i know like when ssds first
+came out so
+years ago um there were those of us who
+were hesitant and afraid to switch to
+ssd
+because the they weren't quite as
+reliable but that has completely changed
+over the past several years are we like
+what kind of lifespan do we expect from
+like your your data center drives uh
+so our data center drives we warrant
+them for five years
+uh yeah and then you know like the they
+have different
+um drive rights per day
+warranties as well so like the dc 500
+that's a 0.3 drive right per day so if
+you have a
+four terabyte or a three three point uh
+was it 3.86 uh
+if you have a four essentially there's
+four terabytes in the end on there
+but if you have like a four terabyte
+drive or an eight terabyte drive
+of the r which is a read centric model
+you can get
+uh up to uh you can do uh 0.3 drive
+rights per day
+um uh the m
+version of that is 1.5 drive rights per
+day
+and if you think about that for a four
+terabyte drive
+that's a lot of writing yeah if you're
+riding uh
+you know like uh six terabytes a day uh
+you might be running facebook off of
+your uh server i don't know
+that's a lot of data to fill up and
+delete
+because that's it's not so much about um
+you know like if you're just collecting
+drives or collecting data on your drives
+that's what the r is all about
+right so the read centric one if i want
+to
+like have a database full of video and
+images
+and text files and spreadsheets and
+stuff that's going to live there forever
+the dc 500r is a really great drive
+because i'm just adding stuff to it all
+the time i'm not
+adding you know like a terabyte at a
+time and then calculating that data and
+deleting the whole thing and
+and putting in the answer that's another
+terabyte um
+you know that that's something like uh
+uh lamp where you've got
+you know apache server and and or an
+oltp
+server or you know some kind of online
+transaction thing where you know
+uh uh you're you're just grinding
+through the data like you know
+facebook where you're just adding new
+cat videos all the time and then
+deleting them as they get old
+right um you know uh most people
+don't do that like i i've got a a drobo
+uh server that i just add stuff to
+constantly
+so uh i actually had to unplug it
+because it's so loud because of all the
+hard drives i'm gonna put uh
+four four terabyte ssds in there perfect
+that'll make it quiet yeah yeah
+it's pretty quiet all of a sudden it's
+interesting you say that like
+because that's the other thing that we
+don't necessarily think about with the
+upgrade is this
+the silence of them the energy
+efficiency yeah
+i i have to say that ssds uh
+compared to hard drive energy efficiency
+hard drives are actually really good at
+when they're not being used
+shutting down like they've they've
+really gotten good at being energy
+efficient uh and and
+i don't think that anybody's replacing
+hard drives
+with like well they have that that's
+exactly what we are exactly
+replacing hard drugs but they have their
+places like if i want to store
+40 uh terabytes of data that's just cold
+data
+that i'm not going to access all the
+time but i really i need for legal
+reasons or
+you know like to make me feel secure or
+it's my backup
+that's a perfect use for hard drives if
+you have data that you want to be able
+to read and work off of
+hard drives are terrible for that just
+because the latency and you know it's
+if you're one user and you are getting
+the data off the hard drives
+it's bad enough to have to wait for it
+but if you've got like 10 users
+or even you know three or four users
+that are all hitting that
+uh hard drive array at the same time
+you can start you know like hey you know
+like why why is everything slowing down
+so much
+it's like um you know you'll also see a
+lot better
+multi-user uh efficacy happening when
+uh when you go to uh ssds
+just because the the latency lots of
+great information i mean i'm i'm
+all kinds of thoughts going through my
+head i'm thinking about how some servers
+like you've got multiple users all
+connecting for
+samba shares and accessing files or even
+accessing things like their bookkeeping
+software
+simultaneously on a single spinning hard
+drive in a
+system or something that's like the the
+difference in the well if
+you think about the the uh vm language
+of spin-up
+uh a virtual machine yeah when you
+are coming off of uh sata drive there's
+still a little spin up time but it
+it's like a fraction of uh what the spin
+up time
+because it really is a spin up time off
+of hard drives
+uh and then if you go to nvme it's it's
+almost like it was in dram you know it's
+like because the nvme drives
+being the you know it's off the sata bus
+and onto the pcie bus it's one step
+closer to the processor mm-hmm and
+we can that's why like dram is the best
+because it's on the processor right
+sure even the you know i guess the cache
+and the processor
+is on the processor but it's also not
+connected to your
+uh display and and all that so
+dram is sort of the king and which we
+also make
+there's all these um kind of irrelevant
+almost benchmarks of
+people turning on their computer and how
+long does it take to boot and it's
+and it's it's kind of irrelevant in so
+many ways and it makes me think about
+those spinning
+those drives spinning up we have such a
+we have a tendency to look at okay when
+i click on something how
+quickly does it happen how quickly does
+that application come up
+and for me in this scenario how quickly
+am i able to open
+large video files in my editor and right
+that's like where yeah i'm not having to
+wait for
+for that that moment is just an instant
+moment for me
+i would do uh so i a lot of the i would
+create demos for when we go to trade
+shows like nib
+the broadcasters uh north american
+broadcaster show or ibc
+in amsterdam uh i'd create some demos
+with adobe
+and uh you know one of the things that
+we'd have to do there is like if we're
+editing 8k or you know 4k or 8k video
+you have to make sure that the clips are
+long enough to blow out any
+dram that you have you know because if
+you know like if i'm editing and it's
+really small files they could all just
+live in dram
+or you know and i wouldn't know the
+difference you know it's like it could
+be
+coming off a hard drive but the first
+time i read it it's really slow but
+after that it's
+nice and fast uh because the if the
+files are tiny
+but if you are trying to pull like 4k
+still frames rather than an avi or a
+quick time
+uh you know that because the avr
+quicktime might be able to
+be stored in if you have 64 or 128 gigs
+of memory in your
+system right you might be able to store
+most of the video there
+but you don't really see the performance
+of the ssds until you
+have something that sort of outmatches
+the amount of dram that you have
+available to you
+mark if i may change directions just a
+as we approach closing our interview off
+one of the things as a business user
+that are that's really important to me
+is knowing that i can get support when i
+need it
+and throughout the course of this
+process in upgrading my server one of
+the things that
+really stands out to me is the fact that
+your team was there for me
+every step of the way is that
+is that pretty typical of kingston uh
+before i worked here i
+i didn't know that much about kingston
+i've worked here for a couple of years
+now
+and one of the things that really blew
+me away was the level of support so
+uh if you have a whether you have a
+problem with like a
+hyperx microphone like this or a headset
+or a keyboard or dram or uh
+an ssd if you call our support number
+we have people here in southern
+california in orange county that answer
+the phone there's not a data center
+somewhere around the world so during the
+it's going to be people in orange county
+if you call it three in the morning it's
+going to be people in england
+so we've got a really great support
+where
+if you have a real problem that they
+can't solve with uh
+you know the all their known database of
+issues
+uh it ends up to me in the engineering
+team for ssds if it goes to us
+um like within
+a half an hour it's in our inbox and
+and you've got like a whole engineering
+team from
+uh southern california to europe and
+and taiwan that are all dealing with it
+uh personally so
+fantastic i think that's one of the big
+differences like i i've had problems
+with uh
+drives from other manufacturers that
+i've worked at other manufacturers and
+and i couldn't get anybody to support me
+at the manufacturer that i worked at
+previously wow
+that's great and there's something to be
+said for good support
+absolutely now you mentioned the hyperx
+line of consumer products of course i've
+experienced it from the enterprise
+kind of level um is this
+you know level of support something that
+can be expected from
+consumers as well as business users
+well absolutely like i was saying like
+uh we've
+we've actually had people you know like
+with broken keyboards or
+you know it's a it's uh you know it's
+it's all one number every
+kingston uh you know has the hyperx
+brand for
+gaming but we also do you know high-end
+uh server
+products dram and ssds for the data
+center
+as well as you know consumer dram and
+consumer ssds and
+usb sticks from consumer ones to all the
+way to the encrypted ones with keypads
+on them
+um one of the other things that also
+surprised me coming from
+another uh company to kingston was
+uh the level of testing so a hundred
+percent of
+our data center uh ssds and and dram
+they're
+they're they're as every piece is tested
+uh they've you know like they've uh the
+server stuff goes through a more
+rigorous
+test uh but they simulate like three
+months worth of uh
+uh use on the d
+on the dram side and and uh
+uh like all the ssds are tested at
+uh in an oven basically while they're
+when they're being manufactured they're
+all tested
+at a high temperature to make sure that
+they are uh
+functioning in an optimal fashion
+fantastic
+big thanks to our guest mark noland who
+joined us from kingston today
+to talk about those drives really really
+exciting stuff hey um
+make sure you subscribe to us on youtube
+linuxtechshow.com
+is a great way to find us there also if
+you love what we do please become a
+patron patreon.com
+category5 but that's all the time we got
+so we're out of here take care we'll see
+you again next week
+[Applause]
+you
