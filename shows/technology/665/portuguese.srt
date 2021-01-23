@@ -1,0 +1,4212 @@
+1
+00:00:00,320 --> 00:00:05,040
+na categoria 5 tv, nós confiamos nossos arquivos em drives de estado sólido da Kingston
+
+2
+00:00:05,040 --> 00:00:07,839
+tecnologia seja para seu laptop de servidor ou
+
+3
+00:00:07,839 --> 00:00:10,880
+computador desktop você terá um desempenho melhorado
+
+4
+00:00:10,880 --> 00:00:17,920
+e confiabilidade com ssds kingston prepare-se, é hora da tecnologia
+
+5
+00:00:22,320 --> 00:00:25,519
+bem-vindos ao show a todos, é o episódio 2 da 14ª temporada
+
+6
+00:00:25,519 --> 00:00:29,599
+eu sou robbie ferguson e eu sou jeff weston é ótimo ter você aqui
+
+7
+00:00:29,599 --> 00:00:32,800
+e uh, espero que você tenha tido uma semana maravilhosa, apesar de
+
+8
+00:00:32,800 --> 00:00:37,760
+tudo, mas aqui estamos e ansiosos por um grande show pela frente
+
+9
+00:00:37,760 --> 00:00:40,960
+esta noite vamos aprender como criar o nosso próprio
+
+10
+00:00:40,960 --> 00:00:45,840
+servidor proxy ok hum então eu não quero falar muito sobre isso no topo
+
+11
+00:00:45,840 --> 00:00:49,200
+o show, mas eu sei que você sabe que às vezes é difícil encontrar um bom
+
+12
+00:00:49,200 --> 00:00:52,640
+serviço de proxy gratuito, então vamos criar o nosso próprio
+
+13
+00:00:52,640 --> 00:00:55,840
+e vou mostrar como colocá-lo em qualquer lugar do mundo
+
+14
+00:00:55,840 --> 00:01:01,600
+usando os serviços em nuvem do aws, é muito empolgante e uma das coisas
+
+15
+00:01:01,600 --> 00:01:05,680
+com isso também, à medida que aprendemos um pouco sobre como
+
+16
+00:01:05,680 --> 00:01:09,520
+Amazon web services ec2 e serviços em nuvem e a capacidade de
+
+17
+00:01:09,520 --> 00:01:13,760
+implantar servidores debian na infraestrutura em nuvem conforme aprendemos
+
+18
+00:01:13,760 --> 00:01:18,799
+como fazer isso e como funciona, apenas saiba que um dos
+
+19
+00:01:18,799 --> 00:01:20,159
+as coisas que vamos fazer é
+
+20
+00:01:20,159 --> 00:01:24,000
+migrar alguns de nossos dados para essa infraestrutura também, então eu digo que
+
+21
+00:01:24,000 --> 00:01:26,960
+porque alguns de nossos espectadores de transmissão ao vivo
+
+22
+00:01:26,960 --> 00:01:29,600
+teve problemas com buffer e coisas assim
+
+23
+00:01:29,600 --> 00:01:32,799
+e é porque temos um pequeno computador de placa única
+
+24
+00:01:32,799 --> 00:01:36,880
+de todas as coisas para as quais estamos transmitindo e depois retransmitindo para
+
+25
+00:01:36,880 --> 00:01:40,799
+qualquer um que está assistindo no roku ou outros jogadores hls e coisas assim
+
+26
+00:01:40,799 --> 00:01:44,399
+tem streamer ágil rodando no computador de placa única, realmente é
+
+27
+00:01:44,399 --> 00:01:47,759
+incrível uau, no entanto, o que eu monitorei através do meu
+
+28
+00:01:47,759 --> 00:01:50,960
+teste é que ele executa uma CPU muito alta quando as pessoas
+
+29
+00:01:50,960 --> 00:01:55,439
+estão assistindo direito, então eu acredito que pode ser o que causa alguns
+
+30
+00:01:55,439 --> 00:01:58,640
+problemas de armazenamento em buffer com nosso stream, então há um monte de coisas que vão
+
+31
+00:01:58,640 --> 00:02:03,520
+nos bastidores aqui para tentar mostrar para você, levar o show para você,
+
+32
+00:02:03,520 --> 00:02:07,840
+um formato muito acessível e fácil de acessar e para que você não
+
+33
+00:02:07,840 --> 00:02:10,160
+experimentando coisas como a roda de fiar
+
+34
+00:02:10,160 --> 00:02:14,560
+e esse tipo de coisas, mas uh então como estamos assistindo esta noite
+
+35
+00:02:14,560 --> 00:02:18,560
+uh e aprender como implantar esses servidores debian na nuvem
+
+36
+00:02:18,560 --> 00:02:20,879
+saber que isso é algo que faremos nos bastidores aqui
+
+37
+00:02:20,879 --> 00:02:23,760
+também e migrar esses serviços
+
+38
+00:02:23,760 --> 00:02:27,120
+para uh para uma dessas instâncias, a fim de
+
+39
+00:02:27,120 --> 00:02:30,480
+tentar melhorar nosso desempenho aqui no estúdio para
+
+40
+00:02:30,480 --> 00:02:34,400
+muitas coisas interessantes acontecendo atrás de nós, como você tem estado
+
+41
+00:02:34,400 --> 00:02:38,000
+tenho estado bem, vamos falar com você um pouco mais tarde esta noite sobre
+
+42
+00:02:38,000 --> 00:02:42,080
+uh algumas das suas façanhas com solda sim sim, você quer nos contar um pouco
+
+43
+00:02:42,080 --> 00:02:44,720
+um pouco apenas uma provocação rápida sobre o que vamos ser
+
+44
+00:02:44,720 --> 00:02:48,959
+discutindo uh meu filho queria entrar em soldagem para
+
+45
+00:02:48,959 --> 00:02:53,120
+o aniversário dele uh então nós seguimos por esse caminho
+
+46
+00:02:53,120 --> 00:02:56,480
+começando no mês passado uh estivemos brincando um pouco e tem
+
+47
+00:02:56,480 --> 00:03:01,200
+eu pensando como posso fazer minhas próprias coisas em casa
+
+48
+00:03:01,200 --> 00:03:04,560
+quando não tenho uma grande área de produção para fazer o meu
+
+49
+00:03:04,560 --> 00:03:09,599
+pcb sim então sim é onde falamos sobre isso, se você estiver interessado em
+
+50
+00:03:09,599 --> 00:03:15,040
+eletrônica DIY, vamos falar sobre isso e uh wow, temos
+
+51
+00:03:15,040 --> 00:03:19,840
+algumas coisas interessantes que estamos preparando para o show da próxima semana
+
+52
+00:03:19,840 --> 00:03:23,040
+já está pronto para ir e estamos ansiosos para estar
+
+53
+00:03:23,040 --> 00:03:26,640
+apresentando a impressão 3D para nossos visualizadores também
+
+54
+00:03:26,640 --> 00:03:29,680
+então isso é algo que vamos aprender ao longo do
+
+55
+00:03:29,680 --> 00:03:36,080
+nas próximas semanas aqui na categoria 5 tv temos muita coisa acontecendo sim
+
+56
+00:03:36,080 --> 00:03:39,200
+por favor, certifique-se de se inscrever no youtube
+
+57
+00:03:39,200 --> 00:03:42,159
+e clique no sino para receber a notificação sempre que postarmos um novo
+
+58
+00:03:42,159 --> 00:03:46,560
+vídeo a qualquer hora que estivermos ao vivo e também se você quiser se envolver em
+
+59
+00:03:46,560 --> 00:03:49,280
+a comunidade eu acho que é uma maneira muito legal
+
+60
+00:03:49,280 --> 00:03:54,000
+para fazer parte da categoria 5 tv algumas pessoas ainda me dizem bem o que
+
+61
+00:03:54,000 --> 00:03:58,400
+discórdia e é nossa, você não faz parte da nossa discórdia
+
+62
+00:03:58,400 --> 00:04:01,920
+servidor porque se você se juntar à nossa discórdia, que você encontrará se for
+
+63
+00:04:01,920 --> 00:04:06,560
+para category5.tv clique em interagir você verá entrar na discórdia
+
+64
+00:04:06,560 --> 00:04:10,720
+servidor é um navegador gratuito ou baseado em aplicativo
+
+65
+00:04:10,720 --> 00:04:14,720
+serviço que você pode colocar em seu dispositivo e / ou acessar
+
+66
+00:04:14,720 --> 00:04:18,160
+através do seu navegador em qualquer coisa e você pode basicamente conversar com o
+
+67
+00:04:18,160 --> 00:04:22,079
+comunidade, mas é muito legal porque é mais do que apenas uma sala de chat
+
+68
+00:04:22,079 --> 00:04:26,160
+ele também tem salas diferentes alocadas para
+
+69
+00:04:26,160 --> 00:04:28,160
+coisas diferentes, então as coisas que estamos falando
+
+70
+00:04:28,160 --> 00:04:31,280
+sobre ou, por exemplo, temos os bastidores
+
+71
+00:04:31,280 --> 00:04:35,680
+então, os bastidores estão repletos de bastidores
+
+72
+00:04:35,680 --> 00:04:42,320
+fotos que você não veria de outra forma e há tanto lá sim em nosso
+
+73
+00:04:42,320 --> 00:04:44,400
+servidor discord, então realmente você tem que ir lá
+
+74
+00:04:44,400 --> 00:04:47,919
+sei que é como se fosse uma plataforma de chat, mas tem um
+
+75
+00:04:47,919 --> 00:04:51,360
+muito mais do que apenas a interação do chat
+
+76
+00:04:51,360 --> 00:04:54,880
+está certo e não é apenas ativo durante o show
+
+77
+00:04:54,880 --> 00:04:58,240
+está ligado o tempo todo e, se você tiver coisas de tecnologia
+
+78
+00:04:58,240 --> 00:05:01,360
+no meio da semana você fica tipo oh, eu não sei como resolver esse problema você
+
+79
+00:05:01,360 --> 00:05:04,080
+poderia aparecer lá e a comunidade é incrível em dar
+
+80
+00:05:04,080 --> 00:05:07,680
+conselho e isso é muito preciso, sim, é verdade
+
+81
+00:05:07,680 --> 00:05:10,720
+tudo bem, então temos que fazer uma pausa bem rápida e então vamos pular direito
+
+82
+00:05:10,720 --> 00:05:14,800
+nele após este curto intervalo que estaremos olhando
+
+83
+00:05:14,800 --> 00:05:20,800
+como configurar uma instância aws ec2 que soa como uma palavra-chave para
+
+84
+00:05:20,800 --> 00:05:24,080
+eu realmente rápido sim, que tal isso nós estamos
+
+85
+00:05:24,080 --> 00:05:29,759
+vamos criar nosso próprio serviço de proxy gratuito que é mais fácil de dizer
+
+86
+00:05:29,759 --> 00:05:36,240
+estou no controle, tenho acesso, temos o manche de controle
+
+87
+00:05:36,240 --> 00:05:51,920
+já volto [música]
+
+88
+00:05:58,560 --> 00:06:01,919
+se você espera ter um pouco mais de privacidade enquanto navega no
+
+89
+00:06:01,919 --> 00:06:04,720
+Internet ou você deseja acessar serviços que
+
+90
+00:06:04,720 --> 00:06:10,160
+talvez não estejam disponíveis normalmente em sua área ou talvez seja um
+
+91
+00:06:10,160 --> 00:06:13,680
+caso de realmente ter tido seu endereço IP
+
+92
+00:06:13,680 --> 00:06:17,600
+bloqueado por um provedor de serviços, pode não ser um
+
+93
+00:06:17,600 --> 00:06:20,960
+coisa maliciosa que tive meu endereço IP bloqueado por
+
+94
+00:06:20,960 --> 00:06:24,639
+youtube antes porque eu envio muitos vídeos e
+
+95
+00:06:24,639 --> 00:06:29,120
+baixe as legendas para aqueles para que
+
+96
+00:06:29,120 --> 00:06:33,759
+me levou a exceder meu uso na API do youtube
+
+97
+00:06:33,759 --> 00:06:38,800
+então meu endereço IP fica bloqueado, então não precisa ser uma coisa maliciosa
+
+98
+00:06:38,800 --> 00:06:44,319
+não quero dar essa impressão, mas há razões muito legítimas
+
+99
+00:06:44,319 --> 00:06:49,759
+precisar contornar esse tipo de coisa e os nerds vão para
+
+100
+00:06:49,759 --> 00:06:56,000
+é um proxy, o problema é que os proxies podem ser muito caros de usar e
+
+101
+00:06:56,000 --> 00:07:00,160
+os gratuitos, enquanto prontamente disponíveis, são muitas vezes
+
+102
+00:07:00,160 --> 00:07:04,800
+ou não é muito confiável, eles estão em alta um dia, no outro, e você perde
+
+103
+00:07:04,800 --> 00:07:10,240
+acesso aos seus serviços e tudo mais ou ainda pior
+
+104
+00:07:10,240 --> 00:07:14,960
+eles são perigosos, você não sabe o que esses proxies estão rastreando
+
+105
+00:07:14,960 --> 00:07:21,120
+registrando e até mesmo interceptando enquanto você está enviando
+
+106
+00:07:21,120 --> 00:07:26,720
+todo o seu tráfego de Internet por meio desse provedor de serviços
+
+107
+00:07:26,720 --> 00:07:35,199
+então há uma pessoa em quem eu realmente confio para fazer proxy de todos os meus dados
+
+108
+00:07:35,199 --> 00:07:41,039
+e esse sou eu, não sou a mesma pessoa em quem você diria que confia
+
+109
+00:07:41,039 --> 00:07:45,199
+a pessoa em quem você confia é você, então vou mostrar como
+
+110
+00:07:45,199 --> 00:07:53,280
+Posso configurar um serviço de proxy gratuito meu e você pode replicar isso e
+
+111
+00:07:53,280 --> 00:07:56,319
+crie o seu próprio também vamos fazer isso na nuvem,
+
+112
+00:07:56,319 --> 00:07:58,800
+usarão um provedor de serviços terceirizado
+
+113
+00:07:58,800 --> 00:08:02,400
+e isso é amazon, então você diz: ah, bem amazon, que tal
+
+114
+00:08:02,400 --> 00:08:05,919
+você sabe, podemos confiar nossos dados a eles, o que estamos usando é o seu
+
+115
+00:08:05,919 --> 00:08:10,639
+serviços em nuvem são chamados de serviços web amazon, então
+
+116
+00:08:10,639 --> 00:08:14,319
+tudo isso é a infraestrutura em nuvem que eles têm
+
+117
+00:08:14,319 --> 00:08:18,560
+para os clientes basicamente alugarem o acesso aos seus servidores e seus
+
+118
+00:08:18,560 --> 00:08:23,360
+seu espaço ee os servidores virtuais e tudo o mais que todo
+
+119
+00:08:23,360 --> 00:08:29,680
+infraestrutura está disponível para você, mas a implantação em si é
+
+120
+00:08:29,680 --> 00:08:34,560
+seu eu vou te mostrar como isso é feito, vamos pular para o aws
+
+121
+00:08:34,560 --> 00:08:40,719
+e em particular o ec2, então é claro que você, se não estiver familiarizado com o aws, apenas
+
+122
+00:08:40,719 --> 00:08:44,720
+acesse aws.amazon.com entre com sua conta amazon
+
+123
+00:08:44,720 --> 00:08:50,640
+e, em seguida, faça uma pesquisa rápida por ec2 e isso o levará basicamente
+
+124
+00:08:50,640 --> 00:08:53,680
+sua plataforma de virtualização pense em ec2 como
+
+125
+00:08:53,680 --> 00:08:57,519
+apenas isso, então a primeira coisa que noto quando estou aqui
+
+126
+00:08:57,519 --> 00:09:03,200
+em ec2 é minha região e isso é importante porque é onde meu proxy
+
+127
+00:09:03,200 --> 00:09:08,080
+o servidor vai residir se eu configurá-lo lá, por que isso
+
+128
+00:09:08,080 --> 00:09:11,519
+importante bem, pense sobre isso, digamos que estou usando um streaming de vídeo
+
+129
+00:09:11,519 --> 00:09:15,680
+serviço que restringe o acesso do canadense ao vídeo
+
+130
+00:09:15,680 --> 00:09:19,440
+serviço de streaming, colocando meu servidor proxy no norte
+
+131
+00:09:19,440 --> 00:09:23,360
+Califórnia agora, de repente, eles são basicamente
+
+132
+00:09:23,360 --> 00:09:26,320
+pelo endereço IP vou pensar que estou me conectando de
+
+133
+00:09:26,320 --> 00:09:29,360
+Califórnia, então eu sou capaz de contornar isso
+
+134
+00:09:29,360 --> 00:09:32,720
+da mesma forma, você pode querer mudar sua região com base em
+
+135
+00:09:32,720 --> 00:09:37,200
+o que você está tentando alcançar, você pode até colocar um servidor na África
+
+136
+00:09:37,200 --> 00:09:40,480
+ou na Ásia, veja que você pode colocar um certo em Hong Kong
+
+137
+00:09:40,480 --> 00:09:44,160
+você pode colocar um no Canadá a uh na Europa você tem
+
+138
+00:09:44,160 --> 00:09:49,680
+em todo o lugar e temos o Oriente Médio e a América do Sul agora
+
+139
+00:09:49,680 --> 00:09:52,800
+então é uma lista bem grande de onde eles
+
+140
+00:09:52,800 --> 00:09:57,360
+ter essa infraestrutura configurada para serviços web amazon o serviço ec2
+
+141
+00:09:57,360 --> 00:10:01,920
+então escolha aquele onde você deseja que seu servidor proxy esteja
+
+142
+00:10:01,920 --> 00:10:05,600
+vou definir o meu, vou apenas deixá-lo como norte da Califórnia, que é
+
+143
+00:10:05,600 --> 00:10:09,279
+nós um oeste e é onde
+
+144
+00:10:09,279 --> 00:10:13,760
+meu servidor proxy irá residir e isso permitirá que eu me conecte
+
+145
+00:10:13,760 --> 00:10:17,680
+como se eu estivesse realmente sentado na Califórnia
+
+146
+00:10:17,680 --> 00:10:20,880
+tudo bem, então vou clicar em iniciar instância
+
+147
+00:10:20,880 --> 00:10:24,880
+e, em seguida, inicie a instância novamente porque ele faz um menu suspenso e isso me dá
+
+148
+00:10:24,880 --> 00:10:29,440
+uma lista de sistemas operacionais que posso implantar
+
+149
+00:10:29,440 --> 00:10:33,760
+na minha instância ec2, então estou usando alguns termos com os quais você pode não estar familiarizado
+
+150
+00:10:33,760 --> 00:10:38,240
+aws são serviços da web da Amazon que são basicamente
+
+151
+00:10:38,240 --> 00:10:44,560
+gama completa de serviços que eles oferecem para usuários de nuvem ec2 é o seu
+
+152
+00:10:44,560 --> 00:10:48,160
+plataforma de virtualização para máquinas virtuais
+
+153
+00:10:48,160 --> 00:10:52,240
+quando eu disse instância, estou falando sobre uma máquina virtual
+
+154
+00:10:52,240 --> 00:10:56,160
+isso é literalmente uma máquina virtual, então vou implantar um desses
+
+155
+00:10:56,160 --> 00:10:59,360
+sistemas operacionais para uma instância de ec2 que é
+
+156
+00:10:59,360 --> 00:11:02,880
+uma máquina virtual, então o que eu quero que seja
+
+157
+00:11:02,880 --> 00:11:07,040
+então e eu estava dizendo ei, comente abaixo se eu usar um termo que você não conhece
+
+158
+00:11:07,040 --> 00:11:08,399
+com eu vou fazer uma busca rápida eu tenho
+
+159
+00:11:08,399 --> 00:11:11,120
+já fiz isso antes porque eu implanto uma tonelada de servidores
+
+160
+00:11:11,120 --> 00:11:15,279
+na nuvem, vou clicar no debian, basta digitar debian no
+
+161
+00:11:15,279 --> 00:11:19,279
+procure aqui então eu vou para aws
+
+162
+00:11:19,279 --> 00:11:24,640
+resultados de mercado, há também aqueles que criei e outros no
+
+163
+00:11:24,640 --> 00:11:27,120
+comunidade que você pensaria oh bem, eu quero usar
+
+164
+00:11:27,120 --> 00:11:30,800
+os da comunidade, bem, não, porque esses vão custar-lhe dinheiro
+
+165
+00:11:30,800 --> 00:11:34,320
+e você diz bem, mas a comunidade é gratuita, é de código aberto e sim
+
+166
+00:11:34,320 --> 00:11:38,959
+no entanto, não faz parte do mercado aws e, portanto, você terá
+
+167
+00:11:38,959 --> 00:11:42,320
+pagar pelo uso de ter aquela máquina virtual que
+
+168
+00:11:42,320 --> 00:11:46,160
+instância em execução na nuvem, então, em vez disso, vamos
+
+169
+00:11:46,160 --> 00:11:49,440
+use um dos oficiais do mercado aws, vamos ver quais resultados
+
+170
+00:11:49,440 --> 00:11:53,360
+nós percebemos que eles estão classificados muito bem. O debian aparece o primeiro resultado é
+
+171
+00:11:53,360 --> 00:11:57,839
+debian 10 buster um nível gratuito compatível ou nível gratuito
+
+172
+00:11:57,839 --> 00:12:00,560
+versão elegível do debian que vamos ser
+
+173
+00:12:00,560 --> 00:12:06,000
+implantando para selecionar aquele nível gratuito elegível para que possamos ignorar o
+
+174
+00:12:06,000 --> 00:12:09,360
+preços porque vamos usar um hit de nível gratuito continuar
+
+175
+00:12:09,360 --> 00:12:13,040
+e é aqui que selecionamos isso tão bem se quisermos o nível gratuito que precisamos
+
+176
+00:12:13,040 --> 00:12:15,839
+com um micro t2 então vou selecionar isso, mas o que
+
+177
+00:12:15,839 --> 00:12:22,399
+isso nos dá uma cpu um gigabyte de memória um
+
+178
+00:12:22,399 --> 00:12:25,600
+e temos armazenamento para lidar, não precisamos de muito armazenamento porque
+
+179
+00:12:25,600 --> 00:12:29,920
+estamos apenas configurando um proxy básico e é tudo, então vou
+
+180
+00:12:29,920 --> 00:12:34,079
+implante assim que t2 micro é o único que é grátis
+
+181
+00:12:34,079 --> 00:12:37,120
+nível qualificado, não selecione um dos maiores
+
+182
+00:12:37,120 --> 00:12:38,720
+uns porque você vai pagar por isso
+
+183
+00:12:38,720 --> 00:12:42,079
+imediatamente vou revisar e lançar, vamos voltar para
+
+184
+00:12:42,079 --> 00:12:45,839
+fazer configurações como nossos grupos de segurança e coisas assim, vou apenas sair
+
+185
+00:12:45,839 --> 00:12:48,480
+tudo por padrão por agora e vamos
+
+186
+00:12:48,480 --> 00:12:52,000
+inicie isso, então, antes de tudo, preciso criar uma nova chave
+
+187
+00:12:52,000 --> 00:12:55,360
+par, então esta é a chave SSH que vou usar no
+
+188
+00:12:55,360 --> 00:12:59,680
+para fazer o ssh neste servidor, então vou chamá-lo
+
+189
+00:12:59,680 --> 00:13:04,160
+um servidor proxy e, em seguida, baixe meu par de chaves
+
+190
+00:13:04,160 --> 00:13:06,320
+certifique-se de guardar isso em algum lugar seguro para onde vou
+
+191
+00:13:06,320 --> 00:13:10,800
+jogue isso no meu servidor e solte lá
+
+192
+00:13:10,800 --> 00:13:16,240
+e agora lançar instância significa ligar sua máquina virtual, então vou
+
+193
+00:13:16,240 --> 00:13:20,000
+empurre isso e pronto, é basicamente
+
+194
+00:13:20,000 --> 00:13:23,120
+criá-lo é criar uma máquina virtual
+
+195
+00:13:23,120 --> 00:13:29,360
+uh uma instância ec2 na nuvem para nós em uh no norte da Califórnia, então lá nós
+
+196
+00:13:29,360 --> 00:13:33,279
+vá, então vou ver as instâncias aqui
+
+197
+00:13:33,279 --> 00:13:37,200
+e agora posso ver que tenho uma instância executando um micro t2
+
+198
+00:13:37,200 --> 00:13:41,199
+e não é apenas um nome, então vou clicar em editar e vou chamar isso
+
+199
+00:13:41,199 --> 00:13:45,839
+meu servidor proxy tente lá vamos nós ok então é
+
+200
+00:13:45,839 --> 00:13:49,519
+já instalado e funcionando, então se eu clicar nele, posso ver o ip
+
+201
+00:13:49,519 --> 00:13:53,360
+endereço desse servidor é eu chamei de servidor proxy, mas agora
+
+202
+00:13:53,360 --> 00:13:56,720
+lembre-se de que é apenas debian 10. não há mais nada instalado nele
+
+203
+00:13:56,720 --> 00:14:02,480
+então eu preciso copiar aquele endereço IP e então vou pular para o meu
+
+204
+00:14:02,480 --> 00:14:05,839
+prompt de comando porque eu baixei a chave para
+
+205
+00:14:05,839 --> 00:14:17,839
+meu servidor, estou indo pessoalmente para ssh para meu servidor interno
+
+206
+00:14:18,399 --> 00:14:22,079
+tudo bem, então agora estou lá, agora o comando que vou usar
+
+207
+00:14:22,079 --> 00:14:28,079
+é ssh e, em seguida, traço i para a chave que vou usar
+
+208
+00:14:28,079 --> 00:14:31,040
+então, o arquivo de entrada que irei usar para a chave
+
+209
+00:14:31,040 --> 00:14:35,760
+e aquele se chama proxy server.pem é o que eu baixei
+
+210
+00:14:35,760 --> 00:14:39,920
+então eu vou me tornar administrador porque esse é o login padrão para o debian
+
+211
+00:14:39,920 --> 00:14:43,600
+administrador de imagens de máquina ami ou amazon em
+
+212
+00:14:43,600 --> 00:14:46,639
+e então o endereço IP que eu já copiei para minha área de transferência e se eu
+
+213
+00:14:46,639 --> 00:14:48,959
+aperte enter vai me pedir para aceitar aquela chave
+
+214
+00:14:48,959 --> 00:14:54,000
+e eu digo sim e sou negado
+
+215
+00:14:54,000 --> 00:14:57,279
+permissões naquele arquivo acabaram sendo
+
+216
+00:14:57,279 --> 00:15:01,199
+766 para que todos tenham acesso a esses arquivos, é interessante
+
+217
+00:15:01,199 --> 00:15:05,519
+O próprio ssh está me protegendo de alguém ser capaz de comprometer minha chave
+
+218
+00:15:05,519 --> 00:15:13,120
+então chmod 700 servidor proxy pam vamos tentar isso e agora
+
+219
+00:15:13,120 --> 00:15:16,000
+tente de novo então o que eu fiz foi ah e agora estou
+
+220
+00:15:16,000 --> 00:15:20,800
+conectado funcionou 700 significa que sou o dono daquela chave
+
+221
+00:15:20,800 --> 00:15:27,279
+tenho permissão para fazer qualquer coisa com isso ler escrever executar zero zero significa
+
+222
+00:15:27,279 --> 00:15:30,800
+ninguém no grupo ninguém que não faz parte do grupo
+
+223
+00:15:30,800 --> 00:15:35,600
+tem permissão para acessar isso, então é basicamente um arquivo burro que eles não podem
+
+224
+00:15:35,600 --> 00:15:39,519
+até mesmo aberto, mas eu posso bem, então agora que estou
+
+225
+00:15:39,519 --> 00:15:44,240
+conectado eu vou sudo sue porque é para isso que o comando é
+
+226
+00:15:44,240 --> 00:15:47,440
+torne-se root então agora sou root então atualize o aplicativo
+
+227
+00:15:47,440 --> 00:15:50,399
+A atualização do aplicativo vai pegar meu
+
+228
+00:15:50,399 --> 00:15:55,680
+repositórios que você vê que este é um computador debian real se você
+
+229
+00:15:55,680 --> 00:16:01,680
+na nuvem é tão fácil eu já estou atualizando já estou executando um debian
+
+230
+00:16:01,680 --> 00:16:05,120
+computador na nuvem então nessa quantidade de tempo e eu estou blá
+
+231
+00:16:05,120 --> 00:16:11,360
+blá blá ao mesmo tempo hum, temos um servidor debian baseado em nuvem
+
+232
+00:16:11,360 --> 00:16:15,519
+você sabia que era fácil e é grátis
+
+233
+00:16:15,519 --> 00:16:18,720
+ok, então podemos fazer outras coisas com isso também podemos configurar uma pilha de lâmpadas
+
+234
+00:16:18,720 --> 00:16:23,600
+poderia usá-lo para o mysql mariadb qualquer coisa que você possa imaginar, é um
+
+235
+00:16:23,600 --> 00:16:26,720
+servidor debian, então vamos usá-lo como nosso
+
+236
+00:16:26,720 --> 00:16:31,759
+proxy, então agora o que vou fazer é instalar uma ferramenta chamada
+
+237
+00:16:31,759 --> 00:16:38,639
+tinyproxy bom e simples de instalar apt install tiny proxy
+
+238
+00:16:38,639 --> 00:16:45,600
+muito simples de configurar diga sim, vamos lá
+
+239
+00:16:47,120 --> 00:16:51,199
+e está feito, agora que instalamos o proxy minúsculo, só precisamos editar
+
+240
+00:16:51,199 --> 00:16:59,440
+o arquivo de configuração então barra etc tiny tiny proxy mude o diretório para aquele
+
+241
+00:16:59,440 --> 00:17:05,760
+e então estou usando o nano tinyproxy.com e edito isso para controlar o nano
+
+242
+00:17:05,760 --> 00:17:08,799
+me permite pesquisar, mas antes de pesquisar, observe que o
+
+243
+00:17:08,799 --> 00:17:12,720
+porta por padrão está usando 888, vamos precisar saber que
+
+244
+00:17:12,720 --> 00:17:15,679
+informações porque é a isso que vamos nos conectar para
+
+245
+00:17:15,679 --> 00:17:19,839
+nosso proxy faz uma busca rápida para permitir
+
+246
+00:17:21,439 --> 00:17:25,679
+alt w permite-lhe pesquisar novamente uau a palavra permitir provavelmente não é a melhor
+
+247
+00:17:25,679 --> 00:17:30,640
+consulta de pesquisa, talvez pesquise por 127.0.0.1 e logo abaixo desse eu vou
+
+248
+00:17:30,640 --> 00:17:34,720
+permitir e então eu preciso adicionar meu endereço IP para que eu possa conectar
+
+249
+00:17:34,720 --> 00:17:37,440
+este servidor proxy porque agora está fechado
+
+250
+00:17:37,440 --> 00:17:40,640
+apenas localhost pode acessá-lo, é importante observar
+
+251
+00:17:40,640 --> 00:17:44,720
+que enquanto este é um servidor proxy público gratuito, eu sou o único que está
+
+252
+00:17:44,720 --> 00:17:47,280
+vai ter permissão para acessá-lo que vai ter permissão para
+
+253
+00:17:47,280 --> 00:17:52,400
+proxy meu conteúdo minha conexão por meio dele, portanto, é privado a esse respeito
+
+254
+00:17:52,400 --> 00:17:55,919
+eu preciso saber meu endereço IP, então vou pular para
+
+255
+00:17:55,919 --> 00:18:03,360
+ip.xyz atual e copie esse endereço IP para minha área de transferência e pule
+
+256
+00:18:03,360 --> 00:18:09,840
+voltar lá e colá-lo no meu controle de configuração para entrar em controle x controle o é
+
+257
+00:18:09,840 --> 00:18:14,320
+para escrever salve o arquivo agora systemctl
+
+258
+00:18:14,320 --> 00:18:21,039
+reiniciar o tiny proxy quase fez a última coisa que precisamos
+
+259
+00:18:21,039 --> 00:18:26,000
+a fazer é apenas dizer ao aws a segurança ec2 que
+
+260
+00:18:26,000 --> 00:18:29,840
+vamos definir uma política que diz ei, só eu tenho permissão para me conectar a isso
+
+261
+00:18:29,840 --> 00:18:32,799
+servidor para que ninguém mais possa se conectar a ele
+
+262
+00:18:32,799 --> 00:18:34,880
+seja o que for, então é isso que vamos fazer certo
+
+263
+00:18:34,880 --> 00:18:38,799
+agora, vou voltar aqui e você verá este servidor na tela
+
+264
+00:18:38,799 --> 00:18:43,840
+bem, se eu clicar em segurança, posso clicar no grupo de segurança que é
+
+265
+00:18:43,840 --> 00:18:46,240
+atribuído automaticamente, então basta clicar nisso
+
+266
+00:18:46,240 --> 00:18:50,480
+e agora me deixou com os grupos de segurança ec2 e a segurança correta
+
+267
+00:18:50,480 --> 00:18:52,320
+grupo você notará que já está configurado
+
+268
+00:18:52,320 --> 00:18:56,960
+um para ssh porque é habilitado por padrão, posso definir isso
+
+269
+00:18:56,960 --> 00:18:59,440
+para me permitir apenas o que é importante então
+
+270
+00:18:59,440 --> 00:19:02,720
+vamos fazer isso apenas para ter boas práticas de segurança para
+
+271
+00:19:02,720 --> 00:19:06,160
+ssh vou mudar de custom000
+
+272
+00:19:06,160 --> 00:19:10,080
+vou fechar x isso e depois mudar para o meu ip
+
+273
+00:19:10,080 --> 00:19:14,480
+então vou adicionar uma nova regra você viu como cheguei bem aqui eu sei que estou me mudando
+
+274
+00:19:14,480 --> 00:19:18,080
+realmente muito rápido, acabei de clicar em editar regras de entrada
+
+275
+00:19:18,080 --> 00:19:22,960
+aqui ok, então adicione uma nova regra tcp personalizado é o
+
+276
+00:19:22,960 --> 00:19:27,120
+número da porta padrão você se lembra de 888 e apenas
+
+277
+00:19:27,120 --> 00:19:31,919
+permitir meu ip, posso chamá-lo de alguma coisa se quiser proxy
+
+278
+00:19:31,919 --> 00:19:37,919
+e salve minhas regras lá vamos nós então agora você vê ssh e
+
+279
+00:19:37,919 --> 00:19:44,160
+tcp personalizado um chamado proxy na porta 888.
+
+280
+00:19:44,160 --> 00:19:49,600
+então, como testamos isso? Nosso endereço IP atual é 99.233
+
+281
+00:19:49,600 --> 00:19:52,640
+e então vou me conectar ao proxy que é
+
+282
+00:19:52,640 --> 00:19:57,360
+não é um tutorial sobre como usar um proxy, este não é um
+
+283
+00:19:57,360 --> 00:20:01,120
+tutorial sobre o que usá-lo, necessariamente, este é
+
+284
+00:20:01,120 --> 00:20:04,720
+estou supondo que você pode pesquisar no Google sozinho
+
+285
+00:20:04,720 --> 00:20:08,240
+porque vai ser diferente com base no seu caso de uso, se você quiser
+
+286
+00:20:08,240 --> 00:20:11,600
+apenas proxy seu navegador ou proxy de um aplicativo específico ou de todo o seu
+
+287
+00:20:11,600 --> 00:20:15,440
+rede que dependerá do seu indivíduo
+
+288
+00:20:15,440 --> 00:20:20,159
+caso de uso, este é estritamente um tutorial sobre como construir este
+
+289
+00:20:20,159 --> 00:20:23,679
+instância ec2 realmente muito rápido de graça
+
+290
+00:20:23,679 --> 00:20:28,400
+que tem um proxy pronto para usarmos na Califórnia ou em qualquer lugar
+
+291
+00:20:28,400 --> 00:20:32,960
+e é isso, no meu caso particular agora
+
+292
+00:20:32,960 --> 00:20:36,480
+então este momento não é necessariamente o que você quer fazer a seguir
+
+293
+00:20:36,480 --> 00:20:41,120
+é assim que vou testar o proxy que estou no Windows 10 aqui
+
+294
+00:20:41,120 --> 00:20:47,280
+então vou simplesmente digitar proxy e entrar nas configurações de proxy novamente
+
+295
+00:20:47,280 --> 00:20:50,880
+provavelmente não como você quer, eu só quero testar, então vou virar
+
+296
+00:20:50,880 --> 00:20:53,679
+no proxy posso ver que há um proxy antigo
+
+297
+00:20:53,679 --> 00:20:56,880
+configurações lá, certifique-se de estar atento a isso
+
+298
+00:20:56,880 --> 00:21:00,240
+se houver configurações de proxy antigas, você precisa alterá-las, vá para
+
+299
+00:21:00,240 --> 00:21:03,679
+instâncias no ec2 clique no id da sua instância
+
+300
+00:21:03,679 --> 00:21:07,440
+e pegue o endereço IP e cole-o
+
+301
+00:21:07,440 --> 00:21:11,840
+como o endereço da porta do servidor proxy 8888
+
+302
+00:21:11,840 --> 00:21:17,120
+e salve, agora estou conectado ao proxy instantaneamente
+
+303
+00:21:17,120 --> 00:21:20,559
+não conectado agora ao Windows está dizendo que vou direcionar todo o seu tráfego
+
+304
+00:21:20,559 --> 00:21:22,880
+através do proxy eu deveria me corrigir lá
+
+305
+00:21:22,880 --> 00:21:29,520
+então, se eu voltar para currentip.xyz 99.233 é meu ip atual, vou bater
+
+306
+00:21:29,520 --> 00:21:38,159
+f5 para atualizar e se tudo correr bem 3.101.108.211. bem
+
+307
+00:21:38,159 --> 00:21:44,720
+o que é esse meu servidor, então estou agora
+
+308
+00:21:44,720 --> 00:21:51,679
+onde estou vamos descobrir maxmind.com vamos fazer uma busca pelo endereço IP
+
+309
+00:21:51,679 --> 00:21:59,120
+que estou atualmente em onde estou são jose california
+
+310
+00:21:59,120 --> 00:22:02,559
+é onde meu maximo me determina estar
+
+311
+00:22:02,559 --> 00:22:05,600
+então isso é tudo que temos
+
+312
+00:22:05,600 --> 00:22:10,640
+criado configurado implantado um serviço de proxy gratuito que nós
+
+313
+00:22:10,640 --> 00:22:14,559
+possuir e operar, somos os únicos que têm isso que têm isso
+
+314
+00:22:14,559 --> 00:22:19,200
+uh chave ssh, então se você quiser se conectar, faça alterações, use-a
+
+315
+00:22:19,200 --> 00:22:23,840
+como um servidor multifuncional, você pode fazer isso, mas fique de olho no seu
+
+316
+00:22:23,840 --> 00:22:27,120
+seu material de faturamento, certifique-se de não ter excedido os limites e
+
+317
+00:22:27,120 --> 00:22:29,440
+coisas assim, se você estiver usando-o apenas como um proxy, é
+
+318
+00:22:29,440 --> 00:22:32,159
+muito improvável que você vá fazer isso, é apenas algo que você está canalizando
+
+319
+00:22:32,159 --> 00:22:37,520
+através de dados, então verifique se é aws.amazon.com para começar
+
+320
+00:22:37,520 --> 00:22:41,440
+se você tiver dúvidas, poste-as em nossa comunidade, vá para
+
+321
+00:22:41,440 --> 00:22:44,480
+nossa discórdia você encontrará o link na categoria 5
+
+322
+00:22:44,480 --> 00:22:48,720
+tv no menu de interação, entretanto, se você gostou, se você já usou ou
+
+323
+00:22:48,720 --> 00:22:53,039
+achei útil me dê um grande sinal de positivo, por favor, inscreva-se e veremos você direito
+
+324
+00:22:53,039 --> 00:23:07,059
+depois do intervalo [música]
+
+325
+00:23:15,520 --> 00:23:18,559
+bem-vindo de volta, esta é a tv de tecnologia de categoria 5
+
+326
+00:23:18,559 --> 00:23:22,240
+e eu quero falar sobre o que estou fazendo em casa
+
+327
+00:23:22,240 --> 00:23:26,640
+ou melhor, o que estou planejando fazer sentado assistindo netflix
+
+328
+00:23:26,640 --> 00:23:30,480
+eu não tenho tempo para sentar e assistir netflix eu gostaria de ter, mas
+
+329
+00:23:30,480 --> 00:23:34,960
+uh não, minha família sempre consome netflix e eu acho que vou apenas no computador
+
+330
+00:23:34,960 --> 00:23:38,720
+o que é ótimo porque me forçou a iniciar o netflix no computador
+
+331
+00:23:38,720 --> 00:23:44,000
+agora jeff você está me distraindo uh não, mas é
+
+332
+00:23:44,000 --> 00:23:46,960
+ótimo porque me forçou a começar a olhar para algumas das coisas que fazemos
+
+333
+00:23:46,960 --> 00:23:51,760
+ao redor da casa e ir como posso fazer isso meu e então
+
+334
+00:23:51,760 --> 00:23:55,120
+você sabe, eu mencionei no início da série que nosso filho tem
+
+335
+00:23:55,120 --> 00:24:00,240
+começou a soldar e ele se saiu muito bem nisso e nos lembra quantos anos ele tem
+
+336
+00:24:00,240 --> 00:24:05,200
+acabou de fazer 12 anos. acabou de fazer 12. tudo bem hum, mas sim, ele terminou
+
+337
+00:24:05,200 --> 00:24:09,760
+muito bem com ele e ele soldou duas calculadoras até agora
+
+338
+00:24:09,760 --> 00:24:13,919
+um e um deles ele foi levado para a escola e seu professor ficou completamente estupefato
+
+339
+00:24:13,919 --> 00:24:16,000
+embora, sim, estou pensando de 12 anos e ele
+
+340
+00:24:16,000 --> 00:24:20,320
+já fazendo uma calculadora sim sim ele fez uma calculadora que nós temos um kit faça você mesmo
+
+341
+00:24:20,320 --> 00:24:23,360
+amazon e ele construiu e talvez duas horas
+
+342
+00:24:23,360 --> 00:24:27,039
+de trabalho foi realmente fenomenal irreal e seu trabalho de solda é
+
+343
+00:24:27,039 --> 00:24:30,880
+realmente limpo, excelente, parece profissional
+
+344
+00:24:30,880 --> 00:24:34,559
+mas de qualquer maneira ele está perguntando como fazer outras coisas e como estamos soldando ele
+
+345
+00:24:34,559 --> 00:24:37,200
+bem o que é isso e o que é isso e como isso funciona e
+
+346
+00:24:37,200 --> 00:24:40,480
+Eu vou quero ser capaz de ensinar essas coisas a ele
+
+347
+00:24:40,480 --> 00:24:46,480
+quero ser capaz de explicar a ele como uma placa de circuito realmente funciona, não apenas
+
+348
+00:24:46,480 --> 00:24:49,360
+soldando-o, mas entendendo os componentes e o roteamento e tudo isso
+
+349
+00:24:49,360 --> 00:24:53,279
+tipo de coisa e quero dizer, eu sei que você pode comprar um
+
+350
+00:24:53,279 --> 00:25:00,400
+apenas placas simples que são apenas fileiras de pequenos pontos de conexão
+
+351
+00:25:00,400 --> 00:25:03,840
+mas eu quero ser capaz de fazer nossa própria placa sim e então ele perguntou
+
+352
+00:25:03,840 --> 00:25:07,279
+especificamente se pudermos encontrar um kit faça você mesmo para
+
+353
+00:25:07,279 --> 00:25:10,320
+uma caixa inútil você sabe que é a caixa onde você aperta o botão sim e o
+
+354
+00:25:10,320 --> 00:25:15,840
+pequena coisa sai e aparece sim, experimente
+
+355
+00:25:17,600 --> 00:25:22,640
+O que você fez, está falando sério?
+
+356
+00:25:25,039 --> 00:25:30,400
+oh meu Deus isso é hilário
+
+357
+00:25:32,720 --> 00:25:39,520
+olá é como ter um gatinho lá é como meu gato
+
+358
+00:25:40,240 --> 00:25:44,799
+ei, ei agora, então estou procurando por um, não encontrei um, mas encontrei um monte de
+
+359
+00:25:44,799 --> 00:25:48,080
+pessoas gostam de oh, você pode fazer um usando um arduino, você pode fazer um usando este
+
+360
+00:25:48,080 --> 00:25:55,520
+e pensei: se eu fosse fazer uma caixa de diy box inútil, quero construí-la
+
+361
+00:25:55,520 --> 00:25:58,559
+o começo, então eu tenho pesquisado como fazer
+
+362
+00:25:58,559 --> 00:26:03,679
+meus próprios pcbs em casa ok, na verdade não é tão difícil
+
+363
+00:26:03,679 --> 00:26:08,960
+e fiquei surpreso porque tudo que eu preciso é uma impressora a laser para definir meu roteamento
+
+364
+00:26:08,960 --> 00:26:12,880
+como para onde vão os caminhos, então você vai realmente gravá-los
+
+365
+00:26:12,880 --> 00:26:15,919
+vou gravá-lo em casa, oh cara
+
+366
+00:26:15,919 --> 00:26:20,159
+isso está muito além da minha compreensão, jeff, realmente envolve produtos químicos
+
+367
+00:26:20,159 --> 00:26:23,679
+faz, mas é um processo muito simples, então descobri
+
+368
+00:26:23,679 --> 00:26:26,880
+Eu pesquisei muito sobre isso e descobri um
+
+369
+00:26:26,880 --> 00:26:29,919
+maneira realmente simples e fácil de fazer meu próprio pcb
+
+370
+00:26:29,919 --> 00:26:32,799
+e é isso que faremos, então meu projeto para o próximo, provavelmente,
+
+371
+00:26:32,799 --> 00:26:35,600
+alguns meses porque eu tenho que aprender como essas coisas
+
+372
+00:26:35,600 --> 00:26:39,520
+trabalho é projetar uma placa de circuito que eu
+
+373
+00:26:39,520 --> 00:26:43,120
+nunca feito antes de fazer a placa de circuito e então o do meu filho
+
+374
+00:26:43,120 --> 00:26:45,919
+vamos soldar juntos e vamos fazer o nosso próprio
+
+375
+00:26:45,919 --> 00:26:50,960
+caixa inútil que espero também imprimir em 3D a caixa também, que legal
+
+376
+00:26:50,960 --> 00:26:56,480
+sim, você está apenas mergulhando em mim quando eu faço algo que não sou pequeno
+
+377
+00:26:56,480 --> 00:27:00,320
+e você sabe que minha abordagem é um pouco diferente porque eu sou muito
+
+378
+00:27:00,320 --> 00:27:03,520
+gosto de aprender algo primeiro
+
+379
+00:27:03,520 --> 00:27:09,200
+e então aumentar meu investimento nesse processo e você gosta de falar
+
+380
+00:27:09,200 --> 00:27:13,679
+sobre pular direto para a criação do pcb para que eu faça backup para que você saiba
+
+381
+00:27:13,679 --> 00:27:16,799
+se é você pensando ei, talvez eu gostaria de ser capaz de fazer meus próprios circuitos
+
+382
+00:27:16,799 --> 00:27:20,399
+e coisas assim, meu ponto de partida é uma placa de ensaio, sim
+
+383
+00:27:20,399 --> 00:27:25,440
+e a placa de ensaio permite que você defina o circuito que você projetou ou
+
+384
+00:27:25,440 --> 00:27:28,559
+que você baixou como um projeto de circuito um
+
+385
+00:27:28,559 --> 00:27:32,399
+da internet ou de qualquer outra forma que você tenha que permita colocá-lo
+
+386
+00:27:32,399 --> 00:27:36,799
+em um basicamente um pcb simulado
+
+387
+00:27:36,799 --> 00:27:41,039
+que funcionará como um pcb, mas então você pode simplesmente desmontá-lo e
+
+388
+00:27:41,039 --> 00:27:46,399
+arrume as peças de maneira correta e é barato, muito barato e apenas para você começar
+
+389
+00:27:46,399 --> 00:27:50,080
+e então a próxima etapa para mim é o que chamamos de placa de prototipagem para que você obtenha
+
+390
+00:27:50,080 --> 00:27:53,279
+placas pcb que têm todos os orifícios corretos e
+
+391
+00:27:53,279 --> 00:27:57,840
+eles têm pontos de solda, mas não há
+
+392
+00:27:57,840 --> 00:28:02,080
+interconexão entre eles para que você realmente passe fios ou
+
+393
+00:28:02,080 --> 00:28:05,760
+passe um pouco de solda entre duas juntas diferentes, por exemplo
+
+394
+00:28:05,760 --> 00:28:10,080
+e você faz dessa forma, então esse é o meu segundo passo sim, então eu iria olhar para
+
+395
+00:28:10,080 --> 00:28:14,720
+talvez seguindo o caminho de gravar seu próprio
+
+396
+00:28:14,720 --> 00:28:19,200
+pcbs porque então você está entrando em processos químicos
+
+397
+00:28:19,200 --> 00:28:24,960
+e eu não pesquisei, mas é um processo muito mais complexo, então
+
+398
+00:28:24,960 --> 00:28:27,919
+eu gosto de começar um pouco mais simples meu primeiro pcb i
+
+399
+00:28:27,919 --> 00:28:32,080
+construída em uma placa de ensaio muito básica, mas eu a projetei direito
+
+400
+00:28:32,080 --> 00:28:35,120
+ok e tudo o que é preciso é de cinco volts
+
+401
+00:28:35,120 --> 00:28:38,880
+sinal e quando tem cinco volts o
+
+402
+00:28:38,880 --> 00:28:43,440
+o relé está fechado, então tem um relé certo quando não tem cinco volts
+
+403
+00:28:43,440 --> 00:28:47,520
+o relé abre para se desconectar,
+
+404
+00:28:47,520 --> 00:28:51,440
+a razão pela qual eu criei que é um aplicativo desenvolvido especificamente, então eu o desenvolvi
+
+405
+00:28:51,440 --> 00:28:56,000
+em uma placa de ensaio e alimentação a cinco volts está vindo de
+
+406
+00:28:56,000 --> 00:29:03,440
+qualquer palpite, qualquer palpite, não é outro acrônimo de três letras usb
+
+407
+00:29:03,440 --> 00:29:07,360
+usb usb puxando um sinal de cinco volts de um micro tick
+
+408
+00:29:07,360 --> 00:29:12,399
+roteador bem e então no micro tick eu programei o código que dizia
+
+409
+00:29:12,399 --> 00:29:17,039
+que basicamente para emburrecer se a internet cair
+
+410
+00:29:17,039 --> 00:29:20,559
+desligue o usb oh e então isso
+
+411
+00:29:20,559 --> 00:29:25,520
+abre o relé e qual é o controle do relé senão a alimentação do meu modem
+
+412
+00:29:25,520 --> 00:29:29,919
+então meu modem se a internet cair irá desligar automaticamente
+
+413
+00:29:29,919 --> 00:29:33,120
+o poder de si mesmo desligado por causa do meu relé
+
+414
+00:29:33,120 --> 00:29:37,039
+certo e espere cinco segundos e, em seguida, ligue novamente, então é essencialmente um
+
+415
+00:29:37,039 --> 00:29:41,200
+versão virtual de você desligou e ligou novamente porque
+
+416
+00:29:41,200 --> 00:29:43,679
+O que você faz quando a internet cai, você puxa o plugue
+
+417
+00:29:43,679 --> 00:29:46,799
+a partir do momento, você espera cinco segundos e conecta-o de volta e
+
+418
+00:29:46,799 --> 00:29:50,240
+você sabe que, oito em cada dez vezes, ele vai voltar e funcionar
+
+419
+00:29:50,240 --> 00:29:54,559
+bem, esse foi o circuito que eu construí, então eu o construí em uma placa de prototipagem uma vez
+
+420
+00:29:54,559 --> 00:29:58,240
+eu o tinha funcionando e acabei de soldá-lo e é muito, muito simples
+
+421
+00:29:58,240 --> 00:30:00,799
+circuito muito legal e funcionou muito bem, eu gosto
+
+422
+00:30:00,799 --> 00:30:04,720
+muito legal ferramentas o que você tem então
+
+423
+00:30:04,720 --> 00:30:08,080
+longe, onde você está uh bem como eu disse que acabei de fazer
+
+424
+00:30:08,080 --> 00:30:13,760
+a pesquisa na semana passada oh, então estou, estou na fase de compra
+
+425
+00:30:13,760 --> 00:30:17,679
+uh então nós temos todo o material de solda, vou comprar a placa comprando
+
+426
+00:30:17,679 --> 00:30:21,919
+os produtos químicos eu já baixei o software um
+
+427
+00:30:21,919 --> 00:30:25,600
+para projetar o pcb uau
+
+428
+00:30:25,600 --> 00:30:29,360
+e eu tenho um kit de componentes que está a caminho com todos os
+
+429
+00:30:29,360 --> 00:30:33,039
+resistores e capacitores, sim, todo esse tipo de coisa que é legal
+
+430
+00:30:33,039 --> 00:30:36,559
+também é que esses dias, quero dizer que você não pode realmente andar
+
+431
+00:30:36,559 --> 00:30:39,039
+em uma cabana de rádio como costumávamos ser capazes de não
+
+432
+00:30:39,039 --> 00:30:43,679
+ainda tem lojas como aqui no barrie temos uma chamada seaal
+
+433
+00:30:43,679 --> 00:30:47,039
+que é uma loja brilhante que é como aquela velha cabana de rádio onde você
+
+434
+00:30:47,039 --> 00:30:50,399
+entre e é como se eu só precisasse de um capacitor sim
+
+435
+00:30:50,399 --> 00:30:52,880
+e é como aqui você vai você sabe que é como gavetas
+
+436
+00:30:52,880 --> 00:30:57,279
+e gavetas de capacitores e resistores e todos os diodos e tudo o mais
+
+437
+00:30:57,279 --> 00:31:01,519
+mas apenas para obter um kit de 20 dólares que tem
+
+438
+00:31:01,519 --> 00:31:04,960
+todo o tipo de coisas comuns e é um kit que vem com um
+
+439
+00:31:04,960 --> 00:31:07,440
+breadboard e vem com um breadboard e aquele
+
+440
+00:31:07,440 --> 00:31:11,279
+uma das coisas é é que eu quero tipo sim, eu vou projetar, mas parte
+
+441
+00:31:11,279 --> 00:31:14,640
+do processo de planejamento é como você disse usando o breadboard para descobrir
+
+442
+00:31:14,640 --> 00:31:17,519
+como o circuito vai funcionar e isso vai ser um grande aprendizado
+
+443
+00:31:17,519 --> 00:31:19,840
+experiência para luke porque eles vão ficar como ei, isso é
+
+444
+00:31:19,840 --> 00:31:23,200
+como isso funciona e vamos tentar isso e vamos fazer aquilo e então
+
+445
+00:31:23,200 --> 00:31:26,080
+você sabe que poderemos experimentar sem realmente fazer nossas próprias peças
+
+446
+00:31:26,080 --> 00:31:30,880
+isso é muito legal que você mencionou também arduino e arduino é uma espécie de
+
+447
+00:31:30,880 --> 00:31:34,159
+como se fosse um controlador, então sim, você sabe, enquanto
+
+448
+00:31:34,159 --> 00:31:37,200
+um raspberry pi ou outro computador de placa única é um verdadeiro
+
+449
+00:31:37,200 --> 00:31:41,200
+computador real com um sistema operacional e tudo que um arduino é como você
+
+450
+00:31:41,200 --> 00:31:45,519
+apenas programe-o para fazer uma tarefa muito específica, é um estado sólido
+
+451
+00:31:45,519 --> 00:31:48,960
+e ele vai responder e eu acho que isso é
+
+452
+00:31:48,960 --> 00:31:51,840
+por que funcionaria muito bem um arduino para
+
+453
+00:31:51,840 --> 00:31:55,679
+uh para uma caixa inútil é porque é como
+
+454
+00:31:55,679 --> 00:31:59,200
+está ligado ou desligado certo e se estiver ligado faça isso
+
+455
+00:31:59,200 --> 00:32:03,200
+e, em seguida, ele desligará isso, então a programação muito básica
+
+456
+00:32:03,200 --> 00:32:09,919
+digital escreva quatro vírgulas oi oi ponto e vírgula e então estamos
+
+457
+00:32:09,919 --> 00:32:13,519
+vai atrasar por um segundo que é mil milissegundos
+
+458
+00:32:13,519 --> 00:32:17,039
+e então vamos copiar essa linha agora
+
+459
+00:32:17,039 --> 00:32:20,960
+O que você acha que alto significa versus baixo que é o que vou colocar aqui
+
+460
+00:32:20,960 --> 00:32:27,440
+apenas um palpite ligado ou desligado sim, então é assim que meu circuito se parece agora
+
+461
+00:32:27,440 --> 00:32:32,399
+e vou simplesmente conectá-lo à alimentação USB, então não vou conectá-lo a
+
+462
+00:32:32,399 --> 00:32:36,240
+o computador que eu quero realmente ligar este dispositivo e ver se
+
+463
+00:32:36,240 --> 00:32:40,840
+executa meu programa e se isso acontecer, devemos ver esta luz
+
+464
+00:32:40,840 --> 00:32:45,279
+flash lá vamos nós que é legal a cada segundo, então nós
+
+465
+00:32:45,279 --> 00:32:49,600
+realmente criou o circuito muito rapidamente e criou o
+
+466
+00:32:49,600 --> 00:32:53,919
+programa para agora dizer a esta luz o que fazer e nós dissemos muito
+
+467
+00:32:53,919 --> 00:32:57,760
+simplesmente ligue e desligue novamente, mas se você estiver
+
+468
+00:32:57,760 --> 00:32:59,679
+fazendo seu próprio circuito, você tem que gostar de fazer
+
+469
+00:32:59,679 --> 00:33:04,159
+ics você tem que programar você mesmo, sim, você tem que descobrir como
+
+470
+00:33:04,159 --> 00:33:07,919
+uau, eu quero ver este projeto como um trabalho em andamento
+
+471
+00:33:07,919 --> 00:33:11,840
+ok e então ver como uh como isso funciona, sim, soa bem
+
+472
+00:33:11,840 --> 00:33:16,559
+mencionamos a comunidade aqui em nosso programa e, uh, nosso servidor de discórdia em
+
+473
+00:33:16,559 --> 00:33:20,320
+em particular, eu entrei em nossa comunidade jeff para
+
+474
+00:33:20,320 --> 00:33:23,760
+entrar e compartilhar minhas idéias para circuitos e sim
+
+475
+00:33:23,760 --> 00:33:27,519
+coisas assim e há algumas pessoas em nossa comunidade que estão apenas
+
+476
+00:33:27,519 --> 00:33:32,559
+como bem aqui no que diz respeito às suas capacidades e compreensão daqueles
+
+477
+00:33:32,559 --> 00:33:36,320
+tipos de coisas, então tem sido muito útil para mim,
+
+478
+00:33:36,320 --> 00:33:38,880
+aprendi então, até eu planejo totalmente usar o
+
+479
+00:33:38,880 --> 00:33:42,640
+comunidade use me trabalhe através de bugs sim e se você é uma daquelas pessoas em
+
+480
+00:33:42,640 --> 00:33:46,159
+a comunidade agora, ei, levante a mão e diga sim, eu
+
+481
+00:33:46,159 --> 00:33:48,480
+entender como tudo isso funciona, eu adoraria ajudar
+
+482
+00:33:48,480 --> 00:33:52,640
+e uh e isso é algo que eu acho que vai fazer um realmente legal
+
+483
+00:33:52,640 --> 00:33:54,320
+recurso para o programa, assim como você aprende
+
+484
+00:33:54,320 --> 00:33:57,200
+sim, com certeza, mantenha-nos informados sobre esse jeff, definitivamente, eu realmente estaria interessado
+
+485
+00:33:57,200 --> 00:34:00,159
+para saber como as coisas vão, sim, vou postar coisas por trás do
+
+486
+00:34:00,159 --> 00:34:06,320
+cenas uma caixa inútil qualquer outra você tem alguma ideia, mas eu fico animado
+
+487
+00:34:06,320 --> 00:34:09,520
+quando eu invento como quando penso em algo
+
+488
+00:34:09,520 --> 00:34:13,200
+Você teve algum daqueles momentos em que eu realmente gostaria de
+
+489
+00:34:13,200 --> 00:34:16,240
+tinha algo que faria isso, mas não existe
+
+490
+00:34:16,240 --> 00:34:20,079
+é aqui que a impressão 3D é interessante para mim, porque estou criando coisas que
+
+491
+00:34:20,079 --> 00:34:23,520
+não existe ainda, eu realmente não pensei
+
+492
+00:34:23,520 --> 00:34:27,520
+tanto quanto ao que existe e não existe
+
+493
+00:34:27,520 --> 00:34:29,919
+hum
+
+494
+00:34:30,960 --> 00:34:34,000
+não, eu realmente não pensei muito nisso, tive algumas ideias
+
+495
+00:34:34,000 --> 00:34:37,040
+sim e compartilhe-os, há um monte de coisas com certeza
+
+496
+00:34:37,040 --> 00:34:43,679
+Sim, como se eu sempre quisesse fazer um sistema de som doméstico
+
+497
+00:34:43,679 --> 00:34:48,879
+que liga até um, você conhece nosso dispositivo amazon e coisas como
+
+498
+00:34:48,879 --> 00:34:52,079
+mas gostaria de ter sensores onde
+
+499
+00:34:52,079 --> 00:34:56,320
+quando eu ando de uma sala para outra, o sensor de movimento entra em ação e fecha
+
+500
+00:34:56,320 --> 00:34:59,760
+desligue os alto-falantes de uma sala e adicione-os onde acabei de ir
+
+501
+00:34:59,760 --> 00:35:02,000
+isso é muito mais avançado, mas provavelmente
+
+502
+00:35:02,000 --> 00:35:05,119
+a única coisa que posso pensar é onde estou, quero fazer isso, mas vejo você falar
+
+503
+00:35:05,119 --> 00:35:08,960
+sobre isso e então acho que tudo bem, você poderia usar um sensor infravermelho passivo
+
+504
+00:35:08,960 --> 00:35:14,640
+sim, que é usado em sensores de movimento, você poderia usar um sensor a laser, mas
+
+505
+00:35:14,640 --> 00:35:19,200
+pir é muito, muito barato, sim, e é apenas um pequeno sensor que é como
+
+506
+00:35:19,200 --> 00:35:22,880
+Ok, havia movimento, faça algo sim para que você pudesse criar algo
+
+507
+00:35:22,880 --> 00:35:27,520
+novamente com um relé que controla apenas se o alto-falante
+
+508
+00:35:27,520 --> 00:35:31,599
+um circuito completo ou não, então se fosse apenas um
+
+509
+00:35:31,599 --> 00:35:36,160
+monte de alto-falantes conectados através de um amplificador, você poderia ter relés configurados
+
+510
+00:35:36,160 --> 00:35:40,000
+com sensores pir que você seria capaz de controlar por movimento
+
+511
+00:35:40,000 --> 00:35:44,160
+sim, bom e se não houver movimento por 10 minutos desligue o alto-falante
+
+512
+00:35:44,160 --> 00:35:45,760
+automaticamente ou algo assim sim
+
+513
+00:35:45,760 --> 00:35:49,200
+exatamente como esses tipos de ideias, como se houvesse tantas coisas que você pode
+
+514
+00:35:49,200 --> 00:35:51,359
+faça quando você começar a entender e então
+
+515
+00:35:51,359 --> 00:35:55,839
+há todo o outro lado disso, onde algo quebra e você pode consertar sim
+
+516
+00:35:55,839 --> 00:35:59,200
+é uma sensação boa e isso foi feito, já fizemos isso
+
+517
+00:35:59,200 --> 00:36:02,000
+Sim, bom, então você sabe que consegue aquela pequena bateria
+
+518
+00:36:02,000 --> 00:36:07,280
+testadores gostariam de verificar a carga, sim, tivemos um desses e é
+
+519
+00:36:07,280 --> 00:36:09,200
+engraçado quando meu filho estava construindo sua calculadora
+
+520
+00:36:09,200 --> 00:36:12,560
+não tínhamos certeza se as baterias estavam funcionando e não estávamos recebendo nada
+
+521
+00:36:12,560 --> 00:36:15,760
+Eu acho que é estranho não conseguirmos normalmente, mesmo que esteja morto,
+
+522
+00:36:15,760 --> 00:36:18,640
+aparece no vermelho, mas não havia nada, então abrimos
+
+523
+00:36:18,640 --> 00:36:22,960
+Acontece que a conexão real foi quebrada oh
+
+524
+00:36:22,960 --> 00:36:27,359
+agora eu não tenho ideia sim e meu filho está tipo oh eu posso consertar isso e
+
+525
+00:36:27,359 --> 00:36:30,240
+ele consertou, nós colocamos de volta e então nós e funciona e é tipo oh
+
+526
+00:36:30,240 --> 00:36:34,000
+sim, é uma bateria descarregada, sim, posso me identificar com isso também, eu uso um
+
+527
+00:36:34,000 --> 00:36:38,160
+alto-falante de travesseiro para podcasts ok e uh porque é você sabe
+
+528
+00:36:38,160 --> 00:36:40,880
+conectado por um fio ao meu telefone, ele é puxado
+
+529
+00:36:40,880 --> 00:36:45,119
+sim e foi puxado para fora, então é uma coisa tão simples, mas eu totalmente o que
+
+530
+00:36:45,119 --> 00:36:48,720
+eu fiz não comprei outro não não não eu peguei
+
+531
+00:36:48,720 --> 00:36:52,480
+separá-lo e re-soldar e reforçar
+
+532
+00:36:52,480 --> 00:36:56,160
+então não aconteceria de novo oh linda fez melhor do que era ele
+
+533
+00:36:56,160 --> 00:37:00,240
+voltou sua mente para coisas como lixo eletrônico sim e ele é como se alguém
+
+534
+00:37:00,240 --> 00:37:04,960
+vai se livrar de sua tv ou monitor de computador, as chances são
+
+535
+00:37:04,960 --> 00:37:08,240
+ainda está funcionando, pai é apenas algo quebrado por dentro
+
+536
+00:37:08,240 --> 00:37:12,400
+ele é como se eu pudesse consertar, eu sou tipo sim, você pensa sobre isso e então suas rodas são
+
+537
+00:37:12,400 --> 00:37:15,599
+virando o último e ele disse: eu poderia fazer essas coisas e depois vender
+
+538
+00:37:15,599 --> 00:37:20,160
+eles 12 anos isso é uma carreira
+
+539
+00:37:20,160 --> 00:37:22,960
+em uma série de
+
+540
+00:37:23,599 --> 00:37:27,359
+uh como se fosse realmente valioso ter esses recursos
+
+541
+00:37:27,359 --> 00:37:30,960
+então vou treiná-lo para o próximo uh bem, ele tem 12 anos.
+
+542
+00:37:30,960 --> 00:37:38,560
+oito seis anos estou me aposentando, recebi um monitor, não sei
+
+543
+00:37:38,560 --> 00:37:42,960
+talvez um belo monitor panorâmico de 23 ou 24 polegadas
+
+544
+00:37:42,960 --> 00:37:47,359
+veio como lixo eletrônico e então eu gosto
+
+545
+00:37:47,359 --> 00:37:50,720
+eu vou dar uma olhada e então minha filha e eu olhamos para isso
+
+546
+00:37:50,720 --> 00:37:57,280
+e havia um único capacitor que estava queimado, então entrei online e
+
+547
+00:37:57,280 --> 00:37:59,920
+eu comprei um desses capacitores, eles vendem em embalagens de
+
+548
+00:37:59,920 --> 00:38:03,599
+três e custava doze dólares, então por 12
+
+549
+00:38:03,599 --> 00:38:07,760
+temos um pacote de três, substituímos um desses capacitores e esse monitor é
+
+550
+00:38:07,760 --> 00:38:13,520
+agora sentado na mesa da minha filha oh meu Deus isso é incrível é maravilhoso
+
+551
+00:38:13,520 --> 00:38:16,720
+e ele está absolutamente certo, mas você não só pode consertar as coisas jeff
+
+552
+00:38:16,720 --> 00:38:19,920
+digamos que algo entre no lixo eletrônico ou você sabe que encontrou algo em
+
+553
+00:38:19,920 --> 00:38:22,320
+o lado da estrada que alguém descartou porque não pode, não
+
+554
+00:38:22,320 --> 00:38:26,480
+sabe como consertar e talvez se consertar seja mais
+
+555
+00:38:26,480 --> 00:38:30,079
+caro do que comprar um novo em muitos casos também
+
+556
+00:38:30,079 --> 00:38:35,119
+hum, você pode, mesmo se não puder consertar, você pode fazer o que é chamado de desoldagem
+
+557
+00:38:35,119 --> 00:38:39,440
+isso é certo para que você possa remover todos os componentes bons disso e
+
+558
+00:38:39,440 --> 00:38:43,119
+coloque-os em um organizador de gaveta sim para que você possa ter seu próprio rádio
+
+559
+00:38:43,119 --> 00:38:46,880
+barraco em casa onde você tem as gavetas de todas essas partes diferentes
+
+560
+00:38:46,880 --> 00:38:50,079
+e então, quando algo quebra, você não precisa gastar 12
+
+561
+00:38:50,079 --> 00:38:53,280
+online para comprá-los, gostaria de não saber que ele ia entrar nisso
+
+562
+00:38:53,280 --> 00:38:57,040
+porque no verão eu tinha cerca de quatro computadores
+
+563
+00:38:57,040 --> 00:39:00,320
+alguns projetores, levamos todo o lixo eletrônico
+
+564
+00:39:00,320 --> 00:39:03,760
+então é como se eu pudesse ter desmontado isso, claro, peguei
+
+565
+00:39:03,760 --> 00:39:07,119
+bem, as partes que vivemos e aprendemos sim, exatamente
+
+566
+00:39:07,119 --> 00:39:10,960
+muito legal, mantenha-nos informados sobre isso definitivamente e ei, comente abaixo, diga-nos
+
+567
+00:39:10,960 --> 00:39:13,359
+sobre algumas das façanhas que você teve
+
+568
+00:39:13,359 --> 00:39:18,560
+uh com relação a esses tipos de tópicos e se eles são
+
+569
+00:39:18,560 --> 00:39:20,880
+algo que te interessa e que você nunca experimentou
+
+570
+00:39:20,880 --> 00:39:24,720
+Ei, comente abaixo também, adoraríamos ouvir de você e adoraríamos ter você
+
+571
+00:39:24,720 --> 00:39:27,920
+como parte desse processo enquanto jeff está aprendendo
+
+572
+00:39:27,920 --> 00:39:32,079
+pois também estou aprendendo e ficando cada vez mais nesses tipos de
+
+573
+00:39:32,079 --> 00:39:36,800
+como reparos de componentes e placas de circuito e tudo mais
+
+574
+00:39:36,800 --> 00:39:41,359
+é muito divertido, sim, é um ótimo hobby e uma carreira maravilhosa se você
+
+575
+00:39:41,359 --> 00:39:45,200
+realmente quero fazer isso também, então é bom para o seu filho, eu gostaria de ouvir
+
+576
+00:39:45,200 --> 00:39:49,680
+como ele gosta, então quando ele está, eu acho
+
+577
+00:39:49,680 --> 00:39:53,359
+13 mais, então no próximo ano você pode trazê-lo para o estúdio
+
+578
+00:39:53,359 --> 00:39:56,560
+e ele pode nos mostrar como ele está se saindo
+
+579
+00:39:56,560 --> 00:40:00,480
+parece bom, muito legal, faça acontecer, temos que ir para a redação
+
+580
+00:40:00,480 --> 00:40:02,960
+becca está lá com nossas principais notícias da semana
+
+581
+00:40:02,960 --> 00:40:08,800
+aqui está ela, aqui está o que está por vir na sala de notícias da categoria 5 dot tv
+
+582
+00:40:08,800 --> 00:40:12,000
+hackers estão usando um grave bug do Windows para comprometer
+
+583
+00:40:12,000 --> 00:40:17,280
+servidores não corrigidos três pacotes javascript foram removidos do npm
+
+584
+00:40:17,280 --> 00:40:22,560
+portal para conter código malicioso nokia foi incumbido de construir um
+
+585
+00:40:22,560 --> 00:40:27,040
+nova rede de celular 4g na lua um novo 80
+
+586
+00:40:27,040 --> 00:40:32,240
+a tecnologia de carregamento watt sem fio da xiaomi está impressionando nossas mentes e o
+
+587
+00:40:32,240 --> 00:40:36,240
+O módulo de computação do raspberry pi 4 foi lançado.
+
+588
+00:40:36,240 --> 00:40:40,720
+deixá-lo saber as especificações e como isso muda as coisas para iot industrial
+
+589
+00:40:40,720 --> 00:40:44,000
+fique atento a todos os detalhes e à criptografia desta semana
+
+590
+00:40:44,000 --> 00:40:48,640
+estão chegando, esta é a redação da categoria 5 dot tv
+
+591
+00:40:48,640 --> 00:40:52,079
+cobrindo as principais histórias de tecnologia da semana com um ligeiro Linux
+
+592
+00:40:52,079 --> 00:40:54,480
+viés
+
+593
+00:40:56,240 --> 00:41:00,319
+da redação, sou becca ferguson
+
+594
+00:41:00,720 --> 00:41:03,920
+hackers estão usando um grave bug do Windows para comprometer
+
+595
+00:41:03,920 --> 00:41:07,920
+servidores não corrigidos, uma das vulnerabilidades do Windows mais críticas
+
+596
+00:41:07,920 --> 00:41:10,400
+divulgado este ano está sob ataque ativo
+
+597
+00:41:10,400 --> 00:41:14,480
+por hackers que estão tentando fazer backdoor em servidores que armazenam credenciais para cada
+
+598
+00:41:14,480 --> 00:41:18,480
+usuário e conta administrativa em uma rede
+
+599
+00:41:18,480 --> 00:41:23,119
+pesquisadores deram à vulnerabilidade o nome de xerologon porque os ataques funcionam por
+
+600
+00:41:23,119 --> 00:41:27,200
+enviar uma sequência de zeros em uma série de mensagens que usam a rede
+
+601
+00:41:27,200 --> 00:41:30,720
+protocolo de logon do qual os servidores Windows dependem para um
+
+602
+00:41:30,720 --> 00:41:34,560
+variedade de tarefas, incluindo permitir que os usuários finais façam login
+
+603
+00:41:34,560 --> 00:41:38,560
+a um logon de rede xero, pois a vulnerabilidade foi
+
+604
+00:41:38,560 --> 00:41:41,280
+dublado ganhou grande atenção no mês passado
+
+605
+00:41:41,280 --> 00:41:44,000
+quando a empresa que o descobriu disse que poderia fornecer aos invasores
+
+606
+00:41:44,000 --> 00:41:48,079
+acesso instantâneo a diretórios ativos que os administradores usam para criar
+
+607
+00:41:48,079 --> 00:41:52,480
+excluir e gerenciar contas de rede, diretórios ativos e o domínio
+
+608
+00:41:52,480 --> 00:41:55,599
+controladores em que são executados estão entre os prêmios mais cobiçados
+
+609
+00:41:55,599 --> 00:42:00,480
+em hackers porque, uma vez sequestrados, eles permitem que os invasores executem códigos e
+
+610
+00:42:00,480 --> 00:42:03,839
+munição em todas as máquinas conectadas microsoft
+
+611
+00:42:03,839 --> 00:42:09,280
+corrigiu a falha de segurança em agosto na sexta-feira kevin beaumont
+
+612
+00:42:09,280 --> 00:42:12,480
+trabalhando na qualidade de pesquisador independente
+
+613
+00:42:12,480 --> 00:42:16,480
+disse em um post de blog que detectou ataques ao honeypot que ele usa para manter
+
+614
+00:42:16,480 --> 00:42:19,680
+a par de ataques de ataques que os hackers estão usando no
+
+615
+00:42:19,680 --> 00:42:24,160
+selvagem quando seu servidor de isca não foi corrigido, os invasores foram capazes de usar um
+
+616
+00:42:24,160 --> 00:42:27,680
+script do powershell para alterar com sucesso uma senha de administrador
+
+617
+00:42:27,680 --> 00:42:31,920
+e backdoor o servidor beaumont disse que o ataque apareceu
+
+618
+00:42:31,920 --> 00:42:36,480
+para ser inteiramente programado com todos os comandos sendo concluídos em segundos
+
+619
+00:42:36,480 --> 00:42:40,160
+com isso os atacantes instalaram uma porta traseira permitindo
+
+620
+00:42:40,160 --> 00:42:44,079
+acesso administrativo a dispositivos dentro de sua rede simulada
+
+621
+00:42:44,079 --> 00:42:48,400
+os invasores também habilitaram a área de trabalho remota, como resultado, eles continuariam
+
+622
+00:42:48,400 --> 00:42:53,200
+ter acesso remoto, mesmo se o administrador posteriormente aplicar patches ao servidor
+
+623
+00:42:53,200 --> 00:42:57,520
+pessoas sem autenticação autêntica podem usar o exploit para ganhar domínio
+
+624
+00:42:57,520 --> 00:43:00,800
+credenciais administrativas, desde que os invasores tenham a capacidade de
+
+625
+00:43:00,800 --> 00:43:05,839
+estabelecer conexões tcp com um controlador de domínio vulnerável em
+
+626
+00:43:05,839 --> 00:43:10,160
+alguns casos, os atacantes podem usar uma vulnerabilidade separada para ganhar uma posição dentro
+
+627
+00:43:10,160 --> 00:43:13,359
+uma rede e, em seguida, explorar o logon zero para assumir
+
+628
+00:43:13,359 --> 00:43:17,599
+o controlador de domínio, acho um bom exemplo de uma maneira de
+
+629
+00:43:17,599 --> 00:43:20,319
+esses tipos de scripts para entrar nas redes
+
+630
+00:43:20,319 --> 00:43:27,839
+são computadores desatualizados na rede e também golpes de engenharia social
+
+631
+00:43:27,839 --> 00:43:31,040
+ouve muito sobre como você provavelmente recebe esses e-mails
+
+632
+00:43:31,040 --> 00:43:34,800
+que tentam induzi-lo a seguir um processo de
+
+633
+00:43:34,800 --> 00:43:38,319
+inserir uma credencial ou algo parecido
+
+634
+00:43:38,319 --> 00:43:44,720
+o risco que corremos e o caso triste que vejo como
+
+635
+00:43:44,720 --> 00:43:48,880
+nisso é que às vezes as pessoas pensam bem
+
+636
+00:43:48,880 --> 00:43:52,319
+eu não preciso atualizar aquele computador porque ele está na sala dos fundos ninguém
+
+637
+00:43:52,319 --> 00:43:55,680
+realmente usa, sim ou bem, precisamos deste para
+
+638
+00:43:55,680 --> 00:43:58,800
+ainda temos o windows xp porque temos problemas com um de nossos
+
+639
+00:43:58,800 --> 00:44:02,880
+impressoras, se não o fizermos, ainda veremos muitas janelas 7
+
+640
+00:44:02,880 --> 00:44:06,960
+sistemas e isso é uma tragédia se você tiver um
+
+641
+00:44:06,960 --> 00:44:10,960
+sistema windows 7 ou windows xp em sua rede basta ligá-lo
+
+642
+00:44:10,960 --> 00:44:13,839
+fora, livre-se disso, veja, a coisa é
+
+643
+00:44:13,839 --> 00:44:20,480
+é com esses sistemas, então a microsoft tem o que chamamos de eol ou fim de vida uh
+
+644
+00:44:20,480 --> 00:44:24,240
+encerrou a vida desses sistemas operacionais
+
+645
+00:44:24,240 --> 00:44:27,839
+então eles disseram que você tem que atualizar para o Windows 10. bem, eu não quero atualizar
+
+646
+00:44:27,839 --> 00:44:32,000
+para windows 10 eu gosto do meu windows 7. eu entendo isso e respeito isso
+
+647
+00:44:32,000 --> 00:44:37,119
+porém aqui está o problema dos hackers
+
+648
+00:44:37,119 --> 00:44:41,599
+agora são capazes de explorar esses sistemas operacionais
+
+649
+00:44:41,599 --> 00:44:45,839
+e como eles fazem isso quando encontram exploits
+
+650
+00:44:45,839 --> 00:44:48,960
+há algumas coisas que acontecem quando eles
+
+651
+00:44:48,960 --> 00:44:55,520
+dê ou venda esses exploits ou dois, eles são apenas liberados
+
+652
+00:44:55,520 --> 00:45:01,520
+ao público por meio da dark web ou até mesmo no github
+
+653
+00:45:01,520 --> 00:45:07,839
+como pesquisa de segurança e agora esses hackers, se você quiser, vamos
+
+654
+00:45:07,839 --> 00:45:11,599
+chamá-los assim, mas realisticamente, em muitos casos, eles são o que chamamos
+
+655
+00:45:11,599 --> 00:45:16,800
+gatinhos de script e estes são um
+
+656
+00:45:16,800 --> 00:45:21,680
+nem mesmo como hackers sim, mas eles não precisam ter muito conhecimento porque
+
+657
+00:45:21,680 --> 00:45:28,160
+o exploit é publicamente conhecido e entendido se
+
+658
+00:45:28,160 --> 00:45:32,319
+existem exploits que estão disponíveis para um sistema operacional
+
+659
+00:45:32,319 --> 00:45:36,880
+o que esperamos que aconteça, esperamos que o fornecedor do sistema operacional Microsoft em
+
+660
+00:45:36,880 --> 00:45:41,200
+neste caso, para corrigir esse exploit para corrigi-lo
+
+661
+00:45:41,200 --> 00:45:44,560
+e esse é o caso com o Windows 10. infelizmente
+
+662
+00:45:44,560 --> 00:45:49,040
+aqueles que são eol não é o caso com um sistema operacional eol às vezes
+
+663
+00:45:49,040 --> 00:45:54,079
+ouvimos bem, não preciso de suporte, bem, a microsoft encerrou o suporte que é
+
+664
+00:45:54,079 --> 00:45:57,440
+o que ouvimos, sim, eles encerraram o suporte para windows 7. eles encerraram
+
+665
+00:45:57,440 --> 00:46:01,920
+suporte para windows xp oh, mas eu nunca tive que ligar para o suporte
+
+666
+00:46:01,920 --> 00:46:04,640
+eu posso lidar com isso, não é o que eles
+
+667
+00:46:04,640 --> 00:46:06,640
+falando sobre o que eles estão dizendo é
+
+668
+00:46:06,640 --> 00:46:12,640
+eles não vão consertar os patches que fazem as explorações não importam
+
+669
+00:46:12,640 --> 00:46:16,160
+quão severos eles são, não importa o quão fácil eles são para
+
+670
+00:46:16,160 --> 00:46:20,079
+explorar para que você tenha uma máquina com Windows 7 em sua rede também
+
+671
+00:46:20,079 --> 00:46:26,319
+você está dando entrada a um desses hackers que nem mesmo têm
+
+672
+00:46:26,319 --> 00:46:31,040
+ser muito bom em hackear porque os exploits são conhecidos publicamente
+
+673
+00:46:31,040 --> 00:46:36,240
+sim, às vezes, eles fazem parte de ferramentas, às vezes, podem apenas baixar um
+
+674
+00:46:36,240 --> 00:46:41,440
+ferramenta e eles podem dizer que eu quero com uma verificação de exploit windows 7
+
+675
+00:46:41,440 --> 00:46:46,400
+e então eles entram em uma caixa do Windows 7 ou enganam um de seus funcionários
+
+676
+00:46:46,400 --> 00:46:50,880
+mesmo que sejam apenas alguém nos fundos trabalhando no depósito
+
+677
+00:46:50,880 --> 00:46:55,119
+eles enganaram alguém para abrir um arquivo que agora dá acesso ao
+
+678
+00:46:55,119 --> 00:46:59,359
+máquina windows 7 a máquina windows xp ou a máquina na sala dos fundos
+
+679
+00:46:59,359 --> 00:47:03,359
+não importa e aqui estamos aprendendo que a microsoft
+
+680
+00:47:03,359 --> 00:47:08,400
+servidores agora têm um exploit que, contanto que
+
+681
+00:47:08,400 --> 00:47:13,599
+uma parte mal-intencionada pode obter acesso a qualquer computador da rede
+
+682
+00:47:13,599 --> 00:47:20,480
+eles agora podem obter acesso de administrador de domínio a toda a rede
+
+683
+00:47:20,480 --> 00:47:25,359
+agora assustador agora suas máquinas com Windows 10 não são mais
+
+684
+00:47:25,359 --> 00:47:31,440
+seguro está certo porque você deu a eles acesso à sua rede como se
+
+685
+00:47:31,440 --> 00:47:39,200
+eles são administradores de domínio, veja, isso é apenas uma má notícia
+
+686
+00:47:39,200 --> 00:47:42,319
+bem, são más notícias porque o ransomware é uma coisa
+
+687
+00:47:42,319 --> 00:47:46,400
+porque o que eles fazem agora está bem, ganhei acesso a esta rede
+
+688
+00:47:46,400 --> 00:47:49,599
+vou vender na dark web acesso a esta rede
+
+689
+00:47:49,599 --> 00:47:56,640
+você vê isso com municípios e sim com cidades que
+
+690
+00:47:56,640 --> 00:48:00,000
+foi o gatinho do script original que fez não o quê
+
+691
+00:48:00,000 --> 00:48:03,680
+ele só querem que eles querem entrar
+
+692
+00:48:03,680 --> 00:48:07,119
+instalar o software e sair e vender o acesso
+
+693
+00:48:07,119 --> 00:48:11,040
+está certo porque é dinheiro rápido, então por que as pessoas fazem isso por dinheiro
+
+694
+00:48:11,040 --> 00:48:15,119
+e é assim que eles fazem isso hum sim, você tem que
+
+695
+00:48:15,119 --> 00:48:18,319
+tipo de manter as coisas atualizadas para que você saiba que é só um pensamento rápido
+
+696
+00:48:18,319 --> 00:48:22,079
+para ponderar ei, se você tem alguma máquina obsoleta em sua rede, você precisa
+
+697
+00:48:22,079 --> 00:48:25,599
+tire-os e treine sua equipe em cyber
+
+698
+00:48:25,599 --> 00:48:29,119
+as práticas de segurança entendem o que são os golpes de phishing
+
+699
+00:48:29,119 --> 00:48:32,720
+porque você sabe, muito bem, alguém clicou em um link e agora seu
+
+700
+00:48:32,720 --> 00:48:34,880
+computadores infectados, mas seu computador está
+
+701
+00:48:34,880 --> 00:48:41,839
+na sua rede, mas eu ia conseguir metade do dinheiro do príncipe
+
+702
+00:48:41,839 --> 00:48:45,359
+isso é uma outra minhoca bem ali jeff
+
+703
+00:48:45,359 --> 00:48:50,000
+mas quero dizer, quando se trata desse tipo de coisa, olhar para o seu sistema e dizer
+
+704
+00:48:50,000 --> 00:48:52,559
+oh eu não quero gastar sete oito
+
+705
+00:48:52,559 --> 00:48:55,599
+cem dólares por um novo computador, eu não me preocuparia em atualizar este
+
+706
+00:48:55,599 --> 00:49:00,000
+você vai acabar gastando mais no longo prazo uh ou no curto prazo
+
+707
+00:49:00,000 --> 00:49:05,040
+hum não no longo prazo se você não tiver seu sistema corrigido porque uma vez
+
+708
+00:49:05,040 --> 00:49:09,200
+eles têm acesso a tudo que você poderia estar fora do ar, mas e eu
+
+709
+00:49:09,200 --> 00:49:11,760
+pense quando eles tiverem acesso a tudo que eu
+
+710
+00:49:11,760 --> 00:49:13,760
+acho que é importante perceber que
+
+711
+00:49:13,760 --> 00:49:20,400
+aquele ponto de entrada torna-se o acesso a tudo, então gaste algumas centenas
+
+712
+00:49:20,400 --> 00:49:24,160
+dinheiro, compre o novo computador, salve-se, não sei o que é preciso
+
+713
+00:49:24,160 --> 00:49:27,599
+quer dizer, é diferente, é diferente para cada caso, certo, eu tinha uma pessoa
+
+714
+00:49:27,599 --> 00:49:30,800
+hoje quem ligou e disse que tenho um único computador windows 7
+
+715
+00:49:30,800 --> 00:49:33,920
+eu não quero atualizá-lo porque ele simplesmente funciona oh
+
+716
+00:49:33,920 --> 00:49:38,400
+então aqui está uma explicação e aqui becca compartilhou conosco uma história
+
+717
+00:49:38,400 --> 00:49:43,200
+que simplesmente nos diz que tudo o que eles precisam é acessar aquele único computador
+
+718
+00:49:43,200 --> 00:49:47,599
+e agora eles têm acesso a todos os computadores de seus computadores e não
+
+719
+00:49:47,599 --> 00:49:52,240
+de um jeito samba, não de um jeito amigável e espero que eles
+
+720
+00:49:52,240 --> 00:49:55,520
+não encontre nenhuma maneira de entrar pelas portas traseiras desses
+
+721
+00:49:55,520 --> 00:49:59,200
+computadores não, eles têm credenciais de administrador
+
+722
+00:49:59,200 --> 00:50:03,119
+sua rede para que eles possam fazer qualquer coisa
+
+723
+00:50:03,119 --> 00:50:07,280
+é isso mesmo que eles querem quando penso na minha casa
+
+724
+00:50:07,280 --> 00:50:10,880
+Eu acho que você está pronto, eu acho que tenho sete
+
+725
+00:50:10,880 --> 00:50:15,520
+dispositivos que não incluem telefones e tablets e coisas assim que estão conectados
+
+726
+00:50:15,520 --> 00:50:18,960
+para a rede, eu não quero que eles tenham acesso a isso
+
+727
+00:50:18,960 --> 00:50:21,200
+sim, eu simplesmente não consigo estressar o suficiente, embora jeff
+
+728
+00:50:21,200 --> 00:50:26,160
+quero dizer, penso em termos de negócios, mais o usuário doméstico, mas
+
+729
+00:50:26,160 --> 00:50:33,119
+uma vez que eles estão dentro, eles estão dentro, você não pode terminar porque você não pode agora
+
+730
+00:50:33,119 --> 00:50:36,240
+desligue aquela máquina windows aquela máquina windows 7 não, eles já estão
+
+731
+00:50:36,240 --> 00:50:40,319
+em tudo, então o que você faz substitui tudo
+
+732
+00:50:40,319 --> 00:50:44,240
+ter todos os computadores apagados porque você não sabe quais ferramentas
+
+733
+00:50:44,240 --> 00:50:50,079
+eles instalaram isso é caro, então não caia nisso
+
+734
+00:50:50,079 --> 00:50:53,280
+de qualquer forma, isso é um mau exploit que é realmente sério pessoal, espero
+
+735
+00:50:53,280 --> 00:50:56,720
+enfatizamos isso o suficiente para que você entenda que este é um mau
+
+736
+00:50:56,720 --> 00:51:02,720
+portanto, certifique-se de que seus administradores de rede estejam bem e entendam esses
+
+737
+00:51:02,720 --> 00:51:05,520
+coisas e que você está protegido e seguro
+
+738
+00:51:05,520 --> 00:51:09,920
+contra esses tipos de ameaças, vamos voltar para Becca
+
+739
+00:51:09,920 --> 00:51:13,920
+três pacotes javascript foram removidos do portal npm para
+
+740
+00:51:13,920 --> 00:51:18,000
+contendo código malicioso de acordo com os avisos do mpm
+
+741
+00:51:18,000 --> 00:51:21,440
+equipe de segurança as três bibliotecas javascript abrem
+
+742
+00:51:21,440 --> 00:51:24,480
+shells nos computadores dos desenvolvedores que importaram os pacotes
+
+743
+00:51:24,480 --> 00:51:29,200
+em seus projetos, os shells permitem que os agentes de ameaças se conectem remotamente ao
+
+744
+00:51:29,200 --> 00:51:33,520
+computador infectado e executar operações maliciosas o npm
+
+745
+00:51:33,520 --> 00:51:37,920
+equipe de segurança disse que os shells não dependem de um sistema operacional específico
+
+746
+00:51:37,920 --> 00:51:41,760
+e pode ser usado para comprometer o windows linux freebsd
+
+747
+00:51:41,760 --> 00:51:46,960
+openbsd e outros sistemas, todos os três pacotes foram enviados para o
+
+748
+00:51:46,960 --> 00:51:50,880
+portal npm em 2018 e cada um tinha centenas de
+
+749
+00:51:50,880 --> 00:51:55,839
+downloads desde então os nomes dos pacotes são plutovs dash
+
+750
+00:51:55,839 --> 00:52:01,920
+Slack Dash Client nodetest199 e nodetest1010
+
+751
+00:52:01,920 --> 00:52:07,119
+a equipe de segurança do npm disse que qualquer computador que tenha esse
+
+752
+00:52:07,119 --> 00:52:10,800
+pacote instalado ou em execução deve ser considerado totalmente comprometido
+
+753
+00:52:10,800 --> 00:52:15,280
+todos os segredos e chaves armazenados nesse computador devem ser alternados imediatamente
+
+754
+00:52:15,280 --> 00:52:20,559
+de um computador diferente, eles avisam que o pacote deve ser removido, mas como
+
+755
+00:52:20,559 --> 00:52:24,160
+controle total do computador pode ter sido dado a uma entidade externa
+
+756
+00:52:24,160 --> 00:52:27,760
+não há garantia de que a remoção do pacote removerá todos os arquivos maliciosos
+
+757
+00:52:27,760 --> 00:52:32,079
+software resultante da instalação mpm
+
+758
+00:52:32,079 --> 00:52:36,079
+a equipe de segurança verifica regularmente sua coleção de bibliotecas javascript
+
+759
+00:52:36,079 --> 00:52:41,839
+considerado o maior repositório de pacotes para qualquer linguagem de programação
+
+760
+00:52:41,839 --> 00:52:46,079
+enquanto eu não consigo nem obter uma boa cobertura de celular em minha casa
+
+761
+00:52:46,079 --> 00:52:52,240
+nokia está trabalhando com a nasa para trazer 4g para os objetivos da missão artemis da lua da nasa
+
+762
+00:52:52,240 --> 00:52:56,559
+para estabelecer uma presença humana de longo prazo na lua como um passo
+
+763
+00:52:56,559 --> 00:53:01,040
+pedra em direção à colonização de Marte e para começar as coisas nasa é
+
+764
+00:53:01,040 --> 00:53:05,280
+estendendo 370 milhões de dólares para 14 empresas
+
+765
+00:53:05,280 --> 00:53:08,400
+para fornecer a tecnologia para o programa
+
+766
+00:53:08,400 --> 00:53:12,400
+da robótica à geração de energia e até criogenia
+
+767
+00:53:12,400 --> 00:53:16,240
+mas faz sentido que essas equipes precisem ser capazes de se comunicar com o
+
+768
+00:53:16,240 --> 00:53:20,079
+planeta mãe a nova rede será projetada
+
+769
+00:53:20,079 --> 00:53:23,760
+especificamente para condições lunares capazes de resistir ao extremo
+
+770
+00:53:23,760 --> 00:53:28,559
+mudanças de temperatura e radiação, a tecnologia também utilizará pequenas células
+
+771
+00:53:28,559 --> 00:53:32,800
+tecnologia que, como o nome sugere, é significativamente menor do que a alta
+
+772
+00:53:32,800 --> 00:53:37,599
+torres de celular que eles estão acostumados a ver aqui na terra, eles também usam muito menos
+
+773
+00:53:37,599 --> 00:53:41,200
+poder, o plano é para um módulo lunar carregar
+
+774
+00:53:41,200 --> 00:53:44,480
+o sistema de comunicação 4g para a superfície lunar
+
+775
+00:53:44,480 --> 00:53:50,400
+em 2022, o Bell Labs da nokia recebeu 14,1 milhões de dólares
+
+776
+00:53:50,400 --> 00:53:55,119
+por sua vez, uma nova tecnologia de carregamento sem fio de 80 watts da
+
+777
+00:53:55,119 --> 00:53:58,880
+xiaomi está explodindo nossas mentes e o pi de framboesa
+
+778
+00:53:58,880 --> 00:54:03,839
+o módulo de computação 4 foi lançado, vamos informá-lo sobre as especificações e como
+
+779
+00:54:03,839 --> 00:54:08,480
+isso muda as coisas para a indústria iot becca tem essas histórias chegando mais
+
+780
+00:54:08,480 --> 00:54:25,839
+robert está aqui com o canto da criptografia, não vá a lugar nenhum
+
+781
+00:54:28,079 --> 00:54:32,079
+bem-vindo de volta ao mundo das criptas e bem-vindo de volta ao canto da criptografia
+
+782
+00:54:32,079 --> 00:54:35,920
+semana passada falamos sobre bancos em alguns anos você não os reconhecerá
+
+783
+00:54:35,920 --> 00:54:39,839
+mais e eu também mencionei a você não muito tempo
+
+784
+00:54:39,839 --> 00:54:43,119
+atrás, a moeda digital chinesa que
+
+785
+00:54:43,119 --> 00:54:46,720
+substituir a abelha riemann e que já a implementaram e
+
+786
+00:54:46,720 --> 00:54:50,400
+eles estão realizando alguns testes em shenzhen agora esta semana
+
+787
+00:54:50,400 --> 00:54:54,400
+houve algum desenvolvimento e gostaria de falar sobre isso porque
+
+788
+00:54:54,400 --> 00:54:58,319
+terá um impacto direto em sua vida e na minha vida
+
+789
+00:54:58,319 --> 00:55:03,760
+então vamos mergulhar nisso aqui o fundo monetário internacional a cabeça
+
+790
+00:55:03,760 --> 00:55:08,400
+dessa organização internacional é uma senhora chamada cristalina jojeva e
+
+791
+00:55:08,400 --> 00:55:11,359
+ela fez um discurso sobre o novo bosque de bretton
+
+792
+00:55:11,359 --> 00:55:14,240
+momento agora o que é um bretton Woods Grã-Bretanha era
+
+793
+00:55:14,240 --> 00:55:17,440
+sistema é a gestão monetária estabelecida
+
+794
+00:55:17,440 --> 00:55:21,760
+as regras das relações financeiras comerciais entre
+
+795
+00:55:21,760 --> 00:55:25,920
+países como nós canadá europa ocidental austrália e japão
+
+796
+00:55:25,920 --> 00:55:31,520
+e então o sistema foi o primeiro exemplo de um pedido totalmente negociado
+
+797
+00:55:31,520 --> 00:55:36,640
+pretendia governar as relações monetárias entre estados independentes de modo que foi
+
+798
+00:55:36,640 --> 00:55:40,079
+Bretton Woods e ela está falando sobre a mudança de
+
+799
+00:55:40,079 --> 00:55:45,760
+aquele sistema em algo mais moderno agora interessante o suficiente
+
+800
+00:55:45,760 --> 00:55:51,200
+na segunda, houve uma reunião com alguns banqueiros centrais falando sobre os chamados
+
+801
+00:55:51,200 --> 00:55:56,319
+pagamentos transfronteiriços, mas se você pensar sobre isso, veja que tipo
+
+802
+00:55:56,319 --> 00:55:59,520
+de pessoas que estiveram presentes, então você tem a cabeça do
+
+803
+00:55:59,520 --> 00:56:03,040
+banco central saudita você tem o chefe de todas as centrais
+
+804
+00:56:03,040 --> 00:56:06,480
+inclina a cabeça do IMF a cabeça dos EUA
+
+805
+00:56:06,480 --> 00:56:10,319
+banco central e o chefe do banco central da Malásia ausente é
+
+806
+00:56:10,319 --> 00:56:13,200
+Europa, o que é interessante, mas haverá uma razão, eu acho
+
+807
+00:56:13,200 --> 00:56:16,880
+então eles se encontraram para falar sobre o pagamento bruto da água
+
+808
+00:56:16,880 --> 00:56:21,920
+agora eu não acredito que essa é uma história real, a história real
+
+809
+00:56:21,920 --> 00:56:26,079
+uh também foi publicado por um senhor chamado raul paul
+
+810
+00:56:26,079 --> 00:56:31,119
+com o qual eu concordo totalmente, então seus pensamentos são exatamente como eu estou pensando
+
+811
+00:56:31,119 --> 00:56:35,520
+e ele está falando exatamente dessa reunião que aconteceu na segunda-feira
+
+812
+00:56:35,520 --> 00:56:39,119
+que substituirá o antigo relacionamento de Bretton Woods
+
+813
+00:56:39,119 --> 00:56:46,319
+entre os países, então o que vai acontecer parece que os bancos centrais
+
+814
+00:56:46,319 --> 00:56:50,720
+vai conspirar e chegar a um sistema
+
+815
+00:56:50,720 --> 00:56:54,000
+um sistema de banco central entre todos eles, então não haverá um nós
+
+816
+00:56:54,000 --> 00:56:56,640
+sistema de banco central de dólares haverá um
+
+817
+00:56:56,640 --> 00:56:59,680
+para cada um para todas as organizações e, em seguida, de
+
+818
+00:56:59,680 --> 00:57:04,160
+lá será diversificado e o que você pode fazer com
+
+819
+00:57:04,160 --> 00:57:06,319
+tal sistema é a parte interessante e
+
+820
+00:57:06,319 --> 00:57:13,520
+eu amo isso, então isso vai mudar o contorno do sistema bancário e financeiro
+
+821
+00:57:13,520 --> 00:57:17,920
+sistema fiscal porque você está interagindo diretamente com as pessoas
+
+822
+00:57:17,920 --> 00:57:22,160
+sim, não é como no momento em que o banco central nos EUA ou
+
+823
+00:57:22,160 --> 00:57:26,720
+o Canadá não importa vem com alguma política e então
+
+824
+00:57:26,720 --> 00:57:32,400
+vai escorrer pela corrente e você como o indivíduo
+
+825
+00:57:32,400 --> 00:57:35,440
+usuário, você provavelmente vê a menor quantidade de
+
+826
+00:57:35,440 --> 00:57:37,680
+dinheiro e provavelmente com a maior taxa de juros
+
+827
+00:57:37,680 --> 00:57:42,559
+que você pode pensar que outras pessoas vão se beneficiar muito mais com o digital
+
+828
+00:57:42,559 --> 00:57:46,799
+dinheiro mais criptomoedas ou programáveis
+
+829
+00:57:46,799 --> 00:57:50,400
+dinheiro você pode fazer muito mais porque agora
+
+830
+00:57:50,400 --> 00:57:55,839
+o banco central pode influenciar diretamente o comportamento das pessoas e como elas
+
+831
+00:57:55,839 --> 00:58:00,400
+faça isso sim, eles podem dizer bem, se você é dono de um restaurante, você pode
+
+832
+00:58:00,400 --> 00:58:03,839
+pegue o dinheiro diretamente de nós no seu bolso, sim, não mais
+
+833
+00:58:03,839 --> 00:58:08,079
+bancos envolvidos faremos isso diretamente, é possível que seja dinheiro do banco central
+
+834
+00:58:08,079 --> 00:58:12,240
+eles podem alterar as taxas de juros, portanto, em uma instância ou setor,
+
+835
+00:58:12,240 --> 00:58:16,480
+pode ter alta taxa de juros do que outro um o que vai acontecer
+
+836
+00:58:16,480 --> 00:58:19,839
+com impostos sim o que vai acontecer com os irs
+
+837
+00:58:19,839 --> 00:58:22,079
+porque eles podem lidar com essas coisas diretamente
+
+838
+00:58:22,079 --> 00:58:25,200
+por meio de dinheiro programável, levará tempo
+
+839
+00:58:25,200 --> 00:58:28,799
+para chegar a esse ponto final, mas isso vai acontecer
+
+840
+00:58:28,799 --> 00:58:34,640
+como você pode ver, para que os pagamentos diretos sejam possíveis
+
+841
+00:58:34,799 --> 00:58:41,119
+eles também estão falando aqui sobre, sim, economia comportamental, então
+
+842
+00:58:41,119 --> 00:58:45,359
+não através de alguns economistas que estão dizendo
+
+843
+00:58:45,359 --> 00:58:49,200
+o governo o que fazer e o que não fazer, porque isso falhou no
+
+844
+00:58:49,200 --> 00:58:52,160
+passado todo mundo está dizendo então o que eles estão fazendo
+
+845
+00:58:52,160 --> 00:58:56,400
+fazer é como um tipo de ideia do Facebook ou uma ideia do tique-taque ou
+
+846
+00:58:56,400 --> 00:58:59,520
+ideia do youtube onde você está interessado nas pessoas
+
+847
+00:58:59,520 --> 00:59:03,280
+fazer amizade com você ou onde as pessoas estão interessadas em
+
+848
+00:59:03,280 --> 00:59:06,799
+recebendo mais curtidas e então você muda seu comportamento em
+
+849
+00:59:06,799 --> 00:59:10,079
+diz respeito a conseguir mais curtidas e a mesma coisa
+
+850
+00:59:10,079 --> 00:59:13,839
+vai acontecer com o dinheiro então e isso vai ser tudo regulado
+
+851
+00:59:13,839 --> 00:59:17,680
+através do banco central, sem ninguém do mundo exterior
+
+852
+00:59:17,680 --> 00:59:22,000
+ter a chance de ter uma influência significativa, então como isso
+
+853
+00:59:22,000 --> 00:59:26,079
+vai parecer que no final ninguém sabe, é claro, mas que estes
+
+854
+00:59:26,079 --> 00:59:31,200
+pessoas estão se reunindo para discutir pagamentos de pedidos cruzados é algo que eu
+
+855
+00:59:31,200 --> 00:59:36,079
+acho muito interessante e, claro, são notícias fantásticas
+
+856
+00:59:36,079 --> 00:59:39,040
+para uh bitcoin porque o bitcoin está fora disso
+
+857
+00:59:39,040 --> 00:59:44,839
+sistema não há ninguém que possa regular uh bitcoin é
+
+858
+00:59:44,839 --> 00:59:48,400
+descentralizado, é imutável, você conhece todos os
+
+859
+00:59:48,400 --> 00:59:54,079
+características de de uh bitcoin, então um bitcoin é uma alternativa fantástica
+
+860
+00:59:54,079 --> 00:59:57,839
+todas as outras criptomoedas, as principais são definitivamente uma boa alternativa
+
+861
+00:59:57,839 --> 01:00:02,000
+vamos ver o que a libra trará, mas haverá algumas boas alternativas
+
+862
+01:00:02,000 --> 01:00:06,480
+para um para o centro uh centralmente
+
+863
+01:00:06,480 --> 01:00:11,359
+dinheiro direcionado por bancos centrais, então espero que você tenha achado isso interessante e
+
+864
+01:00:11,359 --> 01:00:14,559
+espero que tenha gostado e espero ter uma falta de você
+
+865
+01:00:14,559 --> 01:00:18,799
+e eu desejo a vocês uma semana fantástica, então muito obrigado por assistir
+
+866
+01:00:18,799 --> 01:00:23,200
+tchau, tchau, obrigado, robert, apenas um lembrete de que não estamos fornecendo consultoria financeira
+
+867
+01:00:23,200 --> 01:00:26,400
+mas apenas compartilhando o que está acontecendo no mercado de criptomoedas
+
+868
+01:00:26,400 --> 01:00:29,599
+lembre-se sempre de que os mercados de criptomoedas estão em constante mudança e
+
+869
+01:00:29,599 --> 01:00:33,920
+sempre volátil, então você só deve gastar o que pode perder
+
+870
+01:00:33,920 --> 01:00:38,720
+agora de volta a becca na redação obrigado robbie
+
+871
+01:00:38,720 --> 01:00:42,799
+xiaomi anunciou um novo cheque de carga que pode carregar totalmente um esgotado
+
+872
+01:00:42,799 --> 01:00:48,480
+smartphone em menos de 20 minutos, mas sem fios rápido
+
+873
+01:00:48,480 --> 01:00:52,480
+o carregamento tornou-se uma característica fundamental de muitos smartphones nos últimos anos e para
+
+874
+01:00:52,480 --> 01:00:56,160
+o carregamento sem fio pode ser realmente ótimo
+
+875
+01:00:56,160 --> 01:00:59,920
+mas é claro que o carregamento sem fio normalmente carrega um telefone entre
+
+876
+01:00:59,920 --> 01:01:05,359
+10 a 15 watts de potência, alguns telefones como o oneplus 8 pro têm
+
+877
+01:01:05,359 --> 01:01:10,160
+carregamento sem fio de até 40 watts, mas a nova tecnologia de carregamento da xiaomi promete
+
+878
+01:01:10,160 --> 01:01:14,240
+incríveis 80 watts de suco sem fio
+
+879
+01:01:14,240 --> 01:01:18,319
+o que isso significa em termos práticos bem de acordo com o anúncio
+
+880
+01:01:18,319 --> 01:01:22,160
+revelando a tecnologia de carregamento sem fio de 80 watts me
+
+881
+01:01:22,160 --> 01:01:26,720
+um smartphone com carga zero por cento de uma bateria de quatro mil miliamperes horas
+
+882
+01:01:26,720 --> 01:01:30,160
+cobrará dez por cento em apenas um minuto e cinquenta por cento
+
+883
+01:01:30,160 --> 01:01:34,160
+em oito minutos e totalmente carregado após 19 minutos
+
+884
+01:01:34,160 --> 01:01:37,599
+finalmente um carregador que irá carregar meu telefone
+
+885
+01:01:37,599 --> 01:01:43,359
+de zero a cem por cento exatamente como no meu horário de almoço, veja que é bom
+
+886
+01:01:43,359 --> 01:01:48,079
+isso é uma virada de jogo, você pode imaginar, eu penso sobre meus filhos e como temos
+
+887
+01:01:48,079 --> 01:01:51,440
+como telefones em todo lugar, obviamente, quero dizer que isso é para levar
+
+888
+01:01:51,440 --> 01:01:56,319
+a melhor e mais recente tecnologia, mas é sempre um caso de oh, esqueci de
+
+889
+01:01:56,319 --> 01:01:59,520
+coloco meu telefone no carregador ou ele não dura o suficiente para todo o
+
+890
+01:01:59,520 --> 01:02:02,720
+dia e agora que você sabe com a pandemia é claro meu
+
+891
+01:02:02,720 --> 01:02:07,599
+crianças estão sendo educadas em casa agora meio que à força e todo mundo está
+
+892
+01:02:07,599 --> 01:02:11,839
+seus dispositivos o tempo todo, então temos reuniões de zoom acontecendo em telefones
+
+893
+01:02:11,839 --> 01:02:15,599
+e corre esgota a bateria sim
+
+894
+01:02:15,599 --> 01:02:21,440
+mas o que eu gosto é que é sem fio, não é só com fio, isso é incrível
+
+895
+01:02:21,440 --> 01:02:24,480
+é sem fio tão grande quanto a ideia de que
+
+896
+01:02:24,480 --> 01:02:27,200
+eu poderia levar meu telefone, não preciso me preocupar com carregadores e
+
+897
+01:02:27,200 --> 01:02:30,960
+apenas vá, coloque-o, coloque-o no chão 20 minutos depois, estou pronto para ir
+
+898
+01:02:30,960 --> 01:02:34,000
+que eu amo a outra coisa que amo sobre isso
+
+899
+01:02:34,000 --> 01:02:40,480
+o conceito é que hum, penso como você acabou de fazer se pudesse
+
+900
+01:02:40,480 --> 01:02:43,359
+colocá-lo em uma mesa e se você pudesse colocá-lo em um
+
+901
+01:02:43,359 --> 01:02:47,680
+mesa de restaurante sim porque muitos restaurantes seguiram o caminho e eu estou
+
+902
+01:02:47,680 --> 01:02:50,799
+usando restaurantes como exemplo, mas muitos lugares seguiram o caminho de
+
+903
+01:02:50,799 --> 01:02:54,480
+incorporando usb sim para que você possa conectar seu usb
+
+904
+01:02:54,480 --> 01:02:58,640
+cabo para carregar seu telefone, mas, de repente, as pessoas
+
+905
+01:02:58,640 --> 01:03:03,200
+sábio para o fato de que essas portas USB podem ser maliciosas
+
+906
+01:03:03,200 --> 01:03:06,319
+porque o usb também carrega dados ou isso mesmo
+
+907
+01:03:06,319 --> 01:03:10,000
+quem sabe se é muitos volts e que você sabe que talvez seja
+
+908
+01:03:10,000 --> 01:03:13,280
+tenho um curto ou algo parecido e poderia fritar meu telefone
+
+909
+01:03:13,280 --> 01:03:17,039
+então, de repente, temos medo de nos conectar à porta USB porque
+
+910
+01:03:17,039 --> 01:03:20,400
+pode ser algo ruim, tudo bem
+
+911
+01:03:20,400 --> 01:03:24,960
+carregamento sem fio você o abaixa, ele carrega, pega e você está
+
+912
+01:03:24,960 --> 01:03:28,240
+feito sim, mas você pode defini-lo para gosto
+
+913
+01:03:28,240 --> 01:03:31,119
+três minutos e é dado a você carga suficiente para passar a maior parte do
+
+914
+01:03:31,119 --> 01:03:35,680
+tarde que é incrível incrível eu acho
+
+915
+01:03:35,680 --> 01:03:40,559
+da mesma forma que significa que você olha ao redor agora e tem todas essas estações de carga para
+
+916
+01:03:40,559 --> 01:03:44,079
+veículos elétricos seria ótimo começar a ver pouco
+
+917
+01:03:44,079 --> 01:03:48,640
+pop-ups em locais públicos com esse tipo de coisa, onde você pode literalmente colocar
+
+918
+01:03:48,640 --> 01:03:52,880
+seu telefone desligado por cinco minutos e tem o suficiente para fazer uma ligação para
+
+919
+01:03:52,880 --> 01:03:56,319
+peça ajuda ou o que for e é tudo sem fio que acabei de imaginar
+
+920
+01:03:56,319 --> 01:04:01,760
+como um trecho de estrada e embutir o receptor no carro e
+
+921
+01:04:01,760 --> 01:04:05,599
+recarrega o carro autônomo enquanto ele passa por cima
+
+922
+01:04:05,599 --> 01:04:08,230
+coisa que estamos entrando na tecnologia agora pessoal
+
+923
+01:04:08,230 --> 01:04:11,520
+[Risos] Ainda gosto, estou animado com isso,
+
+924
+01:04:11,520 --> 01:04:15,839
+coisa louca é apenas a conclusão é que enquanto o que eu apenas
+
+925
+01:04:15,839 --> 01:04:18,319
+disse que é muito sci-fi como quando estávamos crescendo
+
+926
+01:04:18,319 --> 01:04:21,599
+que era como o futuro, é totalmente factível, é
+
+927
+01:04:21,599 --> 01:04:25,920
+possível agora sim, isso é ridículo o pi de framboesa
+
+928
+01:04:25,920 --> 01:04:31,200
+Foundation lançou um módulo de computação com as especificações de um raspberry pi 4.
+
+929
+01:04:31,200 --> 01:04:35,119
+a base raspberry pi lançou um novo produto segunda-feira o comp
+
+930
+01:04:35,119 --> 01:04:39,440
+o módulo de computação 4. é difícil acreditar que já faz tanto tempo, mas o
+
+931
+01:04:39,440 --> 01:04:43,359
+raspberry pi 4 foi lançado em junho de 2019
+
+932
+01:04:43,359 --> 01:04:48,079
+o módulo de computação 4 traz o pi 4 para o espaço industrial
+
+933
+01:04:48,079 --> 01:04:52,240
+apresentando o mesmo processador empacotado em um módulo de computação
+
+934
+01:04:52,240 --> 01:04:57,200
+implorando para ser integrado em poderosos aparelhos iot
+
+935
+01:04:57,200 --> 01:05:00,880
+se você não está familiarizado com módulos de computação, pode pensar neles como
+
+936
+01:05:00,880 --> 01:05:05,280
+computadores de placa única sem todas as portas e pinos gpio
+
+937
+01:05:05,280 --> 01:05:09,440
+eles permitem que os componentes do computador, os cérebros de uma framboesa pi, sejam
+
+938
+01:05:09,440 --> 01:05:13,920
+integrado em clusters de tecnologia de fabricantes de dispositivos inteligentes de robótica ou
+
+939
+01:05:13,920 --> 01:05:16,400
+qualquer coisa que você possa imaginar que exija um minúsculo
+
+940
+01:05:16,400 --> 01:05:22,240
+computador linux de baixa potência em seu coração, uma vez que o módulo de computação 4 compartilha seu
+
+941
+01:05:22,240 --> 01:05:26,400
+especificações com os desenvolvedores raspberry pi 4 podem fazer todos os seus protótipos
+
+942
+01:05:26,400 --> 01:05:30,319
+no pi 4 sbc, mas depois solicite um monte de módulo de computação
+
+943
+01:05:30,319 --> 01:05:33,520
+4s para integrar em seu produto comercial
+
+944
+01:05:33,520 --> 01:05:38,559
+assim como o raspberry pi 4, o módulo de computação 4 apresenta um braço de 64 bits baseado
+
+945
+01:05:38,559 --> 01:05:42,400
+processador com vídeo core vi gráficos este é
+
+946
+01:05:42,400 --> 01:05:45,520
+vai representar uma grande atualização para computação anterior
+
+947
+01:05:45,520 --> 01:05:49,839
+clientes do módulo e com saída de vídeo 4k em até
+
+948
+01:05:49,839 --> 01:05:55,039
+60 quadros por segundo, mais a capacidade de decodificar vídeo h.265
+
+949
+01:05:55,039 --> 01:05:58,480
+o módulo de computação para o módulo de computação 4
+
+950
+01:05:58,480 --> 01:06:03,039
+pode ser uma virada de jogo para dispositivos movidos a multimídia, como smart tvs ou
+
+951
+01:06:03,039 --> 01:06:06,960
+decodificadores com os quais o módulo de computação 4 está disponível
+
+952
+01:06:06,960 --> 01:06:11,599
+sua escolha de 1 2 4 ou 8 gigabytes de RAM e 8 16
+
+953
+01:06:11,599 --> 01:06:18,000
+ou 32 gigabytes a bordo de armazenamento flash emmc wi-fi e bluetooth
+
+954
+01:06:18,000 --> 01:06:21,440
+também são opcionais, os preços variam de apenas 25
+
+955
+01:06:21,440 --> 01:06:27,599
+para 90 usd agora imagine que jeff the raspberry pi compute module 4
+
+956
+01:06:27,599 --> 01:06:31,359
+sim, em um de seus projetos sbc ou algo parecido, alimentando-o como o
+
+957
+01:06:31,359 --> 01:06:33,920
+cérebros, isso é muito emocionante assim que
+
+958
+01:06:33,920 --> 01:06:39,440
+becca disse decodificação h.265, então é como um vídeo que é
+
+959
+01:06:39,440 --> 01:06:43,760
+muito cpu intensivo, sim, é incrível como diz muito
+
+960
+01:06:43,760 --> 01:06:50,000
+isso é mais poder do que meu servidor plex sim que tipo quem sabe onde é
+
+961
+01:06:50,000 --> 01:06:54,720
+vou levar coisas que eu gosto da ideia de computação em cluster
+
+962
+01:06:54,720 --> 01:06:58,480
+e é aí que você pega vários computadores
+
+963
+01:06:58,480 --> 01:07:01,520
+conectá-los por meio de rede e
+
+964
+01:07:01,520 --> 01:07:06,559
+basicamente instala o software beowulf ou algo parecido que
+
+965
+01:07:06,559 --> 01:07:09,359
+agrupa-os para torná-los capazes de realizar
+
+966
+01:07:09,359 --> 01:07:14,400
+tarefas juntas de tal forma que basicamente formam um super computador
+
+967
+01:07:14,400 --> 01:07:19,200
+direto de vários computadores, então você pensa sobre esses pi de framboesa
+
+968
+01:07:19,200 --> 01:07:25,839
+cl uh cluster ou os módulos ee colocar cerca de 10 deles juntos
+
+969
+01:07:25,839 --> 01:07:30,400
+em um cluster e você gostaria que este módulo de computação
+
+970
+01:07:30,400 --> 01:07:34,559
+cluster que seria um bom computador com tanto poder
+
+971
+01:07:34,559 --> 01:07:38,079
+quando você pode ter oito GB de RAM em cada
+
+972
+01:07:38,079 --> 01:07:43,359
+vezes o tabuleiro que em 10. muito pode fazer muito
+
+973
+01:07:43,359 --> 01:07:47,280
+está mudando as coisas, pessoal, o mundo está mudando, com certeza
+
+974
+01:07:47,280 --> 01:07:50,960
+o que você faria com todo esse poder
+
+975
+01:07:52,160 --> 01:07:55,280
+e silêncio ele está esperando você responder eu
+
+976
+01:07:55,280 --> 01:07:58,480
+Eu estou pensando, o que eu faria com quantas pessoas
+
+977
+01:07:58,480 --> 01:08:05,119
+acabei de minerar bitcoins desculpe pessoal, vocês sabem o que é triste,
+
+978
+01:08:05,119 --> 01:08:10,880
+primeiro pensei que poderia automatizar como alguns dos
+
+979
+01:08:10,880 --> 01:08:14,000
+utilitários que tenho na cozinha para fazer comida para mim
+
+980
+01:08:14,000 --> 01:08:17,600
+esse foi meu primeiro pensamento com um módulo de computação quatro
+
+981
+01:08:17,600 --> 01:08:22,319
+sim, é preciso mais do que isso, mas eu sei que pode ser o cérebro de tal operação
+
+982
+01:08:22,319 --> 01:08:27,759
+claramente estou com fome [risos]
+
+983
+01:08:27,759 --> 01:08:31,359
+sua opinião, comente abaixo, adoraríamos saber o que você faria com um
+
+984
+01:08:31,359 --> 01:08:34,719
+módulo de computação pelos agradecimentos por assistir a categoria 5 pontos
+
+985
+01:08:34,719 --> 01:08:38,000
+redação de tv não se esqueça de curtir e se inscrever
+
+986
+01:08:38,000 --> 01:08:40,640
+todas as suas notícias de tecnologia com um leve viés do Linux
+
+987
+01:08:40,640 --> 01:08:46,000
+e se você aprecia o que fazemos, nos tornamos um patrono em patreon.com
+
+988
+01:08:46,000 --> 01:08:53,839
+categoria 5. da sala de notícias da categoria 5 dot tv estou becca ferguson
+
+989
+01:08:55,870 --> 01:09:04,029
+[Música]
+
+990
+01:09:12,400 --> 01:09:16,159
+bem, está bem, praticamente todo o tempo que temos esta semana jeff
+
+991
+01:09:16,159 --> 01:09:21,600
+semana passada nós passamos e eu fiz todo o processo com o fiverr
+
+992
+01:09:21,600 --> 01:09:25,359
+contratei algumas pessoas para podermos fazer nosso remix, sim, aqui está um engraçado
+
+993
+01:09:25,359 --> 01:09:29,040
+história ok, literalmente me diga quando rir, você
+
+994
+01:09:29,040 --> 01:09:34,960
+sabe lábio ele já fez ele já riu
+
+995
+01:09:34,960 --> 01:09:38,400
+O esquilo de arraia era um dos nossos caras sim sim
+
+996
+01:09:38,400 --> 01:09:42,560
+um de nossos remixers e esquilo literário
+
+997
+01:09:42,560 --> 01:09:48,319
+disse que ficava me perguntando que isso é enquanto ele estava assistindo ao recurso
+
+998
+01:09:48,319 --> 01:09:51,199
+depois eu fiquei me perguntando por que você estava
+
+999
+01:09:51,199 --> 01:09:58,159
+pronunciando incorretamente meu nome oh ninharia um esquilo então eu verifiquei meu
+
+1000
+01:09:58,159 --> 01:10:02,960
+perfil e descobri que escrevi errado oh não
+
+1001
+01:10:02,960 --> 01:10:09,920
+e nunca notei e foi assim por três anos você está falando sério
+
+1002
+01:10:09,920 --> 01:10:17,600
+ele diz meu nome, o nome da minha banda é literary squirrel oh meu deus ele parou
+
+1003
+01:10:17,600 --> 01:10:21,040
+no nosso isso é engraçado, então eu conto essa história
+
+1004
+01:10:21,040 --> 01:10:25,600
+veja, é engraçado, eu disse que era engraçado, era como
+
+1005
+01:10:26,000 --> 01:10:29,679
+eu te conto essa história porque então eu disse a mim mesmo bem
+
+1006
+01:10:29,679 --> 01:10:35,120
+eu vejo palavras e eu e eu acho que na maioria das vezes eu pronuncio
+
+1007
+01:10:35,120 --> 01:10:40,320
+meticulosamente, então, quando vejo literatura, mesmo que não seja uma palavra,
+
+1008
+01:10:40,320 --> 01:10:44,800
+defini-lo da forma correta, então pensei que provavelmente seria um
+
+1009
+01:10:44,800 --> 01:10:47,679
+muito bom revisor, então eu disse o que diabos eu vou dar a ele
+
+1010
+01:10:47,679 --> 01:10:50,960
+vá então eu coloquei um anúncio que dizia que vou revisar
+
+1011
+01:10:50,960 --> 01:10:54,480
+seu texto de 500 palavras ou menos por cinco dólares
+
+1012
+01:10:54,480 --> 01:10:57,520
+ok e eu disse como se ninguém fosse tentar isso
+
+1013
+01:10:57,520 --> 01:11:01,840
+é divertido de qualquer maneira, pensei em tentar e na manhã seguinte recebi um e-mail
+
+1014
+01:11:01,840 --> 01:11:08,239
+de uma pessoa na Espanha que era
+
+1015
+01:11:08,239 --> 01:11:13,120
+um corretor de seguros e tem um cliente que fala inglês
+
+1016
+01:11:13,120 --> 01:11:17,600
+nativamente e queria ter certeza de que estava dizendo as coisas certas em resposta
+
+1017
+01:11:17,600 --> 01:11:21,840
+para um e-mail, então ele removeu todas as coisas confidenciais
+
+1018
+01:11:21,840 --> 01:11:26,400
+sim e me enviou sua resposta e disse: você pode simplesmente repassar isso para mim e eu
+
+1019
+01:11:26,400 --> 01:11:28,400
+fiz e passei e corrigi alguns
+
+1020
+01:11:28,400 --> 01:11:31,840
+coisas e ele tinha algumas palavras que realmente não faziam sentido na tradução
+
+1021
+01:11:31,840 --> 01:11:35,760
+e então eu consertei e corrigi a gramática e o contexto e um pouco
+
+1022
+01:11:35,760 --> 01:11:39,760
+de ortografia e ele estava como se ele amou cinco dólares
+
+1023
+01:11:39,760 --> 01:11:42,000
+realmente me levou 10 minutos e foi apenas
+
+1024
+01:11:42,000 --> 01:11:44,480
+algo que fiz com uma xícara de café logo de manhã
+
+1025
+01:11:44,480 --> 01:11:50,960
+sim e ele me deu uma revisão de 5 de 5 que é incrível como se fosse fiverr de
+
+1026
+01:11:50,960 --> 01:11:54,480
+a perspectiva invertida, então eu acho que isso é muito legal, então eu começo a falar
+
+1027
+01:11:54,480 --> 01:11:58,400
+para meus filhos e eu acho que deveríamos descobrir se, como vocês, poderiam fazer coisas no
+
+1028
+01:11:58,400 --> 01:12:01,199
+lá e você sabe, minha filha é uma artista e
+
+1029
+01:12:01,199 --> 01:12:05,280
+ela poderia fazer desenhos para as pessoas começarem a ganhar dinheiro, é uma coisa legal
+
+1030
+01:12:05,280 --> 01:12:08,159
+ideia de uma plataforma bacana, não sei quais são as regras
+
+1031
+01:12:08,159 --> 01:12:11,120
+como idade mínima e coisas assim, mas podemos olhar para esses tipos de
+
+1032
+01:12:11,120 --> 01:12:13,360
+coisas, mas essa é a minha história para esta semana é
+
+1033
+01:12:13,360 --> 01:12:18,719
+Ei, eu fui para o outro lado também e vendi meu próprio serviço que dei
+
+1034
+01:12:18,719 --> 01:12:23,120
+esquilo literário, um brinde grátis, mas uh
+
+1035
+01:12:23,120 --> 01:12:30,000
+agora estou, estou disponível para venda ii sinto que seria divertido apenas
+
+1036
+01:12:30,000 --> 01:12:34,000
+te dou os cinco dólares e te enviarei um documento de 500 palavras
+
+1037
+01:12:34,000 --> 01:12:38,640
+tudo lorem ipsum e apenas me diga se faz sentido farei o meu melhor
+
+1038
+01:12:38,640 --> 01:12:44,000
+você corrigiu isso, tudo bem bem, é isso aí jeff
+
+1039
+01:12:44,000 --> 01:12:46,800
+está o tempo todo ok, mas tem sido muito divertido, eu
+
+1040
+01:12:46,800 --> 01:12:50,080
+gostei de estar aqui com você novamente esta semana na próxima semana estamos entrando em 3D
+
+1041
+01:12:50,080 --> 01:12:52,560
+impressão, então vamos montar um ender
+
+1042
+01:12:52,560 --> 01:12:55,440
+3v2, então vamos colocá-lo juntos
+
+1043
+01:12:55,440 --> 01:12:58,640
+e então vamos conversar sobre você sabe como tem sido o processo
+
+1044
+01:12:58,640 --> 01:13:03,760
+como para mim como um novato no reino da impressão 3D,
+
+1045
+01:13:03,760 --> 01:13:05,760
+que tipo de desafios eu encontrei
+
+1046
+01:13:05,760 --> 01:13:09,040
+e você pode possivelmente encontrar ao começar
+
+1047
+01:13:09,040 --> 01:13:13,760
+em impressão 3D, além de mostrar a vocês não apenas minha primeira impressão
+
+1048
+01:13:13,760 --> 01:13:19,440
+mas meus primeiros designs impressos vocês não vão querer perder na próxima semana
+
+1049
+01:13:19,440 --> 01:13:22,960
+tenham uma ótima semana a todos nós veremos vocês
+
+1050
+01:13:24,100 --> 01:13:30,029
+[Música] [Aplausos]
+
+1051
+01:13:30,840 --> 01:13:45,060
+tchau [música]
+
+1052
+01:13:48,290 --> 01:13:56,319
+[Música]
+
+1053
+01:14:01,760 --> 01:14:03,840
+vocês
+

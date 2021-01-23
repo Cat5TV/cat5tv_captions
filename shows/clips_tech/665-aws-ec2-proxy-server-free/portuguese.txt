@@ -1,0 +1,240 @@
+se você espera ter um pouco mais de privacidade enquanto navega
+a internet ou você deseja acessar serviços que talvez
+não estão disponíveis normalmente na sua área ou talvez seja o caso de realmente ter
+teve seu endereço IP bloqueado por um provedor de serviços
+pode não ser uma coisa maliciosa, meu endereço IP foi bloqueado pelo youtube antes
+porque eu envio tantos vídeos e faço download
+as legendas ocultas para aqueles que me levaram a exceder meu uso em
+a API do YouTube, então meu endereço IP fica bloqueado, então
+não tem que ser algo malicioso, não quero dar essa impressão
+mas há razões muito legítimas para contornar esses tipos de
+coisas e os nerds vão é um proxy, o problema são proxies
+podem ser muito caros de usar e os gratuitos
+enquanto prontamente disponíveis são muitas vezes não muito confiáveis, eles estão
+dia eles caem no próximo e você perde o acesso aos seus serviços
+e tudo o mais ou ainda pior, eles são perigosos, você não sabe o que
+esses proxies estão rastreando o registro e até mesmo interceptando
+conforme você está enviando todo o seu tráfego de internet
+através desse provedor de serviços para que haja uma pessoa em quem eu realmente confio
+para proxy de todos os meus dados e esse sou eu, não sou a mesma pessoa
+que você diria que confia na pessoa que você confia é você, então eu estou
+vou mostrar como posso configurar um serviço de proxy grátis
+de minha autoria e você pode replicar isso e criar o seu próprio também
+vamos fazer isso na nuvem, vamos usar um serviço de terceiros
+provedor e isso é amazon, então você diz tudo bem
+amazon e você sabe, podemos confiar em nossos dados
+para eles, bem, o que estamos usando são seus serviços em nuvem, é chamado amazon
+serviços da web, então é tudo deles é a nuvem deles
+infraestrutura que eles têm para os clientes basicamente alugarem
+acesso a seus servidores e seu espaço e
+e os servidores virtuais e tudo o mais que todo
+infraestrutura está disponível para você, mas a implantação em si é
+seu eu vou te mostrar como isso é feito, vamos pular para o aws
+e em particular o ec2, então é claro que você, se não estiver familiarizado com o aws, apenas
+acesse aws.amazon.com entre com sua conta amazon e
+em seguida, faça uma pesquisa rápida por ec2 e isso o levará para
+basicamente, sua plataforma de virtualização pensa em ec2 como
+apenas isso, então a primeira coisa que noto quando estou aqui
+em ec2 é minha região e isso é importante porque é onde meu proxy
+o servidor vai residir se eu configurá-lo lá, por que isso
+importante bem, pense sobre isso, digamos que estou usando um streaming de vídeo
+serviço que restringe o acesso do canadense ao vídeo
+serviço de streaming, colocando meu servidor proxy no norte
+Califórnia agora, de repente, eles são basicamente
+pelo endereço IP vou pensar que estou me conectando de
+Califórnia, então eu sou capaz de contornar isso
+da mesma forma, você pode querer mudar sua região com base em
+o que você está tentando alcançar, você pode até colocar um servidor na África
+ou na Ásia, veja que você pode colocar um certo em Hong Kong
+você pode colocar um no Canadá a uh na Europa você tem
+em todo o lugar e temos o Oriente Médio e a América do Sul agora
+então é uma lista bem grande de onde eles
+ter essa infraestrutura configurada para amazon
+serviços da web o serviço ec2, então escolha aquele que
+é onde você quer que seu servidor proxy esteja
+vou definir o meu, vou apenas deixá-lo como norte da Califórnia, que é
+nós um oeste e é onde
+meu servidor proxy irá residir e isso permitirá que eu me conecte
+como se eu estivesse realmente sentado na Califórnia
+tudo bem, então vou clicar em iniciar instância
+e, em seguida, inicie a instância novamente porque ele faz um menu suspenso e isso me dá
+uma lista de sistemas operacionais que posso implantar
+na minha instância ec2, então estou usando alguns termos com os quais você pode não estar familiarizado
+aws são serviços da web da Amazon que basicamente
+a gama completa de serviços que eles oferecem
+para usuários de nuvem ec2 é sua plataforma de virtualização para usuários virtuais
+máquinas quando eu disse instância, estou falando sobre um
+máquina virtual, então é literalmente uma máquina virtual
+então vou implantar um desses sistemas operacionais em uma instância do ec2
+que é uma máquina virtual então o que eu quero
+ser assim e eu estava dizendo ei, comente abaixo se
+eu uso um termo com o qual você não está familiarizado
+vou fazer uma pesquisa rápida, já fiz antes, porque implanto uma tonelada de
+servidores na nuvem vou clicar no debian
+uh apenas digite debian na busca aqui
+então vou para os resultados do aws marketplace, também há
+aqueles que eu criei e os da comunidade
+você pensaria oh bem, eu quero usar os da comunidade bem, não, não, porque
+esses vão custar-lhe dinheiro e você diz bem, mas a comunidade é gratuita
+é open source e sim, no entanto, não faz parte do erro
+mercado e, portanto, você terá que pagar pelo uso
+ter aquela máquina virtual que a instância está executando
+na nuvem, então, em vez disso, vamos usar um dos oficiais da
+aws marketplace vamos ver quais resultados obtemos, eles são classificados muito bem
+debian surge o primeiro resultado é debian 10 buster
+um nível gratuito compatível ou um nível gratuito qualificado
+versão do debian que iremos implementar, então selecione
+nível gratuito qualificado para que possamos ignorar o preço porque vamos usar um
+clique em nível gratuito para continuar e é aqui que selecionamos isso tão bem
+se quisermos o nível gratuito, temos que ir com um micro t2 então
+vou selecionar isso, mas o que isso nos dá, nos dá uma cpu
+um gigabyte de memória e então temos armazenamento para lidar com
+não precisamos de muito armazenamento porque estamos apenas configurando um proxy básico
+e isso é tudo, então vou implantar apenas
+que tão t2 micro é aquele que é de nível gratuito
+qualificado, não selecione um dos maiores porque você vai pagar
+para isso imediatamente vou revisar e
+lançamento, vamos voltar para fazer configurações como nossos grupos de segurança e
+coisas assim eu só vou deixar tudo
+por padrão por agora e vamos lançar isso
+antes de mais nada, preciso criar um novo par de chaves, então este é
+a chave ssh que vou usar para fazer o ssh em
+este servidor, então vou chamá-lo de proxy
+servidor e, em seguida, baixar meu par de chaves, certifique-se de salvá-lo em algum lugar seguro
+vou jogar isso no meu servidor e soltá-lo
+lá e agora lançar instância significa poder
+em sua máquina virtual, então vou empurrar isso
+e lá vamos nós, então basicamente é criar é criar um virtual
+máquina uma instância ec2 na nuvem para nós em
+uh no norte da Califórnia então lá vamos nós então
+vou ver as instâncias aqui e agora posso ver que agora tenho uma
+instância executando um micro t2 e simplesmente não tem nome, então vou
+clique em editar e vou chamá-lo de meu servidor proxy
+servidor tente lá vamos nós ok, então ele já está instalado e funcionando
+então, se eu clicar nele, posso ver o endereço IP desse servidor, é eu chamei
+é servidor proxy, mas agora lembre-se que é apenas debian 10. há
+nada mais instalado nele, então preciso copiar o endereço IP
+e então vou pular para o meu prompt de comando
+porque baixei a chave do meu servidor, vou pessoalmente
+ssh para meu servidor interno
+tudo bem, então agora estou lá, agora o comando que irei usar
+é ssh e, em seguida, traço i para a chave que vou usar
+então, o arquivo de entrada que irei usar para a chave
+e aquele se chama proxy server.pem é o que eu baixei
+então eu vou me tornar administrador porque esse é o login padrão para o debian
+administrador de imagens de máquina ami ou amazon em
+e então o endereço IP que eu já copiei para minha área de transferência e se eu
+aperte enter vai me pedir para aceitar aquela chave
+e eu digo sim e sou negado
+permissões naquele arquivo acabaram sendo
+766 para que todos tenham acesso a esses arquivos, é interessante
+O próprio ssh está me protegendo de alguém ser capaz de comprometer minha chave
+então chmod 7 0 0 servidor proxy ponto pam vamos tentar isso e
+agora tente de novo então o que eu fiz foi ah e agora estou
+conectado, funcionou sete zero zero significa que eu sou o proprietário de
+essa chave, eu posso fazer qualquer coisa com ela
+ler escrever executar zero zero significa ninguém no grupo ninguém que não seja um
+parte do grupo tem permissão para acessar tudo, então é
+basicamente um arquivo idiota que eles nem conseguem abrir
+uh mas eu posso bem, então agora que estou conectado, eu vou sudo sue
+porque esse é o comando para se tornar root, então agora estou root tão apto
+update apt update vai pegar meus repositórios, você vê que este é um
+um computador debian real se você for na nuvem
+é tão fácil eu já estou atualizando eu já estou
+rodando um computador debian na nuvem então nessa quantidade de tempo e eu estou blá
+blá blá ao mesmo tempo hum, temos um servidor debian baseado em nuvem
+você sabia que era fácil e é grátis
+ok, então podemos fazer outras coisas com isso também podemos configurar uma pilha de lâmpadas
+poderia usá-lo para o mysql mariadb qualquer coisa que você possa imaginar, é um
+servidor debian, então vamos usá-lo como nosso
+proxy, então agora o que vou fazer é instalar uma ferramenta chamada
+tiny proxy agradável e simples de instalar apt install tiny proxy
+muito simples de configurar diga sim, vamos lá
+e está feito, agora que instalamos o proxy minúsculo, só precisamos editar
+o arquivo de configuração então slash etc slash tiny tiny proxy a transformou naquele
+e então estou usando o nano tinyproxy.com e edito isso para controlar o nano
+me permite pesquisar, mas antes de pesquisar, observe que o
+porta por padrão está usando 8888, vamos precisar saber que
+informações porque é a isso que vamos nos conectar para
+nosso proxy faz uma busca rápida para permitir
+alt w permite-lhe pesquisar novamente uau a palavra permitir provavelmente não é a melhor
+consulta de pesquisa talvez pesquise 127.0.0.1 um e logo abaixo desse eu vou
+permitir e então eu preciso adicionar meu endereço IP para que eu possa conectar a este
+servidor proxy porque agora ele está fechado apenas localhost pode acessá-lo
+é importante notar que isso é enquanto este é um público gratuito
+servidor proxy eu sou o único que terá permissão para acessá-lo
+vou ter permissão para fazer proxy do meu conteúdo através da minha conexão
+é privado a esse respeito, eu preciso saber meu
+endereço de ip, então vou pular para
+currentip.xyz e copie esse endereço IP para minha área de transferência
+e depois voltar lá e colá-lo na minha configuração
+controle o entrar controle x controle o é escrever
+salve o arquivo agora system ctl restart tiny proxy
+quase fizemos a última coisa que precisamos fazer é apenas dizer
+a segurança ec2 que vamos definir uma política que diz
+ei, só eu tenho permissão para me conectar a esse servidor
+para que ninguém mais possa se conectar a ele de forma alguma, é isso que vamos
+fazer agora, então vou voltar aqui e você ver este servidor no
+tela bem, se eu clicar em segurança, posso
+clique no grupo de segurança que é atribuído automaticamente, então apenas clique
+isso e agora me deixou com ec2
+grupos de segurança e o grupo de segurança correto
+você notará que já está configurado um para ssh porque
+é habilitado por padrão, posso definir isso para apenas me permitir também, o que é
+importante, então vamos fazer isso apenas para estar bem
+práticas de segurança, então ssh, vou mudar de
+custom0000 vou fechar x isso e então
+mude para meu ip então vou adicionar uma nova regra que você viu
+como cheguei aqui bem eu sei que estou indo muito, muito rápido
+acabei de clicar em editar regras de entrada aqui
+ok então adicionar uma nova regra tcp personalizado é o padrão
+número da porta você se lembra 888 e só permitir meu ip eu posso chamá-lo de algo se eu
+quero proxy e depois salve minhas regras
+lá vamos nós, agora você vê ssh e tcp personalizado
+um proxy chamado na porta 8888 então como testamos isso?
+o endereço IP atual é 99.233 e então vou me conectar ao proxy
+este não é um tutorial sobre como usar um proxy
+este não é um tutorial sobre como usá-lo
+necessariamente é isso, estou fazendo suposições aqui que
+você mesmo pode pesquisar no Google porque será diferente com base
+no seu caso de uso, se você deseja apenas proxy seu navegador ou proxy
+aplicativo específico ou toda a sua rede
+isso dependerá do seu caso de uso individual, este é
+estritamente um tutorial sobre como construir esta instância ec2 realmente muito rápido para
+grátis que tem um proxy pronto para usarmos em
+Califórnia ou qualquer outro lugar e uh é isso aí no meu
+caso particular agora, então este momento não é necessariamente o que
+que você quer fazer a seguir, é assim que vou testar o
+proxy Acontece que estou no windows 10 aqui, então vou simplesmente digitar proxy
+e vá para as configurações de proxy novamente, provavelmente não é assim que você quer fazer
+Eu só quero testar, então vou ativar o proxy
+posso ver que há configurações de proxy antigas lá, então certifique-se de
+lembre-se disso se houver configurações de proxy antigas de que você precisa
+para alterá-lo vá para as instâncias em ec2 clique na sua instância
+id e pegue o endereço IP e cole
+isso como o endereço do seu servidor proxy
+porta 8888 e salve, agora estou conectado ao
+proxy instantaneamente não conectado ao agora o Windows está dizendo
+Vou encaminhar todo o seu tráfego através do proxy que devo corrigir
+eu mesmo lá, se eu voltar para o currentip.xyz
+99,233 é meu ip atual, vou apertar f5 para atualizar
+e se tudo correu bem 3.101.108.211. bem o que é isso
+esse é o meu servidor, então estou agora onde estou, vamos descobrir
+maxmind.com vamos fazer uma busca pelo endereço IP que estou usando atualmente
+Onde estou eu, São José, Califórnia, é onde meu máximo me determina
+ser assim é tudo que temos
+criado configurado implantado um serviço de proxy grátis
+que possuímos e operamos, somos os únicos
+quem tem aquela chave SSH, então se você quiser
+conectar-se para fazer alterações, usá-lo como um servidor multifuncional que você pode fazer
+aquele, mas fique de olho no seu faturamento, certifique-se de que
+você não excedeu limites e coisas assim
+se você estiver usando-o apenas como um proxy, é muito improvável que você faça isso
+é apenas algo através do qual você canaliza dados
+então verifique se é aws.amazon.com para começar
+se você tiver dúvidas, poste-as em nossa comunidade de cabeça
+para nossa discórdia, você encontrará o link em category5.tv
+no menu de interação, entretanto, se você gostou, se você já usou ou
+achei útil me dê um grande joinha por favor se inscreva
+[Música] fazer
+[Música]

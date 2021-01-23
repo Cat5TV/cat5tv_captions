@@ -1,0 +1,414 @@
+bonjour c'est la catégorie cinq tv uh catégorie
+cinq pause-café à la télévision, je suis uh bp9 vous donnant un signe là-bas
+et nous avons solberg nous donne un moyen de résoudre
+Oh d'accord assez près et puis nous avons des doutes
+donne-nous et bonjour tu vas et bonjour peter donne-nous peter
+on y va bonjour peter très bien alors bienvenue au
+à la pause café et euh mes nouvelles en gros cette semaine
+est euh euh est à voir avec hier oh hier la semaine dernière je pense que j'ai parlé
+à propos de um euh principalement
+euh tests unitaires dans les programmes c et c'était un gros problème pour moi parce que je
+l'habitude de faire ça en java tout ce temps où j'essayais d'en obtenir 70 ou 80
+couverture sur mon sur mon code java car vous savez pour des raisons commerciales que
+était nécessaire, vous savez que vous deviez être sûr
+que votre code correspond au fait que votre code a réellement fait ce que vous attendiez de lui
+Alors ce que j'ai fait, une des autres choses que nous aimerions faire est de faire
+sûr que vous obtenez une bonne couverture de code et avec une couverture de code c'est quelque chose
+ce n'est pas bien que je ne pensais pas être tout à fait
+si facile à obtenir avec um avec c mais il s'avère que c'est trivial
+le compilateur gcc générera volontiers une couverture
+données pour vous lorsque vous utilisez la couverture moins moins
+commande un argument afin que vous donniez cet argument de ligne de commande au
+au compilateur et à l'éditeur de liens, puis lorsque vous exécutez le programme avec
+votre harnais de test ce qui va se passer est qu'il fonctionnera tout
+les tests et ça va juste, euh euh vous venez de lancer tous les
+les tests que vous avez dans votre suite de tests
+à la fin, vous obtenez tout un tas de données de couverture que vous convertissez ensuite en
+une page html et vous obtenez un vous obtenez une très belle
+euh écran euh un site Web qui vous dit à quel point quel genre de
+la couverture que vous obtenez à l'ensemble du programme
+puis à chaque niveau de fichier et même jusqu'à chaque
+fonction um et niveau ligne si vous vouliez faire ça
+donc ça a été amusant pour moi, je me suis lancé dans ça
+euh je travaille sur ce programme client-serveur que j'ai probablement mentionné
+il y a une semaine ou deux où j'ai essayé d'obtenir le euh
+uh où j'ai essayé d'obtenir le um um euh le
+le client pour crypter puis signer la charge utile
+puis demandez au serveur de déchiffrer puis de vérifier la signature sur
+la charge utile mais je n'ai pas pu faire ça
+travailler de manière fiable au début, je ne pouvais pas le faire fonctionner du tout jusqu'à ce que je comprenne juste
+juste en regardant le code des autres comment
+comment j'ai dû créer un hachage de la charge utile puis chiffrer
+puis signez le hachage qui fonctionne mais qui ne fonctionne pas de manière fiable, je peux
+sur dix courses, je peux le faire fonctionner peut-être sept fois
+sur ces dizaines, mais je n'ai rien changé, tout ce que je fais est d'exécuter ce test
+harnais encore et encore et encore parfois ça marche et parfois ça
+ne le fait pas et je ne sais pas pourquoi donc si quelqu'un a un aperçu de cela
+J'adorerais l'entendre parce que maintenant je ne peux pas
+euh euh maintenant je ne peux rien faire à ce sujet
+alors quelle est votre connexion entre le client et le serveur
+euh c'est un euh c'est une socket tcp mais puisque les deux fonctionnent sur le
+bonne correction quand je l'exécute sur le harnais de test
+euh la connexion il n'y a pas de connexion qu'ils exécutent dans le même processus
+euh donc je suis je prends une charge utile je vais me laisser la mettre dans un cadre je prends un
+payload je le signe et puis je prends cette payload signée
+puis vérifier la signature avec une fonction cryptographique différente
+tous dans le même processus tous sur la même machine
+sont corrects oui monsieur ok maintenant peut-être que ça n'aime pas que je signe et
+vérifier la même signature sur la même charge utile
+peut-être que je dois le faire dans des processus séparés ou quelque chose que je ne sais pas
+que diriez-vous de l'essayer sur des machines séparées
+euh je pourrais faire ça mais j'aurais besoin d'écrire le code qui fait
+la connexion entre les deux machines je n'ai pas encore écrit ce code je suis je suis
+prouvant essentiellement que je peux crypter et signer d'abord et
+alors je vais écrire le code et vérifier qu'il parlera sur le
+Internet via une prise TCP, je suis convaincu que je peux le faire
+écrit ce code suffisamment de fois pour que tu saches que je suis
+confiant que je peux faire fonctionner cette partie ce dont je n'étais pas sûr
+à propos du manque de fiabilité, je suis juste
+se demander si quelque chose ne tombe pas dans la transmission
+bien pour ça ce n'est pas il n'y a pas de connexion impliquée ici
+pour ça c'est euh c'est littéralement juste un
+euh pour ça c'est une connexion directe
+pour um euh je continue de dire connexion et je me trompe
+la signature et la vérification se déroulent exactement de la même manière
+processus dans le même espace d'adressage il n'y a pas euh
+euh il n'y a pas de connexion intermédiaire entre les deux non nous sommes
+interdit si tu essayais de dire quelque chose non je
+ne pense pas, qu'essayais-tu de dire peter i
+excuse tu fais du bruit et je dois
+temporairement j'ai dit que cela pourrait modifier les choses qui
+vous vous en tenez à nouveau à chaque fois que vous lancez les attaques
+changer le code d'une manière très littérale et que
+pourrait changer la raison pour laquelle on a travaillé la deuxième ou la troisième fois
+de celui-là bien le code du programme le code du programme est identique pour chaque exécution
+et la charge utile est identique pour chaque exécution, la seule chose qui est différente
+est le est est la valeur signée car la graine est légèrement différente
+à chaque fois qu'il s'exécute, mais je ne peux pas imaginer que cela aurait
+quoi que ce soit à voir avec euh je ne peux pas imaginer que cela aurait
+tout ce que je pourrais penser est
+quelque chose il y a quelque chose qui change parce que ça dit comme quelque chose
+changer quelque part dans la boucle et c'est pourquoi ça ne marche pas oh je
+serait d'accord ouais je serais d'accord que euh ça
+quelque chose est différent mais le truc c'est que je ne sais pas ce qui est différent
+et voici la partie malheureuse de l'utilisation
+bibliothèques à partir de votre code euh comme vous le faites dans pascal peter quand
+vous utilisez correctement les unités ou lorsque vous utilisez des bibliothèques, vous comptez sur ces bibliothèques pour
+faire ce qu'il faut mais pour que les bibliothèques fassent le
+la bonne chose que vous devez réellement comprendre comment fonctionnent les bibliothèques
+et je ne suis pas sûr d'avoir compris toutes les règles
+impliqué autour d'appeler les différents en particulier
+fonctions cryptographiques parce qu'elles sont si sensibles, bien horribles
+les choses ouais et tu dois tirer le bon droit
+des choses dedans aussi parce que ça peut vous faire partir
+bang aussi oh bien sûr ouais oh absolument mais de toute façon parce que je suis
+exécutez exactement le même code, allez-y, je suis désolé, y a-t-il un moyen de
+surveiller le débit
+existe-t-il un moyen de surveiller la menace littéralement
+Je pense que je pense que je pourrais littéralement parcourir le code
+avec le débogueur gnu um si je voulais faire ça um je
+n'aime généralement pas parcourir le code car cela change tout le
+timings autour de la façon dont le code fonctionne correctement donc je suis
+pas sûr que donc je ne suis pas sûr que passer à travers
+le code va être très productif ouais je préfère me fier aux messages du journal
+sauf que le problème est que les messages de journal ont même tendance à
+uh modifiez le timing du code si vous écrivez beaucoup de messages
+console qui ralentit tout le programme et
+ça pourrait suffire à euh pour cacher le bogue euh
+vous savez qu'il y a un moyen d'atteindre
+existe-t-il un moyen d'enregistrer le débit et de le parcourir
+ensuite
+Je ne suis pas sûr de ça, je ne sais pas comment je ferais ça
+euh je veux dire ii écrire des messages de journal euh en ce qui concerne les résultats des tests
+et donc à partir de là je peux dire um si le
+si le chiffrement ou la signature a réussi ou non
+parce que je reçois un code de retour pour renvoyer le code zéro, la signature était
+réussi et tout va bien mais si le code retour revient avec
+une valeur absurde et cette valeur absurde d'ailleurs si
+vous le convertissez en hexagone et ensuite vous savez enlever le plus haut
+peu il se résout en cela résout ce que je pense être un code de retour qui signifie
+un conflit quelconque mais il n'y a pas
+documentation sur ce que signifie ce code de retour de conflit, il dit simplement euh ouais
+il y avait un conflit bien merci je savais que
+[Rire]
+si je lis correctement le code de retour, c'est ce que cela signifie mais
+mais comment diable est-ce que je suis um vous savez comment je
+continuer avec ça je ne sais pas alors je vais continuer à me débrouiller
+parfois, quand je vois un message d'erreur d'un processus et
+Parfois je me dis ouais je savais que dis moi
+quelque chose que je ne sais pas
+C'est exactement ce que je ressens en ce moment et
+je reçois je l'obtiens si je lis correctement le code de retour car cela impliquait
+en le convertissant en hexadécimal en laissant tomber cette valeur élevée cette valeur de bit élevée au
+très haut niveau puis en lisant le
+reste parce que c'était ce que le niveau de bits était un
+zéro zéro zéro zéro zéro zéro zéro zéro puis
+quelle que soit la valeur hexadécimale du code de retour était une idée que je suis
+en pensant à ouais tu as dit que tu signais
+euh une charge utile et vous vérifiez que c'est
+signé correctement ouais et avez-vous essayé de vérifier que
+que c'est euh avez-vous essayé de déchiffrer
+la charge utile enregistre ensuite chacune des charges utiles
+euh, enregistrez-en un qui est correct et un qui ne l'est pas
+puis décrypter chacun d'eux et voir puis voir
+Qu'est-ce qui est différent ouais alors je le fais donc je le fais
+le um le chiffrer et déchiffrer séparément de la signature et
+vérifier pour prouver que je peux faire chacun individuellement et ensuite si je peux prouver que je
+peut faire chacun individuellement, puis je prendrai le signe de la charge utile
+le chiffrer le déchiffrer vérifier la signature puis
+récupérer la charge utile je ne suis pas encore à ce point mais j'ai prouvé que je peux crypter et
+décrypter aucun problème, je peux faire ça, ça marche juste pour
+Je peux le faire de manière fiable à chaque fois, pas de soucis du tout mais
+c'est la toute la signature et puis
+vérifier la signature de la charge utile qui me pique en ce moment
+ouais c'est exactement ce que je veux dire, avez-vous euh
+essayé juste de vérifier que vous savez sinon d'éliminer
+que ces deux charges utiles sont en fait les mêmes même si vous
+Je ne suis pas arrivé au point où tu en as
+euh bon usage encore mais juste pour vérifier
+ça va
+oui je l'ai fait avec un très bon ouais donc je l'ai fait avec je l'ai fait
+cela avec le cryptage et le décryptage
+Très bien peter allez-y monsieur je vais être impoli mais ils pourraient faire un
+checksum avant et cochez-les pour voir si leurs numéros changent
+parce que j'ai ça d'accord ouais ce n'est pas une idée
+d'accord, donc la chose est que la charge utile est du texte brut d'accord c'est juste
+c'est littéralement un document json d'accord, il est donc trivial de vérifier que le
+la charge utile est la même maintenant l'opération de signature d'une charge utile
+ne modifie pas la charge utile en signant la charge utile crée un
+séparez une chaîne hexadécimale que vous stockez séparément, puis
+vous prenez les deux et vous les cryptez
+puis plus tard après l'avoir envoyé sur les interwebs ou tout ce que vous avez fait
+vous le décryptez puis vous prenez cette signature et vous
+vérifiez la charge utile une fois que vous savez
+à partir de la signature que vous ne faites pas, la charge utile ne change pas lorsque vous
+signer ou vérifier la signature pour que le
+L'astuce consiste à tester pour s'assurer que la signature et la vérification fonctionnent
+est-ce que vous le signez vous obtenez la signature
+puis vous transmettez cette signature à la vérification avec la charge utile
+et vous dites d'accord est-ce que cela vérifie
+est-ce que cela vérifie correctement la seule chose que je peux
+pense à ça euh, il y a deux endroits auxquels je peux penser
+il y a peut-être un problème, c'est que euh le réel
+la signature échoue d'une manière ou d'une autre ou que la vérification
+échoue d'une manière ou d'une autre et il ne vous dit pas pourquoi ni où
+ouais d'accord donc le point d'échec est la signature
+parce que je peux voir la signature et obtenir un code de retour zéro
+chaque fois que l'opération de signature est correcte, cela fonctionne
+donc je peux voir la signature bien parce que je l'imprime dans mon message de journal
+donc si la signature ne fonctionne pas euh mon code de test est stupide, je continue
+et essayez de le vérifier quand même mais bien sûr il n'y a rien à vérifier car
+la signature a échoué, de sorte que le point d'échec est
+la signature est la signature de la charge utile
+c'est là que l'échec se produit je peux vous dire que
+sans équivoque, je n'ai jamais eu de problème où s'il a signé avec succès
+cette vérification a échoué si elle a été signée avec succès
+la vérification a fonctionné à chaque fois, mais la signature
+c'est là que c'est le classement pourrait-il être que euh
+ça pourrait être un problème de timing euh pourrait-il être euh
+Je pense juste hors de ma tête comme d'habitude, pourrait-il être que euh
+mais il commence à signer avant que la charge utile ne soit
+euh correctement livré pour qu'il signe quelque chose et
+euh je pense que ça tourne trop tôt pour ainsi dire
+oh donc le code de test pour que le code de test ne s'exécute pas
+ne tente pas de vérifier la signature
+jusqu'à ce que le processus de signature soit terminé
+parce que je ne passe pas à l'opération suivante jusqu'à ce que je vois un bon
+zéro code de retour du processus de signature
+Ouais mais donc je ne pense pas que ça puisse bouger, je ne le fais pas
+Je pense qu'il peut passer à la vérification jusqu'à ce que je sache que la signature est bonne
+ouais et c'est là que notre débogueur ou les messages de débogage le feraient euh
+sont utiles car alors vous pouvez voir si
+s'il y a un gestionnaire de temps ouais et au fait un grand cri à
+les gens du harnais de test glib uh
+ils ont fait un excellent travail ils ont fait un très bon travail
+faire en sorte que le harnais de test ressemble et fonctionne autant
+euh les équivalents java aussi um que possible
+ils ont fait un meilleur travail que je pourrais faire par exemple parce que mon test maladroit
+harnais exécute tous les tests et je me fiche du temps que cela prend mais
+vous pouvez classer les tests pour dire s'ils sont vraiment très longs
+et donc si vous choisissez de les exécuter sur un harnais de test régulier ouais
+tout ce genre de trucs mais maintenant s'il y a quelque chose qui se passe
+avec le harnais de test maintenant vous savez qu'il peut y avoir quelque chose
+continuer avec le code de test que je ne sais pas pour vous mais
+cela prouve aussi qu'ils font quelque chose qui nécessite un
+le chiffrement et le faire correctement est vraiment difficile
+donc ceux euh ils sont et les projets qui font un bon cryptage euh
+euh certains de leurs quelque part le long des lignes d'un tel
+problèmes qu'ils ont dû avoir plusieurs fois pour avoir heu
+ouais expliquez-le simplement
+c'est dur d'accord je suis d'accord mais je le répète
+le cryptage fonctionne très bien je peux crypter et décrypter à mon coeur
+contenu et je reçois la même charge utile à chaque fois
+pas de problème cette partie fonctionne très bien c'est la signature qui me mord dans le
+derrière donc c'est la seule chose que j'essaye de faire
+euh j'essaye de comprendre ma tête je ne comprends pas que je n'utiliserais pas
+rsa je crois que je dois aller vérifier je n'ai pas regardé je
+pourrais aller regarder je veux dire je pourrais mais je ne veux pas faire de désordre
+l'enregistrement pour que je vous dise plus tard
+euh ouais, c'est ce que j'ai fait si quelqu'un en a d'autres
+idées je serais vraiment heureux de l'entendre alors faisons le tour de la table très vite
+parce que j'ai pris trop de temps ici
+Alors qu'est-ce que tu as euh ce week-end je l'ai été hier et aujourd'hui
+et j'ai aidé mon frère à déménager oui il a un nouvel emploi
+alors il doit fermer ou terminer son euh
+contrat de location euh dans son ancien appartement et avant qu'il ne puisse déménager
+dans un nouveau, il devait ouais donc il est un émouvant euh il a un temporaire
+endroit pour rester euh la moitié de ses meubles sont dans mon
+garage en ce moment et il en a quelques euh donc pour les américains
+sur la ligne pour les américains sur la ligne un appartement est
+est la même chose qu'un appartement ouais, d'accord
+c'est ce que j'ai fait je sais que tu savais qu'après ça
+Pause café je vais rentrer et mettre ma remorque sur ma voiture et je conduis
+pour le rencontrer quelque part, puis il reprend la caravane et
+uh déplacer les derniers morceaux de l'air à quelle distance est-il
+et loin ouais deux heures et demie pour conduire
+ici pour lui oh donc ce n'est pas exactement un bon trajet
+l'option de rester à son domicile actuel pour se rendre au nouveau travail est
+pas vraiment une option alors de son ancien endroit sur le euh au
+New York c'est une heure et demie pouvez-vous travailler
+ouais ouais oh ok peut-être deux heures de train de transports en commun peut-être
+ouais est-ce une option non parce qu'il doit euh
+si quelqu'un a besoin d'aller à l'hôpital et ensuite
+um il va bien l'un de ceux qui prennent ces appels
+Alors ça va ouais ouais alors voilà c'est un chauffeur de taxi oh
+bien
+Alors oh bien ok alors il a un nouveau euh a signé un contrat avec cette compagnie de taxi
+dans l'une des communes
+à une heure de moi euh et lui et lui ont une grosse augmentation de euh de
+dans l'ancien boulot, il avait 10 uh de travail euh et euh tous les autres étaient
+extras et euh si quelqu'un était malade, ils l'ont appelé
+et ainsi de suite mais maintenant il a un 70
+accord de travail pour qu'il puisse planifier un peu son temps libre
+meilleur
+donc le pont a fière allure le pont voyageur a l'air excellent je vois que vous êtes
+en refaisant le quart de nuit, vous voudrez peut-être vérifier tout en bas
+de votre euh de votre écran parce que euh votre vert
+l'écran n'atteint pas tout à fait tout le chemin
+[Rires] Je déteste attirer l'attention dessus mais je
+J'ai pensé que tu pourrais vouloir savoir où tu vas
+là oh beaucoup mieux oh ouais beaucoup mieux beaucoup mieux
+Je doute de ce que tu as fait monsieur comment te sens-tu
+d'abord je me sens beaucoup mieux je retournerai au travail mardi
+bien, hourra, je suis sorti depuis trois semaines, je le comprends
+je reçois un appel téléphonique, donc je risque de perdre Internet
+Encore une fois, s'il vous plaît, accrochez-vous, ne raccrochez pas bien
+Alors je reçois des appels politiques de gauche à droite et au centre c'est fou
+euh donc tu te sens mieux, même si tu pensais que tu allais revenir
+travailler la semaine dernière bien puis j'ai parlé à mon médecin et il
+dit que vous devez avoir du temps pour que votre système digestif se rétablisse
+donc c'est ce que j'ai fait, j'ai travaillé dessus et
+ok je vais bien donc je retournerai au travail mardi
+êtes-vous de retour sur vous êtes de retour sur les aliments solides alors tout va bien
+oui bien bien fait oui donc c'était ce drôle de nom
+Est-ce que je l'ai épelé directement dans les notes la semaine dernière, ylo
+bactérie attends, laisse moi écrire ça
+attendez, épelez-le encore c camp camp en fait
+ouais ouais
+bactérie campylobacter
+ok il n'y a pas de b là dedans voir je n'ai pas dit b désolé
+Je pensais que tu avais dit b peut-être que je suis p ouais ne peut pas appartenir au camp
+par ok
+lobacter ouais j'ai lu que b n'est pas e alors j'ai pensé que ça ne pouvait pas être juste
+il doit y avoir un ab quelque part
+Je le sentirai bien cette fois, je promets que peut-être que Robbie est ma famille
+cet utilisateur quand il épelle absolument ouais
+absolument ouais ou toi ouais bien il y a ça aussi ouais je
+aurait probablement pu le faire et il aurait probablement pu le faire correctement
+ouais désolé pour ça mon mal parce qu'ils fonctionnent particulièrement sur Google
+très bien avec les tentatives d'orthographe c'est gentil
+ouais c'est vrai, il fait un type correct dans une faute d'orthographe, il découvrira quoi
+vous essayez de faire ouais ou dans mon cas duckduckgo je ne suis pas
+Je ne sais pas que ouais duckduckgo ne te suit pas
+ne vous suit pas non plus droite droite page de démarrage
+Ouais, commencez à choisir un autre moteur de recherche oh ouais oh
+Oh, je dois écrire celui-là aussi, vous êtes vraiment utiles merci de commencer
+page dot com yep sweet
+merci d'apprécier que j'utilise mon dandy pratique
+puant dinky minuscule petit euh oui ouais l'homme fonctionne très bien
+ne l'aime plus, plus d'épingles à bille pour moi sauf quand j'écris des chèques
+parce que tu ne peux pas tu ne peux pas pousser fort
+assez pour passer à travers la copie carbone avec ceci si vous essayez de pousser trop
+dur ça va juste bien étendre le papier ça va juste jouer les dents
+sur le stylo plume en ce moment je ne sais pas si vous pouvez le voir
+parce qu'il ne se concentrera pas sur mon visage, il ne se concentrera pas sur ça euh
+sur l'annonce ça ne va toujours pas se concentrer mais
+le truc c'est que euh ça va um écarter les dents les dents sur le dessus
+le sur le stylo plume au lieu de mettre
+plus de pression sur le papier pour que vous ne puissiez pas obtenir de copie
+Pierre quatre cinq minutes ont laissé ce que vous avez fait monsieur
+euh mon épaule est toujours euh et la douleur uh va bouger et
+Euh, nous sommes à nouveau renversés, oh encore une fois, je dois faire quelque chose
+en particulier si j'ai été enfermé à nouveau et euh
+que les chiffres montent aussi là-bas
+non non ils sont tous évacués et j'ai eu la blague sur la grippe aussi l'autre
+jour aussi bien et ma mère aussi
+mais euh je ne pouvais pas avoir d'oeufs et je ne pouvais pas en avoir
+euh j'aime celui-ci euh avec un mélange de gants en caoutchouc de
+latex ouais ouais ouais je ne sais pas pourquoi ils le prennent
+je leur ai dit que c'était
+oh chérie je savais que tu y irais je savais que tu y irais pourquoi je ne suis pas surpris
+comment va ta femme à propos de ses os
+tricoter est-elle au repos non tu sais qu'elle doit se comporter mec
+Je sais que je peux le dire mais ils ne le seront pas, ils ne le seront pas
+aucun d'entre eux ne sera dit ouais toutes les choses sanglantes
+ne te lève pas
+[La musique]
+d'accord mais le médecin doit avoir une idée de ce qui se passera si um
+si elle ne sait pas tricoter correctement quel est le
+Dans le pire des cas, le pire des cas est qu'il devrait être déformé là-bas et euh
+Ce ne sera pas juste à chaque fois qu'il se brise un bras et essaie de le faire à cause de
+tout ce que les os guérira ouais les os
+Guériront à nouveau, ils guérissent mal
+C'est ce que je dis ouais ils ont tous fini ils sont tous totalement
+faux ouais ils ont été au mauvais endroit
+ils pourraient lui poser un problème mais ils ont tendu la main et ont frappé
+là-bas et on ne leur dit pas que je ne suis informé par aucune autorité
+J'ai peur alors tu sais que tu sais que nous avons eu ce morceau parce que
+tu sais mais euh désolé d'entendre que je veux dire ouais tout ce que je peux
+dis-tu que tu sais, dis-lui que tu sais se reposer et
+guérir et j'espère que tout ira bien et ii
+Je ne peux pas dire plus que nos pensées sont avec toi j'espère euh j'espère
+tout fonctionne pour toi et euh et ta femme alors oui oh ouais ouais ouais je
+à plus
+comme allez-y allez-y allez-y euh c'est tout non j'étais juste
+donc toute fermeture des commentaires de clôture avant je euh
+avant de clore la réunion car il est difficile de croire non seulement que nous
+fait 30 minutes c'est fou mais euh nous ne sommes que trois mois
+ouais vas-y ouais la semaine dernière, l'enregistrement s'est terminé par un
+réel un peu soudain quand je pense que tu as perdu ton
+connexion Internet à la fin oh c'est génial
+J'aime ça
+oui et j'ai dit à robbie que maintenant je lui dirai à nouveau qu'il a fait un excellent travail
+avec ça euh avec cette fin je l'ai adoré pour que
+était la meilleure image de toute la pause café était la fin
+Est-ce que cela se terminait absolument oh merci beaucoup
+j'apprécie cela donc la fin était plus divertissante que notre
+randonnées merci je l'apprécie
+Très bien alors sur cette note je vais aller de l'avant et fermer
+clôturez la réunion, merci beaucoup de l'apprécier et j'espère que nous verrons
+vous la semaine prochaine peut-être volez-vous, vous vous présenterez une fois que vous savez juste pour une fois et
+laissez-nous savoir comment se passe son travail de studio
+il était parti la semaine dernière probablement parce qu'il jouait avec le
+chanson thème alors euh, nous verrons comment nous verrons comment cela se passe
+s'il n'a pas déjà il a déjà abandonné l'épisode je n'ai pas je ne le fais pas
+savoir a-t-il laissé tomber la semaine dernière non non pas le
+tout
+mais je n'ai pas pu le faire jouer
+oh vraiment ce qui s'est passé ok la page en regard sur patreon avait le
+petit symbole de jeu rond, vous connaissez le triangle
+dessus et je l'ai frappé et puis il est allé à quoi
+semblait être une photo et lorsque j'ai cliqué sur la photo, c'est
+tout ce était une photo il n'y avait pas de lien vers une vidéo
+maintenant pouvez-vous um télécharger la vidéo de patreon
+quelque part où vous pouvez le télécharger
+une chose que je pense que cela pourrait être est que la vidéo
+est toujours en cours de téléchargement et de traitement pour que
+la photo est un aperçu de ce qui arrive quand ils sont
+fini c'est ouais ouais ouais je pense ouais donc tu pourrais juste
+veux réessayer peut-être réessayer ouais ouais d'accord alors bonne bonne nouvelle
+très bien merci encore une fois vraiment apprécié comme toujours et et
+Merci beaucoup pour votre participation, nous vous verrons nous vous verrons la semaine prochaine
+et et euh ok essaie de ne pas avoir de problèmes
+tout le monde et restez en sécurité, très bien, faites attention au revoir, d'accord
+au revoir

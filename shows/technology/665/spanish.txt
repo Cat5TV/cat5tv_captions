@@ -1,0 +1,1051 @@
+en tv de categoría 5 confiamos nuestros archivos en unidades de estado sólido de kingston
+tecnología ya sea para su computadora portátil servidor o
+computadora de escritorio, experimentará un rendimiento mejorado
+y confiabilidad con kingston ssds prepárate, es hora de la tecnología
+bienvenidos al programa, todos, es el episodio 2 de la temporada 14
+soy robbie ferguson y soy jeff weston es genial tenerte aquí
+y espero que hayas tenido una semana maravillosa a pesar de
+todo menos aquí estamos y esperando un gran espectáculo por delante
+esta noche vamos a aprender a crear nuestro propio
+servidor proxy está bien, um, así que no quiero hablar demasiado sobre eso desde la parte superior de
+el programa, pero sé que sabes que a veces es difícil encontrar un buen
+servicio de proxy gratuito, así que crearemos nuestro propio
+y te mostraré cómo colocarlo en cualquier parte del mundo.
+usar los servicios en la nube de AWS, por lo que es bastante emocionante y una de las cosas
+con eso también a medida que aprendemos un poco sobre cómo
+servicios web de amazon ec2 y servicios en la nube y la capacidad de
+implementar servidores Debian en la infraestructura de la nube a medida que aprendemos
+cómo hacer eso y cómo funciona, solo sepa que uno de
+las cosas que vamos a hacer es
+migrar algunos de nuestros datos a esa infraestructura, así que digo que
+porque algunos de nuestros espectadores de transmisiones en vivo
+tuvo problemas con el almacenamiento en búfer y cosas así
+y es porque tenemos una pequeña computadora de placa única
+de todas las cosas a las que estamos transmitiendo y luego se retransmite a
+cualquiera que esté mirando en roku u otros jugadores de hls y cosas así
+tiene un streamer ágil ejecutándose en la computadora de placa única realmente es
+increíble wow, sin embargo, lo que hice monitorear a través de mi
+prueba es que tiene una CPU bastante alta cuando la gente
+están mirando bien, así que creo que puede ser lo que causa algunos
+problemas de almacenamiento en búfer con nuestra transmisión, por lo que hay muchas cosas que van
+aquí detrás de escena para tratar de que te llegue el espectáculo uh en
+un formato muy accesible y de fácil acceso y para que no estés
+experimentando cosas como la rueca
+y ese tipo de cosas, pero como estamos viendo esta noche
+uh y aprender a implementar estos servidores Debian en la nube
+Sepa que eso es algo que haremos entre bastidores aquí.
+también y migrando esos servicios sobre
+a uh a una de esas instancias con el fin de
+tratar de mejorar nuestro rendimiento aquí en el estudio para
+un montón de cosas emocionantes pasando detrás de nosotros cómo has estado
+He estado bien, esta noche te hablaremos un poco más tarde sobre
+uh, algunas de tus hazañas con la soldadura, sí, sí, quieres contarnos un poco
+solo un breve adelanto de lo que vamos a ser
+discutiendo uh mi hijo quería empezar a soldar por
+su cumpleaños uh, así que bajamos por ese camino
+a partir del mes pasado, hemos estado jugando un poco y tiene
+yo pensando como puedo hacer mis propias cosas en casa
+cuando no tengo una gran área de producción para hacer la mía
+pcb sí, así que sí, ahí es donde hablamos de eso, así que si estás interesado en
+electrónica de bricolaje vamos a estar hablando de eso y uh wow tenemos
+algunas cosas emocionantes para las que nos estamos preparando también para el programa de la próxima semana
+ya está listo para funcionar y estamos emocionados de estar
+presentando la impresión 3D a nuestros espectadores también
+eso es algo que vamos a aprender en el transcurso de la
+las próximas semanas aquí en la categoría 5 de televisión, tenemos mucho que hacer, sí
+por favor asegúrese de suscribirse a nosotros en youtube
+y haga clic en la campana para recibir la notificación cada vez que publiquemos una nueva
+video en cualquier momento que estemos en vivo y también si desea participar en
+la comunidad creo que es una forma genial
+para ser parte de la televisión de categoría 5, algunas personas todavía me dicen qué
+discordia y es guau, no eres parte de nuestra discordia
+servidor porque si te unes a nuestra discordia que encontrarás si vas
+a category5.tv haga clic en interactuar verá unirse a la discordia
+servidor es un navegador gratuito o basado en aplicaciones
+servicio que puede poner en su dispositivo y / o acceder
+a través de su navegador en cualquier cosa y básicamente puede chatear con el
+comunidad, pero es realmente genial porque es más que una simple sala de chat
+también tiene diferentes habitaciones asignadas para
+cosas diferentes, cosas de las que estamos hablando
+sobre o, por ejemplo, tenemos detrás de escena
+así que detrás de escena está lleno de backstage
+fotos que no verías de otra manera y hay tantas que sí en nuestra
+servidor de discordia, así que tienes que ir allí
+sé que es como si fuera una plataforma de chat, pero tiene una
+mucho más que la interacción de chat
+eso es correcto y no solo está activo durante el espectáculo
+está encendido todo el tiempo y quiero decir si tienes material tecnológico
+A mitad de semana estás como, oh, no sé cómo resolver este problema.
+podría aparecer allí y la comunidad es increíble en dar
+consejo y eso es bastante acertado también, sí, eso es cierto
+está bien, así que tenemos que tomar un descanso muy rápido y luego saltamos bien
+en él después de esta breve escapada que vamos a ver
+cómo configurar una instancia de aws ec2 que suene a tecnobatalla para
+yo lo hace muy rápido, sí, ¿qué tal esto?
+vamos a crear nuestro propio servicio de proxy gratuito que es más fácil de decir
+yo tengo el control, tengo acceso, tenemos la palanca de control alrededor,
+ya vuelvo [Música]
+si desea tener un poco más de privacidad mientras navega por el
+Internet o desea acceder a servicios que
+tal vez no estén disponibles normalmente en su área o tal vez sea un
+caso de haber tenido tu dirección IP
+bloqueado por un proveedor de servicios, puede que no sea un
+algo malicioso, he tenido mi dirección IP bloqueada por
+youtube antes porque subo muchos videos y
+descargue los subtítulos para aquellos para que
+me ha llevado a exceder mi uso en la api de youtube
+entonces mi dirección IP se bloquea para que no tenga que ser algo malicioso
+no quiero dar esa impresión pero hay razones muy legítimas
+tener que sortear ese tipo de cosas y los nerds van a
+es un proxy, el problema es que los proxies pueden ser muy costosos de usar y
+los gratuitos, aunque fácilmente disponibles, son muy a menudo
+o no son muy confiables, suben un día, caen al siguiente y tú pierdes
+acceso a sus servicios y todo lo demás o peor aún
+son peligrosos, no sabes qué están rastreando esos proxies
+registro e incluso me gusta interceptar a medida que avanza, está enviando
+todo su tráfico de Internet a través de ese proveedor de servicios
+así que hay una persona en la que realmente confío para que represente todos mis datos
+y ese soy yo no soy la misma persona en la que dirías que confías
+la persona en la que confías eres tú, así que te mostraré cómo
+Podría configurar mi propio servicio de proxy gratuito y usted puede replicarlo y
+También crea el tuyo propio, lo haremos en la nube
+va a utilizar un proveedor de servicios de terceros
+y eso es amazon entonces dices oh bueno amazon que tal
+usted sabe si podemos confiarles bien nuestros datos, lo que estamos usando es su
+servicios en la nube se llama servicios web de amazon, por lo que
+todos sus es su infraestructura en la nube que tienen
+para que los clientes básicamente alquilen el acceso a sus servidores y sus
+su espacio y los servidores virtuales y todo lo demás que todo
+la infraestructura está disponible para usted, pero la implementación en sí
+el tuyo voy a mostrarte cómo se hace esto vamos a saltar a aws
+y en particular ec2, así que, por supuesto, si no está familiarizado con AWS,
+vaya a aws.amazon.com inicie sesión con su cuenta de Amazon
+y luego haga una búsqueda rápida de ec2 y eso lo llevará básicamente a
+su plataforma de virtualización piensa en ec2 como
+solo eso, lo primero que noto cuando estoy aquí
+en ec2 es mi región y esto es importante porque aquí es donde mi proxy
+el servidor va a residir si lo configuro allí, ¿por qué
+importante, piensa en esto, digamos que estoy usando una transmisión de video
+servicio que restringe el acceso de los canadienses a su video
+servicio de transmisión, colocando mi servidor proxy en el norte
+California ahora, de repente, son básicamente
+por dirección IP voy a pensar que me estoy conectando desde
+California, así que puedo solucionar eso
+de manera similar, es posible que desee cambiar su región según
+¿Qué es lo que está tratando de lograr? Incluso puede poner un servidor en África.
+o asia mira que puedes arreglar uno en hong kong
+puedes poner uno en canadá uh en europa tienes
+por todas partes y luego tenemos Oriente Medio y Sudamérica ahora mismo
+por lo que es una lista bastante grande de dónde
+tener esta infraestructura configurada para los servicios web de amazon el servicio ec2
+así que elige el que es donde quieres que esté tu servidor proxy
+Voy a configurar el mío, solo lo dejaré como el norte de California, que es
+nosotros al oeste uno y ahí es donde
+mi servidor proxy va a residir y eso me permitirá conectarme
+como si estuviera realmente sentado en california
+bien, voy a hacer clic en iniciar instancia
+y luego lanzar la instancia nuevamente porque hace un menú desplegable y esto me da
+una lista de sistemas operativos que puedo implementar
+en mi instancia ec2, así que estoy usando algunos términos aquí con los que puede que no esté familiarizado
+aws son los servicios web de Amazon que son básicamente
+gama completa de servicios que ofrecen a los usuarios de la nube ec2 es su
+plataforma de virtualización para máquinas virtuales
+cuando dije instancia, estoy hablando de una máquina virtual
+así que es literalmente una máquina virtual, así que voy a implementar una de estas
+sistemas operativos a una instancia de ec2 que es
+una máquina virtual, entonces, ¿qué quiero que sea?
+Entonces, y estaba diciendo hola, comente a continuación si uso un término que no conoce
+con voy a hacer una búsqueda rápida.
+ya lo hice antes porque implemento una tonelada de servidores
+en la nube voy a hacer clic en debian, simplemente escriba debian en el
+busca aquí entonces voy a ir a aws
+resultados del mercado también hay algunos que he creado y otros en el
+comunidad en la que pensarías, bueno, quiero usar
+los de la comunidad, bueno, no, porque esos te van a costar dinero
+y dices bien, pero la comunidad es gratuita, es de código abierto y sí
+sin embargo, no forma parte del mercado de AWS, por lo que tendrá
+pagar por el uso de esa máquina virtual que
+instancia ejecutándose en la nube, así que en su lugar vamos a
+use uno de los oficiales del mercado aws, veamos qué resultados
+obtenemos que están ordenados bastante bien debian aparece el primer resultado es
+debian 10 buster un nivel gratuito compatible o nivel gratuito
+versión elegible de Debian que vamos a ser
+la implementación, así que seleccione ese nivel gratuito elegible para que podamos ignorar el
+precios porque vamos a utilizar un hit de nivel gratuito continuar
+y aquí es donde lo seleccionamos tan bien si queremos el nivel gratuito, tenemos que ir
+con un micro t2, así que voy a seleccionar eso, pero ¿qué
+¿nos da? nos da una cpu un gigabyte de memoria um
+y luego tenemos que ocuparnos del almacenamiento, no necesitamos mucho almacenamiento porque
+solo estamos configurando un proxy básico y eso es todo, así que voy a
+Implementar así, t2 micro es el que es gratis
+nivel elegible no seleccione uno de los más grandes
+unos porque lo vas a pagar
+de inmediato voy a revisar y lanzar, volveremos a
+hacer configuraciones como nuestros grupos de seguridad y cosas por el estilo, me voy a dejar
+todo por defecto por ahora y vamos a
+lanzar eso, así que primero que nada necesito crear una nueva clave
+par, así que esta es la clave ssh que voy a usar en
+para ingresar a este servidor, así que voy a llamar a esto
+un servidor proxy y luego descargar mi par de claves
+Asegúrate de guardar eso en un lugar seguro al que voy
+arrojar eso a mi servidor y dejarlo allí
+y ahora lanzar la instancia significa encender su máquina virtual, así que voy a
+empuja eso y ahí vamos, así que es básicamente
+crearlo es crear una máquina virtual
+uh una instancia ec2 en la nube para nosotros en uh en el norte de california, así que allí
+ve, así que voy a ver instancias aquí
+y ahora puedo ver que ahora tengo una instancia ejecutando un micro t2
+y simplemente no tiene nombre, así que voy a hacer clic en editar y llamar a esto
+mi servidor proxy intente que ahí vamos bien, así que es
+ya está en funcionamiento, así que si hago clic en eso, puedo ver la ip
+dirección de ese servidor, lo he llamado servidor proxy, pero ahora mismo
+recuerde que es solo debian 10. no hay nada más instalado en él
+así que necesito copiar esa dirección IP y luego voy a saltar a mi
+símbolo del sistema porque descargué la clave para
+mi servidor personalmente voy a ssh a mi servidor interno
+está bien, ahora estoy allí, así que ahora el comando que voy a usar
+es ssh y luego guión i para la clave que voy a usar
+entonces el archivo entrante que voy a usar para la clave
+y ese se llama servidor proxy.pem es lo que descargué
+luego me convertiré en administrador porque ese es el inicio de sesión predeterminado para debian
+administrador de imagen de máquina ami o amazon en
+y luego la dirección IP que ya he copiado en mi portapapeles y si
+presione enter me va a pedir que acepte esa clave
+y digo que si y me niegan
+los permisos en ese archivo terminaron siendo nota que
+766 para que todos tengan acceso a esos archivos, eso es interesante
+ssh en sí mismo me protege de que alguien pueda comprometer mi clave
+así que pam del servidor proxy chmod 700, intentemos eso y ahora
+Inténtalo de nuevo, así que lo que he hecho es oh y ahora estoy
+conectado, acaba de funcionar 700 significa que soy el propietario de esa clave
+se me permite hacer cualquier cosa con él leer escribir ejecutar cero cero significa
+nadie en el grupo nadie que no sea parte del grupo
+tiene permiso para acceder a eso, por lo que es básicamente un archivo tonto que no pueden
+incluso abierto, pero puedo estar bien, así que ahora que estoy
+conectado voy a ir a sudo sue porque eso es lo que el comando es
+conviértete en root, así que ahora soy root, así que actualización de la aplicación
+la actualización de la aplicación whoop va a agarrar mi
+repositorios, ve que esta es una computadora Debian real si lo desea
+en la nube es así de fácil ya estoy actualizando ya estoy ejecutando debian
+Computadora en la nube, así que en esa cantidad de tiempo y soy bla
+bla bla al mismo tiempo um tenemos un servidor debian basado en la nube
+¿Te diste cuenta de que era así de fácil y es gratis?
+bien, entonces podemos hacer otras cosas con esto también, podríamos configurar una pila de lámparas que
+podría usarlo para mysql mariadb cualquier cosa que se le ocurra es un
+servidor Debian, así que vamos a utilizar esto como nuestro
+proxy, así que ahora lo que voy a hacer es instalar una herramienta llamada
+tinyproxy agradable y simple de instalar apt install tiny proxy
+realmente simple de configurar di que sí aquí vamos
+y está hecho ahora que hemos instalado un pequeño proxy, solo necesitamos editar
+el archivo de configuración, así que barra, etc.
+y luego estoy usando nano tinyproxy.com y lo edito para controlar w en nano
+me permite buscar oh, pero antes de buscar tenga en cuenta que el
+puerto por defecto está usando 888, vamos a necesitar saber que
+información porque a eso nos vamos a conectar para
+nuestro proxy realiza una búsqueda rápida para permitir
+alt w te permite buscar de nuevo wow, la palabra permitir probablemente no sea la mejor
+consulta de búsqueda tal vez busque 127.0.0.1 y justo debajo de esa voy a
+permitir y luego debo agregar mi dirección IP para poder conectarme
+este servidor proxy porque ahora mismo está cerrado
+solo localhost puede acceder a él, eso es importante tener en cuenta
+que esto es mientras este es un servidor proxy gratuito público, yo soy el único que está
+se le permitirá acceder a él, se le permitirá
+proxy mi contenido mi conexión a través de él por lo que es privado en ese sentido
+Necesito saber mi dirección IP, así que voy a saltar a
+ip.xyz actual y copie esa dirección IP en mi portapapeles y luego salte
+volver allí y pegarlo en mi control de configuración o ingresar control x control o es
+para escribir guarde el archivo ahora systemctl
+reiniciar el proxy diminuto casi hecho lo último que necesitamos
+lo que debemos hacer es decirle a AWS la seguridad ec2 que
+vamos a establecer una política que diga que sólo yo puedo conectarme a eso
+servidor para que nadie más pueda conectarse a él
+lo que sea, así que eso es lo que vamos a hacer bien
+ahora, así que volveré aquí y verá este servidor en la pantalla
+Bueno, si hago clic en seguridad, puedo hacer clic en el grupo de seguridad que es
+asignado automáticamente, así que haz clic en eso
+y ahora me ha dejado en manos de los grupos de seguridad ec2 y la seguridad correcta
+grupo, notarás que ya está configurado
+uno para ssh porque está habilitado de forma predeterminada, puedo configurar eso
+para permitirme solo a mí lo que es importante, así que
+hagámoslo solo para estar en buenas prácticas de seguridad
+ssh voy a cambiarlo de custom000
+voy a cerrar x eso y luego cambiarlo a mi ip
+luego voy a agregar una nueva regla, viste cómo llegué aquí, sé que me estoy mudando
+realmente muy rápido acabo de hacer clic en editar reglas de entrada
+aquí está bien, así que agregue una nueva regla personalizada tcp es el
+número de puerto predeterminado ¿recuerdas 888 y solo
+permitir mi ip puedo llamarlo algo si quiero proxy
+y luego guarde mis reglas allí vamos, así que ahora ve ssh y
+tcp personalizado uno llamado proxy en el puerto 888.
+Entonces, ¿cómo probamos esto bien para que nuestra dirección IP actual sea 99.233?
+y entonces me voy a conectar al proxy este es
+no es un tutorial sobre cómo usar un proxy, esto no es un
+tutorial sobre para qué usarlo necesariamente esto es
+esto, estoy haciendo suposiciones aquí de que puede buscarlo en Google usted mismo
+porque va a ser diferente en función de su caso de uso, ya sea que desee
+simplemente proxy de su navegador o proxy de una aplicación en particular o toda su
+red que dependerá de su persona
+caso de uso, esto es estrictamente un tutorial sobre cómo construir este
+instancia ec2 realmente muy rápido gratis
+que tiene un proxy listo para que lo usemos en california o donde sea
+y eso es así en mi caso particular ahora mismo
+así que este momento no es necesariamente lo que quieres hacer a continuación
+así es como voy a probar el proxy que estoy en Windows 10 aquí
+así que simplemente escribiré proxy y volveré a la configuración del proxy, esto es
+Probablemente no sea la forma en que quieres hacerlo, solo quiero probar, así que voy a convertir
+en el proxy puedo ver que hay un proxy antiguo
+configuraciones allí, así que asegúrese de tener en cuenta eso
+si hay configuraciones de proxy antiguas, necesita cambiarlas, vaya a
+instancias en ec2 haga clic en su ID de instancia
+y toma esa dirección IP y luego pégala en
+como la dirección para el puerto 8888 de su servidor proxy
+y guardar, así que ahora estoy conectado al proxy al instante
+no conectado a Windows ahora dice que voy a enrutar todo su tráfico
+a través del proxy debería corregirme allí
+así que si vuelvo a currentip.xyz 99.233 es mi ip actual voy a acertar
+f5 para actualizar y si todo salió bien 3.101.108.211. bien
+¿Qué es eso? Ese es mi servidor, así que en realidad estoy ahora
+¿Dónde estoy? Averigüemos maxmind.com Hagamos una búsqueda de la dirección IP.
+que estoy actualmente donde estoy en san josé california
+Ahí es donde Max Mine determina que estoy
+así que eso es todo lo que tenemos, amigos
+creado configurado desplegado un servicio de proxy gratuito que
+poseer y operar somos los únicos que tienen eso que tienen eso
+uh clave ssh, así que si quieres conectarte, haz cambios, úsala
+como servidor multipropósito, puede hacerlo, pero solo vigile su
+sus aspectos de facturación, solo asegúrese de no haber superado los umbrales y
+cosas como esa si solo lo usa como proxy, es
+es muy poco probable que vayas a hacer eso, es solo algo que estás diciendo
+datos a través, así que verifique que es aws.amazon.com para comenzar
+si tiene preguntas, publíquelas en nuestra comunidad, diríjase a
+nuestra discordia encontrarás el enlace en la categoría 5
+tv en el menú de interacción mientras tanto si te gustó esto si lo has usado o
+lo encontré útil dame un gran pulgar hacia arriba, suscríbete y nos veremos bien
+después del descanso [Música]
+Bienvenido de nuevo, esta es la tecnología de televisión de categoría 5
+y quiero hablar de lo que hago en casa
+o más bien lo que planeo hacer sentado viendo netflix
+no tengo tiempo para sentarme y ver netflix desearía tenerlo pero
+uh no, mi familia siempre acapara netflix y yo soy como si solo fuera a la computadora
+lo cual es genial porque me obligó a comenzar hay netflix en la computadora
+ahora jeff me estas distrayendo uh no pero es
+genial porque me ha obligado a empezar a mirar algunas de las cosas que hacemos
+por la casa e ir, ¿cómo puedo hacer esto mío?
+sabes que mencioné en la parte superior del programa que nuestro hijo tiene
+se metió en la soldadura y lo hizo muy bien y recuérdenos cuántos años tiene
+Acabo de cumplir 12 años. Acabo de cumplir 12 años. Está bien, pero sí, ya terminó.
+muy bien con eso y uh ha soldado dos calculadoras hasta ahora
+um y uno de ellos lo llevaron a la escuela y su maestra estaba completamente impresionado
+lejos, sí, estoy pensando en 12 años y él es
+ya está haciendo una calculadora, sí, él hizo una calculadora, obtuvimos un kit de bricolaje de
+amazon y él lo construyó y tal vez dos horas
+de trabajo fue realmente fenomenal irreal y su trabajo de soldadura es
+realmente muy limpio excelente como parece profesional
+pero de todos modos ha estado preguntando cómo hacer otras cosas y mientras soldamos, él
+bueno, ¿qué es esto y qué es esto y cómo funciona eso y
+me voy quiero poder enseñarle estas cosas
+Quiero poder explicarle cómo funciona realmente una placa de circuito, no solo
+soldando pero entendiendo los componentes y el enrutamiento y todo eso
+tipo de cosas y quiero decir, sé que puedes comprar um
+simplemente tableros simples que son solo filas de pequeños puntos de conexión
+pero quiero poder hacer nuestra propia tabla, sí, y por eso me lo pidió
+específicamente si podemos encontrar un kit de bricolaje para
+una caja inútil, sabes que esa es la caja donde presionas el botón, sí y el
+pequeña cosa sale y lo hace estallar, sí, pruébalo
+¿Qué hiciste en serio?
+oh Dios mío, eso es gracioso
+hola es como tener un gatito ahí es como mi gato
+hey hey ahora, he estado buscando uno, no he encontrado uno pero encontré un montón de
+gente como oh, puedes hacer uno usando un arduino, puedes hacer uno usando este
+y yo estaba como si fuera a hacer una caja de bricolaje caja inútil de la que quiero construirla
+desde cero, así que he estado investigando cómo hacer
+mis propias placas de circuito impreso en casa, de acuerdo, en realidad no es tan difícil
+y me sorprendió que todo lo que necesito es una impresora láser para establecer mi ruta
+como a dónde van los caminos para que realmente lo grabes
+voy a grabarlo en casa oh hombre
+eso es mucho más allá de mí, Jeff, es realmente que involucra químicos
+lo hace, pero es un proceso realmente simple, así que he encontrado
+He investigado un montón al respecto y encontré una
+una manera realmente simple y fácil de hacer mi propia pcb
+y eso es lo que vamos a hacer, así que mi proyecto para el próximo probablemente un
+un par de meses porque tengo que aprender cómo estas cosas
+funciona es diseñar una placa de circuito um que tengo
+nunca antes había hecho la placa de circuito y luego la de mi hijo
+vamos a soldarlo juntos y vamos a hacer nuestro propio
+caja inútil que espero también imprimir en 3D la caja también oh eso es genial
+sí, solo estás buceando en mí cuando hago algo, no me vuelvo pequeño
+y sabes que mi enfoque es un poco diferente porque soy mucho
+en como me gusta aprender algo primero
+y luego aumentar mi inversión en ese proceso y ya estás hablando
+sobre saltar directamente a la creación de pcb, así que haría una copia de seguridad para que sepas
+si esto es lo que piensas, tal vez me gustaría poder hacer mis propios circuitos
+y cosas así, mi punto de partida es un tablero, sí
+y la placa le permite diseñar el circuito que ha diseñado o
+que has descargado como un plano de circuito um
+de Internet o como sea que tengas que te permita colocarlo
+en un básicamente un simulacro de pcb
+que funcionará como una placa de circuito impreso, pero luego puede desarmarlo todo y
+guarde las piezas de inmediato y es barato, muy barato y solo lo ayuda a comenzar
+y luego el siguiente paso para mí es lo que se llama una placa de creación de prototipos para que obtengas
+placas de circuito impreso que tienen todos los orificios correctos y
+tienen puntos de soldadura, pero no hay
+interconexión entre ellos para que realmente ejecute cables o
+ejecutar un poco de soldadura entre dos juntas diferentes, por ejemplo
+y lo haces de esa manera, así que ese es mi segundo paso, sí, entonces miraría
+tal vez seguir la ruta de grabar el tuyo
+PCB porque entonces te estás metiendo en procesos químicos
+y yo no lo he investigado, pero es un proceso mucho más complejo, así que
+me gusta comenzar un poco más simple mi primer pcb i
+construido en una placa de pruebas muy, muy básico, pero lo diseñé bien
+está bien y todo lo que es es que se necesitan cinco voltios
+señal y cuando tiene cinco voltios el
+el relé está cerrado, por lo que tiene un relé bien cuando no tiene cinco voltios
+el relé se abre para que se desconecte
+la razón por la que creé que es una aplicación especialmente diseñada, así que la construí
+en una placa de pruebas y la alimentación a cinco voltios proviene de
+cualquier conjetura cualquier conjetura spc no, es otro acrónimo de tres letras usb
+usb usb sacando una señal de cinco voltios de un micro tic
+enrutador bien y entonces en el micro tick programé el código que decía
+que básicamente para simplificarlo si Internet se cae
+apaga la energía en el usb oh y entonces eso
+abre el relé y cuál es el control del relé, pero el poder de mi módem
+por lo que mi módem, si se cae Internet, se apagará automáticamente
+el poder de sí mismo debido a mi relé
+a la derecha y espere cinco segundos y luego vuelva a encenderlo, por lo que es esencialmente un
+versión virtual de ¿lo apagaste y volviste a encender porque
+¿Qué haces cuando estás en Internet? Se cae
+desde el impulso, esperas cinco segundos y lo vuelves a conectar y
+sabes que ocho de cada diez veces volverá a funcionar y funcionará
+así que ese fue el circuito que construí, así que lo construí en una placa de prototipos una vez
+lo tenía funcionando y lo soldaba y es muy, muy simple
+circuito muy guay y funcionó muy bien me gusta
+Eso es genial, así que herramientas, ¿qué tienes?
+¿Dónde estás? Bueno, como dije, acabo de hacer
+la investigación de la semana pasada oh, entonces estoy en la etapa de compra
+uh, así que tenemos todas las cosas de soldadura, voy a comprar la placa.
+los productos químicos ya he descargado el software um
+para diseñar el pcb wow um
+y tengo un kit de componentes que está en camino con todos los
+resistencias y condensadores, sí, todo ese tipo de cosas que es genial
+también es que estos días quiero decir que realmente no puedes caminar
+en una choza de radio como solíamos ser capaces de no
+todavía hay tiendas como aquí en barrie tenemos una llamada seaal
+que es una tienda brillante que se parece a esa vieja choza de radio donde
+entra y es como si solo necesitara un condensador, sí
+y es como aquí tienes sabes que es como cajones
+y cajones de condensadores y resistencias y todo lo demás diodos y lo que sea
+pero solo para conseguir un kit por 20 dólares que tenga
+todo el tipo de cosas comunes y es un kit que viene con un
+protoboard y viene con un protoboard y eso
+Una de las cosas es que quiero que sí, lo voy a diseñar, pero parte
+del proceso de planificación es como dijiste, usar la placa de pruebas para averiguar
+cómo funcionará el circuito y será un gran aprendizaje
+experiencia para luke porque van a ser como hey esto es
+¿Cómo funciona esto? Probemos esto y hagamos aquello y luego
+sabes que podremos probarnos allí sin hacer nuestras propias piezas
+eso es realmente bueno, mencionaste también arduino y arduino es una especie de
+como si fuera un controlador, así que sí, lo sabes mientras
+una frambuesa pi u otra computadora de placa única es un verdadero
+computadora real con un sistema operativo y todo lo que un arduino es como tú
+solo programe para hacer una tarea muy específica es un estado sólido
+y responderá y creo que esto es
+por qué funcionaría realmente bien un arduino para
+uh para una caja inútil es porque es como
+está encendido o apagado, eso es correcto y si está encendido haz esto
+y luego se apagará, así que es una programación muy básica
+digital escribir cuatro coma hola hola punto y coma y luego estamos
+voy a retrasar un segundo que son mil milisegundos
+y luego vamos a copiar esa línea ahora
+¿Qué crees que significa alto versus bajo que es lo que voy a poner aquí?
+solo una suposición, sí, así es como se ve mi circuito ahora
+y simplemente voy a conectarlo a la alimentación USB para no conectarlo a
+la computadora que quiero encender realmente este dispositivo y ver si
+ejecuta mi programa y, si lo hace, deberíamos ver esta luz
+flash ahí vamos que está limpio cada segundo para que
+en realidad creó el circuito con bastante rapidez y creó el
+programa para decirle a esta luz qué hacer y le dijimos muy
+simplemente enciende y apaga de nuevo, pero si estás
+haciendo tu propio circuito tienes que gustar hacer
+ics tienes que programarlo tú mismo yup tienes que averiguar cómo
+wow quiero ver este proyecto como un trabajo en progreso
+Está bien y luego mira cómo se junta, sí, suena bien
+mencionamos la comunidad aquí en nuestro programa y nuestro servidor de discordia en
+en particular, he aprovechado nuestra comunidad Jeff para
+entra y comparte mis ideas para circuitos y sí
+cosas así y hay algunas personas en nuestra comunidad que simplemente
+como hasta aquí en cuanto a sus capacidades y comprensión de esos
+tipos de cosas, así que ha sido muy útil para mí ya que
+Aprendí, oh, incluso yo planeo completamente usar el
+la comunidad utiliza trabajar conmigo a través de errores, sí, y si eres una de esas personas en
+la comunidad en este momento solo levante la mano y diga sí, yo
+entiendo cómo funciona todo eso, me encantaría ayudar
+y eso es algo que creo que creo que hará una muy buena
+función para el programa, así como aprender
+Sí, asegúrate de mantenernos informados sobre ese Jeff, definitivamente me interesaría
+para saber cómo van las cosas, sí, estaré publicando cosas detrás del
+escenas una caja inútil cualquier otra ¿tienes alguna idea pero me emociono?
+cuando invento como cuando pienso en algo
+¿Has tenido alguno de esos momentos en los que estoy como si realmente quisiera
+tenía algo que haría esto pero no existe
+aquí es donde la impresión 3D es interesante para mí porque estoy creando cosas que
+todavía no existe, no he pensado realmente
+que en cuanto a lo que existe y no existe
+um
+no, realmente no he pensado tan lejos, propongo algunas ideas
+sí, y comparte esos, hay un montón de cosas con seguridad
+sí, como siempre he querido hacernos un sistema de sonido para toda la casa
+que se vincula a um, usted conoce nuestro dispositivo de Amazon y cosas como
+eso pero me gustaria tener sensores donde
+cuando camino de una habitación a otra, el sensor de movimiento se activa y se cierra
+Apague los altavoces de una habitación y agréguelo a donde acabo de ir
+eso es mucho más avanzado, pero probablemente
+Lo único en lo que puedo pensar es en dónde estoy, como si quisiera hacer esto, pero te veo hablar
+sobre eso y luego creo que está bien, podrías usar un sensor de infrarrojos pasivo
+sí, que se usa en sensores de movimiento, podría usar un sensor láser pero
+pir es muy, muy barato, sí, y es solo un pequeño sensor que es como
+Está bien, hubo movimiento, haz algo, sí, para que puedas crear algo.
+de nuevo con un relé que controla solo si el altavoz tiene
+un circuito completo o no, así que si fuera solo un
+grupo de altavoces conectados a través de un amplificador, podría tener relés configurados
+con sensores pir que podrías controlar por movimiento
+sí, bien y si no hay movimiento durante 10 minutos apaga el altavoz
+automáticamente o algo así, sí
+exactamente tan parecido a este tipo de ideas como si hubiera tantas cosas que puedes
+hacer cuando empieces a entender y luego
+hay toda la otra cara de la moneda donde algo se rompe y puedes arreglarlo, sí
+eso es un buen sentimiento y ya está hecho, ya lo hemos hecho
+Sí, bueno, así que sabes que tienes esa pequeña batería
+a los probadores les gusta comprobar la carga, sí, así que teníamos uno de esos y es
+gracioso cuando mi hijo estaba construyendo su calculadora
+no estábamos seguros de si las baterías funcionaban y no recibíamos nada
+Me parece extraño que no lo estemos habitualmente, incluso si está muerto.
+aparece en rojo pero no había nada, así que lo abrimos
+resulta que la conexión real se había roto, oh
+ahora no tengo ni idea, sí, y mi hijo dice, oh, puedo arreglar eso y
+lo arregló, lo volvimos a armar y luego nosotros y funciona y es como oh
+sí, eso es una batería muerta, sí, puedo relacionarme con eso también, uso un
+altavoz de almohada para podcasts bien y uh porque es lo que sabes
+conectado por un cable a mi teléfono se tira
+sí, y lo sacaron de inmediato, así que es una cosa tan simple, pero estoy totalmente
+no compré otro no no no lo tomé
+lo separé y lo volví a soldar y lo reforcé
+para que no vuelva a suceder, oh hermoso, lo hizo mejor de lo que era, él es
+volvió su mente hacia cosas como los desechos electrónicos, sí, y él es como si alguien
+va a deshacerse de su televisor o monitor de computadora
+todavía está funcionando papá, es solo algo por dentro se rompió
+él es como si yo pudiera arreglarlo yo soy como si tu piensas en eso y entonces sus ruedas son
+dando el último y él es como si pudiera hacer estas cosas y luego vender
+ellos 12 años esa es una carrera
+en un número de
+uh como si fuera realmente valioso tener esas capacidades
+así que lo entrenaré para el próximo uh, bueno, tiene 12 años.
+ocho seis años me estoy jubilando me vino un monitor no sé
+tal vez un hermoso monitor de pantalla ancha de 23 o 24 pulgadas
+entró como basura electrónica, así que estoy como
+voy a echar un vistazo y entonces mi hija y yo lo miramos
+y había un solo condensador que se quemó, así que me conecté y
+Compré uno de esos condensadores, los venden en paquetes de
+tres y eran doce dólares así que por 12
+tenemos un paquete de tres, reemplazamos uno de esos capacitores y ese monitor es
+ahora sentado en el escritorio de mi hija, oh Dios mío, eso es increíble, es maravilloso
+y tiene toda la razón, pero no solo puedes arreglar cosas Jeff
+digamos que algo entra en la basura electrónica o sabes que encuentras algo en
+el lado del camino que alguien simplemente descarta porque no puede, no lo hace
+saber cómo arreglarlo um y tal vez si arreglarlo es más
+caro que comprar uno nuevo en muchos casos también
+um, puede incluso si no puede arreglarlo, puede hacer lo que se llama desoldar
+eso es correcto para que pueda eliminar todos los componentes buenos de eso y
+Ponlos en un organizador de cajones sí para que luego puedas tener tu propia radio
+choza en casa donde tienes los cajones de todas estas partes diferentes
+y luego, cuando algo se rompe, no tienes que gastar 12
+en línea para comprarlos ojalá no hubiera sabido que él se iba a meter en esto
+porque en el verano tenía unas cuatro computadoras
+un par de proyectores les llevamos toda la basura electrónica
+así que es como, oh, podría haber desmantelado eso, oh, claro, sí, los tengo
+Oh, bueno, las partes vivimos y aprendemos, sí exactamente
+muy bien, mantennos informados sobre eso definitivamente y oye, comenta a continuación, cuéntanos
+sobre algunas de las hazañas que has tenido
+con respecto a este tipo de temas y si son
+algo que te interesa en lo que nunca te has metido
+oye, comenta a continuación también, nos encantaría saber de ti y nos encantaría tenerte
+como parte de ese proceso como Jeff está aprendiendo
+ya que también estoy aprendiendo y metiéndome cada vez más en ese tipo de
+como reparaciones de componentes y placas de circuito y todo lo demás
+es muy divertido, sí, es un gran pasatiempo y una carrera maravillosa si
+Realmente quiero hacerlo también, así que es realmente bueno para su hijo, me gustaría escuchar
+cómo lo disfruta así que cuando está um supongo
+Más de 13, así que el año que viene puedes traerlo al estudio.
+y él puede mostrarnos cómo se está comportando
+suena bien muy bien haz que suceda tenemos que ir a la sala de redacción
+becca está ahí con nuestras principales noticias de la semana
+aquí está ella, esto es lo que viene en la sala de noticias de la categoría 5 dot tv
+los piratas informáticos están utilizando un error grave de Windows para comprometer
+Servidores sin parche Se han eliminado tres paquetes de JavaScript del npm
+portal para contener códigos maliciosos a nokia se le ha asignado la tarea de crear un
+nueva red celular 4g en la luna un nuevo 80
+La tecnología de carga inalámbrica de vatios de xiaomi nos está volviendo loco y el
+El módulo de cómputo 4 de Raspberry Pi ha sido lanzado.
+hacerle saber las especificaciones y cómo esto cambia las cosas para iot industrial
+quédese con todos los detalles y el rincón criptográfico de esta semana
+se acercan esta es la sala de redacción de televisión de puntos de categoría 5
+cubriendo las mejores historias tecnológicas de la semana con un ligero linux
+parcialidad
+desde la sala de redacción soy becca ferguson
+servidores sin parchear una de las vulnerabilidades de Windows más críticas
+divulgado este año está bajo ataque activo
+por piratas informáticos que intentan realizar una puerta trasera en los servidores que almacenan credenciales para cada
+usuario y cuenta administrativa en una red
+Los investigadores dieron a la vulnerabilidad el nombre de xerologon porque los ataques funcionan por
+enviar una cadena de ceros en una serie de mensajes que usan la red
+Protocolo de inicio de sesión en el que se basan los servidores de Windows para
+una variedad de tareas que incluyen permitir que los usuarios finales inicien sesión
+a un inicio de sesión xero de red ya que la vulnerabilidad ha sido
+doblado ganó atención generalizada el mes pasado
+cuando la empresa que lo descubrió dijo que podía darles a los atacantes
+acceso instantáneo a directorios activos que los administradores utilizan para crear
+eliminar y administrar cuentas de red, directorios activos y el dominio
+los controladores con los que corren se encuentran entre los premios más codiciados
+en la piratería porque una vez secuestrados permiten a los atacantes ejecutar código y
+munición en todas las máquinas conectadas microsoft
+parcheó la falla de seguridad en agosto el viernes kevin beaumont
+trabajando en su calidad de investigador independiente
+dijo en una publicación de blog que había detectado ataques en el honeypot que usa para mantener
+al tanto de los ataques que los piratas informáticos están utilizando en el
+salvaje cuando su servidor de señuelos no fue parcheado, los atacantes pudieron usar un
+script de powershell para cambiar con éxito una contraseña de administrador
+y puerta trasera el servidor beaumont dijo que el ataque apareció
+para estar completamente escrito con todos los comandos que se completan en segundos
+con eso los atacantes instalaron una puerta trasera que permitía
+acceso administrativo a dispositivos dentro de su red simulada
+los atacantes también habilitaron el escritorio remoto como resultado, continuarían
+tener acceso remoto incluso si el administrador luego parchea el servidor
+las personas sin autenticación auténtica pueden usar el exploit para obtener el dominio
+credenciales administrativas siempre que los atacantes tengan la capacidad de
+establecer conexiones tcp con un controlador de dominio vulnerable en
+En algunos casos, los atacantes pueden usar una vulnerabilidad separada para hacerse un hueco dentro
+una red y luego explotar el inicio de sesión cero para hacerse cargo
+el controlador de dominio creo que es un buen ejemplo de una forma de
+este tipo de scripts para entrar en redes
+son computadoras desactualizadas en la red y también estafas de ingeniería social que
+escuche mucho sobre como probablemente reciba estos correos electrónicos
+que intentan engañarte para que sigas un proceso de
+ingresando una credencial o algo así
+el riesgo que corremos y el triste caso que veo como
+en ella es que a veces la gente piensa bien
+No necesito actualizar esa computadora porque está en la trastienda, nadie
+realmente lo usa, sí o bueno, necesitamos este para
+todavía tenemos Windows XP porque tenemos problemas con uno de nuestros
+impresoras, si no, seguiremos viendo muchas ventanas 7
+sistemas y eso es una tragedia si tiene un
+Windows 7 o Windows XP en su red, simplemente enciéndalo
+Fuera, deshazte de él, sí, mira, la cosa es
+es con esos sistemas para que Microsoft tenga lo que llamamos eol o fin de vida útil
+ha terminado la vida de estos sistemas operativos
+entonces han dicho que tienes que actualizar a Windows 10. Bueno, no quiero actualizar
+a Windows 10 me gusta mi Windows 7. Lo entiendo y lo respeto
+sin embargo, aquí está el problema de los piratas informáticos
+ahora pueden explotar estos sistemas operativos
+y mientras lo hacen mientras encuentran exploits
+hay un par de cosas que suceden una
+regalar o vender esas hazañas o dos, simplemente están lanzadas
+al público a través de la web oscura o incluso en github
+como investigación de seguridad y ahora estos piratas informáticos, si quieren, vamos a
+llamarlos así, pero de manera realista en muchos casos son lo que llamamos
+gatitos de script y estos son um
+ni siquiera les gustan los hackers, sí, pero no tienen que tener mucho conocimiento porque
+el exploit es públicamente conocido y entendido, así que si
+hay exploits que están disponibles para un sistema operativo
+qué esperamos que suceda esperamos que el proveedor del sistema operativo microsoft en
+este caso para parchear ese exploit para arreglarlo
+y ese es el caso de Windows 10. lamentablemente
+los que son eol no es el caso con un sistema operativo eol a veces
+escuchamos, bueno, no necesito soporte, bueno, microsoft ha terminado el soporte, eso es
+lo que hemos escuchado sí, han terminado el soporte para Windows 7. han terminado
+soporte para windows xp oh pero nunca tuve que llamar al soporte
+Puedo manejarlo, eso no es lo que son
+hablando de todo lo que están diciendo es
+no arreglarán los parches, sí, los exploits no importan
+cuán severos son, no importa cuán fáciles sean de
+explotar para que tenga una máquina con Windows 7 en su red
+le está dando entrada a uno de estos hackers que ni siquiera tiene
+ser muy bueno pirateando porque los exploits son de conocimiento público
+sí, a veces son parte de herramientas, a veces pueden simplemente descargar un
+herramienta y pueden decir que quiero con un cheque explotar Windows 7
+y entonces entran en una caja de Windows 7 o han engañado a uno de sus empleados
+incluso si solo es alguien en la parte de atrás trabajando en el almacén
+han engañado a alguien para que abra un archivo que ahora les da acceso al
+máquina de windows 7 la máquina de windows xp o la máquina en la trastienda
+no importa y aquí estamos aprendiendo que microsoft
+los servidores ahora tienen un exploit que mientras
+una parte malintencionada puede obtener acceso a cualquier computadora en la red
+ahora pueden obtener acceso de administrador de dominio a toda la red
+ahora da miedo ahora sus máquinas con Windows 10 ya no son
+seguro, eso es correcto porque les ha dado acceso a su red como si
+son un administrador de dominio, mira, eso es solo una mala noticia
+bueno, son malas noticias por qué el ransomware es una cosa
+porque qué hacen ahora están bien, obtuve acceso a esta red
+voy a vender en la web oscura acceso a esta red
+ves esto con um con municipios y sí con ciudades que
+¿Fue el gatito del guión original quien lo hizo?
+el solo ellos solo quieren ellos quieren entrar
+instalar su software y salir y luego vender el acceso
+eso es correcto porque es dinero rápido, entonces, ¿por qué la gente lo hace por dinero?
+y así es como lo hacen, así que sí, tienes que
+mantén las cosas actualizadas para que sepas que es solo un pensamiento rápido
+para reflexionar, oye, si tienes máquinas obsoletas en tu red, debes
+Quítelos y capacite a su personal en ciber
+las prácticas de seguridad entienden qué son las estafas de phishing
+porque sabes, bueno, alguien hizo clic en un enlace y ahora su
+computadoras computadoras infectadas pero su computadora está
+en tu red, pero iba a conseguir la mitad del dinero de ese príncipe
+Eso es todo un gusano más allá Jeff
+pero me refiero a que cuando se trata de este tipo de cosas, mire su sistema y diga
+oh, no quiero gastar siete ocho
+Cien dólares por una computadora nueva, no me preocuparía actualizar esta
+Terminarás gastando más a largo plazo o en el corto plazo
+um no a largo plazo si no tiene su sistema parcheado porque una vez
+Tienen acceso a todo lo que podrías estar deprimido pero y yo
+piensa cuando tienen acceso a todo lo que yo
+creo que es importante darse cuenta de que
+ese punto de entrada se convierte en acceso a todo, así que gaste un par de cientos
+bucks consigue la nueva computadora sálvate a ti mismo no sé lo que se necesita
+Quiero decir, es diferente, es diferente para cada caso, cierto, sí, tuve una persona
+hoy quién llamó y dijo que tengo una sola computadora con Windows 7
+no quiero actualizarlo porque simplemente funciona oh
+así que aquí hay una explicación y aquí becca ha compartido con nosotros una historia
+que simplemente nos dice que todo lo que necesitan es acceso a esa computadora
+y ahora tienen acceso a todas las computadoras de sus computadoras y no
+de una manera de samba, no de una manera amigable y, con suerte,
+no encuentres ninguna forma de entrar por las puertas traseras en esos
+computadoras no tienen credenciales de administrador
+su red para que puedan hacer cualquier cosa
+eso es lo que quieran cuando pienso en mi casa
+Creo que ya terminaste, creo que tengo siete
+dispositivos que no incluyen teléfonos y tabletas y cosas por el estilo que están conectadas
+a la red no quiero que tengan acceso a eso
+Sí, no puedo enfatizar lo suficiente aunque Jeff
+Quiero decir, creo que en términos de negocios más que el usuario doméstico, pero
+una vez que están adentro, ellos están adentro, no puedes que hayas terminado porque no puedes ahora
+apaga esa máquina de Windows que la máquina de Windows 7 no, ya están
+en todo, entonces, ¿qué haces para reemplazar todo?
+borre todos los equipos porque no sabe qué herramientas
+han instalado eso es caro, sí, así que no caigas en eso
+de todos modos, eso es un mal exploit, eso es gente realmente seria, espero
+hemos enfatizado lo suficiente como para que entiendas que esta es una mala
+así que asegúrese de que sus administradores de red estén activos y entiendan estos
+cosas y que estas protegido y seguro
+contra este tipo de amenazas, de acuerdo, volveremos a becca
+Se han eliminado tres paquetes de JavaScript del portal npm para
+que contiene código malicioso de acuerdo con las advertencias del mpm
+equipo de seguridad las tres bibliotecas javascript abiertas
+shells en las computadoras de los desarrolladores que importaron los paquetes
+en sus proyectos, los caparazones permiten que los actores de amenazas se conecten de forma remota a los
+computadora infectada y ejecutar operaciones maliciosas el npm
+El equipo de seguridad dijo que los shells no dependen de un sistema operativo en particular.
+y podría usarse para comprometer windows linux freebsd
+openbsd y otros sistemas, los tres paquetes se cargaron en el
+npm portal en 2018 y cada uno tenía cientos de
+descargas desde entonces los nombres del paquete son plutovs dash
+cliente de slack dash nodetest199 y nodetest1010
+el equipo de seguridad de npm dijo que cualquier computadora que tenga esto
+el paquete instalado o en ejecución debe considerarse totalmente comprometido
+todos los secretos y claves almacenados en esa computadora deben rotarse inmediatamente
+desde una computadora diferente, advierten que el paquete debe eliminarse, pero como
+El control total de la computadora puede haber sido otorgado a una entidad externa.
+no hay garantía de que eliminar el paquete eliminará todos los
+software resultante de instalarlo mpm
+El personal de seguridad analiza periódicamente su colección de bibliotecas de JavaScript.
+considerado el repositorio de paquetes más grande para cualquier lenguaje de programación
+mientras que ni siquiera puedo obtener una buena cobertura de cobertura celular en mi cabaña
+Nokia está trabajando con la NASA para llevar 4G a la luna Objetivos de la misión Artemisa de la NASA
+para establecer una presencia humana a largo plazo en la luna como un paso
+piedra hacia la colonización de Marte y para comenzar las cosas, la nasa es
+extendiendo 370 millones de dólares a 14 empresas
+para proporcionar la tecnología para el programa
+desde la robótica hasta la generación de energía e incluso la criogenia
+pero tiene sentido que estos equipos necesiten poder comunicarse con el
+madre planeta se diseñará la nueva red
+específicamente para las condiciones lunares capaces de soportar las condiciones extremas
+cambios de temperatura y radiación, la tecnología también utilizará celdas pequeñas
+tecnología que, como su nombre indica, es significativamente más pequeña que la alta
+torres de telefonía celular que están acostumbrados a ver aquí en la tierra, también usan mucho menos
+poder el plan es que un módulo de aterrizaje lunar lleve
+el sistema de comunicación 4g a la superficie lunar
+en 2022, los bell labs de Nokia recibieron 14,1 millones de dólares
+por su parte, una nueva tecnología de carga inalámbrica de 80 vatios de
+xiaomi nos está volviendo loco y el raspberry pi
+Se lanzó el módulo de cálculo 4, le informaremos las especificaciones y cómo
+esto cambia las cosas para el iot industrial porque tiene estas historias más
+Robert está aquí con el rincón de las criptomonedas, no vayas a ningún lado
+bienvenido de nuevo al mundo de las criptomonedas y bienvenido de nuevo al rincón de las criptomonedas
+la semana pasada hablamos de los bancos dentro de unos años no los reconocerás
+más y también te mencioné no tanto
+hace la moneda digital china que
+reemplazar la abeja riemann y que ya la implementaron y
+están realizando algunas pruebas en shenzhen esta semana
+ha habido algún desarrollo y me gustaría hablar de eso porque
+tendrá un impacto directo en tu vida y en la mía
+así que vamos a sumergirnos en esto aquí el fondo monetario internacional la cabeza
+de esa organización internacional es una señora llamada cristalina jojeva y
+pronunció un discurso sobre el nuevo bosque bretton
+momento ahora lo que es un bretton woods gran bretaña fue
+el sistema está establecido la gestión monetaria
+las reglas de las relaciones comerciales financieras entre
+países como nosotros canadá europa occidental australia y japón
+por lo que el sistema fue el primer ejemplo de una orden totalmente negociada
+pretendía gobernar las relaciones monetarias entre estados independientes, de modo que
+bretton woods y ella está hablando sobre el cambio de
+ese sistema en algo más moderno ahora lo suficientemente interesante
+El lunes hubo una reunión con algunos banqueros centrales hablando de los llamados
+pagos transfronterizos, pero si lo piensa, mire de qué tipo
+de las personas en las que estuvieron presentes, así que tienes la cabeza del
+banco central de Arabia Saudita tienes el jefe de todos los
+bancos el jefe del fmi el jefe de los estados unidos
+falta el banco central y el director del banco central de Malasia
+Europa, que es interesante, pero supongo que habrá una razón
+entonces se reunieron para hablar sobre los pagos brutos del agua
+ahora no creo que esa sea una historia real la historia real
+uh también fue publicado por un señor llamado raul paul
+con lo que estoy totalmente de acuerdo, así que sus pensamientos son exactamente como estoy pensando
+y de lo que está hablando es exactamente de esta reunión que ocurrió el lunes
+que reemplazará la vieja relación de bretton woods uh
+entre países, entonces, ¿qué pasará? Parece que los bancos centrales
+se coludirá y creará un sistema
+un sistema de banco central entre todos ellos para que no haya un ee.
+dólar sistema de banco central habrá uno
+para cada uno para todas las organizaciones y luego desde
+allí se diversificará y qué se puede hacer con
+tal sistema esa es la parte interesante y
+Me encanta que sea así que cambiará eludir la banca y las finanzas.
+sistema fiscal porque interactúa directamente con la gente
+sí, así que no es como en el momento en que el banco central de EE. UU. o
+Canadá no importa, se le ocurre una política y luego
+va goteando um la cadena y usted como individuo
+usuario probablemente vea la menor cantidad de
+dinero y probablemente a la tasa de interés más alta
+que pueda pensar que otras personas se beneficiarán mucho más con la tecnología digital
+dinero más criptomonedas o programable
+dinero puedes hacer mucho más porque ahora
+el banco central puede influir directamente en el comportamiento de las personas y cómo
+haz eso, sí, pueden decir bien, si eres dueño de un restaurante, ¿puedes?
+Obtenga el dinero directamente en su bolsillo de nosotros, sí, no más
+bancos involucrados lo haremos directamente, es posible que sea dinero del banco central
+pueden cambiar las tasas de interés, por lo que en una instancia o en una industria
+puede tener una tasa de interés más alta que otra um lo que sucederá
+con impuestos si que va a pasar con los irs
+porque pueden lidiar con estas cosas directamente
+a través de dinero programable tomará tiempo
+para llegar a esa máxima extensión, pero sucederá
+como puede ver, los pagos directos serán posibles
+también están hablando aquí de um, sí, economía del comportamiento, eh, así que
+no a través de algunos economistas que están diciendo
+el gobierno qué hacer y qué no hacer porque eso ha fallado en el
+más allá de que todo el mundo está diciendo, ¿qué van a hacer?
+hacer es como una idea tipo facebook o una idea tic tac o
+idea de youtube donde te interesan las personas
+hacerse amigo de usted o de las personas que le interesan
+obteniendo más Me gusta y así cambias tu comportamiento en
+se refiere a obtener más Me gusta y lo mismo
+pasará con el dinero así y eso estará todo regulado
+a través del banco central sin nadie del mundo exterior
+tener la oportunidad de tener una influencia significativa, de modo que
+se verá como al final nadie sabe por supuesto pero que estos
+la gente se reúne para discutir los pagos de pedidos cruzados es algo que yo
+me parece muy interesante y, por supuesto, es una noticia fantástica
+para uh bitcoin porque bitcoin está fuera de eso
+sistema no hay nadie que pueda regular uh bitcoin es
+descentralizado, es inmutable, ya sabes,
+características de uh bitcoin por lo que um bitcoin es una alternativa fantástica
+todas las demás criptomonedas, las principales son definitivamente una buena alternativa
+veamos qué mostrará libra, pero habrá algunas buenas alternativas
+a um al central uh centralmente
+dinero impulsado a través de los bancos centrales, así que espero que lo hayan encontrado interesante y
+Espero que les haya gustado y espero que me falten
+y les deseo una semana fantástica, así que muchas gracias por ver
+adiós gracias robert solo un recordatorio que no estamos brindando asesoramiento financiero
+pero solo compartiendo lo que está sucediendo en el mercado de las criptomonedas
+recuerde siempre que los mercados de criptomonedas están en constante cambio y
+siempre volátil, por lo que solo debe gastar lo que pueda permitirse perder
+ahora de vuelta a becca en la sala de redacción gracias robbie
+xiaomi ha anunciado una nueva comprobación de carga que puede cargar completamente un agotado
+smartphone en menos de 20 minutos pero lo hace sin cables rápidamente
+La carga se ha convertido en una característica clave de muchos teléfonos inteligentes en los últimos años y para
+la carga inalámbrica por conveniencia puede ser realmente genial
+pero, por supuesto, la carga inalámbrica normalmente carga un teléfono con entre
+De 10 a 15 vatios de potencia que tienen algunos teléfonos como el oneplus 8 pro
+carga inalámbrica de hasta 40 vatios, pero la nueva tecnología de carga de xiaomi promete
+la friolera de 80 vatios de potencia inalámbrica
+¿Qué significa eso en términos prácticos bien de acuerdo con el anuncio?
+presentando la tecnología de carga inalámbrica me de 80 vatios
+un teléfono inteligente con carga cero por ciento de una batería de cuatro mil miliamperios horas
+cobrará el diez por ciento en solo un minuto cincuenta por ciento
+en ocho minutos y se cargará completamente después de 19 minutos
+finalmente un cargador que cargará mi teléfono
+de cero a cien por ciento justo como en mi pausa para el almuerzo.
+eso es un cambio de juego, ¿te imaginas que pienso en mis hijos y en cómo tenemos
+Como teléfonos en todas partes, obviamente, quiero decir que esto es para tomar como
+la última y mejor tecnología, pero siempre es un caso de oh, me olvidé de
+pon mi teléfono en el cargador o no dura lo suficiente para todo
+día y ahora que sabes con la pandemia por supuesto mi
+los niños están siendo educados en casa ahora por la fuerza y ​​todos están en
+sus dispositivos todo el tiempo, por lo que tenemos reuniones de zoom en teléfonos
+y ya funciona agota la bateria si
+pero lo que me gusta es que es inalámbrico, no solo está cableado, eso es increíble, sí
+es inalámbrico que es tan grande como la idea de que
+Podría tomar mi teléfono sin tener que preocuparme por los cargadores y
+solo ve, solo déjalo, déjalo 20 minutos después, estoy listo para ir
+que amo la otra cosa que amo de eso
+El concepto es que pienso en lo que acabas de hacer si pudiera
+ponerlo sobre una mesa, ¿y si pudiera ponerlo en un
+mesa de restaurante, sí, porque muchos restaurantes han seguido la ruta y estoy
+utilizando restaurantes como ejemplo, pero muchos lugares han seguido la ruta de
+incrustando usb sí para que puedas conectar tu usb
+cable para cargar el teléfono, pero de repente la gente
+sabio que esos puertos usb podrían ser maliciosos
+porque usb también lleva datos o eso es correcto
+quién sabe si son demasiados voltios y que sabes que tal vez sea
+tengo un corto o algo así y podría freír mi teléfono
+entonces, de repente, tenemos miedo de conectarnos al puerto USB porque oye
+podría ser algo malo que está bien
+carga inalámbrica lo dejas abajo se carga y lo recoges y estás
+hecho, sí, pero puedes dejarlo como
+tres minutos y se le ha dado suficiente carga para pasar la mayor parte del
+Tarde que es increíble, increíble, creo
+así como me refiero a que miras a tu alrededor ahora y tienes todas estas estaciones de carga para
+vehículos eléctricos sería genial empezar a ver poco
+ventanas emergentes en lugares públicos con este tipo de cosas donde literalmente puedes poner
+su teléfono durante cinco minutos y tener suficiente para tener una llamada telefónica
+obtener ayuda o lo que sea y todo de forma inalámbrica acabo de imaginar
+como un tramo de carretera e incrustar el receptor en el coche y
+recarga el coche autónomo al pasar por este
+lo que estamos entrando en la tecnología ahora amigos
+[Risas] todavía me gusta, estoy emocionado por el
+Lo loco es solo una conclusión es que mientras lo que acabo de
+dijo que es muy de ciencia ficción como cuando estábamos creciendo
+eso era como el futuro es totalmente factible es
+es posible ahora sí, eso es ridículo, la frambuesa pi
+Foundation ha lanzado un módulo de cómputo con las especificaciones de un raspberry pi 4.
+la fundación raspberry pi lanzó un nuevo producto el lunes
+el módulo de cálculo 4. es difícil creer que ha pasado tanto tiempo, pero el
+raspberry pi 4 se lanzó en junio de 2019
+el módulo de cálculo 4 lleva el pi 4 al espacio industrial de iot
+con el mismo procesador empaquetado en un módulo informático
+solo suplicando ser integrado en potentes dispositivos de iot
+si no está familiarizado con los módulos informáticos, puede considerarlos como
+Computadoras de placa única sin todos los puertos y pines gpio
+Permiten que los componentes de la computadora sean los cerebros de una frambuesa pi.
+integrados en grupos de tecnología de fabricantes de dispositivos inteligentes de robótica o
+cualquier cosa que se te ocurra que requiera un pequeño
+computadora Linux de baja potencia en su corazón, ya que el módulo de cómputo 4 comparte su
+especificaciones con la raspberry pi 4 los desarrolladores pueden hacer todos sus prototipos
+en el pi 4 sbc pero luego pida un montón de módulo de cálculo
+4 para integrar en su producto comercial
+al igual que el raspberry pi 4, el módulo de cómputo 4 presenta un brazo de 64 bits
+procesador con gráficos de video core vi esto es
+va a representar una gran mejora para el cálculo anterior
+clientes del módulo y con salida de video 4k hasta
+60 cuadros por segundo más la capacidad de decodificar video h.265
+el módulo de cálculo para el módulo de cálculo 4
+podría ser un cambio de juego para dispositivos multimedia como televisores inteligentes o
+decodificadores, el módulo de cálculo 4 está disponible con
+su elección de 1 2 4 u 8 gigabytes de ram y 8 16
+o 32 gigabytes a bordo de almacenamiento flash emmc wi-fi y bluetooth
+también son opcionales, el precio varía desde solo 25
+a 90 usd ahora imagina que jeff the raspberry pi compute module 4
+sí, en uno de sus proyectos de sbc o algo así impulsándolo como el
+cerebros, esto es bastante emocionante tan pronto como
+becca dijo decodificación h.265, así que es como un video que es
+muy intensivo en CPU, sí, eso es increíble, como dice mucho
+eso es más poder que mi servidor plex sí que como quién sabe dónde está
+voy a tomar cosas que me gustan de la idea de la computación en clúster
+y ahí es donde llevas varias computadoras
+conectarlos a través de redes y
+básicamente instalar software beowulf o algo así que
+los agrupa para que puedan realizar
+tareas juntas de tal manera que básicamente hace una supercomputadora
+directamente de varias computadoras para que piense en estos raspberry pi
+cl uh clúster o los módulos y poner como 10 de ellos juntos
+en un clúster y le hubiera gustado este módulo de cálculo
+clúster que sería una buena computadora con tanta potencia
+cuando puedes tener ocho gigas de ram en cada
+Tiempos de tabla que a las 10. mucho puede hacer mucho
+está cambiando las cosas gente, el mundo está cambiando eso es seguro
+que harias con todo ese poder
+y el silencio espera que le contestes
+Estoy pensando que soy como, ¿qué haría con esa cantidad de personas?
+acabo de ir a la minería de bitcoins lo siento chicos, ya saben lo que es triste mi
+Lo primero que pensé fue ¿podría automatizar como algunos de los
+utilidades que tengo en la cocina para hacerme comida
+ese fue mi primer pensamiento con un módulo de cálculo cuatro
+Sí, se necesita más que eso, pero sé que podría ser el cerebro de una operación de este tipo.
+aunque claramente tengo hambre [Risas]
+sus pensamientos comentan a continuación, nos encantaría saber qué harías con un
+módulo de computación gracias por ver el punto de categoría 5
+sala de redacción de televisión no olvides dar me gusta y suscribirte a
+todas tus novedades tecnológicas con un ligero sesgo de linux
+y si aprecia lo que hacemos, conviértase en patrocinador de patreon.com
+categoría 5. de la categoría 5 dot tv sala de noticias soy becca ferguson
+[Música]
+Bueno, eso está bien, casi todo el tiempo que tenemos esta semana Jeff
+la semana pasada pasamos y yo hice todo el proceso con fiverr
+contraté a algunas personas para que pudiéramos hacer nuestro remix, sí, aquí hay un divertido
+la historia está bien, literalmente dime cuándo reír
+saber labio ya lo hizo ya se rio
+La ardilla rayada era uno de nuestros chicos, sí, sí
+uno de nuestros remezcladores y ardilla literaria
+Dije que seguía preguntándome esto porque estaba viendo la función.
+después seguí preguntándome por qué estabas
+pronunciando mal mi nombre oh tira una ardilla así que revisé mi
+perfil y encontré que lo escribí mal oh no
+y nunca me di cuenta y fue así durante tres años ¿en serio?
+él dice mi nombre el nombre de mi banda es ardilla literaria oh dios mío se quedó
+en nuestro eso es gracioso así que te cuento esta historia
+Mira, es gracioso, mira, te dije que era gracioso, era como
+te cuento esta historia porque luego me dije bien
+Veo palabras y yo y yo creo que la mayor parte del tiempo pronuncio
+ellos bastante meticulosamente, así que cuando veo literario, aunque esa no es una palabra,
+configúrelo como se lee correctamente, así que pensé que probablemente sería un
+bastante buen corrector de pruebas, así que dije qué diablos le daré un
+ve, así que puse un anuncio que decía que revisaría
+su texto 500 palabras o menos por cinco dólares
+Está bien y yo estaba como ah, nadie lo hará nunca
+es divertido de todos modos, pensé en intentarlo y a la mañana siguiente recibí un correo electrónico
+de una persona en españa que era um es
+un corredor de seguros está bien y tiene un cliente que habla inglés
+de forma nativa y quería asegurarse de que estaba diciendo las cosas correctas en respuesta
+a un correo electrónico para que elimine todo el material confidencial
+Sí, y me envió su respuesta y dijo: ¿Puedes repasar esto por mí y yo?
+lo hice y pasé y corrigí algunos
+cosas y tenía algunas palabras que realmente no tenían sentido en la traducción
+y entonces lo arreglé y corrigí la gramática y el contexto y un poco
+de ortografía y le encantaba cinco dólares
+Realmente me tomó 10 minutos y fue solo
+algo que hice con una taza de café a primera hora de la mañana
+sí, y me dio una reseña de 5 sobre 5 que es increíble, como si fuera cinco de
+la perspectiva invertida, así que estoy como si esto fuera bastante ordenado, así que empiezo a hablar
+a mis hijos y creo que deberíamos averiguar si, como ustedes, podrían hacer cosas en
+ahí y sabes que mi hija es artista y
+ella podría hacer dibujos para que la gente empiece a ganar dinero, es algo genial
+idea una plataforma ordenada no sé de qué se tratan las reglas
+como la edad mínima y cosas por el estilo, pero podemos analizar ese tipo de
+cosas pero esa es mi historia para esta semana es
+que hey yo también fui al otro lado y vendí mi propio servicio que di
+Ardilla literaria gratis un regalo de promoción um pero uh
+ahora estoy, estoy disponible para la venta ii siento que sería divertido simplemente
+te doy los cinco dólares y te enviaré un documento de 500 palabras
+todo lorem ipsum y solo dime si tiene sentido haré mi mejor esfuerzo
+¿Has corregido eso sí, está bien, eso es todo Jeff?
+eso es todo el tiempo, está bien, pero ha sido muy divertido.
+disfruté de estar aquí con ustedes nuevamente esta semana la próxima semana estamos entrando en 3d
+imprimiendo, así que vamos a montar un ender
+3v2, así que lo vamos a armar
+y luego vamos a tener una charla sobre si sabes cuál ha sido el proceso
+como para mí como novato en el ámbito de la impresión 3D, así que
+qué tipo de desafíos he encontrado
+y puede encontrar al comenzar
+en impresión 3d además te mostraré no solo mi primera impresión
+pero mis primeros diseños impresos no querrás perderte la próxima semana
+que tengan una gran semana todos, nos vemos
+[Música] [Aplausos]
+adiós [Música]
+tú
