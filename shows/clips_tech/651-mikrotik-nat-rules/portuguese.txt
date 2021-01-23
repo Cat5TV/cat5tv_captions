@@ -1,0 +1,239 @@
+tudo bem, estivemos olhando para roteadores mikrotik roteamento avançado com
+esses dispositivos, quero dizer, eles se enquadram nesta categoria interessante, todos eles próprios em
+uma maneira porque eles têm o preço de um roteador de consumidor, mas eles têm o
+conjunto de recursos de um roteador empresarial, então de repente você pode fazer muito mais
+você pode proteger sua rede muito melhor do que faria com um consumidor
+roteador e você pode fazer isso pelo mesmo preço ou talvez um
+um pouco mais, mas cerca de um décimo do preço de uma empresa equivalente
+roteador de nível, então tudo isso disse que eles são extremamente baratos para o que você obtém e
+quando você usa um roteador mikrotik por um tempo você começa a perceber uau
+não há limites para isso, é como se você pudesse apenas codificar
+coisas nele no software do sistema operacional do roteador e você pode gerenciar todos
+tipos de coisas e de repente você começa a brincar com bonés man e seu
+a mente está explodindo porque você pode fazer coisas com um roteador micro tech por 30 40 50 a
+cento e cinquenta dólares que você estaria fazendo com um roteador equivalente
+especificações que são setecentos e oitocentos dólares e mil e quinhentos dólares dez
+milhares de dólares e você está fazendo isso nesses dispositivos com preços de consumidor da micro
+tecnologia, então o dispositivo que estou olhando aqui no estúdio é a placa do roteador
+RB 9 6 2 UI GS e esse modelo é o que selecionei para nós aqui no estúdio
+mas pode não ser exatamente o que você deseja para sua casa ou rede doméstica
+ou sua rede de negócios, no entanto, isso é o que é realmente legal sobre micro tecnologia
+significa que uma das coisas é que você apenas escolhe o hardware que funciona para você e
+o software será o mesmo de dispositivo para dispositivo para dispositivo
+você compra a unidade de 30 dólares ou a unidade de 150 dólares ou a unidade de 600 dólares
+não importa tanto quanto o software vai, sua única limitação está no difícil
+estamos tão onde meu dispositivo tem antenas Wi-Fi de 2,4 e 5 gigahertz e
+e transmissores você pode comprar um aparelho mais barato que tenha apenas 2,4 ou 5
+então, esses recursos serão limitados apenas pelo hardware, mas o próprio software
+é o mesmo, então eu sempre começo dizendo isso porque eu quero que você
+entenda que você não tem que comprar o mesmo que eu comprei, encontre aquele que
+funciona para você e então você pode acompanhar esta série e surpreendentemente
+mesmo se você tiver um modelo totalmente diferente, você será capaz de
+siga a tela você vai conseguir seguir os passos e vai ser
+exatamente o mesmo que é incrível, então esta semana eu vou
+para ver como configurar o encaminhamento de porta, vamos chamá-lo agora
+o mikrotik vai chamar de regras de firewall NAT vou falar um pouco
+falaremos sobre isso em um momento, mas nós o conhecemos como encaminhamento ou redirecionamento de porta e
+isto é, quando alguém acessa nosso endereço IP público em uma determinada porta, se
+é uma porta que eu permiti e que reconheço que quero redirecionar para o
+servidor apropriado, então no meu caso eu tenho um servidor em 10.0.0.0
+é o meu tipo pessoal de alternativa aos serviços em nuvem do Google e unidade e
+onedrive e todos esses tipos de serviços, posso colocá-los em meu próprio servidor
+e é meu é meu próprio sistema hospedado em 10.0.0.0 'pn portas 80 e porta 443, então
+se alguém atinge meu IP ou eu realmente tenho um registro DNS porque temos a categoria 5
+TV, é claro, então eu tenho Studio dot categoria 5 dot TV vai encaminhá-los
+até aqui e isso vai atingir a micro tecnologia e a micro tecnologia
+para dizer ok o que eu faço com esse tráfego o que eu vou fazer então eu tenho que dizer ao meu
+micro tecnologia, ei, essa é a porta 443, eu quero escrever isso para 10.0.0.0 porque é
+presumivelmente o que essa pessoa está tentando acessar, então vamos direto ao assunto
+vou pular para o nosso mikrotik e as coisas são tão sofisticadas aqui então
+apenas acompanhe e você vai começar a entender como as coisas funcionam
+clicamos no IP semana passada viemos aqui porque começamos a olhar o DHCP
+regras estáticas e de servidor e coisas assim que expandiremos com o tempo.
+vai acertar o firewall, essas são as configurações padrão do meu firewall mikrotik e eu
+quero adicionar algumas regras que irão redirecionar o tráfego dentro da minha rede agora
+somos um típico roteador de firewall do consumidor vai dizer ei, vou pegar a porta 80
+e vou redirecionar lembrando que o mikrotik me permite ter muito mais
+controle sobre isso, então vou configurar as regras de NAT primeiro, que é
+tradução de endereços de rede, então essas regras vão decidir bem se
+alguem bate nesta porta onde eu quero mandar dentro da terra ta onde estou
+Vou permitir que eles acessem, mas ainda não vai funcionar ao contrário de um
+roteador de consumidor que apenas dirá ok, basicamente D DMZ
+esse servidor e permitir que qualquer um passe e que eles invadam e
+o que eles quiserem fazer assim que você mandar vai o mikrotik vai falar
+ok não, vou permitir o tráfego, no entanto, eles estão sujeitos a algumas regras
+você pode ter algumas outras regras que adicionou ao seu dispositivo mikrotik
+dizem que só vou permitir que um determinado endereço IP acesse isso,
+pode ser meu endereço IP residencial ou meu escritório, pode ser que eu configurei uma regra
+que diz que eu nunca viajo, estou sempre no Canadá, estou sempre, na verdade, em Ontário, então
+se alguém tentar acessar meus servidores de fora do bloco Ontário
+mas abra para mim se eu estiver em Ontário, então como se houvesse todos os tipos de
+como se fosse uma forma hierárquica de olhar
+nessas regras de reto do roteador para redirecionar o tráfego para determinados servidores dentro de seu
+rede que você pode imaginar que é útil para casa porque está lhe dando mais
+segurança, mas também é excepcional para as empresas, quer você tenha ou administre um departamento de TI
+departamento em uma pequena empresa de médio porte ou mesmo uma grande empresa
+mikrotik vai te dar muito mais controle sobre esse tipo de regras
+então vamos começar com nossa regra nat e novamente NAT é um termo curto que nós
+use uma sigla para tradução de endereço de rede e basicamente diz ao nosso
+tráfego de rede para onde fluir com base nas regras que eu configurei, mas eles
+ainda não vou ser permitido, vou mostrar isso em apenas alguns
+momentos, então eu sei que vou precisar da porta 80 e da porta 443 para rotear meu
+tráfego para a próxima nuvem e devo começar mostrando que ei, se eu
+na verdade, vá para o estúdio. categoria-cinco pontos TV, vai pendurar, vai
+tempo limite, não vai a lugar nenhum porque eu não configurei essas regras ainda
+então esse giro, giro, giro, giro, mas vou deixar isso aberto
+então minha regra nat primeiro de tudo eu criei uma nova regra nat então firewall IP nat novo
+regra e agora vou mudar a corrente aqui, quero dizer, dizer que isso é
+o mapa de destino porque estou definindo o destino dentro do meu
+rede, também preciso definir o protocolo porque quero especificar que é
+na verdade, TCP e você pode ver que há toneladas de protocolos que você pode
+escolha Estou apenas configurando o TCP na porta 80 e depois na porta 443 para nos levar
+também comecei a notar que estou usando web fig no meu navegador
+Eu não configurei ou e também não estou usando windbox e isso é em parte porque
+Quero mostrar isso por meio do navegador para que você possa ver que
+não precisa ter ferramenta instalada para poder administrar seu mikrotik
+roteador, acho que há um equívoco assim que digo instalar a caixa de vento e
+usar isso para se conectar à sua retórica cria um equívoco
+que te faz sentir como se isso tivesse que ser gerenciado a partir de uma ferramenta não, mas isso é um
+ferramenta útil para ser capaz de lhe dar acesso ao seu roteador e faz
+fornecer alguns serviços adicionais excepcionais, como minha multitarefa;
+uma tentativa, mas vou fazer a maior parte por meio do navegador porque acho que
+essa é a melhor maneira de mostrar que você está aprendendo Microtech,
+Eu o configurei para o destino que configurei para TCP como o protocolo que é
+número seis e eu preciso definir minha porta de destino e este destino
+porta é a porta da rede externa, então não se confunda com aquela que eu
+tendem a fazer às vezes porque às vezes você pode ter uma situação em que seu
+a porta pública é diferente da porta privada neste caso, pois estamos
+configurando nossa regra de NAT, estamos configurando a porta externa aqui, então no meu caso
+vai combinar com a porta interna, mas lembre-se de que este
+digamos que queremos que ele responda na porta 8080, você pode adicionar que lá mesmo
+embora o servidor interno esteja respondendo na porta 80, lembre-se de que
+pode ser diferente, mas no meu caso não é diferente, certo, preciso
+olhe para minha interface, então há a interface que eu preciso dizer que isso vai
+seja Ethernet um no meu caso pode ser um pouco diferente para você, basta manter
+em mente que o que estou realmente fazendo lá, enquanto seleciono minha internet
+interface lembro quando eu configurei este roteador pela primeira vez em nosso primeiro episódio deste
+série que demonstrei que estava conectando meu modem de internet em Ethernet
+uma porta um e é isso que estou especificando aqui, quero que isso responda
+na minha interface de internet e como você pode imaginar, você pode cavar fundo e configurar
+você sabe que pode fazer coisas muito sofisticadas, especificando
+portas diferentes configurando VLANs, todo esse tipo de coisa que estamos mantendo
+bastante simples e desse jeito certo, vou rolar Wade
+aqui - ação e apenas certifique-se de que está definido como destino de rede DN DST
+net para que isso encaminhe este tráfego para o nosso servidor, então agora role para baixo
+um pouco aqui e você vai encontrar duas portas ali, é a minha porta
+na verdade, vai ser o mesmo aviso que está me dando um intervalo, estou apenas indo
+para especificar a porta 80 e na parte inferior aqui há uma oportunidade para
+você para criar um comentário que vou fazer isso vou dizer próxima nuvem 80 finalmente
+a última coisa que preciso adicionar aqui é o endereço IP de destino
+internamente na minha rede este é o servidor como mencionei 1000 para dizer que
+esta regra de NAT vai responder na porta 80 e redirecionar para 10.0.0.0 agora
+Vou rolar totalmente para cima e clicar em OK e agora veremos que temos um
+nova regra chamada próxima nuvem 80 e está respondendo rede DST e está apontando TCP
+na porta 80 por meio de Ethernet um - como sabemos por sua configuração 10.0.0.0 segura
+porta também siga os mesmos passos, vou mudar a cadeia para o destino
+que vou mudar meu protocolo para TCP e depois vou mudar meu protocolo externo
+minha interface para Ethernet um
+porto de destino, sei que estou um pouco fora de serviço, tudo bem, você sabe o que
+Estou fazendo a porta de destino é 4 4 3 vamos rolar aqui para baixo e mudar
+nossa ação para DST nat e nossa para endereçar o mesmo servidor apenas uma porta diferente e então
+para a porta 443 e dê um comentário aqui na próxima nuvem 443 tudo bem, acho que
+tudo parece bom, vamos clicar em OK, então agora tenho a porta 80 e a porta
+443 regras NAT indo para a porta 10.0.0.0 net1 sobre tcp ainda não vai funcionar
+então, se eu pular aqui, vou apertar F5 para atualizar e está funcionando, olhe para
+isso porque eu sou interno no terreno interno, então não estou realmente no
+Ethernet um não vai funcionar do mundo exterior ainda porque o
+o mundo externo está entrando através da Ethernet um. Estou obviamente interno
+na porta 2, como você se lembra da semana passada, para dar acesso ao
+mundo externo agora eu preciso ir para a guia de regras de firewall aqui e clicar em
+adicionar novo, então é aqui que estou dizendo ok se o firewall for atingido
+precisa acionar essa regra nat, então vamos fazer isso, então adicionamos um novo firewall
+regra e vou mudar a cadeia, vamos ver se ela já está padronizada para
+encaminhar então esse é o endereço IP de origem correto, isso é legal
+Eu não vou definir isso, mas eu só quero que você veja esta lata
+seja o endereço IP que você deseja permitir, lembre-se de que mencionei que você pode configurá-lo para
+que apenas sua rede doméstica tem permissão para fazer isso, você pode adicionar seu
+endereço IP residencial, você pode até criar grupos de IPs que seriam configurados
+aqui que está aqui embaixo lista de endereços de origem veja isso, então essas são coisas que
+vamos aprender com o tempo agora, não vou fazer isso, não
+vou definir um endereço de origem. Vou abrir isso para o mundo, mas eu quero você
+saber que isso está disponível para você, então mover ao longo do endereço de destino é em
+fato do servidor interno então é protocolo 10 0,017, já sabemos que é
+TCP, então clique nele e o TCP é de fato o padrão para que apenas salve
+um tempo rápido, mas você pode ver todos os protocolos que estão disponíveis para nós a seguir
+a etapa é que precisamos definir a porta de serviço para que a porta de destino seja a porta
+80 vamos começar, precisamos fazer os dois, mas preciso configurar cada regra
+separadamente, então lá vamos nós na interface que será minha porta Ethernet 1 enquanto
+já estabelecido e então o que estou fazendo aqui é dizer ao
+firewall que vou permitir esse tráfego da primeira porta Ethernet
+que é minha conexão de internet e é aqui que a ação precisa ser definida
+aceitar, então é aqui que estou dizendo sim, você sabe o que vou permitir
+Isso você também pode definir para rejeitar em certos casos ou você conhece vários
+configurações diferentes, mas vamos dizer exceto que vamos permitir isso e
+em seguida, crie um comentário exatamente como fizemos antes, chamarei esta regra de firewall
+comente próxima nuvem 80 role para cima e observe que se você deixar de fora o NAT
+regra ou você deixa de fora a regra de firewall, bem, você está perdendo algumas das cadeias
+então não vai realmente responder fora de sua rede, então você precisa
+certifique-se de que isso seja feito na próxima etapa, vou adicionar 4 para 3 no firewall
+regras para encaminhar já está selecionado o endereço de origem que não vamos fazer
+desta vez em torno do endereço de destino, vamos definir o protocolo 1000 ponto 1 7
+vai ser TCP e a interface vai ser ether 1
+e o que mais no meu porto de destino eu preciso que lá também bah bah que
+vai ser 4 4 3 role para baixo, certifique-se de que está configurado para aceitar e, em seguida, configure nosso
+comentário vai ser a próxima nuvem 4 4 3 lá vamos nós tudo parece que eu
+tenho tudo lá eu sinto falta de tudo pessoal que você me diz eu vou bater ok então
+agora aqui está a etapa final, você percebe que esses dois itens aqui são descartados
+encaminhamento de regras na lei de incêndio agora é importante observar que mikrotik funciona em
+basicamente em ordem de cima para baixo, quando você estiver olhando para o seu
+regras de firewall, se você está se perguntando por que ainda não estão funcionando bem, é
+porque antes das minhas regras que acabei de configurar já existe uma regra que
+diz para largar tudo, então basicamente isso é dizer ei se você passou por tudo isso
+passado todo esse passado, tudo isso agora abandone a conexão, porque isso é um
+firewall muito sólido bem, então ele nunca chega aqui, então eu realmente preciso reordenar
+e a forma como vou fazer isso é quero que aconteçam ou quero meu costume
+as regras de encaminhamento acontecem logo após a regra de entrada final, então eu devo ser capaz
+para simplesmente arrastar isso até aqui nós vamos e pegamos o último minha próxima nuvem 4
+para 3 a regra tocou e lá vamos nós e agora estamos dentro, então agora eu não preciso
+reinicie o roteador Não tenho que fazer nada isso é que consigo ver, mas
+nosso servidor discord, você pode confirmar para mim, vá para a categoria 5 do documento do estúdio
+TV e sem ter que reiniciar meu roteador sem ter que reiniciar
+qualquer coisa que você deve ver agora o mesmo prompt de login também, então vá em frente
+para a categoria de estúdio 5 dot TV me desculpe e o bp9 é apenas
+nosso perdão não homem cinco você está apenas comentando que quando eu adiciono os comentários
+você não os está vendo na tela, porque a categoria cinco
+é 18 sobre nove e a tela do meu computador é dezesseis sobre nove, então isso é
+algo que terei que descobrir como consertar no futuro, é o meu
+erro, mas você pode ver que esses comentários foram inseridos é um campo de comentário
+é apenas um campo de texto na parte inferior da janela enquanto você adiciona
+e é isso que eu entrei na próxima nuvem nuvem 18x 443 peço desculpas
+que eu não entendi, mas agradeço que você tenha notado isso tão mo maravilla
+diz sim, vejo o login um bp9 também diz sim funciona para mim também, então sem
+essas regras eles não iriam, não iria responder de forma alguma, mas agora que eu
+adicionei essas regras, agora vocês podem se conectar, então a próxima coisa que eu poderia
+se eu quisesse, poderia configurar essas listas de endereços de origem e aqueles
+listas podem conter endereços IP da minha rede doméstica ou da minha rede de trabalho do meu
+redes de amigos das redes de minha equipe e permitir que eles acompanhem essas
+regras, mas abandone todo mundo para que os hackers que estão na minha discórdia
+servidor não pode entrar no meu próximo servidor nuvem e assim por diante, de modo que
+essencialmente, você sabe que esses são seus passos, então, olhando, vamos recuar um
+um pouco e entenda que ok configurei duas portas hoje a porta 80 e a porta
+443 são a porta 80 é uma porta HTTP insegura e a porta 443 é um SSL seguro
+porta HTTP criptografada, quero os dois para que, se alguém realmente não
+fisicamente digite HTTP, dois pontos, barra barra, categoria estúdio cinco pontos TV isso
+em vez disso, atingirá a porta 80 e redirecionará automaticamente para 443 se eu
+não tivessem a porta 80 aberta, eles nunca teriam aquele redirecionamento, eles apenas
+obter um erro de servidor não encontrado então fazendo backup é necessário entrar em nosso mikrotik
+configuração estou usando web fig e clique em IP clique em firewall clique
+na aba NAT na parte superior e crie uma nova regra NAT que a regra NAT dirá
+aonde você quer chegar com essa porta o que você quer fazer
+com ele, mas não vai realmente abri-lo para o público que está
+onde a regra de firewall entra agora, então clique nas regras de firewall no mesmo IP
+firewall e precisamos criar uma nova regra de firewall que aceite
+essa conexão e permitir essas conexões e você pode ainda mais
+aprimorar os endereços de IP ou grupos de origem de IP e coisas assim
+muitas opções diferentes que não podemos cobrir hoje, mas você pode obter o
+ideia de que isso vai nos dar muita configurabilidade e muito controle
+não apenas como o tráfego é roteado por meio de nossas redes, mas quem e e
+quais endereços IP e quais redes são capazes de se conectar por meio de nossa rede e
+como isso será encaminhado assim que chegar ao nosso Microtech

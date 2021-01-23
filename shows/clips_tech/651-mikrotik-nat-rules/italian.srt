@@ -1,0 +1,956 @@
+1
+00:00:01,909 --> 00:00:08,400
+Va bene, abbiamo esaminato il routing avanzato dei router mikrotik con
+
+2
+00:00:08,400 --> 00:00:14,130
+questi dispositivi, voglio dire, rientrano in questa interessante categoria tutti loro propri
+
+3
+00:00:14,130 --> 00:00:19,289
+un modo perché hanno un prezzo come un router consumer ma hanno l'estensione
+
+4
+00:00:19,289 --> 00:00:24,750
+set di funzionalità di un router aziendale così all'improvviso sei in grado di fare molto di più
+
+5
+00:00:24,750 --> 00:00:30,269
+sei in grado di proteggere la tua rete molto meglio di quanto potresti fare con un consumatore
+
+6
+00:00:30,269 --> 00:00:35,399
+router e sei in grado di farlo per circa lo stesso prezzo o forse a
+
+7
+00:00:35,399 --> 00:00:40,260
+un po 'di più, ma circa un decimo del prezzo di un'impresa equivalente
+
+8
+00:00:40,260 --> 00:00:48,300
+router di livello quindi tutto ciò che ha detto che sono estremamente economici per quello che ottieni e
+
+9
+00:00:48,300 --> 00:00:52,739
+quando usi un router mikrotik per un po 'inizi a realizzare wow
+
+10
+00:00:52,739 --> 00:00:58,710
+non ci sono limiti a questo, è come se tu potessi semplicemente programmare
+
+11
+00:00:58,710 --> 00:01:04,589
+roba in esso nel software del sistema operativo del router e puoi gestire tutto
+
+12
+00:01:04,589 --> 00:01:08,250
+cose del genere e all'improvviso inizi a suonare con i cappellini e i tuoi
+
+13
+00:01:08,250 --> 00:01:15,119
+la mente è sbalordita perché puoi fare cose con un router micro tech per 30 40 50 a
+
+14
+00:01:15,119 --> 00:01:19,799
+centocinquanta dollari che faresti con un router equivalente
+
+15
+00:01:19,799 --> 00:01:26,759
+specifiche che sono sette ottocento dollari millecinquecento dollari dieci
+
+16
+00:01:26,759 --> 00:01:31,920
+migliaia di dollari e lo stai facendo su questi dispositivi a prezzo consumer da micro
+
+17
+00:01:31,920 --> 00:01:36,390
+tech quindi il dispositivo che sto guardando qui in studio è la scheda del router
+
+18
+00:01:36,390 --> 00:01:43,409
+RB 9 6 2 UI GS e quel modello è quello che ho selezionato per noi qui in studio
+
+19
+00:01:43,409 --> 00:01:48,329
+ma potrebbe non essere esattamente quello che desideri per la tua casa o la tua rete domestica
+
+20
+00:01:48,329 --> 00:01:53,460
+o la tua rete aziendale, tuttavia, questo è ciò che è veramente interessante della micro tecnologia I
+
+21
+00:01:53,460 --> 00:01:58,710
+significa che una delle cose è che devi solo scegliere l'hardware che funziona per te e
+
+22
+00:01:58,710 --> 00:02:04,020
+il software sarà lo stesso da dispositivo a dispositivo a dispositivo se
+
+23
+00:02:04,020 --> 00:02:08,700
+compri l'unità da 30 dollari o da 150 dollari o da 600 dollari
+
+24
+00:02:08,700 --> 00:02:13,080
+non importa per quanto riguarda il software, l'unica limitazione è l'hard
+
+25
+00:02:13,080 --> 00:02:20,100
+siamo così dove il mio dispositivo ha antenne Wi-Fi da 2,4 e 5 gigahertz e e
+
+26
+00:02:20,100 --> 00:02:26,130
+e trasmettitori puoi acquistare un dispositivo più economico che ha solo 2.4 o solo 5
+
+27
+00:02:26,130 --> 00:02:32,100
+quindi queste funzionalità saranno limitate solo dall'hardware ma dal software stesso
+
+28
+00:02:32,100 --> 00:02:36,000
+è lo stesso quindi io comincio sempre col dirlo perché voglio che tu lo faccia
+
+29
+00:02:36,000 --> 00:02:40,830
+capisci che non devi comprare lo stesso che ho comprato tu trovi quello che
+
+30
+00:02:40,830 --> 00:02:46,800
+funziona per te e quindi puoi seguire questa serie e sorprendentemente
+
+31
+00:02:46,800 --> 00:02:51,060
+anche se hai un modello completamente diverso sarai in grado di farlo
+
+32
+00:02:51,060 --> 00:02:54,840
+segui lo schermo, sarai in grado di seguire i passaggi e sarà
+
+33
+00:02:54,840 --> 00:03:02,820
+esattamente lo stesso che è fantastico, quindi questa settimana vado
+
+34
+00:03:02,820 --> 00:03:07,500
+per vedere come impostare il port forwarding lo chiameremo ora
+
+35
+00:03:07,500 --> 00:03:12,209
+mikrotik lo chiamerà regole del firewall NAT. Parlerò un po '
+
+36
+00:03:12,209 --> 00:03:16,620
+ne parleremo in un attimo, ma lo conosciamo come port forwarding o reindirizzamento e
+
+37
+00:03:16,620 --> 00:03:22,920
+cioè quando qualcuno colpisce il nostro indirizzo IP pubblico su una certa porta se
+
+38
+00:03:22,920 --> 00:03:27,810
+è una porta che ho consentito e che riconosco di volerla reindirizzare a
+
+39
+00:03:27,810 --> 00:03:33,769
+server appropriato quindi nel mio caso ho un server a 10.0.0.0
+
+40
+00:03:35,930 --> 00:03:45,530
+è il mio tipo personale di alternativa ai servizi cloud di Google e drive e
+
+41
+00:03:45,530 --> 00:03:51,450
+onedrive e tutti quei tipi di servizi sono in grado di metterli sul mio server
+
+42
+00:03:51,450 --> 00:04:00,660
+ed è mio, è il mio sistema ospitato su 10.0.0.0 'porte pn 80 e porta 443 così
+
+43
+00:04:00,660 --> 00:04:06,510
+se qualcuno colpisce il mio IP o ho effettivamente un record DNS perché abbiamo la categoria 5
+
+44
+00:04:06,510 --> 00:04:12,390
+La TV ovviamente quindi ho la TV di categoria 5 punti di Studio che li instraderà
+
+45
+00:04:12,390 --> 00:04:16,859
+a qui e questo raggiungerà la micro tecnologia e la micro tecnologia andrà
+
+46
+00:04:16,859 --> 00:04:21,930
+per dire ok cosa devo fare con questo traffico cosa devo fare quindi devo dirlo al mio
+
+47
+00:04:21,930 --> 00:04:30,620
+micro tecnologia hey questa è la porta 443, voglio scriverla su 10.0.0.0 perché è così
+
+48
+00:04:30,620 --> 00:04:37,400
+presumibilmente ciò che questa persona sta cercando di accedere, quindi saltiamo subito dentro
+
+49
+00:04:37,400 --> 00:04:43,610
+salterò al nostro mikrotik e le cose qui sono così sofisticate
+
+50
+00:04:43,610 --> 00:04:47,449
+segui e inizierai a capire come funzionano le cose
+
+51
+00:04:47,449 --> 00:04:52,400
+cliccato su IP la scorsa settimana siamo venuti qui perché abbiamo iniziato a guardare il DHCP
+
+52
+00:04:52,400 --> 00:04:56,690
+server e regole statiche e cose del genere che espanderemo nel tempo
+
+53
+00:04:56,690 --> 00:05:03,500
+colpirò il firewall queste sono le impostazioni predefinite per il mio firewall mikrotik e i
+
+54
+00:05:03,500 --> 00:05:08,030
+voglio aggiungere alcune regole che reindirizzeranno il traffico all'interno della mia rete ora
+
+55
+00:05:08,030 --> 00:05:13,909
+siamo un tipico router firewall consumer che dirà ehi prendo la porta 80
+
+56
+00:05:13,909 --> 00:05:17,750
+e lo reindirizzerò ricordando che il mikrotik mi permette di avere molto di più
+
+57
+00:05:17,750 --> 00:05:24,560
+controllo su questo, quindi imposterò prima le regole NAT
+
+58
+00:05:24,560 --> 00:05:31,009
+traduzione dell'indirizzo di rete in modo che quelle regole decideranno bene se
+
+59
+00:05:31,009 --> 00:05:36,560
+qualcuno colpisce questo porto dove voglio inviarlo all'interno della terra ok dove sono
+
+60
+00:05:36,560 --> 00:05:42,500
+Consentirò loro di accedere, ma non funzionerà ancora a differenza di un file
+
+61
+00:05:42,500 --> 00:05:47,750
+router consumer che sta solo per dire okay, fondamentalmente, D DMZ
+
+62
+00:05:47,750 --> 00:05:51,710
+quel server e consentire a chiunque di passare e consentire loro di hackerare e
+
+63
+00:05:51,710 --> 00:05:56,360
+qualunque cosa vogliano fare non appena dici vai, il mikrotik lo dirà
+
+64
+00:05:56,360 --> 00:06:00,860
+va bene no permetterò il traffico comunque sono soggetti ad alcune regole
+
+65
+00:06:00,860 --> 00:06:05,569
+potresti avere altre regole che hai aggiunto al tuo dispositivo mikrotik
+
+66
+00:06:05,569 --> 00:06:11,990
+che dicono che permetterò solo a un particolare indirizzo IP di accedervi
+
+67
+00:06:11,990 --> 00:06:17,029
+potrebbe essere il mio indirizzo IP di casa o il mio ufficio potrebbe essere che ho impostato una regola
+
+68
+00:06:17,029 --> 00:06:23,900
+questo dice che non viaggio mai. Sono sempre in Canada, in effetti sono sempre in Ontario, quindi
+
+69
+00:06:23,900 --> 00:06:28,580
+se qualcuno cerca di accedere ai miei server dall'esterno del blocco dell'Ontario
+
+70
+00:06:28,580 --> 00:06:34,940
+ma aprilo per me se sono in Ontario, quindi come se ce ne fossero di tutti i tipi
+
+71
+00:06:34,940 --> 00:06:38,870
+come se fosse un modo di guardare gerarchico
+
+72
+00:06:38,870 --> 00:06:45,320
+a quelle regole di reto del router per reindirizzare il traffico a determinati server all'interno del tuo
+
+73
+00:06:45,320 --> 00:06:48,949
+puoi immaginare che sia utile per la casa perché ti dà di più
+
+74
+00:06:48,949 --> 00:06:54,860
+sicurezza ma è anche eccezionale per le aziende, che tu possieda o gestisca un IT
+
+75
+00:06:54,860 --> 00:06:59,050
+dipartimento presso una piccola azienda di medie dimensioni o anche una grande azienda
+
+76
+00:06:59,050 --> 00:07:04,120
+mikrotik ti darà molto più controllo su questo tipo di regole
+
+77
+00:07:04,120 --> 00:07:11,419
+quindi iniziamo con la nostra regola nat e ancora una volta NAT è un termine breve che noi
+
+78
+00:07:11,419 --> 00:07:15,830
+usa a sta per traduzione dell'indirizzo di rete e fondamentalmente dice il nostro
+
+79
+00:07:15,830 --> 00:07:21,800
+traffico di rete dove fluire in base alle regole che ho impostato ma sono
+
+80
+00:07:21,800 --> 00:07:24,680
+ancora non mi sarà permesso te lo mostrerò tra un paio di
+
+81
+00:07:24,680 --> 00:07:31,580
+momenti, quindi so che avrò bisogno della porta 80 e della porta 443 per instradare il mio file
+
+82
+00:07:31,580 --> 00:07:35,780
+traffico per il prossimo cloud e dovrei iniziare mostrandoti che ehi se io
+
+83
+00:07:35,780 --> 00:07:42,110
+in realtà vai alla TV di categoria cinque punti in studio, si bloccherà
+
+84
+00:07:42,110 --> 00:07:46,700
+timeout non andrà da nessuna parte perché non ho ancora impostato quelle regole
+
+85
+00:07:46,700 --> 00:07:50,990
+quindi quello spin spin spin spin spin spin ma lo lascerò aperto
+
+86
+00:07:50,990 --> 00:07:58,639
+quindi la mia regola nat prima di tutto ho creato una nuova regola nat quindi il firewall IP è nuovo
+
+87
+00:07:58,639 --> 00:08:03,710
+regola e ora cambierò la catena qui voglio dirlo dire che questo è
+
+88
+00:08:03,710 --> 00:08:08,450
+la mappa di destinazione perché sto impostando la destinazione all'interno del mio interno
+
+89
+00:08:08,450 --> 00:08:12,229
+rete ho bisogno di impostare anche il protocollo perché voglio specificare che questo è
+
+90
+00:08:12,229 --> 00:08:16,970
+in realtà TCP e puoi vedere che ci sono tonnellate di protocolli che puoi
+
+91
+00:08:16,970 --> 00:08:24,710
+scegli da Sto solo impostando TCP sulla porta 80 e poi sulla porta 443 per farci arrivare
+
+92
+00:08:24,710 --> 00:08:28,700
+ho anche iniziato a notare che sto usando web fig nel mio browser web
+
+93
+00:08:28,700 --> 00:08:35,539
+Non ho impostato o e non sto nemmeno usando wind box e questo in parte perché
+
+94
+00:08:35,539 --> 00:08:39,289
+Voglio mostrarti questo tramite il browser in modo che tu possa vederlo
+
+95
+00:08:39,289 --> 00:08:45,920
+non è necessario avere uno strumento installato per poter amministrare il tuo mikrotik
+
+96
+00:08:45,920 --> 00:08:49,670
+router Penso che ci sia un malinteso non appena dico installa wind box e
+
+97
+00:08:49,670 --> 00:08:52,340
+usalo per connetterti alla tua retorica crea un'idea sbagliata
+
+98
+00:08:52,340 --> 00:08:57,170
+questo ti fa sentire come se questo dovesse essere gestito da uno strumento no, ma è un
+
+99
+00:08:57,170 --> 00:09:00,530
+strumento utile per poterti dare accesso al tuo router e lo fa
+
+100
+00:09:00,530 --> 00:09:05,840
+fornire alcuni servizi aggiuntivi eccezionali come il mio multitasking, quindi provalo
+
+101
+00:09:05,840 --> 00:09:10,040
+un tentativo, ma lo farò per la maggior parte tramite il browser perché lo penso
+
+102
+00:09:10,040 --> 00:09:14,660
+è un modo migliore per mostrarti come stai imparando a usare Microtech
+
+103
+00:09:14,660 --> 00:09:20,240
+L'ho impostato a destinazione che l'ho impostato su TCP come protocollo che è
+
+104
+00:09:20,240 --> 00:09:24,260
+numero sei e devo impostare la mia porta di destinazione e questa destinazione
+
+105
+00:09:24,260 --> 00:09:30,680
+port è la porta sulla rete esterna, quindi non confonderti con quella che ho
+
+106
+00:09:30,680 --> 00:09:36,410
+a volte tendono a farlo perché a volte potresti avere una situazione in cui il tuo
+
+107
+00:09:36,410 --> 00:09:41,510
+la porta pubblica è diversa dalla porta privata in questo caso come lo siamo
+
+108
+00:09:41,510 --> 00:09:47,000
+impostando la nostra regola NAT stiamo impostando la porta esterna qui, quindi nel mio caso
+
+109
+00:09:47,000 --> 00:09:51,140
+corrisponderà alla porta interna, ma tieni presente che questo
+
+110
+00:09:51,140 --> 00:09:57,290
+diciamo che vogliamo che risponda sulla porta 8080, potresti aggiungerlo anche lì
+
+111
+00:09:57,290 --> 00:10:03,590
+anche se il server interno risponde sulla porta 80, tienilo a mente
+
+112
+00:10:03,590 --> 00:10:08,630
+potrebbe essere diverso, ma nel mio caso in realtà non è diverso, va bene
+
+113
+00:10:08,630 --> 00:10:15,110
+guarda la mia interfaccia quindi c'è l'interfaccia in che devo dire che sta per
+
+114
+00:10:15,110 --> 00:10:20,360
+essere Ethernet nel mio caso potrebbe essere un po 'diverso per te, tienilo
+
+115
+00:10:20,360 --> 00:10:24,650
+in mente quello che sto effettivamente facendo lì mentre seleziono il mio Internet
+
+116
+00:10:24,650 --> 00:10:31,100
+ricorda quando ho impostato per la prima volta questo router nel nostro primo episodio di questo
+
+117
+00:10:31,100 --> 00:10:37,490
+serie Ho dimostrato che stavo collegando il mio modem Internet a Ethernet
+
+118
+00:10:37,490 --> 00:10:42,410
+uno porta uno e quindi è quello che sto specificando qui voglio che questo risponda
+
+119
+00:10:42,410 --> 00:10:48,680
+sulla mia interfaccia Internet e come puoi immaginare puoi scavare in profondità e puoi impostare
+
+120
+00:10:48,680 --> 00:10:54,590
+questo su sai che potresti fare cose molto sofisticate specificando
+
+121
+00:10:54,590 --> 00:10:58,280
+porte diverse che configurano le VLAN, tutto quel genere di cose che teniamo
+
+122
+00:10:58,280 --> 00:11:04,490
+abbastanza semplice e procedendo in questo modo, va bene, farò scorrere Wade
+
+123
+00:11:04,490 --> 00:11:14,720
+qui - azione e assicurati che sia impostato su DN DST net destination
+
+124
+00:11:14,720 --> 00:11:21,470
+net in modo che instraderà questo traffico al nostro server, quindi ora scorri verso il basso
+
+125
+00:11:21,470 --> 00:11:30,290
+un po 'di modi qui e troverai due porte lì, sono le mie due porte
+
+126
+00:11:30,290 --> 00:11:33,680
+in realtà sarà lo stesso avviso che mi dà un intervallo che sto solo andando
+
+127
+00:11:33,680 --> 00:11:38,839
+per specificare la porta 80 e in fondo qui c'è un'opportunità per
+
+128
+00:11:38,839 --> 00:11:45,380
+tu per creare un commento lo farò finalmente dirò il prossimo cloud 80
+
+129
+00:11:45,380 --> 00:11:50,770
+l'ultima cosa che devo aggiungere qui è l'indirizzo IP di destinazione
+
+130
+00:11:50,770 --> 00:11:58,040
+internamente sulla mia rete questo è il server come ho detto 1000 per dirlo
+
+131
+00:11:58,040 --> 00:12:08,839
+questa regola NAT risponderà sulla porta 80 e reindirizzerà a 10.0.0.0 così ora
+
+132
+00:12:08,839 --> 00:12:14,810
+Scorrerò fino in fondo e premerò OK e ora vedremo che abbiamo un file
+
+133
+00:12:14,810 --> 00:12:21,589
+la nuova regola chiamata next cloud 80 e risponde alla rete DST e punta a TCP
+
+134
+00:12:21,589 --> 00:12:32,810
+sulla porta 80 tramite Ethernet uno - come sappiamo dalla sua configurazione 10.0.0.0 sicuro
+
+135
+00:12:32,810 --> 00:12:37,640
+port e segui gli stessi passaggi che cambierò la catena in destinazione
+
+136
+00:12:37,640 --> 00:12:47,350
+che cambierò il mio protocollo in TCP e poi cambierò il mio esterno
+
+137
+00:12:47,350 --> 00:12:54,040
+il mio in interfaccia a Ethernet uno
+
+138
+00:12:55,209 --> 00:13:00,260
+porto di destinazione So di essere un po 'fuori servizio va bene sai una cosa
+
+139
+00:13:00,260 --> 00:13:04,820
+Sto facendo che la porta di destinazione è 4 4 3 scorriamo qui in basso e cambiamo
+
+140
+00:13:04,820 --> 00:13:15,440
+la nostra azione su DST nat e la nostra per indirizzare lo stesso server solo su una porta diversa e poi
+
+141
+00:13:15,440 --> 00:13:28,550
+alla porta 443 e dagli un commento qui la prossima nuvola 443 va bene penso di averlo fatto
+
+142
+00:13:28,550 --> 00:13:36,010
+ho tutto sembra a posto, premiamo OK, quindi ora ho la porta 80 e la porta
+
+143
+00:13:36,010 --> 00:13:48,020
+443 Regole NAT che vanno alla porta 10.0.0.0 net1 su tcp non funzioneranno ancora
+
+144
+00:13:48,020 --> 00:13:54,230
+quindi se salto qui premerò f5 per aggiornare oh e sta funzionando guarda
+
+145
+00:13:54,230 --> 00:13:59,029
+questo perché sono interno sul terreno interno quindi non sono effettivamente sul
+
+146
+00:13:59,029 --> 00:14:03,680
+ethernet one non funzionerà ancora dal mondo esterno perché il
+
+147
+00:14:03,680 --> 00:14:10,490
+il mondo esterno sta entrando tramite Ethernet uno sono ovviamente interno sono
+
+148
+00:14:10,490 --> 00:14:16,279
+sulla porta 2 come ricorderai dalla scorsa settimana così per dare accesso al file
+
+149
+00:14:16,279 --> 00:14:22,130
+mondo esterno ora devo andare alla scheda delle regole del firewall qui e fare clic su
+
+150
+00:14:22,130 --> 00:14:26,899
+aggiungi nuovo quindi è qui che sto effettivamente dicendo ok se il firewall viene colpito I
+
+151
+00:14:26,899 --> 00:14:33,949
+è necessario attivare quella regola nat quindi facciamolo così abbiamo aggiunto un nuovo firewall
+
+152
+00:14:33,949 --> 00:14:39,770
+regola e cambierò la catena vediamo no è già predefinita
+
+153
+00:14:39,770 --> 00:14:46,490
+avanti quindi va bene l'indirizzo IP di origine questo è piuttosto interessante
+
+154
+00:14:46,490 --> 00:14:51,500
+Non ho intenzione di impostarlo, ma voglio solo che tu veda questo questo può
+
+155
+00:14:51,500 --> 00:14:56,329
+essere l'indirizzo IP che vuoi consentire ricorda che ho detto che potresti impostarlo così
+
+156
+00:14:56,329 --> 00:15:00,020
+che solo la tua rete domestica è autorizzata a farlo, potresti farlo aggiungere il tuo
+
+157
+00:15:00,020 --> 00:15:05,930
+indirizzo IP di casa puoi anche creare gruppi IP che verrebbero impostati
+
+158
+00:15:05,930 --> 00:15:11,660
+quassù è quaggiù l'elenco degli indirizzi di origine vedi che quindi queste sono cose che
+
+159
+00:15:11,660 --> 00:15:14,480
+impareremo in tempo proprio adesso Non lo farò non lo sono
+
+160
+00:15:14,480 --> 00:15:18,980
+imposterò un indirizzo di origine Lo aprirò al mondo, ma voglio te
+
+161
+00:15:18,980 --> 00:15:24,110
+sapere che questo è a tua disposizione, quindi spostandoti verso la destinazione a cui mi rivolgo
+
+162
+00:15:24,110 --> 00:15:31,910
+Infatti il ​​server interno quindi è il protocollo 10 0,017 che già sappiamo che è
+
+163
+00:15:31,910 --> 00:15:38,360
+TCP quindi fai clic su questo e TCP è in effetti l'impostazione predefinita, quindi salva
+
+164
+00:15:38,360 --> 00:15:44,420
+un po 'di tempo ma puoi vedere tutti i protocolli a nostra disposizione in seguito
+
+165
+00:15:44,420 --> 00:15:52,459
+il passo è che dobbiamo impostare la porta di servizio in modo che la porta di destinazione sarà la porta
+
+166
+00:15:52,459 --> 00:15:57,339
+Inizieremo con dobbiamo fare entrambe le cose, ma devo impostare ogni regola
+
+167
+00:15:57,339 --> 00:16:04,610
+separatamente quindi andiamo nell'interfaccia sarà la mia porta Ethernet 1 come noi
+
+168
+00:16:04,610 --> 00:16:10,369
+già stabilito e quindi quello che sto facendo qui è che sto effettivamente dicendo al
+
+169
+00:16:10,369 --> 00:16:19,429
+firewall che permetterò questo traffico dalla prima porta Ethernet
+
+170
+00:16:19,429 --> 00:16:23,389
+che è la mia connessione Internet e questa è quella in cui l'azione deve essere impostata
+
+171
+00:16:23,389 --> 00:16:27,379
+accettare, quindi è qui che dico, sì, sai cosa permetterò
+
+172
+00:16:27,379 --> 00:16:31,910
+questo potresti anche impostare questo per rifiutare in alcuni casi o conosci vari
+
+173
+00:16:31,910 --> 00:16:35,589
+impostazioni diverse ma diremo tranne che consentiremo questo e
+
+174
+00:16:35,589 --> 00:16:41,089
+quindi crea un commento proprio come abbiamo fatto prima di chiamare questa regola del firewall
+
+175
+00:16:41,089 --> 00:16:50,629
+commenta la prossima nuvola 80 scorri verso l'alto e nota che se lasci fuori il NAT
+
+176
+00:16:50,629 --> 00:16:55,249
+regola o lasci fuori la regola del firewall bene ti mancano alcune delle catene
+
+177
+00:16:55,249 --> 00:16:58,819
+quindi non risponderà effettivamente al di fuori della tua rete, quindi è necessario
+
+178
+00:16:58,819 --> 00:17:03,709
+assicurati che questo sia fatto il prossimo passo è che aggiungerò 4 per 3 nel firewall
+
+179
+00:17:03,709 --> 00:17:07,880
+regole così avanti è già selezionato l'indirizzo di origine che non faremo
+
+180
+00:17:07,880 --> 00:17:13,069
+questa volta intorno all'indirizzo di destinazione imposteremo il protocollo 1000 punto 1 7
+
+181
+00:17:13,069 --> 00:17:19,510
+sarà TCP e l'interfaccia sarà Ether 1
+
+182
+00:17:19,569 --> 00:17:26,499
+e cos'altro nel mio porto di destinazione ho bisogno che anche lì bah bah quello
+
+183
+00:17:26,499 --> 00:17:33,580
+sarà 4 4 3 scorri verso il basso assicurati che sia impostato per accettare e quindi imposta il nostro
+
+184
+00:17:33,580 --> 00:17:42,729
+il commento sarà la prossima nuvola 4 4 3 eccoci tutto sembra che io
+
+185
+00:17:42,729 --> 00:17:48,279
+ho tutto lì dentro mi manca qualcosa, gente mi dici che sto per colpire ok quindi
+
+186
+00:17:48,279 --> 00:17:54,669
+ora ecco l'ultimo passaggio che noti che questi due elementi qui sono caduti
+
+187
+00:17:54,669 --> 00:18:02,099
+forward regole nella legge sul fuoco ora è importante notare che mikrotik funziona in
+
+188
+00:18:02,099 --> 00:18:07,840
+fondamentalmente in ordine così da cima a fondo così quando guardi il tuo
+
+189
+00:18:07,840 --> 00:18:11,979
+regole del firewall se ti stai chiedendo perché non funzionano ancora bene, è
+
+190
+00:18:11,979 --> 00:18:17,979
+perché prima delle mie regole che ho appena configurato c'è già una regola che
+
+191
+00:18:17,979 --> 00:18:22,389
+dice di mollare tutto quindi in pratica questo sta dicendo ehi se hai passato tutto questo
+
+192
+00:18:22,389 --> 00:18:27,820
+passato tutto questo passato tutto questo ora lasciate cadere la connessione perché questi è un file
+
+193
+00:18:27,820 --> 00:18:32,830
+firewall abbastanza solido, quindi non arriva mai qui, quindi ho effettivamente bisogno di riordinare
+
+194
+00:18:32,830 --> 00:18:36,729
+questi e il modo in cui lo farò è voglio che accadano o voglio la mia abitudine
+
+195
+00:18:36,729 --> 00:18:41,919
+le regole di inoltro avvengono subito dopo la regola di input finale, quindi dovrei essere in grado
+
+196
+00:18:41,919 --> 00:18:53,169
+per trascinarlo semplicemente fino a qui, andiamo a prendere l'ultima, la mia prossima nuvola 4
+
+197
+00:18:53,169 --> 00:19:02,710
+per la regola 3 ha suonato e ci siamo e ora siamo dentro quindi ora non devo
+
+198
+00:19:02,710 --> 00:19:07,299
+riavviare il router non devo fare nulla questo sono in grado di vederlo ma
+
+199
+00:19:07,299 --> 00:19:13,269
+il nostro server di discord puoi confermare per me andare alla categoria 5 di studio doc
+
+200
+00:19:13,269 --> 00:19:18,070
+TV e senza dover riavviare il mio router senza dover riavviare
+
+201
+00:19:18,070 --> 00:19:23,259
+tutto ciò che dovresti vedere ora anche lo stesso prompt di accesso, quindi vai avanti
+
+202
+00:19:23,259 --> 00:19:32,530
+oltre alla TV in studio di categoria 5 punti mi dispiace e bp9 è solo
+
+203
+00:19:32,530 --> 00:19:36,640
+il nostro perdonami nessun uomo cinque stai solo commentando quando aggiungo i commenti
+
+204
+00:19:36,640 --> 00:19:40,900
+in realtà non li vedi sullo schermo e questo perché la categoria cinque
+
+205
+00:19:40,900 --> 00:19:46,540
+ha 18 anni su nove e lo schermo del mio computer è sedici su nove, quindi è così
+
+206
+00:19:46,540 --> 00:19:50,290
+qualcosa che dovrò capire come risolvere in futuro è il mio
+
+207
+00:19:50,290 --> 00:19:54,670
+errore ma puoi vedere che quei commenti sono stati inseriti è un campo di commento
+
+208
+00:19:54,670 --> 00:19:59,410
+è solo un campo di testo nella parte inferiore della finestra mentre stai aggiungendo
+
+209
+00:19:59,410 --> 00:20:04,360
+e c'è quello che ho inserito prossima nuvola 18x nuvola 443 Chiedo scusa
+
+210
+00:20:04,360 --> 00:20:09,700
+che non l'ho capito ma apprezzo che tu lo abbia notato così mo maravilla
+
+211
+00:20:09,700 --> 00:20:14,440
+dice sì vedo il login un bp9 dice anche sì funziona anche per me quindi senza
+
+212
+00:20:14,440 --> 00:20:18,160
+quelle regole non vorrebbero non risponderebbe in alcun modo, ma ora che ho
+
+213
+00:20:18,160 --> 00:20:22,660
+aggiunto quelle regole ora siete tutti in grado di connettervi, quindi la prossima cosa che potrei
+
+214
+00:20:22,660 --> 00:20:28,690
+fare se volessi è che potrei impostare quegli elenchi di indirizzi di origine e quelli
+
+215
+00:20:28,690 --> 00:20:35,710
+gli elenchi possono contenere indirizzi IP della mia rete domestica della mia rete lavorativa del mio
+
+216
+00:20:35,710 --> 00:20:40,840
+reti di amici delle reti del mio staff e consenti loro di seguirle
+
+217
+00:20:40,840 --> 00:20:45,310
+regole ma lascia cadere tutti gli altri in modo che quegli hacker che sono sulla mia discordia
+
+218
+00:20:45,310 --> 00:20:51,100
+il server non può accedere al mio prossimo server cloud e così via e così via
+
+219
+00:20:51,100 --> 00:20:54,760
+essenzialmente sai che quelli sono i tuoi passi, quindi guardando torniamo indietro a
+
+220
+00:20:54,760 --> 00:20:59,370
+un po 'e capisco che va bene ho impostato due porte oggi porta 80 e porta
+
+221
+00:20:59,370 --> 00:21:07,500
+443 quelli sono la porta 80 è una porta HTTP non sicura e la porta 443 è un SSL sicuro
+
+222
+00:21:07,500 --> 00:21:13,920
+porta HTTP crittografata Voglio entrambi in modo che se qualcuno non lo fa effettivamente
+
+223
+00:21:13,920 --> 00:21:20,920
+digitare fisicamente in HTTP colon slash slash studio categoria cinque punti TV it
+
+224
+00:21:20,920 --> 00:21:26,620
+invece raggiungerà la porta 80 e reindirizzerà automaticamente a 443 se I
+
+225
+00:21:26,620 --> 00:21:30,160
+non avevano la porta 80 aperta, non avrebbero mai ricevuto quel reindirizzamento che avrebbero semplicemente
+
+226
+00:21:30,160 --> 00:21:36,540
+ottieni un errore del server non trovato, quindi per eseguire il backup dobbiamo andare nel nostro mikrotik
+
+227
+00:21:36,540 --> 00:21:43,060
+configurazione sto usando web fig e clicco su IP clic su firewall clic
+
+228
+00:21:43,060 --> 00:21:49,150
+nella scheda NAT in alto e creare una nuova regola NAT che la regola NAT indicherà
+
+229
+00:21:49,150 --> 00:21:54,970
+dove vuoi andare con questo con questo port cosa vuoi fare
+
+230
+00:21:54,970 --> 00:21:59,530
+con esso ma in realtà non lo aprirà aprendolo al pubblico che è
+
+231
+00:21:59,530 --> 00:22:04,770
+dove ora entra in gioco la regola del firewall, quindi fai clic sulle regole del firewall sullo stesso IP
+
+232
+00:22:04,770 --> 00:22:11,050
+firewall e dobbiamo creare una nuova regola firewall che accetti
+
+233
+00:22:11,050 --> 00:22:16,410
+quella connessione e permetti a quelle connessioni di passare e puoi ulteriormente
+
+234
+00:22:16,410 --> 00:22:22,120
+affinare su indirizzi IP o gruppi di sorgenti IP e cose del genere ci sono così
+
+235
+00:22:22,120 --> 00:22:25,690
+molte opzioni diverse che non siamo in grado di coprire oggi, ma puoi ottenere il
+
+236
+00:22:25,690 --> 00:22:30,580
+l'idea che questo ci darà molta configurabilità e molto controllo
+
+237
+00:22:30,580 --> 00:22:36,340
+non solo su come il traffico viene instradato attraverso le nostre reti, ma anche su chi e e
+
+238
+00:22:36,340 --> 00:22:41,710
+quali indirizzi IP e quali reti sono in grado di connettersi attraverso la nostra rete e
+
+239
+00:22:41,710 --> 00:22:46,860
+come verrà instradato una volta raggiunto il nostro Microtech
+
