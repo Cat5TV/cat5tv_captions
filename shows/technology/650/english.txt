@@ -1,0 +1,998 @@
+who is the bald nerd oh hey sorry this
+is awkward I didn't see you there
+this week on category five technology TV
+we're gonna be getting started with the
+basics of mikrotik routers it's a series
+that is going to help you secure your
+home or office network and we've got to
+start somewhere so we may as well start
+with the getting started we're gonna be
+setting up our router for the first time
+today and then through the course of the
+series you're going to be learning how
+to harden that network and make things
+as safe as they possibly can be using a
+device that is much more affordable than
+should be possible for the feature set
+that's micro tip stick around we're
+going to get started right after this
+[Music]
+our live recordings are trusted only to
+solid-state drives by Kingston
+technology revive your computer with
+improved performance and reliability
+over traditional hard drives with
+Kingston SSDs category 5 TV streams live
+with Telestream Wirecast and nimble
+streamer tune in every week on roku cody
+and other HLS video players for local
+show times visit category 5 dot TV I'm
+Robby Ferguson thank you so much for
+being here with me again this week I'm
+in the production studio aka the bridge
+the bridge is what we call it here at
+category 5 technology TV at Studio e so
+we're starting a series on micro tech
+routers these are a disruptive
+technology in that they provide features
+that are only available generally on the
+market as enterprise level features so
+you've got to pay a lot of money to get
+these kinds of features well these
+little guys from mikrotik are able to do
+it a lot cheaper we're talking about 10%
+of the price so it is a great thing and
+it allows us to create a better home
+network a better office network perfect
+for SMBs or self-employed people so if
+that is you or if you just want to make
+your home network as good as can
+possibly be
+well this series is for you we're gonna
+take you through I'm going to take you
+through everything from the basic set up
+today all the way to creating a guest
+Wi-Fi network that is going to allow
+your kids friends to use the Wi-Fi
+without actually risking the integrity
+of your personal data there's a lot that
+we can do with a micro tech router and
+we're gonna help you through that
+throughout the course of this series the
+series is available at cat5 dot TV slash
+mikrotik so make sure you go there and
+you're going to see each of the videos
+plus the hardware that is going to be
+required speaking of hardware now I have
+opted for the micro tech hap AC router
+board RB 9 6 - UI GS and the reason that
+I've opted for this particular model is
+well there's a few different things
+essentially it has Gigabit Ethernet now
+my internet here at the studio is
+gigabit internet so if I had a router
+that only did 10 over 100 I'm gonna
+actually only be getting a hundred
+megabits per second on my internet
+service even though it's capable of so
+much more so I absolutely needed to
+ensure that my router is going to
+support the Gigabit Ethernet so that and
+the gigabit internet so that I'm not
+losing some of the speed of my internet
+connectivity that's very very important
+second to that is the fact that it has a
+dual radio so 2.4 and 5 gigahertz Wi-Fi
+so I can put my cameras on 2.4 gigahertz
+which is a pretty oversaturated band but
+at the same time I can have 5 gigahertz
+for my phone and my other devices so
+that I've got better speed better
+connectivity and it's gonna work really
+really well
+it supports 802 11 B G and n Wi-Fi
+capability all from within this little
+device that is not gonna cost us a whole
+lot of money you can find out more about
+the product line go to our website cap v
+dot TV slash mikrotik and follow the
+link and that's going to take you to an
+index so what is interesting I should
+say I've already kind of covered this in
+the introductory video a couple weeks
+back but just to be clear what is neat
+about mikrotik is that it is not limited
+by software so the firmware of the
+router does not restrict you in the same
+way that a traditional consumer router
+would typically you have to pay more for
+more features well mikrotik and their
+router board OS if they it is completely
+wide open as far as feature set goes so
+the only consideration as you buy a
+micro tech device is what is the
+hardware going to do for you so you need
+to make sure that it's that the device
+that you're buying is going to meet your
+needs is this
+the right device for you I don't know
+you may be able to get away with a
+lesser one something a little smaller a
+little bit a little less expensive and
+and you can go through the list of their
+hardware and figure out which one is
+right for you but keep in mind the
+software that runs it from the very
+cheapest 30 40 dollar router that
+mikrotik makes all the way up to the
+very most beautiful rack-mountable $600
+unit the software the firmware the
+capabilities of the programming are
+completely the same so the only
+limitation is based on hardware so you
+can start off with something really
+cheap and work your way up later you can
+upgrade if you need something better
+that's pretty cool
+so again cat5 dot TV slash mikrotik the
+now all all that I've done is plugged in
+the power so far but what we need to do
+first and foremost is I need to bridge
+my internet modem so my internet service
+provider has provided an internet modem
+that allows me connectivity but that
+modem has a DHCP server it has a
+firewall and it's basically allowing my
+computers to communicate to the Internet
+well I'm going to replace that built-in
+firewall and that built-in router with
+and the DHCP server with my mikrotik so
+I need to do what's called a bridge so
+the modem that my ISP provides mine is a
+hITRON modem I need to set it so that it
+is nothing but a modem and then we're
+going to use this device to control it
+so the way I'm gonna do that is I'm
+gonna log into the interface and the
+hITRON modems rcus admin is the log in
+your modem is going to be different so
+do keep that in mind it's gonna be the
+IP address of your gateway you can find
+out more by contacting your ISP if
+you're not sure how to do that but just
+ask them hey how do I bridge my modem
+that's the important thing so it is just
+gonna be a dumb modem that gives my
+mikrotik access to the Internet
+so on the hITRON I'm going to go into
+basic and then gateway function and
+residential gateway function is enabled
+by default
+I want to simply disable that now keep
+in mind as soon as I say okay I'm gonna
+lose access to the Internet once I hit
+Save Changes so let's do it
+because now I have turned that into a
+dumb modem so let's grab an Ethernet
+cable and let's let's uplink our router
+board so the router board port number
+one I'm going to set as my LAN port so
+I'm going to connect that into my
+network just get this out of the way
+this is a little bit rickety because I'm
+doing this you know pretty makeshift but
+you're gonna get the idea basically port
+number one from the router board is
+going to come out to my my modem so I'm
+gonna plug that in to my modem here
+there we go connected and good let's see
+yeah doesn't seem to matter which port I
+go in I'm gonna just jam that in there
+there we go
+and now I'm gonna take the cable that
+was up linking me to the network and I'm
+gonna plug this into port number two on
+my router board and that's going to give
+me access to the micro tech I say router
+board mikrotik as the brand router board
+is the product so my network which is my
+switch is now connected to port number
+two so my computer is basically seeing
+port number two port number one on the
+mikrotik is going into the back of the
+actual ISP modem which is now set to
+bridged mode so let's jump over to our
+mikrotik first of all we need to see
+what's now one thing you're gonna notice
+is that I am at 10.00 dot
+to find out what my new network is now
+that I am on the micro tech ipconfig
+/all so this is
+in Windows in Linux you're gonna type IP
+space - a and let's find out what kind
+of networking I've got here okay I'm
+still seeing a default gateway of
+10.0.0.0 it has not refreshed yet so
+let's check so I'm on Windows 10 and
+even though a reboot could trigger
+basically fixing your network by trying
+to reconnect all I'm gonna do is I'm
+gonna right click on my 8th ernet
+adapter and disconnect disable the
+Ethernet adapter and re-enable it and
+now once it reconnects I should be able
+to do an IP config slash all and should
+see yes ok so we now are on 192.168.1 so
+let's try that 192.168.1 and there we
+are with router OS so in retro ass first
+thing we with now this is the quick set
+so this is allowing us to quickly set up
+our mikrotik router device so let's see
+what's happening here so DHCP server
+range I want to change that to 10 dot 0
+dot 0 dot one hundred two 10.0.0.0 for
+now you may not need to do that because
+you may be using 192.168.1 ever I need
+to I here at the studio I use the
+10.0.0.0 block so that is general
+networking and not really what I'm
+setting out to do here and and teach you
+but essentially that's my IP block if
+you're happy with 192.168.1 that's fine
+I'm doing 10.0.0.0 my router and setting
+the DHCP server range accordingly from
+100 to 250 for all right so anything
+else that I need to set here I can set
+up my wireless and everything else I'm
+gonna do that
+in a little bit so let's just get our IP
+address working here so I'm going to hit
+apply configuration notice the address
+acquisition is grabbing from Ethernet
+port number one that's why I plugged my
+modem in there and I've set it to
+automatically get the IP address so
+let's see what happens here as as I
+apply that configuration so we should
+see that that router is going to restart
+itself and when it does we're going to
+be on at 10.00 metwork
+cheap and cheerful solution alright ten
+dot 0 dot 0 dot
+two to get everything set up okay so
+let's let's renew our DHCP from this is
+our internet connection let's see what
+it's given us let's release and renew
+make sure yes we are on Ethernet port
+number one I do not have a live
+indicator light so something my cable
+wasn't plugged in all the way ah that is
+thing number two to do so do you see how
+that just popped right in boom I am live
+on the internet so now I should already
+have access to say Google yes I am
+online let's do a quick speed test
+let's see how she's doing
+go-go-go so that was a pretty miserable
+download speed upload speed not terrible
+test again something's up there maybe
+we're just in that you know that
+pandemic internet speed everything is
+pretty slow right now yeah getting
+pretty low speeds so even still a 10
+over 100 router would only give me up to
+100 megabits and I'm pushing 156 right
+now that's pretty bad considering I'm
+supposed to have a gig but at least I
+know that I'm getting better than 100
+megabits a second so there we go
+everything looks pretty well set let's
+jump into web Figg now this is what
+makes the mikrotik so very powerful this
+is the software which you will get lost
+if you try to find your way through here
+and note that that's as quick as it was
+to get everything up and running but I
+am going to need to set up things like
+under IP I can set up DHCP reservations
+so as my devices connect I can actually
+set these up as static devices you'll
+notice it's counting backwards so my
+computer actually got to 54 so it's
+actually starting at the high end of the
+DHCP pool and working its way down which
+is fine if I wanted to I could make that
+static by simply clicking on make static
+again I'm an IP dhcp server i've single
+clicked on my computer and i can click
+on make static i'm not gonna do that but
+i will need to do that with things like
+my server when i bring those online so
+that is really like really cheap and
+cheerful quick setup of my network now
+let's actually get Wi-Fi up and running
+so Wi-Fi is pretty straightforward i'm
+going to add a Wi-Fi password of
+dum-dum 1 2 3 don't actually do that I'm
+doing that for the sake of the
+demonstration
+okay so network name on 2 gigahertz I
+can leave it as is or I can say cat 5 TV
+2 point I guess I can't I'm not sure if
+I can have a point in there or not I'll
+go cat 5 TV and then for 5 gigahertz
+I'll go cat 5 TV 5 gigahertz yeah all
+right so see the options here B G B G n
+BG n GN and then we've got a and a n a n
+a see only AC and n with a see there's
+my password okay so looks good apply
+that configuration now one of the things
+that's really really neat about this
+okay first of all you notice I'm not
+having to reboot my router every time
+and notice I'm starting to pick up some
+Wi-Fi connectivity here I don't have to
+reboot every time I change the
+configuration and when I create any kind
+of config it's instantaneous so but what
+is cool about web fig this web interface
+so notice I'm accessing this through the
+IP address of the router is that if I
+were to brick my mikrotik and I don't
+want to lose the settings that I've
+created presumably you've backed them up
+because you can within web fig that's
+part of the system so if I jump into
+that do you I want to say it's in system
+system to do recent reboot ports see how
+vast this is I will find and cover
+backing up your micro spec oh there's a
+sub out dot riff file so that will do it
+but if you were to cause a problem that
+would not that would make it so that you
+cannot log in to this mikrotik provides
+a piece of software so I've just logged
+out and you can
+download and install wind box wind box
+is a Windows application it's also
+available for Mac and it gives you the
+interface it basically detects your
+router on the network and it gives you
+the same interface with a little more
+functionality like micro multitasking
+but even if you cannot get into the web
+interface you can use wind box
+I say it's a Windows application you can
+download it and run it in wine on your
+Linux box so do not be concerned about
+that notice I can log in with no
+password so I want to go into quick set
+and just set myself password on my
+router dum-dum 1 2 3
+dum-dum 1 2 3 and apply that config and
+so now if I log out and try to log in
+again its gonna say authentication
+failed so I'm gonna try dum-dum 1 2 3
+enter make sure you use smart passwords
+ok folks
+best way to do that is use a tool like
+like LastPass and generate a secure
+password ok grab that make that your
+password and and then use LastPass or
+whatever password manager you're using
+in order to memorize it and that's going
+to keep you a lot safer
+of course the interface is only
+accessible within my network so it can
+be something that's familiar to you as
+well so that is so we've got Wi-Fi
+working presumably so let's see if I
+bring up my phone here and drag down
+let's bring up our Wi-Fi networks and
+you will see cat 5 TV 5 gigahertz is
+there and ready for me to connect I'm
+going to try it connect to it and type
+dum-dum
+1 2 3 connect and obtaining IP address
+and I'm in done and it's detected cat 5
+TV the 2 gigahertz as well and I'm
+connected so now if I go I pee and then
+DHCP server and go into my leases you'll
+see that there's a new device that's my
+phone so I can make that static and I
+can and notice that is the polka phone
+okay phone f1 Robbie
+so it's as
+because that to pick things up be able
+to configure it and literally we we just
+set up our internet and got up and
+running in a matter of minutes what are
+we gonna do for the rest of the show
+folks what are we gonna do
+so checkout cap five dot TV slash
+mikrotik these devices are affordable
+they are powerful we're gonna learn all
+kinds of amazing things that we can do
+with this it's so much better than the
+built-in firewall and protection that
+comes with your ISPs modem it removes
+the ISPs ability to be able to connect
+in and access your network that's
+important think about that for a second
+when you install a a modem from your ISP
+your internet service provider they have
+access to that remember when I bridged
+it that made them lose access to it now
+the only device that they can see if
+they're trying to track is the the
+mikrotik they cannot access it however
+they might be able to see just that
+there is a device connected I could
+connect another hundred computers they
+would still only see one device
+connected so it gives you a fair amount
+of privacy against the ISP snooping as
+well and that said it's giving you a
+huge amount of privacy against script
+kiddies and hackers and everything else
+but at the same time we're gonna be able
+to create a safer network within our
+internal infrastructure which is going
+to be fantastic I mean it's so nice to
+be able to give out a Wi-Fi password to
+your friends and family as they come and
+visit but you don't want them to have
+access to the files on your server to
+your printer to using all your bandwidth
+as you're trying to you're trying to do
+something online and something's weird
+it's running so slow well little did you
+know that somebody who you gave your
+Wi-Fi access to is downloading a movie
+from next door right so these are things
+that we're gonna be able to prevent with
+our mikrotik so check out the series
+cat5 TV slash mikrotik it's gonna be
+amazing and we're up and running I'm
+gonna put this in the rack and I'm
+excited because this is a
+a better solution for my network check
+it out cat 5 TV slash Microtech I do
+have to take a really quick break when
+we get back we've got back on down with
+the news stick
+welcome back with this week's top tech
+stories here's Becca
+here's what's coming up in the category
+five TV newsroom there's a black hole
+lurking within a thousand light years of
+Earth and people in the southern
+hemisphere can see stars circling it
+with the naked eye two terabytes of
+Nintendo source code was leaked Facebook
+trained their AI chat BOTS using reddit
+posts Tesla has applied to become an
+electricity supplier in the UK the Poco
+f2 pro smartphone with the qualcomm
+snapdragon 865 has launched globally and
+twitter will allow employees to work
+from home for as long as they want stick
+around the full details in this week's
+crypto corner are coming up this is the
+category 5 TV newsroom covering the week
+stop texting with a slight linux bias
+from the newsroom
+I'm Becca Ferguson astronomers have
+stumbled across the nearest black hole
+to us yet the void lies at the heart of
+a stellar system just a thousand
+light-years away and indications to his
+location are visible to the naked eye a
+team of researchers were observing the
+hr6 81:9 star system from the European
+Southern Observatory in Chile as part of
+a wider survey studying by our start
+binary star systems and they stumbled
+across a third object
+spectrographic data revealed that one of
+the stars orbited an invisible companion
+every 40 days meanwhile the second star
+sits much farther away from the first
+they now believe that the HR 68 19 is
+not a double system but a triple system
+one that contains two stars that are
+both around the six solar masses and a
+third object that is at least 4.2 solar
+masses that number is much too high for
+the object to be a neutron star
+Thomas Ravinia spher star of the study
+said an invisible object with a mass at
+least four times out of the Sun can only
+be a black hole if the researchers are
+indeed correct the object will be the
+closest black hole from earth discovered
+yet Peter had drama the co-author of the
+research said the team was totally
+surprised when we realized that this is
+the first stellar system with a black
+hole that can be seen with the unaided
+eye as a point of clarity the black hole
+itself isn't visible to the naked eye
+only the stars are for those in the
+southern hemisphere hoping to catch a
+glimpse it's located in the telescope
+ium constellation and will be best
+viewed during a clear night and two
+fuzzy bright pinpricks should be
+discernible
+without binoculars or a telescope
+although the object seems to have been
+ears all along it is escaped detection
+until now not only is the black hole
+pretty small is also very quiet meaning
+it doesn't spew Jets of electromagnetic
+radiation
+unlike the supermassive ones at the
+Centers of galaxies guzzling up the
+stars the team has only managed to infer
+its existence from the wobble of the
+stars that orbit it the team is hoping
+to capture images of the orbit to
+further establish the distance in mass
+of the system's objects an anonymous
+hacker leaked around 2 terabytes worth
+of source code related to the Nintendo
+Wii GameCube and intend oh 64 designs
+this cache includes very log code for
+the hardware essentially the coded
+blueprints for the various chips while a
+neat peek into the inner workings of
+Nintendo and a rare look at the
+low-level design of the specialized
+chips that go into consoles don't expect
+too much to come out of this while in
+theory the very log code could be used
+to turn chlochops into Nintendo chip
+knock-offs the equipment and expertise
+needed to do that would be very
+expensive and not the sort of thing a
+hobbyist could do and any commercial
+efforts would no doubt be torn to shreds
+by Nintendo lawyers the leak also
+apparently won't be of any use to the
+developers of emulators who can only
+legally do what they do by reverse
+engineering the developers of the
+dolphin emulators say in response to the
+leak we cannot use anything of any sort
+from a leak in fact we can't even look
+at it
+dolphin is only illegal because we are
+cleanroom reverse engineering the
+GameCube and Wii if we use anything from
+a leak dolphin is no longer legal and
+Nintendo will shut us down that's not to
+say there won't be a fly-by-night
+emulators which include the lead code
+but we'd advise serious caution when
+considering and using any such tool as
+it is very likely to include malware or
+backdoors for malicious use Facebook has
+launched a new chat bot that it claims
+is able to demonstrate empathy knowledge
+and personality their chat bot which
+they've annoyingly named blender was
+trained using available public domain
+conversations which included 1.5 billion
+examples of human exchanges but experts
+say training the artificial intelligence
+using a platform such as reddit has its
+drawbacks
+numerous issues arose during longer
+conversations blender would sometimes
+respond with offensive language and at
+other times it would make up facts
+altogether researchers said they hoped
+further models would address some of
+these issues
+artificial intelligence expert Dave
+Chopin said that blend
+was a step in the right direction but
+noted two fundamental issues that still
+need to be overcome he told the BBC the
+first is just how complex it is to
+replicate all of the nuances of a human
+attribute like the ability to hold a
+conversation a sip a skill that most
+three-year-olds can master the second is
+around the relationship with the data
+used to train the model and the results
+generated by the model it goes on to
+explain as great a platform as Retta is
+training algorithms based on the
+conversations you find there is going to
+get you a lot of chaff amongst the wheat
+Facebook also compared blenders
+performance with the latest version of
+Google's own chat BOTS Mina it showed
+people two sets of conversations one
+made with blender and the other with
+Mina conversations included a wide range
+of topics including movies music and
+veganism Facebook said the 67% of
+respondents through blender sounded more
+human than Mina the researchers noted we
+achieved this milestone through a new
+chat bot recipe that includes improved
+decoding techniques novel blending of
+skills and a model with nine point four
+billion parameters which is 3.6 times
+more than the largest this existing
+system building a truly intelligent
+dialogue agent that can chat like a
+human remains one of the largest open
+challenges in AI today all right thanks
+Becca we've got to take a quick break
+when we come back Robert Koenig is here
+with the crypto corner and Becca's got
+more news stories for us coming up as
+well stick around
+you
+come back for the cryptic corner of your
+well this week I'd like to focus on
+information if you've been more than one
+week with this in this industry and
+you've post around YouTube or any other
+news outlets you'll have seen that there
+is a lot of different information out
+there and most of that is misleading
+yeah you've got those maximalist that
+are pretending that their coin or token
+is the best one and that everything else
+is pretty bad you have got those that
+are shilling coins so they're trying to
+sell you something and a lot of people
+also have got no clue what they're
+talking about so this week I'd like to
+focus on exactly that subject I've been
+in this industry since 2015 and what
+you'll see now is a collection of those
+YouTube videos and podcasts that I
+follow on a regular basis you'll see the
+table at the end of this video and it
+will be tabled with the name off of the
+podcast or YouTube video and then in the
+case of YouTube I also added the
+subscribers so that you can find it
+easier in case there's somebody
+pretending to be that youtuber so let's
+start with it
+crypto 101 it's a podcast it's two guys
+then are doing interviews and one every
+two or three days
+they're fantastic those interviews
+because they're neutral they don't
+pretend to be threatening or anything
+like that they're just neutral they're
+really kind kind and they get the
+information that you as a user would
+like to hear so crypto 101 fantastic
+podcast next one is Ivan on tech so
+that's for us here at category 5 an
+interesting one because he focuses on
+the coding and programming side he does
+seven days a week a YouTube video it's
+one of the leaders in this industry in
+regards to programming and coding the
+third one is Andreas Antonopoulos
+he is one of the oh geez in the Krypton
+industry 2014 he did a presentation in
+front of the Canadian Senate he does
+probably five or six YouTube videos a
+week and the nice thing for you is that
+he categorizes them so it's not just
+talking about everything he categorizes
+them so that it's easy for you to find
+or see if it's something that's of
+interest to you or not next one is
+crypto whereby the O is a zero it's not
+an O it's a zero it's a guy called Omar
+bomb really nice guy has been in this
+industry for a no H long time knows
+everybody and has got fairly good news
+he does it also around every two or
+three days fillet is crypto bud who I
+read very high because he is coming from
+the trading traditional trading of
+traditional finance point of view and he
+does fantastic analysis on coins and
+tokens and projects he really goes into
+detail with us and analyzes them and and
+it's very good what he does followed is
+Laura Shin I would say she's the only
+real journalist in this industry and
+when she has got somebody that she
+interviews those interviews go in depth
+and in a really professional so I love
+to listen to Laura shins podcasts crypto
+daily it's the next one
+he is the fun guy of this industry if
+you interested in memes combined with
+some information then he's the right guy
+for you if you want to enlighten your
+life a little bit then yes definitely go
+with crypto daily the modern investor is
+somebody that never shows his face he
+sits somewhere in Europe and he reads
+the news as he finds them on all those
+news heartless oz left us outlets that
+exists he does it very well he
+also gives his own opinion on those yeah
+the modern investor next one is Stefan
+laverra it's not somebody if you want to
+geek out that's the right person for you
+behind Andreas Antonopoulos II I would
+say he is the one who has got the most
+detailed knowledge of products wallets
+exchanges everything he does interviews
+and he has always also the top people
+lined up so Stefan leave ever for the
+technical people box mining next one is
+also technical he was a programmer game
+programmer is based in Hong Kong and
+that's also very good analysis of koto
+concerns
+the moment he mixes a lot of news from
+Hong Kong and China in regards to the
+virus that is currently going around and
+but when he goes to crypto his knowledge
+is very good and also unbiased last but
+not least is data - I would say he's the
+best one doing technical analyst
+analysis so if you're into technical
+analysis then data - is the right person
+he has got very good knowledge huge
+follow base and knows knows the market
+also very well so all those here that I
+just mentioned are those that I am
+watching on a regular basis I rate all
+those as mutual people that really know
+what they're talking about
+so that's the ones that I recommend to
+you and as you will see in a second
+you'll have that table behind me so you
+don't have to write things down anyway I
+wish a great week all the best see you
+next week and stay safe bye
+[Applause]
+thank you Robert
+just a reminder for you viewing at home
+we are not giving financial advice here
+on the show however we're just giving
+you the facts and letting you run with
+it keep in mind though that the
+cryptocurrency market is always changing
+always evolving and is always volatile
+so we suggest only invest what you can
+afford to lose now with more of your
+tech news here's Becca Thank You Robby
+best known for its electric cars Elon
+Musk's company Tesla also makes
+batteries that store renewable energy on
+both domestic and industrial scales and
+they have applied to become an
+electricity supplier in the UK the
+application was lodged at the end of
+March with the UK's gas and electricity
+markets Authority for a license to
+generate electricity to supply any
+premises in Great Britain there has been
+lower demand for electricity during
+lockdown as a result of the corona virus
+pandemic with many factories and major
+businesses having to shut down but
+electricity supply and demand has to be
+balanced within the grid for it to
+function being able to generate and
+store our own electricity does have its
+appeal especially if the grid becomes
+unbalanced and requires the power to be
+cut temporarily in addition Tesla has
+developed software called Auto bitter
+that allows customers to sell surplus
+electricity back to the grid
+automatically they use auto bitter in
+South Australia but it's not yet clear
+if they plan to build similar large
+battery plants in the UK which are
+required to store the surplus a home
+version of the Tesla battery the
+powerwall cost thousands of British
+pounds and requires a set of solar
+panels you may remember the polka phone
+f1 now the poco f2 Pro has launched
+complete with the Qualcomm Snapdragon
+865 an impressive 8k video recording the
+polka phone f1 was a rare Beast and an
+actual example of a flagship killer now
+almost two years later
+it's finally time for an upgrade the
+poco brand began as a sub brand of
+Chinese phone manufacturer show me but
+with the success of the f1 it was
+decided that it could stand on its own
+and they broke it out into its own
+independent company based in India
+following the f1 they rebranded the
+mid-range redmi k 30 calling it the poco
+x2 now the new f2 model is essentially a
+rebranded K 30 pearl the poco f2 pro
+brings a long list of improvements
+compared to the f1 starting with the
+latest chipset a snapdragon 865 is the
+best chip from qualcomm yet and one of
+the first to feature GPU drivers that
+can be updated which might improve the
+phone's longevity a lot of emphasis was
+placed on the liquid-cooled 2.0 Tec with
+a vapor chamber that in itself is larger
+than competing phones poco says this
+will enable more efficient cooling the
+f2 pro runs Android 10 out of the box
+with poco launcher 2.0 dark mode is
+available which looks gorgeous on the
+upgraded AMOLED screen storage now
+starts at 128 gigabytes there's also a
+256 gigabytes option which we'd
+recommend since they've removed the
+microSD slot and the 8k video can eat up
+a lot of space the storage is fast UF u
+FS 3.1 up from 2.1 on the f1 the new
+camera on the foot on the poco f2 pro
+may be what pushes diehard poco Fong f1
+fans to upgrade the phone has four
+rear-facing camera sensors the setup
+includes a 64 mega pixel pixel sony imx6
+86 sensor
+it supports three-time optical optical
+zoom as well as dual optical image
+stabilization there's also a 13
+megapixel ultra wide-angle camera an 8
+pixel mega an 8 megapixel tell them I
+tell them that this is a tongue-twister
+an 8 megapixel tell a macro camera and a
+5 megapixel sensor for selfies you get a
+20 megapixel camera on a motorized
+pop-up mechanism capable of just a 1080p
+video that's the one thing we'd really
+like
+to see improved 4v loggers who are
+forced to use the rear cameras if they
+want to shoot in 4k or 8k Ultra HD
+speaking of Ultra HD the more powerful
+chipset enables 8k recording at the full
+30fps and 4k videos can now be recorded
+at 60fps the switch to mm OLED also let
+allowed the fingerprint reader to be
+hidden in the screen the screen
+refreshes that a standard 60 Hertz but
+the touch sampling rate has been
+increased to 180 Hertz the poco f2 also
+has wide by an l1 certification so we
+can play HD content from Netflix Amazon
+Prime video and other services the
+capacity of the battery has increased to
+of 4,700 milliamp hours with faster 30
+watt charging and a headphone jack is
+still included the poco f2 is available
+now through our partners head over to
+cap 5 TV slash f2 to check it out
+according to a spokesperson for the
+company Twitter CEO Jack Dorsey told
+employees on Tuesday that many of them
+will be allowed to work from home in
+perpetuity even after the corona virus
+pandemic ends in an email first obtained
+by BuzzFeed news Dorsey said it was
+unlikely that Twitter would open his
+offices before September and that all in
+person events would be canceled for the
+remainder of the year the company will
+accept assess its plans for 2021 events
+later this year the spokesperson said we
+were uniquely positioned to respond
+quickly and allow folks to work from
+home given our emphasis on
+decentralization and supporting a
+distributed workforce capable of working
+from anywhere the past few months have
+proven we can make that work so if our
+employees are in a role and situation
+that enables them to work from home and
+they want to continue to do so forever
+we will make that happen if not our
+offices will be there warm and welcoming
+selves with some additional precautions
+when we feel it's safe to return
+Twitter's new policy comes as businesses
+around the world are struggling to adapt
+to social distancing guidelines and
+rethinking how they will operate in a
+post
+endemic world major tech companies such
+as Facebook Google and Microsoft were
+early to move to a work-from-home model
+and have also been the most cautious in
+planning for moving employees back into
+the office Google has told employees
+that the vast majority of them will work
+from home until 2021 though some will
+return in the early summer Facebook will
+similarily start to reopen offices after
+the July 4 weekend but will let
+employees who are able to work from home
+do so until next year
+big thanks to Roy W Nash and our
+community of viewers for submitting
+stories to us this week thanks for
+watching the category-five TV newsroom
+don't forget to Like and subscribe for
+all your tech news with a slight Linux
+bias and if you appreciate what we do
+become a patron at patreon.com slash
+category 5 from the category 5 TV
+newsroom I'm Becca Ferguson Thank You
+stick around
+well folks were still not up to 100% yet
+we're doing our best I'm doing my best
+here at category 5 TV the studio is not
+set up the way that I want it to be it's
+not quite there I'm Way behind schedule
+as far as how things are going from the
+live perspective but I'm doing all I can
+and and we're not quite filling the time
+and getting everything together the way
+that I really want to be doing so we're
+getting there
+category 5 technology TVs still here
+we're still strong we're growing where
+we're learning and we're evolving in our
+new space but we're not there yet so hey
+stick it out with us visit our website
+category 5 dot TV hey it would be such
+an encouragement just to know that
+you're checking out our website checking
+out some of those back episodes we've
+got 13 years worth of tech TV not only
+that but we also have some really great
+features on our website so if you go to
+category 5 TV you'll see some new
+features in the menu bar for example
+we've got a button that says quite
+literally feature and that's where
+you'll find today's feature on the
+mikrotik router that's going to be a
+part of that menu item and and well what
+does that mean Robbie well it's a way
+for you to be able to find content that
+is relevant to other content so what
+that means is as we proceed with this
+series you're going to get to see every
+single video that has been released in
+that series so you can follow along it
+makes things so much easier you don't
+have to nitpick and try to find the
+right videos and make sure that you're
+in order no it's very straight forward
+it's a list of videos that you're going
+to be able to easily find so that's just
+one feature of our website category 5
+dot TV thank you so much for being
+here with us this week I appreciate you
+I appreciate you supporting
+category-five technology TV if you're
+not doing that yet please go to donate
+category 5 TV or even better patreon.com
+slash category 5 that's a great way to
+support us thanks for being here
+everybody we'll see you again next week

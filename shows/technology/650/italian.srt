@@ -1,0 +1,2040 @@
+1
+00:00:00,500 --> 00:00:08,730
+chi è il nerd calvo oh hey scusa questo è imbarazzante non ti ho visto lì
+
+2
+00:00:08,730 --> 00:00:12,120
+questa settimana sulla TV tecnologica di categoria cinque inizieremo con il
+
+3
+00:00:12,120 --> 00:00:18,060
+nozioni di base sui router mikrotik è una serie che ti aiuterà a proteggere il tuo
+
+4
+00:00:18,060 --> 00:00:22,859
+rete domestica o aziendale e dobbiamo iniziare da qualche parte, quindi possiamo anche iniziare
+
+5
+00:00:22,859 --> 00:00:27,420
+con l'inizio configureremo il nostro router per la prima volta
+
+6
+00:00:27,420 --> 00:00:30,359
+oggi e poi nel corso della serie imparerai come
+
+7
+00:00:30,359 --> 00:00:35,489
+per rafforzare quella rete e rendere le cose il più sicure possibile utilizzando un file
+
+8
+00:00:35,489 --> 00:00:41,190
+dispositivo che è molto più conveniente di quanto dovrebbe essere possibile per il set di funzionalità
+
+9
+00:00:41,190 --> 00:00:47,450
+questo è il micro tip stick intorno, inizieremo subito dopo
+
+10
+00:01:09,070 --> 00:01:12,130
+[Musica]
+
+11
+00:01:13,189 --> 00:01:18,149
+le nostre registrazioni live sono affidate solo alle unità a stato solido di Kingston
+
+12
+00:01:18,149 --> 00:01:22,530
+la tecnologia fa rivivere il tuo computer con prestazioni e affidabilità migliorate
+
+13
+00:01:22,530 --> 00:01:29,250
+su dischi rigidi tradizionali con SSD Kingston di categoria 5 in streaming TV in diretta
+
+14
+00:01:29,250 --> 00:01:34,259
+con Telestream Wirecast e agile streamer sintonizzati ogni settimana su Roku Cody
+
+15
+00:01:34,259 --> 00:01:41,310
+e altri lettori video HLS per gli orari degli spettacoli locali visitare la categoria 5 dot TV I'm
+
+16
+00:01:41,310 --> 00:01:45,539
+Robby Ferguson grazie mille per essere qui con me di nuovo questa settimana
+
+17
+00:01:45,539 --> 00:01:51,060
+nello studio di produzione aka the bridge the bridge è come lo chiamiamo qui
+
+18
+00:01:51,060 --> 00:02:00,360
+TV con tecnologia di categoria 5 allo Studio e, quindi stiamo iniziando una serie sulla micro tecnologia
+
+19
+00:02:00,360 --> 00:02:07,380
+router si tratta di una tecnologia dirompente in quanto forniscono funzionalità
+
+20
+00:02:07,380 --> 00:02:14,040
+che sono disponibili solo generalmente sul mercato come caratteristiche di livello aziendale così
+
+21
+00:02:14,040 --> 00:02:18,959
+devi pagare un sacco di soldi per ottenere questo tipo di funzionalità bene queste
+
+22
+00:02:18,959 --> 00:02:25,500
+i ragazzini di mikrotik riescono a farlo molto meno, parliamo del 10%
+
+23
+00:02:25,500 --> 00:02:31,470
+del prezzo quindi è un'ottima cosa e ci permette di creare una casa migliore
+
+24
+00:02:31,470 --> 00:02:37,830
+rete una migliore rete di ufficio perfetta per PMI o lavoratori autonomi, quindi se
+
+25
+00:02:37,830 --> 00:02:41,700
+quello sei tu o se vuoi solo rendere la tua rete domestica il migliore possibile
+
+26
+00:02:41,700 --> 00:02:44,730
+forse starai bene questa serie è per te che andremo
+
+27
+00:02:44,730 --> 00:02:48,750
+ti guiderò attraverso tutto, dalla configurazione di base
+
+28
+00:02:48,750 --> 00:02:53,849
+oggi fino alla creazione di una rete Wi-Fi ospite che lo consentirà
+
+29
+00:02:53,849 --> 00:02:59,670
+i tuoi amici figli di utilizzare il Wi-Fi senza effettivamente rischiare l'integrità
+
+30
+00:02:59,670 --> 00:03:04,680
+dei tuoi dati personali c'è molto che possiamo fare con un router micro-tecnologico e
+
+31
+00:03:04,680 --> 00:03:08,970
+ti aiuteremo in questo durante il corso di questa serie
+
+32
+00:03:08,970 --> 00:03:14,040
+serie è disponibile su cat5 dot TV slash mikrotik quindi assicurati di andare lì e
+
+33
+00:03:14,040 --> 00:03:17,220
+vedrai ciascuno dei video più l'hardware che sarà
+
+34
+00:03:17,220 --> 00:03:22,440
+necessario parlare di hardware ora ho optato per il router AC hap micro tech
+
+35
+00:03:22,440 --> 00:03:29,730
+board RB 9 6 - UI GS e il motivo per cui ho optato per questo particolare modello è
+
+36
+00:03:29,730 --> 00:03:33,990
+beh, ci sono alcune cose diverse essenzialmente ora ha Gigabit Ethernet
+
+37
+00:03:33,990 --> 00:03:38,970
+il mio Internet qui in studio è gigabit, quindi se avessi un router
+
+38
+00:03:38,970 --> 00:03:43,230
+che ha fatto solo 10 su 100, in realtà ne riceverò solo cento
+
+39
+00:03:43,230 --> 00:03:47,010
+megabit al secondo sul mio servizio Internet anche se è in grado di farlo
+
+40
+00:03:47,010 --> 00:03:52,890
+molto di più quindi dovevo assolutamente assicurarmi che il mio router funzionasse
+
+41
+00:03:52,890 --> 00:03:58,850
+supporta Gigabit Ethernet in modo che e gigabit Internet in modo che io non lo sia
+
+42
+00:03:58,850 --> 00:04:03,480
+perdere parte della velocità della mia connettività Internet che è molto molto importante
+
+43
+00:04:03,480 --> 00:04:10,440
+secondo a questo è il fatto che ha una doppia radio quindi Wi-Fi 2.4 e 5 gigahertz
+
+44
+00:04:10,440 --> 00:04:16,739
+quindi posso mettere le mie fotocamere su 2,4 gigahertz che è una banda piuttosto saturata ma
+
+45
+00:04:16,739 --> 00:04:20,549
+allo stesso tempo posso avere 5 gigahertz per il mio telefono e altri dispositivi
+
+46
+00:04:20,549 --> 00:04:24,480
+che ho una maggiore velocità, una migliore connettività e funzionerà davvero
+
+47
+00:04:24,480 --> 00:04:29,220
+molto bene supporta 802 11 BG en Wi-Fi
+
+48
+00:04:29,220 --> 00:04:34,350
+capacità tutto da questo piccolo dispositivo che non ci costerà un intero
+
+49
+00:04:34,350 --> 00:04:39,570
+un sacco di soldi puoi saperne di più sulla linea di prodotti vai al nostro sito web cap v
+
+50
+00:04:39,570 --> 00:04:43,590
+dot TV slash mikrotik e segui il link e questo ti porterà a un file
+
+51
+00:04:43,590 --> 00:04:47,400
+index quindi ciò che è interessante dovrei dire che ho già trattato questo argomento
+
+52
+00:04:47,400 --> 00:04:53,760
+il video introduttivo un paio di settimane fa, ma solo per essere chiari su ciò che è pulito
+
+53
+00:04:53,760 --> 00:04:58,470
+su mikrotik è che non è limitato dal software, quindi il firmware di
+
+54
+00:04:58,470 --> 00:05:04,770
+router non ti limita allo stesso modo di un router consumer tradizionale
+
+55
+00:05:04,770 --> 00:05:10,620
+in genere dovresti pagare di più per più funzionalità, beh mikrotik e le loro
+
+56
+00:05:10,620 --> 00:05:17,760
+il sistema operativo della scheda del router se è completamente aperto per quanto riguarda il set di funzionalità
+
+57
+00:05:17,760 --> 00:05:22,290
+l'unica considerazione quando si acquista un dispositivo micro-tecnologico è qual è il
+
+58
+00:05:22,290 --> 00:05:27,150
+hardware farà per te, quindi devi assicurarti che sia quello il dispositivo
+
+59
+00:05:27,150 --> 00:05:30,660
+che stai acquistando soddisferà le tue esigenze è questo
+
+60
+00:05:30,660 --> 00:05:35,310
+il dispositivo giusto per te Non so potresti essere in grado di farla franca con un
+
+61
+00:05:35,310 --> 00:05:41,580
+minore qualcosa di un po 'più piccolo un po' meno costoso e
+
+62
+00:05:41,580 --> 00:05:45,930
+e puoi scorrere l'elenco del loro hardware e capire qual è
+
+63
+00:05:45,930 --> 00:05:51,120
+giusto per te ma tieni presente il software che lo esegue da molto
+
+64
+00:05:51,120 --> 00:05:55,350
+router 30 40 dollari più economico che mikrotik fa fino al
+
+65
+00:05:55,350 --> 00:06:02,480
+molto più bella unità da $ 600 montabile su rack il software il firmware il
+
+66
+00:06:02,480 --> 00:06:08,340
+le capacità di programmazione sono completamente le stesse quindi le uniche
+
+67
+00:06:08,340 --> 00:06:12,570
+la limitazione si basa sull'hardware in modo da poter iniziare con qualcosa di veramente
+
+68
+00:06:12,570 --> 00:06:16,280
+a buon mercato e salire in un secondo momento puoi aggiornare se hai bisogno di qualcosa di meglio
+
+69
+00:06:16,280 --> 00:06:21,720
+è abbastanza bello quindi di nuovo cat5 dot TV slash mikrotik the
+
+70
+00:06:21,720 --> 00:06:26,190
+ora tutto quello che ho fatto finora è stato collegato alla corrente, ma quello che dobbiamo fare
+
+71
+00:06:26,190 --> 00:06:32,520
+prima di tutto devo collegare il mio modem Internet e quindi il mio servizio Internet
+
+72
+00:06:32,520 --> 00:06:37,560
+provider ha fornito un modem Internet che mi consente la connettività ma quello
+
+73
+00:06:37,560 --> 00:06:43,020
+modem ha un server DHCP, ha un firewall e fondamentalmente consente il mio
+
+74
+00:06:43,020 --> 00:06:48,030
+computer per comunicare con Internet bene, sostituirò quello integrato
+
+75
+00:06:48,030 --> 00:06:53,250
+firewall e quel router integrato con e il server DHCP con il mio mikrotik così
+
+76
+00:06:53,250 --> 00:07:00,870
+Devo fare quello che viene chiamato bridge in modo che il modem che il mio ISP fornisce al mio sia un
+
+77
+00:07:00,870 --> 00:07:07,860
+modem hITRON Ho bisogno di impostarlo in modo che non sia altro che un modem e poi siamo
+
+78
+00:07:07,860 --> 00:07:12,060
+userò questo dispositivo per controllarlo, quindi il modo in cui lo farò è io
+
+79
+00:07:12,060 --> 00:07:19,590
+accederai all'interfaccia e il modem hITRON rcus admin è il login
+
+80
+00:07:19,590 --> 00:07:26,130
+il tuo modem sarà diverso, quindi tieni presente che sarà il
+
+81
+00:07:26,130 --> 00:07:32,160
+Indirizzo IP del tuo gateway puoi saperne di più contattando il tuo ISP se
+
+82
+00:07:32,160 --> 00:07:37,650
+non sei sicuro di come farlo, ma chiedi loro ehi come faccio a collegare il mio modem
+
+83
+00:07:37,650 --> 00:07:42,090
+questa è la cosa importante, quindi sarà solo un modem stupido che dà il mio
+
+84
+00:07:42,090 --> 00:07:46,470
+mikrotik accede a Internet quindi sull'hITRON mi addentrerò
+
+85
+00:07:46,470 --> 00:07:52,170
+vengono abilitate le funzioni base e poi gateway e la funzione gateway residenziale
+
+86
+00:07:52,170 --> 00:07:55,650
+per impostazione predefinita voglio semplicemente disabilitare che ora mantieni
+
+87
+00:07:55,650 --> 00:08:00,480
+in mente non appena dico ok perderò l'accesso a Internet una volta premuto
+
+88
+00:08:00,480 --> 00:08:05,880
+Salva le modifiche quindi facciamolo perché ora l'ho trasformato in un file
+
+89
+00:08:05,880 --> 00:08:13,530
+modem stupido quindi prendiamo un cavo Ethernet e colleghiamo il nostro router
+
+90
+00:08:13,530 --> 00:08:20,880
+board quindi la porta della scheda router numero uno che imposterò come porta LAN così
+
+91
+00:08:20,880 --> 00:08:25,050
+Lo collegherò alla mia rete per toglierlo di mezzo
+
+92
+00:08:25,050 --> 00:08:33,060
+questo è un po 'traballante perché lo sto facendo, sai abbastanza improvvisato ma
+
+93
+00:08:33,060 --> 00:08:37,380
+ti verrà l'idea fondamentalmente la porta numero uno dalla scheda del router è
+
+94
+00:08:37,380 --> 00:08:48,830
+uscirà dal mio modem, quindi lo collegherò al mio modem qui
+
+95
+00:08:48,830 --> 00:08:59,010
+eccoci collegati e bene vediamo, sì, non sembra importare quale porta io
+
+96
+00:08:59,010 --> 00:09:03,090
+entra, sto solo suonando quella lì, eccoci
+
+97
+00:09:03,090 --> 00:09:08,550
+e ora prendo il cavo che mi collegava alla rete e lo sono
+
+98
+00:09:08,550 --> 00:09:12,750
+lo collegherò alla porta numero due sulla mia scheda del router e questo darà
+
+99
+00:09:12,750 --> 00:09:18,000
+me l'accesso alla micro tecnologia dico router board mikrotik come la scheda router di marca
+
+100
+00:09:18,000 --> 00:09:25,500
+è il prodotto quindi la mia rete che è il mio switch è ora collegata al numero di porta
+
+101
+00:09:25,500 --> 00:09:29,490
+due quindi il mio computer sta praticamente vedendo la porta numero due porta numero uno sul
+
+102
+00:09:29,490 --> 00:09:36,960
+mikrotik sta entrando nella parte posteriore del modem ISP effettivo che ora è impostato su
+
+103
+00:09:36,960 --> 00:09:43,350
+modalità bridge quindi passiamo al nostro mikrotik prima di tutto che dobbiamo vedere
+
+104
+00:09:43,350 --> 00:09:48,980
+quello che ora noterai è che sono a 10.00 punto
+
+105
+00:09:48,980 --> 00:09:54,830
+per scoprire qual è la mia nuova rete ora che sono sul micro tech ipconfig
+
+106
+00:09:54,830 --> 00:10:00,529
+/ tutto quindi questo è in Windows in Linux devi digitare IP
+
+107
+00:10:00,529 --> 00:10:07,069
+space - a e scopriamo che tipo di networking ho qui, okay
+
+108
+00:10:07,069 --> 00:10:15,579
+vedendo ancora un gateway predefinito di 10.0.0.0 non è stato ancora aggiornato
+
+109
+00:10:15,579 --> 00:10:22,929
+controlliamo quindi sono su Windows 10 e anche se potrebbe innescarsi un riavvio
+
+110
+00:10:22,929 --> 00:10:27,559
+fondamentalmente aggiustando la tua rete provando a riconnetterti, tutto quello che farò è sto
+
+111
+00:10:27,559 --> 00:10:33,019
+farò clic con il pulsante destro del mouse sul mio 8 ° adattatore ernet e disconnetterò disabilitare il file
+
+112
+00:10:33,019 --> 00:10:38,929
+Adattatore Ethernet e riattivarlo e ora una volta ricollegato dovrei essere in grado
+
+113
+00:10:38,929 --> 00:10:49,399
+per fare una configurazione IP taglia tutto e dovrebbe vedere sì ok quindi ora siamo su 192.168.1 quindi
+
+114
+00:10:49,399 --> 00:11:00,289
+proviamo quel 192.168.1 ed eccoci con il sistema operativo del router, quindi prima nel culo retrò
+
+115
+00:11:00,289 --> 00:11:04,609
+cosa che abbiamo ora questo è il set rapido, quindi questo ci consente di impostare rapidamente
+
+116
+00:11:04,609 --> 00:11:09,379
+il nostro dispositivo router mikrotik quindi vediamo cosa sta succedendo qui, quindi server DHCP
+
+117
+00:11:09,379 --> 00:11:20,239
+intervallo Voglio cambiarlo in 10 punto 0 punto 0 punto centodue 10.0.0.0 per
+
+118
+00:11:20,239 --> 00:11:27,019
+ora potresti non aver bisogno di farlo perché potresti usare 192.168.1 di cui ho bisogno
+
+119
+00:11:27,019 --> 00:11:34,069
+per me qui in studio uso il blocco 10.0.0.0, quindi è generale
+
+120
+00:11:34,069 --> 00:11:38,779
+networking e non proprio quello che ho intenzione di fare qui e insegnarti
+
+121
+00:11:38,779 --> 00:11:45,139
+ma essenzialmente questo è il mio blocco IP se sei soddisfatto di 192.168.1 va bene
+
+122
+00:11:45,139 --> 00:11:54,499
+Sto eseguendo 10.0.0.0 sul mio router e impostando l'intervallo del server DHCP di conseguenza da
+
+123
+00:11:54,499 --> 00:12:00,409
+Da 100 a 250 per tutto, quindi posso impostare qualsiasi altra cosa che devo impostare qui
+
+124
+00:12:00,409 --> 00:12:05,190
+il mio wireless e tutto il resto lo farò
+
+125
+00:12:05,190 --> 00:12:11,400
+tra un po 'quindi facciamo in modo che il nostro indirizzo IP funzioni qui, quindi premerò
+
+126
+00:12:11,400 --> 00:12:16,380
+applicare l'avviso di configurazione l'acquisizione dell'indirizzo sta acquisendo da Ethernet
+
+127
+00:12:16,380 --> 00:12:20,190
+porta numero uno è per questo che ho collegato il mio modem e l'ho impostato su
+
+128
+00:12:20,190 --> 00:12:26,700
+ottiene automaticamente l'indirizzo IP quindi vediamo cosa succede qui mentre io
+
+129
+00:12:26,700 --> 00:12:31,020
+applicare quella configurazione in modo da vedere che il router verrà riavviato
+
+130
+00:12:31,020 --> 00:12:40,160
+stesso e quando accadrà alle 10.00 metwork
+
+131
+00:12:44,720 --> 00:12:56,810
+soluzione economica e allegra va bene dieci punti 0 punti 0 punti
+
+132
+00:12:59,420 --> 00:13:08,040
+due per impostare tutto correttamente, quindi rinnoviamo il nostro DHCP da questo
+
+133
+00:13:08,040 --> 00:13:16,790
+la nostra connessione internet vediamo cosa ci ha dato rilasciamo e rinnoviamo
+
+134
+00:13:16,790 --> 00:13:24,630
+assicurati di sì, siamo sulla porta Ethernet numero uno, non ho un live
+
+135
+00:13:24,630 --> 00:13:32,900
+indicatore luminoso quindi qualcosa il mio cavo non è stato collegato completamente ah questo è
+
+136
+00:13:32,900 --> 00:13:38,100
+cosa numero due da fare, vedi come è appena scoppiato in boom, sono dal vivo
+
+137
+00:13:38,100 --> 00:13:43,710
+su Internet quindi ora dovrei già avere accesso per dire Google sì, lo sono
+
+138
+00:13:43,710 --> 00:13:47,450
+online facciamo un rapido test di velocità
+
+139
+00:13:50,060 --> 00:13:53,290
+vediamo come sta
+
+140
+00:13:55,079 --> 00:14:10,769
+go-go-go quindi quella era una velocità di caricamento piuttosto misera velocità di caricamento non terribile
+
+141
+00:14:10,769 --> 00:14:22,139
+prova di nuovo qualcosa è lassù forse siamo solo in quello lo sai
+
+142
+00:14:22,139 --> 00:14:28,510
+velocità di Internet pandemica tutto è piuttosto lento in questo momento, sì
+
+143
+00:14:28,510 --> 00:14:34,360
+velocità piuttosto basse, quindi anche un router 10 su 100 mi darebbe solo fino a
+
+144
+00:14:34,360 --> 00:14:40,870
+100 megabit e sto spingendo 156 in questo momento è piuttosto brutto considerando che lo sto facendo
+
+145
+00:14:40,870 --> 00:14:45,639
+Dovrei avere un concerto ma almeno so che sto migliorando di 100
+
+146
+00:14:45,639 --> 00:14:50,649
+megabit al secondo, quindi eccoci qua, tutto sembra abbastanza ben impostato
+
+147
+00:14:50,649 --> 00:14:57,970
+salta nel web Figg ora questo è ciò che rende il mikrotik così potente
+
+148
+00:14:57,970 --> 00:15:03,160
+è il software che ti perderai se proverai a trovare la strada da qui
+
+149
+00:15:03,160 --> 00:15:07,269
+e nota che è stato veloce come far funzionare tutto ma io
+
+150
+00:15:07,269 --> 00:15:17,050
+avrò bisogno di impostare cose come sotto IP posso impostare le prenotazioni DHCP
+
+151
+00:15:17,050 --> 00:15:23,980
+così quando i miei dispositivi si connettono, posso effettivamente configurarli come dispositivi statici
+
+152
+00:15:23,980 --> 00:15:28,209
+nota che sta contando all'indietro quindi il mio computer è arrivato a 54 quindi è
+
+153
+00:15:28,209 --> 00:15:32,380
+in realtà partendo dall'estremità superiore del pool DHCP e procedendo verso il basso
+
+154
+00:15:32,380 --> 00:15:37,269
+va bene se volessi potrei renderlo statico semplicemente cliccando su rendi statico
+
+155
+00:15:37,269 --> 00:15:41,709
+ancora una volta sono un server IP dhcp che ho cliccato una volta sul mio computer e posso fare clic
+
+156
+00:15:41,709 --> 00:15:45,819
+su make static non lo farò ma avrò bisogno di farlo con cose come
+
+157
+00:15:45,819 --> 00:15:53,290
+il mio server quando li porto online, quindi è davvero molto economico e
+
+158
+00:15:53,290 --> 00:15:58,600
+allegra configurazione rapida della mia rete ora mettiamo effettivamente il Wi-Fi attivo e funzionante
+
+159
+00:15:58,600 --> 00:16:04,390
+quindi il Wi-Fi è abbastanza semplice, aggiungerò una password Wi-Fi di
+
+160
+00:16:04,390 --> 00:16:09,430
+dum-dum 1 2 3 in realtà non lo faccio Lo sto facendo per il bene di
+
+161
+00:16:09,430 --> 00:16:13,210
+dimostrazione va bene quindi il nome della rete su 2 gigahertz I
+
+162
+00:16:13,210 --> 00:16:22,300
+posso lasciarlo così com'è o posso dire cat 5 TV 2 punti Immagino di non poterlo non sono sicuro se
+
+163
+00:16:22,300 --> 00:16:27,850
+Posso avere un punto lì o no, vado a cat 5 TV e poi per 5 gigahertz
+
+164
+00:16:27,850 --> 00:16:39,270
+Vado cat 5 TV 5 gigahertz sì va bene quindi vedi le opzioni qui BGBG n
+
+165
+00:16:39,270 --> 00:16:51,100
+BG n GN e poi abbiamo un e anan vedi solo AC e n con un vedere c'è
+
+166
+00:16:51,100 --> 00:16:59,860
+la mia password va bene quindi sembra buono applicare quella configurazione ora una delle cose
+
+167
+00:16:59,860 --> 00:17:03,190
+è davvero molto carino in questo okay, prima di tutto noti che non lo sono
+
+168
+00:17:03,190 --> 00:17:06,579
+dover riavviare il mio router ogni volta e notare che sto iniziando a prenderne alcuni
+
+169
+00:17:06,579 --> 00:17:14,440
+Connettività Wi-Fi qui Non devo riavviare ogni volta che cambio il file
+
+170
+00:17:14,440 --> 00:17:22,240
+configurazione e quando creo qualsiasi tipo di configurazione è istantaneo quindi ma cosa
+
+171
+00:17:22,240 --> 00:17:27,400
+è bello per il web fig questa interfaccia web quindi notate che sto accedendo tramite il
+
+172
+00:17:27,400 --> 00:17:34,570
+L'indirizzo IP del router è che se dovessi brickare il mio mikrotik e non lo faccio
+
+173
+00:17:34,570 --> 00:17:37,510
+voglio perdere le impostazioni che ho creato presumibilmente ne hai eseguito il backup
+
+174
+00:17:37,510 --> 00:17:42,900
+perché puoi all'interno di web fig che fa parte del sistema quindi se salto in
+
+175
+00:17:42,900 --> 00:17:52,840
+quello vuoi dire che è nel sistema di sistema per fare le porte di riavvio recenti vedi come
+
+176
+00:17:52,840 --> 00:18:01,330
+vasto questo è che troverò e coprirò il backup della tua micro specifica oh c'è un
+
+177
+00:18:01,330 --> 00:18:08,170
+sub out dot riff file in modo che lo farà, ma se dovessi causare un problema quello
+
+178
+00:18:08,170 --> 00:18:14,260
+non sarebbe così che non puoi accedere a questo mikrotik fornisce
+
+179
+00:18:14,260 --> 00:18:17,650
+un software, quindi mi sono appena disconnesso e puoi farlo
+
+180
+00:18:17,650 --> 00:18:22,780
+scarica e installa wind box wind box è anche un'applicazione Windows
+
+181
+00:18:22,780 --> 00:18:26,440
+disponibile per Mac e ti offre l'interfaccia che fondamentalmente rileva il tuo file
+
+182
+00:18:26,440 --> 00:18:30,990
+router sulla rete e ti offre la stessa interfaccia con un po 'di più
+
+183
+00:18:30,990 --> 00:18:38,380
+funzionalità come il micro multitasking ma anche se non puoi entrare nel web
+
+184
+00:18:38,380 --> 00:18:42,880
+interfaccia che puoi usare wind box, dico che è un'applicazione Windows che puoi
+
+185
+00:18:42,880 --> 00:18:47,920
+scaricalo ed eseguilo in wine sulla tua Linux box, quindi non preoccuparti
+
+186
+00:18:47,920 --> 00:18:52,000
+quell'avviso posso accedere senza password quindi voglio andare in impostazione rapida
+
+187
+00:18:52,000 --> 00:18:57,340
+e impostare me stesso la password sul mio router dum-dum 1 2 3
+
+188
+00:18:57,340 --> 00:19:03,940
+dum-dum 1 2 3 e applico quella configurazione e quindi ora se esco e provo ad accedere
+
+189
+00:19:03,940 --> 00:19:10,720
+di nuovo dirà che l'autenticazione è fallita, quindi proverò dum-dum 1 2 3
+
+190
+00:19:10,720 --> 00:19:13,900
+entra assicurati di usare password intelligenti ok gente
+
+191
+00:19:13,900 --> 00:19:19,780
+il modo migliore per farlo è utilizzare uno strumento come LastPass e generare un file sicuro
+
+192
+00:19:19,780 --> 00:19:25,660
+password ok prendi quella come password e poi usa LastPass o
+
+193
+00:19:25,660 --> 00:19:29,260
+qualunque sia il gestore di password che stai utilizzando per memorizzarlo e il gioco è fatto
+
+194
+00:19:29,260 --> 00:19:32,230
+per mantenerti molto più sicuro, ovviamente, l'interfaccia è solo
+
+195
+00:19:32,230 --> 00:19:35,740
+accessibile all'interno della mia rete in modo che possa essere qualcosa che ti è familiare come
+
+196
+00:19:35,740 --> 00:19:42,490
+beh, è ​​così che il Wi-Fi funziona presumibilmente quindi vediamo se io
+
+197
+00:19:42,490 --> 00:19:48,010
+apri il mio telefono qui e trascina verso il basso apriamo le nostre reti Wi-Fi e
+
+198
+00:19:48,010 --> 00:19:58,240
+vedrai che cat 5 TV 5 gigahertz è lì e pronto per me per la connessione sono
+
+199
+00:19:58,240 --> 00:20:02,350
+lo proverò connettersi ad esso e digitare dum-dum
+
+200
+00:20:02,350 --> 00:20:11,950
+1 2 3 connettersi e ottenere l'indirizzo IP e ho finito e viene rilevato cat 5
+
+201
+00:20:11,950 --> 00:20:17,760
+TV anche i 2 gigahertz e sono connesso quindi ora se vado faccio pipì e poi
+
+202
+00:20:17,760 --> 00:20:22,150
+Server DHCP e vai nei miei contratti vedrai che c'è un nuovo dispositivo che è il mio
+
+203
+00:20:22,150 --> 00:20:27,760
+telefono così posso renderlo statico e posso notare che è il telefono a polka
+
+204
+00:20:27,760 --> 00:20:31,510
+va bene telefono f1 Robbie quindi è come
+
+205
+00:20:31,510 --> 00:20:37,570
+perché quello per raccogliere le cose possiamo configurarlo e letteralmente ci limitiamo
+
+206
+00:20:37,570 --> 00:20:43,150
+ha configurato il nostro Internet e si è installato e funzionante in pochi minuti cosa sono
+
+207
+00:20:43,150 --> 00:20:46,000
+faremo per il resto dello spettacolo gente cosa faremo
+
+208
+00:20:46,000 --> 00:20:50,890
+quindi controlla cap cinque punti TV slash mikrotik questi dispositivi sono convenienti
+
+209
+00:20:50,890 --> 00:20:55,120
+sono potenti impareremo tutti i tipi di cose incredibili che possiamo fare
+
+210
+00:20:55,120 --> 00:20:59,950
+con questo è molto meglio del firewall integrato e della protezione che
+
+211
+00:20:59,950 --> 00:21:06,220
+viene fornito con il modem del tuo ISP rimuove la capacità degli ISP di essere in grado di connettersi
+
+212
+00:21:06,220 --> 00:21:10,570
+e accedi alla tua rete che è importante pensaci per un secondo
+
+213
+00:21:10,570 --> 00:21:16,870
+quando installi un modem dal tuo ISP il tuo provider di servizi Internet hanno
+
+214
+00:21:16,870 --> 00:21:21,880
+l'accesso a quel ricordo quando l'ho scavalcato che gli ha fatto perdere l'accesso ora
+
+215
+00:21:21,880 --> 00:21:26,800
+l'unico dispositivo che possono vedere se stanno cercando di tracciare è il
+
+216
+00:21:26,800 --> 00:21:31,090
+mikrotik non possono accedervi, tuttavia potrebbero essere in grado di vedere proprio questo
+
+217
+00:21:31,090 --> 00:21:35,380
+c'è un dispositivo connesso potrei collegare un altro centinaio di computer loro
+
+218
+00:21:35,380 --> 00:21:39,910
+vedrebbe ancora solo un dispositivo connesso, quindi ti dà una discreta quantità
+
+219
+00:21:39,910 --> 00:21:46,030
+di privacy contro lo spionaggio dell'ISP e detto questo ti dà un
+
+220
+00:21:46,030 --> 00:21:50,380
+enorme quantità di privacy contro gli script kiddies, gli hacker e tutto il resto
+
+221
+00:21:50,380 --> 00:21:55,540
+ma allo stesso tempo saremo in grado di creare una rete più sicura all'interno del nostro
+
+222
+00:21:55,540 --> 00:21:59,710
+infrastruttura interna che sarà fantastica, voglio dire, è così bello
+
+223
+00:21:59,710 --> 00:22:04,210
+essere in grado di fornire una password Wi-Fi ai tuoi amici e familiari quando arrivano e
+
+224
+00:22:04,210 --> 00:22:09,460
+visita ma non vuoi che abbiano accesso ai file sul tuo server
+
+225
+00:22:09,460 --> 00:22:15,760
+la tua stampante per utilizzare tutta la tua larghezza di banda come stai cercando di fare
+
+226
+00:22:15,760 --> 00:22:19,840
+qualcosa in linea e qualcosa di strano sta funzionando così lentamente bene poco hai fatto
+
+227
+00:22:19,840 --> 00:22:24,070
+sappi che qualcuno a cui hai fornito l'accesso Wi-Fi sta scaricando un film
+
+228
+00:22:24,070 --> 00:22:30,250
+dalla porta accanto, quindi queste sono cose che saremo in grado di prevenire
+
+229
+00:22:30,250 --> 00:22:34,780
+il nostro mikrotik quindi dai un'occhiata alla serie cat5 TV slash mikrotik che sarà
+
+230
+00:22:34,780 --> 00:22:39,310
+fantastico e siamo operativi, lo metterò nel rack e lo farò
+
+231
+00:22:39,310 --> 00:22:46,610
+entusiasta perché questa è una soluzione migliore per il mio controllo di rete
+
+232
+00:22:46,610 --> 00:22:51,080
+it out cat 5 TV slash Microtech Devo fare una pausa molto veloce quando
+
+233
+00:22:51,080 --> 00:22:56,559
+torniamo indietro, torniamo indietro con le notizie
+
+234
+00:22:56,790 --> 00:23:04,569
+[Musica]
+
+235
+00:23:10,180 --> 00:23:13,289
+[Musica]
+
+236
+00:23:16,480 --> 00:23:20,990
+bentornato con le migliori storie tecnologiche di questa settimana ecco Becca
+
+237
+00:23:20,990 --> 00:23:25,940
+ecco cosa sta succedendo nella redazione televisiva di categoria cinque c'è un buco nero
+
+238
+00:23:25,940 --> 00:23:29,600
+in agguato a mille anni luce dalla Terra e dalle persone nel sud
+
+239
+00:23:29,600 --> 00:23:34,310
+l'emisfero può vedere le stelle che lo circondano ad occhio nudo di due terabyte
+
+240
+00:23:34,310 --> 00:23:39,860
+Il codice sorgente di Nintendo è trapelato. Facebook ha addestrato i BOT della chat AI usando reddit
+
+241
+00:23:39,860 --> 00:23:47,060
+post Tesla ha presentato domanda per diventare un fornitore di elettricità nel Regno Unito, il Poco
+
+242
+00:23:47,060 --> 00:23:52,930
+Lo smartphone f2 pro con qualcomm snapdragon 865 è stato lanciato a livello globale e
+
+243
+00:23:52,930 --> 00:23:57,890
+twitter consentirà ai dipendenti di lavorare da casa per tutto il tempo che desiderano
+
+244
+00:23:57,890 --> 00:24:02,480
+in giro tutti i dettagli nell'angolo crittografico di questa settimana stanno arrivando questo è il
+
+245
+00:24:02,480 --> 00:24:10,600
+la redazione televisiva di categoria 5 che copre la settimana smette di inviare messaggi con un leggero pregiudizio per Linux
+
+246
+00:24:12,340 --> 00:24:18,919
+dalla redazione sono gli astronomi di Becca Ferguson
+
+247
+00:24:18,919 --> 00:24:23,240
+inciampato nel buco nero più vicino a noi, ma il vuoto si trova al centro di
+
+248
+00:24:23,240 --> 00:24:26,900
+un sistema stellare a soli mille anni luce di distanza e le sue indicazioni
+
+249
+00:24:26,900 --> 00:24:31,610
+posizione sono visibili ad occhio nudo un team di ricercatori stava osservando il
+
+250
+00:24:31,610 --> 00:24:37,370
+hr6 81: 9 star system dall'European Southern Observatory in Cile come parte di
+
+251
+00:24:37,370 --> 00:24:42,830
+un'indagine più ampia studiando dai nostri sistemi stellari binari iniziali e sono inciampati
+
+252
+00:24:42,830 --> 00:24:46,970
+attraverso un terzo oggetto i dati spettrografici hanno rivelato quello di
+
+253
+00:24:46,970 --> 00:24:52,370
+le stelle orbitavano attorno a un compagno invisibile ogni 40 giorni mentre la seconda stella
+
+254
+00:24:52,370 --> 00:24:58,250
+si trova molto più lontano dal primo che ora credono che l'HR 68 19 sia
+
+255
+00:24:58,250 --> 00:25:02,480
+non un sistema doppio ma un sistema triplo che contiene due stelle che sono
+
+256
+00:25:02,480 --> 00:25:07,190
+entrambi attorno alle sei masse solari e un terzo oggetto che sia almeno 4,2 solare
+
+257
+00:25:07,190 --> 00:25:11,890
+masse quel numero è troppo alto perché l'oggetto sia una stella di neutroni
+
+258
+00:25:11,890 --> 00:25:17,000
+Thomas Ravinia stella della sfera dello studio ha detto che un oggetto invisibile con una massa a
+
+259
+00:25:17,000 --> 00:25:21,770
+almeno quattro volte fuori dal Sole può essere un buco nero solo se i ricercatori lo sono
+
+260
+00:25:21,770 --> 00:25:25,580
+effettivamente corretto l'oggetto sarà il buco nero più vicino scoperto dalla terra
+
+261
+00:25:25,580 --> 00:25:31,309
+eppure Peter ha avuto un dramma, il coautore della ricerca ha detto che la squadra era totalmente
+
+262
+00:25:31,309 --> 00:25:35,150
+sorpresi quando ci siamo resi conto che questo è il primo sistema stellare con un nero
+
+263
+00:25:35,150 --> 00:25:40,159
+buco che può essere visto ad occhio nudo come punto di chiarezza il buco nero
+
+264
+00:25:40,159 --> 00:25:44,600
+di per sé non è visibile ad occhio nudo solo le stelle sono per quelli in
+
+265
+00:25:44,600 --> 00:25:48,380
+nell'emisfero sud sperando di intravedere si trova nel telescopio
+
+266
+00:25:48,380 --> 00:25:53,000
+ium costellazione e saranno visualizzati al meglio durante una notte e due serene
+
+267
+00:25:53,000 --> 00:25:55,400
+le punture luminose sfocate dovrebbero essere distinguibili
+
+268
+00:25:55,400 --> 00:25:59,960
+senza un binocolo o un telescopio sebbene l'oggetto sembri essere stato
+
+269
+00:25:59,960 --> 00:26:04,640
+orecchie per tutto il tempo è sfuggito al rilevamento fino ad ora non è solo il buco nero
+
+270
+00:26:04,640 --> 00:26:08,809
+piuttosto piccolo è anche molto silenzioso, il che significa che non emette getti elettromagnetici
+
+271
+00:26:08,809 --> 00:26:12,080
+radiazioni a differenza di quelle supermassicce al
+
+272
+00:26:12,080 --> 00:26:16,970
+Centri di galassie che divorano le stelle, il team è solo riuscito a dedurre
+
+273
+00:26:16,970 --> 00:26:20,870
+la sua esistenza dall'oscillazione delle stelle che orbitano attorno ad essa spera il team
+
+274
+00:26:20,870 --> 00:26:24,770
+per acquisire immagini dell'orbita per stabilire ulteriormente la distanza in massa
+
+275
+00:26:24,770 --> 00:26:31,310
+degli oggetti del sistema un hacker anonimo è trapelato per un valore di circa 2 terabyte
+
+276
+00:26:31,310 --> 00:26:36,070
+di codice sorgente relativo al Nintendo Wii GameCube e intendono oh 64 design
+
+277
+00:26:36,070 --> 00:26:40,580
+questa cache include molto codice di registro per l'hardware essenzialmente il codificato
+
+278
+00:26:40,580 --> 00:26:44,900
+progetti per le varie patatine mentre uno sguardo accurato al funzionamento interno di
+
+279
+00:26:44,900 --> 00:26:48,140
+Nintendo e uno sguardo raro al design di basso livello degli specialisti
+
+280
+00:26:48,140 --> 00:26:53,120
+i chip che entrano nelle console non si aspettano che ne escano troppo mentre sono dentro
+
+281
+00:26:53,120 --> 00:26:56,960
+In teoria, lo stesso codice di registro potrebbe essere utilizzato per trasformare i chlochop in chip Nintendo
+
+282
+00:26:56,960 --> 00:27:00,830
+imitare l'attrezzatura e l'esperienza necessarie per farlo sarebbe molto
+
+283
+00:27:00,830 --> 00:27:05,480
+costoso e non il genere di cose che un hobbista potrebbe fare e qualsiasi pubblicità
+
+284
+00:27:05,480 --> 00:27:11,120
+Gli sforzi sarebbero senza dubbio ridotti a brandelli dagli avvocati di Nintendo anche la fuga di notizie
+
+285
+00:27:11,120 --> 00:27:15,290
+a quanto pare non sarà di alcuna utilità agli sviluppatori di emulatori che possono solo
+
+286
+00:27:15,290 --> 00:27:19,790
+legalmente fanno quello che fanno retroingegnerizzando gli sviluppatori di
+
+287
+00:27:19,790 --> 00:27:24,260
+Gli emulatori di delfini dicono che in risposta alla fuga di notizie non possiamo usare nulla di alcun tipo
+
+288
+00:27:24,260 --> 00:27:27,080
+da una falla infatti non riusciamo nemmeno a guardarla
+
+289
+00:27:27,080 --> 00:27:31,460
+delfino è illegale solo perché stiamo eseguendo il reverse engineering delle camere bianche
+
+290
+00:27:31,460 --> 00:27:36,320
+GameCube e Wii se usiamo qualcosa da un delfino leak non è più legale e
+
+291
+00:27:36,320 --> 00:27:41,090
+Nintendo ci spegnerà, il che non vuol dire che non ci sarà un fly-by-night
+
+292
+00:27:41,090 --> 00:27:46,040
+emulatori che includono il codice principale, ma consigliamo di prestare molta attenzione quando
+
+293
+00:27:46,040 --> 00:27:51,230
+considerare e utilizzare qualsiasi strumento di questo tipo poiché è molto probabile che includa malware o
+
+294
+00:27:51,230 --> 00:27:58,730
+backdoor per uso dannoso Facebook ha lanciato un nuovo chat bot che sostiene
+
+295
+00:27:58,730 --> 00:28:03,920
+è in grado di dimostrare la conoscenza dell'empatia e la personalità del proprio chat bot che
+
+296
+00:28:03,920 --> 00:28:08,330
+hanno fastidiosamente chiamato Blender è stato addestrato utilizzando il dominio pubblico disponibile
+
+297
+00:28:08,330 --> 00:28:14,480
+conversazioni che includevano 1,5 miliardi di esempi di scambi umani ma esperti
+
+298
+00:28:14,480 --> 00:28:18,770
+dire che addestrare l'intelligenza artificiale utilizzando una piattaforma come reddit ha la sua
+
+299
+00:28:18,770 --> 00:28:22,010
+svantaggi numerosi problemi sono sorti durante più a lungo
+
+300
+00:28:22,010 --> 00:28:27,050
+conversazioni blender a volte rispondeva con un linguaggio offensivo e a
+
+301
+00:28:27,050 --> 00:28:31,100
+altre volte si tratterebbe di fatti complessivamente che i ricercatori hanno detto di sperare
+
+302
+00:28:31,100 --> 00:28:34,210
+ulteriori modelli potrebbero affrontare alcuni di questi problemi
+
+303
+00:28:34,210 --> 00:28:38,420
+L'esperto di intelligenza artificiale Dave Chopin ha detto che la miscela
+
+304
+00:28:38,420 --> 00:28:42,410
+è stato un passo nella giusta direzione ma ha rilevato due questioni fondamentali che ancora
+
+305
+00:28:42,410 --> 00:28:47,420
+deve essere superato, ha detto alla BBC che il primo è quanto sia complesso
+
+306
+00:28:47,420 --> 00:28:51,910
+replicare tutte le sfumature di un attributo umano come la capacità di tenere un
+
+307
+00:28:51,910 --> 00:28:57,050
+conversazione un sorso un'abilità che la maggior parte dei bambini di tre anni può padroneggiare la seconda è
+
+308
+00:28:57,050 --> 00:29:00,860
+intorno alla relazione con i dati utilizzati per addestrare il modello e i risultati
+
+309
+00:29:00,860 --> 00:29:06,140
+generato dal modello prosegue spiegando una piattaforma eccezionale come Retta
+
+310
+00:29:06,140 --> 00:29:10,040
+algoritmi di addestramento basati sulle conversazioni che trovi che ci saranno
+
+311
+00:29:10,040 --> 00:29:14,870
+farti un sacco di pula tra il grano Facebook ha anche confrontato i frullatori
+
+312
+00:29:14,870 --> 00:29:20,210
+prestazioni con l'ultima versione dei BOT di chat di Google Mina ha mostrato
+
+313
+00:29:20,210 --> 00:29:23,630
+persone due serie di conversazioni, una fatta con il frullatore e l'altra con
+
+314
+00:29:23,630 --> 00:29:28,610
+Le conversazioni di Mina includevano una vasta gamma di argomenti tra cui film, musica e
+
+315
+00:29:28,610 --> 00:29:34,430
+veganismo Facebook ha detto che il 67% degli intervistati attraverso il frullatore suonava di più
+
+316
+00:29:34,430 --> 00:29:39,770
+umano di Mina, i ricercatori hanno notato che abbiamo raggiunto questo traguardo attraverso un nuovo
+
+317
+00:29:39,770 --> 00:29:44,240
+ricetta del chat bot che include tecniche di decodifica migliorate e nuove miscele di
+
+318
+00:29:44,240 --> 00:29:49,730
+competenze e un modello con nove virgola quattro miliardi di parametri, ovvero 3,6 volte
+
+319
+00:29:49,730 --> 00:29:54,320
+più che il più grande questo sistema esistente costruendo un sistema veramente intelligente
+
+320
+00:29:54,320 --> 00:29:58,520
+agente di dialogo che può chattare come un essere umano rimane uno dei più grandi aperti
+
+321
+00:29:58,520 --> 00:30:03,530
+sfide nell'intelligenza artificiale oggi, va bene, grazie Becca dobbiamo fare una breve pausa
+
+322
+00:30:03,530 --> 00:30:08,150
+quando torniamo Robert Koenig è qui con l'angolo delle criptovalute e Becca ha
+
+323
+00:30:08,150 --> 00:30:11,020
+altre notizie per noi in arrivo e restano in giro
+
+324
+00:30:11,020 --> 00:30:14,140
+[Musica]
+
+325
+00:30:15,030 --> 00:30:17,090
+tu
+
+326
+00:30:22,180 --> 00:30:25,289
+[Musica]
+
+327
+00:30:25,820 --> 00:30:32,160
+torna per l'angolo criptico del tuo pozzo questa settimana su cui vorrei concentrarmi
+
+328
+00:30:32,160 --> 00:30:37,440
+informazioni se sei stato più di una settimana con questo in questo settore e
+
+329
+00:30:37,440 --> 00:30:43,620
+hai postato su YouTube o su qualsiasi altro canale di notizie, lo avrai visto lì
+
+330
+00:30:43,620 --> 00:30:47,660
+ci sono molte informazioni diverse là fuori e la maggior parte di queste sono fuorvianti
+
+331
+00:30:47,660 --> 00:30:53,490
+sì, hai quei massimalisti che fingono di essere la loro moneta o gettone
+
+332
+00:30:53,490 --> 00:30:59,880
+è il migliore e che tutto il resto è piuttosto brutto, hai quelli che
+
+333
+00:30:59,880 --> 00:31:04,500
+stanno scellini, quindi stanno cercando di venderti qualcosa e un sacco di gente
+
+334
+00:31:04,500 --> 00:31:09,000
+inoltre non ho la più pallida idea di cosa stiano parlando, quindi questa settimana mi piacerebbe farlo
+
+335
+00:31:09,000 --> 00:31:14,789
+concentrarsi esattamente su quell'argomento in cui sono stato in questo settore dal 2015 e cosa
+
+336
+00:31:14,789 --> 00:31:19,409
+vedrai ora è una raccolta di quei video e podcast di YouTube che io
+
+337
+00:31:19,409 --> 00:31:28,950
+segui regolarmente vedrai la tabella alla fine di questo video e di esso
+
+338
+00:31:28,950 --> 00:31:34,110
+verrà visualizzato con il nome del podcast o del video di YouTube e quindi nel file
+
+339
+00:31:34,110 --> 00:31:37,940
+caso di YouTube ho anche aggiunto gli iscritti in modo che tu possa trovarlo
+
+340
+00:31:37,940 --> 00:31:42,840
+più facile nel caso ci sia qualcuno che finge di essere quello youtuber quindi cerchiamo
+
+341
+00:31:42,840 --> 00:31:47,480
+inizia con crypto 101 è un podcast sono due ragazzi
+
+342
+00:31:47,480 --> 00:31:54,120
+poi stanno facendo interviste e una ogni due o tre giorni
+
+343
+00:31:54,120 --> 00:31:58,530
+sono fantastiche quelle interviste perché sono neutre, non lo fanno
+
+344
+00:31:58,530 --> 00:32:03,150
+fingono di essere minacciosi o qualcosa del genere sono solo neutrali
+
+345
+00:32:03,150 --> 00:32:08,220
+davvero gentile gentile e ottengono le informazioni che tu come utente avresti
+
+346
+00:32:08,220 --> 00:32:14,640
+piace sentire così crypto 101 fantastico podcast il prossimo è Ivan sulla tecnologia così
+
+347
+00:32:14,640 --> 00:32:18,750
+questo è per noi qui alla categoria 5 interessante perché si concentra
+
+348
+00:32:18,750 --> 00:32:25,320
+il lato di codifica e programmazione che fa sette giorni alla settimana un video di YouTube è
+
+349
+00:32:25,320 --> 00:32:31,230
+uno dei leader in questo settore per quanto riguarda la programmazione e la codifica di
+
+350
+00:32:31,230 --> 00:32:36,420
+il terzo è Andreas Antonopoulos, uno degli oh geez del Krypton
+
+351
+00:32:36,420 --> 00:32:45,620
+industria 2014 ha fatto una presentazione davanti al Senato canadese che fa
+
+352
+00:32:45,620 --> 00:32:52,410
+probabilmente cinque o sei video di YouTube a settimana e la cosa bella per te è questo
+
+353
+00:32:52,410 --> 00:32:57,150
+li classifica quindi non si tratta solo di parlare di tutto ciò che classifica
+
+354
+00:32:57,150 --> 00:33:03,300
+in modo che sia facile per te trovare o vedere se è qualcosa di simile
+
+355
+00:33:03,300 --> 00:33:08,190
+interesse per te o no il prossimo è criptovaluta dove la O è uno zero non lo è
+
+356
+00:33:08,190 --> 00:33:14,460
+un O è uno zero è un ragazzo chiamato bomba di Omar davvero un bravo ragazzo è stato in questo
+
+357
+00:33:14,460 --> 00:33:21,870
+l'industria da molto tempo conosce tutti e ha buone notizie
+
+358
+00:33:21,870 --> 00:33:31,650
+lo fa anche circa ogni due o tre giorni il filetto è crypto bud che io
+
+359
+00:33:31,650 --> 00:33:37,200
+leggere molto in alto perché proviene dal trading trading tradizionale di
+
+360
+00:33:37,200 --> 00:33:42,990
+punto di vista della finanza tradizionale e fa analisi fantastiche su monete e
+
+361
+00:33:42,990 --> 00:33:51,600
+gettoni e progetti, entra davvero nei dettagli con noi e li analizza e e
+
+362
+00:33:51,600 --> 00:33:57,360
+è molto buono quello che ha seguito è Laura Shin, direi che è l'unica
+
+363
+00:33:57,360 --> 00:34:02,310
+vera giornalista in questo settore e quando ha qualcuno che lei
+
+364
+00:34:02,310 --> 00:34:08,670
+interviste quelle interviste vanno in profondità e in modo davvero professionale quindi adoro
+
+365
+00:34:08,670 --> 00:34:14,400
+ascoltare i podcast di Laura shins crypto ogni giorno è il prossimo
+
+366
+00:34:14,400 --> 00:34:21,960
+è il ragazzo divertente di questo settore se sei interessato ai meme combinati con
+
+367
+00:34:21,960 --> 00:34:26,400
+alcune informazioni quindi è il ragazzo giusto per te se vuoi illuminare il tuo
+
+368
+00:34:26,400 --> 00:34:31,530
+la vita un po 'poi sì, sicuramente vai con la crittografia quotidiana, l'investitore moderno è
+
+369
+00:34:31,530 --> 00:34:37,170
+qualcuno che non mostra mai la sua faccia si siede da qualche parte in Europa e legge
+
+370
+00:34:37,170 --> 00:34:42,330
+le notizie come le trova su tutte quelle notizie senza cuore ci hanno lasciato sbocchi che
+
+371
+00:34:42,330 --> 00:34:52,510
+esiste lo fa molto bene dà anche la sua opinione su quelli sì
+
+372
+00:34:52,510 --> 00:34:59,500
+il prossimo investitore moderno è Stefan Laverra, non è qualcuno se vuoi
+
+373
+00:34:59,500 --> 00:35:05,770
+fuori di testa questa è la persona giusta per te dietro Andreas Antonopoulos II lo farei
+
+374
+00:35:05,770 --> 00:35:10,270
+diciamo che è colui che ha la conoscenza più dettagliata dei portafogli dei prodotti
+
+375
+00:35:10,270 --> 00:35:17,160
+scambia tutto quello che fa interviste e ha sempre anche le persone migliori
+
+376
+00:35:17,160 --> 00:35:24,160
+si è messo in fila in modo che Stefan se ne vada per il personale tecnico del box mining il prossimo è
+
+377
+00:35:24,160 --> 00:35:31,050
+anche tecnico era un programmatore programmatore di giochi ha sede a Hong Kong e
+
+378
+00:35:31,050 --> 00:35:34,660
+questa è anche un'ottima analisi delle preoccupazioni di koto
+
+379
+00:35:34,660 --> 00:35:40,840
+nel momento in cui mescola molte notizie da Hong Kong e dalla Cina riguardo al
+
+380
+00:35:40,840 --> 00:35:47,619
+virus che è attualmente in circolazione e ma quando va a crittografare la sua conoscenza
+
+381
+00:35:47,619 --> 00:35:53,380
+è molto buono e anche imparziale, ultimo ma non meno importante, sono i dati - direi che è il
+
+382
+00:35:53,380 --> 00:35:57,760
+il migliore che fa l'analisi dell'analista tecnico, quindi se ti piacciono i tecnici
+
+383
+00:35:57,760 --> 00:36:04,630
+analisi quindi dati - è la persona giusta che ha un'ottima conoscenza enorme
+
+384
+00:36:04,630 --> 00:36:11,140
+seguo base e conosce benissimo anche il mercato quindi tutti quelli qui che io
+
+385
+00:36:11,140 --> 00:36:16,150
+appena citati sono quelli che guardo regolarmente valuto tutti
+
+386
+00:36:16,150 --> 00:36:19,510
+quelli come persone comuni che sanno davvero di cosa stanno parlando
+
+387
+00:36:19,510 --> 00:36:24,130
+quindi sono quelli che ti consiglio e come vedrai tra un secondo
+
+388
+00:36:24,130 --> 00:36:29,710
+avrai quel tavolo dietro di me così non dovrai scrivere le cose comunque io
+
+389
+00:36:29,710 --> 00:36:38,850
+auguro una buona settimana a tutti i migliori arrivederci alla prossima settimana e stai al sicuro ciao
+
+390
+00:36:43,530 --> 00:36:47,089
+[Applausi] grazie Robert
+
+391
+00:36:47,089 --> 00:36:51,799
+solo un promemoria per la visualizzazione a casa che non stiamo dando consigli finanziari qui
+
+392
+00:36:51,799 --> 00:36:55,430
+nello show, tuttavia, ti stiamo solo dando i fatti e lasciandoti correre
+
+393
+00:36:55,430 --> 00:37:00,680
+tieni presente però che il mercato delle criptovalute è in continua evoluzione
+
+394
+00:37:00,680 --> 00:37:06,770
+sempre in evoluzione ed è sempre volatile, quindi suggeriamo di investire solo ciò che puoi
+
+395
+00:37:06,770 --> 00:37:13,329
+permettiti di perdere ora con altre tue notizie tecnologiche ecco Becca Grazie Robby
+
+396
+00:37:13,329 --> 00:37:18,859
+meglio conosciuto per le sue auto elettriche che la società Tesla di Elon Musk produce anche
+
+397
+00:37:18,859 --> 00:37:24,049
+batterie che immagazzinano energia rinnovabile su scala sia domestica che industriale e
+
+398
+00:37:24,049 --> 00:37:28,880
+hanno chiesto di diventare un fornitore di elettricità nel Regno Unito
+
+399
+00:37:28,880 --> 00:37:32,480
+la domanda è stata presentata alla fine di marzo con il gas e l'elettricità del Regno Unito
+
+400
+00:37:32,480 --> 00:37:36,920
+mercati Autorità per una licenza per la generazione di energia elettrica per fornire qualsiasi
+
+401
+00:37:36,920 --> 00:37:42,200
+in Gran Bretagna c'è stata una minore domanda di elettricità durante
+
+402
+00:37:42,200 --> 00:37:46,760
+blocco a seguito della pandemia del coronavirus con molte fabbriche e importanti
+
+403
+00:37:46,760 --> 00:37:52,190
+le imprese devono chiudere, ma l'offerta e la domanda di elettricità devono esserlo
+
+404
+00:37:52,190 --> 00:37:56,630
+equilibrato all'interno della griglia per funzionare essendo in grado di generare e
+
+405
+00:37:56,630 --> 00:38:00,799
+immagazzinare la nostra elettricità ha il suo fascino soprattutto se la rete lo diventa
+
+406
+00:38:00,799 --> 00:38:06,049
+sbilanciato e richiede che l'alimentazione venga temporaneamente interrotta in aggiunta a Tesla
+
+407
+00:38:06,049 --> 00:38:10,130
+sviluppato un software chiamato Auto bitter che consente ai clienti di vendere il surplus
+
+408
+00:38:10,130 --> 00:38:15,950
+l'elettricità torna automaticamente alla rete in cui usano auto bitter
+
+409
+00:38:15,950 --> 00:38:19,609
+South Australia, ma non è ancora chiaro se intendono costruire simili di grandi dimensioni
+
+410
+00:38:19,609 --> 00:38:24,619
+impianti di batterie nel Regno Unito che sono tenuti a immagazzinare il surplus di una casa
+
+411
+00:38:24,619 --> 00:38:28,760
+versione della batteria Tesla il powerwall è costato migliaia di inglesi
+
+412
+00:38:28,760 --> 00:38:35,000
+sterline e necessita di un set di pannelli solari potreste ricordare il polka phone
+
+413
+00:38:35,000 --> 00:38:40,000
+f1 ora il poco f2 Pro è stato lanciato completo di Qualcomm Snapdragon
+
+414
+00:38:40,000 --> 00:38:47,270
+865 un impressionante video 8k che registrava il polka phone f1 era una bestia rara e un
+
+415
+00:38:47,270 --> 00:38:52,339
+esempio reale di un killer ammiraglia ora quasi due anni dopo
+
+416
+00:38:52,339 --> 00:38:57,380
+è finalmente giunto il momento di un aggiornamento del marchio poco iniziato come sottomarca di
+
+417
+00:38:57,380 --> 00:39:03,529
+Il produttore cinese di telefoni me lo mostra ma con il successo della f1 è stato
+
+418
+00:39:03,529 --> 00:39:07,249
+hanno deciso che poteva stare in piedi da solo e l'hanno fatto da solo
+
+419
+00:39:07,249 --> 00:39:12,019
+società indipendente con sede in India in seguito alla f1 hanno rinominato
+
+420
+00:39:12,019 --> 00:39:18,440
+redmi k 30 di fascia media chiamandolo poco x2 ora il nuovo modello f2 è essenzialmente un
+
+421
+00:39:18,440 --> 00:39:23,509
+ribattezzato K 30 pearl, il poco f2 pro porta una lunga lista di miglioramenti
+
+422
+00:39:23,509 --> 00:39:29,029
+rispetto alla f1 a partire dall'ultimo chipset uno snapdragon 865 è il
+
+423
+00:39:29,029 --> 00:39:33,589
+il miglior chip di qualcomm e uno dei primi a presentare driver GPU che
+
+424
+00:39:33,589 --> 00:39:39,589
+può essere aggiornato, il che potrebbe migliorare la longevità del telefono
+
+425
+00:39:39,589 --> 00:39:44,509
+posizionato sul 2.0 Tec raffreddato a liquido con una camera di vapore di per sé più grande
+
+426
+00:39:44,509 --> 00:39:49,640
+rispetto ai telefoni concorrenti, poco dice che ciò consentirà un raffreddamento più efficiente del
+
+427
+00:39:49,640 --> 00:39:55,099
+f2 pro esegue Android 10 out of the box con poco launcher 2.0 dark mode is
+
+428
+00:39:55,099 --> 00:40:01,460
+disponibile che sembra stupendo sulla memoria dello schermo AMOLED aggiornata ora
+
+429
+00:40:01,460 --> 00:40:07,190
+a partire da 128 gigabyte c'è anche un'opzione da 256 gigabyte che vorremmo
+
+430
+00:40:07,190 --> 00:40:11,719
+consigliato dato che hanno rimosso lo slot microSD e il video 8k può consumare
+
+431
+00:40:11,719 --> 00:40:19,670
+molto spazio l'archiviazione è veloce UF u FS 3.1 da 2.1 su f1 il nuovo
+
+432
+00:40:19,670 --> 00:40:24,529
+fotocamera sul piede sul poco f2 pro potrebbe essere ciò che spinge diehard poco Fong f1
+
+433
+00:40:24,529 --> 00:40:29,749
+fan per aggiornare il telefono ha quattro sensori della fotocamera posteriore la configurazione
+
+434
+00:40:29,749 --> 00:40:34,999
+include un sensore Sony imx6 86 da 64 mega pixel
+
+435
+00:40:34,999 --> 00:40:40,279
+supporta lo zoom ottico a tre tempi e la doppia immagine ottica
+
+436
+00:40:40,279 --> 00:40:47,089
+stabilizzazione c'è anche una fotocamera ultra grandangolare da 13 megapixel e 8
+
+437
+00:40:47,089 --> 00:40:51,589
+pixel mega e 8 megapixel dite loro che io dico loro che questo è uno scioglilingua
+
+438
+00:40:51,589 --> 00:40:58,549
+un sensore da 8 megapixel racconta una fotocamera macro e un sensore da 5 megapixel per i selfie ottieni un
+
+439
+00:40:58,549 --> 00:41:03,319
+Fotocamera da 20 megapixel su un meccanismo di pop-up motorizzato capace di solo 1080p
+
+440
+00:41:03,319 --> 00:41:06,119
+video è l'unica cosa che ci piacerebbe davvero
+
+441
+00:41:06,119 --> 00:41:09,869
+per vedere i logger 4v migliorati che sono costretti a utilizzare le telecamere posteriori se lo fanno
+
+442
+00:41:09,869 --> 00:41:15,839
+vuoi girare in 4K o 8k Ultra HD parlando di Ultra HD il più potente
+
+443
+00:41:15,839 --> 00:41:22,049
+Il chipset consente la registrazione 8k a 30 fps completi e ora è possibile registrare video 4K
+
+444
+00:41:22,049 --> 00:41:28,349
+a 60fps il passaggio a mm OLED ha consentito anche di utilizzare il lettore di impronte digitali
+
+445
+00:41:28,349 --> 00:41:33,359
+nascosto nello schermo lo schermo si aggiorna che uno standard di 60 Hertz ma
+
+446
+00:41:33,359 --> 00:41:38,069
+la frequenza di campionamento tattile è stata aumentata a 180 Hertz anche il poco f2
+
+447
+00:41:38,069 --> 00:41:43,049
+ha un'ampia certificazione l1 in modo da poter riprodurre contenuti HD da Netflix Amazon
+
+448
+00:41:43,049 --> 00:41:48,240
+Prime video e altri servizi a cui è aumentata la capacità della batteria
+
+449
+00:41:48,240 --> 00:41:54,180
+di 4.700 milliampere ora con una ricarica più veloce di 30 watt e un jack per cuffie è
+
+450
+00:41:54,180 --> 00:42:00,359
+ancora incluso il poco f2 è ora disponibile tramite i nostri partner
+
+451
+00:42:00,359 --> 00:42:05,299
+cap 5 TV barra f2 per verificarlo
+
+452
+00:42:05,509 --> 00:42:11,099
+secondo un portavoce della società Twitter, il CEO Jack Dorsey ha detto
+
+453
+00:42:11,099 --> 00:42:14,999
+martedì in cui molti di loro potranno lavorare da casa
+
+454
+00:42:14,999 --> 00:42:20,970
+perpetuità anche dopo la fine della pandemia del coronavirus in un'e-mail ricevuta per la prima volta
+
+455
+00:42:20,970 --> 00:42:24,960
+di BuzzFeed news Dorsey ha detto che era improbabile che Twitter aprisse il suo
+
+456
+00:42:24,960 --> 00:42:29,400
+uffici prima di settembre e che tutti gli eventi di persona sarebbero stati cancellati per il
+
+457
+00:42:29,400 --> 00:42:35,309
+per il resto dell'anno la società accetterà di valutare i suoi piani per gli eventi del 2021
+
+458
+00:42:35,309 --> 00:42:40,769
+entro la fine dell'anno il portavoce ha detto che siamo in una posizione unica per rispondere
+
+459
+00:42:40,769 --> 00:42:43,859
+rapidamente e consentire alle persone di lavorare da casa data la nostra enfasi
+
+460
+00:42:43,859 --> 00:42:48,269
+decentralizzazione e supporto di una forza lavoro distribuita in grado di lavorare
+
+461
+00:42:48,269 --> 00:42:53,009
+da qualsiasi luogo gli ultimi mesi hanno dimostrato che possiamo farlo funzionare, quindi se il nostro
+
+462
+00:42:53,009 --> 00:42:56,999
+i dipendenti si trovano in un ruolo e in una situazione che consente loro di lavorare da casa e
+
+463
+00:42:56,999 --> 00:43:02,700
+vogliono continuare a farlo per sempre, lo faremo accadere se non il nostro
+
+464
+00:43:02,700 --> 00:43:07,109
+gli uffici saranno lì caldi e accoglienti con alcune precauzioni aggiuntive
+
+465
+00:43:07,109 --> 00:43:11,700
+quando riteniamo che sia sicuro tornare, la nuova politica di Twitter arriva come aziende
+
+466
+00:43:11,700 --> 00:43:15,410
+in tutto il mondo stanno lottando per adattarsi alle linee guida di distanziamento sociale e
+
+467
+00:43:15,410 --> 00:43:18,150
+ripensando a come funzioneranno in un post
+
+468
+00:43:18,150 --> 00:43:23,339
+endemiche mondiali principali società tecnologiche come Facebook, Google e Microsoft erano
+
+469
+00:43:23,339 --> 00:43:27,779
+presto per passare a un modello di lavoro da casa e sono stati anche i più cauti in
+
+470
+00:43:27,779 --> 00:43:32,099
+pianificazione per riportare i dipendenti in ufficio che Google ha detto ai dipendenti
+
+471
+00:43:32,099 --> 00:43:37,619
+che la stragrande maggioranza di loro lavorerà da casa fino al 2021, anche se alcuni lo faranno
+
+472
+00:43:37,619 --> 00:43:43,200
+ritorno all'inizio dell'estate anche Facebook inizierà a riaprire uffici dopo
+
+473
+00:43:43,200 --> 00:43:46,920
+il week-end del 4 luglio ma permetterà ai dipendenti che potranno lavorare da casa
+
+474
+00:43:46,920 --> 00:43:52,260
+fallo fino al prossimo anno grazie a Roy W Nash e al nostro
+
+475
+00:43:52,260 --> 00:43:56,039
+community di spettatori per averci inviato storie questa settimana, grazie per
+
+476
+00:43:56,039 --> 00:44:00,450
+guardando la redazione televisiva di categoria cinque non dimenticare di mettere Mi piace e iscriverti
+
+477
+00:44:00,450 --> 00:44:04,799
+tutte le tue notizie tecnologiche con un leggero pregiudizio Linux e se apprezzi quello che facciamo
+
+478
+00:44:04,799 --> 00:44:10,859
+diventa un mecenate su patreon.com elimina la categoria 5 dalla categoria 5 TV
+
+479
+00:44:10,859 --> 00:44:14,910
+redazione Sono Becca Ferguson Grazie Becca dobbiamo fare una breve pausa
+
+480
+00:44:14,910 --> 00:44:25,269
+restare nei paraggi [Musica]
+
+481
+00:44:26,500 --> 00:44:28,560
+tu
+
+482
+00:44:30,890 --> 00:44:33,989
+[Musica]
+
+483
+00:44:35,680 --> 00:44:43,910
+beh, la gente non era ancora al 100% eppure stiamo facendo del nostro meglio. Sto facendo del mio meglio
+
+484
+00:44:43,910 --> 00:44:49,790
+qui alla TV di categoria 5 lo studio non è impostato come vorrei che fosse
+
+485
+00:44:49,790 --> 00:44:57,140
+non proprio lì Sono molto in ritardo su come stanno andando le cose dal
+
+486
+00:44:57,140 --> 00:45:03,740
+prospettiva dal vivo ma sto facendo tutto quello che posso e non stiamo riempiendo il tempo
+
+487
+00:45:03,740 --> 00:45:09,440
+e mettere tutto insieme nel modo in cui voglio davvero fare, quindi siamo
+
+488
+00:45:09,440 --> 00:45:12,890
+arrivarci TV con tecnologia di categoria 5 ancora qui
+
+489
+00:45:12,890 --> 00:45:17,690
+siamo ancora forti stiamo crescendo dove stiamo imparando e stiamo evolvendo nel nostro
+
+490
+00:45:17,690 --> 00:45:24,860
+nuovo spazio ma non siamo ancora arrivati, quindi non esitare a visitare il nostro sito web
+
+491
+00:45:24,860 --> 00:45:29,330
+TV a punti di categoria 5 ehi, sarebbe un tale incoraggiamento solo a saperlo
+
+492
+00:45:29,330 --> 00:45:32,240
+stai controllando il nostro sito web controllando alcuni degli episodi precedenti che abbiamo
+
+493
+00:45:32,240 --> 00:45:39,860
+abbiamo ottenuto 13 anni di TV tecnologica non solo, ma ne abbiamo anche alcune davvero fantastiche
+
+494
+00:45:39,860 --> 00:45:45,710
+funzioni sul nostro sito Web quindi se vai alla TV di categoria 5 ne vedrai alcune nuove
+
+495
+00:45:45,710 --> 00:45:50,930
+caratteristiche nella barra dei menu, ad esempio, abbiamo un pulsante che dice abbastanza
+
+496
+00:45:50,930 --> 00:45:57,260
+letteralmente funzionalità ed è lì che troverai le funzionalità di oggi sul
+
+497
+00:45:57,260 --> 00:46:04,340
+mikrotik router che farà parte di quella voce di menu e, beh, cosa
+
+498
+00:46:04,340 --> 00:46:09,710
+vuol dire che Robbie, beh, è ​​un modo per te di essere in grado di trovare contenuti che
+
+499
+00:46:09,710 --> 00:46:16,400
+è rilevante per altri contenuti, quindi ciò significa che procediamo con questo
+
+500
+00:46:16,400 --> 00:46:21,800
+serie in cui vedrai ogni singolo video in cui è stato rilasciato
+
+501
+00:46:21,800 --> 00:46:25,880
+quella serie in modo che tu possa seguirla rende le cose molto più facili che non lo fai
+
+502
+00:46:25,880 --> 00:46:29,930
+devi fare il pelo nell'uovo e cercare di trovare i video giusti e assicurarti di esserlo
+
+503
+00:46:29,930 --> 00:46:34,280
+in ordine no è molto semplice è un elenco di video che stai andando
+
+504
+00:46:34,280 --> 00:46:39,920
+per essere in grado di trovare facilmente, quindi questa è solo una delle caratteristiche del nostro sito web di categoria 5
+
+505
+00:46:39,920 --> 00:46:46,220
+dot TV grazie mille per essere qui con noi questa settimana ti apprezzo
+
+506
+00:46:46,220 --> 00:46:49,670
+Apprezzo che tu supporti la TV con tecnologia di categoria cinque se lo sei
+
+507
+00:46:49,670 --> 00:46:57,619
+se non lo fai ancora, vai a donare TV di categoria 5 o ancora meglio patreon.com
+
+508
+00:46:57,619 --> 00:47:03,200
+slash categoria 5 è un ottimo modo per sostenerci grazie per essere qui
+
+509
+00:47:03,200 --> 00:47:07,240
+tutti ci rivedremo la prossima settimana
+
+510
+00:47:14,380 --> 00:47:17,489
+[Musica]
+

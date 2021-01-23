@@ -1,0 +1,215 @@
+nous commençons une série sur les routeurs micro-tech, ce sont des
+technologie en ce sens qu'ils fournissent des fonctionnalités qui ne sont généralement disponibles que sur le
+marché en tant que fonctionnalités de niveau entreprise, vous devez donc payer beaucoup d'argent pour obtenir
+ces types de fonctionnalités bien que ces petits gars de mikrotik sont capables de faire
+c'est beaucoup moins cher on parle de 10% du prix donc c'est une bonne chose et
+cela nous permet de créer un meilleur réseau domestique un meilleur réseau de bureau parfait
+pour les PME ou les indépendants donc si c'est vous ou si vous voulez juste faire
+votre réseau domestique aussi bon que possible cette série est faite pour vous
+nous allons vous guider, je vais vous guider à travers tout
+configuration de base aujourd'hui jusqu'à la création d'un réseau Wi-Fi invité
+va permettre à vos enfants amis d'utiliser le Wi-Fi sans risquer
+l'intégrité de vos données personnelles, nous pouvons faire beaucoup avec un mikrotik
+routeur et nous allons vous aider tout au long de cette
+série la série est disponible sur cat5 dot TV slash mikrotik alors assurez-vous de
+allez-y et vous verrez chacune des vidéos plus le matériel qui est
+va être nécessaire en parlant de matériel maintenant j'ai opté pour le micro
+tech cap carte de routeur AC RB 9 6 2 UI GS et la raison pour laquelle j'ai opté pour cela
+modèle particulier est bien il y a quelques choses différentes essentiellement
+Gigabit Ethernet maintenant mon Internet ici au studio est Internet Gigabit donc si je
+eu un routeur qui n'en a fait que 10 sur 100, je n'en aurai en fait que 100
+mégabits par seconde sur mon service Internet même s'il en est capable
+beaucoup plus donc j'avais absolument besoin de m'assurer que mon routeur
+prend en charge le Gigabit Ethernet pour que et l'Internet Gigabit pour que je ne
+perdre une partie de la vitesse de ma connectivité Internet, ce qui est très très important
+Deuxièmement, il a une double radio donc 2.4
+et cinq gigahertz Wi-Fi pour que je puisse mettre mes caméras sur 2,4 gigahertz qui est un
+bande assez sursaturée mais en même temps je peux avoir cinq gigahertz pour
+mon téléphone et mes autres appareils pour améliorer ma vitesse
+la connectivité et ça va vraiment très bien fonctionner
+il prend en charge 802 11 BG et la capacité Wi-Fi n tout à partir de ce petit
+appareil qui ne va pas nous coûter beaucoup d'argent vous pouvez en savoir plus
+à propos de la gamme de produits, visitez notre site Web cap cinq points TV slash mikrotik et
+suivez le lien et cela vous mènera à un index donc ce qui est intéressant je
+devrait dire que j'ai déjà couvert cela dans la vidéo d'introduction quelques
+il y a des semaines mais juste pour être clair, ce qui est bien avec mikrotik, c'est que ce n'est pas
+limité par le logiciel afin que le micrologiciel du routeur ne vous limite pas
+de la même manière qu'un routeur grand public traditionnel devrait généralement payer
+plus pour plus de fonctionnalités bien mikrotik et leur OS de carte de routeur si c'est
+complètement ouvert en ce qui concerne les fonctionnalités Heco, donc la seule considération que vous
+acheter un appareil micro-tech est ce que le matériel va faire pour vous donc vous avez besoin
+pour vous assurer que l'appareil que vous achetez répondra à votre
+Besoin est-ce le bon appareil pour vous? Je ne sais pas que vous pourrez peut-être vous échapper
+avec un moindre quelque chose d'un peu plus petit un peu un peu moins
+cher et et vous pouvez parcourir la liste de leur matériel et comprendre
+lequel est fait pour vous, mais gardez à l'esprit le logiciel qui l'exécute à partir du
+le routeur de trente quarante dollars le moins cher que mikrotik fait tout le chemin
+la plus belle unité de six cents dollars montable en rack le logiciel le
+firmware les capacités de la programmation sont complètement les mêmes donc
+la seule limitation est basée sur le matériel afin que vous puissiez commencer avec quelque chose
+vraiment pas cher et travaillez votre chemin plus tard, vous pouvez mettre à niveau si vous avez besoin de quelque chose
+mieux c'est plutôt cool alors encore une fois cat5 dot TV slash mikrotik le
+maintenant tout ce que j'ai fait est branché jusqu'à présent mais ce que nous devons faire
+avant tout, je dois relier mon modem Internet afin que mon service Internet
+fournisseur a fourni un modem Internet qui me permet la connectivité mais qui
+modem a un serveur DHCP, il a un pare-feu et il permet essentiellement à mon
+ordinateurs pour communiquer avec Internet bien je vais remplacer ce intégré
+pare-feu dans ce routeur intégré avec et le serveur DHCP avec mon mikrotik donc
+Je dois faire ce qu'on appelle un pont pour que le modem fourni par mon FAI soit un
+Modem hITRON J'ai besoin de le configurer de sorte que ce ne soit rien d'autre qu'un modem et alors nous sommes
+va utiliser cet appareil pour le contrôler, donc la façon dont je vais le faire est de
+va se connecter à l'interface et l'administrateur rcus des modems hITRON est le login
+votre modem va être différent, alors gardez à l'esprit que ce sera le
+Adresse IP de votre passerelle vous pouvez en savoir plus en contactant votre FAI si
+vous ne savez pas comment faire cela, mais demandez-leur simplement comment puis-je relier mon modem
+c'est la chose importante donc ce sera juste un modem stupide qui donne mon
+accès mikrotik à Internet, donc sur le hITRON je vais entrer dans les bases et
+puis la fonction de passerelle et la fonction de passerelle résidentielle sont activées par défaut
+Je veux simplement désactiver cela maintenant, gardez à l'esprit dès que je dis d'accord
+Je vais perdre l'accès à Internet une fois que j'appuie sur Enregistrer les modifications, alors faisons-le
+parce que maintenant je l'ai transformé en un modem stupide alors prenons un Ethernet
+câble et nous allons relier notre carte de routeur afin que le numéro de port de la carte de routeur
+celui que je vais définir comme port LAN donc je vais le connecter à mon réseau
+il suffit de retirer ça de la façon dont c'est un peu branlant parce que je fais
+ça tu sais
+assez improvisé mais vous allez avoir l'idée en gros du port numéro un de
+la carte du routeur va sortir de mon modem donc je vais la brancher sur
+mon modem ici, nous allons connectés et bien voyons voir ouais ne semble pas
+Peu importe le port dans lequel je vais, je vais juste brouiller que là-dedans nous y allons et maintenant
+Je vais prendre le câble qui me relie au réseau et je vais
+branchez-le sur le port numéro deux de ma carte de routeur et cela me donnera
+accès au micro tech je dis que la carte routeur mikrotik est la carte routeur de la marque
+est le produit donc mon réseau qui est mon commutateur est maintenant connecté au numéro de port
+deux donc mon ordinateur voit essentiellement le port numéro deux le port numéro un sur le
+mikrotik va à l'arrière du modem ISP actuel qui est maintenant réglé sur
+mode ponté alors passons à notre mikrotik tout d'abord, nous devons voir
+ce que tu vas remarquer maintenant, c'est que je suis à 10,00 points
+pour savoir quel est mon nouveau réseau maintenant que je suis sur le micro tech ipconfig
+/ tout ceci est dans Windows sous Linux, vous allez taper le tiret d'espace IP a et
+découvrons le type de réseau que j'ai ici, d'accord, je vois toujours un
+passerelle par défaut de 10.0.0.0 elle n'a pas encore été actualisée si bien vérifions donc je
+sur Windows 10 et même si un redémarrage pourrait déclencher la réparation de votre
+réseau en essayant de me reconnecter, tout ce que je vais faire est de faire un clic droit sur
+mon adaptateur et déconnectez-le, désactivez l'adaptateur Ethernet et
+réactivez-le et maintenant, une fois qu'il se reconnecte, je devrais pouvoir faire une configuration IP
+slash all and should see yes okay donc nous sommes maintenant sur 192.168.1 alors allons
+essayez que 192.168.1 et nous voilà avec le système d'exploitation du routeur, donc dans le cul rétro, la première chose que nous
+maintenant, c'est le réglage rapide, donc cela nous permet de configurer rapidement notre
+périphérique de routeur mikrotik alors voyons ce qui se passe ici donc serveur DHCP
+plage je veux changer cela en 10.0.0.0
+à 10.0.0.0 pour le moment, vous n'aurez peut-être pas besoin de le faire car vous utilisez peut-être
+192.168.1 - Ici, au studio, j'utilise le
+Bloc 10.0.0.0 donc c'est un réseau général et pas vraiment ce que je suis
+entreprendre de faire ici et de vous apprendre, mais c'est essentiellement mon blocage IP si
+vous êtes satisfait de 192.168.1 c'est bien je fais 10.0.0.0 mon routeur et mes paramètres
+le serveur DHCP va donc de cent à deux cent cinquante
+quatre très bien, donc tout ce que j'ai besoin de régler ici, je peux configurer mon
+sans fil et tout le reste, je vais le faire dans un petit moment alors allons-y
+faire fonctionner notre adresse IP ici, donc je vais cliquer sur appliquer la notification de configuration
+l'acquisition d'adresse se fait depuis le port Ethernet numéro un, c'est pourquoi je
+branché mon modem là-dedans et je l'ai configuré pour obtenir automatiquement l'adresse IP
+alors voyons ce qui se passe ici lorsque j'applique cette configuration, nous devrions donc
+voir que ce routeur va redémarrer et quand il le fera, nous serons
+sur un 1000 qui fonctionne
+solution bon marché et gaie bien 10 point 0 point 0 point
+pour que tout soit bien configuré, renouvelons donc notre DHCP à partir de
+notre connexion Internet voyons ce qu'elle nous a donné, libérons et renouvelons
+assurez-vous que oui, nous sommes sur le port Ethernet numéro un, je n'ai pas de live
+voyant lumineux donc quelque chose que mon câble n'a pas été branché complètement ah c'est
+chose numéro deux à faire alors voyez-vous comment cela vient de sauter en plein boom, je suis en direct
+sur Internet alors maintenant je devrais déjà avoir accès pour dire à Google oui je suis
+en ligne faisons un test de vitesse rapide, voyons comment elle va
+go-go-go donc c'était une vitesse de téléchargement assez misérable vitesse de téléchargement pas terrible
+tester à nouveau quelque chose est là-haut peut-être que nous sommes juste là-dedans que vous savez que
+vitesse Internet pandémique, tout est assez lent en ce moment ouais
+des vitesses assez faibles, donc même un routeur 10 sur 100 ne me donnerait que jusqu'à
+100 mégabits et je pousse 156 en ce moment, c'est assez mauvais compte tenu du fait que je suis
+censé avoir un concert mais au moins je sais que je vais mieux que 100
+mégabits par seconde donc on y va tout semble plutôt bien réglé allons
+sauter dans le web Figg maintenant c'est ce qui rend le mikrotik si puissant
+est le logiciel que vous perdrez si vous essayez de vous y retrouver
+et notez que c'est aussi rapide que cela a été de tout faire fonctionner, mais je
+vais avoir besoin de configurer des choses comme sous IP, je peux configurer des réservations DHCP
+afin que mes appareils se connectent, je peux les configurer comme des appareils statiques que vous
+remarquez qu'il compte à rebours, donc mon ordinateur est arrivé à 54 donc c'est
+en fait en commençant par le haut de gamme du pool DHCP et en descendant
+ce qui est bien si je le voulais, je pourrais rendre cela statique en cliquant simplement sur
+rendre statique à nouveau Je suis un serveur IP DHCP J'ai cliqué une fois sur mon ordinateur et je
+peut cliquer sur rendre statique je ne vais pas faire ça mais je vais devoir le faire avec
+des choses comme mon serveur lorsque je les mets en ligne, donc c'est vraiment vraiment
+configuration rapide bon marché et gaie de mon réseau maintenant, mettons le Wi-Fi en place
+et courir donc le Wi-Fi est assez simple, je vais ajouter un Wi-Fi
+mot de passe de dum-dum 1 2 3 ne fais pas vraiment que je suis
+faire ça pour le plaisir de la démonstration
+d'accord donc le nom du réseau sur 2 gigahertz je peux le laisser tel quel ou je peux dire cat 5 TV
+2 points je suppose que je ne peux pas je ne sais pas si je peux avoir un point là-dedans ou pas
+Je vais aller à la télévision cat 5, puis pour 5 gigahertz, je vais passer à la télévision cat 5 5 gigahertz
+ouais d'accord alors voyez les options ici bheegi bheegi nb GN GN et puis nous
+obtenu un / an / an / a seulement AC et n avec un voir il y a mon mot de passe ok alors regarde
+bien appliquer cette configuration maintenant l'un des
+des choses vraiment vraiment chouettes à propos de ça ok tout d'abord vous remarquez que je suis
+ne pas avoir à redémarrer mon routeur à chaque fois et remarquer que je commence à ramasser
+une certaine connectivité Wi-Fi ici, je n'ai pas à redémarrer à chaque fois que je
+changer la configuration et quand je crée tout type de configuration c'est
+instantané donc mais qu'est-ce qu'il y a de cool avec le web fig cette interface web alors remarquez que
+accéder à cela via l'adresse IP du routeur est que si je devais brique mon
+mikrotik et je ne veux pas perdre les paramètres que j'ai créés
+vous les avez probablement sauvegardés parce que vous pouvez dans le Web fig qui fait partie de
+le système, donc si je me lance là-dedans, voulez-vous dire que c'est dans le système
+les ports de redémarrage récents voient-ils à quelle vitesse je trouverai et couvrirai la sauvegarde de votre
+micro stick oh il y a un fichier de riff de point de sortie, donc ça le fera mais si vous
+causerait un problème qui ne ferait pas en sorte que vous ne puissiez pas
+connectez-vous à ce mikrotik fournit un logiciel donc je viens de me déconnecter et
+vous pouvez descendre et installer la boîte à vent de la boîte à vent est un
+L'application Windows est également disponible pour Mac et vous donne l'interface
+il détecte essentiellement votre routeur sur le réseau et vous donne la même chose
+interface avec un peu plus de fonctionnalités comme le micro multitâche
+mais même si vous ne pouvez pas accéder à l'interface Web, vous pouvez utiliser la boîte à vent
+Je dis que c'est une application Windows, vous pouvez la télécharger et l'exécuter dans wine sur votre
+Linux box alors ne vous inquiétez pas de cet avis, je peux me connecter sans mot de passe
+donc je veux entrer dans le réglage rapide et me définir le mot de passe sur mon routeur dum-dum
+1 2 3 dum-dum 1 2 3 et appliquez cette configuration et
+alors maintenant si je me déconnecte et que j'essaye de me reconnecter, ça va dire authentification
+échoué alors je vais essayer dum-dum 1 2 3 entrez assurez-vous d'utiliser des mots de passe intelligents
+ok, la meilleure façon de le faire est d'utiliser un outil comme
+comme LastPass et générez un mot de passe sécurisé ok grab qui en fait votre
+mot de passe, puis utilisez LastPass ou le gestionnaire de mots de passe que vous utilisez
+afin de le mémoriser et cela vous gardera beaucoup plus en sécurité
+bien sûr, l'interface n'est accessible que dans mon réseau afin qu'elle puisse
+être quelque chose qui vous est également familier, donc nous avons le Wi-Fi
+fonctionne probablement alors voyons si j'apporte mon téléphone ici et que je le fais glisser
+montons nos réseaux Wi-Fi et vous verrez cat 5 TV 5 gigahertz est
+là et prêt pour que je me connecte, je vais essayer de me connecter et de taper
+dum-dum 1 2 3 se connecter et obtenir une adresse IP
+et je suis en fait et il a détecté le chat 5 TV le 2 gigahertz aussi et je suis
+connecté alors maintenant si je vais faire pipi puis serveur DHCP et entrer dans mes baux, vous
+voir qu'il y a un nouvel appareil qui est mon téléphone afin que je puisse rendre cela statique et je
+peut et remarquez que c'est le téléphone polka téléphone polka f1 Robby donc c'est aussi rapide
+que pour ramasser les choses, être capable de le configurer et littéralement nous
+mis en place notre Internet et est devenu opérationnel en quelques minutes quels sont
+on va faire pour le reste des gens de la série qu'est-ce qu'on va faire
+alors consultez cat5 dot TV slash mikrotik ces appareils sont abordables ils sont
+puissant, nous allons apprendre toutes sortes de choses incroyables que nous pouvons faire avec ça
+c'est tellement mieux que le pare-feu et la protection intégrés fournis avec
+votre modem FAI supprime la capacité des FAI à se connecter et
+accéder à votre réseau, ce qui est important, pensez-y une seconde lorsque vous
+installez un modem de votre FAI votre fournisseur d'accès Internet dont ils disposent
+accès à cela, rappelez-vous quand je l'ai ponté, ce qui leur a fait perdre l'accès maintenant
+le seul appareil qu'ils peuvent voir s'ils essaient de suivre est le
+mikrotik ils ne peuvent pas y accéder, mais ils pourraient peut-être voir cela
+il y a un appareil connecté, je pourrais connecter une centaine d'ordinateurs supplémentaires
+ne verrait toujours qu'un seul appareil connecté, donc cela vous donne une bonne quantité
+de confidentialité contre le FAI qui fouille également et cela dit qu'il vous donne un
+énorme quantité de confidentialité contre les script kiddies et les hackers et tout le reste
+mais en même temps, nous allons pouvoir créer un réseau plus sûr au sein de notre
+infrastructure interne qui va être fantastique, je veux dire que c'est tellement agréable de
+être en mesure de donner un mot de passe Wi-Fi à vos amis et à votre famille lorsqu'ils viennent et
+visiter mais vous ne voulez pas qu'ils aient accès aux fichiers de votre serveur pour
+votre imprimante à utiliser toute votre bande passante comme vous essayez de le faire
+quelque chose en ligne et quelque chose de bizarre fonctionne si lentement bien peu
+sachez que quelqu'un à qui vous avez donné votre accès Wi-Fi télécharge un film
+de la porte d'à côté, donc ce sont des choses avec lesquelles nous allons pouvoir empêcher
+notre mikrotik alors regardez la série cat5 TV slash mikrotik ça va être
+incroyable et nous sommes opérationnels, je vais mettre ça dans le rack et
+Je suis enthousiaste car c'est une solution bien meilleure pour mon réseau
+[La musique]
