@@ -1,0 +1,254 @@
+maintenant nous avons examiné les routeurs de la marque mikrotik et la série complète est
+disponible gratuitement sur cat5 dot TV slash mikrotik maintenant que notre réseau est
+opérationnel, créons un SSID Wi-Fi invité, notre Wi-Fi invité aura un
+connexion limitée à Internet et ils n'auront pas accès à notre
+ressources donc c'est le réseau partage des imprimantes choses comme celles que je veux verrouiller
+que vers le bas, nous allons créer une connexion Wi-Fi vraiment isolée pour permettre
+invités amis clients ou visiteurs d'utiliser notre connexion Internet sans
+risquant de ralentir notre connexion ou sans risquer l'intégrité ou la confidentialité
+de nos données donc cela va être un tutoriel complexe aujourd'hui alors ce que j'ai fait
+est-ce que j'ai documenté toutes les étapes que je vais franchir à
+cat5 dot TV slash mikrotik pour que vous puissiez suivre cela en fait beaucoup
+plus facile pour vous alors allons-y directement, je vais en fait partir
+ces notes parce que c'est vraiment une série sophistiquée que nous obtenons
+dans ici aujourd'hui ou au moins un aspect de la série, donc je vais être
+je travaille sur mon livre de pins ici et je veux simplement parler de mon ordinateur portable et du
+l'écran a l'air fantastique cette semaine regardez que j'ai apporté quelques améliorations ici à
+le studio donc je pense que tu vas trouver que les choses sont beaucoup plus faciles à lire maintenant
+merci à tous pour votre patience pendant cette période car cela a été
+difficile pour de nombreux diffuseurs mais nous avons apporté quelques améliorations cette semaine
+alors merci pour votre patience donc la première chose que je veux faire en web fig ici
+est-ce que je veux accéder à mes profils de sécurité sans fil afin de comprendre
+Je ne veux pas que ceux qui accèdent à mon Wi-Fi invité utilisent le même
+mot de passe que j'utilise sur mon Wi-Fi principal, c'est particulièrement ce que je ne veux pas
+donner alors faisons-le maintenant, configurons un mot de passe séparé par
+en cliquant sur sans fil à gauche ici, puis je vais cliquer sur sécurité
+profils en haut maintenant cliquez sur ajouter nouveau et vous verrez que la valeur par défaut est en fait mon mon
+votre réseau, c'est donc le mot de passe de mon réseau le Wi-Fi que j'ai déjà
+configurer et je vais cliquer sur ajouter un nouveau et nous allons simplement appeler cet invité
+juste comme cette note est que je veux désactiver WPA PSK
+parce que WPA, comme vous le savez, fait vraiment partie de moi, il est très facile de faire des compromis.
+ne veut pas utiliser WPA, nous voulons seulement utiliser wpa2 car wpa2 est beaucoup plus sûr car
+dans la mesure où quelqu'un peut pirater votre réseau Wi-Fi, désactivez WPA PSK
+laissez wpa2 PSK activé, puis ici car cela est activé, nous devons
+entrez une clé pré-partagée aka le mot de passe pour notre réseau donc je vais utiliser dum-dum
+un-deux-trois-quatre ce Wi-Fi invité, donc ce n'est que pour le Wi-Fi invité
+rappelez-vous que ok une fois que j'ai entré mon mot de passe, je vais frapper ok donc je
+Je n'ai pas encore créé de réseau, tout ce que j'ai fait, c'est d'avoir créé une sécurité
+profil appelé invité et ce profil de sécurité contient la clé partagée wpa2 pour
+ce réseau invité et je remarque que mon réseau par défaut utilise en fait WPA pré
+clé partagée, alors pendant que nous sommes ici, ouvrons celle-ci et désactivons WPA PSK
+parce que je ne veux pas que quelqu'un pirate mon réseau principal et clique sur OK seulement
+a pris un moment pour que mon Pine Book Pro se déconnecte du Wi-Fi et
+reconnecter le mot de passe n'a pas changé simplement l'algorithme de cryptage a
+changé donc maintenant comme vous pouvez le voir à l'écran ni de mes clés de sécurité Wi-Fi
+autorisera WPA ils n'autoriseront que wpa2 c'est aussi simple que cela maintenant sautez dans notre
+Interfaces Wi-Fi c'est là que vous voyez mes deux gigahertz et cinq gigahertz
+réseaux et je souhaite en ajouter un nouveau pour mon Wi-Fi invité mais je n'en ai pas d'autre
+radio alors qu'allons-nous faire nous allons partager la radio avec l'un de mes
+w atterrit donc nous n'allons pas ajouter une autre radio, nous n'avons pas à acheter
+point d'accès ou tout type d'appareil, nous allons simplement utiliser le même
+mikrotik, donc la seule mise en garde est que cela signifie que l'invité
+Le Wi-Fi partagera le même canal que notre Wi-Fi comme le
+Wi-Fi pour notre réseau, car c'est un réseau différent et c'est un
+mot de passe différent, ils ne pourront pas accéder à nos choses, c'est juste
+va partager la même chaîne
+que cela compte ou non, je ne pense pas que ça va bien, allons ajouter un nouveau
+et nous allons choisir le virtuel parce que nous n'en créons pas un réel maintenant nous
+créer un réseau virtuel ici sur notre onglet sans fil dans les interfaces Wi-Fi afin
+créons une interface virtuelle la première chose que je dois faire est de toujours donner
+choses un nom que je vais appeler cet invité
+- Wi-Fi et vous remarquerez que j'utilise des invités pendant que vous utilisez peut-être votre
+votre nom de famille ou votre nom de famille ou quelque chose d'amusant pour vos invités Wi-Fi vous
+peut le faire mais dans le but de rendre ce tutoriel universellement accessible et
+facile à suivre J'utilise des invités car tout le monde peut suivre ces étapes et
+puis retracez et renommez les choses si vous le souhaitez mais vous n'êtes pas obligé de le faire.
+sur ce réseau, faisons défiler un peu vers le bas et nous allons voir
+quelque chose ici appelé SSID, nous savons que le SSID de notre réseau est fondamentalement
+ce que vous voyez lorsque vous ouvrez votre téléphone et que vous accédez au Wi-Fi et que vous
+voir une liste des différents réseaux donc en ce moment je vois cat 5 TV et cat 5 TV -
+5g et environ un milliard d'autres réseaux Wi-Fi autour de moi mais je veux donner
+celui-ci un SSID qui désigne ce Wi-Fi invité maintenant dans notre cas aujourd'hui
+Je vais appeler ce SSID simplement deviné à nouveau je vais me référer
+mon commentaire que nous rendons cela universellement accessible mais vous pouvez appeler
+que tout ce que vous voulez, cela pourrait être, je pourrais appeler ce chat 5 TV - invité qui
+serait très approprié car s'il y a un autre réseau appelé invité
+car c'est assez générique qui pourrait provoquer un conflit mais aussi
+ça fait juste que quand les gens entrent en studio, ils peuvent dire oh
+c'est le Wi-Fi invité pour cat5 TV hey quel est le mot de passe dum-dum un deux
+trois bons et simples, mais pour la démonstration d'aujourd'hui, nous allons juste
+aller avec l'invité et maintenant la dernière chose que nous devons faire bien sûr est de définir notre
+profil de sécurité pour la connexion Wi-Fi et nous allons changer
+que de la valeur par défaut à l'invité, cela va donc être défini pour que nous utilisions le
+password dum-dum 1 2 3 comme nous l'avons spécifié avec ce profil de sécurité et c'est
+littéralement, tout ce qu'il y a à ajouter l'interface est ok maintenant parce que je fais
+changements dans ma configuration Wi-Fi et parce que mon Pine Book Pro est connecté à mon Wi-Fi
+rappelez-vous maintenant que le Wi-Fi maintenant le routeur ne redémarre pas mes serveurs et
+tout mon Internet ne tombe pas mais le Wi-Fi va avoir un hoquet
+là parce que l'émetteur Wi-Fi redémarre ou recharge ces
+paramètres de configuration seuls, alors maintenant que le rechargement de ces
+paramètres, vous verrez maintenant que sous les interfaces Wi-Fi sans fil, j'en ai une
+appelé Wi-Fi invité et qui est une interface virtuelle se connectant à mon Wi-Fi afin que le
+la prochaine chose que nous devons faire est de commencer à déterminer comment le trafic va
+de couler et avez-vous le sentiment ici que si vous suivez ces
+étapes et si vous comprenez les étapes de configuration d'un routeur mikrotik
+vous pouvez faire des trucs vraiment sophistiqués en haut de cette démonstration I
+a averti que cela allait être un peu compliqué, pas que ce soit difficile
+pas difficile ce n'est pas difficile c'est juste qu'il y a beaucoup d'étapes alors allez à
+cap v dot TV slash micro tech et je les ai listés dans une documentation
+format pour vous et la série entière est disponible pour vous absolument gratuitement, donc si
+vous voulez suivre ces étapes et vous vous inquiétez peut-être un peu
+tâtonnant sur quelque chose que j'ai dit ou peut-être que je bouge un peu aussi
+rapidement, allez au cap v dot TV slash mikrotik pour vous installer
+Avec ces Doc, ça va donc pour créer un pont, je vais aller au
+menu de gauche et cliquez sur le pont, nous pouvons voir qu'il y a déjà un pont actif
+en cours d'exécution là-bas, mais nous voulons en ajouter un pour notre Wi-Fi invité parce que nous voulons
+ceci pour être séparé de notre pont principal donc j'ai cliqué sur ajouter un nouveau et je vais
+donnez à celui-ci un nom que vous avez deviné pont - invité
+gardons tout simple, je veux que vous suiviez ce mot à mot et ça va
+aide à faire en sorte que tout ait du sens à la fin et que vous puissiez toujours y aller
+revenir et renommer les choses si vous sentez que vous en avez besoin, c'est littéralement tout ce que nous
+besoin de faire pour créer un pont, bien, maintenant, comme vous pouvez le voir, nous
+avoir un pont appelé les invités du pont assis là à ne rien faire
+nous devons donc spécifier la manière dont les ports seront attribués, alors cliquez sur
+sur les ports et nous devons réellement connecter ce pont à notre nouveau Wi-Fi invité afin
+ajouter un nouveau puis changer l'interface en Wi-Fi invité et le pont que nous ne voulons pas
+qu'en utilisant notre pont principal, nous voulons que cela aille au pont - invité et maintenant appuyez sur OK
+et maintenant vous pouvez voir juste en bas il y a invité - pont Wi-Fi - invité tout
+prêt à partir et attend que nous finissions la configuration, alors la prochaine chose
+que nous devons faire évidemment, nous n'avons pas dit à cet invité Wi-Fi le pont quelle adresse IP
+bloquer à utiliser et encore une fois, je vais revenir au moment où j'ai dit que je veux que ce réseau soit
+séparé de mon réseau privé, je ne veux pas que le Wi-Fi invité soit sur la même IP
+block Je ne veux pas que leur bloc IP puisse accéder au mien car j'ai
+Partages réseau sur mon serveur et je ne veux pas qu'ils aient accès à la suppression de mon
+fichiers ou pire encore ici, nous vivons dans un monde où quelqu'un pourrait se connecter
+votre Wi-Fi invité depuis leur ordinateur portable Windows et ils ont un ransomware qui
+le ransomware sort alors sur le réseau et recherche les partages réseau et
+crypte tous vos fichiers même si vous disposez d'un antivirus ou que vous
+n'ont rien d'autre que Linux sur votre réseau parce qu'ils sont connectés à votre Wi-Fi
+ils ont désormais accès au chiffrement de tous vos fichiers avec leurs logiciels malveillants qu'ils
+ont sur leur ordinateur portable, nous créons donc un réseau qui vous protège
+entièrement contre ce genre d'infiltration ainsi que les
+personne qui se connecterait au Wi-Fi de vos invités et essaierait de rechercher
+informations sur votre réseau afin que nous vous protégions contre cela, définissons
+un bloc IP pour ce Wi-Fi invité et une adresse IP go, puis des adresses sur le
+côté gauche ici et vous pouvez voir ici que mon réseau est 10.0.0.0 point zéro point
+un deux trois quatre ainsi de suite et en comptant donc je vais créer un nouveau bloc IP en
+en cliquant simplement sur ajouter nouveau et nous allons rendre celui-ci un peu différent, donc
+nous allons aller avec 10.10 dot dot one slash 24 et sur l'interface deviner
+quelle interface nous allons utiliser ici les gens bridge - invité c'est le commentaire
+domaine dont je parlais la semaine dernière et dont nous n'avons pas vraiment vu que nous n'avons pas besoin
+que dans ce cas, mais vous pouvez ajouter des commentaires à tout ce que vous ajoutez sur le Web
+épais hit ok alors maintenant nous avons un nouveau réseau ici appelé dix dix dix point un
+et ça va m'attribuer bien on va forcément quand on met en place un serveur DHCP
+voir qu'il y a beaucoup d'étapes pour attribuer des adresses IP à ce bloc IP
+donc en parlant de serveur DHCP, c'est notre prochaine étape, nous allons donc sauter par-dessus
+et sous IP qui est déjà ouvert déjà développé et nous allons cliquer
+sur le serveur DHCP et ici vous pouvez voir mon serveur DHCP en cours d'exécution mais le
+Le truc avec ça, c'est que ça a un nom bizarre, donc je commence
+ce que je veux faire, c'est que je veux ouvrir ça et je vais juste renommer celui-ci
+local et la raison pour laquelle je veux faire cela est que je veux toujours me rappeler que
+ce pool DHCP est mon réseau local, il a un accès complet à tout sur mon
+réseau que vous ne souhaitez pas attribuer à un invité, donc en l'appelant local
+me garde juste un peu plus en sécurité parce que ça se démarque comme ça
+définitivement mon réseau local ajoutons maintenant un nouveau serveur DHCP et vous pouvez voir
+qu'il y a toute cette configuration que vous pouvez effectuer mais je veux vous montrer un outil
+cela va aider à rendre cela encore plus facile, alors je viens juste d'en parler mais
+annuler et vous pouvez voir qu'il y a en fait une configuration DHCP et cela va faire apparaître
+un assistant qui va rendre cela beaucoup plus simple pour nous et c'est littéralement
+easy breezy nous allons changer l'interface du serveur DHCP en pont - invité et
+alors regardez ceci, nous allons frapper la prochaine prochaine voir que r2 l'a automatiquement assigné
+vers le bon réseau, le prochain serveur DNS est simplement extrait de mon routeur
+c'est bien, nous pouvons changer nous allons réellement changer ceux-ci dans le futur
+épisode où nous mettons en place un trou de tarte qui n'est pas un mauvais mot qui est en fait un appareil
+qui agira comme notre serveur DNS en interne et bloquera le blocage de la publicité
+pornographie tout ce genre de trucs cliquez sur Suivant Suivant Suivant Suivant Suivant Suivant
+tout tel quel et nous avons terminé whoo nous avons l'invité 1 et remarquez bien pourquoi
+est-ce DHCP 1 bien mon invité de pont je peux voir que c'est
+invité du pont mais remarquez-le, je ne lui ai pas donné de nom et donc maintenant je peux le faire
+exactement la même chose que je peux ouvrir et appeler cet invité
+pas facile ok alors maintenant je suis au point où je devrais être capable de voir le
+réseau Wi-Fi invité sur mon téléphone, alors faisons une actualisation rapide du Wi-Fi ici et
+bien sûr, il y a cat 5 TV 5 gigahertz cat 5 TV et un appelé guest alors allons
+cliquez dessus avant de faire cela, je vais afficher une ressource de réseau local
+non connecté à la télévision cat 5 Je veux que vous voyiez que je suis en fait capable d'accéder
+ressources locales, alors nous allons simplement afficher ma connexion VirtualBox là-bas, une fois
+Je passe au Wi-Fi invité Je vais l'utiliser comme démonstration pour
+montrer si nous sommes en mesure d'accéder à ces ressources, donc de retour dans mon Wi-Fi
+connectons-nous à l'invité entrez mon mot de passe à partir du profil de sécurité dum-dum 1 2 3
+connectez-vous en obtenant une adresse IP et nous sommes dans quelles options avons-nous ici
+regarder l'adresse IP 10 voir la passerelle 10 10 10
+un très bien alors regardons à nouveau notre navigateur maintenant que je suis connecté à
+ce réseau et essayons d'accéder à PHP VirtualBox et vous remarquerez que oui je suis
+en effet toujours capable d'accéder à PHP VirtualBox j'ai cliqué sur l'adresse
+bar et j'ai cliqué sur le lien et il se charge et c'est simplement parce que je
+n'ont pas encore créé de règle de pare-feu pour essentiellement et il piège que le Wi-Fi le
+accès invité et faites en sorte qu'il ne soit pas autorisé à communiquer avec mon
+réseau local ou mes appareils Wi-Fi sur mon Wi-Fi réel, de sorte que nous
+va le faire est de retour sur notre site mikrotik le Figg je vais cliquer j'ai
+IP ouvert et ensuite nous allons aller au pare-feu, nous l'avons déjà vu sur
+épisodes précédents de cat5 TV slash mikrotik vous pouvez voir que j'ai ajouté quelques
+de nouvelles choses depuis la dernière fois que nous étions ici mais ce que je veux faire
+il est temps que je veux créer une règle pour pouvoir faire en sorte que le Wi-Fi pour
+le réseau invité ne peut pas accéder à dix points 0 point 0 point
+sur ajouter nouveau pour créer une nouvelle règle de pare-feu et vous allez rire de la facilité avec laquelle cela
+est-ce que vous remarquerez que la chaîne est par défaut pour transmettre c'est ce que nous voulons alors laissez
+tel quel et nous allons définir l'adresse source, donc si l'adresse IP
+l'adresse vient de ceci alors faites ceci alors regardez ce que je vais faire ici 10.10
+point point 0 barre oblique 24 pour que quiconque se trouve sur le bloc IP Wi-Fi invité
+tomber dans ceci l'adresse de destination de l'adresse source c'est mon réseau
+10.0.0.0 barre oblique 24 si quelqu'un de ce réseau tente d'accéder à ce réseau
+que voulez-vous faire l'action de défilement vers le bas
+laissez tomber donc ce que nous disons est une source du bloc IP Wi-Fi invité essayant de
+accéder à mon réseau local actuel, nous allons supprimer les paquets que je veux signaler
+que c'est unidirectionnel, il peut donc y avoir des cas où vous souhaitez que les appareils
+accéder à votre réseau sans fil mais ne pas avoir accès à votre
+ressources mais vous voulez que vos ressources internes puissent accéder
+ils pensent peut-être à une caméra IP qui utilise le Wi-Fi pour se connecter bien que vous voulez
+pour pouvoir se connecter à Internet vous voulez qu'il puisse accéder au
+réseau et vous, depuis votre ordinateur sur votre terrain, voulez pouvoir y accéder
+appareil photo, mais vous ne voulez pas que cet appareil photo ait le droit d'accéder à vos éléments sur
+votre réseau n'est qu'un exemple mais je veux dire que vous pouvez probablement penser à des appareils
+que vous voudriez avoir en quelque sorte séparé de votre réseau, de sorte que si quelqu'un
+l'attrape si quelqu'un vole, disons que vous avez un Raspberry Pi assis
+le toit quelque part connecté à votre Wi-Fi bien si quelqu'un vole que vous
+ne veulent pas qu'ils aient accès à votre réseau, alors mettez-le sur un autre
+réseau mais vous permettant de vous y connecter afin que nous comprenions que
+nous faisons cela unidirectionnel et cela n'affectera que le Wi-Fi invité
+cela ne réduit pas cela n'élimine pas ma capacité à me connecter au
+appareils sur le Wi-Fi invité, cliquons sur OK et maintenant nous avons configuré cet itinéraire
+cependant vous avez remarqué qu'il l'a placé en bas et nous avons déjà parlé
+à ce sujet, nous voulons nous assurer que nos règles avancées s'appliquent avant que certaines des
+mikrotik et je veux certainement m'assurer que cela se produit avant le
+règles que j'ai créées si elles impliquent une infrastructure interne Je veux celle-ci
+arriver après ça non je ne veux pas que ça arrive avant ça parce que si
+ils vont accéder à dix points 0 point 0 point via Internet
+via le port que nous avons autorisé, donc si c'était en dessous, ils seraient en fait
+avoir accès à la télévision de catégorie 5 10.0.0.0 donc je vais laisser tomber comme première chose alors maintenant
+sans avoir à redémarrer sans rien faire d'autre je vais ramener
+mon téléphone ici qui est connecté au Wi-Fi invité et revenons à
+mon navigateur et cliquons sur PHP VirtualBox que vous voyez cette progression
+indicateur en haut il est raccroché maintenant je veux dire je sais que je peux toujours voir PHP
+VirtualBox parce que je l'ai déjà chargé, allons à la maison et allons-y
+là encore, donc 10.0 PHP VirtualBox regardez ce que j'ai
+cliqué dessus où est-il ça ne marche pas parce que je suis connecté
+au Wi-Fi invité ce site ne peut pas être atteint mais Internet fonctionne
+Allons juste à la télévision de catégorie 5 ouais, Internet fonctionne un régal essayons d'y aller
+retour à la mauvaise IP 10.00 10 qui est mon serveur VirtualBox
+et disons parce que nous savons que ça va expirer je vais changer pour mon chat
+5 TV 5 gigahertz Wi-Fi là-bas, nous allons connectés et apportons-le et boum je suis
+comme vous pouvez le voir, nous avons créé avec succès un Wi-Fi invité qui
+est distinct de notre réseau, ils ne peuvent pas accéder aux ressources sur 10.0.0.0 ils ne peuvent pas
+accéder à cela à partir de notre Wi-Fi invité que nous allons également apprendre en venant
+semaines comment nous pouvons ralentir que j'ai mentionné que nous allons être
+regardant la limitation, mais nous n'avons plus de temps pour ce segment de la semaine, donc je vais
+déplacez-le également dans un futur épisode, alors assurez-vous de surveiller cela, nous
+va apprendre à ralentir la connexion pour que notre Wi-Fi invité établisse
+sûr que même vous savez si je donne accès aux enfants sur leurs tablettes
+leurs amis, puis les amis sont en train de télécharger des vidéos via
+mon Wi-Fi, je ne veux pas qu'ils traitent toute ma bande passante alors nous allons couvrir ça
+sur une émission à venir ainsi que cap cinq points TV slash mikrotik est l'endroit où vous voulez aller
+pour obtenir l'intégralité de la série gratuitement, veuillez poster vos commentaires et assurez-vous
+vous vous abonnez à nous au salon de la technologie Linux calme où je poste tout
+ceux-ci également qui redirigent vers notre chaîne youtube appelée la prochaine technologie
+spectacle

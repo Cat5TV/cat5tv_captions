@@ -1,0 +1,5065 @@
+1
+00:00:01,790 --> 00:00:04,190
+
+now we've been looking at the mikrotik
+
+2
+00:00:04,190 --> 00:00:04,200
+now we've been looking at the mikrotik
+ 
+
+3
+00:00:04,200 --> 00:00:07,160
+now we've been looking at the mikrotik
+brand routers and the full series is
+
+4
+00:00:07,160 --> 00:00:07,170
+brand routers and the full series is
+ 
+
+5
+00:00:07,170 --> 00:00:09,410
+brand routers and the full series is
+available absolutely free at cat5 dot TV
+
+6
+00:00:09,410 --> 00:00:09,420
+available absolutely free at cat5 dot TV
+ 
+
+7
+00:00:09,420 --> 00:00:12,560
+available absolutely free at cat5 dot TV
+slash mikrotik now that our network is
+
+8
+00:00:12,560 --> 00:00:12,570
+slash mikrotik now that our network is
+ 
+
+9
+00:00:12,570 --> 00:00:14,570
+slash mikrotik now that our network is
+up and running let's create a guest
+
+10
+00:00:14,570 --> 00:00:14,580
+up and running let's create a guest
+ 
+
+11
+00:00:14,580 --> 00:00:19,310
+up and running let's create a guest
+Wi-Fi SSID our guest Wi-Fi will have a
+
+12
+00:00:19,310 --> 00:00:19,320
+Wi-Fi SSID our guest Wi-Fi will have a
+ 
+
+13
+00:00:19,320 --> 00:00:21,490
+Wi-Fi SSID our guest Wi-Fi will have a
+throttled connection to the Internet and
+
+14
+00:00:21,490 --> 00:00:21,500
+throttled connection to the Internet and
+ 
+
+15
+00:00:21,500 --> 00:00:25,250
+throttled connection to the Internet and
+they will not have access to our local
+
+16
+00:00:25,250 --> 00:00:25,260
+they will not have access to our local
+ 
+
+17
+00:00:25,260 --> 00:00:27,830
+they will not have access to our local
+resources so that's network shares
+
+18
+00:00:27,830 --> 00:00:27,840
+resources so that's network shares
+ 
+
+19
+00:00:27,840 --> 00:00:30,439
+resources so that's network shares
+printers things like that I want to lock
+
+20
+00:00:30,439 --> 00:00:30,449
+printers things like that I want to lock
+ 
+
+21
+00:00:30,449 --> 00:00:33,049
+printers things like that I want to lock
+that down we're gonna create a truly
+
+22
+00:00:33,049 --> 00:00:33,059
+that down we're gonna create a truly
+ 
+
+23
+00:00:33,059 --> 00:00:35,270
+that down we're gonna create a truly
+isolated Wi-Fi connection to allow
+
+24
+00:00:35,270 --> 00:00:35,280
+isolated Wi-Fi connection to allow
+ 
+
+25
+00:00:35,280 --> 00:00:37,819
+isolated Wi-Fi connection to allow
+guests friends customers or visitors to
+
+26
+00:00:37,819 --> 00:00:37,829
+guests friends customers or visitors to
+ 
+
+27
+00:00:37,829 --> 00:00:40,520
+guests friends customers or visitors to
+use our internet connection without
+
+28
+00:00:40,520 --> 00:00:40,530
+use our internet connection without
+ 
+
+29
+00:00:40,530 --> 00:00:43,990
+use our internet connection without
+risking slowing down our connection or
+
+30
+00:00:43,990 --> 00:00:44,000
+risking slowing down our connection or
+ 
+
+31
+00:00:44,000 --> 00:00:46,610
+risking slowing down our connection or
+without risking the integrity or privacy
+
+32
+00:00:46,610 --> 00:00:46,620
+without risking the integrity or privacy
+ 
+
+33
+00:00:46,620 --> 00:00:48,920
+without risking the integrity or privacy
+of our data so this is going to be a
+
+34
+00:00:48,920 --> 00:00:48,930
+of our data so this is going to be a
+ 
+
+35
+00:00:48,930 --> 00:00:52,040
+of our data so this is going to be a
+complex tutorial today so what I've done
+
+36
+00:00:52,040 --> 00:00:52,050
+complex tutorial today so what I've done
+ 
+
+37
+00:00:52,050 --> 00:00:54,500
+complex tutorial today so what I've done
+is I've actually documented all of the
+
+38
+00:00:54,500 --> 00:00:54,510
+is I've actually documented all of the
+ 
+
+39
+00:00:54,510 --> 00:00:56,020
+is I've actually documented all of the
+steps that I'm going to go through at
+
+40
+00:00:56,020 --> 00:00:56,030
+steps that I'm going to go through at
+ 
+
+41
+00:00:56,030 --> 00:00:59,599
+steps that I'm going to go through at
+cat5 dot TV slash mikrotik so that you
+
+42
+00:00:59,599 --> 00:00:59,609
+cat5 dot TV slash mikrotik so that you
+ 
+
+43
+00:00:59,609 --> 00:01:01,910
+cat5 dot TV slash mikrotik so that you
+can follow along it just makes it a lot
+
+44
+00:01:01,910 --> 00:01:01,920
+can follow along it just makes it a lot
+ 
+
+45
+00:01:01,920 --> 00:01:03,709
+can follow along it just makes it a lot
+easier for you so let's get right into
+
+46
+00:01:03,709 --> 00:01:03,719
+easier for you so let's get right into
+ 
+
+47
+00:01:03,719 --> 00:01:05,810
+easier for you so let's get right into
+it I am actually going to be going from
+
+48
+00:01:05,810 --> 00:01:05,820
+it I am actually going to be going from
+ 
+
+49
+00:01:05,820 --> 00:01:08,679
+it I am actually going to be going from
+those notes because this is truly a
+
+50
+00:01:08,679 --> 00:01:08,689
+those notes because this is truly a
+ 
+
+51
+00:01:08,689 --> 00:01:11,330
+those notes because this is truly a
+sophisticated series that we're getting
+
+52
+00:01:11,330 --> 00:01:11,340
+sophisticated series that we're getting
+ 
+
+53
+00:01:11,340 --> 00:01:14,770
+sophisticated series that we're getting
+into right here today or at least a
+
+54
+00:01:14,770 --> 00:01:14,780
+into right here today or at least a
+ 
+
+55
+00:01:14,780 --> 00:01:17,990
+into right here today or at least a
+aspect of the series so I am going to be
+
+56
+00:01:17,990 --> 00:01:18,000
+aspect of the series so I am going to be
+ 
+
+57
+00:01:18,000 --> 00:01:20,390
+aspect of the series so I am going to be
+working on my pine book here and I want
+
+58
+00:01:20,390 --> 00:01:20,400
+working on my pine book here and I want
+ 
+
+59
+00:01:20,400 --> 00:01:24,380
+working on my pine book here and I want
+to just bring up my laptop and the
+
+60
+00:01:24,380 --> 00:01:24,390
+to just bring up my laptop and the
+ 
+
+61
+00:01:24,390 --> 00:01:26,600
+to just bring up my laptop and the
+screen looks fantastic this week look at
+
+62
+00:01:26,600 --> 00:01:26,610
+screen looks fantastic this week look at
+ 
+
+63
+00:01:26,610 --> 00:01:28,789
+screen looks fantastic this week look at
+that I've made some improvements here at
+
+64
+00:01:28,789 --> 00:01:28,799
+that I've made some improvements here at
+ 
+
+65
+00:01:28,799 --> 00:01:30,230
+that I've made some improvements here at
+the studio so I think you're gonna find
+
+66
+00:01:30,230 --> 00:01:30,240
+the studio so I think you're gonna find
+ 
+
+67
+00:01:30,240 --> 00:01:31,910
+the studio so I think you're gonna find
+that things are a lot easier to read now
+
+68
+00:01:31,910 --> 00:01:31,920
+that things are a lot easier to read now
+ 
+
+69
+00:01:31,920 --> 00:01:33,859
+that things are a lot easier to read now
+thank you for everyone for your patience
+
+70
+00:01:33,859 --> 00:01:33,869
+thank you for everyone for your patience
+ 
+
+71
+00:01:33,869 --> 00:01:35,660
+thank you for everyone for your patience
+through this time because it has been
+
+72
+00:01:35,660 --> 00:01:35,670
+through this time because it has been
+ 
+
+73
+00:01:35,670 --> 00:01:37,929
+through this time because it has been
+difficult for many broadcasters but
+
+74
+00:01:37,929 --> 00:01:37,939
+difficult for many broadcasters but
+ 
+
+75
+00:01:37,939 --> 00:01:39,980
+difficult for many broadcasters but
+we've made some improvements this week
+
+76
+00:01:39,980 --> 00:01:39,990
+we've made some improvements this week
+ 
+
+77
+00:01:39,990 --> 00:01:42,170
+we've made some improvements this week
+so thank you for your patience so the
+
+78
+00:01:42,170 --> 00:01:42,180
+so thank you for your patience so the
+ 
+
+79
+00:01:42,180 --> 00:01:44,630
+so thank you for your patience so the
+first thing I want to do in web fig here
+
+80
+00:01:44,630 --> 00:01:44,640
+first thing I want to do in web fig here
+ 
+
+81
+00:01:44,640 --> 00:01:47,149
+first thing I want to do in web fig here
+is I want to go into my wireless
+
+82
+00:01:47,149 --> 00:01:47,159
+is I want to go into my wireless
+ 
+
+83
+00:01:47,159 --> 00:01:49,310
+is I want to go into my wireless
+security profiles so understand
+
+84
+00:01:49,310 --> 00:01:49,320
+security profiles so understand
+ 
+
+85
+00:01:49,320 --> 00:01:50,990
+security profiles so understand
+I don't want those who are gonna be
+
+86
+00:01:50,990 --> 00:01:51,000
+I don't want those who are gonna be
+ 
+
+87
+00:01:51,000 --> 00:01:53,450
+I don't want those who are gonna be
+accessing my guest Wi-Fi to use the same
+
+88
+00:01:53,450 --> 00:01:53,460
+accessing my guest Wi-Fi to use the same
+ 
+
+89
+00:01:53,460 --> 00:01:56,359
+accessing my guest Wi-Fi to use the same
+password as I use on my main Wi-Fi
+
+90
+00:01:56,359 --> 00:01:56,369
+password as I use on my main Wi-Fi
+ 
+
+91
+00:01:56,369 --> 00:01:59,060
+password as I use on my main Wi-Fi
+that's particularly what I don't want to
+
+92
+00:01:59,060 --> 00:01:59,070
+that's particularly what I don't want to
+ 
+
+93
+00:01:59,070 --> 00:02:01,399
+that's particularly what I don't want to
+be giving out so let's do that right now
+
+94
+00:02:01,399 --> 00:02:01,409
+be giving out so let's do that right now
+ 
+
+95
+00:02:01,409 --> 00:02:03,200
+be giving out so let's do that right now
+let's set up a separate password by
+
+96
+00:02:03,200 --> 00:02:03,210
+let's set up a separate password by
+ 
+
+97
+00:02:03,210 --> 00:02:04,969
+let's set up a separate password by
+clicking on wireless at the left here
+
+98
+00:02:04,969 --> 00:02:04,979
+clicking on wireless at the left here
+ 
+
+99
+00:02:04,979 --> 00:02:07,100
+clicking on wireless at the left here
+and then I'm going to click on security
+
+100
+00:02:07,100 --> 00:02:07,110
+and then I'm going to click on security
+ 
+
+101
+00:02:07,110 --> 00:02:10,630
+and then I'm going to click on security
+profiles at the top now click on add new
+
+102
+00:02:10,630 --> 00:02:10,640
+profiles at the top now click on add new
+ 
+
+103
+00:02:10,640 --> 00:02:13,820
+profiles at the top now click on add new
+and you'll see default is actually my my
+
+104
+00:02:13,820 --> 00:02:13,830
+and you'll see default is actually my my
+ 
+
+105
+00:02:13,830 --> 00:02:15,890
+and you'll see default is actually my my
+you network so that's the password for
+
+106
+00:02:15,890 --> 00:02:15,900
+you network so that's the password for
+ 
+
+107
+00:02:15,900 --> 00:02:18,350
+you network so that's the password for
+my network the Wi-Fi that I've already
+
+108
+00:02:18,350 --> 00:02:18,360
+my network the Wi-Fi that I've already
+ 
+
+109
+00:02:18,360 --> 00:02:20,360
+my network the Wi-Fi that I've already
+set up and I'm gonna click add new and
+
+110
+00:02:20,360 --> 00:02:20,370
+set up and I'm gonna click add new and
+ 
+
+111
+00:02:20,370 --> 00:02:22,330
+set up and I'm gonna click add new and
+we're just going to call this one guest
+
+112
+00:02:22,330 --> 00:02:22,340
+we're just going to call this one guest
+ 
+
+113
+00:02:22,340 --> 00:02:24,410
+we're just going to call this one guest
+just like that
+
+114
+00:02:24,410 --> 00:02:24,420
+just like that
+ 
+
+115
+00:02:24,420 --> 00:02:27,050
+just like that
+one note is I want to turn off WPA PSK
+
+116
+00:02:27,050 --> 00:02:27,060
+one note is I want to turn off WPA PSK
+ 
+
+117
+00:02:27,060 --> 00:02:31,100
+one note is I want to turn off WPA PSK
+because WPA as you know is very part of
+
+118
+00:02:31,100 --> 00:02:31,110
+because WPA as you know is very part of
+ 
+
+119
+00:02:31,110 --> 00:02:33,260
+because WPA as you know is very part of
+me it's very easy to compromise so we
+
+120
+00:02:33,260 --> 00:02:33,270
+me it's very easy to compromise so we
+ 
+
+121
+00:02:33,270 --> 00:02:36,260
+me it's very easy to compromise so we
+don't want to use WPA we only want to
+
+122
+00:02:36,260 --> 00:02:36,270
+don't want to use WPA we only want to
+ 
+
+123
+00:02:36,270 --> 00:02:41,450
+don't want to use WPA we only want to
+use wpa2 because wpa2 is much safer as
+
+124
+00:02:41,450 --> 00:02:41,460
+use wpa2 because wpa2 is much safer as
+ 
+
+125
+00:02:41,460 --> 00:02:45,230
+use wpa2 because wpa2 is much safer as
+far as somebody being able to hack into
+
+126
+00:02:45,230 --> 00:02:45,240
+far as somebody being able to hack into
+ 
+
+127
+00:02:45,240 --> 00:02:49,100
+far as somebody being able to hack into
+your Wi-Fi network so turn off WPA PSK
+
+128
+00:02:49,100 --> 00:02:49,110
+your Wi-Fi network so turn off WPA PSK
+ 
+
+129
+00:02:49,110 --> 00:02:53,240
+your Wi-Fi network so turn off WPA PSK
+leave wpa2 PSK enabled and then down
+
+130
+00:02:53,240 --> 00:02:53,250
+leave wpa2 PSK enabled and then down
+ 
+
+131
+00:02:53,250 --> 00:02:55,220
+leave wpa2 PSK enabled and then down
+here because that is enabled we need to
+
+132
+00:02:55,220 --> 00:02:55,230
+here because that is enabled we need to
+ 
+
+133
+00:02:55,230 --> 00:02:57,920
+here because that is enabled we need to
+enter a pre-shared key aka the password
+
+134
+00:02:57,920 --> 00:02:57,930
+enter a pre-shared key aka the password
+ 
+
+135
+00:02:57,930 --> 00:03:00,760
+enter a pre-shared key aka the password
+for our network so I'm gonna use dum-dum
+
+136
+00:03:00,760 --> 00:03:00,770
+for our network so I'm gonna use dum-dum
+ 
+
+137
+00:03:00,770 --> 00:03:03,680
+for our network so I'm gonna use dum-dum
+one-two-three-four this guest Wi-Fi so
+
+138
+00:03:03,680 --> 00:03:03,690
+one-two-three-four this guest Wi-Fi so
+ 
+
+139
+00:03:03,690 --> 00:03:06,040
+one-two-three-four this guest Wi-Fi so
+this is only for the guest Wi-Fi
+
+140
+00:03:06,040 --> 00:03:06,050
+this is only for the guest Wi-Fi
+ 
+
+141
+00:03:06,050 --> 00:03:09,020
+this is only for the guest Wi-Fi
+remember that ok once I've entered my
+
+142
+00:03:09,020 --> 00:03:09,030
+remember that ok once I've entered my
+ 
+
+143
+00:03:09,030 --> 00:03:12,050
+remember that ok once I've entered my
+password I'm going to hit ok so I
+
+144
+00:03:12,050 --> 00:03:12,060
+password I'm going to hit ok so I
+ 
+
+145
+00:03:12,060 --> 00:03:14,210
+password I'm going to hit ok so I
+haven't actually created a network yet
+
+146
+00:03:14,210 --> 00:03:14,220
+haven't actually created a network yet
+ 
+
+147
+00:03:14,220 --> 00:03:16,670
+haven't actually created a network yet
+all I've done is I've created a security
+
+148
+00:03:16,670 --> 00:03:16,680
+all I've done is I've created a security
+ 
+
+149
+00:03:16,680 --> 00:03:19,190
+all I've done is I've created a security
+profile called guest and that security
+
+150
+00:03:19,190 --> 00:03:19,200
+profile called guest and that security
+ 
+
+151
+00:03:19,200 --> 00:03:23,870
+profile called guest and that security
+profile contains the wpa2 shared key for
+
+152
+00:03:23,870 --> 00:03:23,880
+profile contains the wpa2 shared key for
+ 
+
+153
+00:03:23,880 --> 00:03:26,360
+profile contains the wpa2 shared key for
+that guest Network and I notice that my
+
+154
+00:03:26,360 --> 00:03:26,370
+that guest Network and I notice that my
+ 
+
+155
+00:03:26,370 --> 00:03:29,479
+that guest Network and I notice that my
+default network is in fact using WPA pre
+
+156
+00:03:29,479 --> 00:03:29,489
+default network is in fact using WPA pre
+ 
+
+157
+00:03:29,489 --> 00:03:31,550
+default network is in fact using WPA pre
+shared key so while we're here let's
+
+158
+00:03:31,550 --> 00:03:31,560
+shared key so while we're here let's
+ 
+
+159
+00:03:31,560 --> 00:03:35,780
+shared key so while we're here let's
+open that one and let's turn off WPA PSK
+
+160
+00:03:35,780 --> 00:03:35,790
+open that one and let's turn off WPA PSK
+ 
+
+161
+00:03:35,790 --> 00:03:38,690
+open that one and let's turn off WPA PSK
+because I do not want someone hacking
+
+162
+00:03:38,690 --> 00:03:38,700
+because I do not want someone hacking
+ 
+
+163
+00:03:38,700 --> 00:03:42,560
+because I do not want someone hacking
+into my main network and hit OK it only
+
+164
+00:03:42,560 --> 00:03:42,570
+into my main network and hit OK it only
+ 
+
+165
+00:03:42,570 --> 00:03:44,630
+into my main network and hit OK it only
+took a moment's time for my pine Book
+
+166
+00:03:44,630 --> 00:03:44,640
+took a moment's time for my pine Book
+ 
+
+167
+00:03:44,640 --> 00:03:46,930
+took a moment's time for my pine Book
+Pro to disconnect from the Wi-Fi and
+
+168
+00:03:46,930 --> 00:03:46,940
+Pro to disconnect from the Wi-Fi and
+ 
+
+169
+00:03:46,940 --> 00:03:49,490
+Pro to disconnect from the Wi-Fi and
+reconnect the password hasn't changed
+
+170
+00:03:49,490 --> 00:03:49,500
+reconnect the password hasn't changed
+ 
+
+171
+00:03:49,500 --> 00:03:52,460
+reconnect the password hasn't changed
+simply the encryption algorithm has
+
+172
+00:03:52,460 --> 00:03:52,470
+simply the encryption algorithm has
+ 
+
+173
+00:03:52,470 --> 00:03:54,979
+simply the encryption algorithm has
+changed so now as you can see on the
+
+174
+00:03:54,979 --> 00:03:54,989
+changed so now as you can see on the
+ 
+
+175
+00:03:54,989 --> 00:03:57,920
+changed so now as you can see on the
+screen neither of my Wi-Fi security keys
+
+176
+00:03:57,920 --> 00:03:57,930
+screen neither of my Wi-Fi security keys
+ 
+
+177
+00:03:57,930 --> 00:04:01,699
+screen neither of my Wi-Fi security keys
+will allow WPA they only allow wpa2 it's
+
+178
+00:04:01,699 --> 00:04:01,709
+will allow WPA they only allow wpa2 it's
+ 
+
+179
+00:04:01,709 --> 00:04:03,650
+will allow WPA they only allow wpa2 it's
+as simple as that now jump into our
+
+180
+00:04:03,650 --> 00:04:03,660
+as simple as that now jump into our
+ 
+
+181
+00:04:03,660 --> 00:04:05,750
+as simple as that now jump into our
+Wi-Fi interfaces this is where you see
+
+182
+00:04:05,750 --> 00:04:05,760
+Wi-Fi interfaces this is where you see
+ 
+
+183
+00:04:05,760 --> 00:04:08,060
+Wi-Fi interfaces this is where you see
+my two gigahertz and five gigahertz
+
+184
+00:04:08,060 --> 00:04:08,070
+my two gigahertz and five gigahertz
+ 
+
+185
+00:04:08,070 --> 00:04:10,340
+my two gigahertz and five gigahertz
+networks and I want to add a new one for
+
+186
+00:04:10,340 --> 00:04:10,350
+networks and I want to add a new one for
+ 
+
+187
+00:04:10,350 --> 00:04:13,310
+networks and I want to add a new one for
+my guest Wi-Fi but I don't have another
+
+188
+00:04:13,310 --> 00:04:13,320
+my guest Wi-Fi but I don't have another
+ 
+
+189
+00:04:13,320 --> 00:04:14,960
+my guest Wi-Fi but I don't have another
+radio so what are we gonna do we're
+
+190
+00:04:14,960 --> 00:04:14,970
+radio so what are we gonna do we're
+ 
+
+191
+00:04:14,970 --> 00:04:17,750
+radio so what are we gonna do we're
+going to share the radio with one of my
+
+192
+00:04:17,750 --> 00:04:17,760
+going to share the radio with one of my
+ 
+
+193
+00:04:17,760 --> 00:04:20,780
+going to share the radio with one of my
+w lands so we're not going to add
+
+194
+00:04:20,780 --> 00:04:20,790
+w lands so we're not going to add
+ 
+
+195
+00:04:20,790 --> 00:04:22,760
+w lands so we're not going to add
+another radio we don't have to buy an
+
+196
+00:04:22,760 --> 00:04:22,770
+another radio we don't have to buy an
+ 
+
+197
+00:04:22,770 --> 00:04:25,110
+another radio we don't have to buy an
+access point or any kind of device
+
+198
+00:04:25,110 --> 00:04:25,120
+access point or any kind of device
+ 
+
+199
+00:04:25,120 --> 00:04:26,820
+access point or any kind of device
+we're just going to use the same
+
+200
+00:04:26,820 --> 00:04:26,830
+we're just going to use the same
+ 
+
+201
+00:04:26,830 --> 00:04:29,760
+we're just going to use the same
+mikrotik router so the only caveat of
+
+202
+00:04:29,760 --> 00:04:29,770
+mikrotik router so the only caveat of
+ 
+
+203
+00:04:29,770 --> 00:04:32,400
+mikrotik router so the only caveat of
+that is that it means that the guest
+
+204
+00:04:32,400 --> 00:04:32,410
+that is that it means that the guest
+ 
+
+205
+00:04:32,410 --> 00:04:35,870
+that is that it means that the guest
+Wi-Fi is going to be sharing the same
+
+206
+00:04:35,870 --> 00:04:35,880
+Wi-Fi is going to be sharing the same
+ 
+
+207
+00:04:35,880 --> 00:04:39,560
+Wi-Fi is going to be sharing the same
+channel as our Wi-Fi like our actual
+
+208
+00:04:39,560 --> 00:04:39,570
+channel as our Wi-Fi like our actual
+ 
+
+209
+00:04:39,570 --> 00:04:42,420
+channel as our Wi-Fi like our actual
+Wi-Fi for our network however because
+
+210
+00:04:42,420 --> 00:04:42,430
+Wi-Fi for our network however because
+ 
+
+211
+00:04:42,430 --> 00:04:43,980
+Wi-Fi for our network however because
+it's a different network and it's a
+
+212
+00:04:43,980 --> 00:04:43,990
+it's a different network and it's a
+ 
+
+213
+00:04:43,990 --> 00:04:47,040
+it's a different network and it's a
+different password they're not going to
+
+214
+00:04:47,040 --> 00:04:47,050
+different password they're not going to
+ 
+
+215
+00:04:47,050 --> 00:04:49,140
+different password they're not going to
+be able to access our things it's just
+
+216
+00:04:49,140 --> 00:04:49,150
+be able to access our things it's just
+ 
+
+217
+00:04:49,150 --> 00:04:52,020
+be able to access our things it's just
+going to be sharing the same the same
+
+218
+00:04:52,020 --> 00:04:52,030
+going to be sharing the same the same
+ 
+
+219
+00:04:52,030 --> 00:04:52,590
+going to be sharing the same the same
+Channel
+
+220
+00:04:52,590 --> 00:04:52,600
+Channel
+ 
+
+221
+00:04:52,600 --> 00:04:54,000
+Channel
+whether or not that matters I don't
+
+222
+00:04:54,000 --> 00:04:54,010
+whether or not that matters I don't
+ 
+
+223
+00:04:54,010 --> 00:04:56,990
+whether or not that matters I don't
+think it does alright let's go add new
+
+224
+00:04:56,990 --> 00:04:57,000
+think it does alright let's go add new
+ 
+
+225
+00:04:57,000 --> 00:05:00,060
+think it does alright let's go add new
+and we're gonna choose virtual because
+
+226
+00:05:00,060 --> 00:05:00,070
+and we're gonna choose virtual because
+ 
+
+227
+00:05:00,070 --> 00:05:03,000
+and we're gonna choose virtual because
+we are not creating a real one now we're
+
+228
+00:05:03,000 --> 00:05:03,010
+we are not creating a real one now we're
+ 
+
+229
+00:05:03,010 --> 00:05:05,640
+we are not creating a real one now we're
+creating a virtual network here on our
+
+230
+00:05:05,640 --> 00:05:05,650
+creating a virtual network here on our
+ 
+
+231
+00:05:05,650 --> 00:05:08,879
+creating a virtual network here on our
+wireless tab in Wi-Fi interfaces so
+
+232
+00:05:08,879 --> 00:05:08,889
+wireless tab in Wi-Fi interfaces so
+ 
+
+233
+00:05:08,889 --> 00:05:12,360
+wireless tab in Wi-Fi interfaces so
+let's create a virtual interface first
+
+234
+00:05:12,360 --> 00:05:12,370
+let's create a virtual interface first
+ 
+
+235
+00:05:12,370 --> 00:05:14,790
+let's create a virtual interface first
+thing I need to do is always I mean give
+
+236
+00:05:14,790 --> 00:05:14,800
+thing I need to do is always I mean give
+ 
+
+237
+00:05:14,800 --> 00:05:16,350
+thing I need to do is always I mean give
+things a name I'm going to call this one
+
+238
+00:05:16,350 --> 00:05:16,360
+things a name I'm going to call this one
+ 
+
+239
+00:05:16,360 --> 00:05:17,219
+things a name I'm going to call this one
+guest
+
+240
+00:05:17,219 --> 00:05:17,229
+guest
+ 
+
+241
+00:05:17,229 --> 00:05:19,770
+guest
+- Wi-Fi and you'll notice I'm using
+
+242
+00:05:19,770 --> 00:05:19,780
+- Wi-Fi and you'll notice I'm using
+ 
+
+243
+00:05:19,780 --> 00:05:23,040
+- Wi-Fi and you'll notice I'm using
+guests throughout you might use your
+
+244
+00:05:23,040 --> 00:05:23,050
+guests throughout you might use your
+ 
+
+245
+00:05:23,050 --> 00:05:25,170
+guests throughout you might use your
+last name or your family name or
+
+246
+00:05:25,170 --> 00:05:25,180
+last name or your family name or
+ 
+
+247
+00:05:25,180 --> 00:05:28,020
+last name or your family name or
+something fun for your guests Wi-Fi you
+
+248
+00:05:28,020 --> 00:05:28,030
+something fun for your guests Wi-Fi you
+ 
+
+249
+00:05:28,030 --> 00:05:30,150
+something fun for your guests Wi-Fi you
+can do that but for the sake of making
+
+250
+00:05:30,150 --> 00:05:30,160
+can do that but for the sake of making
+ 
+
+251
+00:05:30,160 --> 00:05:32,820
+can do that but for the sake of making
+this tutorial universally accessible and
+
+252
+00:05:32,820 --> 00:05:32,830
+this tutorial universally accessible and
+ 
+
+253
+00:05:32,830 --> 00:05:35,520
+this tutorial universally accessible and
+easy to follow I'm using guests because
+
+254
+00:05:35,520 --> 00:05:35,530
+easy to follow I'm using guests because
+ 
+
+255
+00:05:35,530 --> 00:05:37,500
+easy to follow I'm using guests because
+anyone can go through these steps and
+
+256
+00:05:37,500 --> 00:05:37,510
+anyone can go through these steps and
+ 
+
+257
+00:05:37,510 --> 00:05:39,540
+anyone can go through these steps and
+then retrace and rename things if you
+
+258
+00:05:39,540 --> 00:05:39,550
+then retrace and rename things if you
+ 
+
+259
+00:05:39,550 --> 00:05:43,020
+then retrace and rename things if you
+want to but you don't have to do that so
+
+260
+00:05:43,020 --> 00:05:43,030
+want to but you don't have to do that so
+ 
+
+261
+00:05:43,030 --> 00:05:45,960
+want to but you don't have to do that so
+on this network let's scroll down just a
+
+262
+00:05:45,960 --> 00:05:45,970
+on this network let's scroll down just a
+ 
+
+263
+00:05:45,970 --> 00:05:47,310
+on this network let's scroll down just a
+little ways and we're going to see
+
+264
+00:05:47,310 --> 00:05:47,320
+little ways and we're going to see
+ 
+
+265
+00:05:47,320 --> 00:05:51,120
+little ways and we're going to see
+something here called SSID we know that
+
+266
+00:05:51,120 --> 00:05:51,130
+something here called SSID we know that
+ 
+
+267
+00:05:51,130 --> 00:05:53,790
+something here called SSID we know that
+the SSID for our network is basically
+
+268
+00:05:53,790 --> 00:05:53,800
+the SSID for our network is basically
+ 
+
+269
+00:05:53,800 --> 00:05:55,710
+the SSID for our network is basically
+what you see when you bring up your
+
+270
+00:05:55,710 --> 00:05:55,720
+what you see when you bring up your
+ 
+
+271
+00:05:55,720 --> 00:05:58,050
+what you see when you bring up your
+phone and you access the Wi-Fi and you
+
+272
+00:05:58,050 --> 00:05:58,060
+phone and you access the Wi-Fi and you
+ 
+
+273
+00:05:58,060 --> 00:05:59,820
+phone and you access the Wi-Fi and you
+see a list of the different networks so
+
+274
+00:05:59,820 --> 00:05:59,830
+see a list of the different networks so
+ 
+
+275
+00:05:59,830 --> 00:06:03,779
+see a list of the different networks so
+right now I see cat 5 TV and cat 5 TV -
+
+276
+00:06:03,779 --> 00:06:03,789
+right now I see cat 5 TV and cat 5 TV -
+ 
+
+277
+00:06:03,789 --> 00:06:06,719
+right now I see cat 5 TV and cat 5 TV -
+5g and about a billion other Wi-Fi
+
+278
+00:06:06,719 --> 00:06:06,729
+5g and about a billion other Wi-Fi
+ 
+
+279
+00:06:06,729 --> 00:06:09,210
+5g and about a billion other Wi-Fi
+networks around me but I want to give
+
+280
+00:06:09,210 --> 00:06:09,220
+networks around me but I want to give
+ 
+
+281
+00:06:09,220 --> 00:06:12,089
+networks around me but I want to give
+this one an SSID that designates this
+
+282
+00:06:12,089 --> 00:06:12,099
+this one an SSID that designates this
+ 
+
+283
+00:06:12,099 --> 00:06:14,760
+this one an SSID that designates this
+the guest Wi-Fi now in our case today
+
+284
+00:06:14,760 --> 00:06:14,770
+the guest Wi-Fi now in our case today
+ 
+
+285
+00:06:14,770 --> 00:06:17,610
+the guest Wi-Fi now in our case today
+I'm going to call this SSID simply
+
+286
+00:06:17,610 --> 00:06:17,620
+I'm going to call this SSID simply
+ 
+
+287
+00:06:17,620 --> 00:06:20,490
+I'm going to call this SSID simply
+guessed again I'm going to refer back to
+
+288
+00:06:20,490 --> 00:06:20,500
+guessed again I'm going to refer back to
+ 
+
+289
+00:06:20,500 --> 00:06:21,930
+guessed again I'm going to refer back to
+my comment that we're just making this
+
+290
+00:06:21,930 --> 00:06:21,940
+my comment that we're just making this
+ 
+
+291
+00:06:21,940 --> 00:06:24,810
+my comment that we're just making this
+universally accessible but you can call
+
+292
+00:06:24,810 --> 00:06:24,820
+universally accessible but you can call
+ 
+
+293
+00:06:24,820 --> 00:06:26,730
+universally accessible but you can call
+that whatever you want this could be I
+
+294
+00:06:26,730 --> 00:06:26,740
+that whatever you want this could be I
+ 
+
+295
+00:06:26,740 --> 00:06:29,850
+that whatever you want this could be I
+could call this cat 5 TV - guest which
+
+296
+00:06:29,850 --> 00:06:29,860
+could call this cat 5 TV - guest which
+ 
+
+297
+00:06:29,860 --> 00:06:31,860
+could call this cat 5 TV - guest which
+would be very appropriate because if
+
+298
+00:06:31,860 --> 00:06:31,870
+would be very appropriate because if
+ 
+
+299
+00:06:31,870 --> 00:06:33,390
+would be very appropriate because if
+there's some other network called guest
+
+300
+00:06:33,390 --> 00:06:33,400
+there's some other network called guest
+ 
+
+301
+00:06:33,400 --> 00:06:35,430
+there's some other network called guest
+because that's pretty generic that could
+
+302
+00:06:35,430 --> 00:06:35,440
+because that's pretty generic that could
+ 
+
+303
+00:06:35,440 --> 00:06:37,670
+because that's pretty generic that could
+cause a conflict but also
+
+304
+00:06:37,670 --> 00:06:37,680
+cause a conflict but also
+ 
+
+305
+00:06:37,680 --> 00:06:39,350
+cause a conflict but also
+it just makes it so that when people
+
+306
+00:06:39,350 --> 00:06:39,360
+it just makes it so that when people
+ 
+
+307
+00:06:39,360 --> 00:06:41,270
+it just makes it so that when people
+come into the studio they can say oh
+
+308
+00:06:41,270 --> 00:06:41,280
+come into the studio they can say oh
+ 
+
+309
+00:06:41,280 --> 00:06:44,450
+come into the studio they can say oh
+that's the guest Wi-Fi for cat5 TV hey
+
+310
+00:06:44,450 --> 00:06:44,460
+that's the guest Wi-Fi for cat5 TV hey
+ 
+
+311
+00:06:44,460 --> 00:06:46,249
+that's the guest Wi-Fi for cat5 TV hey
+what's the password dum-dum one two
+
+312
+00:06:46,249 --> 00:06:46,259
+what's the password dum-dum one two
+ 
+
+313
+00:06:46,259 --> 00:06:49,129
+what's the password dum-dum one two
+three nice and simple right but for
+
+314
+00:06:49,129 --> 00:06:49,139
+three nice and simple right but for
+ 
+
+315
+00:06:49,139 --> 00:06:51,020
+three nice and simple right but for
+today's demonstration we are just gonna
+
+316
+00:06:51,020 --> 00:06:51,030
+today's demonstration we are just gonna
+ 
+
+317
+00:06:51,030 --> 00:06:54,350
+today's demonstration we are just gonna
+go with guest and now the final thing
+
+318
+00:06:54,350 --> 00:06:54,360
+go with guest and now the final thing
+ 
+
+319
+00:06:54,360 --> 00:06:55,879
+go with guest and now the final thing
+that we need to do of course is set our
+
+320
+00:06:55,879 --> 00:06:55,889
+that we need to do of course is set our
+ 
+
+321
+00:06:55,889 --> 00:06:57,620
+that we need to do of course is set our
+security profile for the Wi-Fi
+
+322
+00:06:57,620 --> 00:06:57,630
+security profile for the Wi-Fi
+ 
+
+323
+00:06:57,630 --> 00:06:58,700
+security profile for the Wi-Fi
+connection and we're going to change
+
+324
+00:06:58,700 --> 00:06:58,710
+connection and we're going to change
+ 
+
+325
+00:06:58,710 --> 00:07:01,520
+connection and we're going to change
+that from default to guest so that's
+
+326
+00:07:01,520 --> 00:07:01,530
+that from default to guest so that's
+ 
+
+327
+00:07:01,530 --> 00:07:03,050
+that from default to guest so that's
+gonna set so that we're using the
+
+328
+00:07:03,050 --> 00:07:03,060
+gonna set so that we're using the
+ 
+
+329
+00:07:03,060 --> 00:07:05,659
+gonna set so that we're using the
+password dum-dum 1 2 3 as we specified
+
+330
+00:07:05,659 --> 00:07:05,669
+password dum-dum 1 2 3 as we specified
+ 
+
+331
+00:07:05,669 --> 00:07:07,670
+password dum-dum 1 2 3 as we specified
+with that security profile and that's
+
+332
+00:07:07,670 --> 00:07:07,680
+with that security profile and that's
+ 
+
+333
+00:07:07,680 --> 00:07:10,189
+with that security profile and that's
+literally all there is to adding the
+
+334
+00:07:10,189 --> 00:07:10,199
+literally all there is to adding the
+ 
+
+335
+00:07:10,199 --> 00:07:14,150
+literally all there is to adding the
+interface hit ok now because I am making
+
+336
+00:07:14,150 --> 00:07:14,160
+interface hit ok now because I am making
+ 
+
+337
+00:07:14,160 --> 00:07:17,689
+interface hit ok now because I am making
+changes to my Wi-Fi setup and because my
+
+338
+00:07:17,689 --> 00:07:17,699
+changes to my Wi-Fi setup and because my
+ 
+
+339
+00:07:17,699 --> 00:07:20,510
+changes to my Wi-Fi setup and because my
+pine Book Pro is connected to my Wi-Fi
+
+340
+00:07:20,510 --> 00:07:20,520
+pine Book Pro is connected to my Wi-Fi
+ 
+
+341
+00:07:20,520 --> 00:07:23,689
+pine Book Pro is connected to my Wi-Fi
+right now remember that Wi-Fi now the
+
+342
+00:07:23,689 --> 00:07:23,699
+right now remember that Wi-Fi now the
+ 
+
+343
+00:07:23,699 --> 00:07:25,850
+right now remember that Wi-Fi now the
+router is not rebooting my servers and
+
+344
+00:07:25,850 --> 00:07:25,860
+router is not rebooting my servers and
+ 
+
+345
+00:07:25,860 --> 00:07:27,350
+router is not rebooting my servers and
+everything my Internet's not going down
+
+346
+00:07:27,350 --> 00:07:27,360
+everything my Internet's not going down
+ 
+
+347
+00:07:27,360 --> 00:07:29,629
+everything my Internet's not going down
+however the Wi-Fi is going to hiccup
+
+348
+00:07:29,629 --> 00:07:29,639
+however the Wi-Fi is going to hiccup
+ 
+
+349
+00:07:29,639 --> 00:07:33,279
+however the Wi-Fi is going to hiccup
+there because the Wi-Fi transmitter is
+
+350
+00:07:33,279 --> 00:07:33,289
+there because the Wi-Fi transmitter is
+ 
+
+351
+00:07:33,289 --> 00:07:35,600
+there because the Wi-Fi transmitter is
+restarting or reloading those
+
+352
+00:07:35,600 --> 00:07:35,610
+restarting or reloading those
+ 
+
+353
+00:07:35,610 --> 00:07:38,629
+restarting or reloading those
+configuration settings on its own so now
+
+354
+00:07:38,629 --> 00:07:38,639
+configuration settings on its own so now
+ 
+
+355
+00:07:38,639 --> 00:07:40,520
+configuration settings on its own so now
+that that's finished reloading those
+
+356
+00:07:40,520 --> 00:07:40,530
+that that's finished reloading those
+ 
+
+357
+00:07:40,530 --> 00:07:42,800
+that that's finished reloading those
+settings you'll see now that under
+
+358
+00:07:42,800 --> 00:07:42,810
+settings you'll see now that under
+ 
+
+359
+00:07:42,810 --> 00:07:45,379
+settings you'll see now that under
+wireless Wi-Fi interfaces I have one
+
+360
+00:07:45,379 --> 00:07:45,389
+wireless Wi-Fi interfaces I have one
+ 
+
+361
+00:07:45,389 --> 00:07:48,920
+wireless Wi-Fi interfaces I have one
+called guest Wi-Fi and that is a virtual
+
+362
+00:07:48,920 --> 00:07:48,930
+called guest Wi-Fi and that is a virtual
+ 
+
+363
+00:07:48,930 --> 00:07:54,050
+called guest Wi-Fi and that is a virtual
+interface connecting to my Wi-Fi so the
+
+364
+00:07:54,050 --> 00:07:54,060
+interface connecting to my Wi-Fi so the
+ 
+
+365
+00:07:54,060 --> 00:07:55,580
+interface connecting to my Wi-Fi so the
+next thing we need to do is we need to
+
+366
+00:07:55,580 --> 00:07:55,590
+next thing we need to do is we need to
+ 
+
+367
+00:07:55,590 --> 00:07:57,800
+next thing we need to do is we need to
+start routing how the traffic is going
+
+368
+00:07:57,800 --> 00:07:57,810
+start routing how the traffic is going
+ 
+
+369
+00:07:57,810 --> 00:07:59,570
+start routing how the traffic is going
+to flow and do you get the sense here
+
+370
+00:07:59,570 --> 00:07:59,580
+to flow and do you get the sense here
+ 
+
+371
+00:07:59,580 --> 00:08:01,460
+to flow and do you get the sense here
+that hey if you if you follow these
+
+372
+00:08:01,460 --> 00:08:01,470
+that hey if you if you follow these
+ 
+
+373
+00:08:01,470 --> 00:08:03,020
+that hey if you if you follow these
+steps and if you understand the steps
+
+374
+00:08:03,020 --> 00:08:03,030
+steps and if you understand the steps
+ 
+
+375
+00:08:03,030 --> 00:08:05,170
+steps and if you understand the steps
+involved in setting up a mikrotik router
+
+376
+00:08:05,170 --> 00:08:05,180
+involved in setting up a mikrotik router
+ 
+
+377
+00:08:05,180 --> 00:08:07,460
+involved in setting up a mikrotik router
+you can do some really sophisticated
+
+378
+00:08:07,460 --> 00:08:07,470
+you can do some really sophisticated
+ 
+
+379
+00:08:07,470 --> 00:08:10,129
+you can do some really sophisticated
+stuff at the top of this demonstration I
+
+380
+00:08:10,129 --> 00:08:10,139
+stuff at the top of this demonstration I
+ 
+
+381
+00:08:10,139 --> 00:08:12,200
+stuff at the top of this demonstration I
+did warn that this is going to be kind
+
+382
+00:08:12,200 --> 00:08:12,210
+did warn that this is going to be kind
+ 
+
+383
+00:08:12,210 --> 00:08:14,960
+did warn that this is going to be kind
+of complicated not that it's hard it's
+
+384
+00:08:14,960 --> 00:08:14,970
+of complicated not that it's hard it's
+ 
+
+385
+00:08:14,970 --> 00:08:16,850
+of complicated not that it's hard it's
+not difficult it's not challenging it's
+
+386
+00:08:16,850 --> 00:08:16,860
+not difficult it's not challenging it's
+ 
+
+387
+00:08:16,860 --> 00:08:19,700
+not difficult it's not challenging it's
+just there are a lot of steps so go to
+
+388
+00:08:19,700 --> 00:08:19,710
+just there are a lot of steps so go to
+ 
+
+389
+00:08:19,710 --> 00:08:22,730
+just there are a lot of steps so go to
+cap v dot TV slash micro tech and I've
+
+390
+00:08:22,730 --> 00:08:22,740
+cap v dot TV slash micro tech and I've
+ 
+
+391
+00:08:22,740 --> 00:08:24,649
+cap v dot TV slash micro tech and I've
+listed those out in a documentation
+
+392
+00:08:24,649 --> 00:08:24,659
+listed those out in a documentation
+ 
+
+393
+00:08:24,659 --> 00:08:27,469
+listed those out in a documentation
+format for you and the entire series is
+
+394
+00:08:27,469 --> 00:08:27,479
+format for you and the entire series is
+ 
+
+395
+00:08:27,479 --> 00:08:30,110
+format for you and the entire series is
+available for you absolutely free so if
+
+396
+00:08:30,110 --> 00:08:30,120
+available for you absolutely free so if
+ 
+
+397
+00:08:30,120 --> 00:08:31,339
+available for you absolutely free so if
+you want to follow these steps and
+
+398
+00:08:31,339 --> 00:08:31,349
+you want to follow these steps and
+ 
+
+399
+00:08:31,349 --> 00:08:32,540
+you want to follow these steps and
+you're a little worried about maybe
+
+400
+00:08:32,540 --> 00:08:32,550
+you're a little worried about maybe
+ 
+
+401
+00:08:32,550 --> 00:08:34,639
+you're a little worried about maybe
+fumbling over something that I've said
+
+402
+00:08:34,639 --> 00:08:34,649
+fumbling over something that I've said
+ 
+
+403
+00:08:34,649 --> 00:08:36,500
+fumbling over something that I've said
+or maybe I'm moving a little bit too
+
+404
+00:08:36,500 --> 00:08:36,510
+or maybe I'm moving a little bit too
+ 
+
+405
+00:08:36,510 --> 00:08:38,750
+or maybe I'm moving a little bit too
+quickly hey head over to cap v dot TV
+
+406
+00:08:38,750 --> 00:08:38,760
+quickly hey head over to cap v dot TV
+ 
+
+407
+00:08:38,760 --> 00:08:41,089
+quickly hey head over to cap v dot TV
+slash mikrotik to get yourself set up
+
+408
+00:08:41,089 --> 00:08:41,099
+slash mikrotik to get yourself set up
+ 
+
+409
+00:08:41,099 --> 00:08:43,190
+slash mikrotik to get yourself set up
+with those Doc's all right so to create
+
+410
+00:08:43,190 --> 00:08:43,200
+with those Doc's all right so to create
+ 
+
+411
+00:08:43,200 --> 00:08:44,420
+with those Doc's all right so to create
+a bridge I'm gonna go over to the
+
+412
+00:08:44,420 --> 00:08:44,430
+a bridge I'm gonna go over to the
+ 
+
+413
+00:08:44,430 --> 00:08:46,699
+a bridge I'm gonna go over to the
+left-hand menu and click on bridge we
+
+414
+00:08:46,699 --> 00:08:46,709
+left-hand menu and click on bridge we
+ 
+
+415
+00:08:46,709 --> 00:08:48,319
+left-hand menu and click on bridge we
+can see there's an active bridge already
+
+416
+00:08:48,319 --> 00:08:48,329
+can see there's an active bridge already
+ 
+
+417
+00:08:48,329 --> 00:08:50,190
+can see there's an active bridge already
+running there but we want to add
+
+418
+00:08:50,190 --> 00:08:50,200
+running there but we want to add
+ 
+
+419
+00:08:50,200 --> 00:08:52,350
+running there but we want to add
+one for our guest Wi-Fi because we want
+
+420
+00:08:52,350 --> 00:08:52,360
+one for our guest Wi-Fi because we want
+ 
+
+421
+00:08:52,360 --> 00:08:54,240
+one for our guest Wi-Fi because we want
+this to be separate from our main bridge
+
+422
+00:08:54,240 --> 00:08:54,250
+this to be separate from our main bridge
+ 
+
+423
+00:08:54,250 --> 00:08:56,610
+this to be separate from our main bridge
+so I've clicked add new and I'm gonna
+
+424
+00:08:56,610 --> 00:08:56,620
+so I've clicked add new and I'm gonna
+ 
+
+425
+00:08:56,620 --> 00:08:58,650
+so I've clicked add new and I'm gonna
+give this one a name you guessed it
+
+426
+00:08:58,650 --> 00:08:58,660
+give this one a name you guessed it
+ 
+
+427
+00:08:58,660 --> 00:09:02,220
+give this one a name you guessed it
+bridge - guest
+
+428
+00:09:02,220 --> 00:09:02,230
+bridge - guest
+ 
+
+429
+00:09:02,230 --> 00:09:04,110
+bridge - guest
+let's keep everything simple I want you
+
+430
+00:09:04,110 --> 00:09:04,120
+let's keep everything simple I want you
+ 
+
+431
+00:09:04,120 --> 00:09:06,150
+let's keep everything simple I want you
+to follow this verbatim and that's gonna
+
+432
+00:09:06,150 --> 00:09:06,160
+to follow this verbatim and that's gonna
+ 
+
+433
+00:09:06,160 --> 00:09:07,949
+to follow this verbatim and that's gonna
+help to make sure that everything makes
+
+434
+00:09:07,949 --> 00:09:07,959
+help to make sure that everything makes
+ 
+
+435
+00:09:07,959 --> 00:09:09,480
+help to make sure that everything makes
+sense in the end and you can always go
+
+436
+00:09:09,480 --> 00:09:09,490
+sense in the end and you can always go
+ 
+
+437
+00:09:09,490 --> 00:09:12,750
+sense in the end and you can always go
+back and and rename things if you feel
+
+438
+00:09:12,750 --> 00:09:12,760
+back and and rename things if you feel
+ 
+
+439
+00:09:12,760 --> 00:09:14,460
+back and and rename things if you feel
+that you need to that's literally all we
+
+440
+00:09:14,460 --> 00:09:14,470
+that you need to that's literally all we
+ 
+
+441
+00:09:14,470 --> 00:09:15,900
+that you need to that's literally all we
+need to do in order to create a bridge
+
+442
+00:09:15,900 --> 00:09:15,910
+need to do in order to create a bridge
+ 
+
+443
+00:09:15,910 --> 00:09:19,079
+need to do in order to create a bridge
+hit okay so now as you can see we now
+
+444
+00:09:19,079 --> 00:09:19,089
+hit okay so now as you can see we now
+ 
+
+445
+00:09:19,089 --> 00:09:20,910
+hit okay so now as you can see we now
+have a bridge called bridge guests
+
+446
+00:09:20,910 --> 00:09:20,920
+have a bridge called bridge guests
+ 
+
+447
+00:09:20,920 --> 00:09:22,860
+have a bridge called bridge guests
+sitting there doing absolutely nothing
+
+448
+00:09:22,860 --> 00:09:22,870
+sitting there doing absolutely nothing
+ 
+
+449
+00:09:22,870 --> 00:09:26,759
+sitting there doing absolutely nothing
+so we need to actually specify how the
+
+450
+00:09:26,759 --> 00:09:26,769
+so we need to actually specify how the
+ 
+
+451
+00:09:26,769 --> 00:09:28,470
+so we need to actually specify how the
+ports are going to be assigned so click
+
+452
+00:09:28,470 --> 00:09:28,480
+ports are going to be assigned so click
+ 
+
+453
+00:09:28,480 --> 00:09:30,780
+ports are going to be assigned so click
+on ports and we need to actually connect
+
+454
+00:09:30,780 --> 00:09:30,790
+on ports and we need to actually connect
+ 
+
+455
+00:09:30,790 --> 00:09:32,970
+on ports and we need to actually connect
+that bridge to our new guest Wi-Fi so
+
+456
+00:09:32,970 --> 00:09:32,980
+that bridge to our new guest Wi-Fi so
+ 
+
+457
+00:09:32,980 --> 00:09:37,710
+that bridge to our new guest Wi-Fi so
+add new and then change the interface to
+
+458
+00:09:37,710 --> 00:09:37,720
+add new and then change the interface to
+ 
+
+459
+00:09:37,720 --> 00:09:41,939
+add new and then change the interface to
+guest Wi-Fi and the bridge we don't want
+
+460
+00:09:41,939 --> 00:09:41,949
+guest Wi-Fi and the bridge we don't want
+ 
+
+461
+00:09:41,949 --> 00:09:43,740
+guest Wi-Fi and the bridge we don't want
+that using our main bridge we want that
+
+462
+00:09:43,740 --> 00:09:43,750
+that using our main bridge we want that
+ 
+
+463
+00:09:43,750 --> 00:09:50,040
+that using our main bridge we want that
+to go to bridge - guest and now hit OK
+
+464
+00:09:50,040 --> 00:09:50,050
+to go to bridge - guest and now hit OK
+ 
+
+465
+00:09:50,050 --> 00:09:53,730
+to go to bridge - guest and now hit OK
+and now you can see right at the bottom
+
+466
+00:09:53,730 --> 00:09:53,740
+and now you can see right at the bottom
+ 
+
+467
+00:09:53,740 --> 00:09:58,980
+and now you can see right at the bottom
+there guest - Wi-Fi bridge - guest all
+
+468
+00:09:58,980 --> 00:09:58,990
+there guest - Wi-Fi bridge - guest all
+ 
+
+469
+00:09:58,990 --> 00:10:01,470
+there guest - Wi-Fi bridge - guest all
+set ready to go and waiting for us to
+
+470
+00:10:01,470 --> 00:10:01,480
+set ready to go and waiting for us to
+ 
+
+471
+00:10:01,480 --> 00:10:03,960
+set ready to go and waiting for us to
+finish configuring so the next thing
+
+472
+00:10:03,960 --> 00:10:03,970
+finish configuring so the next thing
+ 
+
+473
+00:10:03,970 --> 00:10:05,430
+finish configuring so the next thing
+that we need to do obviously we haven't
+
+474
+00:10:05,430 --> 00:10:05,440
+that we need to do obviously we haven't
+ 
+
+475
+00:10:05,440 --> 00:10:08,790
+that we need to do obviously we haven't
+told this guest Wi-Fi the bridge what IP
+
+476
+00:10:08,790 --> 00:10:08,800
+told this guest Wi-Fi the bridge what IP
+ 
+
+477
+00:10:08,800 --> 00:10:11,759
+told this guest Wi-Fi the bridge what IP
+block to use and again I'm gonna back up
+
+478
+00:10:11,759 --> 00:10:11,769
+block to use and again I'm gonna back up
+ 
+
+479
+00:10:11,769 --> 00:10:15,150
+block to use and again I'm gonna back up
+to when I said I want this network to be
+
+480
+00:10:15,150 --> 00:10:15,160
+to when I said I want this network to be
+ 
+
+481
+00:10:15,160 --> 00:10:18,780
+to when I said I want this network to be
+separate from my private network I do
+
+482
+00:10:18,780 --> 00:10:18,790
+separate from my private network I do
+ 
+
+483
+00:10:18,790 --> 00:10:21,900
+separate from my private network I do
+not want the guest Wi-Fi on the same IP
+
+484
+00:10:21,900 --> 00:10:21,910
+not want the guest Wi-Fi on the same IP
+ 
+
+485
+00:10:21,910 --> 00:10:24,630
+not want the guest Wi-Fi on the same IP
+block I do not want their IP block to be
+
+486
+00:10:24,630 --> 00:10:24,640
+block I do not want their IP block to be
+ 
+
+487
+00:10:24,640 --> 00:10:26,610
+block I do not want their IP block to be
+able to access mine because I have
+
+488
+00:10:26,610 --> 00:10:26,620
+able to access mine because I have
+ 
+
+489
+00:10:26,620 --> 00:10:28,620
+able to access mine because I have
+Network shares on my server and I don't
+
+490
+00:10:28,620 --> 00:10:28,630
+Network shares on my server and I don't
+ 
+
+491
+00:10:28,630 --> 00:10:31,199
+Network shares on my server and I don't
+want them to have access to deleting my
+
+492
+00:10:31,199 --> 00:10:31,209
+want them to have access to deleting my
+ 
+
+493
+00:10:31,209 --> 00:10:33,150
+want them to have access to deleting my
+files or worse yet here we live in a
+
+494
+00:10:33,150 --> 00:10:33,160
+files or worse yet here we live in a
+ 
+
+495
+00:10:33,160 --> 00:10:34,980
+files or worse yet here we live in a
+world where someone could connect to
+
+496
+00:10:34,980 --> 00:10:34,990
+world where someone could connect to
+ 
+
+497
+00:10:34,990 --> 00:10:36,720
+world where someone could connect to
+your guest Wi-Fi from their Windows
+
+498
+00:10:36,720 --> 00:10:36,730
+your guest Wi-Fi from their Windows
+ 
+
+499
+00:10:36,730 --> 00:10:39,660
+your guest Wi-Fi from their Windows
+laptop and they have ransomware that
+
+500
+00:10:39,660 --> 00:10:39,670
+laptop and they have ransomware that
+ 
+
+501
+00:10:39,670 --> 00:10:41,670
+laptop and they have ransomware that
+ransomware then goes out on the network
+
+502
+00:10:41,670 --> 00:10:41,680
+ransomware then goes out on the network
+ 
+
+503
+00:10:41,680 --> 00:10:43,800
+ransomware then goes out on the network
+and looks for network shares and
+
+504
+00:10:43,800 --> 00:10:43,810
+and looks for network shares and
+ 
+
+505
+00:10:43,810 --> 00:10:46,710
+and looks for network shares and
+encrypts all your files so even though
+
+506
+00:10:46,710 --> 00:10:46,720
+encrypts all your files so even though
+ 
+
+507
+00:10:46,720 --> 00:10:48,689
+encrypts all your files so even though
+you may have anti-virus or you may even
+
+508
+00:10:48,689 --> 00:10:48,699
+you may have anti-virus or you may even
+ 
+
+509
+00:10:48,699 --> 00:10:50,610
+you may have anti-virus or you may even
+have nothing but Linux on your network
+
+510
+00:10:50,610 --> 00:10:50,620
+have nothing but Linux on your network
+ 
+
+511
+00:10:50,620 --> 00:10:52,819
+have nothing but Linux on your network
+because they've connected to your Wi-Fi
+
+512
+00:10:52,819 --> 00:10:52,829
+because they've connected to your Wi-Fi
+ 
+
+513
+00:10:52,829 --> 00:10:55,889
+because they've connected to your Wi-Fi
+they now have access to encrypting all
+
+514
+00:10:55,889 --> 00:10:55,899
+they now have access to encrypting all
+ 
+
+515
+00:10:55,899 --> 00:10:58,319
+they now have access to encrypting all
+your files with their malware that they
+
+516
+00:10:58,319 --> 00:10:58,329
+your files with their malware that they
+ 
+
+517
+00:10:58,329 --> 00:11:01,319
+your files with their malware that they
+have on their laptop so we're creating a
+
+518
+00:11:01,319 --> 00:11:01,329
+have on their laptop so we're creating a
+ 
+
+519
+00:11:01,329 --> 00:11:04,110
+have on their laptop so we're creating a
+network that protects you
+
+520
+00:11:04,110 --> 00:11:04,120
+network that protects you
+ 
+
+521
+00:11:04,120 --> 00:11:05,700
+network that protects you
+entirely against that kind of
+
+522
+00:11:05,700 --> 00:11:05,710
+entirely against that kind of
+ 
+
+523
+00:11:05,710 --> 00:11:08,100
+entirely against that kind of
+infiltration as well as the malicious
+
+524
+00:11:08,100 --> 00:11:08,110
+infiltration as well as the malicious
+ 
+
+525
+00:11:08,110 --> 00:11:09,540
+infiltration as well as the malicious
+person who would connect to your guests
+
+526
+00:11:09,540 --> 00:11:09,550
+person who would connect to your guests
+ 
+
+527
+00:11:09,550 --> 00:11:11,940
+person who would connect to your guests
+Wi-Fi and try to seek out private
+
+528
+00:11:11,940 --> 00:11:11,950
+Wi-Fi and try to seek out private
+ 
+
+529
+00:11:11,950 --> 00:11:13,890
+Wi-Fi and try to seek out private
+information on your network so we're
+
+530
+00:11:13,890 --> 00:11:13,900
+information on your network so we're
+ 
+
+531
+00:11:13,900 --> 00:11:16,050
+information on your network so we're
+gonna protect you against that let's set
+
+532
+00:11:16,050 --> 00:11:16,060
+gonna protect you against that let's set
+ 
+
+533
+00:11:16,060 --> 00:11:19,500
+gonna protect you against that let's set
+up an IP block for this guest Wi-Fi and
+
+534
+00:11:19,500 --> 00:11:19,510
+up an IP block for this guest Wi-Fi and
+ 
+
+535
+00:11:19,510 --> 00:11:23,160
+up an IP block for this guest Wi-Fi and
+a go IP and then addresses on the
+
+536
+00:11:23,160 --> 00:11:23,170
+a go IP and then addresses on the
+ 
+
+537
+00:11:23,170 --> 00:11:26,130
+a go IP and then addresses on the
+left-hand side here and you can see here
+
+538
+00:11:26,130 --> 00:11:26,140
+left-hand side here and you can see here
+ 
+
+539
+00:11:26,140 --> 00:11:32,490
+left-hand side here and you can see here
+that my network is 10.0.0.0 dot zero dot
+
+540
+00:11:32,490 --> 00:11:32,500
+that my network is 10.0.0.0 dot zero dot
+ 
+
+541
+00:11:32,500 --> 00:11:36,600
+that my network is 10.0.0.0 dot zero dot
+one two three four so on and Counting so
+
+542
+00:11:36,600 --> 00:11:36,610
+one two three four so on and Counting so
+ 
+
+543
+00:11:36,610 --> 00:11:39,930
+one two three four so on and Counting so
+I'm gonna create a new IP block by
+
+544
+00:11:39,930 --> 00:11:39,940
+I'm gonna create a new IP block by
+ 
+
+545
+00:11:39,940 --> 00:11:42,480
+I'm gonna create a new IP block by
+simply clicking add new and we're gonna
+
+546
+00:11:42,480 --> 00:11:42,490
+simply clicking add new and we're gonna
+ 
+
+547
+00:11:42,490 --> 00:11:44,100
+simply clicking add new and we're gonna
+make this one a little different so
+
+548
+00:11:44,100 --> 00:11:44,110
+make this one a little different so
+ 
+
+549
+00:11:44,110 --> 00:11:48,710
+make this one a little different so
+we're gonna go with 10.10 dot dot one
+
+550
+00:11:48,710 --> 00:11:48,720
+we're gonna go with 10.10 dot dot one
+ 
+
+551
+00:11:48,720 --> 00:11:53,610
+we're gonna go with 10.10 dot dot one
+slash 24 and on the interface guess
+
+552
+00:11:53,610 --> 00:11:53,620
+slash 24 and on the interface guess
+ 
+
+553
+00:11:53,620 --> 00:11:55,079
+slash 24 and on the interface guess
+which interface we're gonna use here
+
+554
+00:11:55,079 --> 00:11:55,089
+which interface we're gonna use here
+ 
+
+555
+00:11:55,089 --> 00:12:00,390
+which interface we're gonna use here
+folks bridge - guest that's the comment
+
+556
+00:12:00,390 --> 00:12:00,400
+folks bridge - guest that's the comment
+ 
+
+557
+00:12:00,400 --> 00:12:02,100
+folks bridge - guest that's the comment
+field that I was talking about last week
+
+558
+00:12:02,100 --> 00:12:02,110
+field that I was talking about last week
+ 
+
+559
+00:12:02,110 --> 00:12:03,329
+field that I was talking about last week
+that we didn't really see we don't need
+
+560
+00:12:03,329 --> 00:12:03,339
+that we didn't really see we don't need
+ 
+
+561
+00:12:03,339 --> 00:12:06,060
+that we didn't really see we don't need
+that in this case but you can add
+
+562
+00:12:06,060 --> 00:12:06,070
+that in this case but you can add
+ 
+
+563
+00:12:06,070 --> 00:12:07,740
+that in this case but you can add
+comments to anything that you add in web
+
+564
+00:12:07,740 --> 00:12:07,750
+comments to anything that you add in web
+ 
+
+565
+00:12:07,750 --> 00:12:10,079
+comments to anything that you add in web
+thick hit ok so now we have a new
+
+566
+00:12:10,079 --> 00:12:10,089
+thick hit ok so now we have a new
+ 
+
+567
+00:12:10,089 --> 00:12:12,900
+thick hit ok so now we have a new
+network here called ten ten ten dot one
+
+568
+00:12:12,900 --> 00:12:12,910
+network here called ten ten ten dot one
+ 
+
+569
+00:12:12,910 --> 00:12:15,960
+network here called ten ten ten dot one
+and it will assign I well we will
+
+570
+00:12:15,960 --> 00:12:15,970
+and it will assign I well we will
+ 
+
+571
+00:12:15,970 --> 00:12:17,880
+and it will assign I well we will
+inevitably when we setup a DHCP server
+
+572
+00:12:17,880 --> 00:12:17,890
+inevitably when we setup a DHCP server
+ 
+
+573
+00:12:17,890 --> 00:12:20,610
+inevitably when we setup a DHCP server
+see there's lots of steps it will assign
+
+574
+00:12:20,610 --> 00:12:20,620
+see there's lots of steps it will assign
+ 
+
+575
+00:12:20,620 --> 00:12:24,090
+see there's lots of steps it will assign
+IP addresses on that IP block
+
+576
+00:12:24,090 --> 00:12:24,100
+IP addresses on that IP block
+ 
+
+577
+00:12:24,100 --> 00:12:27,000
+IP addresses on that IP block
+so speaking of DHCP server that's our
+
+578
+00:12:27,000 --> 00:12:27,010
+so speaking of DHCP server that's our
+ 
+
+579
+00:12:27,010 --> 00:12:28,800
+so speaking of DHCP server that's our
+next step so we're gonna jump over here
+
+580
+00:12:28,800 --> 00:12:28,810
+next step so we're gonna jump over here
+ 
+
+581
+00:12:28,810 --> 00:12:30,960
+next step so we're gonna jump over here
+and under IP which is already open
+
+582
+00:12:30,960 --> 00:12:30,970
+and under IP which is already open
+ 
+
+583
+00:12:30,970 --> 00:12:32,880
+and under IP which is already open
+already expanded and we're gonna click
+
+584
+00:12:32,880 --> 00:12:32,890
+already expanded and we're gonna click
+ 
+
+585
+00:12:32,890 --> 00:12:35,760
+already expanded and we're gonna click
+on DHCP server and here you can see my
+
+586
+00:12:35,760 --> 00:12:35,770
+on DHCP server and here you can see my
+ 
+
+587
+00:12:35,770 --> 00:12:38,340
+on DHCP server and here you can see my
+current running DHCP server but the
+
+588
+00:12:38,340 --> 00:12:38,350
+current running DHCP server but the
+ 
+
+589
+00:12:38,350 --> 00:12:39,870
+current running DHCP server but the
+thing with this is that it's got kind of
+
+590
+00:12:39,870 --> 00:12:39,880
+thing with this is that it's got kind of
+ 
+
+591
+00:12:39,880 --> 00:12:41,850
+thing with this is that it's got kind of
+a weird name out of the box so I first
+
+592
+00:12:41,850 --> 00:12:41,860
+a weird name out of the box so I first
+ 
+
+593
+00:12:41,860 --> 00:12:42,840
+a weird name out of the box so I first
+thing I want to do is I want to open
+
+594
+00:12:42,840 --> 00:12:42,850
+thing I want to do is I want to open
+ 
+
+595
+00:12:42,850 --> 00:12:44,160
+thing I want to do is I want to open
+that and I'm just gonna rename this one
+
+596
+00:12:44,160 --> 00:12:44,170
+that and I'm just gonna rename this one
+ 
+
+597
+00:12:44,170 --> 00:12:46,440
+that and I'm just gonna rename this one
+local and the reason I want to do that
+
+598
+00:12:46,440 --> 00:12:46,450
+local and the reason I want to do that
+ 
+
+599
+00:12:46,450 --> 00:12:49,050
+local and the reason I want to do that
+is I want to always remind myself that
+
+600
+00:12:49,050 --> 00:12:49,060
+is I want to always remind myself that
+ 
+
+601
+00:12:49,060 --> 00:12:52,710
+is I want to always remind myself that
+that DHCP pool is my local network it
+
+602
+00:12:52,710 --> 00:12:52,720
+that DHCP pool is my local network it
+ 
+
+603
+00:12:52,720 --> 00:12:55,079
+that DHCP pool is my local network it
+has full access to everything on my
+
+604
+00:12:55,079 --> 00:12:55,089
+has full access to everything on my
+ 
+
+605
+00:12:55,089 --> 00:12:57,060
+has full access to everything on my
+network you do not want to assign a
+
+606
+00:12:57,060 --> 00:12:57,070
+network you do not want to assign a
+ 
+
+607
+00:12:57,070 --> 00:12:59,519
+network you do not want to assign a
+guest to that so by calling it local it
+
+608
+00:12:59,519 --> 00:12:59,529
+guest to that so by calling it local it
+ 
+
+609
+00:12:59,529 --> 00:13:00,810
+guest to that so by calling it local it
+just keeps me a little bit more safe
+
+610
+00:13:00,810 --> 00:13:00,820
+just keeps me a little bit more safe
+ 
+
+611
+00:13:00,820 --> 00:13:03,780
+just keeps me a little bit more safe
+because it stands out as that is
+
+612
+00:13:03,780 --> 00:13:03,790
+because it stands out as that is
+ 
+
+613
+00:13:03,790 --> 00:13:05,820
+because it stands out as that is
+definitely my local network now let's
+
+614
+00:13:05,820 --> 00:13:05,830
+definitely my local network now let's
+ 
+
+615
+00:13:05,830 --> 00:13:08,610
+definitely my local network now let's
+add a new DHCP server and you can see
+
+616
+00:13:08,610 --> 00:13:08,620
+add a new DHCP server and you can see
+ 
+
+617
+00:13:08,620 --> 00:13:10,230
+add a new DHCP server and you can see
+that there's all this setup that you can
+
+618
+00:13:10,230 --> 00:13:10,240
+that there's all this setup that you can
+ 
+
+619
+00:13:10,240 --> 00:13:11,970
+that there's all this setup that you can
+go through but I want to show you a tool
+
+620
+00:13:11,970 --> 00:13:11,980
+go through but I want to show you a tool
+ 
+
+621
+00:13:11,980 --> 00:13:13,890
+go through but I want to show you a tool
+that's going to help make this even
+
+622
+00:13:13,890 --> 00:13:13,900
+that's going to help make this even
+ 
+
+623
+00:13:13,900 --> 00:13:16,110
+that's going to help make this even
+easier so I just brought that up but
+
+624
+00:13:16,110 --> 00:13:16,120
+easier so I just brought that up but
+ 
+
+625
+00:13:16,120 --> 00:13:17,850
+easier so I just brought that up but
+cancel and you can see there's actually
+
+626
+00:13:17,850 --> 00:13:17,860
+cancel and you can see there's actually
+ 
+
+627
+00:13:17,860 --> 00:13:20,550
+cancel and you can see there's actually
+DHCP setup and that's going to bring up
+
+628
+00:13:20,550 --> 00:13:20,560
+DHCP setup and that's going to bring up
+ 
+
+629
+00:13:20,560 --> 00:13:22,560
+DHCP setup and that's going to bring up
+a wizard that is going to make this a
+
+630
+00:13:22,560 --> 00:13:22,570
+a wizard that is going to make this a
+ 
+
+631
+00:13:22,570 --> 00:13:25,110
+a wizard that is going to make this a
+lot simpler for us and this is literally
+
+632
+00:13:25,110 --> 00:13:25,120
+lot simpler for us and this is literally
+ 
+
+633
+00:13:25,120 --> 00:13:27,690
+lot simpler for us and this is literally
+easy breezy we're gonna change the DHCP
+
+634
+00:13:27,690 --> 00:13:27,700
+easy breezy we're gonna change the DHCP
+ 
+
+635
+00:13:27,700 --> 00:13:30,480
+easy breezy we're gonna change the DHCP
+server interface to bridge - guest and
+
+636
+00:13:30,480 --> 00:13:30,490
+server interface to bridge - guest and
+ 
+
+637
+00:13:30,490 --> 00:13:32,870
+server interface to bridge - guest and
+then watch this we're gonna hit next
+
+638
+00:13:32,870 --> 00:13:32,880
+then watch this we're gonna hit next
+ 
+
+639
+00:13:32,880 --> 00:13:36,420
+then watch this we're gonna hit next
+next see it r2 automatically assigned it
+
+640
+00:13:36,420 --> 00:13:36,430
+next see it r2 automatically assigned it
+ 
+
+641
+00:13:36,430 --> 00:13:42,210
+next see it r2 automatically assigned it
+to the correct network next next DNS
+
+642
+00:13:42,210 --> 00:13:42,220
+to the correct network next next DNS
+ 
+
+643
+00:13:42,220 --> 00:13:44,069
+to the correct network next next DNS
+servers is just pulling from my router
+
+644
+00:13:44,069 --> 00:13:44,079
+servers is just pulling from my router
+ 
+
+645
+00:13:44,079 --> 00:13:45,840
+servers is just pulling from my router
+that's fine we can change we're gonna
+
+646
+00:13:45,840 --> 00:13:45,850
+that's fine we can change we're gonna
+ 
+
+647
+00:13:45,850 --> 00:13:47,670
+that's fine we can change we're gonna
+actually change those in a future
+
+648
+00:13:47,670 --> 00:13:47,680
+actually change those in a future
+ 
+
+649
+00:13:47,680 --> 00:13:50,819
+actually change those in a future
+episode when we set up a piehole that's
+
+650
+00:13:50,819 --> 00:13:50,829
+episode when we set up a piehole that's
+ 
+
+651
+00:13:50,829 --> 00:13:53,960
+episode when we set up a piehole that's
+not a bad word that's actually a device
+
+652
+00:13:53,960 --> 00:13:53,970
+not a bad word that's actually a device
+ 
+
+653
+00:13:53,970 --> 00:13:56,550
+not a bad word that's actually a device
+that's gonna act as our DNS server
+
+654
+00:13:56,550 --> 00:13:56,560
+that's gonna act as our DNS server
+ 
+
+655
+00:13:56,560 --> 00:13:58,319
+that's gonna act as our DNS server
+in-house and block advertising block
+
+656
+00:13:58,319 --> 00:13:58,329
+in-house and block advertising block
+ 
+
+657
+00:13:58,329 --> 00:14:00,389
+in-house and block advertising block
+pornography all that kind of stuff click
+
+658
+00:14:00,389 --> 00:14:00,399
+pornography all that kind of stuff click
+ 
+
+659
+00:14:00,399 --> 00:14:08,310
+pornography all that kind of stuff click
+Next Next Next Next Next Next just leave
+
+660
+00:14:08,310 --> 00:14:08,320
+Next Next Next Next Next Next just leave
+ 
+
+661
+00:14:08,320 --> 00:14:10,590
+Next Next Next Next Next Next just leave
+everything as is and we're done whoo
+
+662
+00:14:10,590 --> 00:14:10,600
+everything as is and we're done whoo
+ 
+
+663
+00:14:10,600 --> 00:14:16,500
+everything as is and we're done whoo
+we've got guest 1 and notice ok well why
+
+664
+00:14:16,500 --> 00:14:16,510
+we've got guest 1 and notice ok well why
+ 
+
+665
+00:14:16,510 --> 00:14:18,090
+we've got guest 1 and notice ok well why
+is it DHCP 1
+
+666
+00:14:18,090 --> 00:14:18,100
+is it DHCP 1
+ 
+
+667
+00:14:18,100 --> 00:14:20,430
+is it DHCP 1
+well my bridge guest I can see that it's
+
+668
+00:14:20,430 --> 00:14:20,440
+well my bridge guest I can see that it's
+ 
+
+669
+00:14:20,440 --> 00:14:23,400
+well my bridge guest I can see that it's
+bridge guest but notice it I didn't hand
+
+670
+00:14:23,400 --> 00:14:23,410
+bridge guest but notice it I didn't hand
+ 
+
+671
+00:14:23,410 --> 00:14:26,069
+bridge guest but notice it I didn't hand
+her a name for it and so now I I can do
+
+672
+00:14:26,069 --> 00:14:26,079
+her a name for it and so now I I can do
+ 
+
+673
+00:14:26,079 --> 00:14:27,269
+her a name for it and so now I I can do
+the exact same thing I can open that up
+
+674
+00:14:27,269 --> 00:14:27,279
+the exact same thing I can open that up
+ 
+
+675
+00:14:27,279 --> 00:14:28,340
+the exact same thing I can open that up
+and call this guest
+
+676
+00:14:28,340 --> 00:14:28,350
+and call this guest
+ 
+
+677
+00:14:28,350 --> 00:14:33,030
+and call this guest
+easy peasy right ok so now I'm at the
+
+678
+00:14:33,030 --> 00:14:33,040
+easy peasy right ok so now I'm at the
+ 
+
+679
+00:14:33,040 --> 00:14:34,800
+easy peasy right ok so now I'm at the
+point where I should be able to see the
+
+680
+00:14:34,800 --> 00:14:34,810
+point where I should be able to see the
+ 
+
+681
+00:14:34,810 --> 00:14:37,500
+point where I should be able to see the
+guest Wi-Fi network on my phone so let's
+
+682
+00:14:37,500 --> 00:14:37,510
+guest Wi-Fi network on my phone so let's
+ 
+
+683
+00:14:37,510 --> 00:14:39,509
+guest Wi-Fi network on my phone so let's
+do a quick refresh of Wi-Fi here and
+
+684
+00:14:39,509 --> 00:14:39,519
+do a quick refresh of Wi-Fi here and
+ 
+
+685
+00:14:39,519 --> 00:14:41,790
+do a quick refresh of Wi-Fi here and
+sure enough there's cat 5 TV 5 gigahertz
+
+686
+00:14:41,790 --> 00:14:41,800
+sure enough there's cat 5 TV 5 gigahertz
+ 
+
+687
+00:14:41,800 --> 00:14:44,579
+sure enough there's cat 5 TV 5 gigahertz
+cat 5 TV and one called guest so let's
+
+688
+00:14:44,579 --> 00:14:44,589
+cat 5 TV and one called guest so let's
+ 
+
+689
+00:14:44,589 --> 00:14:47,670
+cat 5 TV and one called guest so let's
+click it actually before I do that I'm
+
+690
+00:14:47,670 --> 00:14:47,680
+click it actually before I do that I'm
+ 
+
+691
+00:14:47,680 --> 00:14:49,980
+click it actually before I do that I'm
+gonna bring up a local network resource
+
+692
+00:14:49,980 --> 00:14:49,990
+gonna bring up a local network resource
+ 
+
+693
+00:14:49,990 --> 00:14:52,829
+gonna bring up a local network resource
+unconnected to cat 5 TV I want you to
+
+694
+00:14:52,829 --> 00:14:52,839
+unconnected to cat 5 TV I want you to
+ 
+
+695
+00:14:52,839 --> 00:14:55,819
+unconnected to cat 5 TV I want you to
+see that I am in fact able to access
+
+696
+00:14:55,819 --> 00:14:55,829
+see that I am in fact able to access
+ 
+
+697
+00:14:55,829 --> 00:14:58,380
+see that I am in fact able to access
+local resources so let's just bring up
+
+698
+00:14:58,380 --> 00:14:58,390
+local resources so let's just bring up
+ 
+
+699
+00:14:58,390 --> 00:15:01,829
+local resources so let's just bring up
+my VirtualBox login there it is so once
+
+700
+00:15:01,829 --> 00:15:01,839
+my VirtualBox login there it is so once
+ 
+
+701
+00:15:01,839 --> 00:15:05,040
+my VirtualBox login there it is so once
+I switch over to the guest Wi-Fi I'm
+
+702
+00:15:05,040 --> 00:15:05,050
+I switch over to the guest Wi-Fi I'm
+ 
+
+703
+00:15:05,050 --> 00:15:06,329
+I switch over to the guest Wi-Fi I'm
+gonna use that as a demonstration to
+
+704
+00:15:06,329 --> 00:15:06,339
+gonna use that as a demonstration to
+ 
+
+705
+00:15:06,339 --> 00:15:07,829
+gonna use that as a demonstration to
+show whether or not we're able to access
+
+706
+00:15:07,829 --> 00:15:07,839
+show whether or not we're able to access
+ 
+
+707
+00:15:07,839 --> 00:15:10,650
+show whether or not we're able to access
+those resources so back in my Wi-Fi
+
+708
+00:15:10,650 --> 00:15:10,660
+those resources so back in my Wi-Fi
+ 
+
+709
+00:15:10,660 --> 00:15:13,560
+those resources so back in my Wi-Fi
+let's connect to guest enter my password
+
+710
+00:15:13,560 --> 00:15:13,570
+let's connect to guest enter my password
+ 
+
+711
+00:15:13,570 --> 00:15:17,780
+let's connect to guest enter my password
+from the security profile dum-dum 1 2 3
+
+712
+00:15:17,780 --> 00:15:17,790
+from the security profile dum-dum 1 2 3
+ 
+
+713
+00:15:17,790 --> 00:15:25,019
+from the security profile dum-dum 1 2 3
+connect obtaining IP address and we're
+
+714
+00:15:25,019 --> 00:15:25,029
+connect obtaining IP address and we're
+ 
+
+715
+00:15:25,029 --> 00:15:27,269
+connect obtaining IP address and we're
+in what options do we have here let's
+
+716
+00:15:27,269 --> 00:15:27,279
+in what options do we have here let's
+ 
+
+717
+00:15:27,279 --> 00:15:29,069
+in what options do we have here let's
+look at the IP address 10 see the
+
+718
+00:15:29,069 --> 00:15:29,079
+look at the IP address 10 see the
+ 
+
+719
+00:15:29,079 --> 00:15:31,620
+look at the IP address 10 see the
+Gateway 10 10 10
+
+720
+00:15:31,620 --> 00:15:31,630
+Gateway 10 10 10
+ 
+
+721
+00:15:31,630 --> 00:15:35,610
+Gateway 10 10 10
+one all right so let's let's look at our
+
+722
+00:15:35,610 --> 00:15:35,620
+one all right so let's let's look at our
+ 
+
+723
+00:15:35,620 --> 00:15:37,380
+one all right so let's let's look at our
+browser again now that I'm connected to
+
+724
+00:15:37,380 --> 00:15:37,390
+browser again now that I'm connected to
+ 
+
+725
+00:15:37,390 --> 00:15:39,660
+browser again now that I'm connected to
+that Network and let's try to access PHP
+
+726
+00:15:39,660 --> 00:15:39,670
+that Network and let's try to access PHP
+ 
+
+727
+00:15:39,670 --> 00:15:42,150
+that Network and let's try to access PHP
+VirtualBox and you'll notice yes I am
+
+728
+00:15:42,150 --> 00:15:42,160
+VirtualBox and you'll notice yes I am
+ 
+
+729
+00:15:42,160 --> 00:15:44,910
+VirtualBox and you'll notice yes I am
+indeed still able to access PHP
+
+730
+00:15:44,910 --> 00:15:44,920
+indeed still able to access PHP
+ 
+
+731
+00:15:44,920 --> 00:15:46,380
+indeed still able to access PHP
+VirtualBox I've clicked on the address
+
+732
+00:15:46,380 --> 00:15:46,390
+VirtualBox I've clicked on the address
+ 
+
+733
+00:15:46,390 --> 00:15:48,330
+VirtualBox I've clicked on the address
+bar and I've clicked on the link and it
+
+734
+00:15:48,330 --> 00:15:48,340
+bar and I've clicked on the link and it
+ 
+
+735
+00:15:48,340 --> 00:15:50,820
+bar and I've clicked on the link and it
+is loading and that is simply because I
+
+736
+00:15:50,820 --> 00:15:50,830
+is loading and that is simply because I
+ 
+
+737
+00:15:50,830 --> 00:15:54,090
+is loading and that is simply because I
+have yet to create a firewall rule to
+
+738
+00:15:54,090 --> 00:15:54,100
+have yet to create a firewall rule to
+ 
+
+739
+00:15:54,100 --> 00:15:57,330
+have yet to create a firewall rule to
+basically and it trap that Wi-Fi the
+
+740
+00:15:57,330 --> 00:15:57,340
+basically and it trap that Wi-Fi the
+ 
+
+741
+00:15:57,340 --> 00:15:59,460
+basically and it trap that Wi-Fi the
+guest access and make it so that it's
+
+742
+00:15:59,460 --> 00:15:59,470
+guest access and make it so that it's
+ 
+
+743
+00:15:59,470 --> 00:16:01,940
+guest access and make it so that it's
+not allowed to communicate back with my
+
+744
+00:16:01,940 --> 00:16:01,950
+not allowed to communicate back with my
+ 
+
+745
+00:16:01,950 --> 00:16:05,670
+not allowed to communicate back with my
+local area network or my Wi-Fi devices
+
+746
+00:16:05,670 --> 00:16:05,680
+local area network or my Wi-Fi devices
+ 
+
+747
+00:16:05,680 --> 00:16:08,640
+local area network or my Wi-Fi devices
+on my actual Wi-Fi so the way that we're
+
+748
+00:16:08,640 --> 00:16:08,650
+on my actual Wi-Fi so the way that we're
+ 
+
+749
+00:16:08,650 --> 00:16:11,010
+on my actual Wi-Fi so the way that we're
+gonna do that is back on our mikrotik
+
+750
+00:16:11,010 --> 00:16:11,020
+gonna do that is back on our mikrotik
+ 
+
+751
+00:16:11,020 --> 00:16:13,350
+gonna do that is back on our mikrotik
+web the Figg I'm going to click I've
+
+752
+00:16:13,350 --> 00:16:13,360
+web the Figg I'm going to click I've
+ 
+
+753
+00:16:13,360 --> 00:16:15,830
+web the Figg I'm going to click I've
+opened IP and then we're gonna go to
+
+754
+00:16:15,830 --> 00:16:15,840
+opened IP and then we're gonna go to
+ 
+
+755
+00:16:15,840 --> 00:16:18,300
+opened IP and then we're gonna go to
+firewall we've already seen this on
+
+756
+00:16:18,300 --> 00:16:18,310
+firewall we've already seen this on
+ 
+
+757
+00:16:18,310 --> 00:16:20,760
+firewall we've already seen this on
+previous episodes of cat5 TV slash
+
+758
+00:16:20,760 --> 00:16:20,770
+previous episodes of cat5 TV slash
+ 
+
+759
+00:16:20,770 --> 00:16:22,680
+previous episodes of cat5 TV slash
+mikrotik you can see I've added a couple
+
+760
+00:16:22,680 --> 00:16:22,690
+mikrotik you can see I've added a couple
+ 
+
+761
+00:16:22,690 --> 00:16:24,660
+mikrotik you can see I've added a couple
+of new things since the last time we
+
+762
+00:16:24,660 --> 00:16:24,670
+of new things since the last time we
+ 
+
+763
+00:16:24,670 --> 00:16:26,850
+of new things since the last time we
+were here but what I want to do this
+
+764
+00:16:26,850 --> 00:16:26,860
+were here but what I want to do this
+ 
+
+765
+00:16:26,860 --> 00:16:29,880
+were here but what I want to do this
+time is I want to create a rule to be
+
+766
+00:16:29,880 --> 00:16:29,890
+time is I want to create a rule to be
+ 
+
+767
+00:16:29,890 --> 00:16:32,340
+time is I want to create a rule to be
+able to make it so that the Wi-Fi for
+
+768
+00:16:32,340 --> 00:16:32,350
+able to make it so that the Wi-Fi for
+ 
+
+769
+00:16:32,350 --> 00:16:35,220
+able to make it so that the Wi-Fi for
+the guest network is not able to get
+
+770
+00:16:35,220 --> 00:16:35,230
+the guest network is not able to get
+ 
+
+771
+00:16:35,230 --> 00:16:39,860
+the guest network is not able to get
+access to ten dot 0 dot 0 dot
+
+772
+00:16:39,860 --> 00:16:39,870
+access to ten dot 0 dot 0 dot
+ 
+
+773
+00:16:39,870 --> 00:16:43,140
+access to ten dot 0 dot 0 dot
+on add new to create a new firewall rule
+
+774
+00:16:43,140 --> 00:16:43,150
+on add new to create a new firewall rule
+ 
+
+775
+00:16:43,150 --> 00:16:45,600
+on add new to create a new firewall rule
+and you're gonna laugh at how easy this
+
+776
+00:16:45,600 --> 00:16:45,610
+and you're gonna laugh at how easy this
+ 
+
+777
+00:16:45,610 --> 00:16:48,480
+and you're gonna laugh at how easy this
+is you'll notice the chain is defaulting
+
+778
+00:16:48,480 --> 00:16:48,490
+is you'll notice the chain is defaulting
+ 
+
+779
+00:16:48,490 --> 00:16:52,140
+is you'll notice the chain is defaulting
+to forward that is what we want so leave
+
+780
+00:16:52,140 --> 00:16:52,150
+to forward that is what we want so leave
+ 
+
+781
+00:16:52,150 --> 00:16:54,120
+to forward that is what we want so leave
+that as is and we're gonna set the
+
+782
+00:16:54,120 --> 00:16:54,130
+that as is and we're gonna set the
+ 
+
+783
+00:16:54,130 --> 00:16:56,760
+that as is and we're gonna set the
+source address so this is if the IP
+
+784
+00:16:56,760 --> 00:16:56,770
+source address so this is if the IP
+ 
+
+785
+00:16:56,770 --> 00:17:00,860
+source address so this is if the IP
+address is coming from this then do this
+
+786
+00:17:00,860 --> 00:17:00,870
+address is coming from this then do this
+ 
+
+787
+00:17:00,870 --> 00:17:05,100
+address is coming from this then do this
+so watch what I'm gonna do here 10.10
+
+788
+00:17:05,100 --> 00:17:05,110
+so watch what I'm gonna do here 10.10
+ 
+
+789
+00:17:05,110 --> 00:17:12,000
+so watch what I'm gonna do here 10.10
+dot dot 0 slash 24 so anyone who is on
+
+790
+00:17:12,000 --> 00:17:12,010
+dot dot 0 slash 24 so anyone who is on
+ 
+
+791
+00:17:12,010 --> 00:17:15,780
+dot dot 0 slash 24 so anyone who is on
+the guest Wi-Fi IP block is going to
+
+792
+00:17:15,780 --> 00:17:15,790
+the guest Wi-Fi IP block is going to
+ 
+
+793
+00:17:15,790 --> 00:17:17,610
+the guest Wi-Fi IP block is going to
+fall into this the source address
+
+794
+00:17:17,610 --> 00:17:17,620
+fall into this the source address
+ 
+
+795
+00:17:17,620 --> 00:17:23,329
+fall into this the source address
+destination address this is my network
+
+796
+00:17:23,329 --> 00:17:23,339
+destination address this is my network
+ 
+
+797
+00:17:23,339 --> 00:17:30,990
+destination address this is my network
+10.0.0.0 slash 24 if anyone from this
+
+798
+00:17:30,990 --> 00:17:31,000
+10.0.0.0 slash 24 if anyone from this
+ 
+
+799
+00:17:31,000 --> 00:17:34,680
+10.0.0.0 slash 24 if anyone from this
+network attempts to access this network
+
+800
+00:17:34,680 --> 00:17:34,690
+network attempts to access this network
+ 
+
+801
+00:17:34,690 --> 00:17:36,420
+network attempts to access this network
+what do you want to do
+
+802
+00:17:36,420 --> 00:17:36,430
+what do you want to do
+ 
+
+803
+00:17:36,430 --> 00:17:45,140
+what do you want to do
+scroll down action
+
+804
+00:17:45,140 --> 00:17:45,150
+
+ 
+
+805
+00:17:45,150 --> 00:17:50,580
+
+drop so what we're saying is any source
+
+806
+00:17:50,580 --> 00:17:50,590
+drop so what we're saying is any source
+ 
+
+807
+00:17:50,590 --> 00:17:54,210
+drop so what we're saying is any source
+from the guest Wi-Fi IP block trying to
+
+808
+00:17:54,210 --> 00:17:54,220
+from the guest Wi-Fi IP block trying to
+ 
+
+809
+00:17:54,220 --> 00:17:57,960
+from the guest Wi-Fi IP block trying to
+access my actual LAN we are going to
+
+810
+00:17:57,960 --> 00:17:57,970
+access my actual LAN we are going to
+ 
+
+811
+00:17:57,970 --> 00:18:03,270
+access my actual LAN we are going to
+drop those packets I want to point out
+
+812
+00:18:03,270 --> 00:18:03,280
+drop those packets I want to point out
+ 
+
+813
+00:18:03,280 --> 00:18:07,290
+drop those packets I want to point out
+that this is unidirectional so there may
+
+814
+00:18:07,290 --> 00:18:07,300
+that this is unidirectional so there may
+ 
+
+815
+00:18:07,300 --> 00:18:09,390
+that this is unidirectional so there may
+be cases where you want devices to
+
+816
+00:18:09,390 --> 00:18:09,400
+be cases where you want devices to
+ 
+
+817
+00:18:09,400 --> 00:18:13,230
+be cases where you want devices to
+access your your wireless network but
+
+818
+00:18:13,230 --> 00:18:13,240
+access your your wireless network but
+ 
+
+819
+00:18:13,240 --> 00:18:15,450
+access your your wireless network but
+not have access to your internal
+
+820
+00:18:15,450 --> 00:18:15,460
+not have access to your internal
+ 
+
+821
+00:18:15,460 --> 00:18:17,940
+not have access to your internal
+resources however you do want your
+
+822
+00:18:17,940 --> 00:18:17,950
+resources however you do want your
+ 
+
+823
+00:18:17,950 --> 00:18:19,710
+resources however you do want your
+internal resources to be able to access
+
+824
+00:18:19,710 --> 00:18:19,720
+internal resources to be able to access
+ 
+
+825
+00:18:19,720 --> 00:18:24,990
+internal resources to be able to access
+them think about perhaps an IP camera
+
+826
+00:18:24,990 --> 00:18:25,000
+them think about perhaps an IP camera
+ 
+
+827
+00:18:25,000 --> 00:18:28,200
+them think about perhaps an IP camera
+that uses Wi-Fi to connect well you want
+
+828
+00:18:28,200 --> 00:18:28,210
+that uses Wi-Fi to connect well you want
+ 
+
+829
+00:18:28,210 --> 00:18:29,400
+that uses Wi-Fi to connect well you want
+it to be able to connect to the internet
+
+830
+00:18:29,400 --> 00:18:29,410
+it to be able to connect to the internet
+ 
+
+831
+00:18:29,410 --> 00:18:33,480
+it to be able to connect to the internet
+you want it to be able to access the
+
+832
+00:18:33,480 --> 00:18:33,490
+you want it to be able to access the
+ 
+
+833
+00:18:33,490 --> 00:18:38,100
+you want it to be able to access the
+network and you from your computer on
+
+834
+00:18:38,100 --> 00:18:38,110
+network and you from your computer on
+ 
+
+835
+00:18:38,110 --> 00:18:40,470
+network and you from your computer on
+your land want to be able to access that
+
+836
+00:18:40,470 --> 00:18:40,480
+your land want to be able to access that
+ 
+
+837
+00:18:40,480 --> 00:18:43,290
+your land want to be able to access that
+camera but you don't want that camera to
+
+838
+00:18:43,290 --> 00:18:43,300
+camera but you don't want that camera to
+ 
+
+839
+00:18:43,300 --> 00:18:47,160
+camera but you don't want that camera to
+have the rights to access your things on
+
+840
+00:18:47,160 --> 00:18:47,170
+have the rights to access your things on
+ 
+
+841
+00:18:47,170 --> 00:18:49,320
+have the rights to access your things on
+your network it's just an example but I
+
+842
+00:18:49,320 --> 00:18:49,330
+your network it's just an example but I
+ 
+
+843
+00:18:49,330 --> 00:18:51,210
+your network it's just an example but I
+mean you can probably think of devices
+
+844
+00:18:51,210 --> 00:18:51,220
+mean you can probably think of devices
+ 
+
+845
+00:18:51,220 --> 00:18:53,940
+mean you can probably think of devices
+that you'd want to have kind of separate
+
+846
+00:18:53,940 --> 00:18:53,950
+that you'd want to have kind of separate
+ 
+
+847
+00:18:53,950 --> 00:18:56,310
+that you'd want to have kind of separate
+from your network so that if somebody
+
+848
+00:18:56,310 --> 00:18:56,320
+from your network so that if somebody
+ 
+
+849
+00:18:56,320 --> 00:18:58,110
+from your network so that if somebody
+grabs it if somebody steals that let's
+
+850
+00:18:58,110 --> 00:18:58,120
+grabs it if somebody steals that let's
+ 
+
+851
+00:18:58,120 --> 00:18:59,700
+grabs it if somebody steals that let's
+say you've got a Raspberry Pi sitting in
+
+852
+00:18:59,700 --> 00:18:59,710
+say you've got a Raspberry Pi sitting in
+ 
+
+853
+00:18:59,710 --> 00:19:01,530
+say you've got a Raspberry Pi sitting in
+the roof somewhere connected to your
+
+854
+00:19:01,530 --> 00:19:01,540
+the roof somewhere connected to your
+ 
+
+855
+00:19:01,540 --> 00:19:03,060
+the roof somewhere connected to your
+Wi-Fi well if someone steals that you
+
+856
+00:19:03,060 --> 00:19:03,070
+Wi-Fi well if someone steals that you
+ 
+
+857
+00:19:03,070 --> 00:19:04,500
+Wi-Fi well if someone steals that you
+don't want them having access to your
+
+858
+00:19:04,500 --> 00:19:04,510
+don't want them having access to your
+ 
+
+859
+00:19:04,510 --> 00:19:06,900
+don't want them having access to your
+network so putting it on a separate
+
+860
+00:19:06,900 --> 00:19:06,910
+network so putting it on a separate
+ 
+
+861
+00:19:06,910 --> 00:19:08,730
+network so putting it on a separate
+network but allowing you to be able to
+
+862
+00:19:08,730 --> 00:19:08,740
+network but allowing you to be able to
+ 
+
+863
+00:19:08,740 --> 00:19:10,410
+network but allowing you to be able to
+connect to it so we understand that
+
+864
+00:19:10,410 --> 00:19:10,420
+connect to it so we understand that
+ 
+
+865
+00:19:10,420 --> 00:19:13,770
+connect to it so we understand that
+we're doing this unidirectional e this
+
+866
+00:19:13,770 --> 00:19:13,780
+we're doing this unidirectional e this
+ 
+
+867
+00:19:13,780 --> 00:19:15,840
+we're doing this unidirectional e this
+is only going to affect the guest Wi-Fi
+
+868
+00:19:15,840 --> 00:19:15,850
+is only going to affect the guest Wi-Fi
+ 
+
+869
+00:19:15,850 --> 00:19:18,270
+is only going to affect the guest Wi-Fi
+this is not reducing it's not
+
+870
+00:19:18,270 --> 00:19:18,280
+this is not reducing it's not
+ 
+
+871
+00:19:18,280 --> 00:19:20,490
+this is not reducing it's not
+eliminating my ability to connect to the
+
+872
+00:19:20,490 --> 00:19:20,500
+eliminating my ability to connect to the
+ 
+
+873
+00:19:20,500 --> 00:19:23,070
+eliminating my ability to connect to the
+devices on the guest Wi-Fi let's hit OK
+
+874
+00:19:23,070 --> 00:19:23,080
+devices on the guest Wi-Fi let's hit OK
+ 
+
+875
+00:19:23,080 --> 00:19:27,300
+devices on the guest Wi-Fi let's hit OK
+and now we have that route set up
+
+876
+00:19:27,300 --> 00:19:27,310
+and now we have that route set up
+ 
+
+877
+00:19:27,310 --> 00:19:29,820
+and now we have that route set up
+however you've noticed it has placed it
+
+878
+00:19:29,820 --> 00:19:29,830
+however you've noticed it has placed it
+ 
+
+879
+00:19:29,830 --> 00:19:31,740
+however you've noticed it has placed it
+at the bottom and we've already talked
+
+880
+00:19:31,740 --> 00:19:31,750
+at the bottom and we've already talked
+ 
+
+881
+00:19:31,750 --> 00:19:33,900
+at the bottom and we've already talked
+about this we want to make sure that our
+
+882
+00:19:33,900 --> 00:19:33,910
+about this we want to make sure that our
+ 
+
+883
+00:19:33,910 --> 00:19:36,360
+about this we want to make sure that our
+forward rules happen before some of the
+
+884
+00:19:36,360 --> 00:19:36,370
+forward rules happen before some of the
+ 
+
+885
+00:19:36,370 --> 00:19:38,580
+forward rules happen before some of the
+mikrotik stuff and I certainly want to
+
+886
+00:19:38,580 --> 00:19:38,590
+mikrotik stuff and I certainly want to
+ 
+
+887
+00:19:38,590 --> 00:19:41,160
+mikrotik stuff and I certainly want to
+make sure that this happens before the
+
+888
+00:19:41,160 --> 00:19:41,170
+make sure that this happens before the
+ 
+
+889
+00:19:41,170 --> 00:19:44,070
+make sure that this happens before the
+rules that I've created if they involve
+
+890
+00:19:44,070 --> 00:19:44,080
+rules that I've created if they involve
+ 
+
+891
+00:19:44,080 --> 00:19:46,440
+rules that I've created if they involve
+internal infrastructure I want this one
+
+892
+00:19:46,440 --> 00:19:46,450
+internal infrastructure I want this one
+ 
+
+893
+00:19:46,450 --> 00:19:51,840
+internal infrastructure I want this one
+to happen after this no I don't I want
+
+894
+00:19:51,840 --> 00:19:51,850
+to happen after this no I don't I want
+ 
+
+895
+00:19:51,850 --> 00:19:53,940
+to happen after this no I don't I want
+it to happen before this because if
+
+896
+00:19:53,940 --> 00:19:53,950
+it to happen before this because if
+ 
+
+897
+00:19:53,950 --> 00:19:55,230
+it to happen before this because if
+they're going to access
+
+898
+00:19:55,230 --> 00:19:55,240
+they're going to access
+ 
+
+899
+00:19:55,240 --> 00:20:00,210
+they're going to access
+ten dot 0 dot 0 dot through the internet
+
+900
+00:20:00,210 --> 00:20:00,220
+ten dot 0 dot 0 dot through the internet
+ 
+
+901
+00:20:00,220 --> 00:20:02,730
+ten dot 0 dot 0 dot through the internet
+through the port that we've allowed so
+
+902
+00:20:02,730 --> 00:20:02,740
+through the port that we've allowed so
+ 
+
+903
+00:20:02,740 --> 00:20:05,250
+through the port that we've allowed so
+if this was below it they would actually
+
+904
+00:20:05,250 --> 00:20:05,260
+if this was below it they would actually
+ 
+
+905
+00:20:05,260 --> 00:20:14,250
+if this was below it they would actually
+have access to 10.0.0.0 category 5 TV so
+
+906
+00:20:14,250 --> 00:20:14,260
+have access to 10.0.0.0 category 5 TV so
+ 
+
+907
+00:20:14,260 --> 00:20:17,100
+have access to 10.0.0.0 category 5 TV so
+I'm gonna drop as the first thing so now
+
+908
+00:20:17,100 --> 00:20:17,110
+I'm gonna drop as the first thing so now
+ 
+
+909
+00:20:17,110 --> 00:20:19,140
+I'm gonna drop as the first thing so now
+without having to restart without having
+
+910
+00:20:19,140 --> 00:20:19,150
+without having to restart without having
+ 
+
+911
+00:20:19,150 --> 00:20:21,090
+without having to restart without having
+to do anything else I'm gonna bring back
+
+912
+00:20:21,090 --> 00:20:21,100
+to do anything else I'm gonna bring back
+ 
+
+913
+00:20:21,100 --> 00:20:23,160
+to do anything else I'm gonna bring back
+up my phone here which is connected to
+
+914
+00:20:23,160 --> 00:20:23,170
+up my phone here which is connected to
+ 
+
+915
+00:20:23,170 --> 00:20:25,860
+up my phone here which is connected to
+the guest Wi-Fi and let's jump back to
+
+916
+00:20:25,860 --> 00:20:25,870
+the guest Wi-Fi and let's jump back to
+ 
+
+917
+00:20:25,870 --> 00:20:28,470
+the guest Wi-Fi and let's jump back to
+my browser and let's click on PHP
+
+918
+00:20:28,470 --> 00:20:28,480
+my browser and let's click on PHP
+ 
+
+919
+00:20:28,480 --> 00:20:30,960
+my browser and let's click on PHP
+VirtualBox which you see that progress
+
+920
+00:20:30,960 --> 00:20:30,970
+VirtualBox which you see that progress
+ 
+
+921
+00:20:30,970 --> 00:20:34,260
+VirtualBox which you see that progress
+indicator up at the top it's hung up now
+
+922
+00:20:34,260 --> 00:20:34,270
+indicator up at the top it's hung up now
+ 
+
+923
+00:20:34,270 --> 00:20:37,890
+indicator up at the top it's hung up now
+I mean I know that I can still see PHP
+
+924
+00:20:37,890 --> 00:20:37,900
+I mean I know that I can still see PHP
+ 
+
+925
+00:20:37,900 --> 00:20:39,300
+I mean I know that I can still see PHP
+VirtualBox because I've previously
+
+926
+00:20:39,300 --> 00:20:39,310
+VirtualBox because I've previously
+ 
+
+927
+00:20:39,310 --> 00:20:41,430
+VirtualBox because I've previously
+loaded it let's go home and let's go
+
+928
+00:20:41,430 --> 00:20:41,440
+loaded it let's go home and let's go
+ 
+
+929
+00:20:41,440 --> 00:20:42,090
+loaded it let's go home and let's go
+there again
+
+930
+00:20:42,090 --> 00:20:42,100
+there again
+ 
+
+931
+00:20:42,100 --> 00:20:47,700
+there again
+so 10.0 PHP VirtualBox watch this I've
+
+932
+00:20:47,700 --> 00:20:47,710
+so 10.0 PHP VirtualBox watch this I've
+ 
+
+933
+00:20:47,710 --> 00:20:51,090
+so 10.0 PHP VirtualBox watch this I've
+clicked on it where is it
+
+934
+00:20:51,090 --> 00:20:51,100
+clicked on it where is it
+ 
+
+935
+00:20:51,100 --> 00:20:54,930
+clicked on it where is it
+it's not working because I am connected
+
+936
+00:20:54,930 --> 00:20:54,940
+it's not working because I am connected
+ 
+
+937
+00:20:54,940 --> 00:20:59,190
+it's not working because I am connected
+to the guest Wi-Fi this site can't be
+
+938
+00:20:59,190 --> 00:20:59,200
+to the guest Wi-Fi this site can't be
+ 
+
+939
+00:20:59,200 --> 00:21:02,340
+to the guest Wi-Fi this site can't be
+reached however is the internet working
+
+940
+00:21:02,340 --> 00:21:02,350
+reached however is the internet working
+ 
+
+941
+00:21:02,350 --> 00:21:06,540
+reached however is the internet working
+let's just go category 5 TV yeah the
+
+942
+00:21:06,540 --> 00:21:06,550
+let's just go category 5 TV yeah the
+ 
+
+943
+00:21:06,550 --> 00:21:09,180
+let's just go category 5 TV yeah the
+internet works a treat let's try to go
+
+944
+00:21:09,180 --> 00:21:09,190
+internet works a treat let's try to go
+ 
+
+945
+00:21:09,190 --> 00:21:12,650
+internet works a treat let's try to go
+back to wrong IP
+
+946
+00:21:12,650 --> 00:21:12,660
+back to wrong IP
+ 
+
+947
+00:21:12,660 --> 00:21:17,790
+back to wrong IP
+10.00 10 which is my VirtualBox server
+
+948
+00:21:17,790 --> 00:21:17,800
+10.00 10 which is my VirtualBox server
+ 
+
+949
+00:21:17,800 --> 00:21:19,950
+10.00 10 which is my VirtualBox server
+and let's because we know that's going
+
+950
+00:21:19,950 --> 00:21:19,960
+and let's because we know that's going
+ 
+
+951
+00:21:19,960 --> 00:21:23,760
+and let's because we know that's going
+to timeout I'm going to change to my cat
+
+952
+00:21:23,760 --> 00:21:23,770
+to timeout I'm going to change to my cat
+ 
+
+953
+00:21:23,770 --> 00:21:30,660
+to timeout I'm going to change to my cat
+5 TV 5 gigahertz Wi-Fi there we go
+
+954
+00:21:30,660 --> 00:21:30,670
+5 TV 5 gigahertz Wi-Fi there we go
+ 
+
+955
+00:21:30,670 --> 00:21:32,970
+5 TV 5 gigahertz Wi-Fi there we go
+connected and bring it up and boom I'm
+
+956
+00:21:32,970 --> 00:21:32,980
+connected and bring it up and boom I'm
+ 
+
+957
+00:21:32,980 --> 00:21:35,610
+connected and bring it up and boom I'm
+instantly in so as you can see we have
+
+958
+00:21:35,610 --> 00:21:35,620
+instantly in so as you can see we have
+ 
+
+959
+00:21:35,620 --> 00:21:38,280
+instantly in so as you can see we have
+successfully created a guest Wi-Fi that
+
+960
+00:21:38,280 --> 00:21:38,290
+successfully created a guest Wi-Fi that
+ 
+
+961
+00:21:38,290 --> 00:21:40,110
+successfully created a guest Wi-Fi that
+is separate from our network they cannot
+
+962
+00:21:40,110 --> 00:21:40,120
+is separate from our network they cannot
+ 
+
+963
+00:21:40,120 --> 00:21:45,780
+is separate from our network they cannot
+access resources on 10.0.0.0 they can't
+
+964
+00:21:45,780 --> 00:21:45,790
+access resources on 10.0.0.0 they can't
+ 
+
+965
+00:21:45,790 --> 00:21:47,640
+access resources on 10.0.0.0 they can't
+gain access to that from our guest Wi-Fi
+
+966
+00:21:47,640 --> 00:21:47,650
+gain access to that from our guest Wi-Fi
+ 
+
+967
+00:21:47,650 --> 00:21:50,550
+gain access to that from our guest Wi-Fi
+we're also going to learn in coming
+
+968
+00:21:50,550 --> 00:21:50,560
+we're also going to learn in coming
+ 
+
+969
+00:21:50,560 --> 00:21:52,170
+we're also going to learn in coming
+weeks how we can throttle that I
+
+970
+00:21:52,170 --> 00:21:52,180
+weeks how we can throttle that I
+ 
+
+971
+00:21:52,180 --> 00:21:53,910
+weeks how we can throttle that I
+mentioned that that we're going to be
+
+972
+00:21:53,910 --> 00:21:53,920
+mentioned that that we're going to be
+ 
+
+973
+00:21:53,920 --> 00:21:55,350
+mentioned that that we're going to be
+looking at throttling but we're out of
+
+974
+00:21:55,350 --> 00:21:55,360
+looking at throttling but we're out of
+ 
+
+975
+00:21:55,360 --> 00:21:58,470
+looking at throttling but we're out of
+time for this week segment so I will
+
+976
+00:21:58,470 --> 00:21:58,480
+time for this week segment so I will
+ 
+
+977
+00:21:58,480 --> 00:22:01,140
+time for this week segment so I will
+move that into a future episode as well
+
+978
+00:22:01,140 --> 00:22:01,150
+move that into a future episode as well
+ 
+
+979
+00:22:01,150 --> 00:22:02,850
+move that into a future episode as well
+so make sure you watch for that we're
+
+980
+00:22:02,850 --> 00:22:02,860
+so make sure you watch for that we're
+ 
+
+981
+00:22:02,860 --> 00:22:04,080
+so make sure you watch for that we're
+gonna learn how to throttle the
+
+982
+00:22:04,080 --> 00:22:04,090
+gonna learn how to throttle the
+ 
+
+983
+00:22:04,090 --> 00:22:06,570
+gonna learn how to throttle the
+connection for our guest Wi-Fi to make
+
+984
+00:22:06,570 --> 00:22:06,580
+connection for our guest Wi-Fi to make
+ 
+
+985
+00:22:06,580 --> 00:22:08,760
+connection for our guest Wi-Fi to make
+sure that even you know if I give the
+
+986
+00:22:08,760 --> 00:22:08,770
+sure that even you know if I give the
+ 
+
+987
+00:22:08,770 --> 00:22:11,790
+sure that even you know if I give the
+kids access to it on their tablets are
+
+988
+00:22:11,790 --> 00:22:11,800
+kids access to it on their tablets are
+ 
+
+989
+00:22:11,800 --> 00:22:13,530
+kids access to it on their tablets are
+their friends and then the friends are
+
+990
+00:22:13,530 --> 00:22:13,540
+their friends and then the friends are
+ 
+
+991
+00:22:13,540 --> 00:22:15,150
+their friends and then the friends are
+down the road downloading videos through
+
+992
+00:22:15,150 --> 00:22:15,160
+down the road downloading videos through
+ 
+
+993
+00:22:15,160 --> 00:22:17,520
+down the road downloading videos through
+my Wi-Fi I don't want them milking all
+
+994
+00:22:17,520 --> 00:22:17,530
+my Wi-Fi I don't want them milking all
+ 
+
+995
+00:22:17,530 --> 00:22:19,020
+my Wi-Fi I don't want them milking all
+my bandwidth so we're gonna cover that
+
+996
+00:22:19,020 --> 00:22:19,030
+my bandwidth so we're gonna cover that
+ 
+
+997
+00:22:19,030 --> 00:22:21,600
+my bandwidth so we're gonna cover that
+on a coming show as well cap five dot TV
+
+998
+00:22:21,600 --> 00:22:21,610
+on a coming show as well cap five dot TV
+ 
+
+999
+00:22:21,610 --> 00:22:23,970
+on a coming show as well cap five dot TV
+slash mikrotik is where you want to go
+
+1000
+00:22:23,970 --> 00:22:23,980
+slash mikrotik is where you want to go
+ 
+
+1001
+00:22:23,980 --> 00:22:26,060
+slash mikrotik is where you want to go
+to get the entire series absolutely free
+
+1002
+00:22:26,060 --> 00:22:26,070
+to get the entire series absolutely free
+ 
+
+1003
+00:22:26,070 --> 00:22:28,890
+to get the entire series absolutely free
+please post your comments and make sure
+
+1004
+00:22:28,890 --> 00:22:28,900
+please post your comments and make sure
+ 
+
+1005
+00:22:28,900 --> 00:22:31,140
+please post your comments and make sure
+you subscribe to us at Linux tech show
+
+1006
+00:22:31,140 --> 00:22:31,150
+you subscribe to us at Linux tech show
+ 
+
+1007
+00:22:31,150 --> 00:22:33,210
+you subscribe to us at Linux tech show
+calm which is where I'm posting all
+
+1008
+00:22:33,210 --> 00:22:33,220
+calm which is where I'm posting all
+ 
+
+1009
+00:22:33,220 --> 00:22:35,880
+calm which is where I'm posting all
+these as well which reroutes to our
+
+1010
+00:22:35,880 --> 00:22:35,890
+these as well which reroutes to our
+ 
+
+1011
+00:22:35,890 --> 00:22:37,590
+these as well which reroutes to our
+youtube channel called the next tech
+
+1012
+00:22:37,590 --> 00:22:37,600
+youtube channel called the next tech
+ 
+
+1013
+00:22:37,600 --> 00:22:39,840
+youtube channel called the next tech
+show
+

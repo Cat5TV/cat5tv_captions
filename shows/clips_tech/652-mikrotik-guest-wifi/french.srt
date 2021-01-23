@@ -1,0 +1,1016 @@
+1
+00:00:01,790 --> 00:00:07,170
+maintenant nous avons examiné les routeurs de la marque mikrotik et la série complète est
+
+2
+00:00:07,170 --> 00:00:12,570
+disponible gratuitement sur cat5 dot TV slash mikrotik maintenant que notre réseau est
+
+3
+00:00:12,570 --> 00:00:19,320
+opérationnel, créons un SSID Wi-Fi invité, notre Wi-Fi invité aura un
+
+4
+00:00:19,320 --> 00:00:25,260
+connexion limitée à Internet et ils n'auront pas accès à notre
+
+5
+00:00:25,260 --> 00:00:30,449
+ressources donc c'est le réseau partage des imprimantes choses comme celles que je veux verrouiller
+
+6
+00:00:30,449 --> 00:00:35,280
+que vers le bas, nous allons créer une connexion Wi-Fi vraiment isolée pour permettre
+
+7
+00:00:35,280 --> 00:00:40,530
+invités amis clients ou visiteurs d'utiliser notre connexion Internet sans
+
+8
+00:00:40,530 --> 00:00:46,620
+risquant de ralentir notre connexion ou sans risquer l'intégrité ou la confidentialité
+
+9
+00:00:46,620 --> 00:00:52,050
+de nos données donc cela va être un tutoriel complexe aujourd'hui alors ce que j'ai fait
+
+10
+00:00:52,050 --> 00:00:56,030
+est-ce que j'ai documenté toutes les étapes que je vais franchir à
+
+11
+00:00:56,030 --> 00:01:01,920
+cat5 dot TV slash mikrotik pour que vous puissiez suivre cela en fait beaucoup
+
+12
+00:01:01,920 --> 00:01:05,820
+plus facile pour vous alors allons-y directement, je vais en fait partir
+
+13
+00:01:05,820 --> 00:01:11,340
+ces notes parce que c'est vraiment une série sophistiquée que nous obtenons
+
+14
+00:01:11,340 --> 00:01:18,000
+dans ici aujourd'hui ou au moins un aspect de la série, donc je vais être
+
+15
+00:01:18,000 --> 00:01:24,390
+je travaille sur mon livre de pins ici et je veux simplement parler de mon ordinateur portable et du
+
+16
+00:01:24,390 --> 00:01:28,799
+l'écran a l'air fantastique cette semaine regardez que j'ai apporté quelques améliorations ici à
+
+17
+00:01:28,799 --> 00:01:31,920
+le studio donc je pense que tu vas trouver que les choses sont beaucoup plus faciles à lire maintenant
+
+18
+00:01:31,920 --> 00:01:35,670
+merci à tous pour votre patience pendant cette période car cela a été
+
+19
+00:01:35,670 --> 00:01:39,990
+difficile pour de nombreux diffuseurs mais nous avons apporté quelques améliorations cette semaine
+
+20
+00:01:39,990 --> 00:01:44,640
+alors merci pour votre patience donc la première chose que je veux faire en web fig ici
+
+21
+00:01:44,640 --> 00:01:49,320
+est-ce que je veux accéder à mes profils de sécurité sans fil afin de comprendre
+
+22
+00:01:49,320 --> 00:01:53,460
+Je ne veux pas que ceux qui accèdent à mon Wi-Fi invité utilisent le même
+
+23
+00:01:53,460 --> 00:01:59,070
+mot de passe que j'utilise sur mon Wi-Fi principal, c'est particulièrement ce que je ne veux pas
+
+24
+00:01:59,070 --> 00:02:03,210
+donner alors faisons-le maintenant, configurons un mot de passe séparé par
+
+25
+00:02:03,210 --> 00:02:07,110
+en cliquant sur sans fil à gauche ici, puis je vais cliquer sur sécurité
+
+26
+00:02:07,110 --> 00:02:13,830
+profils en haut maintenant cliquez sur ajouter nouveau et vous verrez que la valeur par défaut est en fait mon mon
+
+27
+00:02:13,830 --> 00:02:18,360
+votre réseau, c'est donc le mot de passe de mon réseau le Wi-Fi que j'ai déjà
+
+28
+00:02:18,360 --> 00:02:22,340
+configurer et je vais cliquer sur ajouter un nouveau et nous allons simplement appeler cet invité
+
+29
+00:02:22,340 --> 00:02:27,060
+juste comme cette note est que je veux désactiver WPA PSK
+
+30
+00:02:27,060 --> 00:02:33,270
+parce que WPA, comme vous le savez, fait vraiment partie de moi, il est très facile de faire des compromis.
+
+31
+00:02:33,270 --> 00:02:41,460
+ne veut pas utiliser WPA, nous voulons seulement utiliser wpa2 car wpa2 est beaucoup plus sûr car
+
+32
+00:02:41,460 --> 00:02:49,110
+dans la mesure où quelqu'un peut pirater votre réseau Wi-Fi, désactivez WPA PSK
+
+33
+00:02:49,110 --> 00:02:55,230
+laissez wpa2 PSK activé, puis ici car cela est activé, nous devons
+
+34
+00:02:55,230 --> 00:03:00,770
+entrez une clé pré-partagée aka le mot de passe pour notre réseau donc je vais utiliser dum-dum
+
+35
+00:03:00,770 --> 00:03:06,050
+un-deux-trois-quatre ce Wi-Fi invité, donc ce n'est que pour le Wi-Fi invité
+
+36
+00:03:06,050 --> 00:03:12,060
+rappelez-vous que ok une fois que j'ai entré mon mot de passe, je vais frapper ok donc je
+
+37
+00:03:12,060 --> 00:03:16,680
+Je n'ai pas encore créé de réseau, tout ce que j'ai fait, c'est d'avoir créé une sécurité
+
+38
+00:03:16,680 --> 00:03:23,880
+profil appelé invité et ce profil de sécurité contient la clé partagée wpa2 pour
+
+39
+00:03:23,880 --> 00:03:29,489
+ce réseau invité et je remarque que mon réseau par défaut utilise en fait WPA pré
+
+40
+00:03:29,489 --> 00:03:35,790
+clé partagée, alors pendant que nous sommes ici, ouvrons celle-ci et désactivons WPA PSK
+
+41
+00:03:35,790 --> 00:03:42,570
+parce que je ne veux pas que quelqu'un pirate mon réseau principal et clique sur OK seulement
+
+42
+00:03:42,570 --> 00:03:46,940
+a pris un moment pour que mon Pine Book Pro se déconnecte du Wi-Fi et
+
+43
+00:03:46,940 --> 00:03:52,470
+reconnecter le mot de passe n'a pas changé simplement l'algorithme de cryptage a
+
+44
+00:03:52,470 --> 00:03:57,930
+changé donc maintenant comme vous pouvez le voir à l'écran ni de mes clés de sécurité Wi-Fi
+
+45
+00:03:57,930 --> 00:04:03,660
+autorisera WPA ils n'autoriseront que wpa2 c'est aussi simple que cela maintenant sautez dans notre
+
+46
+00:04:03,660 --> 00:04:08,070
+Interfaces Wi-Fi c'est là que vous voyez mes deux gigahertz et cinq gigahertz
+
+47
+00:04:08,070 --> 00:04:13,320
+réseaux et je souhaite en ajouter un nouveau pour mon Wi-Fi invité mais je n'en ai pas d'autre
+
+48
+00:04:13,320 --> 00:04:17,760
+radio alors qu'allons-nous faire nous allons partager la radio avec l'un de mes
+
+49
+00:04:17,760 --> 00:04:22,770
+w atterrit donc nous n'allons pas ajouter une autre radio, nous n'avons pas à acheter
+
+50
+00:04:22,770 --> 00:04:26,830
+point d'accès ou tout type d'appareil, nous allons simplement utiliser le même
+
+51
+00:04:26,830 --> 00:04:32,410
+mikrotik, donc la seule mise en garde est que cela signifie que l'invité
+
+52
+00:04:32,410 --> 00:04:39,570
+Le Wi-Fi partagera le même canal que notre Wi-Fi comme le
+
+53
+00:04:39,570 --> 00:04:43,990
+Wi-Fi pour notre réseau, car c'est un réseau différent et c'est un
+
+54
+00:04:43,990 --> 00:04:49,150
+mot de passe différent, ils ne pourront pas accéder à nos choses, c'est juste
+
+55
+00:04:49,150 --> 00:04:52,600
+va partager la même chaîne
+
+56
+00:04:52,600 --> 00:04:57,000
+que cela compte ou non, je ne pense pas que ça va bien, allons ajouter un nouveau
+
+57
+00:04:57,000 --> 00:05:03,010
+et nous allons choisir le virtuel parce que nous n'en créons pas un réel maintenant nous
+
+58
+00:05:03,010 --> 00:05:08,889
+créer un réseau virtuel ici sur notre onglet sans fil dans les interfaces Wi-Fi afin
+
+59
+00:05:08,889 --> 00:05:14,800
+créons une interface virtuelle la première chose que je dois faire est de toujours donner
+
+60
+00:05:14,800 --> 00:05:17,229
+choses un nom que je vais appeler cet invité
+
+61
+00:05:17,229 --> 00:05:23,050
+- Wi-Fi et vous remarquerez que j'utilise des invités pendant que vous utilisez peut-être votre
+
+62
+00:05:23,050 --> 00:05:28,030
+votre nom de famille ou votre nom de famille ou quelque chose d'amusant pour vos invités Wi-Fi vous
+
+63
+00:05:28,030 --> 00:05:32,830
+peut le faire mais dans le but de rendre ce tutoriel universellement accessible et
+
+64
+00:05:32,830 --> 00:05:37,510
+facile à suivre J'utilise des invités car tout le monde peut suivre ces étapes et
+
+65
+00:05:37,510 --> 00:05:43,030
+puis retracez et renommez les choses si vous le souhaitez mais vous n'êtes pas obligé de le faire.
+
+66
+00:05:43,030 --> 00:05:47,320
+sur ce réseau, faisons défiler un peu vers le bas et nous allons voir
+
+67
+00:05:47,320 --> 00:05:53,800
+quelque chose ici appelé SSID, nous savons que le SSID de notre réseau est fondamentalement
+
+68
+00:05:53,800 --> 00:05:58,060
+ce que vous voyez lorsque vous ouvrez votre téléphone et que vous accédez au Wi-Fi et que vous
+
+69
+00:05:58,060 --> 00:06:03,789
+voir une liste des différents réseaux donc en ce moment je vois cat 5 TV et cat 5 TV -
+
+70
+00:06:03,789 --> 00:06:09,220
+5g et environ un milliard d'autres réseaux Wi-Fi autour de moi mais je veux donner
+
+71
+00:06:09,220 --> 00:06:14,770
+celui-ci un SSID qui désigne ce Wi-Fi invité maintenant dans notre cas aujourd'hui
+
+72
+00:06:14,770 --> 00:06:20,500
+Je vais appeler ce SSID simplement deviné à nouveau je vais me référer
+
+73
+00:06:20,500 --> 00:06:24,820
+mon commentaire que nous rendons cela universellement accessible mais vous pouvez appeler
+
+74
+00:06:24,820 --> 00:06:29,860
+que tout ce que vous voulez, cela pourrait être, je pourrais appeler ce chat 5 TV - invité qui
+
+75
+00:06:29,860 --> 00:06:33,400
+serait très approprié car s'il y a un autre réseau appelé invité
+
+76
+00:06:33,400 --> 00:06:37,680
+car c'est assez générique qui pourrait provoquer un conflit mais aussi
+
+77
+00:06:37,680 --> 00:06:41,280
+ça fait juste que quand les gens entrent en studio, ils peuvent dire oh
+
+78
+00:06:41,280 --> 00:06:46,259
+c'est le Wi-Fi invité pour cat5 TV hey quel est le mot de passe dum-dum un deux
+
+79
+00:06:46,259 --> 00:06:51,030
+trois bons et simples, mais pour la démonstration d'aujourd'hui, nous allons juste
+
+80
+00:06:51,030 --> 00:06:55,889
+aller avec l'invité et maintenant la dernière chose que nous devons faire bien sûr est de définir notre
+
+81
+00:06:55,889 --> 00:06:58,710
+profil de sécurité pour la connexion Wi-Fi et nous allons changer
+
+82
+00:06:58,710 --> 00:07:03,060
+que de la valeur par défaut à l'invité, cela va donc être défini pour que nous utilisions le
+
+83
+00:07:03,060 --> 00:07:07,680
+password dum-dum 1 2 3 comme nous l'avons spécifié avec ce profil de sécurité et c'est
+
+84
+00:07:07,680 --> 00:07:14,160
+littéralement, tout ce qu'il y a à ajouter l'interface est ok maintenant parce que je fais
+
+85
+00:07:14,160 --> 00:07:20,520
+changements dans ma configuration Wi-Fi et parce que mon Pine Book Pro est connecté à mon Wi-Fi
+
+86
+00:07:20,520 --> 00:07:25,860
+rappelez-vous maintenant que le Wi-Fi maintenant le routeur ne redémarre pas mes serveurs et
+
+87
+00:07:25,860 --> 00:07:29,639
+tout mon Internet ne tombe pas mais le Wi-Fi va avoir un hoquet
+
+88
+00:07:29,639 --> 00:07:35,610
+là parce que l'émetteur Wi-Fi redémarre ou recharge ces
+
+89
+00:07:35,610 --> 00:07:40,530
+paramètres de configuration seuls, alors maintenant que le rechargement de ces
+
+90
+00:07:40,530 --> 00:07:45,389
+paramètres, vous verrez maintenant que sous les interfaces Wi-Fi sans fil, j'en ai une
+
+91
+00:07:45,389 --> 00:07:54,060
+appelé Wi-Fi invité et qui est une interface virtuelle se connectant à mon Wi-Fi afin que le
+
+92
+00:07:54,060 --> 00:07:57,810
+la prochaine chose que nous devons faire est de commencer à déterminer comment le trafic va
+
+93
+00:07:57,810 --> 00:08:01,470
+de couler et avez-vous le sentiment ici que si vous suivez ces
+
+94
+00:08:01,470 --> 00:08:05,180
+étapes et si vous comprenez les étapes de configuration d'un routeur mikrotik
+
+95
+00:08:05,180 --> 00:08:10,139
+vous pouvez faire des trucs vraiment sophistiqués en haut de cette démonstration I
+
+96
+00:08:10,139 --> 00:08:14,970
+a averti que cela allait être un peu compliqué, pas que ce soit difficile
+
+97
+00:08:14,970 --> 00:08:19,710
+pas difficile ce n'est pas difficile c'est juste qu'il y a beaucoup d'étapes alors allez à
+
+98
+00:08:19,710 --> 00:08:24,659
+cap v dot TV slash micro tech et je les ai listés dans une documentation
+
+99
+00:08:24,659 --> 00:08:30,120
+format pour vous et la série entière est disponible pour vous absolument gratuitement, donc si
+
+100
+00:08:30,120 --> 00:08:32,550
+vous voulez suivre ces étapes et vous vous inquiétez peut-être un peu
+
+101
+00:08:32,550 --> 00:08:36,510
+tâtonnant sur quelque chose que j'ai dit ou peut-être que je bouge un peu aussi
+
+102
+00:08:36,510 --> 00:08:41,099
+rapidement, allez au cap v dot TV slash mikrotik pour vous installer
+
+103
+00:08:41,099 --> 00:08:44,430
+Avec ces Doc, ça va donc pour créer un pont, je vais aller au
+
+104
+00:08:44,430 --> 00:08:48,329
+menu de gauche et cliquez sur le pont, nous pouvons voir qu'il y a déjà un pont actif
+
+105
+00:08:48,329 --> 00:08:52,360
+en cours d'exécution là-bas, mais nous voulons en ajouter un pour notre Wi-Fi invité parce que nous voulons
+
+106
+00:08:52,360 --> 00:08:56,620
+ceci pour être séparé de notre pont principal donc j'ai cliqué sur ajouter un nouveau et je vais
+
+107
+00:08:56,620 --> 00:09:02,230
+donnez à celui-ci un nom que vous avez deviné pont - invité
+
+108
+00:09:02,230 --> 00:09:06,160
+gardons tout simple, je veux que vous suiviez ce mot à mot et ça va
+
+109
+00:09:06,160 --> 00:09:09,490
+aide à faire en sorte que tout ait du sens à la fin et que vous puissiez toujours y aller
+
+110
+00:09:09,490 --> 00:09:14,470
+revenir et renommer les choses si vous sentez que vous en avez besoin, c'est littéralement tout ce que nous
+
+111
+00:09:14,470 --> 00:09:19,089
+besoin de faire pour créer un pont, bien, maintenant, comme vous pouvez le voir, nous
+
+112
+00:09:19,089 --> 00:09:22,870
+avoir un pont appelé les invités du pont assis là à ne rien faire
+
+113
+00:09:22,870 --> 00:09:28,480
+nous devons donc spécifier la manière dont les ports seront attribués, alors cliquez sur
+
+114
+00:09:28,480 --> 00:09:32,980
+sur les ports et nous devons réellement connecter ce pont à notre nouveau Wi-Fi invité afin
+
+115
+00:09:32,980 --> 00:09:41,949
+ajouter un nouveau puis changer l'interface en Wi-Fi invité et le pont que nous ne voulons pas
+
+116
+00:09:41,949 --> 00:09:50,050
+qu'en utilisant notre pont principal, nous voulons que cela aille au pont - invité et maintenant appuyez sur OK
+
+117
+00:09:50,050 --> 00:09:58,990
+et maintenant vous pouvez voir juste en bas il y a invité - pont Wi-Fi - invité tout
+
+118
+00:09:58,990 --> 00:10:03,970
+prêt à partir et attend que nous finissions la configuration, alors la prochaine chose
+
+119
+00:10:03,970 --> 00:10:08,800
+que nous devons faire évidemment, nous n'avons pas dit à cet invité Wi-Fi le pont quelle adresse IP
+
+120
+00:10:08,800 --> 00:10:15,160
+bloquer à utiliser et encore une fois, je vais revenir au moment où j'ai dit que je veux que ce réseau soit
+
+121
+00:10:15,160 --> 00:10:21,910
+séparé de mon réseau privé, je ne veux pas que le Wi-Fi invité soit sur la même IP
+
+122
+00:10:21,910 --> 00:10:26,620
+block Je ne veux pas que leur bloc IP puisse accéder au mien car j'ai
+
+123
+00:10:26,620 --> 00:10:31,209
+Partages réseau sur mon serveur et je ne veux pas qu'ils aient accès à la suppression de mon
+
+124
+00:10:31,209 --> 00:10:34,990
+fichiers ou pire encore ici, nous vivons dans un monde où quelqu'un pourrait se connecter
+
+125
+00:10:34,990 --> 00:10:39,670
+votre Wi-Fi invité depuis leur ordinateur portable Windows et ils ont un ransomware qui
+
+126
+00:10:39,670 --> 00:10:43,810
+le ransomware sort alors sur le réseau et recherche les partages réseau et
+
+127
+00:10:43,810 --> 00:10:48,699
+crypte tous vos fichiers même si vous disposez d'un antivirus ou que vous
+
+128
+00:10:48,699 --> 00:10:52,829
+n'ont rien d'autre que Linux sur votre réseau parce qu'ils sont connectés à votre Wi-Fi
+
+129
+00:10:52,829 --> 00:10:58,329
+ils ont désormais accès au chiffrement de tous vos fichiers avec leurs logiciels malveillants qu'ils
+
+130
+00:10:58,329 --> 00:11:04,120
+ont sur leur ordinateur portable, nous créons donc un réseau qui vous protège
+
+131
+00:11:04,120 --> 00:11:08,110
+entièrement contre ce genre d'infiltration ainsi que les
+
+132
+00:11:08,110 --> 00:11:11,950
+personne qui se connecterait au Wi-Fi de vos invités et essaierait de rechercher
+
+133
+00:11:11,950 --> 00:11:16,060
+informations sur votre réseau afin que nous vous protégions contre cela, définissons
+
+134
+00:11:16,060 --> 00:11:23,170
+un bloc IP pour ce Wi-Fi invité et une adresse IP go, puis des adresses sur le
+
+135
+00:11:23,170 --> 00:11:32,500
+côté gauche ici et vous pouvez voir ici que mon réseau est 10.0.0.0 point zéro point
+
+136
+00:11:32,500 --> 00:11:39,940
+un deux trois quatre ainsi de suite et en comptant donc je vais créer un nouveau bloc IP en
+
+137
+00:11:39,940 --> 00:11:44,110
+en cliquant simplement sur ajouter nouveau et nous allons rendre celui-ci un peu différent, donc
+
+138
+00:11:44,110 --> 00:11:53,620
+nous allons aller avec 10.10 dot dot one slash 24 et sur l'interface deviner
+
+139
+00:11:53,620 --> 00:12:00,400
+quelle interface nous allons utiliser ici les gens bridge - invité c'est le commentaire
+
+140
+00:12:00,400 --> 00:12:03,339
+domaine dont je parlais la semaine dernière et dont nous n'avons pas vraiment vu que nous n'avons pas besoin
+
+141
+00:12:03,339 --> 00:12:07,750
+que dans ce cas, mais vous pouvez ajouter des commentaires à tout ce que vous ajoutez sur le Web
+
+142
+00:12:07,750 --> 00:12:12,910
+épais hit ok alors maintenant nous avons un nouveau réseau ici appelé dix dix dix point un
+
+143
+00:12:12,910 --> 00:12:17,890
+et ça va m'attribuer bien on va forcément quand on met en place un serveur DHCP
+
+144
+00:12:17,890 --> 00:12:24,100
+voir qu'il y a beaucoup d'étapes pour attribuer des adresses IP à ce bloc IP
+
+145
+00:12:24,100 --> 00:12:28,810
+donc en parlant de serveur DHCP, c'est notre prochaine étape, nous allons donc sauter par-dessus
+
+146
+00:12:28,810 --> 00:12:32,890
+et sous IP qui est déjà ouvert déjà développé et nous allons cliquer
+
+147
+00:12:32,890 --> 00:12:38,350
+sur le serveur DHCP et ici vous pouvez voir mon serveur DHCP en cours d'exécution mais le
+
+148
+00:12:38,350 --> 00:12:41,860
+Le truc avec ça, c'est que ça a un nom bizarre, donc je commence
+
+149
+00:12:41,860 --> 00:12:44,170
+ce que je veux faire, c'est que je veux ouvrir ça et je vais juste renommer celui-ci
+
+150
+00:12:44,170 --> 00:12:49,060
+local et la raison pour laquelle je veux faire cela est que je veux toujours me rappeler que
+
+151
+00:12:49,060 --> 00:12:55,089
+ce pool DHCP est mon réseau local, il a un accès complet à tout sur mon
+
+152
+00:12:55,089 --> 00:12:59,529
+réseau que vous ne souhaitez pas attribuer à un invité, donc en l'appelant local
+
+153
+00:12:59,529 --> 00:13:03,790
+me garde juste un peu plus en sécurité parce que ça se démarque comme ça
+
+154
+00:13:03,790 --> 00:13:08,620
+définitivement mon réseau local ajoutons maintenant un nouveau serveur DHCP et vous pouvez voir
+
+155
+00:13:08,620 --> 00:13:11,980
+qu'il y a toute cette configuration que vous pouvez effectuer mais je veux vous montrer un outil
+
+156
+00:13:11,980 --> 00:13:16,120
+cela va aider à rendre cela encore plus facile, alors je viens juste d'en parler mais
+
+157
+00:13:16,120 --> 00:13:20,560
+annuler et vous pouvez voir qu'il y a en fait une configuration DHCP et cela va faire apparaître
+
+158
+00:13:20,560 --> 00:13:25,120
+un assistant qui va rendre cela beaucoup plus simple pour nous et c'est littéralement
+
+159
+00:13:25,120 --> 00:13:30,490
+easy breezy nous allons changer l'interface du serveur DHCP en pont - invité et
+
+160
+00:13:30,490 --> 00:13:36,430
+alors regardez ceci, nous allons frapper la prochaine prochaine voir que r2 l'a automatiquement assigné
+
+161
+00:13:36,430 --> 00:13:44,079
+vers le bon réseau, le prochain serveur DNS est simplement extrait de mon routeur
+
+162
+00:13:44,079 --> 00:13:47,680
+c'est bien, nous pouvons changer nous allons réellement changer ceux-ci dans le futur
+
+163
+00:13:47,680 --> 00:13:53,970
+épisode où nous mettons en place un trou de tarte qui n'est pas un mauvais mot qui est en fait un appareil
+
+164
+00:13:53,970 --> 00:13:58,329
+qui agira comme notre serveur DNS en interne et bloquera le blocage de la publicité
+
+165
+00:13:58,329 --> 00:14:08,320
+pornographie tout ce genre de trucs cliquez sur Suivant Suivant Suivant Suivant Suivant Suivant
+
+166
+00:14:08,320 --> 00:14:16,510
+tout tel quel et nous avons terminé whoo nous avons l'invité 1 et remarquez bien pourquoi
+
+167
+00:14:16,510 --> 00:14:20,440
+est-ce DHCP 1 bien mon invité de pont je peux voir que c'est
+
+168
+00:14:20,440 --> 00:14:26,079
+invité du pont mais remarquez-le, je ne lui ai pas donné de nom et donc maintenant je peux le faire
+
+169
+00:14:26,079 --> 00:14:28,350
+exactement la même chose que je peux ouvrir et appeler cet invité
+
+170
+00:14:28,350 --> 00:14:34,810
+pas facile ok alors maintenant je suis au point où je devrais être capable de voir le
+
+171
+00:14:34,810 --> 00:14:39,519
+réseau Wi-Fi invité sur mon téléphone, alors faisons une actualisation rapide du Wi-Fi ici et
+
+172
+00:14:39,519 --> 00:14:44,589
+bien sûr, il y a cat 5 TV 5 gigahertz cat 5 TV et un appelé guest alors allons
+
+173
+00:14:44,589 --> 00:14:49,990
+cliquez dessus avant de faire cela, je vais afficher une ressource de réseau local
+
+174
+00:14:49,990 --> 00:14:55,829
+non connecté à la télévision cat 5 Je veux que vous voyiez que je suis en fait capable d'accéder
+
+175
+00:14:55,829 --> 00:15:01,839
+ressources locales, alors nous allons simplement afficher ma connexion VirtualBox là-bas, une fois
+
+176
+00:15:01,839 --> 00:15:06,339
+Je passe au Wi-Fi invité Je vais l'utiliser comme démonstration pour
+
+177
+00:15:06,339 --> 00:15:10,660
+montrer si nous sommes en mesure d'accéder à ces ressources, donc de retour dans mon Wi-Fi
+
+178
+00:15:10,660 --> 00:15:17,790
+connectons-nous à l'invité entrez mon mot de passe à partir du profil de sécurité dum-dum 1 2 3
+
+179
+00:15:17,790 --> 00:15:27,279
+connectez-vous en obtenant une adresse IP et nous sommes dans quelles options avons-nous ici
+
+180
+00:15:27,279 --> 00:15:31,630
+regarder l'adresse IP 10 voir la passerelle 10 10 10
+
+181
+00:15:31,630 --> 00:15:37,390
+un très bien alors regardons à nouveau notre navigateur maintenant que je suis connecté à
+
+182
+00:15:37,390 --> 00:15:42,160
+ce réseau et essayons d'accéder à PHP VirtualBox et vous remarquerez que oui je suis
+
+183
+00:15:42,160 --> 00:15:46,390
+en effet toujours capable d'accéder à PHP VirtualBox j'ai cliqué sur l'adresse
+
+184
+00:15:46,390 --> 00:15:50,830
+bar et j'ai cliqué sur le lien et il se charge et c'est simplement parce que je
+
+185
+00:15:50,830 --> 00:15:57,340
+n'ont pas encore créé de règle de pare-feu pour essentiellement et il piège que le Wi-Fi le
+
+186
+00:15:57,340 --> 00:16:01,950
+accès invité et faites en sorte qu'il ne soit pas autorisé à communiquer avec mon
+
+187
+00:16:01,950 --> 00:16:08,650
+réseau local ou mes appareils Wi-Fi sur mon Wi-Fi réel, de sorte que nous
+
+188
+00:16:08,650 --> 00:16:13,360
+va le faire est de retour sur notre site mikrotik le Figg je vais cliquer j'ai
+
+189
+00:16:13,360 --> 00:16:18,310
+IP ouvert et ensuite nous allons aller au pare-feu, nous l'avons déjà vu sur
+
+190
+00:16:18,310 --> 00:16:22,690
+épisodes précédents de cat5 TV slash mikrotik vous pouvez voir que j'ai ajouté quelques
+
+191
+00:16:22,690 --> 00:16:26,860
+de nouvelles choses depuis la dernière fois que nous étions ici mais ce que je veux faire
+
+192
+00:16:26,860 --> 00:16:32,350
+il est temps que je veux créer une règle pour pouvoir faire en sorte que le Wi-Fi pour
+
+193
+00:16:32,350 --> 00:16:39,870
+le réseau invité ne peut pas accéder à dix points 0 point 0 point
+
+194
+00:16:39,870 --> 00:16:45,610
+sur ajouter nouveau pour créer une nouvelle règle de pare-feu et vous allez rire de la facilité avec laquelle cela
+
+195
+00:16:45,610 --> 00:16:52,150
+est-ce que vous remarquerez que la chaîne est par défaut pour transmettre c'est ce que nous voulons alors laissez
+
+196
+00:16:52,150 --> 00:16:56,770
+tel quel et nous allons définir l'adresse source, donc si l'adresse IP
+
+197
+00:16:56,770 --> 00:17:05,110
+l'adresse vient de ceci alors faites ceci alors regardez ce que je vais faire ici 10.10
+
+198
+00:17:05,110 --> 00:17:15,790
+point point 0 barre oblique 24 pour que quiconque se trouve sur le bloc IP Wi-Fi invité
+
+199
+00:17:15,790 --> 00:17:23,339
+tomber dans ceci l'adresse de destination de l'adresse source c'est mon réseau
+
+200
+00:17:23,339 --> 00:17:34,690
+10.0.0.0 barre oblique 24 si quelqu'un de ce réseau tente d'accéder à ce réseau
+
+201
+00:17:34,690 --> 00:17:42,570
+que voulez-vous faire l'action de défilement vers le bas
+
+202
+00:17:45,150 --> 00:17:54,220
+laissez tomber donc ce que nous disons est une source du bloc IP Wi-Fi invité essayant de
+
+203
+00:17:54,220 --> 00:18:03,280
+accéder à mon réseau local actuel, nous allons supprimer les paquets que je veux signaler
+
+204
+00:18:03,280 --> 00:18:09,400
+que c'est unidirectionnel, il peut donc y avoir des cas où vous souhaitez que les appareils
+
+205
+00:18:09,400 --> 00:18:15,460
+accéder à votre réseau sans fil mais ne pas avoir accès à votre
+
+206
+00:18:15,460 --> 00:18:19,720
+ressources mais vous voulez que vos ressources internes puissent accéder
+
+207
+00:18:19,720 --> 00:18:28,210
+ils pensent peut-être à une caméra IP qui utilise le Wi-Fi pour se connecter bien que vous voulez
+
+208
+00:18:28,210 --> 00:18:33,490
+pour pouvoir se connecter à Internet vous voulez qu'il puisse accéder au
+
+209
+00:18:33,490 --> 00:18:40,480
+réseau et vous, depuis votre ordinateur sur votre terrain, voulez pouvoir y accéder
+
+210
+00:18:40,480 --> 00:18:47,170
+appareil photo, mais vous ne voulez pas que cet appareil photo ait le droit d'accéder à vos éléments sur
+
+211
+00:18:47,170 --> 00:18:51,220
+votre réseau n'est qu'un exemple mais je veux dire que vous pouvez probablement penser à des appareils
+
+212
+00:18:51,220 --> 00:18:56,320
+que vous voudriez avoir en quelque sorte séparé de votre réseau, de sorte que si quelqu'un
+
+213
+00:18:56,320 --> 00:18:59,710
+l'attrape si quelqu'un vole, disons que vous avez un Raspberry Pi assis
+
+214
+00:18:59,710 --> 00:19:03,070
+le toit quelque part connecté à votre Wi-Fi bien si quelqu'un vole que vous
+
+215
+00:19:03,070 --> 00:19:06,910
+ne veulent pas qu'ils aient accès à votre réseau, alors mettez-le sur un autre
+
+216
+00:19:06,910 --> 00:19:10,420
+réseau mais vous permettant de vous y connecter afin que nous comprenions que
+
+217
+00:19:10,420 --> 00:19:15,850
+nous faisons cela unidirectionnel et cela n'affectera que le Wi-Fi invité
+
+218
+00:19:15,850 --> 00:19:20,500
+cela ne réduit pas cela n'élimine pas ma capacité à me connecter au
+
+219
+00:19:20,500 --> 00:19:27,310
+appareils sur le Wi-Fi invité, cliquons sur OK et maintenant nous avons configuré cet itinéraire
+
+220
+00:19:27,310 --> 00:19:31,750
+cependant vous avez remarqué qu'il l'a placé en bas et nous avons déjà parlé
+
+221
+00:19:31,750 --> 00:19:36,370
+à ce sujet, nous voulons nous assurer que nos règles avancées s'appliquent avant que certaines des
+
+222
+00:19:36,370 --> 00:19:41,170
+mikrotik et je veux certainement m'assurer que cela se produit avant le
+
+223
+00:19:41,170 --> 00:19:46,450
+règles que j'ai créées si elles impliquent une infrastructure interne Je veux celle-ci
+
+224
+00:19:46,450 --> 00:19:53,950
+arriver après ça non je ne veux pas que ça arrive avant ça parce que si
+
+225
+00:19:53,950 --> 00:20:00,220
+ils vont accéder à dix points 0 point 0 point via Internet
+
+226
+00:20:00,220 --> 00:20:05,260
+via le port que nous avons autorisé, donc si c'était en dessous, ils seraient en fait
+
+227
+00:20:05,260 --> 00:20:17,110
+avoir accès à la télévision de catégorie 5 10.0.0.0 donc je vais laisser tomber comme première chose alors maintenant
+
+228
+00:20:17,110 --> 00:20:21,100
+sans avoir à redémarrer sans rien faire d'autre je vais ramener
+
+229
+00:20:21,100 --> 00:20:25,870
+mon téléphone ici qui est connecté au Wi-Fi invité et revenons à
+
+230
+00:20:25,870 --> 00:20:30,970
+mon navigateur et cliquons sur PHP VirtualBox que vous voyez cette progression
+
+231
+00:20:30,970 --> 00:20:37,900
+indicateur en haut il est raccroché maintenant je veux dire je sais que je peux toujours voir PHP
+
+232
+00:20:37,900 --> 00:20:41,440
+VirtualBox parce que je l'ai déjà chargé, allons à la maison et allons-y
+
+233
+00:20:41,440 --> 00:20:47,710
+là encore, donc 10.0 PHP VirtualBox regardez ce que j'ai
+
+234
+00:20:47,710 --> 00:20:54,940
+cliqué dessus où est-il ça ne marche pas parce que je suis connecté
+
+235
+00:20:54,940 --> 00:21:02,350
+au Wi-Fi invité ce site ne peut pas être atteint mais Internet fonctionne
+
+236
+00:21:02,350 --> 00:21:09,190
+Allons juste à la télévision de catégorie 5 ouais, Internet fonctionne un régal essayons d'y aller
+
+237
+00:21:09,190 --> 00:21:17,800
+retour à la mauvaise IP 10.00 10 qui est mon serveur VirtualBox
+
+238
+00:21:17,800 --> 00:21:23,770
+et disons parce que nous savons que ça va expirer je vais changer pour mon chat
+
+239
+00:21:23,770 --> 00:21:32,980
+5 TV 5 gigahertz Wi-Fi là-bas, nous allons connectés et apportons-le et boum je suis
+
+240
+00:21:32,980 --> 00:21:38,290
+comme vous pouvez le voir, nous avons créé avec succès un Wi-Fi invité qui
+
+241
+00:21:38,290 --> 00:21:45,790
+est distinct de notre réseau, ils ne peuvent pas accéder aux ressources sur 10.0.0.0 ils ne peuvent pas
+
+242
+00:21:45,790 --> 00:21:50,560
+accéder à cela à partir de notre Wi-Fi invité que nous allons également apprendre en venant
+
+243
+00:21:50,560 --> 00:21:53,920
+semaines comment nous pouvons ralentir que j'ai mentionné que nous allons être
+
+244
+00:21:53,920 --> 00:21:58,480
+regardant la limitation, mais nous n'avons plus de temps pour ce segment de la semaine, donc je vais
+
+245
+00:21:58,480 --> 00:22:02,860
+déplacez-le également dans un futur épisode, alors assurez-vous de surveiller cela, nous
+
+246
+00:22:02,860 --> 00:22:06,580
+va apprendre à ralentir la connexion pour que notre Wi-Fi invité établisse
+
+247
+00:22:06,580 --> 00:22:11,800
+sûr que même vous savez si je donne accès aux enfants sur leurs tablettes
+
+248
+00:22:11,800 --> 00:22:15,160
+leurs amis, puis les amis sont en train de télécharger des vidéos via
+
+249
+00:22:15,160 --> 00:22:19,030
+mon Wi-Fi, je ne veux pas qu'ils traitent toute ma bande passante alors nous allons couvrir ça
+
+250
+00:22:19,030 --> 00:22:23,980
+sur une émission à venir ainsi que cap cinq points TV slash mikrotik est l'endroit où vous voulez aller
+
+251
+00:22:23,980 --> 00:22:28,900
+pour obtenir l'intégralité de la série gratuitement, veuillez poster vos commentaires et assurez-vous
+
+252
+00:22:28,900 --> 00:22:33,220
+vous vous abonnez à nous au salon de la technologie Linux calme où je poste tout
+
+253
+00:22:33,220 --> 00:22:37,600
+ceux-ci également qui redirigent vers notre chaîne youtube appelée la prochaine technologie
+
+254
+00:22:37,600 --> 00:22:39,840
+spectacle
+

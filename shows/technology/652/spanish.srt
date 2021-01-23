@@ -1,0 +1,1976 @@
+1
+00:00:01,199 --> 00:00:08,410
+bienvenido a la tecnología de categoría cinco TV mikrotik hace increíblemente poderoso
+
+2
+00:00:08,410 --> 00:00:12,610
+routers a un precio muy asequible y esta semana vamos a aprender a
+
+3
+00:00:12,610 --> 00:00:18,279
+crear un punto de acceso Wi-Fi para este espacio de estudio, pero la información que voy a
+
+4
+00:00:18,279 --> 00:00:23,080
+enseñarle le permitirá crear su propio punto de acceso Wi-Fi para invitados
+
+5
+00:00:23,080 --> 00:00:28,390
+acceso para su negocio o para su hogar y con esta información está
+
+6
+00:00:28,390 --> 00:00:32,439
+va a poder bloquear ese acceso de tal manera que una de las personas
+
+7
+00:00:32,439 --> 00:00:36,160
+quienes acceden a la red Wi-Fi para invitados no podrán aprovechar todo su ancho de banda
+
+8
+00:00:36,160 --> 00:00:41,739
+porque lo vas a estrangular y a las personas que acceden a tu invitado
+
+9
+00:00:41,739 --> 00:00:48,280
+Wi-Fi no tendrá acceso a sus archivos personales u otros recursos
+
+10
+00:00:48,280 --> 00:00:53,800
+dentro de su red privada, esta es una tierra inalámbrica aislada a la que vamos
+
+11
+00:00:53,800 --> 00:00:57,460
+para estar creando hoy quédate, te voy a mostrar cómo hacerlo bien
+
+12
+00:00:57,460 --> 00:00:59,910
+después de este
+
+13
+00:01:16,880 --> 00:01:23,630
+[Música]
+
+14
+00:01:24,980 --> 00:01:29,940
+nuestras grabaciones en vivo son confiables solo para unidades de estado sólido de Kingston
+
+15
+00:01:29,940 --> 00:01:34,320
+la tecnología revitaliza tu computadora con un rendimiento y confiabilidad mejorados
+
+16
+00:01:34,320 --> 00:01:41,040
+sobre discos duros tradicionales con SSD de Kingston, transmisión de TV de categoría 5 en vivo
+
+17
+00:01:41,040 --> 00:01:46,080
+con Telestream Wirecast y un ágil streamer sintonízate cada semana en roku cody
+
+18
+00:01:46,080 --> 00:01:53,729
+y otros reproductores de video de HLS para los horarios de los programas locales, visite la categoría 5 dot TV ahora
+
+19
+00:01:53,729 --> 00:01:57,300
+esta transmisión no sería posible si no fuera por el apoyo de nuestro
+
+20
+00:01:57,300 --> 00:02:02,400
+comunidad y, en particular, quiero dar las gracias a bp9 Scott Berkeley
+
+21
+00:02:02,400 --> 00:02:08,130
+Ron Morissette Jerry Kowalski Jonathan Garvey jens Nissen bollock ahora
+
+22
+00:02:08,130 --> 00:02:13,650
+Ski y Bill Marshall, además de todos los que han apoyado este espectáculo a través de
+
+23
+00:02:13,650 --> 00:02:21,209
+patreon en patriot patreon.com slash categoría 5 oa través de nuestro kickstarter
+
+24
+00:02:21,209 --> 00:02:26,190
+campaña que terminó recientemente y que ayudó a ponernos en este espacio y es
+
+25
+00:02:26,190 --> 00:02:31,070
+permitiéndome la financiación que necesito para construir básicamente el estudio
+
+26
+00:02:31,070 --> 00:02:36,000
+lento pero seguro, estamos llegando allí y sabes que estamos trabajando en esto y
+
+27
+00:02:36,000 --> 00:02:40,380
+que a medida que avanzamos y algunas cosas están empezando a aparecer en la última pareja
+
+28
+00:02:40,380 --> 00:02:45,510
+de semanas que se ordenaron hace un mes y medio todavía no puedo tener
+
+29
+00:02:45,510 --> 00:02:52,290
+el contratista aquí creo que se está abriendo pero ahora, por supuesto, tiene abierto
+
+30
+00:02:52,290 --> 00:02:58,290
+y bienestar que se está abriendo, nuestro contratista está repleto y tiene un
+
+31
+00:02:58,290 --> 00:03:03,630
+apretada agenda y tuve que ser honesto con ellos y decirles mira, entiendo
+
+32
+00:03:03,630 --> 00:03:08,340
+estás muy ocupado, avísame cuando estés libre cuando podamos reservarte porque
+
+33
+00:03:08,340 --> 00:03:11,990
+lo que estamos haciendo aquí no es una emergencia que voy a hacer
+
+34
+00:03:11,990 --> 00:03:16,640
+Voy a hacer mi mejor esfuerzo con lo que tenemos No quiero entrar y sentirme así
+
+35
+00:03:16,640 --> 00:03:20,900
+es urgente y es una emergencia y tengo un cargo de tasa preferencial para que sepa
+
+36
+00:03:20,900 --> 00:03:25,730
+eso es ser frugal Ravi, así que esperemos y lo estamos esperando
+
+37
+00:03:25,730 --> 00:03:30,380
+juntos y va a ser genial ya es genial de qué estoy hablando
+
+38
+00:03:30,380 --> 00:03:35,840
+es fantástico, simplemente no, va a mejorar, ¿cómo puedo mejorar?
+
+39
+00:03:35,840 --> 00:03:42,710
+que esto será y serás como wow, eso es increíble, hey antes de saltar a
+
+40
+00:03:42,710 --> 00:03:45,860
+el show si aún no lo has hecho quiero animarte por favor
+
+41
+00:03:45,860 --> 00:03:53,810
+suscríbete a nosotros en YouTube si podemos alcanzar los 25.000 suscriptores en
+
+42
+00:03:53,810 --> 00:03:58,520
+Linux tech show com haré un baile para ti como suena
+
+43
+00:03:58,520 --> 00:04:03,290
+estamos muy, muy cerca te gustaría ver a Robbie bailar oh no ahora estoy comprometido
+
+44
+00:04:03,290 --> 00:04:09,140
+Debería estar comprometido. Me comprometeré después de haber hecho mi baile.
+
+45
+00:04:09,140 --> 00:04:14,240
+gente bailarina, así que no se suscriban a nuestro canal de YouTube.
+
+46
+00:04:14,240 --> 00:04:19,370
+tenemos dos canales ok tan bien dos canales principales tenemos tecnología de categoría 5
+
+47
+00:04:19,370 --> 00:04:24,470
+TV, ahí es donde obtendrás el programa completo de una hora seguidos como
+
+48
+00:04:24,470 --> 00:04:29,570
+completamente sin editar y ese es tu programa completo ahora, por otro lado, tenemos
+
+49
+00:04:29,570 --> 00:04:35,290
+La tecnología de Linux muestra la calma que lo redirecciona al programa de tecnología de Linux en YouTube y eso
+
+50
+00:04:35,290 --> 00:04:41,380
+canal, por el contrario, está tomando ese programa de una hora y dividiéndolo en su
+
+51
+00:04:41,380 --> 00:04:46,640
+segmentos individuales para que todas las cosas que se cubren a lo largo del curso
+
+52
+00:04:46,640 --> 00:04:51,560
+del episodio de una hora se convierte en pequeños clips de 20 minutos clips de 10 minutos
+
+53
+00:04:51,560 --> 00:04:56,780
+incluso clips de dos minutos, dependiendo de lo que sean, también dividimos la sala de redacción
+
+54
+00:04:56,780 --> 00:05:02,090
+por lo que todas las noticias están disponibles para usted en Linux tech show com, así que si
+
+55
+00:05:02,090 --> 00:05:07,210
+ver algo en la sala de noticias que desea compartir en las redes sociales ir a nuevo
+
+56
+00:05:07,210 --> 00:05:11,930
+La tecnología de Linux muestra calma en la lista de reproducción de la sala de redacción y verá todas esas
+
+57
+00:05:11,930 --> 00:05:16,070
+clips individuales que puede compartir y específicamente va a compartir eso
+
+58
+00:05:16,070 --> 00:05:20,090
+una historia en la que tiene interés o que cree que sus seguidores
+
+59
+00:05:20,090 --> 00:05:25,350
+tambien tengo mucho interes en asi que si quieres verme bailar
+
+60
+00:05:25,350 --> 00:05:28,920
+Oye, suscríbete a nosotros en YouTube y haz clic en el timbre y obtendrás el
+
+61
+00:05:28,920 --> 00:05:34,560
+notificaciones ahora hemos estado mirando los enrutadores de la marca mikrotik y el
+
+62
+00:05:34,560 --> 00:05:40,020
+La serie está disponible absolutamente gratis en cat5 dot TV slash micro tech ahora que
+
+63
+00:05:40,020 --> 00:05:45,600
+nuestra red está en funcionamiento, creemos un SSID de Wi-Fi para invitados nuestro invitado
+
+64
+00:05:45,600 --> 00:05:51,330
+Wi-Fi tendrá una conexión acelerada a Internet y no tendrá
+
+65
+00:05:51,330 --> 00:05:57,600
+acceso a nuestros recursos locales para que la red comparta impresoras cosas así
+
+66
+00:05:57,600 --> 00:06:02,940
+Quiero bloquear eso, vamos a crear una conexión Wi-Fi verdaderamente aislada.
+
+67
+00:06:02,940 --> 00:06:07,700
+para permitir que los invitados, amigos, clientes o visitantes utilicen nuestra conexión a Internet
+
+68
+00:06:07,700 --> 00:06:13,410
+sin arriesgarnos a ralentizar nuestra conexión o sin arriesgar la
+
+69
+00:06:13,410 --> 00:06:19,350
+integridad o privacidad de nuestros datos, por lo que este será un tutorial complejo hoy
+
+70
+00:06:19,350 --> 00:06:23,130
+así que lo que hice fue documentar todos los pasos que estoy
+
+71
+00:06:23,130 --> 00:06:29,220
+voy a pasar por cat5 dot TV slash mikrotik para que puedas seguirlo
+
+72
+00:06:29,220 --> 00:06:32,820
+lo hace mucho más fácil para ti, así que vayamos directo a ello.
+
+73
+00:06:32,820 --> 00:06:37,680
+va a partir de esas notas porque este es realmente un sofisticado
+
+74
+00:06:37,680 --> 00:06:44,220
+serie en la que nos estamos metiendo aquí mismo hoy o al menos un aspecto de la
+
+75
+00:06:44,220 --> 00:06:49,260
+serie, así que voy a estar trabajando en mi libro de pino aquí y solo quiero traer
+
+76
+00:06:49,260 --> 00:06:55,650
+en mi computadora portátil y la pantalla se ve fantástica esta semana, mira que he
+
+77
+00:06:55,650 --> 00:06:58,440
+hizo algunas mejoras aquí en el estudio, así que creo que encontrarás que
+
+78
+00:06:58,440 --> 00:07:01,860
+las cosas son mucho más fáciles de leer ahora gracias a todos por su paciencia
+
+79
+00:07:01,860 --> 00:07:05,960
+durante este tiempo porque ha sido difícil para muchas emisoras, pero
+
+80
+00:07:05,960 --> 00:07:10,170
+hemos realizado algunas mejoras esta semana, así que gracias por su paciencia para que el
+
+81
+00:07:10,170 --> 00:07:15,180
+Lo primero que quiero hacer en web fig aquí es ir a mi red inalámbrica
+
+82
+00:07:15,180 --> 00:07:18,990
+perfiles de seguridad, así que entienda que no quiero a los que van a ser
+
+83
+00:07:18,990 --> 00:07:24,390
+acceder a mi Wi-Fi de invitado para usar la misma contraseña que uso en mi Wi-Fi principal
+
+84
+00:07:24,390 --> 00:07:29,430
+eso es particularmente lo que no quiero dar, así que hagámoslo ahora mismo.
+
+85
+00:07:29,430 --> 00:07:32,970
+configuremos una contraseña separada haciendo clic en inalámbrico a la izquierda aquí
+
+86
+00:07:32,970 --> 00:07:36,809
+y luego voy a hacer clic en los perfiles de seguridad en el
+
+87
+00:07:36,809 --> 00:07:42,849
+ahora haga clic en agregar nuevo y verá que el valor predeterminado es en realidad mi red, así que
+
+88
+00:07:42,849 --> 00:07:47,259
+esa es la contraseña de mi red, el Wi-Fi que ya configuré y estoy
+
+89
+00:07:47,259 --> 00:07:52,449
+vamos a hacer clic en agregar nuevo y vamos a llamar a este invitado así como así
+
+90
+00:07:52,449 --> 00:07:59,110
+una nota es que quiero desactivar WPA PSK porque WPA, como saben, es parte de
+
+91
+00:07:59,110 --> 00:08:04,270
+Para mí, es muy fácil comprometerse, por lo que no queremos usar WPA, solo queremos
+
+92
+00:08:04,270 --> 00:08:13,210
+use wpa2 porque wpa2 es mucho más seguro en la medida en que alguien pueda piratear
+
+93
+00:08:13,210 --> 00:08:21,249
+su red Wi-Fi, así que apague WPA PSK, deje wpa2 PSK habilitado y luego apáguelo
+
+94
+00:08:21,249 --> 00:08:25,930
+aquí porque eso está habilitado, necesitamos ingresar una clave previamente compartida, también conocida como la contraseña
+
+95
+00:08:25,930 --> 00:08:31,689
+para nuestra red, así que voy a usar dum-dum uno dos tres cuatro este Wi-Fi para invitados
+
+96
+00:08:31,689 --> 00:08:37,029
+esto es solo para el Wi-Fi de invitados, recuerde que está bien una vez que haya ingresado a mi
+
+97
+00:08:37,029 --> 00:08:42,219
+contraseña Voy a presionar OK, así que aún no he creado una red
+
+98
+00:08:42,219 --> 00:08:47,350
+todo lo que he hecho es crear un perfil de seguridad llamado invitado y esa seguridad
+
+99
+00:08:47,350 --> 00:08:54,519
+El perfil contiene la clave compartida wpa2 para esa red de invitados y noto que mi
+
+100
+00:08:54,519 --> 00:08:59,230
+De hecho, la red predeterminada está utilizando la clave precompartida WPA, así que mientras estamos aquí
+
+101
+00:08:59,230 --> 00:09:06,699
+abre ese y apaguemos WPA PSK porque no quiero que alguien piratee
+
+102
+00:09:06,699 --> 00:09:12,430
+en mi red principal y presionar OK, solo tomó un momento para mi pino
+
+103
+00:09:12,430 --> 00:09:17,110
+Book Pro para desconectarse del Wi-Fi y volver a conectar la contraseña no lo ha hecho
+
+104
+00:09:17,110 --> 00:09:22,959
+cambiado simplemente el algoritmo de cifrado ha cambiado, así que ahora, como puede ver en la
+
+105
+00:09:22,959 --> 00:09:29,709
+pantalla ninguna de mis llaves de seguridad Wi-Fi permitirá WPA solo permiten wpa2 es
+
+106
+00:09:29,709 --> 00:09:33,760
+tan simple como eso, ahora salte a nuestras interfaces Wi-Fi aquí es donde verá
+
+107
+00:09:33,760 --> 00:09:38,350
+mis redes de dos gigahercios y cinco gigahercios y quiero agregar una nueva para
+
+108
+00:09:38,350 --> 00:09:42,970
+mi Wi-Fi para invitados, pero no tengo otra radio, así que, ¿qué vamos a hacer?
+
+109
+00:09:42,970 --> 00:09:48,790
+voy a compartir la radio con una de mis tierras W así que no vamos a agregar
+
+110
+00:09:48,790 --> 00:09:52,750
+otra radio que no tenemos por un punto de acceso o cualquier tipo de dispositivo
+
+111
+00:09:52,750 --> 00:09:57,760
+solo usaremos el mismo enrutador mikrotik, así que la única advertencia de
+
+112
+00:09:57,760 --> 00:10:03,870
+es decir, significa que el Wi-Fi invitado va a compartir el mismo
+
+113
+00:10:03,870 --> 00:10:10,450
+canal como nuestro Wi-Fi como nuestro Wi-Fi real para nuestra red, sin embargo porque
+
+114
+00:10:10,450 --> 00:10:15,040
+es una red diferente y es una contraseña diferente que no van a utilizar
+
+115
+00:10:15,040 --> 00:10:20,020
+poder acceder a nuestras cosas, simplemente va a compartir lo mismo, lo mismo
+
+116
+00:10:20,020 --> 00:10:22,890
+Canalice si eso importa o no, no creo que lo haga
+
+117
+00:10:22,890 --> 00:10:28,450
+bien, agreguemos nuevos y elegiremos virtual porque no
+
+118
+00:10:28,450 --> 00:10:34,630
+creando una real ahora estamos creando una red virtual aquí en nuestra pestaña inalámbrica
+
+119
+00:10:34,630 --> 00:10:41,110
+en interfaces Wi-Fi, así que creemos una interfaz virtual lo primero que necesito
+
+120
+00:10:41,110 --> 00:10:45,220
+hacer es siempre quiero decir darle un nombre a las cosas que voy a llamar a este invitado
+
+121
+00:10:45,220 --> 00:10:51,040
+- Wi-Fi y notarás que estoy usando invitados en todo momento.
+
+122
+00:10:51,040 --> 00:10:56,020
+apellido o su apellido o algo divertido para su invitado Wi-Fi usted
+
+123
+00:10:56,020 --> 00:11:00,790
+puede hacer eso, pero para que este tutorial sea universalmente accesible y
+
+124
+00:11:00,790 --> 00:11:05,440
+fácil de seguir Estoy usando invitados porque cualquiera puede seguir estos pasos y
+
+125
+00:11:05,440 --> 00:11:11,020
+luego vuelva sobre las cosas y cambie el nombre de las cosas si lo desea, pero no tiene que hacerlo así
+
+126
+00:11:11,020 --> 00:11:15,310
+en esta red, desplácese un poco hacia abajo y veremos
+
+127
+00:11:15,310 --> 00:11:21,640
+algo aquí llamado SSID sabemos que el SSID de nuestra red es básicamente
+
+128
+00:11:21,640 --> 00:11:26,050
+lo que ves cuando abres tu teléfono y accedes al Wi-Fi y
+
+129
+00:11:26,050 --> 00:11:31,780
+ver una lista de las diferentes redes, así que ahora mismo veo cat 5 TV y cat 5 TV -
+
+130
+00:11:31,780 --> 00:11:37,240
+5g y alrededor de mil millones de otras redes Wi-Fi a mi alrededor, pero quiero dar
+
+131
+00:11:37,240 --> 00:11:42,610
+este es un SSID que designa este como el Wi-Fi para invitados ahora en nuestro caso hoy
+
+132
+00:11:42,610 --> 00:11:48,520
+Voy a llamar a este SSID simplemente adiviné de nuevo. Voy a volver a referirme a
+
+133
+00:11:48,520 --> 00:11:52,810
+mi comentario de que estamos haciendo esto universalmente accesible, pero puede llamar
+
+134
+00:11:52,810 --> 00:11:57,850
+que lo que quieras, esto podría ser, podría llamar a este televisor gato 5, invitado que
+
+135
+00:11:57,850 --> 00:12:01,390
+sería muy apropiado porque si hay alguna otra red llamada invitado
+
+136
+00:12:01,390 --> 00:12:03,860
+porque eso es bastante genérico y podría causar una
+
+137
+00:12:03,860 --> 00:12:08,149
+conflicto, pero también hace que cuando la gente entra al estudio
+
+138
+00:12:08,149 --> 00:12:13,040
+pueden decir oh, ese es el Wi-Fi para invitados para cat5 TV oye, ¿cuál es la contraseña?
+
+139
+00:12:13,040 --> 00:12:18,890
+dum-dum 1 2 3 bonito y sencillo, pero para la demostración de hoy estamos
+
+140
+00:12:18,890 --> 00:12:23,570
+iré con el invitado y ahora lo último que tenemos que hacer, por supuesto, es
+
+141
+00:12:23,570 --> 00:12:26,930
+configurar nuestro perfil de seguridad para la conexión Wi-Fi y lo cambiaremos
+
+142
+00:12:26,930 --> 00:12:31,310
+de forma predeterminada a invitado, por lo que se configurará para que usemos la contraseña
+
+143
+00:12:31,310 --> 00:12:36,320
+dum-dum 1 2 3 como especificamos con ese perfil de seguridad y eso es literalmente
+
+144
+00:12:36,320 --> 00:12:42,980
+todo lo que hay que hacer es agregar la interfaz, presione ok ahora porque estoy haciendo cambios en mi
+
+145
+00:12:42,980 --> 00:12:49,279
+Configuración de Wi-Fi y porque mi pine Book Pro está conectado a mi Wi-Fi en este momento
+
+146
+00:12:49,279 --> 00:12:54,170
+Recuerde que Wi-Fi ahora el enrutador no está reiniciando mis servidores y todo
+
+147
+00:12:54,170 --> 00:12:57,649
+Mi Internet no se cae, pero el Wi-Fi va a fallar.
+
+148
+00:12:57,649 --> 00:13:03,620
+allí porque el transmisor Wi-Fi está reiniciando o recargando esos
+
+149
+00:13:03,620 --> 00:13:08,540
+los ajustes de configuración por sí solo, así que ahora que ha terminado de recargar esos
+
+150
+00:13:08,540 --> 00:13:13,399
+configuración, verá ahora que en las interfaces inalámbricas Wi-Fi tengo una
+
+151
+00:13:13,399 --> 00:13:22,040
+llamado Wi-Fi para invitados y esa es una interfaz virtual que se conecta a mi Wi-Fi para que el
+
+152
+00:13:22,040 --> 00:13:25,850
+Lo siguiente que debemos hacer es comenzar a enrutar cómo va el tráfico
+
+153
+00:13:25,850 --> 00:13:29,420
+para fluir y tienes la sensación aquí de que si sigues estos
+
+154
+00:13:29,420 --> 00:13:33,190
+pasos y si comprende los pasos necesarios para configurar un enrutador mikrotik
+
+155
+00:13:33,190 --> 00:13:38,120
+puedes hacer algunas cosas realmente sofisticadas en la parte superior de esta demostración.
+
+156
+00:13:38,120 --> 00:13:42,980
+advirtió que esto va a ser algo complicado, no que sea difícil, es
+
+157
+00:13:42,980 --> 00:13:47,720
+no es difícil, no es un desafío, es solo que hay muchos pasos, así que ve a
+
+158
+00:13:47,720 --> 00:13:52,640
+cap 5 dot TV slash micro tech y los he enumerado en una documentación
+
+159
+00:13:52,640 --> 00:13:58,100
+formato para usted y toda la serie está disponible para usted absolutamente gratis, así que si
+
+160
+00:13:58,100 --> 00:14:00,560
+desea seguir estos pasos y le preocupa un poco tal vez
+
+161
+00:14:00,560 --> 00:14:04,399
+buscando a tientas algo que he dicho o tal vez me estoy moviendo un poco también
+
+162
+00:14:04,399 --> 00:14:09,350
+rápidamente, oye, dirígete a cap 5 TV slash mikrotik para prepararte con
+
+163
+00:14:09,350 --> 00:14:12,410
+esos Doc están bien, así que para crear un puente voy a ir al
+
+164
+00:14:12,410 --> 00:14:16,339
+menú de la izquierda y haga clic en el puente, podemos ver que ya hay un puente activo
+
+165
+00:14:16,339 --> 00:14:19,220
+corriendo allí queremos agregar uno nuevo para nuestro invitado
+
+166
+00:14:19,220 --> 00:14:22,940
+Wi-Fi porque queremos que esté separado de nuestro puente principal, así que
+
+167
+00:14:22,940 --> 00:14:30,230
+hice clic en agregar nuevo y le daré a este un nombre, lo adivinaste puente - invitado
+
+168
+00:14:30,230 --> 00:14:34,160
+mantengamos todo simple, quiero que sigas esto literalmente y eso va a
+
+169
+00:14:34,160 --> 00:14:37,490
+ayude a asegurarse de que todo tenga sentido al final y siempre pueda ir
+
+170
+00:14:37,490 --> 00:14:42,470
+volver y cambiar el nombre de las cosas si cree que lo necesita, eso es literalmente todo lo que
+
+171
+00:14:42,470 --> 00:14:47,090
+Necesito hacer para crear un puente, está bien, así que ahora, como pueden ver, ahora
+
+172
+00:14:47,090 --> 00:14:50,870
+tener un puente llamado puente invitados sentados allí sin hacer absolutamente nada
+
+173
+00:14:50,870 --> 00:14:56,480
+por lo que necesitamos especificar cómo se asignarán los puertos, así que haga clic en
+
+174
+00:14:56,480 --> 00:15:00,980
+en los puertos y necesitamos conectar ese puente a nuestro nuevo Wi-Fi para invitados
+
+175
+00:15:00,980 --> 00:15:09,950
+agregue nuevo y luego cambie la interfaz a Wi-Fi para invitados y el puente que no queremos
+
+176
+00:15:09,950 --> 00:15:18,050
+que usando nuestro puente principal queremos que vaya al puente - invitado y ahora presione OK
+
+177
+00:15:18,050 --> 00:15:26,990
+y ahora puede ver justo en la parte inferior que hay invitado - Puente Wi-Fi - Invitado todo
+
+178
+00:15:26,990 --> 00:15:31,970
+listo para funcionar y esperando que terminemos de configurar para que lo siguiente
+
+179
+00:15:31,970 --> 00:15:36,800
+que tenemos que hacer, obviamente no le hemos dicho a este invitado Wi-Fi el puente qué IP
+
+180
+00:15:36,800 --> 00:15:43,160
+bloquear para usar y de nuevo voy a retroceder hasta cuando dije que quiero que esta red sea
+
+181
+00:15:43,160 --> 00:15:49,910
+separado de mi red privada No quiero que el Wi-Fi para invitados tenga la misma IP
+
+182
+00:15:49,910 --> 00:15:54,620
+bloquear No quiero que su bloque de IP pueda acceder al mío porque tengo
+
+183
+00:15:54,620 --> 00:15:59,210
+Recursos compartidos de red en mi servidor y no quiero que tengan acceso a eliminar mi
+
+184
+00:15:59,210 --> 00:16:03,050
+archivos o peor aún, aquí vivimos en un mundo donde alguien podría conectarse a
+
+185
+00:16:03,050 --> 00:16:07,670
+su Wi-Fi de invitado desde su computadora portátil con Windows y tienen ransomware que
+
+186
+00:16:07,670 --> 00:16:11,810
+ransomware luego sale a la red y busca recursos compartidos de red y
+
+187
+00:16:11,810 --> 00:16:16,700
+cifra todos sus archivos, por lo que aunque tenga un antivirus o incluso
+
+188
+00:16:16,700 --> 00:16:20,830
+no tienen nada más que Linux en su red porque se han conectado a su Wi-Fi
+
+189
+00:16:20,830 --> 00:16:26,330
+ahora tienen acceso a cifrar todos sus archivos con su malware que ellos
+
+190
+00:16:26,330 --> 00:16:32,449
+tienen en su computadora portátil, por lo que estamos creando una red que lo protege completamente
+
+191
+00:16:32,449 --> 00:16:36,769
+contra ese tipo de infiltración, así como contra la persona maliciosa que
+
+192
+00:16:36,769 --> 00:16:40,820
+conéctese a su Wi-Fi de invitado e intente buscar información privada en su
+
+193
+00:16:40,820 --> 00:16:45,019
+red, así que lo protegeremos contra eso, configuremos un bloqueo de IP
+
+194
+00:16:45,019 --> 00:16:51,680
+para este invitado Wi-Fi y voy IP y luego direcciones en el lado izquierdo
+
+195
+00:16:51,680 --> 00:17:01,699
+aquí y puede ver aquí que mi red es 10.0.0.0 punto cero punto uno dos
+
+196
+00:17:01,699 --> 00:17:08,270
+tres cuatro y así sucesivamente y contando, así que voy a crear un nuevo bloque de IP simplemente
+
+197
+00:17:08,270 --> 00:17:12,260
+haga clic en agregar nuevo y haremos que este sea un poco diferente, así que
+
+198
+00:17:12,260 --> 00:17:22,250
+irá con 10.10 dot dot 1/24 y en la interfaz adivine qué interfaz
+
+199
+00:17:22,250 --> 00:17:28,970
+vamos a usar aquí el puente de la gente - invitado ese es el campo de comentarios que yo
+
+200
+00:17:28,970 --> 00:17:31,850
+estaba hablando la semana pasada que realmente no vimos que no necesitamos eso en
+
+201
+00:17:31,850 --> 00:17:36,530
+en este caso, pero puede agregar comentarios a cualquier cosa que agregue en web Thick Hit
+
+202
+00:17:36,530 --> 00:17:42,980
+ok, ahora tenemos una nueva red aquí llamada 10.10 10.1 y me asignará
+
+203
+00:17:42,980 --> 00:17:48,080
+Bueno, inevitablemente, cuando configuremos un servidor DHCP, veremos que hay muchos pasos que
+
+204
+00:17:48,080 --> 00:17:54,770
+asignará direcciones IP en ese bloque de IP, así que hablando del servidor DHCP que
+
+205
+00:17:54,770 --> 00:17:58,970
+nuestro próximo paso, así que vamos a saltar aquí y bajo la IP que ya está abierta
+
+206
+00:17:58,970 --> 00:18:03,770
+ya expandido y vamos a hacer clic en el servidor DHCP y aquí puede ver mi
+
+207
+00:18:03,770 --> 00:18:07,880
+servidor DHCP en ejecución actual, pero el problema con esto es que tiene una especie de
+
+208
+00:18:07,880 --> 00:18:10,850
+un nombre extraño fuera de la caja, así que lo primero que quiero hacer es abrir
+
+209
+00:18:10,850 --> 00:18:14,450
+eso y solo voy a cambiar el nombre de este local y la razón por la que quiero hacer eso
+
+210
+00:18:14,450 --> 00:18:20,720
+¿Quiero recordarme siempre a mí mismo que ese grupo de DHCP es mi red local?
+
+211
+00:18:20,720 --> 00:18:25,070
+tiene acceso completo a todo en mi red que no desea asignar un
+
+212
+00:18:25,070 --> 00:18:28,820
+invitado a eso, así que al llamarlo local, me mantiene un poco más seguro
+
+213
+00:18:28,820 --> 00:18:33,830
+porque se destaca porque definitivamente es mi red local.
+
+214
+00:18:33,830 --> 00:18:38,240
+agregue un nuevo servidor DHCP y podrá ver que hay toda esta configuración que puede
+
+215
+00:18:38,240 --> 00:18:41,900
+pasar, pero quiero mostrarte una herramienta que te ayudará a hacer esto uniforme
+
+216
+00:18:41,900 --> 00:18:45,650
+más fácil, así que mencioné eso, pero cancelo y puede ver que en realidad
+
+217
+00:18:45,650 --> 00:18:50,570
+una configuración de DHCP y aparecerá un asistente que hará que esto sea un
+
+218
+00:18:50,570 --> 00:18:55,700
+mucho más simple para nosotros y esto es literalmente fácil, vamos a cambiar el DHCP
+
+219
+00:18:55,700 --> 00:19:00,880
+interfaz del servidor al puente - invitado y luego mira esto, vamos a llegar a continuación
+
+220
+00:19:00,880 --> 00:19:10,220
+a continuación, véalo automáticamente asignado a la red correcta siguiente siguiente DNS
+
+221
+00:19:10,220 --> 00:19:13,850
+los servidores solo están sacando de mi enrutador, está bien, podemos cambiar, vamos a
+
+222
+00:19:13,850 --> 00:19:18,830
+cambiarlos en un episodio futuro cuando establezcamos un agujero circular que
+
+223
+00:19:18,830 --> 00:19:24,770
+no es una mala palabra, en realidad es un dispositivo que actuará como nuestro servidor DNS en
+
+224
+00:19:24,770 --> 00:19:28,400
+publicidad en casa y en bloque bloquear la pornografía todo ese tipo de cosas hacer clic
+
+225
+00:19:28,400 --> 00:19:33,460
+siguiente siguiente siguiente siguiente siguiente siguiente
+
+226
+00:19:35,630 --> 00:19:43,370
+solo deja todo como está y terminamos, tenemos al invitado 1 y nota
+
+227
+00:19:43,370 --> 00:19:48,440
+bien bien, ¿por qué es DHCP 1? Bueno, mi invitado de puente, puedo ver que es
+
+228
+00:19:48,440 --> 00:19:54,080
+huésped del puente, pero fíjense que no le di un nombre y ahora puedo hacerlo.
+
+229
+00:19:54,080 --> 00:19:56,590
+exactamente lo mismo que puedo abrir y llamar a este invitado
+
+230
+00:19:56,590 --> 00:20:02,809
+fácil, claro está bien, así que ahora estoy en el punto en el que debería poder ver el
+
+231
+00:20:02,809 --> 00:20:07,520
+red Wi-Fi para invitados en mi teléfono, así que hagamos una actualización rápida de Wi-Fi aquí y
+
+232
+00:20:07,520 --> 00:20:12,590
+seguro que hay un televisor cat 5 de 5 gigahercios, un televisor cat 5 y uno llamado invitado, así que
+
+233
+00:20:12,590 --> 00:20:17,990
+haga clic en él antes de hacerlo. Voy a abrir un recurso de red local.
+
+234
+00:20:17,990 --> 00:20:23,830
+desconectado a cat 5 TV Quiero que vea que, de hecho, puedo acceder
+
+235
+00:20:23,830 --> 00:20:29,840
+recursos locales, así que abramos mi inicio de sesión de VirtualBox, así que una vez
+
+236
+00:20:29,840 --> 00:20:34,340
+Cambié a la red Wi-Fi para invitados. La usaré como demostración para
+
+237
+00:20:34,340 --> 00:20:38,659
+mostrar si podemos o no acceder a esos recursos, así que de vuelta en mi Wi-Fi
+
+238
+00:20:38,659 --> 00:20:45,790
+conectemos al invitado ingrese mi contraseña del perfil de seguridad dum-dum 1 2 3
+
+239
+00:20:45,790 --> 00:20:53,920
+conectar obteniendo dirección IP y estamos en
+
+240
+00:20:53,920 --> 00:20:58,030
+qué opciones tenemos aquí veamos la dirección IP 10 ver el Gateway 10
+
+241
+00:20:58,030 --> 00:21:04,990
+10 10. 1 está bien, así que veamos nuestro navegador nuevamente ahora que estoy
+
+242
+00:21:04,990 --> 00:21:08,530
+conectado a esa red e intentemos acceder a PHP VirtualBox y
+
+243
+00:21:08,530 --> 00:21:13,960
+observe que sí, de hecho, todavía puedo acceder a PHP VirtualBox en el que hice clic
+
+244
+00:21:13,960 --> 00:21:18,040
+la barra de direcciones y he hecho clic en el enlace y se está cargando y eso es
+
+245
+00:21:18,040 --> 00:21:23,500
+simplemente porque todavía tengo que crear una regla de firewall 2 básicamente y atrapa
+
+246
+00:21:23,500 --> 00:21:29,020
+que Wi-Fi el invitado acceda y hacerlo de modo que no se le permita comunicarse
+
+247
+00:21:29,020 --> 00:21:36,280
+de vuelta con mi red de área local o mis dispositivos Wi-Fi en mi Wi-Fi real para que el
+
+248
+00:21:36,280 --> 00:21:40,510
+la forma en que vamos a hacer eso es de vuelta en nuestra red de mikrotik la Figg que voy a
+
+249
+00:21:40,510 --> 00:21:45,910
+haga clic en He abierto IP y luego iremos al firewall que ya hemos visto
+
+250
+00:21:45,910 --> 00:21:50,680
+esto en episodios anteriores de cat5 TV slash mikrotik, puedes ver que agregué un
+
+251
+00:21:50,680 --> 00:21:54,850
+un par de cosas nuevas desde la última vez que estuvimos aquí, pero lo que quiero hacer
+
+252
+00:21:54,850 --> 00:22:00,340
+Es hora de que quiero crear una regla para poder hacer que el Wi-Fi para
+
+253
+00:22:00,340 --> 00:22:12,280
+la red de invitados no puede acceder a 10.0.0.0 todas las reglas y está
+
+254
+00:22:12,280 --> 00:22:16,750
+te vas a reír de lo fácil que es esto, notarás que la cadena está incumpliendo
+
+255
+00:22:16,750 --> 00:22:22,120
+adelante eso es lo que queremos así que déjelo como está y vamos a establecer el
+
+256
+00:22:22,120 --> 00:22:28,860
+dirección de origen, por lo que si la dirección IP proviene de esto, haga esto
+
+257
+00:22:28,860 --> 00:22:40,000
+así que mira lo que voy a hacer aquí 10.10 punto punto 0 barra 24 para que cualquiera que esté en
+
+258
+00:22:40,000 --> 00:22:45,640
+el bloque de IP de Wi-Fi para invitados caerá en esta dirección de origen
+
+259
+00:22:45,640 --> 00:22:58,990
+dirección de destino esta es mi red 10.0.0.0 barra 24 si alguien de esta
+
+260
+00:22:58,990 --> 00:23:07,560
+red intenta acceder a esta red ¿qué desea hacer? desplácese hacia abajo
+
+261
+00:23:07,950 --> 00:23:21,279
+caída de acción, por lo que lo que estamos diciendo es cualquier fuente del bloque de IP de Wi-Fi de invitados
+
+262
+00:23:21,279 --> 00:23:30,279
+tratando de acceder a mi tierra real, vamos a soltar esos paquetes que quiero
+
+263
+00:23:30,279 --> 00:23:36,640
+señalar que esto es unidireccional, por lo que puede haber casos en los que desee
+
+264
+00:23:36,640 --> 00:23:42,970
+dispositivos para acceder a su red inalámbrica pero no tener acceso a su
+
+265
+00:23:42,970 --> 00:23:47,500
+recursos internos, sin embargo, desea que sus recursos internos puedan
+
+266
+00:23:47,500 --> 00:23:55,419
+acceder a ellos piense en quizás una cámara IP que use Wi-Fi para conectarse bien
+
+267
+00:23:55,419 --> 00:23:59,130
+quieres que se pueda conectar a internet quieres que pueda
+
+268
+00:23:59,130 --> 00:24:07,809
+acceder a la red y usted desde su computadora en su tierra quiere poder
+
+269
+00:24:07,809 --> 00:24:12,640
+acceder a esa cámara, pero no desea que esa cámara tenga los derechos de acceso
+
+270
+00:24:12,640 --> 00:24:18,070
+tus cosas en tu red es solo un ejemplo, pero quiero decir que probablemente puedas
+
+271
+00:24:18,070 --> 00:24:23,710
+Piense en dispositivos que le gustaría tener separados de su red, así que
+
+272
+00:24:23,710 --> 00:24:26,470
+que si alguien lo agarra, si alguien roba, digamos que tienes un
+
+273
+00:24:26,470 --> 00:24:30,250
+Raspberry Pi sentado en el techo en algún lugar conectado a su Wi-Fi bien
+
+274
+00:24:30,250 --> 00:24:33,309
+si alguien roba que no quieres que tenga acceso a tu red,
+
+275
+00:24:33,309 --> 00:24:37,419
+ponerlo en una red separada pero permitiéndole poder conectarse a él
+
+276
+00:24:37,419 --> 00:24:42,580
+entonces entendemos que estamos haciendo esto unidireccionalmente, esto solo va a
+
+277
+00:24:42,580 --> 00:24:47,830
+afectar el Wi-Fi de invitados esto no está reduciendo no está eliminando mi capacidad
+
+278
+00:24:47,830 --> 00:24:54,640
+para conectarnos a los dispositivos en el Wi-Fi para invitados, presionemos OK y ahora tenemos eso
+
+279
+00:24:54,640 --> 00:24:59,200
+ruta configurada sin embargo, has notado que la ha colocado en la parte inferior y hemos
+
+280
+00:24:59,200 --> 00:25:03,340
+Ya hemos hablado de esto, queremos asegurarnos de que se cumplan nuestras reglas de avance.
+
+281
+00:25:03,340 --> 00:25:07,330
+antes de algunas de las cosas de mikrotik y ciertamente quiero asegurarme de que esto
+
+282
+00:25:07,330 --> 00:25:12,789
+sucede antes que las reglas que he creado si involucran internos
+
+283
+00:25:12,789 --> 00:25:17,300
+infraestructura quiero que esto suceda después
+
+284
+00:25:17,300 --> 00:25:22,440
+esto no, no quiero que suceda antes de esto porque si van a
+
+285
+00:25:22,440 --> 00:25:41,790
+acceder a 10.0.0.0 si en realidad tendrían acceso a 10.0.0.0 TV de categoría cinco
+
+286
+00:25:41,790 --> 00:25:46,890
+así que voy a caer como lo primero, así que ahora sin tener que reiniciar sin
+
+287
+00:25:46,890 --> 00:25:50,130
+tener que hacer cualquier otra cosa, voy a traer de vuelta mi teléfono aquí
+
+288
+00:25:50,130 --> 00:25:54,660
+que está conectado a la red Wi-Fi para invitados y volvamos a mi navegador y
+
+289
+00:25:54,660 --> 00:25:59,790
+hagamos clic en PHP VirtualBox que verá ese indicador de progreso hacia arriba
+
+290
+00:25:59,790 --> 00:26:06,660
+en la parte superior está colgado ahora quiero decir, sé que todavía puedo ver PHP VirtualBox
+
+291
+00:26:06,660 --> 00:26:09,960
+porque lo cargué previamente vamos a casa y vamos de nuevo
+
+292
+00:26:09,960 --> 00:26:20,190
+Entonces 10.0 PHP VirtualBox mira esto. Hice clic en él, ¿dónde está?
+
+293
+00:26:20,190 --> 00:26:27,980
+funcionando porque estoy conectado a la red Wi-Fi para invitados no se puede acceder a este sitio
+
+294
+00:26:27,980 --> 00:26:34,230
+Sin embargo, si Internet funciona, vayamos a la categoría 5 TV, sí
+
+295
+00:26:34,230 --> 00:26:40,670
+Internet funciona de maravilla, intentemos volver a que estamos en IP
+
+296
+00:26:40,670 --> 00:26:47,970
+10.00 10 que es mi servidor VirtualBox y vamos porque sabemos que va
+
+297
+00:26:47,970 --> 00:26:53,490
+al tiempo de espera voy a cambiar a mi gato 5 TV 5
+
+298
+00:26:53,490 --> 00:27:01,710
+Wi-Fi gigahertz ahí vamos conectados y lo subimos y boom estoy instantáneamente
+
+299
+00:27:01,710 --> 00:27:06,300
+como puede ver, hemos creado con éxito un Wi-Fi para invitados que
+
+300
+00:27:06,300 --> 00:27:13,770
+está separado de nuestra red, no pueden acceder a los recursos en 10.0.0.0, no pueden
+
+301
+00:27:13,770 --> 00:27:18,540
+obtener acceso a eso desde nuestro Wi-Fi para invitados, también vamos a aprender en el próximo
+
+302
+00:27:18,540 --> 00:27:21,930
+semanas cómo podemos acelerar lo que mencioné que vamos a ser
+
+303
+00:27:21,930 --> 00:27:26,490
+mirando el estrangulamiento, pero estamos fuera de tiempo para el segmento de esta semana, así que
+
+304
+00:27:26,490 --> 00:27:30,440
+mover eso a un futuro también, así que asegúrese de estar atento a eso
+
+305
+00:27:30,440 --> 00:27:34,610
+Aprenderemos a acelerar la conexión para que nuestros huéspedes hagan Wi-Fi.
+
+306
+00:27:34,610 --> 00:27:39,799
+seguro de que incluso usted sabe si les doy acceso a los niños en sus tabletas
+
+307
+00:27:39,799 --> 00:27:43,160
+sus amigos y luego los amigos están por el camino descargando videos a través de
+
+308
+00:27:43,160 --> 00:27:46,790
+mi Wi-Fi No quiero que se aprovechen de todo mi ancho de banda, así que vamos a cubrir
+
+309
+00:27:46,790 --> 00:27:51,740
+que en un próximo programa también cap five dot TV slash mikrotik es donde quieres
+
+310
+00:27:51,740 --> 00:27:55,580
+para obtener toda la serie absolutamente gratis, publique su
+
+311
+00:27:55,580 --> 00:28:00,260
+comentarios y asegúrese de suscribirse a nosotros en Linux tech show.com, que es donde
+
+312
+00:28:00,260 --> 00:28:04,880
+También estoy publicando todo esto, lo que redirige a nuestro canal de YouTube llamado
+
+313
+00:28:04,880 --> 00:28:09,470
+Programa de tecnología de Linux gracias por ver a todos, tenemos que saltar al
+
+314
+00:28:09,470 --> 00:28:15,370
+sala de redacción aquí está Becca esto es lo que se avecina en una sala de redacción de televisión de categoría 5
+
+315
+00:28:15,370 --> 00:28:20,210
+iBM está despidiendo a miles de empleados y buscando flexibilidad durante el kovat
+
+316
+00:28:20,210 --> 00:28:26,809
+19 malware de robo de cuentas en crisis está haciendo sus rondas en discord a pizzería
+
+317
+00:28:26,809 --> 00:28:30,770
+propietario en los EE. UU. ha descubierto y explotado una falla en la puerta de Dash
+
+318
+00:28:30,770 --> 00:28:35,929
+plan de marketing y gana dinero comprando sus propias pizzas microsoft ha arreglado un
+
+319
+00:28:35,929 --> 00:28:41,270
+vulnerabilidad crítica que afecta a todas las versiones de Windows desde 1996 y no tripulada
+
+320
+00:28:41,270 --> 00:28:46,760
+Los drones reducirán los tiempos de entrega del NHS a un remoto hospital escocés.
+
+321
+00:28:46,760 --> 00:28:52,040
+Se acercan todos los detalles. Esta es la sala de redacción de televisión de categoría cinco puntos.
+
+322
+00:28:52,040 --> 00:28:58,230
+cubriendo la parte superior de la semana con un ligero sesgo de Linux
+
+323
+00:29:00,740 --> 00:29:05,570
+desde la sala de redacción soy Becca Ferguson
+
+324
+00:29:05,809 --> 00:29:10,590
+Tanto Hewlett-Packard Enterprise como IBM han anunciado importantes recortes de costes.
+
+325
+00:29:10,590 --> 00:29:15,450
+medidas que incluyen recortes salariales y pérdidas significativas de puestos de trabajo el kovat 19
+
+326
+00:29:15,450 --> 00:29:19,409
+La crisis está golpeando duramente a casi todos los sectores del mercado y ahora las fichas de dominó están
+
+327
+00:29:19,409 --> 00:29:24,929
+comenzando a caer a medida que otras pequeñas, medianas y grandes empresas reducen sus operaciones
+
+328
+00:29:24,929 --> 00:29:28,620
+o estremecerse para siempre las empresas de tecnología que dependen de los clientes empresariales son
+
+329
+00:29:28,620 --> 00:29:33,690
+ellos mismos sufriendo grandes pérdidas en el despido de personal IBM anunció sus despidos
+
+330
+00:29:33,690 --> 00:29:38,580
+el jueves por la noche en un comunicado, la compañía dijo que el mercado altamente competitivo
+
+331
+00:29:38,580 --> 00:29:43,470
+requiere flexibilidad para mezclar constantemente habilidades de alto valor que en este caso
+
+332
+00:29:43,470 --> 00:29:48,029
+significa decidir que ya no da un gran valor a las habilidades
+
+333
+00:29:48,029 --> 00:29:51,480
+número de empleados aportados a la mesa de distancia social
+
+334
+00:29:51,480 --> 00:29:56,370
+IBM, como muchas empresas que ahora se enfrentan a recortes y despidos, no estaba en el mejor estado financiero.
+
+335
+00:29:56,370 --> 00:30:02,399
+situaciones antes de que Cova 19 golpeara al CEO de la compañía, Arvind Krishna,
+
+336
+00:30:02,399 --> 00:30:06,240
+con la compañía durante décadas, pero solo entró en la primera semilla en abril
+
+337
+00:30:06,240 --> 00:30:10,019
+diciendo en ese momento que estaba concentrado en desarrollar las partes de la empresa
+
+338
+00:30:10,019 --> 00:30:14,100
+que admiten la computación en la nube y la inteligencia artificial y estaba dispuesto
+
+339
+00:30:14,100 --> 00:30:19,019
+para alejarse del resto IVM no especificó cuántos puestos estaban siendo
+
+340
+00:30:19,019 --> 00:30:23,759
+pero tanto The Wall Street Journal como Bloomberg News informan miles de
+
+341
+00:30:23,759 --> 00:30:28,620
+empleados se vieron afectados en cinco estados California Nueva York Carolina del Norte
+
+342
+00:30:28,620 --> 00:30:34,230
+IBM en Missouri y Pennsylvania dijeron en un comunicado que ofrecería subsidios
+
+343
+00:30:34,230 --> 00:30:39,690
+cobertura médica para los empleados afectados durante los próximos 12 meses Hewlett Packard
+
+344
+00:30:39,690 --> 00:30:43,139
+Enterprise también anunció sus planes de reducción de costos el jueves como parte
+
+345
+00:30:43,139 --> 00:30:47,250
+de su informe de ganancias trimestrales más reciente, la compañía recortará algunos
+
+346
+00:30:47,250 --> 00:30:51,210
+sueldos hasta al menos finales de octubre con los ejecutivos viendo recortes salariales
+
+347
+00:30:51,210 --> 00:30:56,159
+de entre el 20 y el 25 por ciento a la empresa le gustan los hermanos tecnológicos más jóvenes, como
+
+348
+00:30:56,159 --> 00:31:00,299
+Facebook y Twitter dicen que ahorrarán aún más dinero al adoptar el control remoto
+
+349
+00:31:00,299 --> 00:31:07,710
+trabajar a largo plazo, lo que le permite cerrar algunas oficinas, los investigadores han
+
+350
+00:31:07,710 --> 00:31:11,130
+encontró una versión actualizada de Anarchy grabber que Steve
+
+351
+00:31:11,130 --> 00:31:17,190
+víctimas contraseñas de texto sin formato e infecta a los amigos de las víctimas en discordia detectada como
+
+352
+00:31:17,190 --> 00:31:22,110
+anarchy grabber 3 la nueva variante troyana modifica los clientes de discordia
+
+353
+00:31:22,110 --> 00:31:26,430
+javascriptcore después de una instalación exitosa y esta versión modificada
+
+354
+00:31:26,430 --> 00:31:31,650
+le da al malware la capacidad de cargar otros archivos JavaScript cuando el virus
+
+355
+00:31:31,650 --> 00:31:38,340
+el cliente de discordia está abierto, la amenaza cargada inyecta j / s desde una nueva carpeta de anarquía
+
+356
+00:31:38,340 --> 00:31:43,110
+este archivo cargó otro script llamado discord magis y los dos scripts
+
+357
+00:31:43,110 --> 00:31:47,640
+juntos cierran la sesión del usuario, momento en el que se les pide que vuelvan a iniciar sesión
+
+358
+00:31:47,640 --> 00:31:51,810
+la nueva variante de capturador de anarquía intenta deshabilitar dos factores
+
+359
+00:31:51,810 --> 00:31:55,950
+autenticación en la cuenta de la víctima y roba información, incluida su
+
+360
+00:31:55,950 --> 00:32:00,810
+nombre de usuario contraseña de texto sin formato y token de usuario que envía a los atacantes
+
+361
+00:32:00,810 --> 00:32:05,910
+propio servidor de discordia mediante un enlace web, el malware también intenta propagarse
+
+362
+00:32:05,910 --> 00:32:09,420
+a otros usuarios de discordia enviando un mensaje que contiene el malware a
+
+363
+00:32:09,420 --> 00:32:14,730
+todos en la lista de amigos del usuario después de modificar el cliente de discordia y nuestra clave
+
+364
+00:32:14,730 --> 00:32:18,690
+grabber no se ejecuta de nuevo, lo que dificulta que el software antivirus
+
+365
+00:32:18,690 --> 00:32:23,610
+detectar la amenaza, ya que no hay procesos maliciosos, también garantiza que
+
+366
+00:32:23,610 --> 00:32:27,210
+una víctima sigue siendo parte de la botnet cada vez que interactúa con la discordia
+
+367
+00:32:27,210 --> 00:32:32,010
+utilizando la aplicación Robbie, ¿cómo puede un usuario determinar si está infectado si
+
+368
+00:32:32,010 --> 00:32:36,810
+El antivirus no puede detectarlo bien Los usuarios expertos en tecnología de Becca pueden abrir el
+
+369
+00:32:36,810 --> 00:32:41,700
+index j / s y luego pueden verificar el contenido, por lo que en Windows
+
+370
+00:32:41,700 --> 00:32:46,980
+encontrar que en los datos de su aplicación simplemente envuelva eso en signos de porcentaje para llegar realmente allí
+
+371
+00:32:46,980 --> 00:32:51,510
+rápidamente y luego ingresará a la carpeta de discordia a la que los usuarios de Linux y Mac van
+
+372
+00:32:51,510 --> 00:32:55,620
+la carpeta oculta doc config en su carpeta de inicio y dentro de ella encontrará
+
+373
+00:32:55,620 --> 00:33:01,110
+la carpeta de la discordia que contiene todos los archivos ahora en cualquier arquitectura los archivos en
+
+374
+00:33:01,110 --> 00:33:04,830
+a partir de ahí serán los mismos, así que ya sea que esté en Windows Mac o Linux
+
+375
+00:33:04,830 --> 00:33:11,220
+notará que hay muchos archivos llamados index J s en el árbol
+
+376
+00:33:11,220 --> 00:33:17,430
+de esa carpeta para que el que estás buscando esté en discordia subrayado
+
+377
+00:33:17,430 --> 00:33:23,370
+núcleo de subrayado de escritorio y el formato de directorio es su versión de discordia
+
+378
+00:33:23,370 --> 00:33:27,220
+ahora en mi caso aquí en windows si eso es cero punto cero punto
+
+379
+00:33:27,220 --> 00:33:32,920
+306, así que entro en esa carpeta, luego en los módulos y luego en el escritorio de subrayado de la discordia
+
+380
+00:33:32,920 --> 00:33:37,630
+subrayar el núcleo y puedo verificar el contenido del archivo index J ass y si
+
+381
+00:33:37,630 --> 00:33:42,310
+contiene cualquier cosa que no sea un comando para requerir core dot s R es
+
+382
+00:33:42,310 --> 00:33:48,250
+probablemente infectado gracias Robby si sospecha que la infección desinstale el
+
+383
+00:33:48,250 --> 00:33:53,890
+discord y vuelva a instalar, cambie su contraseña y asegúrese de que 2fa vuelva a habilitar diff
+
+384
+00:33:53,890 --> 00:33:58,240
+se ha desactivado si la discordia envía un correo electrónico a Facebook o si es diligente
+
+385
+00:33:58,240 --> 00:34:03,220
+y asegúrese de hacer clic en enlaces en los que sabe que puede confiar, ya que este tipo de malware
+
+386
+00:34:03,220 --> 00:34:06,580
+se propaga a sin amigos también es importante recordar que solo porque
+
+387
+00:34:06,580 --> 00:34:10,390
+es uno de tus amigos de confianza que lo envía no significa que puedas automáticamente
+
+388
+00:34:10,390 --> 00:34:14,650
+Confíe en los enlaces. Un simple ¿envió esta pregunta? Podría ser todo lo que se necesita para
+
+389
+00:34:14,650 --> 00:34:22,060
+proteger su cuenta y su privacidad el dueño de una pizzería
+
+390
+00:34:22,060 --> 00:34:27,100
+en los EE. UU. ha descubierto que la aplicación de entrega a domicilio ha estado vendiendo su comida
+
+391
+00:34:27,100 --> 00:34:32,320
+más barato que él, sin dejar de pagarle el precio completo por pedir una pizza por
+
+392
+00:34:32,320 --> 00:34:36,670
+que cobró veinticuatro dólares se anunciaba por 16 en la puerta, y
+
+393
+00:34:36,670 --> 00:34:40,720
+cuando él mismo lo pidió en secreto, la aplicación pagó a su restaurante los veinte
+
+394
+00:34:40,720 --> 00:34:45,520
+cuatro dólares mientras le cobraba 16 por lo que pidió diez pizzas pagó ciento y
+
+395
+00:34:45,520 --> 00:34:49,510
+sesenta dólares y los envió a la casa de un amigo, el restaurante estaba entonces
+
+396
+00:34:49,510 --> 00:34:53,920
+Pagó doscientos cuarenta dólares por el pedido a puerta; en pruebas posteriores, el
+
+397
+00:34:53,920 --> 00:34:57,520
+El restaurante preparó el pedido de sus amigos empaquetando la base de la pizza sin
+
+398
+00:34:57,520 --> 00:35:02,550
+coberturas maximizando el beneficio de los precios no coincidentes y funcionó
+
+399
+00:35:02,550 --> 00:35:06,970
+el estratega de contenido Rand John Roy, amigo del propietario de la pizzería, escribió en su blog
+
+400
+00:35:06,970 --> 00:35:12,250
+al respecto, dijo que tenía mucha curiosidad por saber si la puerta se daría cuenta, pero
+
+401
+00:35:12,250 --> 00:35:16,390
+¿No surgió la curiosidad del hecho de que no habían pedido que se les pusiera
+
+402
+00:35:16,390 --> 00:35:20,050
+en la aplicación, por lo que no tenía sentido que la empresa vendiera su pizza
+
+403
+00:35:20,050 --> 00:35:23,860
+perdidos, más tarde descubrieron que era parte de una astuta estrategia para construir
+
+404
+00:35:23,860 --> 00:35:30,370
+demanda del cliente y luego utilizar esa demanda para que el restaurante se registre sr. Roy
+
+405
+00:35:30,370 --> 00:35:34,780
+dice que tienen un período de prueba en el que revisan el sitio web de los restaurantes y no
+
+406
+00:35:34,780 --> 00:35:38,440
+cobrar cualquier tarifa a cualquiera para que puedan ir al restaurante idealmente
+
+407
+00:35:38,440 --> 00:35:43,599
+los datos del pedido positivo para que el restaurante se registre en la plataforma mr.
+
+408
+00:35:43,599 --> 00:35:46,299
+Roy opina que es un mal negocio
+
+409
+00:35:46,299 --> 00:35:50,500
+él dice que tienes fondos de capital increíblemente grandes que crean una increíble
+
+410
+00:35:50,500 --> 00:35:55,720
+Modelo de negocio de pérdida de dinero ineficaz. La puerta está respaldada por gigantes de la inversión.
+
+411
+00:35:55,720 --> 00:36:00,670
+Softbank, que la semana pasada registró una pérdida récord de casi 13
+
+412
+00:36:00,670 --> 00:36:04,900
+mil millones gracias Becca, tenemos que tomar un descanso muy rápido, pero cuando venimos
+
+413
+00:36:04,900 --> 00:36:10,680
+Atrás Becca tiene más de tus noticias tecnológicas más importantes de la semana, así que quédate
+
+414
+00:36:10,890 --> 00:36:18,669
+[Música]
+
+415
+00:36:24,280 --> 00:36:27,389
+[Música]
+
+416
+00:36:30,270 --> 00:36:33,970
+Los investigadores han demostrado que una vulnerabilidad en una década
+
+417
+00:36:33,970 --> 00:36:38,410
+El componente de Microsoft Windows que controla la impresión podría ser abusado por
+
+418
+00:36:38,410 --> 00:36:43,390
+actores malintencionados para obtener privilegios elevados en el sistema de destino
+
+419
+00:36:43,390 --> 00:36:47,500
+defecto al que llamaron demonio de impresión reside en la cola de impresión y
+
+420
+00:36:47,500 --> 00:36:50,710
+esto afecta a todas las versiones de Windows desde NT
+
+421
+00:36:50,710 --> 00:36:55,420
+4.0, el componente se ha mantenido prácticamente sin cambios desde que, aunque otro
+
+422
+00:36:55,420 --> 00:37:00,150
+La vulnerabilidad que lo afecta fue abusada por el infame Stuxnet hace una década.
+
+423
+00:37:00,150 --> 00:37:05,049
+Microsoft dijo de la solución que existe una elevación de la vulnerabilidad privilegiada cuando
+
+424
+00:37:05,049 --> 00:37:08,920
+el servicio de cola de impresión de Windows permite incorrectamente la escritura arbitraria
+
+425
+00:37:08,920 --> 00:37:12,549
+el sistema de archivos un atacante que explotó con éxito este
+
+426
+00:37:12,549 --> 00:37:16,630
+vulnerabilidad podría ejecutar código arbitrario con privilegios elevados del sistema y
+
+427
+00:37:16,630 --> 00:37:22,599
+El atacante podría instalar programas, ver cambios o eliminar datos o crear nuevos
+
+428
+00:37:22,599 --> 00:37:27,910
+cuentas con derechos de usuario plenos microsoft establecieron la probabilidad de explotación
+
+429
+00:37:27,910 --> 00:37:32,260
+diciendo que un atacante tendría que iniciar sesión en un sistema afectado y utilizar un
+
+430
+00:37:32,260 --> 00:37:36,940
+aplicación o script especialmente escrito, pero como sabemos, los exploits RDP son
+
+431
+00:37:36,940 --> 00:37:41,650
+que ocurren en la naturaleza con malware como SAR que abre un acceso remoto a
+
+432
+00:37:41,650 --> 00:37:46,299
+sistemas Windows, por lo que en el mundo conectado de hoy en día, un hacker debe tener
+
+433
+00:37:46,299 --> 00:37:50,829
+el acceso a un sistema para explotarlo es un punto irresponsable que hacer
+
+434
+00:37:50,829 --> 00:37:54,070
+que podría faltar en departamentos de TI con experiencia en
+
+435
+00:37:54,070 --> 00:37:59,980
+complacencia se puede abusar de la vulnerabilidad para elevar privilegios eludir
+
+436
+00:37:59,980 --> 00:38:04,869
+reglas de respuesta y detección de puntos finales y persistencia del juego como parte de este
+
+437
+00:38:04,869 --> 00:38:09,880
+parche del mes martes que taponó un total de 111 agujeros de seguridad Microsoft
+
+438
+00:38:09,880 --> 00:38:14,170
+cambió la forma en que el componente de cola de impresión de Windows escribe datos en el sistema de archivos
+
+439
+00:38:14,170 --> 00:38:19,780
+y recomendó descargar y aplicar la actualización que este exploit va para mostrar por qué
+
+440
+00:38:19,780 --> 00:38:24,760
+ejecutar una versión de Windows que ya no está en el fin de su vida útil es imprudente, la solución
+
+441
+00:38:24,760 --> 00:38:29,380
+para este exploit no se lanzará a los sistemas operativos eol como Windows XP
+
+442
+00:38:29,380 --> 00:38:34,660
+o incluso Windows 7, que seguirá siendo vulnerable a esta falla crítica tal vez
+
+443
+00:38:34,660 --> 00:38:41,010
+Este es también otro ejemplo de por qué es hora de considerar cambiar a Linux.
+
+444
+00:38:43,170 --> 00:38:48,070
+Se utilizarán drones de control remoto para entregar kits de prueba de coronavirus a un
+
+445
+00:38:48,070 --> 00:38:52,540
+remoto del hospital escocés y están siendo trasladados fuera de los operadores
+
+446
+00:38:52,540 --> 00:38:59,170
+línea de visión directa respaldada por la firma local de drones de confianza del NHS, Sky ports volará
+
+447
+00:38:59,170 --> 00:39:02,950
+drones entre la isla de Mull y Oban, la ciudad más cercana en la Escocia
+
+448
+00:39:02,950 --> 00:39:08,080
+continental hemos informado sobre similares en programas de prueba recientes y parece que es
+
+449
+00:39:08,080 --> 00:39:11,680
+trabajando a medida que más comunidades comienzan a aprovechar las capacidades incomparables
+
+450
+00:39:11,680 --> 00:39:18,730
+de UAVs, el director ejecutivo de Sky ports, Duncan Walker, habla sobre su reciente juicio
+
+451
+00:39:18,730 --> 00:39:23,410
+en la zona escocesa de Argyll and Bute diciendo que proporciona una importante
+
+452
+00:39:23,410 --> 00:39:27,160
+respuesta a corto plazo a la pandemia actual y sienta las bases de
+
+453
+00:39:27,160 --> 00:39:31,960
+que desarrollar una operación de entrega de drones permanente a través de una red de atención médica
+
+454
+00:39:31,960 --> 00:39:37,300
+instalaciones en todo el país su empresa volará entregas no tripuladas
+
+455
+00:39:37,300 --> 00:39:42,369
+aviones no tripulados fabricados por helicópteros de ala de la compañía alemana, la nave volará el 17
+
+456
+00:39:42,369 --> 00:39:46,869
+kilómetros entre Lauren e Isles hospital en abierto y soy dueño de una comunidad
+
+457
+00:39:46,869 --> 00:39:51,430
+hospital en Craig nur, mientras que 17 kilómetros no suenan como un largo
+
+458
+00:39:51,430 --> 00:39:55,630
+distancia en línea recta es un largo y arduo viaje por carretera y
+
+459
+00:39:55,630 --> 00:39:58,900
+ferry, por el contrario, sky port dice que tomará
+
+460
+00:39:58,900 --> 00:40:04,150
+solo 15 minutos por dron, la prueba se llevará a cabo usando más allá de la línea visual de
+
+461
+00:40:04,150 --> 00:40:06,980
+Reglas de vista para ahran permiso especial del Civil
+
+462
+00:40:06,980 --> 00:40:11,569
+Los vuelos de drones de la Autoridad de Aviación que van más allá de la línea de visión del operador son
+
+463
+00:40:11,569 --> 00:40:15,589
+normalmente prohibido, sin embargo, el principal beneficio percibido de los drones de aviación
+
+464
+00:40:15,589 --> 00:40:20,059
+no se puede realizar hasta que se demuestre que la tecnología es lo suficientemente segura como para pensar que es
+
+465
+00:40:20,059 --> 00:40:24,859
+Volado sin un humano atento cerca en caso de colisiones, la prueba tomará
+
+466
+00:40:24,859 --> 00:40:29,079
+lugar durante las próximas dos semanas completando en la primera semana de junio
+
+467
+00:40:29,079 --> 00:40:33,769
+muchas gracias a Roy W Nash y a nuestra comunidad por enviar
+
+468
+00:40:33,769 --> 00:40:38,269
+historias para nosotros esta semana gracias por ver la sala de redacción de televisión de categoría cinco
+
+469
+00:40:38,269 --> 00:40:42,589
+no te olvides de dar Me gusta y suscribirte a todas tus novedades tecnológicas con un ligero linux '
+
+470
+00:40:42,589 --> 00:40:47,269
+sesgo y si aprecia lo que hacemos conviértase en un patrocinador en patreon.com barra
+
+471
+00:40:47,269 --> 00:40:53,509
+categoría 5 de la sala de redacción de televisión de categoría 5 soy becca ferguson, de acuerdo
+
+472
+00:40:53,509 --> 00:40:57,619
+gracias Becca y gracias a ti por acompañarnos de nuevo esta semana.
+
+473
+00:40:57,619 --> 00:41:03,230
+Me alegro tenerte aquí, quiero recordarte que estamos en twitter en la categoría 5
+
+474
+00:41:03,230 --> 00:41:09,230
+TV Personalmente estoy en twitter en robbie ferguson y lo sigo así que dame un
+
+475
+00:41:09,230 --> 00:41:13,490
+sígueme y te cazaré y te seguiré
+
+476
+00:41:13,490 --> 00:41:18,780
+Oye, si te gusta ver las versiones editadas de la televisión de tecnología de categoría cinco
+
+477
+00:41:18,780 --> 00:41:21,299
+son muy compartibles son muy consumibles son solo
+
+478
+00:41:21,299 --> 00:41:25,140
+Los videos de pequeños fragmentos rápidos se dirigen a la tecnología de Linux muestran la calma que es una gran
+
+479
+00:41:25,140 --> 00:41:30,750
+Canal de YouTube al que suscribirse si ama el contenido que producimos y como
+
+480
+00:41:30,750 --> 00:41:34,710
+ya establecimos que voy a hacer un pequeño baile para ti si tu si ayudas
+
+481
+00:41:34,710 --> 00:41:39,750
+para lograr veinticinco mil suscriptores en el mes de mayo estoy
+
+482
+00:41:39,750 --> 00:41:44,579
+voy a decir que dentro del mes del veinte de mayo lo lograremos
+
+483
+00:41:44,579 --> 00:41:47,940
+Juntos, la televisión de tecnología de categoría cinco también está en roku
+
+484
+00:41:47,940 --> 00:41:54,630
+estamos en otros jugadores de HLS estamos en Plex estamos en cody puedes obtener nuestros canales en
+
+485
+00:41:54,630 --> 00:42:00,420
+github comm slash cat five TV y, por supuesto, nuestro sitio web principal vincula todo
+
+486
+00:42:00,420 --> 00:42:06,359
+juntos encontrarán que en la categoría cinco puntos de TV y no olviden todos estos
+
+487
+00:42:06,359 --> 00:42:11,400
+direcciones web y las cosas bien, pero nuestra serie de esta semana está en el micro tic
+
+488
+00:42:11,400 --> 00:42:16,200
+y tengo un enlace muy especial para ti en cat5 dot TV slash micro tech
+
+489
+00:42:16,200 --> 00:42:20,339
+que tiene todos los detalles y estos pasos a seguir para lograr
+
+490
+00:42:20,339 --> 00:42:24,210
+todo lo que hemos hecho aquí esta semana para que tengas una semana maravillosa
+
+491
+00:42:24,210 --> 00:42:26,730
+todo el mundo y espero volver a verte
+
+492
+00:42:26,730 --> 00:42:31,040
+en una semana nos vemos
+
+493
+00:42:36,870 --> 00:42:39,989
+[Música]
+
+494
+00:42:46,840 --> 00:42:48,900
+tú
+
