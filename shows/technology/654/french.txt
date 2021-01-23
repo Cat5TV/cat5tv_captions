@@ -1,0 +1,685 @@
+Bienvenue à la télévision technologique de catégorie cinq aujourd'hui, je vais vous montrer comment
+installez un système d'exploitation sur une carte micro SD que vous allez pouvoir démarrer
+à partir d'un Pine Book Pro au-delà de cela, je vais vous montrer comment utiliser github dans
+afin de gérer vos référentiels comment extraire les données comment apporter des modifications
+localement, puis repoussez-les vers le serveur.
+[La musique]
+nos enregistrements en direct ne sont confiés qu'aux disques SSD de Kingston
+la technologie ravive votre ordinateur en améliorant les performances et la fiabilité
+disques durs traditionnels avec SSD Kingston de catégorie 5 diffusés en direct avec
+streamer agile et Telestream Wirecast se connectent via roku Kodi Plex
+ou d'autres lecteurs vidéo HLS pour les heures de spectacle locales, visitez notre site Web catégorie 5
+dot TV maintenant cette émission vous est présentée par BP 9 Scott Barclay Ron Morissette
+Jerry Kowalski Jonathon Garbi Jen's Nissen Bollock maintenant ski et Bill Marshal
+ainsi que tous ceux qui ont décidé de soutenir notre récente campagne Kickstarter ou ceux
+d'entre vous qui ont fait un don pour assurer la catégorie 5 entre dans ce nouveau studio
+space ou nos clients sur patreon.com slash catégorie 5 Je veux dire que je ne pouvais pas faire
+ce spectacle sans votre soutien, je n'aurais pas pu survivre à ce déménagement sans
+votre soutien en particulier pendant une pandémie et je veux juste dire un énorme
+merci à tous ceux qui ont soutenu la technologie de la télévision de catégorie 5 avant de sauter
+dans l'émission cette semaine, je tiens à vous rappeler s'il vous plaît abonnez-vous à nous sur youtube
+cliquez sur cette cloche pour recevoir des notifications chaque fois que nous sommes en direct ou lorsque nous publions
+nouveau contenu passionnant J'ai mentionné il y a quelques semaines que nous voulons atteindre 25000
+abonnés et jusqu'à présent ce mois-ci, 350 d'entre vous ont souscrit
+porte notre total à 24000 756 abonnés, nous pouvons le faire si vous n'êtes pas
+déjà abonné à l'émission de technologie linux, calmez-vous et faites-le et une fois que nous avons frappé
+que 25000 mark je suis honoré de faire un numéro de danse de fantaisie pour vous
+désolé pour cela il y a plusieurs semaines Rocko du projecteur Linux interviewé
+moi et cette interview a été publiée ce matin, ça a été vraiment chouette pour moi de
+voir le nombre de téléspectateurs qui, je suppose, les téléspectateurs de Rocco's Show Linux
+projecteurs qui ont déclaré avoir regardé la catégorie cinq
+technologie TV depuis les tout premiers jours Kevin y courants par exemple dit que
+il regarde l'émission depuis lors, Peter 14 est même antérieur à l'émission ayant
+regardé certaines de mes toutes premières vidéos YouTube, a-t-il dit sur Twitter, je suis entré
+Linux grâce à Robbie en 2004 avec Lindos quand son émission était en direct de son
+salon une personne formidable dans l'âme qui a aidé tant de personnes dans le monde
+merci beaucoup Jill Bryant rennaker dit et je devrais
+mentionner qu'elle est en fait l'un des co-hôtes sur Linux gamecast LW DW elle
+dit que je regarde l'excellent contenu Linux de Robbie depuis des années et je suis tellement
+impatient de regarder le projecteur Linux, dit Tony Hughes sur Twitter
+vraiment heureux de ce Robbie a été une inspiration et une aide fantastique pour moi en tant que
+un noob Cheers comme Nick le dit alors que Nix dit une excellente interview J'ai suivi Robbie's
+cat5 TV depuis plusieurs années et c'est toujours bien merci beaucoup et Joe
+Panico dit que j'aime vraiment ce que Robbie a fait avec ses plates-formes technologiques parce que
+de ces interviews fabuleuses, nous avons un aperçu de la vie des personnes que nous
+ont appris à savoir qu'à un certain niveau, l'entretien complet dure environ une heure et demie
+longtemps, ne la regardez pas maintenant, vous pouvez d'abord regarder cette émission, puis nous nous connecterons
+l'interview mais je vais vous montrer un clip dans un instant donc au cours de la
+entretien d'une heure et demie nous abordons une tonne de sujets à la fois personnels et derrière
+les scènes ici à la télévision de catégorie cinq tout de l'open source mon début
+jours sous Linux mon tout premier ordinateur et la valeur de
+acheter de la margarine sans nom, tout aura un sens un peu plus tard
+voici ce court échantillon de l'interview pour vous
+bienvenue sous les projecteurs de Linux ce spectacle est dédié à montrer le meilleur
+chose à propos de Linux notre communauté cette communauté est composée de développeurs
+mainteneur de la distribution x youtubers et utilisateurs quotidiens, chacun joue un rôle vital
+rôle dans notre communauté et le but est d'avoir une discussion avec chaque individu
+à propos de leur voyage dans Linux et au-delà, alors rejoignez-moi maintenant alors que nous
+projecteur sur
+bonjour je suis votre hôte Rocco et avec moi aujourd'hui notre invité spécial est Robbie
+Ferguson hey Robbie comment vas-tu hey va bien je vais bien
+mec ces jours-ci, quand je dis que je vais bien, tu dois obtenir les citations aériennes
+Ouais en train de bien t'accrocher, tu fais de ton mieux
+c'est ça oui bien je pense que c'est ce que nous faisons tous en ce moment donc oui monsieur vous
+sachez que vous avez des émissions comme la télévision technologique et la salle de presse, elles couvrent tout
+technologie non seulement les gens de Linux vous connaîtront de cela, mais si vous deviez
+rencontrer quelqu'un qui ne vous connaissait pas, que lui diriez-vous s'il disait qui est
+Robbie Ferguson personnellement Qui suis-je je suppose que vous savez que je suis un gars de la famille, je suis un je
+avoir une femme et trois enfants à la maison et nous passons un bon moment ensemble et j'adore
+passer du temps avec eux, nous aimons comme nous faisons nos randonnées dans la nature aussi souvent que possible
+nous arrivons enfin à ce point maintenant où nous pouvons faire que le temps est
+assez sympa ici en Ontario au Canada que nous faisons cela chaque week-end donc je
+comme le temps en famille j'aime faire des choses avec mes enfants et bien aider
+les impliquer dans mes passe-temps pour que ce soit comme si mon fils faisait
+ou tech avec moi connectant gpio sur un Raspberry Pi à un circuit que je suis
+sur le point d'exploser tu sais ce genre de trucs
+alors nous essayons de faire les choses ensemble en leur apprenant à bien apprendre l'apprentissage et
+les emmener pour le trajet pour que vous le sachiez parce que je suis toujours en quête de
+apprends que je ne suis jamais je ne suis jamais content comme je ne suis jamais au point où je suis
+fait je sais tout ce qu'il y a à savoir je n'ai pas besoin d'en savoir plus je suis pris si je reçois
+au point où j'en sais assez sur un sujet sur lequel je passe
+autre chose, alors j'aimerais les amener avec moi, allons-y
+histoire et revenez au début de vos ordinateurs quel était le
+premier ordinateur que vous avez utilisé le ce que j'attribuerais ce que je dirais est le
+le premier ordinateur sur lequel je me suis assis et enduit aurait été le vic-20 et
+J'ai utilisé ce truc comme un fou comme si j'étais arrivé au point où j'écrivais
+code à vous savez cinq six ans qui d'ailleurs vous savez que je toujours
+J'ai pensé que c'était fou comme le codage à six ans et puis mes fils l'ont fait
+la même chose et tu sais que mon fils de neuf ans maintenant notre plus jeune est en train de coder en roblox
+Et c'est et c'est tellement ça me ramène à ces jours et j'aime vraiment ça
+temps où les ordinateurs nous avons compris comment ils fonctionnaient nous avons compris
+fonctionnement d'eux afin de démonter le Commodore vic-20
+était quelque chose que je connaissais mais le premier véritable ordinateur comme le PC
+aurait été un XT aussi drôle que ce grand vieux système IBM qui aime
+est une ancre de bateau comme nous disons que je n'avais pas le droit d'avoir un ordinateur donc c'était
+sous des couvertures cachées dans mon placard comme ça c'est le genre de nerd que je suis
+enfant, j'ai caché un ordinateur XT dans mon placard pour que mon père ne le trouve pas
+et me causer des ennuis je ne peux même pas imaginer ce que j'ai fait avec le moniteur
+Je ne sais pas comment j'ai compris comment cacher un moniteur CRT le trouver
+Je ne peux pas imaginer qu'il ne l'a pas fait mais il ne l'a jamais mentionné alors je pense qu'il doit probablement
+J'ai su mais mon esprit d'enfant stupide naïf pense que oh ce père ne sait pas et
+c'est comme cet énorme ordinateur maintenant combien de temps faut-il avant de passer à
+Linux bien alors ces fenêtres étaient un commutateur complet ouais un commutateur complet
+à partir de là ouais j'utilise une première version d'Adobe Photoshop dans Wine
+parce que l'ancienne version fonctionnait bien sous des gémissements tel et tel
+cs2 est sorti, il ne fonctionnait plus tout à fait ce qui était vraiment bien alors
+car à l'époque GIMP était vraiment mauvais mais ils ont depuis corrigé cela avec 2.10
+donc comme la mise à l'échelle est beaucoup mieux maintenant mais ouais Lindos était à peu près à l'époque où je
+J'ai changé de nom, je veux dire, j'ai dit que je ne dis pas que c'était un classique
+distro ils ont été poursuivis par Microsoft pour le nom qu'ils ont dû changer pour
+Le feu de Linds qui n'avait aucun sens, puis eux et en Michael Robertson typique
+style, il a juste viré tout le monde et vendu l'entreprise et tous les droits de création
+et tout et maintenant c'est la propriété de quelqu'un d'autre mais ouais mais ça m'a
+aimer Debian Debian m'a fait aimer Ubuntu qui et qui m'a fait aimer Mark
+Shuttleworth et l'ensemble de l'écosystème de
+sachant que vous pouvez gérer une entreprise basée sur le support plutôt que sur le produit I
+pense que c'était une sorte de révélation pour moi aussi
+Donc c'est comme si tout le monde bougeait avec les vagues et
+trouver où vous en êtes en ce momentJe lance Linux Mint 19 comme si j'étais vieux
+école donc j'aime bien l'interface mattei j'allais te demander alors pourquoi tu
+laissez-les essayé tous, alors pourquoi êtes-vous resté avec Linux Mint?
+depuis dix-neuf est sorti et c'est principalement parce que c'était juste un
+brillante expérience prête à l'emploi, je n'ai pas, je suis en quelque sorte tombé amoureux
+une aubaine pour un petit moment à cause de l'unité l'unité m'a fait tomber amoureux
+avec une aubaine pour vous n'étiez pas un fan certainement pas non et je suis vraiment un
+petite vieille école dans mon paradigme de bureau alors je dis que je préfère matei je le fais vraiment je
+aime vraiment cette interface comme si c'était inconfortable alors Linux Mint
+avec matei est une distribution fantastique prête à l'emploi, tout fonctionne et ils
+Soutenez toujours le campus qui m'apporte toutes sortes de joie de nerd bien vous savez ne pas
+vous balancer ou quoi que ce soit qui n'est pas la température vous il n'y a pas de chaud mais avez-vous essayé un chignon
+à Ma Tei et comparez ça à comme oh ouais
+ouais ce que tu fais Martin et Pope ou c'est un travail fantastique et et moi
+je l'ai exécuté sur certains de mes systèmes bas de gamme et je l'adore, je l'ai utilisé
+ordinateurs portables et trucs rien de mon choix d'utiliser Linux Mint en ce moment c'est de ne pas dire
+que Lubuntu MITEI n'est pas génial c'est vraiment mais c'est juste là que j'ai
+atterri ouais quand tu sais comment les choses fonctionnent sous le capot, beaucoup de choses
+très similaire donc c'est vraiment juste de trouver une distribution stable qui fonctionne à partir du
+boîte il ne perd pas beaucoup de temps à le configurer car j'utilise
+Linux Mint au travail J'ai besoin de quelque chose dans lequel je peux aimer réinstaller et être opérationnel
+et en une heure et vous savez de retour dans le monde des affaires, donc c'est
+travaillé non pas que je ne puisse pas faire ça avec nous allons peut-être un c'est juste où
+tu es c'est juste là où j'en suis ouais et je pense que ça fait vraiment
+déroutant aussi pour les nouveaux utilisateurs de Linux car bien quelle saveur devrait
+Je vais avec quelle distribution pourquoi vous avez l'avantage de matei contre Linux Mint avec matei the
+c'est vraiment très similaire, donc c'est la communauté c'est le
+écosystème de la distribution elle-même, vous savez où est le soutien que vous
+Je sais que je n'ai pas besoin de soutien, donc je ne me soucie pas vraiment de ça mais
+l'utilisateur novice le ferait si oui, vous pouvez regarder l'interview complète sur le projecteur Linux à
+cat5 dot TV slash spotlight nous devons faire une pause rapide à notre retour je suis
+va répondre à certaines de vos questions de téléspectateurs et aux commentaires
+est arrivé cette semaine à propos du livre de pin pro stick around
+Bienvenue à nouveau en regardant la fonctionnalité pro du livre de pin de la semaine dernière beaucoup d'entre vous
+ont commencé à recevoir vos envois Pine Book Pro et donc ces petites bizarreries
+sont à venir et nous commençons à voir des commentaires à venir dans vp9 postait
+dans notre serveur Discord aujourd'hui, c'est pourquoi j'ai mon téléphone avec moi, je ne suis pas
+antisocial je suis social voir comment j'ai fait ça
+bp9 avait des problèmes avec le clavier, la touche D était un peu collante et non
+tout à fait fonctionnant et a constaté qu'il était capable de soulever très soigneusement cette clé et
+faire passer de l'air comprimé en dessous et souffler sous le contact
+et pour une raison quelconque, cela l'a corrigé pour lui, donc je suis heureux d'entendre que la touche D
+travaille maintenant vp9 en mentionnant également que pendant que je montrais sur mon Pine Book Pro que
+un clic rapide sur le logo pin et f11 activerait et désactiverait le Wi-Fi et que
+semblait bien fonctionner pour notre démonstration de la semaine dernière, il a mentionné
+que sur son carnet de notes sur son pin Book Pro, il devait effectivement tenir cette clé
+séquence pendant trois secondes, donc si vous constatez que cela n'a pas d'impact
+c'est peut-être la différence après le même tutoriel de la semaine dernière sur la façon dont
+pour faire fonctionner le Wi-Fi sur votre nouveau Pine Book Pro, mais essayez de le maintenir pendant
+trois secondes si ma démonstration de tapotement très rapide ne l'a pas fait pendant
+vous donc c'est bon de savoir aussi la dernière chose que mentionne bp9 est que
+son clavier était bien prédéfini avec la disposition du clavier britannique qui pourrait être
+frustrant parce que vos clés ne seront pas au bon endroit, donc fondamentalement
+Disposition ISO par rapport à ANSI et vous auriez donc du mal à entrer votre mot de passe et
+des choses comme ça assez intéressant quand j'ai démarré et mis le feu à Manjaro
+pour la première fois, il m'a demandé si je voulais ISO ou ANSI alors je suis passé par
+ce processus de lui dire quelle disposition de clavier j'avais
+et cela a très bien fonctionné pour moi, mais dans le cas de bp9, ce n'était pas le cas et il
+a très rapidement pu entrer et modifier simplement les paramètres du clavier dans le
+le système de menu a trouvé son chemin là-bas, ce n'était pas un gros problème, c'était une solution simple
+pour lequel je n'avais même pas besoin du wiki puisque je savais comment changer la mise en page
+déjà et bp9 d'ailleurs de notre communauté mentionnant que le wiki
+s'est avéré être une ressource fantastique et vous le trouverez à Pine 64
+org et c'est vraiment un site axé sur la communauté et donc lorsque des problèmes surviennent
+les gens y publient sur le wiki un peu comme un format de documentation pour
+être en mesure d'aider d'autres personnes qui rencontrent les mêmes problèmes Ryan
+Howard est sur notre chaîne YouTube et dit qu'il ne peut pas obtenir le système d'exploitation pour le
+Pine Book Pro gravé sur une carte SD, il demande s'il vous plaît comment faites-vous cela un
+la vidéo serait super bien ici vous êtes c'est la vidéo donc je vais faire cette chose
+très bien, donc la première chose que nous devons déterminer est de savoir si nous voulons
+utiliser une carte SD ou le emmc intégré et il y a plusieurs choses qui
+être un facteur décisif Les cartes SD sont un moyen vraiment très simple de
+pour basculer entre plusieurs distributions, vous devez faire un peu de pop
+vous poussez si vous en avez un là-dedans et puis il ressort donc c'est ma carte SD
+juste là, je pense que je viens d'éjecter mon système d'exploitation alors qu'il est allumé oh ne fais pas ça
+c'est comme tirer sur votre disque dur mais le emmc intégré peut être un peu
+plus difficile à mettre en place, mais pensez à l'une des choses et je
+toucher à cela, je vais vous expliquer cela, mais l'une des choses que j'aime sur les cartes SD et
+la possibilité de démarrer à partir d'une carte SD ouais bien sûr je viens de planter mon système je suis
+va redémarrer la bonne chose de pouvoir démarrer à partir d'une carte SD est
+disons que vous avez un foyer où tout le monde partage les mêmes appareils afin que vous
+pourrait donner à chaque membre de la famille par exemple ou peut-être que vous êtes une éducation
+et vous voulez donner à chaque mec ou à chaque professeur sa propre carte SD pour que vous
+configurer le système d'exploitation sur cette carte SD et tous ceux qui vont l'utiliser
+avec la mise hors tension démarre à partir de leur carte SD et de toutes leurs applications
+tout le reste est configuré par utilisateur et personne n'affecte aucun autre utilisateur
+car la carte SD est en fait leur disque dur de démarrage, je viens de prouver que
+faire ce que je viens de faire alors que stupide n'a pas détruit mon Pyne Book Pro en fonctionnement
+système sur ma carte SD, donc c'est une bonne chose, donc c'est plutôt cool parce que
+avec votre propre carte SD, vous pouvez simplement le démarrer et avoir vos propres paramètres afin que je
+comme ça si vous avez choisi la distribution que vous
+préfère qu'il soit peut-être temps de l'installer sur un emmc mais ça peut être plus impliqué que je
+mentionné car il nécessite parfois d'ouvrir le Pine Book Pro et vous avez
+d'utiliser un adaptateur spécial pour le flasher mais le processus lui-même est le même même dans
+ce cas, donc si vous avez l'adaptateur, vous allez graver sur un emmc j'utilise le
+term burn en utilisant un adaptateur branché sur le port USB ou quelque chose comme ça et
+ce sera le même processus que vous utiliserez le même logiciel que vous pourriez avoir
+pour utiliser une image différente en fonction de la distribution que vous regardez mais
+en parlant de certaines distributions telles que Manjaro qui offrent en fait un
+installateur donc si vous le gravez sur une carte SD, vous démarrez le livre de pin pro vous
+peut ensuite l'installer sur l'emmc pour que vous n'ayez pas à ouvrir le Pine Book Pro
+vous n'avez pas besoin d'acheter un adaptateur pour pouvoir flasher n'importe quelle carte MMC, donc c'est
+assez brillant, vous devez parcourir le wiki ou le site Web de
+la distribution individuelle que vous regardez donc nous allons passer
+pour pins 64 dot org et choisissez la distribution que nous allons télécharger pour vous
+cliquez simplement sur le wiki et allez au logiciel Pine Book Pro
+maintenant je vais aller avec Manjaro parce que nous savons que c'est essayé et vrai c'est
+celui qui vient dessus et j'ai en fait téléchargé Debian sur ma carte SD
+donc je viens d'une carte SD normalement donc c'est
+Debian sortant de la carte SD, nous allons changer cela dans quelques
+moments, donc la prochaine étape est que nous devons obtenir un outil pour faire la gravure, nous allons utiliser un
+outil appelé B'Elanna à la fois villena à la fois que lana comment le dire je ne sais pas
+et j'expliquerai pourquoi bal enna etcher il s'appelait juste etcher et comme
+un animateur d'émissions de télévision ces jours-là, Valena me manque
+sois alena et la raison pour laquelle ça me rebute c'est parce que je suis une vieille école
+Trekkie et donc je veux toujours dire B'Elanna en pensant à B'Elanna Torres
+Alors pense à B'Elanna et puis pense que non c'est le contraire de ce bal ana dot
+io / h ER maintenant pendant que je vais faire cela sur ma machine Windows, vous pouvez
+faites également cela sur Linux ou Mac afin que B'Elanna
+cette bataille dans ce dilemme dot io / etcher téléchargez-le pour votre plate-forme ok
+la première chose que je veux faire sur ma machine est de m'assurer qu'aucun support amovible n'est
+connecté à l'ordinateur assurez-vous que c'est la première étape de la sauvegarde, tirez tous vos
+Clés USB, cela signifie débrancher le stockage USB de tout ce qui est branché
+les cartes SD de l'ordinateur si vous avez un lecteur de carte SD ou quelque chose comme
+cette raison pour laquelle je le fais est que nous voulons éviter d'essuyer accidentellement le mauvais
+stockage si vous avez quelques clés USB branchées, vous pouvez accidentellement
+sélectionnez le mauvais et rappelez-vous qu'il s'agit d'un processus destructeur, vous
+va perdre toutes les données qui sont actuellement sur le lecteur, alors je peux l'appeler graveur dans
+graveur sélectionnez le fichier image que vous avez téléchargé dans notre cas c'est la prise Manjaro
+votre carte dans un lecteur de carte ou encore si vous utilisez emmc utilisez l'adaptateur et
+vous devez acheter cet adaptateur séparément et le graveur doit détecter et
+pré-remplissez la section de sélection du lecteur au moment où vous branchez votre lecteur cliquez sur
+flash pour commencer et sur windows ça va demander
+moi de cliquer pour permettre à l'administrateur d'accéder à Linux ou Mac à la place
+demander mon mot de passe root pour continuer car je l'ai mentionné c'est un processus destructeur
+il va effacer tout ce qui se trouve sur cette carte, alors assurez-vous que vous voulez
+continuez bien puis faites-le bien une fois que l'image a été écrite sur la carte
+etcher vérifiera que l'écriture a réussi, cela peut prendre quelques minutes
+Alors accrochez-vous bien et une fois que c'est fait, si cela vous dit que vous avez réussi, vous pouvez supprimer
+cette carte insérez-la dans votre Pine Book Pro et encore une fois j'utilise la carte SD pour
+il suffit de le brancher dans la fente sur le côté si vous utilisez le emmc vous
+va avoir besoin d'installer cette alimentation en interne sur votre Pine Book Pro et il
+devrait démarrer automatiquement à partir de la carte SD si vous utilisez la MMC, assurez-vous
+qu'aucune carte SD n'est branchée avant la mise sous tension, sinon vous n'allez pas
+avoir accès, il va démarrer à partir d'essayer de démarrer à partir de SD, alors nous y allons
+J'essaye d'éclaircir l'écran, je ne peux pas tout à fait le faire, tu ne peux pas tout à fait voir mais je suis
+en regardant l'invite de connexion Manjaro fantastique, nous l'avons maintenant
+démarré et exécuté notre nouvelle distribution dans notre cas à partir d'un micro SD et si vous avez
+problème essayez d'utiliser une autre carte SD d'abord et avant tout ok juste au cas où le
+la carte a des problèmes parfois il y a des problèmes de compatibilité que je n'ai pas
+Je l'ai encore rencontré sur un Pine Book Pro mais cela pourrait arriver alors ayez une seconde
+carte à portée de main c'est la première chose que vous voulez exclure et aussi si vous
+avoir du mal comme je l'ai mentionné à entrer dans les ressources de la communauté pin 64 comme leur
+forum consultez leur wiki rejoindre leur serveur discord ou vous pouvez même sauter sur
+leur leur subreddit ainsi ils ont un officiel pour la liste complète des
+tous les endroits où vous pouvez obtenir de l'aide visitez leur site Web à l'adresse Pine 64 dot org
+maintenant il est temps de se diriger vers la salle de rédaction, voici Becca, voici ce qui
+à venir dans la salle de presse TV de catégorie 5 Google a corrigé certaines failles Android qui
+permettre l'exécution de code avec des taux système élevés
+les éditeurs poursuivent et tentent de fermer les archives Internet Elon Musk
+fait d'amener des humains sur Mars sa priorité absolue vous dira comment il veut
+faites-le Google Maps a lancé de nouvelles fonctionnalités pour aider spécifiquement les voyageurs
+pendant la pandémie du virus corona, lenovo prévoit de vendre ubuntu sur plus de thinkpad
+et pensez que les stations cet été et l'armée américaine pourraient perdre la force spatiale
+marque déposée à Netflix, la série Netflix du même nom reste
+les détails et le voyage de cette semaine au coin sont à venir c'est la catégorie 5 dot
+La salle de presse télévisée couvrant votre semaine arrête d'envoyer des SMS avec un léger biais Linux
+de la salle de rédaction, je suis Becky Ferguson, Google a publié des correctifs de sécurité
+pour des dizaines de vulnérabilités dans son système d'exploitation mobile Android, deux des
+ce qui pourrait permettre aux pirates d'exécuter à distance du code malveillant avec des
+droits système élevés dans certains cas, le logiciel malveillant pourrait s'exécuter avec des
+privilégie une possibilité qui augmente la gravité des bogues parce que le
+les bogues situés dans le composant du système Android pourraient permettre une
+transmission conçue pour exécuter du code arbitraire dans le contexte d'un
+processus privilégié dans tous les correctifs de publication de Google pour au moins 34 failles de sécurité
+bien que certaines des vulnérabilités n'étaient présentes que dans les appareils disponibles
+du fabricant Qualcomm aux vulnérabilités classées comme critiques dans
+Les bulletins de sécurité de Google de juin font partie des quatre failles du système localisées dans le
+Système Android les deux autres sont classés avec une sévérité de la critique élevée
+les vulnérabilités résident dans les versions d'Android 8 à la plus récente
+la publication 11 d'un avis du partage d'informations multi-états et
+Analysis Center a déclaré que ces vulnérabilités pourraient être exploitées
+via plusieurs méthodes telles que la navigation Web par e-mail et les MMS lors du traitement
+fichiers multimédias en fonction des privilèges associés à l'application et
+l'attaquant pourrait alors installer des programmes, voir modifier ou supprimer des données ou créer de nouvelles
+comptes avec des vulnérabilités de droits d'utilisateur complets avec une cote de gravité
+de haut a affecté le cadre multimédia Android, le cadre Android et le
+D'autres vulnérabilités du noyau Android étaient contenues dans des composants livrés dans
+appareils de Qualcomm à des failles critiques spécifiques à Qualcomm résidant à proximité
+les composants source la gravité des autres failles de Qualcomm a été jugée élevée n'importe qui
+avec un appareil Android doit vérifier les paramètres pour voir si des correctifs ou
+des mises à jour sont disponibles plusieurs des plus grands éditeurs du monde ont poursuivi le
+Internet Archive pour sa bibliothèque d'urgence de 1,3 million de livres revendiquant
+l'organisation est en piratage numérique délibéré sur un
+échelle industrielle la semaine dernière le groupe de livres hachette
+Les éditeurs HarperCollins John Wiley and Sons et le pingouin Random House ont poursuivi le
+organisation à but non lucratif mieux connue pour ses archives de pages Web Wayback Machine pour
+la violation du droit d'auteur selon eux est intentionnelle et systématique.
+comprendre que les éditeurs espèrent fermer l'organisation Internet Archive
+a invité la colère des éditeurs et des auteurs en mars quand il a décidé de
+lever les restrictions sur les copies numériques des livres de bibliothèque qu'elle a acquis et
+scanné toute personne qui s'inscrit sur le site peut en retirer 1,3 million
+livre la plainte déclare bien que les archives Internet revendiquent le chiffre réel
+est de 1,4 million, les archives Internet sont enregistrées en tant que bibliothèque mais ont affirmé
+une théorie non testée appelée contrôle des prêts numériques qui fait valoir les bibliothèques
+n'enfreignent pas le droit d'auteur lorsqu'ils font des copies numériques de livres qu'ils
+possèdent les éditeurs et les auteurs ont été mécontents de cette approche mais ont
+feu alors que les archives Internet ont limité le nombre de livres électroniques
+rendrait disponible à tout moment au nombre de livres physiques qu'il
+possédait cette restriction est sortie de la fenêtre en mars, mais lorsque le
+Internet Archive a décidé qu'en raison du coronavirus, il créerait tous ses ebooks
+disponible sans liste d'attente, la guilde de l'auteur a déclaré que l'organisation avait
+aucun droit sur ces livres et encore moins pour les céder sans discernement
+sans le consentement de l'éditeur ou de l'auteur et de l'Association of American
+l'éditeur est appelé le mouvement à la hauteur de l'hypocrisie et un jeu cynique pour
+porter atteinte au droit d'auteur le procès intenté à New York appelle les copies électroniques de
+les livres des archives Internet que les archives Internet intégrales ont fait
+Les bootlegs numériques qu'il va sur Internet Archive n'agissent pas uniquement à l'extérieur
+tout cadre juridique, il le fait de manière flagrante et frauduleuse et il
+continue malgré la notification réelle que ses actions constituent une contrefaçon
+réponse le fondateur des archives Internet, Brewster Kahle, a publié un bref blog
+poster dans elle note que l'organisation est
+déçu par le procès et prétend soutenir les auteurs et éditeurs
+lecteurs, dit-il, les éditeurs poursuivent les bibliothèques pour
+prêt de livres dans ce cas des versions numérisées protégées et tandis que les écoles et
+les bibliothèques sont fermées n'est dans l'intérêt de personne d'avoir terminé son premier
+lancement humain Le fondateur et PDG de SpaceX, Elon Musk, affirme que la société se concentre désormais sur
+développer son vaisseau spatial de nouvelle génération il y a quelques semaines
+nice la NASA et SpaceX ont lancé avec succès des astronautes du sol américain pour le
+première fois en près d'une décennie selon un e-mail interne envoyé à un bâton musqué
+a déclaré que le développement du vaisseau spatial est désormais l'objectif principal de la société
+aux côtés du retour en toute sécurité du dragon d'équipage de l'espace international
+le vaisseau de la station a été dévoilé en septembre dernier et est conçu pour transporter un
+équipage et cargaison vers la lune Mars ou n'importe où ailleurs dans le système solaire
+selon l'intention du milliardaire Musk est de faire le vol spatial
+des véhicules aussi réutilisables que des avions il y a quatre ans, le milliardaire a décrit son
+vision de construire une colonie sur Mars dans nos vies avec la première fusée
+propulsant les humains sur la planète rouge d'ici 2025 pendant de nombreuses années, l'entreprise a utilisé un
+image de la surface martienne en train d'être terraformée est devenue semblable à la terre dans son
+matériel promotionnel mais la NASA a passé une étude sponsorisée publiée dans
+2018 a rejeté ces plans comme étant impossibles avec la technologie d'aujourd'hui l'année dernière Musk
+a tweeté qu'il pensait qu'il était possible de créer une ville autonome sur Mars en
+2050 si nous commençons dans cinq ans selon SpaceX sont les plans détaillés les plus récents
+publié en 2016 il y a deux phases pour les premières transmissions humaines comme
+partie d'une programmation pour coloniser Mars la première aura lieu en 2022 lorsque
+au moins deux fusées de vaisseaux spatiaux atterriront sur Mars, elles seront sans pilote
+vaisseau spatial mais contenant des drones et des robots qui confirmeront
+il y a suffisamment de ressources en eau sur la planète et vérifiez s'il y a
+Risques géographiques La deuxième phase débutera en 2024 lorsqu'une autre paire de
+vaisseau spatial va atterrir sur Mars avec les premiers astronautes ces
+vaisseau spatial apportera du matériel et des fournitures ainsi qu'un certain nombre de
+usines de production pour la vie continue sur la planète ainsi que développer une base de
+opérations séparément la mission réussie pour la NASA a donné à l'entreprise un
+coup de pouce avant le nouveau programme d'atterrissage sur la lune de l'Agence spatiale américaine qui reviendra
+des humains sur la lune d'ici 2024 et jettent les bases d'une mission habitée sur Mars
+Le nouveau programme Artemis de la NASA porte le nom de la sœur mythologique d'Apollo
+la première mission lunaire homonyme et est destinée à faire voler la première femme au
+moon le programme Artemis sera utilisé comme un moyen de développer quelque chose appelé le
+passerelle lunaire essentiellement une version de l'ISS mais en orbite autour de la lune permettant
+il doit être utilisé comme tremplin pour les missions destinées à Mars nASA a
+a donné à SpaceX et à Blue Origin le signe de développer ses nouveaux atterrisseurs lunaires qui
+emmène la première femme et le prochain homme à la surface de la Lune grâce à Becca
+nous devons faire une petite pause lorsque nous revenons notre correspondant crypto
+Robert Koenig est ici pour partager le statut du marché de la crypto-monnaie et
+Becca a plus d'actualités technologiques [Musique]
+Bienvenue dans le coin cryptique et vous êtes les bienvenus dans les nouvelles hebdomadaires de la crypto et comme
+habituel, jetons un coup d'œil à la performance du marché au cours des sept derniers
+jours comme vous pouvez le voir, nous avons plusieurs projets qui ont gagné plus de 15% du gagnant
+est de la cire avec presque 60% d'anneau en boucle avec 50% et ainsi de suite la plupart de ces projets sont
+des projets vraiment sérieux et bons avec d'énormes équipes derrière eux, ce qui est génial
+nouvelles pour l'industrie du côté des perdants les deux seuls projets d'environ 15% l'un est
+hex l'autre est le commerce de couverture qui est ouais montre-nous simplement comment le marché est
+en cours d'exécution au moment où il est sur le prochain titre est le noyau de Bitcoin publié
+la version zéro point deux contient une fonctionnalité qu'il convient de mentionner
+qui est l'ASM AP et qui est une partie logicielle du logiciel qui
+empêche les attaques des États-nations et cette fonctionnalité permet de limiter
+le nombre de nœuds connectés à un système autonome spécifique afin
+auparavant, un pays immense pouvait attaquer la blockchain Bitcoin
+maintenant être évité, donc c'est aussi une bonne nouvelle. Le prochain est un petit projet qui
+tout le monde peut utiliser créer votre propre token donc avec ceci
+logiciel maintenant mettre un lien ci-dessous, vous pouvez créer votre propre jeton afin que vous
+entrez le nom du jeton le symbole du jeton le nombre de décimales que vous voulez avoir
+l'offre maximale sur laquelle vous cliquez créez un jeton et voilà, vous avez votre propre jeton
+créé, vous pouvez mettre ce jeton même sur un échange de liquidité de crédit, donc si
+vous avez une excellente idée, c'est un outil parfait, mais vous pouvez l'utiliser pour le mettre
+idée en pratique ou si vous voulez juste avoir un cadeau un cadeau d'anniversaire
+là vous avez une autre idée la suivante est pwc l'un des plus grands comptes
+entreprises, ils ont créé un rapport sur les fonds spéculatifs crypto et je viens de
+Je mettrai également un lien de ce rapport dans la description ci-dessous le
+les faits saillants ici sont de mon point de vue celui de ces hedge funds qu'ils
+analysé 97% détiennent Bitcoin Je me demande ce que sont les trois autres
+faire mais de toute façon 97% détiennent Bitcoin suivi d'un théorème XRP litecoin
+Bitcoin cash et aucune autre pièce mentionnée dans ce rapport qui vaut
+tout montant substantiel ces hedge funds opérant principalement aux États-Unis et au Royaume-Uni
+les deux grands centres financiers dans le monde et ils sont basés aux îles Caïmans
+Le Raj américain et britannique et les paradis fiscaux si bas que le marché est augmenté de 30%
+bien que ce soit encore très petit, il est passé de 2 milliards à 3 milliards
+cette année j'ai dit que c'est encore un petit marché le prochain est d Phi qui est mon
+sujet favori car ce D Phi en lui-même commencera, le suivant fonctionnera
+sur notre marché, j'en suis assez sûr si vous regardez ici ce club de prêt qui
+est un grand prêteur peer-to-peer ici aux États-Unis, ils ont créé 250 millions de dollars
+prêts au cours des cinq premières années, fabricant de puits qui est notre prêteur peer-to-peer
+a émis 2,4 milliards de prêts au cours des 5 dernières années si je regarde le marché D 5
+cap qui est comme lorsque la capitalisation boursière, mais seulement pour l'industrie td5, vous pouvez voir
+que nous utilisons actuellement une capitalisation boursière de 2,2 milliards de dollars
+Dow est bien sûr le numéro un mais tout est vert comme vous pouvez le voir ici
+donc et cela reflète aussi ce que je vois là-bas sur le marché, je suis allé voir un
+peu de formes défient la forme ou la finance forme le
+ils n'avaient aucune idée de ce qui se passe sur notre marché ils ne comprennent pas cela
+année où ils ne savent pas quel est le contrat intelligent ils ne comprennent pas défier
+ils le traduisent toujours à ce à quoi ils sont habitués avec un intermédiaire
+personne qui crée le marché mais ne comprend pas que cela peut être fait beaucoup
+beaucoup plus facile et de loin plus efficace que ce que nous avons vu dans le traditionnel
+système donc celui-ci ici, le marché du défi est à surveiller de toute façon
+c'est tout pour moi de cette semaine j'espère que tu vas bien et je te souhaite le meilleur et
+merci beaucoup d'avoir regardé et à la semaine prochaine j'espère merci merci
+toi Robert juste un rappel à ceux d'entre vous qui regardent à la maison nous ne sommes pas
+fournissant des conseils financiers ici sur l'émission, nous vous donnons simplement le
+faits sur le marché de la crypto-monnaie et vous laissant les décisions
+soyez conscient que la crypto-monnaie est un marché en constante évolution, c'est toujours
+volatile et nous vous suggérons d'investir uniquement ce que vous pouvez vous permettre de perdre maintenant
+retour à Becca Merci Ravi voyager pendant la pandémie peut être difficile
+pourquoi la dernière version de Google Maps pour Android et iOS a plusieurs fonctionnalités
+qui pourraient aider les voyageurs à se déplacer en toute sécurité maintenant lorsque vous recherchez des informations publiques
+Les cartes d'itinéraires en transports en commun afficheront les alertes liées à Cova 19 Google souligne que
+les données ne seront disponibles que là où elles pourront obtenir des informations auprès des agences de transport en commun locales
+et uniquement sur les voyages susceptibles d'être affectés par les restrictions du kovat 19, ces
+des alertes se déploient en Argentine Australie Belgique Brésil Colombie France
+Inde Mexique Pays-Bas Espagne Thaïlande Royaume-Uni et États-Unis et Google
+dit qu'ils vont bientôt venir dans plus de pays, Maps sera également
+afficher des alertes lorsque vous accédez à des installations médicales ou à des tests de kovat 19
+centres vous avertissant de vérifier l'éligibilité et les directives de l'établissement pour
+éviter d'être refusé ou de causer une pression supplémentaire sur la santé locale
+les alertes du système de soins pour les établissements médicaux sont lancées cette semaine
+Indonésie Israël, Philippines, Corée du Sud et États-Unis, signalent des tests
+les centres ne seront disponibles qu'aux États-Unis. Encore une fois, Google dit qu'il ne montrera que
+ces alertes lorsqu'il peut obtenir des données faisant autorité de l'état local et
+les gouvernements fédéraux ou à partir de leurs sites Web, Google indique que l'application sera également
+vous dire à quel point les bus de métro et les stations de transport en commun seront bondés et vous serez
+capable de voir quand une station de transport en commun a toujours été moins fréquentée afin que vous puissiez
+planifier à l'avance Google affirme que ces fonctionnalités sont alimentées par des
+les données des utilisateurs qui optent pour l'historique des positions Google qu'ils déploieront
+dans les prochaines semaines, l'application vous montrera enfin la conduite
+alertes vous informant des points de contrôle et des restrictions de kovat 19 le long de votre
+par exemple lors du franchissement des frontières nationales, cette fonction ne sera initialement
+être disponible au Canada Le Mexique et les États-Unis Lenovo ont annoncé qu'ils
+y compris Ubuntu comme option de système d'exploitation préchargée ou un numéro sur un certain nombre de leurs
+systèmes à partir de cet été Lenovo est déjà bien représenté au sein du
+Communauté matérielle Linux ayant certifié une partie de ses appareils pour
+différentes distributions au fil des ans et la société a récemment révélé des plans
+pour vendre des ordinateurs portables préchargés avec fedora et rendre plus de mises à jour de firmware disponibles
+via le service de micrologiciel du fournisseur Linux indépendant du fournisseur, mais maintenant cela va même
+plus loin avec l'amour Linux, Lenovo dit toute sa station de réflexion et ThinkPad
+Les ordinateurs portables de la série p seront disponibles à l'achat avec une plaie - LTS préchargé et
+pas seulement quelques configurations spécifiques cachées sur un stockage difficile à trouver
+page quelque part alors que les mêmes appareils peuvent être achetés avec Windows 10 ou Red Hat
+Enterprise Linux pré-installé, c'est toujours une victoire majeure pour Ubuntu et le
+la communauté Linux plus large, la société dit également qu'elle mettra en amont les pilotes de périphériques
+directement au noyau Linux pour aider à maintenir la stabilité et la compatibilité
+tout au long de la vie du poste de travail, bien sûr, il est assez facile d'acheter un
+pensez à Windows Pad et installez ubuntu manuellement mais
+le support officiel signifie que les acheteurs peuvent être certains que tout le matériel fonctionne avec
+Ubuntu prêt à l'emploi, pas de pilotes à rechercher ou de fichiers de configuration à modifier vraisemblablement
+cela signifie également des économies de coûts puisqu'une licence Windows n'a pas besoin d'être
+inclus Lenovo affirme qu'ubuntu LTS bénéficie d'un cycle de support prolongé de cinq ans
+offrant une confiance accrue des utilisateurs et une stabilité du système tout au long du déploiement
+canonique l'entreprise derrière une aubaine pour effectuer la certification et la régression
+des tests sur ces systèmes sur une base continue pour s'assurer qu'ils restent
+aussi stable que possible pour les utilisateurs finaux, la force spatiale américaine
+annoncé il y a deux ans et n'a encore engagé aucune opération militaire, mais
+la dernière branche des forces armées américaines risque déjà de perdre sa première bataille
+à la force spatiale de Netflix, le service de streaming a créé sa nouvelle série comique
+force spatiale le 29 mai, le nom de l'émission n'a aucun rapport avec le plus récent
+organisation de l'armée américaine qui a dévoilé son drapeau officiel seulement deux
+semaines plus tôt à cause du surnom commun dans l'espace des États-Unis
+la première bataille des forces pourrait être une guerre de marque menée devant les tribunaux plutôt que dans
+les avocats de l'espace pour l'armée américaine ont peu fait pour sécuriser l'espace
+force le nom en tant que marque déposée Netflix a cependant été beaucoup plus
+agressif et a déjà verrouillé les droits sur le nom dans plusieurs
+pays, malgré le partage d'un nom, les deux entités ont une grande marge de manœuvre
+sans évoquer beaucoup de confusion, la comédie en streaming est peu susceptible de faire
+les téléspectateurs pensent regarder une série sur une branche réelle des États-Unis
+militaire, la force spatiale américaine n'a pas encore décollé
+les deux litoris sont à la fois littéralement et figuré
+alors que l'effort de Netflix a été le premier à se concrétiser la force spatiale américaine
+a été annoncé pour la première fois par le président Donald Trump en mars 2018, la branche militaire
+a été officiellement créée en tant qu'organisation officielle en décembre dernier Netflix
+pendant ce temps, a lancé une série de 10 épisodes en janvier
+20:19 créé par Greg Daniel Daniel et Steve Carrell espace pour les stars Carell
+john malkovich ben schwartz diana silvers et tani Newsome la saison un est
+actuellement disponible sur Netflix un grand merci à Roy W Nash dans notre
+communauté de téléspectateurs pour nous avoir soumis des histoires cette semaine merci pour
+en regardant la salle de presse de la catégorie 5, n'oubliez pas d'aimer et de vous abonner à
+toutes vos actualités technologiques avec un léger biais Linux et si vous appréciez ce que nous faisons
+devenir mécène sur patreon.com slash catégorie 5 de la catégorie 5 TV
+newsroom Je suis Becca Ferguson
+maintenant, si vous ne nous avez jamais rejoint pour une pause-café communautaire de catégorie 5, vous
+en savoir plus à ce sujet sur la télévision à points de catégorie cinq, faites défiler vers le bas sur la page d'accueil
+et vous y verrez la pause-café de la communauté ainsi que notre horaire lorsque
+nous allons faire le prochain c'est un événement hebdomadaire que nous organisons en zoom '
+et c'est une opportunité pour notre communauté de se rassembler et même
+bien que nous vivions tous ce que nous vivons dans notre monde aujourd'hui, nous
+a choisi de dire plutôt que de parler de ces choses, les choses
+qui nous abattent en ce moment, regardons-le et disons que nous sommes tous
+coincé dans cette situation qu'est-ce que je fais qui m'excite
+qu'est-ce que j'expérimente technologiquement qui est vraiment
+intéressant pour moi et m'aide à occuper du temps si je suis coincé à la maison
+maintenant ou peu importe le cas, le sujet a été abordé à propos de github parce que
+nous parlons de programmation et Peter est là presque à chaque fois pour un
+pause-café de la communauté et Peter demandait comment bien utiliser github
+Ce n'est pas vraiment quelque chose que nous pouvons montrer ou parler, vous savez vous guider
+pendant la pause café, mais il est apparu que bon, ce serait vraiment un
+bon sujet à discuter sur la télévision technologique de catégorie cinq et la raison pour laquelle
+est apparu au départ parce que lorsque Microsoft a acheté github, ils l'ont gardé
+en quelque sorte de statu quo et vous deviez payer pour certaines fonctionnalités mais
+puis tout à coup très récemment dit Microsoft et tous ceux qui ont payé pour des fonctionnalités non
+tous, mais beaucoup d'entre eux ont payé pour des fonctionnalités que vous aviez l'habitude de payer
+car sont maintenant gratuits, ils prennent le service et ils sont fondamentalement
+offrant leur service premium absolument gratuit sur github com alors qu'est-ce
+github bien github est un peu comme un fournisseur de services cloud pour vous
+c'est pour les développeurs cela nous aide à pouvoir gérer nos projets afin que vous
+peut remonter dans le temps essentiellement avec du code et il est vraiment utile de pouvoir
+voir ces commits et voir comment les changements ont impacté votre projet c'est aussi un
+excellent mécanisme de stockage pour votre code car vous pouvez le partager avec
+d'autres personnes si vous voulez maintenant bien sûr que Microsoft le rend gratuit
+vous pouvez maintenant avoir des référentiels privés gratuits et vous pouvez configurer
+autant d'équipes que vous le souhaitez si vous souhaitez collaborer avec d'autres programmeurs mais
+essentiellement ce qu'il fait pour moi, c'est qu'il me permet de partager mon code en ligne dans
+de manière à ce que d'autres personnes puissent l'utiliser en open source, ils peuvent le compiler ou l'utiliser
+ou exécutez-le sur leurs propres ordinateurs, puis s'ils décident, je préfère
+cela fonctionne de cette façon ou peut-être voici un bug et je peux réparer qu'ils peuvent faire ce qui
+appelé une pull request donc fondamentalement ils clonent mon référentiel github mon logiciel
+code, ils le réparent sur leur ordinateur, puis ils font une pull request qui pousse
+il en arrière pendant qu'ils le repoussent à leur fourche, puis cela crée une demande de traction
+pour moi afin que je vois que Hey Joe va souffler sur leur correction de ce bug avec mon
+logiciel Je peux cliquer sur un bouton et il importera ce correctif dans mon logiciel afin
+il y a beaucoup à faire et c'est vraiment très puissant ça peut être
+déroutant, surtout lorsque vous commencez à les écraser et à les fusionner
+genre de choses que nous n'allons pas aborder aujourd'hui mais ce que je veux
+vous montrer comment les connaissances les plus élémentaires sur son fonctionnement vont
+vous permettent d'utiliser github de manière efficace, considérez-le comme celui où vous
+mettre votre code là-bas en tant que logiciel open source et il n'a pas à
+être vous pouvez l'avoir privé si vous voulez mais dans mon cas c'est ce que je fais je
+veulent que les gens collaborent avec moi de temps en temps, peut-être qu'ils publieront des problèmes
+s'ils trouvent un bogue et que je suis toujours la personne qui doit le corriger mais à
+au moins ma communauté entre dans mon référentiel de logiciels et dit que c'est un
+problème et vous devez le résoudre correctement, donc github.com est l'endroit où vous allez
+est inscrivez-vous pour votre compte gratuit tout ce que vous avez à faire est de cliquer sur le lien et
+cliquez sur Inscrivez-vous maintenant J'ai déjà un compte donc je vais me connecter en tant que moi-même
+et connectez-vous pour que vous puissiez voir ici que si je vais dans mes référentiels, si je saute
+à la maison ici et va le laisser charger ici laisse le charger bien je vais juste y aller
+directement à la télévision cat 5, j'héberge tous mes logiciels, alors vous y allez
+github.com slash cat 5 TV vous pouvez voir comment cela fonctionne afin que vous puissiez voir que j'ai
+a une tonne de référentiels de logiciels et ce sont tous des projets différents
+différentes choses que j'ai faites ou que je continue de faire et il y a des pages
+et les pages et les pages de celui-ci, une fois que vous avez votre compte github, vous pouvez vous connecter
+à ce que vous voyez ici, qui est ma liste de référentiels, mais lorsque vous
+inscrivez-vous, vous n'aurez pas tout ce dont vous avez besoin pour créer votre premier
+référentiel donc la façon dont je vais le faire comprend maintenant que github n'est pas
+requis oubliez ok et git n'est pas la même chose que github github est en ligne
+service et pensez-y comme le stockage en nuage oubliez ok ce n'est pas la même chose
+un stockage en ligne pour cet outil de gestion de packages open source ou un projet
+outil de gestion, donc ici sur github, ils ont rendu vraiment très facile
+dites simplement nouveau référentiel donc je suis allé dans mes référentiels et j'ai cliqué sur
+nouveau et ensuite je vais lui donner un nom, je vais appeler celui-ci mon soulignement
+test et une description facultative ceci est un test pour l'émission si vous voulez
+que ce soit public ou privé, puis initialisez-le avec un readme c'est toujours
+mieux vaut le faire, c'est pour que les gens puissent y accéder immédiatement
+y compris vous-même vous voulez ajouter une licence voulez-vous ajouter un git ignore
+Je vais laisser ces deux vides, vous découvrirez ce que cela signifie dans le
+futur et créez votre référentiel donc maintenant j'en ai un appelé mon test de soulignement mais
+il n'y a rien là-bas, j'ai fini avec le navigateur alors maintenant quoi
+Je vais faire est je vais faire monter mon terminal et dans mon terminal je vais
+tapez get ok afin que vous puissiez voir que je l'ai déjà installé si vous ne l'avez pas
+encore installé donc je suis sous Linux je suis sur Debian Linux ici vous pouvez taper apt
+installez git c'est ce que vous allez taper
+Je ne suis pas route sudo su log non est rock ok apt installer pourtant ça va me dire
+que j'ai déjà le courant oh il y a un non non je l'ai déjà
+il y a d'autres mises à jour pour moi, mais get est déjà la dernière version, donc
+si vous ne l'avez pas, vous devez l'installer si vous êtes sur une heure PM
+système, il sera encore jeune et vous pouvez également le trouver dans votre interface graphique
+gestionnaire de référentiel votre gestionnaire de paquets ou tout ce que vous utilisez comme san synaptic
+gestionnaire de paquets par exemple, une fois que vous avez installé, créez un dossier
+probablement dans votre dossier personnel et nous appellerons ces dépôts juste pour que je
+avoir un endroit où je sais toujours que mon code est correct, donc ça va être un
+copie locale de mon dépôt git alors maintenant je vais taper git clone et nous allons
+copier cette URL github.com slash cat 5 TV slash mon test de soulignement afin que je puisse copier
+que juste avec ctrl C vous allez vous habituer à simplement taper c'est votre utilisateur
+nom slash votre référentiel et maintenant si je regarde mon système de fichiers donc il est cloné
+obtenir le clone puis le nom du ou l'URL du référentiel alors maintenant si je vais
+dans mon dossier personnel, puis dans les référentiels, notez qu'il appartient à root
+parce que je vois un mec super utilisateur pour poursuivre alors il y a maintenant un dossier appelé mon test et
+dans mon test, il y a un fichier appelé readme MD donc dans ce dossier, je suis
+va entrer dans mon test et je veux créer un nouveau fichier, je vais l'appeler
+nano test dot Sh et nous allons créer un fichier SH rapide à exécuter
+un script bash et je vais taper echo salut
+comment est-ce oh je devrais vraiment m'en tenir à la norme bonjour le monde comment ça va
+donc je l'ai écrit et je l'ai fermé donc maintenant vous voyez qu'il y a un fichier appelé
+testez SH maintenant lorsque je transfère un fichier vers github, les autorisations vont
+être inclus avec cette poussée, donc si je fais un test de barre oblique SH, vous remarquez qu'il dit
+permission refusée j'ai besoin de faire un exécutif exécutif tout chmod plus x
+test dot s H donc maintenant si je tape test dot s HS s bonjour le monde donc j'ai maintenant mon tout
+premier morceau de script prêt à monter sur github, il fait partie de mon référentiel sur mon
+ordinateur local mais ce n'est pas encore dans github donc si vous regardez github je suis
+va se rafraîchir juste pour le prouver, vous voyez votre liste de fichiers ici et ils sont toujours
+juste le readme ok alors maintenant de retour dans ma fenêtre de terminal je vais à nouveau l'utiliser
+git command Je vais aller chercher une étoile dans le dossier des référentiels
+en disant trouver tous les fichiers qui ont des modifications et les ajouter okay get commit -
+Je suis et puis entre guillemets, donne un nom à tes commits alors je vais
+dites mon premier script et ce ne sont que de courtes descriptions et appuyez sur Entrée
+et maintenant ça dit hey tu dois nous dire qui tu es
+parce que vous n'avez jamais exécuté git sur cet ordinateur auparavant, vous devez donc exécuter
+ces deux commandes sont assez simples get config - - global
+vous n'avez qu'à le faire une fois, ne vous inquiétez pas de l'e-mail de l'utilisateur et si vous avez
+difficulté à taper cela, copiez-le simplement, puis entre guillemets, je vais mettre
+Robby à la télévision de catégorie cinq et c'est juste de lui dire mon adresse e-mail alors
+Je vais utiliser le nom du point d'utilisateur Je ne sais pas si vous pouvez l'entendre mais c'est
+en fait une très mauvaise tempête à l'extérieur de notre studio aujourd'hui, donc les lumières sont
+scintillant quelques fois et mais je pense que nous allons passer à travers
+de toute façon, tout va bien, supprimez ça et changez mon nom en Robbie
+Ferguson entre ok, donc je n'ai qu'à le faire une fois, alors à la prochaine fois
+Je lance ce git commit - est-ce que je l'ajoute simplement, alors je l'ai ajouté et il
+voit qu'un fichier a changé il y a deux insertions et tester SH est nouveau donc
+ça va créer ça alors maintenant la dernière commande que je dois entrer est get push
+origine et je vais spécifier le maître qui est le maître de la branche donc
+maître d'origine et maintenant il va me demander mon nom d'utilisateur et mon mot de passe que je
+entré lors de la création de mon compte, donc cat5 TV est mon nom d'utilisateur et mon mot de passe I
+utilisez LastPass et générez de nouveaux mots de passe tout le temps et ils sont massifs et
+fou donc je copie le mot de passe et puis je le colle et voilà c'est parti
+télécharger ces données dans mon référentiel et c'est fait ainsi f5 pour actualiser et vous
+devrait voir le test SH fait maintenant partie de mon référentiel github et il est là et il
+montre que c'est exécutif bonjour monde alors maintenant de retour ici alors faisons juste semblant
+J'ai fait des changements ailleurs donc sur un autre ordinateur et je vais le faire
+ceci via le navigateur juste pour vous montrer, donc sur ce système, je vais faire écho
+bonjour encore ok et ensuite je vais enregistrer ces changements, je ne vais pas lui donner un
+nom ou quelque chose comme cette description, je vais juste confirmer donc maintenant le script
+ressemble à ça alors voyez comment je change cela dans le navigateur, vous pouvez le faire
+de n'importe où donc maintenant si je regarde mon fichier localement sur mon ordinateur dans le
+référentiel là nous allons, il dit juste bonjour tout le monde d'accord alors je vais y aller
+obtenir à nouveau tirer je fais tout cela dans le dossier de test mon soulignement donc git
+pull recherchera ensuite les modifications apportées ailleurs
+et tirez-les vers mon ordinateur pour qu'il synchronise toujours ces changements
+donc maintenant si j'ouvre Nano et ouvre ce fichier, vous pouvez voir ce nouveau
+bonjour fait maintenant partie de ça alors je vais te montrer trois fois bonjour écho
+et je vais sauver ça et maintenant je vais faire exactement la même chose mais je
+va vous montrer en quoi c'est différent maintenant que j'ai déjà entré mon nom et mon
+adresse e-mail encore ajouter une étoile get commit - am final update get push origin master
+cap 5 TV est mon nom d'utilisateur et mon mot de passe est une chaîne d'environ 64 caractères
+choisi au hasard et je vais coller ça dedans et nous y voilà donc c'est tout
+il y a - maintenant pousser mes modifications localement sur le serveur github afin que
+le partage à nouveau avec tout le monde ou avec mes autres systèmes lorsque je fais un get
+tirez donc en faisant ça, je peux me faire clunk pardonnez-moi git clone quelque chose et ça
+ne doit pas être à moi, cela peut être le dépôt github de quelqu'un d'autre tant
+comme ce public, mais je peux ensuite y apporter des modifications sur ma machine locale et
+alors je peux faire un push maintenant vous devez posséder le référentiel afin de faire un push donc
+la façon d'apporter des modifications au référentiel de quelqu'un d'autre est de le bifurquer ainsi quand
+vous allez dans le référentiel vous cliquez sur le bouton appelé fork et c'est fondamentalement
+en fait une copie dans votre propre compte que vous pouvez modifier, puis
+c'est là que vous pouvez faire des pull requests mais ce sont les bases pour vous
+commencé qui va vous permettre de créer des référentiels télécharger vos fichiers
+télécharger votre code être capable de le manipuler à partir de n'importe quel système afin de pouvoir le tester sur
+un Raspberry Pi sur votre machine Windows sur votre bureau Linux sur n'importe quoi et
+puis transmettez toutes ces modifications au serveur afin qu'elles puissent être téléchargées ou
+tiré sur tous vos systèmes, c'est tout ce qu'il y a à faire, nous sommes sur Twitter à
+télévision de catégorie cinq Je suis personnellement sur Twitter à robbie Ferguson merci beaucoup
+beaucoup pour me rejoindre cette semaine et j'ai hâte de vous revoir
+la prochaine fois et allez sur notre site Web de catégorie 5 TV pour toutes les dernières et je vous verrai
+bientôt au revoir

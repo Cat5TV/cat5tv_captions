@@ -1,0 +1,2760 @@
+1
+00:00:00,170 --> 00:00:04,740
+Bienvenue à la télévision technologique de catégorie cinq aujourd'hui, je vais vous montrer comment
+
+2
+00:00:04,740 --> 00:00:10,590
+installez un système d'exploitation sur une carte micro SD que vous allez pouvoir démarrer
+
+3
+00:00:10,590 --> 00:00:16,410
+à partir d'un Pine Book Pro au-delà de cela, je vais vous montrer comment utiliser github dans
+
+4
+00:00:16,410 --> 00:00:21,000
+afin de gérer vos référentiels comment extraire les données comment apporter des modifications
+
+5
+00:00:21,000 --> 00:00:26,510
+localement, puis repoussez-les vers le serveur.
+
+6
+00:00:44,210 --> 00:00:50,980
+[La musique]
+
+7
+00:00:52,480 --> 00:00:56,420
+nos enregistrements en direct ne sont confiés qu'aux disques SSD de Kingston
+
+8
+00:00:56,420 --> 00:01:00,350
+la technologie ravive votre ordinateur en améliorant les performances et la fiabilité
+
+9
+00:01:00,350 --> 00:01:05,720
+disques durs traditionnels avec SSD Kingston de catégorie 5 diffusés en direct avec
+
+10
+00:01:05,720 --> 00:01:10,759
+streamer agile et Telestream Wirecast se connectent via roku Kodi Plex
+
+11
+00:01:10,759 --> 00:01:15,259
+ou d'autres lecteurs vidéo HLS pour les heures de spectacle locales, visitez notre site Web catégorie 5
+
+12
+00:01:15,259 --> 00:01:22,940
+dot TV maintenant cette émission vous est présentée par BP 9 Scott Barclay Ron Morissette
+
+13
+00:01:22,940 --> 00:01:29,539
+Jerry Kowalski Jonathon Garbi Jen's Nissen Bollock maintenant ski et Bill Marshal
+
+14
+00:01:29,539 --> 00:01:35,600
+ainsi que tous ceux qui ont décidé de soutenir notre récente campagne Kickstarter ou ceux
+
+15
+00:01:35,600 --> 00:01:39,440
+d'entre vous qui ont fait un don pour assurer la catégorie 5 entre dans ce nouveau studio
+
+16
+00:01:39,440 --> 00:01:45,440
+space ou nos clients sur patreon.com slash catégorie 5 Je veux dire que je ne pouvais pas faire
+
+17
+00:01:45,440 --> 00:01:49,819
+ce spectacle sans votre soutien, je n'aurais pas pu survivre à ce déménagement sans
+
+18
+00:01:49,819 --> 00:01:54,140
+votre soutien en particulier pendant une pandémie et je veux juste dire un énorme
+
+19
+00:01:54,140 --> 00:02:00,050
+merci à tous ceux qui ont soutenu la technologie de la télévision de catégorie 5 avant de sauter
+
+20
+00:02:00,050 --> 00:02:04,700
+dans l'émission cette semaine, je tiens à vous rappeler s'il vous plaît abonnez-vous à nous sur youtube
+
+21
+00:02:04,700 --> 00:02:09,740
+cliquez sur cette cloche pour recevoir des notifications chaque fois que nous sommes en direct ou lorsque nous publions
+
+22
+00:02:09,740 --> 00:02:15,140
+nouveau contenu passionnant J'ai mentionné il y a quelques semaines que nous voulons atteindre 25000
+
+23
+00:02:15,140 --> 00:02:20,480
+abonnés et jusqu'à présent ce mois-ci, 350 d'entre vous ont souscrit
+
+24
+00:02:20,480 --> 00:02:28,610
+porte notre total à 24000 756 abonnés, nous pouvons le faire si vous n'êtes pas
+
+25
+00:02:28,610 --> 00:02:35,030
+déjà abonné à l'émission de technologie linux, calmez-vous et faites-le et une fois que nous avons frappé
+
+26
+00:02:35,030 --> 00:02:41,000
+que 25000 mark je suis honoré de faire un numéro de danse de fantaisie pour vous
+
+27
+00:02:41,000 --> 00:02:47,030
+désolé pour cela il y a plusieurs semaines Rocko du projecteur Linux interviewé
+
+28
+00:02:47,030 --> 00:02:52,220
+moi et cette interview a été publiée ce matin, ça a été vraiment chouette pour moi de
+
+29
+00:02:52,220 --> 00:02:57,650
+voir le nombre de téléspectateurs qui, je suppose, les téléspectateurs de Rocco's Show Linux
+
+30
+00:02:57,650 --> 00:03:02,390
+projecteurs qui ont déclaré avoir regardé la catégorie cinq
+
+31
+00:03:02,390 --> 00:03:08,090
+technologie TV depuis les tout premiers jours Kevin y courants par exemple dit que
+
+32
+00:03:08,090 --> 00:03:13,910
+il regarde l'émission depuis lors, Peter 14 est même antérieur à l'émission ayant
+
+33
+00:03:13,910 --> 00:03:19,520
+regardé certaines de mes toutes premières vidéos YouTube, a-t-il dit sur Twitter, je suis entré
+
+34
+00:03:19,520 --> 00:03:26,870
+Linux grâce à Robbie en 2004 avec Lindos quand son émission était en direct de son
+
+35
+00:03:26,870 --> 00:03:31,430
+salon une personne formidable dans l'âme qui a aidé tant de personnes dans le monde
+
+36
+00:03:31,430 --> 00:03:36,590
+merci beaucoup Jill Bryant rennaker dit et je devrais
+
+37
+00:03:36,590 --> 00:03:41,930
+mentionner qu'elle est en fait l'un des co-hôtes sur Linux gamecast LW DW elle
+
+38
+00:03:41,930 --> 00:03:47,060
+dit que je regarde l'excellent contenu Linux de Robbie depuis des années et je suis tellement
+
+39
+00:03:47,060 --> 00:03:51,260
+impatient de regarder le projecteur Linux, dit Tony Hughes sur Twitter
+
+40
+00:03:51,260 --> 00:03:56,959
+vraiment heureux de ce Robbie a été une inspiration et une aide fantastique pour moi en tant que
+
+41
+00:03:56,959 --> 00:04:05,840
+un noob Cheers comme Nick le dit alors que Nix dit une excellente interview J'ai suivi Robbie's
+
+42
+00:04:05,840 --> 00:04:10,790
+cat5 TV depuis plusieurs années et c'est toujours bien merci beaucoup et Joe
+
+43
+00:04:10,790 --> 00:04:15,709
+Panico dit que j'aime vraiment ce que Robbie a fait avec ses plates-formes technologiques parce que
+
+44
+00:04:15,709 --> 00:04:20,120
+de ces interviews fabuleuses, nous avons un aperçu de la vie des personnes que nous
+
+45
+00:04:20,120 --> 00:04:25,070
+ont appris à savoir qu'à un certain niveau, l'entretien complet dure environ une heure et demie
+
+46
+00:04:25,070 --> 00:04:29,960
+longtemps, ne la regardez pas maintenant, vous pouvez d'abord regarder cette émission, puis nous nous connecterons
+
+47
+00:04:29,960 --> 00:04:35,210
+l'interview mais je vais vous montrer un clip dans un instant donc au cours de la
+
+48
+00:04:35,210 --> 00:04:39,110
+entretien d'une heure et demie nous abordons une tonne de sujets à la fois personnels et derrière
+
+49
+00:04:39,110 --> 00:04:44,600
+les scènes ici à la télévision de catégorie cinq tout de l'open source mon début
+
+50
+00:04:44,600 --> 00:04:49,520
+jours sous Linux mon tout premier ordinateur et la valeur de
+
+51
+00:04:49,520 --> 00:04:55,420
+acheter de la margarine sans nom, tout aura un sens un peu plus tard
+
+52
+00:04:55,420 --> 00:05:00,460
+voici ce court échantillon de l'interview pour vous
+
+53
+00:05:10,520 --> 00:05:16,069
+bienvenue sous les projecteurs de Linux ce spectacle est dédié à montrer le meilleur
+
+54
+00:05:16,069 --> 00:05:21,830
+chose à propos de Linux notre communauté cette communauté est composée de développeurs
+
+55
+00:05:21,830 --> 00:05:27,229
+mainteneur de la distribution x youtubers et utilisateurs quotidiens, chacun joue un rôle vital
+
+56
+00:05:27,229 --> 00:05:31,819
+rôle dans notre communauté et le but est d'avoir une discussion avec chaque individu
+
+57
+00:05:31,819 --> 00:05:38,750
+à propos de leur voyage dans Linux et au-delà, alors rejoignez-moi maintenant alors que nous
+
+58
+00:05:38,750 --> 00:05:41,169
+projecteur sur
+
+59
+00:05:51,470 --> 00:05:58,290
+bonjour je suis votre hôte Rocco et avec moi aujourd'hui notre invité spécial est Robbie
+
+60
+00:05:58,290 --> 00:06:03,720
+Ferguson hey Robbie comment vas-tu hey va bien je vais bien
+
+61
+00:06:03,720 --> 00:06:07,050
+mec ces jours-ci, quand je dis que je vais bien, tu dois obtenir les citations aériennes
+
+62
+00:06:07,050 --> 00:06:12,030
+Ouais en train de bien t'accrocher, tu fais de ton mieux
+
+63
+00:06:12,030 --> 00:06:17,580
+c'est ça oui bien je pense que c'est ce que nous faisons tous en ce moment donc oui monsieur vous
+
+64
+00:06:17,580 --> 00:06:23,490
+sachez que vous avez des émissions comme la télévision technologique et la salle de presse, elles couvrent tout
+
+65
+00:06:23,490 --> 00:06:28,500
+technologie non seulement les gens de Linux vous connaîtront de cela, mais si vous deviez
+
+66
+00:06:28,500 --> 00:06:33,060
+rencontrer quelqu'un qui ne vous connaissait pas, que lui diriez-vous s'il disait qui est
+
+67
+00:06:33,060 --> 00:06:41,729
+Robbie Ferguson personnellement Qui suis-je je suppose que vous savez que je suis un gars de la famille, je suis un je
+
+68
+00:06:41,729 --> 00:06:49,080
+avoir une femme et trois enfants à la maison et nous passons un bon moment ensemble et j'adore
+
+69
+00:06:49,080 --> 00:06:54,360
+passer du temps avec eux, nous aimons comme nous faisons nos randonnées dans la nature aussi souvent que possible
+
+70
+00:06:54,360 --> 00:06:58,320
+nous arrivons enfin à ce point maintenant où nous pouvons faire que le temps est
+
+71
+00:06:58,320 --> 00:07:03,570
+assez sympa ici en Ontario au Canada que nous faisons cela chaque week-end donc je
+
+72
+00:07:03,570 --> 00:07:10,590
+comme le temps en famille j'aime faire des choses avec mes enfants et bien aider
+
+73
+00:07:10,590 --> 00:07:16,169
+les impliquer dans mes passe-temps pour que ce soit comme si mon fils faisait
+
+74
+00:07:16,169 --> 00:07:22,169
+ou tech avec moi connectant gpio sur un Raspberry Pi à un circuit que je suis
+
+75
+00:07:22,169 --> 00:07:24,240
+sur le point d'exploser tu sais ce genre de trucs
+
+76
+00:07:24,240 --> 00:07:30,860
+alors nous essayons de faire les choses ensemble en leur apprenant à bien apprendre l'apprentissage et
+
+77
+00:07:30,860 --> 00:07:36,150
+les emmener pour le trajet pour que vous le sachiez parce que je suis toujours en quête de
+
+78
+00:07:36,150 --> 00:07:41,340
+apprends que je ne suis jamais je ne suis jamais content comme je ne suis jamais au point où je suis
+
+79
+00:07:41,340 --> 00:07:46,229
+fait je sais tout ce qu'il y a à savoir je n'ai pas besoin d'en savoir plus je suis pris si je reçois
+
+80
+00:07:46,229 --> 00:07:49,950
+au point où j'en sais assez sur un sujet sur lequel je passe
+
+81
+00:07:49,950 --> 00:07:56,310
+autre chose, alors j'aimerais les amener avec moi, allons-y
+
+82
+00:07:56,310 --> 00:08:03,030
+histoire et revenez au début de vos ordinateurs quel était le
+
+83
+00:08:03,030 --> 00:08:08,490
+premier ordinateur que vous avez utilisé le ce que j'attribuerais ce que je dirais est le
+
+84
+00:08:08,490 --> 00:08:12,990
+le premier ordinateur sur lequel je me suis assis et enduit aurait été le vic-20 et
+
+85
+00:08:12,990 --> 00:08:17,940
+J'ai utilisé ce truc comme un fou comme si j'étais arrivé au point où j'écrivais
+
+86
+00:08:17,940 --> 00:08:24,150
+code à vous savez cinq six ans qui d'ailleurs vous savez que je toujours
+
+87
+00:08:24,150 --> 00:08:28,830
+J'ai pensé que c'était fou comme le codage à six ans et puis mes fils l'ont fait
+
+88
+00:08:28,830 --> 00:08:35,459
+la même chose et tu sais que mon fils de neuf ans maintenant notre plus jeune est en train de coder en roblox
+
+89
+00:08:35,459 --> 00:08:42,030
+Et c'est et c'est tellement ça me ramène à ces jours et j'aime vraiment ça
+
+90
+00:08:42,030 --> 00:08:45,930
+temps où les ordinateurs nous avons compris comment ils fonctionnaient nous avons compris
+
+91
+00:08:45,930 --> 00:08:49,329
+fonctionnement d'eux afin de démonter le Commodore vic-20
+
+92
+00:08:49,329 --> 00:08:53,829
+était quelque chose que je connaissais mais le premier véritable ordinateur comme le PC
+
+93
+00:08:53,829 --> 00:09:01,360
+aurait été un XT aussi drôle que ce grand vieux système IBM qui aime
+
+94
+00:09:01,360 --> 00:09:08,049
+est une ancre de bateau comme nous disons que je n'avais pas le droit d'avoir un ordinateur donc c'était
+
+95
+00:09:08,049 --> 00:09:12,850
+sous des couvertures cachées dans mon placard comme ça c'est le genre de nerd que je suis
+
+96
+00:09:12,850 --> 00:09:21,730
+enfant, j'ai caché un ordinateur XT dans mon placard pour que mon père ne le trouve pas
+
+97
+00:09:21,730 --> 00:09:26,920
+et me causer des ennuis je ne peux même pas imaginer ce que j'ai fait avec le moniteur
+
+98
+00:09:26,920 --> 00:09:31,209
+Je ne sais pas comment j'ai compris comment cacher un moniteur CRT le trouver
+
+99
+00:09:31,209 --> 00:09:36,220
+Je ne peux pas imaginer qu'il ne l'a pas fait mais il ne l'a jamais mentionné alors je pense qu'il doit probablement
+
+100
+00:09:36,220 --> 00:09:41,170
+J'ai su mais mon esprit d'enfant stupide naïf pense que oh ce père ne sait pas et
+
+101
+00:09:41,170 --> 00:09:48,699
+c'est comme cet énorme ordinateur maintenant combien de temps faut-il avant de passer à
+
+102
+00:09:48,699 --> 00:09:53,739
+Linux bien alors ces fenêtres étaient un commutateur complet ouais un commutateur complet
+
+103
+00:09:53,739 --> 00:10:00,329
+à partir de là ouais j'utilise une première version d'Adobe Photoshop dans Wine
+
+104
+00:10:00,329 --> 00:10:05,350
+parce que l'ancienne version fonctionnait bien sous des gémissements tel et tel
+
+105
+00:10:05,350 --> 00:10:10,149
+cs2 est sorti, il ne fonctionnait plus tout à fait ce qui était vraiment bien alors
+
+106
+00:10:10,149 --> 00:10:16,269
+car à l'époque GIMP était vraiment mauvais mais ils ont depuis corrigé cela avec 2.10
+
+107
+00:10:16,269 --> 00:10:23,679
+donc comme la mise à l'échelle est beaucoup mieux maintenant mais ouais Lindos était à peu près à l'époque où je
+
+108
+00:10:23,679 --> 00:10:28,059
+J'ai changé de nom, je veux dire, j'ai dit que je ne dis pas que c'était un classique
+
+109
+00:10:28,059 --> 00:10:32,769
+distro ils ont été poursuivis par Microsoft pour le nom qu'ils ont dû changer pour
+
+110
+00:10:32,769 --> 00:10:37,720
+Le feu de Linds qui n'avait aucun sens, puis eux et en Michael Robertson typique
+
+111
+00:10:37,720 --> 00:10:42,519
+style, il a juste viré tout le monde et vendu l'entreprise et tous les droits de création
+
+112
+00:10:42,519 --> 00:10:48,279
+et tout et maintenant c'est la propriété de quelqu'un d'autre mais ouais mais ça m'a
+
+113
+00:10:48,279 --> 00:10:54,699
+aimer Debian Debian m'a fait aimer Ubuntu qui et qui m'a fait aimer Mark
+
+114
+00:10:54,699 --> 00:11:00,540
+Shuttleworth et l'ensemble de l'écosystème de
+
+115
+00:11:00,540 --> 00:11:06,579
+sachant que vous pouvez gérer une entreprise basée sur le support plutôt que sur le produit I
+
+116
+00:11:06,579 --> 00:11:10,360
+pense que c'était une sorte de révélation pour moi aussi
+
+117
+00:11:10,360 --> 00:11:15,880
+Donc c'est comme si tout le monde bougeait avec les vagues et
+
+118
+00:11:15,880 --> 00:11:22,089
+trouver où vous en êtes en ce momentJe lance Linux Mint 19 comme si j'étais vieux
+
+119
+00:11:22,089 --> 00:11:26,889
+école donc j'aime bien l'interface mattei j'allais te demander alors pourquoi tu
+
+120
+00:11:26,889 --> 00:11:33,100
+laissez-les essayé tous, alors pourquoi êtes-vous resté avec Linux Mint?
+
+121
+00:11:33,100 --> 00:11:39,639
+depuis dix-neuf est sorti et c'est principalement parce que c'était juste un
+
+122
+00:11:39,639 --> 00:11:44,350
+brillante expérience prête à l'emploi, je n'ai pas, je suis en quelque sorte tombé amoureux
+
+123
+00:11:44,350 --> 00:11:50,529
+une aubaine pour un petit moment à cause de l'unité l'unité m'a fait tomber amoureux
+
+124
+00:11:50,529 --> 00:11:59,050
+avec une aubaine pour vous n'étiez pas un fan certainement pas non et je suis vraiment un
+
+125
+00:11:59,050 --> 00:12:06,339
+petite vieille école dans mon paradigme de bureau alors je dis que je préfère matei je le fais vraiment je
+
+126
+00:12:06,339 --> 00:12:11,529
+aime vraiment cette interface comme si c'était inconfortable alors Linux Mint
+
+127
+00:12:11,529 --> 00:12:20,259
+avec matei est une distribution fantastique prête à l'emploi, tout fonctionne et ils
+
+128
+00:12:20,259 --> 00:12:29,199
+Soutenez toujours le campus qui m'apporte toutes sortes de joie de nerd bien vous savez ne pas
+
+129
+00:12:29,199 --> 00:12:32,800
+vous balancer ou quoi que ce soit qui n'est pas la température vous il n'y a pas de chaud mais avez-vous essayé un chignon
+
+130
+00:12:32,800 --> 00:12:35,500
+à Ma Tei et comparez ça à comme oh ouais
+
+131
+00:12:35,500 --> 00:12:43,000
+ouais ce que tu fais Martin et Pope ou c'est un travail fantastique et et moi
+
+132
+00:12:43,000 --> 00:12:46,689
+je l'ai exécuté sur certains de mes systèmes bas de gamme et je l'adore, je l'ai utilisé
+
+133
+00:12:46,689 --> 00:12:54,310
+ordinateurs portables et trucs rien de mon choix d'utiliser Linux Mint en ce moment c'est de ne pas dire
+
+134
+00:12:54,310 --> 00:13:01,240
+que Lubuntu MITEI n'est pas génial c'est vraiment mais c'est juste là que j'ai
+
+135
+00:13:01,240 --> 00:13:05,709
+atterri ouais quand tu sais comment les choses fonctionnent sous le capot, beaucoup de choses
+
+136
+00:13:05,709 --> 00:13:09,430
+très similaire donc c'est vraiment juste de trouver une distribution stable qui fonctionne à partir du
+
+137
+00:13:09,430 --> 00:13:14,670
+boîte il ne perd pas beaucoup de temps à le configurer car j'utilise
+
+138
+00:13:14,670 --> 00:13:21,670
+Linux Mint au travail J'ai besoin de quelque chose dans lequel je peux aimer réinstaller et être opérationnel
+
+139
+00:13:21,670 --> 00:13:26,019
+et en une heure et vous savez de retour dans le monde des affaires, donc c'est
+
+140
+00:13:26,019 --> 00:13:29,800
+travaillé non pas que je ne puisse pas faire ça avec nous allons peut-être un c'est juste où
+
+141
+00:13:29,800 --> 00:13:33,430
+tu es c'est juste là où j'en suis ouais et je pense que ça fait vraiment
+
+142
+00:13:33,430 --> 00:13:38,350
+déroutant aussi pour les nouveaux utilisateurs de Linux car bien quelle saveur devrait
+
+143
+00:13:38,350 --> 00:13:43,870
+Je vais avec quelle distribution pourquoi vous avez l'avantage de matei contre Linux Mint avec matei the
+
+144
+00:13:43,870 --> 00:13:49,660
+c'est vraiment très similaire, donc c'est la communauté c'est le
+
+145
+00:13:49,660 --> 00:13:54,820
+écosystème de la distribution elle-même, vous savez où est le soutien que vous
+
+146
+00:13:54,820 --> 00:13:58,300
+Je sais que je n'ai pas besoin de soutien, donc je ne me soucie pas vraiment de ça mais
+
+147
+00:13:58,300 --> 00:14:05,680
+l'utilisateur novice le ferait si oui, vous pouvez regarder l'interview complète sur le projecteur Linux à
+
+148
+00:14:05,680 --> 00:14:12,850
+cat5 dot TV slash spotlight nous devons faire une pause rapide à notre retour je suis
+
+149
+00:14:12,850 --> 00:14:16,300
+va répondre à certaines de vos questions de téléspectateurs et aux commentaires
+
+150
+00:14:16,300 --> 00:14:21,300
+est arrivé cette semaine à propos du livre de pin pro stick around
+
+151
+00:14:21,300 --> 00:14:29,070
+[La musique]
+
+152
+00:14:34,690 --> 00:14:37,829
+[La musique]
+
+153
+00:14:39,650 --> 00:14:45,060
+Bienvenue à nouveau en regardant la fonctionnalité pro du livre de pin de la semaine dernière beaucoup d'entre vous
+
+154
+00:14:45,060 --> 00:14:49,560
+ont commencé à recevoir vos envois Pine Book Pro et donc ces petites bizarreries
+
+155
+00:14:49,560 --> 00:14:55,110
+sont à venir et nous commençons à voir des commentaires à venir dans vp9 postait
+
+156
+00:14:55,110 --> 00:14:58,560
+dans notre serveur Discord aujourd'hui, c'est pourquoi j'ai mon téléphone avec moi, je ne suis pas
+
+157
+00:14:58,560 --> 00:15:03,060
+antisocial je suis social voir comment j'ai fait ça
+
+158
+00:15:03,060 --> 00:15:07,110
+bp9 avait des problèmes avec le clavier, la touche D était un peu collante et non
+
+159
+00:15:07,110 --> 00:15:12,090
+tout à fait fonctionnant et a constaté qu'il était capable de soulever très soigneusement cette clé et
+
+160
+00:15:12,090 --> 00:15:17,580
+faire passer de l'air comprimé en dessous et souffler sous le contact
+
+161
+00:15:17,580 --> 00:15:22,050
+et pour une raison quelconque, cela l'a corrigé pour lui, donc je suis heureux d'entendre que la touche D
+
+162
+00:15:22,050 --> 00:15:28,980
+travaille maintenant vp9 en mentionnant également que pendant que je montrais sur mon Pine Book Pro que
+
+163
+00:15:28,980 --> 00:15:35,610
+un clic rapide sur le logo pin et f11 activerait et désactiverait le Wi-Fi et que
+
+164
+00:15:35,610 --> 00:15:40,200
+semblait bien fonctionner pour notre démonstration de la semaine dernière, il a mentionné
+
+165
+00:15:40,200 --> 00:15:44,700
+que sur son carnet de notes sur son pin Book Pro, il devait effectivement tenir cette clé
+
+166
+00:15:44,700 --> 00:15:48,930
+séquence pendant trois secondes, donc si vous constatez que cela n'a pas d'impact
+
+167
+00:15:48,930 --> 00:15:52,860
+c'est peut-être la différence après le même tutoriel de la semaine dernière sur la façon dont
+
+168
+00:15:52,860 --> 00:15:56,940
+pour faire fonctionner le Wi-Fi sur votre nouveau Pine Book Pro, mais essayez de le maintenir pendant
+
+169
+00:15:56,940 --> 00:16:01,500
+trois secondes si ma démonstration de tapotement très rapide ne l'a pas fait pendant
+
+170
+00:16:01,500 --> 00:16:06,980
+vous donc c'est bon de savoir aussi la dernière chose que mentionne bp9 est que
+
+171
+00:16:06,980 --> 00:16:13,650
+son clavier était bien prédéfini avec la disposition du clavier britannique qui pourrait être
+
+172
+00:16:13,650 --> 00:16:17,640
+frustrant parce que vos clés ne seront pas au bon endroit, donc fondamentalement
+
+173
+00:16:17,640 --> 00:16:22,500
+Disposition ISO par rapport à ANSI et vous auriez donc du mal à entrer votre mot de passe et
+
+174
+00:16:22,500 --> 00:16:27,060
+des choses comme ça assez intéressant quand j'ai démarré et mis le feu à Manjaro
+
+175
+00:16:27,060 --> 00:16:32,730
+pour la première fois, il m'a demandé si je voulais ISO ou ANSI alors je suis passé par
+
+176
+00:16:32,730 --> 00:16:36,370
+ce processus de lui dire quelle disposition de clavier j'avais
+
+177
+00:16:36,370 --> 00:16:41,650
+et cela a très bien fonctionné pour moi, mais dans le cas de bp9, ce n'était pas le cas et il
+
+178
+00:16:41,650 --> 00:16:46,450
+a très rapidement pu entrer et modifier simplement les paramètres du clavier dans le
+
+179
+00:16:46,450 --> 00:16:51,790
+le système de menu a trouvé son chemin là-bas, ce n'était pas un gros problème, c'était une solution simple
+
+180
+00:16:51,790 --> 00:16:56,740
+pour lequel je n'avais même pas besoin du wiki puisque je savais comment changer la mise en page
+
+181
+00:16:56,740 --> 00:17:01,570
+déjà et bp9 d'ailleurs de notre communauté mentionnant que le wiki
+
+182
+00:17:01,570 --> 00:17:07,510
+s'est avéré être une ressource fantastique et vous le trouverez à Pine 64
+
+183
+00:17:07,510 --> 00:17:12,480
+org et c'est vraiment un site axé sur la communauté et donc lorsque des problèmes surviennent
+
+184
+00:17:12,480 --> 00:17:18,309
+les gens y publient sur le wiki un peu comme un format de documentation pour
+
+185
+00:17:18,309 --> 00:17:22,540
+être en mesure d'aider d'autres personnes qui rencontrent les mêmes problèmes Ryan
+
+186
+00:17:22,540 --> 00:17:27,069
+Howard est sur notre chaîne YouTube et dit qu'il ne peut pas obtenir le système d'exploitation pour le
+
+187
+00:17:27,069 --> 00:17:32,710
+Pine Book Pro gravé sur une carte SD, il demande s'il vous plaît comment faites-vous cela un
+
+188
+00:17:32,710 --> 00:17:40,030
+la vidéo serait super bien ici vous êtes c'est la vidéo donc je vais faire cette chose
+
+189
+00:17:40,030 --> 00:17:44,440
+très bien, donc la première chose que nous devons déterminer est de savoir si nous voulons
+
+190
+00:17:44,440 --> 00:17:51,760
+utiliser une carte SD ou le emmc intégré et il y a plusieurs choses qui
+
+191
+00:17:51,760 --> 00:17:56,650
+être un facteur décisif Les cartes SD sont un moyen vraiment très simple de
+
+192
+00:17:56,650 --> 00:18:00,700
+pour basculer entre plusieurs distributions, vous devez faire un peu de pop
+
+193
+00:18:00,700 --> 00:18:06,130
+vous poussez si vous en avez un là-dedans et puis il ressort donc c'est ma carte SD
+
+194
+00:18:06,130 --> 00:18:12,370
+juste là, je pense que je viens d'éjecter mon système d'exploitation alors qu'il est allumé oh ne fais pas ça
+
+195
+00:18:12,370 --> 00:18:18,250
+c'est comme tirer sur votre disque dur mais le emmc intégré peut être un peu
+
+196
+00:18:18,250 --> 00:18:23,800
+plus difficile à mettre en place, mais pensez à l'une des choses et je
+
+197
+00:18:23,800 --> 00:18:27,700
+toucher à cela, je vais vous expliquer cela, mais l'une des choses que j'aime sur les cartes SD et
+
+198
+00:18:27,700 --> 00:18:32,440
+la possibilité de démarrer à partir d'une carte SD ouais bien sûr je viens de planter mon système je suis
+
+199
+00:18:32,440 --> 00:18:37,809
+va redémarrer la bonne chose de pouvoir démarrer à partir d'une carte SD est
+
+200
+00:18:37,809 --> 00:18:43,120
+disons que vous avez un foyer où tout le monde partage les mêmes appareils afin que vous
+
+201
+00:18:43,120 --> 00:18:47,470
+pourrait donner à chaque membre de la famille par exemple ou peut-être que vous êtes une éducation
+
+202
+00:18:47,470 --> 00:18:52,790
+et vous voulez donner à chaque mec ou à chaque professeur sa propre carte SD pour que vous
+
+203
+00:18:52,790 --> 00:18:57,770
+configurer le système d'exploitation sur cette carte SD et tous ceux qui vont l'utiliser
+
+204
+00:18:57,770 --> 00:19:03,350
+avec la mise hors tension démarre à partir de leur carte SD et de toutes leurs applications
+
+205
+00:19:03,350 --> 00:19:08,480
+tout le reste est configuré par utilisateur et personne n'affecte aucun autre utilisateur
+
+206
+00:19:08,480 --> 00:19:13,220
+car la carte SD est en fait leur disque dur de démarrage, je viens de prouver que
+
+207
+00:19:13,220 --> 00:19:19,970
+faire ce que je viens de faire alors que stupide n'a pas détruit mon Pyne Book Pro en fonctionnement
+
+208
+00:19:19,970 --> 00:19:23,150
+système sur ma carte SD, donc c'est une bonne chose, donc c'est plutôt cool parce que
+
+209
+00:19:23,150 --> 00:19:26,720
+avec votre propre carte SD, vous pouvez simplement le démarrer et avoir vos propres paramètres afin que je
+
+210
+00:19:26,720 --> 00:19:29,870
+comme ça si vous avez choisi la distribution que vous
+
+211
+00:19:29,870 --> 00:19:36,290
+préfère qu'il soit peut-être temps de l'installer sur un emmc mais ça peut être plus impliqué que je
+
+212
+00:19:36,290 --> 00:19:40,460
+mentionné car il nécessite parfois d'ouvrir le Pine Book Pro et vous avez
+
+213
+00:19:40,460 --> 00:19:46,460
+d'utiliser un adaptateur spécial pour le flasher mais le processus lui-même est le même même dans
+
+214
+00:19:46,460 --> 00:19:50,810
+ce cas, donc si vous avez l'adaptateur, vous allez graver sur un emmc j'utilise le
+
+215
+00:19:50,810 --> 00:19:57,560
+term burn en utilisant un adaptateur branché sur le port USB ou quelque chose comme ça et
+
+216
+00:19:57,560 --> 00:20:01,640
+ce sera le même processus que vous utiliserez le même logiciel que vous pourriez avoir
+
+217
+00:20:01,640 --> 00:20:05,450
+pour utiliser une image différente en fonction de la distribution que vous regardez mais
+
+218
+00:20:05,450 --> 00:20:11,720
+en parlant de certaines distributions telles que Manjaro qui offrent en fait un
+
+219
+00:20:11,720 --> 00:20:17,180
+installateur donc si vous le gravez sur une carte SD, vous démarrez le livre de pin pro vous
+
+220
+00:20:17,180 --> 00:20:21,500
+peut ensuite l'installer sur l'emmc pour que vous n'ayez pas à ouvrir le Pine Book Pro
+
+221
+00:20:21,500 --> 00:20:26,930
+vous n'avez pas besoin d'acheter un adaptateur pour pouvoir flasher n'importe quelle carte MMC, donc c'est
+
+222
+00:20:26,930 --> 00:20:31,280
+assez brillant, vous devez parcourir le wiki ou le site Web de
+
+223
+00:20:31,280 --> 00:20:35,600
+la distribution individuelle que vous regardez donc nous allons passer
+
+224
+00:20:35,600 --> 00:20:44,630
+pour pins 64 dot org et choisissez la distribution que nous allons télécharger pour vous
+
+225
+00:20:44,630 --> 00:20:52,540
+cliquez simplement sur le wiki et allez au logiciel Pine Book Pro
+
+226
+00:20:52,540 --> 00:20:57,080
+maintenant je vais aller avec Manjaro parce que nous savons que c'est essayé et vrai c'est
+
+227
+00:20:57,080 --> 00:21:02,390
+celui qui vient dessus et j'ai en fait téléchargé Debian sur ma carte SD
+
+228
+00:21:02,390 --> 00:21:06,980
+donc je viens d'une carte SD normalement donc c'est
+
+229
+00:21:06,980 --> 00:21:11,900
+Debian sortant de la carte SD, nous allons changer cela dans quelques
+
+230
+00:21:11,900 --> 00:21:18,170
+moments, donc la prochaine étape est que nous devons obtenir un outil pour faire la gravure, nous allons utiliser un
+
+231
+00:21:18,170 --> 00:21:25,550
+outil appelé B'Elanna à la fois villena à la fois que lana comment le dire je ne sais pas
+
+232
+00:21:25,550 --> 00:21:31,520
+et j'expliquerai pourquoi bal enna etcher il s'appelait juste etcher et comme
+
+233
+00:21:31,520 --> 00:21:37,580
+un animateur d'émissions de télévision ces jours-là, Valena me manque
+
+234
+00:21:37,580 --> 00:21:44,809
+sois alena et la raison pour laquelle ça me rebute c'est parce que je suis une vieille école
+
+235
+00:21:44,809 --> 00:21:50,470
+Trekkie et donc je veux toujours dire B'Elanna en pensant à B'Elanna Torres
+
+236
+00:21:50,470 --> 00:21:57,140
+Alors pense à B'Elanna et puis pense que non c'est le contraire de ce bal ana dot
+
+237
+00:21:57,140 --> 00:22:03,020
+io / h ER maintenant pendant que je vais faire cela sur ma machine Windows, vous pouvez
+
+238
+00:22:03,020 --> 00:22:07,550
+faites également cela sur Linux ou Mac afin que B'Elanna
+
+239
+00:22:07,550 --> 00:22:14,960
+cette bataille dans ce dilemme dot io / etcher téléchargez-le pour votre plate-forme ok
+
+240
+00:22:14,960 --> 00:22:20,240
+la première chose que je veux faire sur ma machine est de m'assurer qu'aucun support amovible n'est
+
+241
+00:22:20,240 --> 00:22:25,670
+connecté à l'ordinateur assurez-vous que c'est la première étape de la sauvegarde, tirez tous vos
+
+242
+00:22:25,670 --> 00:22:30,230
+Clés USB, cela signifie débrancher le stockage USB de tout ce qui est branché
+
+243
+00:22:30,230 --> 00:22:34,520
+les cartes SD de l'ordinateur si vous avez un lecteur de carte SD ou quelque chose comme
+
+244
+00:22:34,520 --> 00:22:39,950
+cette raison pour laquelle je le fais est que nous voulons éviter d'essuyer accidentellement le mauvais
+
+245
+00:22:39,950 --> 00:22:44,090
+stockage si vous avez quelques clés USB branchées, vous pouvez accidentellement
+
+246
+00:22:44,090 --> 00:22:48,020
+sélectionnez le mauvais et rappelez-vous qu'il s'agit d'un processus destructeur, vous
+
+247
+00:22:48,020 --> 00:22:52,690
+va perdre toutes les données qui sont actuellement sur le lecteur, alors je peux l'appeler graveur dans
+
+248
+00:22:52,690 --> 00:22:59,480
+graveur sélectionnez le fichier image que vous avez téléchargé dans notre cas c'est la prise Manjaro
+
+249
+00:22:59,480 --> 00:23:05,750
+votre carte dans un lecteur de carte ou encore si vous utilisez emmc utilisez l'adaptateur et
+
+250
+00:23:05,750 --> 00:23:10,160
+vous devez acheter cet adaptateur séparément et le graveur doit détecter et
+
+251
+00:23:10,160 --> 00:23:15,890
+pré-remplissez la section de sélection du lecteur au moment où vous branchez votre lecteur cliquez sur
+
+252
+00:23:15,890 --> 00:23:18,530
+flash pour commencer et sur windows ça va demander
+
+253
+00:23:18,530 --> 00:23:24,260
+moi de cliquer pour permettre à l'administrateur d'accéder à Linux ou Mac à la place
+
+254
+00:23:24,260 --> 00:23:29,360
+demander mon mot de passe root pour continuer car je l'ai mentionné c'est un processus destructeur
+
+255
+00:23:29,360 --> 00:23:33,170
+il va effacer tout ce qui se trouve sur cette carte, alors assurez-vous que vous voulez
+
+256
+00:23:33,170 --> 00:23:39,290
+continuez bien puis faites-le bien une fois que l'image a été écrite sur la carte
+
+257
+00:23:39,290 --> 00:23:43,760
+etcher vérifiera que l'écriture a réussi, cela peut prendre quelques minutes
+
+258
+00:23:43,760 --> 00:23:48,470
+Alors accrochez-vous bien et une fois que c'est fait, si cela vous dit que vous avez réussi, vous pouvez supprimer
+
+259
+00:23:48,470 --> 00:23:54,770
+cette carte insérez-la dans votre Pine Book Pro et encore une fois j'utilise la carte SD pour
+
+260
+00:23:54,770 --> 00:23:59,390
+il suffit de le brancher dans la fente sur le côté si vous utilisez le emmc vous
+
+261
+00:23:59,390 --> 00:24:04,580
+va avoir besoin d'installer cette alimentation en interne sur votre Pine Book Pro et il
+
+262
+00:24:04,580 --> 00:24:08,780
+devrait démarrer automatiquement à partir de la carte SD si vous utilisez la MMC, assurez-vous
+
+263
+00:24:08,780 --> 00:24:12,650
+qu'aucune carte SD n'est branchée avant la mise sous tension, sinon vous n'allez pas
+
+264
+00:24:12,650 --> 00:24:17,960
+avoir accès, il va démarrer à partir d'essayer de démarrer à partir de SD, alors nous y allons
+
+265
+00:24:17,960 --> 00:24:21,320
+J'essaye d'éclaircir l'écran, je ne peux pas tout à fait le faire, tu ne peux pas tout à fait voir mais je suis
+
+266
+00:24:21,320 --> 00:24:27,920
+en regardant l'invite de connexion Manjaro fantastique, nous l'avons maintenant
+
+267
+00:24:27,920 --> 00:24:33,410
+démarré et exécuté notre nouvelle distribution dans notre cas à partir d'un micro SD et si vous avez
+
+268
+00:24:33,410 --> 00:24:37,700
+problème essayez d'utiliser une autre carte SD d'abord et avant tout ok juste au cas où le
+
+269
+00:24:37,700 --> 00:24:41,600
+la carte a des problèmes parfois il y a des problèmes de compatibilité que je n'ai pas
+
+270
+00:24:41,600 --> 00:24:46,010
+Je l'ai encore rencontré sur un Pine Book Pro mais cela pourrait arriver alors ayez une seconde
+
+271
+00:24:46,010 --> 00:24:51,559
+carte à portée de main c'est la première chose que vous voulez exclure et aussi si vous
+
+272
+00:24:51,559 --> 00:24:56,390
+avoir du mal comme je l'ai mentionné à entrer dans les ressources de la communauté pin 64 comme leur
+
+273
+00:24:56,390 --> 00:25:01,790
+forum consultez leur wiki rejoindre leur serveur discord ou vous pouvez même sauter sur
+
+274
+00:25:01,790 --> 00:25:06,170
+leur leur subreddit ainsi ils ont un officiel pour la liste complète des
+
+275
+00:25:06,170 --> 00:25:11,770
+tous les endroits où vous pouvez obtenir de l'aide visitez leur site Web à l'adresse Pine 64 dot org
+
+276
+00:25:11,770 --> 00:25:16,460
+maintenant il est temps de se diriger vers la salle de rédaction, voici Becca, voici ce qui
+
+277
+00:25:16,460 --> 00:25:22,520
+à venir dans la salle de presse TV de catégorie 5 Google a corrigé certaines failles Android qui
+
+278
+00:25:22,520 --> 00:25:25,440
+permettre l'exécution de code avec des taux système élevés
+
+279
+00:25:25,440 --> 00:25:30,540
+les éditeurs poursuivent et tentent de fermer les archives Internet Elon Musk
+
+280
+00:25:30,540 --> 00:25:35,310
+fait d'amener des humains sur Mars sa priorité absolue vous dira comment il veut
+
+281
+00:25:35,310 --> 00:25:40,140
+faites-le Google Maps a lancé de nouvelles fonctionnalités pour aider spécifiquement les voyageurs
+
+282
+00:25:40,140 --> 00:25:45,840
+pendant la pandémie du virus corona, lenovo prévoit de vendre ubuntu sur plus de thinkpad
+
+283
+00:25:45,840 --> 00:25:51,450
+et pensez que les stations cet été et l'armée américaine pourraient perdre la force spatiale
+
+284
+00:25:51,450 --> 00:25:56,640
+marque déposée à Netflix, la série Netflix du même nom reste
+
+285
+00:25:56,640 --> 00:26:01,920
+les détails et le voyage de cette semaine au coin sont à venir c'est la catégorie 5 dot
+
+286
+00:26:01,920 --> 00:26:08,990
+La salle de presse télévisée couvrant votre semaine arrête d'envoyer des SMS avec un léger biais Linux
+
+287
+00:26:11,000 --> 00:26:17,100
+de la salle de rédaction, je suis Becky Ferguson, Google a publié des correctifs de sécurité
+
+288
+00:26:17,100 --> 00:26:22,409
+pour des dizaines de vulnérabilités dans son système d'exploitation mobile Android, deux des
+
+289
+00:26:22,409 --> 00:26:26,370
+ce qui pourrait permettre aux pirates d'exécuter à distance du code malveillant avec des
+
+290
+00:26:26,370 --> 00:26:31,230
+droits système élevés dans certains cas, le logiciel malveillant pourrait s'exécuter avec des
+
+291
+00:26:31,230 --> 00:26:36,630
+privilégie une possibilité qui augmente la gravité des bogues parce que le
+
+292
+00:26:36,630 --> 00:26:40,620
+les bogues situés dans le composant du système Android pourraient permettre une
+
+293
+00:26:40,620 --> 00:26:45,539
+transmission conçue pour exécuter du code arbitraire dans le contexte d'un
+
+294
+00:26:45,539 --> 00:26:51,330
+processus privilégié dans tous les correctifs de publication de Google pour au moins 34 failles de sécurité
+
+295
+00:26:51,330 --> 00:26:55,140
+bien que certaines des vulnérabilités n'étaient présentes que dans les appareils disponibles
+
+296
+00:26:55,140 --> 00:27:00,899
+du fabricant Qualcomm aux vulnérabilités classées comme critiques dans
+
+297
+00:27:00,899 --> 00:27:05,279
+Les bulletins de sécurité de Google de juin font partie des quatre failles du système localisées dans le
+
+298
+00:27:05,279 --> 00:27:10,830
+Système Android les deux autres sont classés avec une sévérité de la critique élevée
+
+299
+00:27:10,830 --> 00:27:14,730
+les vulnérabilités résident dans les versions d'Android 8 à la plus récente
+
+300
+00:27:14,730 --> 00:27:19,710
+la publication 11 d'un avis du partage d'informations multi-états et
+
+301
+00:27:19,710 --> 00:27:24,690
+Analysis Center a déclaré que ces vulnérabilités pourraient être exploitées
+
+302
+00:27:24,690 --> 00:27:29,730
+via plusieurs méthodes telles que la navigation Web par e-mail et les MMS lors du traitement
+
+303
+00:27:29,730 --> 00:27:34,470
+fichiers multimédias en fonction des privilèges associés à l'application et
+
+304
+00:27:34,470 --> 00:27:39,840
+l'attaquant pourrait alors installer des programmes, voir modifier ou supprimer des données ou créer de nouvelles
+
+305
+00:27:39,840 --> 00:27:45,600
+comptes avec des vulnérabilités de droits d'utilisateur complets avec une cote de gravité
+
+306
+00:27:45,600 --> 00:27:50,190
+de haut a affecté le cadre multimédia Android, le cadre Android et le
+
+307
+00:27:50,190 --> 00:27:54,750
+D'autres vulnérabilités du noyau Android étaient contenues dans des composants livrés dans
+
+308
+00:27:54,750 --> 00:28:00,360
+appareils de Qualcomm à des failles critiques spécifiques à Qualcomm résidant à proximité
+
+309
+00:28:00,360 --> 00:28:06,600
+les composants source la gravité des autres failles de Qualcomm a été jugée élevée n'importe qui
+
+310
+00:28:06,600 --> 00:28:10,710
+avec un appareil Android doit vérifier les paramètres pour voir si des correctifs ou
+
+311
+00:28:10,710 --> 00:28:16,289
+des mises à jour sont disponibles plusieurs des plus grands éditeurs du monde ont poursuivi le
+
+312
+00:28:16,289 --> 00:28:22,080
+Internet Archive pour sa bibliothèque d'urgence de 1,3 million de livres revendiquant
+
+313
+00:28:22,080 --> 00:28:25,710
+l'organisation est en piratage numérique délibéré sur un
+
+314
+00:28:25,710 --> 00:28:29,299
+échelle industrielle la semaine dernière le groupe de livres hachette
+
+315
+00:28:29,299 --> 00:28:34,950
+Les éditeurs HarperCollins John Wiley and Sons et le pingouin Random House ont poursuivi le
+
+316
+00:28:34,950 --> 00:28:39,570
+organisation à but non lucratif mieux connue pour ses archives de pages Web Wayback Machine pour
+
+317
+00:28:39,570 --> 00:28:45,899
+la violation du droit d'auteur selon eux est intentionnelle et systématique.
+
+318
+00:28:45,899 --> 00:28:50,490
+comprendre que les éditeurs espèrent fermer l'organisation Internet Archive
+
+319
+00:28:50,490 --> 00:28:54,899
+a invité la colère des éditeurs et des auteurs en mars quand il a décidé de
+
+320
+00:28:54,899 --> 00:28:59,220
+lever les restrictions sur les copies numériques des livres de bibliothèque qu'elle a acquis et
+
+321
+00:28:59,220 --> 00:29:04,080
+scanné toute personne qui s'inscrit sur le site peut en retirer 1,3 million
+
+322
+00:29:04,080 --> 00:29:08,879
+livre la plainte déclare bien que les archives Internet revendiquent le chiffre réel
+
+323
+00:29:08,879 --> 00:29:14,759
+est de 1,4 million, les archives Internet sont enregistrées en tant que bibliothèque mais ont affirmé
+
+324
+00:29:14,759 --> 00:29:19,799
+une théorie non testée appelée contrôle des prêts numériques qui fait valoir les bibliothèques
+
+325
+00:29:19,799 --> 00:29:23,789
+n'enfreignent pas le droit d'auteur lorsqu'ils font des copies numériques de livres qu'ils
+
+326
+00:29:23,789 --> 00:29:28,559
+possèdent les éditeurs et les auteurs ont été mécontents de cette approche mais ont
+
+327
+00:29:28,559 --> 00:29:32,549
+feu alors que les archives Internet ont limité le nombre de livres électroniques
+
+328
+00:29:32,549 --> 00:29:36,299
+rendrait disponible à tout moment au nombre de livres physiques qu'il
+
+329
+00:29:36,299 --> 00:29:41,220
+possédait cette restriction est sortie de la fenêtre en mars, mais lorsque le
+
+330
+00:29:41,220 --> 00:29:45,990
+Internet Archive a décidé qu'en raison du coronavirus, il créerait tous ses ebooks
+
+331
+00:29:45,990 --> 00:29:51,299
+disponible sans liste d'attente, la guilde de l'auteur a déclaré que l'organisation avait
+
+332
+00:29:51,299 --> 00:29:56,159
+aucun droit sur ces livres et encore moins pour les céder sans discernement
+
+333
+00:29:56,159 --> 00:30:00,990
+sans le consentement de l'éditeur ou de l'auteur et de l'Association of American
+
+334
+00:30:00,990 --> 00:30:06,029
+l'éditeur est appelé le mouvement à la hauteur de l'hypocrisie et un jeu cynique pour
+
+335
+00:30:06,029 --> 00:30:11,940
+porter atteinte au droit d'auteur le procès intenté à New York appelle les copies électroniques de
+
+336
+00:30:11,940 --> 00:30:16,460
+les livres des archives Internet que les archives Internet intégrales ont fait
+
+337
+00:30:16,460 --> 00:30:22,110
+Les bootlegs numériques qu'il va sur Internet Archive n'agissent pas uniquement à l'extérieur
+
+338
+00:30:22,110 --> 00:30:26,610
+tout cadre juridique, il le fait de manière flagrante et frauduleuse et il
+
+339
+00:30:26,610 --> 00:30:31,649
+continue malgré la notification réelle que ses actions constituent une contrefaçon
+
+340
+00:30:31,649 --> 00:30:36,450
+réponse le fondateur des archives Internet, Brewster Kahle, a publié un bref blog
+
+341
+00:30:36,450 --> 00:30:39,480
+poster dans elle note que l'organisation est
+
+342
+00:30:39,480 --> 00:30:43,980
+déçu par le procès et prétend soutenir les auteurs et éditeurs
+
+343
+00:30:43,980 --> 00:30:47,610
+lecteurs, dit-il, les éditeurs poursuivent les bibliothèques pour
+
+344
+00:30:47,610 --> 00:30:52,740
+prêt de livres dans ce cas des versions numérisées protégées et tandis que les écoles et
+
+345
+00:30:52,740 --> 00:30:58,740
+les bibliothèques sont fermées n'est dans l'intérêt de personne d'avoir terminé son premier
+
+346
+00:30:58,740 --> 00:31:04,650
+lancement humain Le fondateur et PDG de SpaceX, Elon Musk, affirme que la société se concentre désormais sur
+
+347
+00:31:04,650 --> 00:31:10,050
+développer son vaisseau spatial de nouvelle génération il y a quelques semaines
+
+348
+00:31:10,050 --> 00:31:15,210
+nice la NASA et SpaceX ont lancé avec succès des astronautes du sol américain pour le
+
+349
+00:31:15,210 --> 00:31:20,790
+première fois en près d'une décennie selon un e-mail interne envoyé à un bâton musqué
+
+350
+00:31:20,790 --> 00:31:25,200
+a déclaré que le développement du vaisseau spatial est désormais l'objectif principal de la société
+
+351
+00:31:25,200 --> 00:31:30,210
+aux côtés du retour en toute sécurité du dragon d'équipage de l'espace international
+
+352
+00:31:30,210 --> 00:31:36,180
+le vaisseau de la station a été dévoilé en septembre dernier et est conçu pour transporter un
+
+353
+00:31:36,180 --> 00:31:40,800
+équipage et cargaison vers la lune Mars ou n'importe où ailleurs dans le système solaire
+
+354
+00:31:40,800 --> 00:31:45,720
+selon l'intention du milliardaire Musk est de faire le vol spatial
+
+355
+00:31:45,720 --> 00:31:52,050
+des véhicules aussi réutilisables que des avions il y a quatre ans, le milliardaire a décrit son
+
+356
+00:31:52,050 --> 00:31:56,430
+vision de construire une colonie sur Mars dans nos vies avec la première fusée
+
+357
+00:31:56,430 --> 00:32:02,400
+propulsant les humains sur la planète rouge d'ici 2025 pendant de nombreuses années, l'entreprise a utilisé un
+
+358
+00:32:02,400 --> 00:32:07,470
+image de la surface martienne en train d'être terraformée est devenue semblable à la terre dans son
+
+359
+00:32:07,470 --> 00:32:12,860
+matériel promotionnel mais la NASA a passé une étude sponsorisée publiée dans
+
+360
+00:32:12,860 --> 00:32:19,620
+2018 a rejeté ces plans comme étant impossibles avec la technologie d'aujourd'hui l'année dernière Musk
+
+361
+00:32:19,620 --> 00:32:24,030
+a tweeté qu'il pensait qu'il était possible de créer une ville autonome sur Mars en
+
+362
+00:32:24,030 --> 00:32:30,960
+2050 si nous commençons dans cinq ans selon SpaceX sont les plans détaillés les plus récents
+
+363
+00:32:30,960 --> 00:32:36,090
+publié en 2016 il y a deux phases pour les premières transmissions humaines comme
+
+364
+00:32:36,090 --> 00:32:41,730
+partie d'une programmation pour coloniser Mars la première aura lieu en 2022 lorsque
+
+365
+00:32:41,730 --> 00:32:46,260
+au moins deux fusées de vaisseaux spatiaux atterriront sur Mars, elles seront sans pilote
+
+366
+00:32:46,260 --> 00:32:49,929
+vaisseau spatial mais contenant des drones et des robots qui confirmeront
+
+367
+00:32:49,929 --> 00:32:54,009
+il y a suffisamment de ressources en eau sur la planète et vérifiez s'il y a
+
+368
+00:32:54,009 --> 00:32:59,470
+Risques géographiques La deuxième phase débutera en 2024 lorsqu'une autre paire de
+
+369
+00:32:59,470 --> 00:33:04,539
+vaisseau spatial va atterrir sur Mars avec les premiers astronautes ces
+
+370
+00:33:04,539 --> 00:33:08,320
+vaisseau spatial apportera du matériel et des fournitures ainsi qu'un certain nombre de
+
+371
+00:33:08,320 --> 00:33:13,450
+usines de production pour la vie continue sur la planète ainsi que développer une base de
+
+372
+00:33:13,450 --> 00:33:19,119
+opérations séparément la mission réussie pour la NASA a donné à l'entreprise un
+
+373
+00:33:19,119 --> 00:33:24,309
+coup de pouce avant le nouveau programme d'atterrissage sur la lune de l'Agence spatiale américaine qui reviendra
+
+374
+00:33:24,309 --> 00:33:29,820
+des humains sur la lune d'ici 2024 et jettent les bases d'une mission habitée sur Mars
+
+375
+00:33:29,820 --> 00:33:34,499
+Le nouveau programme Artemis de la NASA porte le nom de la sœur mythologique d'Apollo
+
+376
+00:33:34,499 --> 00:33:40,029
+la première mission lunaire homonyme et est destinée à faire voler la première femme au
+
+377
+00:33:40,029 --> 00:33:44,590
+moon le programme Artemis sera utilisé comme un moyen de développer quelque chose appelé le
+
+378
+00:33:44,590 --> 00:33:49,539
+passerelle lunaire essentiellement une version de l'ISS mais en orbite autour de la lune permettant
+
+379
+00:33:49,539 --> 00:33:54,610
+il doit être utilisé comme tremplin pour les missions destinées à Mars nASA a
+
+380
+00:33:54,610 --> 00:33:59,499
+a donné à SpaceX et à Blue Origin le signe de développer ses nouveaux atterrisseurs lunaires qui
+
+381
+00:33:59,499 --> 00:34:04,450
+emmène la première femme et le prochain homme à la surface de la Lune grâce à Becca
+
+382
+00:34:04,450 --> 00:34:08,710
+nous devons faire une petite pause lorsque nous revenons notre correspondant crypto
+
+383
+00:34:08,710 --> 00:34:12,339
+Robert Koenig est ici pour partager le statut du marché de la crypto-monnaie et
+
+384
+00:34:12,339 --> 00:34:29,640
+Becca a plus d'actualités technologiques [Musique]
+
+385
+00:34:29,640 --> 00:34:34,360
+Bienvenue dans le coin cryptique et vous êtes les bienvenus dans les nouvelles hebdomadaires de la crypto et comme
+
+386
+00:34:34,360 --> 00:34:37,930
+habituel, jetons un coup d'œil à la performance du marché au cours des sept derniers
+
+387
+00:34:37,930 --> 00:34:45,670
+jours comme vous pouvez le voir, nous avons plusieurs projets qui ont gagné plus de 15% du gagnant
+
+388
+00:34:45,670 --> 00:34:52,240
+est de la cire avec presque 60% d'anneau en boucle avec 50% et ainsi de suite la plupart de ces projets sont
+
+389
+00:34:52,240 --> 00:34:57,070
+des projets vraiment sérieux et bons avec d'énormes équipes derrière eux, ce qui est génial
+
+390
+00:34:57,070 --> 00:35:02,980
+nouvelles pour l'industrie du côté des perdants les deux seuls projets d'environ 15% l'un est
+
+391
+00:35:02,980 --> 00:35:09,550
+hex l'autre est le commerce de couverture qui est ouais montre-nous simplement comment le marché est
+
+392
+00:35:09,550 --> 00:35:16,890
+en cours d'exécution au moment où il est sur le prochain titre est le noyau de Bitcoin publié
+
+393
+00:35:16,890 --> 00:35:22,270
+la version zéro point deux contient une fonctionnalité qu'il convient de mentionner
+
+394
+00:35:22,270 --> 00:35:28,930
+qui est l'ASM AP et qui est une partie logicielle du logiciel qui
+
+395
+00:35:28,930 --> 00:35:35,380
+empêche les attaques des États-nations et cette fonctionnalité permet de limiter
+
+396
+00:35:35,380 --> 00:35:40,920
+le nombre de nœuds connectés à un système autonome spécifique afin
+
+397
+00:35:40,920 --> 00:35:47,200
+auparavant, un pays immense pouvait attaquer la blockchain Bitcoin
+
+398
+00:35:47,200 --> 00:35:55,530
+maintenant être évité, donc c'est aussi une bonne nouvelle. Le prochain est un petit projet qui
+
+399
+00:35:55,530 --> 00:35:59,890
+tout le monde peut utiliser créer votre propre token donc avec ceci
+
+400
+00:35:59,890 --> 00:36:05,500
+logiciel maintenant mettre un lien ci-dessous, vous pouvez créer votre propre jeton afin que vous
+
+401
+00:36:05,500 --> 00:36:10,090
+entrez le nom du jeton le symbole du jeton le nombre de décimales que vous voulez avoir
+
+402
+00:36:10,090 --> 00:36:17,050
+l'offre maximale sur laquelle vous cliquez créez un jeton et voilà, vous avez votre propre jeton
+
+403
+00:36:17,050 --> 00:36:23,710
+créé, vous pouvez mettre ce jeton même sur un échange de liquidité de crédit, donc si
+
+404
+00:36:23,710 --> 00:36:28,980
+vous avez une excellente idée, c'est un outil parfait, mais vous pouvez l'utiliser pour le mettre
+
+405
+00:36:28,980 --> 00:36:33,060
+idée en pratique ou si vous voulez juste avoir un cadeau un cadeau d'anniversaire
+
+406
+00:36:33,060 --> 00:36:40,000
+là vous avez une autre idée la suivante est pwc l'un des plus grands comptes
+
+407
+00:36:40,000 --> 00:36:44,950
+entreprises, ils ont créé un rapport sur les fonds spéculatifs crypto et je viens de
+
+408
+00:36:44,950 --> 00:36:50,890
+Je mettrai également un lien de ce rapport dans la description ci-dessous le
+
+409
+00:36:50,890 --> 00:36:58,930
+les faits saillants ici sont de mon point de vue celui de ces hedge funds qu'ils
+
+410
+00:36:58,930 --> 00:37:04,420
+analysé 97% détiennent Bitcoin Je me demande ce que sont les trois autres
+
+411
+00:37:04,420 --> 00:37:09,760
+faire mais de toute façon 97% détiennent Bitcoin suivi d'un théorème XRP litecoin
+
+412
+00:37:09,760 --> 00:37:17,910
+Bitcoin cash et aucune autre pièce mentionnée dans ce rapport qui vaut
+
+413
+00:37:17,910 --> 00:37:27,089
+tout montant substantiel ces hedge funds opérant principalement aux États-Unis et au Royaume-Uni
+
+414
+00:37:27,089 --> 00:37:32,530
+les deux grands centres financiers dans le monde et ils sont basés aux îles Caïmans
+
+415
+00:37:32,530 --> 00:37:41,020
+Le Raj américain et britannique et les paradis fiscaux si bas que le marché est augmenté de 30%
+
+416
+00:37:41,020 --> 00:37:45,000
+bien que ce soit encore très petit, il est passé de 2 milliards à 3 milliards
+
+417
+00:37:45,000 --> 00:37:54,070
+cette année j'ai dit que c'est encore un petit marché le prochain est d Phi qui est mon
+
+418
+00:37:54,070 --> 00:37:59,560
+sujet favori car ce D Phi en lui-même commencera, le suivant fonctionnera
+
+419
+00:37:59,560 --> 00:38:05,980
+sur notre marché, j'en suis assez sûr si vous regardez ici ce club de prêt qui
+
+420
+00:38:05,980 --> 00:38:11,410
+est un grand prêteur peer-to-peer ici aux États-Unis, ils ont créé 250 millions de dollars
+
+421
+00:38:11,410 --> 00:38:18,270
+prêts au cours des cinq premières années, fabricant de puits qui est notre prêteur peer-to-peer
+
+422
+00:38:18,270 --> 00:38:29,380
+a émis 2,4 milliards de prêts au cours des 5 dernières années si je regarde le marché D 5
+
+423
+00:38:29,380 --> 00:38:34,300
+cap qui est comme lorsque la capitalisation boursière, mais seulement pour l'industrie td5, vous pouvez voir
+
+424
+00:38:34,300 --> 00:38:42,040
+que nous utilisons actuellement une capitalisation boursière de 2,2 milliards de dollars
+
+425
+00:38:42,040 --> 00:38:46,630
+Dow est bien sûr le numéro un mais tout est vert comme vous pouvez le voir ici
+
+426
+00:38:46,630 --> 00:38:51,550
+donc et cela reflète aussi ce que je vois là-bas sur le marché, je suis allé voir un
+
+427
+00:38:51,550 --> 00:38:57,540
+peu de formes défient la forme ou la finance forme le
+
+428
+00:38:57,540 --> 00:39:01,800
+ils n'avaient aucune idée de ce qui se passe sur notre marché ils ne comprennent pas cela
+
+429
+00:39:01,800 --> 00:39:05,970
+année où ils ne savent pas quel est le contrat intelligent ils ne comprennent pas défier
+
+430
+00:39:05,970 --> 00:39:09,600
+ils le traduisent toujours à ce à quoi ils sont habitués avec un intermédiaire
+
+431
+00:39:09,600 --> 00:39:15,090
+personne qui crée le marché mais ne comprend pas que cela peut être fait beaucoup
+
+432
+00:39:15,090 --> 00:39:21,030
+beaucoup plus facile et de loin plus efficace que ce que nous avons vu dans le traditionnel
+
+433
+00:39:21,030 --> 00:39:27,990
+système donc celui-ci ici, le marché du défi est à surveiller de toute façon
+
+434
+00:39:27,990 --> 00:39:33,510
+c'est tout pour moi de cette semaine j'espère que tu vas bien et je te souhaite le meilleur et
+
+435
+00:39:33,510 --> 00:39:37,530
+merci beaucoup d'avoir regardé et à la semaine prochaine j'espère merci merci
+
+436
+00:39:37,530 --> 00:39:42,030
+toi Robert juste un rappel à ceux d'entre vous qui regardent à la maison nous ne sommes pas
+
+437
+00:39:42,030 --> 00:39:45,960
+fournissant des conseils financiers ici sur l'émission, nous vous donnons simplement le
+
+438
+00:39:45,960 --> 00:39:50,010
+faits sur le marché de la crypto-monnaie et vous laissant les décisions
+
+439
+00:39:50,010 --> 00:39:54,780
+soyez conscient que la crypto-monnaie est un marché en constante évolution, c'est toujours
+
+440
+00:39:54,780 --> 00:40:00,390
+volatile et nous vous suggérons d'investir uniquement ce que vous pouvez vous permettre de perdre maintenant
+
+441
+00:40:00,390 --> 00:40:07,050
+retour à Becca Merci Ravi voyager pendant la pandémie peut être difficile
+
+442
+00:40:07,050 --> 00:40:11,610
+pourquoi la dernière version de Google Maps pour Android et iOS a plusieurs fonctionnalités
+
+443
+00:40:11,610 --> 00:40:16,260
+qui pourraient aider les voyageurs à se déplacer en toute sécurité maintenant lorsque vous recherchez des informations publiques
+
+444
+00:40:16,260 --> 00:40:21,630
+Les cartes d'itinéraires en transports en commun afficheront les alertes liées à Cova 19 Google souligne que
+
+445
+00:40:21,630 --> 00:40:25,800
+les données ne seront disponibles que là où elles pourront obtenir des informations auprès des agences de transport en commun locales
+
+446
+00:40:25,800 --> 00:40:31,380
+et uniquement sur les voyages susceptibles d'être affectés par les restrictions du kovat 19, ces
+
+447
+00:40:31,380 --> 00:40:36,330
+des alertes se déploient en Argentine Australie Belgique Brésil Colombie France
+
+448
+00:40:36,330 --> 00:40:42,870
+Inde Mexique Pays-Bas Espagne Thaïlande Royaume-Uni et États-Unis et Google
+
+449
+00:40:42,870 --> 00:40:48,360
+dit qu'ils vont bientôt venir dans plus de pays, Maps sera également
+
+450
+00:40:48,360 --> 00:40:53,070
+afficher des alertes lorsque vous accédez à des installations médicales ou à des tests de kovat 19
+
+451
+00:40:53,070 --> 00:40:57,510
+centres vous avertissant de vérifier l'éligibilité et les directives de l'établissement pour
+
+452
+00:40:57,510 --> 00:41:01,500
+éviter d'être refusé ou de causer une pression supplémentaire sur la santé locale
+
+453
+00:41:01,500 --> 00:41:05,950
+les alertes du système de soins pour les établissements médicaux sont lancées cette semaine
+
+454
+00:41:05,950 --> 00:41:11,440
+Indonésie Israël, Philippines, Corée du Sud et États-Unis, signalent des tests
+
+455
+00:41:11,440 --> 00:41:16,810
+les centres ne seront disponibles qu'aux États-Unis. Encore une fois, Google dit qu'il ne montrera que
+
+456
+00:41:16,810 --> 00:41:21,040
+ces alertes lorsqu'il peut obtenir des données faisant autorité de l'état local et
+
+457
+00:41:21,040 --> 00:41:26,890
+les gouvernements fédéraux ou à partir de leurs sites Web, Google indique que l'application sera également
+
+458
+00:41:26,890 --> 00:41:32,260
+vous dire à quel point les bus de métro et les stations de transport en commun seront bondés et vous serez
+
+459
+00:41:32,260 --> 00:41:36,460
+capable de voir quand une station de transport en commun a toujours été moins fréquentée afin que vous puissiez
+
+460
+00:41:36,460 --> 00:41:41,410
+planifier à l'avance Google affirme que ces fonctionnalités sont alimentées par des
+
+461
+00:41:41,410 --> 00:41:46,390
+les données des utilisateurs qui optent pour l'historique des positions Google qu'ils déploieront
+
+462
+00:41:46,390 --> 00:41:50,950
+dans les prochaines semaines, l'application vous montrera enfin la conduite
+
+463
+00:41:50,950 --> 00:41:55,420
+alertes vous informant des points de contrôle et des restrictions de kovat 19 le long de votre
+
+464
+00:41:55,420 --> 00:42:00,880
+par exemple lors du franchissement des frontières nationales, cette fonction ne sera initialement
+
+465
+00:42:00,880 --> 00:42:07,089
+être disponible au Canada Le Mexique et les États-Unis Lenovo ont annoncé qu'ils
+
+466
+00:42:07,089 --> 00:42:12,520
+y compris Ubuntu comme option de système d'exploitation préchargée ou un numéro sur un certain nombre de leurs
+
+467
+00:42:12,520 --> 00:42:17,319
+systèmes à partir de cet été Lenovo est déjà bien représenté au sein du
+
+468
+00:42:17,319 --> 00:42:21,190
+Communauté matérielle Linux ayant certifié une partie de ses appareils pour
+
+469
+00:42:21,190 --> 00:42:26,109
+différentes distributions au fil des ans et la société a récemment révélé des plans
+
+470
+00:42:26,109 --> 00:42:30,579
+pour vendre des ordinateurs portables préchargés avec fedora et rendre plus de mises à jour de firmware disponibles
+
+471
+00:42:30,579 --> 00:42:36,730
+via le service de micrologiciel du fournisseur Linux indépendant du fournisseur, mais maintenant cela va même
+
+472
+00:42:36,730 --> 00:42:42,430
+plus loin avec l'amour Linux, Lenovo dit toute sa station de réflexion et ThinkPad
+
+473
+00:42:42,430 --> 00:42:47,500
+Les ordinateurs portables de la série p seront disponibles à l'achat avec une plaie - LTS préchargé et
+
+474
+00:42:47,500 --> 00:42:52,480
+pas seulement quelques configurations spécifiques cachées sur un stockage difficile à trouver
+
+475
+00:42:52,480 --> 00:42:57,220
+page quelque part alors que les mêmes appareils peuvent être achetés avec Windows 10 ou Red Hat
+
+476
+00:42:57,220 --> 00:43:03,040
+Enterprise Linux pré-installé, c'est toujours une victoire majeure pour Ubuntu et le
+
+477
+00:43:03,040 --> 00:43:08,650
+la communauté Linux plus large, la société dit également qu'elle mettra en amont les pilotes de périphériques
+
+478
+00:43:08,650 --> 00:43:12,970
+directement au noyau Linux pour aider à maintenir la stabilité et la compatibilité
+
+479
+00:43:12,970 --> 00:43:17,770
+tout au long de la vie du poste de travail, bien sûr, il est assez facile d'acheter un
+
+480
+00:43:17,770 --> 00:43:21,800
+pensez à Windows Pad et installez ubuntu manuellement mais
+
+481
+00:43:21,800 --> 00:43:25,850
+le support officiel signifie que les acheteurs peuvent être certains que tout le matériel fonctionne avec
+
+482
+00:43:25,850 --> 00:43:32,150
+Ubuntu prêt à l'emploi, pas de pilotes à rechercher ou de fichiers de configuration à modifier vraisemblablement
+
+483
+00:43:32,150 --> 00:43:36,620
+cela signifie également des économies de coûts puisqu'une licence Windows n'a pas besoin d'être
+
+484
+00:43:36,620 --> 00:43:43,850
+inclus Lenovo affirme qu'ubuntu LTS bénéficie d'un cycle de support prolongé de cinq ans
+
+485
+00:43:43,850 --> 00:43:49,330
+offrant une confiance accrue des utilisateurs et une stabilité du système tout au long du déploiement
+
+486
+00:43:49,330 --> 00:43:54,140
+canonique l'entreprise derrière une aubaine pour effectuer la certification et la régression
+
+487
+00:43:54,140 --> 00:43:58,520
+des tests sur ces systèmes sur une base continue pour s'assurer qu'ils restent
+
+488
+00:43:58,520 --> 00:44:05,090
+aussi stable que possible pour les utilisateurs finaux, la force spatiale américaine
+
+489
+00:44:05,090 --> 00:44:09,950
+annoncé il y a deux ans et n'a encore engagé aucune opération militaire, mais
+
+490
+00:44:09,950 --> 00:44:14,420
+la dernière branche des forces armées américaines risque déjà de perdre sa première bataille
+
+491
+00:44:14,420 --> 00:44:20,870
+à la force spatiale de Netflix, le service de streaming a créé sa nouvelle série comique
+
+492
+00:44:20,870 --> 00:44:25,850
+force spatiale le 29 mai, le nom de l'émission n'a aucun rapport avec le plus récent
+
+493
+00:44:25,850 --> 00:44:30,230
+organisation de l'armée américaine qui a dévoilé son drapeau officiel seulement deux
+
+494
+00:44:30,230 --> 00:44:34,550
+semaines plus tôt à cause du surnom commun dans l'espace des États-Unis
+
+495
+00:44:34,550 --> 00:44:39,860
+la première bataille des forces pourrait être une guerre de marque menée devant les tribunaux plutôt que dans
+
+496
+00:44:39,860 --> 00:44:44,630
+les avocats de l'espace pour l'armée américaine ont peu fait pour sécuriser l'espace
+
+497
+00:44:44,630 --> 00:44:48,860
+force le nom en tant que marque déposée Netflix a cependant été beaucoup plus
+
+498
+00:44:48,860 --> 00:44:52,580
+agressif et a déjà verrouillé les droits sur le nom dans plusieurs
+
+499
+00:44:52,580 --> 00:44:57,320
+pays, malgré le partage d'un nom, les deux entités ont une grande marge de manœuvre
+
+500
+00:44:57,320 --> 00:45:02,090
+sans évoquer beaucoup de confusion, la comédie en streaming est peu susceptible de faire
+
+501
+00:45:02,090 --> 00:45:05,360
+les téléspectateurs pensent regarder une série sur une branche réelle des États-Unis
+
+502
+00:45:05,360 --> 00:45:09,530
+militaire, la force spatiale américaine n'a pas encore décollé
+
+503
+00:45:09,530 --> 00:45:13,330
+les deux litoris sont à la fois littéralement et figuré
+
+504
+00:45:13,330 --> 00:45:17,990
+alors que l'effort de Netflix a été le premier à se concrétiser la force spatiale américaine
+
+505
+00:45:17,990 --> 00:45:23,270
+a été annoncé pour la première fois par le président Donald Trump en mars 2018, la branche militaire
+
+506
+00:45:23,270 --> 00:45:28,250
+a été officiellement créée en tant qu'organisation officielle en décembre dernier Netflix
+
+507
+00:45:28,250 --> 00:45:31,250
+pendant ce temps, a lancé une série de 10 épisodes en janvier
+
+508
+00:45:31,250 --> 00:45:37,550
+20:19 créé par Greg Daniel Daniel et Steve Carrell espace pour les stars Carell
+
+509
+00:45:37,550 --> 00:45:43,280
+john malkovich ben schwartz diana silvers et tani Newsome la saison un est
+
+510
+00:45:43,280 --> 00:45:48,740
+actuellement disponible sur Netflix un grand merci à Roy W Nash dans notre
+
+511
+00:45:48,740 --> 00:45:52,610
+communauté de téléspectateurs pour nous avoir soumis des histoires cette semaine merci pour
+
+512
+00:45:52,610 --> 00:45:57,440
+en regardant la salle de presse de la catégorie 5, n'oubliez pas d'aimer et de vous abonner à
+
+513
+00:45:57,440 --> 00:46:01,760
+toutes vos actualités technologiques avec un léger biais Linux et si vous appréciez ce que nous faisons
+
+514
+00:46:01,760 --> 00:46:08,060
+devenir mécène sur patreon.com slash catégorie 5 de la catégorie 5 TV
+
+515
+00:46:08,060 --> 00:46:11,920
+newsroom Je suis Becca Ferguson
+
+516
+00:46:12,060 --> 00:46:19,840
+[La musique]
+
+517
+00:46:25,440 --> 00:46:28,610
+[La musique]
+
+518
+00:46:29,390 --> 00:46:35,069
+maintenant, si vous ne nous avez jamais rejoint pour une pause-café communautaire de catégorie 5, vous
+
+519
+00:46:35,069 --> 00:46:39,359
+en savoir plus à ce sujet sur la télévision à points de catégorie cinq, faites défiler vers le bas sur la page d'accueil
+
+520
+00:46:39,359 --> 00:46:43,440
+et vous y verrez la pause-café de la communauté ainsi que notre horaire lorsque
+
+521
+00:46:43,440 --> 00:46:47,789
+nous allons faire le prochain c'est un événement hebdomadaire que nous organisons en zoom '
+
+522
+00:46:47,789 --> 00:46:51,299
+et c'est une opportunité pour notre communauté de se rassembler et même
+
+523
+00:46:51,299 --> 00:46:57,059
+bien que nous vivions tous ce que nous vivons dans notre monde aujourd'hui, nous
+
+524
+00:46:57,059 --> 00:47:03,240
+a choisi de dire plutôt que de parler de ces choses, les choses
+
+525
+00:47:03,240 --> 00:47:08,130
+qui nous abattent en ce moment, regardons-le et disons que nous sommes tous
+
+526
+00:47:08,130 --> 00:47:14,910
+coincé dans cette situation qu'est-ce que je fais qui m'excite
+
+527
+00:47:14,910 --> 00:47:19,880
+qu'est-ce que j'expérimente technologiquement qui est vraiment
+
+528
+00:47:19,880 --> 00:47:24,539
+intéressant pour moi et m'aide à occuper du temps si je suis coincé à la maison
+
+529
+00:47:24,539 --> 00:47:31,859
+maintenant ou peu importe le cas, le sujet a été abordé à propos de github parce que
+
+530
+00:47:31,859 --> 00:47:38,249
+nous parlons de programmation et Peter est là presque à chaque fois pour un
+
+531
+00:47:38,249 --> 00:47:42,450
+pause-café de la communauté et Peter demandait comment bien utiliser github
+
+532
+00:47:42,450 --> 00:47:46,619
+Ce n'est pas vraiment quelque chose que nous pouvons montrer ou parler, vous savez vous guider
+
+533
+00:47:46,619 --> 00:47:50,640
+pendant la pause café, mais il est apparu que bon, ce serait vraiment un
+
+534
+00:47:50,640 --> 00:47:55,200
+bon sujet à discuter sur la télévision technologique de catégorie cinq et la raison pour laquelle
+
+535
+00:47:55,200 --> 00:48:02,220
+est apparu au départ parce que lorsque Microsoft a acheté github, ils l'ont gardé
+
+536
+00:48:02,220 --> 00:48:07,440
+en quelque sorte de statu quo et vous deviez payer pour certaines fonctionnalités mais
+
+537
+00:48:07,440 --> 00:48:16,109
+puis tout à coup très récemment dit Microsoft et tous ceux qui ont payé pour des fonctionnalités non
+
+538
+00:48:16,109 --> 00:48:19,769
+tous, mais beaucoup d'entre eux ont payé pour des fonctionnalités que vous aviez l'habitude de payer
+
+539
+00:48:19,769 --> 00:48:23,369
+car sont maintenant gratuits, ils prennent le service et ils sont fondamentalement
+
+540
+00:48:23,369 --> 00:48:28,529
+offrant leur service premium absolument gratuit sur github com alors qu'est-ce
+
+541
+00:48:28,529 --> 00:48:33,840
+github bien github est un peu comme un fournisseur de services cloud pour vous
+
+542
+00:48:33,840 --> 00:48:38,430
+c'est pour les développeurs cela nous aide à pouvoir gérer nos projets afin que vous
+
+543
+00:48:38,430 --> 00:48:42,870
+peut remonter dans le temps essentiellement avec du code et il est vraiment utile de pouvoir
+
+544
+00:48:42,870 --> 00:48:48,390
+voir ces commits et voir comment les changements ont impacté votre projet c'est aussi un
+
+545
+00:48:48,390 --> 00:48:54,210
+excellent mécanisme de stockage pour votre code car vous pouvez le partager avec
+
+546
+00:48:54,210 --> 00:48:58,230
+d'autres personnes si vous voulez maintenant bien sûr que Microsoft le rend gratuit
+
+547
+00:48:58,230 --> 00:49:05,580
+vous pouvez maintenant avoir des référentiels privés gratuits et vous pouvez configurer
+
+548
+00:49:05,580 --> 00:49:09,210
+autant d'équipes que vous le souhaitez si vous souhaitez collaborer avec d'autres programmeurs mais
+
+549
+00:49:09,210 --> 00:49:13,710
+essentiellement ce qu'il fait pour moi, c'est qu'il me permet de partager mon code en ligne dans
+
+550
+00:49:13,710 --> 00:49:17,340
+de manière à ce que d'autres personnes puissent l'utiliser en open source, ils peuvent le compiler ou l'utiliser
+
+551
+00:49:17,340 --> 00:49:23,280
+ou exécutez-le sur leurs propres ordinateurs, puis s'ils décident, je préfère
+
+552
+00:49:23,280 --> 00:49:27,360
+cela fonctionne de cette façon ou peut-être voici un bug et je peux réparer qu'ils peuvent faire ce qui
+
+553
+00:49:27,360 --> 00:49:33,270
+appelé une pull request donc fondamentalement ils clonent mon référentiel github mon logiciel
+
+554
+00:49:33,270 --> 00:49:38,730
+code, ils le réparent sur leur ordinateur, puis ils font une pull request qui pousse
+
+555
+00:49:38,730 --> 00:49:43,950
+il en arrière pendant qu'ils le repoussent à leur fourche, puis cela crée une demande de traction
+
+556
+00:49:43,950 --> 00:49:49,590
+pour moi afin que je vois que Hey Joe va souffler sur leur correction de ce bug avec mon
+
+557
+00:49:49,590 --> 00:49:54,600
+logiciel Je peux cliquer sur un bouton et il importera ce correctif dans mon logiciel afin
+
+558
+00:49:54,600 --> 00:50:01,740
+il y a beaucoup à faire et c'est vraiment très puissant ça peut être
+
+559
+00:50:01,740 --> 00:50:05,400
+déroutant, surtout lorsque vous commencez à les écraser et à les fusionner
+
+560
+00:50:05,400 --> 00:50:09,270
+genre de choses que nous n'allons pas aborder aujourd'hui mais ce que je veux
+
+561
+00:50:09,270 --> 00:50:15,000
+vous montrer comment les connaissances les plus élémentaires sur son fonctionnement vont
+
+562
+00:50:15,000 --> 00:50:21,600
+vous permettent d'utiliser github de manière efficace, considérez-le comme celui où vous
+
+563
+00:50:21,600 --> 00:50:26,250
+mettre votre code là-bas en tant que logiciel open source et il n'a pas à
+
+564
+00:50:26,250 --> 00:50:31,290
+être vous pouvez l'avoir privé si vous voulez mais dans mon cas c'est ce que je fais je
+
+565
+00:50:31,290 --> 00:50:34,980
+veulent que les gens collaborent avec moi de temps en temps, peut-être qu'ils publieront des problèmes
+
+566
+00:50:34,980 --> 00:50:38,280
+s'ils trouvent un bogue et que je suis toujours la personne qui doit le corriger mais à
+
+567
+00:50:38,280 --> 00:50:43,470
+au moins ma communauté entre dans mon référentiel de logiciels et dit que c'est un
+
+568
+00:50:43,470 --> 00:50:49,070
+problème et vous devez le résoudre correctement, donc github.com est l'endroit où vous allez
+
+569
+00:50:49,070 --> 00:50:53,630
+est inscrivez-vous pour votre compte gratuit tout ce que vous avez à faire est de cliquer sur le lien et
+
+570
+00:50:53,630 --> 00:50:57,440
+cliquez sur Inscrivez-vous maintenant J'ai déjà un compte donc je vais me connecter en tant que moi-même
+
+571
+00:50:57,440 --> 00:51:05,630
+et connectez-vous pour que vous puissiez voir ici que si je vais dans mes référentiels, si je saute
+
+572
+00:51:05,630 --> 00:51:15,440
+à la maison ici et va le laisser charger ici laisse le charger bien je vais juste y aller
+
+573
+00:51:15,440 --> 00:51:23,870
+directement à la télévision cat 5, j'héberge tous mes logiciels, alors vous y allez
+
+574
+00:51:23,870 --> 00:51:27,680
+github.com slash cat 5 TV vous pouvez voir comment cela fonctionne afin que vous puissiez voir que j'ai
+
+575
+00:51:27,680 --> 00:51:31,670
+a une tonne de référentiels de logiciels et ce sont tous des projets différents
+
+576
+00:51:31,670 --> 00:51:36,410
+différentes choses que j'ai faites ou que je continue de faire et il y a des pages
+
+577
+00:51:36,410 --> 00:51:43,460
+et les pages et les pages de celui-ci, une fois que vous avez votre compte github, vous pouvez vous connecter
+
+578
+00:51:43,460 --> 00:51:47,660
+à ce que vous voyez ici, qui est ma liste de référentiels, mais lorsque vous
+
+579
+00:51:47,660 --> 00:51:51,380
+inscrivez-vous, vous n'aurez pas tout ce dont vous avez besoin pour créer votre premier
+
+580
+00:51:51,380 --> 00:51:56,240
+référentiel donc la façon dont je vais le faire comprend maintenant que github n'est pas
+
+581
+00:51:56,240 --> 00:52:01,730
+requis oubliez ok et git n'est pas la même chose que github github est en ligne
+
+582
+00:52:01,730 --> 00:52:08,990
+service et pensez-y comme le stockage en nuage oubliez ok ce n'est pas la même chose
+
+583
+00:52:08,990 --> 00:52:14,540
+un stockage en ligne pour cet outil de gestion de packages open source ou un projet
+
+584
+00:52:14,540 --> 00:52:19,460
+outil de gestion, donc ici sur github, ils ont rendu vraiment très facile
+
+585
+00:52:19,460 --> 00:52:23,660
+dites simplement nouveau référentiel donc je suis allé dans mes référentiels et j'ai cliqué sur
+
+586
+00:52:23,660 --> 00:52:29,330
+nouveau et ensuite je vais lui donner un nom, je vais appeler celui-ci mon soulignement
+
+587
+00:52:29,330 --> 00:52:36,590
+test et une description facultative ceci est un test pour l'émission si vous voulez
+
+588
+00:52:36,590 --> 00:52:41,540
+que ce soit public ou privé, puis initialisez-le avec un readme c'est toujours
+
+589
+00:52:41,540 --> 00:52:45,260
+mieux vaut le faire, c'est pour que les gens puissent y accéder immédiatement
+
+590
+00:52:45,260 --> 00:52:49,070
+y compris vous-même vous voulez ajouter une licence voulez-vous ajouter un git ignore
+
+591
+00:52:49,070 --> 00:52:52,700
+Je vais laisser ces deux vides, vous découvrirez ce que cela signifie dans le
+
+592
+00:52:52,700 --> 00:52:58,820
+futur et créez votre référentiel donc maintenant j'en ai un appelé mon test de soulignement mais
+
+593
+00:52:58,820 --> 00:53:02,060
+il n'y a rien là-bas, j'ai fini avec le navigateur alors maintenant quoi
+
+594
+00:53:02,060 --> 00:53:07,670
+Je vais faire est je vais faire monter mon terminal et dans mon terminal je vais
+
+595
+00:53:07,670 --> 00:53:13,400
+tapez get ok afin que vous puissiez voir que je l'ai déjà installé si vous ne l'avez pas
+
+596
+00:53:13,400 --> 00:53:18,640
+encore installé donc je suis sous Linux je suis sur Debian Linux ici vous pouvez taper apt
+
+597
+00:53:18,640 --> 00:53:23,350
+installez git c'est ce que vous allez taper
+
+598
+00:53:23,350 --> 00:53:33,680
+Je ne suis pas route sudo su log non est rock ok apt installer pourtant ça va me dire
+
+599
+00:53:33,680 --> 00:53:37,520
+que j'ai déjà le courant oh il y a un non non je l'ai déjà
+
+600
+00:53:37,520 --> 00:53:41,390
+il y a d'autres mises à jour pour moi, mais get est déjà la dernière version, donc
+
+601
+00:53:41,390 --> 00:53:45,290
+si vous ne l'avez pas, vous devez l'installer si vous êtes sur une heure PM
+
+602
+00:53:45,290 --> 00:53:50,860
+système, il sera encore jeune et vous pouvez également le trouver dans votre interface graphique
+
+603
+00:53:50,860 --> 00:53:56,630
+gestionnaire de référentiel votre gestionnaire de paquets ou tout ce que vous utilisez comme san synaptic
+
+604
+00:53:56,630 --> 00:54:01,610
+gestionnaire de paquets par exemple, une fois que vous avez installé, créez un dossier
+
+605
+00:54:01,610 --> 00:54:09,020
+probablement dans votre dossier personnel et nous appellerons ces dépôts juste pour que je
+
+606
+00:54:09,020 --> 00:54:14,180
+avoir un endroit où je sais toujours que mon code est correct, donc ça va être un
+
+607
+00:54:14,180 --> 00:54:20,630
+copie locale de mon dépôt git alors maintenant je vais taper git clone et nous allons
+
+608
+00:54:20,630 --> 00:54:28,400
+copier cette URL github.com slash cat 5 TV slash mon test de soulignement afin que je puisse copier
+
+609
+00:54:28,400 --> 00:54:36,110
+que juste avec ctrl C vous allez vous habituer à simplement taper c'est votre utilisateur
+
+610
+00:54:36,110 --> 00:54:41,780
+nom slash votre référentiel et maintenant si je regarde mon système de fichiers donc il est cloné
+
+611
+00:54:41,780 --> 00:54:48,890
+obtenir le clone puis le nom du ou l'URL du référentiel alors maintenant si je vais
+
+612
+00:54:48,890 --> 00:54:53,780
+dans mon dossier personnel, puis dans les référentiels, notez qu'il appartient à root
+
+613
+00:54:53,780 --> 00:54:59,600
+parce que je vois un mec super utilisateur pour poursuivre alors il y a maintenant un dossier appelé mon test et
+
+614
+00:54:59,600 --> 00:55:06,110
+dans mon test, il y a un fichier appelé readme MD donc dans ce dossier, je suis
+
+615
+00:55:06,110 --> 00:55:11,110
+va entrer dans mon test et je veux créer un nouveau fichier, je vais l'appeler
+
+616
+00:55:11,110 --> 00:55:17,890
+nano test dot Sh et nous allons créer un fichier SH rapide à exécuter
+
+617
+00:55:17,890 --> 00:55:21,819
+un script bash et je vais taper echo salut
+
+618
+00:55:21,819 --> 00:55:28,859
+comment est-ce oh je devrais vraiment m'en tenir à la norme bonjour le monde comment ça va
+
+619
+00:55:28,859 --> 00:55:33,549
+donc je l'ai écrit et je l'ai fermé donc maintenant vous voyez qu'il y a un fichier appelé
+
+620
+00:55:33,549 --> 00:55:42,010
+testez SH maintenant lorsque je transfère un fichier vers github, les autorisations vont
+
+621
+00:55:42,010 --> 00:55:46,990
+être inclus avec cette poussée, donc si je fais un test de barre oblique SH, vous remarquez qu'il dit
+
+622
+00:55:46,990 --> 00:55:52,180
+permission refusée j'ai besoin de faire un exécutif exécutif tout chmod plus x
+
+623
+00:55:52,180 --> 00:55:59,380
+test dot s H donc maintenant si je tape test dot s HS s bonjour le monde donc j'ai maintenant mon tout
+
+624
+00:55:59,380 --> 00:56:04,539
+premier morceau de script prêt à monter sur github, il fait partie de mon référentiel sur mon
+
+625
+00:56:04,539 --> 00:56:10,180
+ordinateur local mais ce n'est pas encore dans github donc si vous regardez github je suis
+
+626
+00:56:10,180 --> 00:56:13,569
+va se rafraîchir juste pour le prouver, vous voyez votre liste de fichiers ici et ils sont toujours
+
+627
+00:56:13,569 --> 00:56:18,849
+juste le readme ok alors maintenant de retour dans ma fenêtre de terminal je vais à nouveau l'utiliser
+
+628
+00:56:18,849 --> 00:56:24,730
+git command Je vais aller chercher une étoile dans le dossier des référentiels
+
+629
+00:56:24,730 --> 00:56:30,670
+en disant trouver tous les fichiers qui ont des modifications et les ajouter okay get commit -
+
+630
+00:56:30,670 --> 00:56:37,329
+Je suis et puis entre guillemets, donne un nom à tes commits alors je vais
+
+631
+00:56:37,329 --> 00:56:42,160
+dites mon premier script et ce ne sont que de courtes descriptions et appuyez sur Entrée
+
+632
+00:56:42,160 --> 00:56:45,880
+et maintenant ça dit hey tu dois nous dire qui tu es
+
+633
+00:56:45,880 --> 00:56:50,289
+parce que vous n'avez jamais exécuté git sur cet ordinateur auparavant, vous devez donc exécuter
+
+634
+00:56:50,289 --> 00:56:56,289
+ces deux commandes sont assez simples get config - - global
+
+635
+00:56:56,289 --> 00:57:00,160
+vous n'avez qu'à le faire une fois, ne vous inquiétez pas de l'e-mail de l'utilisateur et si vous avez
+
+636
+00:57:00,160 --> 00:57:03,970
+difficulté à taper cela, copiez-le simplement, puis entre guillemets, je vais mettre
+
+637
+00:57:03,970 --> 00:57:09,880
+Robby à la télévision de catégorie cinq et c'est juste de lui dire mon adresse e-mail alors
+
+638
+00:57:09,880 --> 00:57:17,680
+Je vais utiliser le nom du point d'utilisateur Je ne sais pas si vous pouvez l'entendre mais c'est
+
+639
+00:57:17,680 --> 00:57:21,430
+en fait une très mauvaise tempête à l'extérieur de notre studio aujourd'hui, donc les lumières sont
+
+640
+00:57:21,430 --> 00:57:24,860
+scintillant quelques fois et mais je pense que nous allons passer à travers
+
+641
+00:57:24,860 --> 00:57:29,960
+de toute façon, tout va bien, supprimez ça et changez mon nom en Robbie
+
+642
+00:57:29,960 --> 00:57:34,850
+Ferguson entre ok, donc je n'ai qu'à le faire une fois, alors à la prochaine fois
+
+643
+00:57:34,850 --> 00:57:40,700
+Je lance ce git commit - est-ce que je l'ajoute simplement, alors je l'ai ajouté et il
+
+644
+00:57:40,700 --> 00:57:45,920
+voit qu'un fichier a changé il y a deux insertions et tester SH est nouveau donc
+
+645
+00:57:45,920 --> 00:57:51,650
+ça va créer ça alors maintenant la dernière commande que je dois entrer est get push
+
+646
+00:57:51,650 --> 00:57:57,620
+origine et je vais spécifier le maître qui est le maître de la branche donc
+
+647
+00:57:57,620 --> 00:58:02,120
+maître d'origine et maintenant il va me demander mon nom d'utilisateur et mon mot de passe que je
+
+648
+00:58:02,120 --> 00:58:08,590
+entré lors de la création de mon compte, donc cat5 TV est mon nom d'utilisateur et mon mot de passe I
+
+649
+00:58:08,590 --> 00:58:14,990
+utilisez LastPass et générez de nouveaux mots de passe tout le temps et ils sont massifs et
+
+650
+00:58:14,990 --> 00:58:23,150
+fou donc je copie le mot de passe et puis je le colle et voilà c'est parti
+
+651
+00:58:23,150 --> 00:58:28,850
+télécharger ces données dans mon référentiel et c'est fait ainsi f5 pour actualiser et vous
+
+652
+00:58:28,850 --> 00:58:36,380
+devrait voir le test SH fait maintenant partie de mon référentiel github et il est là et il
+
+653
+00:58:36,380 --> 00:58:42,890
+montre que c'est exécutif bonjour monde alors maintenant de retour ici alors faisons juste semblant
+
+654
+00:58:42,890 --> 00:58:47,960
+J'ai fait des changements ailleurs donc sur un autre ordinateur et je vais le faire
+
+655
+00:58:47,960 --> 00:58:53,440
+ceci via le navigateur juste pour vous montrer, donc sur ce système, je vais faire écho
+
+656
+00:58:53,440 --> 00:58:59,920
+bonjour encore ok et ensuite je vais enregistrer ces changements, je ne vais pas lui donner un
+
+657
+00:58:59,920 --> 00:59:04,100
+nom ou quelque chose comme cette description, je vais juste confirmer donc maintenant le script
+
+658
+00:59:04,100 --> 00:59:07,430
+ressemble à ça alors voyez comment je change cela dans le navigateur, vous pouvez le faire
+
+659
+00:59:07,430 --> 00:59:12,440
+de n'importe où donc maintenant si je regarde mon fichier localement sur mon ordinateur dans le
+
+660
+00:59:12,440 --> 00:59:18,950
+référentiel là nous allons, il dit juste bonjour tout le monde d'accord alors je vais y aller
+
+661
+00:59:18,950 --> 00:59:24,140
+obtenir à nouveau tirer je fais tout cela dans le dossier de test mon soulignement donc git
+
+662
+00:59:24,140 --> 00:59:28,430
+pull recherchera ensuite les modifications apportées ailleurs
+
+663
+00:59:28,430 --> 00:59:32,870
+et tirez-les vers mon ordinateur pour qu'il synchronise toujours ces changements
+
+664
+00:59:32,870 --> 00:59:36,560
+donc maintenant si j'ouvre Nano et ouvre ce fichier, vous pouvez voir ce nouveau
+
+665
+00:59:36,560 --> 00:59:44,300
+bonjour fait maintenant partie de ça alors je vais te montrer trois fois bonjour écho
+
+666
+00:59:44,300 --> 00:59:48,830
+et je vais sauver ça et maintenant je vais faire exactement la même chose mais je
+
+667
+00:59:48,830 --> 00:59:52,160
+va vous montrer en quoi c'est différent maintenant que j'ai déjà entré mon nom et mon
+
+668
+00:59:52,160 --> 01:00:03,220
+adresse e-mail encore ajouter une étoile get commit - am final update get push origin master
+
+669
+01:00:03,220 --> 01:00:12,370
+cap 5 TV est mon nom d'utilisateur et mon mot de passe est une chaîne d'environ 64 caractères
+
+670
+01:00:12,370 --> 01:00:21,560
+choisi au hasard et je vais coller ça dedans et nous y voilà donc c'est tout
+
+671
+01:00:21,560 --> 01:00:26,840
+il y a - maintenant pousser mes modifications localement sur le serveur github afin que
+
+672
+01:00:26,840 --> 01:00:30,110
+le partage à nouveau avec tout le monde ou avec mes autres systèmes lorsque je fais un get
+
+673
+01:00:30,110 --> 01:00:36,470
+tirez donc en faisant ça, je peux me faire clunk pardonnez-moi git clone quelque chose et ça
+
+674
+01:00:36,470 --> 01:00:40,220
+ne doit pas être à moi, cela peut être le dépôt github de quelqu'un d'autre tant
+
+675
+01:00:40,220 --> 01:00:44,450
+comme ce public, mais je peux ensuite y apporter des modifications sur ma machine locale et
+
+676
+01:00:44,450 --> 01:00:50,360
+alors je peux faire un push maintenant vous devez posséder le référentiel afin de faire un push donc
+
+677
+01:00:50,360 --> 01:00:55,850
+la façon d'apporter des modifications au référentiel de quelqu'un d'autre est de le bifurquer ainsi quand
+
+678
+01:00:55,850 --> 01:00:59,110
+vous allez dans le référentiel vous cliquez sur le bouton appelé fork et c'est fondamentalement
+
+679
+01:00:59,110 --> 01:01:03,800
+en fait une copie dans votre propre compte que vous pouvez modifier, puis
+
+680
+01:01:03,800 --> 01:01:07,100
+c'est là que vous pouvez faire des pull requests mais ce sont les bases pour vous
+
+681
+01:01:07,100 --> 01:01:11,390
+commencé qui va vous permettre de créer des référentiels télécharger vos fichiers
+
+682
+01:01:11,390 --> 01:01:15,560
+télécharger votre code être capable de le manipuler à partir de n'importe quel système afin de pouvoir le tester sur
+
+683
+01:01:15,560 --> 01:01:19,520
+un Raspberry Pi sur votre machine Windows sur votre bureau Linux sur n'importe quoi et
+
+684
+01:01:19,520 --> 01:01:24,380
+puis transmettez toutes ces modifications au serveur afin qu'elles puissent être téléchargées ou
+
+685
+01:01:24,380 --> 01:01:31,250
+tiré sur tous vos systèmes, c'est tout ce qu'il y a à faire, nous sommes sur Twitter à
+
+686
+01:01:31,250 --> 01:01:36,020
+télévision de catégorie cinq Je suis personnellement sur Twitter à robbie Ferguson merci beaucoup
+
+687
+01:01:36,020 --> 01:01:39,559
+beaucoup pour me rejoindre cette semaine et j'ai hâte de vous revoir
+
+688
+01:01:39,559 --> 01:01:44,119
+la prochaine fois et allez sur notre site Web de catégorie 5 TV pour toutes les dernières et je vous verrai
+
+689
+01:01:44,119 --> 01:01:46,869
+bientôt au revoir
+
+690
+01:01:52,880 --> 01:01:55,989
+[La musique]
+
