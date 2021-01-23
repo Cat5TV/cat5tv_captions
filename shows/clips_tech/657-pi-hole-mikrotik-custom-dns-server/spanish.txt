@@ -1,0 +1,125 @@
+bien, ya que estamos aquí para aprender cómo configurar los enrutadores mikrotik
+Voy a asumir que ya sabes lo que es un agujero, no voy a
+entrar en eso voy a asumir que ya tienes uno configurado si tienes
+no tengo idea de lo que es un agujero, solo ten en cuenta que para hacer lo que estamos
+a punto de hacer vas a necesitar tener uno, mientras que puede sonar como algo
+ofensivo es en realidad una computadora de placa única o incluso una máquina virtual que
+se ejecuta en su red las 24 horas del día, los 7 días de la semana, actúa como su servidor DNS para su red
+filtra los anuncios a nivel de DNS, por lo que, dado que el anuncio nunca descarga su
+Internet se vuelve perceptiblemente más rápido su uso de datos es
+reducido una cantidad sorprendente y se ve una reducción notable en el número de
+anuncios a los que está sujeto ahora, a veces puede tener un inconveniente
+por ejemplo, si estás navegando por Amazon, a veces te presentarán un
+sugerencia de producto relevante, pero al hacer clic en él, se bloqueará
+porque es un anuncio, pero en general, es una solución fantástica que elimina los anuncios
+en toda su red, no tiene que instalar software en su
+dispositivos y no hay configuración en un dispositivo a nivel de dispositivo tan pronto como su
+dispositivo está conectado a la red obtiene las capacidades de filtrado de su
+piehole así que si no está familiarizado con piehole en este punto o de otra manera si
+no tienes uno Hice un tutorial el año pasado que te guía a través de lo básico
+configurado para aquellos de ustedes que están viendo en YouTube oa través de nuestro sitio web un
+TV de categoría 5, simplemente puede hacer clic en ese icono para ver el tutorial; de lo contrario, diríjase
+en nuestro sitio web de televisión de 5 puntos de categoría y haga una búsqueda rápida de
+y está escrito como se ve en la pantalla.
+buscar se llama anuncios de bloqueo y pornografía usando una sola computadora de placa
+Oh, espera bien, ahora que aparentemente tienes tu agujero
+todo configurado, veamos cómo configurar esto en nuestro enrutador mikrotik, así que en mi
+red mi dispositivo piehole está en 10.00 a su servidor DNS obviamente tiene que tener un
+dirección IP estática dentro de su red, así que esa es la dirección IP a la que voy a
+enrutar mi tráfico de DNS a, por lo que quiero mostrarles un par de cosas aquí en la web
+Figg, así que voy a hacer clic en la IP que ya está abierta y luego en DNS, así que cuando
+entra ahí vas a ver los servidores dinámicos que mi red es
+actualmente distribuyendo a todos mis dispositivos a través de DHCP, bueno, quiero cambiar eso
+Quiero configurar estos para que sean mi agujero, pero se dan cuenta de que no puedo
+cambiar los que no me permite hacer ningún cambio aquí, así que primero lo que tengo que hacer
+hacer es hacer clic en el cliente DHCP, haga clic en su éter en mi caso, que es
+recuerde de antes en nuestra serie mikrotik, la interfaz ether one es mi
+conexión a Internet, por lo que esa es la conexión real al enrutador desde el enrutador
+al módem para darme mi conectividad a Internet, así que haré clic en eso
+y voy a desactivar el uso de DNS del mismo nivel, así que básicamente digo que no quiero
+usar el DNS que me dio mi ISP y presionar OK ahora cuando voy a cuando voy a
+DNS verá ahora que los servidores dinámicos se han ido, no hay nada allí y
+presumiblemente a menos que esté almacenado en caché si intento ir a algún lugar, solo va a
+tiempo de espera porque ahora mismo no tengo ningún servidor DNS, así que ahora necesito agregar mi
+poseer diez lo que 10.0.0.0 hice eso es todo
+hay que decirlo, pero lo voy a revertir para que tengamos
+Pasé por ese proceso solo para mostrarte que voy a simplemente que voy a
+revertir eso para que pueda mostrarte una demostración de lo que realmente somos
+lo que estamos haciendo aquí lo que realmente estamos logrando, así que volvamos a encender
+nuestro DNS puro tengo problemas con estos trackpads
+Debería conseguir un ratón, así que veamos que volvemos a la dinámica, así que voy a
+abre un sitio web y tendrás que hacerlo en Firefox o Chrome
+no lo hagas en valiente porque, obviamente, valiente ya bloquea la publicidad
+los anuncios no lo hacen en un navegador que tiene instalada una herramienta de bloqueo de anuncios
+y trabajando activamente porque en realidad no le mostrará el éxito
+de hacer lo que estamos a punto de hacer acelerando a través de nuestro agujero de tarta, así que lo que
+lo que quiero hacer es ir a los anuncios de barra inclinada de dos puntos HTTP: bloqueador com y la razón por la que
+quiere ir allí es porque es solo un sitio web de demostración con muchos anuncios, así que si
+Si te desplazas un poco hacia abajo, comenzarás a ver publicidad aquí.
+en este sitio web hay anuncios que aparecen en este sitio parece que Firefox es
+en realidad ya está bloqueando algunos, así que voy a volver a bloquear la solicitud de origen
+bloqueado el 7 o el 10% de esta página, ¿puedo desactivar eso?
+es eso lo que está haciendo, sí, ahora vamos a ver anuncios, así que Firefox es
+ahora incluye un bloqueador de anuncios que es genial, pero que entienda muy bien si Firefox
+ya tiene un bloqueador de anuncios por qué tenemos que ir a todo este trabajo por qué necesitamos un
+agujero circular recuerda cómo dije esto hace que el bloqueo de anuncios a nivel de DNS y
+Insinué el hecho de que reducirá el consumo de ancho de banda.
+vas a acelerar tu Internet y eso es porque con algo como un
+complemento de bloqueo de anuncios o un navegador de bloqueo de anuncios tradicionalmente
+lo que sucede es que todavía descarga el anuncio, solo lo oculta, lo bloquea pero
+con el bloqueo del nivel de DNS, en realidad es la solicitud a los servidores de anuncios
+que responden con una respuesta nula, por lo que en realidad está bloqueando la capacidad de
+su computadora para llegar al servidor de anuncios no puede descargar nada que ellos
+no pueden rastrearlo, no pueden rastrear esa solicitud, no importa allí,
+se bloqueará en el nivel de DNS, por lo que hay mucho más, así que ahora que
+Tengo esto que usted bloquea, inhabilite, puede ver que hay un anuncio de Google aquí, está bien
+así que volvamos a mi micro tic aquí, vayamos de nuevo al cliente DHCP bajo IP y
+Hay muchas formas de hacer esto, puede hacerlo red por red si
+quieres, pero voy a hacer esto en toda mi red porque quiero cualquier
+dispositivo que está en mi red para pasar por el piehole puedo apagar el uso
+DNS puro y presiona ok ahora ve a DNS y agrega mi piehole 10 puntos
+0.2 y todo esto es bastante instantáneo, sin embargo, hay un par de cosas que
+nota, así que voy a borrar mi caché, esto es caché de limpieza de caché de DNS, así que ahora
+todo lo que ya se haya accedido se elimina de la caché de DNS y, por lo tanto,
+no va a ser, va a solicitar al juego y pasar por el
+piehole, la otra cosa a tener en cuenta es que podrías si quisieras entrar en
+Redes de servidores DHCP, así que en lugar de hacer esto en DNS, podría decir que está bien, mi LAN
+o estas son mis redes Wi-Fi para invitados, podría simplemente agregar un servidor DNS específico
+para aquellos para que pudiera hacer eso, ver cuán diversa puede ser la configuración con un
+mikrotik, así que al hacerlo de esa manera, podrías tener múltiples agujeros de tarta con
+Múltiples configuraciones diferentes que podría tener una mamá y un papá Wi-Fi que tenga eso
+tiene acceso directo a través del DNS de Google o algo así si no lo hace
+desea bloquear cosas, puede hacer que su Wi-Fi de invitado tenga un DNS más reforzado
+filtro, por ejemplo, para que pueda hacerlo a nivel de red en mi caso, como digo que soy
+no lo estoy haciendo en este nivel lo estoy haciendo en mi red completa, así que mi éter es
+voy a pasar por 10.0.0.0 me encantan sus solicitudes de DNS, así que ahora si salto aquí y
+simplemente actualice esta página tan simple como que el anuncio esté bloqueado.
+Trató de cargarlo para ver cómo obtuvo un marcador de posición Intentó acceder al anuncio
+pero estaba bloqueado a nivel de DNS, por lo que nunca llegó a mi navegador lo genial que es
+que entonces con esta configuración otra cosa a tener en cuenta es que mientras tu
+mikrotik servidor DHCP va a distribuir esta nueva configuración de DNS para 1000 - en
+En mi caso, es posible que tenga una situación en la que alguien se haya acostumbrado
+en su teléfono o tal vez estén ejecutando un navegador que
+anula la configuración de DNS de su red que podría ser un problema porque esto
+la configuración no se aplica, por lo que su dispositivo puede omitirla fácilmente, por lo que
+por defecto su dispositivo mikrotik en este momento, como acabo de demostrar con esto
+La configuración básica va a descargar esas configuraciones a través de DHCP y no
+saber que la descarga es el término correcto, pero obtendrá la nueva IP y dns
+configuración de su servidor DHCP en el Microtech, pero si su dispositivo tiene su propio
+configuraciones personalizadas, lo evitará, así que si lo desea, y
+forzarlo de modo que incluso si hubo una anulación en un dispositivo o si su navegador
+estaba ignorando la configuración de DNS deseada en su red, así que querrá
+Mire más en nuestra serie, ya que veremos cómo hacer lo que
+llamado enmascaramiento de DNS y con el enmascaramiento de DNS vamos a tomar lo que
+aprendido hoy en este tutorial y lo llevaremos al siguiente nivel que
+es decir, está bien, mi mikrotik ahora básicamente encontrará cualquier tráfico dns que sea
+pasando por mi red y se va a enmascarar para que tenga que ir
+a través del orificio de entrada hay una incapacidad en su dispositivo para eludir
+o anule eso incluso si establece su configuración de dns manualmente enmascarando
+lo forzará a pasar en mi caso 10.0.0.0 en cinco puntos TV slash mikrotik
+cubre una amplia gama de cómo configurar y utilizar su Microtech
+dispositivo de enrutamiento, esto es lo que vamos a buscar más enmascarado en el
+futuro, así que descarto esa palabra clave porque quiero que la vigile
+si eso le interesa, quiere hacer cumplirlo, suba al límite de v dot TV slash
+Mikrotik y busca ese dns disfrazado
+[Música]

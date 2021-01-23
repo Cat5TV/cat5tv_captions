@@ -1,0 +1,125 @@
+tudo bem, pois estamos aqui para aprender como configurar roteadores mikrotik
+Vou presumir que você já sabe o que é um idiota, não vou
+entendo que vou assumir que você já tem um configurado se você
+não tenho ideia do que é um buraco de pizza, apenas tenha em mente que, para fazer o que estamos
+prestes a fazer, você vai precisar de um, embora possa soar como algo
+ofensiva é na verdade um único computador de placa ou mesmo uma máquina virtual que
+funciona na sua rede 24 horas por dia, 7 dias por semana, atua como servidor DNS para a sua rede
+filtra os anúncios no nível DNS para que o anúncio nunca baixe seu
+Internet torna-se perceptivelmente mais rápido o uso de dados é
+reduziu uma quantidade surpreendente e você vê uma redução notável no número de
+anúncios aos quais você está sujeito agora, às vezes pode ter uma desvantagem
+como se você estivesse navegando na Amazon, às vezes, eles lhe apresentarão um
+sugestão de produto relevante, mas quando você clicar nela, ela será bloqueada
+porque é um anúncio, mas, em suma, é uma solução fantástica que corta os anúncios
+em toda a sua rede, você não precisa instalar software em seu
+dispositivos e não há configuração em um dispositivo para nível de dispositivo assim que seu
+dispositivo está conectado à rede, ele ganha os recursos de filtragem de seu
+piehole, então, se você não estiver familiarizado com piehole neste ponto ou se
+você não tem um. Eu fiz um tutorial no ano passado que mostra o básico
+configurado para aqueles de vocês que estão assistindo no YouTube ou através de nosso site a
+TV categoria 5, você pode simplesmente clicar nesse ícone para ver o tutorial de outra forma
+para a categoria 5 dot TV do nosso site e basta fazer uma busca rápida por torta
+e é escrito exatamente como você vê na tela, torta - buraco o vídeo que você está
+procurando é chamado de bloquear anúncios e pornografia usando um computador de placa única
+oh espere ok, então agora que você aparentemente tem seu buraco
+tudo configurado vamos ver como configurar isso no nosso roteador mikrotik so no meu
+rede meu dispositivo piehole está em 10,00 para o seu servidor DNS, obviamente, deve ter um
+endereço IP estático em sua rede, então esse é o endereço IP que irei
+estar direcionando meu tráfego DNS para, então quero mostrar algumas coisas aqui na web
+Figg então vou clicar no IP que já está aberto e depois no DNS então quando eu
+vá lá você vai ver os servidores dinâmicos que minha rede está
+atualmente distribuindo para todos os meus dispositivos através de DHCP bem, eu quero mudar isso
+Eu quero definir isso como meu buraco, mas você percebe que eu não posso
+alterá-los, não me permite fazer alterações aqui, então primeiro o que tenho que
+fazer é clicar no cliente DHCP clicar no seu éter no meu caso que é você
+lembre-se de antes em nossa série mikrotik a interface ether one é minha
+conexão com a Internet, de modo que essa é a conexão real do roteador ao roteador
+ao modem para me dar conectividade com a Internet, então vou clicar nele
+e vou desligar o uso de DNS de mesmo nível, então basicamente estou dizendo que não quero
+usar o DNS que me foi fornecido pelo meu ISP e clicar em OK agora quando for para quando for para
+DNS você verá agora que os servidores dinâmicos se foram, não há nada lá e
+presumivelmente, a menos que esteja em cache, se eu tentar ir a algum lugar, ele simplesmente vai
+tempo limite porque agora não tenho nenhum servidor DNS, então agora preciso adicionar meu
+tenho dez o que 10.0.0.0 eu fiz isso é tudo
+há uma maneira de falar, mas vou reverter isso para que
+passei por esse processo apenas para mostrar que vou apenas
+inverter isso para que eu possa mostrar a vocês uma demonstração do que realmente somos
+o que estamos realizando aqui o que estamos realmente alcançando, então vamos voltar
+nosso DNS puro, tenho problemas com esses trackpads
+Devo pegar um mouse ok para ver se estamos de volta à dinâmica, então vou
+crie um site e você precisará fazer isso no Firefox ou Chrome
+não faça isso com coragem porque corajoso obviamente já bloqueia a publicidade
+anúncios não fazem isso em um navegador com uma ferramenta de bloqueio de anúncios instalada
+e trabalhando ativamente porque não vai realmente mostrar o sucesso
+de fazer o que estamos prestes a fazer acelerando através de nosso buraco de pizza, então o que eu
+quero fazer é acessar HTTP, dois pontos, barra, barra, anúncios - blocker com e o motivo pelo qual
+quero ir lá é porque é apenas um site de demonstração de anúncios pesados, então se
+você rola um pouco para baixo e verá alguns anúncios aqui
+neste site existem anúncios que aparecem neste site parece que o Firefox está
+na verdade já está bloqueando alguns e então vou novamente, você bloqueia a solicitação de origem
+bloqueou 7 ou 10% desta página, posso desligar isso?
+é isso que está fazendo, sim, agora vamos ver anúncios lá, então o Firefox está
+agora incluindo um bloqueador de anúncios que é legal, mas entende tão bem se o Firefox
+já tem um bloqueador de anúncios, por que precisamos fazer todo esse trabalho, por que precisamos de um
+Lembre-se de como eu disse que isso faz com que o bloqueio de anúncios no nível do DNS
+Sugeri que você vai reduzir o consumo de largura de banda
+você vai acelerar sua internet e isso porque com algo como um
+plug-in de bloqueio de anúncio ou um navegador de bloqueio de anúncio tradicionalmente
+o que acontece é que ele ainda baixa o anúncio, apenas o esconde, o bloqueia, mas
+com o bloqueio de nível de DNS, é na verdade a solicitação para os servidores de anúncios
+que respondem com uma resposta nula, portanto, está bloqueando a capacidade de
+seu computador chegar ao servidor de anúncios, ele não pode baixar nada que eles
+não podem rastreá-lo, eles não podem rastrear essa solicitação, não importa se ela está
+será bloqueado no nível do DNS, então há muito mais do que isso, agora que
+Eu tenho isso para você bloquear, desativar, você pode ver que há um anúncio do Google bem aqui, ok
+então, de volta ao meu micro tick, vamos novamente para o cliente DHCP sob IP e
+há muitas maneiras de fazer isso, você pode fazer isso rede por rede se
+você quer, mas vou fazer isso em toda a minha rede porque quero qualquer
+dispositivo que está na minha rede para passar pelo buraco eu posso desligar uso
+DNS puro e clique em ok agora vá para DNS e adicione meu piehole 10 pontos
+0.2 e tudo isso é bastante instantâneo, no entanto, há algumas coisas para
+observe que vou limpar meu cache, este é o cache de liberação de cache DNS, agora
+tudo o que já foi acessado é eliminado do cache DNS e assim
+não vai ser, vai pedir ao jogo e passar pelo
+a outra coisa a ter em mente é que você poderia se quisesse
+Redes de servidores DHCP, então, em vez de fazer isso no DNS, eu poderia apenas dizer ok minha LAN
+ou se essas são minhas redes Wi-Fi de convidado, eu poderia simplesmente adicionar um servidor DNS específico
+para aqueles que eu poderia fazer isso ver como a configuração pode ser diversa com um
+mikrotik então fazendo dessa forma você poderia ter vários buracos de pizza com
+em várias configurações diferentes, você pode ter um Wi-Fi de mãe e pai que tenha esse
+tem acesso direto através do DNS do Google ou algo parecido, se você não
+deseja bloquear coisas, você pode fazer com que o Wi-Fi de seu convidado tenha um DNS mais protegido
+filtro, por exemplo, para que você possa fazer isso em um nível de rede no meu caso, como digo que estou
+não fazendo neste nível, estou fazendo na minha rede completa, então o meu ether é
+vai passar por 10.0.0.0 adoro suas solicitações de DNS, então agora se eu pular aqui e
+apenas atualize esta página tão simples como o anúncio está bloqueado veja que assim
+tentou carregá-lo para ver como conseguiu um placeholder, tentou acessar o anúncio
+mas foi bloqueado no nível de DNS, então nunca chegou ao meu navegador como é legal
+com esta configuração, outra coisa a ter em mente é que enquanto
+O servidor DHCP da mikrotik irá distribuir esta nova configuração de DNS para 1000 - em
+meu caso, você pode ter uma situação em que alguém talvez tenha acostumado
+configuração no telefone ou talvez eles estejam executando um navegador que
+substitui as configurações de DNS de sua rede, o que pode ser um problema porque este
+configuração não é aplicada, portanto, esta configuração pode ser facilmente ignorada pelo seu dispositivo
+por padrão seu dispositivo mikrotik agora como acabei de demonstrar com este
+a configuração básica fará o download dessas configurações por meio de DHCP e eu não
+saber que o download é o termo correto, mas ele obterá o novo IP e dns
+configurações do seu servidor DHCP na Microtech, mas se o seu dispositivo tiver o seu próprio
+configurações personalizadas vai contornar isso, se você preferir e
+force-o para que mesmo se houver uma modificação em um dispositivo ou se o seu navegador
+estava ignorando as configurações de DNS desejadas em sua rede, você vai querer
+assista mais adiante em nossa série, pois veremos como fazer o que
+chamado mascaramento de DNS e com mascaramento de DNS vamos pegar o que
+aprendemos hoje neste tutorial e vamos levá-lo para o próximo nível que
+é para dizer que meu mikrotik agora vai basicamente encontrar qualquer tráfego de DNS que
+passando pela minha rede e vai mascará-la para que tenha que ir
+através do buraco do visor, há uma incapacidade do seu dispositivo de contornar
+ou substituir isso mesmo se você definir suas configurações de DNS manualmente mascarando
+vai forçar ele passar no meu caso 10.0.0.0 em cinco dot TV slash mikrotik
+cobre uma ampla gama de como instalar e configurar e usar o seu Microtech
+dispositivo de roteamento, vamos olhar mais para mascarar no
+futuro, então estou descartando essa palavra-chave para você porque quero que você observe
+se isso for do seu interesse, você deseja aplicá-lo, vá para cap v dot TV slash
+mikrotik e procura aquele dns masquerading
+[Música]

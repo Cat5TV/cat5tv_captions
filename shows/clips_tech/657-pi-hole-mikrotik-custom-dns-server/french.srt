@@ -1,0 +1,500 @@
+1
+00:00:01,610 --> 00:00:06,839
+très bien pour que nous soyons ici pour savoir comment configurer les routeurs mikrotik
+
+2
+00:00:06,839 --> 00:00:11,219
+Je vais supposer que tu sais déjà quel trou est je ne vais pas
+
+3
+00:00:11,219 --> 00:00:15,870
+entrer dans cela, je vais supposer que vous en avez déjà un si vous
+
+4
+00:00:15,870 --> 00:00:20,970
+Je n'ai aucune idée de ce qu'est un trou de tarte, gardez simplement à l'esprit que pour faire ce que nous
+
+5
+00:00:20,970 --> 00:00:24,510
+sur le point de le faire, vous devrez en avoir un alors que cela peut ressembler à quelque chose
+
+6
+00:00:24,510 --> 00:00:29,970
+offensive c'est en fait un ordinateur monocarte ou même une machine virtuelle qui
+
+7
+00:00:29,970 --> 00:00:35,820
+fonctionne sur votre réseau 24/7 il agit comme votre serveur DNS pour votre réseau il
+
+8
+00:00:35,820 --> 00:00:42,390
+filtre les publicités au niveau du DNS, puisque l'annonce ne télécharge jamais votre
+
+9
+00:00:42,390 --> 00:00:47,489
+Internet devient perceptiblement plus rapide que votre utilisation de données est
+
+10
+00:00:47,489 --> 00:00:52,289
+réduit une quantité surprenante et vous constatez une réduction notable du nombre de
+
+11
+00:00:52,289 --> 00:00:57,180
+les publicités auxquelles vous êtes soumis maintenant peuvent parfois avoir un inconvénient
+
+12
+00:00:57,180 --> 00:01:00,930
+comme si vous naviguez sur Amazon, ils vous présenteront parfois un
+
+13
+00:01:00,930 --> 00:01:05,790
+suggestion de produit pertinente mais lorsque vous cliquez dessus, elle sera bloquée
+
+14
+00:01:05,790 --> 00:01:10,439
+parce que c'est une publicité mais dans l'ensemble, c'est une solution fantastique qui coupe les publicités
+
+15
+00:01:10,439 --> 00:01:14,189
+tout au long de votre réseau, vous n'avez pas besoin d'installer de logiciel sur votre
+
+16
+00:01:14,189 --> 00:01:20,220
+appareils et il n'y a pas de configuration sur un appareil au niveau appareil dès que votre
+
+17
+00:01:20,220 --> 00:01:23,880
+l'appareil est connecté au réseau, il obtient les capacités de filtrage de votre
+
+18
+00:01:23,880 --> 00:01:30,360
+piehole donc si vous n'êtes pas familier avec le piehole à ce stade ou autrement si
+
+19
+00:01:30,360 --> 00:01:34,320
+vous n'en avez pas J'ai fait un tutoriel l'année dernière qui vous guide à travers les bases
+
+20
+00:01:34,320 --> 00:01:38,400
+mis en place pour ceux d'entre vous qui regardent sur YouTube ou via notre site Web un
+
+21
+00:01:38,400 --> 00:01:43,770
+TV de catégorie 5, vous pouvez simplement cliquer sur cette icône pour voir le tutoriel sinon, dirigez-vous
+
+22
+00:01:43,770 --> 00:01:49,590
+sur notre site Web de catégorie 5 dot TV et faites simplement une recherche rapide pour tarte
+
+23
+00:01:49,590 --> 00:01:53,939
+et il est orthographié comme vous le voyez sur l'écran là-bas tarte - trou la vidéo que vous
+
+24
+00:01:53,939 --> 00:02:00,670
+la recherche s'appelle bloquer les publicités et la pornographie à l'aide d'un ordinateur à carte unique
+
+25
+00:02:00,670 --> 00:02:38,050
+Oh attends ok maintenant que tu as apparemment ton trou du cul
+
+26
+00:02:38,050 --> 00:02:44,260
+tous mis en place voyons comment configurer cela sur notre routeur mikrotik donc sur mon
+
+27
+00:02:44,260 --> 00:02:51,820
+réseau mon appareil piehole est à 10,00 à votre serveur DNS doit évidemment avoir un
+
+28
+00:02:51,820 --> 00:02:55,930
+adresse IP statique au sein de votre réseau, c'est donc l'adresse IP que je vais
+
+29
+00:02:55,930 --> 00:03:00,340
+acheminer mon trafic DNS vers, donc je veux vous montrer quelques choses ici sur le Web
+
+30
+00:03:00,340 --> 00:03:04,330
+Figg donc je vais cliquer sur IP qui est déjà ouvert, puis DNS alors quand je
+
+31
+00:03:04,330 --> 00:03:07,690
+allez-y, vous allez voir les serveurs dynamiques que mon réseau est
+
+32
+00:03:07,690 --> 00:03:11,590
+actuellement distribué à tous mes appareils via DHCP et je veux changer cela
+
+33
+00:03:11,590 --> 00:03:16,269
+Je veux en fait les définir comme mon trou du cul mais vous remarquez que je ne peux pas en fait
+
+34
+00:03:16,269 --> 00:03:21,760
+changer ceux-ci, cela ne me permet pas de faire des changements ici, alors ce que je dois d'abord
+
+35
+00:03:21,760 --> 00:03:28,480
+faire est de cliquer sur le client DHCP, cliquez sur votre éther dans mon cas, vous
+
+36
+00:03:28,480 --> 00:03:34,230
+rappelez-vous de plus tôt dans notre série mikrotik, l'interface Ether One est ma
+
+37
+00:03:34,230 --> 00:03:39,160
+connexion Internet, donc c'est la connexion réelle au routeur à partir du routeur
+
+38
+00:03:39,160 --> 00:03:42,940
+au modem pour me donner ma connectivité Internet alors je vais cliquer dessus
+
+39
+00:03:42,940 --> 00:03:49,299
+et je vais désactiver l'utilisation du DNS pair, donc je dis que je ne veux pas
+
+40
+00:03:49,299 --> 00:03:55,180
+utilisez le DNS qui m'a été fourni par mon FAI et cliquez sur OK maintenant quand je vais à quand je vais à
+
+41
+00:03:55,180 --> 00:04:02,549
+DNS, vous verrez maintenant que les serveurs dynamiques sont partis, il n'y a rien là-bas et
+
+42
+00:04:02,549 --> 00:04:05,980
+probablement à moins qu'il ne soit mis en cache si j'essaye d'aller quelque part
+
+43
+00:04:05,980 --> 00:04:11,769
+timeout car pour le moment je n'ai pas de serveur DNS donc maintenant je dois ajouter mon
+
+44
+00:04:11,769 --> 00:04:24,330
+posséder dix ce que j'ai fait 10.0.0.0 c'est tout
+
+45
+00:04:24,330 --> 00:04:28,800
+il y a quelque chose à dire mais je vais inverser cela pour que nous
+
+46
+00:04:28,800 --> 00:04:32,610
+J'ai traversé ce processus juste pour te montrer que je vais juste en quelque sorte je vais
+
+47
+00:04:32,610 --> 00:04:36,380
+inverser cela pour que je puisse vous montrer une démonstration de ce que nous sommes réellement
+
+48
+00:04:36,380 --> 00:04:41,280
+ce que nous faisons ici ce que nous accomplissons réellement alors revenons sur
+
+49
+00:04:41,280 --> 00:04:45,090
+notre DNS pur j'ai des problèmes avec ces trackpads
+
+50
+00:04:45,090 --> 00:04:50,400
+Je devrais avoir une souris d'accord pour voir que nous sommes de retour sur la dynamique alors je vais
+
+51
+00:04:50,400 --> 00:04:55,789
+ouvrir un site Web et vous devrez le faire dans Firefox ou Chrome
+
+52
+00:04:55,789 --> 00:05:01,380
+ne le faites pas avec courage parce que brave bloque évidemment déjà la publicité
+
+53
+00:05:01,380 --> 00:05:08,580
+les publicités ne le font pas dans un navigateur sur lequel un outil de blocage des publicités est installé
+
+54
+00:05:08,580 --> 00:05:15,449
+et travailler activement car cela ne vous montrera pas vraiment le succès
+
+55
+00:05:15,449 --> 00:05:20,370
+de faire ce que nous sommes sur le point de faire en tournant à travers notre trou de tarte alors qu'est-ce que je
+
+56
+00:05:20,370 --> 00:05:27,630
+voulez faire est d'aller aux publicités HTTP slash slash - blocker com et la raison pour laquelle je
+
+57
+00:05:27,630 --> 00:05:31,949
+je veux y aller parce que c'est juste un site Web de démonstration lourd, donc si
+
+58
+00:05:31,949 --> 00:05:35,729
+vous faites défiler un peu les façons dont vous allez commencer à voir de la publicité ici
+
+59
+00:05:35,729 --> 00:05:43,560
+sur ce site Web, il y a des publicités qui apparaissent sur ce site, il semble que Firefox est
+
+60
+00:05:43,560 --> 00:05:50,280
+en bloquant déjà certains et donc je vais à nouveau vous bloquer la demande d'origine
+
+61
+00:05:50,280 --> 00:05:55,440
+bloqué 7 ou 10% de cette page puis-je désactiver cela
+
+62
+00:05:55,440 --> 00:06:05,820
+est-ce que c'est ce qui le fait ouais maintenant, nous allons voir des publicités là-bas, donc Firefox est
+
+63
+00:06:05,820 --> 00:06:10,949
+y compris maintenant un bloqueur de publicité qui est cool mais comprend si bien si Firefox
+
+64
+00:06:10,949 --> 00:06:14,009
+a déjà un bloqueur de publicité pourquoi devons-nous aller à tout ce travail pourquoi avons-nous besoin d'un
+
+65
+00:06:14,009 --> 00:06:20,430
+trou de tarte rappelez-vous comment j'ai dit que le blocage des publicités au niveau DNS ainsi et
+
+66
+00:06:20,430 --> 00:06:23,130
+J'ai laissé entendre que vous allez réduire votre consommation de bande passante
+
+67
+00:06:23,130 --> 00:06:27,500
+vous allez accélérer votre connexion Internet et c'est parce qu'avec quelque chose comme un
+
+68
+00:06:27,500 --> 00:06:33,080
+plugin de blocage des publicités ou navigateur de blocage des publicités traditionnellement
+
+69
+00:06:33,080 --> 00:06:38,750
+ce qui se passe, c'est qu'il télécharge toujours l'annonce, il la cache juste, il la bloque mais
+
+70
+00:06:38,750 --> 00:06:43,550
+avec le blocage du niveau DNS, c'est en fait la demande aux serveurs publicitaires
+
+71
+00:06:43,550 --> 00:06:50,000
+qui répondent par une réponse nulle, ce qui bloque en fait la possibilité de
+
+72
+00:06:50,000 --> 00:06:55,129
+votre ordinateur pour atteindre le serveur publicitaire du tout, il ne peut rien télécharger
+
+73
+00:06:55,129 --> 00:07:00,020
+ne peut pas vous suivre ils ne peuvent pas suivre cette demande peu importe là c'est
+
+74
+00:07:00,020 --> 00:07:03,620
+va être bloqué au niveau DNS, donc il y a tellement plus que maintenant
+
+75
+00:07:03,620 --> 00:07:07,909
+J'ai ce que vous bloquez désactiver, vous pouvez voir qu'il y a une annonce Google ici, d'accord
+
+76
+00:07:07,909 --> 00:07:15,470
+revenons donc à mon micro coche ici, revenons au client DHCP sous IP et
+
+77
+00:07:15,470 --> 00:07:19,909
+il existe de nombreuses façons de le faire, vous pouvez le faire réseau par réseau si
+
+78
+00:07:19,909 --> 00:07:24,139
+vous voulez mais je vais juste le faire sur tout mon réseau parce que je veux tout
+
+79
+00:07:24,139 --> 00:07:28,009
+appareil qui se trouve sur mon réseau pour passer par le trou du trou Je peux désactiver l'utilisation
+
+80
+00:07:28,009 --> 00:07:40,370
+DNS pur et cliquez sur OK, allez maintenant dans DNS et ajoutez mon trou de pie 10 points
+
+81
+00:07:40,370 --> 00:07:46,790
+0.2 et tout cela est assez instantané, mais il y a plusieurs choses à
+
+82
+00:07:46,790 --> 00:07:52,280
+note donc je vais vider mon cache c'est le cache de vidage du cache DNS alors maintenant
+
+83
+00:07:52,280 --> 00:07:56,600
+tout ce qui a déjà été accédé est vidé du cache DNS et ainsi
+
+84
+00:07:56,600 --> 00:08:02,210
+ça ne va pas être ça va demander au jeu et passer par le
+
+85
+00:08:02,210 --> 00:08:08,000
+Piehole, l'autre chose à garder à l'esprit est que vous pourriez si vous vouliez entrer dans
+
+86
+00:08:08,000 --> 00:08:15,410
+Réseaux de serveurs DHCP, donc au lieu de faire cela au DNS, je pourrais simplement dire d'accord mon LAN
+
+87
+00:08:15,410 --> 00:08:23,449
+ou ce sont mes réseaux Wi-Fi invités, je pourrais simplement ajouter un serveur DNS spécifique
+
+88
+00:08:23,449 --> 00:08:29,449
+pour ceux-ci afin que je puisse le faire voir à quel point la configuration peut être diversifiée avec un
+
+89
+00:08:29,449 --> 00:08:34,250
+mikrotik donc en procédant de cette façon, vous pourriez avoir plusieurs trous de tarte avec
+
+90
+00:08:34,250 --> 00:08:38,750
+plusieurs paramètres différents, vous pourriez avoir un Wi-Fi maman et papa qui a cela
+
+91
+00:08:38,750 --> 00:08:43,010
+a un accès direct via le DNS de Google ou quelque chose du genre si vous ne le faites pas
+
+92
+00:08:43,010 --> 00:08:49,100
+voulez bloquer les choses que vous pouvez faire en sorte que votre Wi-Fi invité ait un DNS plus durci
+
+93
+00:08:49,100 --> 00:08:54,380
+filtre par exemple pour que vous puissiez le faire au niveau du réseau dans mon cas comme je dis que je suis
+
+94
+00:08:54,380 --> 00:09:01,220
+ne pas le faire à ce niveau je le fais sur mon réseau complet donc mon éther est
+
+95
+00:09:01,220 --> 00:09:09,200
+va passer par 10.0.0.0 aime ses requêtes DNS alors maintenant si je saute ici et
+
+96
+00:09:09,200 --> 00:09:19,550
+il suffit de rafraîchir cette page aussi simplement que la publicité est bloquée voir que si
+
+97
+00:09:19,550 --> 00:09:25,480
+il a essayé de le charger voir comment il a un espace réservé il a essayé d'accéder à l'annonce
+
+98
+00:09:25,480 --> 00:09:33,320
+mais il a été bloqué au niveau DNS, donc il n'est jamais arrivé à mon navigateur à quel point c'est cool
+
+99
+00:09:33,320 --> 00:09:39,650
+ainsi, avec cette configuration, une autre chose à garder à l'esprit est que pendant que votre
+
+100
+00:09:39,650 --> 00:09:47,930
+Le serveur DHCP mikrotik va proposer ce nouveau paramètre DNS pour 1000 - in
+
+101
+00:09:47,930 --> 00:09:54,560
+mon cas, vous pouvez avoir une situation où quelqu'un s'est peut-être habitué
+
+102
+00:09:54,560 --> 00:10:00,620
+réglage sur leur téléphone ou peut-être qu'il y a là, ils exécutent un navigateur qui
+
+103
+00:10:00,620 --> 00:10:07,999
+remplace les paramètres DNS de votre réseau qui pourraient poser problème car cela
+
+104
+00:10:07,999 --> 00:10:16,040
+n'est pas appliqué, ce paramètre peut donc être facilement contourné par votre appareil.
+
+105
+00:10:16,040 --> 00:10:20,959
+par défaut votre appareil mikrotik en ce moment comme je viens de le démontrer avec ceci
+
+106
+00:10:20,959 --> 00:10:27,350
+la configuration de base va télécharger ces paramètres via DHCP et je ne le fais pas
+
+107
+00:10:27,350 --> 00:10:31,519
+sachez que le téléchargement est le bon terme, mais il obtiendra la nouvelle adresse IP et le nouveau DNS
+
+108
+00:10:31,519 --> 00:10:37,999
+paramètres de votre serveur DHCP sur le Microtech mais si votre appareil a son propre
+
+109
+00:10:37,999 --> 00:10:44,930
+paramètres personnalisés, cela va contourner cela, donc si vous le souhaitez à la place et
+
+110
+00:10:44,930 --> 00:10:50,809
+forcez-le pour que même s'il y avait un remplacement sur un appareil ou si votre navigateur
+
+111
+00:10:50,809 --> 00:10:56,300
+ignorait vos paramètres DNS souhaités sur votre réseau et vous voudrez bien
+
+112
+00:10:56,300 --> 00:11:00,559
+regardez plus loin dans notre série car nous allons voir comment faire
+
+113
+00:11:00,559 --> 00:11:05,720
+appelé DNS masquerading et avec DNS masquerading nous allons prendre ce que nous
+
+114
+00:11:05,720 --> 00:11:10,730
+appris aujourd'hui sur ce tutoriel et nous allons passer au niveau suivant qui
+
+115
+00:11:10,730 --> 00:11:17,149
+c'est-à-dire que mon mikrotik va maintenant trouver essentiellement tout trafic DNS
+
+116
+00:11:17,149 --> 00:11:22,879
+en passant par mon réseau et il va le masquer pour qu'il doit disparaître
+
+117
+00:11:22,879 --> 00:11:28,220
+à travers le trou du trou, votre appareil ne parvient pas à contourner
+
+118
+00:11:28,220 --> 00:11:34,220
+ou remplacez-le même si vous définissez vos paramètres DNS manuellement en masquant
+
+119
+00:11:34,220 --> 00:11:43,160
+va le forcer à passer dans mon cas 10.0.0.0 à cinq points TV slash mikrotik
+
+120
+00:11:43,160 --> 00:11:48,709
+couvre un large éventail de méthodes d'installation, de configuration et d'utilisation de votre Microtech
+
+121
+00:11:48,709 --> 00:11:54,920
+périphérique de routage, nous allons chercher davantage à se faire passer pour un
+
+122
+00:11:54,920 --> 00:11:58,910
+futur, donc je laisse tomber ce mot-clé pour vous parce que je veux que vous le surveilliez
+
+123
+00:11:58,910 --> 00:12:03,319
+si cela vous intéresse, vous voulez l'appliquer, passez à la barre oblique TV
+
+124
+00:12:03,319 --> 00:12:09,610
+mikrotik et cherchez celui-là dns masquerading
+
+125
+00:12:20,740 --> 00:12:23,779
+[La musique]
+

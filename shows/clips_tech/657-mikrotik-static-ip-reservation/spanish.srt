@@ -1,0 +1,220 @@
+1
+00:00:02,720 --> 00:00:06,720
+lo siguiente en nuestra serie micrótica es cómo asignar una dirección IP estática
+
+2
+00:00:06,720 --> 00:00:14,160
+a un dispositivo en su dhcp en su grupo de dhcp, así que simplemente voy a iniciar sesión
+
+3
+00:00:14,160 --> 00:00:20,400
+web fig aquí en mi computadora portátil y quiero mostrarte lo fácil que es esto
+
+4
+00:00:20,400 --> 00:00:25,599
+para hacerlo, haga clic en ip y haga clic en dhcp
+
+5
+00:00:25,599 --> 00:00:32,399
+servidor y haga clic en arrendamientos, esto es algo importante porque
+
+6
+00:00:32,399 --> 00:00:34,800
+vas a necesitar tener ip estática
+
+7
+00:00:34,800 --> 00:00:38,320
+direccionamiento en su red para cosas como servidores
+
+8
+00:00:38,320 --> 00:00:43,040
+en mi caso, también estamos viendo el agujero pi, por ejemplo
+
+9
+00:00:43,040 --> 00:00:48,239
+entonces mi servidor pi hole está configurado como
+
+10
+00:00:48,280 --> 00:00:52,559
+10.0.0.2 que es una reserva estática en mi dhcp
+
+11
+00:00:52,559 --> 00:00:56,640
+piscina para mi microtecnología, así que cualquiera de estos
+
+12
+00:00:56,640 --> 00:01:01,840
+dispositivos para que estos sean dinámicos vea estos dispositivos dinámicos
+
+13
+00:01:01,840 --> 00:01:06,799
+d los que tienen un botón de anuncio, ese botón realmente convertirá
+
+14
+00:01:06,799 --> 00:01:09,439
+a dinámicos pero actualmente son estáticos
+
+15
+00:01:09,439 --> 00:01:15,680
+así que veamos tengo un vamos a agarrar mi teléfono ahí está mi teléfono
+
+16
+00:01:15,680 --> 00:01:20,280
+así que voy a hacer clic en eso y actualmente está asignado a
+
+17
+00:01:20,280 --> 00:01:24,840
+10.0.0.107, así que simplemente presionaré make
+
+18
+00:01:24,840 --> 00:01:30,360
+estático y ahora se ha asignado a
+
+19
+00:01:30,360 --> 00:01:35,520
+10.0.0.107 estático pero si cierro eso
+
+20
+00:01:35,520 --> 00:01:40,720
+ahora verá 107 tiene esa d junto a él y ya no es dinámico
+
+21
+00:01:40,720 --> 00:01:44,720
+así que ahora, si lo abro haciendo clic en él, obtengo todas estas nuevas opciones
+
+22
+00:01:44,720 --> 00:01:49,200
+y ahora puedo asignarle su propia dirección IP algo que
+
+23
+00:01:49,200 --> 00:01:53,600
+no está actualmente en uso en mi grupo, así que puedo asignar ese 2.88
+
+24
+00:01:53,600 --> 00:02:00,560
+y presiona ok y ahora mi pocophone es 10.0.0.88
+
+25
+00:02:00,560 --> 00:02:06,799
+ahí está ver lo fácil que es configurar una reserva estática en su
+
+26
+00:02:06,799 --> 00:02:11,599
+dhcp pool en un dispositivo microtech es una fantástica pregunta de seguimiento rápida en
+
+27
+00:02:11,599 --> 00:02:16,720
+nuestra discordia del foo que está preguntando no debería ser reservado ips
+
+28
+00:02:16,720 --> 00:02:23,599
+fuera del rango dinámico de la piscina dhcp y aunque técnicamente es cierto en
+
+29
+00:02:23,599 --> 00:02:28,160
+y en un tipo diferente de escenario en el que no estás usando dhcp
+
+30
+00:02:28,160 --> 00:02:32,000
+ese no es el caso aquí voy a explicar por qué
+
+31
+00:02:32,000 --> 00:02:36,720
+Tradicionalmente, los administradores de sistemas somos básicamente lo que está arraigado en nuestra
+
+32
+00:02:36,720 --> 00:02:41,440
+Mentes a asignar siempre al dhc uh la dirección estática fuera del
+
+33
+00:02:41,440 --> 00:02:45,920
+pool, la razón de esto es si digamos que instala un nuevo
+
+34
+00:02:45,920 --> 00:02:50,239
+impresora en una red y vas a esa impresora y escribes
+
+35
+00:02:50,239 --> 00:02:53,440
+en la dirección IP y la pones dentro del
+
+36
+00:02:53,440 --> 00:02:57,040
+agrupa ahora tu servidor dhcp ni siquiera sabe
+
+37
+00:02:57,040 --> 00:03:01,519
+que existe porque no asignó la dirección ip
+
+38
+00:03:01,519 --> 00:03:04,400
+así que lo que estamos haciendo aquí es completamente diferente de lo que estamos haciendo es
+
+39
+00:03:04,400 --> 00:03:09,120
+configurar la reserva en el servidor DHCP para que la impresora esté
+
+40
+00:03:09,120 --> 00:03:11,440
+todavía obteniendo la dirección IP del
+
+41
+00:03:11,440 --> 00:03:14,720
+servidor dhcp por lo que tiene que estar fuera del
+
+42
+00:03:14,720 --> 00:03:18,159
+piscina ahora no, la razón por la que tendría que ser si fuera
+
+43
+00:03:18,159 --> 00:03:21,440
+escribirlo manualmente en la impresora es porque
+
+44
+00:03:21,440 --> 00:03:24,720
+cuando el servidor dhcp luego asigna esa ip
+
+45
+00:03:24,720 --> 00:03:28,400
+dirección a otro dispositivo en su red va a causar una ip
+
+46
+00:03:28,400 --> 00:03:31,440
+conflicto de colisión, por lo que tendrá dos dispositivos
+
+47
+00:03:31,440 --> 00:03:36,239
+compartiendo la misma dirección IP y obtendrás todo tipo de arp
+
+48
+00:03:36,239 --> 00:03:39,360
+advertencia de ataques arp advertencias de ataque cosas así
+
+49
+00:03:39,360 --> 00:03:42,400
+porque tienes estas colisiones que ocurren dentro de tu red, las cosas son
+
+50
+00:03:42,400 --> 00:03:46,959
+ir lento de repente, eso es un problema porque estoy asignando
+
+51
+00:03:46,959 --> 00:03:50,879
+mi dirección ip desde el servidor dhcp a mi dispositivo
+
+52
+00:03:50,879 --> 00:03:55,840
+o en mi impresora, puedo configurarlo en cualquier cosa que no esté asignada
+
+53
+00:03:55,840 --> 00:03:59,680
+y lo distribuirá a través del DHCP y no importa si es
+
+54
+00:03:59,680 --> 00:04:15,840
+dentro de la piscina o no
+
+55
+00:04:19,120 --> 00:04:21,199
+tú
+

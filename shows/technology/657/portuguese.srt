@@ -1,0 +1,2320 @@
+1
+00:00:00,709 --> 00:00:05,759
+esta semana estamos pegando em nossa série de roteadores mikrotik e vou mostrar como
+
+2
+00:00:05,759 --> 00:00:10,110
+para atualizar o firmware do roteador como atribuir endereços IP estáticos por meio de
+
+3
+00:00:10,110 --> 00:00:14,519
+seu servidor DHCP e como rotear o tráfego DNS para o seu piehole
+
+4
+00:00:14,519 --> 00:00:19,080
+por padrão, Becca tem suas principais notícias, incluindo um lapso de tempo de 10 anos
+
+5
+00:00:19,080 --> 00:00:23,939
+do filho Tim Horton está sob ataque por espionar você por meio do aplicativo deles e do
+
+6
+00:00:23,939 --> 00:00:29,640
+o supercomputador mais poderoso do mundo é movido por processadores ARM que alguém hackeado
+
+7
+00:00:29,640 --> 00:00:34,290
+meio milhão de dólares em criptografia, mas bitcoin ainda é mais seguro do que ouro
+
+8
+00:00:34,290 --> 00:00:38,610
+Robert Koenig está aqui para nos ajudar a descobrir o mercado louco de criptomoedas
+
+9
+00:00:38,610 --> 00:00:43,910
+está tudo chegando, então está na hora da tecnologia
+
+10
+00:01:04,440 --> 00:01:12,140
+[Música] nossas gravações ao vivo são confiáveis ​​apenas para
+
+11
+00:01:12,140 --> 00:01:16,159
+unidades de estado sólido da tecnologia Kingston reanimam seu computador com
+
+12
+00:01:16,159 --> 00:01:19,610
+melhor desempenho e confiabilidade em relação aos discos rígidos tradicionais com
+
+13
+00:01:19,610 --> 00:01:25,549
+Transmissões de TV da categoria 5 dos SSDs da Kingston ao vivo com Telestream Wirecast e ágil
+
+14
+00:01:25,549 --> 00:01:30,770
+streamer sintonize todas as semanas no roku cody e outros players de vídeo HLS para locais
+
+15
+00:01:30,770 --> 00:01:36,140
+show times visite a categoria 5 dot TV bem-vindos de volta ao show, todos estão
+
+16
+00:01:36,140 --> 00:01:41,090
+que bom ter você aqui, bom ter você participando de nossa transmissão ao vivo ou talvez
+
+17
+00:01:41,090 --> 00:01:45,319
+você está assistindo isso sob demanda após o fato, no entanto, você está assistindo, dê-nos um
+
+18
+00:01:45,319 --> 00:01:51,319
+Gostei, inscreva-se se você estiver assistindo no YouTube, é claro se você
+
+19
+00:01:51,319 --> 00:01:53,450
+clique em inscrever-se em nosso canal no YouTube
+
+20
+00:01:53,450 --> 00:01:58,130
+infelizmente isso aumenta nossos números e, conforme nossos números sobem, fico honrado
+
+21
+00:01:58,130 --> 00:02:06,110
+fazer coisas malucas então eu tenho minha primeira aula de coreografia muito obrigado
+
+22
+00:02:06,110 --> 00:02:14,510
+e dirá que estou aprendendo. Vou progredir conforme avançamos,
+
+23
+00:02:14,510 --> 00:02:20,180
+ultrapassou 25.000 assinantes no Linux tech show comm e, claro, isso significa
+
+24
+00:02:20,180 --> 00:02:24,860
+Eu tenho que fazer uma dança funky para você e então estou trabalhando nisso e eu tenho meu
+
+25
+00:02:24,860 --> 00:02:28,580
+coreógrafo me ajudando com isso e é uma surpresa quem vai ser
+
+26
+00:02:28,580 --> 00:02:34,220
+ajudando com isso, então certifique-se de continuar assistindo TV de categoria 5 e ajuda se
+
+27
+00:02:34,220 --> 00:02:38,209
+você é um assinante porque então receberá a notificação de check-out
+
+28
+00:02:38,209 --> 00:02:44,959
+nossa discórdia, nenhum homem 5 está se perguntando se eu tenho que passar o dia na categoria 5
+
+29
+00:02:44,959 --> 00:02:52,970
+Estúdio de TV sendo que hoje é o Dia do Canadá feliz e se eu conseguisse gastar
+
+30
+00:02:52,970 --> 00:02:58,849
+em algum momento no estúdio hoje fui capaz de vasculhar as caixas e encontrar meu
+
+31
+00:02:58,849 --> 00:03:06,349
+ferramentas de solda e para isso eu digo oh sim meu amigo sim eu encontrei minha solda
+
+32
+00:03:06,349 --> 00:03:10,450
+coisas, mas ainda não está perfeitamente configurado
+
+33
+00:03:10,450 --> 00:03:14,260
+está um pouco bagunçado e estou tentando descobrir como posso arrumar uma mesa
+
+34
+00:03:14,260 --> 00:03:19,060
+Tenho que arranjar uma mesa adequada, mas está aqui, por isso vamos conseguir
+
+35
+00:03:19,060 --> 00:03:22,630
+laptop instalado e funcionando ao longo das próximas semanas, sempre que recebo
+
+36
+00:03:22,630 --> 00:03:26,050
+a chance de fazer isso, eu consegui passar o dia inteiro no estúdio não exatamente
+
+37
+00:03:26,050 --> 00:03:32,530
+mas isso é porque eu tirei um feriado longo e agradável com minha família subiu
+
+38
+00:03:32,530 --> 00:03:38,230
+para a cabana e meu primeiro dia de volta foi terça-feira, então isso significava realmente fazer
+
+39
+00:03:38,230 --> 00:03:42,340
+parte da pós-produção do show da categoria cinco da semana passada em
+
+40
+00:03:42,340 --> 00:03:48,220
+Terça-feira, então acabamos de colocar as notícias e tudo na terça à noite e um
+
+41
+00:03:48,220 --> 00:03:52,690
+alguns dos outros recursos e hoje foi gasto escrevendo as notícias e
+
+42
+00:03:52,690 --> 00:03:56,950
+deixando tudo pronto para você, há muito que fazer para transmitir
+
+43
+00:03:56,950 --> 00:04:02,860
+TV de tecnologia de categoria cinco e eu realmente agradeço o apoio de nossa comunidade
+
+44
+00:04:02,860 --> 00:04:07,720
+vindo junto e dizendo uau como eu reconheço que isso é muito trabalho
+
+45
+00:04:07,720 --> 00:04:13,600
+especialmente nestes tempos em que não posso ter mais ninguém no estúdio comigo
+
+46
+00:04:13,600 --> 00:04:18,280
+fisicamente ao mesmo tempo que estou aqui transmitindo, então, muito
+
+47
+00:04:18,280 --> 00:04:21,609
+cai sobre meus ombros e tem que ser feito, tenho que ser capaz de trazer você
+
+48
+00:04:21,609 --> 00:04:25,390
+um show a cada semana, mas para aqueles de vocês que disseram sim, eu vou pisar
+
+49
+00:04:25,390 --> 00:04:29,560
+e diga sim, agradeço o que você está fazendo e vou voltar financeiramente
+
+50
+00:04:29,560 --> 00:04:33,550
+que eu só quero agradecer em particular, quero dizer um grande obrigado
+
+51
+00:04:33,550 --> 00:04:40,210
+para bp9 Scott Barclay Ron Morissette Jerry Kowalski Jonathan Garvey Jen's
+
+52
+00:04:40,210 --> 00:04:47,169
+Nissen Ameritrade nomen v bill Marshall e NiCad mais, claro, todos os outros
+
+53
+00:04:47,169 --> 00:04:50,979
+quem apoiou o programa ou está apoiando o programa pode ser através
+
+54
+00:04:50,979 --> 00:04:57,370
+através do nosso patreon em patreon.com slash categoria cinco que é uma maneira muito legal
+
+55
+00:04:57,370 --> 00:05:00,700
+para oferecer suporte à TV de categoria cinco e, incidentalmente, você fica nos bastidores
+
+56
+00:05:00,700 --> 00:05:05,979
+acesso você obtém meu vlog que ninguém mais consegue ver e então você consegue ver alguns
+
+57
+00:05:05,979 --> 00:05:10,360
+das coisas que estão acontecendo aqui no estúdio e coisas que estão acontecendo
+
+58
+00:05:10,360 --> 00:05:15,669
+no meu mundo, pois estou acelerando as coisas para a categoria 5 em cada
+
+59
+00:05:15,669 --> 00:05:21,670
+semana muito obrigado a todos que são ou apoiaram TV categoria 5
+
+60
+00:05:21,670 --> 00:05:26,290
+aquela contribuição normal, quero dizer, se você pode acreditar, agora é 1º de julho
+
+61
+00:05:26,290 --> 00:05:31,720
+Já estou dizendo que o tempo está voando, mas 1 de julho significa ok, eu não posso
+
+62
+00:05:31,720 --> 00:05:35,470
+esqueça antes de eu encerrar para hoje à noite Tenho que preencher um cheque de aluguel Tenho que ir
+
+63
+00:05:35,470 --> 00:05:40,870
+cobrir isso para que as contribuições mensais por meio do patreon e e
+
+64
+00:05:40,870 --> 00:05:44,860
+outras maneiras de nos apoiar através de nosso site, temos alguns
+
+65
+00:05:44,860 --> 00:05:48,490
+diferentes maneiras, você pode conferir na categoria cinco TV, mas patreon em
+
+66
+00:05:48,490 --> 00:05:52,090
+particular é uma boa maneira de eu poder acompanhar o que
+
+67
+00:05:52,090 --> 00:05:54,700
+virá a cada mês e isso nos ajuda a cobrir aqueles
+
+68
+00:05:54,700 --> 00:06:00,700
+despesas mensais, então isso é muito legal, obrigado a todos
+
+69
+00:06:00,700 --> 00:06:07,930
+tudo bem, então primeiro vamos começar com a parte 6 do nosso mikrotik
+
+70
+00:06:07,930 --> 00:06:13,300
+série como exploits e devo dizer que há construção acontecendo no
+
+71
+00:06:13,300 --> 00:06:18,610
+corredor hoje e se você ouvir algum barulho, eu me perdoo, é que há
+
+72
+00:06:18,610 --> 00:06:22,840
+nada que eu possa fazer sobre isso, mas espero que eles não vão também
+
+73
+00:06:22,840 --> 00:06:29,710
+alto e por muito tempo, mas como exploits são monitorados e corrigidos e como novos
+
+74
+00:06:29,710 --> 00:06:34,060
+recursos são adicionados ao firmware da micro Tech, você pode facilmente atualizar seu
+
+75
+00:06:34,060 --> 00:06:40,030
+roteador mikrotik com apenas alguns cliques do mouse na web Figg e você pode ver
+
+76
+00:06:40,030 --> 00:06:43,960
+na verdade, o que tenho aqui é a web fig. Vou clicar em configuração rápida
+
+77
+00:06:43,960 --> 00:06:49,030
+e, em seguida, role para baixo aqui para verificar se há atualizações poderia ser tão simples e você
+
+78
+00:06:49,030 --> 00:06:54,610
+posso ver que estou executando seis vírgula quatro dois vírgula doze estável, você pode mudar o
+
+79
+00:06:54,610 --> 00:06:58,630
+ramo se você quiser ou o canal, mas eu quero obter o estável seis vírgula quatro
+
+80
+00:06:58,630 --> 00:07:03,220
+sete e se você olhar abaixo, você pode ver os logs de alterações para isso e tudo
+
+81
+00:07:03,220 --> 00:07:07,840
+que isso vai me dar, então apenas clique em baixar e instalar e olhar para
+
+82
+00:07:07,840 --> 00:07:14,500
+nada disso, ele pega o arquivo do servidor, baixa e reinicia, então
+
+83
+00:07:14,500 --> 00:07:20,050
+agora meu roteador está reiniciando e olhe que seis vírgula quatro sete estável é o
+
+84
+00:07:20,050 --> 00:07:24,190
+versão que estou executando agora clique em verificar atualizações e você verá que estou executando
+
+85
+00:07:24,190 --> 00:07:31,270
+essa versão e o sistema já estão atualizados, isso é tudo que há para o seu
+
+86
+00:07:31,270 --> 00:07:36,390
+roteador mikrotik agora está executando o melhor e mais recente firmware
+
+87
+00:07:36,390 --> 00:07:41,710
+a seguir em nossa série mikrotik é como atribuir um endereço IP estático a um dispositivo
+
+88
+00:07:41,710 --> 00:07:49,750
+no seu DHCP no seu pool de DHCP, então vou apenas entrar no web fig aqui no meu
+
+89
+00:07:49,750 --> 00:07:58,510
+laptop e quero mostrar como é fácil fazer isso, clique em IP e clique em
+
+90
+00:07:58,510 --> 00:08:06,300
+no servidor DHCP e clique em leases, isso é uma coisa importante a fazer porque
+
+91
+00:08:06,300 --> 00:08:11,260
+você precisará ter endereçamento IP estático em sua rede para as coisas
+
+92
+00:08:11,260 --> 00:08:17,860
+como servidores, no meu caso, também estamos olhando para piehole, por exemplo, então meu
+
+93
+00:08:17,860 --> 00:08:28,000
+O servidor piehole está de fato definido como servation 10.0.0.0 no meu pool DHCP para
+
+94
+00:08:28,000 --> 00:08:34,919
+na minha micro tecnologia, então qualquer um desses dispositivos, então esses são dinâmicos, veja estes
+
+95
+00:08:34,919 --> 00:08:40,839
+Dee dinâmico, aqueles que têm um botão Dee, esse botão realmente
+
+96
+00:08:40,839 --> 00:08:46,270
+convertê-lo em dinâmico, mas eles são estáticos no momento, então vamos dar uma olhada
+
+97
+00:08:46,270 --> 00:08:50,980
+tem um vamos pegar meu telefone, lá está meu telefone poco, então eu vou clicar
+
+98
+00:08:50,980 --> 00:08:57,370
+isso e está atualmente atribuído a 10.0.0.0 7, então vou simplesmente
+
+99
+00:08:57,370 --> 00:09:07,540
+pressione make static e agora foi atribuído a 10.0.0.0 7 static, mas se eu
+
+100
+00:09:07,540 --> 00:09:14,800
+feche que agora você verá que 107 tem aquele D próximo a ele e não é mais dinâmico
+
+101
+00:09:14,800 --> 00:09:19,240
+agora, se eu abrir com um único clique, recebo todas essas novas opções e
+
+102
+00:09:19,240 --> 00:09:24,700
+agora posso atribuir a ele seu próprio endereço IP, algo que não está em uso no momento
+
+103
+00:09:24,700 --> 00:09:32,350
+na minha piscina para que eu possa atribuir aquele 2,88 e clicar em OK e agora meu telefone polka é 10 0
+
+104
+00:09:32,350 --> 00:09:38,010
+ponto 0 ponto aí está veja como é fácil
+
+105
+00:09:38,010 --> 00:09:43,720
+configurar uma reserva estática no seu pool DHCP em um dispositivo mikrotik é
+
+106
+00:09:43,720 --> 00:09:47,860
+fantástico, temos que fazer uma pausa rápida quando voltarmos
+
+107
+00:09:47,860 --> 00:09:53,890
+como direcionar o tráfego DHCP em nossa rede para o exército através de nosso mikrotik
+
+108
+00:09:53,890 --> 00:10:02,350
+roteador sintoniza nosso servidor DNS, que é, no meu caso, um buraco no meio
+
+109
+00:10:02,350 --> 00:10:10,140
+[Música]
+
+110
+00:10:15,750 --> 00:10:18,899
+[Música]
+
+111
+00:10:20,740 --> 00:10:25,850
+rápido siga uma pergunta em nossa discórdia do Fuu que está perguntando
+
+112
+00:10:25,850 --> 00:10:32,350
+não deve o IPS reservado estar fora da faixa dinâmica dos pools dhcp e enquanto
+
+113
+00:10:32,350 --> 00:10:38,120
+tecnicamente verdadeiro em um tipo diferente de cenário onde você não está usando
+
+114
+00:10:38,120 --> 00:10:45,020
+DHCP não é o caso aqui vou explicar porque é tão tradicionalmente assistido
+
+115
+00:10:45,020 --> 00:10:50,480
+Minutos são basicamente, está arraigado em nossas mentes para sempre atribuir o DHC
+
+116
+00:10:50,480 --> 00:10:55,970
+o endereço estático fora do pool, a razão para isso é se você digamos
+
+117
+00:10:55,970 --> 00:11:01,190
+você instala uma nova impressora em uma rede e você vai até aquela impressora e você digita
+
+118
+00:11:01,190 --> 00:11:07,820
+no endereço IP e você o coloca dentro do pool, agora o seu servidor DHCP não
+
+119
+00:11:07,820 --> 00:11:13,310
+até mesmo saber que existe porque não atribuiu o endereço IP, então o que estamos
+
+120
+00:11:13,310 --> 00:11:16,070
+fazer aqui é completamente diferente do que estamos fazendo é configurando o
+
+121
+00:11:16,070 --> 00:11:21,290
+reserva no servidor DHCP para que a impressora ainda esteja apenas
+
+122
+00:11:21,290 --> 00:11:26,150
+o endereço IP do servidor DHCP, então ele precisa estar fora do pool
+
+123
+00:11:26,150 --> 00:11:30,770
+agora sem a razão que teria que ser se eu estivesse digitando manualmente no
+
+124
+00:11:30,770 --> 00:11:36,740
+impressora é porque quando o servidor DHCP atribui esse endereço IP a outro
+
+125
+00:11:36,740 --> 00:11:41,060
+dispositivo em sua rede vai causar um conflito de colisão de IP, então você
+
+126
+00:11:41,060 --> 00:11:46,430
+terá dois dispositivos compartilhando o mesmo endereço IP e você terá todos
+
+127
+00:11:46,430 --> 00:11:50,840
+tipos de ataques ARP avisando ataques ARP avisando coisas assim porque
+
+128
+00:11:50,840 --> 00:11:53,900
+você tem essas colisões ocorrendo dentro de sua rede, as coisas vão acontecer
+
+129
+00:11:53,900 --> 00:11:58,820
+lento de repente, isso é um problema porque estou atribuindo meu endereço IP
+
+130
+00:11:58,820 --> 00:12:04,940
+do servidor DHCP para o meu dispositivo ou impressora, posso configurá-lo para qualquer coisa que
+
+131
+00:12:04,940 --> 00:12:10,340
+ainda não está atribuído e irá distribuí-lo através do DHCP e não
+
+132
+00:12:10,340 --> 00:12:14,960
+importa se está dentro da piscina ou não, pois estamos aqui para aprender
+
+133
+00:12:14,960 --> 00:12:19,610
+sobre como configurar roteadores mikrotik, vou supor que você já
+
+134
+00:12:19,610 --> 00:12:22,520
+sei o que é um buraco no qual não vou entrar
+
+135
+00:12:22,520 --> 00:12:26,870
+que vou supor que você já tenha um configurado, se não tiver
+
+136
+00:12:26,870 --> 00:12:31,970
+ideia do que é um buraco de pizza, basta ter em mente que, para fazer o que estamos prestes a fazer
+
+137
+00:12:31,970 --> 00:12:35,240
+você vai precisar de um enquanto pode soar como algo
+
+138
+00:12:35,240 --> 00:12:40,520
+ofensiva é na verdade um único computador de placa ou mesmo uma máquina virtual que
+
+139
+00:12:40,520 --> 00:12:46,340
+funciona na sua rede 24 horas por dia, 7 dias por semana, atua como servidor DNS para a sua rede
+
+140
+00:12:46,340 --> 00:12:52,970
+filtra os anúncios no nível DNS para que o anúncio nunca baixe seu
+
+141
+00:12:52,970 --> 00:12:58,040
+Internet torna-se perceptivelmente mais rápido o uso de dados é
+
+142
+00:12:58,040 --> 00:13:02,840
+reduziu uma quantidade surpreendente e você vê uma redução notável no número de
+
+143
+00:13:02,840 --> 00:13:07,730
+anúncios aos quais você está sujeito agora, às vezes pode ter uma desvantagem
+
+144
+00:13:07,730 --> 00:13:11,480
+como se você estivesse navegando na Amazon, às vezes, eles lhe apresentarão um
+
+145
+00:13:11,480 --> 00:13:16,340
+sugestão de produto relevante, mas quando você clicar nela, ela será bloqueada
+
+146
+00:13:16,340 --> 00:13:21,020
+porque é um anúncio, mas, em suma, é uma solução fantástica que corta os anúncios
+
+147
+00:13:21,020 --> 00:13:24,740
+em toda a sua rede, você não precisa instalar software em seu
+
+148
+00:13:24,740 --> 00:13:30,770
+dispositivos e não há configuração em um dispositivo para nível de dispositivo assim que seu
+
+149
+00:13:30,770 --> 00:13:34,460
+dispositivo está conectado à rede, ele ganha os recursos de filtragem de seu
+
+150
+00:13:34,460 --> 00:13:40,940
+piehole, então, se você não estiver familiarizado com piehole neste ponto ou se
+
+151
+00:13:40,940 --> 00:13:44,900
+você não tem um. Eu fiz um tutorial no ano passado que mostra o básico
+
+152
+00:13:44,900 --> 00:13:48,980
+configuração para aqueles de vocês que estão assistindo no YouTube ou através de nosso site a
+
+153
+00:13:48,980 --> 00:13:54,320
+categoria 5 TV você pode simplesmente clicar nesse ícone para ver o tutorial caso contrário, cabeça
+
+154
+00:13:54,320 --> 00:14:00,140
+para a categoria 5 dot TV do nosso site e basta fazer uma busca rápida por torta
+
+155
+00:14:00,140 --> 00:14:04,520
+e é escrito exatamente como você vê na tela, torta - buraco o vídeo que você está
+
+156
+00:14:04,520 --> 00:14:13,780
+procurando é chamado de bloquear anúncios e pornografia usando um computador de placa única. Vou esperar
+
+157
+00:14:15,830 --> 00:14:36,200
+[Música]
+
+158
+00:14:40,200 --> 00:14:48,060
+[Música] ok, então agora que você aparentemente tem
+
+159
+00:14:48,060 --> 00:14:53,700
+seu piehole tudo configurado vamos ver como configurar isso no nosso roteador mikrotik então
+
+160
+00:14:53,700 --> 00:15:01,950
+na minha rede, meu dispositivo piehole está às 10h - seu servidor DNS obviamente tem que
+
+161
+00:15:01,950 --> 00:15:06,120
+tem um endereço IP estático em sua rede, então esse é o endereço IP que
+
+162
+00:15:06,120 --> 00:15:10,140
+Vou rotear meu tráfego DNS para, então quero mostrar algumas coisas
+
+163
+00:15:10,140 --> 00:15:14,730
+aqui na web Figg vou clicar no IP que já está aberto e depois no DNS então
+
+164
+00:15:14,730 --> 00:15:18,270
+quando eu entrar lá você verá os servidores dinâmicos que minha rede está
+
+165
+00:15:18,270 --> 00:15:22,170
+atualmente distribuindo para todos os meus dispositivos através de DHCP bem, eu quero mudar isso
+
+166
+00:15:22,170 --> 00:15:25,320
+Eu quero realmente definir isso para ser meu buraco de pizza
+
+167
+00:15:25,320 --> 00:15:29,280
+mas você percebe que eu não posso realmente mudar aqueles, não me permite fazer qualquer
+
+168
+00:15:29,280 --> 00:15:36,270
+mudanças aqui, então primeiro o que tenho que fazer é clicar no cliente DHCP, clicar no seu
+
+169
+00:15:36,270 --> 00:15:41,130
+ether um no meu caso que você se lembra de antes no nosso mikrotik
+
+170
+00:15:41,130 --> 00:15:47,280
+série a interface ether one é minha conexão de internet, então essa é a
+
+171
+00:15:47,280 --> 00:15:52,320
+conexão ao roteador do roteador ao modem para me dar minha internet
+
+172
+00:15:52,320 --> 00:15:53,730
+conectividade, então clicarei nisso
+
+173
+00:15:53,730 --> 00:15:59,850
+e vou desligar o uso de DNS de mesmo nível, então basicamente estou dizendo que não quero
+
+174
+00:15:59,850 --> 00:16:05,430
+usar o DNS que me foi fornecido pelo meu ISP e clicar em OK agora quando for para o que quando
+
+175
+00:16:05,430 --> 00:16:13,130
+vá para DNS, você verá que agora os servidores dinâmicos se foram, não há nada lá e
+
+176
+00:16:13,130 --> 00:16:16,530
+presumivelmente, a menos que esteja em cache, se eu tentar ir a algum lugar, ele simplesmente vai
+
+177
+00:16:16,530 --> 00:16:22,320
+tempo limite porque agora não tenho nenhum servidor DNS, então agora preciso adicionar meu
+
+178
+00:16:22,320 --> 00:16:28,800
+possui 10 o que 10 ponto 0 ponto 0 ponto
+
+179
+00:16:28,800 --> 00:16:37,710
+e, em seguida, clique em "Aplicar" e pronto, é tudo o que há em uma maneira de falar
+
+180
+00:16:37,710 --> 00:16:41,160
+mas vou reverter isso, então passamos por esse processo apenas para mostrar
+
+181
+00:16:41,160 --> 00:16:44,820
+eu vou apenas reverter isso para que eu possa mostrar a você um
+
+182
+00:16:44,820 --> 00:16:49,080
+demonstração do que estamos realmente fazendo aqui o que estamos
+
+183
+00:16:49,080 --> 00:16:54,960
+realmente alcançando, então vamos voltar ao nosso DNS puro. Tenho problemas com estes
+
+184
+00:16:54,960 --> 00:16:58,980
+trackpads, devo conseguir um mouse, então veja se estamos
+
+185
+00:16:58,980 --> 00:17:02,730
+de volta à dinâmica, então vou apresentar um site e você vai precisar
+
+186
+00:17:02,730 --> 00:17:09,000
+para fazer isso dentro do Firefox ou Chrome, não o faça com coragem porque corajosa
+
+187
+00:17:09,000 --> 00:17:15,720
+obviamente, já bloqueia anúncios publicitários, não faça isso em um navegador
+
+188
+00:17:15,720 --> 00:17:21,150
+que tem uma ferramenta de bloqueio de anúncios instalada e funcionando ativamente porque não
+
+189
+00:17:21,150 --> 00:17:28,560
+vamos realmente mostrar a você o sucesso de fazer o que estamos prestes a fazer
+
+190
+00:17:28,560 --> 00:17:33,090
+acelerando através de nosso buraco de pizza, então o que eu quero fazer é ir para HTTP dois pontos barra
+
+191
+00:17:33,090 --> 00:17:39,660
+slash ads - blocker com e quero ir para lá porque é apenas um
+
+192
+00:17:39,660 --> 00:17:44,250
+site de demonstração de anúncios pesados, então se você rolar um pouco para baixo
+
+193
+00:17:44,250 --> 00:17:50,130
+vai começar a ver alguns anúncios aqui neste site, há anúncios que vêm
+
+194
+00:17:50,130 --> 00:17:57,090
+neste site, parece que o Firefox já está bloqueando alguns e então
+
+195
+00:17:57,090 --> 00:18:05,430
+Vou repetir, você bloqueia a solicitação de origem bloqueada 7 ou 10 por cento desta página pode
+
+196
+00:18:05,430 --> 00:18:13,200
+Eu desligo isso é o que está fazendo sim, agora estamos
+
+197
+00:18:13,200 --> 00:18:18,200
+veremos anúncios lá, então o Firefox agora inclui um bloqueador de anúncios que é legal
+
+198
+00:18:18,200 --> 00:18:23,010
+mas entendo tão bem se o Firefox já tem um bloqueador de anúncios, por que precisamos
+
+199
+00:18:23,010 --> 00:18:27,990
+para ir para todo esse trabalho, por que precisamos de um buraco de pizza, lembre-se de como eu disse que isso faz
+
+200
+00:18:27,990 --> 00:18:32,340
+o bloqueio de anúncios no nível do DNS, e eu sugeri que você está indo
+
+201
+00:18:32,340 --> 00:18:34,710
+para reduzir o consumo de largura de banda, você vai acelerar sua internet
+
+202
+00:18:34,710 --> 00:18:38,059
+e isso é porque com algo como um
+
+203
+00:18:38,059 --> 00:18:43,669
+plug-in de bloqueio de anúncio ou um navegador de bloqueio de anúncio tradicionalmente
+
+204
+00:18:43,669 --> 00:18:49,309
+o que acontece é que ele ainda baixa o anúncio, apenas o oculta, o bloqueia, mas
+
+205
+00:18:49,309 --> 00:18:54,139
+com o bloqueio de nível de DNS, é na verdade a solicitação para os servidores de anúncios
+
+206
+00:18:54,139 --> 00:19:00,559
+que respondem com uma resposta nula, portanto, está bloqueando a capacidade de
+
+207
+00:19:00,559 --> 00:19:05,690
+seu computador chegar ao servidor de anúncios, ele não pode baixar nada que eles
+
+208
+00:19:05,690 --> 00:19:10,580
+não podem rastreá-lo, eles não podem rastrear essa solicitação, não importa se ela está
+
+209
+00:19:10,580 --> 00:19:14,179
+será bloqueado no nível de DNS, então há muito mais do que isso agora
+
+210
+00:19:14,179 --> 00:19:18,499
+Eu tenho isso para você bloquear, desativar, você pode ver que há um anúncio do Google bem aqui, ok
+
+211
+00:19:18,499 --> 00:19:25,879
+então, de volta ao meu micro tick, vamos novamente para o cliente DHCP sob IP e
+
+212
+00:19:25,879 --> 00:19:30,470
+há muitas maneiras de fazer isso, você pode fazer isso rede por rede se
+
+213
+00:19:30,470 --> 00:19:34,730
+você quer, mas vou fazer isso em toda a minha rede porque quero qualquer
+
+214
+00:19:34,730 --> 00:19:38,570
+dispositivo que está na minha rede para passar pelo buraco da pizza, posso desligar o uso
+
+215
+00:19:38,570 --> 00:19:50,930
+peer DNS e aperte ok agora vá para DNS e adicione my pie hole 10.0
+
+216
+00:19:50,930 --> 00:19:57,380
+0.2 e tudo isso é bastante instantâneo, no entanto, há algumas coisas para
+
+217
+00:19:57,380 --> 00:20:02,870
+observe que vou limpar meu cache, este é o cache de liberação de cache DNS, agora
+
+218
+00:20:02,870 --> 00:20:07,760
+tudo o que já foi acessado é eliminado do cache DNS e assim
+
+219
+00:20:07,760 --> 00:20:12,920
+não vai ser, vai pedir um jogo e mexer na torta
+
+220
+00:20:12,920 --> 00:20:18,740
+buraco, a outra coisa para ter em mente é que você poderia se quisesse entrar no
+
+221
+00:20:18,740 --> 00:20:26,000
+Redes de servidores HCP, então, em vez de fazer isso no DNS, eu poderia apenas dizer ok minha LAN
+
+222
+00:20:26,000 --> 00:20:34,010
+ou se essas são minhas redes Wi-Fi de convidado, eu poderia simplesmente adicionar um servidor DNS específico
+
+223
+00:20:34,010 --> 00:20:40,010
+para aqueles que eu poderia fazer isso ver como a configuração pode ser diversa com um
+
+224
+00:20:40,010 --> 00:20:44,810
+mikrotik então fazendo dessa forma você poderia ter vários buracos de pizza com
+
+225
+00:20:44,810 --> 00:20:49,310
+em várias configurações diferentes, você pode ter um Wi-Fi de mãe e pai que tenha esse
+
+226
+00:20:49,310 --> 00:20:53,510
+tem acesso direto através do DNS do Google ou algo parecido, se você não
+
+227
+00:20:53,510 --> 00:20:59,660
+deseja bloquear coisas, você pode fazer com que o Wi-Fi de seu convidado tenha um DNS mais protegido
+
+228
+00:20:59,660 --> 00:21:04,970
+filtro, por exemplo, para que você possa fazer isso em um nível de rede no meu caso, como digo que estou
+
+229
+00:21:04,970 --> 00:21:11,780
+não fazendo neste nível, estou fazendo na minha rede completa, então o meu ether é
+
+230
+00:21:11,780 --> 00:21:19,760
+vai passar por 10.0.0.0 adoro suas solicitações de DNS, então agora se eu pular aqui e
+
+231
+00:21:19,760 --> 00:21:30,110
+apenas atualize esta página tão simples como o anúncio está bloqueado veja que assim
+
+232
+00:21:30,110 --> 00:21:36,040
+tentou carregá-lo para ver como conseguiu um placeholder, tentou acessar o anúncio
+
+233
+00:21:36,040 --> 00:21:43,880
+mas foi bloqueado no nível de DNS, então nunca chegou ao meu navegador como é legal
+
+234
+00:21:43,880 --> 00:21:50,210
+com esta configuração, outra coisa a ter em mente é que enquanto
+
+235
+00:21:50,210 --> 00:21:58,490
+O servidor DHCP da mikrotik irá distribuir esta nova configuração de DNS para 1000 - em
+
+236
+00:21:58,490 --> 00:22:04,130
+meu caso, você pode ter uma situação em que alguém tem
+
+237
+00:22:04,130 --> 00:22:10,430
+talvez uma configuração DNS personalizada no telefone ou talvez eles estejam executando
+
+238
+00:22:10,430 --> 00:22:15,920
+um navegador que substitui as configurações de DNS de sua rede que pode ser um problema
+
+239
+00:22:15,920 --> 00:22:24,340
+porque esta configuração não é aplicada, então esta configuração pode ser facilmente contornada por
+
+240
+00:22:24,340 --> 00:22:30,680
+seu dispositivo, então por padrão seu dispositivo mikrotik agora como acabei de
+
+241
+00:22:30,680 --> 00:22:35,810
+demonstrado com esta configuração básica vai baixar aqueles
+
+242
+00:22:35,810 --> 00:22:39,770
+configurações através de DHCP e não sei se baixar é o termo certo, mas é
+
+243
+00:22:39,770 --> 00:22:45,010
+obterá as novas configurações de IP e DNS do seu servidor DHCP na Microtech
+
+244
+00:22:45,010 --> 00:22:51,970
+mas se o seu dispositivo tiver suas próprias configurações personalizadas, ele vai contornar isso
+
+245
+00:22:51,970 --> 00:22:59,960
+então, se você quiser, e forçá-lo para que, mesmo que haja uma substituição
+
+246
+00:22:59,960 --> 00:23:05,000
+um dispositivo ou se seu navegador estava ignorando as configurações DNS desejadas em seu
+
+247
+00:23:05,000 --> 00:23:09,380
+rede bem, você vai querer assistir mais em nossa série como vamos ser
+
+248
+00:23:09,380 --> 00:23:15,410
+ver como fazer o que é chamado de mascaramento de DNS e com mascaramento de DNS
+
+249
+00:23:15,410 --> 00:23:20,060
+vamos pegar o que aprendemos hoje neste tutorial e vamos pegar
+
+250
+00:23:20,060 --> 00:23:24,440
+para o próximo nível que quer dizer ok meu mikrotik agora vai
+
+251
+00:23:24,440 --> 00:23:30,290
+basicamente encontrar qualquer tráfego dns que passa pela minha rede e vai
+
+252
+00:23:30,290 --> 00:23:36,050
+para disfarçá-lo de modo que ele tenha que passar pelo buraco da pizza, há um
+
+253
+00:23:36,050 --> 00:23:41,480
+incapacidade do seu dispositivo de contornar ou anular isso, mesmo se você definir seu
+
+254
+00:23:41,480 --> 00:23:48,100
+o mascaramento manual de suas configurações de DNS o forçará a passar no meu caso
+
+255
+00:23:48,100 --> 00:23:57,860
+10.0.0.0 v slash mikrotik está cobrindo uma ampla gama de como configurar e
+
+256
+00:23:57,860 --> 00:24:03,560
+configurar e usar o seu dispositivo de roteamento Microtech que vamos procurar
+
+257
+00:24:03,560 --> 00:24:08,300
+mais em mascarar no futuro, então vou abandonar essa palavra-chave para você
+
+258
+00:24:08,300 --> 00:24:11,120
+porque eu quero que você observe, se for do seu interesse, você deseja
+
+259
+00:24:11,120 --> 00:24:16,770
+obrigue vá para cap v dot TV slash mikrotik e procure aquele chamado
+
+260
+00:24:16,770 --> 00:24:22,890
+ENS mascarando tudo certo, vamos direto para a redação Becca está aqui
+
+261
+00:24:22,890 --> 00:24:29,940
+conosco aqui está o que está por vir na redação de TV categoria 5 NASA fez um
+
+262
+00:24:29,940 --> 00:24:35,850
+incrível lapso de tempo de 10 anos da rotação ardente do sol, Tim Hortons é
+
+263
+00:24:35,850 --> 00:24:41,820
+enfrentando uma ação coletiva sobre o rastreamento de aplicativos da Disney foi
+
+264
+00:24:41,820 --> 00:24:48,180
+desenvolvendo tecnologia deep falsa incrivelmente realista O braço japonês Phu gaku é
+
+265
+00:24:48,180 --> 00:24:53,640
+agora o supercomputador mais rápido do mundo, a empresa apoiada pela Apple pretende chegar a 1 milhão
+
+266
+00:24:53,640 --> 00:25:00,060
+Robo táxis e Facebook desenvolveram um novo conjunto de óculos VR que se parecem com um
+
+267
+00:25:00,060 --> 00:25:05,010
+óculos de sol grossos adornam todos os detalhes e a criptografia desta semana
+
+268
+00:25:05,010 --> 00:25:10,530
+estão chegando, esta é a redação de TV de 5 pontos cobrindo o
+
+269
+00:25:10,530 --> 00:25:15,590
+semana parar de enviar mensagens de texto com um leve viés Linux
+
+270
+00:25:17,090 --> 00:25:23,010
+da redação, sou Becca Ferguson, você não deveria olhar para o Sol, é
+
+271
+00:25:23,010 --> 00:25:27,180
+perigoso, mas este mês marca uma década inteira de Solar Dynamics da NASA
+
+272
+00:25:27,180 --> 00:25:32,250
+Observatório olhando para o Sol para nós, tem estudado a estrela
+
+273
+00:25:32,250 --> 00:25:37,590
+mais próximo da Terra sem parar da órbita reunindo 425 milhões de alta resolução
+
+274
+00:25:37,590 --> 00:25:42,360
+imagens desde junho de 2010, os dados coletados ajudaram os cientistas a fazer
+
+275
+00:25:42,360 --> 00:25:46,530
+muitas descobertas, mas para aqueles de nós navegando na internet por algum tipo de
+
+276
+00:25:46,530 --> 00:25:51,540
+boas notícias A nASA transformou as observações em algo divertido que a nASA
+
+277
+00:25:51,540 --> 00:25:56,250
+compilou as imagens em um lapso de tempo impressionante da atividade das estrelas durante
+
+278
+00:25:56,250 --> 00:26:01,290
+nos últimos 10 anos, o lapso de tempo reúne imagens tiradas de forma extrema
+
+279
+00:26:01,290 --> 00:26:05,970
+comprimento de onda ultravioleta que mostra a camada atmosférica mais externa do sol,
+
+280
+00:26:05,970 --> 00:26:10,620
+corona o filme compila uma foto a cada hora com slides escuros causados ​​pelo
+
+281
+00:26:10,620 --> 00:26:14,670
+Terra ou a lua eclipsando o observatório enquanto passam entre as
+
+282
+00:26:14,670 --> 00:26:20,160
+nave espacial e o Sol o vídeo completo dura 61 minutos mostrando o sol
+
+283
+00:26:20,160 --> 00:26:25,410
+Ciclo solar de 11 anos com sua ascensão e queda na atividade, a mudança na energia solar
+
+284
+00:26:25,410 --> 00:26:30,330
+atividade pode ser claramente vista conforme o número de manchas solares inchadas aumentou
+
+285
+00:26:30,330 --> 00:26:35,100
+a níveis explosivos com chicotes violentos de linhas de campo magnético e explosões solares
+
+286
+00:26:35,100 --> 00:26:40,200
+então se acalma novamente para um período conhecido como mínimo solar quando a quantidade
+
+287
+00:26:40,200 --> 00:26:45,630
+da atividade solar é relativamente baixo, é um período em que estamos agora com um
+
+288
+00:26:45,630 --> 00:26:49,260
+resultado sendo que a aurora boreal é vista com menos frequência nas regiões
+
+289
+00:26:49,260 --> 00:26:54,450
+latitudes, é impressionante ver de nossa perspectiva, mesmo que uma década seja um pouco
+
+290
+00:26:54,450 --> 00:26:58,950
+mais do que um pontinho na vida de uma estrela, o vídeo de lapso de tempo completo em 4k
+
+291
+00:26:58,950 --> 00:27:06,450
+resolução pode ser vista em cat5 dot TV slash Sun Tim Hortons está enfrentando um
+
+292
+00:27:06,450 --> 00:27:10,530
+ação coletiva em Quebec sobre questões de coleta de dados na empresa
+
+293
+00:27:10,530 --> 00:27:15,630
+aplicativo de pedido móvel apresentado um dia depois que os vigilantes da privacidade anunciaram um joint
+
+294
+00:27:15,630 --> 00:27:21,179
+investigação sobre o excesso da empresa no pedido judicial apresentado por
+
+295
+00:27:21,179 --> 00:27:26,010
+dois escritórios de advocacia de Montreal na terça-feira citam uma história investigativa do
+
+296
+00:27:26,010 --> 00:27:29,360
+Financial Post que revelou o app Tim Hortons
+
+297
+00:27:29,360 --> 00:27:34,580
+estava registrando os dados de localização dos usuários em segundo plano, mesmo quando o aplicativo não estava aberto
+
+298
+00:27:34,580 --> 00:27:40,280
+o aplicativo estava transmitindo dados de localização GPS para radar Labs Inc, uma empresa americana
+
+299
+00:27:40,280 --> 00:27:46,250
+que analisa os dados de localização para inferir onde os usuários vivem e trabalham e registra um
+
+300
+00:27:46,250 --> 00:27:50,870
+visitas pessoais a um dos concorrentes da Tim Hortons, como Starbucks ou
+
+301
+00:27:50,870 --> 00:27:55,850
+McDonald's Corp imediatamente após os comissários de privacidade do governo federal
+
+302
+00:27:55,850 --> 00:28:00,650
+governo Quebec Alberta e British Columbia anunciaram sua parceria
+
+303
+00:28:00,650 --> 00:28:05,420
+investigação na segunda-feira, Tim Hortons disse em um comunicado que descontinuou
+
+304
+00:28:05,420 --> 00:28:10,340
+sua prática de rastrear a perda da localização dos usuários quando o aplicativo não está aberto no
+
+305
+00:28:10,340 --> 00:28:14,570
+o reclamante principal é um residente de Montreal que trabalha no setor de TI e até
+
+306
+00:28:14,570 --> 00:28:18,710
+embora definido por seu advogado como um cara experiente em tecnologia, ele ficou chocado ao descobrir como
+
+307
+00:28:18,710 --> 00:28:23,930
+o aplicativo estava rastreando o advogado de defesa do consumidor, Joey Zuk Zuk Rijn, disse
+
+308
+00:28:23,930 --> 00:28:27,650
+que simplesmente interromper a prática de rastreamento de localização em segundo plano não é
+
+309
+00:28:27,650 --> 00:28:31,490
+o suficiente porque a controladora de Tim Hortons parece ter rastreado
+
+310
+00:28:31,490 --> 00:28:35,800
+o queixoso principal desde o ano passado e o dano já está feito
+
+311
+00:28:35,800 --> 00:28:40,070
+sacarina diz que eles ganharam um valioso banco de dados de informações e comportamento
+
+312
+00:28:40,070 --> 00:28:44,390
+padrões e atividades dos indivíduos, então eles agora vão apenas lançar isso
+
+313
+00:28:44,390 --> 00:28:49,910
+fora ou eles vão lucrar com isso, meu palpite, meu palpite é o último Tim
+
+314
+00:28:49,910 --> 00:28:53,870
+Fulton, diretor corporativo da Hortons, Duncan full 'filhos, disse em um e-mail
+
+315
+00:28:53,870 --> 00:28:57,910
+declaração a empresa não fez qualquer comentário sobre a ação coletiva e
+
+316
+00:28:57,910 --> 00:29:01,730
+reiterou que havia descontinuado o rastreamento de localização em segundo plano
+
+317
+00:29:01,730 --> 00:29:07,850
+embora o aplicativo ainda possa registrar a localização do usuário quando for aberto em muitos casos de
+
+318
+00:29:07,850 --> 00:29:11,840
+violações de privacidade são difíceis de processar porque os litigantes não podem colocar um dólar
+
+319
+00:29:11,840 --> 00:29:16,220
+valor sobre o dano que sofreram, mas a Carta de Direitos de Quebec e
+
+320
+00:29:16,220 --> 00:29:21,350
+As liberdades tornam a privacidade um direito protegido e isso simplifica muito o caso
+
+321
+00:29:21,350 --> 00:29:25,430
+casos de privacidade e dados no Canadá têm se concentrado em violações em que as empresas
+
+322
+00:29:25,430 --> 00:29:30,380
+permitiu que informações privadas fossem vazadas ou roubadas por hackers, mas litígios
+
+323
+00:29:30,380 --> 00:29:34,160
+em torno de questões relacionadas a dados e privacidade podem se tornar mais comuns
+
+324
+00:29:34,160 --> 00:29:39,820
+dependendo de como os tribunais respondem neste caso e em casos futuros
+
+325
+00:29:39,820 --> 00:29:44,230
+um novo artigo publicado pela Disney Research descreve um sistema neural totalmente automatizado
+
+326
+00:29:44,230 --> 00:29:49,570
+método baseado em rede para trocar rostos em fotos e vídeos o primeiro método
+
+327
+00:29:49,570 --> 00:29:54,070
+que resulta em resultados de alta resolução de qualidade suficiente para serem usados ​​em filmes
+
+328
+00:29:54,070 --> 00:29:58,060
+e TV os pesquisadores pretendem especificamente este
+
+329
+00:29:58,060 --> 00:30:02,080
+tecnologia para uso na substituição e desempenho dos atores existentes com um
+
+330
+00:30:02,080 --> 00:30:06,700
+atores substitutos enfrentam, por exemplo, quando envelhecem ou aumentam
+
+331
+00:30:06,700 --> 00:30:11,190
+a idade de alguém ou potencialmente ao retratar um ator que já faleceu
+
+332
+00:30:11,190 --> 00:30:16,120
+eles também sugerem que pode ser usado para substituir os rostos de dublês em
+
+333
+00:30:16,120 --> 00:30:21,490
+casos em que as condições de uma cena exigem que eles sejam usados, este método é
+
+334
+00:30:21,490 --> 00:30:26,050
+diferente de outras abordagens em uma série de maneiras, incluindo que qualquer rosto usado em
+
+335
+00:30:26,050 --> 00:30:30,010
+o conjunto pode ser trocado por qualquer performance gravada, tornando possível
+
+336
+00:30:30,010 --> 00:30:36,130
+com relativa facilidade re-imagem os atores sob demanda; o outro é que ele recria
+
+337
+00:30:36,130 --> 00:30:39,940
+as condições de contraste e iluminação para garantir que o ator pareça
+
+338
+00:30:39,940 --> 00:30:45,070
+realmente presentes nas mesmas condições da cena, você pode verificar o
+
+339
+00:30:45,070 --> 00:30:49,690
+resultados para você neste vídeo, como você pode ver, ainda há uma sugestão de
+
+340
+00:30:49,690 --> 00:30:53,410
+vale estranho acontecendo aqui, mas os pesquisadores reconhecem que em seus
+
+341
+00:30:53,410 --> 00:30:58,120
+papel chamando isso de um grande passo para a troca de rosto fotorrealista que pode
+
+342
+00:30:58,120 --> 00:31:02,980
+construir uma ponte sobre o vale misterioso, ainda é muito mais realista do que
+
+343
+00:31:02,980 --> 00:31:06,010
+outras tentativas que são especialmente aparentes quando você viu o
+
+344
+00:31:06,010 --> 00:31:10,990
+comparações lado a lado com outras técnicas, principalmente, funciona em muito
+
+345
+00:31:10,990 --> 00:31:15,390
+resolução mais alta que é fundamental para o uso real da indústria do entretenimento
+
+346
+00:31:15,390 --> 00:31:19,600
+considerando o exemplo de usar esta técnica para uma dublê de real é
+
+347
+00:31:19,600 --> 00:31:24,820
+o realismo pode parecer incrivelmente realista nos exemplos
+
+348
+00:31:24,820 --> 00:31:30,100
+apresentados são uma amostra super pequena, então resta ver o quão amplamente isso pode
+
+349
+00:31:30,100 --> 00:31:35,290
+ser aplicados assuntos usados ​​parecem ser principalmente brancos, por exemplo também
+
+350
+00:31:35,290 --> 00:31:39,370
+sempre há a questão da implicação ética de qualquer uso do rosto
+
+351
+00:31:39,370 --> 00:31:44,230
+trocando tecnologia especialmente em vídeo, pois poderia ser usada para fabricar
+
+352
+00:31:44,230 --> 00:31:48,630
+vídeo confiável ou evidência fotográfica de algo que realmente não aconteceu
+
+353
+00:31:48,630 --> 00:31:53,500
+dado, no entanto, que a tecnologia está agora em desenvolvimento em vários trimestres
+
+354
+00:31:53,500 --> 00:31:57,340
+é essencialmente muito mais que o tempo de debate sobre a ética de seu
+
+355
+00:31:57,340 --> 00:32:02,080
+desenvolvimento e exploração, em vez disso, é bem-vindo nas organizações
+
+356
+00:32:02,080 --> 00:32:06,340
+como a Disney Research, estão seguindo o caminho acadêmico e compartilhando os resultados de
+
+357
+00:32:06,340 --> 00:32:10,000
+seu trabalho para que outras pessoas preocupadas com seu potencial malicioso Melissa
+
+358
+00:32:10,000 --> 00:32:15,900
+o uso pode determinar maneiras de sinalizar, identificar e proteger contra quaisquer agentes mal-intencionados
+
+359
+00:32:15,900 --> 00:32:22,630
+O fugue aku do Japão é agora o supercomputador mais rápido do mundo, uma maçã
+
+360
+00:32:22,630 --> 00:32:28,000
+empresa apoiada visa 1 milhão de táxis Robo e o Facebook desenvolveu um novo conjunto de
+
+361
+00:32:28,000 --> 00:32:32,920
+Óculos de realidade virtual que parecem um par de óculos de sol grossos Becca tem essas histórias
+
+362
+00:32:32,920 --> 00:32:36,490
+chegando Mais Roberts aqui com o canto da criptografia não vá a lugar nenhum
+
+363
+00:32:36,490 --> 00:32:39,599
+[Música]
+
+364
+00:32:41,630 --> 00:32:43,690
+vocês
+
+365
+00:32:48,790 --> 00:32:53,300
+bem-vindo ao canto do cristal e, novamente, temos um programa totalmente carregado para você
+
+366
+00:32:53,300 --> 00:32:59,030
+vamos mergulhar nisso se olharmos para o mercado, então você verá que há
+
+367
+00:32:59,030 --> 00:33:04,340
+houve uma ligeira queda entre a semana passada e esta semana de 277 bilhões para 263
+
+368
+00:33:04,340 --> 00:33:10,730
+bilhões no Irã, em média, queda de cinco por cento entre a semana passada e esta semana nós
+
+369
+00:33:10,730 --> 00:33:14,930
+vimos este ano por sete dias, então na semana passada tivemos vinte moedas que ganharam
+
+370
+00:33:14,930 --> 00:33:21,230
+mais de quinze por cento desta vez são apenas seis moedas e o lado negativo
+
+371
+00:33:21,230 --> 00:33:25,640
+na semana passada tivemos duas moedas que perderam mais de quinze por cento desta vez é
+
+372
+00:33:25,640 --> 00:33:29,660
+um pouco mais do que isso, então é um comportamento ligeiramente de baixa no mercado e se nós
+
+373
+00:33:29,660 --> 00:33:35,510
+olhe para o mercado d5, em seguida, imagem semelhante lá de 6,7 bilhões para 6
+
+374
+00:33:35,510 --> 00:33:40,760
+ponto 1 bilhão caiu entre a semana passada e esta semana agora, se você se lembra
+
+375
+00:33:40,760 --> 00:33:46,010
+na semana passada, entramos em detalhes em relação ao mercado d5 como participar de
+
+376
+00:33:46,010 --> 00:33:51,050
+este mercado e como o futuro se parece, mas também que seus riscos estão associados
+
+377
+00:33:51,050 --> 00:33:54,770
+a isso porque é um mercado muito jovem e isso é o que aconteceu entre
+
+378
+00:33:54,770 --> 00:34:01,280
+semana passada e esta semana um hacker roubou cerca de meio milhão de dólares americanos agora
+
+379
+00:34:01,280 --> 00:34:05,450
+não é roubar no sentido tradicional, apenas pegamos algo, é apenas
+
+380
+00:34:05,450 --> 00:34:11,510
+que eles usaram esses diferentes protocolos de uma maneira que puderam
+
+381
+00:34:11,510 --> 00:34:17,300
+colher cerca de meio milhão de dólares americanos e a forma como funcionou é tão
+
+382
+00:34:17,300 --> 00:34:20,990
+você se lembra dessa plataforma onde você pode participar e dizer que você
+
+383
+00:34:20,990 --> 00:34:25,840
+eles usam o equilíbrio do pool o equilíbrio da plataforma em um desses pools e
+
+384
+00:34:25,840 --> 00:34:30,590
+eles usam a tecnologia flush LAN, portanto, com esta tecnologia, o que significa um flash
+
+385
+00:34:30,590 --> 00:34:34,429
+vínculo é algo que acontece entre dois blocos, então nunca é registrado, então
+
+386
+00:34:34,429 --> 00:34:38,690
+você pode pegar um empréstimo tão alto quanto quiser, não importa porque nunca é
+
+387
+00:34:38,690 --> 00:34:43,070
+registrado, mas entre dois desses dois blocos você pode fazer o que quiser
+
+388
+00:34:43,070 --> 00:34:47,240
+você pode fazer o que quiser com esse dinheiro e foi isso que eles fizeram
+
+389
+00:34:47,240 --> 00:34:52,550
+então eles pegaram esse empréstimo e então começaram a trocar entre o teorema e
+
+390
+00:34:52,550 --> 00:34:58,130
+o token STA e eles fizeram isso 24 vezes até que todo o pool foi drenado
+
+391
+00:34:58,130 --> 00:35:02,660
+novamente está entre dois blocos, então nunca é registrado, mas eles estavam fazendo
+
+392
+00:35:02,660 --> 00:35:08,720
+uso disso e toda vez que essa transferência aconteceu a taxa de transferência de 1%
+
+393
+00:35:08,720 --> 00:35:13,249
+foi cobrado do destinatário, mas não foi registrado no saldo de
+
+394
+00:35:13,249 --> 00:35:18,380
+plataforma e cada vez que o atacante trocava entre essas duas moedas,
+
+395
+00:35:18,380 --> 00:35:24,170
+dois tokens o saldo de Poole recebeu um por cento a menos do que era esperado
+
+396
+00:35:24,170 --> 00:35:29,839
+e essas pessoas estavam colhendo isso, isso mostra o quão jovem esta indústria é, mas
+
+397
+00:35:29,839 --> 00:35:35,269
+também é interessante e como eu encorajo você na semana passada, vá
+
+398
+00:35:35,269 --> 00:35:39,499
+lá e aprenda mais sobre isso agora do outro lado olhando para o
+
+399
+00:35:39,499 --> 00:35:45,319
+mercado tradicional, algo semelhante aconteceu 2,8 bilhões de dólares americanos foram
+
+400
+00:35:45,319 --> 00:35:49,400
+enganado no mercado de ouro agora, isso é algo que nunca seria capaz
+
+401
+00:35:49,400 --> 00:35:54,710
+acontecer no Bitcoin ou no mercado de criptografia, especialmente Bitcoin, porque é
+
+402
+00:35:54,710 --> 00:35:59,630
+a plataforma mais segura do mundo, mas em ouro todos que operam com
+
+403
+00:35:59,630 --> 00:36:03,349
+certificados ou não o ouro físico é um certificado que está sendo
+
+404
+00:36:03,349 --> 00:36:07,549
+transferido e é aí que o golpe aconteceu, o tipo que iria
+
+405
+00:36:07,549 --> 00:36:12,279
+nunca aconteceu porque o Bitcoin nunca foi hackeado, então é o mais seguro
+
+406
+00:36:12,279 --> 00:36:17,569
+plataforma de software no mundo agora algo interessante
+
+407
+00:36:17,569 --> 00:36:22,219
+alguém publicou um relatório fantástico, encorajo-vos a dar uma vista de olhos
+
+408
+00:36:22,219 --> 00:36:26,690
+nele e, como de costume, coloquei o link na descrição, mas este relatório está em
+
+409
+00:36:26,690 --> 00:36:32,809
+dívida e muito científico e fantástico adorei este relatório, então estes vão para
+
+410
+00:36:32,809 --> 00:36:40,190
+cada aspecto do mercado, de modo que a taxa de adoção, evasão fiscal, remessa e
+
+411
+00:36:40,190 --> 00:36:47,390
+que em uma base global e eles também analisam como o valor vai
+
+412
+00:36:47,390 --> 00:36:53,930
+executar a partir de Bitcoin aetherium ondulação e XRP de ovo durante os próximos cinco a dez
+
+413
+00:36:53,930 --> 00:36:57,920
+anos eles previram o preço. Não vou mencionar isso aqui porque é
+
+414
+00:36:57,920 --> 00:37:03,170
+não o que fazemos, mas dê uma olhada no que o relatório diz, mas no interessante
+
+415
+00:37:03,170 --> 00:37:07,880
+coisa é realmente o que eles estão falando, então as transações online como eles
+
+416
+00:37:07,880 --> 00:37:11,790
+olhe eles, é claro, você pode ver que é realmente em detalhes o que
+
+417
+00:37:11,790 --> 00:37:16,080
+eles estão analisando e vale a pena gastar algum tempo lendo este
+
+418
+00:37:16,080 --> 00:37:23,280
+relatório são 64 agora 61 páginas agora parte disso é claro, como você ouviu de nós
+
+419
+00:37:23,280 --> 00:37:31,070
+últimas semanas atrás é que a China está se movendo para o chinês realmente
+
+420
+00:37:31,070 --> 00:37:36,090
+criptomoeda e Canadá é como a maioria dos outros países estão planejando fazer
+
+421
+00:37:36,090 --> 00:37:41,850
+coisas semelhantes, o interessante é que alguns especialistas no Canadá estão esperando
+
+422
+00:37:41,850 --> 00:37:47,160
+que o Banco do Canadá criará um sistema digital mais inclusivo e acessível
+
+423
+00:37:47,160 --> 00:37:50,850
+Dólar canadense, então vamos esperar que isso aconteça porque seria benéfico
+
+424
+00:37:50,850 --> 00:37:59,010
+para todos no mundo e o último é uma base de moeda, eles têm um
+
+425
+00:37:59,010 --> 00:38:02,640
+seção onde você pode ganhar dinheiro apenas aprendendo algo para que você entre em moedas
+
+426
+00:38:02,640 --> 00:38:07,140
+com base em comunicação e, em seguida, corte de ganho e você tem aqui a seção onde você pode
+
+427
+00:38:07,140 --> 00:38:13,080
+apenas aprendendo algo, você ganha dinheiro e acho que é um total de mais de $ 400 e
+
+428
+00:38:13,080 --> 00:38:17,700
+eles acabaram de começar este aqui, o curso composto onde você pode ganhar nove
+
+429
+00:38:17,700 --> 00:38:24,510
+compostos no valor de nove dólares compostos apenas por fazer o curso agora que você tem
+
+430
+00:38:24,510 --> 00:38:28,860
+ser rápido porque essas coisas se esgotam muito rápido, mas é apenas outra maneira de
+
+431
+00:38:28,860 --> 00:38:34,410
+como você pode ganhar algum dinheiro, mas você pode ganhar algum dinheiro de qualquer maneira, é isso para mim
+
+432
+00:38:34,410 --> 00:38:39,330
+esta semana espero que tenham gostado espero que tenham aprendido algo e estou procurando
+
+433
+00:38:39,330 --> 00:38:43,650
+ansioso para vê-lo na próxima semana, muito obrigado por assistir, obrigado
+
+434
+00:38:43,650 --> 00:38:47,910
+tchau, obrigado Robert, apenas um lembrete de que não estamos fornecendo recursos financeiros
+
+435
+00:38:47,910 --> 00:38:51,630
+conselhos, mas apenas compartilhando o que está acontecendo no mercado de criptomoedas sempre
+
+436
+00:38:51,630 --> 00:38:56,040
+lembre-se de que o mercado de criptomoedas está sempre mudando e sempre volátil, então
+
+437
+00:38:56,040 --> 00:39:00,540
+você só deve gastar o que pode perder agora de volta para Becca no
+
+438
+00:39:00,540 --> 00:39:06,930
+redação Obrigado Robbie de acordo com um ranking semestral anunciado pelos EUA
+
+439
+00:39:06,930 --> 00:39:12,690
+Projeto europeu top 500 na segunda-feira O mais recente supercomputador do Japão fuga qu é
+
+440
+00:39:12,690 --> 00:39:17,510
+a velocidade de computação mais rápida do mundo, esta é a primeira vez que um japonês
+
+441
+00:39:17,510 --> 00:39:21,950
+supercomputador assumiu a posição de liderança em nove anos quando o computador K
+
+442
+00:39:21,950 --> 00:39:28,160
+predecessor da vogue aku ficou em primeiro lugar nesta época em 2011, desenvolvido em conjunto
+
+443
+00:39:28,160 --> 00:39:33,020
+pelo Estado do Japão de volta ao Centro de Ciência da Computação e Fujitsu que
+
+444
+00:39:33,020 --> 00:39:37,400
+gaku é o primeiro sistema baseado em ARM a se tornar o mais rápido do mundo
+
+445
+00:39:37,400 --> 00:39:42,680
+supercomputador marcou uma pontuação Linpack HPL de alto desempenho de
+
+446
+00:39:42,680 --> 00:39:48,410
+415 pontos 5 petaflop, o que o torna 2,8 vezes mais rápido que o IBM
+
+447
+00:39:48,410 --> 00:39:54,050
+cumpre 148 pontos 6 petaflop que agora está em segundo lugar entre os 500 primeiros
+
+448
+00:39:54,050 --> 00:39:59,810
+supercomputadores Ann Keynes, cujo gaku é movido pela Fujitsu, é baseado em ARM de 48 núcleos
+
+449
+00:39:59,810 --> 00:40:05,930
+um sistema de 64 FX no chip e consiste em quase sete vírgula três milhões de CPU
+
+450
+00:40:05,930 --> 00:40:11,780
+núcleos em operações de precisão simples, atinge desempenho máximo de mais de 1.000
+
+451
+00:40:11,780 --> 00:40:17,359
+petaflop que empurra nosso vernáculo para a próxima camada em um exaflop o
+
+452
+00:40:17,359 --> 00:40:23,480
+chips rodam a 2,0 gigahertz com um aumento para 2,2 gigahertz e carregam 32 gigabytes
+
+453
+00:40:23,480 --> 00:40:28,910
+de memória de alta largura de banda de segunda geração, cada um deste supercomputador baseado em ARM
+
+454
+00:40:28,910 --> 00:40:32,630
+também garantiu a posição de número um em outras classificações que testam computadores em
+
+455
+00:40:32,630 --> 00:40:38,780
+parâmetros diferentes, incluindo gráfico 500 HP l ai e conjugado de alto desempenho
+
+456
+00:40:38,780 --> 00:40:43,790
+gradiente, esta é a primeira vez que um supercomputador superou simultaneamente
+
+457
+00:40:43,790 --> 00:40:48,670
+as classificações nas quatro categorias acima de acordo com a Fujitsu
+
+458
+00:40:48,670 --> 00:40:53,390
+atualmente instalado no Centro RIKEN para ciência computacional em Kobe Japão
+
+459
+00:40:53,390 --> 00:40:59,180
+poucos gaku também realizarão uma ampla gama de aplicações que abordarão
+
+460
+00:40:59,180 --> 00:41:04,550
+questões sociais e científicas de alta prioridade enquanto o supercomputador está
+
+461
+00:41:04,550 --> 00:41:09,500
+deverá iniciar a operação em tempo integral em abril do próximo ano, eles já estão usando
+
+462
+00:41:09,500 --> 00:41:14,540
+na luta contra Koba 19 nos últimos anos, países como os EUA e
+
+463
+00:41:14,540 --> 00:41:19,310
+A China dominou a corrida para desenvolver máquinas poderosas, desta vez para a China
+
+464
+00:41:19,310 --> 00:41:25,040
+dominou a lista dos 500 melhores com 226 supercomputadores enquanto os EUA
+
+465
+00:41:25,040 --> 00:41:31,099
+o segundo lugar com 114 sistemas seguido pelo Japão com 30 França com 18 e
+
+466
+00:41:31,099 --> 00:41:39,019
+Alemanha com 16 sistemas, a empresa chinesa DD chicheng afirma isso
+
+467
+00:41:39,019 --> 00:41:43,930
+planeja operar mais de um milhão de veículos que dirigem sozinhos até 2030
+
+468
+00:41:43,930 --> 00:41:49,190
+de acordo com o diretor de operações do Dedes, Manning, o robo taki
+
+469
+00:41:49,190 --> 00:41:53,809
+os táxis devem ser implantados em locais onde os motoristas que pedem carona estão menos disponíveis
+
+470
+00:41:53,809 --> 00:41:58,249
+a empresa concluiu no mês passado uma arrecadação de fundos de mais de 500 milhões de dólares
+
+471
+00:41:58,249 --> 00:42:03,519
+rodada para a unidade de condução autônoma liderada pelo fundo de visão do grupo Softbank para
+
+472
+00:42:03,519 --> 00:42:07,309
+maçã que é conhecida por estar interessada no desenvolvimento da direção autônoma
+
+473
+00:42:07,309 --> 00:42:11,720
+investiu 1 bilhão de dólares em DD em 2016
+
+474
+00:42:11,720 --> 00:42:16,130
+no ano passado, a DD disse que começaria a usar veículos autônomos para pegar
+
+475
+00:42:16,130 --> 00:42:20,809
+passageiros em Pequim, Xangai e Shenzhen este ano, antes de expandir o
+
+476
+00:42:20,809 --> 00:42:27,200
+esquema fora da China em 2021 fabricantes de automóveis e empresas de tecnologia na China são
+
+477
+00:42:27,200 --> 00:42:30,529
+investindo pesadamente na indústria de direção autônoma para competir com o
+
+478
+00:42:30,529 --> 00:42:36,289
+gosta do alfabeto Tesla muito mais e mais, enquanto alguns especialistas da indústria dizem que vai
+
+479
+00:42:36,289 --> 00:42:40,160
+levar tempo para que o público confie plenamente nos veículos autônomos, disse
+
+480
+00:42:40,160 --> 00:42:45,369
+DeeDee espera que os veículos autônomos estejam em produção em massa em 2025
+
+481
+00:42:45,369 --> 00:42:50,180
+concorrentes já estão oferecendo serviço de táxi Robo, mas uma frota de 1 milhão
+
+482
+00:42:50,180 --> 00:42:54,589
+veículos iriam envergonhar todos nós vamos ficar de olho nisso e ver se
+
+483
+00:42:54,589 --> 00:43:01,369
+dee dee é capaz de entregar O Facebook criou um fone de ouvido de realidade virtual que é
+
+484
+00:43:01,369 --> 00:43:06,259
+não muito maior do que um par de óculos de sol grossos, os tons futuristas usam um
+
+485
+00:43:06,259 --> 00:43:11,210
+filme holográfico especialmente projetado para miniaturizar a lente VR convencional
+
+486
+00:43:11,210 --> 00:43:15,589
+as telas tendem a ser volumosas, pois as lentes refrativas dentro delas precisam de um
+
+487
+00:43:15,589 --> 00:43:20,569
+alguns centímetros do motor para focar a tela para os olhos do usuário, o resultado
+
+488
+00:43:20,569 --> 00:43:25,099
+é um par de óculos que tem no máximo apenas 9 milímetros de espessura de acordo com
+
+489
+00:43:25,099 --> 00:43:30,920
+para os pesquisadores e com imagens de apenas 17,8 gramas dos óculos verdes e
+
+490
+00:43:30,920 --> 00:43:35,989
+tela preta são francamente extremamente cyberpunk, os óculos podem fornecer um
+
+491
+00:43:35,989 --> 00:43:40,460
+campo de visão horizontal de aproximadamente 90 graus de acordo com os testes detalhados em
+
+492
+00:43:40,460 --> 00:43:45,319
+um artigo publicado pela pesquisa do Facebook, o design também acaba com o
+
+493
+00:43:45,319 --> 00:43:48,890
+painéis LCD tradicionais usados ​​em fones de ouvido VR convencionais
+
+494
+00:43:48,890 --> 00:43:54,140
+e usa lasers para criar uma imagem que significa que a contagem de pixels não
+
+495
+00:43:54,140 --> 00:43:58,760
+realmente uma opção, ainda é um protótipo inicial com muitas limitações
+
+496
+00:43:58,760 --> 00:44:02,960
+uma vez que os raios de luz da luz de fundo se espalham significativamente antes de serem
+
+497
+00:44:02,960 --> 00:44:08,420
+focado pelas regiões de grande razão da superfície do divisor de feixe holográfico do
+
+498
+00:44:08,420 --> 00:44:12,590
+display não contribui para o campo de visão dos pesquisadores
+
+499
+00:44:12,590 --> 00:44:16,640
+escrever no papel os vidros também ainda não são capazes de produzir um
+
+500
+00:44:16,640 --> 00:44:20,990
+imagem colorida e exibição de fantasmas nas bordas do campo de visão
+
+501
+00:44:20,990 --> 00:44:26,780
+causado por superfícies ópticas refletindo luz, a equipe já tem um plano para
+
+502
+00:44:26,780 --> 00:44:31,370
+reduzir o peso ainda mais mudando para substratos de plástico, os pesquisadores
+
+503
+00:44:31,370 --> 00:44:35,960
+esperamos trazer o peso total para apenas 6,6 gramas sobre o peso de um par de
+
+504
+00:44:35,960 --> 00:44:41,390
+óculos de sol grandes estilo aviador, esta notícia chega ao mesmo tempo que os do Google
+
+505
+00:44:41,390 --> 00:44:45,740
+aquisição da startup canadense de óculos inteligentes North, que desenvolveu produtos leves
+
+506
+00:44:45,740 --> 00:44:50,000
+óculos inteligentes focais projetados com uma tela holográfica que somente o usuário
+
+507
+00:44:50,000 --> 00:44:54,470
+pode ver que parece que a realidade aumentada ainda está na mira desses
+
+508
+00:44:54,470 --> 00:45:00,410
+dois grandes jogadores, o que pode significar alguma tecnologia interessante nos próximos anos.
+
+509
+00:45:00,410 --> 00:45:04,580
+obrigado a Roy W Nash e nossa comunidade de espectadores por enviar histórias para nós
+
+510
+00:45:04,580 --> 00:45:09,620
+esta semana, obrigado por assistir a uma redação de TV de categoria 5, não se esqueça de
+
+511
+00:45:09,620 --> 00:45:13,940
+Curta e assine todas as notícias de tecnologia com um leve viés do Linux e se você
+
+512
+00:45:13,940 --> 00:45:20,180
+aprecio o que nos tornamos um patrono em patreon.com slash categoria 5 do
+
+513
+00:45:20,180 --> 00:45:25,300
+redação de TV de categoria 5 estou becca ferguson
+
+514
+00:45:25,300 --> 00:45:33,070
+[Música]
+
+515
+00:45:38,680 --> 00:45:41,840
+[Música]
+
+516
+00:45:43,439 --> 00:45:49,449
+antes de encerrarmos o episódio desta semana, uma mensagem do Eduardo acaba de chegar para mim
+
+517
+00:45:49,449 --> 00:45:53,349
+e Eduardo está usando um pine Book Pro assim como eu
+
+518
+00:45:53,349 --> 00:45:59,369
+mas está tentando fazer as coisas funcionarem com um cartão SD para o sistema operacional
+
+519
+00:45:59,369 --> 00:46:04,779
+Eduardo escreve oi gostaria de saber se você usou o sistema operacional do cartão para um
+
+520
+00:46:04,779 --> 00:46:09,809
+Há muito tempo estou enfrentando um problema em que o cartão se torna somente leitura após 10 dias
+
+521
+00:46:09,809 --> 00:46:15,160
+Repeti o procedimento duas vezes e obtive o mesmo resultado, conheço o Waring
+
+522
+00:46:15,160 --> 00:46:19,989
+problema, mas eu desabilito o pântano e o cache de disco do Firefox para reduzir o uso
+
+523
+00:46:19,989 --> 00:46:27,670
+efeito, mas cerca de 10 dias no cartão torna-se inútil que novamente vindo para nós
+
+524
+00:46:27,670 --> 00:46:32,439
+de Eduardo é um cenário infeliz se isso acontecer, mas eu vou
+
+525
+00:46:32,439 --> 00:46:39,130
+dizer o que eu suspeito que esteja acontecendo, antes de tudo no Linux, quando um
+
+526
+00:46:39,130 --> 00:46:44,949
+o sistema torna-se somente leitura quando um sistema de arquivos torna-se somente leitura o que ocorre
+
+527
+00:46:44,949 --> 00:46:52,420
+quando o kernel entra em pânico ao tentar fazer operações de leitura e escrita que geralmente é um
+
+528
+00:46:52,420 --> 00:46:57,279
+sinal revelador de um disco rígido com defeito bem, você não está usando um disco rígido
+
+529
+00:46:57,279 --> 00:47:04,660
+você está usando um cartão SD, um micro SD, portanto, no seu caso, se tiver certeza de que seu
+
+530
+00:47:04,660 --> 00:47:13,989
+cartão micro SD é bom sem defeitos se você tiver certeza de que seu cartão SD não é um
+
+531
+00:47:13,989 --> 00:47:19,209
+falsos porque existem, por favor, se este é um novo cartão, entre em nosso site
+
+532
+00:47:19,209 --> 00:47:23,650
+categoria 5 dot TV ou mesmo Linux Tech mostram calma e apenas fazer uma pesquisa rápida
+
+533
+00:47:23,650 --> 00:47:29,859
+através de nossos vídeos para cartão SD falso e tenho algumas ferramentas que ajudarão
+
+534
+00:47:29,859 --> 00:47:34,089
+você pode determinar se o seu cartão SD é falso, porque então o que acontece
+
+535
+00:47:34,089 --> 00:47:38,739
+é você chegar a um certo ponto no sistema de arquivos onde ele tenta escrever
+
+536
+00:47:38,739 --> 00:47:43,179
+áreas do cartão que não existem porque é falso e então
+
+537
+00:47:43,179 --> 00:47:47,030
+cague e você vai para aquele estado somente leitura
+
+538
+00:47:47,030 --> 00:47:50,990
+então essa é uma possibilidade, mas se você tiver certeza de que é um bom cartão e
+
+539
+00:47:50,990 --> 00:47:55,790
+você tem certeza e você está absolutamente certo de que não é uma farsa porque
+
+540
+00:47:55,790 --> 00:47:59,990
+que definitivamente forneceria esse sintoma, tente uma marca diferente, tente um
+
+541
+00:47:59,990 --> 00:48:04,820
+cartão diferente tente uma velocidade diferente entre na comunidade em Pine 64 org find
+
+542
+00:48:04,820 --> 00:48:08,690
+descobrir o que outras pessoas estão usando, tive grande sucesso com alguns cartões Kingston
+
+543
+00:48:08,690 --> 00:48:13,250
+e tive algumas falhas com alguns cartões Kingston, tive grande sucesso
+
+544
+00:48:13,250 --> 00:48:18,620
+com alguns cartões SanDisk e tive algumas falhas em alguns papais noéis
+
+545
+00:48:18,620 --> 00:48:24,890
+cartões, portanto, de cartão para cartão, há várias coisas que farão com que isso
+
+546
+00:48:24,890 --> 00:48:29,270
+acontecer porque o pine Book Pro está tentando usá-lo como se fosse um disco rígido
+
+547
+00:48:29,270 --> 00:48:35,270
+e alguns cartões podem ser problemáticos, enquanto outro cartão será perfeitamente
+
+548
+00:48:35,270 --> 00:48:40,660
+bem, tente um cartão diferente tente uma marca diferente, um diferente, um diferente
+
+549
+00:48:40,660 --> 00:48:48,530
+cartão dentro de sua programação e ver o que funciona melhor para você - direto
+
+550
+00:48:48,530 --> 00:48:54,980
+resposta certa à sua pergunta eduardo eu uso meu cartão micro SD desde que
+
+551
+00:48:54,980 --> 00:49:03,320
+ganhei meu livro de pinho Pro e não tive tal acontecimento agora não sou um pesado
+
+552
+00:49:03,320 --> 00:49:07,700
+usuário avançado no meu livro pine Pro, de um modo geral, ele permanece no estúdio quando estou
+
+553
+00:49:07,700 --> 00:49:14,210
+não aqui e depois eu ligo em uma quarta-feira à noite para fazer o show, mas ali
+
+554
+00:49:14,210 --> 00:49:17,900
+são momentos em que levo em casa e faço a produção completa e outras coisas, mas e estou
+
+555
+00:49:17,900 --> 00:49:23,150
+usá-lo nos fins de semana e coisas assim, mas acho que
+
+556
+00:49:23,150 --> 00:49:29,930
+cartão para cartão, você só precisa experimentar e ver como o próximo cartão se comporta, mas
+
+557
+00:49:29,930 --> 00:49:34,310
+entender que isso é o que está causando isso é que ele está tendo problemas com isso
+
+558
+00:49:34,310 --> 00:49:40,460
+cartão então se você reescreveu o mesmo cartão e tentou novamente, você ainda
+
+559
+00:49:40,460 --> 00:49:44,330
+experimentando o mesmo sintoma porque é o mesmo cartão ou se é o mesmo
+
+560
+00:49:44,330 --> 00:49:48,590
+marca e a mesma linha de produtos talvez haja um problema com isso, novamente
+
+561
+00:49:48,590 --> 00:49:51,590
+entrar na comunidade e descobrir o que outras pessoas estão sugerindo
+
+562
+00:49:51,590 --> 00:49:56,550
+vai te fazer bem, obrigado pela pergunta certo pessoal
+
+563
+00:49:56,550 --> 00:50:01,200
+bem, temos que encerrar a semana, foi fantástico ter você
+
+564
+00:50:01,200 --> 00:50:06,510
+aqui confere nossa serie cat 5 tv slash mikrotik confira a redação
+
+565
+00:50:06,510 --> 00:50:10,920
+o canto Krypto e todos esses clipes na tecnologia Linux mostram calma ou é claro
+
+566
+00:50:10,920 --> 00:50:15,810
+tudo se junta em nosso site TV de categoria 5 que você pode acompanhar
+
+567
+00:50:15,810 --> 00:50:21,330
+TV categoria 5 no Twitter e eu, pessoalmente, sou ainda mais incrível no
+
+568
+00:50:21,330 --> 00:50:27,840
+Twitter em Robbie Fergus e porque eu sigo de volta, então se você quiser um extra
+
+569
+00:50:27,840 --> 00:50:33,750
+seguidor me segue e aliás eu posto coisas como Doctor Who eu digo que
+
+570
+00:50:33,750 --> 00:50:39,450
+porque eu tinha um tweet que postei esta semana e a BBC retuitou e foi
+
+571
+00:50:39,450 --> 00:50:44,610
+apenas se preocupe em dobrar a partir daí, então vá para twitter.com slash Robbie Fergus e
+
+572
+00:50:44,610 --> 00:50:48,120
+me segue e eu te deixo cair de volta tudo bem, tenha uma semana maravilhosa a todos
+
+573
+00:50:48,120 --> 00:50:53,310
+Eu vou te ver de novo na próxima vez oh não se esqueça que nós tomamos um café
+
+574
+00:50:53,310 --> 00:50:57,840
+pausa neste domingo às 12 horas, horário do leste dos EUA
+
+575
+00:50:57,840 --> 00:51:02,100
+então vá para nosso site de TV de categoria 5, role para baixo na página inicial, você verá
+
+576
+00:51:02,100 --> 00:51:06,000
+a pausa para o café e participe daquela reunião zoom onde nossa comunidade vem
+
+577
+00:51:06,000 --> 00:51:09,870
+juntos e apenas tomar um café e bater um papo, então nos vemos lá pega leve
+
+578
+00:51:09,870 --> 00:51:12,560
+todo mundo vê
+
+579
+00:51:18,590 --> 00:51:21,689
+[Música]
+
+580
+00:51:28,940 --> 00:51:31,000
+vocês
+

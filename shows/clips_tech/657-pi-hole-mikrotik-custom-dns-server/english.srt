@@ -1,0 +1,2485 @@
+1
+00:00:01,610 --> 00:00:04,370
+
+all right so as we're here to learn
+
+2
+00:00:04,370 --> 00:00:04,380
+all right so as we're here to learn
+ 
+
+3
+00:00:04,380 --> 00:00:06,829
+all right so as we're here to learn
+about how to configure mikrotik routers
+
+4
+00:00:06,829 --> 00:00:06,839
+about how to configure mikrotik routers
+ 
+
+5
+00:00:06,839 --> 00:00:09,049
+about how to configure mikrotik routers
+I'm going to assume that you already
+
+6
+00:00:09,049 --> 00:00:09,059
+I'm going to assume that you already
+ 
+
+7
+00:00:09,059 --> 00:00:11,209
+I'm going to assume that you already
+know what a piehole is I'm not going to
+
+8
+00:00:11,209 --> 00:00:11,219
+know what a piehole is I'm not going to
+ 
+
+9
+00:00:11,219 --> 00:00:13,549
+know what a piehole is I'm not going to
+get into that I'm going to assume that
+
+10
+00:00:13,549 --> 00:00:13,559
+get into that I'm going to assume that
+ 
+
+11
+00:00:13,559 --> 00:00:15,860
+get into that I'm going to assume that
+you've already got one set up if you've
+
+12
+00:00:15,860 --> 00:00:15,870
+you've already got one set up if you've
+ 
+
+13
+00:00:15,870 --> 00:00:18,439
+you've already got one set up if you've
+got no idea what a piehole is just keep
+
+14
+00:00:18,439 --> 00:00:18,449
+got no idea what a piehole is just keep
+ 
+
+15
+00:00:18,449 --> 00:00:20,960
+got no idea what a piehole is just keep
+in mind that in order to do what we're
+
+16
+00:00:20,960 --> 00:00:20,970
+in mind that in order to do what we're
+ 
+
+17
+00:00:20,970 --> 00:00:22,310
+in mind that in order to do what we're
+about to do you're gonna need to have
+
+18
+00:00:22,310 --> 00:00:22,320
+about to do you're gonna need to have
+ 
+
+19
+00:00:22,320 --> 00:00:24,500
+about to do you're gonna need to have
+one while it may sound like something
+
+20
+00:00:24,500 --> 00:00:24,510
+one while it may sound like something
+ 
+
+21
+00:00:24,510 --> 00:00:26,900
+one while it may sound like something
+offensive it's actually a single board
+
+22
+00:00:26,900 --> 00:00:26,910
+offensive it's actually a single board
+ 
+
+23
+00:00:26,910 --> 00:00:29,960
+offensive it's actually a single board
+computer or even a virtual machine that
+
+24
+00:00:29,960 --> 00:00:29,970
+computer or even a virtual machine that
+ 
+
+25
+00:00:29,970 --> 00:00:33,319
+computer or even a virtual machine that
+runs on your network 24/7 it acts as
+
+26
+00:00:33,319 --> 00:00:33,329
+runs on your network 24/7 it acts as
+ 
+
+27
+00:00:33,329 --> 00:00:35,810
+runs on your network 24/7 it acts as
+your DNS server for your network it
+
+28
+00:00:35,810 --> 00:00:35,820
+your DNS server for your network it
+ 
+
+29
+00:00:35,820 --> 00:00:39,799
+your DNS server for your network it
+filters out ads at the DNS level so
+
+30
+00:00:39,799 --> 00:00:39,809
+filters out ads at the DNS level so
+ 
+
+31
+00:00:39,809 --> 00:00:42,380
+filters out ads at the DNS level so
+since the ad never downloads your
+
+32
+00:00:42,380 --> 00:00:42,390
+since the ad never downloads your
+ 
+
+33
+00:00:42,390 --> 00:00:43,700
+since the ad never downloads your
+Internet becomes perceptibly
+
+34
+00:00:43,700 --> 00:00:43,710
+Internet becomes perceptibly
+ 
+
+35
+00:00:43,710 --> 00:00:47,479
+Internet becomes perceptibly
+perceptively faster your data usage is
+
+36
+00:00:47,479 --> 00:00:47,489
+perceptively faster your data usage is
+ 
+
+37
+00:00:47,489 --> 00:00:50,840
+perceptively faster your data usage is
+reduced a surprising amount and you see
+
+38
+00:00:50,840 --> 00:00:50,850
+reduced a surprising amount and you see
+ 
+
+39
+00:00:50,850 --> 00:00:52,279
+reduced a surprising amount and you see
+a notable reduction in the number of
+
+40
+00:00:52,279 --> 00:00:52,289
+a notable reduction in the number of
+ 
+
+41
+00:00:52,289 --> 00:00:54,279
+a notable reduction in the number of
+advertisements that you're subjected to
+
+42
+00:00:54,279 --> 00:00:54,289
+advertisements that you're subjected to
+ 
+
+43
+00:00:54,289 --> 00:00:57,170
+advertisements that you're subjected to
+now it can have a downside sometimes
+
+44
+00:00:57,170 --> 00:00:57,180
+now it can have a downside sometimes
+ 
+
+45
+00:00:57,180 --> 00:00:59,180
+now it can have a downside sometimes
+such as if you're browsing Amazon
+
+46
+00:00:59,180 --> 00:00:59,190
+such as if you're browsing Amazon
+ 
+
+47
+00:00:59,190 --> 00:01:00,920
+such as if you're browsing Amazon
+sometimes they'll present you with a
+
+48
+00:01:00,920 --> 00:01:00,930
+sometimes they'll present you with a
+ 
+
+49
+00:01:00,930 --> 00:01:04,280
+sometimes they'll present you with a
+relevant product suggestion but when you
+
+50
+00:01:04,280 --> 00:01:04,290
+relevant product suggestion but when you
+ 
+
+51
+00:01:04,290 --> 00:01:05,780
+relevant product suggestion but when you
+click on it it's gonna get blocked
+
+52
+00:01:05,780 --> 00:01:05,790
+click on it it's gonna get blocked
+ 
+
+53
+00:01:05,790 --> 00:01:08,600
+click on it it's gonna get blocked
+because it's an ad but all in all this
+
+54
+00:01:08,600 --> 00:01:08,610
+because it's an ad but all in all this
+ 
+
+55
+00:01:08,610 --> 00:01:10,429
+because it's an ad but all in all this
+is a fantastic solution that cuts ads
+
+56
+00:01:10,429 --> 00:01:10,439
+is a fantastic solution that cuts ads
+ 
+
+57
+00:01:10,439 --> 00:01:12,560
+is a fantastic solution that cuts ads
+way down on your entire network you
+
+58
+00:01:12,560 --> 00:01:12,570
+way down on your entire network you
+ 
+
+59
+00:01:12,570 --> 00:01:14,179
+way down on your entire network you
+don't have to install software on your
+
+60
+00:01:14,179 --> 00:01:14,189
+don't have to install software on your
+ 
+
+61
+00:01:14,189 --> 00:01:17,090
+don't have to install software on your
+devices and there's no configuration on
+
+62
+00:01:17,090 --> 00:01:17,100
+devices and there's no configuration on
+ 
+
+63
+00:01:17,100 --> 00:01:20,210
+devices and there's no configuration on
+a device to device level as soon as your
+
+64
+00:01:20,210 --> 00:01:20,220
+a device to device level as soon as your
+ 
+
+65
+00:01:20,220 --> 00:01:21,859
+a device to device level as soon as your
+device is connected to the network it
+
+66
+00:01:21,859 --> 00:01:21,869
+device is connected to the network it
+ 
+
+67
+00:01:21,869 --> 00:01:23,870
+device is connected to the network it
+gains the filtering capabilities of your
+
+68
+00:01:23,870 --> 00:01:23,880
+gains the filtering capabilities of your
+ 
+
+69
+00:01:23,880 --> 00:01:27,679
+gains the filtering capabilities of your
+piehole so if you are unfamiliar with
+
+70
+00:01:27,679 --> 00:01:27,689
+piehole so if you are unfamiliar with
+ 
+
+71
+00:01:27,689 --> 00:01:30,350
+piehole so if you are unfamiliar with
+piehole at this point or otherwise if
+
+72
+00:01:30,350 --> 00:01:30,360
+piehole at this point or otherwise if
+ 
+
+73
+00:01:30,360 --> 00:01:32,359
+piehole at this point or otherwise if
+you don't have one I did a tutorial last
+
+74
+00:01:32,359 --> 00:01:32,369
+you don't have one I did a tutorial last
+ 
+
+75
+00:01:32,369 --> 00:01:34,310
+you don't have one I did a tutorial last
+year that walks you through the basic
+
+76
+00:01:34,310 --> 00:01:34,320
+year that walks you through the basic
+ 
+
+77
+00:01:34,320 --> 00:01:36,410
+year that walks you through the basic
+set up for those of you who are watching
+
+78
+00:01:36,410 --> 00:01:36,420
+set up for those of you who are watching
+ 
+
+79
+00:01:36,420 --> 00:01:38,390
+set up for those of you who are watching
+on YouTube or through our website a
+
+80
+00:01:38,390 --> 00:01:38,400
+on YouTube or through our website a
+ 
+
+81
+00:01:38,400 --> 00:01:40,609
+on YouTube or through our website a
+category-5 TV you can simply click that
+
+82
+00:01:40,609 --> 00:01:40,619
+category-5 TV you can simply click that
+ 
+
+83
+00:01:40,619 --> 00:01:43,760
+category-5 TV you can simply click that
+icon to see the tutorial otherwise head
+
+84
+00:01:43,760 --> 00:01:43,770
+icon to see the tutorial otherwise head
+ 
+
+85
+00:01:43,770 --> 00:01:46,399
+icon to see the tutorial otherwise head
+on over to our website category 5 dot TV
+
+86
+00:01:46,399 --> 00:01:46,409
+on over to our website category 5 dot TV
+ 
+
+87
+00:01:46,409 --> 00:01:49,580
+on over to our website category 5 dot TV
+and just do a quick search for pie hole
+
+88
+00:01:49,580 --> 00:01:49,590
+and just do a quick search for pie hole
+ 
+
+89
+00:01:49,590 --> 00:01:51,050
+and just do a quick search for pie hole
+and it's spelt just like you see on the
+
+90
+00:01:51,050 --> 00:01:51,060
+and it's spelt just like you see on the
+ 
+
+91
+00:01:51,060 --> 00:01:53,929
+and it's spelt just like you see on the
+screen there pie - hole the video you're
+
+92
+00:01:53,929 --> 00:01:53,939
+screen there pie - hole the video you're
+ 
+
+93
+00:01:53,939 --> 00:01:56,990
+screen there pie - hole the video you're
+looking for is called block ads and porn
+
+94
+00:01:56,990 --> 00:01:57,000
+looking for is called block ads and porn
+ 
+
+95
+00:01:57,000 --> 00:02:00,660
+looking for is called block ads and porn
+using a single board computer
+
+96
+00:02:00,660 --> 00:02:00,670
+using a single board computer
+ 
+
+97
+00:02:00,670 --> 00:02:36,780
+using a single board computer
+oh wait okay so now that you've
+
+98
+00:02:36,780 --> 00:02:36,790
+oh wait okay so now that you've
+ 
+
+99
+00:02:36,790 --> 00:02:38,040
+oh wait okay so now that you've
+apparently got your piehole
+
+100
+00:02:38,040 --> 00:02:38,050
+apparently got your piehole
+ 
+
+101
+00:02:38,050 --> 00:02:40,320
+apparently got your piehole
+all set up let's see how to configure
+
+102
+00:02:40,320 --> 00:02:40,330
+all set up let's see how to configure
+ 
+
+103
+00:02:40,330 --> 00:02:44,250
+all set up let's see how to configure
+this on our mikrotik router so on my
+
+104
+00:02:44,250 --> 00:02:44,260
+this on our mikrotik router so on my
+ 
+
+105
+00:02:44,260 --> 00:02:49,560
+this on our mikrotik router so on my
+network my piehole device is at 10.00 to
+
+106
+00:02:49,560 --> 00:02:49,570
+network my piehole device is at 10.00 to
+ 
+
+107
+00:02:49,570 --> 00:02:51,810
+network my piehole device is at 10.00 to
+your DNS server obviously has to have a
+
+108
+00:02:51,810 --> 00:02:51,820
+your DNS server obviously has to have a
+ 
+
+109
+00:02:51,820 --> 00:02:54,240
+your DNS server obviously has to have a
+static IP address within your network so
+
+110
+00:02:54,240 --> 00:02:54,250
+static IP address within your network so
+ 
+
+111
+00:02:54,250 --> 00:02:55,920
+static IP address within your network so
+that's the IP address that I'm going to
+
+112
+00:02:55,920 --> 00:02:55,930
+that's the IP address that I'm going to
+ 
+
+113
+00:02:55,930 --> 00:02:58,949
+that's the IP address that I'm going to
+be routing my DNS traffic to so I want
+
+114
+00:02:58,949 --> 00:02:58,959
+be routing my DNS traffic to so I want
+ 
+
+115
+00:02:58,959 --> 00:03:00,330
+be routing my DNS traffic to so I want
+to show you a couple things here in web
+
+116
+00:03:00,330 --> 00:03:00,340
+to show you a couple things here in web
+ 
+
+117
+00:03:00,340 --> 00:03:02,430
+to show you a couple things here in web
+Figg so I'm going to click on IP which
+
+118
+00:03:02,430 --> 00:03:02,440
+Figg so I'm going to click on IP which
+ 
+
+119
+00:03:02,440 --> 00:03:04,320
+Figg so I'm going to click on IP which
+is already open and then DNS so when I
+
+120
+00:03:04,320 --> 00:03:04,330
+is already open and then DNS so when I
+ 
+
+121
+00:03:04,330 --> 00:03:05,940
+is already open and then DNS so when I
+go in there you're going to see the
+
+122
+00:03:05,940 --> 00:03:05,950
+go in there you're going to see the
+ 
+
+123
+00:03:05,950 --> 00:03:07,680
+go in there you're going to see the
+dynamic servers that my network is
+
+124
+00:03:07,680 --> 00:03:07,690
+dynamic servers that my network is
+ 
+
+125
+00:03:07,690 --> 00:03:09,479
+dynamic servers that my network is
+currently dishing out to all my devices
+
+126
+00:03:09,479 --> 00:03:09,489
+currently dishing out to all my devices
+ 
+
+127
+00:03:09,489 --> 00:03:11,580
+currently dishing out to all my devices
+through DHCP well I want to change that
+
+128
+00:03:11,580 --> 00:03:11,590
+through DHCP well I want to change that
+ 
+
+129
+00:03:11,590 --> 00:03:13,670
+through DHCP well I want to change that
+I want to actually set these to be my
+
+130
+00:03:13,670 --> 00:03:13,680
+I want to actually set these to be my
+ 
+
+131
+00:03:13,680 --> 00:03:16,259
+I want to actually set these to be my
+piehole but you notice I can't actually
+
+132
+00:03:16,259 --> 00:03:16,269
+piehole but you notice I can't actually
+ 
+
+133
+00:03:16,269 --> 00:03:18,539
+piehole but you notice I can't actually
+change those it doesn't allow me to make
+
+134
+00:03:18,539 --> 00:03:18,549
+change those it doesn't allow me to make
+ 
+
+135
+00:03:18,549 --> 00:03:21,750
+change those it doesn't allow me to make
+any changes here so first what I have to
+
+136
+00:03:21,750 --> 00:03:21,760
+any changes here so first what I have to
+ 
+
+137
+00:03:21,760 --> 00:03:25,680
+any changes here so first what I have to
+do is click on DHCP client click on your
+
+138
+00:03:25,680 --> 00:03:25,690
+do is click on DHCP client click on your
+ 
+
+139
+00:03:25,690 --> 00:03:28,470
+do is click on DHCP client click on your
+ether one in my case which is you'll
+
+140
+00:03:28,470 --> 00:03:28,480
+ether one in my case which is you'll
+ 
+
+141
+00:03:28,480 --> 00:03:30,569
+ether one in my case which is you'll
+remember from earlier in our mikrotik
+
+142
+00:03:30,569 --> 00:03:30,579
+remember from earlier in our mikrotik
+ 
+
+143
+00:03:30,579 --> 00:03:34,220
+remember from earlier in our mikrotik
+series the ether one interface is my
+
+144
+00:03:34,220 --> 00:03:34,230
+series the ether one interface is my
+ 
+
+145
+00:03:34,230 --> 00:03:36,750
+series the ether one interface is my
+internet connection so that's the actual
+
+146
+00:03:36,750 --> 00:03:36,760
+internet connection so that's the actual
+ 
+
+147
+00:03:36,760 --> 00:03:39,150
+internet connection so that's the actual
+connection to the router from the router
+
+148
+00:03:39,150 --> 00:03:39,160
+connection to the router from the router
+ 
+
+149
+00:03:39,160 --> 00:03:41,729
+connection to the router from the router
+to the modem to give me my internet
+
+150
+00:03:41,729 --> 00:03:41,739
+to the modem to give me my internet
+ 
+
+151
+00:03:41,739 --> 00:03:42,930
+to the modem to give me my internet
+connectivity so I'm gonna click on that
+
+152
+00:03:42,930 --> 00:03:42,940
+connectivity so I'm gonna click on that
+ 
+
+153
+00:03:42,940 --> 00:03:47,039
+connectivity so I'm gonna click on that
+and I'm going to turn off use peer DNS
+
+154
+00:03:47,039 --> 00:03:47,049
+and I'm going to turn off use peer DNS
+ 
+
+155
+00:03:47,049 --> 00:03:49,289
+and I'm going to turn off use peer DNS
+so basically I'm saying I don't want to
+
+156
+00:03:49,289 --> 00:03:49,299
+so basically I'm saying I don't want to
+ 
+
+157
+00:03:49,299 --> 00:03:51,630
+so basically I'm saying I don't want to
+use the DNS that's given to me by my ISP
+
+158
+00:03:51,630 --> 00:03:51,640
+use the DNS that's given to me by my ISP
+ 
+
+159
+00:03:51,640 --> 00:03:55,170
+use the DNS that's given to me by my ISP
+and hit OK now when I go to when I go to
+
+160
+00:03:55,170 --> 00:03:55,180
+and hit OK now when I go to when I go to
+ 
+
+161
+00:03:55,180 --> 00:03:59,910
+and hit OK now when I go to when I go to
+DNS you'll see now dynamic servers are
+
+162
+00:03:59,910 --> 00:03:59,920
+DNS you'll see now dynamic servers are
+ 
+
+163
+00:03:59,920 --> 00:04:02,539
+DNS you'll see now dynamic servers are
+gone there's nothing there and
+
+164
+00:04:02,539 --> 00:04:02,549
+gone there's nothing there and
+ 
+
+165
+00:04:02,549 --> 00:04:04,830
+gone there's nothing there and
+presumably unless it's cached if I try
+
+166
+00:04:04,830 --> 00:04:04,840
+presumably unless it's cached if I try
+ 
+
+167
+00:04:04,840 --> 00:04:05,970
+presumably unless it's cached if I try
+to go somewhere it's just going to
+
+168
+00:04:05,970 --> 00:04:05,980
+to go somewhere it's just going to
+ 
+
+169
+00:04:05,980 --> 00:04:07,979
+to go somewhere it's just going to
+timeout because right now I do not have
+
+170
+00:04:07,979 --> 00:04:07,989
+timeout because right now I do not have
+ 
+
+171
+00:04:07,989 --> 00:04:11,759
+timeout because right now I do not have
+any DNS servers so now I need to add my
+
+172
+00:04:11,759 --> 00:04:11,769
+any DNS servers so now I need to add my
+ 
+
+173
+00:04:11,769 --> 00:04:13,539
+any DNS servers so now I need to add my
+own
+
+174
+00:04:13,539 --> 00:04:13,549
+own
+ 
+
+175
+00:04:13,549 --> 00:04:24,320
+own
+ten what 10.0.0.0 I done that's all
+
+176
+00:04:24,320 --> 00:04:24,330
+ten what 10.0.0.0 I done that's all
+ 
+
+177
+00:04:24,330 --> 00:04:27,140
+ten what 10.0.0.0 I done that's all
+there is to it in a manner of speaking
+
+178
+00:04:27,140 --> 00:04:27,150
+there is to it in a manner of speaking
+ 
+
+179
+00:04:27,150 --> 00:04:28,790
+there is to it in a manner of speaking
+but I'm going to reverse that so we've
+
+180
+00:04:28,790 --> 00:04:28,800
+but I'm going to reverse that so we've
+ 
+
+181
+00:04:28,800 --> 00:04:30,589
+but I'm going to reverse that so we've
+gone through that process just to show
+
+182
+00:04:30,589 --> 00:04:30,599
+gone through that process just to show
+ 
+
+183
+00:04:30,599 --> 00:04:32,600
+gone through that process just to show
+you I'm going to just kind of I'm gonna
+
+184
+00:04:32,600 --> 00:04:32,610
+you I'm going to just kind of I'm gonna
+ 
+
+185
+00:04:32,610 --> 00:04:34,219
+you I'm going to just kind of I'm gonna
+reverse that so that I can show you a
+
+186
+00:04:34,219 --> 00:04:34,229
+reverse that so that I can show you a
+ 
+
+187
+00:04:34,229 --> 00:04:36,370
+reverse that so that I can show you a
+demonstration of what we're actually
+
+188
+00:04:36,370 --> 00:04:36,380
+demonstration of what we're actually
+ 
+
+189
+00:04:36,380 --> 00:04:38,510
+demonstration of what we're actually
+what we're performing here what we're
+
+190
+00:04:38,510 --> 00:04:38,520
+what we're performing here what we're
+ 
+
+191
+00:04:38,520 --> 00:04:41,270
+what we're performing here what we're
+actually achieving so let's turn back on
+
+192
+00:04:41,270 --> 00:04:41,280
+actually achieving so let's turn back on
+ 
+
+193
+00:04:41,280 --> 00:04:44,390
+actually achieving so let's turn back on
+our pure DNS I have trouble with these
+
+194
+00:04:44,390 --> 00:04:44,400
+our pure DNS I have trouble with these
+ 
+
+195
+00:04:44,400 --> 00:04:45,080
+our pure DNS I have trouble with these
+trackpads
+
+196
+00:04:45,080 --> 00:04:45,090
+trackpads
+ 
+
+197
+00:04:45,090 --> 00:04:48,409
+trackpads
+I should get a mouse okay so see we're
+
+198
+00:04:48,409 --> 00:04:48,419
+I should get a mouse okay so see we're
+ 
+
+199
+00:04:48,419 --> 00:04:50,390
+I should get a mouse okay so see we're
+back on the dynamic so I'm going to
+
+200
+00:04:50,390 --> 00:04:50,400
+back on the dynamic so I'm going to
+ 
+
+201
+00:04:50,400 --> 00:04:52,129
+back on the dynamic so I'm going to
+bring up a website and you're gonna need
+
+202
+00:04:52,129 --> 00:04:52,139
+bring up a website and you're gonna need
+ 
+
+203
+00:04:52,139 --> 00:04:55,779
+bring up a website and you're gonna need
+to do this within Firefox or Chrome
+
+204
+00:04:55,779 --> 00:04:55,789
+to do this within Firefox or Chrome
+ 
+
+205
+00:04:55,789 --> 00:04:58,400
+to do this within Firefox or Chrome
+don't do it in brave because brave
+
+206
+00:04:58,400 --> 00:04:58,410
+don't do it in brave because brave
+ 
+
+207
+00:04:58,410 --> 00:05:01,370
+don't do it in brave because brave
+obviously already blocks advertising
+
+208
+00:05:01,370 --> 00:05:01,380
+obviously already blocks advertising
+ 
+
+209
+00:05:01,380 --> 00:05:05,180
+obviously already blocks advertising
+advertisements don't do it in a browser
+
+210
+00:05:05,180 --> 00:05:05,190
+advertisements don't do it in a browser
+ 
+
+211
+00:05:05,190 --> 00:05:08,570
+advertisements don't do it in a browser
+that has an ad blocking tool installed
+
+212
+00:05:08,570 --> 00:05:08,580
+that has an ad blocking tool installed
+ 
+
+213
+00:05:08,580 --> 00:05:10,640
+that has an ad blocking tool installed
+and actively working because it's not
+
+214
+00:05:10,640 --> 00:05:10,650
+and actively working because it's not
+ 
+
+215
+00:05:10,650 --> 00:05:15,439
+and actively working because it's not
+going to actually show you the success
+
+216
+00:05:15,439 --> 00:05:15,449
+going to actually show you the success
+ 
+
+217
+00:05:15,449 --> 00:05:18,200
+going to actually show you the success
+of doing what we're about to do by
+
+218
+00:05:18,200 --> 00:05:18,210
+of doing what we're about to do by
+ 
+
+219
+00:05:18,210 --> 00:05:20,360
+of doing what we're about to do by
+revving through our pie hole so what I
+
+220
+00:05:20,360 --> 00:05:20,370
+revving through our pie hole so what I
+ 
+
+221
+00:05:20,370 --> 00:05:22,610
+revving through our pie hole so what I
+want to do is go to HTTP colon slash
+
+222
+00:05:22,610 --> 00:05:22,620
+want to do is go to HTTP colon slash
+ 
+
+223
+00:05:22,620 --> 00:05:27,620
+want to do is go to HTTP colon slash
+slash ads - blocker com and the reason I
+
+224
+00:05:27,620 --> 00:05:27,630
+slash ads - blocker com and the reason I
+ 
+
+225
+00:05:27,630 --> 00:05:29,060
+slash ads - blocker com and the reason I
+want to go there is because it's just an
+
+226
+00:05:29,060 --> 00:05:29,070
+want to go there is because it's just an
+ 
+
+227
+00:05:29,070 --> 00:05:31,939
+want to go there is because it's just an
+ad heavy demonstration web site so if
+
+228
+00:05:31,939 --> 00:05:31,949
+ad heavy demonstration web site so if
+ 
+
+229
+00:05:31,949 --> 00:05:33,649
+ad heavy demonstration web site so if
+you scroll down a little ways you're
+
+230
+00:05:33,649 --> 00:05:33,659
+you scroll down a little ways you're
+ 
+
+231
+00:05:33,659 --> 00:05:35,719
+you scroll down a little ways you're
+gonna start to see some advertising here
+
+232
+00:05:35,719 --> 00:05:35,729
+gonna start to see some advertising here
+ 
+
+233
+00:05:35,729 --> 00:05:39,560
+gonna start to see some advertising here
+on this website there are ads that come
+
+234
+00:05:39,560 --> 00:05:39,570
+on this website there are ads that come
+ 
+
+235
+00:05:39,570 --> 00:05:43,550
+on this website there are ads that come
+up on this site it looks like Firefox is
+
+236
+00:05:43,550 --> 00:05:43,560
+up on this site it looks like Firefox is
+ 
+
+237
+00:05:43,560 --> 00:05:46,520
+up on this site it looks like Firefox is
+actually already blocking some and so
+
+238
+00:05:46,520 --> 00:05:46,530
+actually already blocking some and so
+ 
+
+239
+00:05:46,530 --> 00:05:50,270
+actually already blocking some and so
+I'm going again you block origin request
+
+240
+00:05:50,270 --> 00:05:50,280
+I'm going again you block origin request
+ 
+
+241
+00:05:50,280 --> 00:05:54,980
+I'm going again you block origin request
+blocked 7 or 10% of this page can I turn
+
+242
+00:05:54,980 --> 00:05:54,990
+blocked 7 or 10% of this page can I turn
+ 
+
+243
+00:05:54,990 --> 00:05:55,430
+blocked 7 or 10% of this page can I turn
+that off
+
+244
+00:05:55,430 --> 00:05:55,440
+that off
+ 
+
+245
+00:05:55,440 --> 00:06:02,600
+that off
+is that what's doing it yeah now we're
+
+246
+00:06:02,600 --> 00:06:02,610
+is that what's doing it yeah now we're
+ 
+
+247
+00:06:02,610 --> 00:06:05,810
+is that what's doing it yeah now we're
+gonna see ads there you go so Firefox is
+
+248
+00:06:05,810 --> 00:06:05,820
+gonna see ads there you go so Firefox is
+ 
+
+249
+00:06:05,820 --> 00:06:07,629
+gonna see ads there you go so Firefox is
+now including an ad blocker that's cool
+
+250
+00:06:07,629 --> 00:06:07,639
+now including an ad blocker that's cool
+ 
+
+251
+00:06:07,639 --> 00:06:10,939
+now including an ad blocker that's cool
+but understand so well if Firefox
+
+252
+00:06:10,939 --> 00:06:10,949
+but understand so well if Firefox
+ 
+
+253
+00:06:10,949 --> 00:06:12,409
+but understand so well if Firefox
+already has an ad blocker why do we need
+
+254
+00:06:12,409 --> 00:06:12,419
+already has an ad blocker why do we need
+ 
+
+255
+00:06:12,419 --> 00:06:13,999
+already has an ad blocker why do we need
+to go to all this work why do we need a
+
+256
+00:06:13,999 --> 00:06:14,009
+to go to all this work why do we need a
+ 
+
+257
+00:06:14,009 --> 00:06:17,420
+to go to all this work why do we need a
+pie hole remember how I said this does
+
+258
+00:06:17,420 --> 00:06:17,430
+pie hole remember how I said this does
+ 
+
+259
+00:06:17,430 --> 00:06:20,420
+pie hole remember how I said this does
+the ad blocking at the DNS level so and
+
+260
+00:06:20,420 --> 00:06:20,430
+the ad blocking at the DNS level so and
+ 
+
+261
+00:06:20,430 --> 00:06:21,800
+the ad blocking at the DNS level so and
+I hinted to the fact that you're going
+
+262
+00:06:21,800 --> 00:06:21,810
+I hinted to the fact that you're going
+ 
+
+263
+00:06:21,810 --> 00:06:23,120
+I hinted to the fact that you're going
+to reduce your bandwidth consumption
+
+264
+00:06:23,120 --> 00:06:23,130
+to reduce your bandwidth consumption
+ 
+
+265
+00:06:23,130 --> 00:06:24,760
+to reduce your bandwidth consumption
+you're gonna speed up your internet and
+
+266
+00:06:24,760 --> 00:06:24,770
+you're gonna speed up your internet and
+ 
+
+267
+00:06:24,770 --> 00:06:27,490
+you're gonna speed up your internet and
+that is because with something like an
+
+268
+00:06:27,490 --> 00:06:27,500
+that is because with something like an
+ 
+
+269
+00:06:27,500 --> 00:06:29,200
+that is because with something like an
+ad blocking plugin
+
+270
+00:06:29,200 --> 00:06:29,210
+ad blocking plugin
+ 
+
+271
+00:06:29,210 --> 00:06:33,070
+ad blocking plugin
+or an ad blocking browser traditionally
+
+272
+00:06:33,070 --> 00:06:33,080
+or an ad blocking browser traditionally
+ 
+
+273
+00:06:33,080 --> 00:06:35,260
+or an ad blocking browser traditionally
+what happens is it still downloads the
+
+274
+00:06:35,260 --> 00:06:35,270
+what happens is it still downloads the
+ 
+
+275
+00:06:35,270 --> 00:06:38,740
+what happens is it still downloads the
+ad it just hides it it blocks it but
+
+276
+00:06:38,740 --> 00:06:38,750
+ad it just hides it it blocks it but
+ 
+
+277
+00:06:38,750 --> 00:06:41,110
+ad it just hides it it blocks it but
+with the DNS level blocking it's
+
+278
+00:06:41,110 --> 00:06:41,120
+with the DNS level blocking it's
+ 
+
+279
+00:06:41,120 --> 00:06:43,540
+with the DNS level blocking it's
+actually the request to the ad servers
+
+280
+00:06:43,540 --> 00:06:43,550
+actually the request to the ad servers
+ 
+
+281
+00:06:43,550 --> 00:06:47,409
+actually the request to the ad servers
+that respond with a null response so
+
+282
+00:06:47,409 --> 00:06:47,419
+that respond with a null response so
+ 
+
+283
+00:06:47,419 --> 00:06:49,990
+that respond with a null response so
+it's actually blocking the ability for
+
+284
+00:06:49,990 --> 00:06:50,000
+it's actually blocking the ability for
+ 
+
+285
+00:06:50,000 --> 00:06:52,869
+it's actually blocking the ability for
+your computer to reach the ad server at
+
+286
+00:06:52,869 --> 00:06:52,879
+your computer to reach the ad server at
+ 
+
+287
+00:06:52,879 --> 00:06:55,119
+your computer to reach the ad server at
+all it can't download anything they
+
+288
+00:06:55,119 --> 00:06:55,129
+all it can't download anything they
+ 
+
+289
+00:06:55,129 --> 00:06:56,950
+all it can't download anything they
+can't track you they can't trace that
+
+290
+00:06:56,950 --> 00:06:56,960
+can't track you they can't trace that
+ 
+
+291
+00:06:56,960 --> 00:07:00,010
+can't track you they can't trace that
+request it doesn't matter there it's
+
+292
+00:07:00,010 --> 00:07:00,020
+request it doesn't matter there it's
+ 
+
+293
+00:07:00,020 --> 00:07:01,719
+request it doesn't matter there it's
+going to be blocked at the DNS level so
+
+294
+00:07:01,719 --> 00:07:01,729
+going to be blocked at the DNS level so
+ 
+
+295
+00:07:01,729 --> 00:07:03,610
+going to be blocked at the DNS level so
+there's so much more to it so now that
+
+296
+00:07:03,610 --> 00:07:03,620
+there's so much more to it so now that
+ 
+
+297
+00:07:03,620 --> 00:07:05,439
+there's so much more to it so now that
+I've got this you block disable you can
+
+298
+00:07:05,439 --> 00:07:05,449
+I've got this you block disable you can
+ 
+
+299
+00:07:05,449 --> 00:07:07,899
+I've got this you block disable you can
+see there's a Google ad right here okay
+
+300
+00:07:07,899 --> 00:07:07,909
+see there's a Google ad right here okay
+ 
+
+301
+00:07:07,909 --> 00:07:11,080
+see there's a Google ad right here okay
+so back over to my micro tick here let's
+
+302
+00:07:11,080 --> 00:07:11,090
+so back over to my micro tick here let's
+ 
+
+303
+00:07:11,090 --> 00:07:15,460
+so back over to my micro tick here let's
+again go to DHCP client under IP and
+
+304
+00:07:15,460 --> 00:07:15,470
+again go to DHCP client under IP and
+ 
+
+305
+00:07:15,470 --> 00:07:17,290
+again go to DHCP client under IP and
+there are many ways to do this you can
+
+306
+00:07:17,290 --> 00:07:17,300
+there are many ways to do this you can
+ 
+
+307
+00:07:17,300 --> 00:07:19,899
+there are many ways to do this you can
+do this on a network by network basis if
+
+308
+00:07:19,899 --> 00:07:19,909
+do this on a network by network basis if
+ 
+
+309
+00:07:19,909 --> 00:07:21,159
+do this on a network by network basis if
+you want but I'm just going to do this
+
+310
+00:07:21,159 --> 00:07:21,169
+you want but I'm just going to do this
+ 
+
+311
+00:07:21,169 --> 00:07:24,129
+you want but I'm just going to do this
+on my entire network because I want any
+
+312
+00:07:24,129 --> 00:07:24,139
+on my entire network because I want any
+ 
+
+313
+00:07:24,139 --> 00:07:26,050
+on my entire network because I want any
+device that is on my network to go
+
+314
+00:07:26,050 --> 00:07:26,060
+device that is on my network to go
+ 
+
+315
+00:07:26,060 --> 00:07:27,999
+device that is on my network to go
+through the piehole I can turn off use
+
+316
+00:07:27,999 --> 00:07:28,009
+through the piehole I can turn off use
+ 
+
+317
+00:07:28,009 --> 00:07:33,420
+through the piehole I can turn off use
+pure DNS and hit ok now go to DNS and
+
+318
+00:07:33,420 --> 00:07:33,430
+pure DNS and hit ok now go to DNS and
+ 
+
+319
+00:07:33,430 --> 00:07:40,360
+pure DNS and hit ok now go to DNS and
+add my piehole 10 dots
+
+320
+00:07:40,360 --> 00:07:40,370
+add my piehole 10 dots
+ 
+
+321
+00:07:40,370 --> 00:07:44,170
+add my piehole 10 dots
+0.2 and this is all quite instantaneous
+
+322
+00:07:44,170 --> 00:07:44,180
+0.2 and this is all quite instantaneous
+ 
+
+323
+00:07:44,180 --> 00:07:46,780
+0.2 and this is all quite instantaneous
+however there are a couple of things to
+
+324
+00:07:46,780 --> 00:07:46,790
+however there are a couple of things to
+ 
+
+325
+00:07:46,790 --> 00:07:48,610
+however there are a couple of things to
+note so I'm going to clear my cache
+
+326
+00:07:48,610 --> 00:07:48,620
+note so I'm going to clear my cache
+ 
+
+327
+00:07:48,620 --> 00:07:52,270
+note so I'm going to clear my cache
+this is DNS cache flush cache so now
+
+328
+00:07:52,270 --> 00:07:52,280
+this is DNS cache flush cache so now
+ 
+
+329
+00:07:52,280 --> 00:07:54,219
+this is DNS cache flush cache so now
+anything that has already been accessed
+
+330
+00:07:54,219 --> 00:07:54,229
+anything that has already been accessed
+ 
+
+331
+00:07:54,229 --> 00:07:56,590
+anything that has already been accessed
+is flushed out of the DNS cache and so
+
+332
+00:07:56,590 --> 00:07:56,600
+is flushed out of the DNS cache and so
+ 
+
+333
+00:07:56,600 --> 00:08:00,310
+is flushed out of the DNS cache and so
+it's not going to be it's it's gonna
+
+334
+00:08:00,310 --> 00:08:00,320
+it's not going to be it's it's gonna
+ 
+
+335
+00:08:00,320 --> 00:08:02,200
+it's not going to be it's it's gonna
+request to the game and go through the
+
+336
+00:08:02,200 --> 00:08:02,210
+request to the game and go through the
+ 
+
+337
+00:08:02,210 --> 00:08:04,629
+request to the game and go through the
+piehole the other thing to keep in mind
+
+338
+00:08:04,629 --> 00:08:04,639
+piehole the other thing to keep in mind
+ 
+
+339
+00:08:04,639 --> 00:08:07,990
+piehole the other thing to keep in mind
+is you could if you wanted to go into
+
+340
+00:08:07,990 --> 00:08:08,000
+is you could if you wanted to go into
+ 
+
+341
+00:08:08,000 --> 00:08:12,460
+is you could if you wanted to go into
+DHCP server networks so instead of doing
+
+342
+00:08:12,460 --> 00:08:12,470
+DHCP server networks so instead of doing
+ 
+
+343
+00:08:12,470 --> 00:08:15,400
+DHCP server networks so instead of doing
+this at DNS I could just say okay my LAN
+
+344
+00:08:15,400 --> 00:08:15,410
+this at DNS I could just say okay my LAN
+ 
+
+345
+00:08:15,410 --> 00:08:19,270
+this at DNS I could just say okay my LAN
+or my these are my guest Wi-Fi networks
+
+346
+00:08:19,270 --> 00:08:19,280
+or my these are my guest Wi-Fi networks
+ 
+
+347
+00:08:19,280 --> 00:08:23,439
+or my these are my guest Wi-Fi networks
+I could just add a specific DNS server
+
+348
+00:08:23,439 --> 00:08:23,449
+I could just add a specific DNS server
+ 
+
+349
+00:08:23,449 --> 00:08:26,820
+I could just add a specific DNS server
+for those so I could do that see how
+
+350
+00:08:26,820 --> 00:08:26,830
+for those so I could do that see how
+ 
+
+351
+00:08:26,830 --> 00:08:29,439
+for those so I could do that see how
+diverse the configuration can be with a
+
+352
+00:08:29,439 --> 00:08:29,449
+diverse the configuration can be with a
+ 
+
+353
+00:08:29,449 --> 00:08:31,750
+diverse the configuration can be with a
+mikrotik so by doing it that way you
+
+354
+00:08:31,750 --> 00:08:31,760
+mikrotik so by doing it that way you
+ 
+
+355
+00:08:31,760 --> 00:08:34,240
+mikrotik so by doing it that way you
+could have multiple pie holes with
+
+356
+00:08:34,240 --> 00:08:34,250
+could have multiple pie holes with
+ 
+
+357
+00:08:34,250 --> 00:08:35,649
+could have multiple pie holes with
+multiple different settings you could
+
+358
+00:08:35,649 --> 00:08:35,659
+multiple different settings you could
+ 
+
+359
+00:08:35,659 --> 00:08:38,740
+multiple different settings you could
+have a mum and dad Wi-Fi that has that
+
+360
+00:08:38,740 --> 00:08:38,750
+have a mum and dad Wi-Fi that has that
+ 
+
+361
+00:08:38,750 --> 00:08:41,050
+have a mum and dad Wi-Fi that has that
+has direct access through like Google's
+
+362
+00:08:41,050 --> 00:08:41,060
+has direct access through like Google's
+ 
+
+363
+00:08:41,060 --> 00:08:43,000
+has direct access through like Google's
+DNS or something like that if you don't
+
+364
+00:08:43,000 --> 00:08:43,010
+DNS or something like that if you don't
+ 
+
+365
+00:08:43,010 --> 00:08:45,910
+DNS or something like that if you don't
+want to block things you can have your
+
+366
+00:08:45,910 --> 00:08:45,920
+want to block things you can have your
+ 
+
+367
+00:08:45,920 --> 00:08:49,090
+want to block things you can have your
+guest Wi-Fi have a more hardened DNS
+
+368
+00:08:49,090 --> 00:08:49,100
+guest Wi-Fi have a more hardened DNS
+ 
+
+369
+00:08:49,100 --> 00:08:51,190
+guest Wi-Fi have a more hardened DNS
+filter for example so you can do that at
+
+370
+00:08:51,190 --> 00:08:51,200
+filter for example so you can do that at
+ 
+
+371
+00:08:51,200 --> 00:08:54,370
+filter for example so you can do that at
+a network level in my case as I say I'm
+
+372
+00:08:54,370 --> 00:08:54,380
+a network level in my case as I say I'm
+ 
+
+373
+00:08:54,380 --> 00:08:56,560
+a network level in my case as I say I'm
+not doing it at this level I'm doing it
+
+374
+00:08:56,560 --> 00:08:56,570
+not doing it at this level I'm doing it
+ 
+
+375
+00:08:56,570 --> 00:09:01,210
+not doing it at this level I'm doing it
+on my full network so my ether one is
+
+376
+00:09:01,210 --> 00:09:01,220
+on my full network so my ether one is
+ 
+
+377
+00:09:01,220 --> 00:09:05,110
+on my full network so my ether one is
+gonna go through 10.0.0.0 love its DNS
+
+378
+00:09:05,110 --> 00:09:05,120
+gonna go through 10.0.0.0 love its DNS
+ 
+
+379
+00:09:05,120 --> 00:09:09,190
+gonna go through 10.0.0.0 love its DNS
+requests so now if I jump over here and
+
+380
+00:09:09,190 --> 00:09:09,200
+requests so now if I jump over here and
+ 
+
+381
+00:09:09,200 --> 00:09:13,960
+requests so now if I jump over here and
+just refresh this page as simple as that
+
+382
+00:09:13,960 --> 00:09:13,970
+just refresh this page as simple as that
+ 
+
+383
+00:09:13,970 --> 00:09:19,540
+just refresh this page as simple as that
+the advertisement is blocked see that so
+
+384
+00:09:19,540 --> 00:09:19,550
+the advertisement is blocked see that so
+ 
+
+385
+00:09:19,550 --> 00:09:22,900
+the advertisement is blocked see that so
+it tried to load it see how it's got a
+
+386
+00:09:22,900 --> 00:09:22,910
+it tried to load it see how it's got a
+ 
+
+387
+00:09:22,910 --> 00:09:25,470
+it tried to load it see how it's got a
+placeholder it tried to access the ad
+
+388
+00:09:25,470 --> 00:09:25,480
+placeholder it tried to access the ad
+ 
+
+389
+00:09:25,480 --> 00:09:28,210
+placeholder it tried to access the ad
+but it was blocked at the DNS level so
+
+390
+00:09:28,210 --> 00:09:28,220
+but it was blocked at the DNS level so
+ 
+
+391
+00:09:28,220 --> 00:09:33,310
+but it was blocked at the DNS level so
+it never got to my browser how cool is
+
+392
+00:09:33,310 --> 00:09:33,320
+it never got to my browser how cool is
+ 
+
+393
+00:09:33,320 --> 00:09:36,970
+it never got to my browser how cool is
+that so with this set up another thing
+
+394
+00:09:36,970 --> 00:09:36,980
+that so with this set up another thing
+ 
+
+395
+00:09:36,980 --> 00:09:39,640
+that so with this set up another thing
+to keep in mind is that while your
+
+396
+00:09:39,640 --> 00:09:39,650
+to keep in mind is that while your
+ 
+
+397
+00:09:39,650 --> 00:09:44,079
+to keep in mind is that while your
+mikrotik DHCP server is is going to dish
+
+398
+00:09:44,079 --> 00:09:44,089
+mikrotik DHCP server is is going to dish
+ 
+
+399
+00:09:44,089 --> 00:09:47,920
+mikrotik DHCP server is is going to dish
+out this new DNS setting for 1000 - in
+
+400
+00:09:47,920 --> 00:09:47,930
+out this new DNS setting for 1000 - in
+ 
+
+401
+00:09:47,930 --> 00:09:52,240
+out this new DNS setting for 1000 - in
+my case you may have a situation where
+
+402
+00:09:52,240 --> 00:09:52,250
+my case you may have a situation where
+ 
+
+403
+00:09:52,250 --> 00:09:54,550
+my case you may have a situation where
+somebody has maybe accustomed
+
+404
+00:09:54,550 --> 00:09:54,560
+somebody has maybe accustomed
+ 
+
+405
+00:09:54,560 --> 00:09:58,410
+somebody has maybe accustomed
+setting on their phone or maybe there is
+
+406
+00:09:58,410 --> 00:09:58,420
+setting on their phone or maybe there is
+ 
+
+407
+00:09:58,420 --> 00:10:00,610
+setting on their phone or maybe there is
+there they're running a browser that
+
+408
+00:10:00,610 --> 00:10:00,620
+there they're running a browser that
+ 
+
+409
+00:10:00,620 --> 00:10:03,910
+there they're running a browser that
+overrides your networks DNS settings
+
+410
+00:10:03,910 --> 00:10:03,920
+overrides your networks DNS settings
+ 
+
+411
+00:10:03,920 --> 00:10:07,989
+overrides your networks DNS settings
+that could be a problem because this
+
+412
+00:10:07,989 --> 00:10:07,999
+that could be a problem because this
+ 
+
+413
+00:10:07,999 --> 00:10:11,290
+that could be a problem because this
+setting is not enforced so this setting
+
+414
+00:10:11,290 --> 00:10:11,300
+setting is not enforced so this setting
+ 
+
+415
+00:10:11,300 --> 00:10:16,030
+setting is not enforced so this setting
+can easily be bypassed by your device so
+
+416
+00:10:16,030 --> 00:10:16,040
+can easily be bypassed by your device so
+ 
+
+417
+00:10:16,040 --> 00:10:18,819
+can easily be bypassed by your device so
+by default your mikrotik device right
+
+418
+00:10:18,819 --> 00:10:18,829
+by default your mikrotik device right
+ 
+
+419
+00:10:18,829 --> 00:10:20,949
+by default your mikrotik device right
+now as I've just demonstrated with this
+
+420
+00:10:20,949 --> 00:10:20,959
+now as I've just demonstrated with this
+ 
+
+421
+00:10:20,959 --> 00:10:24,269
+now as I've just demonstrated with this
+basic configuration is going to download
+
+422
+00:10:24,269 --> 00:10:24,279
+basic configuration is going to download
+ 
+
+423
+00:10:24,279 --> 00:10:27,340
+basic configuration is going to download
+those settings through DHCP and I don't
+
+424
+00:10:27,340 --> 00:10:27,350
+those settings through DHCP and I don't
+ 
+
+425
+00:10:27,350 --> 00:10:28,840
+those settings through DHCP and I don't
+know the download is the right term but
+
+426
+00:10:28,840 --> 00:10:28,850
+know the download is the right term but
+ 
+
+427
+00:10:28,850 --> 00:10:31,509
+know the download is the right term but
+it's going to get the new IP and dns
+
+428
+00:10:31,509 --> 00:10:31,519
+it's going to get the new IP and dns
+ 
+
+429
+00:10:31,519 --> 00:10:33,579
+it's going to get the new IP and dns
+settings from your DHCP server on the
+
+430
+00:10:33,579 --> 00:10:33,589
+settings from your DHCP server on the
+ 
+
+431
+00:10:33,589 --> 00:10:37,989
+settings from your DHCP server on the
+Microtech but if your device has its own
+
+432
+00:10:37,989 --> 00:10:37,999
+Microtech but if your device has its own
+ 
+
+433
+00:10:37,999 --> 00:10:40,749
+Microtech but if your device has its own
+custom settings it's going to circumvent
+
+434
+00:10:40,749 --> 00:10:40,759
+custom settings it's going to circumvent
+ 
+
+435
+00:10:40,759 --> 00:10:44,920
+custom settings it's going to circumvent
+that so if you'd like to instead and
+
+436
+00:10:44,920 --> 00:10:44,930
+that so if you'd like to instead and
+ 
+
+437
+00:10:44,930 --> 00:10:48,579
+that so if you'd like to instead and
+force it so that even if there was an
+
+438
+00:10:48,579 --> 00:10:48,589
+force it so that even if there was an
+ 
+
+439
+00:10:48,589 --> 00:10:50,799
+force it so that even if there was an
+override on a device or if your browser
+
+440
+00:10:50,799 --> 00:10:50,809
+override on a device or if your browser
+ 
+
+441
+00:10:50,809 --> 00:10:54,249
+override on a device or if your browser
+was ignoring your desired DNS settings
+
+442
+00:10:54,249 --> 00:10:54,259
+was ignoring your desired DNS settings
+ 
+
+443
+00:10:54,259 --> 00:10:56,290
+was ignoring your desired DNS settings
+on your network well you'll want to
+
+444
+00:10:56,290 --> 00:10:56,300
+on your network well you'll want to
+ 
+
+445
+00:10:56,300 --> 00:10:58,629
+on your network well you'll want to
+watch further in our series as we're
+
+446
+00:10:58,629 --> 00:10:58,639
+watch further in our series as we're
+ 
+
+447
+00:10:58,639 --> 00:11:00,549
+watch further in our series as we're
+gonna be looking at how to do what's
+
+448
+00:11:00,549 --> 00:11:00,559
+gonna be looking at how to do what's
+ 
+
+449
+00:11:00,559 --> 00:11:04,030
+gonna be looking at how to do what's
+called DNS masquerading and with DNS
+
+450
+00:11:04,030 --> 00:11:04,040
+called DNS masquerading and with DNS
+ 
+
+451
+00:11:04,040 --> 00:11:05,710
+called DNS masquerading and with DNS
+masquerading we're gonna take what we
+
+452
+00:11:05,710 --> 00:11:05,720
+masquerading we're gonna take what we
+ 
+
+453
+00:11:05,720 --> 00:11:08,590
+masquerading we're gonna take what we
+learned today on this tutorial and we're
+
+454
+00:11:08,590 --> 00:11:08,600
+learned today on this tutorial and we're
+ 
+
+455
+00:11:08,600 --> 00:11:10,720
+learned today on this tutorial and we're
+going to take it to the next level which
+
+456
+00:11:10,720 --> 00:11:10,730
+going to take it to the next level which
+ 
+
+457
+00:11:10,730 --> 00:11:13,749
+going to take it to the next level which
+is to say okay my mikrotik is now going
+
+458
+00:11:13,749 --> 00:11:13,759
+is to say okay my mikrotik is now going
+ 
+
+459
+00:11:13,759 --> 00:11:17,139
+is to say okay my mikrotik is now going
+to basically find any dns traffic that's
+
+460
+00:11:17,139 --> 00:11:17,149
+to basically find any dns traffic that's
+ 
+
+461
+00:11:17,149 --> 00:11:19,720
+to basically find any dns traffic that's
+going through my network and it's going
+
+462
+00:11:19,720 --> 00:11:19,730
+going through my network and it's going
+ 
+
+463
+00:11:19,730 --> 00:11:22,869
+going through my network and it's going
+to masquerade it so that it has to go
+
+464
+00:11:22,869 --> 00:11:22,879
+to masquerade it so that it has to go
+ 
+
+465
+00:11:22,879 --> 00:11:25,480
+to masquerade it so that it has to go
+through the piehole there is an
+
+466
+00:11:25,480 --> 00:11:25,490
+through the piehole there is an
+ 
+
+467
+00:11:25,490 --> 00:11:28,210
+through the piehole there is an
+inability on your device to circumvent
+
+468
+00:11:28,210 --> 00:11:28,220
+inability on your device to circumvent
+ 
+
+469
+00:11:28,220 --> 00:11:30,879
+inability on your device to circumvent
+or override that even if you set your
+
+470
+00:11:30,879 --> 00:11:30,889
+or override that even if you set your
+ 
+
+471
+00:11:30,889 --> 00:11:34,210
+or override that even if you set your
+your dns settings manually masquerading
+
+472
+00:11:34,210 --> 00:11:34,220
+your dns settings manually masquerading
+ 
+
+473
+00:11:34,220 --> 00:11:37,530
+your dns settings manually masquerading
+will force it to go through in my case
+
+474
+00:11:37,530 --> 00:11:37,540
+will force it to go through in my case
+ 
+
+475
+00:11:37,540 --> 00:11:43,150
+will force it to go through in my case
+10.0.0.0 at five dot TV slash mikrotik
+
+476
+00:11:43,150 --> 00:11:43,160
+10.0.0.0 at five dot TV slash mikrotik
+ 
+
+477
+00:11:43,160 --> 00:11:46,960
+10.0.0.0 at five dot TV slash mikrotik
+is covering a wide gamut of how to set
+
+478
+00:11:46,960 --> 00:11:46,970
+is covering a wide gamut of how to set
+ 
+
+479
+00:11:46,970 --> 00:11:48,699
+is covering a wide gamut of how to set
+up and configure and use your Microtech
+
+480
+00:11:48,699 --> 00:11:48,709
+up and configure and use your Microtech
+ 
+
+481
+00:11:48,709 --> 00:11:52,840
+up and configure and use your Microtech
+routing device this is we're gonna be
+
+482
+00:11:52,840 --> 00:11:52,850
+routing device this is we're gonna be
+ 
+
+483
+00:11:52,850 --> 00:11:54,910
+routing device this is we're gonna be
+looking more at masquerading in the
+
+484
+00:11:54,910 --> 00:11:54,920
+looking more at masquerading in the
+ 
+
+485
+00:11:54,920 --> 00:11:57,579
+looking more at masquerading in the
+future so I'm dropping that keyword for
+
+486
+00:11:57,579 --> 00:11:57,589
+future so I'm dropping that keyword for
+ 
+
+487
+00:11:57,589 --> 00:11:58,900
+future so I'm dropping that keyword for
+you because I want you to watch for it
+
+488
+00:11:58,900 --> 00:11:58,910
+you because I want you to watch for it
+ 
+
+489
+00:11:58,910 --> 00:12:00,549
+you because I want you to watch for it
+if that's of interest to you you want to
+
+490
+00:12:00,549 --> 00:12:00,559
+if that's of interest to you you want to
+ 
+
+491
+00:12:00,559 --> 00:12:03,309
+if that's of interest to you you want to
+enforce it get on to cap v dot TV slash
+
+492
+00:12:03,309 --> 00:12:03,319
+enforce it get on to cap v dot TV slash
+ 
+
+493
+00:12:03,319 --> 00:12:05,920
+enforce it get on to cap v dot TV slash
+mikrotik and look for that one
+
+494
+00:12:05,920 --> 00:12:05,930
+mikrotik and look for that one
+ 
+
+495
+00:12:05,930 --> 00:12:20,730
+mikrotik and look for that one
+dns masquerading
+
+496
+00:12:20,730 --> 00:12:20,740
+
+ 
+
+497
+00:12:20,740 --> 00:12:23,779
+
+[Music]
+
