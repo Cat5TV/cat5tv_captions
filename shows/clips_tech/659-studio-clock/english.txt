@@ -1,0 +1,268 @@
+what i wanted to show you
+is simply a clock that i've been working
+on i know that sounds crazy but
+one of the things that i've been trying
+to achieve
+with this space which is our basically
+our producers room
+is to make it as functional as possible
+but also try to give it some eye candy
+as well
+i've been using just a standard analog
+clock on the wall because it has
+tick tick tick tick and i can count the
+seconds but i wanted to take it one more
+like a step further because quite often
+when we're producing video especially
+live
+we have to meet markers so there's a
+countdown
+usually i have a walkie-talkie if i'm
+producing somebody in the other
+room and i'll be communicating back and
+forth
+in order to let them know the countdown
+so you've seen it on tv i'm sure so
+you know five seconds three
+mark you know so we're punching in that
+way but it's not always ideal to use
+just a standard clock
+so i set out to build something a little
+bit different and it's powered
+by today anyways a raspberry pi
+3b plus i am not at all satisfied with
+the performance of that which you're
+about to see
+um however it's given me a development
+platform to
+play around with now i may have to
+install it on something
+that can handle better graphics well why
+do you need
+graphics for a clock robbie because
+i want to so this is what i'm working on
+i based this on the aries jquery
+dashboard so you may be familiar with
+that but what i've done is i've actually
+created a functional clock
+out of this system so um so i've taken
+that it's basically a template
+and then i've created a jquery clock
+counter countdown disk check that uses
+ajax to php to be able to check my
+network to see if there's any hard drive
+failures
+or or hard drives that are full in our
+array um
+and i'll show you also it'll it even
+shows when we're live on the air so
+that's pretty cool right now it's not
+connected so
+we've got studio e up here these are the
+only things that are not functional
+these are just eye candy right now
+um from the original theme i've left
+them in just to make it
+so that there's some filled space there
+no point in removing them and having
+having it not look symmetrical so
+um so with this we can ignore those
+things
+here we have the actual functional clock
+and i've got greek
+for time there according to google
+translate
+[Laughter]
+so we've got 9 46 is the time and we've
+got a seconds counter here
+10 11 12. so you can see how janky the
+video is that's because of the raspberry
+pi 3b plus not being
+uh it's the graphics processing not
+being able to keep up with the
+with the visual effects that i've
+created it runs
+stellar on my linux desktop um
+so that's the actual time nothing fancy
+there except i wanted to
+separate out the seconds rather than
+having them
+in line like you'd normally see like 9
+colon 46 colon 38
+i wanted to move that 38 up here and
+it's counting in real time using jquery
+so every second there's a timer that
+updates the time
+then taking it one step further quite
+often
+in production we count backwards so
+when we're looking at 10 o'clock the
+time
+we're counting down to it so we're
+calling
+60 seconds 30 seconds
+10 seconds 5
+and then everything goes black and boom
+we're live
+so that's how it works so what we have
+is now now we've seen that it's 9 47 we
+can
+really easily calculate that we've got
+43 seconds left
+but if we look down here we actually
+have a countdown that says time will be
+9 48 in 35 34
+33 you can see that jquery timer is a
+little bit off
+that's also the raspberry pi that's not
+that's not the system
+itself it's that the raspberry pi
+unfortunately can't keep up with it i
+was really thinking this was gonna work
+on
+on a single board computer i tried it on
+an asus
+um tinkerboard and it was uh
+it was so unable to handle the graphics
+that it actually wouldn't even load them
+the raspberry pi 3b plus at least loads
+it but not
+well enough so i'm going to try a couple
+of different sbcs
+reason i'm trying the raspberry pi 3b
+plus right now is simply
+it has wi-fi which makes it a little
+easier to set up
+because i don't have i haven't unpacked
+my ethernet cables yet
+over here oh and this is not functional
+either this is just fake
+part of the template oh i should point
+out up here so
+as i'm recording this as we mentioned
+we're not actually broadcasting live
+today this is all
+we've produced this behind like after
+the fact so
+um this shows the video feed is off the
+air but as soon as we go live
+this will actually shift to say on air
+so that also serves a double purpose if
+we're here
+producing and and broadcasting a live
+show
+we'll notice that presumably i mean if
+we look up we'll see that we're off the
+air something's going on even though we
+think we're on the air
+this will actually show that then this
+is also functional
+so this shows disk usage my disk usage
+is not actually that bad although it is
+close
+what this is looking to do is it's going
+to connect to samba
+shares on my server and it does a disk
+check every 15 seconds to see
+how much disk usage there is and this
+will move automatically
+the only one right now that's currently
+connected because i have not created
+those samba connections
+is the sd card so you can see i'm using
+about what looks like about ten percent
+eight percent of my sd card so these
+will move in real time
+the animation is so much better on a
+computer
+so i've got this little box here that
+i'm thinking maybe i'll turn that into
+my clock but
+part of the idea is i want to create a
+setup here that's
+very low power consumption yet has some
+eye candy
+and is also functional so this serves
+many purposes from the
+time to the countdown um to the disk
+usage warnings
+and even showing us whether we're on air
+or off air
+and it will even tell us if there's a
+problem with the api if the api is not
+responding this will go red
+and it will warn us of that right here
+you see an empty box and that's because
+i have not yet plugged
+a microphone into the raspberry pi this
+is a spectrum
+analyzer um so that
+will actually show the the spectrum uh
+in real time of
+audio that's flowing through the
+raspberry pi so i'm thinking maybe we'll
+pull that off of our mixing console
+so that we can actually see the audio
+levels on the
+on the dashboard so that's pretty cool
+so that's my new clock
+it's much more than a clock it's a
+functional dashboard and going to be
+growing over the next little while as i
+develop it
+it's not really ready for mainstream use
+right yet however if you'd like to check
+it out you'll see
+a repository called studio
+on github.com cat5 tv
+my github page and the source code for
+this
+and everything is there and you can
+check it out if you have a pr for me to
+make it even funkier i'd love to see it
+and i'm going to be working on figuring
+out which platform which hardware
+platform is going to work the best
+i don't really want to put it on a pi 4
+i
+figure it probably will run better there
+but that's a very expensive clock
+very expensive clock so so
+maybe though because there's dual video
+output on a raspberry pi 4
+i could offset that cost by running my
+nem server on the fourth screen
+so that gives me some thought so maybe
+i'm going to tinker with that what are
+your thoughts what system should i run
+it on what one do you think is going to
+perform best as far as the graphics go
+the processor is doing just fine it's
+able to do all this but it's the
+graphical end of it that the raspberry
+pi 3b
+plus just is terrible at so
+uh i'm curious what what single board
+computer is going to be
+the best one for this use case so check
+it out github.com
+cap5 tv slash studio and
+the folder that you're looking for for
+this particular application
+is screens slash dashboard
+and you'll also see screens slash the
+orville which is actually a screen
+from the set of the orville provided by
+tom costantino
+so that repository is basically anything
+that we do
+that i do for the studio like api
+connections and
+things like that that's where i stick
+them so if you want to check out how we
+do things
+that's a pretty cool spot
+github.comcat5tv
+studio
+[Music]
+you
