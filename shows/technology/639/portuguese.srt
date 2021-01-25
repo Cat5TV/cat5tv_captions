@@ -1,0 +1,2788 @@
+1
+00:00:00,060 --> 00:00:05,190
+esta semana vou te ensinar como criar imagens vetoriais a partir de imagens raster
+
+2
+00:00:05,190 --> 00:00:11,730
+pings ou JPEGs no Linux também vamos começar a construir um software
+
+3
+00:00:11,730 --> 00:00:15,809
+produto que nos permitirá criar, digamos, uma campainha
+
+4
+00:00:15,809 --> 00:00:23,510
+que soa simplesmente quando sua equipe se aproxima do escritório, fica por perto
+
+5
+00:00:40,930 --> 00:00:47,700
+[Música]
+
+6
+00:00:48,949 --> 00:00:53,220
+nossas gravações ao vivo são confiáveis ​​apenas para unidades de estado sólido da Kingston
+
+7
+00:00:53,220 --> 00:00:56,790
+tecnologia revive seu computador com desempenho e confiabilidade aprimorados
+
+8
+00:00:56,790 --> 00:01:02,489
+em discos rígidos tradicionais com Kingston SSDs categoria 5 transmissões de TV ao vivo
+
+9
+00:01:02,489 --> 00:01:06,930
+com Telestream Wirecast e ágil streamer tune todas as semanas no roku cody
+
+10
+00:01:06,930 --> 00:01:13,130
+e outros players de vídeo HLS para programas locais, visite a categoria cinco dot TV
+
+11
+00:01:13,130 --> 00:01:16,380
+bem vindos ao show a todos, é tão bom ter vocês aqui, sou só eu
+
+12
+00:01:16,380 --> 00:01:20,549
+voando solo esta semana eu provei antes do feriado de Natal que eu poderia fazer isso
+
+13
+00:01:20,549 --> 00:01:26,040
+e então eu acho que foi minha iniciação e aqui estou eu estou feliz por
+
+14
+00:01:26,040 --> 00:01:29,480
+acompanhe você no passeio comigo, vamos nos divertir muito esta semana
+
+15
+00:01:29,480 --> 00:01:35,520
+antes de mais nada, pretendia ter esta discussão com a minha querida
+
+16
+00:01:35,520 --> 00:01:43,470
+anfitriões que não estão aqui comigo hoje, mas meio que olhando como tenho sido você
+
+17
+00:01:43,470 --> 00:01:47,310
+saiba que tipo de progresso eu tenho feito você saber minha resolução de ano novo
+
+18
+00:01:47,310 --> 00:01:50,750
+é um pouco diferente, não estou tentando perder peso, em vez disso, estou tentando
+
+19
+00:01:50,750 --> 00:01:57,150
+educar-me quanto à minha saúde para que indiretamente eu possa perder peso e
+
+20
+00:01:57,150 --> 00:02:01,170
+estar um pouco mais saudável até agora o que estou fazendo é pisar no meu smart
+
+21
+00:02:01,170 --> 00:02:05,790
+escala 2 vezes por dia e estou observando as tendências e estou percebendo é claro que estou
+
+22
+00:02:05,790 --> 00:02:08,550
+mais pesado à noite do que pela manhã, então vamos apenas dividir o
+
+23
+00:02:08,550 --> 00:02:12,510
+diferença na verdade não, não vamos tirar a média vamos pegar a manhã, esperar
+
+24
+00:02:12,510 --> 00:02:16,230
+Eu acho que é o que eu vou escolher, mas isso está realmente me ajudando a ser capaz
+
+25
+00:02:16,230 --> 00:02:19,890
+definir algumas metas que são realmente minhas intenções e essas metas são muito
+
+26
+00:02:19,890 --> 00:02:25,799
+arbitrário, sou que eles não estão muito relacionados à dieta, eles são muito, então eu posso
+
+27
+00:02:25,799 --> 00:02:29,670
+apenas veja que, ei, é aqui que estou e é aqui que quero estar
+
+28
+00:02:29,670 --> 00:02:34,340
+e, à medida que meu dia passa, considero o que posso fazer para alcançar
+
+29
+00:02:34,340 --> 00:02:38,060
+meus objetivos a longo prazo, não sei se vai demorar oito semanas, não
+
+30
+00:02:38,060 --> 00:02:45,140
+sei se vai demorar 365 dias, eu não sei, mas pelo menos eu tenho algum tipo de
+
+31
+00:02:45,140 --> 00:02:49,010
+que está acontecendo, vai poder me ajudar com o meu monitor de fitness
+
+32
+00:02:49,010 --> 00:02:53,780
+meu pulso está me ajudando a monitorar minha frequência cardíaca, também
+
+33
+00:02:53,780 --> 00:02:57,049
+monitorar minha pressão arterial, o que é bom porque eu tenho um pouco
+
+34
+00:02:57,049 --> 00:03:01,310
+um pouco de pressão alta, nada a temer ou algo assim
+
+35
+00:03:01,310 --> 00:03:06,260
+mas acho que algumas vezes quando estou estressado pode ser um problema, então é
+
+36
+00:03:06,260 --> 00:03:10,280
+bom poder tocar no meu relógio de pulso se quiser e ser capaz de
+
+37
+00:03:10,280 --> 00:03:14,420
+veja esses números e também me rastreia 24 horas por dia, 7 dias por semana, e posso ver esses gráficos
+
+38
+00:03:14,420 --> 00:03:17,480
+ao longo do dia para que eu possa ver o que está acontecendo, o que é muito
+
+39
+00:03:17,480 --> 00:03:25,069
+útil para mim ao definir essas metas e também acidentalmente ao longo do dia
+
+40
+00:03:25,069 --> 00:03:28,849
+duas coisas que me lembra é que me lembra de levantar da minha mesa
+
+41
+00:03:28,849 --> 00:03:32,599
+o que é provavelmente uma coisa boa e realmente gosta de vibrar e eu
+
+42
+00:03:32,599 --> 00:03:36,829
+olhe para o meu relógio de pulso e ele diz "levante-se" não diz realmente que tem
+
+43
+00:03:36,829 --> 00:03:43,100
+pequeno ícone que é como um cara parado em uma mesa e esse sou eu e então eu
+
+44
+00:03:43,100 --> 00:03:47,239
+fazer e estou sempre insistindo nisso, algumas vezes
+
+45
+00:03:47,239 --> 00:03:52,459
+é como se eu estivesse muito ocupado para você agora rastreador de fitness e depois me sinto mal, mas
+
+46
+00:03:52,459 --> 00:03:56,630
+Eu tenho seguido o melhor que posso e então me lembra com um copo de
+
+47
+00:03:56,630 --> 00:04:00,980
+água parece uma caneca de café cheia de água para beber água e eu
+
+48
+00:04:00,980 --> 00:04:04,669
+tenho bebido muito mais água, o que vai me ajudar com meu metabolismo e
+
+49
+00:04:04,669 --> 00:04:10,190
+me ajude a ser capaz de queimar gordura também, então indiretamente de novo eu não estou tentando
+
+50
+00:04:10,190 --> 00:04:17,690
+perder peso por si só, mas indiretamente isso vai acontecer, então também esta semana, agora, no passado
+
+51
+00:04:17,690 --> 00:04:24,080
+semana eu fiz o macarrão de abobrinha essa semana minha esposa serviu arroz com curry
+
+52
+00:04:24,080 --> 00:04:28,280
+em cima disso e em vez de ir com o arroz o que fiz foi pegar um
+
+53
+00:04:28,280 --> 00:04:32,599
+couve-flor e eu a desfiei com uma trituradora de queijo Eu sei, me ouça aqui
+
+54
+00:04:32,599 --> 00:04:37,849
+ok então o que a couve-flor ralou com um triturador de queijo e depois refoguei
+
+55
+00:04:37,849 --> 00:04:42,800
+um pouco de azeite e coloco meu molho de curry por cima
+
+56
+00:04:42,800 --> 00:04:45,740
+então, em vez de arroz que está cheio de carboidratos, eu
+
+57
+00:04:45,740 --> 00:04:49,940
+ter couve-flor e gosto de couve-flor, por isso não é grande coisa para
+
+58
+00:04:49,940 --> 00:04:55,340
+eu, mas foi como uma solução muito rápida e muito baixo teor de carboidratos, então foi
+
+59
+00:04:55,340 --> 00:04:59,720
+realmente excelente e no que se refere a lanches, tenho beliscado queijo cottage
+
+60
+00:04:59,720 --> 00:05:03,830
+é como se eu quisesse batatas fritas, eu só coloco algumas colheres de queijo cottage que
+
+61
+00:05:03,830 --> 00:05:08,509
+também gosto, estou bem com isso, então o que isso tem a ver com tecnologia
+
+62
+00:05:08,509 --> 00:05:11,870
+Robby, esse é um tipo de pergunta que tenho respondido bem na semana passada
+
+63
+00:05:11,870 --> 00:05:15,380
+o que tudo isso tem a ver com tecnologia? Estou usando tecnologia porque nós
+
+64
+00:05:15,380 --> 00:05:21,759
+viver em uma época agora em que a tecnologia está disponível por cerca de US $ 35 para a escala
+
+65
+00:05:21,759 --> 00:05:27,139
+$ 35 para o rastreador de fitness inteligente que se conecta com Bluetooth ao meu smartphone
+
+66
+00:05:27,139 --> 00:05:32,960
+e é capaz de gerar gráficos, então usando tecnologia sou capaz de gerar relatórios
+
+67
+00:05:32,960 --> 00:05:37,310
+que me ajudem a conseguir isso, já que estamos dando início a 2020
+
+68
+00:05:37,310 --> 00:05:41,000
+aqui está o meu objetivo, eu quero que você se junte a mim se você for um patrono, você vai ser
+
+69
+00:05:41,000 --> 00:05:44,569
+para acompanhar, vou postar algumas capturas de tela e coisas assim que
+
+70
+00:05:44,569 --> 00:05:48,849
+vamos ajudá-lo se você estiver interessado em seguir comigo e
+
+71
+00:05:48,849 --> 00:05:54,409
+e eu encorajo você se você tiver objetivos semelhantes que talvez possamos compartilhar
+
+72
+00:05:54,409 --> 00:06:00,020
+nosso progresso e discutir isso antes de entrarmos na tecnologia real
+
+73
+00:06:00,020 --> 00:06:05,479
+conteúdo do programa desta semana, quero lembrá-lo de se inscrever no YouTube
+
+74
+00:06:05,479 --> 00:06:08,539
+e clique no sino que vai garantir que você receba essas notificações
+
+75
+00:06:08,539 --> 00:06:15,110
+a qualquer hora que estivermos ao vivo e a qualquer hora que postarmos novos vídeos em nosso YouTube
+
+76
+00:06:15,110 --> 00:06:18,229
+canalizar o que mudou no YouTube no passado
+
+77
+00:06:18,229 --> 00:06:24,710
+semana para TV de tecnologia de categoria cinco bem, temos dois canais principais do YouTube
+
+78
+00:06:24,710 --> 00:06:28,909
+para este programa, então há uma TV de tecnologia de categoria cinco que é onde você vai
+
+79
+00:06:28,909 --> 00:06:33,500
+assista à transmissão completa de uma hora de TV de tecnologia de categoria cinco e é
+
+80
+00:06:33,500 --> 00:06:38,970
+assim como da frente para trás e você está assistindo a hora inteira
+
+81
+00:06:38,970 --> 00:06:43,650
+alternativamente, há o que é chamado de show técnico do Linux, você pode obter lá é um
+
+82
+00:06:43,650 --> 00:06:49,620
+hotlink Linux tech show comm e o que eu faço com o Linux tech show é levar o
+
+83
+00:06:49,620 --> 00:06:55,410
+show inteiro de uma hora e eu cortei todas as peças do show agora no passado
+
+84
+00:06:55,410 --> 00:06:59,310
+semana fizemos algo um pouco diferente ou eu fiz algo um pouco
+
+85
+00:06:59,310 --> 00:07:04,620
+um pouco diferente, conversei com alguns membros da equipe e disse o que aconteceria se fizéssemos
+
+86
+00:07:04,620 --> 00:07:09,930
+isso e todo mundo estava tipo sim, parece muito trabalho Robbie, mas você
+
+87
+00:07:09,930 --> 00:07:12,960
+pode fazer isso e se você fizer isso, provavelmente será uma coisa muito boa, então
+
+88
+00:07:12,960 --> 00:07:17,850
+o que eu fiz não foi apenas pegar todos os clipes da tecnologia da categoria cinco
+
+89
+00:07:17,850 --> 00:07:24,150
+TV para que você possa assistir apenas o recurso ou apenas a redação e agora
+
+90
+00:07:24,150 --> 00:07:30,090
+para a próxima etapa e disse tudo bem na semana passada, tínhamos oito histórias na categoria
+
+91
+00:07:30,090 --> 00:07:35,400
+cinco pontos da sala de notícias da TV, oito histórias, essas são notícias que foram
+
+92
+00:07:35,400 --> 00:07:40,740
+seguindo em tecnologia para que você possa assistir àquela sala de notícias de TV de cinco pontos da categoria completa
+
+93
+00:07:40,740 --> 00:07:47,120
+episódio que tem 28 minutos de duração ou agora começando na semana passada, você pode assistir cada
+
+94
+00:07:47,120 --> 00:07:51,930
+história individual, portanto, se houver uma história particular na categoria 5 TV
+
+95
+00:07:51,930 --> 00:07:55,680
+sala de notícias que você adora, vá ao Linux tech show com você será capaz de encontrar
+
+96
+00:07:55,680 --> 00:08:00,300
+história daqui em diante e você pode compartilhar isso em seu perfil de mídia social
+
+97
+00:08:00,300 --> 00:08:04,830
+pode postar no YouTube você pode postar no Twitter você pode postar no Facebook
+
+98
+00:08:04,830 --> 00:08:08,669
+você pode compartilhar com seus amigos e familiares, se houver uma história em particular
+
+99
+00:08:08,669 --> 00:08:13,350
+que se aplica a você ou àqueles que você acha que estão seguindo seu
+
+100
+00:08:13,350 --> 00:08:16,950
+perfis de mídia, você poderá postar esses vídeos e essa é uma ótima maneira de
+
+101
+00:08:16,950 --> 00:08:21,240
+espalhar o tipo de notícia sobre TV de tecnologia de categoria cinco conforme crescemos
+
+102
+00:08:21,240 --> 00:08:26,880
+aqui em 2020 esta semana eu mencionei no início do show que vamos ser
+
+103
+00:08:26,880 --> 00:08:32,099
+olhando como criar imagens vetoriais a partir de imagens raster e o que isso
+
+104
+00:08:32,099 --> 00:08:40,169
+querem dizer bem quando estou trabalhando em sites ou em qualquer tipo de
+
+105
+00:08:40,169 --> 00:08:45,930
+projetos gráficos, muitas vezes eu solicito uma imagem vetorial do meu cliente e o
+
+106
+00:08:45,930 --> 00:08:51,150
+o cliente pode dizer que não temos tal coisa ou melhor ainda
+
+107
+00:08:51,150 --> 00:08:55,950
+o que diabos é uma imagem vetorial certo, então talvez essa seja a pergunta que eu tenho que
+
+108
+00:08:55,950 --> 00:09:01,650
+responda primeiro para uma imagem raster ou uma imagem achatada como um JPEG ou um
+
+109
+00:09:01,650 --> 00:09:09,600
+pintura ou bitmap é o que é chamado de imagem rasterizada para que a imagem seja definida
+
+110
+00:09:09,600 --> 00:09:17,580
+para as dimensões que o Criador salvou, então vamos dizer que um vídeo é 1920
+
+111
+00:09:17,580 --> 00:09:21,840
+em 1080, então, se você tiver uma captura de tela desse vídeo, essa captura de tela vai
+
+112
+00:09:21,840 --> 00:09:28,380
+ser 1920 por 1080 agora você pode diminuir isso e vai ficar ótimo, você pode
+
+113
+00:09:28,380 --> 00:09:33,180
+encolha e ficará fantástico, no entanto, se você tentar fazê-lo
+
+114
+00:09:33,180 --> 00:09:36,750
+maior, então digamos que você queira caber em uma tela de 4k
+
+115
+00:09:36,750 --> 00:09:41,250
+bem, agora o que você está fazendo é tirar aquela captura de tela de 1080 peças e
+
+116
+00:09:41,250 --> 00:09:46,800
+você está esticando e bem, como um computador estica bem uma imagem?
+
+117
+00:09:46,800 --> 00:09:52,650
+recria todos os pixels, os alonga e cada pixel é alongado de forma
+
+118
+00:09:52,650 --> 00:09:57,120
+eventualmente, quando você ficar grande o suficiente, você terá distorção, você vai
+
+119
+00:09:57,120 --> 00:10:03,000
+fica embaçado e isso acontece quando você pega um logotipo, é um exemplo perfeito quando
+
+120
+00:10:03,000 --> 00:10:07,430
+você pega um pequeno logotipo de um site e tenta imprimi-lo em um outdoor
+
+121
+00:10:07,430 --> 00:10:11,760
+bem, isso não vai ficar bem e alguém com algum controle de qualidade está
+
+122
+00:10:11,760 --> 00:10:16,680
+vou te dizer que não precisamos de uma imagem vetorial, o que é o vetor
+
+123
+00:10:16,680 --> 00:10:24,000
+imagem como posso obter uma imagem vetorial Eu não tenho um bem, então eu mesmo como um
+
+124
+00:10:24,000 --> 00:10:29,820
+olho gráfico Não sou um designer gráfico, mas usarei esse termo vagamente
+
+125
+00:10:29,820 --> 00:10:33,180
+Vou levar seus gráficos e ser o controle de qualidade e vou garantir que
+
+126
+00:10:33,180 --> 00:10:39,360
+está pronto para você para seu outdoor, o que posso fazer para te ajudar muitas vezes
+
+127
+00:10:39,360 --> 00:10:46,110
+têm acesso a esses gráficos como imagens raster, mas eles não são vetoriais, então novamente
+
+128
+00:10:46,110 --> 00:10:51,060
+é um logotipo se eu o aumentar se eu fizer aquele pequeno logotipo que é destinado a um
+
+129
+00:10:51,060 --> 00:10:55,140
+site e escalá-lo para um outdoor, ele ficará todo granulado, ficará
+
+130
+00:10:55,140 --> 00:10:59,820
+embaçado vai ficar como pixels em blocos vai ficar horrível no
+
+131
+00:10:59,820 --> 00:11:04,130
+fim, então você deseja evitar que a todo custo o vetor esteja onde está
+
+132
+00:11:04,130 --> 00:11:09,470
+imagens vetoriais são basicamente a diferença é em vez de um renderizado
+
+133
+00:11:09,470 --> 00:11:15,740
+imagem que tem todos os pixels salvos na tela é um arquivo de texto
+
+134
+00:11:15,740 --> 00:11:22,580
+que direciona bem aqui está uma curva ok então se esta for uma curva essa curva vai
+
+135
+00:11:22,580 --> 00:11:27,770
+ser o mesmo ou tão grande nisso ou tão grande nisso
+
+136
+00:11:27,770 --> 00:11:32,270
+esse é o vetor que permitirá que você aumente a escala e a curva é
+
+137
+00:11:32,270 --> 00:11:36,770
+vai ficar o mesmo que a imagem vai ficar tão boa se você imprimi-la
+
+138
+00:11:36,770 --> 00:11:41,330
+em um outdoor de 500 pés versus e não sei se tal coisa existe, mas se
+
+139
+00:11:41,330 --> 00:11:45,470
+você poderia imprimi-lo com um vetor se pegasse uma imagem raster e fizesse isso
+
+140
+00:11:45,470 --> 00:11:51,500
+seria horrível, mas muitas vezes surge na minha indústria e talvez você
+
+141
+00:11:51,500 --> 00:11:55,220
+encontrei isso onde é como se eu não tivesse um vetor, então o que vou fazer?
+
+142
+00:11:55,220 --> 00:12:01,420
+hoje estamos estudando como usar Linux e software livre para converter um
+
+143
+00:12:01,420 --> 00:12:07,160
+imagem raster em um vetor agora existem ferramentas online que permitem que você faça isso
+
+144
+00:12:07,160 --> 00:12:10,190
+isso é legal, mas se você olhar o código-fonte
+
+145
+00:12:10,190 --> 00:12:14,960
+você vai perceber que essas ferramentas online que fazem isso de graça
+
+146
+00:12:14,960 --> 00:12:19,250
+fazer é e muitas vezes não necessariamente tudo o que sempre e não é
+
+147
+00:12:19,250 --> 00:12:25,970
+sempre é o caso, mas muitas vezes essas ferramentas gratuitas estão pegando essa imagem raster
+
+148
+00:12:25,970 --> 00:12:30,680
+e eles o colocam em um vetor e, em seguida, incorporam a imagem raster
+
+149
+00:12:30,680 --> 00:12:38,630
+em um arquivo vetorial, então ainda é raster; em vez disso, o que queremos fazer é
+
+150
+00:12:38,630 --> 00:12:43,520
+pegue essa imagem e queremos traçar em torno de todas as curvas, então se houver um
+
+151
+00:12:43,520 --> 00:12:48,680
+letra SI quero traçar em torno dessa letra s para que quando eu aumentar
+
+152
+00:12:48,680 --> 00:12:54,140
+vai ficar absolutamente perfeito bem, como faço isso, parece muito
+
+153
+00:12:54,140 --> 00:12:58,700
+do trabalho porque estamos pensando em termos de varredura certo, estamos pensando no GNU
+
+154
+00:12:58,700 --> 00:13:03,320
+programa de manipulação de imagens ou Photoshop e como teríamos que rastrear
+
+155
+00:13:03,320 --> 00:13:07,010
+tudo e seria absolutamente brutal, mas o Linux o torna um
+
+156
+00:13:07,010 --> 00:13:10,640
+muito mais fácil, então vamos pular para o meu terminal, vou trazer meu
+
+157
+00:13:10,640 --> 00:13:15,470
+computador aqui e tudo o que precisamos é um programa simples
+
+158
+00:13:15,470 --> 00:13:20,329
+que vou instalar primeiro, mas depois vamos pegar um logotipo do
+
+159
+00:13:20,329 --> 00:13:30,319
+web, então vou me tornar root, então no Linux Mint é sudo su ou su do su para aqueles
+
+160
+00:13:30,319 --> 00:13:35,929
+puristas e digite sua senha agora que sou o superusuário, então sou o usuário root
+
+161
+00:13:35,929 --> 00:13:41,300
+agora posso digitar apt update e isso vai pegar meu repositório mais recente
+
+162
+00:13:41,300 --> 00:13:46,249
+informações da web, então esses são os aplicativos Linux disponíveis online
+
+163
+00:13:46,249 --> 00:13:53,499
+e vou instalar o apt e há um comando muito simples aqui po trace
+
+164
+00:13:53,499 --> 00:13:58,939
+que vai pegar um programa chamado Não sei se é chamado Poe trace ou
+
+165
+00:13:58,939 --> 00:14:03,170
+Pio trace vamos chamá-lo de Poe trace e eu disse que sim
+
+166
+00:14:03,170 --> 00:14:08,809
+agora que está instalado, se eu digitar Poe trace - - help, devo obter uma ajuda
+
+167
+00:14:08,809 --> 00:14:13,550
+caixa de diálogo lá que é fantástica, então nós a instalamos agora
+
+168
+00:14:13,550 --> 00:14:18,170
+vamos pular na web, então vou entrar aqui e vamos realmente saber
+
+169
+00:14:18,170 --> 00:14:24,290
+vamos pegar o logotipo da TV de cinco pontos da categoria, vamos ver como isso vai
+
+170
+00:14:24,290 --> 00:14:28,999
+funciona, então está na web e se eu clicar com o botão direito e abrir a imagem
+
+171
+00:14:28,999 --> 00:14:34,100
+e a nova aba vamos clicar nela e aí está a minha imagem uau que é realmente
+
+172
+00:14:34,100 --> 00:14:39,350
+muito pequeno, não sei o quão bem isso vai escalar você, provavelmente você sabe disso
+
+173
+00:14:39,350 --> 00:14:44,899
+me faz pensar sobre o controle de qualidade inicial, pois estamos fazendo isso que queremos
+
+174
+00:14:44,899 --> 00:14:50,179
+tentar obter a maior imagem possível, queremos tentar obtê-la como algo que
+
+175
+00:14:50,179 --> 00:14:54,920
+tem uma camada alfa como um ping por exemplo que seria perfeito e nós
+
+176
+00:14:54,920 --> 00:14:59,389
+quero ter certeza de que é o mais claro possível se ele tem bordas pontilhadas ou um
+
+177
+00:14:59,389 --> 00:15:05,929
+sombra projetada atrás dele não vai renderizar bem como um vetor porque os vetores
+
+178
+00:15:05,929 --> 00:15:10,370
+são completamente diferentes de uma imagem raster, eles não são coloridos
+
+179
+00:15:10,370 --> 00:15:15,860
+mas eles podem ser coloridos como quando você os exibe para que você possa dizer
+
+180
+00:15:15,860 --> 00:15:19,249
+ok, essa parte vai ser este Pantone e aquela parte vai ser
+
+181
+00:15:19,249 --> 00:15:23,389
+este Pantone, mas é muito diferente porque não está salvando como o mesmo
+
+182
+00:15:23,389 --> 00:15:26,899
+imagem raster, então o que devo fazer com o meu
+
+183
+00:15:26,899 --> 00:15:30,470
+logotipo da rede de TV de categoria 5 que você vê no meu
+
+184
+00:15:30,470 --> 00:15:35,389
+tela é que eu posso querer fazer algo como pegar a imagem master
+
+185
+00:15:35,389 --> 00:15:39,199
+parece que está havendo alguma sombra de queda e eu provavelmente poderia ir ao wiki
+
+186
+00:15:39,199 --> 00:15:47,689
+categoria de pontos - cinco pontos de TV e em meu wiki eu poderia encontrar a marca e ir para o
+
+187
+00:15:47,689 --> 00:15:54,410
+branding categoria 5 e posso pegar uma dessas imagens em escala real, então talvez
+
+188
+00:15:54,410 --> 00:15:58,309
+algo um pouco mais parecido com isso seria do meu agrado, então aqui no fundo
+
+189
+00:15:58,309 --> 00:16:03,889
+Eu tenho um arquivo de marca de palavra e você pode fazer isso, mesmo apenas começando
+
+190
+00:16:03,889 --> 00:16:08,689
+Imagens do Google ou algo assim e encontrar uma imagem maior para as imagens que você
+
+191
+00:16:08,689 --> 00:16:12,410
+procurando algo assim ficará muito bom, mas observe que isso é
+
+192
+00:16:12,410 --> 00:16:18,290
+na verdade, um arquivo de ping sim, ele escala bem, mas é um ping, então vamos salvá-lo.
+
+193
+00:16:18,290 --> 00:16:22,639
+vou jogar isso no meu desktop e é chamado de luz de sublinhado de marca de palavra
+
+194
+00:16:22,639 --> 00:16:28,850
+ponto ping para que você possa vê-lo bem ali, então é uma imagem raster
+
+195
+00:16:28,850 --> 00:16:34,339
+sim, por acaso tenho um com setenta e quatro quarenta e quatro por dois um oito sete
+
+196
+00:16:34,339 --> 00:16:40,009
+pixels vai funcionar muito bem, independentemente de ser uma imagem gigante, mas o que
+
+197
+00:16:40,009 --> 00:16:47,509
+se você tem algo mais, vamos para o Imagens do Google e apenas fazer um
+
+198
+00:16:47,509 --> 00:16:51,829
+pesquisa rápida por vou fazer uma pesquisa por logotipo e vamos ver o que podemos fazer
+
+199
+00:16:51,829 --> 00:16:57,889
+tudo bem, temos o Burger King, o McDonald's, o IKEA, vamos pegar
+
+200
+00:16:57,889 --> 00:17:03,709
+o logotipo da IKEA, não temos direitos para usá-lo, mas isso é para o bem do
+
+201
+00:17:03,709 --> 00:17:09,260
+demonstração, então o uso justo diz ei, estamos mostrando como fazer isso, vamos lá
+
+202
+00:17:09,260 --> 00:17:13,429
+então temos dois logotipos em minha área de trabalho, temos o logotipo de TV da categoria 5 e
+
+203
+00:17:13,429 --> 00:17:19,669
+temos o logotipo IKEA soa bem, com este programa instalado, então
+
+204
+00:17:19,669 --> 00:17:26,209
+PO trace instalado e agora vou para a minha área de trabalho e ver as imagens
+
+205
+00:17:26,209 --> 00:17:31,490
+que tenho lá e ambas são imagens de ping, agora uma das coisas com
+
+206
+00:17:31,490 --> 00:17:35,929
+O rastreamento PO que precisamos ter em mente é que o rastreamento PO suporta apenas bitmap
+
+207
+00:17:35,929 --> 00:17:39,350
+imagens para fins de demonstração e apenas pela facilidade de
+
+208
+00:17:39,350 --> 00:17:44,610
+uso e familiarizado, eu quero usar arquivos BMP, então de volta ao meu
+
+209
+00:17:44,610 --> 00:17:48,810
+computador vou abrir o programa de manipulação de imagens GNU, lembre-se de que estou
+
+210
+00:17:48,810 --> 00:17:54,840
+fazendo tudo isso a partir do Linux Linux é um sistema operacional livre a imagem GNU
+
+211
+00:17:54,840 --> 00:17:59,610
+programa de manipulação é um editor de imagens gratuito, tudo o que estou fazendo aqui é
+
+212
+00:17:59,610 --> 00:18:05,730
+disponível de forma absolutamente gratuita para qualquer pessoa que queira fazer isso, se você estiver no Windows
+
+213
+00:18:05,730 --> 00:18:08,940
+e dizendo oh, mas como faço isso no Windows você sabe o que pode instalar
+
+214
+00:18:08,940 --> 00:18:15,090
+Linux e essa é uma maneira de conseguir isso, então vou
+
+215
+00:18:15,090 --> 00:18:22,410
+exportar então tenho o logotipo da TV da categoria 5, vou exportar como um bitmap
+
+216
+00:18:22,410 --> 00:18:27,540
+então vou mudar a extensão B MP e apertar enter agora ele vai me perguntar
+
+217
+00:18:27,540 --> 00:18:32,430
+algumas coisas aqui vai dizer ok opções de compatibilidade vamos abrir
+
+218
+00:18:32,430 --> 00:18:37,050
+e certifique-se de que não está marcado, não escreva espaço de cor
+
+219
+00:18:37,050 --> 00:18:42,930
+informações agora precisamos absolutamente de informações sobre o espaço de cores que são um requisito
+
+220
+00:18:42,930 --> 00:18:49,650
+de rastreamento de po em Opções avançadas, podemos ver 16 bits, 24 bits e 32 bits, o padrão
+
+221
+00:18:49,650 --> 00:18:58,080
+é um RGB de 32 bits que significa alfa vermelho verde azul agora queremos RGB, mas nós
+
+222
+00:18:58,080 --> 00:19:03,090
+não quero 32 bits porque o rastreamento PO provavelmente terá problemas com
+
+223
+00:19:03,090 --> 00:19:07,700
+que, em vez disso, vamos usar RGB de 24 bits, então clicarei nisso e agora
+
+224
+00:19:07,700 --> 00:19:15,030
+RGB 24 bits está selecionado e vou clicar em exportar, agora na minha área de trabalho i
+
+225
+00:19:15,030 --> 00:19:20,760
+deve ter outro arquivo aqui chamado word mark light BMP e quando eu
+
+226
+00:19:20,760 --> 00:19:24,060
+clique duas vezes em que é meu logotipo olhe para isso
+
+227
+00:19:24,060 --> 00:19:30,120
+ainda é uma imagem raster, se eu escalar muito, vou começar
+
+228
+00:19:30,120 --> 00:19:34,470
+perdendo qualidade, eu me pergunto se posso realmente mostrar que você pode ver isso
+
+229
+00:19:34,470 --> 00:19:41,430
+se eu aumentar o zoom, você vê aquelas bordas pixeladas, vê como isso é granulado
+
+230
+00:19:41,430 --> 00:19:46,170
+e como isso é uma imagem raster, porque salvou cada
+
+231
+00:19:46,170 --> 00:19:52,080
+pixel, então, em vez disso, vamos criar um vetor com base nesse arquivo, lembre-se do
+
+232
+00:19:52,080 --> 00:19:57,060
+a primeira etapa é que eu preciso desse bitmap, seja uma fonte de ping ou JPEG
+
+233
+00:19:57,060 --> 00:20:02,070
+ou seja lá o que for, você precisa primeiro convertê-lo em um bitmap e depois em PO
+
+234
+00:20:02,070 --> 00:20:06,150
+trace poderá funcionar com ele, então agora vou digitar PO trace e
+
+235
+00:20:06,150 --> 00:20:11,010
+há algumas coisas que você pode fazer agora - ajude a aprender mais veja como isso
+
+236
+00:20:11,010 --> 00:20:15,000
+funciona e o que você quer fazer, você pode rolar para cima aqui e ver que tipo
+
+237
+00:20:15,000 --> 00:20:18,780
+de opções estão disponíveis para você, mas vou dizer o que acho que vai
+
+238
+00:20:18,780 --> 00:20:22,740
+funciona muito bem para nós e veremos aqui ao vivo no ar se isso vai funcionar
+
+239
+00:20:22,740 --> 00:20:30,660
+Vou fazer - s, o que significa que vou salvar isso como uma imagem vetorial SVG,
+
+240
+00:20:30,660 --> 00:20:37,650
+Vou dizer - grupo e - grupo é uma opção SVG e o que isso faz é
+
+241
+00:20:37,650 --> 00:20:44,720
+ele agrupa caminhos relacionados, então vai mesclar todos eles em um único
+
+242
+00:20:44,720 --> 00:20:51,750
+basicamente um vetor como ponto de passagem, não sei os termos técnicos, mas
+
+243
+00:20:51,750 --> 00:20:56,070
+em vez de ter um monte de coisas separadas em seu arquivo SVG, é
+
+244
+00:20:56,070 --> 00:20:59,340
+vamos mesclá-los, então vamos agrupá-los para manter as coisas boas
+
+245
+00:20:59,340 --> 00:21:04,080
+e limpo agora, quero dizer minha saída, vou chamar esse logotipo de ponto SVG
+
+246
+00:21:04,080 --> 00:21:11,340
+SVG sendo um formato vetorial escalonável, a próxima coisa que posso fazer
+
+247
+00:21:11,340 --> 00:21:18,360
+é opcional, mas vou fazer - - apertado e o que - - apertado faz é se houver
+
+248
+00:21:18,360 --> 00:21:21,780
+muito espaço em branco ao redor do logotipo com o qual você está trabalhando,
+
+249
+00:21:21,780 --> 00:21:25,860
+trazer isso vai basicamente cortar automaticamente o vetor para você para que você
+
+250
+00:21:25,860 --> 00:21:29,490
+não tem um monte de espaços em branco de uma perspectiva vetorial, acho que é um bom
+
+251
+00:21:29,490 --> 00:21:36,770
+ideia e depois o próximo passo é o meu arquivo de entrada, então esse arquivo foi chamado de marca de palavra
+
+252
+00:21:36,770 --> 00:21:44,550
+ponto de luz BMP agora vou apenas apertar enter e assim que apertar enter se
+
+253
+00:21:44,550 --> 00:21:49,470
+tudo Oh, o que eu fiz, diz opção inválida de rastreamento de PO - - zero
+
+254
+00:21:49,470 --> 00:21:57,450
+oh, por que eu pressionei zero que deveria ser um O para a saída, então
+
+255
+00:21:57,450 --> 00:22:02,340
+lembre-se - ah, não - zero digite e você viu quão rápido apareceu um
+
+256
+00:22:02,340 --> 00:22:07,620
+logo dot arquivo SVG na minha área de trabalho, então, se eu clicar duas vezes nesse arquivo, você poderá
+
+257
+00:22:07,620 --> 00:22:11,730
+veja o CAD cinco e ele é removido do verde, então
+
+258
+00:22:11,730 --> 00:22:17,010
+isso é um problema para mim, mas este é na verdade um vetor então por que ele retirou
+
+259
+00:22:17,010 --> 00:22:23,250
+o poço verde é em tons de cinza certo, então talvez eu possa trabalhar com isso, posso olhar
+
+260
+00:22:23,250 --> 00:22:27,330
+as opções que estão disponíveis para mim, vamos ver se a escala de cinza serviria
+
+261
+00:22:27,330 --> 00:22:32,610
+algum tipo de diferença, portanto, olhando para nossas opções de saída aqui vamos obter um
+
+262
+00:22:32,610 --> 00:22:38,360
+olhe mais de perto e veja que tipo de opções nós temos no que diz respeito à colorização
+
+263
+00:22:38,360 --> 00:22:45,660
+temos resolução escala esticar girar margem margem esquerda margem inferior
+
+264
+00:22:45,660 --> 00:22:50,670
+tamanho da página todas essas coisas Oh - cor definida cor de preenchimento de primeiro plano
+
+265
+00:22:50,670 --> 00:22:58,680
+opaco, mas se você não tiver certeza se há maneiras de fazer isso, há maneiras
+
+266
+00:22:58,680 --> 00:23:03,030
+ter isso para você, mas há algo que podemos fazer aqui para
+
+267
+00:23:03,030 --> 00:23:08,130
+lembre-se de que criamos esse bitmap corretamente e lembre-se de que o que
+
+268
+00:23:08,130 --> 00:23:16,020
+victor é basicamente os contornos deste arquivo, então vamos exportá-lo novamente
+
+269
+00:23:16,020 --> 00:23:23,700
+vamos criar uma nova exportação antes de fazermos isso. Vou para o modo de imagem em tons de cinza
+
+270
+00:23:23,700 --> 00:23:31,110
+e o modo de imagem RGB novamente então eu apenas escalonei em cinza, vamos ver se isso
+
+271
+00:23:31,110 --> 00:23:37,350
+vai fazer isso por nós, ainda há muito branco lá que vou substituir
+
+272
+00:23:37,350 --> 00:23:44,820
+esse arquivo definir as mesmas configurações que eu quero ser de 24 bits e exportar tudo bem
+
+273
+00:23:44,820 --> 00:23:48,960
+Vou apenas minimizar isso e ver o que acontece aqui, então vamos fazer uma corrida de poetas
+
+274
+00:23:48,960 --> 00:23:55,020
+isso de novo e veja se isso fez alguma diferença e não fez, então nossa cor é
+
+275
+00:23:55,020 --> 00:23:58,410
+causando um problema com este vetor específico porque ele está tentando obter aqueles
+
+276
+00:23:58,410 --> 00:24:02,850
+bordas e vê o preto, mas não está vendo o verde, então como posso corrigir
+
+277
+00:24:02,850 --> 00:24:05,880
+isso e ele não está vendo o branco também, é como um
+
+278
+00:24:05,880 --> 00:24:12,140
+cor de fundo, então de volta ao GIMP, o programa de manipulação de imagens GNU, posso ativar
+
+279
+00:24:12,140 --> 00:24:18,010
+alfa segure para que seja bloqueado o canal alfa e, em seguida, escolha preto
+
+280
+00:24:18,010 --> 00:24:23,320
+e clique com o botão direito e edite o preenchimento com a cor do primeiro plano, então criei
+
+281
+00:24:23,320 --> 00:24:29,200
+que como uma imagem completamente preta agora posso exportar arquivo como luz de marca de palavra
+
+282
+00:24:29,200 --> 00:24:38,320
+exportar e substituir dot BMP definir minhas configurações e exportar, então agora eu tenho um
+
+283
+00:24:38,320 --> 00:24:46,510
+imagem que é um bitmap que é todo preto, então agora se eu executar esse comando novamente você
+
+284
+00:24:46,510 --> 00:24:51,040
+não precisa ter medo de experimentar e experimentar coisas que são reais
+
+285
+00:24:51,040 --> 00:24:56,320
+vetor então este é o logotipo SVG este é o ponto do logotipo BMP então com o ponto do logotipo
+
+286
+00:24:56,320 --> 00:25:05,860
+BMP: vou bater 1 e depois + 1 - posso ampliar 1 2 ctrl + 1 2 3
+
+287
+00:25:05,860 --> 00:25:11,230
+4 5 e então eu vou bater Eu vou vir aqui então este é o bitmap que você
+
+288
+00:25:11,230 --> 00:25:18,940
+veja essas bordas como são horríveis 1 2 3 4 5 veja aquelas bordas denteadas
+
+289
+00:25:18,940 --> 00:25:24,580
+então vamos fazer a mesma coisa, vamos voltar ao nosso arquivo SVG que nós
+
+290
+00:25:24,580 --> 00:25:30,580
+saída e vamos ampliar isso e vamos ampliar um monte de vezes
+
+291
+00:25:30,580 --> 00:25:36,340
+e vá até aqui, observe que o fundo ficou limpo para ver como essas bordas
+
+292
+00:25:36,340 --> 00:25:41,679
+porque agora estamos trabalhando com um arquivo vetorial ampliei cento e quinze
+
+293
+00:25:41,679 --> 00:25:46,210
+cem vezes e você pode e é realmente muito difícil rolar porque estou
+
+294
+00:25:46,210 --> 00:25:52,240
+dimensionado tão perto, mas agora ok, eu ampliei duas mil vezes que é o
+
+295
+00:25:52,240 --> 00:25:57,940
+máximo absoluto e você pode ver que esse Edge não tem bordas dentadas
+
+296
+00:25:57,940 --> 00:26:03,700
+seja o que for, para que eu possa aumentar isso também, não importa o que eu queira que seja e não seja
+
+297
+00:26:03,700 --> 00:26:07,360
+ficará irregular se eu abrir isso com o programa de manipulação de imagens GNU
+
+298
+00:26:07,360 --> 00:26:13,059
+agora é um arquivo SVG então o que está dizendo ei, isso é um render escalável
+
+299
+00:26:13,059 --> 00:26:19,000
+gráfico vetorial esta é a largura e a altura e o que você quer fazer bem
+
+300
+00:26:19,000 --> 00:26:25,150
+vamos torná-lo uma quantidade ridícula vamos torná-lo trinta mil pixels de largura para você
+
+301
+00:26:25,150 --> 00:26:29,870
+acho que isso vai travar meu computador, vamos clicar em OK, pode travar
+
+302
+00:26:29,870 --> 00:26:35,300
+meu computador que é ridiculamente de alta resolução lá vamos nós
+
+303
+00:26:35,300 --> 00:26:42,440
+Vou ver uma vez e olhar para ver aquelas arestas que são
+
+304
+00:26:42,440 --> 00:26:48,650
+uma das letras em nosso logotipo são absolutamente perfeitas, sem bordas irregulares
+
+305
+00:26:48,650 --> 00:26:53,660
+porque este é legitimamente um vetor e mencionei lá que alguns desses
+
+306
+00:26:53,660 --> 00:26:58,309
+ferramentas online que fazem isso de graça farão com que você tenha
+
+307
+00:26:58,309 --> 00:27:03,440
+imagem rasterizada dentro de um vetor que não vai aumentar assim, então vamos
+
+308
+00:27:03,440 --> 00:27:07,520
+ver como podemos determinar isso, se eu abrir com e vamos realmente
+
+309
+00:27:07,520 --> 00:27:15,800
+abra nosso arquivo SVG com um editor de texto e posso ver que esses caminhos SVG foram
+
+310
+00:27:15,800 --> 00:27:23,570
+traçado por PO trace, então estes são realmente os caminhos do vetor agora que você
+
+311
+00:27:23,570 --> 00:27:28,850
+veja se não é um vetor, se é como um vetor falso, você verá que
+
+312
+00:27:28,850 --> 00:27:35,450
+tem como um embed com alguns dados de dor bem, este é um vetor verdadeiro então lá
+
+313
+00:27:35,450 --> 00:27:39,200
+você o tem e eu mencionei sobre este logotipo da IKEA, então
+
+314
+00:27:39,200 --> 00:27:42,470
+vamos ver o que acontece aqui com o logotipo da IKEA, porque quero ver
+
+315
+00:27:42,470 --> 00:27:47,510
+Eu quero que você saiba que isso não é algo que eu estou apenas fingindo que sou
+
+316
+00:27:47,510 --> 00:27:54,160
+vou exportar aquele e vou salvá-lo no meu desktop como ponto qual ponto BMP
+
+317
+00:27:54,160 --> 00:27:58,910
+insira as opções de compatibilidade, certifique-se de que as informações do espaço de cores sejam
+
+318
+00:27:58,910 --> 00:28:02,600
+salvo e você percebe que estou tentando clicar em Opções avançadas e não está permitindo
+
+319
+00:28:02,600 --> 00:28:11,020
+eu faço isso bem, por que está tudo bem, algo errado aqui se cancelarmos
+
+320
+00:28:11,020 --> 00:28:15,250
+uma das coisas que posso ver sobre esta imagem é que esta imagem em particular é
+
+321
+00:28:15,250 --> 00:28:19,940
+cor indexada você se lembra quando eu estava trabalhando no logotipo da categoria 5?
+
+322
+00:28:19,940 --> 00:28:24,170
+tive que voltar para RGB bem se eu clicar com o botão direito na imagem e ir para a imagem
+
+323
+00:28:24,170 --> 00:28:31,760
+você pode ver que está selecionado como indexado vamos mudar isso para RGB agora
+
+324
+00:28:31,760 --> 00:28:38,270
+que é RGB, posso exportar como bitmap, então exporte como altere para BMP
+
+325
+00:28:38,270 --> 00:28:44,750
+e agora veja que tenho minhas opções avançadas de volta e posso clicar em
+
+326
+00:28:44,750 --> 00:28:48,500
+24 bits que era o padrão para este logotipo, certifique-se de que o espaço de cores
+
+327
+00:28:48,500 --> 00:28:54,380
+as informações são salvas e clique em exportar, então agora na minha área de trabalho eu tenho um pequeno
+
+328
+00:28:54,380 --> 00:28:59,660
+arquivo de imagem uma duplicata, parece uma duplicata, mas este é um bitmap, então
+
+329
+00:28:59,660 --> 00:29:04,760
+agora, de volta ao meu terminal, vamos tentar aquele, então vou pressionar a seta para cima
+
+330
+00:29:04,760 --> 00:29:10,610
+no meu teclado Linux e remova a imagem de origem do último comando e
+
+331
+00:29:10,610 --> 00:29:16,550
+em vez disso, mude para IKEA sublinhado 2019 logo ponto BMP e pressione Enter e
+
+332
+00:29:16,550 --> 00:29:22,580
+instantaneamente vejo um novo IKEA oh não, ele foi salvo como logotipo SVG por causa do - OH
+
+333
+00:29:22,580 --> 00:29:25,240
+comando vamos ver o que parece tada
+
+334
+00:29:25,240 --> 00:29:32,270
+então esse é um vetor do logotipo IKEA bem, não é exatamente o que eu gostaria
+
+335
+00:29:32,270 --> 00:29:37,220
+lembre-se que o vetor não está salvando as informações de cor, ele está salvando os caminhos certos
+
+336
+00:29:37,220 --> 00:29:39,590
+as informações de cor serão separadas, isso é algo que você
+
+337
+00:29:39,590 --> 00:29:43,610
+fornecerá ao seu designer gráfico ou talvez o seu logotipo não tenha uma
+
+338
+00:29:43,610 --> 00:29:48,230
+muito, mas observe isso, se eu fizer esse comando novamente agora, vou adicionar a isso
+
+339
+00:29:48,230 --> 00:29:51,770
+comando Não sei se consigo fazer no final, mas vou digitar - - inverter
+
+340
+00:29:51,770 --> 00:29:57,110
+e agora que digitei - inverter e abro a imagem novamente, olhe para o
+
+341
+00:29:57,110 --> 00:30:02,330
+diferença é inverter aquele logotipo para mim e agora eu tenho um vetor perfeito que
+
+342
+00:30:02,330 --> 00:30:07,160
+parece assim de novo se eu abrir no programa de manipulação de imagens GNU
+
+343
+00:30:07,160 --> 00:30:10,790
+e eu só estou fazendo isso porque este é um programa raster, mas quero que você veja
+
+344
+00:30:10,790 --> 00:30:15,440
+que esta é de fato uma imagem vetorial agora, se eu pegá-la e fizer cinquenta
+
+345
+00:30:15,440 --> 00:30:21,230
+mil pixels de largura, dezoito mil setecentos e oito pixels de altura
+
+346
+00:30:21,230 --> 00:30:26,420
+diz que não tenho memória suficiente para isso, vamos tentar uma abertura um pouco menor com
+
+347
+00:30:26,420 --> 00:30:31,160
+Programa de manipulação de imagens GNU você vê que é um vetor vamos tentar 10 mil
+
+348
+00:30:31,160 --> 00:30:38,150
+pixels de largura 3742 pixels de altura vamos bem, vamos bater 1 e você pode ver aqueles
+
+349
+00:30:38,150 --> 00:30:45,559
+as bordas são perfeitas, como está a borda arredondada, vamos pular, olhe que meu
+
+350
+00:30:45,559 --> 00:30:51,779
+amigos absolutamente lindos aí está
+
+351
+00:30:51,779 --> 00:30:59,429
+de modo que essa é uma maneira pela qual podemos converter muito rapidamente um ping em um
+
+352
+00:30:59,429 --> 00:31:03,840
+bitmap certifique-se de que está em tons de cinza ou que as cores serão convertidas
+
+353
+00:31:03,840 --> 00:31:08,609
+corretamente em um vetor e, em seguida, use uma ferramenta gratuita que está disponível através de
+
+354
+00:31:08,609 --> 00:31:15,570
+nossos repositórios eu usei o apt - usei o apt install pote Reis você pode usar o app - get
+
+355
+00:31:15,570 --> 00:31:19,799
+instale o poet race ou você pode usar um yum install PO trace dependendo do seu
+
+356
+00:31:19,799 --> 00:31:25,379
+distribuição Estou no Linux Mint e então o apt install PO trace me levou lá e como
+
+357
+00:31:25,379 --> 00:31:29,059
+contanto que eu tenha uma imagem de bitmap compatível com ela, posso
+
+358
+00:31:29,059 --> 00:31:34,980
+converter isso para uma imagem vetorial muito rapidamente
+
+359
+00:31:34,980 --> 00:31:40,440
+Já fiz isso antes de refazer manualmente as imagens para criar um
+
+360
+00:31:40,440 --> 00:31:47,029
+vetor e é um processo brutal que você viu ao vivo, quanto tempo demoramos para fazê-lo
+
+361
+00:31:47,029 --> 00:31:53,190
+deixe-me saber abaixo comente abaixo como isso tem ajudado você no que diz respeito ao seu logotipo
+
+362
+00:31:53,190 --> 00:31:58,499
+processo de criação, convertendo imagens em vetor e agora você pode fazer esse raster
+
+363
+00:31:58,499 --> 00:32:04,559
+imagem e dimensioná-la tão grande quanto você quiser, não importa se você quiser
+
+364
+00:32:04,559 --> 00:32:09,179
+imprimir isso em um outdoor de 500 pés de largura vai funcionar para você, é
+
+365
+00:32:09,179 --> 00:32:14,399
+vai ficar fantástico, temos que fazer uma pausa rápida quando voltarmos
+
+366
+00:32:14,399 --> 00:32:19,080
+bem, vamos ver se estamos pulando, quero dizer, essa é minha chance de ser um
+
+367
+00:32:19,080 --> 00:32:23,249
+geek certo, ninguém mais está aqui, então é só você e eu que podemos entrar no
+
+368
+00:32:23,249 --> 00:32:28,440
+Terminal Linux é onde estou mais confortável, vamos falar sobre como
+
+369
+00:32:28,440 --> 00:32:33,389
+podemos criar um script bash que vamos executá-lo como um cron job em um
+
+370
+00:32:33,389 --> 00:32:36,749
+Raspberry Pi inevitavelmente, mas hoje estou apenas fazendo isso no meu laptop, mas estamos
+
+371
+00:32:36,749 --> 00:32:42,869
+vamos escrever juntos para saber quando as pessoas vêm e vão do trabalho
+
+372
+00:32:42,869 --> 00:32:46,830
+vamos ser capazes de usá-lo como uma campainha, vamos ser capazes de usá-lo
+
+373
+00:32:46,830 --> 00:32:51,210
+como um monitor de tempo para saber quando eles estão no trabalho e quando não estão, você
+
+374
+00:32:51,210 --> 00:32:56,290
+poderia usar isso para que, quando você chegar em casa, todas as luzes se acendam
+
+375
+00:32:56,290 --> 00:33:00,610
+porque você tem um programa para fazer, então você pode tê-lo para quando você chegar
+
+376
+00:33:00,610 --> 00:33:05,770
+o escritório, ei, sua música começa o que você quiser fazer, vamos mostrar
+
+377
+00:33:05,770 --> 00:33:11,530
+eu vou mostrar aqui como podemos codificar isso para detectar sua presença e
+
+378
+00:33:11,530 --> 00:33:38,890
+fazer alguma coisa ficar por aqui, então aqui no estúdio D às vezes pode ser um problema
+
+379
+00:33:38,890 --> 00:33:45,190
+quando um anfitrião chega, eles ficam trancados do lado de fora no frio inverno canadense
+
+380
+00:33:45,190 --> 00:33:50,800
+porque o temos configurado de tal forma que nosso estúdio fica dentro de um prédio enorme
+
+381
+00:33:50,800 --> 00:33:56,200
+e há um foyer entre nós e o mundo exterior e o foyer fica trancado
+
+382
+00:33:56,200 --> 00:34:01,570
+à noite e para entrar no prédio tenho que primeiro sair do estúdio D
+
+383
+00:34:01,570 --> 00:34:07,360
+saia do foyer e destranque a porta da frente para deixar alguém entrar, para quando
+
+384
+00:34:07,360 --> 00:34:12,550
+Sasha chega quando Jeff chega quando Henry Bailey Brown chega, eles geralmente
+
+385
+00:34:12,550 --> 00:34:16,929
+me enviem no discord eles me avisem que eu sou que eles estão aqui às vezes
+
+386
+00:34:16,929 --> 00:34:23,860
+não perceba imediatamente, está 40 graus abaixo e é como uma chuva congelante ou
+
+387
+00:34:23,860 --> 00:34:28,450
+seja o que for, então esse é o meu cenário, seu cenário pode ser um pouco
+
+388
+00:34:28,450 --> 00:34:31,480
+diferente, talvez você só queira poder entrar em sua casa e ter todos os
+
+389
+00:34:31,480 --> 00:34:34,240
+seus dispositivos reconhecem que, querida, estou em casa
+
+390
+00:34:34,240 --> 00:34:40,360
+talvez você queira usar isso em um escritório onde se eu entrasse pela porta de um
+
+391
+00:34:40,360 --> 00:34:47,530
+de repente meu tempo está sendo rastreado talvez seja um barato talvez uma forma gratuita para você
+
+392
+00:34:47,530 --> 00:34:51,720
+ser capaz de rastrear seus funcionários entrando e saindo do escritório, talvez
+
+393
+00:34:51,720 --> 00:34:58,510
+Bem, como podemos fazer isso bem, todo mundo carrega um dispositivo Eu tenho meu smartphone
+
+394
+00:34:58,510 --> 00:35:03,820
+meu smartphone é conectado ao Wi-Fi assim que eu abordo o estúdio uma vez
+
+395
+00:35:03,820 --> 00:35:08,420
+Estou aqui, ele se conecta ao Wi-Fi e o que isso te diz bem
+
+396
+00:35:08,420 --> 00:35:15,230
+Eu tenho um endereço IP na LAN agora que estou conectado ao Wi-Fi e se eu tiver
+
+397
+00:35:15,230 --> 00:35:19,549
+um endereço IP na terra, o que posso presumivelmente ter acontecido
+
+398
+00:35:19,549 --> 00:35:28,130
+eu posso ser pingado posso ser bem fixado aqui está o que não costumamos fazer isso
+
+399
+00:35:28,130 --> 00:35:32,720
+com um smartphone, por exemplo, deixamos o servidor DHCP distribuir o IP
+
+400
+00:35:32,720 --> 00:35:38,660
+endereços e está tudo bem, mas Robbie está aqui, nós conhecemos e confiamos em Robbie
+
+401
+00:35:38,660 --> 00:35:42,700
+Robbie é um membro da equipe e quando Robbie estiver aqui, queremos saber sobre isso
+
+402
+00:35:42,700 --> 00:35:48,529
+Sasha quando ela chegar talvez a gente queira saber talvez no meu caso eu queira ter um
+
+403
+00:35:48,529 --> 00:35:53,390
+acenda uma luz que diz ei Robbie, é hora de abrir a porta
+
+404
+00:35:53,390 --> 00:35:57,980
+sair pelo foyer e destrancar a porta, deixe-a entrar talvez em seu escritório você
+
+405
+00:35:57,980 --> 00:36:05,809
+deseja ser capaz de rastrear se sua custódia para a equipe está lá dentro do prazo e dos gastos
+
+406
+00:36:05,809 --> 00:36:10,400
+todo o turno e monitorando aqueles talvez seja como um quem sabe
+
+407
+00:36:10,400 --> 00:36:14,509
+talvez seja um ambiente onde você apenas recebe enquanto está lá ou talvez você
+
+408
+00:36:14,509 --> 00:36:20,480
+Ei, queremos que a luz acenda quando a equipe chegar, então como podemos
+
+409
+00:36:20,480 --> 00:36:26,509
+fazemos isso bem, todo dispositivo tem um endereço MAC, o endereço MAC é privado
+
+410
+00:36:26,509 --> 00:36:30,710
+endereço que não está disponível na web, mas está disponível no dispositivo e
+
+411
+00:36:30,710 --> 00:36:36,170
+está disponível para o servidor DHCP DHB para que seu servidor DHCP forneça o IP
+
+412
+00:36:36,170 --> 00:36:40,450
+endereço para cada dispositivo conectado diz tudo bem, vamos dar a isso o próximo
+
+413
+00:36:40,450 --> 00:36:52,910
+endereço no pool DHCP 10.0.0.0 sete pode ser o seu telefone, então entre em seu
+
+414
+00:36:52,910 --> 00:36:57,740
+Servidor DHCP, seja um roteador ou servidor DHCP do Windows ou talvez você tenha
+
+415
+00:36:57,740 --> 00:37:04,640
+um servidor DHCP Linux e olhe para o endereço MAC desse dispositivo e configure um DHCP
+
+416
+00:37:04,640 --> 00:37:12,740
+reserva, então agora toda vez que eu me conectar ao Wi-Fi, meu smartphone está
+
+417
+00:37:12,740 --> 00:37:18,440
+dado o mesmo endereço IP, seja lá o que for que eu tenha definido, perdoe-me em meu
+
+418
+00:37:18,440 --> 00:37:26,380
+case Eu disse ponto 5-0 ping 10.0.0.0 o que você vê
+
+419
+00:37:26,380 --> 00:37:33,500
+ei, esse é o telefone do Robby, então o que acontece se eu pegar meu telefone e eu vou
+
+420
+00:37:33,500 --> 00:37:36,830
+contagem regressiva a partir de três vou me desconectar do Wi-Fi para o qual você está pronto
+
+421
+00:37:36,830 --> 00:37:42,950
+esses três dois um clique agora estou fora do wi-fi o que aconteceu com o seu
+
+422
+00:37:42,950 --> 00:37:50,510
+tela está congelada Robby saiu do prédio ou desligou o Wi-Fi
+
+423
+00:37:50,510 --> 00:37:54,410
+mas por que ele faria isso se isso está sendo usado para controlar suas horas e fazer
+
+424
+00:37:54,410 --> 00:37:59,360
+certeza de que ele é pago lá você vai destino host inacessível eu vou
+
+425
+00:37:59,360 --> 00:38:03,110
+para restabelecer minha conexão Wi-Fi apenas pressionando o botão Wi-Fi no meu telefone
+
+426
+00:38:03,110 --> 00:38:10,070
+em três dois um agora e vamos ver quanto tempo leva, então agora abordei o
+
+427
+00:38:10,070 --> 00:38:16,520
+edifício e adivinhe o que Robby está de volta certo, então sabemos que é o caso
+
+428
+00:38:16,520 --> 00:38:25,070
+bem, como podemos usar essa informação para um bom bem fácil
+
+429
+00:38:25,070 --> 00:38:35,000
+Sempre facilito as coisas para você, vá para o meu github github.com slash
+
+430
+00:38:35,000 --> 00:38:43,250
+cat 5 TV slash Linux tools Linux - ferramentas que devo dizer e há um script lá
+
+431
+00:38:43,250 --> 00:38:49,130
+chamado verificação de Wi-Fi vamos fazer clique nele clique em bruto e vamos fazer o download
+
+432
+00:38:49,130 --> 00:38:55,970
+salve como e vou jogar isso no meu desktop, ele está chamando de txt seja o que for
+
+433
+00:38:55,970 --> 00:39:02,540
+Vou renomear e agora vamos pular para o meu terminal, vá para o meu desktop, mova o Wi-Fi
+
+434
+00:39:02,540 --> 00:39:12,410
+verificar txt para Wi-Fi verificar ponto feito tudo certo chmod plus x Wi-Fi - verifique agora
+
+435
+00:39:12,410 --> 00:39:18,590
+esse arquivo é executivo, tudo bem, então agora eu preciso criar um arquivo de configuração para
+
+436
+00:39:18,590 --> 00:39:28,400
+Vou chamar isso de Wi-Fi - verifique CFG então echo e vamos 10.0.0.0 era meu
+
+437
+00:39:28,400 --> 00:39:33,529
+estabelecer o endereço IP certo, então vou salvá-lo no Wi-Fi - marque ponto CFG para
+
+438
+00:39:33,529 --> 00:39:39,619
+agora, se eu nano esse arquivo, olhe para isso oh não, não Wi-Fi verifique ponto CFG ponto CFG
+
+439
+00:39:39,619 --> 00:39:46,940
+lá é 10.0.0.0, então se Sasha trouxer seu smartphone, vou atribuir um
+
+440
+00:39:46,940 --> 00:39:57,740
+endereço IP estático para ela, que será 10.0.0.0, então agora se eu executar esse arquivo
+
+441
+00:39:57,740 --> 00:40:06,859
+Wi-Fi - verifique o que você vê 10.0.0.0 é igual a 110 ponto 0 ponto 0 ponto 5 1 é igual a 0
+
+442
+00:40:06,859 --> 00:40:11,480
+bem, o que isso nos diz ok, então estabelecemos o ponto 5 0 de Robbie
+
+443
+00:40:11,480 --> 00:40:19,809
+Ponto de Sascha 5 1 você vê Sasha Sasha não estava aqui Robbie é então Robbie é igual a 1
+
+444
+00:40:19,809 --> 00:40:27,079
+Sasha é igual a 0 1 ponto 4 Robbie, então agora programaticamente podemos dizer ok
+
+445
+00:40:27,079 --> 00:40:31,190
+bem, podemos, podemos programar, podemos mudar, podemos manipular isso para
+
+446
+00:40:31,190 --> 00:40:36,829
+diga ok, o Robbie está online e podemos executá-lo como um cron job certo
+
+447
+00:40:36,829 --> 00:40:41,420
+ok então da mesma forma vamos pegar meu smartphone e vou desligar meu wi-fi
+
+448
+00:40:41,420 --> 00:40:46,039
+então agora meu Wi-Fi está desligado, vou executar esse comando novamente e ver o que
+
+449
+00:40:46,039 --> 00:40:51,619
+acontece você pode assumir o que acontece, mas 10.0.0.0 que já estabelecemos
+
+450
+00:40:51,619 --> 00:40:59,000
+como Robbie vai atingir o tempo limite e vai dizer 0, agora sabemos que ambos
+
+451
+00:40:59,000 --> 00:41:04,880
+Robbie e Sasha foram embora do prédio. Eu liguei meu Wi-Fi e estou
+
+452
+00:41:04,880 --> 00:41:10,490
+vamos executar aquele comando novamente e agora podemos ver que a faixa traseira de Robbie ainda não
+
+453
+00:41:10,490 --> 00:41:16,670
+aqui, o que isso faz por mim, agora de forma programática, posso dizer vamos obter um
+
+454
+00:41:16,670 --> 00:41:21,650
+alerta vamos usar um GPIO em um Raspberry Pi para poder acionar eventos assim que
+
+455
+00:41:21,650 --> 00:41:26,569
+conforme Sasha se aproxima do prédio e seu telefone se conecta ao meu Wi-Fi agora, tudo de um
+
+456
+00:41:26,569 --> 00:41:30,200
+repentinamente uma luz verde acima da porta se acende e eu sei exatamente o que é
+
+457
+00:41:30,200 --> 00:41:34,039
+Eu vou ir lá e abrir a porta para não ficar mais parado no
+
+458
+00:41:34,039 --> 00:41:38,809
+Invernos frios canadenses e podemos fazer, podemos programar isso para poder registrar
+
+459
+00:41:38,809 --> 00:41:42,080
+coisas para um banco de dados MySQL, não há limite
+
+460
+00:41:42,080 --> 00:41:45,530
+contanto que você tenha alguma criatividade e um pouco de know-how, você será
+
+461
+00:41:45,530 --> 00:41:49,340
+capaz de fazer isso, então vamos olhar para o código-fonte e ver o que é realmente
+
+462
+00:41:49,340 --> 00:41:56,300
+fazendo isso, vou editar o Wi-Fi - verifique no meu repositório get, então o que está feito
+
+463
+00:41:56,300 --> 00:42:00,650
+é que ele abre o arquivo de configuração que eu criei e está pegando
+
+464
+00:42:00,650 --> 00:42:09,230
+os endereços, bem, eles não precisam ser, devo dizer que eles não precisam ser IP
+
+465
+00:42:09,230 --> 00:42:14,630
+endereços em uma LAN local, posso colocar google.ca se quiser e, em seguida, se eu
+
+466
+00:42:14,630 --> 00:42:19,370
+executá-lo é apenas para que você saiba então apenas para saber a flexibilidade disso para você
+
+467
+00:42:19,370 --> 00:42:24,380
+posso ver google.ca está online está respondendo a um ping, então eu só quero você
+
+468
+00:42:24,380 --> 00:42:28,520
+saber que ele tem essa flexibilidade, então você pode colocar qualquer coisa lá
+
+469
+00:42:28,520 --> 00:42:34,790
+que você deseja, desde que seja um nome de host válido, um nome de domínio ou poderia ser um
+
+470
+00:42:34,790 --> 00:42:39,380
+Endereço IP como estamos usando na demonstração de hoje para este
+
+471
+00:42:39,380 --> 00:42:46,750
+caso de uso, então ele executa um ping bem, é tudo o que ele faz, apenas executa um ping aqui está
+
+472
+00:42:46,750 --> 00:42:54,290
+ping e pings para o host e se estiver ativo responde com um e se estiver inativo
+
+473
+00:42:54,290 --> 00:42:58,610
+responde com zero ok bem, o que adianta se responder com um ou
+
+474
+00:42:58,610 --> 00:43:04,250
+zero você sabe o que eu faço com essa informação Robbie é por isso
+
+475
+00:43:04,250 --> 00:43:08,300
+Eu queria mostrar o código-fonte porque agora você pode dizer ok, bem, eu sei
+
+476
+00:43:08,300 --> 00:43:17,720
+que está ecoando 10.0.0.0 é igual a um, por que não esperamos um minuto
+
+477
+00:43:17,720 --> 00:43:24,860
+por que não deleto essa linha e digo eco e vamos dizer o cifrão
+
+478
+00:43:24,860 --> 00:43:35,340
+host dot e lembre-se de que o PHP está ativo dot PHP EOL
+
+479
+00:43:35,340 --> 00:43:40,620
+tudo bem e talvez eu pegue este e digo você sabe o que talvez não haja
+
+480
+00:43:40,620 --> 00:43:46,590
+mais talvez eu possa remover o else e dizer que só vai me dizer se estiver
+
+481
+00:43:46,590 --> 00:43:52,230
+agora, se eu executar o 10.0.0.0 está certo, mas não me mostra os que estão
+
+482
+00:43:52,230 --> 00:43:57,960
+para baixo ou talvez eu possa pegar isso e estou apenas mostrando que não há limite
+
+483
+00:43:57,960 --> 00:44:05,250
+ok, talvez eu possa dizer que vamos usar um comando bem simples se o cifrão
+
+484
+00:44:05,250 --> 00:44:24,680
+host é igual a 10 ponto 0 ponto 0 ponto 5 0 vamos dizer echo Robby está aqui Oh
+
+485
+00:44:25,280 --> 00:44:30,720
+boom ok veja o que estou fazendo e então posso mudar isso para outro
+
+486
+00:44:30,720 --> 00:44:36,900
+então, se não for Ravi 10.0.0.0, vai apenas ecoar o nome do host, então agora vou
+
+487
+00:44:36,900 --> 00:44:46,110
+Adicione novamente o Google a isso para que você possa ver porque o Google estará ativo, observe aqui
+
+488
+00:44:46,110 --> 00:44:52,980
+Robby está aqui, sim, meu telefone está online Google está ativo. Tenho alguns problemas de sintaxe
+
+489
+00:44:52,980 --> 00:44:56,640
+mas tudo bem, podemos trabalhar com isso vou transformar
+
+490
+00:44:56,640 --> 00:45:05,640
+desligar meu Wi-Fi e executá-lo novamente. Observe que Robby não está aqui, mas Google
+
+491
+00:45:05,640 --> 00:45:10,020
+está ativo e então eu vejo que o Google está ativo e então eu terei aquele problema de sintaxe
+
+492
+00:45:10,020 --> 00:45:13,560
+de novo eu vou consertar isso não se preocupe, eu sei exatamente o que está acontecendo lá, veja
+
+493
+00:45:13,560 --> 00:45:21,780
+que o Google está no meu arquivo de configuração, eu acidentalmente adicionei um carro extra
+
+494
+00:45:21,780 --> 00:45:26,210
+retorna é por isso que está funcionando contra um retorno de carro
+
+495
+00:45:26,210 --> 00:45:33,980
+tentando pingar nada, então verifique o Wi-Fi com ponto e barra e não dirá nada
+
+496
+00:45:33,980 --> 00:45:40,609
+mas google.ca está funcionando agora vou ligar meu Wi-Fi e executar exatamente o mesmo
+
+497
+00:45:40,609 --> 00:45:49,569
+comando novamente Robby está aqui google.ca está ativo então você vê o que estou fazendo lá então
+
+498
+00:45:49,569 --> 00:45:56,029
+programaticamente posso fazer absolutamente qualquer coisa e tratar as pessoas
+
+499
+00:45:56,029 --> 00:45:59,990
+conectividade com o smartphone para que o smartphone se conecte ao Wi-Fi
+
+500
+00:45:59,990 --> 00:46:04,609
+o servidor DHCP distribui os endereços IP com base em suas reservas
+
+501
+00:46:04,609 --> 00:46:10,819
+com base em seu endereço MAC, agora você pode controlar eventos com base nas idas e vindas
+
+502
+00:46:10,819 --> 00:46:17,480
+de sua equipe, acho que não preciso dizer mais nada, acho que já estou
+
+503
+00:46:17,480 --> 00:46:21,740
+suas idéias principais estão chegando. Quero que você comente abaixo. Quero que me diga o que
+
+504
+00:46:21,740 --> 00:46:26,990
+tipo de ideias que nascem que tipo de coisas você pode fazer com isso, eu acho
+
+505
+00:46:26,990 --> 00:46:33,910
+de rastreamento de tempo como um ótimo exemplo robbie fez check-in robbie saiu
+
+506
+00:46:33,910 --> 00:46:39,260
+aqui está este cheque de pagamento baseado nessas informações, é realmente difícil falsificar
+
+507
+00:46:39,260 --> 00:46:43,730
+isso certo e quero dizer, se você confia em sua equipe de qualquer maneira, não é realmente uma confiança
+
+508
+00:46:43,730 --> 00:46:49,010
+coisa é simplesmente uma coisa fácil de usar assim que você se conecta ao Wi-Fi
+
+509
+00:46:49,010 --> 00:46:53,569
+adivinhe o que estou rastreando o fato de que você está conectado, não há não
+
+510
+00:46:53,569 --> 00:46:56,869
+rastreamento não há problema de privacidade aqui, simplesmente você está online ou está
+
+511
+00:46:56,869 --> 00:47:00,079
+você não está online é um ping e enquanto esse dispositivo
+
+512
+00:47:00,079 --> 00:47:05,299
+ou aquele domínio ou aquele endereço IP responde ao ping ICMP então você vai
+
+513
+00:47:05,299 --> 00:47:10,970
+ser capaz de incorporar isso em seu arquivo de configuração cap 5tv
+
+514
+00:47:10,970 --> 00:47:16,760
+no github você encontrará um repositório chamado linux - ferramentas que o levará
+
+515
+00:47:16,760 --> 00:47:20,050
+começou bem, temos uma cabeça para o
+
+516
+00:47:20,050 --> 00:47:27,100
+redação aqui está o que está por vir na categoria cinco pontos TV redação paypal tem
+
+517
+00:47:27,100 --> 00:47:32,230
+confirmou que um pesquisador encontrou uma vulnerabilidade de segurança de alta gravidade que
+
+518
+00:47:32,230 --> 00:47:37,180
+poderia expor senhas de usuários a centenas de milhões de invasores
+
+519
+00:47:37,180 --> 00:47:44,470
+Modems a cabo baseados em Broadcom correm o risco de sequestro remoto. A Apple agora está vendendo
+
+520
+00:47:44,470 --> 00:47:49,600
+raladores de queijo montáveis ​​em prateleiras e Braveheart Edition de espuma de pinho
+
+521
+00:47:49,600 --> 00:47:54,910
+disponível agora para os primeiros usuários e falaremos sobre o smartphone de $ 150
+
+522
+00:47:54,910 --> 00:47:59,370
+do pine 64 stick em torno de todos os detalhes virão mais tarde no show
+
+523
+00:47:59,370 --> 00:48:05,590
+esta é a redação de TV de categoria 5 que cobre a semana para parar de enviar mensagens de texto com um
+
+524
+00:48:05,590 --> 00:48:09,000
+ligeiro viés linux
+
+525
+00:48:11,710 --> 00:48:16,150
+Ravi Ferguson substituindo Sascha Rickman esta semana alguns honoráveis ​​rápidos
+
+526
+00:48:16,150 --> 00:48:20,770
+menciona no mês passado a Citrix divulgou uma crítica
+
+527
+00:48:20,770 --> 00:48:25,930
+brecha de segurança em seu controlador de entrega de aplicativo e gateway unificado
+
+528
+00:48:25,930 --> 00:48:32,859
+ofertas de até 80.000 sistemas estavam em risco, com cerca de 25.000
+
+529
+00:48:32,859 --> 00:48:39,339
+instâncias encontradas online no fim de semana passado, os administradores que não colocaram
+
+530
+00:48:39,339 --> 00:48:44,770
+mitigações em vigor até agora vão querer ter certeza de que abordam seus
+
+531
+00:48:44,770 --> 00:48:49,750
+situação imediatamente como os pesquisadores da InfoSec declararam publicamente
+
+532
+00:48:49,750 --> 00:48:55,420
+e código de exploração de trabalho compartilhado para o bug de controle remoto agora o
+
+533
+00:48:55,420 --> 00:49:00,280
+código de prova de conceito pode ser usado para obter código arbitrário trivialmente
+
+534
+00:49:00,280 --> 00:49:06,220
+execução sem credenciais de conta em outras palavras, eles serão facilmente capazes de
+
+535
+00:49:06,220 --> 00:49:11,440
+sequestrar sistemas se você ainda não tiver implementado as atenuações e
+
+536
+00:49:11,440 --> 00:49:15,520
+tem sistemas vulneráveis ​​que enfrentam a internet, você provavelmente já esteve
+
+537
+00:49:15,520 --> 00:49:18,670
+hackeado desde que BOTS foram mascarados escaneando o
+
+538
+00:49:18,670 --> 00:49:25,210
+rede para as máquinas se comprometerem hoje em dia com ransomware, por exemplo, sendo
+
+539
+00:49:25,210 --> 00:49:31,240
+uma questão tão importante que não consigo reiterar o suficiente para manter seus firmwares atualizados
+
+540
+00:49:31,240 --> 00:49:36,790
+você poderia imaginar se alguém fosse capaz de comprometer o seu modem que lhes dá
+
+541
+00:49:36,790 --> 00:49:42,609
+acesso a todos os dispositivos, todos os dispositivos da sua rede e se algum de
+
+542
+00:49:42,609 --> 00:49:49,230
+aqueles podem ser acessados ​​com RDP ou com compartilhamentos Samba exatamente como compartilhamento de arquivos
+
+543
+00:49:49,230 --> 00:49:54,089
+seu servidor provavelmente tem um bom compartilhamento de arquivos agora, de repente, adivinhe
+
+544
+00:49:54,089 --> 00:50:00,400
+você acabou de manter esses dispositivos atualizados, falando de suporte de segurança para
+
+545
+00:50:00,400 --> 00:50:05,380
+O Windows 7 acabou para atualizações de software de segurança e outros motivos pelos quais
+
+546
+00:50:05,380 --> 00:50:10,720
+hora de parar de procrastinar certifique-se de mudar para o Windows 10 se você estiver
+
+547
+00:50:10,720 --> 00:50:14,230
+vai ficar na plataforma Windows O suporte da Microsoft para o Windows 7 tem
+
+548
+00:50:14,230 --> 00:50:17,980
+terminou oficialmente e isso não deve ser uma surpresa para os usuários do Windows. Microsoft
+
+549
+00:50:17,980 --> 00:50:22,089
+prometeu apenas 10 anos de suporte ao produto quando o Windows 7 foi lançado de volta
+
+550
+00:50:22,089 --> 00:50:28,480
+em 20 de outubro de 2009 você acredita que já faz tanto tempo e agora
+
+551
+00:50:28,480 --> 00:50:32,710
+eles mudaram para tecnologias mais novas a partir de 14 de janeiro a Microsoft não é mais
+
+552
+00:50:32,710 --> 00:50:37,599
+oferecendo assistência técnica ou atualizações de software para o seu dispositivo e o
+
+553
+00:50:37,599 --> 00:50:42,010
+empresa encorajou as pessoas a atualizar para o Windows 10 para manter seus PCs e
+
+554
+00:50:42,010 --> 00:50:47,200
+laptops que protegem seu computador com Windows 7 continuarão funcionando, mas a Microsoft não
+
+555
+00:50:47,200 --> 00:50:52,900
+fornecer quaisquer atualizações ou correções de segurança ou até mesmo suporte técnico para quaisquer problemas
+
+556
+00:50:52,900 --> 00:50:57,880
+que deixa seu computador com maior risco de vírus e malware que podem
+
+557
+00:50:57,880 --> 00:51:02,460
+circule para tirar proveito de qualquer uma das falhas que são descobertas posteriormente
+
+558
+00:51:02,460 --> 00:51:10,450
+é por isso que é importante para você mudar para um sistema operacional que seja de segurança mais recente
+
+559
+00:51:10,450 --> 00:51:18,250
+vulnerabilidades são descobertas para o sistema operacional descontinuado e os hackers criarão
+
+560
+00:51:18,250 --> 00:51:25,000
+ferramentas para explorar essas vulnerabilidades, mas a Microsoft não as corrigirá
+
+561
+00:51:25,000 --> 00:51:29,770
+problemas sem atualizações de segurança ou correções que você está colocando em seu computador e outros
+
+562
+00:51:29,770 --> 00:51:34,720
+dispositivos em sua rede em risco se você for um usuário estendido do Windows 8.1
+
+563
+00:51:34,720 --> 00:51:40,410
+o suporte para esse sistema operacional não terminará até janeiro de 2023, o Windows 10 foi lançado em
+
+564
+00:51:40,410 --> 00:51:51,280
+2015 e o suporte estendido para a versão mais recente do sistema operacional é até 2025 este
+
+565
+00:51:51,280 --> 00:51:56,049
+também pode ser um excelente momento para você experimentar o Linux, eu tenho que adicionar isso
+
+566
+00:51:56,049 --> 00:52:00,579
+ali mesmo enquanto uma atualização para o Windows 10 pode exigir que você atualize seu
+
+567
+00:52:00,579 --> 00:52:06,490
+hardware para Linux pode dar uma nova vida ao seu computador existente, você pode
+
+568
+00:52:06,490 --> 00:52:12,000
+remova o Windows 7 descontinuado e substitua-o pelo Ubuntu ou Linux Mint
+
+569
+00:52:12,000 --> 00:52:17,530
+absolutamente grátis, vamos às histórias principais que estamos seguindo
+
+570
+00:52:17,530 --> 00:52:22,930
+esta semana, em primeiro lugar, o PayPal confirmou que um pesquisador encontrou uma alta
+
+571
+00:52:22,930 --> 00:52:28,119
+vulnerabilidade de segurança de gravidade que pode expor as senhas do usuário a um
+
+572
+00:52:28,119 --> 00:52:33,640
+atacante o pesquisador Alex Burson descobriu a alta gravidade
+
+573
+00:52:33,640 --> 00:52:38,110
+vulnerabilidade quando ele estava explorando o fluxo de autenticação principal no Pape
+
+574
+00:52:38,110 --> 00:52:42,850
+sua atenção foi atraída para o fato de que o arquivo javascript continha o que parecia
+
+575
+00:52:42,850 --> 00:52:51,220
+como um token de falsificação de solicitação entre sites e um ID de sessão, ele diz que fornece uma cotação
+
+576
+00:52:51,220 --> 00:52:56,590
+qualquer tipo de dados de sessão dentro de um arquivo JavaScript válido geralmente permite que seja
+
+577
+00:52:56,590 --> 00:53:03,040
+recebido por atacantes terminar a citação se um usuário não conseguir fazer o login várias vezes
+
+578
+00:53:03,040 --> 00:53:09,100
+perdoe-me, eles têm que resolver um CAPTCHA nesse ponto e uma vez que eles finalmente
+
+579
+00:53:09,100 --> 00:53:16,300
+autenticar e o PayPal observou a citação de que os tokens expostos foram usados ​​na postagem
+
+580
+00:53:16,300 --> 00:53:22,810
+pedido para resolver o CAPTCHA do PayPal disse citação se um usuário seguiu um link de login
+
+581
+00:53:22,810 --> 00:53:29,200
+de um site malicioso semelhante a uma página de phishing, só isso
+
+582
+00:53:29,200 --> 00:53:31,870
+leva seguir um link de um site de login para o seu
+
+583
+00:53:31,870 --> 00:53:38,590
+Conta do PayPal, você está pronto, no entanto Burson disse no mundo real das redes sociais
+
+584
+00:53:38,590 --> 00:53:44,080
+ataques de engenharia citam que a única interação do usuário necessária teria sido um
+
+585
+00:53:44,080 --> 00:53:50,710
+uma única visita a uma página da web controlada pelo invasor e esse é o fim da citação
+
+586
+00:53:50,710 --> 00:53:55,990
+dentro de 24 horas da confirmação de bugs pelo hacker um programa de recompensa por bug
+
+587
+00:53:55,990 --> 00:54:02,170
+O PayPal corrigiu a vulnerabilidade que bearson disse enquanto era recompensado com
+
+588
+00:54:02,170 --> 00:54:07,110
+uma recompensa por insetos no valor de cerca de quinze mil e trezentos dólares nós e
+
+589
+00:54:07,110 --> 00:54:12,340
+o que devemos ter em mente aqui, ok, então este é um exploit que está ativado
+
+590
+00:54:12,340 --> 00:54:18,600
+um site como o PayPal, então se você seguiu um link e criou aquele cookie de sessão
+
+591
+00:54:18,600 --> 00:54:22,720
+que poderia ter sido comprometido, quero dizer, você clica nesse link em um
+
+592
+00:54:22,720 --> 00:54:27,310
+e-mail de esquema de phishing certo e você acha que, bem, este é um esquema de phishing
+
+593
+00:54:27,310 --> 00:54:34,230
+vou recuar, lobo, é tarde demais, você nem mesmo se conectou e é tarde demais
+
+594
+00:54:34,230 --> 00:54:41,800
+é isso que estamos enfrentando aqui, para que qualquer membro de sua equipe que tenha acesso ao seu
+
+595
+00:54:41,800 --> 00:54:46,870
+A conta do PayPal agora clicou nesse link e tem aquele cookie de sessão instalado
+
+596
+00:54:46,870 --> 00:54:51,250
+de um site malicioso e malicioso e então
+
+597
+00:54:51,250 --> 00:54:56,620
+mais tarde, se loga legitimamente no PayPal após ter feito a captura
+
+598
+00:54:56,620 --> 00:55:01,270
+processo eu acho que é o exploit em si, você tem que falhar no login um
+
+599
+00:55:01,270 --> 00:55:06,910
+algumas vezes e então, quando você acerta, é quando o hacker consegue
+
+600
+00:55:06,910 --> 00:55:12,640
+credenciais, você sabe como isso me afeta e como posso evitar que
+
+601
+00:55:12,640 --> 00:55:18,880
+aconteça, eu acho que realmente volta para os gerenciadores de senhas porque você
+
+602
+00:55:18,880 --> 00:55:26,380
+pense como você digita a senha errada do PayPal três vezes para o
+
+603
+00:55:26,380 --> 00:55:31,600
+ponto onde você precisa inserir um CAPTCHA, você provavelmente está digitando e se
+
+604
+00:55:31,600 --> 00:55:36,640
+você está digitando sua senha do PayPal, provavelmente é muito fácil se você puder
+
+605
+00:55:36,640 --> 00:55:40,600
+lembre-se de sua senha do PayPal é muito fácil você consegue lembrar sua senha
+
+606
+00:55:40,600 --> 00:55:46,030
+para o PayPal, se eu o mandasse para o PayPal, calma agora, você conseguiria fazer login até
+
+607
+00:55:46,030 --> 00:55:53,440
+digitando seu nome de usuário e senha se for o caso de você ser um potencial
+
+608
+00:55:53,440 --> 00:56:00,580
+vítima, você é facilmente explorado por meio deste tipo de ataque, não sei meu
+
+609
+00:56:00,580 --> 00:56:06,730
+credenciais para PayPal, meu gerenciador de senha garante que minha senha para
+
+610
+00:56:06,730 --> 00:56:15,610
+O PayPal é tão obscuro e seguro que nem eu percebo quando vou para
+
+611
+00:56:15,610 --> 00:56:22,870
+paypal.com Eu entro no meu gerenciador de senhas com minha senha segura, que é
+
+612
+00:56:22,870 --> 00:56:29,740
+uma receita de senha e, em seguida, ele preenche as informações do PayPal para
+
+613
+00:56:29,740 --> 00:56:35,380
+que eu posso logar se você não estiver fazendo dessa forma, então você está aberto a isso
+
+614
+00:56:35,380 --> 00:56:39,310
+tipo de vulnerabilidade e preciso encorajá-lo de que você precisa
+
+615
+00:56:39,310 --> 00:56:44,480
+entender o valor de um gerenciador de senhas não se trata de
+
+616
+00:56:44,480 --> 00:56:49,220
+Posso lembrar minhas senhas, não é sobre isso, é sobre ser capaz de
+
+617
+00:56:49,220 --> 00:56:55,099
+crie senhas para sites como o PayPal, onde seu dinheiro reside onde ele
+
+618
+00:56:55,099 --> 00:57:01,730
+acesso à sua conta corrente e cartão de crédito é sobre ter senhas
+
+619
+00:57:01,730 --> 00:57:07,250
+que são tão seguros que mesmo você não os conhece, esse é o ponto-chave sobre um
+
+620
+00:57:07,250 --> 00:57:15,079
+gerenciador de senhas, uma vulnerabilidade no firmware do modem de cabo de comunicação ampla deixou
+
+621
+00:57:15,079 --> 00:57:21,950
+até 200 milhões de gateways de banda larga domésticos na Europa e potencialmente mais
+
+622
+00:57:21,950 --> 00:57:28,910
+em todo o mundo sob risco de sequestro remoto, um usuário vulnerável simplesmente teria que
+
+623
+00:57:28,910 --> 00:57:34,730
+visite um site ou até mesmo abra um arquivo HTML que contém JavaScript malicioso
+
+624
+00:57:34,730 --> 00:57:40,730
+este código subsequentemente se conecta ao servidor web integrado ao vulnerável
+
+625
+00:57:40,730 --> 00:57:46,520
+modem na rede local o script então altera o conteúdo dos modems
+
+626
+00:57:46,520 --> 00:57:53,329
+o processador se registra sobrescrevendo a pilha para redirecionar a execução para malware
+
+627
+00:57:53,329 --> 00:57:59,359
+contrabandeado pela solicitação nesse ponto, o código pode tentar man-in-the-middle
+
+628
+00:57:59,359 --> 00:58:04,430
+ataque que permite ao hacker obter acesso, por exemplo, a potencialmente
+
+629
+00:58:04,430 --> 00:58:09,349
+informações confidenciais enviadas de ou para a conexão de Internet do usuário
+
+630
+00:58:09,349 --> 00:58:14,750
+malfeitor também pode usar o exploit para manipular a mudança de firmware DNS
+
+631
+00:58:14,750 --> 00:58:21,140
+configurações para redirecionar conexões para páginas da web e eles podem redirecionar para qualquer coisa
+
+632
+00:58:21,140 --> 00:58:25,400
+de sua escolha, então, sem dúvida, versões de phishing de cada banco e mídia social
+
+633
+00:58:25,400 --> 00:58:30,500
+site seria algo em que eles pensariam que poderiam espionar o tráfego
+
+634
+00:58:30,500 --> 00:58:36,109
+lançar ataques distribuídos de negação de serviço e mais, em outras palavras,
+
+635
+00:58:36,109 --> 00:58:39,560
+um mau, uma vez explorado, um invasor pode usar o
+
+636
+00:58:39,560 --> 00:58:42,260
+modem para fazer praticamente qualquer coisa que eles querem
+
+637
+00:58:42,260 --> 00:58:48,500
+Broadcom diz que o código de exploração foi corrigido em maio passado, mas parece claro que
+
+638
+00:58:48,500 --> 00:58:54,650
+a correção não foi amplamente adotada pelos usuários em seus testes, a equipe de assombração do cabo foi
+
+639
+00:58:54,650 --> 00:59:01,569
+capaz de comprometer um grande número de Sageman calmo Netgear Technicolor e
+
+640
+00:59:01,569 --> 00:59:08,119
+modelos compais, por exemplo, uma vez que os chips Broadcom estão em muitas marcas de
+
+641
+00:59:08,119 --> 00:59:12,410
+roteadores e modems, é importante para você certificar-se de que seu firmware é
+
+642
+00:59:12,410 --> 00:59:16,039
+atualizado para que você não se comprometa agora que o exploit está
+
+643
+00:59:16,039 --> 00:59:27,530
+conhecido por hackers [Música]
+
+644
+00:59:30,070 --> 00:59:35,130
+começou a vender a variante montável em rack de seu computador desktop Mac Pro
+
+645
+00:59:35,130 --> 00:59:41,680
+começando com apenas 6.500 dólares, o Mac Pro montado em rack é idêntico ao
+
+646
+00:59:41,680 --> 00:59:47,680
+versão torre em termos de especificações e vem no mesmo hardware
+
+647
+00:59:47,680 --> 00:59:52,630
+configurações também tem as mesmas portas e está disposto da mesma dentro do
+
+648
+00:59:52,630 --> 00:59:57,610
+caso e tem as mesmas conexões traseiras as diferenças do
+
+649
+00:59:57,610 --> 01:00:03,010
+variante torre são inteiramente no próprio caso esta variante do Mac Pro 4
+
+650
+01:00:03,010 --> 01:00:08,680
+vai as rodas ou suportes do modelo de torre em favor de trilhos de aço inoxidável
+
+651
+01:00:08,680 --> 01:00:14,680
+que permitem que o dispositivo seja montado horizontalmente em racks de servidores, ele também tem
+
+652
+01:00:14,680 --> 01:00:20,130
+uma tampa removível em vez da estrutura totalmente removível vista na torre
+
+653
+01:00:20,130 --> 01:00:25,660
+além disso, as alças estão na frente para facilitar a remoção dos racks de servidores
+
+654
+01:00:25,660 --> 01:00:30,190
+e alguns outros elementos, como o botão liga / desliga, foram removidos da torre
+
+655
+01:00:30,190 --> 01:00:37,600
+de cima para o rack frontal este Mac Pro foi projetado para inclusão em fazendas de renderização
+
+656
+01:00:37,600 --> 01:00:43,420
+como servidor e outros usos comerciais e profissionais, certamente pude ver
+
+657
+01:00:43,420 --> 01:00:49,150
+no farm de renderização, quero dizer, trabalho com vídeo o tempo todo, então tenho algo
+
+658
+01:00:49,150 --> 01:00:53,770
+que é capaz de fazer minha renderização que é poderosa, mas tem que ser um
+
+659
+01:00:53,770 --> 01:00:59,530
+Mac poderia ser uma máquina Linux com liquidificador rodando que seria ótimo
+
+660
+01:00:59,530 --> 01:01:06,370
+vamos por esse caminho o telefone pinho oh você sabia que eu ia chegar aqui, não
+
+661
+01:01:06,370 --> 01:01:14,470
+sim, 64 vamos dar uma olhada, o telefone pine é um Linux inteligente acessível
+
+662
+01:01:14,470 --> 01:01:20,740
+telefone criado por Pine 64, os criadores do laptop pine butt Pro, o rock pro 64
+
+663
+01:01:20,740 --> 01:01:28,030
+e computadores de placa única pinho 64, o preço e design das especificações do telefone pine são
+
+664
+01:01:28,030 --> 01:01:36,580
+tudo sob medida para mantê-lo em $ 149 super baixos, o que o coloca em uma posição
+
+665
+01:01:36,580 --> 01:01:42,070
+por si só, o telefone pine foi feito para entusiastas e desenvolvedores Linux que podem
+
+666
+01:01:42,070 --> 01:01:47,050
+aprecie sua privacidade e o software de código aberto não espere por isso
+
+667
+01:01:47,050 --> 01:01:51,580
+embora para estar em pé de igualdade com o smartphone mais recente e melhor acertar o objetivo com
+
+668
+01:01:51,580 --> 01:01:57,100
+o telefone pine é fornecer uma plataforma de smartphone confiável aberta e hackeavel
+
+669
+01:01:57,100 --> 01:02:03,760
+alimentado por Linux, o Braveheart Edition está disponível agora e se destina a
+
+670
+01:02:03,760 --> 01:02:09,160
+entusiastas e adotantes iniciais, vamos chamá-lo de lote inicial que ele faz
+
+671
+01:02:09,160 --> 01:02:14,080
+não vem com o Linux instalado, você teria que fazer isso sozinho em um dos
+
+672
+01:02:14,080 --> 01:02:18,520
+as compilações de betta que estão disponíveis e o aparelho tem algumas diferenças em relação ao
+
+673
+01:02:18,520 --> 01:02:22,810
+unidades de execução final principalmente relacionadas com a antena e a colocação do 2g
+
+674
+01:02:22,810 --> 01:02:31,240
+sinais em breve, o telefone pine estará disponível como um telefone completo pré-carregado
+
+675
+01:02:31,240 --> 01:02:35,830
+com um sistema operacional móvel baseado em Linux, não há data de lançamento específica
+
+676
+01:02:35,830 --> 01:02:41,560
+mas assim que houver, avisaremos você, então certifique-se de se inscrever
+
+677
+01:02:41,560 --> 01:02:46,540
+e clique no sino para receber notificações, muito obrigado esta semana - Roy
+
+678
+01:02:46,540 --> 01:02:51,550
+W Nash e nossa comunidade de visualizadores por enviar histórias para nós, obrigado por
+
+679
+01:02:51,550 --> 01:02:55,510
+assistindo à redação da categoria cinco dot TV, não se esqueça de curtir e
+
+680
+01:02:55,510 --> 01:03:01,090
+inscreva-se para receber todas as suas notícias de tecnologia favoritas com um leve viés do Linux e se você
+
+681
+01:03:01,090 --> 01:03:05,860
+aprecio o que fazemos, por favor, torne-se um patrono deste segmento específico do
+
+682
+01:03:05,860 --> 01:03:11,290
+mostre que é a redação do patreon.com, por favor
+
+683
+01:03:11,290 --> 01:03:16,420
+mostre-nos um pouco de amor que significaria muito da redação de TV da categoria cinco
+
+684
+01:03:16,420 --> 01:03:22,000
+Sou Robbie Ferguson substituindo Sascha Rickman. Foi tão bom ter
+
+685
+01:03:22,000 --> 01:03:27,550
+todos vocês aqui comigo esta semana, obrigado por se juntarem a mim, obrigado por serem meus
+
+686
+01:03:27,550 --> 01:03:31,750
+comunidade aqui me fazendo companhia, porque senão é muito solitário
+
+687
+01:03:31,750 --> 01:03:35,980
+quando você está aqui sozinho no estúdio D, mas é bom
+
+688
+01:03:35,980 --> 01:03:39,220
+ter você aqui e foi bom interagir com você. Estou ansioso para
+
+689
+01:03:39,220 --> 01:03:43,800
+te vendo de novo na semana que vem antecipo que terei casa aqui comigo
+
+690
+01:03:43,800 --> 01:03:49,210
+às vezes surgem coisas que o tornam impossível, mas nos esforçamos para ter
+
+691
+01:03:49,210 --> 01:03:54,400
+pessoal aqui para tornar a brincadeira um pouco mais emocionante do que apenas Robbie falando
+
+692
+01:03:54,400 --> 01:03:58,849
+para o vazio que é a internet, mas ei
+
+693
+01:03:58,849 --> 01:04:03,559
+talvez você possa ajudar com o comentário de interação abaixo envie-me uma mensagem deixe-me
+
+694
+01:04:03,559 --> 01:04:07,700
+sei o que você achou do show desta noite e eu apreciaria muito isso, mas em
+
+695
+01:04:07,700 --> 01:04:12,079
+Enquanto isso, espero que você tenha uma semana maravilhosa. Estou ansioso para vê-lo novamente
+
+696
+01:04:12,079 --> 01:04:15,190
+na próxima semana se cuide
+
+697
+01:04:21,890 --> 01:04:24,989
+[Música]
+
