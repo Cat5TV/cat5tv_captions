@@ -1,0 +1,140 @@
+às vezes pode ser um problema quando um anfitrião chega, eles ficam trancados do lado de fora
+o frio inverno canadense porque o montamos de tal forma que nosso estúdio está
+dentro de um edifício enorme e há um foyer entre nós e o mundo exterior
+e o foyer fica trancado à noite e para entrar no prédio eu tenho
+primeiro sair do Studio D, saia da Phi a e destranque a porta da frente para deixar
+alguém em so quando Sasha chega quando Jeff chega
+quando Henry Bailey Brown chega, eles costumam me enviar mensagens sobre discórdia, eles deixam
+eu sei que eu sou que eles estão aqui às vezes eu não entendo isso imediatamente
+e está 40 abaixo e é como uma chuva congelante ou o que quer que seja, então é
+meu cenário seu cenário pode ser um pouco diferente talvez você só queira
+ser capaz de entrar em sua casa e fazer com que todos os seus dispositivos reconheçam que
+ei querida, estou em casa, talvez você queira usar isso em um escritório onde se eu entrar
+a porta de repente meu tempo está sendo rastreado talvez seja um barato talvez
+uma maneira gratuita de rastrear seus funcionários indo e vindo do
+escritório talvez bem, como podemos fazer isso bem todo mundo carrega um dispositivo que eu tenho
+meu smartphone meu smartphone é conectado ao Wi-Fi assim que me aproximo do
+quando estou aqui, ele se conecta ao Wi-Fi e o que isso diz bem?
+tenho um endereço IP na LAN agora que estou conectado ao Wi-Fi e se eu tiver
+um endereço IP na terra o que eu presumivelmente pode ter acontecido comigo
+Posso receber um ping, posso receber um ping bem, aqui está o que não costumamos fazer isso
+com um smartphone, por exemplo, deixamos o servidor DHCP distribuir o IP
+endereços e está tudo bem, mas Robbie está aqui, nós conhecemos e confiamos em Robbie
+Robbie é um membro da equipe e quando Robbie estiver aqui, queremos saber sobre isso
+Sasha quando ela chegar talvez a gente queira saber talvez em
+caso eu quero ter um pouco de luz acesa que diga ei Robby, é hora de abrir
+a porta saia pelo foyer e destranque a porta, deixe-a entrar talvez em seu
+escritório que você deseja rastrear se sua custódia para os funcionários chegar a tempo
+e passar o turno inteiro monitorando aqueles talvez seja como quem
+sabe que talvez seja um ambiente onde você apenas
+seja pago enquanto você estiver lá ou talvez você apenas ei, nós queremos que essa luz venha
+quando a equipe chega, então como podemos fazer isso bem todo dispositivo tem um MAC
+endereço o endereço MAC é um endereço privado que não está disponível na web
+mas está disponível no dispositivo e está disponível para o servidor DHB dhcp, então
+seu servidor DHCP que distribui o endereço IP para todos os dispositivos conectados diz
+vamos dar a este o próximo endereço no pool DHCP 10.0.0.0 sete
+pode ser o seu telefone, então entre no servidor DHCP, seja um roteador ou um
+Servidor DHCP do Windows ou talvez você tenha um servidor DHCP do Linux e olhe para o MAC
+endereço desse dispositivo e configurar uma reserva de DHCP, então agora toda vez que eu
+conectar ao Wi-Fi, meu smartphone recebe o mesmo endereço IP, seja qual for
+definido perdoe-me no meu caso eu disse ponto cinco zero ping 10.0.0.0 o que você
+veja, é o telefone do Robbie, então o que acontece se eu pegar meu telefone e eu estiver
+vou contar regressivamente a partir de três vou desligar o Wi-Fi para o qual você está pronto
+esses três dois um clique agora estou fora do wi-fi o que aconteceu com o seu
+a tela está congelada Robbie agora deixou o
+edifício ou desligou o Wi-Fi, mas por que faria isso se este for
+sendo usado para monitorar suas horas e certificar-se de que ele é pago lá para você ir
+host de destino inacessível. Vou restabelecer minha conexão Wi-Fi apenas
+apertando o botão Wi-Fi do meu telefone em três dois um
+agora e vamos ver quanto tempo leva, então agora me aproximei do prédio e
+adivinhe o que Robbie está de volta, então sabemos que
+esse é o caso, bem, como podemos usar essa informação para um bom bem fácil
+Sempre facilito as coisas para você, vá para o meu github github.com slash
+cat5 TV slash Linux tools Linux - ferramentas devo dizer e há um script lá
+chamado verificação de Wi-Fi vamos fazer clique nele clique em bruto e vamos fazer o download
+salve como e vou jogar isso no meu desktop, ele está chamando de txt seja o que for
+Vou renomear e agora vamos pular para o meu terminal, vá para o meu desktop, mova o Wi-Fi
+verifique txt para Wi-Fi verifique ponto ponto tudo certo CH mod + X Wi-Fi - verifique agora
+esse arquivo é executivo, então agora preciso criar um arquivo de configuração
+Vou chamar isso de Wi-Fi - verifique CFG então echo e vamos 10.0.0.0 era meu
+estabeleceu o endereço IP certo, então vou salvá-lo no Wi-Fi - verifique ponto CFG
+então agora se eu nano esse arquivo olhe para isso oh não não Wi-Fi cheque ponto CFG ponto CFG
+lá está 10 ponto 0 ponto 0 - 5 0 então se Sasha trouxer seu smartphone eu vou
+atribuir um endereço IP estático a ela, que será 10.0.0.0
+Ok, então vamos fingir que adicionei isso ao arquivo dot CFG, agora se eu executar isso
+arquivo Wi-Fi - verifique o que você vê 10.0.0.0 é igual a 110 ponto 0 ponto 0 ponto 5 1
+é igual a 0 bem, o que isso nos diz, ok, então estabelecemos o ponto de Robbie 5 0
+Sascha's ponto 5 1 você vê Sasha Sasha não estava aqui Robbie é tão Robbie é igual
+1 Sasha é igual a 0 1 ponto 4 Robbie, então agora programaticamente podemos dizer ok
+bem, podemos, podemos programar, podemos mudar, podemos manipular isso para
+diga ok, o Robbie está online e podemos executá-lo como um cron job certo, então
+da mesma forma, vamos pegar meu smartphone e vou desligar meu Wi-Fi, então agora meu
+O Wi-Fi está desligado Vou executar esse comando novamente e ver o que acontece, você pode
+presuma o que acontece, mas 10.0.0.0 que já estabelecemos como Robbie, ele
+vai para o tempo limite e vai dizer zero, então agora sabemos que tanto Robbie quanto
+Sasha se foi do prédio, liguei meu Wi-Fi e vou correr
+aquele comando de novo e agora podemos ver as costas de Robbie Sasha ainda não está aqui, então
+o que isso faz por mim, então agora de forma programática posso dizer vamos obter um
+alerta vamos usar um GPIO em um Raspberry Pi para poder acionar eventos assim que
+conforme Sasha se aproxima do prédio e seu telefone se conecta ao meu Wi-Fi agora, tudo de um
+repentinamente uma luz verde acima da porta se acende e eu sei exatamente o que é
+Eu vou ir lá e abrir a porta para não ficar mais parado no
+Invernos frios canadenses e podemos fazer, podemos programar isso para poder registrar
+coisas para um banco de dados MySQL, não há limite, desde que você tenha alguns
+criatividade e um pouco de know-how, você será capaz de fazer isso, então vamos ver
+nesse código-fonte e ver o que está realmente fazendo, então vou editar o Wi-Fi -
+verifique no meu repositório get, então o que é feito é abrir o arquivo no
+arquivo de configuração que criei e está pegando os endereços bem, eles não
+tem que ser eu deveria dizer que eles não têm que ser
+Endereços IP em um terreno local, posso colocar google.ca se quiser e, em seguida, se eu
+executá-lo é apenas para que você saiba então apenas para saber a flexibilidade disso para você
+posso ver google.ca está online está respondendo a um ping, então eu só quero você
+saber que ele tem essa flexibilidade, então você pode colocar qualquer coisa lá
+que você deseja, desde que seja um nome de host válido, um nome de domínio ou pode ser
+um endereço IP como estamos usando na demonstração de hoje para este
+caso de uso, então ele executa um ping bem, é tudo o que ele faz, apenas executa um ping aqui está
+ping e pings para o host e se estiver ativo responde com um e se estiver inativo
+responde com zero ok bem, de que adianta se responder com 1 ou 0
+você sabe o que eu faço com essa informação Robbie é por isso que eu
+queria mostrar o código-fonte porque agora você pode dizer ok, bem, eu sei
+que está ecoando 10.0.0.0 é igual a 1, por que não esperamos um minuto
+por que não deleto essa linha e digo eco e vamos dizer o cifrão
+host dot e lembre-se de que o PHP está ativo. PHP, tudo bem
+e talvez eu pegue este e digo você sabe o que talvez não haja mais talvez eu
+pode remover o else e dizer que só vai me dizer se já está funcionando, então agora se eu correr
+que 10.0.0.0 está correto, mas não me mostra os que estão inativos ou talvez
+Eu posso pegar isso e estou apenas mostrando que não há
+limit ok, talvez eu possa dizer vamos usar um comando realmente simples se o dólar
+sinal host é igual a 10 ponto 0 ponto 0 ponto 5 0 vamos dizer echo Robby's
+aqui Oh Nita boom ok veja o que estou fazendo e
+então posso mudar isso para outro, então, se não for Ravi 10.0.0.0, vai apenas
+echo o nome do host, então agora vou adicionar novamente o Google para que você possa ver porque
+O Google vai estar ativo, assista aqui Robby está aqui sim, meu telefone está online Google está ativo
+Eu tenho alguns problemas de sintaxe, mas tudo bem, podemos trabalhar nisso. Vou desligar
+meu Wi-Fi e, em seguida, execute-o novamente, observe que Robby não está aqui, mas o Google está funcionando
+e vejo que o Google está funcionando e então vou ter aquele problema de sintaxe novamente
+Vou consertar isso, não se preocupe, eu sei exatamente o que está acontecendo lá, veja isso
+Google está no meu arquivo de configuração Eu acidentalmente adicionei um carro extra
+retorna é por isso que está funcionando contra um retorno de carro
+tentando pingar nada, então verifique o Wi-Fi com ponto e barra e não dirá nada
+mas google.ca está ativo agora vou ligar meu wi-fi e
+execute exatamente o mesmo comando novamente Robby está aqui google.ca está ativo, então você vê
+o que estou fazendo lá de forma programática, posso fazer qualquer coisa, absolutamente qualquer coisa
+e tratar a conectividade das pessoas com seus smartphones para que seus smartphones se conectem
+para o Wi-Fi, o servidor DHCP distribui os endereços IP com base em seus
+reserva com base em seu endereço MAC agora você pode controlar eventos com base em
+indo e vindo de sua equipe acho que não preciso dizer mais nada
+acho que já na sua cabeça ideias estão surgindo, quero que você comente abaixo
+quero que você me diga que tipo de ideias isso dá origem a que tipo de coisas podem
+você faz com isso, eu penso no controle de tempo como um ótimo exemplo, robbie
+fez check-in robbie assinou aqui está seu cheque de pagamento com base nessa informação
+é realmente difícil falsificar isso, e quero dizer, se você confia na sua equipe de qualquer maneira
+não é realmente uma questão de confiança, é simplesmente uma coisa fácil de usar logo
+enquanto você se conecta ao Wi-Fi, acho que estou rastreando o fato de você estar conectado
+não há nenhum rastreamento não há problema de privacidade aqui, é simplesmente
+você está online ou não está online é um ping e desde que esse dispositivo
+ou aquele domínio ou aquele endereço IP responde ao ping ICMP então você vai
+ser capaz de incorporar isso em seu arquivo de configuração cap 5tv
+no github você encontrará um repositório chamado linux - tools
+você começa
+[Música]
