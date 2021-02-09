@@ -1,0 +1,980 @@
+1
+00:00:03,679 --> 00:00:08,320
+è una domanda comune che abbiamo ricevuto e ne abbiamo persino discusso internamente
+
+2
+00:00:08,320 --> 00:00:13,120
+un microcomputer Raspberry Pi può alimentare un server Minecraft
+
+3
+00:00:13,120 --> 00:00:16,160
+bene oggi risponderemo a questa domanda e ti forniremo tutto il
+
+4
+00:00:16,160 --> 00:00:18,240
+strumenti necessari per essere operativi
+
+5
+00:00:18,240 --> 00:00:20,800
+i collegamenti sono nella descrizione qui sotto ma per favore seguiteci
+
+6
+00:00:20,800 --> 00:00:23,119
+durante questo video e imparerai come impostarlo
+
+7
+00:00:23,119 --> 00:00:27,279
+e guarda come si comporta ecco cosa ti servirà a
+
+8
+00:00:27,279 --> 00:00:31,359
+raspberry pi 4 con 4 o 8 gigabyte di ram
+
+9
+00:00:31,359 --> 00:00:35,280
+un ottimo alimentatore e raffreddamento attivo dal momento che lo saremo
+
+10
+00:00:35,280 --> 00:00:38,800
+overcloccare il tuo raspberry pi per iniziare rapidamente le cose
+
+11
+00:00:38,800 --> 00:00:42,480
+utilizzare una scheda micro SD ma voglio essere in grado di fidarmi di questo spazio di archiviazione
+
+12
+00:00:42,480 --> 00:00:45,600
+quindi è per questo che ho intenzione di scegliere la scheda endurance kingston che è stata costruita
+
+13
+00:00:45,600 --> 00:00:48,480
+specifico per le giuste applicazioni intensive
+
+14
+00:00:48,480 --> 00:00:52,879
+questa funzione ti è stata offerta da ameridroid.com ottieni il tuo raspberry pi 4
+
+15
+00:00:52,879 --> 00:00:54,879
+o un altro computer a scheda singola da alimentare
+
+16
+00:00:54,879 --> 00:00:59,680
+il tuo server Minecraft su ameridroid.com con sede negli Stati Uniti
+
+17
+00:00:59,680 --> 00:01:03,559
+spedizione elettronica di vendita e visita di supporto
+
+18
+00:01:03,559 --> 00:01:06,560
+ameridroid.com ora ti servirà per primo
+
+19
+00:01:06,560 --> 00:01:12,159
+installare una distribuzione headless basata su Debian in modo che non ci sia ambiente desktop e
+
+20
+00:01:12,159 --> 00:01:17,280
+nessuna app aggiuntiva in esecuzione per il raspberry pi 4 a 64 bit di
+
+21
+00:01:17,280 --> 00:01:20,880
+raspberry pi os lite non è ancora disponibile così
+
+22
+00:01:20,880 --> 00:01:24,159
+per ora dovremo attenerci al 32 bit, questo significa che lo siamo
+
+23
+00:01:24,159 --> 00:01:29,200
+limitato a soli quattro gigabyte di ram per Java, quindi l'acquisto degli otto gigabyte pi
+
+24
+00:01:29,200 --> 00:01:32,640
+4 subito va bene per prontezza futura e l'installatore lo farà
+
+25
+00:01:32,640 --> 00:01:36,880
+adattarlo perfettamente e consentirti di eseguire un aggiornamento successivo per utilizzare più ram
+
+26
+00:01:36,880 --> 00:01:40,640
+una volta rilasciato il sistema operativo a 64 bit, ma per ora
+
+27
+00:01:40,640 --> 00:01:45,920
+non c'è davvero alcun vantaggio del modello da otto gigabyte rispetto ai quattro gigabyte
+
+28
+00:01:45,920 --> 00:01:49,520
+perché avevo bisogno di un nome di fantasia per il progetto e perché questo programma di installazione è
+
+29
+00:01:49,520 --> 00:01:55,520
+costruito per funzionare su qualsiasi spc adeguato come il pine 64 rock pro 64.
+
+30
+00:01:55,520 --> 00:02:00,719
+Sto chiamando il progetto pinecraft semplicemente non è limitato al lampone
+
+31
+00:02:00,719 --> 00:02:05,119
+pi quindi assicurati che sia il sistema su cui intendi eseguirlo
+
+32
+00:02:05,119 --> 00:02:10,239
+dedicato e ha almeno quattro gigabyte di ram iniziamo
+
+33
+00:02:10,239 --> 00:02:15,040
+trasformando il nostro raspberry pi 4 in un server minecraft dedicato
+
+34
+00:02:15,040 --> 00:02:18,160
+mi sono connesso al mio sistema operativo Raspberry Pi con ssh
+
+35
+00:02:18,160 --> 00:02:21,440
+e la prima cosa che dobbiamo fare è installare git
+
+36
+00:02:21,440 --> 00:02:29,120
+quindi questo è sudo apt install git dì sì che scaricherà git
+
+37
+00:02:29,120 --> 00:02:33,120
+e installalo per noi e ora git sarà un comando su
+
+38
+00:02:33,120 --> 00:02:41,599
+il nostro sistema così posso andare a ottenere clone https colon slash github.comcat5tv
+
+39
+00:02:41,599 --> 00:02:46,720
+barra e poi il nome di questo progetto che è pinecraft
+
+40
+00:02:46,720 --> 00:02:50,319
+come Minecraft ma funzionerà anche su schede pine64
+
+41
+00:02:50,319 --> 00:02:55,040
+quindi premi invio ora abbiamo una cartella, tieni presente che ero nella mia cartella home
+
+42
+00:02:55,040 --> 00:03:00,480
+quando ho eseguito quel comando quindi dove sono ora è slash home slash pi
+
+43
+00:03:00,480 --> 00:03:04,959
+pinecraft ora nota che sto usando l'utente pi perché sto usando un'installazione predefinita
+
+44
+00:03:04,959 --> 00:03:07,760
+quindi per favore per l'amor del cielo come utente pi
+
+45
+00:03:07,760 --> 00:03:11,599
+digita la password è come una password ma si scrive in modo strano
+
+46
+00:03:11,599 --> 00:03:15,200
+e poi premi invio inserisci la tua password attuale che è lampone
+
+47
+00:03:15,200 --> 00:03:19,280
+e inserisci una nuova password per favore, per carità, fallo perché è così
+
+48
+00:03:19,280 --> 00:03:22,400
+solo buon senso um non usare mai l'impostazione predefinita
+
+49
+00:03:22,400 --> 00:03:24,000
+password questa è una delle prime cose che siamo
+
+50
+00:03:24,000 --> 00:03:28,959
+andando a fare così sto divagando guarda la cartella qui quella
+
+51
+00:03:28,959 --> 00:03:32,400
+siamo stati clonati e vedi un file chiamato
+
+52
+00:03:32,400 --> 00:03:34,560
+installa non ti mostrerò tutto e
+
+53
+00:03:34,560 --> 00:03:37,640
+spiega tutto qui ma se hai qualche domanda entra nella nostra discordia vai a
+
+54
+00:03:37,640 --> 00:03:41,120
+category5.tv fai clic su interagisci ma quello che ho fatto qui è che l'ho fatto
+
+55
+00:03:41,120 --> 00:03:44,799
+fondamentalmente ha scritto l'intero processo di impostazione
+
+56
+00:03:44,799 --> 00:03:49,040
+su questo server di Minecraft usando spigot in modo da non dover passare attraverso
+
+57
+00:03:49,040 --> 00:03:52,720
+ciascuno di questi passaggi manualmente e in modo che questo video duri tre ore
+
+58
+00:03:52,720 --> 00:03:56,720
+quindi questo è fondamentalmente il processo automatizzato di come ero
+
+59
+00:03:56,720 --> 00:04:00,959
+in grado di far funzionare Minecraft su un raspberry pi nel miglior modo possibile, quindi
+
+60
+00:04:00,959 --> 00:04:03,519
+overclock fa automaticamente un sacco di cose
+
+61
+00:04:03,519 --> 00:04:06,799
+rileva la quantità di RAM che hai che tipo di sistema operativo stai utilizzando e
+
+62
+00:04:06,799 --> 00:04:09,439
+così via ti incoraggio ogni volta che vai
+
+63
+00:04:09,439 --> 00:04:13,519
+per eseguire qualsiasi tipo di script di installazione, guarda il codice
+
+64
+00:04:13,519 --> 00:04:17,359
+scoprire cosa sta effettivamente facendo e vedere che questo ti dà anche la possibilità di farlo
+
+65
+00:04:17,359 --> 00:04:20,720
+fidati di quello che sto facendo qui, ma è anche davvero buono
+
+66
+00:04:20,720 --> 00:04:25,520
+informazioni e ti mostra esattamente cosa sto facendo, ma questo è
+
+67
+00:04:25,520 --> 00:04:27,919
+fondamentalmente solo il programma di installazione lo script che sta per fare
+
+68
+00:04:27,919 --> 00:04:31,199
+è ben commentato quindi penso che non avrai problemi
+
+69
+00:04:31,199 --> 00:04:34,240
+capire cosa sto facendo lì, tuttavia, se hai qualche domanda
+
+70
+00:04:34,240 --> 00:04:36,400
+facci sapere tutto bene, quindi eseguiamolo
+
+71
+00:04:36,400 --> 00:04:39,759
+vai sudo perché ho bisogno di essere l'utente root per eseguirlo
+
+72
+00:04:39,759 --> 00:04:43,840
+punto slash installa perché si trova nella cartella corrente
+
+73
+00:04:43,840 --> 00:04:47,440
+ed è eseguibile e quindi ho bisogno di specificare il mio utente Linux così
+
+74
+00:04:47,440 --> 00:04:51,199
+questo sarà chi eseguirà il server Minecraft perché noi
+
+75
+00:04:51,199 --> 00:04:54,639
+non voglio che sia corretto come root quindi se digito robbie per
+
+76
+00:04:54,639 --> 00:04:57,120
+esempio vedrai che robbie non esiste i
+
+77
+00:04:57,120 --> 00:05:01,120
+non ho creato quell'utente l'unico utente sul mio raspberry pi è il
+
+78
+00:05:01,120 --> 00:05:04,960
+pi utente che è predefinito perché è proprio come un vanilla
+
+79
+00:05:04,960 --> 00:05:12,000
+raspberry pi os quindi scriverò invece sudo dot slash install
+
+80
+00:05:12,000 --> 00:05:15,680
+pi e premi invio e il gioco è fatto
+
+81
+00:05:15,680 --> 00:05:20,000
+la prima cosa che dobbiamo fare è accettare l'eula di mo yang, la licenza per l'utente finale
+
+82
+00:05:20,000 --> 00:05:22,400
+accordo quindi ho incluso il link lì per te
+
+83
+00:05:22,400 --> 00:05:25,600
+devi accettarlo per installare
+
+84
+00:05:25,600 --> 00:05:28,639
+ora questo mi sta avvertendo che è molto importante ora
+
+85
+00:05:28,639 --> 00:05:32,000
+il mio server Raspberry Pi che stiamo per guardare uh
+
+86
+00:05:32,000 --> 00:05:35,840
+con il gameplay in pochi istanti il ​​tempo è un raspberry pi con quattro concerti di
+
+87
+00:05:35,840 --> 00:05:38,080
+ram sto eseguendo questo su uno con
+
+88
+00:05:38,080 --> 00:05:41,360
+otto concerti di ram per la dimostrazione, quindi è stato rilevato qui
+
+89
+00:05:41,360 --> 00:05:45,039
+che sto eseguendo il sistema operativo a 32 bit, quindi non sarò effettivamente in grado di ottenere tutto
+
+90
+00:05:45,039 --> 00:05:47,120
+otto giga di ram che potrò usare solo
+
+91
+00:05:47,120 --> 00:05:51,680
+quattro che lo limitano a 2,5 gigabyte di RAM in uso
+
+92
+00:05:51,680 --> 00:05:55,360
+dal gioco quindi va bene, continuerà a funzionare alla grande, ma tienilo a mente
+
+93
+00:05:55,360 --> 00:05:59,280
+se sei andato e hai acquistato la versione da 8 gig del raspberry pi 4
+
+94
+00:05:59,280 --> 00:06:03,440
+devi usare il sistema operativo a 64 bit, ma perché sto usando il sistema operativo a 32 bit allora
+
+95
+00:06:03,440 --> 00:06:06,560
+è perché non hanno rilasciato il sistema operativo leggero a 64 bit
+
+96
+00:06:06,560 --> 00:06:09,680
+eppure è così che il desktop è attualmente in beta
+
+97
+00:06:09,680 --> 00:06:12,800
+e inevitabilmente vedremo la versione leggera di uh
+
+98
+00:06:12,800 --> 00:06:16,960
+del 64 bit, quindi tieni presente che tieni d'occhio su cui puoi installarlo
+
+99
+00:06:16,960 --> 00:06:20,479
+il tuo pi in questo momento, quindi eseguire il backup e quindi reinstallare con il 64 bit una volta
+
+100
+00:06:20,479 --> 00:06:23,199
+è stato rilasciato e potrai sfruttare tutta quella ram
+
+101
+00:06:23,199 --> 00:06:27,440
+nel frattempo andrà in overclock a 1.9 gigahertz il default è 1.5 quindi
+
+102
+00:06:27,440 --> 00:06:30,160
+è abbastanza buono ma conservatore perché non voglio
+
+103
+00:06:30,160 --> 00:06:33,280
+invalidi la garanzia e non voglio causare problemi con la stabilità o
+
+104
+00:06:33,280 --> 00:06:36,000
+niente del genere quindi mi sta solo avvertendo che sto andando
+
+105
+00:06:36,000 --> 00:06:39,919
+per sovrascrivere il file config.txt che inevitabilmente
+
+106
+00:06:39,919 --> 00:06:43,600
+quando lo fa lo fa anche il backup, quindi tienilo a mente che troverai
+
+107
+00:06:43,600 --> 00:06:47,280
+una nuova copia che ha una data stamp nello stivale slash
+
+108
+00:06:47,280 --> 00:06:50,720
+su quell'unità quindi se rimani bloccato sei a posto, installerà il file
+
+109
+00:06:50,720 --> 00:06:53,680
+server ora passerà attraverso tutto ciò che deve fare
+
+110
+00:06:53,680 --> 00:06:57,280
+prima di tutto sta scaricando il programma di installazione per spigot e lo farà
+
+111
+00:06:57,280 --> 00:06:59,440
+passare attraverso questo processo ci vorrà del tempo
+
+112
+00:06:59,440 --> 00:07:03,840
+quindi mi muoverò nel tempo
+
+113
+00:07:08,890 --> 00:07:19,069
+[Musica]
+
+114
+00:07:23,039 --> 00:07:26,479
+e lì abbiamo tutti i passaggi automatizzati con il pinecraft
+
+115
+00:07:26,479 --> 00:07:29,440
+installa lo script e siamo pronti per iniziare a riprodurlo
+
+116
+00:07:29,440 --> 00:07:32,880
+molto importante per te sapere e ricordare che non puoi chiudere
+
+117
+00:07:32,880 --> 00:07:36,479
+o riavviare un server Minecraft nel modo tradizionale di Linux
+
+118
+00:07:36,479 --> 00:07:39,759
+se lo fai, perderai tutti i blocchi che sono in memoria
+
+119
+00:07:39,759 --> 00:07:44,960
+forse un giorno o più di gioco, quindi Pinecraft ne include un paio a portata di mano
+
+120
+00:07:44,960 --> 00:07:50,160
+script tra cui uno chiamato riavvio e uno chiamato stop minecraft è
+
+121
+00:07:50,160 --> 00:07:55,280
+tutto pronto e pronto per essere caricato non appena riavviato, ma ovviamente
+
+122
+00:07:55,280 --> 00:07:59,039
+abbiamo bisogno di riavviare quindi dobbiamo farlo in sicurezza usando il comando
+
+123
+00:07:59,039 --> 00:08:04,319
+sudo tilde minecraft slash reboot memorizzerà tutti i file
+
+124
+00:08:04,319 --> 00:08:07,599
+blocchi su disco e riavviare il pi che è il comando
+
+125
+00:08:07,599 --> 00:08:11,440
+d'ora in poi utilizzerai in modo simile il comando stop
+
+126
+00:08:11,440 --> 00:08:14,479
+conserverà in sicurezza i tuoi blocchi e fermerà il minecraft
+
+127
+00:08:14,479 --> 00:08:18,080
+il server di Minecraft uh ma lascialo in esecuzione in modo che tu possa farlo
+
+128
+00:08:18,080 --> 00:08:21,840
+quindi arrestare il sistema o eseguire un backup o qualcosa del genere
+
+129
+00:08:21,840 --> 00:08:25,759
+quindi entrambi questi comandi possono richiedere diversi minuti, tienilo a mente
+
+130
+00:08:25,759 --> 00:08:28,960
+perché immagazzineranno diversi giorni, possibilmente per un valore di blocchi
+
+131
+00:08:28,960 --> 00:08:33,440
+che sono nella tua ram su disco così ora che il nuovo raspberry pi
+
+132
+00:08:33,440 --> 00:08:37,680
+Il server di Minecraft viene riavviato, è ora che sia il momento della verità
+
+133
+00:08:37,680 --> 00:08:41,839
+proviamo a connetterci
+
+134
+00:08:45,240 --> 00:08:50,560
+assolutamente impeccabile fantastico bene quando torniamo dopo la pausa siamo
+
+135
+00:08:50,560 --> 00:08:53,040
+farò un test del mondo reale di connessione
+
+136
+00:08:53,040 --> 00:09:09,839
+diversi giocatori a un server Minecraft Raspberry Pi 4 rimangono in giro
+
+137
+00:09:10,590 --> 00:09:15,769
+[Musica]
+
+138
+00:09:18,640 --> 00:09:22,080
+bene, è ora di controllare l'avviso sulle prestazioni di gioco che abbiamo
+
+139
+00:09:22,080 --> 00:09:25,600
+ha ottenuto le statistiche della cpu e della ram nella parte inferiore dello schermo
+
+140
+00:09:25,600 --> 00:09:28,959
+e questo rimarrà per l'intera dimostrazione, quindi sono qui
+
+141
+00:09:28,959 --> 00:09:33,680
+a casa di jeff e sto andando a correre velocemente per mostrarti il ​​file
+
+142
+00:09:33,680 --> 00:09:38,080
+sai che sta funzionando molto molto bene
+
+143
+00:09:38,080 --> 00:09:42,000
+quindi questo è un raspberry pi 4 è il server
+
+144
+00:09:42,000 --> 00:09:46,160
+e l'ho overcloccato a 1,95 gigahertz
+
+145
+00:09:46,160 --> 00:09:52,320
+ha 4 giga di ram e una scheda microsd kingston uh endurance
+
+146
+00:09:52,320 --> 00:09:55,760
+tutto bene quindi volevo mostrare la performance solo con me
+
+147
+00:09:55,760 --> 00:09:58,959
+uh sembra tutto abbastanza buono e qui a casa di Jeff
+
+148
+00:09:58,959 --> 00:10:03,600
+jeff immagino che le cose dovrebbero funzionare male qui se dovunque a destra
+
+149
+00:10:03,600 --> 00:10:07,440
+perché hai tutti questi animali e cose del genere ed è corretto
+
+150
+00:10:07,440 --> 00:10:11,360
+sì, ho provato a costruire una base che fosse abbastanza occupata
+
+151
+00:10:11,360 --> 00:10:14,000
+con molti elementi e quindi ci sono molti animali che fanno rumore nel file
+
+152
+00:10:14,000 --> 00:10:16,480
+sfondo voglio provare a tassare il surfista
+
+153
+00:10:16,480 --> 00:10:19,920
+sì ok quindi vediamo cosa succede quando iniziamo ad aggiungere giocatori
+
+154
+00:10:19,920 --> 00:10:22,240
+perché penso che sia stata una delle domande che sono emerse
+
+155
+00:10:22,240 --> 00:10:25,600
+quando tu ed io stavamo discutendo per la prima volta di questo progetto lo eravamo
+
+156
+00:10:25,600 --> 00:10:29,440
+sai quanti giocatori potranno venire qui
+
+157
+00:10:29,440 --> 00:10:33,200
+Va bene e uh penso di essere l'ultimo ad iscriversi
+
+158
+00:10:33,200 --> 00:10:38,079
+c'è la volpe maciullata 70 sì oh sì jeff forse sarebbe carino se tu potessi unirti a me
+
+159
+00:10:38,079 --> 00:10:41,279
+eccolo che è casuale, ehi
+
+160
+00:10:41,279 --> 00:10:49,519
+quello quindi controlla questo così abbiamo uno due tre quattro cinque sei
+
+161
+00:10:49,519 --> 00:10:54,720
+sette otto persone online contemporaneamente sul nostro raspberry pi 4
+
+162
+00:10:54,720 --> 00:10:57,920
+cameriere e un pollo e un sacco di uh
+
+163
+00:10:57,920 --> 00:11:00,480
+animali sullo sfondo e non ne vedo nemmeno uno
+
+164
+00:11:00,480 --> 00:11:05,920
+nessun problema tecnico nessun problema tecnico è difficile da vedere in questo momento perché lo è
+
+165
+00:11:05,920 --> 00:11:11,200
+a tarda notte a tarda notte e per stupire sei bravo uh in ordine
+
+166
+00:11:11,200 --> 00:11:13,360
+per accelerare tutta la notte dobbiamo farlo tutti
+
+167
+00:11:13,360 --> 00:11:17,040
+scommetti e Jeff ha solo un letto a casa sua
+
+168
+00:11:17,040 --> 00:11:24,000
+si va bene va bene così possiamo seguire quello oh
+
+169
+00:11:24,000 --> 00:11:28,399
+ok hai uno scudo che io no, ma lo farò
+
+170
+00:11:28,399 --> 00:11:32,880
+il tuo videografo [Musica]
+
+171
+00:11:32,880 --> 00:11:37,279
+fatto oh creepers evitiamo che sì questi ragazzi questi sono i ragazzi che se
+
+172
+00:11:37,279 --> 00:11:42,079
+ti avvicini troppo esplodono anche quando sei seguito da un ragno
+
+173
+00:11:42,079 --> 00:11:46,640
+e un mucchio di rampicanti oh, va bene, è stato efficace e vedo un enderman
+
+174
+00:11:46,640 --> 00:11:57,839
+l'ombra di un enderman oh qualcuno è oh oh oh no
+
+175
+00:12:08,839 --> 00:12:12,399
+quindi oh e ci sono zombi ovunque e io l'ho fatto
+
+176
+00:12:12,399 --> 00:12:19,760
+niente armi amico ok, forse dovremo solo aspettare la notte
+
+177
+00:12:19,760 --> 00:12:23,440
+sì potresti dover oh mio dio c'è un enderman sì
+
+178
+00:12:23,440 --> 00:12:30,240
+finalmente ho ricevuto una spada di ferro congratulazioni
+
+179
+00:12:30,959 --> 00:12:37,120
+ragazzi vedete la mia roba avevate uh pantaloni e scarpe con la spada di ferro
+
+180
+00:12:37,120 --> 00:12:41,120
+si esattamente ma poi sono morto davanti a casa mia
+
+181
+00:12:41,120 --> 00:12:45,200
+Penso che Hinger possa aver raccolto la tua roba, um
+
+182
+00:12:45,200 --> 00:12:53,839
+nerd palla ho appena ucciso uno zombi sotto alto
+
+183
+00:12:58,480 --> 00:13:03,920
+oh ho capito, ecco la mia roba oh quella era quella degli zombi da cui provenivano
+
+184
+00:13:03,920 --> 00:13:08,079
+lo zombi penso così calvo nerd avevi questa armatura
+
+185
+00:13:08,079 --> 00:13:14,000
+ecco che uh hingers erano nell'ostacolo
+
+186
+00:13:14,959 --> 00:13:19,600
+questa è l'armatura che lo zombi ha lasciato cadere no quella era l'armatura che io
+
+187
+00:13:19,600 --> 00:13:26,320
+caduto sì lo zombi lo raccolse non sapevo che gli zombi potessero raccoglierlo
+
+188
+00:13:27,680 --> 00:13:30,720
+i nostri spettatori possono vedere che la performance è simile
+
+189
+00:13:30,720 --> 00:13:35,120
+questo è probabilmente meglio di più tempo o lo sapresti perché hai giocato
+
+190
+00:13:35,120 --> 00:13:39,519
+su molti server online come sono le prestazioni del nostro minecraft
+
+191
+00:13:39,519 --> 00:13:43,279
+server su un raspberry pi uh rispetto ad alcuni di quelli online
+
+192
+00:13:43,279 --> 00:13:48,959
+server meglio in realtà questo è meglio sì
+
+193
+00:13:48,959 --> 00:13:51,600
+sarei d'accordo se avessi questo è quello che mi è stato detto
+
+194
+00:13:51,600 --> 00:13:57,440
+ci sono molti meno giocatori però, ma voglio dire che ho un server gratuito
+
+195
+00:13:57,440 --> 00:14:04,000
+che uh ho usato con i miei figli e abbiamo problemi di lag quando è solo il
+
+196
+00:14:04,000 --> 00:14:08,800
+quattro di noi quindi il fatto che questo è un lampone pi
+
+197
+00:14:08,800 --> 00:14:13,680
+e c'è quello che nove di noi è dispiaciuto mio mio mio internet
+
+198
+00:14:13,680 --> 00:14:16,000
+appena uscito così ti ho perso per un secondo lì
+
+199
+00:14:16,000 --> 00:14:19,920
+stavi parlando Jeff, beh, stavo solo dicendo che ho un
+
+200
+00:14:19,920 --> 00:14:26,639
+um un server gratuito che uso con i miei figli oh va bene come
+
+201
+00:14:26,639 --> 00:14:31,279
+online come una nuvola online va bene sì e lo è
+
+202
+00:14:31,279 --> 00:14:35,760
+um può essere piuttosto lento a volte quando siamo solo noi quattro
+
+203
+00:14:35,760 --> 00:14:40,000
+quindi questo funziona eccezionalmente meglio di così
+
+204
+00:14:40,000 --> 00:14:43,920
+e ho anche pagato per server in cui sai 60
+
+205
+00:14:43,920 --> 00:14:49,920
+un anno e questa è una prestazione migliore che non hai molto
+
+206
+00:14:49,920 --> 00:14:53,360
+nel senso dell'armatura ma sei interessato a seguirmi
+
+207
+00:14:53,360 --> 00:14:57,199
+nel nether solo per un breve tour uh certo perché dovrebbe essere un file
+
+208
+00:14:57,199 --> 00:14:59,920
+le prestazioni hanno colpito proprio che sta caricando un altro mondo
+
+209
+00:14:59,920 --> 00:15:02,959
+e avremo più persone in quel mondo e più persone in
+
+210
+00:15:02,959 --> 00:15:07,120
+questo sì, facciamolo bene
+
+211
+00:15:07,120 --> 00:15:10,800
+così carico istantaneo
+
+212
+00:15:11,360 --> 00:15:14,959
+fai solo attenzione a dove cammini perché non vuoi cadere nella lava
+
+213
+00:15:14,959 --> 00:15:29,299
+sì, dirò tutto bene [Musica]
+
+214
+00:15:31,360 --> 00:15:35,279
+oh uomo quindi guarda il mondo, gentiluomo ora, perché è
+
+215
+00:15:35,279 --> 00:15:38,959
+non è neve che è come da cose più strane, sì
+
+216
+00:15:38,959 --> 00:15:43,680
+sono le cose strane che fluttuano, sì okay
+
+217
+00:15:44,399 --> 00:15:55,839
+sono solo sbalordito
+
+218
+00:15:57,279 --> 00:16:00,160
+dove sei morto
+
+219
+00:16:00,399 --> 00:16:03,920
+eri qui con noi
+
+220
+00:16:04,240 --> 00:16:09,839
+Tutto ok
+
+221
+00:16:21,600 --> 00:16:26,480
+Sono così impressionato da quanto bene questo mondo gens
+
+222
+00:16:26,480 --> 00:16:32,639
+non ci sono problemi che mi aspettavo ora non ho esperienza con
+
+223
+00:16:32,639 --> 00:16:36,880
+minecraft ma ho visto il ritardo che causa la generazione del mondo
+
+224
+00:16:36,880 --> 00:16:41,360
+tipo di balbuzie sì um su altri server
+
+225
+00:16:41,360 --> 00:16:45,279
+quindi me l'aspettavo perché questo è solo un singolo computer di bordo
+
+226
+00:16:45,279 --> 00:16:48,720
+è vero, ma funziona alla grande
+
+227
+00:16:48,720 --> 00:16:52,320
+molto molto bene a quanto pare questo è il posto dove stare, mi piace
+
+228
+00:16:52,320 --> 00:16:55,600
+al sicuro dalla pioggia proprio qui
+
+229
+00:16:55,759 --> 00:17:05,439
+è tutto intorno a me whoa whoa sei caduto sì ho messo un cactus sopra
+
+230
+00:17:05,439 --> 00:17:09,760
+ed è crollato cosa
+
+231
+00:17:11,280 --> 00:17:17,520
+Eviterei di non toccare il cactus no io no non è il cactus che ha ucciso
+
+232
+00:17:17,520 --> 00:17:21,600
+io avevo dei cactus nel mio inventario e poi li ho lasciati cadere a terra
+
+233
+00:17:21,600 --> 00:17:26,000
+e come se l'avessi appoggiato a terra sulla sabbia su cui stavo
+
+234
+00:17:26,000 --> 00:17:30,160
+e poi la sabbia è crollata e poi sono caduto nel
+
+235
+00:17:30,160 --> 00:17:36,160
+Qualunque cosa sì, sai cosa sto ascoltando qui Jeff cosa
+
+236
+00:17:36,160 --> 00:17:39,120
+come dire che noi siamo i papà che sei tu
+
+237
+00:17:39,120 --> 00:17:41,280
+so che la performance è davvero eccezionale
+
+238
+00:17:41,280 --> 00:17:44,480
+su un unico computer di bordo ma i bambini si divertono bene
+
+239
+00:17:44,480 --> 00:17:48,799
+esattamente ho i miei tre figli seduti accanto a me e loro sono
+
+240
+00:17:48,799 --> 00:17:54,640
+si stanno divertendo tantissimo, quindi è fantastico, penso sia un successo di missione
+
+241
+00:17:54,640 --> 00:17:57,039
+mio amico
+
+242
+00:17:58,840 --> 00:18:09,690
+evviva [Musica]
+
+243
+00:18:09,690 --> 00:18:21,049
+[Applausi] [Musica]
+
+244
+00:18:24,340 --> 00:18:32,349
+[Musica]
+
+245
+00:18:32,720 --> 00:18:34,799
+voi
+

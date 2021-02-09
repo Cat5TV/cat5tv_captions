@@ -1,0 +1,467 @@
+it's a common question we received
+and we've even discussed it internally
+can a raspberry pi microcomputer power a
+minecraft server
+well today we're going to answer that
+question and provide you with all the
+tools that you need to get up and
+running
+the links are in the description below
+but please follow along with us
+throughout this video
+and you're going to learn how to set it
+up and see how it performs
+here's what you're going to need a
+raspberry pi 4 with either 4 or 8
+gigabytes of ram
+a very good power supply and active
+cooling since we're going to be
+overclocking your raspberry pi
+to help get things started quickly we'll
+use a micro sd card but i want to be
+able to trust this storage
+so that's why i'm going to go with the
+kingston endurance card which is built
+specifically for right intensive
+applications
+this feature is brought to you by
+ameridroid.com get your raspberry pi 4
+or
+other single board computer to power
+your minecraft server
+at ameridroid.com american-based
+electronic sales
+shipping and support visit
+ameridroid.com
+now first up you're going to need to
+install a debian based headless distro
+so that means no desktop environment and
+no extra apps running
+for the raspberry pi 4 the 64-bit of the
+raspberry pi os lite isn't available yet
+so
+for now we're going to have to stick
+with the 32-bit this means that we're
+limited to only four gigabytes of ram
+for java so buying the eight gigabyte pi
+4 right away is fine for future
+readiness and the installer will
+accommodate this just fine and allow you
+to later upgrade to use more ram
+once the 64-bit os is released but for
+now
+there's really no advantage of the eight
+gigabyte model over the four gigabyte
+because i needed a fancy name for the
+project and because this installer is
+built to work on any adequate spc
+such as the pine 64 rock pro 64.
+i'm calling the project pinecraft
+it's simply not limited to the raspberry
+pi so just make sure whatever system you
+intend to run it on is going to be
+dedicated and has at least
+four gigabytes of ram let's get started
+turning our raspberry pi 4 into a
+dedicated minecraft server
+i've connected to my raspberry pi os
+with ssh
+and the first thing that we need to do
+is install git
+so that's sudo apt install git
+say yes that's going to download git
+and install it for us and now git is
+going to be a command on
+our system so i can go get clone
+https colon slash github.comcat5tv
+slash and then the name of this project
+which is pinecraft
+like minecraft but it's going to work on
+pine64 boards as well
+so hit enter now we've got a folder
+keep in mind i was in my home folder
+when i ran that command so
+where i am now is slash home slash pi
+pinecraft now notice i'm using the pi
+user because i'm using a default install
+so please for goodness sake as the pi
+user
+type password it's like password but
+spelt kind of weird
+and then hit enter enter your current
+password which is raspberry
+and enter a new password please for
+goodness sake do that because that is
+just
+common sense um never use the default
+password
+that's one of the first things we're
+going to do so
+i digress look at the folder here that
+we've
+get cloned and you see a file called
+install
+i'm not going to show you everything and
+explain everything here but if you have
+any questions get onto our discord go to
+category5.tv click on interact
+but what i've done here is i've
+basically
+scripted the entire process of setting
+up this minecraft server using spigot
+so that you don't have to go through
+each of these steps manually and so that
+this video is in three hours long
+so this is basically the automated
+process of how i was
+able to get minecraft up and running on
+a raspberry pi as well as possible so it
+overclocks it automatically does a whole
+bunch of stuff
+detects how much ram you have what kind
+of operating system you're running and
+so on and so forth
+i'd encourage you anytime you're going
+to run any kind of installer script hey
+look at the code
+find out what it's actually doing and
+and see this also gives you a chance to
+trust what i'm doing here
+but also it just is really good
+information and shows you
+exactly what i'm doing but this is
+basically just the
+installer the script that's going to do
+it it is well commented so
+i think you won't have any trouble
+figuring out what it is that i'm doing
+there however if you have any questions
+let us know
+all right so let's run it i'm going to
+go sudo because i need to be the root
+user in order to run this
+dot slash install because it's in the
+current folder
+and it is executable and then i need to
+specify my linux user so
+this is going to be who is going to be
+running the minecraft server because we
+don't want that to be
+root right so if i type robbie for
+example
+you'll see that robbie does not exist i
+haven't created that user
+the only user on my raspberry pi is the
+pi user which is default because it's
+just like a vanilla
+raspberry pi os so i'm going to instead
+type sudo dot slash install
+pi and hit enter and there we go it's
+running so
+first thing we need to do is accept mo
+yang's eula the end user license
+agreement so i've included the link
+there for you
+you have to accept that in order to
+now this is warning me this is very
+important now while
+my raspberry pi server that we're going
+to be looking at uh
+with the gameplay in just a few moments
+time is a raspberry pi with four gigs of
+ram
+i'm right now running this on one with
+eight gigs of ram for the demonstration
+so it's detected up here
+that i'm running the 32-bit os so i'm
+not actually going to be able to get all
+eight gigs of ram i'm only going to be
+able to use
+four which is capping it off at 2.5
+gigabytes of ram being used
+by the game so that's fine it's still
+going to run great but do keep in mind
+if you've gone and bought the 8 gig
+version of the raspberry pi 4
+you have to use the 64-bit os but why am
+i using the 32-bit os then
+it's because they haven't released the
+64-bit light os
+yet so that is uh the desktop is
+currently in beta
+and we will inevitably see the light
+version of uh
+of the 64-bit so keep that in mind keep
+watch for it you can install this on
+your pi right now then back it up and
+then re-install with the 64 bit once
+it's released and you'll be able to take
+advantage of all that ram
+in the meantime it's going to overclock
+to 1.9 gigahertz the default is 1.5 so
+that's pretty good but
+conservative because i don't want to
+void your warranty and i don't want to
+cause any trouble with stability or
+anything like that
+so it's just warning me that i'm going
+to overwrite the config.txt file which
+inevitably
+when it does that it also backs it up so
+keep that in mind you will find
+a new copy that has a date stamp in your
+slash boot
+on that drive so if you get stuck you're
+good to go it's going to install the
+server now it's going to go through
+anything that it needs to do
+first of all it's downloading the
+installer for spigot and it's going to
+go through this process this is going to
+take some time
+so i'm just going to warp through time
+[Music]
+and there we have it all the steps have
+been automated with the pinecraft
+install script
+and we're ready to start playing it's
+really important for you to know and
+remember that you can't shut down
+or reboot a minecraft server in the
+traditional linux way
+if you do you're going to lose all the
+blocks that are in memory
+possibly a day or more of gameplay so
+pinecraft includes a couple handy
+scripts including one called
+reboot and one called stop minecraft is
+all set and ready to go at
+load as soon as you reboot but of course
+we need to reboot so we need to do that
+safely using the command
+sudo tilde minecraft slash
+reboot it's going to store all the
+blocks to disk
+and reboot the pi that's the command
+you're going to use
+from now on similarly the stop command
+will safely store your blocks and stop
+the minecraft
+the minecraft server uh but leave it
+running so that you can either
+then halt the system or run a backup or
+something like that
+so both of these commands can take
+several minutes just keep that in mind
+because they're going to be storing
+several days possibly worth of blocks
+that are in your ram to
+disk so now that the new raspberry pi
+minecraft server is rebooted
+it's time it's like the moment of truth
+let's try to connect
+absolutely flawless fantastic well
+when we come back after the break we're
+gonna give it a real world test
+connecting
+several players to a raspberry pi 4
+minecraft server stick around
+alright it's time to check out the
+gameplay performance notice that we've
+got the cpu and ram stats at the bottom
+of your screen
+and that'll remain for the whole
+demonstration all right so i'm here
+at jeff's place and just going to kind
+of quickly run around to show you the
+you know that this is performing very
+very well
+so this is a raspberry pi 4 is the
+server
+and i've overclocked it to 1.95
+gigahertz
+it's got 4 gigs of ram and a kingston
+uh endurance microsd card
+all right so i wanted to show the
+performance with just me
+uh everything looks pretty good and and
+here at jeff's place
+jeff i guess things should be performing
+it poorly here if anywhere right
+because you've got all these animals and
+stuff and that's correct
+yeah i tried to to to build a base that
+was busy enough
+with lots of elements and so there's
+lots of animals making noise in the
+background i want to try and tax the
+surfer out
+yeah okay so let's uh let's see what
+happens as we start to add players
+because i think that was one of the
+questions that came up
+when you and i were first discussing
+this project was
+you know what how many players are going
+to be able to come on here
+all right and uh i think i'm the last to
+join
+there's mangled fox 70 yeah oh yeah jeff
+maybe it'd be nice if you could join me
+there he is that's a random one right
+hey
+the one so check this out
+so we've got one two three four five six
+seven eight people
+online at once on our raspberry pi 4
+and a chicken and a whole bunch of uh
+animals in the background
+and there's i'm not seeing a single
+glitch at all no glitches
+it's hard to see right now because it is
+late late late at night and
+in order to wow you're good uh in order
+to
+speed through the night we all have to
+have a bet and jeff only has the one bed
+at his place so
+yes all right all right
+so we can follow the one oh
+okay you've got a shield i do not but i
+will i'm going to be like
+your videographer
+done oh creepers let's avoid that yeah
+these guys these are the guys that if
+you get too close they explode
+when you're followed by a spider too
+and a bunch of creepers oh that was okay
+that was effective and i see an enderman
+the shadow of an enderman oh somebody's
+oh oh oh no
+so oh and there's zombies everywhere and
+i have
+no weapons dude okay
+we may have to just wait out the night
+yeah you may have to oh my god there's
+an enderman yes
+i got an iron sword finally
+congratulations
+do you guys see my stuff did you have uh
+iron sword pants and shoes
+yeah exactly but then i died out in
+front of my house
+i think hinger may have collected your
+stuff um
+ball nerd i just killed a
+zombie under high
+oh i got it here's my stuff oh that was
+that was from the zombies that was from
+the zombie i think
+so bald nerd did you have this armor
+here
+that uh hingers were in the hindrance
+that's the armor that the zombie dropped
+no that was the armor that i
+dropped yeah the zombie picked it up i
+did not know zombies could pick up
+our viewers can see that the performance
+is like
+this is probably better than more time
+or you would know because you've played
+on a lot of online servers
+how's the performance of our minecraft
+server on a raspberry pi
+uh compared to some of those online
+servers
+better actually this is better yeah i
+would agree
+i i have that's what i've been told
+there's way less players though
+but i mean there i have a free server
+that uh i've used with my kids and
+we get lag issues when it's just the
+four of us on
+so the fact that this is a raspberry pi
+and there's what
+nine of us it's sorry my my my internet
+just dropped out so i lost you for a
+second there
+you were talking jeff well i was just
+saying that i have a
+um a free server
+that i use with my kids oh okay like
+online like a cloud
+online okay yeah and it is
+um it can be quite laggy sometimes when
+it's just the four of us
+so this performs exceptionally better
+than that
+and i've i've also paid for servers
+where it's you know 60
+a year and this is
+better performance you don't have much
+in the way of armor
+but are you interested in following me
+into the nether just for a quick tour
+uh sure because that should be a
+performance hit right that's loading
+another world
+and we're going to have multiple people
+in that world and multiple people in
+this one
+yeah let's do it all right
+so instantaneous load
+just be careful where you walk because
+uh you don't want to fall into the lava
+yeah i'll say all right
+oh man so look at the world gent now why
+is it
+that's not snow that's like from
+stranger things yeah
+it's the weird stuff that's just kind of
+floating yeah okay
+i'm just astounded
+where did you die
+were you were you here with us
+all right
+i am so impressed with how well this
+world gens
+there's zero issues i was expecting
+now i've i have no experience with
+minecraft but i've seen
+the lag that causes the world gen to
+kind of
+stutter yep um on other servers
+so i was expecting that because this is
+just a single board computer
+that's right but it's running great it's
+very very well apparently this is the
+place to stand i'm like
+safe from the rain right here
+it's all around me whoa whoa
+you fell yeah i put a cactus on top
+and it collapsed what
+i would avoid against touching cactus
+no i no it's not the cactus that killed
+me i had cactus in my inventory and then
+i dropped them on the ground
+and like i placed it on the ground on
+top of the sand that i was standing on
+and then the sand collapsed and then i
+fell into the
+um whatever yeah
+you know what i'm hearing here jeff what
+like
+i mean we're we're the dads that are you
+know the performance is really really
+great
+on a single board computer but the kids
+are having fun well
+exactly i've got my three kids sitting
+beside me and they're
+they're having a blast so this is good
+awesome i think it's a mission success
+my friend
+hooray
+[Applause]
+you

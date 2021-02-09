@@ -1,0 +1,243 @@
+c'est une question courante que nous avons reçue et nous en avons même discuté en interne
+Un micro-ordinateur Raspberry Pi peut-il alimenter un serveur Minecraft
+Eh bien, aujourd'hui, nous allons répondre à cette question et vous fournir tous les
+outils dont vous avez besoin pour être opérationnel
+les liens sont dans la description ci-dessous mais veuillez suivre avec nous
+tout au long de cette vidéo et vous allez apprendre à le configurer
+et voyez comment cela fonctionne, voici ce dont vous aurez besoin
+raspberry pi 4 avec 4 ou 8 gigaoctets de RAM
+une très bonne alimentation et un refroidissement actif puisque nous allons être
+overclocker votre Raspberry Pi pour vous aider à démarrer rapidement, nous
+utiliser une carte micro sd mais je veux pouvoir faire confiance à ce stockage
+c'est pourquoi je vais utiliser la carte d'endurance kingston qui est construite
+spécifiquement pour les bonnes applications intensives
+cette fonctionnalité vous est proposée par ameridroid.com obtenez votre raspberry pi 4
+ou tout autre ordinateur à carte unique pour alimenter
+votre serveur minecraft sur ameridroid.com basé aux États-Unis
+expédition de vente électronique et visite d'assistance
+ameridroid.com maintenant, vous devrez d'abord
+installez une distribution sans tête basée sur Debian pour éviter tout environnement de bureau et
+aucune application supplémentaire en cours d'exécution pour le raspberry pi 4 le 64 bits du
+raspberry pi os lite n'est pas encore disponible, donc
+pour l'instant, nous allons devoir nous en tenir au 32 bits, cela signifie que nous
+limité à seulement quatre gigaoctets de RAM pour java donc acheter les huit gigaoctets pi
+4 est tout de suite très bien pour la préparation future et l'installateur
+accueillir cela très bien et vous permettre de mettre à niveau plus tard pour utiliser plus de RAM
+une fois le système d'exploitation 64 bits sorti mais pour l'instant
+il n'y a vraiment aucun avantage du modèle à huit gigaoctets sur les quatre gigaoctets
+parce que j'avais besoin d'un nom sophistiqué pour le projet et parce que ce programme d'installation est
+construit pour fonctionner sur n'importe quel SPC adéquat tel que le pin 64 rock pro 64.
+j'appelle le projet pinecraft, il n'est tout simplement pas limité à la framboise
+pi alors assurez-vous simplement que le système sur lequel vous avez l'intention de l'exécuter sera
+dédié et a au moins quatre gigaoctets de RAM commençons
+transformer notre raspberry pi 4 en un serveur minecraft dédié
+je me suis connecté à mon système d'exploitation Raspberry Pi avec ssh
+et la première chose que nous devons faire est d'installer git
+donc c'est sudo apt install git dire oui ça va télécharger git
+et installez-le pour nous et maintenant git va être une commande sur
+notre système pour que je puisse aller cloner https barre oblique du colon github.comcat5tv
+barre oblique puis le nom de ce projet qui est pinecraft
+comme minecraft mais cela fonctionnera aussi sur les planches pine64
+alors appuyez sur Entrée maintenant nous avons un dossier gardez à l'esprit que j'étais dans mon dossier personnel
+quand j'ai exécuté cette commande, alors où je suis maintenant, c'est slash home slash pi
+pinecraft remarque maintenant que j'utilise l'utilisateur pi car j'utilise une installation par défaut
+alors s'il vous plaît pour l'amour de Dieu en tant qu'utilisateur pi
+tapez le mot de passe c'est comme un mot de passe mais épelé un peu bizarre
+puis appuyez sur Entrée entrez votre mot de passe actuel qui est framboise
+et entrez un nouveau mot de passe s'il vous plaît pour l'amour de Dieu, faites-le parce que c'est
+juste du bon sens um n'utilise jamais la valeur par défaut
+mot de passe c'est l'une des premières choses que nous
+va le faire, je m'éloigne du regard du dossier ici
+nous avons été clonés et vous voyez un fichier appelé
+installer je ne vais pas tout vous montrer et
+expliquez tout ici mais si vous avez des questions sur notre discorde, allez à
+category5.tv cliquez sur interagir mais ce que j'ai fait ici c'est que j'ai
+a essentiellement écrit tout le processus de réglage
+sur ce serveur minecraft en utilisant spigot pour que vous n'ayez pas à passer par
+chacune de ces étapes manuellement et pour que cette vidéo dure trois heures
+il s'agit donc essentiellement du processus automatisé de la façon dont j'étais
+capable de faire fonctionner Minecraft sur un Raspberry Pi aussi bien que possible afin qu'il
+overclocking il fait automatiquement tout un tas de choses
+détecte la quantité de RAM dont vous disposez, quel type de système d'exploitation vous utilisez et
+ainsi de suite et ainsi de suite, je vous encouragerais à chaque fois que vous y allez
+pour exécuter n'importe quel type de script d'installation, regardez le code
+découvrir ce qu'il fait réellement et voir que cela vous donne également une chance de
+fais confiance à ce que je fais ici mais aussi c'est vraiment bien
+informations et vous montre exactement ce que je fais mais c'est
+essentiellement juste l'installateur le script qui va faire
+c'est bien commenté donc je pense que vous n'aurez aucun problème
+comprendre ce que je fais là-bas cependant si vous avez des questions
+laissez-nous savoir alors allons-y, je vais
+allez sudo parce que je dois être l'utilisateur root pour exécuter ceci
+dot slash installer car il se trouve dans le dossier actuel
+et il est exécutable et puis je dois spécifier mon utilisateur Linux afin
+ce sera qui va exécuter le serveur minecraft parce que nous
+Je ne veux pas que ce soit le bon root, donc si je tape robbie pour
+exemple vous verrez que robbie n'existe pas i
+n'a pas créé cet utilisateur, le seul utilisateur sur mon Raspberry Pi est le
+utilisateur pi qui est par défaut car c'est comme une vanille
+raspberry pi os donc je vais plutôt taper sudo dot slash install
+pi et appuyez sur Entrée et là, c'est en cours d'exécution alors
+la première chose que nous devons faire est d'accepter eula de mo yang la licence d'utilisateur final
+accord donc j'ai inclus le lien pour vous
+vous devez l'accepter pour installer
+maintenant cela me prévient que c'est très important maintenant alors que
+mon serveur Raspberry Pi que nous allons examiner euh
+avec le gameplay en quelques instants le temps est un Raspberry Pi avec quatre concerts de
+ram je suis en train d'exécuter ceci sur un avec
+huit Go de RAM pour la démonstration, donc c'est détecté ici
+que j'exécute le système d'exploitation 32 bits, donc je ne vais pas pouvoir tout obtenir
+huit Go de RAM que je ne pourrai utiliser
+quatre, ce qui plafonne à 2,5 gigaoctets de RAM utilisés
+par le jeu, donc ça va, ça va toujours bien fonctionner, mais gardez à l'esprit
+si vous êtes allé acheter la version 8 gig du raspberry pi 4
+vous devez utiliser le système d'exploitation 64 bits mais pourquoi est-ce que j'utilise le système d'exploitation 32 bits alors
+c'est parce qu'ils n'ont pas publié le système d'exploitation léger 64 bits
+pourtant, c'est euh, le bureau est actuellement en version bêta
+et on verra forcément la version light de euh
+du 64 bits, gardez donc à l'esprit que vous pouvez l'installer sur
+votre pi maintenant puis sauvegardez-le, puis réinstallez-le avec le 64 bits une fois
+il est sorti et vous pourrez profiter de tout ce ram
+en attendant, il va overclocker à 1,9 gigahertz la valeur par défaut est 1,5 donc
+c'est plutôt bien mais conservateur parce que je ne veux pas
+annuler votre garantie et je ne veux pas causer de problèmes de stabilité ou
+quelque chose comme ça donc ça me prévient juste que je vais
+pour écraser le fichier config.txt qui inévitablement
+quand il le fait, il le sauvegarde également, alors gardez à l'esprit que vous trouverez
+une nouvelle copie avec un horodatage dans votre démarrage slash
+sur ce lecteur, donc si vous êtes coincé, vous êtes prêt à partir, il va installer le
+serveur maintenant, il va passer par tout ce qu'il doit faire
+tout d'abord, il télécharge le programme d'installation de spigot et il va
+passer par ce processus cela va prendre du temps
+Alors je vais juste traverser le temps
+[La musique]
+et là, nous l'avons toutes les étapes ont été automatisées avec le pinecraft
+installer le script et nous sommes prêts à commencer à le jouer
+vraiment important pour vous de savoir et de vous rappeler que vous ne pouvez pas arrêter
+ou redémarrez un serveur minecraft de la manière traditionnelle Linux
+si vous le faites, vous allez perdre tous les blocs qui sont en mémoire
+peut-être un jour ou plus de jeu, donc pinecraft comprend un couple pratique
+scripts dont un appelé reboot et un appelé stop minecraft est
+tout est prêt et prêt à être chargé dès que vous redémarrez mais bien sûr
+nous devons redémarrer, nous devons donc le faire en toute sécurité en utilisant la commande
+sudo tilde minecraft slash reboot il va stocker tous les
+bloque sur le disque et redémarrez le pi c'est la commande
+vous allez utiliser désormais de la même manière la commande stop
+stockera en toute sécurité vos blocs et arrêtera le minecraft
+le serveur minecraft euh mais laissez-le tourner pour que vous puissiez soit
+puis arrêtez le système ou exécutez une sauvegarde ou quelque chose comme ça
+donc ces deux commandes peuvent prendre plusieurs minutes, gardez cela à l'esprit
+parce qu'ils vont stocker plusieurs jours, peut-être l'équivalent de blocs
+qui sont dans votre RAM sur le disque alors maintenant que le nouveau Raspberry Pi
+Le serveur minecraft est redémarré, il est temps que ce soit comme le moment de vérité
+essayons de nous connecter
+absolument parfait bien fantastique quand nous revenons après la pause nous sommes
+va lui donner un test de connexion dans le monde réel
+plusieurs joueurs sur un serveur minecraft raspberry pi 4 restent
+d'accord, il est temps de consulter l'avis de performance de jeu que nous
+obtenu les statistiques du processeur et de la RAM au bas de votre écran
+et ça restera pour toute la démonstration, donc je suis là
+chez Jeff et je vais juste courir rapidement pour vous montrer le
+vous savez que cela fonctionne très très bien
+donc c'est un raspberry pi 4 c'est le serveur
+et je l'ai overclocké à 1,95 gigahertz
+il a 4 Go de RAM et une carte microsd kingston uh endurance
+Très bien donc je voulais montrer la performance avec juste moi
+euh tout a l'air plutôt bien et ici chez Jeff
+Jeff je suppose que les choses devraient mal fonctionner ici si quelque part bien
+parce que tu as tous ces animaux et tout ça et c'est correct
+ouais j'ai essayé de construire une base assez occupée
+avec beaucoup d'éléments et donc il y a beaucoup d'animaux qui font du bruit dans le
+contexte je veux essayer de taxer le surfeur
+ouais ok alors voyons ce qui se passe alors que nous commençons à ajouter des joueurs
+parce que je pense que c'était l'une des questions qui se sont posées
+lorsque vous et moi avons discuté pour la première fois de ce projet
+vous savez combien de joueurs vont pouvoir venir ici
+Très bien et je pense que je suis le dernier à rejoindre
+il y a un renard mutilé 70 ouais oh ouais jeff peut-être que ce serait bien si tu pouvais me rejoindre
+il est là c'est un hasard hey
+celui alors regarde ça pour que nous ayons un deux trois quatre cinq six
+sept huit personnes en ligne à la fois sur notre raspberry pi 4
+serveur et un poulet et tout un tas de euh
+des animaux en arrière-plan et il y a je ne vois pas un seul
+pépin du tout pas de pépin c'est difficile à voir en ce moment car c'est
+tard tard dans la nuit et pour impressionner tu es bon euh dans l'ordre
+pour accélérer la nuit, nous devons tous
+a un pari et jeff n'a qu'un seul lit chez lui alors
+Oui d'accord, d'accord pour que nous puissions suivre celui oh
+ok tu as un bouclier que je n'ai pas mais je vais je vais être comme
+votre vidéaste [Musique]
+fait oh creepers évitons que ouais ces gars-là ce sont les gars qui si
+vous vous approchez trop, ils explosent lorsque vous êtes suivi par une araignée aussi
+et un tas de plantes grimpantes oh c'était bon c'était efficace et je vois un enderman
+l'ombre d'un enderman oh quelqu'un est oh oh oh non
+alors oh et il y a des zombies partout et j'ai
+pas d'armes mec d'accord, nous devrons peut-être attendre la nuit
+ouais tu devras peut-être oh mon dieu il y a un enderman oui
+j'ai enfin une épée de fer félicitations
+est-ce que vous voyez mes affaires, avez-vous eu un pantalon et des chaussures d'épée de fer
+Ouais exactement mais ensuite je suis mort devant ma maison
+Je pense que Hinger a peut-être rassemblé vos affaires euh
+ball nerd je viens de tuer un zombie sous haut
+Oh je l'ai, voici mes trucs oh c'était des zombies qui venaient de
+le zombie que je pense si chauve nerd as-tu eu cette armure
+ici que euh les hingers étaient en obstacle
+c'est l'armure que le zombie a laissé tomber non c'était l'armure que je
+lâché ouais le zombie l'a ramassé, je ne savais pas que les zombies pouvaient le ramasser
+nos téléspectateurs peuvent voir que la performance est comme
+c'est probablement mieux que plus de temps ou vous le sauriez parce que vous avez joué
+sur de nombreux serveurs en ligne, quelle est la performance de notre minecraft
+serveur sur un Raspberry Pi euh comparé à certains de ceux en ligne
+serveurs mieux en fait c'est mieux ouais je
+je serais d'accord que c'est ce qu'on m'a dit
+il y a beaucoup moins de joueurs mais je veux dire que j'ai un serveur gratuit
+que j'ai utilisé avec mes enfants et nous avons des problèmes de décalage quand c'est juste le
+quatre d'entre nous sur donc le fait qu'il s'agit d'un pi de framboise
+Et il y a ce que neuf d'entre nous c'est désolé mon mon mon internet
+J'ai juste abandonné alors je t'ai perdu une seconde là-bas
+tu parlais bien jeff je disais juste que j'ai un
+um un serveur gratuit que j'utilise avec mes enfants oh d'accord comme
+en ligne comme un nuage en ligne ok ouais et c'est
+euh ça peut être assez lent parfois quand ce n'est que nous quatre
+donc cela fonctionne exceptionnellement mieux que cela
+et j'ai aussi payé pour des serveurs sur lesquels vous savez 60
+un an et c'est une meilleure performance, vous n'avez pas beaucoup
+dans la voie de l'armure mais êtes-vous intéressé à me suivre
+dans le bas juste pour un tour rapide, bien sûr parce que ça devrait être un
+performance frappé à droite qui charge un autre monde
+et nous allons avoir plusieurs personnes dans ce monde et plusieurs personnes dans
+celui-là ouais faisons-le bien
+charge si instantanée
+fais juste attention où tu marches parce que tu ne veux pas tomber dans la lave
+ouais je vais dire très bien [Musique]
+Oh mec alors regarde le monde maintenant pourquoi est-ce
+ce n'est pas de la neige qui ressemble à des choses étranges ouais
+c'est le truc bizarre qui flotte juste ouais d'accord
+je suis juste étonné
+où es-tu mort
+étiez-vous ici avec nous
+d'accord
+je suis tellement impressionné par la façon dont ce monde
+il n'y a aucun problème auquel je m'attendais maintenant, je n'ai aucune expérience avec
+minecraft mais j'ai vu le décalage qui fait que la génération mondiale
+genre de bégaiement ouais sur d'autres serveurs
+donc je m'attendais à cela car il ne s'agit que d'un ordinateur à carte unique
+c'est vrai mais ça marche bien ça marche
+très très bien apparemment c'est l'endroit où je me tiens
+à l'abri de la pluie ici
+C'est tout autour de moi whoa whoa tu es tombé ouais je mets un cactus dessus
+et il s'est effondré quoi
+j'éviterais de toucher le cactus non je non ce n'est pas le cactus qui a tué
+moi j'avais des cactus dans mon inventaire puis je les ai laissés tomber sur le sol
+Et comme je l'ai placé sur le sol au-dessus du sable sur lequel je me tenais
+puis le sable s'est effondré puis je suis tombé dans le
+um peu importe ouais tu sais ce que j'entends ici jeff quoi
+comme je veux dire, nous sommes les papas que vous êtes
+sais que la performance est vraiment vraiment géniale
+sur un ordinateur monocarte mais les enfants s'amusent bien
+exactement j'ai mes trois enfants assis à côté de moi et ils
+ils s'amusent donc c'est bien génial je pense que c'est une mission réussie
+mon amie
+Hourra [Musique]
+[Applaudissements] [Musique]
+tu
