@@ -1,0 +1,320 @@
+setting up a minecraft server can be a
+big
+pain in the many of the easiest
+solutions out there will end up charging
+you a monthly fee
+and you never even have control over
+your world files so if the company goes
+belly up or otherwise disappears
+you lose all of your builds so i set out
+to create an
+easier way pinecraft installer lets you
+host your very own
+multiplayer minecraft server on a cheap
+little single board computer such as the
+raspberry pi
+4. the new version 2.6 just came out and
+it's killer
+today i'm going to show you how to
+install it and i'll highlight some of
+the great new features
+many of which are a direct result of
+user requests on our last video
+stick around till the end because i'm
+going to show you how to add your own
+user
+as an admin this feature is brought to
+you by ameridroid.com
+get your raspberry pi 4 or other single
+board computer home automation devices
+and electronics accessories at
+ameridroid.com
+american-based sales and support visit
+i've got some exciting ideas for
+pinecraft that i'd love to implement in
+a future version
+but it'll take the support of users like
+you to help me do it
+so if you love pinecraft please consider
+supporting the project
+at patreon.com pinecraft
+now i released the very first version of
+minecraft installer back in january
+and here we are it's less than three
+months later and version 2.6 is already
+out
+implementing several user requests in
+its infancy
+pinecraft only installed spigot and only
+in survival mode to boot
+but users wanted more options and i
+received a ton
+of great feedback from users who have
+already done their homework so
+now paper is the default server flavor
+but you can choose from an assortment of
+available servers and don't worry i'll
+explain the basic differences between
+the available server versions in just a
+moment
+in this video we'll turn a raspberry pi
+4 with 8 gigabytes of ram
+into a high performance multiplayer
+minecraft server using pinecraft
+[Music]
+installer
+the very first thing that i need to do
+is grab my linux based distro and i'm
+choosing ubuntu
+server 20.04 since it has a 64-bit
+version which will let me take advantage
+of the 8 gigabytes of ram
+on my raspberry pi 4. you can grab that
+at ubuntu.com and i've got the direct
+link for you in the video description as
+well
+you want to use fast media otherwise
+your server performance is going to
+suffer
+so i've flashed the ubuntu image to a
+hyperx gaming microsd card
+which boasts 100 megabytes per second
+read
+and 80 megabytes per second right i've
+got
+my pi 4 booted and grabbed the ip
+address of the pi from my router's dhcp
+pool so let's connect ubuntu server
+gives me a proper 64-bit distro
+i've got 8 gigabytes of ram on the pi 4
+and i can see
+7 gigabytes are free while it's running
+to install pinecraft we're going to need
+git so first thing i'm going to do is
+update our app repositories
+sudo apt update will get you there and
+after a few seconds it'll be done
+so now i can run sudo apt install
+git and i can actually see that ubuntu
+server comes with git
+already pre-installed and it's already
+the latest version so i'm good to start
+i'm going to make sure that i'm in my
+user's home folder and then run
+git clone https colon slash slash
+github.com slash cat5 tv slash
+pinecraft that downloads the latest
+version of pinecraft to our clean distro
+let's cd into the pinecraft folder and
+it's super
+simple to get up and running we're going
+to type sudo dot slash
+install and hit enter pinecraft will
+quickly install
+any dependencies it needs to run and
+then will be greeted with the splash
+screen
+simply hit enter to proceed you'll see
+again that pinecraft will install
+any components that will be required to
+run your minecraft server
+give that a moment to complete and we'll
+be prompted with our first question
+which server flavor do you want each of
+the available options are just
+different teams of developers working on
+various improvements on minecraft's
+server
+and it'd be tough to give you an
+exhaustive comparison but essentially
+we've got paper
+which supports plug-ins and it installs
+very quickly
+it's been optimized to perform very well
+and it does so even on a single board
+computer
+it's lightweight and it runs great so
+that's why i've made it the new default
+next in the list is fabric which is yet
+another lightweight
+well-optimized server which supports
+plug-ins and has a fast
+build time then there's spigot which
+runs great but it's a bit heavier than
+the first two
+and it certainly takes a lot longer to
+install since it compiles from source
+then there's the experimental
+implementation of kuberite
+this one's interesting though quite
+niche since it's a full
+rewrite of the minecraft server in c
+plus plus
+since it's not a java based server it's
+significantly more optimized
+and could even allow running a minecraft
+server on a super cheap board
+such as the raspberry pi zero
+but it does have caveats in particular
+it only works with
+older minecraft java clients but it's
+definitely fun to give it a try and
+see if you can get a minecraft server
+running on an ultra cheap system
+finally there's one called vanilla and
+this
+is the legit minecraft server as
+provided by
+moyang it's included in pinecraft for
+the purists
+but as many will tell you you can't
+expect it to perform
+nearly as well as the optimized servers
+nor does it support
+plug-ins or mods so all that said we're
+going to go for the default today
+and install the paper server if you
+don't know which one you want this is a
+great starting point
+next we'll select whether we want a
+survival or
+creative gameplay server if you want to
+follow our series and learn how to play
+minecraft make sure you choose
+survival if however you want to try your
+hand at master builds without having to
+mine the resources
+give creative a try creative is likely a
+great starting point if you've got very
+young children
+but if you want exciting gameplay you're
+probably going to want to lean toward
+survival enter your linux username
+in my case i haven't changed it from the
+default on my raspberry pi
+and that's ubuntu you'll need to accept
+the moyang end user license agreement
+which you can do here next is our world
+seed you can choose one that's provided
+in the pinecraft installer
+enter a custom one or just have your
+seed generated randomly
+you can have your minecraft server load
+automatically at boot
+so just choose yes if that sounds good
+and finally we get an information window
+that simply tells us a bit more about
+our selections
+you'll see on my raspberry pi 4
+pinecraft installer
+is also going to overclock my cpu to 1.9
+gigahertz to maximize gameplay
+performance
+plus my minecraft server will have
+almost five and a half gigabytes of ram
+allocated to it hit enter to continue
+this screen is just warning me that my
+pi
+is going to be overclocked and since i'm
+fine with that i'll hit enter and the
+installation will begin
+and it's done my minecraft server is
+already installed
+and running hit enter to exit you can
+see if your server is running by typing
+slash etc
+init dot d slash minecraft space
+status one means that it's up zero means
+it's down i'll likely improve that in a
+future release
+as of pinecraft 2.6 the minecraft server
+runs under a linux
+screen session so if you want to access
+the minecraft server console directly
+simply type screen dash r on the server
+as you can see my server is still
+generating the world
+it can take several minutes so be
+patient to exit the console while still
+leaving the game server running
+press control a followed by d
+that's the screen command to detach the
+session
+if i list the running screens you can
+see one called pinecraft
+and that's literally all it takes to get
+your minecraft server up and running
+so let's connect and check it out in
+your minecraft java client on any
+computer on your local network
+go to multiplayer and add a server give
+it a friendly name
+i'm going to call mine new server
+minecraft
+2.6 and enter the ip address of the
+on which i ran the pinecraft installer
+remember that this
+only works on your local network if you
+want to give your friends access
+to the server which you can you're going
+to need to open
+port 25565 in your router
+and grab the public ip address of your
+network at
+currentip.xyz
+and share that with your friends now
+every router is
+slightly different so i can't really
+show you how to set that up
+but consult your manual and look for a
+feature called
+port forwarding or something similar to
+that if in doubt
+hey get your nerdiest friend to come on
+by and give you a hand
+and here we are in my brand new
+minecraft world
+interesting a floating tree
+well as i run around you can see that
+the performance is really
+excellent oh and if you want to know how
+i make minecraft look so sexy
+click on the video here so there you
+have it a pinecraft 2.6 installation of
+a paper minecraft server
+on a raspberry pi 4 with 8 gigabytes of
+ram
+running the 64-bit ubuntu server os
+took no effort at all and here we are
+so thanks for staying with me till the
+end just for that i'm going to show you
+a quick way to add yourself as an admin
+to your shiny new minecraft server we
+already learned how to connect to the
+minecraft console screen
+so let's do that from there you can
+enter console commands directly so it's
+super easy to just go
+op bald nerd that's me to make myself a
+server operator
+now that i'm up i can run my server
+commands from within the game
+including opting other players if i'd
+like changing game modes on the fly
+setting the time of day giving players
+resources
+and so much more i really want a plaque
+one day to put on this wall so please
+subscribe to my channel like this video
+and click that bell to be notified next
+time i release a tutorial
+if you want to see all the awkward
+moments behind the scenes
+and even chat with me directly join our
+fleet patreon.com
+category 5. i'm robbie ferguson at
+category 5 tv
+don't forget if you're not having fun
+you're doing it wrong
+thanks for watching
+you

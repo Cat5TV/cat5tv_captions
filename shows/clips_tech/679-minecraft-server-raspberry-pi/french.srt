@@ -1,0 +1,660 @@
+1
+00:00:04,560 --> 00:00:07,279
+la mise en place d'un serveur minecraft peut être un gros
+
+2
+00:00:07,279 --> 00:00:12,000
+la douleur dans la plupart des solutions les plus simples du marché finira par charger
+
+3
+00:00:12,000 --> 00:00:14,960
+vous avez des frais mensuels et vous n'avez même jamais le contrôle sur
+
+4
+00:00:14,960 --> 00:00:19,199
+votre monde file donc si la société se désagrège ou disparaît d'une autre manière
+
+5
+00:00:19,199 --> 00:00:23,119
+vous perdez toutes vos constructions alors je me suis mis à créer un
+
+6
+00:00:23,119 --> 00:00:27,439
+plus simple, l'installateur pinecraft vous permet d'héberger le vôtre
+
+7
+00:00:27,439 --> 00:00:32,000
+serveur minecraft multijoueur sur un petit ordinateur monocarte bon marché tel que le
+
+8
+00:00:32,000 --> 00:00:35,920
+raspberry pi 4. la nouvelle version 2.6 vient de sortir et
+
+9
+00:00:35,920 --> 00:00:38,160
+c'est tueur aujourd'hui, je vais vous montrer comment faire
+
+10
+00:00:38,160 --> 00:00:41,200
+installez-le et je vais mettre en évidence certaines des nouvelles fonctionnalités intéressantes
+
+11
+00:00:41,200 --> 00:00:45,840
+dont beaucoup sont le résultat direct des demandes des utilisateurs sur notre dernière vidéo
+
+12
+00:00:45,840 --> 00:00:49,120
+restez dans les parages jusqu'à la fin parce que je vais vous montrer comment ajouter le vôtre
+
+13
+00:00:49,120 --> 00:00:52,079
+utilisateur en tant qu'administrateur, cette fonctionnalité est mise à disposition
+
+14
+00:00:52,079 --> 00:00:56,879
+vous par ameridroid.com obtenez votre raspberry pi 4 ou autre single
+
+15
+00:00:56,879 --> 00:01:01,879
+ordinateurs de bord appareils domotiques et accessoires électroniques à
+
+16
+00:01:01,879 --> 00:01:07,159
+Visite de vente et d'assistance basée aux États-Unis sur ameridroid.com
+
+17
+00:01:07,159 --> 00:01:10,640
+ameridroid.com j'ai des idées intéressantes pour
+
+18
+00:01:10,640 --> 00:01:14,000
+pinecraft que j'aimerais implémenter dans une future version
+
+19
+00:01:14,000 --> 00:01:17,119
+mais il faudra le soutien d'utilisateurs comme vous pour m'aider à le faire
+
+20
+00:01:17,119 --> 00:01:20,960
+donc si vous aimez pinecraft, pensez à soutenir le projet
+
+21
+00:01:20,960 --> 00:01:26,640
+sur patreon.com pinecraft maintenant j'ai publié la toute première version de
+
+22
+00:01:26,640 --> 00:01:30,880
+l'installateur de minecraft de retour en janvier et nous y sommes c'est moins de trois
+
+23
+00:01:30,880 --> 00:01:33,920
+des mois plus tard et la version 2.6 est déjà sortie
+
+24
+00:01:33,920 --> 00:01:37,520
+la mise en œuvre de plusieurs demandes d'utilisateurs à ses débuts
+
+25
+00:01:37,520 --> 00:01:42,079
+pinecraft installé uniquement spigot et uniquement en mode survie pour démarrer
+
+26
+00:01:42,079 --> 00:01:45,520
+mais les utilisateurs voulaient plus d'options et j'ai reçu une tonne
+
+27
+00:01:45,520 --> 00:01:49,439
+de bons retours d'utilisateurs qui ont déjà fait leurs devoirs
+
+28
+00:01:49,439 --> 00:01:54,560
+maintenant, le papier est la saveur du serveur par défaut, mais vous pouvez choisir parmi un assortiment de
+
+29
+00:01:54,560 --> 00:01:58,320
+serveurs disponibles et ne vous inquiétez pas, je vais vous expliquer les différences de base entre
+
+30
+00:01:58,320 --> 00:02:01,040
+les versions de serveur disponibles en un instant
+
+31
+00:02:01,040 --> 00:02:05,119
+dans cette vidéo, nous allons transformer un raspberry pi 4 avec 8 gigaoctets de RAM
+
+32
+00:02:05,119 --> 00:02:09,900
+dans un serveur minecraft multijoueur haute performance utilisant Pinecraft
+
+33
+00:02:09,900 --> 00:02:23,660
+[Music] installateur
+
+34
+00:02:23,660 --> 00:02:26,789
+[Musique]
+
+35
+00:02:31,440 --> 00:02:35,200
+la toute première chose que je dois faire est de récupérer ma distribution Linux et je suis
+
+36
+00:02:35,200 --> 00:02:39,760
+choisir le serveur ubuntu 20.04 car il a un 64 bits
+
+37
+00:02:39,760 --> 00:02:42,879
+version qui me permettra de profiter des 8 gigaoctets de RAM
+
+38
+00:02:42,879 --> 00:02:47,840
+sur mon raspberry pi 4. vous pouvez le récupérer sur ubuntu.com et j'ai le direct
+
+39
+00:02:47,840 --> 00:02:50,640
+lien pour vous dans la description de la vidéo également
+
+40
+00:02:50,640 --> 00:02:54,000
+vous souhaitez utiliser un média rapide, sinon les performances de votre serveur vont
+
+41
+00:02:54,000 --> 00:02:56,720
+souffrir alors j'ai flashé l'image ubuntu sur un
+
+42
+00:02:56,720 --> 00:03:01,920
+carte microsd de jeu hyperx qui offre 100 mégaoctets par seconde
+
+43
+00:03:01,920 --> 00:03:05,360
+lu et 80 mégaoctets par seconde à droite, j'ai
+
+44
+00:03:05,360 --> 00:03:08,319
+obtenu mon pi 4 démarré et attrapé l'ip
+
+45
+00:03:08,319 --> 00:03:18,800
+adresse du pi du pool DHCP de mon routeur alors connectons le serveur ubuntu
+
+46
+00:03:18,800 --> 00:03:23,599
+me donne une vraie distribution 64 bits, j'ai 8 gigaoctets de RAM sur le pi 4
+
+47
+00:03:23,599 --> 00:03:27,680
+et je peux voir que 7 gigaoctets sont gratuits pendant son exécution
+
+48
+00:03:27,680 --> 00:03:31,200
+pour installer pinecraft, nous allons avoir besoin de git, donc la première chose que je vais faire est
+
+49
+00:03:31,200 --> 00:03:36,159
+mettre à jour nos référentiels d'applications sudo apt update vous y mènera et
+
+50
+00:03:36,159 --> 00:03:41,360
+après quelques secondes, ce sera fait, alors je peux maintenant exécuter sudo apt install
+
+51
+00:03:41,360 --> 00:03:44,640
+git et je peux voir que le serveur ubuntu est livré avec git
+
+52
+00:03:44,640 --> 00:03:48,560
+déjà pré-installé et c'est déjà la dernière version donc je suis prêt à commencer
+
+53
+00:03:48,560 --> 00:03:52,000
+je vais m'assurer que je suis dans le dossier personnel de mon utilisateur, puis exécuter
+
+54
+00:03:52,000 --> 00:03:59,120
+git clone https deux-points slash slash github.com slash cat5 tv slash
+
+55
+00:03:59,120 --> 00:04:04,080
+pinecraft qui télécharge la dernière version de pinecraft sur notre propre distribution
+
+56
+00:04:04,080 --> 00:04:07,920
+allons cd dans le dossier pinecraft et c'est super
+
+57
+00:04:07,920 --> 00:04:11,920
+simple à démarrer, nous allons taper sudo dot slash
+
+58
+00:04:11,920 --> 00:04:15,920
+installez et appuyez sur Entrée pinecraft installera rapidement
+
+59
+00:04:15,920 --> 00:04:20,079
+toutes les dépendances dont il a besoin pour s'exécuter et seront ensuite accueillies par le splash
+
+60
+00:04:20,079 --> 00:04:22,639
+écran appuyez simplement sur Entrée pour continuer, vous verrez
+
+61
+00:04:22,639 --> 00:04:26,000
+encore une fois, ce pinecraft installera tous les composants qui seront nécessaires pour
+
+62
+00:04:26,000 --> 00:04:29,680
+exécutez votre serveur minecraft, laissez un moment pour terminer et nous
+
+63
+00:04:29,680 --> 00:04:34,800
+être invité avec notre première question quelle saveur de serveur voulez-vous chacun de
+
+64
+00:04:34,800 --> 00:04:38,639
+les options disponibles sont juste différentes équipes de développeurs travaillant sur
+
+65
+00:04:38,639 --> 00:04:41,440
+diverses améliorations sur le serveur de Minecraft
+
+66
+00:04:41,440 --> 00:04:44,960
+et il serait difficile de vous donner une comparaison exhaustive mais essentiellement
+
+67
+00:04:44,960 --> 00:04:48,400
+nous avons du papier qui prend en charge les plug-ins et il installe
+
+68
+00:04:48,400 --> 00:04:51,840
+très rapidement, il a été optimisé pour très bien fonctionner
+
+69
+00:04:51,840 --> 00:04:55,040
+et il le fait même sur un ordinateur monocarte
+
+70
+00:04:55,040 --> 00:05:00,000
+il est léger et il fonctionne très bien, c'est pourquoi j'en ai fait le nouveau par défaut
+
+71
+00:05:00,000 --> 00:05:03,680
+le prochain dans la liste est le tissu qui est encore un autre poids léger
+
+72
+00:05:03,680 --> 00:05:07,440
+serveur bien optimisé qui prend en charge les plug-ins et a une
+
+73
+00:05:07,440 --> 00:05:11,759
+le temps de construction puis il y a le robinet qui fonctionne très bien mais c'est un peu plus lourd que
+
+74
+00:05:11,759 --> 00:05:14,400
+les deux premiers et il faut certainement beaucoup plus de temps pour
+
+75
+00:05:14,400 --> 00:05:18,880
+installer car il compile à partir des sources, puis il y a l'expérimental
+
+76
+00:05:18,880 --> 00:05:22,960
+implémentation de kuberite celle-ci est intéressante mais assez
+
+77
+00:05:22,960 --> 00:05:27,199
+niche car il s'agit d'une réécriture complète du serveur minecraft en c
+
+78
+00:05:27,199 --> 00:05:31,120
+plus, car ce n'est pas un serveur Java, c'est
+
+79
+00:05:31,120 --> 00:05:35,360
+nettement plus optimisé et pourrait même permettre d'exécuter un minecraft
+
+80
+00:05:35,360 --> 00:05:40,639
+serveur sur une carte super bon marché comme le raspberry pi zero
+
+81
+00:05:40,639 --> 00:05:44,560
+mais il a des mises en garde en particulier, il ne fonctionne qu'avec
+
+82
+00:05:44,560 --> 00:05:49,039
+anciens clients java minecraft mais c'est vraiment amusant d'essayer et
+
+83
+00:05:49,039 --> 00:05:52,800
+voir si vous pouvez obtenir un serveur minecraft fonctionnant sur un système ultra bon marché
+
+84
+00:05:52,800 --> 00:05:56,000
+enfin il y en a un appelé vanille et celui-ci
+
+85
+00:05:56,000 --> 00:05:59,520
+est le serveur minecraft légitime fourni par
+
+86
+00:05:59,520 --> 00:06:03,039
+moyang il est inclus dans pinecraft pour les puristes
+
+87
+00:06:03,039 --> 00:06:06,240
+mais comme beaucoup vous le diront, vous ne pouvez pas vous attendre à ce qu'il fonctionne
+
+88
+00:06:06,240 --> 00:06:09,919
+presque aussi bien que les serveurs optimisés ni ne prend en charge
+
+89
+00:06:09,919 --> 00:06:14,560
+plug-ins ou mods donc tout cela dit que nous allons opter pour la valeur par défaut aujourd'hui
+
+90
+00:06:14,560 --> 00:06:18,639
+et installez le serveur papier si vous ne savez pas lequel vous voulez c'est un
+
+91
+00:06:18,639 --> 00:06:22,479
+excellent point de départ, nous choisirons ensuite si nous voulons un
+
+92
+00:06:22,479 --> 00:06:26,800
+serveur de survie ou de jeu créatif si vous le souhaitez
+
+93
+00:06:26,800 --> 00:06:30,639
+suivez notre série et apprenez à jouer à minecraft assurez-vous de choisir
+
+94
+00:06:30,639 --> 00:06:35,120
+survie si toutefois vous voulez vous essayer aux builds de maître sans avoir à
+
+95
+00:06:35,120 --> 00:06:39,360
+exploiter les ressources donner un essai créatif à la création est probablement un
+
+96
+00:06:39,360 --> 00:06:42,160
+excellent point de départ si vous avez de très jeunes enfants
+
+97
+00:06:42,160 --> 00:06:45,919
+mais si vous voulez un gameplay passionnant, vous voudrez probablement vous pencher vers
+
+98
+00:06:45,919 --> 00:06:50,800
+Survie entrez votre nom d'utilisateur linux dans mon cas, je ne l'ai pas changé depuis le
+
+99
+00:06:50,800 --> 00:06:55,199
+par défaut sur mon raspberry pi et c'est ubuntu que vous devrez accepter
+
+100
+00:06:55,199 --> 00:07:00,800
+le contrat de licence utilisateur final moyang que vous pouvez faire ici est notre monde
+
+101
+00:07:00,800 --> 00:07:05,039
+seed, vous pouvez en choisir un qui est fourni dans le programme d'installation de pinecraft
+
+102
+00:07:05,039 --> 00:07:09,680
+saisissez-en un personnalisé ou faites simplement générer votre graine au hasard
+
+103
+00:07:09,680 --> 00:07:13,199
+vous pouvez faire charger votre serveur minecraft automatiquement au démarrage
+
+104
+00:07:13,199 --> 00:07:18,319
+alors choisissez simplement oui si cela sonne bien et finalement nous obtenons une fenêtre d'information
+
+105
+00:07:18,319 --> 00:07:21,199
+qui nous en dit simplement un peu plus sur nos sélections
+
+106
+00:07:21,199 --> 00:07:25,280
+vous verrez sur mon programme d'installation de raspberry pi 4 pinecraft
+
+107
+00:07:25,280 --> 00:07:30,639
+va également overclocker mon processeur à 1,9 gigahertz pour maximiser le gameplay
+
+108
+00:07:30,639 --> 00:07:34,319
+performances plus mon serveur minecraft aura
+
+109
+00:07:34,319 --> 00:07:39,759
+près de cinq gigaoctets et demi de RAM qui lui sont alloués, appuyez sur Entrée pour continuer
+
+110
+00:07:39,759 --> 00:07:42,000
+cet écran m'avertit simplement que mon pi
+
+111
+00:07:42,000 --> 00:07:46,319
+va être overclocké et comme je vais bien avec ça, je vais appuyer sur Entrée et le
+
+112
+00:07:46,319 --> 00:07:54,560
+l'installation commencera [Musique]
+
+113
+00:07:54,560 --> 00:07:58,160
+et c'est fait mon serveur minecraft est déjà installé
+
+114
+00:07:58,160 --> 00:08:03,199
+et en cours d'exécution appuyez sur Entrée pour quitter, vous pouvez voir si votre serveur est en cours d'exécution en tapant
+
+115
+00:08:03,199 --> 00:08:08,000
+barre oblique etc init dot d barre oblique minecraft espace
+
+116
+00:08:08,000 --> 00:08:13,039
+le statut un signifie qu'il est à zéro signifie qu'il est en baisse, je vais probablement l'améliorer dans un
+
+117
+00:08:13,039 --> 00:08:18,240
+version future à partir de pinecraft 2.6 le serveur minecraft
+
+118
+00:08:18,240 --> 00:08:22,080
+s'exécute sous une session d'écran Linux, donc si vous souhaitez accéder
+
+119
+00:08:22,080 --> 00:08:28,960
+la console du serveur minecraft directement tapez simplement screen dash r sur le serveur
+
+120
+00:08:28,960 --> 00:08:32,560
+comme vous pouvez le voir, mon serveur génère toujours le monde
+
+121
+00:08:32,560 --> 00:08:37,360
+cela peut prendre plusieurs minutes alors soyez patient pour quitter la console tout en restant
+
+122
+00:08:37,360 --> 00:08:42,479
+quitter le serveur de jeu en cours d'exécution, appuyez sur la commande a suivi de d
+
+123
+00:08:42,479 --> 00:08:45,920
+c'est la commande d'écran pour détacher la session
+
+124
+00:08:45,920 --> 00:08:49,760
+si je liste les écrans en cours d'exécution, vous pouvez en voir un appelé pinecraft
+
+125
+00:08:49,760 --> 00:08:54,480
+et c'est littéralement tout ce qu'il faut pour que votre serveur minecraft soit opérationnel
+
+126
+00:08:54,480 --> 00:08:59,279
+Alors connectons-nous et vérifions-le dans votre client java minecraft sur n'importe quel
+
+127
+00:08:59,279 --> 00:09:04,640
+ordinateur sur votre réseau local passez en multijoueur et ajoutez un serveur
+
+128
+00:09:04,640 --> 00:09:08,240
+c'est un nom convivial, je vais appeler le mien nouveau serveur
+
+129
+00:09:08,240 --> 00:09:12,959
+minecraft 2.6 et entrez l'adresse IP du
+
+130
+00:09:12,959 --> 00:09:16,800
+raspberry pi sur lequel j'ai exécuté le programme d'installation de pinecraft
+
+131
+00:09:16,800 --> 00:09:20,480
+rappelez-vous que cela ne fonctionne sur votre réseau local que si vous
+
+132
+00:09:20,480 --> 00:09:24,320
+voulez donner à vos amis l'accès au serveur auquel vous pouvez vous rendre
+
+133
+00:09:24,320 --> 00:09:28,720
+avoir besoin d'ouvrir le port 25565 de votre routeur
+
+134
+00:09:28,720 --> 00:09:33,560
+et saisissez l'adresse IP publique de votre réseau sur
+
+135
+00:09:33,560 --> 00:09:37,440
+currentip.xyz et partagez-le avec vos amis maintenant
+
+136
+00:09:37,440 --> 00:09:40,399
+chaque routeur est légèrement différent, donc je ne peux pas vraiment
+
+137
+00:09:40,399 --> 00:09:44,480
+vous montre comment configurer cela, mais consultez votre manuel et recherchez un
+
+138
+00:09:44,480 --> 00:09:47,519
+fonctionnalité appelée redirection de port ou quelque chose de similaire à
+
+139
+00:09:47,519 --> 00:09:51,279
+qu'en cas de doute, faites venir votre ami le plus nerd
+
+140
+00:09:51,279 --> 00:09:55,519
+par et vous donner un coup de main et nous voici dans mon tout nouveau
+
+141
+00:09:55,519 --> 00:09:59,120
+Minecraft world [Musique]
+
+142
+00:09:59,120 --> 00:10:06,959
+intéressant un arbre flottant ainsi que je cours autour, vous pouvez le voir
+
+143
+00:10:06,959 --> 00:10:10,720
+la performance est vraiment excellente oh et si vous voulez savoir comment
+
+144
+00:10:10,720 --> 00:10:15,600
+Je fais de minecraft un look si sexy, cliquez sur la vidéo ici pour vous y voilà
+
+145
+00:10:15,600 --> 00:10:20,640
+avoir une installation pinecraft 2.6 d'un serveur minecraft papier
+
+146
+00:10:20,640 --> 00:10:24,160
+sur un raspberry pi 4 avec 8 gigaoctets de RAM
+
+147
+00:10:24,160 --> 00:10:31,040
+exécuter le système d'exploitation du serveur ubuntu 64 bits n'a pris aucun effort et nous y sommes
+
+148
+00:10:31,040 --> 00:10:34,399
+alors merci de rester avec moi jusqu'à la fin juste pour ça je vais te montrer
+
+149
+00:10:34,399 --> 00:10:39,760
+un moyen rapide de vous ajouter en tant qu'administrateur à votre nouveau serveur minecraft brillant, nous
+
+150
+00:10:39,760 --> 00:10:43,279
+déjà appris à se connecter à l'écran de la console Minecraft
+
+151
+00:10:43,279 --> 00:10:48,399
+alors faisons cela à partir de là, vous pouvez entrer directement les commandes de la console, donc c'est
+
+152
+00:10:48,399 --> 00:10:53,680
+super facile de devenir un nerd chauve, c'est moi de me faire un
+
+153
+00:10:53,680 --> 00:10:57,200
+opérateur de serveur maintenant que je suis en place, je peux exécuter mon serveur
+
+154
+00:10:57,200 --> 00:11:01,200
+commandes à partir du jeu, y compris en choisissant d'autres joueurs si je voulais
+
+155
+00:11:01,200 --> 00:11:06,320
+comme changer de mode de jeu à la volée en définissant l'heure de la journée donnant aux joueurs
+
+156
+00:11:06,320 --> 00:11:10,959
+ressources et bien plus encore je veux vraiment une plaque
+
+157
+00:11:10,959 --> 00:11:15,360
+un jour pour mettre sur ce mur alors s'il vous plaît abonnez-vous à ma chaîne comme cette vidéo
+
+158
+00:11:15,360 --> 00:11:18,800
+et cliquez sur cette cloche pour être averti la prochaine fois que je publie un tutoriel
+
+159
+00:11:18,800 --> 00:11:21,839
+si vous voulez voir tous les moments difficiles dans les coulisses
+
+160
+00:11:21,839 --> 00:11:26,320
+et même discuter avec moi directement rejoindre notre flotte patreon.com
+
+161
+00:11:26,320 --> 00:11:30,240
+catégorie 5. je suis robbie ferguson à la catégorie 5 tv
+
+162
+00:11:30,240 --> 00:11:33,920
+n'oubliez pas si vous ne vous amusez pas, vous le faites mal
+
+163
+00:11:33,920 --> 00:11:43,839
+Merci d'avoir regardé
+
+164
+00:11:46,440 --> 00:12:06,389
+[Musique]
+
+165
+00:12:09,680 --> 00:12:11,760
+vous
+
